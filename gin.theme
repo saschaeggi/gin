@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the standard theme.
+ */
+
+ use Drupal\Component\Utility\Html;
+ use Drupal\Component\Utility\SafeMarkup;
+ use Drupal\Core\Render\Element;
+ use Drupal\Core\Url;
+ use Drupal\file\Entity\File;
+ use Drupal\Core\Template\Attribute;
+ use Drupal\Core\Render\Markup;
+
+ /**
+ ** Implements hook_preprocess_HOOK() for links__dropbutton.
+ **/
+ function gin_preprocess_dropbutton_wrapper(&$variables) {
+   $children = (string)$variables['children'];
+
+   $pattern = '/(<ul\sclass\s*= *["\']?)([^"\']*)(.*)(<li)/i';
+   $lipattern = '/(<li class\s*= *["\']?)([^"\']*)/i';
+
+   $children = preg_replace($lipattern, '$1$2 dropbutton__item dropbutton__item--extrasmall', $children);
+   $children = preg_replace('/<li>/', '<li class="dropbutton__item dropbutton__item--extrasmall">', $children);
+   $children = preg_replace($pattern, '$1$2 dropbutton--multiple dropbutton--extrasmall $3$4', $children);
+
+   $variables['children'] = Markup::create($children);
+}
+
+/**
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function gin_form_alter(&$form, $form_state, $form_id) {
+  if (strpos($form_id, 'node_') !== false && strpos($form_id, 'page_edit_form') !== false) {
+    if (isset($form['actions']['submit'])) {
+      $form['actions']['submit']['#attributes']['class'][] = 'button--small';
+    }
+    if (isset($form['actions']['preview'])) {
+      $form['actions']['preview']['#attributes']['class'][] = 'button--small';
+    }
+    if (isset($form['actions']['delete_translation'])) {
+      $form['actions']['delete_translation']['#attributes']['class'][] = 'button--small';
+      $form['actions']['delete_translation']['#attributes']['class'][] = 'button--danger';
+    }
+  }
+}

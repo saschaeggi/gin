@@ -1,0 +1,94 @@
+// Paragraphs
+.paragraph--view-mode--preview {
+  .field--name-field-image {
+    max-height: 200px;
+    overflow: hidden;
+  }
+
+  img {
+    width: 200px;
+  }
+
+  .contextual {
+    display: none;
+  }
+}
+
+.paragraphs-tabs-wrapper {
+  .paragraphs-subform {
+    margin-top: 20px;
+    margin-right: 31px;
+  }
+
+  .tabledrag-toggle-weight-wrapper {
+    padding-bottom: 12px;
+  }
+
+  .field-multiple-table {
+    thead, tbody {
+      border: 1px solid #e6e4df;
+    }
+
+    thead {
+      .label {
+        display: inline-block;
+        color: #444;
+        text-transform: capitalize;
+        padding-top: 4px;
+      }
+    }
+
+    .draggable {
+      td {
+        padding: 30px 0 20px;
+      }
+    }
+  }
+
+  .paragraph-type-label {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .paragraphs-subform {
+    .paragraph-type-label {
+      font-size: 14px;
+    }
+  }
+
+  .paragraph-type-add-modal,
+  .paragraphs-dropbutton-wrapper {
+    margin-right: 8px;
+  }
+}
+
+.paragraph--view-mode--preview .field--name-field-title {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.paragraph--type--layout.paragraph--view-mode--preview,
+.paragraph--type--slider.paragraph--view-mode--preview {
+  .field--name-field-paragraphs {
+    display: flex;
+    margin-top: 12px;
+
+    > .field__item {
+      margin-right: 12px;
+      margin-bottom: 12px;
+
+      @include breakpoint(1024px) {
+        flex-basis: 50%;
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+    }
+  }
+}
+
+.paragraph--view-mode--preview .paragraph--type--image-mobile {
+  .field--name-field-variant {
+    display: none;
+  }
+}

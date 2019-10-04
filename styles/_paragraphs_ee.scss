@@ -1,0 +1,21 @@
+// Paragraphs EE
+.js .paragraphs-add-dialog--categorized .item-filter, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .item-filter {
+  padding: 8px;
+  background: #fff;
+  border: 0 none;
+}
+
+.js .paragraphs-add-dialog--categorized .search-description, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .search-description {
+  margin-top: 12px;
+}
+
+.js .paragraphs-add-dialog--categorized .paragraphs-button--icon, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-button--icon {
+  background-size: 64px;
+  background-position: center center;
+  background-color: white;
+}
+
+.js .paragraphs_ee__add-in-between__wrapper {
+  position: absolute;
+  transform: translateX(-50%);
+}

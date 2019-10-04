@@ -1,0 +1,6 @@
+gin:
+  css:
+    theme:
+      dist/css/gin.css: {}
+  js:
+    dist/js/gin.js: {}

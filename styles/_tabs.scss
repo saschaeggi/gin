@@ -1,0 +1,79 @@
+
+// Horizontal Tabs in Claro style
+.horizontal-tabs {
+  position: static !important;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border: 0 none;
+
+  ul.horizontal-tabs-list {
+    position: relative;
+    padding-top: .5rem;
+    background: none;
+    border-right: 0 none;
+    overflow: hidden;
+
+    &:after {
+      content: "";
+      z-index: -1;
+      display: block;
+      position: absolute;
+      bottom: 1px;
+      width: 100%;
+      height: 1px;
+      background: #ccc;
+    }
+
+    li.horizontal-tab-button {
+      background: none;
+      border-right: 0 none;
+
+      a {
+        color: #545560;
+        padding: 0.75rem 2rem;
+        border-radius: 2px 2px 0 0;
+
+        &:hover {
+          background: #e6ecf8;
+        }
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+        }
+      }
+
+      &.selected a {
+        color: #003cc5;
+
+        &:before {
+          border-left: none;
+          border-right: none;
+          border-bottom: 3px solid #003cc5;
+          top: auto;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .horizontal-tabs-panes {
+    width: 100%;
+  }
+
+  .horizontal-tabs-pane {
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .claro-details__wrapper {
+    margin: 0;
+  }
+}

@@ -1,0 +1,76 @@
+// Fieldgroup
+fieldset:not(.fieldgroup) {
+  padding-top: 40px;
+  padding-left: 0;
+  padding-right: 0;
+  background: transparent;
+  border-color: #e6e4df;
+  border-left: 0 none;
+  border-right: 0 none;
+
+  > legend {
+    top: 20px;
+  }
+
+  > .fieldset-wrapper {
+    margin-top: 20px;
+  }
+}
+
+// Summary
+details summary {
+  padding: 16px;
+  background-color: rgba(#e6e4df, .2);
+}
+
+
+// Claro form--inline fixes
+.form--inline,
+[data-drupal-selector="edit-node-bulk-form"],
+.layout-region-node-footer__content {
+  display: flex;
+
+  .form-item,
+  .form-actions {
+    margin: .5rem .5rem .5rem 0;
+  }
+
+  .form-actions {
+    align-self: flex-end;
+
+    .button,
+    .action-link {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.field--type-text-with-summary,
+.field--widget-text-textarea {
+  .form-item {
+    margin-bottom: 0;
+  }
+
+  .filter-wrapper {
+    border: 0 none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+// Claro upload widget
+.ui-dialog .media-library-wrapper .media-library-menu {
+  max-width: 10%;
+}
+
+// Claro delete
+.button--danger {
+  background: none;
+  color: #d72222;
+}
+
+// Autocomplete z-index issue
+.ui-autocomplete {
+  z-index: 2000;
+}

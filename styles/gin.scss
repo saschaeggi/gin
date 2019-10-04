@@ -1,0 +1,88 @@
+// Import breakpoint
+@import "node_modules/breakpoint-sass/stylesheets/breakpoint";
+
+// Import variables, abstractions, base styles and components using globbing.
+//
+// Globbing will always import files alphabetically. Optimally, all your
+// components should be self-contained and explicit enough to not have any
+// contained styles leak into unrelated components: The import order should not
+// affect the result.
+//
+// If there are variables, functions or mixins that depend on each other and
+// therefore need to be imported in a specific order you can import them
+// directly. Variables-, function- or mixin providing partials should never
+// output any styles themselves: Importing them multiple times to resolve
+// dependencies shouldn't be a problem.
+
+@import "toolbar";
+@import "claro_improvements";
+@import "entity_reference_layout";
+@import "layout_node_form";
+@import "paragraphs";
+@import "paragraphs_ee";
+@import "tabs";
+@import "views";
+@import "media-library";
+
+// Sidebar
+// .entity-meta {
+//   border-color: #e6e4df;
+//
+//   &__header {
+//     border-top-color: #e6e4df;
+//   }
+//
+//   &__header,
+//    details {
+//     border-bottom-color: #e6e4df;
+//   }
+// }
+
+// Vertical tabs
+// .adminimal .vertical-tabs {
+//   margin: 0;
+//   border-color: #e6e4df;
+// }
+
+// [class*="block-column-"] > .grid, .item-list > [class*="block-column-"] > .grid {
+//   position: relative;
+// }
+
+// .views-view-grid .views-row.noclear {
+//   clear: none;
+// }
+
+// .view-media-entity-browser .views-row {
+//   border: 4px solid #fff;
+// }
+//
+// .view-media-entity-browser .views-row.checked {
+//   border: 4px solid #73b355;
+// }
+//
+// .view-media-entity-browser .grid {
+//   .form-type-checkbox {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     margin: 0;
+//
+//     label {
+//       top: 0;
+//       left: 0;
+//       width: 100%;
+//       height: 100%;
+//       z-index: 3;
+//       clip: unset;
+//       font-size: 0;
+//     }
+//
+//     input[type=checkbox] {
+//       position: absolute;
+//       top: 10px;
+//       right: 10px;
+//     }
+//   }
+// }

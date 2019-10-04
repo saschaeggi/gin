@@ -1,0 +1,199 @@
+// Paragraphs in Layout Builder
+.field--widget-entity-reference-layout-widget {
+  fieldset.erl-field {
+    position: relative;
+    padding-top: 24px;
+    background: #fff; //#f3f4f9; //#fff;
+    border: 1px solid rgba(216, 217, 224, 0.8);
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    // box-shadow: none;
+
+    > legend {
+      display: none;
+    }
+  }
+
+  .erl-layout {
+    background: none;
+
+    .layout {
+      background: #fff;
+    }
+  }
+
+  .erl-add-content__group,
+  .erl-add-content--group {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 800px;
+    transform: translateX(-50%);
+
+    button {
+      text-align: center;
+      flex-basis: 25%;
+      margin-bottom: 16px;
+
+      img {
+        width: 24px;
+        height: 24px;
+        float: none;
+        display: block;
+        margin: 8px auto;
+
+        @media (min-width: 1024px) {
+          width: 48px;
+          height: 48px;
+        }
+      }
+    }
+  }
+
+  .erl-layout-region {
+    padding: 16px;
+    margin-left: -1px;
+    background: #fff;
+    border: 1px solid #ccc;
+
+    .erl-field-item {
+      outline: 1px dashed #d6d6d6;
+    }
+
+    .paragraph {
+      .contextual {
+        display: none;
+      }
+    }
+  }
+
+  .erl-field-item--layout {
+    border: 0 none;
+
+    &:before {
+      height: 2px;
+      background-color: #333;
+    }
+  }
+
+  .erl-layout-disabled {
+    padding-top: 64px;
+
+    h4 {
+      padding-left: 0;
+    }
+  }
+
+  .erl-add-content {
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  .erl-field-item--layout-container ~ .erl-add-content--single {
+    width: calc(100% - 104px);
+    left: 0;
+    margin: 0 52px;
+
+    button {
+      display: block;
+      width: 100%;
+      background: #f6f9fa;
+      padding: 16px;
+      border: 1px dashed;
+    }
+  }
+
+  .layout-radio-item {
+    > div {
+      display: flex;
+      align-items: center;
+    }
+
+    .form-item {
+      margin-left: 8px;
+    }
+
+    &.active {
+      outline: 2px solid #003cc5;
+    }
+  }
+}
+
+.layout {
+  // .paragraph {
+  //   position: relative;
+  //
+  //   &:before {
+  //     content: "";
+  //     display: block;
+  //     position: absolute;
+  //     top: 0;
+  //     left: 0;
+  //     width: 100%;
+  //     height: 100%;
+  //     z-index: 1;
+  //   }
+  // }
+
+  > .erl-layout-region {
+    padding: 0;
+  }
+
+  .field--name-field-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .field--name-field-lead {
+    font-size: 1.25rem;
+  }
+
+  .field--name-field-lead,
+  .field--name-field-text {
+    line-height: 1.5;
+  }
+
+  .field--name-field-cta {
+    a {
+      display: inline-block;
+      padding: .5rem 1rem;
+      color: #fff;
+      background: black;
+    }
+  }
+
+  .paragraph--type--image-desktop,
+  .paragraph--type--image-mobile {
+    line-height: 0;
+    border: 2px solid black;
+    border-radius: 4px;
+    overflow: hidden;
+
+    .field--name-field-variant,
+    .field--name-field-show-more {
+      display: none;
+    }
+  }
+
+  .paragraph--type--image-mobile {
+    max-width: 240px;
+    max-height: 420px;
+  }
+}
+
+
+// Modal
+.ui-widget-content {
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .erl-form-actions {
+    margin-bottom: 0 !important;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}

@@ -1,0 +1,122 @@
+// Node layout
+.path-node {
+  $sidebarWidth: 320px;
+  $breakpoint: 1024px;
+
+  .layout-node-form {
+    overflow: inherit;
+
+    @include breakpoint($breakpoint) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  .layout-region-node-main,
+  .layout-region-node-secondary
+  .layout-region-node-footer {
+    float: none;
+  }
+
+  .layout-region-node-main,
+  .layout-region-node-footer {
+    width: 100%;
+
+    @include breakpoint($breakpoint) {
+      flex-basis: 40%;
+      flex-shrink: 1;
+      flex-grow: 1;
+    }
+  }
+
+  .messages-list,
+  .layout-region-node-main {
+    padding-right: 0;
+
+    @include breakpoint($breakpoint) {
+      margin-right: $sidebarWidth;
+    }
+
+    .form-wrapper,
+    .form-composite {
+      label {
+        text-transform: capitalize;
+        padding-bottom: 4px;
+      }
+    }
+  }
+
+  .layout-region-node-secondary {
+    width: 100%;
+
+    @include breakpoint($breakpoint) {
+      z-index: 100;
+      flex-basis: $sidebarWidth;
+      width: $sidebarWidth !important;
+      position: fixed;
+      top: 14px;
+      right: 0;
+      overflow-y: auto;
+      height: calc(100% - 94px);
+      border-bottom: 1px solid #ddd;
+      border-left: 1px solid #ddd;
+      box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+
+      .accordion {
+        border: 0 none;
+        box-shadow: none;
+      }
+    }
+  }
+
+  &.toolbar-horizontal.toolbar-tray-open {
+    .layout-region-node-secondary {
+      top: 54px;
+      height: calc(100% - 134px);
+    }
+  }
+
+  .layout-region-node-footer {
+    margin-top: 40px;
+  }
+}
+
+// Fixed form form-wrapper
+.node-form .layout-region-node-footer {
+  z-index: 99;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+
+  &__content {
+    display: flex;
+    padding: .25rem 0;
+    margin: 0;
+
+    .form-actions {
+      margin: 0 1rem 0 3rem;
+    }
+
+    .entity-content-form-footer {
+      margin: 0 2rem;
+      order: 2;
+      align-self: center;
+    }
+
+    .form-type--checkbox {
+      margin-top: .75rem;
+      margin-bottom: .75rem;
+    }
+
+    .button,
+    .action-link {
+      margin-top: .5rem;
+      margin-bottom: .5rem;
+    }
+  }
+}
