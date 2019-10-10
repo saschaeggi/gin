@@ -71,6 +71,7 @@
 
   .erl-layout.erl-item {
     border: 0 none;
+    margin-bottom: 0;
 
     &:before {
       height: 2px;
@@ -89,10 +90,11 @@
     }
   }
 
-  .erl-field-item--layout-container ~ .erl-add-content--single {
-    width: calc(100% - 104px);
+  .erl-item > .erl-add-content--single {
+    position: static;
+    width: 100%;
     left: 0;
-    margin: 0 52px;
+    margin: 0;
 
     button {
       display: block;
@@ -101,6 +103,10 @@
       padding: 16px;
       border: 1px dashed;
     }
+  }
+
+  .erl-item:last-of-type > .erl-add-content--single {
+    opacity: 1;
   }
 
   .layout-radio-item {
