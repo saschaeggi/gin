@@ -50,13 +50,15 @@
     }
   }
 
-  .erl-layout-region {
+  .erl-layout-region,
+  .erl-disabled-items {
     padding: 16px;
     margin-left: -1px;
     background: #fff;
     border: 1px solid #ccc;
+    box-shadow: none;
 
-    .erl-field-item {
+    .erl-item {
       outline: 1px dashed #d6d6d6;
     }
 
@@ -67,7 +69,7 @@
     }
   }
 
-  .erl-field-item--layout {
+  .erl-layout.erl-item {
     border: 0 none;
 
     &:before {
@@ -76,12 +78,8 @@
     }
   }
 
-  .erl-layout-disabled {
-    padding-top: 64px;
-
-    h4 {
-      padding-left: 0;
-    }
+  .erl-disabled-items {
+    background: #f6f6f6;
   }
 
   .erl-add-content {
@@ -122,25 +120,6 @@
 }
 
 .layout {
-  // .paragraph {
-  //   position: relative;
-  //
-  //   &:before {
-  //     content: "";
-  //     display: block;
-  //     position: absolute;
-  //     top: 0;
-  //     left: 0;
-  //     width: 100%;
-  //     height: 100%;
-  //     z-index: 1;
-  //   }
-  // }
-
-  > .erl-layout-region {
-    padding: 0;
-  }
-
   .field--name-field-title {
     font-size: 1.5rem;
     font-weight: bold;
