@@ -61,7 +61,10 @@
     .erl-item {
       outline: 1px dashed #d6d6d6;
     }
+  }
 
+  // Don't show contextual for pagragraphs
+  .erl-item {
     .paragraph {
       .contextual {
         display: none;
