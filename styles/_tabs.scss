@@ -71,9 +71,9 @@
     padding: 0;
     margin: 0;
     box-shadow: none;
-  }
 
-  .claro-details__wrapper {
-    margin: 0;
+    > .details-wrapper {
+      margin: 0;
+    }
   }
 }
