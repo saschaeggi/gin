@@ -5,6 +5,9 @@ description: 'For a better Content Editor Experience on top of Claro'
 core: 8.x
 core_version_requirement: ^8 || ^9
 
+dependencies:
+  - claro:claro
+
 libraries:
   - claro/global-styling
   - gin/gin
