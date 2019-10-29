@@ -36,17 +36,7 @@
  */
 function gin_form_alter(&$form, $form_state, $form_id) {
  if (strpos($form_id, 'node_') !== false && strpos($form_id, 'edit_form') !== false) {
-   if (isset($form['actions']['submit'])) {
-     $form['actions']['submit']['#attributes']['class'][] = 'button--small';
-   }
-   if (isset($form['actions']['preview'])) {
-     $form['actions']['preview']['#attributes']['class'][] = 'button--small';
-   }
-   if (isset($form['actions']['delete'])) {
-     $form['actions']['delete']['#attributes']['class'][] = 'action-link--small';
-   }
    if (isset($form['actions']['delete_translation'])) {
-     $form['actions']['delete_translation']['#attributes']['class'][] = 'button--small';
      $form['actions']['delete_translation']['#attributes']['class'][] = 'button--danger';
    }
  }
