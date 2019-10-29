@@ -3,7 +3,7 @@ type: theme
 base theme: claro
 description: 'For a better Content Editor Experience on top of Claro'
 core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^8.8
 
 dependencies:
   - claro:claro
@@ -11,107 +11,6 @@ dependencies:
 libraries:
   - claro/global-styling
   - gin/gin
-
-libraries-override:
-  system/base:
-    css:
-      component:
-        /core/themes/stable/css/system/components/ajax-progress.module.css: /themes/contrib/claro/css/dist/components/ajax-progress.module.css
-        /core/themes/stable/css/system/components/autocomplete-loading.module.css: /themes/contrib/claro/css/dist/components/autocomplete-loading.module.css
-        /core/themes/stable/css/system/components/system-status-counter.css: /themes/contrib/claro/css/dist/components/system-status-counter.css
-        /core/themes/stable/css/system/components/system-status-report-counters.css: /themes/contrib/claro/css/dist/components/system-status-report-counters.css
-        /core/themes/stable/css/system/components/system-status-report-general-info.css: /themes/contrib/claro/css/dist/components/system-status-report-general-info.css
-  system/admin:
-    css:
-      theme:
-        /core/themes/stable/css/system/system.admin.css: false
-
-  core/drupal.dropbutton:
-    css:
-      component:
-        /core/themes/stable/css/core/dropbutton/dropbutton.css: /themes/contrib/claro/css/dist/components/dropbutton.css
-
-  core/drupal.vertical-tabs:
-    css:
-      component:
-        /core/themes/stable/css/core/vertical-tabs.css: false
-  core/jquery.ui:
-    css:
-      theme:
-        assets/vendor/jquery.ui/themes/base/theme.css: false
-  core/jquery.ui.dialog:
-    css:
-      component:
-        assets/vendor/jquery.ui/themes/base/dialog.css: false
-  classy/dialog:
-    claro/claro.drupal.dialog
-  classy/base:
-    css:
-      component:
-        css/components/breadcrumb.css: false
-        css/components/button.css: false
-        css/components/details.css: false
-        css/components/dropbutton.css: false
-        css/components/form.css: false
-        css/components/tabs.css: false
-        css/components/pager.css: false
-        css/components/tableselect.css: /themes/contrib/claro/css/dist/components/tableselect.css
-        css/components/tabledrag.css: /themes/contrib/claro/css/dist/components/tabledrag.css
-        css/components/collapse-processed.css: false
-
-  classy/dropbutton:
-    css:
-      component:
-        css/components/dropbutton.css: false
-
-  classy/progress:
-    css:
-      component:
-        css/components/progress.css: /themes/contrib/claro/css/dist/components/progress.css
-  # @todo Refactor when https://www.drupal.org/node/2642122 is fixed.
-  filter/drupal.filter.admin:
-    css:
-      theme:
-        /core/themes/stable/css/filter/filter.admin.css: /themes/contrib/claro/css/dist/theme/filter.theme.css
-  filter/drupal.filter:
-    css:
-      theme:
-        /core/themes/stable/css/filter/filter.admin.css: /themes/contrib/claro/css/dist/theme/filter.theme.css
-
-  views_ui/admin.styling:
-    css:
-      theme:
-        /core/themes/stable/css/views_ui/views_ui.admin.theme.css: /themes/contrib/claro/css/dist/theme/views_ui.admin.theme.css
-
-libraries-extend:
-  ckeditor/drupal.ckeditor:
-    - claro/ckeditor-editor
-  classy/image-widget:
-    - claro/image-widget
-  core/ckeditor:
-    - claro/ckeditor-dialog
-  core/drupal.collapse:
-    - claro/details-focus
-  core/drupal.dropbutton:
-    - claro/drupal-theme
-  core/drupal.vertical-tabs:
-    - claro/vertical-tabs
-  core/drupal.tableselect:
-    - claro/drupal.tableselect
-  core/jquery.ui:
-    - claro/claro.jquery.ui
-  media_library/view:
-    - claro/media_library.view
-  system/admin:
-    - claro/system.admin
-  core/drupal.autocomplete:
-    - claro/autocomplete
-  tour/tour-styling:
-    - claro/tour-styling
-  shortcut/drupal.shortcut:
-    - claro/drupal.shortcut
-  core/drupal.ajax:
-    - claro/ajax
 
 regions:
   header: 'Header'
