@@ -8,22 +8,10 @@
   border: 0 none;
 
   ul.horizontal-tabs-list {
-    position: relative;
     padding-top: .5rem;
     background: none;
     border-right: 0 none;
     overflow: hidden;
-
-    &:after {
-      content: "";
-      z-index: -1;
-      display: block;
-      position: absolute;
-      bottom: 1px;
-      width: 100%;
-      height: 1px;
-      background: #ccc;
-    }
 
     li.horizontal-tab-button {
       background: none;
