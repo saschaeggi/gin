@@ -106,6 +106,10 @@
       margin: 0 2rem;
       order: 2;
       align-self: center;
+
+      .form-item {
+        display: inline-block;
+      }
     }
 
     .form-type--checkbox {
