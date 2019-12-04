@@ -15,8 +15,8 @@ libraries-override:
   system/base:
     css:
       component:
-        /core/themes/stable/css/system/components/ajax-progress.module.css: css/components/ajax-progress.module.css
-        /core/themes/stable/css/system/components/autocomplete-loading.module.css: css/components/autocomplete-loading.module.css
+        /core/themes/stable/css/system/components/ajax-progress.module.css: /core/themes/claro/css/components/ajax-progress.module.css
+        /core/themes/stable/css/system/components/autocomplete-loading.module.css: /core/themes/claro/css/components/autocomplete-loading.module.css
         /core/themes/stable/css/system/components/system-status-counter.css: /core/themes/claro/css/components/system-status-counter.css
         /core/themes/stable/css/system/components/system-status-report-counters.css: /core/themes/claro/css/components/system-status-report-counters.css
         /core/themes/stable/css/system/components/system-status-report-general-info.css: /core/themes/claro/css/components/system-status-report-general-info.css
