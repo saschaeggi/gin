@@ -4,5 +4,9 @@
     .contextual-toolbar-tab.toolbar-tab {
       float: right; // Set contextual to right
     }
+
+    .toolbar-tab > .toolbar-item {
+      font-weight: normal;
+    }
   }
 }
