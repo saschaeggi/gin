@@ -58,6 +58,8 @@
   .horizontal-tabs-pane {
     padding: 0;
     margin: 0;
+    border: 0 none;
+    border-top: 1px solid #ccc;
     box-shadow: none;
 
     > .details-wrapper {
