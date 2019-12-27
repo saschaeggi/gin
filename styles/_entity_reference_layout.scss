@@ -167,10 +167,12 @@
 
   .paragraph--type--image-desktop,
   .paragraph--type--image-mobile {
+    display: inline-block;
     line-height: 0;
     border: 2px solid black;
     border-radius: 4px;
     overflow: hidden;
+    max-height: 320px;
 
     .field--name-field-variant,
     .field--name-field-show-more {
