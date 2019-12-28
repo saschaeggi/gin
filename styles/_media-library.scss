@@ -5,3 +5,10 @@
   min-width: unset;
   min-height: unset;
 }
+
+// In dialog
+.ui-dialog {
+  .media-library-item--grid .field--name-thumbnail img {
+    width: auto;
+  }
+}
