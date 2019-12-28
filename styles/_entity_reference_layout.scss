@@ -139,7 +139,7 @@
   }
 }
 
-.layout {
+.paragraph {
   .field--name-field-title {
     font-size: 1.5rem;
     font-weight: bold;
@@ -147,6 +147,10 @@
 
   .field--name-field-lead {
     font-size: 1.25rem;
+  }
+
+  .field--name-field-title + .field--name-field-lead {
+    margin-top: .5rem;
   }
 
   .field--name-field-lead,
@@ -163,25 +167,36 @@
     }
   }
 
-  .paragraph--type--image-desktop,
-  .paragraph--type--image-mobile {
+  .field--type-image {
+    display: inline-block;
     line-height: 0;
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 4px;
     overflow: hidden;
-
-    .field--name-field-variant,
-    .field--name-field-show-more {
-      display: none;
-    }
+    max-height: 320px;
   }
 
-  .paragraph--type--image-mobile {
-    max-width: 240px;
-    max-height: 420px;
+  .field--name-field-variant,
+  .field--name-field-show-more {
+    display: none;
   }
 }
 
+.paragraph--type--image-mobile {
+  max-width: 240px;
+  max-height: 420px;
+}
+
+.paragraph--type--slider {
+  .field--name-field-paragraphs {
+    display: flex;
+
+    > .field__item {
+      margin-top: .5rem;
+      margin-right: .25rem;
+    }
+  }
+}
 
 // Modal
 .ui-widget-content {
