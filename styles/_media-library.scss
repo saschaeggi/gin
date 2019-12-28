@@ -1,14 +1,9 @@
 // Core Media preview image override
-.media-library-item--grid .field--name-thumbnail img {
-  width: 100%;
-  height: auto;
-  min-width: unset;
-  min-height: unset;
-}
-
-// In dialog
-.ui-dialog {
+.media-library-views-form {
   .media-library-item--grid .field--name-thumbnail img {
-    width: auto;
+    width: 100%;
+    height: auto;
+    min-width: unset;
+    min-height: unset;
   }
 }
