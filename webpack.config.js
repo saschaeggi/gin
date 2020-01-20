@@ -34,19 +34,19 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpe?g|gif)$/,
+        test: /\.(png|jpe?g|gif|svg)$/,
         use: [{
             loader: 'file-loader',
             options: {
               name: 'images/[name].[ext]?[hash]',
             },
           },
-          {
-            loader: 'img-loader',
-            options: {
-              enabled: !isDev,
-            },
-          },
+          // {
+          //   loader: 'img-loader',
+          //   options: {
+          //     enabled: !isDev,
+          //   },
+          // },
         ],
       },
       {

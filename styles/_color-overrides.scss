@@ -1,0 +1,41 @@
+.form-boolean--type-checkbox:checked,
+.button--primary
+{
+  background-color: var(--colorPrimary);
+
+  &:hover,
+  &:active {
+    background-color: var(--colorPrimaryHover);
+  }
+}
+
+a,
+.tabs__link.is-active
+{
+  color: var(--colorPrimary);
+
+  &:hover,
+  &:active {
+    color: var(--colorPrimaryHover);
+  }
+}
+
+svg path {
+  fill: var(--colorPrimary);
+
+  &:hover,
+  &:active {
+    fill: var(--colorPrimaryHover);
+  }
+}
+
+.form-boolean--type-checkbox:checked,
+.is-horizontal .tabs__link.is-active::before,
+.tabs__tab.is-active::before {
+  border-color: var(--colorPrimary);
+
+  &:hover,
+  &:active {
+    border-color: var(--colorPrimaryHover);
+  }
+}
