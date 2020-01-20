@@ -40,4 +40,34 @@ function gin_form_alter(&$form, $form_state, $form_id) {
      $form['actions']['delete_translation']['#attributes']['class'][] = 'button--danger';
    }
  }
+
+ // User form (Login, Register or Forgot password)
+ if (strpos($form_id, 'user_login') !== false || strpos($form_id, 'user_register') !== false || strpos($form_id, 'user_pass') !== false) {
+   $form['actions']['submit']['#attributes']['class'][] = 'button--primary';
+ }
+}
+
+ /**
+ ** Implements form_alter() for forms.
+ **/
+function gin_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#id']);
+}
+
+ /**
+ ** Page title alter()
+ **/
+function gin_theme_suggestions_page_title_alter(array &$suggestions, array $variables) {
+  // Are we looking at a user?
+  $path = \Drupal::service('path.current')->getPath();
+
+  // Prepare $path
+  $path = substr($path, 1);
+  $path = str_replace('/', '_', $path);
+
+  // Chek if path is available and we're at user level
+  if (!empty($path) && strpos($path, 'user_') !== false) {
+    $suggestions[] = 'page_title__user';
+    $suggestions[] = 'page_title__' . $path;
+  }
 }
