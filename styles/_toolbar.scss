@@ -2,6 +2,23 @@
 .toolbar {
   .toolbar-bar {
     background: #222330;
+    display: flex;
+
+    // Alignment: move user account
+    .user-menu {
+      order: 99;
+      align-self: flex-end;
+      flex-grow: 1;
+      text-align: right;
+
+      .toolbar-item {
+        display: inline-block;
+      }
+
+      .toolbar-menu {
+        text-align: left;
+      }
+    }
 
     .contextual-toolbar-tab.toolbar-tab {
       float: right; // Set contextual to right
@@ -14,6 +31,17 @@
     .toolbar-tab > .toolbar-item.is-active {
       background-image: none;
       background-color: #545560;
+    }
+
+    // Home icon
+    .toolbar-icon-admin-toolbar-tools-help {
+      width: 80px;
+
+      &:before {
+        width: 45px;
+        left: .75rem;
+        background-image: url(../images/drupal.svg);
+      }
     }
   }
 }
@@ -29,12 +57,13 @@
     &:hover, &:active, &:focus, &.is-active {
       text-decoration: none;
     }
+  }
 
-    &:focus {
+  .menu-item {
+    &:hover, a:focus {
       background-color: var(--colorPrimary20);
     }
   }
-
 
   .menu-item + .menu-item {
     border-left: 0 none;
@@ -47,15 +76,36 @@
   .menu-item--expanded {
     background-color: #fff;
   }
+}
 
-  // Home icon
-  .toolbar-icon-admin-toolbar-tools-help {
-    width: 80px;
+.toolbar .toolbar-tray-vertical {
+  box-shadow: none;
+  border-right: 1px solid #ccc;
+}
 
-    &:before {
-      width: 45px;
-      left: .75rem;
-      background-image: url(../images/drupal.svg);
+.toolbar-tray-horizontal {
+  ul {
+    li {
+      &.menu-item {
+        .menu-item {
+          border-left: none;
+          border-right: none;
+          border-bottom: 1px solid #e0e0e0;
+        }
+
+        &--expanded {
+          &.hover-intent ul {
+            box-shadow: 0px 8px 14px rgba(0, 0, 0, 0.15);
+          }
+        }
+      }
     }
+  }
+
+  ul li.menu-item--expanded ul li.menu-item--expanded,
+  .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
+    background-image: url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='%23004adc'/%3E%3C/svg%3E");
+    background-position: center right 8px;
+    background-size: 10px 10px;
   }
 }

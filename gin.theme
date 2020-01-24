@@ -55,8 +55,8 @@ function gin_theme_suggestions_form_alter(array &$suggestions, array $variables)
 }
 
  /**
- ** Page title alter()
- **/
+  ** Page title alter()
+  **/
 function gin_theme_suggestions_page_title_alter(array &$suggestions, array $variables) {
   // Are we looking at a user?
   $path = \Drupal::service('path.current')->getPath();
@@ -69,5 +69,17 @@ function gin_theme_suggestions_page_title_alter(array &$suggestions, array $vari
   if (!empty($path) && strpos($path, 'user_') !== false) {
     $suggestions[] = 'page_title__user';
     $suggestions[] = 'page_title__' . $path;
+  }
+}
+
+/**
+ ** Set Gin CSS first!
+ **/
+function gin_css_alter(&$css, $assets) {
+  // UPDATE THIS PATH TO YOUR MODULE'S CSS PATH
+  $path = drupal_get_path('theme', 'gin') . '/dist/css/gin.css';
+  if (isset($css[$path])) {
+    // Use anything greater than 100 to have it load after the theme as CSS_AGGREGATE_THEME is set to 100.
+    $css[$path]['group'] = 200;
   }
 }
