@@ -1,12 +1,61 @@
 // Toolbar
 .toolbar {
   .toolbar-bar {
+    background: #222330;
+
     .contextual-toolbar-tab.toolbar-tab {
       float: right; // Set contextual to right
     }
 
     .toolbar-tab > .toolbar-item {
       font-weight: normal;
+    }
+
+    .toolbar-tab > .toolbar-item.is-active {
+      background-image: none;
+      background-color: #545560;
+    }
+  }
+}
+
+.toolbar-horizontal .toolbar-tray {
+  box-shadow: none;
+  border-bottom: 1px solid;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+
+  a {
+    color: #222;
+
+    &:hover, &:active, &:focus, &.is-active {
+      text-decoration: none;
+    }
+
+    &:focus {
+      background-color: var(--colorPrimary20);
+    }
+  }
+
+
+  .menu-item + .menu-item {
+    border-left: 0 none;
+
+    &:last-child {
+      border-right: 0 none;
+    }
+  }
+
+  .menu-item--expanded {
+    background-color: #fff;
+  }
+
+  // Home icon
+  .toolbar-icon-admin-toolbar-tools-help {
+    width: 80px;
+
+    &:before {
+      width: 45px;
+      left: .75rem;
+      background-image: url(../images/drupal.svg);
     }
   }
 }
