@@ -1,26 +1,96 @@
 <?php
 
-/**
- * @file
- * Functions to support theming in the standard theme.
- */
-
  use Drupal\Component\Utility\Html;
  use Drupal\Component\Utility\SafeMarkup;
  use Drupal\Core\Render\Element;
  use Drupal\Core\Url;
  use Drupal\file\Entity\File;
  use Drupal\Core\Template\Attribute;
+ use Drupal\Core\Form\FormStateInterface;
+ use Drupal\Core\Routing\RouteMatchInterface;
  use Drupal\Core\Render\Markup;
 
 /**
  ** Implements hook_preprocess_HOOK() for page_attachments.
  **/
  function gin_page_attachments_alter(&$page) {
+  // Is User logged in?
   $logged_in = \Drupal::currentUser()->isAuthenticated();
 
   if ($logged_in) {
     $page['#attached']['library'][] = 'gin/gin_toolbar';
+  }
+
+  // Get config of accent color
+  $accent_color = theme_get_setting('accent_color');
+
+  if ($logged_in && $accent_color) {
+    // Attach accent overrides CSS
+    $page['#attached']['library'][] = 'gin/gin_accent';
+
+    $accent_color_hover = _gin_adjustBrightness($accent_color, -0.1);
+    $accent_color_active = _gin_adjustBrightness($accent_color, -0.2);
+    $accent_color_a20 = _gin_adjustBrightness($accent_color, 0.92);
+    $accent_color_svg = str_replace('#', '%23', $accent_color);
+
+    $accent_color_css = <<<EOH
+      :root {
+        --colorPrimary: $accent_color !important;
+        --colorPrimaryHover: $accent_color_hover !important;
+        --colorPrimaryActive: $accent_color_active !important;
+        --colorPrimary20: $accent_color_a20 !important;
+      }
+
+      body .claro-details__summary:hover::before,
+      body .claro-details__summary:hover:focus::before,
+      body .claro-details[open] > .claro-details__summary:focus::before,
+      body .claro-details[open] > .claro-details__summary--accordion::before,
+      body .claro-details[open] > .claro-details__summary--accordion-item::before,
+      body .claro-details[open] > .claro-details__summary--vertical-tabs-item::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M5.2109375,1.3144531 3.7890625,2.7226562 9.0917969,8.0761719 3.7890625,13.429688 5.2109375,14.837891 11.908203,8.0761719Z' fill='$accent_color_svg'/%3E%3C/svg%3E");
+      }
+
+      body .tablesort--asc,
+      body [dir="rtl"] .tablesort--asc {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='16' viewBox='0 0 10 12'%3E%3Cpath d='M 5 0.43945312 L 0.71875 4.71875 L 1.78125 5.78125 L 4.25 3.3125 L 4.25 11.25 L 5.75 11.25 L 5.75 3.3125 L 8.21875 5.78125 L 9.28125 4.71875 L 5 0.43945312 z' fill='$accent_color_svg'/%3E%3C/svg%3E");
+      }
+
+      body .tablesort--desc,
+      body [dir="rtl"] .tablesort--desc {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='16' viewBox='0 0 10 12'%3E%3Cpath d='M 4.25 0.75 L 4.25 8.6875 L 1.78125 6.21875 L 0.71875 7.28125 L 5 11.560547 L 9.28125 7.28125 L 8.21875 6.21875 L 5.75 8.6875 L 5.75 0.75 L 4.25 0.75 z' fill='$accent_color_svg'/%3E%3C/svg%3E");
+      }
+
+      body .admin-item__link::before {
+        background-image: url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='$accent_color_svg'/%3E%3C/svg%3E");
+      }
+
+      body .form-boolean--type-radio:checked {
+        background-image: url("data:image/svg+xml,%3Csvg width='17' height='17' viewBox='0 0 17 17' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle r='4.5' cx='8.5' cy='8.5' fill='$accent_color_svg'/%3E%3C/svg%3E");
+      }
+
+      body .action-link--icon-checkmark:hover::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' stroke='$accent_color_svg'  stroke-width='2' fill='none' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M2 8.57143L5.6 12L14 4'/%3E%3C/svg%3E");
+      }
+
+      body .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded, .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded>a:focus {
+        background-image: url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='$accent_color_svg'/%3E%3C/svg%3E");
+      }
+    EOH;
+
+    if (
+      $logged_in ||
+      $route == 'user.login' ||
+      $route == 'user.pass' ||
+      $route == 'user.register'
+    ) {
+      $page['#attached']['html_head'][] = [
+        [
+          '#tag' => 'style',
+          '#value' => Markup::create($accent_color_css),
+        ],
+        'gin-accent-color'
+      ];
+    }
   }
  }
 
@@ -93,4 +163,56 @@ function gin_css_alter(&$css, $assets) {
     // Use anything greater than 100 to have it load after the theme as CSS_AGGREGATE_THEME is set to 100.
     $css[$path]['group'] = 200;
   }
+}
+
+/**
+ ** Custom theme settings
+ **/
+function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_state, $form_id = NULL) {
+  // Work-around for a core bug affecting admin themes. See issue #943212.
+  if (isset($form_id)) {
+    return;
+  }
+
+  $form['custom_settings'] = array(
+    '#type' => 'details',
+    '#open' => true,
+    '#title' => t('Custom Settings'),
+  );
+
+  $form['custom_settings']['accent_color'] = array(
+    '#type' => 'color',
+    '#title' => t('Accent color (EXPERIMENTAL)'),
+    '#description' => t('Set the accent color for the login (hex value in format of #AAAAAA, Default value: #003cc5).'),
+    '#default_value' => theme_get_setting('accent_color'),
+    '#min' => 7,
+    '#max' => 7,
+  );
+}
+
+/**
+ * Increases or decreases the brightness of a color by a percentage of the current brightness.
+ *
+ * @param   string  $hexCode        Supported formats: `#FFF`, `#FFFFFF`, `FFF`, `FFFFFF`
+ * @param   float   $adjustPercent  A number between -1 and 1. E.g. 0.3 = 30% lighter; -0.4 = 40% darker.
+ *
+ * @return  string
+ */
+function _gin_adjustBrightness($hexCode, $adjustPercent) {
+  $hexCode = ltrim($hexCode, '#');
+
+  if (strlen($hexCode) == 3) {
+      $hexCode = $hexCode[0] . $hexCode[0] . $hexCode[1] . $hexCode[1] . $hexCode[2] . $hexCode[2];
+  }
+
+  $hexCode = array_map('hexdec', str_split($hexCode, 2));
+
+  foreach ($hexCode as & $color) {
+      $adjustableLimit = $adjustPercent < 0 ? $color : 255 - $color;
+      $adjustAmount = ceil($adjustableLimit * $adjustPercent);
+
+      $color = str_pad(dechex($color + $adjustAmount), 2, '0', STR_PAD_LEFT);
+  }
+
+  return '#' . implode($hexCode);
 }
