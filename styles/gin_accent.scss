@@ -24,7 +24,8 @@ button.link,
 .sortable-heading.is-active > a,
 [open] .claro-details__summary--accordion,
 [open] .claro-details__summary--accordion-item,
-[open] .claro-details__summary--vertical-tabs-item
+[open] .claro-details__summary--vertical-tabs-item,
+.vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link
 {
   color: var(--colorPrimary);
 
@@ -79,7 +80,8 @@ svg path {
 .collapse-processed[open] > .claro-details__summary--accordion .details-title:not(:focus)::after,
 .collapse-processed[open] > .claro-details__summary--accordion-item .details-title:not(:focus)::after,
 [open] > .claro-details__summary--vertical-tabs-item:not(:focus):not(:active)::after,
-.collapse-processed[open] > .claro-details__summary--vertical-tabs-item .details-title:not(:focus)::after
+.collapse-processed[open] > .claro-details__summary--vertical-tabs-item .details-title:not(:focus)::after,
+.vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link::before
 {
   border-color: var(--colorPrimary);
 
