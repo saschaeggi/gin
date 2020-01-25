@@ -6,11 +6,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const globImporter = require('node-sass-glob-importer');
+const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: {
     gin: ['./js/gin.js', './styles/gin.scss'],
+    gin_toolbar: ['./styles/gin_toolbar.scss'],
   },
   output: {
     devtoolLineToLine: true,
@@ -18,7 +20,6 @@ module.exports = {
     chunkFilename: 'js/async/[name].chunk.js',
     pathinfo: true,
     filename: 'js/[name].js',
-    publicPath: '/themes/unic/dist/'
   },
   module: {
     rules: [{
@@ -103,6 +104,7 @@ module.exports = {
   },
   plugins: [
     new FriendlyErrorsWebpackPlugin(),
+    new FixStyleOnlyEntriesPlugin(),
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname),
     }),
