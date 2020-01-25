@@ -1,22 +1,35 @@
+// Import breakpoint
+@import "node_modules/breakpoint-sass/stylesheets/breakpoint";
+@import "_vars";
+@import "color-overrides";
+
 // Toolbar
 .toolbar {
   .toolbar-bar {
+    $breakpoint: 576px;
     background: #222330;
-    display: flex;
 
-    // Alignment: move user account
-    .user-menu {
-      order: 99;
-      align-self: flex-end;
-      flex-grow: 1;
-      text-align: right;
+    @include breakpoint($breakpoint) {
+      display: flex;
 
-      .toolbar-item {
-        display: inline-block;
+      // Alignment: move user account
+      .user-menu {
+        order: 99;
+        align-self: flex-end;
+        flex-grow: 1;
+        text-align: right;
+
+        .toolbar-item {
+          display: inline-block;
+        }
+
+        .toolbar-menu {
+          text-align: left;
+        }
       }
 
-      .toolbar-menu {
-        text-align: left;
+      .contextual-toolbar-tab {
+        order: 100;
       }
     }
 

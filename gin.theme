@@ -13,6 +13,17 @@
  use Drupal\Core\Template\Attribute;
  use Drupal\Core\Render\Markup;
 
+/**
+ ** Implements hook_preprocess_HOOK() for page_attachments.
+ **/
+ function gin_page_attachments_alter(&$page) {
+  $logged_in = \Drupal::currentUser()->isAuthenticated();
+
+  if ($logged_in) {
+    $page['#attached']['library'][] = 'gin/gin_toolbar';
+  }
+ }
+
  /**
  ** Implements hook_preprocess_HOOK() for links__dropbutton.
  **/
@@ -36,9 +47,9 @@
  */
 function gin_form_alter(&$form, $form_state, $form_id) {
  if (strpos($form_id, 'node_') !== false && strpos($form_id, 'edit_form') !== false) {
-   if (isset($form['actions']['delete_translation'])) {
-     $form['actions']['delete_translation']['#attributes']['class'][] = 'button--danger';
-   }
+  if (isset($form['actions']['delete_translation'])) {
+    $form['actions']['delete_translation']['#attributes']['class'][] = 'button--danger';
+  }
  }
 
  // User form (Login, Register or Forgot password)
