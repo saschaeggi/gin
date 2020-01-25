@@ -98,8 +98,12 @@ svg path {
   box-shadow: inset 0 0 0 1px var(--colorPrimary);
 }
 
-.progress__bar,
 .form-boolean--type-checkbox[disabled]:checked {
   border-color: var(--colorDisabled);
   background-color: var(--colorDisabled);
+}
+
+.progress__bar {
+  border-color: var(--colorPrimary);
+  background-color: var(--colorPrimary);
 }
