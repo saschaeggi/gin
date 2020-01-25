@@ -8,3 +8,7 @@ gin_toolbar:
   css:
     theme:
       dist/css/gin_toolbar.css: {}
+gin_accent:
+  css:
+    theme:
+      dist/css/gin_accent.css: {}
