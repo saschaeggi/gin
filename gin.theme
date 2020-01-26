@@ -2,14 +2,15 @@
 
 /**
  * @file
+ * gin.theme
  */
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Markup;
 
 /**
- * * Implements hook_preprocess_HOOK() for page_attachments.
- **/
+ * Implements hook_preprocess_HOOK() for page_attachments.
+ */
 function gin_page_attachments_alter(&$page) {
   // Is User logged in?
   $logged_in = \Drupal::currentUser()->isAuthenticated();
@@ -25,9 +26,9 @@ function gin_page_attachments_alter(&$page) {
     // Attach accent overrides CSS.
     $page['#attached']['library'][] = 'gin/gin_accent';
 
-    $accent_color_hover = _gin_adjustBrightness($accent_color, -0.1);
-    $accent_color_active = _gin_adjustBrightness($accent_color, -0.2);
-    $accent_color_a20 = _gin_adjustBrightness($accent_color, 0.92);
+    $accent_color_hover = _gin_adjust_brightness($accent_color, -0.1);
+    $accent_color_active = _gin_adjust_brightness($accent_color, -0.2);
+    $accent_color_a20 = _gin_adjust_brightness($accent_color, 0.92);
     $accent_color_svg = str_replace('#', '%23', $accent_color);
 
     $accent_color_css = <<<EOH
@@ -92,8 +93,8 @@ function gin_page_attachments_alter(&$page) {
 }
 
 /**
- * * Implements hook_preprocess_HOOK() for links__dropbutton.
- **/
+ * Implements hook_preprocess_HOOK() for links__dropbutton.
+ */
 function gin_preprocess_dropbutton_wrapper(&$variables) {
   $children = (string) $variables['children'];
 
@@ -108,9 +109,7 @@ function gin_preprocess_dropbutton_wrapper(&$variables) {
 }
 
 /**
- * @param $form
- * @param \Drupal\Core\Form\FormStateInterface $form_state
- * @param $form_id
+ * Form_alter()
  */
 function gin_form_alter(&$form, $form_state, $form_id) {
   if (strpos($form_id, 'node_') !== FALSE && strpos($form_id, 'edit_form') !== FALSE) {
@@ -126,15 +125,15 @@ function gin_form_alter(&$form, $form_state, $form_id) {
 }
 
 /**
- * * Implements form_alter() for forms.
- **/
+ * Implements form_alter() for forms.
+ */
 function gin_theme_suggestions_form_alter(array &$suggestions, array $variables) {
   $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#id']);
 }
 
 /**
- * * Page title alter()
- **/
+ * Page title alter()
+ */
 function gin_theme_suggestions_page_title_alter(array &$suggestions, array $variables) {
   // Are we looking at a user?
   $path = \Drupal::service('path.current')->getPath();
@@ -151,20 +150,21 @@ function gin_theme_suggestions_page_title_alter(array &$suggestions, array $vari
 }
 
 /**
- * * Set Gin CSS first!
- **/
+ * Set Gin CSS first!
+ */
 function gin_css_alter(&$css, $assets) {
   // UPDATE THIS PATH TO YOUR MODULE'S CSS PATH.
   $path = drupal_get_path('theme', 'gin') . '/dist/css/gin.css';
   if (isset($css[$path])) {
-    // Use anything greater than 100 to have it load after the theme as CSS_AGGREGATE_THEME is set to 100.
+    // Use anything greater than 100 to have it load after the theme
+    // as CSS_AGGREGATE_THEME is set to 100.
     $css[$path]['group'] = 200;
   }
 }
 
 /**
- * * Custom theme settings.
- **/
+ * Custom theme settings.
+ */
 function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_state, $form_id = NULL) {
   // Work-around for a core bug affecting admin themes. See issue #943212.
   if (isset($form_id)) {
@@ -188,16 +188,9 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
 }
 
 /**
- * Increases or decreases the brightness of a color by a percentage of the current brightness.
- *
- * @param string $hexCode
- *   Supported formats: `#FFF`, `#FFFFFF`, `FFF`, `FFFFFF`.
- * @param float $adjustPercent
- *   A number between -1 and 1. E.g. 0.3 = 30% lighter; -0.4 = 40% darker.
- *
- * @return string
+ * Increases or decreases the brightness of a color.
  */
-function _gin_adjustBrightness($hexCode, $adjustPercent) {
+function _gin_adjust_brightness($hexCode, $adjustPercent) {
   $hexCode = ltrim($hexCode, '#');
 
   if (strlen($hexCode) == 3) {
