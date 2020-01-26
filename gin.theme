@@ -1,19 +1,16 @@
 <?php
 
- use Drupal\Component\Utility\Html;
- use Drupal\Component\Utility\SafeMarkup;
- use Drupal\Core\Render\Element;
- use Drupal\Core\Url;
- use Drupal\file\Entity\File;
- use Drupal\Core\Template\Attribute;
- use Drupal\Core\Form\FormStateInterface;
- use Drupal\Core\Routing\RouteMatchInterface;
- use Drupal\Core\Render\Markup;
+/**
+ * @file
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Markup;
 
 /**
- ** Implements hook_preprocess_HOOK() for page_attachments.
+ * * Implements hook_preprocess_HOOK() for page_attachments.
  **/
- function gin_page_attachments_alter(&$page) {
+function gin_page_attachments_alter(&$page) {
   // Is User logged in?
   $logged_in = \Drupal::currentUser()->isAuthenticated();
 
@@ -21,11 +18,11 @@
     $page['#attached']['library'][] = 'gin/gin_toolbar';
   }
 
-  // Get config of accent color
+  // Get config of accent color.
   $accent_color = theme_get_setting('accent_color');
 
   if ($logged_in && $accent_color) {
-    // Attach accent overrides CSS
+    // Attach accent overrides CSS.
     $page['#attached']['library'][] = 'gin/gin_accent';
 
     $accent_color_hover = _gin_adjustBrightness($accent_color, -0.1);
@@ -88,26 +85,26 @@
           '#tag' => 'style',
           '#value' => Markup::create($accent_color_css),
         ],
-        'gin-accent-color'
+        'gin-accent-color',
       ];
     }
   }
- }
+}
 
- /**
- ** Implements hook_preprocess_HOOK() for links__dropbutton.
+/**
+ * * Implements hook_preprocess_HOOK() for links__dropbutton.
  **/
- function gin_preprocess_dropbutton_wrapper(&$variables) {
-   $children = (string)$variables['children'];
+function gin_preprocess_dropbutton_wrapper(&$variables) {
+  $children = (string) $variables['children'];
 
-   $pattern = '/(<ul\sclass\s*= *["\']?)([^"\']*)(.*)(<li)/i';
-   $lipattern = '/(<li class\s*= *["\']?)([^"\']*)/i';
+  $pattern = '/(<ul\sclass\s*= *["\']?)([^"\']*)(.*)(<li)/i';
+  $lipattern = '/(<li class\s*= *["\']?)([^"\']*)/i';
 
-   $children = preg_replace($lipattern, '$1$2 dropbutton__item dropbutton__item--extrasmall', $children);
-   $children = preg_replace('/<li>/', '<li class="dropbutton__item dropbutton__item--extrasmall">', $children);
-   $children = preg_replace($pattern, '$1$2 dropbutton--multiple dropbutton--extrasmall $3$4', $children);
+  $children = preg_replace($lipattern, '$1$2 dropbutton__item dropbutton__item--extrasmall', $children);
+  $children = preg_replace('/<li>/', '<li class="dropbutton__item dropbutton__item--extrasmall">', $children);
+  $children = preg_replace($pattern, '$1$2 dropbutton--multiple dropbutton--extrasmall $3$4', $children);
 
-   $variables['children'] = Markup::create($children);
+  $variables['children'] = Markup::create($children);
 }
 
 /**
@@ -116,48 +113,48 @@
  * @param $form_id
  */
 function gin_form_alter(&$form, $form_state, $form_id) {
- if (strpos($form_id, 'node_') !== false && strpos($form_id, 'edit_form') !== false) {
-  if (isset($form['actions']['delete_translation'])) {
-    $form['actions']['delete_translation']['#attributes']['class'][] = 'button--danger';
+  if (strpos($form_id, 'node_') !== FALSE && strpos($form_id, 'edit_form') !== FALSE) {
+    if (isset($form['actions']['delete_translation'])) {
+      $form['actions']['delete_translation']['#attributes']['class'][] = 'button--danger';
+    }
   }
- }
 
- // User form (Login, Register or Forgot password)
- if (strpos($form_id, 'user_login') !== false || strpos($form_id, 'user_register') !== false || strpos($form_id, 'user_pass') !== false) {
-   $form['actions']['submit']['#attributes']['class'][] = 'button--primary';
- }
+  // User form (Login, Register or Forgot password)
+  if (strpos($form_id, 'user_login') !== FALSE || strpos($form_id, 'user_register') !== FALSE || strpos($form_id, 'user_pass') !== FALSE) {
+    $form['actions']['submit']['#attributes']['class'][] = 'button--primary';
+  }
 }
 
- /**
- ** Implements form_alter() for forms.
+/**
+ * * Implements form_alter() for forms.
  **/
 function gin_theme_suggestions_form_alter(array &$suggestions, array $variables) {
   $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#id']);
 }
 
- /**
-  ** Page title alter()
-  **/
+/**
+ * * Page title alter()
+ **/
 function gin_theme_suggestions_page_title_alter(array &$suggestions, array $variables) {
   // Are we looking at a user?
   $path = \Drupal::service('path.current')->getPath();
 
-  // Prepare $path
+  // Prepare $path.
   $path = substr($path, 1);
   $path = str_replace('/', '_', $path);
 
-  // Chek if path is available and we're at user level
-  if (!empty($path) && strpos($path, 'user_') !== false) {
+  // Chek if path is available and we're at user level.
+  if (!empty($path) && strpos($path, 'user_') !== FALSE) {
     $suggestions[] = 'page_title__user';
     $suggestions[] = 'page_title__' . $path;
   }
 }
 
 /**
- ** Set Gin CSS first!
+ * * Set Gin CSS first!
  **/
 function gin_css_alter(&$css, $assets) {
-  // UPDATE THIS PATH TO YOUR MODULE'S CSS PATH
+  // UPDATE THIS PATH TO YOUR MODULE'S CSS PATH.
   $path = drupal_get_path('theme', 'gin') . '/dist/css/gin.css';
   if (isset($css[$path])) {
     // Use anything greater than 100 to have it load after the theme as CSS_AGGREGATE_THEME is set to 100.
@@ -166,7 +163,7 @@ function gin_css_alter(&$css, $assets) {
 }
 
 /**
- ** Custom theme settings
+ * * Custom theme settings.
  **/
 function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_state, $form_id = NULL) {
   // Work-around for a core bug affecting admin themes. See issue #943212.
@@ -174,44 +171,46 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     return;
   }
 
-  $form['custom_settings'] = array(
+  $form['custom_settings'] = [
     '#type' => 'details',
-    '#open' => true,
+    '#open' => TRUE,
     '#title' => t('Custom Settings'),
-  );
+  ];
 
-  $form['custom_settings']['accent_color'] = array(
+  $form['custom_settings']['accent_color'] = [
     '#type' => 'color',
     '#title' => t('Accent color (EXPERIMENTAL)'),
     '#description' => t('Set the accent color for the login (hex value in format of #AAAAAA, Default value: #003cc5).'),
     '#default_value' => theme_get_setting('accent_color'),
     '#min' => 7,
     '#max' => 7,
-  );
+  ];
 }
 
 /**
  * Increases or decreases the brightness of a color by a percentage of the current brightness.
  *
- * @param   string  $hexCode        Supported formats: `#FFF`, `#FFFFFF`, `FFF`, `FFFFFF`
- * @param   float   $adjustPercent  A number between -1 and 1. E.g. 0.3 = 30% lighter; -0.4 = 40% darker.
+ * @param string $hexCode
+ *   Supported formats: `#FFF`, `#FFFFFF`, `FFF`, `FFFFFF`.
+ * @param float $adjustPercent
+ *   A number between -1 and 1. E.g. 0.3 = 30% lighter; -0.4 = 40% darker.
  *
- * @return  string
+ * @return string
  */
 function _gin_adjustBrightness($hexCode, $adjustPercent) {
   $hexCode = ltrim($hexCode, '#');
 
   if (strlen($hexCode) == 3) {
-      $hexCode = $hexCode[0] . $hexCode[0] . $hexCode[1] . $hexCode[1] . $hexCode[2] . $hexCode[2];
+    $hexCode = $hexCode[0] . $hexCode[0] . $hexCode[1] . $hexCode[1] . $hexCode[2] . $hexCode[2];
   }
 
   $hexCode = array_map('hexdec', str_split($hexCode, 2));
 
   foreach ($hexCode as & $color) {
-      $adjustableLimit = $adjustPercent < 0 ? $color : 255 - $color;
-      $adjustAmount = ceil($adjustableLimit * $adjustPercent);
+    $adjustableLimit = $adjustPercent < 0 ? $color : 255 - $color;
+    $adjustAmount = ceil($adjustableLimit * $adjustPercent);
 
-      $color = str_pad(dechex($color + $adjustAmount), 2, '0', STR_PAD_LEFT);
+    $color = str_pad(dechex($color + $adjustAmount), 2, '0', STR_PAD_LEFT);
   }
 
   return '#' . implode($hexCode);
