@@ -20,7 +20,7 @@ function gin_page_attachments_alter(&$page) {
   }
 
   // Get config of accent color.
-  $accent_color = theme_get_setting('accent_color');
+  $accent_color = theme_get_setting('accent_color', 'gin');
 
   if ($logged_in && $accent_color) {
     // Attach accent overrides CSS.
