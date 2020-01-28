@@ -134,7 +134,7 @@
     }
 
     &.active {
-      outline: 2px solid #003cc5;
+      outline: 2px solid var(--colorPrimary);
     }
   }
 }
