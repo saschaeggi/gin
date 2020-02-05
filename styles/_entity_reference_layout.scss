@@ -79,6 +79,10 @@
       .contextual {
         display: none;
       }
+
+      .contextual-region {
+        position: static;
+      }
     }
   }
 
@@ -135,65 +139,6 @@
 
     &.active {
       outline: 2px solid var(--colorPrimary);
-    }
-  }
-}
-
-.paragraph {
-  .field--name-field-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-
-  .field--name-field-lead {
-    font-size: 1.25rem;
-  }
-
-  .field--name-field-title + .field--name-field-lead {
-    margin-top: .5rem;
-  }
-
-  .field--name-field-lead,
-  .field--name-field-text {
-    line-height: 1.5;
-  }
-
-  .field--name-field-cta {
-    a {
-      display: inline-block;
-      padding: .5rem 1rem;
-      color: #fff;
-      background: black;
-    }
-  }
-
-  .field--type-image {
-    display: inline-block;
-    line-height: 0;
-    border: 1px solid black;
-    border-radius: 4px;
-    overflow: hidden;
-    max-height: 320px;
-  }
-
-  .field--name-field-variant,
-  .field--name-field-show-more {
-    display: none;
-  }
-}
-
-.paragraph--type--image-mobile {
-  max-width: 240px;
-  max-height: 420px;
-}
-
-.paragraph--type--slider {
-  .field--name-field-paragraphs {
-    display: flex;
-
-    > .field__item {
-      margin-top: .5rem;
-      margin-right: .25rem;
     }
   }
 }
