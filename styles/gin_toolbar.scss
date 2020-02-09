@@ -6,7 +6,7 @@
 .toolbar {
   .toolbar-bar {
     $breakpoint: 576px;
-    background: #222330;
+    background: #100f10; //#222330;
 
     @include breakpoint($breakpoint) {
       display: flex;
