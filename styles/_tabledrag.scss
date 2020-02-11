@@ -1,3 +1,13 @@
-.draggable a.tabledrag-handle {
-  float: none;
+.draggable {
+  a.tabledrag-handle {
+    float: none;
+  }
+
+  &.drag-previous {
+    background-color: #ffffe9;
+  }
+
+  &.drag, &.drag:focus {
+    background-color: #f0f1f9;
+  }
 }
