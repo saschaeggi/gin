@@ -2,6 +2,7 @@
   $breakpoint: 1024px;
 
   font-weight: 400;
+  letter-spacing: -.025em;
   margin-top: 1rem;
 
   @include breakpoint($breakpoint) {
