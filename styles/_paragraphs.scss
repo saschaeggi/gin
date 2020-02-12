@@ -1,4 +1,10 @@
 .paragraphs-tabs-wrapper {
+  tr {
+    &:hover, &:focus {
+      background-color: inherit;
+    }
+  }
+
   .paragraphs-subform {
     margin-top: 20px;
     margin-right: 31px;
