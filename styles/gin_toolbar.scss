@@ -61,6 +61,13 @@
         background-image: url(../images/drupal.svg);
       }
     }
+
+    // Inline Edit toggle
+    .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item,
+    .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active,
+    .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item:focus {
+      background: var(--colorGinPrimary);
+    }
   }
 }
 
@@ -126,4 +133,12 @@
     background-position: center right 8px;
     background-size: 10px 10px;
   }
+}
+
+#toolbar-bar.js-settings-tray-edit-mode {
+  background: var(--colorGinPrimary);
+}
+
+#toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon.toolbar-icon-edit.toolbar-item.is-active:hover {
+  background: var(--colorGinPrimaryHover);
 }
