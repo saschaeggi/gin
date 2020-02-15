@@ -33,10 +33,10 @@ function gin_page_attachments_alter(&$page) {
 
     $accent_color_css = <<<EOH
       :root {
-        --colorPrimary: $accent_color !important;
-        --colorPrimaryHover: $accent_color_hover !important;
-        --colorPrimaryActive: $accent_color_active !important;
-        --colorPrimary20: $accent_color_a20 !important;
+        --colorGinPrimary: $accent_color !important;
+        --colorGinPrimaryHover: $accent_color_hover !important;
+        --colorGinPrimaryActive: $accent_color_active !important;
+        --colorGinPrimary20: $accent_color_a20 !important;
       }
 
       body .claro-details__summary:hover::before,
