@@ -148,11 +148,12 @@ libraries-extend:
     - claro/views
 
 quickedit_stylesheets:
-  - /themes/contrib/claro/css/dist/components/quickedit.css
+  - ../../../themes/contrib/claro/css/dist/components/quickedit.css
+
 ckeditor_stylesheets:
-  - /themes/contrib/claro/css/dist/base/elements.css
-  - /themes/contrib/claro/css/dist/base/typography.css
-  - /themes/contrib/claro/css/dist/theme/ckeditor-frame.css
+  - ../../../themes/contrib/claro/css/dist/base/elements.css
+  - ../../../themes/contrib/claro/css/dist/base/typography.css
+  - ../../../themes/contrib/claro/css/dist/theme/ckeditor-frame.css
 
 regions:
   header: 'Header'
