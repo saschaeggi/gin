@@ -2,6 +2,9 @@ gin:
   css:
     theme:
       dist/css/gin.css: {}
+  # js:
+  #   dist/js/gin.js: {}
+gin_table:
   js:
     dist/js/gin.js: {}
 gin_toolbar:

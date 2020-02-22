@@ -2,15 +2,19 @@
 .field--widget-entity-reference-layout-widget {
   fieldset.erl-field {
     position: relative;
-    padding-top: 24px;
-    background: #fff; //#f3f4f9; //#fff;
-    border: 1px solid rgba(216, 217, 224, 0.8);
-    border-radius: 2px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    // box-shadow: none;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    background: #fff;
+    box-shadow: none;
 
     > legend {
       display: none;
+    }
+
+    .fieldset__wrapper {
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 
@@ -36,6 +40,7 @@
     -webkit-overflow-scrolling: touch;
 
     button {
+      color: #000;
       text-align: center;
       flex-basis: 25%;
       margin-bottom: 16px;
@@ -61,6 +66,10 @@
     background: #fff;
     box-shadow: none;
 
+    @media (min-width: 1024px) {
+      padding: 24px;
+    }
+
     &,
     &:hover {
       border: 0 none;
@@ -69,7 +78,7 @@
     }
 
     .erl-item {
-      outline: 1px dashed #d6d6d6;
+      outline: 1px dashed #999;
     }
   }
 
@@ -87,6 +96,7 @@
   }
 
   .erl-layout.erl-item {
+    padding-top: 32px;
     border: 0 none;
     margin-bottom: 0;
 
@@ -110,6 +120,7 @@
   }
 
   .erl-item > .erl-add-content--single {
+    opacity: 1;
     position: static;
     width: 100%;
     left: 0;

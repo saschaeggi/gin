@@ -81,45 +81,33 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./js/gin.js":
-/*!*******************!*\
-  !*** ./js/gin.js ***!
-  \*******************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuL2pzL2dpbi5qcy5qcyIsInNvdXJjZXNDb250ZW50IjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./js/gin.js\n");
-
-/***/ }),
-
-/***/ "./styles/gin.scss":
-/*!*************************!*\
-  !*** ./styles/gin.scss ***!
-  \*************************/
+/***/ "./styles/gin_accent.scss":
+/*!********************************!*\
+  !*** ./styles/gin_accent.scss ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// extracted by mini-css-extract-plugin//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zdHlsZXMvZ2luLnNjc3M/OGE1YyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSIsImZpbGUiOiIuL3N0eWxlcy9naW4uc2Nzcy5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8vIGV4dHJhY3RlZCBieSBtaW5pLWNzcy1leHRyYWN0LXBsdWdpbiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./styles/gin.scss\n");
+eval("// extracted by mini-css-extract-plugin//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zdHlsZXMvZ2luX2FjY2VudC5zY3NzP2Y5YTMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEiLCJmaWxlIjoiLi9zdHlsZXMvZ2luX2FjY2VudC5zY3NzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiLy8gZXh0cmFjdGVkIGJ5IG1pbmktY3NzLWV4dHJhY3QtcGx1Z2luIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./styles/gin_accent.scss\n");
 
 /***/ }),
 
-/***/ 0:
-/*!*******************************************!*\
-  !*** multi ./js/gin.js ./styles/gin.scss ***!
-  \*******************************************/
+/***/ 2:
+/*!**************************************!*\
+  !*** multi ./styles/gin_accent.scss ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./js/gin.js */"./js/gin.js");
-module.exports = __webpack_require__(/*! ./styles/gin.scss */"./styles/gin.scss");
+module.exports = __webpack_require__(/*! ./styles/gin_accent.scss */"./styles/gin_accent.scss");
 
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=gin.js.map
+//# sourceMappingURL=gin_accent.js.map

@@ -1,3 +1,12 @@
+@keyframes fadeInBottom {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 // Option for 6 column layout
 .show-6 {
   .views-row {
@@ -18,4 +27,100 @@
       width: 16.666666667%;
     }
   }
+}
+
+.block-system > form,
+.view-content .views-form {
+  .claro-details {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    box-shadow: none;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint(max-width 767px) {
+      overflow: auto;
+    }
+
+    > .form-actions {
+      background: pink;
+    }
+  }
+
+  .views-table {
+    order: -1;
+  }
+
+  [data-drupal-selector*="-header"] {
+    position: relative;
+    left: 0;
+    padding: 0 16px 16px 16px;
+    background: #ebecf1;
+    border-radius: 4px;
+
+    .form-item__label {
+      display: block;
+      float: left;
+      margin-right: 1rem;
+      line-height: 1.5;
+    }
+
+    &.is-sticky {
+      z-index: 4;
+      position: sticky;
+      left: 0;
+      bottom: 0;
+      animation: fadeInBottom 320ms 1 forwards;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}
+
+.block-system > form,
+.view-content .views-form,
+.panel,
+.update,
+.view-watchdog .view-content
+{
+  padding: 0 24px;
+  background: #fff;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #E2E2E5;
+  border-radius: 4px;
+}
+
+.views-exposed-form.views-exposed-form {
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.block-system > .node-confirm-form,
+.block-system > .confirmation, {
+  padding-top: 24px;
+}
+
+.admin-list,
+.panel {
+  padding: 0;
+
+  &__title,
+  &__content {
+    padding: 24px;
+  }
+
+  &__title {
+    background: #ebecf1;
+  }
+}
+
+.admin-list {
+  padding: 8px 0;
+}
+
+.admin-item {
+  padding: 1em 1.5em 1em 3em;
 }

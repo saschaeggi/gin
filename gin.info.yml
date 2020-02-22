@@ -107,6 +107,11 @@ libraries-override:
       theme:
         /core/themes/stable/css/views_ui/views_ui.admin.theme.css: /core/themes/claro/css/theme/views_ui.admin.theme.css
 
+  # Custom override
+  core/drupal.tableselect:
+    js:
+      misc/tableselect.js: js/gin_tableselect.js
+
 libraries-extend:
   ckeditor/drupal.ckeditor:
     - claro/ckeditor-editor

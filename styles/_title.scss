@@ -5,6 +5,11 @@
   letter-spacing: -.025em;
   margin-top: 1rem;
 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
+
   @include breakpoint($breakpoint) {
     font-size: 2.25rem;
   }

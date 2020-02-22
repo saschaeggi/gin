@@ -16,6 +16,8 @@
 
 @import "_vars";
 
+@import "body";
+@import "regions";
 @import "title";
 @import "user";
 @import "claro_improvements";
@@ -28,4 +30,7 @@
 @import "media-library";
 @import "table";
 @import "tabledrag";
+@import "form";
 @import "chosen";
+@import "pager";
+@import "coffee";

@@ -26,9 +26,10 @@ details summary {
 
 // Claro form--inline fixes
 .form--inline,
-[data-drupal-selector="edit-node-bulk-form"],
+[data-drupal-selector*="-bulk-form"],
 .layout-region-node-footer__content {
   display: flex;
+  padding-top: 16px;
 
   .form-item,
   .form-actions {

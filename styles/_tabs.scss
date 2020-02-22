@@ -1,3 +1,34 @@
+.tabs {
+  &__link {
+    font-size: 14px;
+    color: #222330;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+}
+
+.is-horizontal .tabs--primary,
+.is-horizontal .tabs--secondary {
+  &::after {
+    @include breakpoint(768px) {
+      content: "";
+      position: absolute;
+      bottom: 1rem;
+      left: 0;
+      display: block;
+      width: 100%;
+      border-bottom: 1px solid #d4d4d8;
+    }
+  }
+}
+
+.is-horizontal .tabs--primary {
+  &::after {
+    bottom: 0,
+  }
+}
 
 // Horizontal Tabs in Claro style
 .horizontal-tabs {
@@ -8,7 +39,7 @@
   border: 0 none;
 
   ul.horizontal-tabs-list {
-    padding-top: .5rem;
+    padding-top: 1rem;
     background: none;
     border-right: 0 none;
     overflow: hidden;

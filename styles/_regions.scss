@@ -1,0 +1,64 @@
+.region-sticky {
+  padding: 8px 16px;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid rgba(216, 217, 224, 0.8);
+  box-shadow: -20px 4px 10px rgba(0, 0, 0, 0.05); //40px 4px 10px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+
+  @include breakpoint(1024px) {
+    position: fixed;
+    z-index: 101;
+    top: 39px;
+    height: 96px;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -2px;
+    width: 4px;
+    height: 100%;
+    background: #fff;
+  }
+
+  .toolbar-tray-open.toolbar-horizontal & {
+    top: 78px;
+  }
+
+  &__items {
+    @include breakpoint(768px) {
+      display: flex;
+      height: 100%;
+
+      .block-page-title-block {
+        flex-grow: 1;
+        align-self: center;
+        display: flex;
+        overflow: hidden;
+        margin: 0;
+
+        .page-title {
+          align-self: center;
+          margin: 0;
+        }
+      }
+
+      .settings-tray-editable {
+        flex-shrink: 0;
+      }
+    }
+  }
+}
+
+.content-header {
+  background-color: transparent;
+}
+
+.page-wrapper {
+  @include breakpoint(1024px) {
+    margin-top: 96px;
+  }
+}
