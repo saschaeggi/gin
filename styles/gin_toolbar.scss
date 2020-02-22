@@ -7,6 +7,7 @@
   .toolbar-bar {
     $breakpoint: 576px;
     background: #100f10; //#222330;
+    box-shadow: none;
 
     @include breakpoint($breakpoint) {
       display: flex;
@@ -51,6 +52,20 @@
       }
     }
 
+    .toolbar-icon.toolbar-handle,
+    .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle
+    {
+      &::before {
+        transform: rotate(90deg);
+        background-position: center center;
+        background-size: 12px 12px;
+      }
+
+      &.open::before {
+        transform: rotate(-90deg);
+      }
+    }
+
     // Home icon
     .toolbar-icon-admin-toolbar-tools-help {
       width: 80px;
@@ -74,7 +89,6 @@
 .toolbar-horizontal .toolbar-tray {
   box-shadow: none;
   border-bottom: 1px solid;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
 
   a {
     color: #222;
@@ -87,7 +101,7 @@
 
   .menu-item {
     &:hover, a:focus {
-      background-color: #f3f4f9;
+      background-color: var(--colorGinPrimary20);
     }
   }
 
@@ -107,6 +121,7 @@
 .toolbar .toolbar-tray-vertical {
   box-shadow: none;
   border-right: 1px solid #ccc;
+  background: #fff;
 }
 
 .toolbar-tray-horizontal {
@@ -127,13 +142,21 @@
       }
     }
   }
+}
 
-  ul li.menu-item--expanded ul li.menu-item--expanded,
-  .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
-    background-image: url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='%23004adc'/%3E%3C/svg%3E");
-    background-position: center right 8px;
-    background-size: 10px 10px;
-  }
+.toolbar .toolbar-icon.toolbar-handle::before,
+.toolbar .toolbar-icon.toolbar-handle.open::before,
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle::before,
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open::before,
+.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
+.toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
+  background-image: url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='%23004adc'/%3E%3C/svg%3E");
+}
+
+.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
+.toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
+  background-position: center right 8px;
+  background-size: 10px 10px;
 }
 
 #toolbar-bar.js-settings-tray-edit-mode {
