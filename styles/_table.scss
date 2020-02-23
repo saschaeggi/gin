@@ -1,15 +1,15 @@
 table.sticky-header {
   margin-top: 95px;
 
-  th {
-    &:first-child {
-      border-top-left-radius: 0;
-    }
+  // th {
+  //   &:first-child {
+  //     border-top-left-radius: 0;
+  //   }
 
-    &:last-child {
-      border-top-right-radius: 0;
-    }
-  }
+  //   &:last-child {
+  //     border-top-right-radius: 0;
+  //   }
+  // }
 }
 
 table {

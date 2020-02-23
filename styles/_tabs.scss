@@ -1,12 +1,15 @@
-.tabs {
-  &__link {
-    font-size: 14px;
-    color: #222330;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
-  }
+.tabs__link,
+.claro-details__summary {
+  font-size: 14px;
+  color: #222330;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.claro-details__summary {
+  color: #545560;
 }
 
 .is-horizontal .tabs--primary,

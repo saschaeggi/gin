@@ -1,16 +1,22 @@
+.block-page-title-block {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .page-title {
   $breakpoint: 1024px;
 
+  font-size: 1.6em;
   font-weight: 400;
+  line-height: normal;
   letter-spacing: -.025em;
-  margin-top: 1rem;
-
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 90%;
 
   @include breakpoint($breakpoint) {
-    font-size: 2.25rem;
+    font-size: 2em;
   }
 }

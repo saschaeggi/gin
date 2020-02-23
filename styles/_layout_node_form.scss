@@ -20,6 +20,7 @@
   .layout-region-node-main,
   .layout-region-node-footer {
     width: 100%;
+    padding-right: 0;
 
     @include breakpoint($breakpoint) {
       flex-basis: 40%;
@@ -29,16 +30,38 @@
   }
 
   .page-wrapper__node-edit-form {
+    @include breakpoint($breakpoint) {
+      padding-right: $sidebarWidth;
+    }
+
+    .block-page-title-block {
+      @include breakpoint(1730px) {
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        transform: translateX(-170px);
+      }
+
+      .page-title {
+        @include breakpoint($breakpoint) {
+          width: calc(100% - 400px);
+        }
+      }
+    }
+
     // .block-page-title-block,
     .block-local-tasks-block,
     .messages-list,
     .node-form {
-      // padding-right: 0;
+      // @include breakpoint($breakpoint) {
+      //   margin-right: $sidebarWidth;
+      // }
 
-      @include breakpoint($breakpoint) {
-        padding-right: 0;
-        margin-right: $sidebarWidth;
-      }
+      width: 100%;
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      box-sizing: border-box;
 
       .form-wrapper,
       .form-composite {
@@ -57,14 +80,15 @@
         flex-basis: $sidebarWidth;
         width: $sidebarWidth !important;
         position: fixed;
-        top: 14px;
+        top: 102px;
         right: 0;
         overflow-x: hidden;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        height: calc(100% - 14px); // 94px;
+        height: calc(100% - 126px);
         border-bottom: 1px solid #ddd;
         border-left: 1px solid #ddd;
+        background: #fff;
         box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
 
         .accordion {
@@ -73,16 +97,23 @@
         }
       }
 
-      > .scroller .accordion .claro-details {
-        margin: -1px 0 0 0;
+      .action-link--icon-trash {
+        margin-bottom: 0;
+      }
+
+      .entity-meta {
+        > .accordion__item {
+          margin: -1px 0 0 0;
+          border-left: 0 none;
+        }
       }
     }
 
-    .region-sticky {
-      @include breakpoint($breakpoint) {
-        width: calc(100% - #{$sidebarWidth});
-      }
-    }
+    // .region-sticky {
+    //   @include breakpoint($breakpoint) {
+    //     width: calc(100% - #{$sidebarWidth});
+    //   }
+    // }
   }
 
   &.toolbar-tray-open.toolbar-vertical {
@@ -95,8 +126,8 @@
 
   &.toolbar-horizontal.toolbar-tray-open {
     .layout-region-node-secondary {
-      top: 54px;
-      height: calc(100% - 77px); // 134px
+      top: 142px;
+      height: calc(100% - 166px);
     }
   }
 
@@ -106,52 +137,50 @@
 }
 
 // Fixed form form-wrapper
-.node-form .layout-region-node-footer {
-  z-index: 101;
-  position: fixed;
-  top: 39px;
-  left: 50%;
-  width: calc(50% - #{$sidebarWidth});
-  margin: 16px 0 0 0;
+// .node-form .layout-region-node-footer {
+  // z-index: 101;
+  // position: fixed;
+  // top: 39px;
+  // left: 50%;
+  // width: calc(50% - #{$sidebarWidth});
+  // margin: 16px 0 0 0;
 
-  .toolbar-tray-open & {
-    top: 78px;
-  }
+  // .toolbar-tray-open & {
+  //   top: 78px;
+  // }
+// }
 
-  &__content {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 1rem;
-    margin: 0;
-    background: #fff;
+// .node-form .layout-region {
+//   &__content {
+//     display: flex;
+//     flex-wrap: wrap;
+//     padding: 1rem;
+//     margin: 0;
+//     background: #fff;
 
-    .form-actions {
-      margin: 0;
-    }
+//     .form-actions {
+//       margin: 0;
+//     }
 
-    #edit-delete {
-      display: none;
-    }
+//     .entity-content-form-footer {
+//       margin: 1rem 2rem 0;
+//       order: 2;
+//       align-self: center;
 
-    .entity-content-form-footer {
-      margin: 1rem 2rem 0;
-      order: 2;
-      align-self: center;
+//       .form-item {
+//         display: inline-block;
+//       }
+//     }
 
-      .form-item {
-        display: inline-block;
-      }
-    }
+//     .form-type--checkbox {
+//       margin-top: .75rem;
+//       margin-bottom: .75rem;
+//     }
 
-    .form-type--checkbox {
-      margin-top: .75rem;
-      margin-bottom: .75rem;
-    }
-
-    .button,
-    .action-link {
-      margin-top: .5rem;
-      margin-bottom: .5rem;
-    }
-  }
-}
+//     .button,
+//     .action-link {
+//       margin-top: .5rem;
+//       margin-bottom: .5rem;
+//     }
+//   }
+// }

@@ -118,8 +118,28 @@ function gin_preprocess_dropbutton_wrapper(&$variables) {
  */
 function gin_form_alter(&$form, $form_state, $form_id) {
   if (strpos($form_id, 'node_') !== FALSE && strpos($form_id, 'edit_form') !== FALSE) {
+    // xxx
+    if (isset($form['actions']['submit'])) {
+      $form['actions']['submit']['#weight'] = '99';
+    }
+
+    // if actions: show delete translation as danger button
     if (isset($form['actions']['delete_translation'])) {
       $form['actions']['delete_translation']['#attributes']['class'][] = 'button--danger';
+    }
+
+    // if actions: remove delete action
+    if (isset($form['actions']['delete'])) {
+      $form_delete = $form['actions']['delete'];
+      unset($form['actions']['delete']);
+    }
+
+    // if node form advanced: add delete
+    if (isset($form['meta'])) {
+      $form['meta']['delete'] = $form_delete;
+      // var_dump($form['meta']['delete']);
+      $form['meta']['delete']['#options']['attributes']['class'][] = 'button';
+      $form['meta']['delete']['#options']['attributes']['class'][] = 'button--danger';
     }
   }
 
@@ -166,6 +186,31 @@ function gin_theme_suggestions_page_title_alter(array &$suggestions, array $vari
     $suggestions[] = 'page_title__user';
     $suggestions[] = 'page_title__' . $path;
   }
+}
+
+ /**
+ * Implements hook_menu_local_tasks_alter().
+ * Remove delete tab
+ */
+function gin_menu_local_tasks_alter(&$data, $route_name) {
+
+  var_dump($route_name);
+  var_dump($data);
+
+  //do nothing if this ain't a display page
+  if ($route_name !== 'entity.node.canonical') return;
+
+  //try to get the currently displayed node
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  //check if this is a node of the types you want to handle
+  if ($node) {
+    unset($data['tabs'][0]['delete']);
+  }
+}
+
+function gin_local_tasks_alter(&$local_tasks) {
+  var_dump($local_tasks);
 }
 
 /**
