@@ -161,6 +161,7 @@
 
 #toolbar-bar.js-settings-tray-edit-mode {
   background: var(--colorGinPrimary);
+  justify-content: flex-end;
 }
 
 #toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon.toolbar-icon-edit.toolbar-item.is-active:hover {

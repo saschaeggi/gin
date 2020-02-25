@@ -85,12 +85,22 @@
   // Don't show contextual for pagragraphs
   .erl-item {
     .paragraph {
-      .contextual {
-        display: none;
-      }
+      // .contextual {
+      //   display: none;
+      // }
 
-      .contextual-region {
-        position: static;
+      // .contextual-region {
+      //   position: static;
+      // }
+
+      .field--name-field-paragraphs {
+        display: flex;
+        flex-wrap: wrap;
+
+        .field__item {
+          flex-basis: 100px;
+          margin-right: .5rem;
+        }
       }
     }
   }
@@ -115,6 +125,12 @@
   .erl-add-content {
     &:focus {
       outline: none;
+      box-shadow: none;
+    }
+  }
+
+  .erl-actions {
+    input {
       box-shadow: none;
     }
   }

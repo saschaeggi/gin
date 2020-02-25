@@ -10,6 +10,10 @@
 
 .claro-details__summary {
   color: #545560;
+
+  &:after {
+    left: 0;
+  }
 }
 
 .is-horizontal .tabs--primary,
