@@ -163,6 +163,34 @@ function gin_form_alter(&$form, $form_state, $form_id) {
   }
 }
 
+// /**
+//  * Implements form_element() for forms.
+//  */
+// function gin_preprocess_form_element(&$variables) {
+//   $element =& $variables['element'];
+
+//   // Checkbox
+//   if ($element['#type'] == 'checkbox') {
+//     $variables['attributes']['class'][] = 'form-type--checkbox-single';
+//   }
+// }
+
+// /**
+//  * Implements form_element() for forms.
+//  */
+// function gin_preprocess_checkboxes(&$variables) {
+//   $element = $variables['element'];
+//   $variables['attributes'] = array();
+
+//   if (isset($element['#id'])) {
+//     unset($variables['attributes']['class']['form-type--checkbox-single']);
+//   }
+
+//   var_dump($element['#children']);
+
+//   $variables['children'] = $element['#children'];
+// }
+
 /**
  * Implements form_alter() for forms.
  */

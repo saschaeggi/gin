@@ -22,8 +22,8 @@
     background: none;
 
     .layout {
-      border-left: 1px solid #ccc;
-      border-bottom: 1px solid #ccc;
+      border-left: 1px dashed #ccc;
+      border-bottom: 1px dashed #ccc;
       background: #fff;
     }
   }
@@ -66,19 +66,32 @@
     background: #fff;
     box-shadow: none;
 
-    @media (min-width: 1024px) {
-      padding: 24px;
-    }
+    // @media (min-width: 1024px) {
+    //   padding: 24px;
+    // }
 
     &,
     &:hover {
       border: 0 none;
-      border-top: 1px solid #ccc;
-      border-right: 1px solid #ccc;
+      border-top: 1px dashed #ccc;
+      border-right: 1px dashed #ccc;
+    }
+
+    .layout-label {
+      display: none;
     }
 
     .erl-item {
-      outline: 1px dashed #999;
+      &:hover,
+      &:active,
+      &:focus {
+        outline: 1px solid var(--colorGinPrimary);
+
+        .layout-label {
+          display: block;
+          margin: 0;
+        }
+      }
     }
   }
 
@@ -92,6 +105,19 @@
       // .contextual-region {
       //   position: static;
       // }
+
+      .field {
+        margin: .5em 0;
+      }
+
+      .field--name-field-title {
+        font-weight: bold;
+      }
+
+      .field--type-image {
+        max-height: 400px;
+        overflow: hidden;
+      }
 
       .field--name-field-paragraphs {
         display: flex;
@@ -167,7 +193,7 @@
     }
 
     &.active {
-      outline: 2px solid var(--colorGinPrimary);
+      outline: 3px solid var(--colorGinPrimary);
     }
   }
 }

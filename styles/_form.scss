@@ -25,7 +25,7 @@
   line-height: 1rem;
 }
 
-.form-type--checkbox {
+:not(.form-checkboxes):not(td) > .form-type--checkbox {
   margin-left: 0;
 
   .checkbox-toggle {
@@ -35,7 +35,7 @@
     width: 40px;
     height: 24px;
     margin-right: -40px;
-    background-color: var(--colorGinDisabled);
+    background-color: #909090;
     border-radius: 12px;
     box-sizing: border-box;
 
@@ -64,6 +64,17 @@
 
   input {
     @extend .visually-hidden;
+    @extend .focusable;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:hover:focus,
+    &:active:focus {
+      outline: none;
+      box-shadow: none;
+      border: none;
+    }
 
     &:checked ~ .checkbox-toggle .checkbox-toggle__inner {
       background-color: var(--colorGinPrimary);
@@ -73,6 +84,7 @@
       }
     }
 
+    &:active ~ .checkbox-toggle .checkbox-toggle__inner,
     &:focus ~ .checkbox-toggle .checkbox-toggle__inner {
       box-shadow: 0 0 0 2px #fff, 0 0 0 5px #26a769;
     }
