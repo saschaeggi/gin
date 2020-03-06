@@ -74,23 +74,28 @@
   }
 }
 
+.layer-wrapper,
 .block-system > form,
 .view-content .views-form,
 .panel,
 .update,
 .admin-list,
 .view-watchdog .view-content,
-.views-exposed-form.views-exposed-form {
+.views-exposed-form.views-exposed-form,
+.region-help
+{
   box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.05);
   border-radius: 4px;
 }
 
+.layer-wrapper,
 .block-system > form,
 .view-content .views-form,
 .panel,
 .update,
 .admin-list,
-.view-watchdog .view-content
+.view-watchdog .view-content,
+.region-help
 {
   padding: 0 24px;
   background: #fff;
@@ -112,7 +117,8 @@
   }
 
   &__title {
-    background: var(--colorGinPrimary10);
+    color: #fff;
+    background: #1c1f23;
     border-bottom: 1px solid rgba(#282932, .3);
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -127,10 +133,22 @@
   padding: 1em 1.5em 1em 3em;
 }
 
-.panel {
-  .admin-list {
-    padding: 0;
-    border: 0 none;
-    box-shadow: none;
+.panel .admin-list,
+.block-system > form .dataset-table-wrapper {
+  padding: 0;
+  border: 0 none;
+  box-shadow: none;
+}
+
+.layer-wrapper {
+  padding: 24px;
+
+  & ~ .layer-wrapper {
+    margin-top: 24px;
   }
+}
+
+.region-help {
+  padding: 24px;
+  margin-bottom: 24px;
 }

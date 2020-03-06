@@ -12,7 +12,7 @@
 
   .toolbar-bar {
     $breakpoint: 576px;
-    background:#222330;
+    background:#1c1f23; //#222330;
     box-shadow: none;
 
     @include breakpoint($breakpoint) {
