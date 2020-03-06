@@ -85,7 +85,6 @@
   flex-wrap: wrap;
   width: 100%;
   padding: 0 16px;
-  background-color: #fff;
   box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
 
   @include breakpoint(600px) {
@@ -128,6 +127,10 @@
 
     input:last-child {
       margin-right: 0;
+    }
+
+    .button:not(.button--primary) {
+      background-color: #fff;
     }
   }
 

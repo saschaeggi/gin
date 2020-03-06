@@ -304,7 +304,7 @@
       margin-left: $toolbarOpenWidth;
 
       .region-sticky {
-        max-width: calc(100% - #{$toolbarOpenWidth - 2px});
+        max-width: calc(100% - #{$toolbarOpenWidth});
       }
     }
   }
@@ -378,7 +378,7 @@
     display: block;
     width: $toolbarWidth;
     height: 100%;
-    background: url(../images/drupal.svg) no-repeat left 24px center;
+    background: rgba(255, 255, 255, .075) url(../images/drupal.svg) no-repeat left 21px center;
     background-size: 56px auto;
 
     &:hover {
@@ -474,10 +474,10 @@
               content: "";
               opacity: .9;
               position: absolute;
-              left: 39px;
+              left: 45px;
               display: block;
-              width: 12px;
-              height: 12px;
+              width: 3px;
+              height: 3px;
               box-shadow: 2px 3px 20px var(--colorGinPrimary);
             }
           }

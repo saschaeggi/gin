@@ -28,7 +28,7 @@
       {% set user_menu = tray.links['user_links'] ? 'user-menu' : false %}
       <div{{ tab.attributes.addClass('toolbar-tab', user_menu, 'toolbar-tab--' ~ tab.link['#id']) }}>
         {% if tab.link['#id'] == 'toolbar-item-administration' %}
-          <a class="toolbar-menu__logo" href="/"></a>
+          <a class="toolbar-menu__logo" href="/admin/content"></a>
           {{ tab.link }}
         {% else %}
           {{ tab.link }}

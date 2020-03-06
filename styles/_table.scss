@@ -30,4 +30,14 @@ table {
       border-bottom-right-radius: 4px;
     }
   }
+
+  td {
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
