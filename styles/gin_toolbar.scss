@@ -254,7 +254,7 @@
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
   background-position: center right 16px;
-  background-size: 10px 10px;
+  background-size: 12px 12px;
 }
 
 #toolbar-bar.js-settings-tray-edit-mode {
@@ -286,7 +286,7 @@
   }
 
   &__trigger,
-  &__placeholder {
+  &__logo {
     display: none;
   }
 }
@@ -374,12 +374,16 @@
     order: -1;
   }
 
-  .toolbar-menu__placeholder {
+  .toolbar-menu__logo {
     display: block;
     width: $toolbarWidth;
     height: 100%;
-    background: url(../images/drupal.svg) no-repeat left 16px center;
+    background: url(../images/drupal.svg) no-repeat left 24px center;
     background-size: 56px auto;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.125);
+    }
   }
 
   .region-sticky {
