@@ -1,20 +1,24 @@
 table.sticky-header {
-  margin-top: 95px;
+  left: auto !important;
 
-  // th {
-  //   &:first-child {
-  //     border-top-left-radius: 0;
-  //   }
+  @include mq(1024px) {
+    margin-top: 86px;
+  }
 
-  //   &:last-child {
-  //     border-top-right-radius: 0;
-  //   }
-  // }
+  th {
+    &:first-child {
+      border-top-left-radius: 0;
+    }
+
+    &:last-child {
+      border-top-right-radius: 0;
+    }
+  }
 }
 
 table {
   th {
-    background: #ebecf1;
+    background: #dfe0e4;
 
     &:first-child {
       border-top-left-radius: 4px;

@@ -39,7 +39,6 @@
         width: 100%;
         max-width: 1280px;
         margin: 0 auto;
-        transform: translateX(-170px);
       }
 
       .page-title {
@@ -49,14 +48,9 @@
       }
     }
 
-    // .block-page-title-block,
     .block-local-tasks-block,
     .messages-list,
     .node-form {
-      // @include breakpoint($breakpoint) {
-      //   margin-right: $sidebarWidth;
-      // }
-
       width: 100%;
       max-width: 1280px;
       margin-left: auto;
@@ -80,14 +74,12 @@
         flex-basis: $sidebarWidth;
         width: $sidebarWidth !important;
         position: fixed;
-        top: 102px;
+        top: 15px;
         right: 0;
         overflow-x: hidden;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        height: calc(100% - 126px);
-        border-bottom: 1px solid #ddd;
-        border-left: 1px solid #ddd;
+        height: calc(100% - #{$topBar});
         background: #fff;
         box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
 
@@ -108,79 +100,5 @@
         }
       }
     }
-
-    // .region-sticky {
-    //   @include breakpoint($breakpoint) {
-    //     width: calc(100% - #{$sidebarWidth});
-    //   }
-    // }
   }
-
-  &.toolbar-tray-open.toolbar-vertical {
-    .region-sticky {
-      @include breakpoint($breakpoint) {
-        width: calc(100% - #{$sidebarWidth} - 240px);
-      }
-    }
-  }
-
-  &.toolbar-horizontal.toolbar-tray-open {
-    .layout-region-node-secondary {
-      top: 142px;
-      height: calc(100% - 166px);
-    }
-  }
-
-  // .layout-region-node-footer {
-  //   margin-top: 40px;
-  // }
 }
-
-// Fixed form form-wrapper
-// .node-form .layout-region-node-footer {
-  // z-index: 101;
-  // position: fixed;
-  // top: 39px;
-  // left: 50%;
-  // width: calc(50% - #{$sidebarWidth});
-  // margin: 16px 0 0 0;
-
-  // .toolbar-tray-open & {
-  //   top: 78px;
-  // }
-// }
-
-// .node-form .layout-region {
-//   &__content {
-//     display: flex;
-//     flex-wrap: wrap;
-//     padding: 1rem;
-//     margin: 0;
-//     background: #fff;
-
-//     .form-actions {
-//       margin: 0;
-//     }
-
-//     .entity-content-form-footer {
-//       margin: 1rem 2rem 0;
-//       order: 2;
-//       align-self: center;
-
-//       .form-item {
-//         display: inline-block;
-//       }
-//     }
-
-//     .form-type--checkbox {
-//       margin-top: .75rem;
-//       margin-bottom: .75rem;
-//     }
-
-//     .button,
-//     .action-link {
-//       margin-top: .5rem;
-//       margin-bottom: .5rem;
-//     }
-//   }
-// }

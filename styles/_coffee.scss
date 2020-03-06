@@ -11,8 +11,15 @@
     padding: 16px;
 
     &.ui-state-active {
-      color: #fff;
       background: var(--colorGinPrimary);
+
+      &, .description {
+        color: #fff;
+      }
+
+      .description {
+        opacity: .9;
+      }
     }
   }
 }

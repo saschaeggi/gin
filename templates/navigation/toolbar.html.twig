@@ -26,8 +26,13 @@
     {% for key, tab in tabs %}
       {% set tray = trays[key] %}
       {% set user_menu = tray.links['user_links'] ? 'user-menu' : false %}
-      <div{{ tab.attributes.addClass('toolbar-tab', user_menu) }}>
-        {{ tab.link }}
+      <div{{ tab.attributes.addClass('toolbar-tab', user_menu, 'toolbar-tab--' ~ tab.link['#id']) }}>
+        {% if tab.link['#id'] == 'toolbar-item-administration' %}
+          <span class="toolbar-menu__placeholder"></span>
+          {{ tab.link }}
+        {% else %}
+          {{ tab.link }}
+        {% endif %}
         {% spaceless %}
           <div{{ tray.attributes }}>
             {% if tray.label %}

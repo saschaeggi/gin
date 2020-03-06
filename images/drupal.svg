@@ -1,8 +1,5 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 700 180" style="enable-background:new 0 0 700 180;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#515151; //#2AA9E0}
-</style>
+	 viewBox="0 0 700 180" fill="#ffffff" style="enable-background:new 0 0 700 180;" xml:space="preserve">
 <g>
 	<path class="st0" d="M327.76,33.57H298.3l0.05,55.12c0,16.11-6.91,29.14-23.02,29.14c-16.12,0-23.08-13.03-23.08-29.14V33.63
 		h-29.38l-0.01,55.07c0,31.83,20.46,57.63,52.3,57.63c31.83,0,52.6-25.8,52.6-57.63L327.76,33.57z"/>

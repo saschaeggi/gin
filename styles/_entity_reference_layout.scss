@@ -39,10 +39,22 @@
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
+    position: fixed;
+    top: 127px;
+    left: auto;
+    right: 0;
+    transform: none;
+    max-width: 359px;
+    z-index: 999;
+    max-height: 100%;
+    height: 100vh;
+    box-shadow: none;
+    align-content: flex-start;
+
     button {
       color: #000;
       text-align: center;
-      flex-basis: 25%;
+      flex-basis: 33.333%;
       margin-bottom: 16px;
 
       img {
@@ -65,10 +77,6 @@
     padding: 16px;
     background: #fff;
     box-shadow: none;
-
-    // @media (min-width: 1024px) {
-    //   padding: 24px;
-    // }
 
     &,
     &:hover {
@@ -98,14 +106,6 @@
   // Don't show contextual for pagragraphs
   .erl-item {
     .paragraph {
-      // .contextual {
-      //   display: none;
-      // }
-
-      // .contextual-region {
-      //   position: static;
-      // }
-
       .field {
         margin: .5em 0;
       }
@@ -138,7 +138,6 @@
 
     &:before {
       height: 2px;
-      background-color: #333;
     }
   }
 
@@ -162,7 +161,6 @@
   }
 
   .erl-item > .erl-add-content--single {
-    opacity: 1;
     position: static;
     width: 100%;
     left: 0;

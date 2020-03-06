@@ -11,6 +11,8 @@ gin_toolbar:
   css:
     theme:
       dist/css/gin_toolbar.css: {}
+  js:
+    dist/js/gin_toolbar.js: {}
 gin_accent:
   css:
     theme:
