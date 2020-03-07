@@ -81,8 +81,7 @@
 .update,
 .admin-list,
 .view-watchdog .view-content,
-.views-exposed-form.views-exposed-form,
-.region-help
+.views-exposed-form.views-exposed-form
 {
   box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.05);
   border-radius: 4px;
@@ -94,8 +93,7 @@
 .panel,
 .update,
 .admin-list,
-.view-watchdog .view-content,
-.region-help
+.view-watchdog .view-content
 {
   padding: 0 24px;
   background: #fff;
@@ -133,6 +131,13 @@
   padding: 1em 1.5em 1em 3em;
 }
 
+.layer-wrapper {
+  .responsive-enabled {
+    margin-top: 0;
+  }
+}
+
+.block-system > form .layer-wrapper,
 .panel .admin-list,
 .block-system > form .dataset-table-wrapper {
   padding: 0;
@@ -146,9 +151,4 @@
   & ~ .layer-wrapper {
     margin-top: 24px;
   }
-}
-
-.region-help {
-  padding: 24px;
-  margin-bottom: 24px;
 }

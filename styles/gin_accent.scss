@@ -111,3 +111,8 @@ svg path {
 .pager__link.is-active, .pager__item--current {
   background-color: var(--colorGinPrimary);
 }
+
+.ajax-progress__throbber {
+  border: 2px solid var(--colorGinPrimary);
+  border-right: 2px dotted transparent;
+}

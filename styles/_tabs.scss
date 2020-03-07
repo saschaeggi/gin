@@ -1,5 +1,7 @@
 .tabs__link,
-.claro-details__summary {
+.claro-details__summary,
+.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a
+{
   font-size: 14px;
   color: #222330;
   letter-spacing: 1.5px;
@@ -56,12 +58,11 @@
       border-right: 0 none;
 
       a {
-        color: #545560;
-        padding: 0.75rem 2rem;
-        border-radius: 2px 2px 0 0;
+        padding-right: 2rem;
+        padding-left: 2rem;
 
         &:hover {
-          background: #e6ecf8;
+          background: rgba(#e6ecf8, .55);
         }
 
         &:before {
