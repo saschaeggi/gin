@@ -1,9 +1,27 @@
 // Core Media preview image override
 .media-library-views-form {
-  .media-library-item--grid .field--name-thumbnail img {
-    width: 100%;
-    height: auto;
-    min-width: unset;
-    min-height: unset;
+  .media-library-item--grid {
+    .field--name-thumbnail img {
+      width: 100%;
+      height: auto;
+      min-width: unset;
+      min-height: unset;
+    }
+
+    &.is-hover:before,
+    &.checked:before,
+    &.is-focus:before {
+      border-color: var(--colorGinPrimary);
+    }
   }
+}
+
+.media-library-item__edit:hover,
+.media-library-item__edit:focus,
+.media-library-item__remove:hover,
+.media-library-item__remove:focus,
+.media-library-item__remove.button:hover,
+.media-library-item__remove.button:focus,
+.media-library-item__remove.button:disabled:active {
+  border-color: var(--colorGinPrimary);
 }

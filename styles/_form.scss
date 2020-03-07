@@ -25,7 +25,7 @@
   line-height: 1rem;
 }
 
-:not(.form-checkboxes):not(td) > .form-type--checkbox {
+:not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox) > .form-type--checkbox {
   margin-left: 0;
 
   .checkbox-toggle {

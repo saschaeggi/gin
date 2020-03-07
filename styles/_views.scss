@@ -46,9 +46,11 @@
 
   .views-table {
     order: -1;
+    margin-top: 0;
   }
 
   [data-drupal-selector*="-header"] {
+    order: 99;
     position: relative;
     left: 0;
     padding: 0 16px 16px 16px;
@@ -95,7 +97,7 @@
 .admin-list,
 .view-watchdog .view-content
 {
-  padding: 0 24px;
+  padding: 24px; //0 24px;
   background: #fff;
   border: 1px solid #E2E2E5;
 }
@@ -144,6 +146,7 @@
   border: 0 none;
   box-shadow: none;
 }
+
 
 .layer-wrapper {
   padding: 24px;

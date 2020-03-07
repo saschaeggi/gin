@@ -134,9 +134,21 @@
   }
 
   .erl-disabled-items {
-    border-left: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    padding: 24px;
     background: #f6f6f6;
+
+    &, &:hover, &:active {
+      border: 1px dashed #ccc;
+    }
+
+    .fieldset__label {
+      padding: 16px 0 24px;
+    }
+
+    &__description {
+      font-size: 0.875rem;
+      color: #999;
+    }
   }
 
   .erl-add-content {
