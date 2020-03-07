@@ -1,0 +1,24 @@
+.system-status-report__requirements-group {
+  margin-top: 32px;
+  border: 0 none;
+
+  h3 {
+    margin-top: 0;
+  }
+}
+
+.system-status-counter__status-icon {
+  background-color: transparent;
+  border: 0 none;
+  box-shadow: none;
+}
+
+.system-status-general-info__header {
+  font-size: 1.5rem;
+}
+
+.system-status-general-info__header,
+.system-status-report__requirements-group h3 {
+  text-transform: none;
+  background-color: transparent;
+}
