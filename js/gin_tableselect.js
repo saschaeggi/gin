@@ -19,7 +19,7 @@
       selectNone: Drupal.t('Deselect all rows in this table')
     };
     var setClass = 'is-sticky';
-    var $stickyHeader = $table.parent().find('[data-drupal-selector*="-header"]');
+    var $stickyHeader = $table.parent().find('[data-drupal-selector*="edit-header"]');
     var updateSelectAll = function updateSelectAll(state) {
       $table.prev('table.sticky-header').addBack().find('th.select-all input[type="checkbox"]').each(function () {
         var $checkbox = $(this);

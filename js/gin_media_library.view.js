@@ -28,7 +28,7 @@
 
       // Media Library select
       $('.media-library-view .form-checkbox', context).on('click', function() {
-        $(this).parents('.media-library-view').find('[data-drupal-selector*="-header"]').toggleClass('is-sticky');
+        $(this).parents('.media-library-view').find('[data-drupal-selector*="edit-header"]').toggleClass('is-sticky');
       });
     }
   };
