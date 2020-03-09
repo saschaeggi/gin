@@ -237,6 +237,11 @@
   .views-display-setting:nth-of-type(even) {
     background-color: var(--colorGinPrimary20);
   }
+
+  .dropbutton-wrapper {
+    top: 9px;
+    right: 8px;
+  }
 }
 
 .views-query-info table tr {
