@@ -199,6 +199,18 @@
   overflow: hidden;
 }
 
+.views-admin {
+  .icon.add {
+    background: none;
+
+    &:before {
+      content: "+";
+      font-size: 1rem;
+      line-height: .1;
+    }
+  }
+}
+
 .views-display-top {
   padding: 16px;
   background-color: var(--colorGinPrimary20);
@@ -221,8 +233,15 @@
   margin: 0;
 }
 
-.views-tabs a {
-  padding: 8px 16px;
+.views-tabs {
+  a {
+    padding: 8px 16px;
+  }
+
+  li a:hover, li.is-active a, li.is-active a.is-active {
+    background: #1c1f23;
+    border-color: transparent;
+  }
 }
 
 .views-ui-display-tab-bucket {
