@@ -28,7 +28,7 @@
 #}
 {{ menus.menu_links(items, attributes, 0, false) }}
 
-{% macro menu_links(items, attributes, menu_level, title) %}
+{% macro menu_links(items, attributes, menu_level, parent) %}
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
@@ -49,18 +49,22 @@
       {# Add Menu Titles #}
       {% if menu_level == 1 and loop.index == 1 %}
         <li class="menu-item-title">
-          <h2 class="toolbar-menu__title">{{ title }}</h2>
+          <h2 class="toolbar-menu__title">
+            <a href="{{ parent.url }}">{{ parent.title }}</a>
+          </h2>
         </li>
       {% elseif menu_level > 1 and loop.index == 1 %}
         <li class="menu-item-title">
-          <h3 class="toolbar-menu__sub-title">{{ title }}</h3>
+          <h3 class="toolbar-menu__sub-title">
+            <a href="{{ parent.url }}">{{ parent.title }}</a>
+          </h3>
         </li>
       {% endif %}
 
       <li{{ item.attributes.addClass(classes) }}>
         {{ link(item.title, item.url) }}
         {% if item.below %}
-          {{ menus.menu_links(item.below, attributes, menu_level + 1, item.title) }}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1, item) }}
         {% endif %}
       </li>
     {% endfor %}
