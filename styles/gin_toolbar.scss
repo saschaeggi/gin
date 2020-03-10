@@ -4,7 +4,9 @@
 
 // Toolbar
 #toolbar-item-administration-tray {
-  border: 0 none;
+  @include breakpoint(976px) {
+    border: 0 none;
+  }
 }
 
 .toolbar {
@@ -292,7 +294,7 @@
 }
 
 // New Desktop Toolbar
-@include mq(1024px) {
+@include mq(976px) {
   #toolbar-item-administration-tray {
     display: block;
   }
