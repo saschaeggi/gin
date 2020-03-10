@@ -61,12 +61,15 @@
   margin-bottom: 0;
   background-color: transparent;
 
-  @include breakpoint(768px) {
-    margin-bottom: 1.5rem;
-  }
-
   @include breakpoint(1024px) {
     padding-top: $contentHeaderSpacer;
+  }
+
+  .block-local-tasks-block {
+    @include breakpoint(768px) {
+      margin-top: 6px;
+      margin-bottom: 1rem;
+    }
   }
 }
 
