@@ -25,3 +25,8 @@
 .media-library-item__remove.button:disabled:active {
   border-color: var(--colorGinPrimary);
 }
+
+.media-library-item__click-to-select-checkbox input {
+  width: 28px;
+  height: 28px;
+}

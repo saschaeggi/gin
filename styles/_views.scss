@@ -80,7 +80,6 @@
 .block-system > form,
 .view-content .views-form,
 .panel,
-.update,
 .admin-list,
 .view-watchdog .view-content,
 .views-exposed-form.views-exposed-form,
@@ -91,6 +90,7 @@
 .views-preview-wrapper,
 #views-entity-list
 {
+  margin-top: 0;
   box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.05);
   border-radius: 4px;
 }
@@ -99,8 +99,8 @@
 .block-system > form,
 .view-content .views-form,
 .panel,
-.update,
 .admin-list,
+.update,
 .view-watchdog .view-content,
 .system-status-general-info,
 .system-status-report__requirements-group,
@@ -138,6 +138,10 @@
   }
 }
 
+.update {
+  margin: 0;
+}
+
 .admin-list {
   padding: 8px 0;
 }
@@ -164,8 +168,12 @@
 .layer-wrapper {
   padding: 24px;
 
-  & ~ .layer-wrapper {
+  & + .layer-wrapper {
     margin-top: 24px;
+  }
+
+  & + h3 {
+    margin-top: 32px;
   }
 }
 
@@ -265,4 +273,23 @@
 
 .views-query-info table tr {
   background-color: var(--colorGinPrimary10);
+}
+
+.system-modules,
+.locale-translation-status-form {
+  tr.even,
+  tr.odd {
+    background: none;
+    border-top: 1px solid #ccc;
+    border-bottom: none;
+  }
+}
+
+.system-modules td {
+  padding: 1rem;
+  height: auto;
+
+  details summary {
+    background-color: transparent;
+  }
 }
