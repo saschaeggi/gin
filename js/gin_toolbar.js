@@ -47,7 +47,9 @@
       });
 
       // Toolbar toggle
-      $('.toolbar-menu__trigger', context).on('click', function() {
+      $('.toolbar-menu__trigger', context).on('click', function(e) {
+        e.preventDefault();
+
         $(this).toggleClass('is-active');
 
         if ($(this).hasClass('is-active')) {
