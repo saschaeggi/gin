@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Handles installation and upgrade tasks.
+ */
+
+/**
+ * Update Accent Color: Set to Claro Blue
+ */
+function gin_update_8101() {
+  /** @var \Drupal\Core\Config\Config $config */
+  $config = \Drupal::configFactory()->getEditable('gin.settings');
+  $config
+    ->set('accent_color', '#003cc5')
+    ->save();
+}
