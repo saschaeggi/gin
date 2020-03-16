@@ -54,8 +54,12 @@
     position: relative;
     left: 0;
     padding: 0 16px 16px 16px;
-    background: #dfe0e4;
+    background: rgba(#dfe0e4, .9);
     border-radius: 4px;
+
+    .dark-mode & {
+      background: rgba($colorDarkAppBackground, .9);
+    }
 
     .form-item__label {
       display: block;
@@ -98,6 +102,7 @@
 .layer-wrapper,
 .block-system > form,
 .view-content .views-form,
+.views-exposed-form.views-exposed-form,
 .panel,
 .admin-list,
 .update,
@@ -109,9 +114,9 @@
 #views-entity-list
 {
   width: 100%;
-  padding: 24px; //0 24px;
-  background: #fff;
-  border: 1px solid #E2E2E5;
+  padding: 24px;
+  background: var(--colorGinLayerBackground);
+  border: 1px solid rgba(0,0,0,0.1); // #E2E2E5;
   box-sizing: border-box;
 }
 
@@ -147,7 +152,7 @@
 }
 
 .admin-item {
-  padding: 1em 1.5em 1em 3em;
+  padding: 1em 1.5em 1em 4em;
 }
 
 .layer-wrapper {

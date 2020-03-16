@@ -1,5 +1,5 @@
 (function ($, Drupal) {
-  Drupal.behaviors.ginToolbarChange = {
+  Drupal.behaviors.ginToolbarActiveItem = {
     attach: function attach(context, settings) {
       // Check if on node edit form
       if (window.location.href.indexOf('admin/content') > -1) {
@@ -33,7 +33,11 @@
       else if (window.location.href.indexOf('admin/help') > -1) {
         $('.toolbar-icon-help-main').addClass('is-active');
       }
+    }
+  };
 
+  Drupal.behaviors.ginToolbarToggle = {
+    attach: function attach(context, settings) {
       // Change when clicked
       $('#toolbar-bar .toolbar-item', context).on('click', function() {
         $('body').attr('data-toolbar-tray', $(this).data('toolbar-tray'));
@@ -47,7 +51,20 @@
       });
 
       // Toolbar toggle
-      $('.toolbar-menu__trigger', context).on('click', function(e) {
+      // $('.toolbar-menu__trigger', context).on('click', function(e) {
+      //   e.preventDefault();
+
+      //   $(this).toggleClass('is-active');
+
+      //   if ($(this).hasClass('is-active')) {
+      //     $('body').attr('data-toolbar-menu', 'open');
+      //   } else {
+      //     $('body').attr('data-toolbar-menu', '');
+      //   }
+      // });
+
+      // Toolbar hover toggle
+      $('.toolbar-menu-administration', context).hover(function(e) {
         e.preventDefault();
 
         $(this).toggleClass('is-active');
@@ -56,6 +73,29 @@
           $('body').attr('data-toolbar-menu', 'open');
         } else {
           $('body').attr('data-toolbar-menu', '');
+        }
+      });
+    }
+  };
+
+  Drupal.behaviors.ginScroll = {
+    attach: function attach(context, settings) {
+      var offset = $(window).scrollTop();
+
+      if (offset > 0) {
+        $('body').addClass('--scrolled');
+      } else {
+        $('body').removeClass('--scrolled');
+      }
+
+      // Scroll event
+      $(window).scroll(function (event) {
+        var offset = $(window).scrollTop();
+
+        if (offset > 0) {
+          $('body').addClass('--scrolled');
+        } else {
+          $('body').removeClass('--scrolled');
         }
       });
     }

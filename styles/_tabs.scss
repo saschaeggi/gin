@@ -3,16 +3,25 @@
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a
 {
   font-size: 14px;
-  color: #222330;
+  color: var(--colorGinText);
   letter-spacing: 1.5px;
   text-transform: uppercase;
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+
+  .dark-mode & {
+    font-weight: 500;
+  }
+}
+
+.is-horizontal .tabs__link,
+.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
+  &:hover {
+    background: var(--colorGinLayer2Background);
+  }
 }
 
 .claro-details__summary {
-  color: #545560;
-
   &:after {
     left: 0;
   }
@@ -28,7 +37,7 @@
       left: 0;
       display: block;
       width: 100%;
-      border-bottom: 1px solid #d4d4d8;
+      border-bottom: 1px solid var(--colorGinBorder);
     }
   }
 }
@@ -59,10 +68,6 @@
       a {
         padding-right: 2rem;
         padding-left: 2rem;
-
-        &:hover {
-          background: rgba(#e6ecf8, .55);
-        }
 
         &:before {
           content: '';
@@ -102,4 +107,20 @@
       margin: 0;
     }
   }
+}
+
+// Icon
+.claro-details__summary:hover::before,
+.claro-details__summary:hover:focus::before,
+.claro-details[open] > .claro-details__summary:focus::before,
+.claro-details[open] > .claro-details__summary--accordion::before,
+.claro-details[open] > .claro-details__summary--accordion-item::before,
+.claro-details[open] > .claro-details__summary--vertical-tabs-item::before {
+  // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M5.2109375,1.3144531 3.7890625,2.7226562 9.0917969,8.0761719 3.7890625,13.429688 5.2109375,14.837891 11.908203,8.0761719Z' fill='$accent_color_svg'/%3E%3C/svg%3E");
+  background-image: none;
+  background-color: var(--colorGinPrimary);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M5.2109375,1.3144531 3.7890625,2.7226562 9.0917969,8.0761719 3.7890625,13.429688 5.2109375,14.837891 11.908203,8.0761719Z' fill='%23#{$iconActiveFill}'/%3E%3C/svg%3E");
+  mask-repeat: no-repeat;
+  mask-position: center center;
+  mask-size: 100% 100%;
 }

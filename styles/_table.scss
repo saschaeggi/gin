@@ -1,8 +1,9 @@
 table.sticky-header {
   left: auto !important;
+  background: transparent;
 
   @include mq(1024px) {
-    margin-top: 86px;
+    margin-top: 48px; //86px;
   }
 
   th {
@@ -18,7 +19,8 @@ table.sticky-header {
 
 table {
   th {
-    background: #dfe0e4;
+    color: var(--colorGinTitle);
+    background: var(--colorGinTableHeader);
 
     &:first-child {
       border-top-left-radius: 4px;
@@ -31,6 +33,23 @@ table {
     }
   }
 
+  tbody {
+    tr {
+      border-bottom: 1px solid var(--colorGinBorder);
+    }
+  }
+
+  tr,
+  .draggable-table.tabledrag-disabled tr {
+    color: var(--colorGinText);
+    background-color: transparent;
+
+    &:hover {
+      color: var(--colorGinText);
+      background: var(--colorGinLayer2Background);
+    }
+  }
+
   td {
     a {
       text-decoration: none;
@@ -40,4 +59,16 @@ table {
       }
     }
   }
+}
+
+.tablesort {
+  background-color: var(--colorGinPrimary);
+  background-image: none;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath d='m1.75,0.25v1.5h10.5v-1.5z m0,3v1.5h7.5v-1.5z m0,3v1.5h4.5v-1.5z' fill='%23222330'/%3E%3C/svg%3E");
+  mask-repeat: no-repeat;
+  mask-position: 0 50%;
+}
+
+.tablesort--asc, [dir="rtl"] .tablesort--asc {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='16' viewBox='0 0 10 12'%3E%3Cpath d='M 5 0.43945312 L 0.71875 4.71875 L 1.78125 5.78125 L 4.25 3.3125 L 4.25 11.25 L 5.75 11.25 L 5.75 3.3125 L 8.21875 5.78125 L 9.28125 4.71875 L 5 0.43945312 z' fill='%23004adc'/%3E%3C/svg%3E");
 }

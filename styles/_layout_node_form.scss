@@ -74,16 +74,18 @@
         flex-basis: $sidebarWidth;
         width: $sidebarWidth !important;
         position: fixed;
-        top: 15px;
+        top: 0; //15px;
         right: 0;
+        margin: 0;
         overflow-x: hidden;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        height: calc(100% - #{$topBar});
-        background: #fff;
+        height: 100%; //calc(100% - #{$topBar});
+        background:var(--colorGinLayerBackground);
         box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
 
         .accordion {
+          background: none;
           border: 0 none;
           box-shadow: none;
         }
@@ -94,9 +96,43 @@
       }
 
       .entity-meta {
+        $sidebarSpacer: 2rem;
+
+        &__header {
+          color: var(--colorGinText);
+          padding-left: $sidebarSpacer;
+          padding-right: $sidebarSpacer;
+          background: none;
+        }
+
+        &__title {
+          color: var(--colorGinTitle);
+          font-weight: 500;
+          margin-bottom: 2rem;
+          margin-top: 1rem;
+          text-shadow: none;
+        }
+
         > .accordion__item {
           margin: -1px 0 0 0;
           border-left: 0 none;
+
+          > .claro-details__summary {
+            padding-left: #{$sidebarSpacer + 1.5rem};
+
+            &:before {
+              left: $sidebarSpacer;
+            }
+          }
+
+          .claro-details__content {
+            margin-left: $sidebarSpacer;
+            margin-right: $sidebarSpacer;
+
+            .claro-details__wrapper {
+              margin: 1.5rem;
+            }
+          }
         }
       }
     }

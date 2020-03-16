@@ -1,13 +1,3 @@
-:root {
-  // Accent color: use Claro defaults for Gin
-  --colorGinPrimary: #003cc5;
-  --colorGinPrimaryHover: #0036b1;
-  --colorGinPrimaryActive: #00339a;
-  --colorGinPrimary20: #f3f4f9;
-  --colorGinPrimary10: #fafbfd;
-  --colorGinDisabled: #bbb;
-}
-
 $topBar: 39px;
 $contentHeaderSpacer: 88px;
 $toolbarWidth: 96px;
@@ -17,3 +7,50 @@ $sidebarWidth: 360px;
 
 $iconFill: '787878';
 $iconActiveFill: '003cc5';
+
+$basic-easing: cubic-bezier(.455, .03, .515, .955);
+$fancy-easing: cubic-bezier(.19, 1, .22, 1);
+$transition: .15s $fancy-easing;
+$transition--fast: .3s $fancy-easing;
+
+$colorAppBackground: #f3f4fa;
+$colorDarkAppBackground: #1B1B1D; //#171a1d;
+
+:root {
+  // Accent color: use Claro defaults for Gin
+  --colorGinPrimary: #003cc5;
+  --colorGinPrimaryHover: #0036b1;
+  --colorGinPrimaryActive: #00339a;
+  --colorGinPrimary20: #f3f4f9;
+  --colorGinPrimary10: #fafbfd;
+  --colorGinDisabled: #bbb;
+
+  --colorGinAppBackground: #{$colorAppBackground};
+  --colorGinLayerBackground: #fff;
+  --colorGinLayer2Background: #e6ecf8;
+  --colorGinBorder: #d4d4d8;
+
+  --colorGinTitle:#222330;
+  --colorGinText: #222330;
+  --colorGinTextLight: #545560;
+
+  --colorGinTableHeader: #dfe0e4;
+}
+
+.dark-mode {
+  --colorGinPrimary: #90aeef; //#e0714d;
+  --colorGinPrimaryHover: #{lighten(#90aeef, 5)};
+  --colorGinPrimaryActive: #{lighten(#90aeef, 10)};
+
+  --colorGinAppBackground: #{$colorDarkAppBackground};
+  --colorGinLayerBackground: #2A2A2D;
+  --colorGinLayer2Background: #3B3B3F;
+  --colorGinBorder: #43454a;
+  --colorGinLayer2Border: #76777B;
+
+  --colorGinTitle: #fff;
+  --colorGinText: #ccc;
+  --colorGinTextLight: #828386;
+
+  --colorGinTableHeader: #161a1d;
+}

@@ -2,13 +2,18 @@
   position: relative;
   padding: 16px 0 0;
   width: 100%;
-  background: rgba(#f3f4fa, .9); // #fff;
+  background: rgba($colorAppBackground, .9);
   box-sizing: border-box;
+  transition: $transition;
+
+  .dark-mode & {
+    background: rgba($colorDarkAppBackground, .9);
+  }
 
   @include breakpoint(1024px) {
     position: fixed;
     z-index: 101;
-    top: auto;
+    top: 20px;
     width: 100%;
     height: 88px;
     padding-bottom: 16px;
@@ -17,6 +22,10 @@
 
     .toolbar-horizontal[data-toolbar-tray='toolbar-item-administration-tray'] & {
       top: $topBar;
+    }
+
+    .--scrolled & {
+      top: 0;
     }
   }
 
@@ -92,7 +101,7 @@
 
   @include breakpoint(1024px) {
     left: auto;
-    top: 41px;
+    top: 22px; //41px;
     right: $sidebarWidth + 32px;
     bottom: auto;
     width: auto;
@@ -100,16 +109,21 @@
     padding-right: 0;
     background-color: transparent;
     box-shadow: none;
+    transition: $transition;
 
-    .toolbar-tray-open.toolbar-horizontal[data-toolbar-tray]:not([data-toolbar-tray='toolbar-item-administration-tray']) & {
-      top: 81px;
+    // .toolbar-tray-open.toolbar-horizontal[data-toolbar-tray]:not([data-toolbar-tray='toolbar-item-administration-tray']) & {
+    //   top: 81px;
+    // }
+
+    .--scrolled & {
+      top: 2px;
     }
   }
 
   @include breakpoint(1440px) {
     right: 24px;
     justify-content: flex-end;
-    right: calc(#{$sidebarWidth} + 3em);
+    right: calc(#{$sidebarWidth} + 4em);
   }
 
   @include breakpoint(1730px) {
@@ -151,7 +165,7 @@ body:not(.toolbar-tray-open) .layout-container {
   }
 
   @include breakpoint(1440px) {
-    margin-left: 3em;
-    margin-right: 3em;
+    margin-left: 4em;
+    margin-right: 4em;
   }
 }
