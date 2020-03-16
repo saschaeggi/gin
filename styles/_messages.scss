@@ -2,4 +2,8 @@
   &, &-list {
     margin-top: 0;
   }
+
+  .dark-mode & {
+    background-color: var(--colorGinLayer2Background);
+  }
 }

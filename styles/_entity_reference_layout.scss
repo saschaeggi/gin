@@ -5,7 +5,7 @@
     padding-top: 0;
     padding-left: 0;
     padding-right: 0;
-    background: #fff;
+    background: transparent;
     box-shadow: none;
 
     > legend {
@@ -174,7 +174,9 @@
     button {
       display: block;
       width: 100%;
-      background: #f6f9fa;
+      color: var(--colorGinTitle);
+      text-decoration: none;
+      background: var(--colorGinLayer2Background);
       padding: 16px;
       border: 1px dashed;
     }

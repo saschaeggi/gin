@@ -43,6 +43,19 @@
   line-height: 1rem;
 }
 
+// Darkmode Checkbox
+.form-boolean--type-checkbox:checked {
+  .dark-mode & {
+    $iconColor: 1B1B1D;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.7949219,7.095703 6.1816406,9.601563 12.205078,3.2753906 13.689453,4.8359375 6.1816406,12.724609 2.3105469,8.65625 Z' fill='%23#{$iconColor}'/%3E%3C/svg%3E");
+
+    &:hover {
+      box-shadow: inset 0 0 0 1px #fff;
+    }
+  }
+}
+
+// Single Checkbox: show as toggle
 :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox) > .form-type--checkbox {
   margin-left: 0;
 
@@ -74,6 +87,7 @@
         height: 100%;
         background-color: #fff;
         border-radius: 21px;
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
         transform: translateX(-16px);
         transition: .3s;
       }
@@ -95,7 +109,7 @@
     }
 
     &:checked ~ .checkbox-toggle .checkbox-toggle__inner {
-      background-color: #26a769; //var(--colorGinPrimary);
+      background-color: var(--colorGinGreen);
 
       &:before {
         transform: translateX(16px);
@@ -104,7 +118,7 @@
 
     &:active ~ .checkbox-toggle .checkbox-toggle__inner,
     &:focus ~ .checkbox-toggle .checkbox-toggle__inner {
-      box-shadow: 0 0 0 2px #fff, 0 0 0 5px #26a769;
+      box-shadow: 0 0 0 2px #fff, 0 0 0 5px var(--colorGinGreen);
     }
   }
 
@@ -113,6 +127,7 @@
     position: relative;
     padding-left: 44px;
     padding-bottom: 0;
+    color: var(--colorGinText);
   }
 }
 
@@ -187,4 +202,9 @@
   &:not(:last-of-type) {
     margin-right: calc(1.5rem + 1px);
   }
+}
+
+.fieldset__label--group,
+.form-item__label {
+  color: var(--colorGinText);
 }

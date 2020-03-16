@@ -45,8 +45,22 @@ table {
     background-color: transparent;
 
     &:hover {
-      color: var(--colorGinText);
-      background: var(--colorGinLayer2Background);
+      .dark-mode & {
+        color: var(--colorGinText);
+        background: var(--colorGinLayer2Background);
+      }
+    }
+  }
+
+  tr.selected {
+    .dark-mode & {
+      border-color: rgba(white, .2);
+    }
+
+    td {
+      .dark-mode & {
+        background-color: var(--colorGinSelected);
+      }
     }
   }
 

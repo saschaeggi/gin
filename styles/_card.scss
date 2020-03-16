@@ -1,0 +1,15 @@
+.card {
+  border: 1px solid var(--colorGinBorder);
+
+  &-list {
+    margin-bottom: 2rem;
+  }
+
+  &__content-wrapper {
+    background-color: var(--colorGinLayerBackground);
+  }
+
+  .heading-f {
+    color: var(--colorGinTitle);
+  }
+}

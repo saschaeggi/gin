@@ -60,6 +60,7 @@
       .form-wrapper,
       .form-composite {
         label {
+          color: var(--colorGinText);
           text-transform: capitalize;
           padding-bottom: 4px;
         }
@@ -116,6 +117,7 @@
         > .accordion__item {
           margin: -1px 0 0 0;
           border-left: 0 none;
+          border-right: 0 none;
 
           > .claro-details__summary {
             padding-left: #{$sidebarSpacer + 1.5rem};

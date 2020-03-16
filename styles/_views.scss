@@ -120,6 +120,10 @@
   box-sizing: border-box;
 }
 
+.views-exposed-form.views-exposed-form {
+  padding-top: 8px;
+}
+
 .block-system > .node-confirm-form,
 .block-system > .confirmation, {
   padding-top: 24px;
@@ -140,7 +144,15 @@
     border-bottom: 1px solid rgba(#282932, .3);
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
+
+    .dark-mode & {
+      background: var(--colorGinLayer2Background);
+    }
   }
+}
+
+.panel__content {
+  padding-top: 0;
 }
 
 .update {

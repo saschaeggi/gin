@@ -1,0 +1,13 @@
+.admin-item {
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--colorGinBorder);
+  }
+
+  &__link::before {
+    background-image: none;
+    background-color: var(--colorGinPrimary);
+    mask-image: url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='%23004adc'/%3E%3C/svg%3E");
+    mask-repeat: no-repeat;
+    mask-position: center center;
+  }
+}

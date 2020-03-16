@@ -25,6 +25,9 @@ $colorDarkAppBackground: #1B1B1D; //#171a1d;
   --colorGinPrimary10: #fafbfd;
   --colorGinDisabled: #bbb;
 
+  --colorGinWarning: #c11f1f;
+  --colorGinGreen: #26a769;
+
   --colorGinAppBackground: #{$colorAppBackground};
   --colorGinLayerBackground: #fff;
   --colorGinLayer2Background: #e6ecf8;
@@ -38,9 +41,12 @@ $colorDarkAppBackground: #1B1B1D; //#171a1d;
 }
 
 .dark-mode {
-  --colorGinPrimary: #90aeef; //#e0714d;
+  --colorGinPrimary: #6b95ff; //#90aeef; //#e0714d;
   --colorGinPrimaryHover: #{lighten(#90aeef, 5)};
   --colorGinPrimaryActive: #{lighten(#90aeef, 10)};
+
+  --colorGinWarning: #ce6060;
+  --colorGinGreen: #48ab7b;
 
   --colorGinAppBackground: #{$colorDarkAppBackground};
   --colorGinLayerBackground: #2A2A2D;
@@ -52,5 +58,7 @@ $colorDarkAppBackground: #1B1B1D; //#171a1d;
   --colorGinText: #ccc;
   --colorGinTextLight: #828386;
 
-  --colorGinTableHeader: #161a1d;
+  --colorGinSelected: #{lighten(#3B3B3F, 5)}; //#43454a;
+
+  --colorGinTableHeader: var(--colorGinAppBackground); //#161a1d;
 }
