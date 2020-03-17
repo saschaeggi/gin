@@ -29,11 +29,14 @@
     }
   }
 
-  .page-wrapper__node-edit-form {
+  // Has sidebar, save the space
+  .node-edit-form--has-sidebar {
     @include breakpoint($breakpoint) {
       padding-right: $sidebarWidth;
     }
+  }
 
+  .page-wrapper__node-edit-form {
     .block-page-title-block {
       @include breakpoint(1730px) {
         width: 100%;

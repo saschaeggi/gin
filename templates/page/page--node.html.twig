@@ -39,7 +39,7 @@
  * @see html.html.twig
  */
 #}
-<div class="page-wrapper__node-edit-form">
+<div class="page-wrapper__node-edit-form{% if has_sidebar != 'false' %} node-edit-form--has-sidebar{% endif %}">
   <header class="region region-sticky">
     <div class="layout-container region-sticky__items">
       {{ page.header.gin_page_title }}
