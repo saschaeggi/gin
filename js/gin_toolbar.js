@@ -80,22 +80,25 @@
 
   Drupal.behaviors.ginScroll = {
     attach: function attach(context, settings) {
-      var offset = $(window).scrollTop();
+      var offsetTop = $(window).scrollTop(),
+          offset = 40,
+          scrollClass = '-has-scrolled';
 
-      if (offset > 0) {
-        $('body').addClass('--scrolled');
+      if (offsetTop > offset) {
+        $('body').addClass(scrollClass);
       } else {
-        $('body').removeClass('--scrolled');
+        $('body').removeClass(scrollClass);
       }
 
       // Scroll event
       $(window).scroll(function (event) {
-        var offset = $(window).scrollTop();
+        var offsetTop = $(window).scrollTop(),
+            offset = 40;
 
-        if (offset > 0) {
-          $('body').addClass('--scrolled');
+        if (offsetTop > offset) {
+          $('body').addClass(scrollClass);
         } else {
-          $('body').removeClass('--scrolled');
+          $('body').removeClass(scrollClass);
         }
       });
     }
