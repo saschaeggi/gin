@@ -41,7 +41,7 @@ $colorDarkAppBackground: #1B1B1D; //#171a1d;
 }
 
 .dark-mode {
-  --colorGinPrimary: #6b95ff; //#90aeef; //#e0714d;
+  --colorGinPrimary: #90aeef; //#90aeef; //#6b95ff; //#e0714d;
   --colorGinPrimaryHover: #{lighten(#90aeef, 5)};
   --colorGinPrimaryActive: #{lighten(#90aeef, 10)};
 

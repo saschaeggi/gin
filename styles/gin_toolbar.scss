@@ -100,12 +100,12 @@
       #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help {
         @include mq(976px) {
           position: absolute;
-          top: 30px;
+          top: 10px;
           transition: top $transition;
 
-          .--scrolled & {
-            top: 10px;
-          }
+          // .--scrolled & {
+          //   top: 10px;
+          // }
         }
 
         &:before {
@@ -415,11 +415,11 @@
   }
 
   .toolbar-fixed {
-    margin-left: $toolbarWidth;
+    padding-left: $toolbarWidth;
     transition: $transition;
 
     &[data-toolbar-menu='open'] {
-      margin-left: $toolbarOpenWidth;
+      padding-left: $toolbarOpenWidth;
 
       .region-sticky {
         max-width: calc(100% - #{$toolbarOpenWidth});
