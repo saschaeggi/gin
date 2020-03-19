@@ -51,20 +51,7 @@
       });
 
       // Toolbar toggle
-      // $('.toolbar-menu__trigger', context).on('click', function(e) {
-      //   e.preventDefault();
-
-      //   $(this).toggleClass('is-active');
-
-      //   if ($(this).hasClass('is-active')) {
-      //     $('body').attr('data-toolbar-menu', 'open');
-      //   } else {
-      //     $('body').attr('data-toolbar-menu', '');
-      //   }
-      // });
-
-      // Toolbar hover toggle
-      $('.toolbar-menu-administration', context).hover(function(e) {
+      $('.toolbar-menu__trigger', context).on('click', function(e) {
         e.preventDefault();
 
         $(this).toggleClass('is-active');
@@ -75,6 +62,19 @@
           $('body').attr('data-toolbar-menu', '');
         }
       });
+
+      // Toolbar hover toggle
+      // $('.toolbar-menu-administration', context).hover(function(e) {
+      //   e.preventDefault();
+
+      //   $(this).toggleClass('is-active');
+
+      //   if ($(this).hasClass('is-active')) {
+      //     $('body').attr('data-toolbar-menu', 'open');
+      //   } else {
+      //     $('body').attr('data-toolbar-menu', '');
+      //   }
+      // });
     }
   };
 
