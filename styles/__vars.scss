@@ -25,19 +25,19 @@ $colorDarkAppBackground: #1B1B1D; //#171a1d;
   --colorGinPrimary10: #fafbfd;
   --colorGinDisabled: #bbb;
 
-  --colorGinWarning: #c11f1f;
+  --colorGinWarning: #e0ac00;
+  --colorGinDanger: #c11f1f;
   --colorGinGreen: #26a769;
 
   --colorGinAppBackground: #{$colorAppBackground};
   --colorGinLayerBackground: #fff;
   --colorGinLayer2Background: #e6ecf8;
   --colorGinBorder: #d4d4d8;
-
   --colorGinTitle:#222330;
   --colorGinText: #222330;
   --colorGinTextLight: #545560;
-
   --colorGinTableHeader: #dfe0e4;
+  --colorGinFocus: #20697f; //var(--colorGinGreen);
 }
 
 .dark-mode {
@@ -45,7 +45,8 @@ $colorDarkAppBackground: #1B1B1D; //#171a1d;
   --colorGinPrimaryHover: #{lighten(#90aeef, 5)};
   --colorGinPrimaryActive: #{lighten(#90aeef, 10)};
 
-  --colorGinWarning: #ce6060;
+  --colorGinWarning: #dec15f;
+  --colorGinDanger: #ce6060;
   --colorGinGreen: #48ab7b;
 
   --colorGinAppBackground: #{$colorDarkAppBackground};
@@ -53,12 +54,10 @@ $colorDarkAppBackground: #1B1B1D; //#171a1d;
   --colorGinLayer2Background: #3B3B3F;
   --colorGinBorder: #43454a;
   --colorGinLayer2Border: #76777B;
-
   --colorGinTitle: #fff;
   --colorGinText: #ccc;
   --colorGinTextLight: #828386;
-
+  --colorGinFocus: #e0714d;
   --colorGinSelected: #{lighten(#3B3B3F, 5)}; //#43454a;
-
   --colorGinTableHeader: var(--colorGinAppBackground); //#161a1d;
 }

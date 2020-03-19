@@ -1,0 +1,24 @@
+.page-wrapper *:focus,
+.page-wrapper *:focus:hover,
+.page-wrapper *:focus:active,
+.ui-dialog *:focus,
+.ui-dialog *:focus:hover,
+.ui-dialog *:focus:active,
+.dropbutton__item:first-of-type > *:focus:hover,
+.dropbutton__item:first-of-type > .button:focus:hover,
+.is-horizontal .tabs--primary .tabs__link:focus,
+.cke.cke_chrome.cke_focus {
+  box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 5px var(--colorGinFocus);
+}
+
+.claro-details {
+  &__summary {
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:after {
+      box-shadow: inset 0 0 0 3px var(--colorGinFocus);
+    }
+  }
+}
