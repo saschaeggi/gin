@@ -4,7 +4,9 @@
   }
 
   a {
-    color: var(--colorGinPrimary);
+    .gin--dark-mode & {
+      color: var(--colorGinPrimary);
+    }
   }
 
   &__title {
@@ -80,7 +82,7 @@
     }
   }
 
-  .dark-mode & {
+  .gin--dark-mode & {
     background-color: var(--colorGinLayer2Background);
   }
 }

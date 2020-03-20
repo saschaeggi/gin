@@ -6,7 +6,7 @@
   box-sizing: border-box;
   transition: $transition;
 
-  .dark-mode & {
+  .gin--dark-mode & {
     background: rgba($colorDarkAppBackground, .9);
   }
 
@@ -26,6 +26,19 @@
 
     .-has-scrolled & {
       top:0 ;
+    }
+
+    .gin--classic-toolbar:not(.path-node) & {
+      position: relative;
+    }
+
+    .gin--classic-toolbar.path-node & {
+      width: calc(100% - #{$sidebarWidth});
+      top: 40px;
+    }
+
+    .gin--classic-toolbar.path-node.toolbar-tray-open & {
+      top: 80px;
     }
   }
 
@@ -67,6 +80,10 @@
 
   @include breakpoint(1024px) {
     padding-top: $contentHeaderSpacer;
+
+    .gin--classic-toolbar:not(.path-node) & {
+      padding-top: 0;
+    }
   }
 
   .block-local-tasks-block {
@@ -92,7 +109,12 @@
   flex-wrap: wrap;
   width: 100%;
   padding: 0 16px;
+  background: rgba($colorAppBackground, .9);
   box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+
+  .gin--dark-mode & {
+    background: rgba($colorDarkAppBackground, .9);
+  }
 
   @include breakpoint(600px) {
     padding-left: 2em;
@@ -113,6 +135,14 @@
 
     .-has-scrolled & {
       top: 2px;
+    }
+
+    .gin--classic-toolbar & {
+      top: 41px;
+    }
+
+    .gin--classic-toolbar.toolbar-tray-open & {
+      top: 83px;
     }
   }
 

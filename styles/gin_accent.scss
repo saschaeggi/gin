@@ -1,118 +1,52 @@
 @import "_vars";
 
-// Background
-.form-boolean--type-checkbox:checked,
-.button--primary
-{
-  background-color: var(--colorGinPrimary);
+:root {
+  // Accent color: use Claro defaults for Gin
+  --colorGinPrimary: #003cc5;
+  --colorGinPrimaryHover: #0036b1;
+  --colorGinPrimaryActive: #00339a;
+  --colorGinFocus: #e0714d;
 
-  &:hover {
-    background-color: var(--colorGinPrimaryHover);
-  }
+  --colorGinDisabled: #bbb;
+  --colorGinWarning: #e0ac00;
+  --colorGinDanger: #c11f1f;
+  --colorGinGreen: #26a769;
 
-  &:active {
-    background-color: var(--colorGinPrimaryHover);
-  }
+  --colorGinAppBackground: #{$colorAppBackground};
+  --colorGinLayerBackground: #fff;
+  --colorGinLayer2Background: #e6ecf8;
+  --colorGinBorder: #d4d4d8;
+  --colorGinLayer2Border: #d4d4d8;
+
+  --colorGinTitle:#222330;
+  --colorGinText: #222330;
+  --colorGinTextLight: #545560;
+
+  --colorGinTableHeader: #dfe0e4;
 }
 
-// Color
-a,
-.link,
-button.link,
-.tabs__link.is-active,
-.sortable-heading.is-active > a,
-[open] .claro-details__summary--accordion,
-[open] .claro-details__summary--accordion-item,
-[open] .claro-details__summary--vertical-tabs-item,
-.vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link
-{
-  color: var(--colorGinPrimary);
+.gin--dark-mode {
+  --colorGinPrimary: #90aeef; //#90aeef; //#6b95ff; //#e0714d;
+  --colorGinPrimaryHover: #{lighten(#90aeef, 5)};
+  --colorGinPrimaryActive: #{lighten(#90aeef, 10)};
+  --colorGinFocus: #e0714d;
 
-  &:hover {
-    color: var(--colorGinPrimaryHover);
-  }
+  --colorGinDisabled: #999;
+  --colorGinWarning: #dec15f;
+  --colorGinDanger: #ce6060;
+  --colorGinGreen: #48ab7b;
 
-  &:active {
-    color: var(--colorGinPrimaryHover);
-  }
-}
 
-// Only hover
-.is-horizontal .tabs__link,
-.claro-details__summary,
-.action-link
-{
-  &:hover {
-    color: var(--colorGinPrimaryHover);
-  }
-}
+  --colorGinAppBackground: #{$colorDarkAppBackground};
+  --colorGinLayerBackground: #2A2A2D;
+  --colorGinLayer2Background: #3B3B3F;
+  --colorGinBorder: #43454a;
+  --colorGinLayer2Border: #76777B;
 
-// Only focus
-.claro-details[open] > .claro-details__summary
-{
-  &:focus {
-    color: var(--colorGinPrimaryActive);
-  }
-}
+  --colorGinTitle: #fff;
+  --colorGinText: #ccc;
+  --colorGinTextLight: #828386;
 
-// SVG
-svg path {
-  fill: var(--colorGinPrimary);
-
-  &:hover {
-    fill: var(--colorGinPrimaryHover);
-  }
-
-  &:active {
-    fill: var(--colorGinPrimaryActive);
-  }
-}
-
-// Border color
-.form-boolean--type-checkbox:checked,
-.form-boolean--type-radio:checked,
-.is-horizontal .tabs__link.is-active::before,
-.tabs__tab.is-active::before,
-.sortable-heading.is-active > a::before,
-[open] > .claro-details__summary--accordion:not(:focus):not(:active)::after,
-[open] > .claro-details__summary--accordion-item:not(:focus):not(:active)::after,
-.collapse-processed[open] > .claro-details__summary--accordion .details-title:not(:focus)::after,
-.collapse-processed[open] > .claro-details__summary--accordion-item .details-title:not(:focus)::after,
-[open] > .claro-details__summary--vertical-tabs-item:not(:focus):not(:active)::after,
-.collapse-processed[open] > .claro-details__summary--vertical-tabs-item .details-title:not(:focus)::after,
-.vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link::before,
-.field--widget-entity-reference-layout-widget .erl-layout .erl-item:hover
-{
-  border-color: var(--colorGinPrimary);
-
-  &:hover {
-    border-color: var(--colorGinPrimaryHover);
-  }
-
-  &:active {
-    border-color: var(--colorGinPrimaryHover);
-  }
-}
-
-.form-boolean--type-radio:checked {
-  box-shadow: inset 0 0 0 1px var(--colorGinPrimary);
-}
-
-.form-boolean--type-checkbox[disabled]:checked {
-  border-color: var(--colorGinDisabled);
-  background-color: var(--colorGinDisabled);
-}
-
-.progress__bar {
-  border-color: var(--colorGinPrimary);
-  background-color: var(--colorGinPrimary);
-}
-
-.pager__link.is-active, .pager__item--current {
-  background-color: var(--colorGinPrimary);
-}
-
-.ajax-progress__throbber {
-  border: 2px solid var(--colorGinPrimary);
-  border-right: 2px dotted transparent;
+  --colorGinSelected: #{lighten(#3B3B3F, 5)}; //#43454a;
+  --colorGinTableHeader: var(--colorGinAppBackground); //#161a1d;
 }

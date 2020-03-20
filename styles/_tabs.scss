@@ -1,11 +1,11 @@
 .tabs-wrapper:not(.is-horizontal) {
   .tabs {
-    .dark-mode & {
+    .gin--dark-mode & {
       border-color: #8E929C;
     }
 
     &__tab {
-      .dark-mode & {
+      .gin--dark-mode & {
         background-color: var(--colorGinLayer2Background);
         border-color: #8E929C;
       }
@@ -24,7 +24,7 @@
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
 
-  .dark-mode & {
+  .gin--dark-mode & {
     font-weight: 500;
 
     strong {
@@ -46,7 +46,7 @@
   }
 
   &:hover {
-    .dark-mode & {
+    .gin--dark-mode & {
       background-color: var(--colorGinLayer2Background);
     }
   }
@@ -150,7 +150,13 @@
   mask-size: 100% 100%;
 }
 
-.dark-mode {
+.claro-details {
+  &__description {
+    color: var(--colorGinTextLight);
+  }
+}
+
+.gin--dark-mode {
   .claro-details,
   .claro-details__summary--accordion,
   .claro-details__summary--accordion-item,

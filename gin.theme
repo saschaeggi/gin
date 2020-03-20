@@ -9,6 +9,23 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Markup;
 
 /**
+ * Implements hook_preprocess_HOOK() for html.
+ */
+function gin_preprocess_html(&$variables) {
+  // Get theme darkmode config.
+  $darkmode = theme_get_setting('enable_darkmode', 'gin');
+  $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
+
+  if ($darkmode === 1) {
+    $variables['attributes']['class'][] = 'gin--dark-mode';
+  }
+
+  if ($classic_toolbar === 1) {
+    $variables['attributes']['class'][] = 'gin--classic-toolbar';
+  }
+}
+
+/**
  * Implements hook_preprocess_HOOK() for page.
  */
 function gin_preprocess_page(&$variables) {
@@ -29,43 +46,26 @@ function gin_page_attachments_alter(&$page) {
   $logged_in = \Drupal::currentUser()->isAuthenticated();
 
   if ($logged_in) {
-    $page['#attached']['library'][] = 'gin/gin_toolbar';
-  }
+    // Get theme configs.
+    $accent_color = theme_get_setting('accent_color', 'gin');
+    $darkmode = theme_get_setting('enable_darkmode', 'gin');
+    $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
 
-  // Get config of accent color.
-  $accent_color = theme_get_setting('accent_color', 'gin');
+    if ($classic_toolbar) {
+      // Attach the classic toolbar styles.
+      $page['#attached']['library'][] = 'gin/gin_classic_toolbar';
+    }
+    else {
+      // Attach toolbar styles.
+      $page['#attached']['library'][] = 'gin/gin_toolbar';
+    }
 
-  if ($logged_in && $accent_color) {
     // Attach accent overrides CSS.
     $page['#attached']['library'][] = 'gin/gin_accent';
 
-    $accent_color_hover = _gin_adjust_brightness($accent_color, -0.1);
-    $accent_color_active = _gin_adjust_brightness($accent_color, -0.2);
-    $accent_color_a20 = _gin_adjust_brightness($accent_color, 0.92);
-    $accent_color_svg = str_replace('#', '%23', $accent_color);
-
-    $accent_color_css = <<<EOH
-      body {
-        --colorGinPrimary: $accent_color;
-        --colorGinPrimaryHover: $accent_color_hover;
-        --colorGinPrimaryActive: $accent_color_active;
-      }
-EOH;
-
-    if (
-      $logged_in ||
-      $route == 'user.login' ||
-      $route == 'user.pass' ||
-      $route == 'user.register'
-    ) {
-      $page['#attached']['html_head'][] = [
-        [
-          '#tag' => 'style',
-          '#value' => Markup::create($accent_color_css),
-        ],
-        'gin-accent-color',
-      ];
-    }
+    // Expose settings to JS.
+    $page['#attached']['drupalSettings']['gin']['accent_color'] = $accent_color;
+    $page['#attached']['drupalSettings']['gin']['darkmode'] = $darkmode;
   }
 }
 
@@ -142,7 +142,7 @@ function gin_theme_suggestions_form_alter(array &$suggestions, array $variables)
 }
 
 /**
- * Page title alter()
+ * Page title alter().
  */
 function gin_theme_suggestions_page_title_alter(array &$suggestions, array $variables) {
   // Are we looking at a user?
@@ -160,11 +160,34 @@ function gin_theme_suggestions_page_title_alter(array &$suggestions, array $vari
 }
 
 /**
- * Set Gin CSS first!
+ * Toolbar alter().
+ */
+function gin_theme_suggestions_toolbar_alter(array &$suggestions, array $variables) {
+  $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
+
+  if (!$classic_toolbar) {
+    $suggestions[] = 'toolbar__gin';
+  }
+}
+
+/**
+ * Toolbar menu alter().
+ */
+function gin_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
+  $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
+
+  if ($variables['menu_name'] == 'admin' && !$classic_toolbar) {
+    $suggestions[] = 'menu__toolbar__gin';
+  }
+}
+
+/**
+ * Set Gin CSS on top of all other CSS files.
  */
 function gin_css_alter(&$css, $assets) {
   // UPDATE THIS PATH TO YOUR MODULE'S CSS PATH.
   $path = drupal_get_path('theme', 'gin') . '/dist/css/gin.css';
+
   if (isset($css[$path])) {
     // Use anything greater than 100 to have it load after the theme
     // as CSS_AGGREGATE_THEME is set to 100.
@@ -187,13 +210,37 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#title' => t('Custom Settings'),
   ];
 
-  $form['custom_settings']['accent_color'] = [
+  $form['custom_settings']['enable_darkmode'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Enable Darkmode (EXPERIMENTAL)'),
+    '#description' => t("Enable Darkmode (Currently doesn't support a custom Accent color)."),
+    '#default_value' => theme_get_setting('enable_darkmode'),
+  ];
+
+  $form['custom_settings']['more'] = [
+    '#type' => 'container',
+    '#states' => [
+      // Hide Accent color when Darkmode is enabled for now.
+      'invisible' => [
+        'input[name="enable_darkmode"]' => ['checked' => TRUE],
+      ],
+    ],
+  ];
+
+  $form['custom_settings']['more']['accent_color'] = [
     '#type' => 'color',
     '#title' => t('Accent color (EXPERIMENTAL)'),
     '#description' => t('Set the accent color for the login (hex value in format of #AAAAAA, Default value: #003cc5).'),
     '#default_value' => theme_get_setting('accent_color'),
     '#min' => 7,
     '#max' => 7,
+  ];
+
+  $form['custom_settings']['classic_toolbar'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Enable Classic Drupal Toolbar'),
+    '#description' => t('Enable Classic Legacy Drupal Toolbar (Horizontal Toolbar).'),
+    '#default_value' => theme_get_setting('classic_toolbar'),
   ];
 }
 

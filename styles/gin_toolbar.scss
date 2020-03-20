@@ -79,7 +79,7 @@
     // Default icon settings for admin tray
     #toolbar-item-administration-tray a.toolbar-icon {
       &:before {
-        background-color: #787878;
+        background-color: var(--colorGinTextLight);
         background-image: none;
         mask-repeat: no-repeat;
         mask-position: center center;
@@ -215,7 +215,7 @@
 
   .menu-item--expanded {
     width: 100%;
-    background-color: var(--colorGinLayerBackground);
+    background-color: transparent;
   }
 }
 
@@ -389,8 +389,8 @@
     padding: 16px 10px 16px 24px;
     margin: 0;
 
-    &, &:hover, &:active, &:focus {
-      background-color: var(--colorGinLayerBackground);
+    &, &:active, &:focus {
+      background-color: transparent;
     }
 
     &:hover {
@@ -408,7 +408,7 @@
       border: 1px solid var(--colorGinBorder);
       background: var(--colorGinLayerBackground) url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='%23999999'/%3E%3C/svg%3E") no-repeat center center;
       background-size: 12px 12px;
-      transition: transform .25s ease;
+      transition: $transition;
     }
 
     &.is-active {
@@ -526,7 +526,7 @@
       padding-top: 12px;
       max-height: calc(100% - 112px);
       overflow-y: auto;
-      background: var(--colorGinLayerBackground);
+      background: transparent;
       -webkit-overflow-scrolling: touch;
 
       > .menu-item {
@@ -590,7 +590,7 @@
           box-shadow: none;
           border-left: 1px solid rgba(216, 217, 224, 0.8);
 
-          .dark-mode & {
+          .gin--dark-mode & {
             border-left: 1px solid $colorDarkAppBackground;
           }
 

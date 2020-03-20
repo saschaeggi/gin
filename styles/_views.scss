@@ -57,7 +57,7 @@
     background: rgba(#dfe0e4, .9);
     border-radius: 4px;
 
-    .dark-mode & {
+    .gin--dark-mode & {
       background: rgba($colorDarkAppBackground, .9);
     }
 
@@ -145,7 +145,7 @@
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 
-    .dark-mode & {
+    .gin--dark-mode & {
       background: var(--colorGinLayer2Background);
     }
   }
@@ -220,6 +220,7 @@
 }
 
 .views-displays {
+  border-color: var(--colorGinLayer2Border);
   border-radius: 4px;
   overflow: hidden;
 }
@@ -238,9 +239,10 @@
 
 .views-display-top {
   padding: 16px;
-  background-color: var(--colorGinPrimary20);
+  background-color: var(--colorGinLayer2Background);
   border: 0 none;
-  border-radius: 4px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 
   .dropbutton-wrapper {
     top: 18px;
@@ -263,6 +265,10 @@
     padding: 8px 16px;
   }
 
+  li a {
+    background: var(--colorGinLayer2Background);
+  }
+
   li a:hover, li.is-active a, li.is-active a.is-active {
     background: #1c1f23;
     border-color: transparent;
@@ -270,16 +276,19 @@
 }
 
 .views-ui-display-tab-bucket {
+  border-bottom-color: var(--colorGinBorder);
+
   &__title, .views-ui-display-tab-bucket > .views-display-setting {
     padding: 8px;
   }
 
   .views-display-setting {
+    color: var(--colorGinText);
     padding: 8px;
   }
 
   .views-display-setting:nth-of-type(even) {
-    background-color: var(--colorGinPrimary20);
+    background-color: var(--colorGinLayer2Background);
   }
 
   .dropbutton-wrapper {
@@ -289,7 +298,11 @@
 }
 
 .views-query-info table tr {
-  background-color: var(--colorGinPrimary10);
+  background-color: var(--colorGinLayer2Background);
+
+  td {
+    color: var(--colorGinText);
+  }
 }
 
 .system-modules,
@@ -309,4 +322,9 @@
   details summary {
     background-color: transparent;
   }
+}
+
+.views-display-column,
+.edit-display-settings-top.views-ui-display-tab-bucket {
+  border-color: var(--colorGinBorder);
 }

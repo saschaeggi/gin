@@ -37,7 +37,7 @@
 a.button.button--danger {
   color: var(--colorGinDanger);
 
-  .dark-mode & {
+  .gin--dark-mode & {
     background-color: var(--colorGinLayer2Background);
   }
 

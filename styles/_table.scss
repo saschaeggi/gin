@@ -45,7 +45,7 @@ table {
     background-color: transparent;
 
     &:hover {
-      .dark-mode & {
+      .gin--dark-mode & {
         color: var(--colorGinText);
         background: var(--colorGinLayer2Background);
       }
@@ -53,12 +53,12 @@ table {
   }
 
   tr.selected {
-    .dark-mode & {
+    .gin--dark-mode & {
       border-color: rgba(white, .2);
     }
 
     td {
-      .dark-mode & {
+      .gin--dark-mode & {
         background-color: var(--colorGinSelected);
       }
     }

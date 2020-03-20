@@ -2,12 +2,6 @@ gin:
   css:
     theme:
       dist/css/gin.css: {}
-  js:
-    dist/js/gin.js: {}
-
-gin_table:
-  js:
-    dist/js/gin.js: {}
 
 gin_media_library:
   js:
@@ -20,7 +14,14 @@ gin_toolbar:
   js:
     dist/js/gin_toolbar.js: {}
 
+gin_classic_toolbar:
+  css:
+    theme:
+      dist/css/gin_classic_toolbar.css: {}
+
 gin_accent:
   css:
     theme:
       dist/css/gin_accent.css: {}
+  js:
+    dist/js/gin_accent.js: {}
