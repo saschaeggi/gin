@@ -15,3 +15,9 @@ function gin_update_8101() {
     ->set('accent_color', '#003cc5')
     ->save();
 }
+
+/**
+ * Update: Trigger cache rebuild
+ */
+function gin_update_8301() {
+}
