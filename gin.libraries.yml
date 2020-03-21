@@ -25,3 +25,7 @@ gin_accent:
       dist/css/gin_accent.css: {}
   js:
     dist/js/gin_accent.js: {}
+
+gin_settings:
+  js:
+    dist/js/gin_settings.js: {}

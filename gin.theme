@@ -48,6 +48,7 @@ function gin_page_attachments_alter(&$page) {
   if ($logged_in) {
     // Get theme configs.
     $darkmode = theme_get_setting('enable_darkmode', 'gin');
+    $darkmode_class = 'gin--dark-mode';
     $preset_accent_color = theme_get_setting('preset_accent_color', 'gin');
     $accent_color = theme_get_setting('accent_color', 'gin');
     $preset_focus_color = theme_get_setting('preset_focus_color', 'gin');
@@ -68,6 +69,7 @@ function gin_page_attachments_alter(&$page) {
 
     // Expose settings to JS.
     $page['#attached']['drupalSettings']['gin']['darkmode'] = $darkmode;
+    $page['#attached']['drupalSettings']['gin']['darkmode_class'] = $darkmode_class;
     $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $preset_accent_color;
     $page['#attached']['drupalSettings']['gin']['accent_color'] = $accent_color;
     $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $preset_focus_color;
@@ -230,9 +232,9 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#type' => 'container',
     '#states' => [
       // Hide if not met.
-      'invisible' => [
-        'input[name="enable_darkmode"]' => ['checked' => TRUE],
-      ],
+      // 'invisible' => [
+      //   'input[name="enable_darkmode"]' => ['checked' => TRUE],
+      // ],
     ],
   ];
 
@@ -310,6 +312,9 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#description' => t('Enable Classic Legacy Drupal Toolbar (Horizontal Toolbar).'),
     '#default_value' => theme_get_setting('classic_toolbar'),
   ];
+
+  // Attach custom js.
+  $form['#attached']['library'][] = 'gin/gin_settings';
 }
 
 /**
