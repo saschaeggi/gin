@@ -1,0 +1,19 @@
+.ui-dialog {
+  &:focus,
+  &:focus:active,
+  &:focus:hover {
+    box-shadow: none;
+  }
+
+  .ui-dialog-titlebar {
+    background: #000;
+  }
+
+  .ui-dialog-titlebar-close {
+    border: none;
+  }
+
+  .ui-widget-content.ui-dialog-content {
+    background: var(--colorGinLayerBackground);
+  }
+}

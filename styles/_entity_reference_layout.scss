@@ -64,6 +64,11 @@
     }
   }
 
+  // Overlay
+  .layout-radio-item.active {
+    background: transparent;
+  }
+
   .erl-layout-region,
   .erl-disabled-items {
     padding: 16px;
@@ -85,7 +90,7 @@
       &:hover,
       &:active,
       &:focus {
-        outline: 1px solid var(--colorGinPrimary);
+        outline: 1px solid var(--colorGinFocus);
 
         .layout-label {
           display: block;
@@ -197,7 +202,7 @@
     }
 
     &.active {
-      outline: 3px solid var(--colorGinPrimary);
+      outline: 3px solid var(--colorGinFocus);
     }
   }
 }

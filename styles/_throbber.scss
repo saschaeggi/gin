@@ -1,0 +1,10 @@
+.ajax-progress {
+  &__throbber {
+    border: 2px solid var(--colorGinPrimary);
+    border-right: 2px dotted transparent;
+  }
+
+  .ajax-progress__message {
+    color: var(--colorGinText);
+  }
+}
