@@ -39,31 +39,29 @@
  * @see html.html.twig
  */
 #}
-
-  <header class="region region-sticky">
-    <div class="layout-container region-sticky__items">
-      {{ page.header.gin_page_title }}
-      {{ page.content.gin_local_actions }}
-    </div>
-  </header>
-
-  <div class="content-header clearfix">
-    <div class="layout-container">
-      {{ page.header|without('gin_page_title') }}
-    </div>
+<header class="region region-sticky">
+  <div class="layout-container region-sticky__items">
+    {{ page.header.gin_page_title }}
+    {{ page.content.gin_local_actions }}
   </div>
+</header>
 
+<div class="content-header clearfix">
   <div class="layout-container">
-    {{ page.pre_content }}
-    <main class="page-content clearfix" role="main">
-      <div class="visually-hidden"><a id="main-content" tabindex="-1"></a></div>
-      {{ page.highlighted }}
-      {% if page.help %}
-        <div class="help">
-          {{ page.help }}
-        </div>
-      {% endif %}
-      {{ page.content|without('gin_local_actions') }}
-    </main>
-
+    {{ page.header|without('gin_page_title') }}
   </div>
+</div>
+
+<div class="layout-container">
+  {{ page.pre_content }}
+  <main class="page-content clearfix" role="main">
+    <div class="visually-hidden"><a id="main-content" tabindex="-1"></a></div>
+    {{ page.highlighted }}
+    {% if page.help %}
+      <div class="help">
+        {{ page.help }}
+      </div>
+    {% endif %}
+    {{ page.content|without('gin_local_actions') }}
+  </main>
+</div>

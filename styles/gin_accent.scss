@@ -26,9 +26,9 @@
 }
 
 .gin--dark-mode {
-  --colorGinPrimary: #90aeef; //#90aeef; //#6b95ff; //#e0714d;
-  --colorGinPrimaryHover: #{lighten(#90aeef, 5)};
-  --colorGinPrimaryActive: #{lighten(#90aeef, 10)};
+  --colorGinPrimary: #90aeef; //#799eef; //#6b95ff; //#f99271;
+  --colorGinPrimaryHover: #{lighten(#799eef, 5)};
+  --colorGinPrimaryActive: #{lighten(#799eef, 10)};
   --colorGinFocus: #e0714d;
 
   --colorGinDisabled: #999;

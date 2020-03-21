@@ -47,8 +47,11 @@ function gin_page_attachments_alter(&$page) {
 
   if ($logged_in) {
     // Get theme configs.
-    $accent_color = theme_get_setting('accent_color', 'gin');
     $darkmode = theme_get_setting('enable_darkmode', 'gin');
+    $preset_accent_color = theme_get_setting('preset_accent_color', 'gin');
+    $accent_color = theme_get_setting('accent_color', 'gin');
+    $preset_focus_color = theme_get_setting('preset_focus_color', 'gin');
+    $focus_color = theme_get_setting('focus_color', 'gin');
     $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
 
     if ($classic_toolbar) {
@@ -64,8 +67,11 @@ function gin_page_attachments_alter(&$page) {
     $page['#attached']['library'][] = 'gin/gin_accent';
 
     // Expose settings to JS.
-    $page['#attached']['drupalSettings']['gin']['accent_color'] = $accent_color;
     $page['#attached']['drupalSettings']['gin']['darkmode'] = $darkmode;
+    $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $preset_accent_color;
+    $page['#attached']['drupalSettings']['gin']['accent_color'] = $accent_color;
+    $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $preset_focus_color;
+    $page['#attached']['drupalSettings']['gin']['focus_color'] = $focus_color;
   }
 }
 
@@ -204,12 +210,14 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     return;
   }
 
+  // Custom settings details element.
   $form['custom_settings'] = [
     '#type' => 'details',
     '#open' => TRUE,
     '#title' => t('Custom Settings'),
   ];
 
+  // Darkmode setting.
   $form['custom_settings']['enable_darkmode'] = [
     '#type' => 'checkbox',
     '#title' => t('Enable Darkmode (EXPERIMENTAL)'),
@@ -217,25 +225,85 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#default_value' => theme_get_setting('enable_darkmode'),
   ];
 
-  $form['custom_settings']['more'] = [
+  // Wrapper to hide accent color when darkmode is enabled.
+  $form['custom_settings']['colors'] = [
     '#type' => 'container',
     '#states' => [
-      // Hide Accent color when Darkmode is enabled for now.
+      // Hide if not met.
       'invisible' => [
         'input[name="enable_darkmode"]' => ['checked' => TRUE],
       ],
     ],
   ];
 
-  $form['custom_settings']['more']['accent_color'] = [
-    '#type' => 'color',
+  // Accent color setting.
+  $form['custom_settings']['colors']['preset_accent_color'] = [
+    '#type' => 'select',
     '#title' => t('Accent color (EXPERIMENTAL)'),
-    '#description' => t('Set the accent color for the login (hex value in format of #AAAAAA, Default value: #003cc5).'),
-    '#default_value' => theme_get_setting('accent_color'),
-    '#min' => 7,
-    '#max' => 7,
+    '#default_value' => theme_get_setting('preset_accent_color'),
+    '#options' => [
+      'blue' => t('Claro Blue (Default)'),
+      'teal' => t('Teal'),
+      'dark_purple' => t('Dark Purple'),
+      'purple' => t('Purple'),
+      'green' => t('Green'),
+      'red' => t('Red'),
+      'orange' => t('Orange'),
+      'pink' => t('Pink'),
+      'custom' => t('Custom'),
+    ],
   ];
 
+  // Main Accent color setting.
+  $form['custom_settings']['colors']['accent_color'] = [
+    '#type' => 'color',
+    '#placeholder' => '#77777',
+    '#title' => t('Accent color (EXPERIMENTAL)'),
+    '#description' => t('Use with caution, values should meet a11y criterias.'),
+    '#default_value' => theme_get_setting('accent_color'),
+    '#min' => '7',
+    '#max' => '7',
+    '#size' => '7',
+    '#states' => [
+      // Show if met.
+      'visible' => [
+        'select[name="preset_accent_color"]' => ['value' => 'custom'],
+      ],
+    ],
+  ];
+
+  // Focus color setting.
+  $form['custom_settings']['colors']['preset_focus_color'] = [
+    '#type' => 'select',
+    '#title' => t('Focus color (EXPERIMENTAL)'),
+    '#default_value' => theme_get_setting('preset_focus_color'),
+    '#options' => [
+      'gin' => t('Orange (Default)'),
+      'claro' => t('Claro Green'),
+      'accent' => t('Same as Accent color'),
+      'custom' => t('Custom'),
+    ],
+  ];
+
+  // Custom Focus color setting.
+  $form['custom_settings']['colors']['focus_color'] = [
+    '#type' => 'color',
+    '#placeholder' => '#777777',
+    '#title' => t('Custom Focus color (EXPERIMENTAL)'),
+    '#description' => t('Use with caution, values should meet a11y criterias.'),
+    '#default_value' => theme_get_setting('focus_color'),
+    '#min' => '7',
+    '#max' => '7',
+    '#size' => '7',
+    '#states' => [
+      // Show if met.
+      'visible' => [
+        'select[name="preset_focus_color"]' => ['value' => 'custom'],
+      ],
+    ],
+  ];
+
+  // Classic toolbar setting.
   $form['custom_settings']['classic_toolbar'] = [
     '#type' => 'checkbox',
     '#title' => t('Enable Classic Drupal Toolbar'),

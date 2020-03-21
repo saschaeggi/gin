@@ -13,11 +13,10 @@
   @include breakpoint(1024px) {
     position: fixed;
     z-index: 101;
-    top: 20px;
+    top: 0;
     width: 100%;
     height: 88px;
-    padding-bottom: 16px;
-    padding-left: 0;
+    padding: 40px 0 16px;
     margin-top: -1px;
 
     .toolbar-horizontal[data-toolbar-tray='toolbar-item-administration-tray'] & {
@@ -25,7 +24,7 @@
     }
 
     .-has-scrolled & {
-      top:0 ;
+      padding-top: 16px;
     }
 
     .gin--classic-toolbar:not(.path-node) & {
@@ -34,6 +33,7 @@
 
     .gin--classic-toolbar.path-node & {
       width: calc(100% - #{$sidebarWidth});
+      padding-top: 16px;
       top: 40px;
     }
 
