@@ -2,12 +2,12 @@
   position: relative;
   padding: 16px 0 0;
   width: 100%;
-  background: rgba($colorAppBackground, .9);
+  background: rgba($colorAppBackground, .98);
   box-sizing: border-box;
   transition: $transition;
 
   .gin--dark-mode & {
-    background: rgba($colorDarkAppBackground, .9);
+    background: rgba($colorDarkAppBackground, .98);
   }
 
   @include breakpoint(1024px) {
@@ -109,11 +109,11 @@
   flex-wrap: wrap;
   width: 100%;
   padding: 0 16px;
-  background: rgba($colorAppBackground, .9);
+  background: rgba($colorAppBackground, .98);
   box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
 
   .gin--dark-mode & {
-    background: rgba($colorDarkAppBackground, .9);
+    background: rgba($colorDarkAppBackground, .98);
   }
 
   @include breakpoint(600px) {

@@ -54,11 +54,11 @@
     position: relative;
     left: 0;
     padding: 0 16px 16px 16px;
-    background: rgba(#dfe0e4, .9);
+    background: rgba(#dfe0e4, .98);
     border-radius: 4px;
 
     .gin--dark-mode & {
-      background: rgba($colorDarkAppBackground, .9);
+      background: rgba($colorDarkAppBackground, .98);
     }
 
     .form-item__label {
@@ -310,7 +310,7 @@
   tr.even,
   tr.odd {
     background: none;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid var(--colorGinLayer2Border);
     border-bottom: none;
   }
 }

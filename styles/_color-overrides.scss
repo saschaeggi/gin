@@ -11,7 +11,7 @@
   }
 
   &:active {
-    background-color: var(--colorGinPrimaryHover);
+    background-color: var(--colorGinPrimaryActive);
   }
 }
 
@@ -33,7 +33,7 @@ button.link,
   }
 
   &:active {
-    color: var(--colorGinPrimaryHover);
+    color: var(--colorGinPrimaryActive);
   }
 }
 
@@ -90,7 +90,7 @@ svg path {
   }
 
   &:active {
-    border-color: var(--colorGinPrimaryHover);
+    border-color: var(--colorGinPrimaryActive);
   }
 }
 
