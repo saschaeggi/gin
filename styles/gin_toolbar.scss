@@ -104,10 +104,12 @@
         top: 10px;
         transition: top $transition;
 
-        &.is-active {
-          &:before {
-            background-color: var(--colorGinText);
-          }
+        &:hover {
+          background-color: var(--colorGinItemHover);
+        }
+
+        &.is-active:before {
+          background-color: var(--colorGinText);
         }
       }
 

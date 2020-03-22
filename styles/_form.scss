@@ -12,6 +12,10 @@
     color: var(--colorGinText);
     background-color: var(--colorGinLayer2Background);
     border-color: var(--colorGinLayer2Border);
+
+    &:hover {
+      border-color: rgba(#fff, .7);
+    }
   }
 }
 

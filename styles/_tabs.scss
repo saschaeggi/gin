@@ -43,8 +43,8 @@
   color: var(--colorGinText);
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding-top: 1.25em;
-  padding-bottom: 1.25em;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 
   .gin--dark-mode & {
     font-weight: 500;
@@ -85,10 +85,9 @@
 
     &::after {
       content: "";
-      z-index: 4;
       position: absolute;
       bottom: 0;
-      left: 6px;
+      left: 0;
       display: block;
       width: 100%;
       border-bottom: 1px solid var(--colorGinBorder);
@@ -98,7 +97,7 @@
 
 .is-horizontal .tabs--primary {
   .tabs__link {
-    min-height: 3em;
+    min-height: 3rem;
   }
 }
 
@@ -121,8 +120,8 @@
       border-bottom: 0 none;
 
       a {
-        padding-right: 2em;
-        padding-left: 2em;
+        padding-right: 2rem;
+        padding-left: 2rem;
         border-radius: 2px 2px 0 0;
 
         &:before {
