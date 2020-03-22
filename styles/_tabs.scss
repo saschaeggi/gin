@@ -2,6 +2,8 @@
 .tabs-wrapper,
 .horizontal-tabs ul.horizontal-tabs-list {
   padding: 6px 6px 0 6px;
+  margin-left: -6px;
+  margin-right: -6px;
   overflow: hidden;
 }
 
@@ -14,9 +16,21 @@
 
     &__tab {
       .gin--dark-mode & {
-        background-color: var(--colorGinItemHover); //var(--colorGinLayer2Background);
+        background-color: var(--colorGinItemHover);
         border-color: #8E929C;
       }
+    }
+  }
+}
+
+.gin--dark-mode {
+  .tabs {
+    border-color: var(--colorGinLayer2Border);
+
+    .tabs__tab,
+    .tabs__tab.is-active {
+      border-color: var(--colorGinLayer2Border);
+      background-color: transparent;
     }
   }
 }
@@ -43,7 +57,8 @@
 
 .is-horizontal .tabs__link,
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--colorGinPrimary);
     background: var(--colorGinItemHover);
   }
@@ -61,13 +76,19 @@
 }
 
 .is-horizontal .tabs--primary,
-.is-horizontal .tabs--secondary {
-  &::after {
-    @include breakpoint(768px) {
+.is-horizontal .tabs--secondary,
+.horizontal-tabs ul.horizontal-tabs-list {
+  position: relative;
+
+  @include breakpoint(768px) {
+    width: calc(100% - 6px);
+
+    &::after {
       content: "";
+      z-index: 4;
       position: absolute;
-      bottom: 1rem;
-      left: 0;
+      bottom: 0;
+      left: 6px;
       display: block;
       width: 100%;
       border-bottom: 1px solid var(--colorGinBorder);
@@ -76,10 +97,6 @@
 }
 
 .is-horizontal .tabs--primary {
-  &::after {
-    bottom: 0;
-  }
-
   .tabs__link {
     min-height: 3em;
   }
@@ -96,11 +113,12 @@
   ul.horizontal-tabs-list {
     background: none;
     border-right: 0 none;
-    border-bottom: 1px solid var(--colorGinBorder);
+    border-bottom: 0 none;
 
     li.horizontal-tab-button {
       background: none;
       border-right: 0 none;
+      border-bottom: 0 none;
 
       a {
         padding-right: 2em;
@@ -205,5 +223,16 @@
     &__menu-link-summary {
       color: var(--colorGinTextLight);
     }
+  }
+}
+
+.vertical-tabs__menu-link:hover:before {
+  background: var(--colorGinLayer2Background);
+}
+
+.vertical-tabs__menu-item {
+  &:before,
+  &:after {
+    border-color: var(--colorGinBorder);
   }
 }

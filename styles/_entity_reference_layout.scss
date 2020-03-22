@@ -179,11 +179,11 @@
     button {
       display: block;
       width: 100%;
-      color: var(--colorGinTitle);
+      color: var(--colorGinPrimary);
       text-decoration: none;
-      background: var(--colorGinLayer2Background);
+      background: var(--colorGinItemHover);
       padding: 16px;
-      border: 1px dashed;
+      border: 1px dashed var(--colorGinPrimary);
     }
   }
 

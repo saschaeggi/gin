@@ -1,14 +1,10 @@
 .page-wrapper *:focus,
-.page-wrapper *:focus:hover,
-.page-wrapper *:focus:active,
 .ui-dialog *:focus,
-.ui-dialog *:focus:hover,
-.ui-dialog *:focus:active,
 .dropbutton__item:first-of-type > *:focus:hover,
 .dropbutton__item:first-of-type > .button:focus:hover,
-.is-horizontal .tabs--primary .tabs__link:focus,
+.form-boolean:focus:active,
+.form-boolean:focus:hover,
 .cke.cke_chrome.cke_focus,
-.is-horizontal .tabs__link:focus,
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a:focus {
   box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 5px var(--colorGinFocus);
 }
@@ -26,4 +22,32 @@
       box-shadow: inset 0 0 0 3px var(--colorGinFocus);
     }
   }
+}
+
+.tabs__link:focus {
+  border: 1px solid transparent;
+  box-shadow: inset 0 0 0 3px var(--colorGinFocus);
+}
+
+.vertical-tabs__menu-link:focus:after,
+.tabs__trigger:focus {
+  box-shadow: none;
+  border: 3px solid var(--colorGinFocus);
+}
+
+@include mq(768px) {
+  .is-horizontal .tabs__link:focus,
+  .is-horizontal .tabs--primary .tabs__link:focus {
+    box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 5px var(--colorGinFocus);
+  }
+}
+
+.vertical-tabs__menu-link:focus,
+.vertical-tabs__menu-item:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.toolbar-horizontal .toolbar-tray .menu-item a:focus {
+  box-shadow: inset 0 0 0 3px var(--colorGinFocus);
 }

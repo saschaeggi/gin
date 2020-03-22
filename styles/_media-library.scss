@@ -30,3 +30,13 @@
   width: 28px;
   height: 28px;
 }
+
+.media-library-item--grid:before {
+  border-color: var(--colorGinBorder);
+}
+
+.media-library-item--grid .field--name-thumbnail,
+.media-library-item__attributes,
+.media-library-item--grid {
+  background: none;
+}

@@ -283,6 +283,10 @@
   }
 }
 
+#toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon.toolbar-icon-edit.toolbar-item.is-active {
+  color: var(--colorGinAppBackground);
+}
+
 // Inline Edit toggle
 .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item,
 .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active,

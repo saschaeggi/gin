@@ -77,7 +77,8 @@
     }
 
     // Default icon settings for admin tray
-    #toolbar-item-administration-tray a.toolbar-icon {
+    #toolbar-item-administration-tray a.toolbar-icon,
+    .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &:before {
         background-color: var(--colorGinTextLight);
         background-image: none;
@@ -184,6 +185,19 @@
       }
     }
 
+    // Edit
+    .toolbar-tab > .toolbar-icon-edit.toolbar-item {
+      &, &:hover, &:active, &.is-active {
+        color: var(--colorGinAppBackground);
+
+        &:before {
+          background-image: none;
+          background-color: var(--colorGinAppBackground);
+          mask-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cg%3E%3Cpath fill='%23ffffff' d='M14.545 3.042l-1.586-1.585c-.389-.389-1.025-.389-1.414 0l-1.293 1.293 3 3 1.293-1.293c.389-.389.389-1.026 0-1.415z'/%3E%3Crect fill='%23ffffff' x='5.129' y='3.8' transform='matrix(-.707 -.707 .707 -.707 6.189 20.064)' width='4.243' height='9.899'/%3E%3Cpath fill='%23ffffff' d='M.908 14.775c-.087.262.055.397.316.312l2.001-.667-1.65-1.646-.667 2.001z'/%3E%3C/g%3E%3C/svg%3E%0A");
+        }
+      }
+    }
+
     // Inline Edit toggle
     .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item,
     .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active,
@@ -191,6 +205,10 @@
       background: var(--colorGinPrimary);
     }
   }
+}
+
+#toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon.toolbar-icon-edit.toolbar-item.is-active {
+  color: var(--colorGinAppBackground);
 }
 
 .toolbar-horizontal .toolbar-tray {
