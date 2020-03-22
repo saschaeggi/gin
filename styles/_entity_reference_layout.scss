@@ -26,6 +26,11 @@
       border-bottom: 1px dashed #ccc;
       background: #fff;
     }
+
+    .layout-controls,
+    .erl-actions {
+      background: var(--colorGinLayer2Background);
+    }
   }
 
   .erl-add-content__group,
@@ -135,6 +140,7 @@
 
     &:before {
       height: 2px;
+      background-color: var(--colorGinLayer2Border);
     }
   }
 

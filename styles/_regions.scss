@@ -109,12 +109,7 @@
   flex-wrap: wrap;
   width: 100%;
   padding: 0 16px;
-  background: rgba($colorAppBackground, .98);
   box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
-
-  .gin--dark-mode & {
-    background: rgba($colorDarkAppBackground, .98);
-  }
 
   @include breakpoint(600px) {
     padding-left: 2em;

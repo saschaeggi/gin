@@ -94,6 +94,10 @@
         box-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
         transform: translateX(-16px);
         transition: .3s;
+
+        .gin--dark-mode & {
+          background-color: var(--colorGinLayer2Background);
+        }
       }
     }
   }
@@ -113,7 +117,7 @@
     }
 
     &:checked ~ .checkbox-toggle .checkbox-toggle__inner {
-      background-color: var(--colorGinGreen);
+      background-color: var(--colorGinSwitch);
 
       &:before {
         transform: translateX(16px);

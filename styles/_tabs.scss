@@ -64,6 +64,10 @@
   }
 }
 
+.claro-details {
+  color: var(--colorGinText);
+}
+
 .claro-details__summary {
   &:after {
     left: 0;
