@@ -102,6 +102,12 @@
         position: absolute;
         top: 10px;
         transition: top $transition;
+
+        &.is-active {
+          &:before {
+            background-color: var(--colorGinText);
+          }
+        }
       }
 
       &:before {
@@ -202,7 +208,7 @@
 
   .menu-item {
     &:hover, a:focus {
-      background-color: var(--colorGinAppBackground);
+      background-color: var(--colorGinItemHover); //var(--colorGinAppBackground);
     }
   }
 
@@ -396,7 +402,7 @@
     }
 
     &:hover {
-      background-color: var(--colorGinAppBackground);
+      background-color: var(--colorGinItemHover); //var(--colorGinAppBackground);
     }
 
     &:before {
@@ -545,7 +551,7 @@
           overflow: hidden;
 
           &:hover {
-            background-color: var(--colorGinAppBackground);
+            background-color: transparent; //var(--colorGinAppBackground);
           }
 
           [data-toolbar-menu='open'] & {

@@ -21,16 +21,18 @@
       var darkmodeEnabled = darkmode != null ? darkmode : drupalSettings.gin.darkmode;
 
       if (darkmodeEnabled == 1) {
+        // Darkmode colors.
         var accentColors = {
           'dark_purple': '#976bef',
-          'purple': '#d180ef',
-          'teal': '#67d1ea',
+          'purple': '#dba5ef',
+          'teal': '#85d4e6',
           'green': '#6bd4a1',
-          'red': '#ce6060',
-          'orange': '#f99271',
-          'pink': '#ff8ef1'
+          'red': '#ca6d6d',
+          'orange': '#f79576',
+          'pink': '#e79da3'
         };
       } else {
+        // Light theme colors.
         var accentColors = {
           'dark_purple': '#35009d',
           'purple': '#a43bcb',
@@ -38,7 +40,7 @@
           'green': '#26a769',
           'red': '#a55254',
           'orange': '#e07f34',
-          'pink': '#aa439d'
+          'pink': '#c5636b'
         };
       }
 
@@ -70,8 +72,12 @@
         $('body').append("<style class=\"gin-custom-colors\">\
         " + body + " {\n\
           --colorGinPrimary: " + setAccentColor + ";\n\
-          --colorGinPrimaryHover: " + Drupal.behaviors.ginAccent.shadeColor(setAccentColor, -15) + ";\n\
-          --colorGinPrimaryActive: " + Drupal.behaviors.ginAccent.shadeColor(setAccentColor, -30) + ";\n\
+          --colorGinPrimaryHover: " + Drupal.behaviors.ginAccent.shadeColor(setAccentColor, -10) + ";\n\
+          --colorGinPrimaryActive: " + Drupal.behaviors.ginAccent.shadeColor(setAccentColor, -15) + ";\n\
+          --colorGinPrimaryLight: " + setAccentColor + "35;\n\
+          --colorGinPrimaryLightHover: " + setAccentColor + "45;\n\
+          --colorGinPrimaryLightActive: " + setAccentColor + "55;\n\
+          --colorGinItemHover: " + setAccentColor + "15;\n\
         }\n\
         .form-element--type-select:hover,\n\
         .form-element--type-select:active,\n\
@@ -117,23 +123,12 @@
     },
 
     shadeColor: function shadeColor(color, percent) {
-      var R = parseInt(color.substring(1,3),16),
-          G = parseInt(color.substring(3,5),16),
-          B = parseInt(color.substring(5,7),16);
-
-      R = parseInt(R * (100 + percent) / 100);
-      G = parseInt(G * (100 + percent) / 100);
-      B = parseInt(B * (100 + percent) / 100);
-
-      R = (R < 255) ? R : 255;
-      G = (G < 255) ? G : 255;
-      B = (B < 255) ? B : 255;
-
-      var RR = ((R.toString(16).length==1) ? '0' + R.toString(16) : R.toString(16)),
-          GG = ((G.toString(16).length==1) ? '0' + G.toString(16) : G.toString(16)),
-          BB = ((B.toString(16).length==1) ? '0' + B.toString(16) : B.toString(16));
-
-      return '#' + RR + GG + BB;
+      var num = parseInt(color.replace("#",""),16),
+          amt = Math.round(2.55 * percent),
+          R = (num >> 16) + amt,
+          B = (num >> 8 & 0x00FF) + amt,
+          G = (num & 0x0000FF) + amt;
+      return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (B<255?B<1?0:B:255)*0x100 + (G<255?G<1?0:G:255)).toString(16).slice(1);
     }
   };
 })(jQuery, Drupal, drupalSettings);

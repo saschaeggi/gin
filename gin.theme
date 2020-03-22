@@ -134,7 +134,6 @@ function gin_form_alter(&$form, $form_state, $form_id) {
     if ($form['header'][$bulk_form]) {
       $form['header'][$bulk_form]['action']['#attributes']['class'][] = 'form-element--type-select--small';
       $form['header'][$bulk_form]['actions']['submit']['#attributes']['class'][] = 'button--small';
-      $form['header'][$bulk_form]['actions']['submit']['#attributes']['class'][] = 'button--primary';
 
       // Remove double entry of submit button.
       unset($form['actions']['submit']);
@@ -227,19 +226,8 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#default_value' => theme_get_setting('enable_darkmode'),
   ];
 
-  // Wrapper to hide accent color when darkmode is enabled.
-  $form['custom_settings']['colors'] = [
-    '#type' => 'container',
-    '#states' => [
-      // Hide if not met.
-      // 'invisible' => [
-      //   'input[name="enable_darkmode"]' => ['checked' => TRUE],
-      // ],
-    ],
-  ];
-
   // Accent color setting.
-  $form['custom_settings']['colors']['preset_accent_color'] = [
+  $form['custom_settings']['preset_accent_color'] = [
     '#type' => 'select',
     '#title' => t('Accent color (EXPERIMENTAL)'),
     '#default_value' => theme_get_setting('preset_accent_color'),
@@ -257,7 +245,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   ];
 
   // Main Accent color setting.
-  $form['custom_settings']['colors']['accent_color'] = [
+  $form['custom_settings']['accent_color'] = [
     '#type' => 'color',
     '#placeholder' => '#77777',
     '#title' => t('Accent color (EXPERIMENTAL)'),
@@ -275,7 +263,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   ];
 
   // Focus color setting.
-  $form['custom_settings']['colors']['preset_focus_color'] = [
+  $form['custom_settings']['preset_focus_color'] = [
     '#type' => 'select',
     '#title' => t('Focus color (EXPERIMENTAL)'),
     '#default_value' => theme_get_setting('preset_focus_color'),
@@ -288,7 +276,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   ];
 
   // Custom Focus color setting.
-  $form['custom_settings']['colors']['focus_color'] = [
+  $form['custom_settings']['focus_color'] = [
     '#type' => 'color',
     '#placeholder' => '#777777',
     '#title' => t('Custom Focus color (EXPERIMENTAL)'),

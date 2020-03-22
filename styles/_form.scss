@@ -161,26 +161,57 @@
 }
 
 .button,
+.dropbutton__item:first-of-type > *,
+.dropbutton__toggle {
+  background-color: var(--colorGinPrimaryLight);
+
+  &:hover {
+    background-color: var(--colorGinPrimaryLightHover);
+  }
+
+  &:active, &:focus {
+    background-color: var(--colorGinPrimaryLightActive);
+  }
+
+  &, &:hover, &:active, &:focus {
+    color: var(--colorGinPrimaryActive);
+
+    .gin--dark-mode & {
+      color: var(--colorGinPrimary);
+    }
+  }
+}
+
+.button,
 .button:not(:focus),
 .form-actions .button,
-.action-link--icon-trash.action-link--danger {
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, .4);
-  // box-shadow: 2px 8px 16px rgba(0,0,0,.15);
+.action-link--icon-trash.action-linkf {
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, .2);
   border-radius: 4px;
 }
 
 .button--primary,
 .button--primary:not(:focus) {
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, .3);
-  // box-shadow: 2px 8px 16px rgba(0,0,0,.25);
+  background-color: var(--colorGinPrimary);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, .5);
 
-  .gin--dark-mode & {
+  &:hover {
+    background-color: var(--colorGinPrimaryHover);
+  }
+
+  &:active, &:focus {
+    background-color: var(--colorGinPrimaryActive);
+  }
+
+  &, &:hover, &:active, &:focus {
     color: var(--colorGinAppBackground);
   }
 }
 
 a.button--primary:hover,
-a.button--primary:active {
+a.button--primary:active,
+a.button--primary:focus,
+a.button--primary:focus:hover {
   .gin--dark-mode & {
     color: var(--colorGinAppBackground);
   }
@@ -191,6 +222,15 @@ a.button--primary:active {
   margin-bottom: 0;
   border: 0 none;
   background-color: transparent;
+}
+
+.dropbutton__toggle::before {
+  background-image: none;
+  background-color: var(--colorGinPrimaryActive);
+  mask-image: url("data:image/svg+xml,%3Csvg width='14' height='9' viewBox='0 0 14 9' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.2384999,1.9384769 1.646703,0.5166019 7.0002189,5.8193359 12.353735,0.5166019 13.761938,1.9384769 7.0002189,8.635742Z' fill='%23222330'/%3E%3C/svg%3E");
+  mask-repeat: no-repeat;
+  mask-position: center center;
+  mask-size: 12px 12px;
 }
 
 .js .dropbutton--multiple .dropbutton__item:first-of-type {
@@ -212,4 +252,12 @@ a.button--primary:active {
 .fieldset__label--group,
 .form-item__label {
   color: var(--colorGinText);
+}
+
+.form-item__label.form-required::after,
+.fieldset__label.form-required::after {
+  content: "*";
+  color: var(--colorGinDanger);
+  vertical-align: text-top;
+  background: none;
 }

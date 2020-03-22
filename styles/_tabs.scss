@@ -1,3 +1,11 @@
+// Tabs
+.tabs-wrapper,
+.horizontal-tabs ul.horizontal-tabs-list {
+  padding: 6px 6px 0 6px;
+  overflow: hidden;
+}
+
+// Vertical tabs
 .tabs-wrapper:not(.is-horizontal) {
   .tabs {
     .gin--dark-mode & {
@@ -6,7 +14,7 @@
 
     &__tab {
       .gin--dark-mode & {
-        background-color: var(--colorGinLayer2Background);
+        background-color: var(--colorGinItemHover); //var(--colorGinLayer2Background);
         border-color: #8E929C;
       }
     }
@@ -21,8 +29,8 @@
   color: var(--colorGinText);
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+  padding-top: 1.25em;
+  padding-bottom: 1.25em;
 
   .gin--dark-mode & {
     font-weight: 500;
@@ -36,7 +44,8 @@
 .is-horizontal .tabs__link,
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
   &:hover {
-    background: var(--colorGinLayer2Background);
+    color: var(--colorGinPrimary);
+    background: var(--colorGinItemHover);
   }
 }
 
@@ -46,9 +55,8 @@
   }
 
   &:hover {
-    .gin--dark-mode & {
-      background-color: var(--colorGinLayer2Background);
-    }
+    color: var(--colorGinPrimary);
+    background-color: var(--colorGinItemHover);
   }
 }
 
@@ -69,7 +77,11 @@
 
 .is-horizontal .tabs--primary {
   &::after {
-    bottom: 0,
+    bottom: 0;
+  }
+
+  .tabs__link {
+    min-height: 3em;
   }
 }
 
@@ -85,15 +97,15 @@
     background: none;
     border-right: 0 none;
     border-bottom: 1px solid var(--colorGinBorder);
-    overflow: hidden;
 
     li.horizontal-tab-button {
       background: none;
       border-right: 0 none;
 
       a {
-        padding-right: 2rem;
-        padding-left: 2rem;
+        padding-right: 2em;
+        padding-left: 2em;
+        border-radius: 2px 2px 0 0;
 
         &:before {
           content: '';

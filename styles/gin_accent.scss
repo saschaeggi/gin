@@ -1,10 +1,16 @@
 @import "_vars";
 
+$ginPrimary: #003cc5;
+
 :root {
   // Accent color: use Claro defaults for Gin
-  --colorGinPrimary: #003cc5;
+  --colorGinPrimary: #{$ginPrimary};
   --colorGinPrimaryHover: #0036b1;
   --colorGinPrimaryActive: #00339a;
+  --colorGinPrimaryLight: #{rgba($ginPrimary, .15)};
+  --colorGinPrimaryLightHover: #{rgba($ginPrimary, .25)};
+  --colorGinPrimaryLightActive: #{rgba($ginPrimary, .35)};
+  --colorGinItemHover: #{$colorAppBackground};
   --colorGinFocus: #e0714d;
 
   --colorGinDisabled: #bbb;
@@ -26,9 +32,14 @@
 }
 
 .gin--dark-mode {
-  --colorGinPrimary: #90aeef; //#799eef; //#6b95ff; //#f99271;
+  $ginPrimary: #90aeef; //#799eef; //#6b95ff; //#f99271;
+  --colorGinPrimary: #{$ginPrimary};
   --colorGinPrimaryHover: #{lighten(#799eef, 5)};
   --colorGinPrimaryActive: #{lighten(#799eef, 10)};
+  --colorGinPrimaryLight: #{rgba($ginPrimary, .20)};
+  --colorGinPrimaryLightHover: #{rgba($ginPrimary, .30)};
+  --colorGinPrimaryLightActive: #{rgba($ginPrimary, .40)};
+  --colorGinItemHover: #{rgba($ginPrimary, .10)};
   --colorGinFocus: #e0714d;
 
   --colorGinDisabled: #999;

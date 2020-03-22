@@ -7,7 +7,9 @@
 .dropbutton__item:first-of-type > *:focus:hover,
 .dropbutton__item:first-of-type > .button:focus:hover,
 .is-horizontal .tabs--primary .tabs__link:focus,
-.cke.cke_chrome.cke_focus {
+.cke.cke_chrome.cke_focus,
+.is-horizontal .tabs__link:focus,
+.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a:focus {
   box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 5px var(--colorGinFocus);
 }
 
