@@ -36,6 +36,10 @@ function gin_preprocess_page(&$variables) {
   if (substr($path, -$length) === 'node/add') {
     $variables['has_sidebar'] = 'false';
   }
+
+  // Required for allowing subtheming Gin
+  $activeThemeName = \Drupal::theme()->getActiveTheme()->getName();
+  $variables['active_admin_theme'] =  $activeThemeName;
 }
 
 /**

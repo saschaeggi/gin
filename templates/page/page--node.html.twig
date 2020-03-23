@@ -39,17 +39,20 @@
  * @see html.html.twig
  */
 #}
+{% set page_title_block = active_admin_theme ~ '_page_title' %}
+{% set local_actions_block = active_admin_theme ~ '_local_actions' %}
+
 <div class="page-wrapper__node-edit-form{% if has_sidebar != 'false' %} node-edit-form--has-sidebar{% endif %}">
   <header class="region region-sticky">
     <div class="layout-container region-sticky__items">
       {{ page.header.gin_page_title }}
-      {{ page.content.gin_local_actions }}
+      {{ page.content[local_actions_block] }}
     </div>
   </header>
 
   <div class="content-header clearfix">
     <div class="layout-container">
-      {{ page.header|without('gin_page_title') }}
+      {{ page.header|without(page_title_block) }}
     </div>
   </div>
 
@@ -63,7 +66,7 @@
           {{ page.help }}
         </div>
       {% endif %}
-      {{ page.content|without('gin_local_actions') }}
+      {{ page.content|without(local_actions_block) }}
     </main>
   </div>
 </div>
