@@ -29,6 +29,7 @@
           'green': '#6bd4a1',
           'red': '#ca6d6d',
           'orange': '#f79576',
+          'yellow': '#f1c970',
           'pink': '#e79da3'
         };
       } else {
@@ -40,6 +41,7 @@
           'green': '#26a769',
           'red': '#a55254',
           'orange': '#e07f34',
+          'yellow': '#d69400',
           'pink': '#c5636b'
         };
       }

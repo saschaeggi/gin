@@ -213,6 +213,10 @@
 
   &, &:hover, &:active, &:focus {
     color: var(--colorGinAppBackground);
+
+    .gin--dark-mode & {
+      color: var(--colorGinAppBackground);
+    }
   }
 }
 
