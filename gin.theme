@@ -133,14 +133,16 @@ function gin_form_alter(&$form, $form_state, $form_id) {
 
   // Bulk forms: update action & actions to small variants.
   if (strpos($form_id, 'views_form') !== FALSE) {
-    $bulk_form = current(preg_grep('/_bulk_form/', array_keys($form['header'])));
+    if (isset($form['header'])) {
+      $bulk_form = current(preg_grep('/_bulk_form/', array_keys($form['header'])));
 
-    if ($form['header'][$bulk_form]) {
-      $form['header'][$bulk_form]['action']['#attributes']['class'][] = 'form-element--type-select--small';
-      $form['header'][$bulk_form]['actions']['submit']['#attributes']['class'][] = 'button--small';
+      if ($form['header'][$bulk_form]) {
+        $form['header'][$bulk_form]['action']['#attributes']['class'][] = 'form-element--type-select--small';
+        $form['header'][$bulk_form]['actions']['submit']['#attributes']['class'][] = 'button--small';
 
-      // Remove double entry of submit button.
-      unset($form['actions']['submit']);
+        // Remove double entry of submit button.
+        unset($form['actions']['submit']);
+      }
     }
   }
 }
