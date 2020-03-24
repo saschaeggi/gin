@@ -629,6 +629,10 @@
           // Link color
           a {
             color: var(--colorGinText);
+
+            &.is-active {
+              color: var(--colorGinPrimary);
+            }
           }
 
           &__title,

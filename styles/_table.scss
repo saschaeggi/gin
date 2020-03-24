@@ -3,7 +3,7 @@ table.sticky-header {
   background: transparent;
 
   @include mq(1024px) {
-    margin-top: 48px; //86px;
+    margin-top: 48px;
   }
 
   th {
@@ -47,7 +47,7 @@ table {
     &:hover {
       .gin--dark-mode & {
         color: var(--colorGinText);
-        background: var(--colorGinLayer2Background);
+        background: var(--colorGinItemHover);
       }
     }
   }
@@ -59,7 +59,7 @@ table {
 
     td {
       .gin--dark-mode & {
-        background-color: var(--colorGinPrimaryLight); //var(--colorGinSelected);
+        background-color: var(--colorGinPrimaryLight);
       }
     }
   }
