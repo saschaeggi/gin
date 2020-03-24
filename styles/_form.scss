@@ -261,6 +261,7 @@ a.button--primary:focus:hover {
   }
 }
 
+.fieldset,
 .fieldset__label--group,
 .form-item__label {
   color: var(--colorGinText);
@@ -272,8 +273,4 @@ a.button--primary:focus:hover {
   color: var(--colorGinDanger);
   vertical-align: text-top;
   background: none;
-}
-
-.fieldset {
-  color: var(--colorGinTextLight);
 }
