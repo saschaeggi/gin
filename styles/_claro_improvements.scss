@@ -4,7 +4,7 @@ fieldset:not(.fieldgroup) {
   padding-left: 0;
   padding-right: 0;
   background: transparent;
-  border-color: #e6e4df;
+  border-color: var(--colorGinLayer2Border);
   border-left: 0 none;
   border-right: 0 none;
 

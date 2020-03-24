@@ -6,7 +6,11 @@
   }
 
   .ui-dialog-titlebar {
-    background: #000;
+    background: #1b1b1d;
+  }
+
+  .ui-widget-content.ui-dialog-buttonpane {
+    background: var(--colorGinAppBackground);
   }
 
   .ui-dialog-titlebar-close {

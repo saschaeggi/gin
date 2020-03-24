@@ -16,6 +16,12 @@
   }
 }
 
+.media-library-item__preview {
+  .gin--dark-mode & {
+    background: var(--colorGinLayer2Background);
+  }
+}
+
 .media-library-item__edit:hover,
 .media-library-item__edit:focus,
 .media-library-item__remove:hover,
@@ -39,4 +45,97 @@
 .media-library-item__attributes,
 .media-library-item--grid {
   background: none;
+}
+
+.media-library-widget-empty-text {
+  color: var(--colorGinTextLight);
+}
+
+.media-library-add-form__preview {
+  background: var(--colorGinAppBackground);
+}
+
+.media-library-add-form__input-wrapper {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+
+.media-library-menu {
+  border-color: var(--colorGinBorder);
+  background-color: var(--colorGinAppBackground);
+}
+
+.media-library-view {
+  .view-header {
+    padding: 1rem;
+    color: var(--colorGinText);
+    text-decoration: none;
+    background: var(--colorGinAppBackground);
+    border-radius: 4px;
+  }
+}
+
+.media-library-wrapper {
+  .views-display-link {
+    position: relative;
+    color: var(--colorGinText);
+    text-decoration: none;
+    background-image: none;
+
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      left: 0;
+      top: 1px;
+      background-color: var(--colorGinText);
+    }
+
+    &.is-active {
+      color: var(--colorGinPrimary);
+
+      &:before {
+        background-color: var(--colorGinPrimary);
+      }
+    }
+  }
+
+  .views-display-link-widget {
+    &:before {
+      mask-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='%23333333' d='M10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3A1.5 1.5 0 0 1 10.5 9zm-8 0h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3A1.5 1.5 0 0 1 2.5 9zm8-8h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3A1.5 1.5 0 0 1 10.5 1zm-8 0h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3A1.5 1.5 0 0 1 2.5 1z'/%3E%3C/svg%3E%0A");
+    }
+  }
+
+  .views-display-link-widget_table {
+    &:before {
+      mask-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='%23333333' d='M7 15a1.5 1.5 0 0 1 0-3h7a1.5 1.5 0 0 1 0 3H7zm-4.5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM7 9.5a1.5 1.5 0 0 1 0-3h7a1.5 1.5 0 0 1 0 3H7zm-4.5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM7 4a1.5 1.5 0 0 1 0-3h7a1.5 1.5 0 0 1 0 3H7zM2.5 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z'/%3E%3C/svg%3E%0A");
+    }
+  }
+}
+
+.media-library-content {
+  border-color: var(--colorGinBorder);
+}
+
+.media-library-menu__link {
+  color: var(--colorGinText);
+  text-shadow: none;
+  border-color: var(--colorGinBorder);
+  background-color: transparent;
+
+  &:active,
+  &:hover,
+  &:focus,
+  &.active {
+    color: var(--colorGinPrimary);
+    text-shadow: none;
+    background-color: var(--colorGinLayerBackground);
+    border-right: 0 none;
+    border-bottom: 1px solid var(--colorGinBorder);
+    box-shadow: none;
+  }
 }

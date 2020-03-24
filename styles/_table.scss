@@ -59,7 +59,7 @@ table {
 
     td {
       .gin--dark-mode & {
-        background-color: var(--colorGinSelected);
+        background-color: var(--colorGinPrimaryLight); //var(--colorGinSelected);
       }
     }
   }

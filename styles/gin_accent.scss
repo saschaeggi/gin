@@ -58,7 +58,7 @@ $ginPrimary: #003cc5;
   --colorGinText: #ccc;
   --colorGinTextLight: #828386;
 
-  --colorGinSelected: #{lighten(#3B3B3F, 5)}; //#43454a;
-  --colorGinTableHeader: var(--colorGinAppBackground); //#161a1d;
+  // --colorGinSelected: #{lighten(#3B3B3F, 5)};
+  --colorGinTableHeader: var(--colorGinAppBackground);
   --colorGinSwitch: var(--colorGinPrimary);
 }
