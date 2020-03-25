@@ -7,4 +7,17 @@
   .ajax-progress__message {
     color: var(--colorGinText);
   }
+
+  &--fullscreen {
+    .gin--dark-mode & {
+      background-color: var(--colorGinPrimary);
+      border-color: transparent;
+      box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
+
+      .ajax-progress__throbber {
+        border: 2px solid var(--colorGinAppBackground);
+        border-right: 2px dotted transparent;
+      }
+    }
+  }
 }
