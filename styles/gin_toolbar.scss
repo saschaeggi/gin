@@ -76,8 +76,26 @@
       }
     }
 
-    // Default icon settings for admin tray
     #toolbar-item-administration-tray a.toolbar-icon,
+    .toolbar-tab > .toolbar-icon-edit.toolbar-item {
+      &:before {
+        @include mq(976px) {
+          left: 36px;
+          width: 21px;
+        }
+      }
+    }
+
+    // Overrides for default toolbar items
+    .toolbar-icon-admin-toolbar-tools-help,
+    .toolbar-icon-system-admin-content,
+    .toolbar-icon-system-admin-structure,
+    .toolbar-icon-system-themes-page,
+    .toolbar-icon-system-modules-list,
+    .toolbar-icon-system-admin-config,
+    .toolbar-icon-entity-user-collection,
+    .toolbar-icon-system-admin-reports,
+    .toolbar-icon-help-main,
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &:before {
         background-color: var(--colorGinTextLight);
@@ -85,11 +103,6 @@
         mask-repeat: no-repeat;
         mask-position: center center;
         mask-size: 20px 20px;
-
-        @include mq(976px) {
-          left: 36px;
-          width: 21px;
-        }
       }
 
       &.is-active:before {
