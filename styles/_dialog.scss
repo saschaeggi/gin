@@ -1,4 +1,6 @@
 .ui-dialog {
+  z-index: 503 !important;
+
   &:focus,
   &:focus:active,
   &:focus:hover {
@@ -14,10 +16,23 @@
   }
 
   .ui-dialog-titlebar-close {
+    top: 15px;
     border: none;
   }
 
   .ui-widget-content.ui-dialog-content {
     background: var(--colorGinLayerBackground);
+  }
+}
+
+.gin--dark-mode {
+  .ui-widget-overlay {
+    background: #333;
+  }
+}
+
+.views-ui-dialog {
+  .views-offset-bottom {
+    border-top: 1px solid var(--colorGinBorder);
   }
 }

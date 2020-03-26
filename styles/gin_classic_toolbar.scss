@@ -138,6 +138,7 @@
 .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
 .toolbar .toolbar-tray a.is-active {
   color: var(--colorGinPrimary);
+  font-weight: normal;
 }
 
 .toolbar .toolbar-tray-vertical {
@@ -327,6 +328,13 @@
     mask-repeat: no-repeat;
     mask-position: center center;
     mask-size: 12px 12px;
+  }
+}
+
+.toolbar-menu {
+  &__title,
+  &__sub-title {
+    display: none;
   }
 }
 

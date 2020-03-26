@@ -250,7 +250,6 @@
   }
 
   .dropbutton--small .dropbutton__item > a {
-    height: 2rem;
     line-height: 1.3rem;
   }
 }
@@ -267,6 +266,7 @@
 
   li a {
     background: var(--colorGinLayer2Background);
+    border: 1px solid var(--colorGinPrimaryLightActive);
   }
 
   li a:hover, li.is-active a, li.is-active a.is-active {
@@ -288,7 +288,7 @@
   }
 
   .views-display-setting:nth-of-type(even) {
-    background-color: var(--colorGinLayer2Background);
+    background-color: transparent;
   }
 
   .dropbutton-wrapper {
@@ -327,4 +327,24 @@
 .views-display-column,
 .edit-display-settings-top.views-ui-display-tab-bucket {
   border-color: var(--colorGinBorder);
+}
+
+.views-ui-dialog {
+  .form--inline {
+    padding-top: 0;
+  }
+
+  .views-override:not(:empty) {
+    background-color: transparent;
+    border-bottom: 0 none;
+  }
+
+  .form-item--fields-area-text-custom-removed {
+    display: inline-block;
+    margin-right: 4px;
+  }
+}
+
+.views-filterable-options {
+  border-top: none;
 }
