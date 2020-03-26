@@ -332,9 +332,10 @@
 }
 
 .toolbar-menu {
-  &__title,
-  &__sub-title {
-    display: none;
+  &-title,
+  &-sub-title,
+  &__trigger {
+    display: none !important;
   }
 }
 
