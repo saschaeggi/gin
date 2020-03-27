@@ -63,6 +63,7 @@
           {% for cell in header %}
             {%
               set cell_classes = [
+                'th__' ~ cell.content|clean_class,
                 cell.active_table_sort ? 'is-active',
               ]
             %}
@@ -84,7 +85,18 @@
           %}
           <tr{{ row.attributes.addClass(row_classes) }}>
             {% for cell in row.cells %}
-              <{{ cell.tag }}{{ cell.attributes }}>
+              {% set currentIndex = loop.index %}
+              {% set theadValue = null %}
+
+              {% for value in header %}
+                {% if loop.index == currentIndex %}
+                  {% set theadValue = value.content|clean_class %}
+                {% endif %}
+              {% endfor %}
+
+              {% set cell_classes = [theadValue ? 'td__' ~ theadValue] %}
+
+              <{{ cell.tag }}{{ cell.attributes.addClass(cell_classes) }}>
                 {{- cell.content -}}
               </{{ cell.tag }}>
             {% endfor %}

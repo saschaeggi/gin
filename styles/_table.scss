@@ -33,6 +33,12 @@ table {
     }
   }
 
+  .th__operations,
+  .td__operations {
+    width: 160px;
+    text-align: right;
+  }
+
   tbody {
     tr {
       border-bottom: 1px solid var(--colorGinBorder);

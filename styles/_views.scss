@@ -269,12 +269,32 @@
 
   li a {
     background: var(--colorGinLayer2Background);
-    border: 1px solid var(--colorGinPrimaryLightActive);
+    border: 1px solid var(--colorGinPrimary);
   }
 
   li a:hover, li.is-active a, li.is-active a.is-active {
-    background: #1c1f23;
+    background: var(--colorGinPrimary);
     border-color: transparent;
+  }
+
+  .action-list {
+    top: 36px;
+    background: var(--colorGinLayer2Background);
+
+    .button {
+      width: 100%;
+      text-align: left;
+      line-height: 1.2;
+      box-shadow: none;
+    }
+
+    li {
+      background-color: none;
+
+      &:hover {
+        background-color: var(--colorGinPrimaryLightHover);
+      }
+    }
   }
 }
 
@@ -338,7 +358,7 @@
   }
 
   .views-override:not(:empty) {
-    background-color: transparent;
+    background-color: var(--colorGinAppBackground);
     border-bottom: 0 none;
   }
 
