@@ -1,4 +1,13 @@
 .dropbutton {
+  &-wrapper {
+    box-shadow: none;
+  }
+
+  &__item:first-of-type > *,
+  &__toggle {
+    box-shadow: 0 1px 2px var(--colorGinButtonShadow);
+  }
+
   &__item {
     &:first-of-type {
       text-align: right;
@@ -7,7 +16,6 @@
         width: auto;
         display: inline-block;
         vertical-align: top;
-        line-height: .8rem;
       }
     }
 
@@ -58,6 +66,11 @@
   margin-right: 0;
 
   &:not(:last-of-type) {
-    margin-right: calc(1.5rem + 1px);
+    margin-right: 1.5rem;
+    border-right: 1px solid var(--colorGinPrimaryLightActive);
   }
+}
+
+.no-touchevents .dropbutton__item--extrasmall:first-of-type > * {
+  line-height: .8rem;
 }

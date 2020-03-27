@@ -11,6 +11,7 @@ $ginPrimary: #003cc5;
   --colorGinPrimaryLightHover: #{rgba($ginPrimary, .25)};
   --colorGinPrimaryLightActive: #{rgba($ginPrimary, .35)};
   --colorGinItemHover: #{$colorAppBackground};
+  --colorGinButtonShadow: #{rgba($ginPrimary, .5)};
   --colorGinFocus: #e0714d;
 
   --colorGinDisabled: #bbb;

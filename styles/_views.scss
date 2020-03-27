@@ -210,8 +210,11 @@
   }
 
   .preview-section {
-    display: flex;
     padding: 16px;
+  }
+
+  .view-filters .preview-section {
+    display: flex;
   }
 
   .form-actions {

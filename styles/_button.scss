@@ -1,0 +1,68 @@
+
+.button,
+.dropbutton__item:first-of-type > *,
+.dropbutton__toggle {
+  background-color: var(--colorGinPrimaryLight);
+
+  &:hover {
+    background-color: var(--colorGinPrimaryLightHover);
+  }
+
+  &:active, &:focus {
+    background-color: var(--colorGinPrimaryLightActive);
+  }
+
+  &, &:hover, &:active, &:focus {
+    color: var(--colorGinPrimaryActive);
+
+    .gin--dark-mode & {
+      color: var(--colorGinPrimary);
+    }
+  }
+}
+
+.button,
+.button:not(:focus),
+.form-actions .button,
+.action-link--icon-trash.action-link {
+  box-shadow: 0 1px 2px var(--colorGinButtonShadow);
+  border-radius: 4px;
+}
+
+.button--primary,
+.button--primary:not(:focus) {
+  background-color: var(--colorGinPrimary);
+  box-shadow: 0 2px 7px var(--colorGinPrimaryLightActive);
+
+  &:hover {
+    background-color: var(--colorGinPrimaryHover);
+  }
+
+  &:active, &:focus {
+    background-color: var(--colorGinPrimaryActive);
+  }
+
+  &, &:hover, &:active, &:focus {
+    color: var(--colorGinAppBackground);
+
+    .gin--dark-mode & {
+      color: var(--colorGinAppBackground);
+    }
+  }
+}
+
+a.button--primary:hover,
+a.button--primary:active,
+a.button--primary:focus,
+a.button--primary:focus:hover {
+  .gin--dark-mode & {
+    color: var(--colorGinAppBackground);
+  }
+}
+
+.button:disabled, .button.is-disabled {
+  .gin--dark-mode & {
+    color: var(--colorGinDisabled);
+    background-color: var(--colorGinLayer2Background);
+  }
+}

@@ -54,7 +54,8 @@
           accentColorSetting = color != null ? color : drupalSettings.gin.accent_color,
           darkmode = preset != null ? $('input[name="enable_darkmode"]').is(':checked') : drupalSettings.gin.darkmode,
           darkmodeClass = drupalSettings.gin.darkmode_class,
-          accentColors = Drupal.behaviors.ginAccent.colorDefinition(darkmode);
+          accentColors = Drupal.behaviors.ginAccent.colorDefinition(darkmode),
+          ratio = darkmode ? 10 : 7;
 
       // First clear things up.
       Drupal.behaviors.ginAccent.clearAccentColor();
@@ -76,10 +77,11 @@
           --colorGinPrimary: " + setAccentColor + ";\n\
           --colorGinPrimaryHover: " + Drupal.behaviors.ginAccent.shadeColor(setAccentColor, -10) + ";\n\
           --colorGinPrimaryActive: " + Drupal.behaviors.ginAccent.shadeColor(setAccentColor, -15) + ";\n\
-          --colorGinPrimaryLight: " + setAccentColor + "35;\n\
-          --colorGinPrimaryLightHover: " + setAccentColor + "45;\n\
-          --colorGinPrimaryLightActive: " + setAccentColor + "55;\n\
-          --colorGinItemHover: " + setAccentColor + "15;\n\
+          --colorGinPrimaryLight: " + setAccentColor + Math.round(ratio * 3.5) + ";\n\
+          --colorGinPrimaryLightHover: " + setAccentColor + Math.round(ratio * 4.5) + ";\n\
+          --colorGinPrimaryLightActive: " + setAccentColor + Math.round(ratio * 5.5) + ";\n\
+          --colorGinItemHover: " + setAccentColor + Math.round(ratio * 1.5) + ";\n\
+          --colorGinButtonShadow: " + setAccentColor + Math.round(ratio * 8) + ";\n\
         }\n\
         .form-element--type-select:hover,\n\
         .form-element--type-select:active,\n\
