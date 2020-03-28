@@ -25,7 +25,7 @@
         var accentColors = {
           'dark_purple': '#976bef',
           'purple': '#dba5ef',
-          'teal': '#85d4e6',
+          'teal': '#67efce',
           'green': '#6bd4a1',
           'red': '#ca6d6d',
           'orange': '#f79576',
@@ -81,7 +81,6 @@
           --colorGinPrimaryLightHover: " + setAccentColor + Math.round(ratio * 4.5) + ";\n\
           --colorGinPrimaryLightActive: " + setAccentColor + Math.round(ratio * 5.5) + ";\n\
           --colorGinItemHover: " + setAccentColor + Math.round(ratio * 1.5) + ";\n\
-          --colorGinButtonShadow: " + setAccentColor + Math.round(ratio * 8) + ";\n\
         }\n\
         .form-element--type-select:hover,\n\
         .form-element--type-select:active,\n\

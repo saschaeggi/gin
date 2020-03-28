@@ -25,14 +25,17 @@
 .button:not(:focus),
 .form-actions .button,
 .action-link--icon-trash.action-link {
-  box-shadow: 0 1px 2px var(--colorGinButtonShadow);
+  .gin--dark-mode & {
+    box-shadow: 0 1px 2px var(--colorGinButtonShadow);
+  }
+
   border-radius: 4px;
 }
 
 .button--primary,
 .button--primary:not(:focus) {
   background-color: var(--colorGinPrimary);
-  box-shadow: 0 2px 7px var(--colorGinPrimaryLightActive);
+  box-shadow: 0 2px 7px var(--colorGinButtonShadow);
 
   &:hover {
     background-color: var(--colorGinPrimaryHover);
