@@ -106,6 +106,10 @@
         mask-size: 20px 20px;
       }
 
+      &:hover:before {
+        background-color: var(--colorGinTitle);
+      }
+
       &.is-active:before {
         background-color: var(--colorGinPrimary);
       }
@@ -120,6 +124,10 @@
 
         &:hover {
           background-color: var(--colorGinItemHover);
+
+          &:before {
+            background-color: var(--colorGinTitle);
+          }
         }
 
         &.is-active:before {
@@ -447,7 +455,12 @@
     }
 
     &:hover {
+      color: var(--colorGinTitle);
       background-color: var(--colorGinItemHover); //var(--colorGinAppBackground);
+
+      &:before {
+        background-color: var(--colorGinTitle);
+      }
     }
 
     &:before {
@@ -468,7 +481,7 @@
       display: flex;
       font-size: 1rem;
       font-weight: normal;
-      color: #777;
+      color: var(--colorGinTitle);
       padding: 16px 24px;
       width: $toolbarOpenWidth;
 
@@ -596,6 +609,7 @@
           overflow: hidden;
 
           &:hover {
+            color: var(--colorGinTitle);
             background-color: transparent; //var(--colorGinAppBackground);
           }
 
@@ -606,6 +620,7 @@
 
           &.is-active {
             color: var(--colorGinPrimary);
+            font-weight: 500;
 
             &:after {
               content: "";
@@ -615,10 +630,9 @@
               display: block;
               width: 4px;
               height: 4px;
-              box-shadow: 2px 3px 10px var(--colorGinPrimary),
+              box-shadow: 2px 3px 15px var(--colorGinPrimary),
                           2px 3px 20px var(--colorGinPrimary),
-                          2px 3px 30px var(--colorGinPrimary),
-                          2px 3px 60px var(--colorGinPrimary);
+                          2px 3px 30px var(--colorGinPrimary);
             }
           }
 

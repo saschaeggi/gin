@@ -16,16 +16,16 @@
     top: 0;
     width: 100%;
     height: 88px;
-    padding: 40px 0 16px;
+    padding: 16px 0 16px;
     margin-top: -1px;
 
     .toolbar-horizontal[data-toolbar-tray='toolbar-item-administration-tray'] & {
       top: $topBar;
     }
 
-    .-has-scrolled & {
-      padding-top: 16px;
-    }
+    // .-has-scrolled & {
+    //   padding-top: 16px;
+    // }
 
     .gin--classic-toolbar:not(.path-node) & {
       position: relative;

@@ -51,10 +51,8 @@ table {
     background-color: transparent;
 
     &:hover {
-      .gin--dark-mode & {
-        color: var(--colorGinText);
-        background: var(--colorGinItemHover);
-      }
+      color: var(--colorGinText);
+      background: var(--colorGinItemHover);
     }
   }
 
@@ -64,9 +62,7 @@ table {
     }
 
     td {
-      .gin--dark-mode & {
-        background-color: var(--colorGinPrimaryLight);
-      }
+      background-color: var(--colorGinPrimaryLight);
     }
   }
 
