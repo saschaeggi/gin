@@ -124,14 +124,11 @@
 
         &:hover {
           background-color: var(--colorGinItemHover);
-
-          &:before {
-            background-color: var(--colorGinTitle);
-          }
         }
 
+        &:hover:before,
         &.is-active:before {
-          background-color: #767676;
+          background-color: var(--colorGinTitle);
         }
       }
 
