@@ -59,8 +59,12 @@
     mask-size: 12px 12px;
   }
 
-  &__toggle:hover::before {
-    background-color: var(--colorGinButtonText);
+  &__toggle {
+    &:hover::before,
+    &:active::before,
+    &:focus::before {
+      background-color: var(--colorGinButtonText);
+    }
   }
 }
 
