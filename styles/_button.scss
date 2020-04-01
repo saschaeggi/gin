@@ -3,7 +3,7 @@
 .dropbutton__item:first-of-type > *,
 .dropbutton__toggle {
   color: var(--colorGinPrimaryActive);
-  background: none;
+  background-color: transparent; //var(--colorGinPrimaryLight);
   box-shadow: none;
 
   &:hover {
