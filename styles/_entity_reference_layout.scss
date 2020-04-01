@@ -131,6 +131,11 @@
         }
       }
     }
+
+    // Drag & Drop
+    &.gu-transit {
+      background-color: var(--colorGinPrimaryLightActive);
+    }
   }
 
   .erl-layout.erl-item {
@@ -172,6 +177,13 @@
   .erl-actions {
     input {
       box-shadow: none;
+    }
+
+    .erl-edit,
+    .erl-remove {
+      &, &:hover, &:hover, &:focus {
+        border-color: transparent !important;
+      }
     }
   }
 

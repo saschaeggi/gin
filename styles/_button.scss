@@ -82,3 +82,13 @@ a.button--primary:focus:hover {
     background-color: var(--colorGinLayer2Background);
   }
 }
+
+.action-link--icon-trash.action-link {
+  min-height: 48px;
+  padding: calc(.75rem - 1px) calc(1.5rem - 2px);
+  box-sizing: border-box;
+
+  &, &:hover, &:active, &:focus, &:focus:hover {
+    border: 2px solid var(--colorGinDanger) !important;
+  }
+}

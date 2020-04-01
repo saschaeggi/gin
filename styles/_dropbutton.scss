@@ -1,5 +1,5 @@
 .dropbutton {
-  border: 1px solid var(--colorGinPrimary);
+  border: 2px solid var(--colorGinPrimary);
   border-radius: 4px;
 
   &:hover {
@@ -20,8 +20,8 @@
   }
 
   &__toggle {
-    top: 1px;
-    right: 1px;
+    top: 2px;
+    right: 2px;
   }
 
   &__item {

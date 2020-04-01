@@ -118,7 +118,7 @@
 
   @include breakpoint(1024px) {
     left: auto;
-    top: 22px;
+    top: 2px; //22px;
     right: $sidebarWidth + 32px;
     bottom: auto;
     width: auto;
@@ -128,9 +128,9 @@
     box-shadow: none;
     transition: $transition;
 
-    .-has-scrolled & {
-      top: 2px;
-    }
+    // .-has-scrolled & {
+    //   top: 2px;
+    // }
 
     .gin--classic-toolbar & {
       top: 41px;
@@ -150,8 +150,8 @@
   @include breakpoint(1730px) {
     right: calc(50% - #{$sidebarWidth} - 6em - 52px);
 
-    .toolbar-horizontal.toolbar-tray-open[data-toolbar-menu='open'] & {
-      right: calc(50% - #{$sidebarWidth} - 6em - 94px);
+    [data-toolbar-menu='open'] & {
+      right: calc(50% - #{$sidebarWidth} - 6em - 52px - #{(($toolbarOpenWidth - $toolbarWidth) / 2)});
     }
   }
 

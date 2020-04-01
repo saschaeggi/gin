@@ -118,6 +118,12 @@
     border-right: 0 none;
     border-bottom: 0 none;
 
+    &:after {
+      @include breakpoint(768px) {
+        left: 6px;
+      }
+    }
+
     li.horizontal-tab-button {
       background: none;
       border-right: 0 none;
