@@ -76,7 +76,11 @@ a.button--primary:focus:hover {
   }
 }
 
-.button:disabled, .button.is-disabled {
+.button.button:disabled, .buton.button.is-disabled {
+  &, &:hover, &:active, &:focus {
+    border: 2px solid var(--colorGinDisabled) !important;
+  }
+
   .gin--dark-mode & {
     color: var(--colorGinDisabled);
     background-color: var(--colorGinLayer2Background);
