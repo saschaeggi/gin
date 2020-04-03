@@ -61,12 +61,21 @@
       <thead>
         <tr>
           {% for cell in header %}
-            {%
-              set cell_classes = [
-                'th__' ~ cell.content|clean_class,
-                cell.active_table_sort ? 'is-active',
-              ]
-            %}
+            {% if '<a' in cell.content|render|render %}
+              {%
+                set cell_classes = [
+                  'th__item',
+                  cell.active_table_sort ? 'is-active',
+                ]
+              %}
+            {% else %}
+              {%
+                set cell_classes = [
+                  'th__' ~ cell.content|render|clean_class,
+                  cell.active_table_sort ? 'is-active',
+                ]
+              %}
+            {% endif %}
             <{{ cell.tag }}{{ cell.attributes.addClass(cell_classes) }}>
               {{- cell.content -}}
             </{{ cell.tag }}>
@@ -90,7 +99,11 @@
 
               {% for value in header %}
                 {% if loop.index == currentIndex %}
-                  {% set theadValue = value.content|clean_class %}
+                  {% if '<a' in value.content|render|render %}
+                    {% set theadValue = 'td__item' %}
+                  {% else %}
+                    {% set theadValue = value.content|render|clean_class %}
+                  {% endif %}
                 {% endif %}
               {% endfor %}
 

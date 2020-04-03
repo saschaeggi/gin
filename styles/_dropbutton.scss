@@ -25,15 +25,15 @@
   }
 
   &__item {
-    &:first-of-type {
-      text-align: right;
+    // &:first-of-type {
+    //   text-align: right;
 
-      a {
-        width: auto;
-        display: inline-block;
-        vertical-align: top;
-      }
-    }
+    //   a {
+    //     width: auto;
+    //     display: inline-block;
+    //     vertical-align: top;
+    //   }
+    // }
 
     &:first-of-type ~ .dropbutton__item {
       background-color: var(--colorGinBackground);
