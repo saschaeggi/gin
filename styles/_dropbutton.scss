@@ -36,12 +36,17 @@
     }
 
     &:first-of-type ~ .dropbutton__item {
-      background-color: var(--colorGinAppBackground);
+      background-color: var(--colorGinBackground);
 
       > a,
       > .button {
         color: var(--colorGinPrimary);
-        background: var(--colorGinAppBackground);
+        background: var(--colorGinLayer3Background);
+
+        &:hover, &:active, &:focus {
+          color: var(--colorGinAppBackground);
+          background: var(--colorGinPrimary);
+        }
       }
 
       &, &:last-child {

@@ -175,13 +175,10 @@
   }
 
   .erl-actions {
-    input {
-      box-shadow: none;
-    }
-
     .erl-edit,
     .erl-remove {
       &, &:hover, &:hover, &:focus {
+        box-shadow: none !important;
         border-color: transparent !important;
       }
     }
@@ -207,6 +204,14 @@
 
   .erl-item:last-of-type > .erl-add-content--single {
     opacity: 1;
+  }
+
+  .erl-add-content--single {
+    button {
+      .icon {
+        margin-right: .5rem;
+      }
+    }
   }
 
   .layout-radio-item {
