@@ -244,6 +244,7 @@
   padding: 16px;
   background-color: var(--colorGinLayer2Background);
   border: 0 none;
+  border-bottom: 1px solid var(--colorGinLayer2Border);
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 
@@ -273,6 +274,7 @@
   }
 
   li a:hover, li.is-active a, li.is-active a.is-active {
+    color: var(--colorGinAppBackground);
     background: var(--colorGinPrimary);
     border-color: transparent;
   }

@@ -80,7 +80,7 @@
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &:before {
         @include mq(976px) {
-          left: 36px;
+          left: #{round($toolbarWidth / 2.666666667)};
           width: 21px;
         }
       }
@@ -145,7 +145,7 @@
         mask-position: center center;
 
         @include mq(976px) {
-          left: 33px;
+          left: #{round($toolbarWidth / 2.666666667) - 3px};
         }
       }
     }
@@ -444,8 +444,10 @@
     text-decoration: none;
     display: flex;
     align-items: center;
-    padding: 16px 10px 16px 24px;
+    width: $toolbarWidth;
+    padding: 16px 0 16px 22px;
     margin: 0;
+    transition: $transition;
 
     &, &:active, &:focus {
       background-color: transparent;
@@ -466,7 +468,7 @@
       display: inline-block;
       width: 40px;
       height: 40px;
-      margin-right: 1.25rem;
+      margin-right: 24px;
       border-radius: 50%;
       border: 1px solid var(--colorGinBorder);
       background: var(--colorGinLayerBackground) url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='%23999999'/%3E%3C/svg%3E") no-repeat center center;
@@ -479,7 +481,7 @@
       font-size: 1rem;
       font-weight: normal;
       color: var(--colorGinTitle);
-      padding: 16px 24px;
+      // padding: 16px 24px;
       width: $toolbarOpenWidth;
 
       &:before {
@@ -612,7 +614,7 @@
 
           [data-toolbar-menu='open'] & {
             width: $toolbarOpenWidth;
-            padding-left: $toolbarWidth - 11px;
+            padding-left: $toolbarWidth; // - 11px;
           }
 
           &.is-active {
@@ -645,8 +647,8 @@
         .toolbar-menu {
           display: none;
           position: fixed;
-          top: 0; // $topBar;
-          margin-left: ($toolbarWidth - 11px);
+          top: 0;
+          margin-left: ($toolbarWidth - 2px);
           width: $subToolbarWidth;
           height: 100vh;
           max-width: calc(100% - #{$topBar});
