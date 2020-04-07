@@ -15,11 +15,10 @@
 
   .toolbar-bar {
     $breakpoint: 576px;
-    // background: #1c1f23;
+    display: flex;
     box-shadow: none;
 
     @include breakpoint($breakpoint) {
-      display: flex;
       height: $topBar;
 
       // Alignment: move user account
@@ -54,6 +53,10 @@
     .toolbar-tab > .toolbar-item.is-active {
       background-image: none;
       background-color: rgba(255, 255, 255, .1);
+
+      .gin--dark-mode & {
+        background-color: var(--colorGinLayerBackground);
+      }
     }
 
     .toolbar-tab > .toolbar-icon:before {
@@ -282,15 +285,33 @@
 
 .toolbar .toolbar-tray-vertical {
   box-shadow: none;
-  border-right: 1px solid var(--colorGinBorder);
+  border-right: 1px solid rgba(255, 255, 255, .1);
   background: var(--colorGinLayerBackground);
 
   .menu-item + .menu-item {
-    border-top: 1px solid var(--colorGinBorder);
+    border-top: 1px solid rgba(255, 255, 255, .1);
   }
 
   .level-1.menu-item:last-child {
-    border-bottom: 1px solid var(--colorGinBorder);
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+  }
+
+  .gin--dark-mode & {
+    .toolbar-menu ul ul {
+      border-color: transparent;
+    }
+
+    .level-1 .toolbar-menu {
+      background: var(--colorGinLayer2Background);
+    }
+
+    .level-2 .toolbar-menu {
+      background: var(--colorGinLayer3Background);
+    }
+
+    .level-3 .toolbar-menu {
+      background: #5a5a61;
+    }
   }
 }
 
@@ -391,20 +412,20 @@
 .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
 .toolbar .toolbar-tray a.is-active {
   color: var(--colorGinPrimary);
+  font-weight: 500;
   text-decoration: none;
+
+  @include breakpoint(max-width 975px) {
+    background: var(--colorGinItemHover);
+  }
 }
 
 // Mobile: hide menu titles
-.toolbar-menu {
-  &__title,
-  &__sub-title {
-    display: none;
-  }
-
-  &__trigger,
-  &__logo {
-    display: none;
-  }
+.toolbar-menu__title,
+.toolbar-menu__sub-title,
+a.toolbar-menu__trigger,
+.toolbar-menu__logo {
+  display: none;
 }
 
 // New Desktop Toolbar
@@ -666,6 +687,8 @@
 
             &.is-active {
               color: var(--colorGinPrimary);
+              font-weight: 500;
+              background: var(--colorGinItemHover);
             }
           }
 
@@ -717,8 +740,12 @@
   }
 }
 
-.toolbar-horizontal .toolbar-tray > .toolbar-lining {
+.gin--dark-mode.toolbar-horizontal .toolbar-tray > .toolbar-lining {
   padding-right: 0;
+}
+
+.toolbar .toolbar-icon.toolbar-handle:focus {
+  background-color: rgba(255, 255, 255, .1);
 }
 
 #toolbar-item-administration-search-tray input {

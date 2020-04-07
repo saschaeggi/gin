@@ -44,11 +44,16 @@
 
   &__items {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
 
-    .block-page-title-block,
-    .local-actions {
-      margin: 0;
+    @include breakpoint(480px) {
+      flex-wrap: nowrap;
+      align-items: center;
+
+      .block-page-title-block,
+      .local-actions {
+        margin: 0;
+      }
     }
 
     .block-page-title-block {

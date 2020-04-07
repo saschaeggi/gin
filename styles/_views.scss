@@ -184,6 +184,8 @@
 
 .layer-wrapper {
   padding: 24px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 
   & + .layer-wrapper {
     margin-top: 24px;
