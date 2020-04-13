@@ -33,6 +33,8 @@ $ginPrimary: #003cc5;
 
   --colorGinTableHeader: #dfe0e4;
   --colorGinSwitch: var(--colorGinGreen);
+
+  --colorGinIcons: #888;
 }
 
 .gin--dark-mode {
@@ -67,4 +69,6 @@ $ginPrimary: #003cc5;
   // --colorGinSelected: #{lighten(#3B3B3F, 5)};
   --colorGinTableHeader: var(--colorGinAppBackground);
   --colorGinSwitch: var(--colorGinPrimary);
+
+  --colorGinIcons: #777;
 }

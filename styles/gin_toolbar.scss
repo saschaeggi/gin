@@ -102,11 +102,11 @@
     .toolbar-icon-commerce-admin-commerce,
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &:before {
-        background-color: var(--colorGinTextLight);
+        background-color: var(--colorGinIcons);
         background-image: none;
         mask-repeat: no-repeat;
         mask-position: center center;
-        mask-size: 20px 20px;
+        mask-size: 18px 18px;
       }
 
       &:hover:before {
@@ -121,8 +121,9 @@
     // Admin tray: Home icon
     #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help {
       @include mq(976px) {
-        position: absolute;
-        top: 10px;
+        // position: absolute;
+        // top: 0;
+        height: 88px;
         transition: top $transition;
 
         &:hover {
@@ -142,8 +143,8 @@
         width: $logoSize;
         padding-left: 0;
         padding-right: 0;
-        background-color: #767676;
-        mask-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 679.25 774.71'%3E%3Cg id='Layer_2' data-name='Layer 2'%3E%3Cg id='Layer_1-2' data-name='Layer 1'%3E%3Cpath d='M312.52,0c2.08,1.88,3.52,3,4.75,4.32a502.23,502.23,0,0,0,100.4,82.79c25.18,15.82,50.86,30.83,76.38,46.08,23.66,14.14,46.41,29.5,67,47.95C610.51,225.52,646,278.9,664.8,342.93a349.82,349.82,0,0,1,13.11,72.52,361.39,361.39,0,0,1,1.15,41.22c-3,78.46-28.15,148.45-80.87,207.45C556,711.39,503.62,742.75,443,760.54A350.4,350.4,0,0,1,318.7,773.79c-128.19-9.12-240-87.52-290.42-200.14a327.78,327.78,0,0,1-27-161.94c2.57-27.2,9.54-53.44,19.82-78.78,14.79-36.5,35.59-69.35,60.35-99.79,29-35.67,62.28-67,98.28-95.39,15-11.89,30.63-23.12,46-34.66,13-9.81,26.23-19.4,39-29.55a205.7,205.7,0,0,0,20.47-18.79A99.23,99.23,0,0,0,311.1,6.31C311.48,4.55,311.89,2.78,312.52,0Zm-167,541.48a94.88,94.88,0,0,0,2.13,23.68c3.2,13.66,8.73,26.24,18.85,36.05,10.66,10.33,23.12,18.07,37.63,22.14,10.54,3,21.36,3.58,32.19,4.54a139,139,0,0,0,58.5-7.36,298.48,298.48,0,0,0,50.39-23.29c18.31-10.47,36.29-21.51,54.58-32,11.9-6.84,23.94-13.5,36.23-19.59,6.24-3.09,13.14-4.87,19.82-7,8.49-2.7,16.58-.91,23.9,3.59a137.86,137.86,0,0,1,18.71,13.28c9.38,8.2,18.2,17,27.15,25.71,9.65,9.34,19,19,28.83,28.13A128.62,128.62,0,0,0,569.63,621c4.85,3.32,10.39,4.51,16.37,4.4,10.5-.19,19.25-4.18,26.66-11.33a125.37,125.37,0,0,0,25.05-33.75,181.55,181.55,0,0,0,19.41-88,71.42,71.42,0,0,0-7.9-30.4,55.6,55.6,0,0,0-7.9-11.94c-12.07-13.53-27.19-17.16-44.4-12.41-9.62,2.66-18.35,7.51-26.71,12.82-13.49,8.56-26.68,17.59-40.07,26.3-10.45,6.8-20.91,13.58-31.55,20.07a105.92,105.92,0,0,1-23.46,10.78,37.71,37.71,0,0,1-24.47-.16,83.38,83.38,0,0,1-14.9-6.47c-10.14-6.07-20.05-12.53-29.83-19.16-13.48-9.15-26.57-18.87-40.17-27.83a202.38,202.38,0,0,0-40-20.51c-23.35-8.8-47.23-13.22-72.31-9.11-38.69,6.35-69.2,25.38-90.74,58.19C151,500.24,144.8,519.84,145.53,541.48Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        // background-color: var(--colorGinIcons);
+        mask-image: url("data:image/svg+xml,%3Csvg width='100pt' height='100pt' version='1.1' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m29.809 83.68c7.5312 6.6836 17.879 9.2109 27.641 6.75 9.7617-2.4648 17.676-9.5938 21.137-19.051 3.4609-9.4531 2.0195-20.008-3.8477-28.188l-24.738-34.531-24.738 34.531c-4.3984 6.1094-6.3672 13.637-5.5273 21.121 0.83984 7.4805 4.4297 14.383 10.074 19.367zm2-35.828l18.191-25.453 18.23 25.453c3.2188 4.4922 4.6641 10.012 4.0625 15.504-0.60547 5.4922-3.2109 10.57-7.3281 14.258-4.1133 3.6875-9.4453 5.7266-14.969 5.7266-5.5273 0-10.859-2.0391-14.973-5.7266-4.1133-3.6875-6.7227-8.7656-7.3242-14.258-0.60156-5.4922 0.84375-11.012 4.0625-15.504z'/%3E%3C/svg%3E");
         mask-size: $logoSize $logoSize;
         mask-position: center center;
 
@@ -466,9 +467,9 @@ a.toolbar-menu__trigger,
     display: flex;
     align-items: center;
     width: $toolbarWidth;
-    padding: 16px 0 16px 22px;
+    padding: 16px 0 16px 28px;
     margin: 0;
-    transition: $transition;
+    transition: background $transition;
 
     &, &:active, &:focus {
       background-color: transparent;
@@ -487,14 +488,14 @@ a.toolbar-menu__trigger,
       content: "";
       position: static;
       display: inline-block;
-      width: 40px;
-      height: 40px;
-      margin-right: 24px;
+      width: 32px;
+      height: 32px;
+      margin-right: 20px;
       border-radius: 50%;
       border: 1px solid var(--colorGinBorder);
       background: var(--colorGinLayerBackground) url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='%23999999'/%3E%3C/svg%3E") no-repeat center center;
       background-size: 12px 12px;
-      transition: $transition;
+      transition: transform $transition;
     }
 
     &.is-active {
@@ -571,7 +572,7 @@ a.toolbar-menu__trigger,
     height: 100vh;
     max-width: calc(100% - #{$topBar});
     background: var(--colorGinLayerBackground);
-    box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 4px rgba(0,0,0,0.05);
     transition: $transition;
 
     [data-toolbar-menu='open'] & {
@@ -608,8 +609,8 @@ a.toolbar-menu__trigger,
     }
 
     > .toolbar-menu {
-      align-self: center; // flex-start;
-      padding-top: 12px;
+      align-self: flex-start;
+      // padding-top: 88px;
       max-height: calc(100% - 112px);
       overflow-y: auto;
       background: transparent;
@@ -623,7 +624,7 @@ a.toolbar-menu__trigger,
           display: flex;
           align-items: center;
           width: $toolbarWidth;
-          height: 64px;
+          height: 56px;
           padding-left: $toolbarWidth;
           padding-right: 0;
           overflow: hidden;
@@ -704,12 +705,12 @@ a.toolbar-menu__trigger,
 
             a {
               color: var(--colorGinTitle);
-              padding: 24px 24px 16px 24px;
+              padding: 32px 24px 30px 24px; //24px 24px 16px 24px;
             }
           }
 
           &__sub-title {
-            font-size: 1.5em;
+            font-size: 1.667em;
             letter-spacing: normal;
             margin-bottom: 7px;
           }
