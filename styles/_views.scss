@@ -92,6 +92,7 @@
 .system-status-report__requirements-group,
 .views-edit-view,
 .views-preview-wrapper,
+.view-block-content .view-content,
 #views-entity-list
 {
   margin-top: 0;
@@ -111,6 +112,7 @@
 .system-status-report__requirements-group,
 .views-edit-view,
 .views-preview-wrapper,
+.view-block-content .view-content,
 #views-entity-list
 {
   width: 100%;
@@ -374,4 +376,8 @@
 
 .views-filterable-options {
   border-top: none;
+}
+
+.view-block-content .views-table {
+  margin-top: 0;
 }
