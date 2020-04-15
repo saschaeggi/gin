@@ -38,6 +38,15 @@
 .media-library-item__click-to-select-checkbox input {
   width: 28px;
   height: 28px;
+
+  &,
+  .gin--dark-mode & {
+    border: 2px solid var(--colorGinBorder);
+
+    &:checked {
+      border-color: var(--colorGinPrimary);
+    }
+  }
 }
 
 .media-library-item--grid:before {
