@@ -66,30 +66,4 @@
       });
     }
   };
-
-  Drupal.behaviors.ginScroll = {
-    attach: function attach(context, settings) {
-      var offsetTop = $(window).scrollTop(),
-          offset = 40,
-          scrollClass = '-has-scrolled';
-
-      if (offsetTop > offset) {
-        $('body').addClass(scrollClass);
-      } else {
-        $('body').removeClass(scrollClass);
-      }
-
-      // Scroll event
-      $(window).scroll(function (event) {
-        var offsetTop = $(window).scrollTop(),
-            offset = 40;
-
-        if (offsetTop > offset) {
-          $('body').addClass(scrollClass);
-        } else {
-          $('body').removeClass(scrollClass);
-        }
-      });
-    }
-  };
 })(jQuery, Drupal, drupalSettings);
