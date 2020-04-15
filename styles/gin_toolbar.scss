@@ -83,7 +83,7 @@
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &:before {
         @include mq(976px) {
-          left: #{round($toolbarWidth / 2.666666667)};
+          left: #{round($toolbarWidth / 2.666666667) - 1px};
           width: 21px;
         }
       }
@@ -149,7 +149,7 @@
         mask-position: center center;
 
         @include mq(976px) {
-          left: #{round($toolbarWidth / 2.666666667) - 3px};
+          left: #{round($toolbarWidth / 2.666666667) - 2px};
         }
       }
     }

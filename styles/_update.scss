@@ -1,0 +1,95 @@
+.project-update {
+  &__status {
+    &-icon {
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      vertical-align: bottom;
+
+      img {
+        display: none;
+      }
+    }
+
+    // Error
+    & &-icon {
+      background-color: var(--colorGinDanger);
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 14 14'%3E%3Cpath d='M3 11.1931L11.4501 2.99995' stroke='%23e34f4f' stroke-width='2'/%3E%3Ccircle cx='7' cy='7' r='6' fill='none' stroke='%23e34f4f' stroke-width='2'/%3E%3C/svg%3E%0A");
+      mask-position: center center;
+      mask-repeat: no-repeat;
+    }
+
+    // Outdated
+    &--not-current &-icon {
+      background-color: var(--colorGinWarning);
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 4 14' fill='%23e0ac00'%3E%3Crect x='0.5' width='3' height='9'/%3E%3Ccircle cx='2' cy='12.5' r='1.5'/%3E%3C/svg%3E%0A");
+      mask-position: center center;
+      mask-repeat: no-repeat;
+    }
+
+    // Current
+    &--current &-icon {
+      background-color: var(--colorGinGreen);
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 13'%3E%3Cpath d='M2 6.57143L5.6 10L14 2' fill='none' stroke='%2342a877' stroke-width='3'/%3E%3C/svg%3E%0A");
+      mask-position: center center;
+      mask-repeat: no-repeat;
+    }
+  }
+}
+
+.layer-wrapper {
+  .update {
+    margin: -25px;
+    width: calc(100% + 50px);
+  }
+}
+
+.update {
+  .color-success {
+    color: var(--colorGinGreen);
+    background-color: rgba(72, 171, 123, .05);
+
+    &:hover, &:active, &:focus {
+      background-color: rgba(72, 171, 123, .1);
+    }
+  }
+
+  .color-warning {
+    background-color: rgba(226, 151, 0, .05);
+
+    &:hover, &:active, &:focus {
+      background-color: rgba(226, 151, 0, .08);
+    }
+
+    &, &:hover, &:active, &:focus {
+      color: rgb(144, 103, 21);
+
+      .gin--dark-mode & {
+        color: var(--colorGinWarning);
+      }
+    }
+  }
+
+  .color-error {
+    color: var(--colorGinDanger);
+    background-color: rgba(222, 117, 96, .1);
+
+    &:hover, &:active, &:focus {
+      background-color: rgba(222, 117, 96, .2);
+    }
+  }
+
+  .color-success,
+  .color-warning,
+  .color-error {
+    border-left: 6px solid;
+
+    a {
+      color: var(--colorGinText);
+    }
+  }
+
+  .color-warning {
+    border-left: 6px solid var(--colorGinWarning);
+  }
+}
