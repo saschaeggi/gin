@@ -121,7 +121,8 @@
     // Admin tray: Home icon
     #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help {
       @include mq(976px) {
-        height: 100px;
+        font-size: 0;
+        height: 104px;
         transition: top $transition;
 
         &:hover {
@@ -466,9 +467,9 @@ a.toolbar-menu__trigger,
     display: flex;
     align-items: center;
     width: $toolbarWidth;
-    padding: 16px 0 16px 28px;
+    padding: 16px 0 16px 25px;
     margin: 0;
-    transition: background $transition;
+    transition: $transition;
 
     &, &:active, &:focus {
       background-color: transparent;
@@ -476,7 +477,7 @@ a.toolbar-menu__trigger,
 
     &:hover {
       color: var(--colorGinTitle);
-      background-color: var(--colorGinItemHover); //var(--colorGinAppBackground);
+      background-color: var(--colorGinItemHover);
 
       &:before {
         background-color: var(--colorGinTitle);
@@ -489,7 +490,7 @@ a.toolbar-menu__trigger,
       display: inline-block;
       width: 32px;
       height: 32px;
-      margin-right: 20px;
+      margin-right: 29px;
       border-radius: 50%;
       border: 1px solid var(--colorGinBorder);
       background: var(--colorGinLayerBackground) url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='%23999999'/%3E%3C/svg%3E") no-repeat center center;
@@ -502,7 +503,6 @@ a.toolbar-menu__trigger,
       font-size: 1rem;
       font-weight: normal;
       color: var(--colorGinTitle);
-      // padding: 16px 24px;
       width: $toolbarOpenWidth;
 
       &:before {
@@ -704,7 +704,7 @@ a.toolbar-menu__trigger,
 
             a {
               color: var(--colorGinTitle);
-              padding: 32px 24px 42px 24px; //24px 24px 16px 24px;
+              padding: 32px 24px 42px 24px;
             }
           }
 
