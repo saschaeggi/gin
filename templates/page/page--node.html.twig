@@ -45,7 +45,7 @@
 <div class="page-wrapper__node-edit-form{% if has_sidebar != 'false' %} node-edit-form--has-sidebar{% endif %}">
   <header class="region region-sticky">
     <div class="layout-container region-sticky__items">
-      {{ page.header.gin_page_title }}
+      {{ page.header[page_title_block] }}
       {{ page.content[local_actions_block] }}
     </div>
   </header>
