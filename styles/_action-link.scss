@@ -35,6 +35,7 @@
 }
 
 .action-link--icon-trash.action-link--danger,
+.button.button--danger,
 a.button.button--danger {
   color: var(--colorGinDanger);
 
@@ -45,6 +46,8 @@ a.button.button--danger {
   &,
   &:hover,
   &:active {
+    border-color: var(--colorGinDanger) !important;
+
     &:before {
       background-image: none;
       background-color: var(--colorGinDanger);

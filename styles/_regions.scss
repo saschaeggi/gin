@@ -82,6 +82,10 @@
   @include breakpoint(1024px) {
     padding-top: $contentHeaderSpacer;
 
+    .gin--classic-toolbar & {
+      padding-top: #{$contentHeaderSpacer + 32px};
+    }
+
     .gin--classic-toolbar:not(.path-node) & {
       padding-top: 0;
     }
@@ -110,6 +114,7 @@
   flex-wrap: wrap;
   width: 100%;
   padding: 0 16px;
+  background-color: var(--colorGinAppBackground);
   box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
 
   @include breakpoint(600px) {
@@ -145,10 +150,17 @@
   }
 
   @include breakpoint(1860px) {
-    right: calc(50% - #{$sidebarWidth} - 6em - 52px);
+    // right: calc(50% - #{$sidebarWidth - $toolbarWidth + 62px});
+    right: calc(50% - 504px);
 
+    .gin--classic-toolbar & {
+      right: calc(50% - #{$sidebarWidth} - 6em);
+    }
+  }
+
+  @include breakpoint(2010px) {
     [data-toolbar-menu='open'] & {
-      right: calc(50% - #{$sidebarWidth} - 6em - 52px - #{(($toolbarOpenWidth - $toolbarWidth) / 2)});
+      right: calc(50% - 580px);
     }
   }
 
@@ -160,11 +172,11 @@
     }
   }
 
-  .form-item--status-value {
-    background: var(--colorGinAppBackground);
+  .gin-sticky {
+    display: flex;
   }
 
-  .entity-content-form-footer {
+  .field--name-status {
     flex-grow: 1;
     align-self: center;
     margin-right: 2rem;

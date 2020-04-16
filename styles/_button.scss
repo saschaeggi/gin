@@ -39,6 +39,10 @@
   &:active, &:focus {
     border-color: var(--colorGinPrimaryActive) !important;
   }
+
+  &:hover, &:active, &:focus, &:hover:focus {
+    color: var(--colorGinButtonText);
+  }
 }
 
 .button.button--small {
@@ -87,7 +91,7 @@ a.button--primary:focus:hover {
   }
 }
 
-.action-link--icon-trash.action-link {
+.action-link.action-link--icon-trash {
   min-height: 48px;
   padding: calc(.75rem - 1px) calc(1.5rem - 2px);
   box-sizing: border-box;

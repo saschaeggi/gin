@@ -339,12 +339,10 @@
   }
 }
 
-.toolbar-menu {
-  &-title,
-  &-sub-title,
-  &__trigger {
-    display: none !important;
-  }
+.toolbar-menu__trigger,
+.menu-item-title,
+.menu-item-sub-title {
+  display: none !important;
 }
 
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
@@ -372,4 +370,13 @@
 
 .toolbar .level-3 > ul {
   background-color: var(--colorGinAppBackground);
+}
+
+// Offset sidebar
+.gin--classic-toolbar .page-wrapper__node-edit-form .layout-region-node-secondary {
+  padding-top: 39px;
+}
+
+.gin--classic-toolbar.toolbar-tray-open .page-wrapper__node-edit-form .layout-region-node-secondary {
+  padding-top: 79px;
 }
