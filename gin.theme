@@ -101,7 +101,7 @@ function gin_preprocess_dropbutton_wrapper(&$variables) {
  * Form_alter()
  */
 function gin_form_alter(&$form, $form_state, $form_id) {
-  if (strpos($form_id, 'node_') !== FALSE && strpos($form_id, 'edit_form') !== FALSE) {
+  if (strpos($form_id, 'node_') !== FALSE && strpos($form_id, '_form') !== FALSE) {
     // Submit change weight.
     if (isset($form['actions']['submit'])) {
       $form['actions']['submit']['#weight'] = '99';
@@ -119,9 +119,11 @@ function gin_form_alter(&$form, $form_state, $form_id) {
       ];
       // Assign status to gin_sticky
       $form['status']['#group'] = 'gin_sticky';
+
       // Create actions group
       $form['gin_sticky']['actions'] = [
         '#type' => 'actions',
+        '#weight' => 130
       ];
       // Add Submit to gin_sticky actions
       $form['gin_sticky']['actions']['submit'] = $form['actions']['submit'];
