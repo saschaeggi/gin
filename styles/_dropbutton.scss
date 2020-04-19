@@ -24,12 +24,6 @@
     right: 2px;
   }
 
-  &-action {
-    .field-add-more-submit {
-      border: 0 none !important;
-    }
-  }
-
   &__item {
     &:first-of-type ~ .dropbutton__item {
       background-color: var(--colorGinBackground);
@@ -74,6 +68,15 @@
 
   &:not(:last-of-type) {
     margin-right: calc(3rem + 1px);
+  }
+
+  > .button {
+    border-color: transparent !important;
+
+    &:hover {
+      color: var(--colorGinButtonText);
+      background-color: var(--colorGinPrimary);
+    }
   }
 }
 

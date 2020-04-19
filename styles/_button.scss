@@ -71,6 +71,11 @@
   }
 }
 
+a.button:hover,
+a.button:active {
+  color: var(--colorGinButtonText);
+}
+
 a.button--primary:hover,
 a.button--primary:active,
 a.button--primary:focus,
