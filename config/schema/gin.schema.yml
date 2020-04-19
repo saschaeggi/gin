@@ -1,0 +1,18 @@
+# Schema for the configuration files of the Gin theme.
+
+gin.settings:
+  type: theme_settings
+  label: 'gin settings'
+  mapping:
+    preset_accent_color:
+      type: string
+      label: 'Present accent color'
+    preset_focus_color:
+      type: string
+      label: 'Present focus color'
+    enable_darkmode:
+      type: boolean
+      label: 'The dark mode'
+    classic_toolbar:
+      type: boolean
+      label: 'The classic toolbar'
