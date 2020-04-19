@@ -93,6 +93,7 @@
 .views-edit-view,
 .views-preview-wrapper,
 .view-block-content .view-content,
+.view-files .view-content,
 #views-entity-list
 {
   margin-top: 0;
@@ -107,6 +108,7 @@
 .panel,
 .admin-list,
 .update,
+.view-files .view-content,
 .view-watchdog .view-content,
 .system-status-general-info,
 .system-status-report__requirements-group,
@@ -153,6 +155,7 @@
   }
 }
 
+.view-files .view-content,
 .panel__content {
   padding-top: 0;
 }
