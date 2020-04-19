@@ -1,0 +1,43 @@
+.layer-wrapper,
+.block-system > form,
+.view-content .views-form,
+.panel,
+.admin-list,
+.view-watchdog .view-content,
+.views-exposed-form.views-exposed-form,
+.system-status-counter,
+.system-status-general-info,
+.system-status-report__requirements-group,
+.views-edit-view,
+.views-preview-wrapper,
+.view-block-content .view-content,
+.view-files .view-content,
+#views-entity-list
+{
+  margin-top: 0;
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.layer-wrapper,
+.block-system > form,
+.view-content .views-form,
+.views-exposed-form.views-exposed-form,
+.panel,
+.admin-list,
+.update,
+.view-files .view-content,
+.view-watchdog .view-content,
+.system-status-general-info,
+.system-status-report__requirements-group,
+.views-edit-view,
+.views-preview-wrapper,
+.view-block-content .view-content,
+#views-entity-list
+{
+  width: 100%;
+  padding: 24px;
+  background: var(--colorGinLayerBackground);
+  border: 1px solid var(--colorGinBorder);
+  box-sizing: border-box;
+}
