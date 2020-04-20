@@ -1,4 +1,7 @@
-/* eslint-disable func-names, no-mutable-exports, comma-dangle */
+/* eslint-disable func-names, no-mutable-exports, comma-dangle, strict */
+
+'use strict';
+
 (($, Drupal) => {
   Drupal.behaviors.ginSettings = {
     attach: function attach(context) {

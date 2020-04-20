@@ -1,4 +1,7 @@
-/* eslint-disable func-names, no-mutable-exports, no-continue, comma-dangle */
+/* eslint-disable func-names, no-mutable-exports, no-continue, comma-dangle, strict */
+
+'use strict';
+
 (($, Drupal) => {
   Drupal.behaviors.tableSelect = {
     attach: function attach(context) {

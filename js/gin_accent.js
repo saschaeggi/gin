@@ -1,4 +1,7 @@
-/* eslint-disable no-bitwise, no-nested-ternary, no-mutable-exports, comma-dangle */
+/* eslint-disable no-bitwise, no-nested-ternary, no-mutable-exports, comma-dangle, strict */
+
+'use strict';
+
 (($, Drupal, drupalSettings) => {
   Drupal.behaviors.ginAccent = {
     attach: function attach() {
