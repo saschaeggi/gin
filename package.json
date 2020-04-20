@@ -36,6 +36,7 @@
     "es6-promise": "^4.1.1",
     "eslint": "5.7.0",
     "eslint-config-airbnb-base": "13.1.0",
+    "eslint-config-drupal-bundle": "^1.0.2",
     "eslint-import-resolver-webpack": "0.10.1",
     "eslint-plugin-import": "2.14.0",
     "expose-loader": "^0.7.5",

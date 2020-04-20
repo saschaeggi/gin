@@ -1,11 +1,12 @@
-(function ($, Drupal) {
+/* eslint-disable func-names, no-bitwise, no-nested-ternary, no-undef, no-param-reassign */
+(($, Drupal) => {
   Drupal.behaviors.ginSettings = {
-    attach: function (context, settings) {
+    attach: function attach(context) {
       // Watch Darkmode setting has changed.
       $('input[name="enable_darkmode"]', context).change(function() {
-        var darkmode = $(this).is(':checked'),
-            accentColorPreset = $('select[name="preset_accent_color"]').val(),
-            focusColorPreset = $('select[name="preset_focus_color"]').val();
+        const darkmode = $(this).is(":checked");
+        const accentColorPreset = $('select[name="preset_accent_color"]').val();
+        const focusColorPreset = $('select[name="preset_focus_color"]').val();
 
         // Toggle Darkmode
         Drupal.behaviors.ginAccent.darkmode(darkmode);
@@ -17,7 +18,7 @@
 
       // Watch Accent color setting has changed.
       $('select[name="preset_accent_color"]', context).change(function() {
-        var accentColorPreset = $(this).val();
+        const accentColorPreset = $(this).val();
 
         // Update
         Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset);
@@ -25,16 +26,19 @@
 
       // Watch Accent color setting has changed.
       $('input[name="accent_color"]', context).change(function() {
-        var accentColorPreset = $('select[name="preset_accent_color"]').val(),
-            accentColorSetting = $(this).val();
+        const accentColorPreset = $('select[name="preset_accent_color"]').val();
+        const accentColorSetting = $(this).val();
 
         // Update
-        Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset, accentColorSetting);
+        Drupal.behaviors.ginAccent.setAccentColor(
+          accentColorPreset,
+          accentColorSetting
+        );
       });
 
       // Watch Accent color setting has changed.
       $('select[name="preset_focus_color"]', context).change(function() {
-        var accentColorPreset = $(this).val();
+        const accentColorPreset = $(this).val();
 
         // Update
         Drupal.behaviors.ginAccent.setFocusColor(accentColorPreset);
@@ -42,12 +46,15 @@
 
       // Watch Accent color setting has changed.
       $('input[name="focus_color"]', context).change(function() {
-        var focusColorPreset = $('select[name="preset_focus_color"]').val(),
-            focusColorSetting = $(this).val();
+        const focusColorPreset = $('select[name="preset_focus_color"]').val();
+        const focusColorSetting = $(this).val();
 
         // Update
-        Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset, focusColorSetting);
+        Drupal.behaviors.ginAccent.setFocusColor(
+          focusColorPreset,
+          focusColorSetting
+        );
       });
     }
   };
-})(jQuery, Drupal, drupalSettings);
+})(jQuery, Drupal);
