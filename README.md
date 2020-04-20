@@ -1,12 +1,21 @@
-# Gin Webpack 4 Build
-A minimalistic build task to compile css/js for Gin
+# INTRODUCTION
+A minimalistic build task to compile css/js for Gin.
 
-## Run build task (compile / watch / build)
-Install (run outside of vagrant):
+# REQUIREMENTS
+- nvm
+- npm (10.15.1)
+
+# INSTALLATION
+How to setup Gin locally that you can start contributing and compile CSS & JS files.
+
 ```
 nvm use
 npm install
 ```
+
+# CONFIGURATION
+
+## Run build task (compile / watch / build)
 
 Run dev env with watcher and debug output (development process)
 ```
