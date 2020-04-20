@@ -84,9 +84,7 @@
           Drupal.tableSelectRange($(e.target).closest('tr')[0], $(lastChecked).closest('tr')[0], e.target.checked);
         }
 
-        updateSelectAll(
-          checkboxes.length === checkboxes.filter(':checked').length,
-        );
+        updateSelectAll(checkboxes.length === checkboxes.filter(':checked').length);
         updateSticky(Boolean(Number(checkboxes.filter(':checked').length)));
 
         lastChecked = e.target;

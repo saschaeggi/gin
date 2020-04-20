@@ -1,4 +1,4 @@
-/* eslint-disable func-names, no-mutable-exports */
+/* eslint-disable func-names, no-mutable-exports, comma-dangle */
 (($, Drupal, drupalSettings) => {
   Drupal.behaviors.ginToolbarActiveItem = {
     attach: function attach() {

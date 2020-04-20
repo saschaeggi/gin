@@ -1,4 +1,4 @@
-/* eslint-disable func-names, no-mutable-exports */
+/* eslint-disable func-names, no-mutable-exports, comma-dangle */
 (($, Drupal) => {
   Drupal.behaviors.ginSettings = {
     attach: function attach(context) {
@@ -49,6 +49,6 @@
         // Update
         Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset, focusColorSetting);
       });
-    },
+    }
   };
 })(jQuery, Drupal);

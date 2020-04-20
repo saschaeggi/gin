@@ -80,25 +80,24 @@
         if (accentColor) {
           const strippedAccentColor = accentColor.replace('#', '');
           const body = darkmode ? `.${darkmodeClass}` : 'body';
+          const styles = `<style class="gin-custom-colors">\
+            ${body} {\n\
+              --colorGinPrimary: ${accentColor};\n\
+              --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -10)};\n\
+              --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -15)};\n\
+              --colorGinPrimaryLight: ${accentColor}${Math.round(ratio * 3.5)};\n\
+              --colorGinPrimaryLightHover: ${accentColor}${Math.round(ratio * 4.5)};\n\
+              --colorGinPrimaryLightActive: ${accentColor}${Math.round(ratio * 5.5)};\n\
+              --colorGinItemHover: ${accentColor}${Math.round(ratio * 1.5)};\n\
+            }\n\
+            .form-element--type-select:hover,\n\
+            .form-element--type-select:active,\n\
+            .form-element--type-select:focus {\n\
+              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath fill='none' stroke-width='1.5' d='M1 1L7 7L13 1' stroke='%23${strippedAccentColor}'/%3E%3C/svg%3E%0A");\n\
+            }\n\
+            </style>`;
 
-          $('body').append(
-            `<style class="gin-custom-colors">\
-              ${body} {\n\
-                --colorGinPrimary: ${accentColor};\n\
-                --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -10)};\n\
-                --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -15)};\n\
-                --colorGinPrimaryLight: ${accentColor}${Math.round(ratio * 3.5)};\n\
-                --colorGinPrimaryLightHover: ${accentColor}${Math.round(ratio * 4.5)};\n\
-                --colorGinPrimaryLightActive: ${accentColor}${Math.round(ratio * 5.5)};\n\
-                --colorGinItemHover: ${accentColor}${Math.round(ratio * 1.5)};\n\
-              }\n\
-              .form-element--type-select:hover,\n\
-              .form-element--type-select:active,\n\
-              .form-element--type-select:focus {\n\
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath fill='none' stroke-width='1.5' d='M1 1L7 7L13 1' stroke='%23${strippedAccentColor}'/%3E%3C/svg%3E%0A");\n\
-              }\n\
-              </style>`,
-          );
+          $('body').append(styles);
         }
       }
     },
