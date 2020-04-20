@@ -30,10 +30,7 @@
         const accentColorSetting = $(this).val();
 
         // Update
-        Drupal.behaviors.ginAccent.setAccentColor(
-          accentColorPreset,
-          accentColorSetting,
-        );
+        Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset, accentColorSetting);
       });
 
       // Watch Accent color setting has changed.

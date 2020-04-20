@@ -1,5 +1,5 @@
 /* eslint-disable func-names, no-mutable-exports */
-(function ($, Drupal, drupalSettings) {
+(($, Drupal, drupalSettings) => {
   Drupal.behaviors.ginToolbarActiveItem = {
     attach: function attach() {
       const path = drupalSettings.path.currentPath;
@@ -39,7 +39,7 @@
       else if (path.indexOf('admin/help') > -1) {
         $('.toolbar-icon-help-main').addClass('is-active');
       }
-    },
+    }
   };
 
   Drupal.behaviors.ginToolbarToggle = {
@@ -69,6 +69,6 @@
           $('body').attr('data-toolbar-menu', '');
         }
       });
-    },
+    }
   };
-}(jQuery, Drupal, drupalSettings));
+})(jQuery, Drupal, drupalSettings);

@@ -36,10 +36,7 @@
           const $checkbox = $(this);
           const stateChanged = $checkbox.prop('checked') !== state;
 
-          $checkbox.attr(
-            'title',
-            state ? strings.selectNone : strings.selectAll,
-          );
+          $checkbox.attr('title', state ? strings.selectNone : strings.selectAll);
 
           if (stateChanged) {
             $checkbox.prop('checked', state).trigger('change');
