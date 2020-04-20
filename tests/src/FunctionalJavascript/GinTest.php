@@ -16,6 +16,9 @@ class GinTest extends BrowserTestBase {
    */
   protected $defaultTheme = 'gin';
 
+  /**
+   * Sets up the test.
+   */
   public function setUp() {
     parent::setUp();
     $adminUser = $this->drupalCreateUser(['access administration pages', 'administer themes']);
@@ -36,28 +39,40 @@ class GinTest extends BrowserTestBase {
     $this->assertSession()->responseNotContains('gin_classic_toolbar.css');
   }
 
-  public function testDarkModeSetting(){
-    \Drupal::configFactory()->getEditable('gin.settings')->set('enable_darkmode', true)->save();
+  /**
+   * Tests Darkmode setting.
+   */
+  public function testDarkModeSetting() {
+    \Drupal::configFactory()->getEditable('gin.settings')->set('enable_darkmode', TRUE)->save();
     $response = $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);
     $this->assertContains('"darkmode":true', $response);
   }
 
-  public function testClassicToolbarSetting(){
-    \Drupal::configFactory()->getEditable('gin.settings')->set('classic_toolbar', true)->save();
+  /**
+   * Tests Classic Drupal Toolbar setting.
+   */
+  public function testClassicToolbarSetting() {
+    \Drupal::configFactory()->getEditable('gin.settings')->set('classic_toolbar', TRUE)->save();
     $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);
     $this->assertSession()->responseContains('gin_classic_toolbar.css');
   }
 
-  public function testAccentColorSetting(){
+  /**
+   * Tests Color Accent setting.
+   */
+  public function testAccentColorSetting() {
     \Drupal::configFactory()->getEditable('gin.settings')->set('preset_accent_color', 'red')->save();
     $response = $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);
     $this->assertContains('"preset_accent_color":"red"', $response);
   }
 
-  public function testFocusColorSetting(){
+  /**
+   * Tests Focus Accent setting.
+   */
+  public function testFocusColorSetting() {
     \Drupal::configFactory()->getEditable('gin.settings')->set('preset_focus_color', 'blue')->save();
     $response = $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);

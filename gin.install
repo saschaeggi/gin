@@ -6,7 +6,7 @@
  */
 
 /**
- * Update Accent Color: Set to Claro Blue
+ * Update Accent Color: Set to Claro Blue.
  */
 function gin_update_8101() {
   /** @var \Drupal\Core\Config\Config $config */
@@ -17,13 +17,13 @@ function gin_update_8101() {
 }
 
 /**
- * Update: Trigger cache rebuild
+ * Update: Trigger cache rebuild.
  */
 function gin_update_8301() {
 }
 
 /**
- * Update: Trigger cache rebuild
+ * Update: Trigger cache rebuild.
  */
 function gin_update_8302() {
 }
