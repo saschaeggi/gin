@@ -30,6 +30,17 @@
           $bulkOperations.removeClass('is-sticky');
         }
       });
+
+      // Media Library select
+      $('.media-library-view .media-library-item__click-to-select-trigger', context).on('click', function() {
+        var $bulkOperations = $(this).parents('.media-library-view').find('[data-drupal-selector*="edit-header"]');
+
+        if ($('.media-library-view .form-checkbox:checked', context).length > 0) {
+          $bulkOperations.addClass('is-sticky');
+        } else {
+          $bulkOperations.removeClass('is-sticky');
+        }
+      });
     }
   };
 })(jQuery, Drupal);

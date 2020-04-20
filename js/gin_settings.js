@@ -1,10 +1,10 @@
-/* eslint-disable func-names, no-bitwise, no-nested-ternary, no-undef, no-param-reassign */
+/* eslint-disable func-names, no-mutable-exports */
 (($, Drupal) => {
   Drupal.behaviors.ginSettings = {
     attach: function attach(context) {
       // Watch Darkmode setting has changed.
-      $('input[name="enable_darkmode"]', context).change(function() {
-        const darkmode = $(this).is(":checked");
+      $('input[name="enable_darkmode"]', context).change(function () {
+        const darkmode = $(this).is(':checked');
         const accentColorPreset = $('select[name="preset_accent_color"]').val();
         const focusColorPreset = $('select[name="preset_focus_color"]').val();
 
@@ -17,7 +17,7 @@
       });
 
       // Watch Accent color setting has changed.
-      $('select[name="preset_accent_color"]', context).change(function() {
+      $('select[name="preset_accent_color"]', context).change(function () {
         const accentColorPreset = $(this).val();
 
         // Update
@@ -25,19 +25,19 @@
       });
 
       // Watch Accent color setting has changed.
-      $('input[name="accent_color"]', context).change(function() {
+      $('input[name="accent_color"]', context).change(function () {
         const accentColorPreset = $('select[name="preset_accent_color"]').val();
         const accentColorSetting = $(this).val();
 
         // Update
         Drupal.behaviors.ginAccent.setAccentColor(
           accentColorPreset,
-          accentColorSetting
+          accentColorSetting,
         );
       });
 
       // Watch Accent color setting has changed.
-      $('select[name="preset_focus_color"]', context).change(function() {
+      $('select[name="preset_focus_color"]', context).change(function () {
         const accentColorPreset = $(this).val();
 
         // Update
@@ -45,16 +45,16 @@
       });
 
       // Watch Accent color setting has changed.
-      $('input[name="focus_color"]', context).change(function() {
+      $('input[name="focus_color"]', context).change(function () {
         const focusColorPreset = $('select[name="preset_focus_color"]').val();
         const focusColorSetting = $(this).val();
 
         // Update
         Drupal.behaviors.ginAccent.setFocusColor(
           focusColorPreset,
-          focusColorSetting
+          focusColorSetting,
         );
       });
-    }
+    },
   };
 })(jQuery, Drupal);
