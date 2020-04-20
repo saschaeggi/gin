@@ -47,10 +47,7 @@
         const focusColorSetting = $(this).val();
 
         // Update
-        Drupal.behaviors.ginAccent.setFocusColor(
-          focusColorPreset,
-          focusColorSetting,
-        );
+        Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset, focusColorSetting);
       });
     },
   };

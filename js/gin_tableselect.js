@@ -81,11 +81,7 @@
           .toggleClass('selected', this.checked);
 
         if (e.shiftKey && lastChecked && lastChecked !== e.target) {
-          Drupal.tableSelectRange(
-            $(e.target).closest('tr')[0],
-            $(lastChecked).closest('tr')[0],
-            e.target.checked,
-          );
+          Drupal.tableSelectRange($(e.target).closest('tr')[0], $(lastChecked).closest('tr')[0], e.target.checked);
         }
 
         updateSelectAll(
