@@ -71,7 +71,7 @@
       Drupal.behaviors.ginAccent.clearAccentColor();
 
       if (accentColorPreset !== "blue") {
-        if (accentColorPreset == "custom") {
+        if (accentColorPreset === "custom") {
           accentColor = accentColorSetting;
         } else {
           accentColor = accentColors[accentColorPreset];
