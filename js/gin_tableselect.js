@@ -1,4 +1,4 @@
-/* eslint-disable func-names, no-mutable-exports, no-continue */
+/* eslint-disable func-names, no-mutable-exports, no-continue, comma-dangle */
 (($, Drupal) => {
   Drupal.behaviors.tableSelect = {
     attach: function attach(context) {
@@ -7,7 +7,7 @@
         .closest('table')
         .once('table-select')
         .each(Drupal.tableSelect);
-    },
+    }
   };
 
   Drupal.tableSelect = function () {
@@ -21,7 +21,7 @@
     const $table = $(table);
     const strings = {
       selectAll: Drupal.t('Select all rows in this table'),
-      selectNone: Drupal.t('Deselect all rows in this table'),
+      selectNone: Drupal.t('Deselect all rows in this table')
     };
     const setClass = 'is-sticky';
     const $stickyHeader = $table

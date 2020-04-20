@@ -1,4 +1,4 @@
-/* eslint-disable no-bitwise, no-nested-ternary, no-mutable-exports */
+/* eslint-disable no-bitwise, no-nested-ternary, no-mutable-exports, comma-dangle */
 (($, Drupal, drupalSettings) => {
   Drupal.behaviors.ginAccent = {
     attach: function attach() {
@@ -35,7 +35,7 @@
           red: '#ca6d6d',
           orange: '#f79576',
           yellow: '#f1c970',
-          pink: '#e79da3',
+          pink: '#e79da3'
         };
       }
       else {
@@ -48,7 +48,7 @@
           red: '#a55254',
           orange: '#e07f34',
           yellow: '#d69400',
-          pink: '#c5636b',
+          pink: '#c5636b'
         };
       }
 
@@ -152,6 +152,6 @@
       )
         .toString(16)
         .slice(1)}`;
-    },
+    }
   };
 })(jQuery, Drupal, drupalSettings);
