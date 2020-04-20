@@ -6,7 +6,7 @@ A minimalistic build task to compile css/js for Gin.
 - npm (10.15.1)
 
 # INSTALLATION
-How to setup Gin locally that you can start contributing and compile CSS & JS files.
+How to setup Gin locally that you can compile CSS & JS files.
 
 ```
 nvm use
