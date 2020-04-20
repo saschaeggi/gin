@@ -27,26 +27,26 @@
       if (darkmodeEnabled === true) {
         // Darkmode colors.
         accentColors = {
-          dark_purple: "#976bef",
-          purple: "#dba5ef",
-          teal: "#67efce",
-          green: "#6bd4a1",
-          red: "#ca6d6d",
-          orange: "#f79576",
-          yellow: "#f1c970",
-          pink: "#e79da3"
+          dark_purple: '#976bef',
+          purple: '#dba5ef',
+          teal: '#67efce',
+          green: '#6bd4a1',
+          red: '#ca6d6d',
+          orange: '#f79576',
+          yellow: '#f1c970',
+          pink: '#e79da3'
         };
       } else {
         // Light theme colors.
         accentColors = {
-          dark_purple: "#35009d",
-          purple: "#a43bcb",
-          teal: "#267c91",
-          green: "#26a769",
-          red: "#a55254",
-          orange: "#e07f34",
-          yellow: "#d69400",
-          pink: "#c5636b"
+          dark_purple: '#35009d',
+          purple: '#a43bcb',
+          teal: '#267c91',
+          green: '#26a769',
+          red: '#a55254',
+          orange: '#e07f34',
+          yellow: '#d69400',
+          pink: '#c5636b'
         };
       }
 
