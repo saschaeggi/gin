@@ -1,5 +1,7 @@
 /* eslint-disable no-bitwise, no-nested-ternary, no-undef, no-param-reassign */
 (($, Drupal, drupalSettings) => {
+  'use strict';
+
   Drupal.behaviors.ginAccent = {
     attach: function attach() {
       // Set Colors
@@ -13,9 +15,9 @@
       const darkmodeClass = drupalSettings.gin.darkmode_class;
 
       if (darkmodeEnabled === true) {
-        $("body").addClass(darkmodeClass);
+        $('body').addClass(darkmodeClass);
       } else {
-        $("body").removeClass(darkmodeClass);
+        $('body').removeClass(darkmodeClass);
       }
     },
 
@@ -60,7 +62,7 @@
         color != null ? color : drupalSettings.gin.accent_color;
       const darkmode =
         preset != null
-          ? $('input[name="enable_darkmode"]').is(":checked")
+          ? $('input[name="enable_darkmode"]').is(':checked')
           : drupalSettings.gin.darkmode;
       const darkmodeClass = drupalSettings.gin.darkmode_class;
       const accentColors = Drupal.behaviors.ginAccent.colorDefinition(darkmode);
@@ -70,18 +72,18 @@
       // First clear things up.
       Drupal.behaviors.ginAccent.clearAccentColor();
 
-      if (accentColorPreset !== "blue") {
-        if (accentColorPreset === "custom") {
+      if (accentColorPreset !== 'blue') {
+        if (accentColorPreset === 'custom') {
           accentColor = accentColorSetting;
         } else {
           accentColor = accentColors[accentColorPreset];
         }
 
         if (accentColor) {
-          const strippedAccentColor = accentColor.replace("#", "");
-          const body = darkmode ? `.${darkmodeClass}` : "body";
+          const strippedAccentColor = accentColor.replace('#', '');
+          const body = darkmode ? `.${darkmodeClass}` : 'body';
 
-          $("body").append(
+          $('body').append(
             `<style class="gin-custom-colors">\
           ${body} {\n\
             --colorGinPrimary: ${accentColor};\n\
@@ -114,7 +116,7 @@
     },
 
     clearAccentColor: function clearAccentColor() {
-      $(".gin-custom-colors").remove();
+      $('.gin-custom-colors').remove();
     },
 
     setFocusColor: function setFocusColor(preset = null, color = null) {
@@ -126,32 +128,32 @@
       // First clear things up.
       Drupal.behaviors.ginAccent.clearFocusColor();
 
-      if (focusColorPreset !== "gin") {
+      if (focusColorPreset !== 'gin') {
         let setColor;
 
         switch (focusColorPreset) {
           default:
-          case "claro":
-            setColor = "#26a769";
+          case 'claro':
+            setColor = '#26a769';
             break;
-          case "accent":
-            setColor = "var(--colorGinPrimary)";
+          case 'accent':
+            setColor = 'var(--colorGinPrimary)';
             break;
-          case "custom":
+          case 'custom':
             setColor = focusColorSetting;
             break;
         }
 
-        $("body").css("--colorGinFocus", setColor);
+        $('body').css('--colorGinFocus', setColor);
       }
     },
 
     clearFocusColor: function clearFocusColor() {
-      $("body").css("--colorGinFocus", "");
+      $('body').css('--colorGinFocus', '');
     },
 
     shadeColor: function shadeColor(color, percent) {
-      const num = parseInt(color.replace("#", ""), 16);
+      const num = parseInt(color.replace('#', ''), 16);
       const amt = Math.round(2.55 * percent);
       const R = (num >> 16) + amt;
       const B = ((num >> 8) & 0x00ff) + amt;
