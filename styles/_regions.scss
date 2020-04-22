@@ -148,13 +148,15 @@
     right: calc(#{$sidebarWidth} + 4em);
   }
 
+  @include breakpoint(1770px) {
+    .gin--classic-toolbar & {
+      right: calc(50% - 460px);
+    }
+  }
+
   @include breakpoint(1860px) {
     // right: calc(50% - #{$sidebarWidth - $toolbarWidth + 62px});
     right: calc(50% - 504px);
-
-    .gin--classic-toolbar & {
-      right: calc(50% - #{$sidebarWidth} - 6em);
-    }
   }
 
   @include breakpoint(2010px) {

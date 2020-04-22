@@ -551,11 +551,15 @@ a.toolbar-menu__trigger,
   }
 
   .region-sticky {
-    max-width: calc(100% - #{$toolbarWidth});
+    max-width: calc(100% - #{$sidebarWidth});
   }
 
   .path-node .region-sticky {
     max-width: calc(100% - #{$toolbarWidth + $sidebarWidth + 2px});
+  }
+
+  .path-node .page-wrapper__node-edit-form:not(.node-edit-form--has-sidebar) .region-sticky {
+    max-width: calc(100% - #{$toolbarWidth});
   }
 
   .path-node[data-toolbar-menu='open'] .region-sticky {

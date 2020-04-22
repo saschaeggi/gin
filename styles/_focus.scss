@@ -6,7 +6,8 @@
 .form-boolean:focus:hover,
 .cke.cke_chrome.cke_focus,
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a:focus,
-.form-element.error:hover:focus {
+.form-element.error:hover:focus,
+.form-actions .action-link:focus {
   box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 5px var(--colorGinFocus);
 }
 

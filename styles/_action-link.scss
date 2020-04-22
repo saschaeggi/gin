@@ -45,6 +45,7 @@ a.button.button--danger {
 
   &,
   &:hover,
+  &:focus,
   &:active {
     border-color: var(--colorGinDanger) !important;
 
@@ -56,6 +57,7 @@ a.button.button--danger {
   }
 
   &:hover,
+  &:focus,
   &:active {
     color: var(--colorGinLayerBackground);
     background-color: var(--colorGinDanger);

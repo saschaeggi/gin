@@ -34,8 +34,12 @@ function gin_preprocess_page(&$variables) {
   $path = \Drupal::service('path.current')->getPath();
   $length = strlen('node/add');
 
-  // Check if we're directly on the node add page.
-  if (substr($path, -$length) === 'node/add') {
+  // Check if we're directly on the node add or an delete page.
+  if (
+    substr($path, -$length) === 'node/add' ||
+    strpos($path, '/delete') !== FALSE
+
+   ) {
     $variables['has_sidebar'] = 'false';
   }
 
@@ -100,11 +104,15 @@ function gin_preprocess_dropbutton_wrapper(&$variables) {
 }
 
 /**
- * Form_alter()
+ * Implements form_alter_HOOK() for some major form changes.
  */
 function gin_form_alter(&$form, $form_state, $form_id) {
+  // Okay this is the tricky part,
+  // choose the right node forms to alter the actions
+  // This needs refactoring later on.
   if (
-    (strpos($form_id, 'node_') !== FALSE && strpos($form_id, '_form') !== FALSE) &&
+    (strpos($form_id, 'node_') === 0 && strpos($form_id, '_form') !== FALSE) &&
+    strpos($form_id, '_delete_form') === FALSE &&
     $form_id !== 'node_type_edit_form'
    ) {
     // Submit change weight.

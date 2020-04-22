@@ -21,13 +21,13 @@
     font-size: 2em;
   }
 
-  em {
-    font-weight: 300;
-    font-style: normal;
-    letter-spacing: -.02em;
+  // em {
+  //   font-weight: 300;
+  //   font-style: normal;
+  //   letter-spacing: -.02em;
 
-    &:after {
-      content: ':';
-    }
-  }
+  //   &:after {
+  //     content: ':';
+  //   }
+  // }
 }
