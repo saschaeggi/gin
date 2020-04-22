@@ -32,13 +32,13 @@ function gin_preprocess_html(&$variables) {
  */
 function gin_preprocess_page(&$variables) {
   $path = \Drupal::service('path.current')->getPath();
-  $length = strlen('node/add');
 
-  // Check if we're directly on the node add or an delete page.
+  // Check if we're directly on the node/add page
+  // or an delete/revision node page.
   if (
-    substr($path, -$length) === 'node/add' ||
-    strpos($path, '/delete') !== FALSE
-
+    $path === '/node/add' ||
+    strpos($path, '/delete') !== FALSE ||
+    strpos($path, '/revisions') !== FALSE
    ) {
     $variables['has_sidebar'] = 'false';
   }
@@ -58,12 +58,14 @@ function gin_page_attachments_alter(&$page) {
   if ($logged_in) {
     // Get theme configs.
     $darkmode = theme_get_setting('enable_darkmode', 'gin');
-    $darkmode_class = 'gin--dark-mode';
     $preset_accent_color = theme_get_setting('preset_accent_color', 'gin');
     $accent_color = theme_get_setting('accent_color', 'gin');
     $preset_focus_color = theme_get_setting('preset_focus_color', 'gin');
     $focus_color = theme_get_setting('focus_color', 'gin');
     $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
+
+    // Define darkmode class.
+    $darkmode_class = 'gin--dark-mode';
 
     if ($classic_toolbar) {
       // Attach the classic toolbar styles.
@@ -107,13 +109,14 @@ function gin_preprocess_dropbutton_wrapper(&$variables) {
  * Implements form_alter_HOOK() for some major form changes.
  */
 function gin_form_alter(&$form, $form_state, $form_id) {
+  $path = \Drupal::service('path.current')->getPath();
+
   // Okay this is the tricky part,
   // choose the right node forms to alter the actions
   // This needs refactoring later on.
   if (
-    (strpos($form_id, 'node_') === 0 && strpos($form_id, '_form') !== FALSE) &&
-    strpos($form_id, '_delete_form') === FALSE &&
-    $form_id !== 'node_type_edit_form'
+    strpos($form_id, 'node_') === 0 &&
+    (strpos($path, '/edit') !== FALSE || strpos($path, '/add') !== FALSE)
    ) {
     // Submit change weight.
     if (isset($form['actions']['submit'])) {
@@ -190,24 +193,6 @@ function gin_form_alter(&$form, $form_state, $form_id) {
  */
 function gin_theme_suggestions_form_alter(array &$suggestions, array $variables) {
   $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#id']);
-}
-
-/**
- * Page title alter().
- */
-function gin_theme_suggestions_page_title_alter(array &$suggestions, array $variables) {
-  // Are we looking at a user?
-  $path = \Drupal::service('path.current')->getPath();
-
-  // Prepare $path.
-  $path = substr($path, 1);
-  $path = str_replace('/', '_', $path);
-
-  // Chek if path is available and we're at user level.
-  if (!empty($path) && strpos($path, 'user_') !== FALSE) {
-    $suggestions[] = 'page_title__user';
-    $suggestions[] = 'page_title__' . $path;
-  }
 }
 
 /**

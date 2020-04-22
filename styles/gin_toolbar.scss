@@ -551,7 +551,7 @@ a.toolbar-menu__trigger,
   }
 
   .region-sticky {
-    max-width: calc(100% - #{$sidebarWidth});
+    max-width: calc(100% - #{$toolbarWidth});
   }
 
   .path-node .region-sticky {

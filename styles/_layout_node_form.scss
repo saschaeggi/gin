@@ -52,10 +52,12 @@
     }
 
     .block-local-tasks-block,
+    .block-system-main-block,
     .messages-list,
     .node-form,
     .node-confirm-form,
-    .admin-list {
+    .admin-list,
+    .help {
       width: 100%;
       max-width: 1280px;
       margin-left: auto;
@@ -154,5 +156,9 @@
         }
       }
     }
+  }
+
+  .revision-current {
+    background-color: var(--colorGinPrimaryLightActive);
   }
 }

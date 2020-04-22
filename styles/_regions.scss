@@ -33,6 +33,10 @@
       top: 40px;
     }
 
+    .gin--classic-toolbar.path-node .page-wrapper__node-edit-form:not(.node-edit-form--has-sidebar) & {
+      width: 100%;
+    }
+
     .gin--classic-toolbar.path-node.toolbar-tray-open & {
       top: 80px;
     }
