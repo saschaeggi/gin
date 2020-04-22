@@ -16,13 +16,13 @@ function gin_preprocess_html(&$variables) {
   $darkmode = theme_get_setting('enable_darkmode', 'gin');
   $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
 
-  // We need to check both because of backwards compatibility.
-  if ($darkmode === TRUE || $darkmode === 1) {
+  // Check if darkmode is enabled.
+  if ($darkmode === TRUE) {
     $variables['attributes']['class'][] = 'gin--dark-mode';
   }
 
-  // We need to check both because of backwards compatibility.
-  if ($classic_toolbar === TRUE || $classic_toolbar === 1) {
+  // Check if classic_toolbar is active.
+  if ($classic_toolbar === TRUE) {
     $variables['attributes']['class'][] = 'gin--classic-toolbar';
   }
 }
@@ -227,6 +227,7 @@ function gin_css_alter(&$css, $assets) {
   if (isset($css[$path])) {
     // Use anything greater than 100 to have it load after the theme
     // as CSS_AGGREGATE_THEME is set to 100.
+    // Let's be on the safe side and assign a high number to it.
     $css[$path]['group'] = 200;
   }
 }
