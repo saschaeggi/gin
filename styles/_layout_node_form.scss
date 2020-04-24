@@ -46,7 +46,9 @@
 
       .page-title {
         @include breakpoint($breakpoint) {
-          width: calc(100% - 400px);
+          width: 100%;
+          max-width: 1280px;
+          margin: 0 auto;
         }
       }
     }

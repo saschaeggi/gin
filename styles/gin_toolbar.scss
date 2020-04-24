@@ -562,6 +562,10 @@ a.toolbar-menu__trigger,
     max-width: calc(100% - #{$toolbarWidth});
   }
 
+  .path-node[data-toolbar-menu='open'] .page-wrapper__node-edit-form:not(.node-edit-form--has-sidebar) .region-sticky {
+    max-width: calc(100% - #{$toolbarOpenWidth});
+  }
+
   .path-node[data-toolbar-menu='open'] .region-sticky {
     max-width: calc(100% - #{$toolbarOpenWidth + $sidebarWidth + 2px});
   }

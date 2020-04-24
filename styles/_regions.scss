@@ -126,10 +126,14 @@
     padding-right: 2em;
   }
 
+  @include breakpoint(976px) {
+    left: $toolbarWidth;
+  }
+
   @include breakpoint(1024px) {
     left: auto;
     top: 4px;
-    right: $sidebarWidth + 32px;
+    right: calc(#{$sidebarWidth} + min(5vw, 96px));
     bottom: auto;
     width: auto;
     padding-left: 0;
@@ -147,9 +151,7 @@
   }
 
   @include breakpoint(1440px) {
-    right: 24px;
     justify-content: flex-end;
-    right: calc(#{$sidebarWidth} + 4em);
   }
 
   @include breakpoint(1770px) {
@@ -159,11 +161,12 @@
   }
 
   @include breakpoint(1860px) {
-    // right: calc(50% - #{$sidebarWidth - $toolbarWidth + 62px});
-    right: calc(50% - 504px);
+    body:not([data-toolbar-menu='open']) & {
+      right: calc(50% - 504px);
+    }
   }
 
-  @include breakpoint(2010px) {
+  @include breakpoint(2070px) {
     [data-toolbar-menu='open'] & {
       right: calc(50% - 580px);
     }
@@ -179,6 +182,27 @@
 
   .gin-sticky {
     display: flex;
+
+    @include mq(1024px) {
+      position: relative;
+      padding-left: 8px;
+
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 10%;
+        margin-left: calc(-10% + 4px);
+        height: 100%;
+        background-image: linear-gradient(to right, #{rgba($colorAppBackground, 0)}, #{$colorAppBackground}, #{$colorAppBackground});
+
+        .gin--dark-mode & {
+          background-image: linear-gradient(to right, #{rgba($colorDarkAppBackground, 0)}, #{$colorDarkAppBackground}, #{$colorDarkAppBackground});
+        }
+      }
+    }
   }
 
   .field--name-status {
@@ -194,13 +218,21 @@
 
 .toolbar-tray-open:not(.toolbar-vertical) .layout-container,
 body:not(.toolbar-tray-open) .layout-container {
-  @include breakpoint(600px) {
-    margin-left: 2em;
-    margin-right: 2em;
-  }
+  // @include breakpoint(600px) {
+  //   margin-left: 2em;
+  //   margin-right: 2em;
+  // }
 
-  @include breakpoint(1440px) {
-    margin-left: 4em;
-    margin-right: 4em;
+  // @include breakpoint(1440px) {
+  //   margin-left: 4em;
+  //   margin-right: 4em;
+  // }
+
+  margin-left: m#{i}n(5vw, 96px);
+  margin-right: m#{i}n(5vw, 96px);
+
+  .layout-container {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
