@@ -3,7 +3,8 @@ table.sticky-header {
   background: transparent;
 
   @include mq(1024px) {
-    margin-top: 48px;
+    margin-top: 88px; //48px;
+    border-top: 1px solid var(--colorGinLayer2Background);
   }
 
   th {

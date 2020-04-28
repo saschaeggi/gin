@@ -42,6 +42,11 @@
 {% set page_title_block = active_admin_theme ~ '_page_title' %}
 {% set local_actions_block = active_admin_theme ~ '_local_actions' %}
 
+<div class="region region-meta layout-container">
+  {{ page.breadcrumb }}
+  {{ page.gin_secondary_toolbar }}
+</div>
+
 <header class="region region-sticky">
   <div class="layout-container region-sticky__items">
     {{ page.header[page_title_block] }}

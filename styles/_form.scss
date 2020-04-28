@@ -148,6 +148,7 @@
 
     .gin--dark-mode & {
       background-color: var(--colorGinLayer2Background);
+      border-color: var(--colorGinLayer2Border);
     }
   }
 
@@ -163,7 +164,7 @@
 
       .gin--dark-mode & {
         background-color: var(--colorGinLayer2Background);
-        border-color: var(--colorGinLayer2Border);
+        border-color: var(--colorGinPrimary);
       }
     }
   }
@@ -197,4 +198,11 @@
 
 .js .form-autocomplete {
   padding-right: 36px;
+}
+
+.entity-form-display-form {
+  > .form-actions {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }

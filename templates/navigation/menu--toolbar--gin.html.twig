@@ -45,8 +45,16 @@
           item.in_active_trail ? 'menu-item--active-trail',
         ]
       %}
+      {% set title = item.title|clean_class %}
 
       {% if menu_name == 'admin' %}
+        {# Add Home if it doesn't exist #}
+        {% if menu_level == 0 and loop.index == 1 and title != 'tools' %}
+          <li class="menu-item menu-item--expanded menu-item__tools">
+            <a href="/" class="toolbar-icon toolbar-icon-admin-toolbar-tools-help" data-drupal-link-system-path="<front>">{{ 'Home'|t }}</a>
+          </li>
+        {% endif %}
+
         {# Add Menu Titles #}
         {% if menu_level == 1 and loop.index == 1 %}
           <li class="menu-item-title">
@@ -63,7 +71,7 @@
         {% endif %}
       {% endif %}
 
-      <li{{ item.attributes.addClass(classes) }}>
+      <li{{ item.attributes.addClass(classes, 'menu-item__' ~ title) }}>
         {{ link(item.title, item.url) }}
         {% if item.below %}
           {{ menus.menu_links(item.below, attributes, menu_level + 1, item, menu_name) }}

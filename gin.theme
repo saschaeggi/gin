@@ -7,6 +7,9 @@
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Markup;
+use Drupal\block\Entity\Block;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\user\Entity\User;
 
 /**
  * Implements hook_preprocess_HOOK() for html.
@@ -25,6 +28,19 @@ function gin_preprocess_html(&$variables) {
   if ($classic_toolbar === TRUE) {
     $variables['attributes']['class'][] = 'gin--classic-toolbar';
   }
+
+  // Gin secondary toolbar
+  $variables['page']['gin_secondary_toolbar'] = [
+    '#type' => 'toolbar',
+    '#access' => \Drupal::currentUser()->hasPermission('access toolbar'),
+    '#cache' => [
+      'keys' => ['toolbar_secondary'],
+      'contexts' => ['user.permissions'],
+    ],
+    '#attributes' => [
+      'id' => 'toolbar-administration-secondary',
+    ],
+  ];
 }
 
 /**
@@ -189,6 +205,41 @@ function gin_form_alter(&$form, $form_state, $form_id) {
 }
 
 /**
+ * Local actions preprocess.
+ */
+function gin_preprocess_menu_local_action(&$variables) {
+  $classes = &$variables['link']['#options']['attributes']['class'];
+  $classes = array_filter($classes, function($e) {
+    return $e != 'button--primary';
+  });
+}
+
+/**
+ * Implements toolbar preprocess.
+ */
+function gin_preprocess_toolbar(&$variables) {
+  $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
+
+  // Only if Classic Toolbar is disabled.
+  if (!$classic_toolbar) {
+    $user_id = \Drupal::currentUser()->id();
+
+    // check that the field exists and that it has a value.
+    if ($user_id) {
+      $user = User::load($user_id);
+
+      if (!empty($user->user_picture) && !empty($user->user_picture->entity)) {
+        $image = $user->user_picture->entity->getFileUri();
+        $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('thumbnail');
+        $url = $style->buildUrl($image);
+
+        $variables['user_picture'] = $url;
+      }
+    }
+  }
+}
+
+/**
  * Implements form_alter() for forms.
  */
 function gin_theme_suggestions_form_alter(array &$suggestions, array $variables) {
@@ -201,8 +252,13 @@ function gin_theme_suggestions_form_alter(array &$suggestions, array $variables)
 function gin_theme_suggestions_toolbar_alter(array &$suggestions, array $variables) {
   $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
 
+  // Only if Classic Toolbar is disabled.
   if (!$classic_toolbar) {
     $suggestions[] = 'toolbar__gin';
+
+    if ($variables['element']['#attributes']['id'] === 'toolbar-administration-secondary') {
+      $suggestions[] = 'toolbar__gin__secondary';
+    }
   }
 }
 
@@ -212,6 +268,7 @@ function gin_theme_suggestions_toolbar_alter(array &$suggestions, array $variabl
 function gin_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
   $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
 
+  // Only if Classic Toolbar is disabled.
   if (isset($variables['menu_name']) && $variables['menu_name'] === 'admin' && !$classic_toolbar) {
     $suggestions[] = 'menu__toolbar__gin';
   }

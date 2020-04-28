@@ -27,3 +27,12 @@
   mask-repeat: no-repeat;
   mask-position: center center;
 }
+
+.draggable.drag, .draggable.drag:focus {
+  background-color: var(--colorGinPrimaryLightHover);
+}
+
+.draggable.drag-previous {
+  background-color: var(--colorGinLayer2Background);
+  border-left: 6px solid var(--colorGinWarning);
+}

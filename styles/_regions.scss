@@ -11,7 +11,7 @@
   }
 
   @include breakpoint(1024px) {
-    position: fixed;
+    position: sticky; //fixed;
     z-index: 101;
     top: 0;
     width: 100%;
@@ -80,24 +80,25 @@
 }
 
 .content-header {
+  padding-top: 0;
   margin-bottom: 0;
   background-color: transparent;
 
-  @include breakpoint(1024px) {
-    padding-top: $contentHeaderSpacer;
+  // @include breakpoint(1024px) {
+  //   padding-top: $contentHeaderSpacer;
 
-    .gin--classic-toolbar & {
-      padding-top: #{$contentHeaderSpacer + 32px};
-    }
+  //   .gin--classic-toolbar & {
+  //     padding-top: #{$contentHeaderSpacer + 32px};
+  //   }
 
-    .gin--classic-toolbar:not(.path-node) & {
-      padding-top: 0;
-    }
-  }
+  //   .gin--classic-toolbar:not(.path-node) & {
+  //     padding-top: 0;
+  //   }
+  // }
 
   .block-local-tasks-block {
     @include breakpoint(768px) {
-      margin-top: 6px;
+      // margin-top: 6px;
       margin-bottom: 1.5rem;
     }
   }
@@ -160,7 +161,7 @@
     }
   }
 
-  @include breakpoint(1860px) {
+  @include breakpoint(1920px) {
     body:not([data-toolbar-menu='open']) & {
       right: calc(50% - 504px);
     }
@@ -218,21 +219,25 @@
 
 .toolbar-tray-open:not(.toolbar-vertical) .layout-container,
 body:not(.toolbar-tray-open) .layout-container {
-  // @include breakpoint(600px) {
-  //   margin-left: 2em;
-  //   margin-right: 2em;
-  // }
-
-  // @include breakpoint(1440px) {
-  //   margin-left: 4em;
-  //   margin-right: 4em;
-  // }
-
   margin-left: m#{i}n(5vw, 96px);
   margin-right: m#{i}n(5vw, 96px);
 
   .layout-container {
     margin-left: 0;
     margin-right: 0;
+  }
+}
+
+.region-breadcrumb {
+  flex-grow: 1;
+}
+
+.region-meta {
+  display: flex;
+  margin-top: 16px;
+
+  @include breakpoint(976px) {
+    padding: 1.5rem 0;
+    margin-top: 0;
   }
 }
