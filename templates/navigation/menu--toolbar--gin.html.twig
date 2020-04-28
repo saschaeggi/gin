@@ -49,11 +49,11 @@
 
       {% if menu_name == 'admin' %}
         {# Add Home if it doesn't exist #}
-        {% if menu_level == 0 and loop.index == 1 and title != 'tools' %}
+        {# {% if menu_level == 0 and loop.index == 1 and title != 'tools' %}
           <li class="menu-item menu-item--expanded menu-item__tools">
             <a href="/" class="toolbar-icon toolbar-icon-admin-toolbar-tools-help" data-drupal-link-system-path="<front>">{{ 'Home'|t }}</a>
           </li>
-        {% endif %}
+        {% endif %} #}
 
         {# Add Menu Titles #}
         {% if menu_level == 1 and loop.index == 1 %}
