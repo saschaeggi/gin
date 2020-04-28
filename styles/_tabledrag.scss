@@ -36,3 +36,9 @@
   background-color: var(--colorGinLayer2Background);
   border-left: 6px solid var(--colorGinWarning);
 }
+
+.tabledrag-cell-content__item {
+  .checkbox-toggle:hover {
+    cursor: pointer;
+  }
+}

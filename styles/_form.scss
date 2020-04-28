@@ -97,6 +97,9 @@
   input {
     @extend .visually-hidden;
     @extend .focusable;
+    @supports (-moz-appearance: none) {
+      display: none;
+    }
 
     &:hover,
     &:focus,
