@@ -30,17 +30,19 @@ function gin_preprocess_html(&$variables) {
   }
 
   // Gin secondary toolbar
-  $variables['page']['gin_secondary_toolbar'] = [
-    '#type' => 'toolbar',
-    '#access' => \Drupal::currentUser()->hasPermission('access toolbar'),
-    '#cache' => [
-      'keys' => ['toolbar_secondary'],
-      'contexts' => ['user.permissions'],
-    ],
-    '#attributes' => [
-      'id' => 'toolbar-administration-secondary',
-    ],
-  ];
+  if (!$classic_toolbar) {
+    $variables['page']['gin_secondary_toolbar'] = [
+      '#type' => 'toolbar',
+      '#access' => \Drupal::currentUser()->hasPermission('access toolbar'),
+      '#cache' => [
+        'keys' => ['toolbar_secondary'],
+        'contexts' => ['user.permissions'],
+      ],
+      '#attributes' => [
+        'id' => 'toolbar-administration-secondary',
+      ],
+    ];
+  }
 }
 
 /**
