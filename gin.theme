@@ -7,8 +7,6 @@
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Markup;
-use Drupal\block\Entity\Block;
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\user\Entity\User;
 
 /**
@@ -29,7 +27,7 @@ function gin_preprocess_html(&$variables) {
     $variables['attributes']['class'][] = 'gin--classic-toolbar';
   }
 
-  // Gin secondary toolbar
+  // Gin secondary toolbar.
   if (!$classic_toolbar) {
     $variables['page']['gin_secondary_toolbar'] = [
       '#type' => 'toolbar',
@@ -211,7 +209,7 @@ function gin_form_alter(&$form, $form_state, $form_id) {
  */
 function gin_preprocess_menu_local_action(&$variables) {
   $classes = &$variables['link']['#options']['attributes']['class'];
-  $classes = array_filter($classes, function($e) {
+  $classes = array_filter($classes, function ($e) {
     return $e != 'button--primary';
   });
 }
@@ -226,7 +224,7 @@ function gin_preprocess_toolbar(&$variables) {
   if (!$classic_toolbar) {
     $user_id = \Drupal::currentUser()->id();
 
-    // check that the field exists and that it has a value.
+    // Check that the field exists and that it has a value.
     if ($user_id) {
       $user = User::load($user_id);
 
