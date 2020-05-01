@@ -29,7 +29,11 @@
 }
 
 .draggable.drag, .draggable.drag:focus {
-  background-color: var(--colorGinPrimaryLightHover);
+  background-color: var(--colorGinLayer2Background);
+
+  .gin--dark-mode & {
+    background-color: var(--colorGinPrimaryLightHover);
+  }
 }
 
 .draggable.drag-previous {

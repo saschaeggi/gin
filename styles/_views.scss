@@ -178,6 +178,7 @@
 
   .view-filters .preview-section {
     display: flex;
+    flex-wrap: wrap;
   }
 
   .form-actions {
@@ -242,19 +243,38 @@
     border-color: transparent;
   }
 
+  .add {
+    &.open {
+      a {
+        background: var(--colorGinLayer2Background);
+
+        &:hover, &:focus, &:active {
+          color: var(--colorGinPrimary);
+        }
+      }
+    }
+  }
+
   .action-list {
     top: 36px;
-    background: var(--colorGinLayer2Background);
-
-    .button {
-      width: 100%;
-      text-align: left;
-      line-height: 1.2;
-      box-shadow: none;
-    }
+    background: var(--colorGinLayer3Background);
+    box-shadow: 0 1px 2px var(--colorGinButtonShadow);
 
     li {
-      background-color: none;
+      background-color: transparent;
+      border: none;
+
+      input.button {
+        width: 100%;
+        text-align: left;
+        line-height: 1.2;
+        box-shadow: none;
+        border: none !important;
+
+        &:hover, &:focus, &:active {
+          color: var(--colorGinPrimary);
+        }
+      }
 
       &:hover {
         background-color: var(--colorGinPrimaryLightHover);
@@ -266,13 +286,21 @@
 .views-ui-display-tab-bucket {
   border-bottom-color: var(--colorGinBorder);
 
-  &__title, .views-ui-display-tab-bucket > .views-display-setting {
-    padding: 8px;
+  & &__title {
+    font-size: 1.2em;
+    font-weight: normal;
+    color: var(--colorGinTitle);
+    text-transform: none;
+    padding: 16px;
+  }
+
+  .views-display-setting,
+  .views-ui-display-tab-bucket > .views-display-setting {
+    padding: 8px 16px;
   }
 
   .views-display-setting {
     color: var(--colorGinText);
-    padding: 8px;
   }
 
   .views-display-setting:nth-of-type(even) {
@@ -280,8 +308,18 @@
   }
 
   .dropbutton-wrapper {
-    top: 9px;
-    right: 8px;
+    top: 16px;
+    right: 16px;
+  }
+
+  &.pager {
+    margin: 0;
+  }
+}
+
+.views-ui-display-tab-actions {
+  .views-ui-display-tab-setting {
+    padding: 16px;
   }
 }
 
@@ -339,4 +377,10 @@
 
 .view-block-content .views-table {
   margin-top: 0;
+}
+
+.views-display-columns {
+  .details-wrapper {
+    margin: 0;
+  }
 }
