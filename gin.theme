@@ -158,9 +158,9 @@ function gin_form_alter(&$form, $form_state, $form_id) {
         '#weight' => 130,
       ];
       // Add Submit to gin_sticky actions.
-      $form['gin_sticky']['actions']['submit'] = $form['actions']['submit'];
+      $form['gin_sticky']['actions']['submit'] = ($form['actions']['submit']) ?? [];
       // Add Preview to gin_sticky actions.
-      $form['gin_sticky']['actions']['preview'] = $form['actions']['preview'];
+      $form['gin_sticky']['actions']['preview'] = ($form['actions']['preview']) ?? [];
 
       // Create gin_sidebar group.
       $form['gin_sidebar'] = [
@@ -174,9 +174,9 @@ function gin_form_alter(&$form, $form_state, $form_id) {
         ],
       ];
       // Copy footer over.
-      $form['gin_sidebar']['footer'] = $form['footer'];
+      $form['gin_sidebar']['footer'] = ($form['footer']) ?? [];
       // Copy actions over.
-      $form['gin_sidebar']['actions'] = $form['actions'];
+      $form['gin_sidebar']['actions'] = ($form['actions']) ?? [];
       // Unset previous added preview & submit.
       unset($form['gin_sidebar']['actions']['preview']);
       unset($form['gin_sidebar']['actions']['submit']);
