@@ -202,21 +202,18 @@ function gin_form_alter(&$form, $form_state, $form_id) {
 /**
  * Implements hook_preprocess_menu().
  */
-function gin_preprocess_menu(&$variables, $hook) {
+function gin_preprocess_menu(&$variables) {
   if ($variables['menu_name'] == 'admin') {
     $moduleHandler = \Drupal::service('module_handler');
 
     // Check if the admin_toolbar module is installed.
-    if ($moduleHandler->moduleExists('admin_toolbar')) {
-      foreach ($variables['items'] as $key => $item) {
-        $gin_id = $key;
+    foreach ($variables['items'] as $key => $item) {
+      $gin_id = str_replace('.', '-', $key);
 
-        if (strpos($gin_id, 'are') !== FALSE) {
-          $gin_id = explode('.', $gin_id, 2)[1];
-        }
+      $variables['items'][$key]['gin_id'] = $gin_id;
 
+      if ($moduleHandler->moduleExists('admin_toolbar')) {
         $variables['items'][$key]['gin_admin_toolbar_module'] = TRUE;
-        $variables['items'][$key]['gin_id'] = $gin_id;
       }
     }
   }

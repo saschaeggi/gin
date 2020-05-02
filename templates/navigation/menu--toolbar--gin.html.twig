@@ -46,7 +46,6 @@
           item.gin_id ? 'menu-item__' ~ item.gin_id
         ]
       %}
-      {% set title = item.title|clean_class %}
 
       {% if menu_name == 'admin' %}
         {# Add Home if it doesn't exist #}
@@ -54,6 +53,10 @@
           <li class="menu-item menu-item--expanded menu-item__tools">
             <a href="/" class="toolbar-icon toolbar-icon-admin-toolbar-tools-help" data-drupal-link-system-path="<front>">{{ 'Home'|t }}</a>
           </li>
+        {% endif %}
+
+        {% if menu_level == 0 and item.gin_id == 'help-main' %}
+          <li class="menu-item menu-item__spacer menu-item--no-link"></li>
         {% endif %}
 
         {# Add Menu Titles #}
@@ -72,7 +75,7 @@
         {% endif %}
       {% endif %}
 
-      <li{{ item.attributes.addClass(classes, 'menu-item__' ~ title) }}>
+      <li{{ item.attributes.addClass(classes) }}>
         {{ link(item.title, item.url) }}
         {% if item.below %}
           {{ menus.menu_links(item.below, attributes, menu_level + 1, item, menu_name) }}

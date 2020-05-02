@@ -129,8 +129,7 @@
           background-color: var(--colorGinItemHover);
         }
 
-        &:hover:before,
-        &.is-active:before {
+        &:hover:before {
           background-color: var(--colorGinTitle);
         }
       }
@@ -149,6 +148,7 @@
 
         @include mq(976px) {
           left: #{round($toolbarWidth / 2.666666667) - 4px};
+          background-color: var(--colorGinText);
           mask-position: center 28px;
         }
       }
@@ -264,6 +264,12 @@
   .menu-item {
     &:hover, a:focus {
       background-color: var(--colorGinItemHover); //var(--colorGinAppBackground);
+    }
+
+    &--no-link {
+      &:hover, a:focus {
+        background-color: transparent;
+      }
     }
 
     a:focus {
@@ -623,15 +629,16 @@ a.toolbar-menu__trigger,
 
     > .toolbar-menu {
       align-self: flex-start;
+      height: 100%;
       max-height: calc(100% - 68px);
       overflow-y: auto;
       background: transparent;
       -webkit-overflow-scrolling: touch;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
 
-      .menu-item__configuration {
-        order: 99;
+      .menu-item__spacer {
+        flex-grow: 1;
       }
 
       > .menu-item {
