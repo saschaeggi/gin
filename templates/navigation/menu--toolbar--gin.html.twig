@@ -43,17 +43,18 @@
           item.is_expanded ? 'menu-item--expanded',
           item.is_collapsed ? 'menu-item--collapsed',
           item.in_active_trail ? 'menu-item--active-trail',
+          item.gin_id ? 'menu-item__' ~ item.gin_id
         ]
       %}
       {% set title = item.title|clean_class %}
 
       {% if menu_name == 'admin' %}
         {# Add Home if it doesn't exist #}
-        {# {% if menu_level == 0 and loop.index == 1 and title != 'tools' %}
+        {% if menu_level == 0 and loop.index == 1 and not item.gin_admin_toolbar_module %}
           <li class="menu-item menu-item--expanded menu-item__tools">
             <a href="/" class="toolbar-icon toolbar-icon-admin-toolbar-tools-help" data-drupal-link-system-path="<front>">{{ 'Home'|t }}</a>
           </li>
-        {% endif %} #}
+        {% endif %}
 
         {# Add Menu Titles #}
         {% if menu_level == 1 and loop.index == 1 %}

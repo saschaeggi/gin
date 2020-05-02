@@ -68,41 +68,36 @@ function gin_preprocess_page(&$variables) {
  * Implements hook_preprocess_HOOK() for page_attachments.
  */
 function gin_page_attachments_alter(&$page) {
-  // Is User logged in?
-  $logged_in = \Drupal::currentUser()->isAuthenticated();
+  // Get theme configs.
+  $darkmode = theme_get_setting('enable_darkmode', 'gin');
+  $preset_accent_color = theme_get_setting('preset_accent_color', 'gin');
+  $accent_color = theme_get_setting('accent_color', 'gin');
+  $preset_focus_color = theme_get_setting('preset_focus_color', 'gin');
+  $focus_color = theme_get_setting('focus_color', 'gin');
+  $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
 
-  if ($logged_in) {
-    // Get theme configs.
-    $darkmode = theme_get_setting('enable_darkmode', 'gin');
-    $preset_accent_color = theme_get_setting('preset_accent_color', 'gin');
-    $accent_color = theme_get_setting('accent_color', 'gin');
-    $preset_focus_color = theme_get_setting('preset_focus_color', 'gin');
-    $focus_color = theme_get_setting('focus_color', 'gin');
-    $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
+  // Define darkmode class.
+  $darkmode_class = 'gin--dark-mode';
 
-    // Define darkmode class.
-    $darkmode_class = 'gin--dark-mode';
-
-    if ($classic_toolbar) {
-      // Attach the classic toolbar styles.
-      $page['#attached']['library'][] = 'gin/gin_classic_toolbar';
-    }
-    else {
-      // Attach toolbar styles.
-      $page['#attached']['library'][] = 'gin/gin_toolbar';
-    }
-
-    // Attach accent overrides CSS.
-    $page['#attached']['library'][] = 'gin/gin_accent';
-
-    // Expose settings to JS.
-    $page['#attached']['drupalSettings']['gin']['darkmode'] = $darkmode;
-    $page['#attached']['drupalSettings']['gin']['darkmode_class'] = $darkmode_class;
-    $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $preset_accent_color;
-    $page['#attached']['drupalSettings']['gin']['accent_color'] = $accent_color;
-    $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $preset_focus_color;
-    $page['#attached']['drupalSettings']['gin']['focus_color'] = $focus_color;
+  if ($classic_toolbar) {
+    // Attach the classic toolbar styles.
+    $page['#attached']['library'][] = 'gin/gin_classic_toolbar';
   }
+  else {
+    // Attach toolbar styles.
+    $page['#attached']['library'][] = 'gin/gin_toolbar';
+  }
+
+  // Attach accent overrides CSS.
+  $page['#attached']['library'][] = 'gin/gin_accent';
+
+  // Expose settings to JS.
+  $page['#attached']['drupalSettings']['gin']['darkmode'] = $darkmode;
+  $page['#attached']['drupalSettings']['gin']['darkmode_class'] = $darkmode_class;
+  $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $preset_accent_color;
+  $page['#attached']['drupalSettings']['gin']['accent_color'] = $accent_color;
+  $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $preset_focus_color;
+  $page['#attached']['drupalSettings']['gin']['focus_color'] = $focus_color;
 }
 
 /**
@@ -199,6 +194,29 @@ function gin_form_alter(&$form, $form_state, $form_id) {
 
         // Remove double entry of submit button.
         unset($form['actions']['submit']);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_menu().
+ */
+function gin_preprocess_menu(&$variables, $hook) {
+  if ($variables['menu_name'] == 'admin') {
+    $moduleHandler = \Drupal::service('module_handler');
+
+    // Check if the admin_toolbar module is installed.
+    if ($moduleHandler->moduleExists('admin_toolbar')) {
+      foreach ($variables['items'] as $key => $item) {
+        $gin_id = $key;
+
+        if (strpos($gin_id, 'are') !== FALSE) {
+          $gin_id = explode('.', $gin_id, 2)[1];
+        }
+
+        $variables['items'][$key]['gin_admin_toolbar_module'] = TRUE;
+        $variables['items'][$key]['gin_id'] = $gin_id;
       }
     }
   }
