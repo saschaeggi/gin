@@ -1,0 +1,20 @@
+body {
+  color: #fff;
+  background-color: transparent;
+}
+
+a {
+  color: #90aeef;
+}
+
+.cke_panel_grouptitle {
+  color: #000;
+  background: #57575d;
+}
+
+.cke_panel_listItem.cke_selected a,
+.cke_panel_listItem a:hover,
+.cke_panel_listItem a:focus,
+.cke_panel_listItem a:active {
+  background-color: #57575d;
+}

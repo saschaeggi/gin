@@ -16,6 +16,7 @@ module.exports = {
     gin_classic_toolbar: ['./styles/gin_classic_toolbar.scss'],
     gin_accent: ['./js/gin_accent.js','./styles/gin_accent.scss'],
     gin_settings: ['./js/gin_settings.js'],
+    gin_ckeditor: ['./styles/gin_ckeditor.scss'],
   },
   output: {
     devtoolLineToLine: true,

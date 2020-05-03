@@ -310,6 +310,18 @@ function gin_css_alter(&$css, $assets) {
 }
 
 /**
+ * Implements hook_ckeditor_css_alter().
+ */
+function gin_ckeditor_css_alter(array &$css) {
+  // Get theme darkmode config.
+  $darkmode = theme_get_setting('enable_darkmode', 'gin');
+
+  if ($darkmode) {
+    $css[] = drupal_get_path('theme', 'gin') . '/dist/css/gin_ckeditor.css';
+  }
+}
+
+/**
  * Custom theme settings.
  */
 function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_state, $form_id = NULL) {
