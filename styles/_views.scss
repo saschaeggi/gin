@@ -41,6 +41,7 @@
 
     @include breakpoint(max-width 1024px) {
       overflow: auto;
+      -webkit-overflow-scrolling: touch;
     }
   }
 
@@ -145,8 +146,11 @@
 
 .layer-wrapper {
   padding: 24px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+
+  @include breakpoint(max-width 1024px) {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 
   & + .layer-wrapper {
     margin-top: 24px;
