@@ -22,7 +22,7 @@ function gin_preprocess_html(&$variables) {
     $variables['attributes']['class'][] = 'gin--dark-mode';
   }
 
-  // Only add gin--classic-toolbar class if user has permission
+  // Only add gin--classic-toolbar class if user has permission.
   if (!\Drupal::currentUser()->hasPermission('access toolbar')) {
     return;
   }
