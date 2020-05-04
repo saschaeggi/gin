@@ -372,11 +372,18 @@
   background-color: var(--colorGinAppBackground);
 }
 
-// Offset sidebar
-.gin--classic-toolbar .page-wrapper__node-edit-form .layout-region-node-secondary {
-  padding-top: 39px;
-}
-
 .gin--classic-toolbar.toolbar-tray-open .page-wrapper__node-edit-form .layout-region-node-secondary {
   padding-top: 79px;
+}
+
+.gin--classic-toolbar {
+  .page-wrapper__node-edit-form .layout-region-node-secondary {
+    padding-top: 39px;
+  }
+
+  table.sticky-header {
+    @include mq(1024px) {
+      margin-top: 0;
+    }
+  }
 }

@@ -28,9 +28,8 @@
     }
 
     .gin--classic-toolbar.path-node & {
-      width: calc(100% - #{$sidebarWidth});
       padding-top: 16px;
-      top: 40px;
+      top: $topBar;
     }
 
     .gin--classic-toolbar.path-node .page-wrapper__node-edit-form:not(.node-edit-form--has-sidebar) & {
@@ -38,7 +37,7 @@
     }
 
     .gin--classic-toolbar.path-node.toolbar-tray-open & {
-      top: 80px;
+      top: 79px;
     }
   }
 
@@ -156,7 +155,8 @@
   }
 
   @include breakpoint(1770px) {
-    .gin--classic-toolbar & {
+    .gin--classic-toolbar &,
+    .gin--classic-toolbar:not([data-toolbar-menu='open']) & {
       right: calc(50% - 460px);
     }
   }
