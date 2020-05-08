@@ -274,14 +274,14 @@
         line-height: 1.2;
         box-shadow: none;
         border: none !important;
-
-        &:hover, &:focus, &:active {
-          color: var(--colorGinPrimary);
-        }
       }
 
-      &:hover {
-        background-color: var(--colorGinPrimaryLightHover);
+      &:hover, &:focus, &:active {
+        &,
+        input.button {
+          color: var(--colorGinButtonText);
+          background: var(--colorGinPrimary);
+        }
       }
     }
   }
