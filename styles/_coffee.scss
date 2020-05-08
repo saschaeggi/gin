@@ -7,18 +7,28 @@
     background: #fff;
   }
 
-  .ui-autocomplete .ui-menu-item-wrapper {
-    padding: 16px;
+  #coffee-results {
+    a {
+      border-radius: 4px;
+    }
+  }
 
-    &.ui-state-active {
-      background: var(--colorGinPrimary);
+  .ui-autocomplete {
+    box-shadow: none;
 
-      &, .description {
-        color: #fff;
-      }
+    .ui-menu-item-wrapper {
+      padding: 16px;
 
-      .description {
-        opacity: .9;
+      &.ui-state-active {
+        background: var(--colorGinPrimary);
+
+        &, .description {
+          color: #fff;
+        }
+
+        .description {
+          opacity: .9;
+        }
       }
     }
   }
