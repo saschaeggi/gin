@@ -330,11 +330,34 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     return;
   }
 
-  // Custom settings details element.
+  // Add submit/validate function.
+  $form['#validate'][] = 'gin_form_system_theme_settings_alter_validate';
+
+  /*
+   * //////////////////////////
+   * Unset unused settings.
+   * * //////////////////////////
+   */
+  unset($form['logo']);
+  unset($form['favicon']);
+
+  /*
+   * //////////////////////////
+   * Move default theme settings to bottom.
+   * * //////////////////////////
+   */
+  $form['theme_settings']['#open'] = FALSE;
+  $form['theme_settings']['#weight'] = 99;
+
+  /*
+   * //////////////////////////
+   * General settings.
+   * * //////////////////////////
+   */
   $form['custom_settings'] = [
     '#type' => 'details',
     '#open' => TRUE,
-    '#title' => t('Custom Settings'),
+    '#title' => t('Settings'),
   ];
 
   // Darkmode setting.
@@ -413,8 +436,19 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     ],
   ];
 
+  /*
+   * //////////////////////////
+   * Toolbar settings.
+   * * //////////////////////////
+   */
+  $form['toolbar'] = [
+    '#type' => 'details',
+    '#title' => t('Toolbar'),
+    '#open' => TRUE,
+  ];
+
   // Classic toolbar setting.
-  $form['custom_settings']['classic_toolbar'] = [
+  $form['toolbar']['classic_toolbar'] = [
     '#type' => 'checkbox',
     '#title' => t('Enable Classic Drupal Toolbar'),
     '#description' => t('Enable Classic Legacy Drupal Toolbar (Horizontal Toolbar).'),
