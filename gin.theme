@@ -132,7 +132,8 @@ function gin_form_alter(&$form, $form_state, $form_id) {
   // This needs refactoring later on.
   if (
     strpos($form_id, 'node_') === 0 &&
-    (strpos($path, '/edit') !== FALSE || strpos($path, '/add') !== FALSE)
+    (strpos($path, '/edit') !== FALSE || strpos($path, '/add') !== FALSE) &&
+    $form_id !== 'node_type_add_form'
    ) {
     // Submit change weight.
     if (isset($form['actions']['submit'])) {
