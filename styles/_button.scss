@@ -54,7 +54,8 @@
 }
 
 .button--primary,
-.button--primary:not(:focus) {
+.button--primary:not(:focus),
+.ief-entity-submit {
   background-color: var(--colorGinPrimary);
   box-shadow: 0 2px 7px var(--colorGinButtonShadow);
 
