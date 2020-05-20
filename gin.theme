@@ -14,10 +14,9 @@ use Drupal\Core\Url;
  * Implements hook_preprocess_HOOK() for html.
  */
 function gin_preprocess_html(&$variables) {
-  // Get theme darkmode config.
+  // Get configs.
   $darkmode = _gin_dark_mode_enabled();
-
-  $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
+  $classic_toolbar = _gin_classic_toolbar();
 
   // Check if darkmode is enabled.
   if ($darkmode === TRUE) {
@@ -81,7 +80,7 @@ function gin_page_attachments_alter(&$page) {
   $accent_color = _gin_accent_color();
   $preset_focus_color = theme_get_setting('preset_focus_color', 'gin');
   $focus_color = theme_get_setting('focus_color', 'gin');
-  $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
+  $classic_toolbar = _gin_classic_toolbar();
 
   // Define darkmode class.
   $darkmode_class = 'gin--dark-mode';
@@ -295,6 +294,20 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       ],
     ];
 
+    $classicToolbarValue = $userData->get('gin', $user->id(), 'classic_toolbar');
+
+    if ($classicToolbarValue == NULL) {
+      $classicToolbarValue = theme_get_setting('classic_toolbar');
+    }
+
+    // Classic Toolbar user setting.
+    $form['gin_theme_settings']['user_settings']['classic_toolbar'] = [
+      '#type' => 'checkbox',
+      '#title' => t('Enable Classic Drupal Toolbar'),
+      '#description' => t('Enables Classic Legacy Drupal Toolbar (Horizontal Toolbar).'),
+      '#default_value' => $classicToolbarValue,
+    ];
+
     array_unshift($form['actions']['submit']['#submit'], '_gin_user_form_submit');
   }
 }
@@ -333,7 +346,7 @@ function gin_preprocess_menu_local_action(&$variables) {
  * Implements toolbar preprocess.
  */
 function gin_preprocess_toolbar(&$variables) {
-  $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
+  $classic_toolbar = _gin_classic_toolbar();
 
   // Only if Classic Toolbar is disabled.
   if (!$classic_toolbar) {
@@ -365,7 +378,7 @@ function gin_theme_suggestions_form_alter(array &$suggestions, array $variables)
  * Toolbar alter().
  */
 function gin_theme_suggestions_toolbar_alter(array &$suggestions, array $variables) {
-  $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
+  $classic_toolbar = _gin_classic_toolbar();
 
   // Only if Classic Toolbar is disabled.
   if (!$classic_toolbar) {
@@ -381,7 +394,7 @@ function gin_theme_suggestions_toolbar_alter(array &$suggestions, array $variabl
  * Toolbar menu alter().
  */
 function gin_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
-  $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
+  $classic_toolbar = _gin_classic_toolbar();
 
   // Only if Classic Toolbar is disabled.
   if (isset($variables['menu_name']) && $variables['menu_name'] === 'admin' && !$classic_toolbar) {
@@ -559,10 +572,19 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   ];
 
   // Classic toolbar setting.
+  // Check if this is overridden by the logged in user.
+  $userClassicToolbar = _gin_classic_toolbar();
+  $classicToolbar = theme_get_setting('classic_toolbar');
+  $description = t('Enables Classic Legacy Drupal Toolbar (Horizontal Toolbar).');
+
+  if (!is_null($userClassicToolbar) && $userClassicToolbar !== $classicToolbar) {
+    $toolbar = $userClassicToolbar ? t('Classic') : t('Sidebar');
+    $description = t('Enables Classic Legacy Drupal Toolbar (Horizontal Toolbar).') . '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Toolbar: <strong>@toolbar</strong></span>', ['@toolbar' => $toolbar, '@editUrl' => $userEditUrl]);
+  }
   $form['toolbar']['classic_toolbar'] = [
     '#type' => 'checkbox',
     '#title' => t('Enable Classic Drupal Toolbar'),
-    '#description' => t('Enable Classic Legacy Drupal Toolbar (Horizontal Toolbar).'),
+    '#description' => $description,
     '#default_value' => theme_get_setting('classic_toolbar'),
   ];
 
@@ -592,6 +614,9 @@ function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
 
     $accentColorValue = $form_state->getValue('accent_color');
     $userData->set('gin', $user->id(), 'accent_color', $accentColorValue);
+
+    $classicToolbarValue = $form_state->getValue('classic_toolbar');
+    $userData->set('gin', $user->id(), 'classic_toolbar', $classicToolbarValue);
   }
 }
 
@@ -775,4 +800,42 @@ function _gin_get_accent_color_preset_label($key) {
     return $options[$key];
   }
   return '';
+}
+
+/**
+ * Classic Toolbar helper function.
+ */
+function _gin_classic_toolbar() {
+  // Get user config.
+  if (_gin_user__overrides_enabled()) {
+    $uid = _gin_user__get_user_id();
+    $classic_toolbar = _gin_user__classic_toolbar();
+  }
+  // Get general config.
+  else {
+    $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
+  }
+
+  // Convert older versions to boolean.
+  $classic_toolbar = $classic_toolbar === 0 || $classic_toolbar === '0' ? FALSE : $classic_toolbar;
+  $classic_toolbar = $classic_toolbar === 1 || $classic_toolbar === '1' ? TRUE : $classic_toolbar;
+
+  return $classic_toolbar;
+}
+
+/**
+ * User Classic Toolbar helper function.
+ */
+function _gin_user__classic_toolbar() {
+  $uid = _gin_user__get_user_id();
+
+  /** @var \Drupal\user\UserDataInterface $userData */
+  $userData = Drupal::service('user.data');
+
+  if ($userData->get('gin', $uid, 'classic_toolbar') !== NULL) {
+    return $userData->get('gin', $uid, 'classic_toolbar');
+  }
+  else {
+    return NULL;
+  }
 }
