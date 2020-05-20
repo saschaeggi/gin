@@ -234,6 +234,11 @@ $maxWidth: 520px;
   background: none;
 }
 
+.form-item__warning {
+  display: inline-block;
+  margin-top: .5rem;
+}
+
 .js .form-autocomplete {
   padding-right: 36px;
 }

@@ -8,13 +8,15 @@
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Markup;
 use Drupal\user\Entity\User;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_preprocess_HOOK() for html.
  */
 function gin_preprocess_html(&$variables) {
   // Get theme darkmode config.
-  $darkmode = theme_get_setting('enable_darkmode', 'gin');
+  $darkmode = _gin_dark_mode_enabled();
+
   $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
 
   // Check if darkmode is enabled.
@@ -60,7 +62,7 @@ function gin_preprocess_page(&$variables) {
     $path === '/node/add' ||
     strpos($path, '/delete') !== FALSE ||
     strpos($path, '/revisions') !== FALSE
-   ) {
+  ) {
     $variables['has_sidebar'] = 'false';
   }
 
@@ -74,9 +76,9 @@ function gin_preprocess_page(&$variables) {
  */
 function gin_page_attachments_alter(&$page) {
   // Get theme configs.
-  $darkmode = theme_get_setting('enable_darkmode', 'gin');
-  $preset_accent_color = theme_get_setting('preset_accent_color', 'gin');
-  $accent_color = theme_get_setting('accent_color', 'gin');
+  $darkmode = _gin_dark_mode_enabled();
+  $preset_accent_color = _gin_preset_accent_color();
+  $accent_color = _gin_accent_color();
   $preset_focus_color = theme_get_setting('preset_focus_color', 'gin');
   $focus_color = theme_get_setting('focus_color', 'gin');
   $classic_toolbar = theme_get_setting('classic_toolbar', 'gin');
@@ -127,14 +129,13 @@ function gin_preprocess_dropbutton_wrapper(&$variables) {
 function gin_form_alter(&$form, $form_state, $form_id) {
   $path = \Drupal::service('path.current')->getPath();
 
-  // Okay this is the tricky part,
-  // choose the right node forms to alter the actions
-  // This needs refactoring later on.
+  // Okay this is the tricky part.
+  // Choose the right node forms to alter the actions.
   if (
     strpos($form_id, 'node_') === 0 &&
     (strpos($path, '/edit') !== FALSE || strpos($path, '/add') !== FALSE) &&
     $form_id !== 'node_type_add_form'
-   ) {
+  ) {
     // Submit change weight.
     if (isset($form['actions']['submit'])) {
       $form['actions']['submit']['#weight'] = '99';
@@ -202,6 +203,99 @@ function gin_form_alter(&$form, $form_state, $form_id) {
         unset($form['actions']['submit']);
       }
     }
+  }
+}
+
+/**
+ * Implements form_user_form_alter().
+ */
+function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
+  /** @var \Drupal\user\UserInterface $user */
+  $user = $form_state->getBuildInfo()['callback_object']->getEntity();
+
+  if ($user->id()) {
+    /** @var \Drupal\user\UserDataInterface $userData */
+    $userData = Drupal::service('user.data');
+    $enabledUserOverrides = $userData->get('gin', $user->id(), 'enable_user_settings');
+    $darkModeValue = $userData->get('gin', $user->id(), 'enable_darkmode');
+
+    if ($darkModeValue == NULL) {
+      $darkModeValue = theme_get_setting('enable_darkmode', 'gin') == TRUE ? TRUE : FALSE;
+    }
+
+    // Inject the settings for the dark mode feauture.
+    $form['gin_theme_settings'] = [
+      '#type' => 'details',
+      '#title' => t('Admin theme settings'),
+      '#open' => TRUE,
+      '#weight' => 90,
+    ];
+
+    $form['gin_theme_settings']['enable_user_settings'] = [
+      '#type' => 'checkbox',
+      '#title' => t('Enable overrides'),
+      '#description' => t("Enables default admin theme overrides."),
+      '#default_value' => $enabledUserOverrides,
+      '#weight' => 0,
+    ];
+
+    $form['gin_theme_settings']['user_settings'] = [
+      '#type' => 'container',
+      '#states' => [
+        // Show if met.
+        'visible' => [
+          'input[name="enable_user_settings"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+
+    $form['gin_theme_settings']['user_settings']['enable_darkmode'] = [
+      '#type' => 'checkbox',
+      '#title' => t('Enable Darkmode (EXPERIMENTAL)'),
+      '#description' => t("Enables Darkmode for the admin interface."),
+      '#default_value' => $darkModeValue !== NULL ? $darkModeValue : 0,
+      '#weight' => 0,
+    ];
+
+    $accentColorPresetValue = $userData->get('gin', $user->id(), 'preset_accent_color');
+
+    if ($accentColorPresetValue == NULL) {
+      $accentColorPresetValue = theme_get_setting('preset_accent_color');
+    }
+
+    // Accent color setting.
+    $form['gin_theme_settings']['user_settings']['preset_accent_color'] = [
+      '#type' => 'select',
+      '#title' => t('Accent color (EXPERIMENTAL)'),
+      '#default_value' => $accentColorPresetValue,
+      '#options' => _gin_get_accent_color_presets(),
+    ];
+
+    $accentColorValue = $userData->get('gin', $user->id(), 'accent_color');
+
+    if ($accentColorValue == NULL) {
+      $accentColorValue = theme_get_setting('accent_color');
+    }
+
+    // Main Accent color setting.
+    $form['gin_theme_settings']['user_settings']['accent_color'] = [
+      '#type' => 'color',
+      '#placeholder' => '#77777',
+      '#title' => t('Accent color (EXPERIMENTAL)'),
+      '#description' => t('Use with caution, values should meet a11y criterias.'),
+      '#default_value' => $accentColorValue,
+      '#min' => '7',
+      '#max' => '7',
+      '#size' => '7',
+      '#states' => [
+        // Show if met.
+        'visible' => [
+          'select[name="preset_accent_color"]' => ['value' => 'custom'],
+        ],
+      ],
+    ];
+
+    array_unshift($form['actions']['submit']['#submit'], '_gin_user_form_submit');
   }
 }
 
@@ -315,7 +409,7 @@ function gin_css_alter(&$css, $assets) {
  */
 function gin_ckeditor_css_alter(array &$css) {
   // Get theme darkmode config.
-  $darkmode = theme_get_setting('enable_darkmode', 'gin');
+  $darkmode = _gin_dark_mode_enabled();
 
   if ($darkmode) {
     $css[] = drupal_get_path('theme', 'gin') . '/dist/css/gin_ckeditor.css';
@@ -361,32 +455,44 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#title' => t('Settings'),
   ];
 
+  $userEditUrl = Url::fromRoute('entity.user.edit_form', ['user' => Drupal::currentUser()->id()])->toString();
+
   // Darkmode setting.
+  // Check if this is overridden by the logged in user.
+  $userDarkMode = _gin_dark_mode_enabled();
+  $themeDarkMode = theme_get_setting('enable_darkmode');
+  $description = t("Enables Darkmode for the admin interface.");
+
+  if (!is_null($userDarkMode) && $userDarkMode !== $themeDarkMode) {
+    $darkmode = $userDarkMode ? t('Enabled') : t('Disabled');
+    $description = t("Enables Darkmode for the admin interface.") . '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Darkmode: <strong>@darkmode</strong></span>', ['@darkmode' => $darkmode, '@editUrl' => $userEditUrl]);
+  }
   $form['custom_settings']['enable_darkmode'] = [
     '#type' => 'checkbox',
     '#title' => t('Enable Darkmode (EXPERIMENTAL)'),
-    '#description' => t("Enable Darkmode (Currently doesn't support a custom Accent color)."),
-    '#default_value' => theme_get_setting('enable_darkmode'),
+    '#description' => $description,
+    '#default_value' => $themeDarkMode,
   ];
 
   // Accent color setting.
+  // Check if this is overridden by the logged in user.
+  $userPresetAccentColor = _gin_user__get_preset_accentcolor();
+  $themePresetAccentColor = theme_get_setting('preset_accent_color');
   $form['custom_settings']['preset_accent_color'] = [
     '#type' => 'select',
     '#title' => t('Accent color (EXPERIMENTAL)'),
-    '#default_value' => theme_get_setting('preset_accent_color'),
-    '#options' => [
-      'blue' => t('Claro Blue (Default)'),
-      'teal' => t('Teal'),
-      'dark_purple' => t('Dark Purple'),
-      'purple' => t('Purple'),
-      'green' => t('Green'),
-      'red' => t('Red'),
-      'orange' => t('Orange'),
-      'yellow' => t('Yellow'),
-      'pink' => t('Pink'),
-      'custom' => t('Custom'),
-    ],
+    '#default_value' => $themePresetAccentColor,
+    '#options' => _gin_get_accent_color_presets(),
   ];
+
+  if (!is_null($userPresetAccentColor) && $userPresetAccentColor !== $themePresetAccentColor) {
+    $presetActionColorLabel = _gin_get_accent_color_preset_label($userPresetAccentColor);
+    $form['custom_settings']['preset_accent_color']['#description'] = '<span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Accent Color: <strong>@colorLabel</strong></span>', ['@editUrl' => $userEditUrl, '@colorLabel' => $presetActionColorLabel]);
+  }
+
+  // Check if this is overridden by the logged in user.
+  $userAccentColor = _gin_user__accentcolor();
+  $themeAccentColor = theme_get_setting('accent_color');
 
   // Main Accent color setting.
   $form['custom_settings']['accent_color'] = [
@@ -394,7 +500,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#placeholder' => '#77777',
     '#title' => t('Accent color (EXPERIMENTAL)'),
     '#description' => t('Use with caution, values should meet a11y criterias.'),
-    '#default_value' => theme_get_setting('accent_color'),
+    '#default_value' => $themeAccentColor,
     '#min' => '7',
     '#max' => '7',
     '#size' => '7',
@@ -405,6 +511,10 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
       ],
     ],
   ];
+
+  if (!is_null($userAccentColor) && $userAccentColor !== $themeAccentColor) {
+    $form['custom_settings']['accent_color']['#description'] = t('Use with caution, values should meet a11y criterias.') . '<br/>' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Custom Accent Color: <strong>@accentColor</strong>', ['@editUrl' => $userEditUrl, '@accentColor' => $userAccentColor]);
+  }
 
   // Focus color setting.
   $form['custom_settings']['preset_focus_color'] = [
@@ -461,7 +571,32 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
 }
 
 /**
- * Increases or decreases the brightness of a color.
+ * Implements helper function _gin_user_form_submit().
+ */
+function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
+  /** @var \Drupal\user\UserDataInterface $userData */
+  $userData = Drupal::service('user.data');
+
+  /** @var \Drupal\user\UserInterface $user */
+  $user = $form_state->getBuildInfo()['callback_object']->getEntity();
+
+  if ($user->id()) {
+    $enabledUserOverrides = $form_state->getValue('enable_user_settings');
+    $userData->set('gin', $user->id(), 'enable_user_settings', $enabledUserOverrides);
+
+    $darkModeValue = $form_state->getValue('enable_darkmode');
+    $userData->set('gin', $user->id(), 'enable_darkmode', $darkModeValue);
+
+    $accentColorPresetValue = $form_state->getValue('preset_accent_color');
+    $userData->set('gin', $user->id(), 'preset_accent_color', $accentColorPresetValue);
+
+    $accentColorValue = $form_state->getValue('accent_color');
+    $userData->set('gin', $user->id(), 'accent_color', $accentColorValue);
+  }
+}
+
+/**
+ * Helper function for increasing/decreasing the brightness of a color.
  */
 function _gin_adjust_brightness($hexCode, $adjustPercent) {
   $hexCode = ltrim($hexCode, '#');
@@ -480,4 +615,164 @@ function _gin_adjust_brightness($hexCode, $adjustPercent) {
   }
 
   return '#' . implode($hexCode);
+}
+
+/**
+ * Check user has enabled darkmode helper function.
+ */
+function _gin_user__get_user_id() {
+  $uid = Drupal::currentUser()->id();
+
+  if (empty($uid)) {
+    return NULL;
+  }
+  else {
+    return $uid;
+  }
+}
+
+/**
+ * Check user has enabled darkmode helper function.
+ */
+function _gin_user__overrides_enabled() {
+  $uid = _gin_user__get_user_id();
+
+  /** @var \Drupal\user\UserDataInterface $userData */
+  $userData = Drupal::service('user.data');
+
+  $enableUserSetting = $userData->get('gin', $uid, 'enable_user_settings');
+  $enableUserSetting = $enableUserSetting === 1 || $enableUserSetting === '1' ? TRUE : $enableUserSetting;
+  $enableUserSetting = $enableUserSetting === 0 || $enableUserSetting === '0' ? FALSE : $enableUserSetting;
+
+  if ($uid && $enableUserSetting === TRUE) {
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Enable darkmode helper function.
+ */
+function _gin_dark_mode_enabled() {
+  // Get user config.
+  if (_gin_user__overrides_enabled()) {
+    $uid = _gin_user__get_user_id();
+    $darkmode = _gin_user__get_darkmode_enabled();
+
+    // Convert older versions to boolean.
+    $darkmode = $darkmode === 0 || $darkmode === '0' ? FALSE : $darkmode;
+    $darkmode = $darkmode === 1 || $darkmode === '1' ? TRUE : $darkmode;
+  }
+  // Get general config.
+  else {
+    $darkmode = theme_get_setting('enable_darkmode', 'gin');
+  }
+
+  return $darkmode;
+}
+
+/**
+ * Check user has enabled darkmode helper function.
+ */
+function _gin_user__get_darkmode_enabled() {
+  $uid = _gin_user__get_user_id();
+
+  if ($uid) {
+    /** @var \Drupal\user\UserDataInterface $userData */
+    $userData = Drupal::service('user.data');
+
+    return $userData->get('gin', $uid, 'enable_darkmode');
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Accent color helper function.
+ */
+function _gin_preset_accent_color() {
+  if (_gin_user__overrides_enabled()) {
+    return _gin_user__get_preset_accentcolor();
+  }
+  else {
+    return theme_get_setting('preset_accent_color', 'gin');
+  }
+}
+
+/**
+ * User Accent color helper function.
+ */
+function _gin_user__get_preset_accentcolor() {
+  $uid = _gin_user__get_user_id();
+
+  /** @var \Drupal\user\UserDataInterface $userData */
+  $userData = Drupal::service('user.data');
+
+  if ($userData->get('gin', $uid, 'preset_accent_color') !== NULL) {
+    return $userData->get('gin', $uid, 'preset_accent_color');
+  }
+  else {
+    return NULL;
+  }
+}
+
+/**
+ * Accent color helper function.
+ */
+function _gin_accent_color() {
+  if (_gin_user__overrides_enabled() && _gin_user__accentcolor()) {
+    return _gin_user__accentcolor();
+  }
+  else {
+    return theme_get_setting('accent_color', 'gin');
+  }
+}
+
+/**
+ * User Accent color helper function.
+ */
+function _gin_user__accentcolor() {
+  $uid = _gin_user__get_user_id();
+
+  /** @var \Drupal\user\UserDataInterface $userData */
+  $userData = Drupal::service('user.data');
+
+  if ($uid && $userData->get('gin', $uid, 'accent_color') !== NULL) {
+    return $userData->get('gin', $uid, 'accent_color');
+  }
+  else {
+    return NULL;
+  }
+}
+
+/**
+ * Accent color presets helper function.
+ */
+function _gin_get_accent_color_presets() {
+  return [
+    'blue' => t('Claro Blue (Default)'),
+    'teal' => t('Teal'),
+    'dark_purple' => t('Dark Purple'),
+    'purple' => t('Purple'),
+    'green' => t('Green'),
+    'red' => t('Red'),
+    'orange' => t('Orange'),
+    'yellow' => t('Yellow'),
+    'pink' => t('Pink'),
+    'custom' => t('Custom'),
+  ];
+}
+
+/**
+ * Accent color preset label helper function.
+ */
+function _gin_get_accent_color_preset_label($key) {
+  $options = _gin_get_accent_color_presets();
+  if (!empty($options[$key])) {
+    return $options[$key];
+  }
+  return '';
 }
