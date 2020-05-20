@@ -335,12 +335,12 @@ function gin_preprocess_menu(&$variables) {
 /**
  * Local actions preprocess.
  */
-function gin_preprocess_menu_local_action(&$variables) {
-  $classes = &$variables['link']['#options']['attributes']['class'];
-  $classes = array_filter($classes, function ($e) {
-    return $e != 'button--primary';
-  });
-}
+// function gin_preprocess_menu_local_action(&$variables) {
+//   $classes = &$variables['link']['#options']['attributes']['class'];
+//   $classes = array_filter($classes, function ($e) {
+//     return $e != 'button--primary';
+//   });
+// }
 
 /**
  * Implements toolbar preprocess.
