@@ -784,6 +784,7 @@ a.toolbar-menu__trigger,
     .toolbar-bar {
       position: relative;
       height: $topBar;
+      z-index: 102;
 
       .toolbar-tab {
         display: block;
