@@ -2,6 +2,10 @@
   .ief-row-form {
     border: 1px solid var(--colorGinBorder);
 
+    &:hover {
+      background: transparent;
+    }
+
     td {
       padding-bottom: 0;
     }
@@ -24,7 +28,6 @@
   }
 
   .form-wrapper:last-of-type {
-    background: var(--colorGinLayer2Background);
     margin: 0 -1.5rem;
     padding: 0 1.5rem;
   }
