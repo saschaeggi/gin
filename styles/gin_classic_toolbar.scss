@@ -8,6 +8,8 @@
 .toolbar {
   .toolbar-bar {
     $breakpoint: 576px;
+    display: flex;
+    overflow: auto;
     background: #100f10;
     box-shadow: none;
 
@@ -35,12 +37,17 @@
       }
     }
 
+    @include mq(976px) {
+      overflow: initial;
+    }
+
     .contextual-toolbar-tab.toolbar-tab {
       float: right; // Set contextual to right
     }
 
     .toolbar-tab > .toolbar-item {
       font-weight: normal;
+      white-space: nowrap;
     }
 
     .toolbar-tab > .toolbar-item.is-active {
@@ -167,10 +174,10 @@
         .menu-item {
           border-left: none;
           border-right: none;
-          border-bottom: 1px solid var(--colorGinBorder);
+          border-bottom: 1px solid transparent;
 
           &:first-child {
-            border-top: 1px solid var(--colorGinBorder);
+            border-top: 1px solid transparent;
           }
         }
 
@@ -328,7 +335,7 @@
     display: block;
     position: absolute;
     right: 0;
-    top: 18px;
+    top: 11px;
     width: 16px;
     height: 16px;
     background-color: var(--colorGinPrimary);

@@ -5,8 +5,10 @@
  * gin.theme
  */
 
+use Drupal\Core\File\Exception\FileException;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\user\Entity\User;
 use Drupal\Core\Url;
 
@@ -333,16 +335,6 @@ function gin_preprocess_menu(&$variables) {
 }
 
 /**
- * Local actions preprocess.
- */
-// function gin_preprocess_menu_local_action(&$variables) {
-//   $classes = &$variables['link']['#options']['attributes']['class'];
-//   $classes = array_filter($classes, function ($e) {
-//     return $e != 'button--primary';
-//   });
-// }
-
-/**
  * Implements toolbar preprocess.
  */
 function gin_preprocess_toolbar(&$variables) {
@@ -430,6 +422,21 @@ function gin_ckeditor_css_alter(array &$css) {
 }
 
 /**
+ * Implements hook_preprocess_menu__toolbar__gin().
+ */
+function gin_preprocess_menu__toolbar__gin(&$variables) {
+  // Get theme configs.
+  $logo_path = theme_get_setting('icon_path', 'gin');
+  $logo_default = theme_get_setting('icon_default', 'gin');
+  $classic_toolbar = _gin_classic_toolbar();
+  $variables['icon_default'] = $logo_default;
+
+  if (!$classic_toolbar && !$logo_default) {
+    $variables['icon_path'] = $logo_path;
+  }
+}
+
+/**
  * Custom theme settings.
  */
 function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_state, $form_id = NULL) {
@@ -438,22 +445,20 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     return;
   }
 
-  // Add submit/validate function.
-  $form['#validate'][] = 'gin_form_system_theme_settings_alter_validate';
-
   /*
    * //////////////////////////
    * Unset unused settings.
    * * //////////////////////////
    */
   unset($form['logo']);
-  unset($form['favicon']);
 
   /*
    * //////////////////////////
    * Move default theme settings to bottom.
    * * //////////////////////////
    */
+  $form['favicon']['#open'] = FALSE;
+  $form['favicon']['#weight'] = 98;
   $form['theme_settings']['#open'] = FALSE;
   $form['theme_settings']['#weight'] = 99;
 
@@ -587,6 +592,49 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#description' => $description,
     '#default_value' => theme_get_setting('classic_toolbar'),
   ];
+
+  /*
+   * //////////////////////////
+   * Logo settings.
+   * * //////////////////////////
+   */
+  $form['icon'] = [
+    '#type' => 'details',
+    '#title' => t('Logo'),
+    '#open' => TRUE,
+  ];
+  $form['icon']['icon_default'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Use the default logo supplied by the theme'),
+    '#default_value' => theme_get_setting('icon_default'),
+    '#tree' => FALSE,
+  ];
+  $form['icon']['settings'] = [
+    '#type' => 'container',
+    '#states' => [
+      // Hide the logo settings when using the default logo.
+      'invisible' => [
+        'input[name="icon_default"]' => ['checked' => TRUE],
+      ],
+    ],
+  ];
+  $form['icon']['settings']['icon_path'] = [
+    '#type' => 'textfield',
+    '#title' => t('Path to custom logo'),
+    '#default_value' => theme_get_setting('icon_path'),
+  ];
+  $form['icon']['settings']['icon_upload'] = [
+    '#type' => 'file',
+    '#title' => t('Upload logo image'),
+    '#maxlength' => 40,
+    '#description' => t("If you don't have direct file access to the server, use this field to upload your logo."),
+    '#upload_validators' => [
+      'file_validate_extensions' => ['png gif jpg jpeg apng svg'],
+    ],
+  ];
+
+  // Add submit/validate function.
+  $form['#validate'][] = 'gin_form_system_theme_settings_alter_validate';
 
   // Attach custom js.
   $form['#attached']['library'][] = 'gin/gin_settings';
@@ -838,4 +886,75 @@ function _gin_user__classic_toolbar() {
   else {
     return NULL;
   }
+}
+
+/**
+ * Validation for logo.
+ */
+function gin_form_system_theme_settings_alter_validate(array &$form, FormStateInterface $form_state) {
+  if (isset($form['icon'])) {
+    $file = _file_save_upload_from_form($form['icon']['settings']['icon_upload'], $form_state, 0);
+    if ($file) {
+      try {
+        $filename = \Drupal::service('file_system')->copy($file->getFileUri(), \Drupal::config('system.file')->get('default_scheme') . '://');
+        $form_state->setValue('icon_default', 0);
+        $form_state->setValue('icon_path', $filename);
+        $form_state->unsetValue('icon_upload');
+      }
+      catch (FileException $e) {
+        \Drupal::logger('gin')->error($e->getMessage());
+      }
+    }
+  }
+
+  // When intending to use the default logo, unset the icon_path.
+  if ($form_state->getValue('icon_default')) {
+    $form_state->unsetValue('icon_path');
+  }
+
+  // If the user provided a path for a logo file, make sure a file
+  // exists at that path.
+  if ($form_state->getValue('icon_path')) {
+    $path = _gin_validate_path_logo($form_state->getValue('icon_path'));
+
+    if (!$path) {
+      $form_state->setErrorByName('icon_path', t('The custom logo path is invalid.'));
+    }
+  }
+}
+
+/**
+ * Helper function for logo.
+ *
+ * Attempts to validate normal system paths, paths relative to the public files
+ * directory, or stream wrapper URIs. If the given path is any of the above,
+ * returns a valid path or URI that the theme system can display.
+ *
+ * @param string $path
+ *   A path relative to the Drupal root or to the public files directory, or
+ *   a stream wrapper URI.
+ *
+ * @return mixed
+ *   A valid path that can be displayed through the theme system, or FALSE if
+ *   the path could not be validated.
+ */
+function _gin_validate_path_logo($path) {
+  $file_system = \Drupal::service('file_system');
+
+  // // Absolute local file paths are invalid.
+  if ($file_system->realpath($path) == $path) {
+    return FALSE;
+  }
+  // A path relative to the Drupal root or a fully qualified URI is valid.
+  if (is_file($path)) {
+    return $path;
+  }
+  // Prepend 'public://' for relative file paths within public filesystem.
+  if (StreamWrapperManager::getScheme($path) === FALSE) {
+    $path = 'public://' . $path;
+  }
+  if (is_file($path)) {
+    return $path;
+  }
+  return FALSE;
 }

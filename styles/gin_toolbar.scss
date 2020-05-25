@@ -118,8 +118,29 @@
       }
     }
 
+    // Toolbar logo
+    .toolbar-logo {
+      height: 96px;
+    }
+
     // Admin tray: Home icon
-    #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help {
+    .toolbar-icon-home {
+      display: block;
+      width: 40px;
+      margin: 8px;
+    }
+
+    #toolbar-item-administration-tray a.toolbar-icon.override-icon {
+      &:before {
+        @include mq(976px) {
+          left: 0;
+          width: 0;
+          content: none;
+        }
+      }
+    }
+
+    #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
       @include mq(976px) {
         font-size: 0;
         height: 96px;
@@ -385,6 +406,16 @@
 #toolbar-bar.js-settings-tray-edit-mode {
   background: var(--colorGinPrimary);
   justify-content: flex-end;
+}
+
+#toolbar-item-administration-tray a.toolbar-icon.override-icon {
+  &:before {
+    @include mq(976px) {
+      left: 0;
+      width: 0;
+      content: none;
+    }
+  }
 }
 
 #toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon.toolbar-icon-edit.toolbar-item.is-active:hover {
@@ -847,6 +878,10 @@ a.toolbar-menu__trigger,
           .icon-user {
             box-shadow: 0 0 0 2px var(--colorGinAppBackground),0 0 0 5px var(--colorGinLayer3Background);
           }
+        }
+
+        .toolbar-icon-user {
+          padding-right: 0;
         }
 
         .toolbar-tray {

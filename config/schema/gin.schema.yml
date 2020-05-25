@@ -16,3 +16,9 @@ gin.settings:
     classic_toolbar:
       type: boolean
       label: 'The classic toolbar'
+    icon_default:
+      type: boolean
+      label: 'Use default logo'
+    icon_path:
+      type: string
+      label: 'Path to custom logo'

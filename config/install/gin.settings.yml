@@ -2,3 +2,5 @@ preset_accent_color: 'blue'
 preset_focus_color: 'gin'
 enable_darkmode: false
 classic_toolbar: false
+icon_default: true
+icon_path: ''
