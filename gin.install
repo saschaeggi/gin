@@ -27,3 +27,14 @@ function gin_update_8301() {
  */
 function gin_update_8302() {
 }
+
+/**
+ * Update: Set icon_default to true.
+ */
+function gin_update_8303() {
+  /** @var \Drupal\Core\Config\Config $config */
+  $config = \Drupal::configFactory()->getEditable('gin.settings');
+  $config
+    ->set('icon_default', true)
+    ->save();
+}
