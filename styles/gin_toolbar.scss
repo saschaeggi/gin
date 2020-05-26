@@ -616,7 +616,7 @@ a.toolbar-menu__trigger,
     height: 100vh;
     max-width: calc(100% - #{$topBar});
     background: var(--colorGinLayerBackground);
-    box-shadow: 0 4px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .15);
     transition: $transition;
 
     [data-toolbar-menu='open'] & {
@@ -692,6 +692,7 @@ a.toolbar-menu__trigger,
           &.is-active {
             color: var(--colorGinPrimary);
             font-weight: 500;
+            background-color: var(--colorGinItemHover);
 
             &:after {
               content: "";
