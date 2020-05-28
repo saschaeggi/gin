@@ -692,7 +692,6 @@ a.toolbar-menu__trigger,
           &.is-active {
             color: var(--colorGinPrimary);
             font-weight: 500;
-            background-color: var(--colorGinItemHover);
 
             &:after {
               content: "";
