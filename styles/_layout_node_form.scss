@@ -137,10 +137,7 @@
         > .accordion__item {
           margin: 0;
           border: 0 none;
-
-          @include mq(1360px) {
-            border-bottom: 1px solid var(--colorGinBorder);
-          }
+          border-bottom: 1px solid var(--colorGinBorder);
 
           > .claro-details__summary {
             display: block;
