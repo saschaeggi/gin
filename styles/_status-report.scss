@@ -43,6 +43,10 @@
   border: 1px solid var(--colorGinBorder);
   background: var(--colorGinLayerBackground);
 
+  &__status-title {
+    padding-left: 0;
+  }
+
   &__status-icon {
     &--checked:before,
     &--warning:before,

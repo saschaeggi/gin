@@ -74,11 +74,17 @@
               <a href="{{ parent.url }}">{{ parent.title }}</a>
             </h2>
           </li>
+          <li class="menu-item">
+            <a href="{{ parent.url }}" class="toolbar-icon">{{ 'Overview'|t }}</a>
+          </li>
         {% elseif menu_level > 1 and loop.index == 1 %}
           <li class="menu-item-title">
             <h3 class="toolbar-menu__sub-title">
               <a href="{{ parent.url }}">{{ parent.title }}</a>
             </h3>
+          </li>
+          <li class="menu-item">
+            <a href="{{ parent.url }}" class="toolbar-icon">{{ 'Overview'|t }}</a>
           </li>
         {% endif %}
       {% endif %}

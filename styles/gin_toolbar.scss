@@ -15,11 +15,10 @@
 
   .toolbar-bar {
     $breakpoint: 576px;
-    display: flex;
     box-shadow: none;
 
     @include breakpoint($breakpoint) {
-      height: 0; //$topBar;
+      display: flex;
 
       // Alignment: move user account
       .user-menu {
@@ -36,10 +35,14 @@
           text-align: left;
         }
       }
+    }
 
-      .contextual-toolbar-tab {
-        order: 100;
-      }
+    @include breakpoint(1024px) {
+      height: 0;
+    }
+
+    .contextual-toolbar-tab {
+      order: 100;
     }
 
     .contextual-toolbar-tab.toolbar-tab {
@@ -100,6 +103,10 @@
     .toolbar-icon-system-admin-reports,
     .toolbar-icon-help-main,
     .toolbar-icon-commerce-admin-commerce,
+    .toolbar-icon-escape-admin,
+    .toolbar-icon-edit,
+    .toolbar-icon-local-tasks,
+    .toolbar-icon-menu,
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &:before {
         background-color: var(--colorGinIcons);
@@ -174,6 +181,13 @@
       }
     }
 
+    // Hamburger
+    .toolbar-icon-menu {
+      &:before {
+        mask-image: url("data:image/svg+xml,%3Csvg width='100pt' height='100pt' version='1.1' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath d='m92.953 27.328h-85.938c-1.9141 0-3.4688-1.5547-3.4688-3.4688s1.5547-3.4688 3.4688-3.4688h85.938c1.9141 0 3.4688 1.5547 3.4688 3.4688s-1.5547 3.4688-3.4688 3.4688z'/%3E%3Cpath d='m92.953 53.469h-85.938c-1.9141 0-3.4688-1.5547-3.4688-3.4688s1.5547-3.4688 3.4688-3.4688h85.938c1.9141 0 3.4688 1.5547 3.4688 3.4688s-1.5547 3.4688-3.4688 3.4688z'/%3E%3Cpath d='m92.953 79.688h-85.938c-1.9141 0-3.4688-1.5547-3.4688-3.4688s1.5547-3.4688 3.4688-3.4688h85.938c1.9141 0 3.4688 1.5547 3.4688 3.4688s-1.5547 3.4688-3.4688 3.4688z'/%3E%3C/g%3E%3C/svg%3E");
+      }
+    }
+
     // Admin tray: Add content
     .toolbar-icon-system-admin-content {
       &:before {
@@ -237,7 +251,22 @@
       }
     }
 
+    // Back to site
+    .toolbar-icon-escape-admin {
+      &:before {
+        mask-image: url("data:image/svg+xml,%3Csvg width='100pt' height='100pt' version='1.1' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m83.332 45.832h-66.664c-2.3008 0-4.168 1.8672-4.168 4.168s1.8672 4.168 4.168 4.168h66.664c2.3008 0 4.168-1.8672 4.168-4.168s-1.8672-4.168-4.168-4.168zm-30.387-26.219c1.6289-1.6289 1.6289-4.2656 0-5.8945-1.625-1.625-4.2656-1.625-5.8906 0l-33.336 33.336c-1.625 1.625-1.625 4.2656 0 5.8906l33.336 33.336c1.625 1.625 4.2656 1.625 5.8906 0 1.6289-1.6289 1.6289-4.2656 0-5.8945l-30.387-30.387z'/%3E%3C/svg%3E");
+      }
+    }
+
     // Edit
+    .toolbar-icon-edit,
+    .toolbar-icon-local-tasks,
+    .toolbar-tab > .toolbar-icon-edit.toolbar-item {
+      &:before {
+        mask-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cg%3E%3Cpath fill='%23ffffff' d='M14.545 3.042l-1.586-1.585c-.389-.389-1.025-.389-1.414 0l-1.293 1.293 3 3 1.293-1.293c.389-.389.389-1.026 0-1.415z'/%3E%3Crect fill='%23ffffff' x='5.129' y='3.8' transform='matrix(-.707 -.707 .707 -.707 6.189 20.064)' width='4.243' height='9.899'/%3E%3Cpath fill='%23ffffff' d='M.908 14.775c-.087.262.055.397.316.312l2.001-.667-1.65-1.646-.667 2.001z'/%3E%3C/g%3E%3C/svg%3E%0A");
+      }
+    }
+
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &, &:hover, &:active, &.is-active {
         color: var(--colorGinAppBackground);
@@ -245,7 +274,6 @@
         &:before {
           background-image: none;
           background-color: var(--colorGinAppBackground);
-          mask-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cg%3E%3Cpath fill='%23ffffff' d='M14.545 3.042l-1.586-1.585c-.389-.389-1.025-.389-1.414 0l-1.293 1.293 3 3 1.293-1.293c.389-.389.389-1.026 0-1.415z'/%3E%3Crect fill='%23ffffff' x='5.129' y='3.8' transform='matrix(-.707 -.707 .707 -.707 6.189 20.064)' width='4.243' height='9.899'/%3E%3Cpath fill='%23ffffff' d='M.908 14.775c-.087.262.055.397.316.312l2.001-.667-1.65-1.646-.667 2.001z'/%3E%3C/g%3E%3C/svg%3E%0A");
         }
       }
     }
@@ -312,15 +340,15 @@
 
 .toolbar .toolbar-tray-vertical {
   box-shadow: none;
-  border-right: 1px solid rgba(255, 255, 255, .1);
+  border-right: 1px solid var(--colorGinBorder);
   background: var(--colorGinLayerBackground);
 
   .menu-item + .menu-item {
-    border-top: 1px solid rgba(255, 255, 255, .1);
+    border-top: 1px solid var(--colorGinBorder);
   }
 
   .level-1.menu-item:last-child {
-    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    border-bottom: 1px solid var(--colorGinBorder);
   }
 
   .gin--dark-mode & {
