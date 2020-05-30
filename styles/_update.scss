@@ -37,52 +37,43 @@
   }
 }
 
-.update {
-  .color-success {
-    color: var(--colorGinGreen);
-    background-color: rgba(72, 171, 123, .05);
+.color-success,
+.color-checked {
+  border-left: 6px solid var(--colorGinGreen);
+  background-color: transparent; //rgba(72, 171, 123, .05);
 
-    &:hover, &:active, &:focus {
-      background-color: rgba(72, 171, 123, .1);
+  &:hover, &:active, &:focus {
+    background-color: rgba(72, 171, 123, .1);
+  }
+}
+
+.color-warning {
+  border-left: 6px solid var(--colorGinWarning);
+  background-color: transparent; //rgba(226, 151, 0, .05);
+
+  &:hover, &:active, &:focus {
+    background-color: rgba(226, 151, 0, .08);
+    color: rgb(144, 103, 21);
+
+    .gin--dark-mode & {
+      color: var(--colorGinWarning);
     }
   }
+}
 
-  .color-warning {
-    background-color: rgba(226, 151, 0, .05);
+.color-error {
+  border-left: 6px solid var(--colorGinDanger);
+  background-color: transparent; //rgba(222, 117, 96, .1);
 
-    &:hover, &:active, &:focus {
-      background-color: rgba(226, 151, 0, .08);
-    }
-
-    &, &:hover, &:active, &:focus {
-      color: rgb(144, 103, 21);
-
-      .gin--dark-mode & {
-        color: var(--colorGinWarning);
-      }
-    }
+  &:hover, &:active, &:focus {
+    background-color: rgba(222, 117, 96, .2);
   }
+}
 
-  .color-error {
-    color: var(--colorGinDanger);
-    background-color: rgba(222, 117, 96, .1);
-
-    &:hover, &:active, &:focus {
-      background-color: rgba(222, 117, 96, .2);
-    }
-  }
-
-  .color-success,
-  .color-warning,
-  .color-error {
-    border-left: 6px solid;
-
-    a {
-      color: var(--colorGinText);
-    }
-  }
-
-  .color-warning {
-    border-left: 6px solid var(--colorGinWarning);
-  }
+.color-success,
+.color-warning,
+.color-error,
+.color-checked {
+  color: var(--colorGinText);
+  box-sizing: border-box;
 }
