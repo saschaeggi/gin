@@ -8,7 +8,12 @@
   }
 
   .ui-dialog-titlebar {
+    padding: 24px;
     background: #1b1b1d;
+  }
+
+  .ui-dialog-title {
+    font-weight: normal;
   }
 
   .ui-widget-content.ui-dialog-buttonpane {
@@ -16,8 +21,21 @@
   }
 
   .ui-dialog-titlebar-close {
-    top: 15px;
+    top: 19px;
+    right: 18px;
     border: none;
+    opacity: .8;
+
+    .ui-icon-closethick {
+      background: url("data:image/svg+xml,%3Csvg width='100pt' height='100pt' fill='%23ffffff' version='1.1' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m91.668 13.676l-5.3398-5.3398-36.328 36.324-36.328-36.324-5.3398 5.3398 36.328 36.324-36.328 36.324 5.3398 5.3398 36.328-36.324 36.328 36.324 5.3398-5.3398-36.328-36.324z'/%3E%3C/svg%3E");
+      background-size: 24px 24px;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
   .ui-widget-content.ui-dialog-content {

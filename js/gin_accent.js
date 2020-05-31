@@ -160,10 +160,12 @@
 
   Drupal.behaviors.ginTableCheckbox = {
     attach: function (context) {
-      $("table td .checkbox-toggle", context).once().bind('click', function () {
-        var checkBoxes = $(this).siblings("input");
-        checkBoxes.prop("checked", !checkBoxes.prop("checked"));
-      });
+      if ( $("table td .checkbox-toggle", context).length > 0 ) {
+        $("table td .checkbox-toggle", context).once().bind('click', function () {
+          var checkBoxes = $(this).siblings("input");
+          checkBoxes.prop("checked", !checkBoxes.prop("checked"));
+        });
+      }
     }
   };
 })(jQuery, Drupal, drupalSettings);
