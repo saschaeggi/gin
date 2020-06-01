@@ -47,7 +47,7 @@
         ]
       %}
 
-      {% if menu_name == 'admin' %}
+      {# {% if menu_name == 'admin' %} #}
         {# Add Home if it doesn't exist #}
         {% if menu_level == 0 and loop.index == 1 and item.gin_id != 'admin_toolbar_tools-help' %}
           <li class="menu-item menu-item--expanded menu-item__tools">
@@ -87,7 +87,7 @@
             <a href="{{ parent.url }}" class="toolbar-icon">{{ 'Overview'|t }}</a>
           </li>
         {% endif %}
-      {% endif %}
+      {# {% endif %} #}
 
       <li{{ item.attributes.addClass(classes) }}>
         {% if item.gin_id == 'admin_toolbar_tools-help' and icon_default == false and icon_path != '' %}
@@ -107,7 +107,7 @@
     </ul>
   {% endif %}
 
-  {% if menu_name == 'admin' and menu_level == 0 %}
+  {% if menu_level == 0 %}
     {# Custom toggle for menu #}
     <a href="#" class="toolbar-menu__trigger trigger" role="button" aria-pressed="false">{{ 'Close'|t }}</a>
   {% endif %}
