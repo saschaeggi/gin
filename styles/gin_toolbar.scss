@@ -534,7 +534,7 @@ a.toolbar-menu__trigger,
     width: $toolbarWidth;
     padding: 16px 0 16px 25px;
     margin: 0;
-    transition: $transition;
+    transition: width $transition;
 
     &, &:active, &:focus {
       background-color: transparent;
