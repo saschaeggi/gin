@@ -698,7 +698,7 @@ a.toolbar-menu__trigger,
         > .toolbar-icon,
         > .toolbar-box > .toolbar-icon {
           font-size: 1rem;
-          color: #777;
+          color: var(--colorGinTextLight);
           display: flex;
           align-items: center;
           width: $toolbarWidth;
