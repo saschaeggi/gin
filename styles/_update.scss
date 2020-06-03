@@ -38,7 +38,10 @@
 }
 
 .color-success,
-.color-checked {
+.color-checked,
+.upgrade-status-error-list tr.no-known-error,
+.upgrade-status-summary tr.no-known-error
+{
   border-left: 6px solid var(--colorGinGreen);
   background-color: transparent; //rgba(72, 171, 123, .05);
 
@@ -47,7 +50,9 @@
   }
 }
 
-.color-warning {
+.color-warning,
+.upgrade-status-error-list tr.known-warnings,
+.upgrade-status-summary tr.known-warnings {
   border-left: 6px solid var(--colorGinWarning);
   background-color: transparent; //rgba(226, 151, 0, .05);
 
@@ -61,7 +66,9 @@
   }
 }
 
-.color-error {
+.color-error,
+.upgrade-status-error-list tr.known-errors,
+.upgrade-status-summary tr.known-errors {
   border-left: 6px solid var(--colorGinDanger);
   background-color: transparent; //rgba(222, 117, 96, .1);
 

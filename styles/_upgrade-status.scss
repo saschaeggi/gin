@@ -1,0 +1,43 @@
+.upgrade-status-error-list tr.known-warnings,
+.upgrade-status-summary tr.known-warnings,
+.upgrade-status-error-list tr.no-known-error,
+.upgrade-status-summary tr.no-known-error,
+.upgrade-status-error-list tr.known-errors,
+.upgrade-status-summary tr.known-errors {
+  color: var(--colorGinText);
+}
+
+.upgrade-status-summary > summary {
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.upgrade-status-summary tr.not-scanned > td.status-info,
+.upgrade-status-error-list tr.no-known-error > td.status-info,
+.upgrade-status-summary tr.no-known-error > td.status-info,
+.upgrade-status-error-list tr.known-warnings > td.status-info,
+.upgrade-status-summary tr.known-warnings > td.status-info,
+.upgrade-status-error-list tr.known-errors > td.status-info,
+.upgrade-status-summary tr.known-errors > td.status-info {
+  position: relative;
+  background-image: none;
+
+  &:before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    margin-top: 2px;
+  }
+}
+
+.upgrade-status-counter__status-icon--not-scanned:before {
+  mask-size: 24px;
+}
+
+.upgrade-status-summary .select-all,
+.upgrade-status-summary th.project-label, .upgrade-status-summary th.requirement-label {
+  border-left: 6px solid var(--colorGinTableHeader);
+}

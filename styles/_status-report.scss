@@ -1,10 +1,23 @@
+// Unknown
+.upgrade-status-counter__status-icon--not-scanned:before,
+.upgrade-status-summary tr.not-scanned > td.status-info:before {
+  background-image: none;
+  background-color: var(--colorGinText);
+  mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' version='1.1' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m50 2c-12.73 0-24.938 5.0586-33.941 14.059-9 9.0039-14.059 21.211-14.059 33.941s5.0586 24.938 14.059 33.941c9.0039 9 21.211 14.059 33.941 14.059s24.938-5.0586 33.941-14.059c9-9.0039 14.059-21.211 14.059-33.941s-5.0586-24.938-14.059-33.941c-9.0039-9-21.211-14.059-33.941-14.059zm6 82.5h-12v-12h12zm3.2109-27.621c-2.082 1.1797-3.3242 3.4297-3.2109 5.8203v0.80078h-12v-0.80078c-0.050781-3.418 0.85547-6.7812 2.6094-9.7109 1.7578-2.9336 4.2969-5.3164 7.332-6.8867 3.0977-1.5117 5.0625-4.6562 5.0586-8.1016-0.125-4.918-4.082-8.875-9-9-4.9688 0-9 4.0312-9 9h-12c0-5.5703 2.2109-10.91 6.1523-14.848 3.9375-3.9414 9.2773-6.1523 14.848-6.1523 5.5469 0.074219 10.848 2.3086 14.77 6.2305s6.1562 9.2227 6.2305 14.77c0.015625 3.9375-1.082 7.8008-3.168 11.145-2.0859 3.3398-5.0742 6.0234-8.6211 7.7344z'/%3E%3C/svg%3E%0A");
+  mask-repeat: no-repeat;
+  mask-position: center center;
+}
+
 // Checked
 .system-status-counter__status-icon--checked:before,
 .admin-dblog .dblog-info .icon,
 .admin-dblog .dblog-notice .icon,
 .system-status-report__status-icon--checked .details-title:before,
 .details .system-status-report__status-icon--checked:before,
-.color-checked .system-status-report__status-title:before {
+.color-checked .system-status-report__status-title:before,
+.upgrade-status-counter__status-icon--checked:before,
+.upgrade-status-error-list tr.no-known-error > td.status-info:before,
+.upgrade-status-summary tr.no-known-error > td.status-info:before {
   background-image: none;
   background-color: var(--colorGinGreen);
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 13'%3E%3Cpath d='M2 6.57143L5.6 10L14 2' fill='none' stroke='%2342a877' stroke-width='3'/%3E%3C/svg%3E%0A");
@@ -16,7 +29,10 @@
 .system-status-counter__status-icon--warning:before,
 .admin-dblog .dblog-warning .icon,
 .system-status-report__status-icon--warning .details-title:before,
-.details .system-status-report__status-icon--warning:before {
+.details .system-status-report__status-icon--warning:before,
+.upgrade-status-counter__status-icon--warning:before,
+.upgrade-status-error-list tr.known-warnings > td.status-info:before,
+.upgrade-status-summary tr.known-warnings > td.status-info:before {
   background-image: none;
   background-color: var(--colorGinWarning);
   mask-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M14.66 12.316l-5.316-10.633c-.738-1.476-1.946-1.476-2.685 0l-5.317 10.633c-.738 1.477.008 2.684 1.658 2.684h10.002c1.65 0 2.396-1.207 1.658-2.684zm-7.66-8.316h2.002v5h-2.002v-5zm2.252 8.615c0 .344-.281.625-.625.625h-1.25c-.345 0-.626-.281-.626-.625v-1.239c0-.344.281-.625.626-.625h1.25c.344 0 .625.281.625.625v1.239z'/%3E%3C/svg%3E");
@@ -31,7 +47,10 @@
 .admin-dblog .dblog-alert .icon,
 .admin-dblog .dblog-emergency .icon,
 .system-status-report__status-icon--error .details-title:before,
-.details .system-status-report__status-icon--error:before {
+.details .system-status-report__status-icon--error:before,
+.upgrade-status-counter__status-icon--error:before,
+.upgrade-status-error-list tr.known-errors > td.status-info:before,
+.upgrade-status-summary tr.known-errors > td.status-info:before {
   background-image: none;
   background-color: var(--colorGinDanger);
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 14 14'%3E%3Cpath d='M3 11.1931L11.4501 2.99995' stroke='%23e34f4f' stroke-width='2'/%3E%3Ccircle cx='7' cy='7' r='6' fill='none' stroke='%23e34f4f' stroke-width='2'/%3E%3C/svg%3E%0A");
@@ -39,7 +58,8 @@
   mask-position: center center;
 }
 
-.system-status-counter {
+.system-status-counter,
+.upgrade-status-counter {
   border: 1px solid var(--colorGinBorder);
   background: var(--colorGinLayerBackground);
 
@@ -48,6 +68,9 @@
   }
 
   &__status-icon {
+    background-color: transparent;
+    border-right: 0 none;
+
     &--checked:before,
     &--warning:before,
     &--error:before {

@@ -1,0 +1,16 @@
+.progress {
+  &__bar {
+    border-color: var(--colorGinPrimary);
+    background-color: var(--colorGinPrimary);
+  }
+
+  &__track {
+    border-color: var(--colorGinBorder);
+    background-color: var(--colorGinLayer3Background);
+  }
+
+  &__description,
+  &__percentage {
+    color: var(--colorGinText);
+  }
+}

@@ -103,11 +103,6 @@ svg path {
   background-color: var(--colorGinDisabled);
 }
 
-.progress__bar {
-  border-color: var(--colorGinPrimary);
-  background-color: var(--colorGinPrimary);
-}
-
 .pager__link.is-active, .pager__item--current {
   background-color: var(--colorGinPrimary);
 }
