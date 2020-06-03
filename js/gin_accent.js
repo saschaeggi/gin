@@ -31,6 +31,7 @@
       if (darkmodeEnabled === true || darkmodeEnabled === 1) {
         // Darkmode colors.
         accentColors = {
+          light_blue: '#82bfe8',
           dark_purple: '#976bef',
           purple: '#dba5ef',
           teal: '#67efce',
@@ -44,6 +45,7 @@
       else {
         // Light theme colors.
         accentColors = {
+          light_blue: '#0f6aa6',
           dark_purple: '#35009d',
           purple: '#8140b7',
           teal: '#267c91',

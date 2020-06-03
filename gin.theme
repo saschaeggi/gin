@@ -831,6 +831,7 @@ function _gin_user__accentcolor() {
 function _gin_get_accent_color_presets() {
   return [
     'blue' => t('Claro Blue (Default)'),
+    'light_blue' => t('Light Blue'),
     'teal' => t('Teal'),
     'dark_purple' => t('Dark Purple'),
     'purple' => t('Purple'),
