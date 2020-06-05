@@ -410,18 +410,6 @@ function gin_css_alter(&$css, $assets) {
 }
 
 /**
- * Implements hook_ckeditor_css_alter().
- */
-function gin_ckeditor_css_alter(array &$css) {
-  // Get theme darkmode config.
-  $darkmode = _gin_dark_mode_enabled();
-
-  if ($darkmode) {
-    $css[] = drupal_get_path('theme', 'gin') . '/dist/css/gin_ckeditor.css';
-  }
-}
-
-/**
  * Implements hook_preprocess_menu__toolbar__gin().
  */
 function gin_preprocess_menu__toolbar__gin(&$variables) {

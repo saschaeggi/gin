@@ -162,7 +162,6 @@ ckeditor_stylesheets:
   - ../../../core/themes/claro/css/base/typography.css
   - ../../../core/themes/claro/css/theme/ckeditor-frame.css
   - dist/css/gin_accent.css
-  - dist/css/gin_ckeditor.css
 
 regions:
   header: 'Header'

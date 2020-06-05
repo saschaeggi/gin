@@ -2,7 +2,9 @@
   .cke_inner,
   .cke_wysiwyg_frame,
   .cke_wysiwyg_div {
-    background: var(--colorGinLayer2Background);
+    .gin--dark-mode & {
+      background: var(--colorGinLayer2Background);
+    }
   }
 
   .cke_top {
