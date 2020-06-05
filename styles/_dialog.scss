@@ -8,6 +8,7 @@
   }
 
   .ui-dialog-titlebar {
+    line-height: 1.2;
     padding: 24px;
     background: #1b1b1d;
   }
@@ -21,7 +22,7 @@
   }
 
   .ui-dialog-titlebar-close {
-    top: 24px;
+    top: 20px;
     right: 18px;
     border: none;
     opacity: .8;
