@@ -58,11 +58,17 @@
     background: rgba(#dfe0e4, .98);
     border-radius: 4px;
 
+    [data-drupal-selector*='edit-views-bulk-operations-bulk-form'] {
+      > * {
+        margin-right: .5rem;
+      }
+    }
+
     .gin--dark-mode & {
       background: rgba($colorDarkAppBackground, .98);
     }
 
-    .form-item__label {
+    .form-item__label:not([for='edit-select-all']) {
       display: block;
       float: left;
       margin-right: 1rem;
@@ -86,7 +92,7 @@
 }
 
 .block-system > .node-confirm-form,
-.block-system > .confirmation, {
+.block-system > .confirmation {
   padding-top: 24px;
 }
 

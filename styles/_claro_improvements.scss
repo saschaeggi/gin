@@ -30,7 +30,12 @@ details summary {
 .layout-region-node-footer__content {
   display: flex;
   align-items: flex-start;
+  flex-wrap: wrap;
   padding-top: 16px;
+
+  @media(min-width: 1024px) {
+    flex-wrap: nowrap;
+  }
 
   .form-item,
   .form-actions {
