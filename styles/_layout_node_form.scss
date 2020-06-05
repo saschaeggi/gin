@@ -93,6 +93,7 @@
         height: 100%; //calc(100% - #{$topBar});
         background:var(--colorGinLayerBackground);
         box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+        border-left: 1px solid rgba(0, 0, 0, .1);
       }
 
       .gin-sidebar {

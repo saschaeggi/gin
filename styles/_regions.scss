@@ -14,7 +14,7 @@
     position: sticky; //fixed;
     z-index: 101;
     top: 0;
-    width: 100%;
+    width: calc(100% - 4px);
     height: 88px;
     padding: 16px 0 16px;
     margin-top: -1px;
