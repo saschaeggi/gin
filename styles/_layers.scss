@@ -1,3 +1,11 @@
+.page-content {
+  margin-top: 0;
+}
+
+.region-pre-content + .page-content {
+  margin-top: 1.5rem;
+}
+
 .layer-wrapper,
 .block-system > form,
 .view-content .views-form,
@@ -36,7 +44,7 @@
 #views-entity-list
 {
   width: 100%;
-  padding: 24px;
+  padding: 1.5rem;
   background: var(--colorGinLayerBackground);
   border: 1px solid var(--colorGinBorder);
   box-sizing: border-box;
