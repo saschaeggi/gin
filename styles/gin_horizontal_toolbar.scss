@@ -3,14 +3,51 @@
 
 @import "_vars";
 @import "coffee";
-@import "toolbar";
 
 // Toolbar
 .toolbar {
   .toolbar-bar {
     $breakpoint: 576px;
+    overflow: auto;
     background: #100f10;
     box-shadow: none;
+
+    @include mq($breakpoint) {
+      // Alignment: move user account
+      .user-menu {
+        align-self: flex-end;
+      }
+    }
+
+    @include mq(976px) {
+      display: flex;
+      overflow: initial;
+      background: none;
+    }
+
+    @include breakpoint(1024px) {
+      height: 0;
+    }
+
+    .toolbar-menu-administration {
+      > .toolbar-menu {
+        > .menu-item {
+          > .toolbar-icon,
+          > .toolbar-box > .toolbar-icon {
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+            @include mq(1140px) {
+              font-size: .875rem;
+            }
+          }
+        }
+      }
+    }
+
+    .toolbar-toggle-orientation {
+      display: none !important;
+    }
   }
 }
 
@@ -83,24 +120,16 @@
   }
 }
 
-.toolbar-bar {
-  .toolbar-icon {
-    &.toolbar-icon-escape-admin,
-    &.toolbar-icon-edit,
-    &.toolbar-icon-local-tasks,
-    &.toolbar-icon-menu,
-    &.toolbar-icon-shortcut,
-    &.toolbar-icon-coffee,
-    &.toolbar-icon-devel,
-    &.toolbar-icon-user,
-    &#toolbar-item-administration-search {
-      &:hover:before,
-      &.is-active:before {
-        background-color: #fff;
-      }
-    }
-  }
+.gin--horizontal-toolbar {
+  padding-top: 54px !important;
 }
+
+#toolbar-item-administration-tray {
+  box-shadow: 0 0px 4px rgba(0,0,0,0.1);
+}
+
+@import "toolbar";
+@import "toolbar-meta";
 
 // Home icon
 .toolbar .toolbar-bar .toolbar-icon-admin-toolbar-tools-help {
@@ -110,18 +139,6 @@
     &:before {
       left: 16px;
       mask-size: 21px 21px;
-    }
-  }
-}
-
-#toolbar-item-administration-tray {
-  box-shadow: 0 0px 4px rgba(0,0,0,0.1);
-
-  .toolbar-logo {
-    img {
-      @include breakpoint(1024px) {
-        max-height: 21px;
-      }
     }
   }
 }
@@ -136,9 +153,9 @@
   }
 }
 
-.toolbar-tray-open.path-node .page-wrapper__node-edit-form .layout-region-node-secondary {
+.gin--horizontal-toolbar.path-node .page-wrapper__node-edit-form .layout-region-node-secondary {
   @include breakpoint(1024px) {
-    top: $topBar;
-    height: calc(100% - #{$topBar});
+    top: 54px;
+    height: calc(100% - 54px);
   }
 }

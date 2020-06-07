@@ -13,6 +13,7 @@ module.exports = {
   entry: {
     gin: ['./styles/gin.scss'],
     gin_toolbar: ['./js/gin_toolbar.js', './styles/gin_toolbar.scss'],
+    gin_horizontal_toolbar: ['./styles/gin_horizontal_toolbar.scss'],
     gin_classic_toolbar: ['./styles/gin_classic_toolbar.scss'],
     gin_accent: ['./js/gin_accent.js','./styles/gin_accent.scss'],
     gin_settings: ['./js/gin_settings.js'],

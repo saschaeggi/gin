@@ -18,6 +18,15 @@ gin_classic_toolbar:
   css:
     theme:
       dist/css/gin_classic_toolbar.css: {}
+  js:
+    dist/js/gin_toolbar.js: {}
+
+gin_horizontal_toolbar:
+  css:
+    theme:
+      dist/css/gin_horizontal_toolbar.css: {}
+  js:
+    dist/js/gin_toolbar.js: {}
 
 gin_accent:
   css:

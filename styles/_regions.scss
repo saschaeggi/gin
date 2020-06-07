@@ -11,17 +11,13 @@
   }
 
   @include breakpoint(1024px) {
-    position: sticky; //fixed;
+    position: sticky;
     z-index: 101;
     top: 0;
     width: calc(100% - 4px);
     height: 88px;
     padding: 16px 0 16px;
     margin-top: -1px;
-
-    .toolbar-horizontal[data-toolbar-tray='toolbar-item-administration-tray'] & {
-      top: $topBar;
-    }
 
     .gin--classic-toolbar:not(.path-node) & {
       position: relative;
@@ -30,6 +26,14 @@
     .gin--classic-toolbar.path-node & {
       padding-top: 16px;
       top: $topBar;
+    }
+
+    .gin--horizontal-toolbar & {
+      top: 54px;
+    }
+
+    .gin--horizontal-toolbar.path-node & {
+      padding-top: 16px;
     }
 
     .gin--classic-toolbar.path-node .page-wrapper__node-edit-form:not(.node-edit-form--has-sidebar) & {
@@ -83,18 +87,6 @@
   margin-bottom: 0;
   background-color: transparent;
 
-  // @include breakpoint(1024px) {
-  //   padding-top: $contentHeaderSpacer;
-
-  //   .gin--classic-toolbar & {
-  //     padding-top: #{$contentHeaderSpacer + 32px};
-  //   }
-
-  //   .gin--classic-toolbar:not(.path-node) & {
-  //     padding-top: 0;
-  //   }
-  // }
-
   .block-local-tasks-block {
     @include breakpoint(768px) {
       // margin-top: 6px;
@@ -126,8 +118,10 @@
     padding-right: 2em;
   }
 
-  @include breakpoint(976px) {
-    left: $toolbarWidth;
+  @include breakpoint(976px 1023px) {
+    .gin--vertical-toolbar & {
+      left: $toolbarWidth;
+    }
   }
 
   @include breakpoint(1024px) {
@@ -148,6 +142,11 @@
     .gin--classic-toolbar.toolbar-tray-open & {
       top: 83px;
     }
+
+    .gin--horizontal-toolbar &,
+    .gin--horizontal-toolbar.toolbar-tray-open & {
+      top: 58px;
+    }
   }
 
   @include breakpoint(1440px) {
@@ -156,7 +155,9 @@
 
   @include breakpoint(1770px) {
     .gin--classic-toolbar &,
-    .gin--classic-toolbar:not([data-toolbar-menu='open']) & {
+    .gin--classic-toolbar:not([data-toolbar-menu='open']) &,
+    .gin--horizontal-toolbar &,
+    .gin--horizontal-toolbar:not([data-toolbar-menu='open']) & {
       right: calc(50% - 460px);
     }
   }

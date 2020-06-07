@@ -19,6 +19,10 @@
       }
     }
 
+    .toolbar-tab > .toolbar-item {
+      white-space: nowrap;
+    }
+
     .contextual-toolbar-tab.toolbar-tab {
       float: right; // Set contextual to right
     }
@@ -60,6 +64,7 @@
     .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item,
     .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active,
     .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item:focus {
+      color: var(--colorGinAppBackground);
       background: var(--colorGinPrimary);
     }
 
@@ -93,7 +98,9 @@
       }
 
       &:hover:before {
-        background-color: var(--colorGinTitle);
+        @include mq(976px) {
+          background-color: var(--colorGinTitle);
+        }
       }
     }
 
@@ -211,6 +218,12 @@
       &:before {
         mask-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cg%3E%3Cpath fill='%23ffffff' d='M14.545 3.042l-1.586-1.585c-.389-.389-1.025-.389-1.414 0l-1.293 1.293 3 3 1.293-1.293c.389-.389.389-1.026 0-1.415z'/%3E%3Crect fill='%23ffffff' x='5.129' y='3.8' transform='matrix(-.707 -.707 .707 -.707 6.189 20.064)' width='4.243' height='9.899'/%3E%3Cpath fill='%23ffffff' d='M.908 14.775c-.087.262.055.397.316.312l2.001-.667-1.65-1.646-.667 2.001z'/%3E%3C/g%3E%3C/svg%3E%0A");
       }
+
+      &, &:hover, &:active {
+        &:before {
+          background: var(--colorGinAppBackground);
+        }
+      }
     }
 
     // Shortcuts
@@ -246,10 +259,10 @@
 
 .toolbar-horizontal .toolbar-tray {
   box-shadow: none;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid var(--colorGinBorder);
 
   a {
-    color: #222;
+    color: var(--colorGinText);
     font-weight: normal;
 
     &:hover, &:active, &:focus, &.is-active {
@@ -259,7 +272,7 @@
 
   .menu-item {
     &:hover, a:focus {
-      background-color: var(--colorGinItemHover); //var(--colorGinAppBackground);
+      background-color: var(--colorGinItemHover);
     }
 
     &--no-link {
@@ -299,6 +312,11 @@
     border-bottom: 0 none;
   }
 
+  // Custom logo
+  .menu-item .toolbar-logo {
+    padding-left: 16px;
+  }
+
   .level-1.menu-item:last-child {
     border-bottom: 1px solid var(--colorGinBorder);
   }
@@ -329,7 +347,7 @@
         .menu-item {
           border-left: none;
           border-right: none;
-          border-bottom: 1px solid #e0e0e0;
+          border-bottom: 1px solid var(--colorGinBorder);
         }
 
         &--expanded {
@@ -390,4 +408,59 @@
 .toolbar .toolbar-tray-vertical .toolbar-menu a {
   padding-top: 1.5em;
   padding-bottom: 1.5em;
+}
+
+.toolbar-bar {
+  .toolbar-icon {
+    &.toolbar-icon-shortcut,
+    &.toolbar-icon-coffee,
+    &.toolbar-icon-devel,
+    &.toolbar-icon-user {
+      &:before {
+        background: none;
+        background-color: var(--colorGinIcons);
+        mask-repeat: no-repeat;
+        mask-position: center center;
+      }
+
+      &:hover:before {
+        @include mq(976px) {
+          background-color: var(--colorGinTitle);
+        }
+      }
+
+      &.is-active:before {
+        background-color: var(--colorGinPrimary);
+      }
+    }
+  }
+
+  .toolbar-icon-escape-admin,
+  .toolbar-icon-edit,
+  .toolbar-icon-local-tasks,
+  .toolbar-icon-menu,
+  .toolbar-icon-shortcut,
+  .toolbar-icon-coffee,
+  .toolbar-icon-devel,
+  .toolbar-icon-user,
+  #toolbar-item-administration-search,
+  .toolbar-tab > .toolbar-icon-edit.toolbar-item {
+    &:hover:before,
+    &.is-active:before {
+      @include breakpoint(max-width 975px) {
+        background: #fff;
+      }
+    }
+  }
+}
+
+// Custom logo
+#toolbar-item-administration-tray .toolbar-logo {
+  padding-top: 8px;
+  padding-bottom: 8px;
+
+  img {
+    max-width: 100px;
+    max-height: 35px;
+  }
 }

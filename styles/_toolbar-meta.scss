@@ -1,0 +1,151 @@
+@include mq(976px) {
+  // Hide unused tabs
+  .toolbar .toolbar-bar {
+    background: transparent;
+
+    .toolbar-tab {
+      &, .toolbar-menu__logo {
+        display: none;
+      }
+
+      &.toolbar-tab--toolbar-item-administration {
+        display: block;
+      }
+    }
+  }
+
+  .toolbar-tab--toolbar-item-administration {
+    > .toolbar-icon-menu {
+      display: none;
+    }
+  }
+
+  #toolbar-item-administration-tray {
+    display: block;
+    position: absolute;
+    top: 0;
+  }
+}
+
+.toolbar-meta {
+  display: none;
+
+  @include breakpoint(976px) {
+    display: block;
+    margin-top: -12px;
+
+    .toolbar-bar {
+      position: relative;
+      height: $topBar;
+      z-index: 102;
+
+      .toolbar-tab {
+        display: block;
+        position: relative;
+
+        &:hover {
+          .toolbar-item {
+            text-decoration: none;
+            background: var(--colorGinLayer3Background);
+          }
+        }
+
+        &:hover, &:focus-within {
+          .toolbar-tray {
+            display: block;
+          }
+        }
+
+        .toolbar-item {
+          font-size: 0;
+          color: var(--colorGinText);
+          width: 39px;
+          height: 39px;
+
+          &:before {
+            left: 12px;
+          }
+
+          &:focus ~ .toolbar-tray {
+            display: block;
+          }
+        }
+
+        .toolbar-tray {
+          position: absolute;
+          left: 0;
+          width: 170px;
+          background: var(--colorGinLayer3Background);
+          box-shadow: 0px 6px 16px rgba(0,0,0, 0.1);
+          border-bottom: 0 none;
+
+          a {
+            color: var(--colorGinPrimary);
+
+            &:hover, &:active {
+              color: var(--colorGinButtonText);
+              background: var(--colorGinPrimary);
+            }
+          }
+
+          .toolbar-lining {
+            padding-right: 0;
+          }
+        }
+
+        &.hidden {
+          display: none;
+        }
+      }
+
+      .toolbar-id--toolbar-icon-user {
+        &:hover {
+          // background: transparent;
+
+          .icon-user {
+            box-shadow: 0 0 0 2px var(--colorGinAppBackground),0 0 0 5px var(--colorGinLayer3Background);
+          }
+        }
+
+        .toolbar-icon-user {
+          padding-right: 0;
+        }
+
+        .toolbar-tray {
+          left: auto;
+          right: 0;
+        }
+
+        .icon-user {
+          border: 1px solid var(--colorGinBorder);
+          border-radius: 50%;
+          overflow: hidden;
+          margin-left: 1rem;
+          padding: 0;
+          line-height: 0;
+
+          &__image {
+            width: 34px;
+            height: 34px;
+          }
+        }
+      }
+    }
+  }
+
+  @include breakpoint(1140px) {
+    .toolbar-bar {
+      .toolbar-tab {
+        .toolbar-item {
+          font-size: inherit;
+          width: auto;
+          height: auto;
+
+          &:before {
+            left: 10px;
+          }
+        }
+      }
+    }
+  }
+}

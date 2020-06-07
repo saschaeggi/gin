@@ -1,5 +1,4 @@
 # Schema for the configuration files of the Gin theme.
-
 gin.settings:
   type: theme_settings
   label: 'gin settings'
@@ -14,7 +13,7 @@ gin.settings:
       type: boolean
       label: 'The dark mode'
     classic_toolbar:
-      type: boolean
+      type: string
       label: 'The classic toolbar'
     icon_default:
       type: boolean
