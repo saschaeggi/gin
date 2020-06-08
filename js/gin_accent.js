@@ -47,7 +47,7 @@
         accentColors = {
           light_blue: '#2177d5',
           dark_purple: '#35009d',
-          purple: '#6e2df9',
+          purple: '#6240e6',
           teal: '#267c91',
           green: '#26a769',
           red: '#a55254',
