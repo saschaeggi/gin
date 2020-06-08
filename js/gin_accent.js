@@ -45,13 +45,13 @@
       else {
         // Light theme colors.
         accentColors = {
-          light_blue: '#0f6aa6',
+          light_blue: '#2177d5',
           dark_purple: '#35009d',
-          purple: '#8140b7',
+          purple: '#6e2df9',
           teal: '#267c91',
           green: '#26a769',
           red: '#a55254',
-          orange: '#f05623',
+          orange: '#d05822',
           yellow: '#d69400',
           pink: '#c5636b'
         };
