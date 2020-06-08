@@ -102,6 +102,12 @@
           background-color: var(--colorGinTitle);
         }
       }
+
+      &.is-active:hover:before {
+        @include mq(976px) {
+          background-color: var(--colorGinPrimary);
+        }
+      }
     }
 
     .menu-item--active-trail {
@@ -345,9 +351,10 @@
     li {
       &.menu-item {
         .menu-item {
+          background: #fff;
           border-left: none;
           border-right: none;
-          border-bottom: 1px solid var(--colorGinBorder);
+          border-bottom: 0 none;
         }
 
         &--expanded {
@@ -429,7 +436,8 @@
         }
       }
 
-      &.is-active:before {
+      &.is-active:before,
+      &.is-active:hover:before {
         background-color: var(--colorGinPrimary);
       }
     }

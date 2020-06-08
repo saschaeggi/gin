@@ -137,6 +137,7 @@
 
   @include mq(976px) {
     &:before {
+      top: -1px;
       left: 16px;
       mask-size: 21px 21px;
     }

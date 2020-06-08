@@ -24,6 +24,18 @@
   border-left: 1px solid var(--colorGinBorder);
 }
 
+.toolbar-tray-horizontal {
+  ul {
+    li {
+      &.menu-item {
+        .menu-item {
+          border-bottom: 1px solid var(--colorGinBorder);
+        }
+      }
+    }
+  }
+}
+
 .toolbar-tray a,
 .toolbar .toolbar-menu .toolbar-menu a {
   color: var(--colorGinText);
