@@ -238,7 +238,13 @@ body:not(.toolbar-tray-open) .layout-container {
   margin-top: 16px;
 
   @include breakpoint(976px) {
-    padding: 1.5rem 0;
+    // padding: 1.5rem 0;
+    padding: 1.5rem 0 .5rem;
     margin-top: 0;
+
+    // .gin--horizontal-toolbar &,
+    // .gin--classic-toolbar & {
+    //   padding-bottom: .5rem;
+    // }
   }
 }
