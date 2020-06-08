@@ -1,6 +1,6 @@
 preset_accent_color: 'blue'
 preset_focus_color: 'gin'
 enable_darkmode: false
-classic_toolbar: false
+classic_toolbar: 'vertical'
 icon_default: true
 icon_path: ''
