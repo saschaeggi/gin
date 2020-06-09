@@ -42,6 +42,11 @@
       else if (path.indexOf('admin/help') > -1) {
         $('.toolbar-icon-help-main').addClass('is-active');
       }
+
+      // If Commerce
+      else if (path.indexOf('admin/commerce') > -1) {
+        $('.toolbar-icon-commerce-admin-commerce').addClass('is-active');
+      }
     }
   };
 
