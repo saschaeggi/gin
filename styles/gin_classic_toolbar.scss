@@ -46,12 +46,14 @@
 }
 
 .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
+.toolbar .toolbar-tray .menu-item > .toolbar-icon.is-active,
+.toolbar .toolbar-tray .menu-item > .toolbar-box > .toolbar-icon.is-active,
 .toolbar .toolbar-tray a.is-active {
   color: var(--colorGinPrimary);
   font-weight: normal;
 
   &:before {
-    background-color: var(--colorGinPrimary);
+    background: var(--colorGinPrimary);
   }
 }
 
