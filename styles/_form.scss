@@ -90,6 +90,7 @@ $maxWidth: 520px;
 
 // Single Checkbox: show as toggle
 :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox {
+  position: relative;
   margin-left: 0;
 
   .checkbox-toggle {
@@ -98,7 +99,6 @@ $maxWidth: 520px;
     vertical-align: top;
     width: 40px;
     height: 24px;
-    margin-right: -40px;
     background-color: #909090;
     border-radius: 12px;
     box-sizing: border-box;
@@ -133,10 +133,13 @@ $maxWidth: 520px;
 
   input {
     @extend .visually-hidden;
-    @extend .focusable;
-    @supports (-moz-appearance: none) {
-      display: none;
-    }
+    width: 40px;
+    height: 24px;
+    clip: auto;
+    margin-left: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1;
 
     &:hover,
     &:focus,
@@ -150,6 +153,7 @@ $maxWidth: 520px;
 
     &:checked ~ .checkbox-toggle .checkbox-toggle__inner {
       background-color: var(--colorGinSwitch);
+
 
       &:before {
         transform: translateX(16px);
@@ -165,7 +169,7 @@ $maxWidth: 520px;
   label {
     z-index: 1;
     position: relative;
-    padding-left: 44px;
+    padding-left: 4px;
     padding-bottom: 0;
     color: var(--colorGinText);
   }
