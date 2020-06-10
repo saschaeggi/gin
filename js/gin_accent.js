@@ -45,7 +45,7 @@
       else {
         // Light theme colors.
         accentColors = {
-          light_blue: '#2177d5',
+          light_blue: '#047eb5',
           dark_purple: '#35009d',
           purple: '#6240e6',
           teal: '#267c91',
