@@ -317,8 +317,8 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
     // Classic Toolbar user setting.
     $form['gin_theme_settings']['user_settings']['classic_toolbar'] = [
       '#type' => 'select',
-      '#title' => t('Enable Classic Drupal Toolbar'),
-      '#description' => t('Enables Classic Legacy Drupal Toolbar (Horizontal Toolbar).'),
+      '#title' => t('Drupal Toolbar'),
+      '#description' => t('Choose Drupal Toolbar.'),
       '#default_value' => $toolbarValue,
       '#options' => _gin_get_toolbar_presets(),
     ];
@@ -574,15 +574,27 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   // Check if this is overridden by the logged in user.
   $userToolbar = _gin_toolbar();
   $toolbar = theme_get_setting('classic_toolbar');
-  $description = t('Enables Classic Legacy Drupal Toolbar (Horizontal Toolbar).');
+  $description = t('Choose Drupal Toolbar.');
 
   if (!is_null($userToolbar) && $userToolbar !== $toolbar) {
-    $toolbar = $userToolbar ? t('Classic') : t('Sidebar');
-    $description = t('Enables Classic Legacy Drupal Toolbar (Horizontal Toolbar).') . '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Toolbar: <strong>@toolbar</strong></span>', ['@toolbar' => $toolbar, '@editUrl' => $userEditUrl]);
+    switch ($userToolbar) {
+      case 1:
+        $toolbar = t('Classic');
+        break;
+
+      case 'horizontal':
+        $toolbar = t('Horizontal');
+        break;
+
+      default:
+        $toolbar = t('Sidebar');
+    }
+
+    $description = t('Choose Drupal Toolbar.') . '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Toolbar: <strong>@toolbar</strong></span>', ['@toolbar' => $toolbar, '@editUrl' => $userEditUrl]);
   }
   $form['toolbar']['classic_toolbar'] = [
     '#type' => 'select',
-    '#title' => t('Enable Classic Drupal Toolbar'),
+    '#title' => t('Drupal Toolbar'),
     '#description' => $description,
     '#default_value' => theme_get_setting('classic_toolbar'),
     '#options' => _gin_get_toolbar_presets(),
@@ -812,7 +824,7 @@ function _gin_user__accentcolor() {
   /** @var \Drupal\user\UserDataInterface $userData */
   $userData = Drupal::service('user.data');
 
-  if ($uid && $userData->get('gin', $uid, 'accent_color') !== NULL) {
+  if ($uid && $userData->get('gin', $uid, 'preset_accent_color') === 'custom' && $userData->get('gin', $uid, 'accent_color') !== NULL) {
     return $userData->get('gin', $uid, 'accent_color');
   }
   else {
@@ -855,6 +867,7 @@ function _gin_get_toolbar_presets() {
  */
 function _gin_get_accent_color_preset_label($key) {
   $options = _gin_get_accent_color_presets();
+
   if (!empty($options[$key])) {
     return $options[$key];
   }
