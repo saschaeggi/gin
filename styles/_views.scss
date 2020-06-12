@@ -62,6 +62,20 @@
       > * {
         margin-right: .5rem;
       }
+
+      .form-type--select,
+      .form-actions {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+
+      .form-actions {
+        justify-content: flex-end;
+      }
+
+      .form-type--checkbox {
+        align-self: center;
+      }
     }
 
     .gin--dark-mode & {
