@@ -153,8 +153,7 @@ $maxWidth: 520px;
 
     &:checked ~ .checkbox-toggle .checkbox-toggle__inner {
       background-color: var(--colorGinSwitch);
-      box-shadow: 0 0.125em 0.25em var(--colorGinSwitchShadow),
-                  -0.25em -0.5em 1em var(--colorGinAppBackground);
+      box-shadow: 0 0.125em 0.25em var(--colorGinSwitchShadow);
 
       &:before {
         transform: translateX(16px);
