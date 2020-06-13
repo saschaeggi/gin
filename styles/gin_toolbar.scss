@@ -42,7 +42,7 @@
     @include mq(976px) {
       // Toolbar logo
       .toolbar-logo {
-        height: 96px;
+        height: 88px;
       }
 
       // Admin tray: Home icon
@@ -64,16 +64,8 @@
     #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
       @include mq(976px) {
         font-size: 0;
-        height: 96px;
+        height: 88px;
         transition: top $transition;
-
-        &:hover {
-          background-color: var(--colorGinItemHover);
-        }
-
-        &:hover:before {
-          background-color: var(--colorGinTitle);
-        }
       }
 
       &:before {
@@ -196,7 +188,8 @@ a.toolbar-menu__trigger,
     display: flex;
     align-items: center;
     width: $toolbarWidth;
-    padding: 16px 0 16px 25px;
+    height: 64px;
+    padding: 16px 0 16px 88px;
     margin: 0;
     transition: width $transition;
 
@@ -205,7 +198,6 @@ a.toolbar-menu__trigger,
     }
 
     &:hover {
-      color: var(--colorGinTitle);
       background-color: var(--colorGinItemHover);
 
       &:before {
@@ -215,11 +207,11 @@ a.toolbar-menu__trigger,
 
     &:before {
       content: "";
-      position: static;
+      position: absolute;
+      left: 25px;
       display: inline-block;
       width: 32px;
       height: 32px;
-      margin-right: 29px;
       border-radius: 50%;
       border: 1px solid var(--colorGinBorder);
       background: var(--colorGinLayerBackground) url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='%23999999'/%3E%3C/svg%3E") no-repeat center center;
@@ -231,8 +223,12 @@ a.toolbar-menu__trigger,
       display: flex;
       font-size: 1rem;
       font-weight: normal;
-      color: var(--colorGinTitle);
+      color: var(--colorGinTextLight);
       width: $toolbarOpenWidth;
+
+      &:hover {
+        color: var(--colorGinTitle);
+      }
 
       &:before {
         transform: rotate(180deg);
@@ -273,9 +269,13 @@ a.toolbar-menu__trigger,
     height: 100vh;
     max-width: calc(100% - #{$topBar});
     background: var(--colorGinLayerBackground);
-    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 48px rgba(0, 0, 0, 0.1);
     border-right: 1px solid rgba(0, 0, 0, .1);
     transition: $transition;
+
+    .gin--dark-mode & {
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    }
 
     [data-toolbar-menu='open'] & {
       width: $toolbarOpenWidth;
@@ -452,6 +452,10 @@ a.toolbar-menu__trigger,
   // Hide Drupal's default toggle for sidebar
   .toolbar .toolbar-toggle-orientation button {
     display: none;
+  }
+
+  .menu-item__admin_toolbar_tools-help {
+    margin-bottom: 8px;
   }
 }
 

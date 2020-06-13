@@ -23,6 +23,11 @@ table {
     color: var(--colorGinTitle);
     background: var(--colorGinTableHeader);
 
+    @include mq(976px) {
+      height: auto;
+      padding: 1rem;
+    }
+
     &:first-child {
       border-top-left-radius: 4px;
       border-bottom-left-radius: 4px;
@@ -34,15 +39,9 @@ table {
     }
   }
 
-  // .th__operations,
-  // .td__operations {
-  //   width: 160px;
-  //   text-align: right;
-  // }
-
   tbody {
     tr {
-      border-bottom: 1px solid var(--colorGinBorder);
+      border-bottom: 1px solid var(--colorGinTableBorder);
     }
   }
 
@@ -97,4 +96,12 @@ table {
 
 .tablesort--asc, [dir="rtl"] .tablesort--asc {
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='16' viewBox='0 0 10 12'%3E%3Cpath d='M 5 0.43945312 L 0.71875 4.71875 L 1.78125 5.78125 L 4.25 3.3125 L 4.25 11.25 L 5.75 11.25 L 5.75 3.3125 L 8.21875 5.78125 L 9.28125 4.71875 L 5 0.43945312 z' fill='%23004adc'/%3E%3C/svg%3E");
+}
+
+.field-plugin-settings-edit-wrapper {
+  float: right;
+
+  + a {
+    float: left;
+  }
 }

@@ -1,7 +1,5 @@
 @import "_vars";
 
-$ginPrimary: #003cc5;
-
 :root {
   // Accent color: use Claro defaults for Gin
   --colorGinPrimary: #{$ginPrimary};
@@ -24,15 +22,19 @@ $ginPrimary: #003cc5;
   --colorGinLayerBackground: #fff;
   --colorGinLayer2Background: #edeff5;
   --colorGinLayer3Background: #fff;
+  --colorGinLayer4Background: #e4e5e8;
   --colorGinBorder: #d4d4d8;
+  --colorGinLayerBorder: rgba(0, 0, 0, .1);
   --colorGinLayer2Border: #d4d4d8;
+  --colorGinTableBorder: #e5e4e8;
 
   --colorGinTitle:#222330;
   --colorGinText: #222330;
   --colorGinTextLight: #545560;
 
-  --colorGinTableHeader: #dfe0e4;
+  --colorGinTableHeader: var(--colorGinLayer4Background); //#dfe0e4;
   --colorGinSwitch: var(--colorGinGreen);
+  --colorGinSwitchShadow: rgba(38, 167, 105, .3);
 
   --colorGinIcons: #6e6d7a;
 }
@@ -59,8 +61,11 @@ $ginPrimary: #003cc5;
   --colorGinLayerBackground: #2A2A2D;
   --colorGinLayer2Background: #3B3B3F;
   --colorGinLayer3Background: #47474c;
+  --colorGinLayer4Background: #19191b;
   --colorGinBorder: #43454a;
+  --colorGinLayerBorder: rgba(0, 0, 0, .05); //#383a3e;
   --colorGinLayer2Border: #76777B;
+  --colorGinTableBorder: #43454a;
 
   --colorGinTitle: #fff;
   --colorGinText: #ccc;
@@ -69,6 +74,7 @@ $ginPrimary: #003cc5;
   // --colorGinSelected: #{lighten(#3B3B3F, 5)};
   --colorGinTableHeader: var(--colorGinAppBackground);
   --colorGinSwitch: var(--colorGinPrimary);
+  --colorGinSwitchShadow: var(--colorGinPrimaryLight);
 
   --colorGinIcons: #888;
 }

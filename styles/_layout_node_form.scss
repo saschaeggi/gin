@@ -80,7 +80,7 @@
       width: 100%;
 
       @include breakpoint($breakpoint) {
-        z-index: 100;
+        z-index: 101;
         flex-basis: $sidebarWidth;
         width: $sidebarWidth !important;
         position: fixed;
@@ -92,8 +92,12 @@
         -webkit-overflow-scrolling: touch;
         height: 100%; //calc(100% - #{$topBar});
         background:var(--colorGinLayerBackground);
-        box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 48px rgba(0, 0, 0, 0.1);
         border-left: 1px solid rgba(0, 0, 0, .1);
+
+        .gin--dark-mode & {
+          box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+        }
       }
 
       .gin-sidebar {
@@ -129,9 +133,9 @@
 
         &__title {
           color: var(--colorGinTitle);
-          font-weight: 600;
-          margin-bottom: 2rem;
+          font-weight: 500;
           margin-top: 1rem;
+          margin-bottom: 1rem;
           text-shadow: none;
         }
 

@@ -1,6 +1,6 @@
 .admin-item {
   &:not(:last-child) {
-    border-bottom: 1px solid var(--colorGinBorder);
+    border-bottom: 1px solid var(--colorGinTableBorder);
   }
 
   &__link::before {

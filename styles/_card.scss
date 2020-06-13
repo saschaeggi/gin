@@ -7,6 +7,10 @@
 
   &__content-wrapper {
     background-color: var(--colorGinLayerBackground);
+
+    .gin--dark-mode & {
+      background-color: var(--colorGinLayer2Background);
+    }
   }
 
   .heading-f {

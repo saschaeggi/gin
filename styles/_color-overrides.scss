@@ -5,6 +5,7 @@
 .button--primary
 {
   background-color: var(--colorGinPrimary);
+  box-shadow: 4px 4px 12px var(--colorGinPrimaryLight);
 
   &:hover {
     background-color: var(--colorGinPrimaryHover);

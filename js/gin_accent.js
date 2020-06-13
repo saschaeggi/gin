@@ -50,7 +50,7 @@
           purple: '#6240e6',
           teal: '#267c91',
           green: '#26a769',
-          red: '#a55254',
+          red: '#b34547',
           orange: '#de6d3a',
           yellow: '#d69400',
           pink: '#c5636b'

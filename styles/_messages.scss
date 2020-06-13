@@ -1,4 +1,7 @@
 .messages {
+  border-left-width: 6px;
+  border-radius: 6px;
+
   &, &-list {
     margin-top: 0;
   }
@@ -7,6 +10,10 @@
     .gin--dark-mode & {
       color: var(--colorGinPrimary);
     }
+  }
+
+  &__title {
+    font-weight: 500;
   }
 
   &__title,

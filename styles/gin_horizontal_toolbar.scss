@@ -12,13 +12,6 @@
     background: #100f10;
     box-shadow: none;
 
-    @include mq($breakpoint) {
-      // Alignment: move user account
-      .user-menu {
-        align-self: flex-end;
-      }
-    }
-
     @include mq(976px) {
       display: flex;
       overflow: initial;
@@ -127,7 +120,11 @@
 }
 
 #toolbar-item-administration-tray {
-  box-shadow: 0 0px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 0px 4px rgba(0, 0, 0, .1);
+
+  .gin--dark-mode & {
+    box-shadow: 0 0px 4px rgba(0, 0, 0, .3);
+  }
 }
 
 @import "toolbar";

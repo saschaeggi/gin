@@ -12,12 +12,20 @@
   box-shadow: none;
 }
 
-.system-status-general-info__header {
-  font-size: 1.5rem;
+.system-status-general-info,
+.system-status-report__requirements-group {
+  padding: 24px;
+}
+
+.system-status-general-info {
+  &__items {
+    margin: 16px 8px 0;
+  }
 }
 
 .system-status-general-info__header,
-.system-status-report__requirements-group h3 {
+.system-status-report__requirements-group > h3,
+.system-themes-list__header {
   text-transform: none;
-  background-color: transparent;
+  margin: -8px -8px 16px -8px;
 }

@@ -243,3 +243,36 @@
     padding-bottom: 0;
   }
 }
+
+// Add more item
+.erl-add-more-menu__item {
+  a {
+    color: var(--colorGinPrimary);
+
+    &:hover {
+      background-color: var(--colorGinPrimaryLight);
+    }
+  }
+}
+
+// Add Toggle
+.erl-add-content__toggle {
+  bottom: 2px;
+  background: var(--colorGinPrimary) url("data:image/svg+xml,%3Csvg width='100pt' height='100pt' version='1.1' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' fill='%23fff'%3E%3Cpath d='m87.5 45.832h-33.332v-33.332c0-2.3008-1.8672-4.168-4.168-4.168s-4.168 1.8672-4.168 4.168v33.332h-33.332c-2.3008 0-4.168 1.8672-4.168 4.168s1.8672 4.168 4.168 4.168h33.332v33.332c0 2.3008 1.8672 4.168 4.168 4.168s4.168-1.8672 4.168-4.168v-33.332h33.332c2.3008 0 4.168-1.8672 4.168-4.168s-1.8672-4.168-4.168-4.168z'/%3E%3C/svg%3E") no-repeat center center;
+  background-size: 16px 16px;
+  border-radius: 50%;
+}
+
+.erl-layout-region:hover button.erl-add-content__toggle {
+  opacity: 1;
+}
+
+// Loader
+.erl-loading div.spinner {
+  width: 1.125rem;
+  height: 1.125rem;
+  animation: gin-throbber 0.75s linear infinite;
+  border: 2px solid var(--colorGinPrimary);
+  border-right: 2px dotted transparent;
+  border-radius: 50%;
+}

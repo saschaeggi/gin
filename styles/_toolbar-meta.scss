@@ -32,7 +32,7 @@
 
   @include breakpoint(976px) {
     display: block;
-    margin-top: -12px;
+    margin-top: -11px;
 
     .toolbar-bar {
       position: relative;
@@ -44,7 +44,7 @@
         position: relative;
 
         &:hover {
-          .toolbar-item {
+          .trigger {
             text-decoration: none;
             background: var(--colorGinLayer3Background);
           }
@@ -76,8 +76,11 @@
           left: 0;
           width: 170px;
           background: var(--colorGinLayer3Background);
-          box-shadow: 0px 6px 16px rgba(0,0,0, 0.1);
           border-bottom: 0 none;
+          // box-shadow: 0px 6px 16px rgba(0,0,0, 0.1);
+          box-shadow:  20px 20px 60px rgba(0, 0, 0, .2);
+          border-radius: 0 4px 4px 4px;
+          overflow: hidden;
 
           a {
             color: var(--colorGinPrimary);
@@ -114,6 +117,7 @@
         .toolbar-tray {
           left: auto;
           right: 0;
+          border-radius: 4px;
         }
 
         .icon-user {

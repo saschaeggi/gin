@@ -60,7 +60,9 @@
 
 .system-status-counter,
 .upgrade-status-counter {
-  border: 1px solid var(--colorGinBorder);
+  height: auto;
+  padding: 16px 0;
+  border: 1px solid var(--colorGinLayerBorder);
   background: var(--colorGinLayerBackground);
 
   &__status-title {
@@ -86,13 +88,13 @@
   }
 }
 
-.system-status-general-info__header,
-.system-status-report h3 {
-  color: var(--colorGinTitle);
-  padding-top: 0;
-  padding-left: 0;
-  margin-bottom: 1.25rem;
-}
+// .system-status-general-info__header,
+// .system-status-report h3 {
+//   color: var(--colorGinTitle);
+//   padding-top: 0;
+//   padding-left: 0;
+//   margin-bottom: 1.25rem;
+// }
 
 .system-status-general-info {
   &__header {
