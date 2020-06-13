@@ -2,9 +2,13 @@
   &__bar {
     border-color: var(--colorGinPrimary);
     background-color: var(--colorGinPrimary);
+    box-shadow: 0 .125em .25em var(--colorGinPrimaryLight),
+                1.25em .9375em 1.5em var(--colorGinPrimaryLight),
+                -.25em -.5em 1em var(--colorGinAppBackground);
   }
 
   &__track {
+    padding: 8px;
     border-color: var(--colorGinBorder);
     background-color: var(--colorGinLayer3Background);
   }

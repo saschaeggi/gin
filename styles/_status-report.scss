@@ -72,6 +72,7 @@
   &__status-icon {
     background-color: transparent;
     border-right: 0 none;
+    box-shadow: none;
 
     &--checked:before,
     &--warning:before,

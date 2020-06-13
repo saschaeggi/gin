@@ -43,7 +43,9 @@
 {% set local_actions_block = active_admin_theme ~ '_local_actions' %}
 
 <div class="region region-meta layout-container">
-  {{ page.breadcrumb }}
+  <div class="breadcrumb-wrapper">
+    {{ page.breadcrumb }}
+  </div>
   {{ page.gin_secondary_toolbar }}
 </div>
 
