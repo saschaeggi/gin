@@ -105,74 +105,8 @@
   padding-top: 8px;
 }
 
-.block-system > .node-confirm-form,
-.block-system > .confirmation {
-  padding-top: 24px;
-}
-
-.panel__title,
-.system-status-general-info__header,
-.system-status-report__requirements-group > h3,
-.system-themes-list__header {
-  font-size: 1.125em;
-  font-weight: 500;
-  color: var(--colorGinTitle);
-  padding: 24px;
-  margin-top: 0;
-  background: var(--colorGinLayer4Background);
-  border-radius: 6px;
-}
-
-.panel {
-  padding: 16px;
-
-  &__content {
-    padding: 0 16px;
-  }
-
-  .admin-list {
-    margin: 0;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .admin-item {
-    padding-left: 2rem;
-  }
-}
-
 .view-files .view-content {
   padding-top: 0;
-}
-
-.update {
-  margin: 0;
-}
-
-.admin-list {
-  padding: 8px 0;
-}
-
-.admin-item {
-  padding: 1em 1.5em 1em 4em;
-}
-
-.layer-wrapper {
-  .responsive-enabled {
-    margin-top: 0;
-  }
-}
-
-.block-system > form .layer-wrapper,
-.panel .admin-list,
-.block-system > form .dataset-table-wrapper {
-  padding: 0;
-  border: 0 none;
-  box-shadow: none;
-}
-
-.compact-link {
-  text-align: right;
 }
 
 .layer-wrapper {

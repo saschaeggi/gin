@@ -92,7 +92,7 @@
         -webkit-overflow-scrolling: touch;
         height: 100%; //calc(100% - #{$topBar});
         background:var(--colorGinLayerBackground);
-        box-shadow: 0 0 48px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 48px rgba(0, 0, 0, 0.075);
         border-left: 1px solid rgba(0, 0, 0, .1);
 
         .gin--dark-mode & {

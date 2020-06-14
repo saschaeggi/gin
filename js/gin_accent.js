@@ -31,6 +31,7 @@
       if (darkmodeEnabled === true || darkmodeEnabled === 1) {
         // Darkmode colors.
         accentColors = {
+          claro_blue: '#7391d8',
           light_blue: '#82bfe8',
           dark_purple: '#976bef',
           purple: '#dba5ef',
@@ -45,6 +46,7 @@
       else {
         // Light theme colors.
         accentColors = {
+          claro_blue: '#003cc5',
           light_blue: '#047eb5',
           dark_purple: '#35009d',
           purple: '#6240e6',
@@ -68,7 +70,7 @@
         : drupalSettings.gin.darkmode;
       const darkmodeClass = drupalSettings.gin.darkmode_class;
       const accentColors = Drupal.behaviors.ginAccent.colorDefinition(darkmode);
-      const ratio = darkmode ? 10 : 7;
+      const ratio = darkmode ? 10 : 6.5;
       let accentColor;
 
       // First clear things up.
@@ -125,6 +127,12 @@
           default:
           case 'claro':
             setColor = '#26a769';
+            break;
+          case 'orange':
+            setColor = '#ec7c57';
+            break;
+          case 'dark':
+            setColor = '#5c5a67';
             break;
           case 'accent':
             setColor = 'var(--colorGinPrimary)';

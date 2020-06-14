@@ -58,7 +58,6 @@
 
   &:hover, &:active, &:focus {
     background-color: rgba(226, 151, 0, .08);
-    color: rgb(144, 103, 21);
 
     .gin--dark-mode & {
       color: var(--colorGinWarning);
@@ -84,4 +83,27 @@
 .color-checked {
   color: var(--colorGinText);
   box-sizing: border-box;
+}
+
+.update {
+  margin: 0;
+}
+
+.layer-wrapper {
+  .responsive-enabled {
+    margin-top: 0;
+  }
+}
+
+.block-system > form .layer-wrapper,
+.panel .admin-list,
+.block-system > form .dataset-table-wrapper {
+  padding: 0;
+  border: 0 none;
+  box-shadow: none;
+}
+
+.compact-link {
+  font-size: 0.875rem;
+  text-align: right;
 }

@@ -534,8 +534,10 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#title' => t('Focus color (EXPERIMENTAL)'),
     '#default_value' => theme_get_setting('preset_focus_color'),
     '#options' => [
-      'gin' => t('Orange (Default)'),
+      'gin' => t('Gin Green (Default)'),
       'claro' => t('Claro Green'),
+      'orange' => t('Orange'),
+      'dark' => t('Dark'),
       'accent' => t('Same as Accent color'),
       'custom' => t('Custom'),
     ],
@@ -837,7 +839,8 @@ function _gin_user__accentcolor() {
  */
 function _gin_get_accent_color_presets() {
   return [
-    'blue' => t('Claro Blue (Default)'),
+    'blue' => t('Gin Blue (Default)'),
+    'claro_blue' => t('Claro Blue'),
     'light_blue' => t('Light Blue'),
     'teal' => t('Teal'),
     'dark_purple' => t('Dark Purple'),
