@@ -3,15 +3,15 @@
 :root {
   // Accent color: use Claro defaults for Gin
   --colorGinPrimary: #{$ginPrimary};
-  --colorGinPrimaryHover: #0036b1;
-  --colorGinPrimaryActive: #00339a;
+  --colorGinPrimaryHover: #{$ginPrimaryHover};
+  --colorGinPrimaryActive: #{$ginPrimaryActive};
   --colorGinPrimaryLight: #{rgba($ginPrimary, .15)};
   --colorGinPrimaryLightHover: #{rgba($ginPrimary, .25)};
   --colorGinPrimaryLightActive: #{rgba($ginPrimary, .35)};
   --colorGinItemHover: #{rgba($ginPrimary, .06)};
   --colorGinButtonShadow: rgba(0, 0, 0, .2);
   --colorGinButtonText: #fff;
-  --colorGinFocus: #039a72; //#039a72; //#e0714d;
+  --colorGinFocus: #0ba77d;
 
   --colorGinDisabled: #bbb;
   --colorGinWarning: #e0ac00;
@@ -33,7 +33,7 @@
   --colorGinTextLight: #545560;
 
   --colorGinTableHeader: var(--colorGinLayer4Background); //#dfe0e4;
-  --colorGinSwitch: var(--colorGinGreen);
+  --colorGinSwitch: var(--colorGinFocus);
   --colorGinSwitchShadow: rgba(38, 167, 105, .3);
 
   --colorGinIcons: #6e6d7a;
