@@ -8,15 +8,15 @@
   --colorGinPrimaryLight: #{rgba($ginPrimary, .15)};
   --colorGinPrimaryLightHover: #{rgba($ginPrimary, .25)};
   --colorGinPrimaryLightActive: #{rgba($ginPrimary, .35)};
-  --colorGinItemHover: #{$colorAppBackground};
+  --colorGinItemHover: #{rgba($ginPrimary, .06)};
   --colorGinButtonShadow: rgba(0, 0, 0, .2);
   --colorGinButtonText: #fff;
-  --colorGinFocus: #0ea77d; //#039a72; //#26a769; //#e0714d;
+  --colorGinFocus: #039a72; //#039a72; //#e0714d;
 
   --colorGinDisabled: #bbb;
   --colorGinWarning: #e0ac00;
   --colorGinDanger: #c11f1f;
-  --colorGinGreen: #0ea77d;
+  --colorGinGreen: #039a72;
 
   --colorGinAppBackground: #{$colorAppBackground};
   --colorGinLayerBackground: #fff;
@@ -24,7 +24,7 @@
   --colorGinLayer3Background: #fff;
   --colorGinLayer4Background: #e3e3e8; //#e4e5e8;
   --colorGinBorder: #d4d4d8;
-  --colorGinLayerBorder: rgba(0, 0, 0, .05);
+  --colorGinLayerBorder: rgba(0, 0, 0, .075);
   --colorGinLayer2Border: #d4d4d8;
   --colorGinTableBorder: #e5e4e8;
 

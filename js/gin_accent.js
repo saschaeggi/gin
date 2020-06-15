@@ -76,7 +76,7 @@
       // First clear things up.
       Drupal.behaviors.ginAccent.clearAccentColor();
 
-      if (accentColorPreset !== 'blue') {
+      // if (accentColorPreset !== 'blue') {
         if (accentColorPreset === 'custom') {
           accentColor = accentColorSetting;
         }
@@ -106,7 +106,7 @@
 
           $('body').append(styles);
         }
-      }
+      // }
     },
 
     clearAccentColor: function clearAccentColor() {
