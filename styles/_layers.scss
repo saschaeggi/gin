@@ -24,11 +24,21 @@
 #views-entity-list
 {
   margin-top: 0;
-  // box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.05);
-  box-shadow:  20px 20px 40px rgba(0, 0, 0, .05),
-              -6px -6px 16px rgba(0, 0, 0, .02),
-              -8px -8px 24px var(--colorGinLayerBackground);
+  // box-shadow: 0px 6px 16px rgba(0, 0, 0, .05);
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, .08);
   border-radius: 8px; //4px;
+
+  @include mq(976px) {
+    // box-shadow: 20px 20px 40px rgba(0, 0, 0, .05),
+    //             -6px -6px 16px rgba(0, 0, 0, .02),
+    //             -8px -8px 24px rgba(255, 255, 255, .5);
+    // box-shadow: -8px -8px 40px rgba(255, 255, 255, .4),
+    //             20px 20px 40px rgba(0, 0, 0, .05),
+    //             -6px -6px 16px rgba(0, 0, 0, .02);
+    box-shadow: -8px -8px 24px rgba(255, 255, 255, .5),
+                20px 20px 40px scale-color($colorAppBackgroundShadow, $lightness: -5%),
+                -6px -6px 16px scale-color($colorAppBackgroundShadow, $lightness: -2%);
+  }
 
   .gin--dark-mode & {
     box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.05);

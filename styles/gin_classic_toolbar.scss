@@ -7,6 +7,8 @@
 
 // Toolbar
 .toolbar {
+  font-family: Inter, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
   .toolbar-bar {
     $breakpoint: 576px;
     background: #100f10;
@@ -50,7 +52,7 @@
 .toolbar .toolbar-tray .menu-item > .toolbar-box > .toolbar-icon.is-active,
 .toolbar .toolbar-tray a.is-active {
   color: var(--colorGinPrimary);
-  font-weight: normal;
+  font-weight: 500;
 
   &:before {
     background: var(--colorGinPrimary);

@@ -11,7 +11,7 @@
 }
 
 .toolbar {
-  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: Inter, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
   .toolbar-bar {
     $breakpoint: 576px;
@@ -137,7 +137,7 @@
 .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
 .toolbar .toolbar-tray a.is-active {
   color: var(--colorGinPrimary);
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
 
   @include breakpoint(max-width 975px) {
@@ -269,7 +269,8 @@ a.toolbar-menu__trigger,
     height: 100vh;
     max-width: calc(100% - #{$topBar});
     background: var(--colorGinLayerBackground);
-    box-shadow: 0 0 48px rgba(0, 0, 0, 0.075);
+    // box-shadow: 0 0 48px rgba(0, 0, 0, 0.075);
+    box-shadow: 0 0 48px scale-color($colorAppBackgroundShadow, $lightness: -3%);
     border-right: 1px solid rgba(0, 0, 0, .1);
     transition: $transition;
 
@@ -340,17 +341,17 @@ a.toolbar-menu__trigger,
 
           &:hover {
             color: var(--colorGinTitle);
-            background-color: transparent; //var(--colorGinAppBackground);
+            background-color: transparent;
           }
 
           [data-toolbar-menu='open'] & {
             width: $toolbarOpenWidth;
-            padding-left: $toolbarWidth; // - 11px;
+            padding-left: $toolbarWidth;
           }
 
           &.is-active {
             color: var(--colorGinPrimary);
-            font-weight: 500;
+            font-weight: 600;
 
             &:before {
               background: var(--colorGinPrimary);
@@ -426,6 +427,10 @@ a.toolbar-menu__trigger,
             font-size: 1.667em;
             letter-spacing: -.01em;
             margin-bottom: 5px;
+
+            a {
+              padding: 36px 24px 34px 24px;
+            }
           }
 
           .menu-item {

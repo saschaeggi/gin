@@ -43,14 +43,9 @@
         display: block;
         position: relative;
 
-        &:hover {
-          .trigger {
-            text-decoration: none;
-            background: var(--colorGinLayer3Background);
-          }
-        }
-
         &:hover, &:focus-within {
+          border-radius: 4px 4px 0 0;
+
           .toolbar-tray {
             display: block;
           }
@@ -61,13 +56,36 @@
           color: var(--colorGinText);
           width: 39px;
           height: 39px;
+          border-radius: 4px 4px 0 0;
 
           &:before {
             left: 12px;
           }
 
+          &:focus {
+            border-radius: 4px;
+          }
+
           &:focus ~ .toolbar-tray {
             display: block;
+          }
+
+          &:hover,
+          &:focus {
+            background: none;
+          }
+
+          &:focus,
+          &:hover:focus {
+            box-shadow: 0 0 0 2px var(--colorGinLayerBackground),0 0 0 5px var(--colorGinFocus);
+          }
+        }
+
+        &:hover,
+        &:focus {
+          .trigger {
+            text-decoration: none;
+            background: var(--colorGinLayer3Background);
           }
         }
 
@@ -104,17 +122,19 @@
       .toolbar-id--toolbar-icon-user {
         &:hover {
           .icon-user {
-            box-shadow: 0 0 0 2px var(--colorGinAppBackground),0 0 0 5px var(--colorGinLayer3Background);
+            box-shadow: 0 0 0 2px var(--colorGinAppBackground),
+                        0 0 0 5px var(--colorGinLayer3Background);
           }
-        }
-
-        .toolbar-icon-user {
-          padding-right: 0;
         }
 
         .toolbar-tray {
           left: auto;
           right: 0;
+          border-radius: 4px 0 4px 4px;
+        }
+
+        // If custom user image
+        .icon-user ~ .toolbar-tray {
           border-radius: 4px;
         }
 

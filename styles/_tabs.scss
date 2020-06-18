@@ -1,3 +1,7 @@
+.tabs {
+  box-shadow: none;
+}
+
 // Tabs
 .tabs-wrapper,
 .horizontal-tabs ul.horizontal-tabs-list {
@@ -66,6 +70,7 @@
 
 .claro-details {
   color: var(--colorGinText);
+  border-radius: 4px;
 }
 
 .claro-details__summary {
@@ -107,7 +112,10 @@
 
 .is-horizontal .tabs--secondary {
   margin-left: 0;
-  width: calc(100% - 12px);
+
+  @include breakpoint(768px) {
+    width: calc(100% - 12px);
+  }
 
   .tabs__link {
     min-height: 2.5rem;

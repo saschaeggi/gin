@@ -3,33 +3,41 @@
   background: #000;
   border-radius: 8px;
 
+  #coffee-form-inner,
   #coffee-q {
-    background: #fff;
+    color: var(--colorGinText);
+    background: var(--colorGinLayerBackground);
   }
 
   #coffee-results {
     a {
       border-radius: 4px;
-    }
-  }
 
-  .ui-autocomplete {
-    box-shadow: none;
+      &, .description {
+        color: var(--colorGinText);
+      }
 
-    .ui-menu-item-wrapper {
-      padding: 16px;
-
+      &:hover,
       &.ui-state-active {
         background: var(--colorGinPrimary);
 
         &, .description {
-          color: #fff;
+          color: var(--colorGinButtonText);
         }
 
         .description {
           opacity: .9;
         }
       }
+    }
+  }
+
+  .ui-autocomplete {
+    background: transparent;
+    box-shadow: none;
+
+    .ui-menu-item-wrapper {
+      padding: 16px;
     }
   }
 }

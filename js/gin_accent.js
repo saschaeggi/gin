@@ -49,13 +49,13 @@
           claro_blue: '#003cc5',
           light_blue: '#047eb5',
           dark_purple: '#35009d',
-          purple: '#6240e6',
-          teal: '#267c91',
+          purple: '#5b00ff',
+          teal: '#10857f',
           green: '#26a769',
           red: '#b34547',
           orange: '#de6d3a',
           yellow: '#d69400',
-          pink: '#c5636b'
+          pink: '#f31b5d'
         };
       }
 
