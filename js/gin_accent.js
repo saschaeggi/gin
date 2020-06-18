@@ -53,7 +53,7 @@
           teal: '#10857f',
           green: '#26a769',
           red: '#b34547',
-          orange: '#de6d3a',
+          orange: '#ef5c20',
           yellow: '#d69400',
           pink: '#f31b5d'
         };
