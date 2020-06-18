@@ -270,7 +270,7 @@ a.toolbar-menu__trigger,
     max-width: calc(100% - #{$topBar});
     background: var(--colorGinLayerBackground);
     box-shadow: 0 0 48px rgba(0, 0, 0, 0.075);
-    // box-shadow: 0 0 48px rgba(scale-color($colorAppBackgroundShadow, $lightness: -3%);
+    // box-shadow: 0 0 48px scale-color($colorAppBackgroundShadow, $lightness: -3%);
     border-right: 1px solid rgba(0, 0, 0, .1);
     transition: $transition;
 
