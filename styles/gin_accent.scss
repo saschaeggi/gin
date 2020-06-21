@@ -53,7 +53,7 @@
   --colorGinItemHover: #{rgba($ginPrimary, .10)};
   --colorGinButtonShadow: rgba(#111, .9);
   --colorGinButtonText: #111;
-  --colorGinFocus: #19a6b3; //#0ac3ac; //#96eab2; //#5dc0cf; //#32cea4; //#59caf9;
+  --colorGinFocus: var(--colorGinPrimary); //#19a6b3; //#0ac3ac; //#96eab2; //#5dc0cf; //#32cea4; //#59caf9;
 
   --colorGinDisabled: #999;
   --colorGinWarning: #dec15f;
