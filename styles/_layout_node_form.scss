@@ -94,7 +94,7 @@
         background:var(--colorGinLayerBackground);
         box-shadow: 0 0 48px rgba(0, 0, 0, 0.075);
         // box-shadow: 0 0 48px scale-color($colorAppBackgroundShadow, $lightness: -3%);
-        border-left: 1px solid rgba(0, 0, 0, .1);
+        border-left: 1px solid var(--colorGinLayerBorder); //rgba(0, 0, 0, .1);
 
         .gin--dark-mode & {
           box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);

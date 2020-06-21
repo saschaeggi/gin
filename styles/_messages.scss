@@ -9,6 +9,14 @@
 
   a {
     color: var(--colorGinPrimary);
+
+    &:hover {
+      color: var(--colorGinPrimaryHover);
+    }
+
+    &:active {
+      color: var(--colorGinPrimaryActive);
+    }
   }
 
   &__title {
