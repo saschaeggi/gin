@@ -74,7 +74,7 @@
         @include mq(976px) {
           width: $logoSize;
           left: #{round($toolbarWidth / 2.666666667) - 4px};
-          background-color: var(--colorGinText);
+          // background-color: var(--colorGinText);
           mask-size: $logoSize $logoSize;
           mask-position: center 28px;
         }
@@ -189,7 +189,7 @@ a.toolbar-menu__trigger,
     align-items: center;
     width: $toolbarWidth;
     height: 64px;
-    padding: 16px 0 16px 88px;
+    padding: 16px 0 16px #{$toolbarWidth};
     margin: 0;
     transition: width $transition;
 
@@ -208,7 +208,7 @@ a.toolbar-menu__trigger,
     &:before {
       content: "";
       position: absolute;
-      left: 25px;
+      left: #{round(($toolbarWidth - 34px) / 2) - 1px};
       display: inline-block;
       width: 32px;
       height: 32px;
@@ -361,7 +361,7 @@ a.toolbar-menu__trigger,
               content: "";
               opacity: .9;
               position: absolute;
-              left: 45px;
+              left: #{round($toolbarWidth / 2)};
               display: block;
               width: 4px;
               height: 4px;

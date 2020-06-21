@@ -128,6 +128,9 @@
           case 'claro':
             setColor = '#26a769';
             break;
+          case 'green':
+            setColor = '#08a390';
+            break;
           case 'orange':
             setColor = '#ec7c57';
             break;

@@ -7,7 +7,7 @@ $maxWidth: 520px;
   border-radius: 4px;
 
   &:focus, &:hover:focus {
-    box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 5px var(--colorGinFocus);
+    box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
   }
 
   .gin--dark-mode & {
@@ -160,7 +160,7 @@ $maxWidth: 520px;
 
     &:active ~ .checkbox-toggle .checkbox-toggle__inner,
     &:focus ~ .checkbox-toggle .checkbox-toggle__inner {
-      box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 5px var(--colorGinFocus);
+      box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
     }
   }
 

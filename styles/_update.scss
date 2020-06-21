@@ -51,7 +51,7 @@
 .upgrade-status-error-list tr.no-known-error,
 .upgrade-status-summary tr.no-known-error
 {
-  border-left: 10px solid var(--colorGinGreen);
+  border-left: 8px solid var(--colorGinGreen);
   background-color: transparent; //rgba(72, 171, 123, .05);
 
   &:hover, &:active, &:focus {
@@ -62,7 +62,7 @@
 .color-warning,
 .upgrade-status-error-list tr.known-warnings,
 .upgrade-status-summary tr.known-warnings {
-  border-left: 10px solid var(--colorGinWarning);
+  border-left: 8px solid var(--colorGinWarning);
   background-color: transparent; //rgba(226, 151, 0, .05);
 
   &:hover, &:active, &:focus {
@@ -78,7 +78,7 @@
 .color-error,
 .upgrade-status-error-list tr.known-errors,
 .upgrade-status-summary tr.known-errors {
-  border-left: 10px solid var(--colorGinDanger);
+  border-left: 8px solid var(--colorGinDanger);
   background-color: transparent; //rgba(222, 117, 96, .1);
 
   &:hover, &:active, &:focus {

@@ -8,7 +8,7 @@
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a:focus,
 .form-element.error:hover:focus,
 .form-actions .action-link:focus {
-  box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 5px var(--colorGinFocus);
+  box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
 }
 
 .claro-details {
@@ -21,26 +21,26 @@
 
   &__summary {
     &:after {
-      box-shadow: inset 0 0 0 3px var(--colorGinFocus);
+      box-shadow: inset 0 0 0 2px var(--colorGinFocus);
     }
   }
 }
 
 .tabs__link:focus {
   border: 1px solid transparent;
-  box-shadow: inset 0 0 0 3px var(--colorGinFocus);
+  box-shadow: inset 0 0 0 2px var(--colorGinFocus);
 }
 
 .vertical-tabs__menu-link:focus:after,
 .tabs__trigger:focus {
   box-shadow: none;
-  border: 3px solid var(--colorGinFocus);
+  border: 2px solid var(--colorGinFocus);
 }
 
 @include mq(768px) {
   .is-horizontal .tabs__link:focus,
   .is-horizontal .tabs--primary .tabs__link:focus {
-    box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 5px var(--colorGinFocus);
+    box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
   }
 }
 

@@ -534,7 +534,8 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#title' => t('Focus color (EXPERIMENTAL)'),
     '#default_value' => theme_get_setting('preset_focus_color'),
     '#options' => [
-      'gin' => t('Gin Green (Default)'),
+      'gin' => t('Gin Focus color (Default)'),
+      'green' => t('Green'),
       'claro' => t('Claro Green'),
       'orange' => t('Orange'),
       'dark' => t('Dark'),

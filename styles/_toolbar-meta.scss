@@ -59,7 +59,7 @@
           border-radius: 4px 4px 0 0;
 
           &:before {
-            left: 12px;
+            left: 10px;
           }
 
           &:focus {
@@ -77,7 +77,7 @@
 
           &:focus,
           &:hover:focus {
-            box-shadow: 0 0 0 2px var(--colorGinLayerBackground),0 0 0 5px var(--colorGinFocus);
+            box-shadow: 0 0 0 2px var(--colorGinLayerBackground),0 0 0 4px var(--colorGinFocus);
           }
         }
 
