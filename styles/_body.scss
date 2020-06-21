@@ -19,3 +19,11 @@ h2 {
 h3 {
   font-size: 1.5rem;
 }
+
+::selection {
+  background: var(--colorGinPrimaryLightHover);
+}
+
+::-moz-selection {
+  background: var(--colorGinPrimaryLightHover);
+}
