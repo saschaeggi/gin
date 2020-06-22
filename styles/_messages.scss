@@ -8,14 +8,10 @@
   }
 
   a {
-    color: var(--colorGinPrimary);
-
-    &:hover {
-      color: var(--colorGinPrimaryHover);
-    }
-
+    &,
+    &:hover,
     &:active {
-      color: var(--colorGinPrimaryActive);
+      color: var(--colorGinButtonText);
     }
   }
 
