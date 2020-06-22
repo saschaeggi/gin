@@ -5,6 +5,10 @@
   box-shadow:   20px 20px 40px scale-color($colorAppBackgroundShadow, $lightness: -5%),
                 -6px -6px 16px scale-color($colorAppBackgroundShadow, $lightness: -2%);
 
+  .gin--dark-mode & {
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.05);
+  }
+
   &, &-list {
     margin-top: 0;
   }
