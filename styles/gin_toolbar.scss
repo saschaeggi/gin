@@ -48,8 +48,8 @@
       // Admin tray: Home icon
       .toolbar-icon-home {
         display: block;
-        width: 40px;
-        margin: 8px auto;
+        width: 100%;
+        margin: 8px 0;
       }
 
       #toolbar-item-administration-tray a.toolbar-icon.override-icon {
@@ -58,6 +58,14 @@
           width: 0;
           content: none;
         }
+      }
+    }
+
+    // Custom logo
+    #toolbar-item-administration-tray .toolbar-logo {
+      img {
+        max-width: 44px;
+        max-height: 40px;
       }
     }
 
@@ -459,6 +467,8 @@ a.toolbar-menu__trigger,
     display: none;
   }
 
+  // home tab
+  .menu-item__tools,
   .menu-item__admin_toolbar_tools-help {
     margin-bottom: 8px;
   }

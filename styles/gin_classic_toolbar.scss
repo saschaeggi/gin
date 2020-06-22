@@ -121,11 +121,16 @@
 // Home icon
 .toolbar .toolbar-bar .toolbar-icon-admin-toolbar-tools-help {
   width: auto;
+  height: 100%;
+  text-indent: -999em;
+
+  &:before {
+    mask-size: 21px 21px;
+  }
 
   @include mq(976px) {
     &:before {
       left: 16px;
-      mask-size: 21px 21px;
     }
   }
 }
