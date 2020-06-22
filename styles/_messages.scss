@@ -1,6 +1,6 @@
 .messages {
   padding: 1rem;
-  border: 2px solid;
+  border: 2px solid transparent;
   border-radius: 6px;
 
   &, &-list {
@@ -45,13 +45,12 @@
   }
 
   &--status {
-    color: var(--colorGinGreen);
+    color: var(--colorGinGreenLight);
     background-color: var(--colorGinGreenBackground);
-    border-color: var(--colorGinGreen);
 
     .messages__header {
       &:before {
-        background-color: var(--colorGinGreen);
+        background-color: var(--colorGinGreenLight);
         mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 13'%3E%3Cpath d='M2 6.57143L5.6 10L14 2' fill='none' stroke='%2342a877' stroke-width='3'/%3E%3C/svg%3E%0A");
         mask-repeat: no-repeat;
         mask-position: center left;
@@ -60,13 +59,12 @@
   }
 
   &--warning {
-    color: var(--colorGinWarning);
+    color: var(--colorGinWarningLight);
     background-color: var(--colorGinWarningBackground);
-    border-color: var(--colorGinWarning);
 
     .messages__header {
       &:before {
-        background-color: var(--colorGinWarning);
+        background-color: var(--colorGinWarningLight);
         mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 4 14' fill='%23e0ac00'%3E%3Crect x='0.5' width='3' height='9'/%3E%3Ccircle cx='2' cy='12.5' r='1.5'/%3E%3C/svg%3E%0A");
         mask-repeat: no-repeat;
         mask-position: center left;
@@ -75,13 +73,12 @@
   }
 
   &--error {
-    color: var(--colorGinDanger);
+    color: var(--colorGinDangerLight);
     background-color: var(--colorGinDangerBackground);
-    border-color: var(--colorGinDanger);
 
     .messages__header {
       &:before {
-        background-color: var(--colorGinDanger);
+        background-color: var(--colorGinDangerLight);
         mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 14 14'%3E%3Cpath d='M3 11.1931L11.4501 2.99995' stroke='%23e34f4f' stroke-width='2'/%3E%3Ccircle cx='7' cy='7' r='6' fill='none' stroke='%23e34f4f' stroke-width='2'/%3E%3C/svg%3E%0A");
         mask-repeat: no-repeat;
         mask-position: center left;

@@ -14,12 +14,15 @@
   --colorGinFocus: #059fad; //#00a590; //#0ba77d; //#2297c7;
 
   --colorGinDisabled: #bbb;
-  --colorGinWarning: #d27006; //#b78000; //#e0ac00;
-  --colorGinWarningBackground: #{mix(white, #d27006, 90%)};
-  --colorGinDanger: #cc3d3d; //#e34f4f;
-  --colorGinDangerBackground: #{mix(white, #cc3d3d, 90%)};
-  --colorGinGreen: #058260; //#039a72;
-  --colorGinGreenBackground: #{mix(white, #058260, 90%)};
+  --colorGinWarning: #d8b234;
+  --colorGinWarningLight: #efcf64;
+  --colorGinWarningBackground: #{mix(black, #efcf64, 60%)};
+  --colorGinDanger: #cc3d3d;
+  --colorGinDangerLight: #f39b9d;
+  --colorGinDangerBackground: #{mix(black, #dc7f7f, 60%)};
+  --colorGinGreen: #058260;
+  --colorGinGreenLight: #32cea4;
+  --colorGinGreenBackground: #{mix(black, #32cea4, 60%)};
 
   --colorGinAppBackground: #{$colorAppBackground};
   --colorGinLayerBackground: #fff;
@@ -57,11 +60,11 @@
 
   --colorGinDisabled: #999;
   --colorGinWarning: #dec15f;
-  --colorGinWarningBackground: #{mix(black, #dec15f, 85%)};
+  // --colorGinWarningBackground: #{mix(black, #dec15f, 60%)};
   --colorGinDanger: #ce6060;
-  --colorGinDangerBackground: #{mix(black, #ce6060, 85%)};
+  // --colorGinDangerBackground: #{mix(black, #ce6060, 60%)};
   --colorGinGreen: #32cea4;
-  --colorGinGreenBackground: #{mix(black, #32cea4, 85%)};
+  // --colorGinGreenBackground: #{mix(black, #32cea4, 60%)};
 
   --colorGinAppBackground: #{$colorDarkAppBackground};
   --colorGinLayerBackground: #2A2A2D;
