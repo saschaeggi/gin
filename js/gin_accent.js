@@ -55,7 +55,7 @@
           red: '#b34547',
           orange: '#ef5c20',
           yellow: '#d69400',
-          pink: '#f31b5d'
+          pink: '#e23177'
         };
       }
 
