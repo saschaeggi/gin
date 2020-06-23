@@ -1,5 +1,7 @@
 // Core Media preview image override
 .media-library-views-form {
+  flex-wrap: initial;
+
   .media-library-item--grid {
     .field--name-thumbnail img {
       width: 100%;
@@ -57,10 +59,26 @@
   border-color: var(--colorGinBorder);
 }
 
+.media-library-item__attributes:hover .media-library-item__name,
+.media-library-item--grid.is-focus .media-library-item__name,
+.media-library-item--grid.checked .media-library-item__name {
+  white-space: nowrap;
+}
+
 .media-library-item--grid .field--name-thumbnail,
 .media-library-item__attributes,
 .media-library-item--grid {
   background: none;
+}
+
+fieldset.media-library-widget {
+  padding: 1.5rem;
+  border: 1px solid var(--colorGinBorder);
+  border-radius: 6px;
+
+  .fieldset__label {
+    padding-left: 0;
+  }
 }
 
 .media-library-widget-empty-text {
@@ -90,6 +108,17 @@
     text-decoration: none;
     background: var(--colorGinAppBackground);
     border-radius: 4px;
+  }
+
+  .views-form,
+  .views-exposed-form {
+    border: 1px solid var(--colorGinBorder);
+  }
+
+  .views-exposed-form {
+    .gin--dark-mode & {
+      background: var(--colorGinLayer2Background);
+    }
   }
 }
 
