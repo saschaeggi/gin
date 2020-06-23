@@ -290,3 +290,8 @@
   border-right: 2px dotted transparent;
   border-radius: 50%;
 }
+
+// Loader background in overlay
+.gin--dark-mode .erl-overlay.erl-loading div.loading {
+  background: rgba(0, 0, 0, .3);
+}

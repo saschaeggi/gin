@@ -18,6 +18,9 @@
   }
 
   .ui-widget-content.ui-dialog-buttonpane {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-top: 1px solid var(--colorGinLayerBorder);
     background: var(--colorGinAppBackground);
   }
 
