@@ -15,6 +15,11 @@
 .system-status-general-info,
 .system-status-report__requirements-group {
   padding: 24px;
+
+  h3 + .divider,
+  .divider:last-child {
+    display: none;
+  }
 }
 
 .system-status-general-info {

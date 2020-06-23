@@ -95,6 +95,7 @@
       &:hover,
       &:active,
       &:focus {
+        border-color: var(--colorGinFocus);
         outline: 1px solid var(--colorGinFocus);
 
         .layout-label {
@@ -109,6 +110,7 @@
   .erl-item {
     .paragraph {
       .field {
+        line-height: 1.5;
         margin: .5em 0;
       }
 

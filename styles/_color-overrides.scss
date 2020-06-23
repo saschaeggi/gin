@@ -81,8 +81,7 @@ svg path {
 .collapse-processed[open] > .claro-details__summary--accordion-item .details-title:not(:focus)::after,
 [open] > .claro-details__summary--vertical-tabs-item:not(:focus):not(:active)::after,
 .collapse-processed[open] > .claro-details__summary--vertical-tabs-item .details-title:not(:focus)::after,
-.vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link::before,
-.field--widget-entity-reference-layout-widget .erl-layout .erl-item:hover
+.vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link::before
 {
   border-color: var(--colorGinPrimary);
 

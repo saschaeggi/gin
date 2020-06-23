@@ -96,7 +96,13 @@
 
 .update {
   margin: 0;
-  border: 1px solid var(--colorGinLayerBorder);
+  border: 0 none;
+
+  tbody {
+    tr:last-child {
+      border-bottom: 0 none;
+    }
+  }
 }
 
 .layer-wrapper {

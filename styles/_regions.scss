@@ -238,13 +238,19 @@ body:not(.toolbar-tray-open) .layout-container {
   margin-top: 16px;
 
   @include breakpoint(976px) {
-    // padding: 1.5rem 0;
     padding: 1.5rem 0 .5rem;
     margin-top: 0;
-
-    // .gin--horizontal-toolbar &,
-    // .gin--classic-toolbar & {
-    //   padding-bottom: .5rem;
-    // }
   }
 }
+
+// @supports (backdrop-filter: blur(20px)) or (--webkit-backdrop-filter: blur(20px)) {
+//   .region-sticky {
+//     -webkit-backdrop-filter: saturate(180%) blur(20px);
+//     backdrop-filter: saturate(180%) blur(20px);
+//     background: rgba($colorAppBackground, .8);
+//   }
+
+//   .gin--dark-mode .region-sticky {
+//     background: rgba($colorDarkAppBackground, .8);
+//   }
+// }
