@@ -116,6 +116,10 @@ libraries-override:
     js:
       misc/tableselect.js: js/gin_tableselect.js
 
+  core/drupal.tableheader:
+    js:
+      misc/tableheader.js: js/gin_tableheader.js
+
   media_library/view:
     js:
       js/media_library.view.js: js/gin_media_library.view.js
