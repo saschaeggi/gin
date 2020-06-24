@@ -97,6 +97,7 @@
       &:focus {
         border-color: var(--colorGinFocus);
         outline: 1px solid var(--colorGinFocus);
+        z-index: 1;
 
         .layout-label {
           display: block;
@@ -292,6 +293,10 @@
 }
 
 // Loader background in overlay
-.gin--dark-mode .erl-overlay.erl-loading div.loading {
-  background: rgba(0, 0, 0, .3);
+.erl-overlay.erl-loading div.loading {
+  border-radius: 6px;
+
+  .gin--dark-mode & {
+    background: rgba(0, 0, 0, .3);
+  }
 }

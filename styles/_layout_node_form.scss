@@ -32,7 +32,7 @@
   // Has sidebar, save the space
   .node-edit-form--has-sidebar {
     @include breakpoint($breakpoint) {
-      padding-right: $sidebarWidth;
+      padding-right: var(--ginSidebarWidth);
     }
   }
 
@@ -81,8 +81,8 @@
 
       @include breakpoint($breakpoint) {
         z-index: 101;
-        flex-basis: $sidebarWidth;
-        width: $sidebarWidth !important;
+        flex-basis: var(--ginSidebarWidth);
+        width: var(--ginSidebarWidth) !important;
         position: fixed;
         top: 0; //15px;
         right: 0;

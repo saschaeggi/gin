@@ -102,7 +102,7 @@
 }
 
 .layout-region-node-actions {
-  z-index: 111;
+  z-index: 102;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -114,8 +114,8 @@
   box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
 
   @include breakpoint(600px) {
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-left: m#{i}n(5vw, 48px);
+    padding-right: m#{i}n(5vw, 48px);
   }
 
   @include breakpoint(976px 1023px) {
@@ -127,7 +127,7 @@
   @include breakpoint(1024px) {
     left: auto;
     top: 4px;
-    right: calc(#{$sidebarWidth} + min(5vw, 96px));
+    right: calc(var(--ginSidebarWidth) + min(5vw, 48px));
     bottom: auto;
     width: auto;
     padding-left: 0;
@@ -220,8 +220,8 @@
 
 .toolbar-tray-open:not(.toolbar-vertical) .layout-container,
 body:not(.toolbar-tray-open) .layout-container {
-  margin-left: m#{i}n(5vw, 96px);
-  margin-right: m#{i}n(5vw, 96px);
+  margin-left: m#{i}n(5vw, 48px);
+  margin-right: m#{i}n(5vw, 48px);
 
   .layout-container {
     margin-left: 0;

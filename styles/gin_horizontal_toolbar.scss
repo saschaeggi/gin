@@ -198,8 +198,8 @@
   // target fist level only
   .toolbar-menu-administration {
     @include breakpoint(976px) {
-      margin-left: m#{i}n(5vw, 96px);
-      margin-right: m#{i}n(5vw, 96px);
+      margin-left: m#{i}n(5vw, 48px);
+      margin-right: m#{i}n(5vw, 48px);
 
       > .toolbar-menu {
         display: flex;
