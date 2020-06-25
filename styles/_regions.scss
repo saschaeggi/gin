@@ -19,11 +19,11 @@
     padding: 16px 0 16px;
     margin-top: -1px;
 
-    .gin--classic-toolbar:not(.path-node) & {
+    .gin--classic-toolbar:not(.gin--edit-form) {
       position: relative;
     }
 
-    .gin--classic-toolbar.path-node & {
+    .gin--classic-toolbar.gin--edit-form & {
       padding-top: 16px;
       top: $topBar;
     }
@@ -32,15 +32,11 @@
       top: 54px;
     }
 
-    .gin--horizontal-toolbar.path-node & {
+    .gin--horizontal-toolbar.gin--edit-form & {
       padding-top: 16px;
     }
 
-    .gin--classic-toolbar.path-node .page-wrapper__node-edit-form:not(.node-edit-form--has-sidebar) & {
-      width: 100%;
-    }
-
-    .gin--classic-toolbar.path-node.toolbar-tray-open & {
+    .gin--classic-toolbar.gin--edit-form.toolbar-tray-open & {
       top: 79px;
     }
   }

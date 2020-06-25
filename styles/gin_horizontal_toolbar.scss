@@ -142,7 +142,7 @@
   }
 }
 
-.gin--horizontal-toolbar.path-node .page-wrapper__node-edit-form .layout-region-node-secondary {
+.gin--horizontal-toolbar.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
   @include breakpoint(1024px) {
     top: 54px;
     height: calc(100% - 54px);

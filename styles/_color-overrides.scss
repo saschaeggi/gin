@@ -101,6 +101,7 @@ svg path {
 .form-boolean--type-checkbox[disabled]:checked {
   border-color: var(--colorGinDisabled);
   background-color: var(--colorGinDisabled);
+  box-shadow: none;
 }
 
 .pager__link.is-active, .pager__item--current {

@@ -47,7 +47,7 @@
         // Light theme colors.
         accentColors = {
           claro_blue: '#003cc5',
-          light_blue: '#047eb5',
+          light_blue: '#426af4',
           dark_purple: '#35009d',
           purple: '#5b00ff',
           teal: '#10857f',

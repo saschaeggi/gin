@@ -1,12 +1,28 @@
 .card {
   border: 1px solid var(--colorGinBorder);
+  border-radius: 6px;
 
   &-list {
     margin-bottom: 2rem;
   }
 
+  &__image {
+    img {
+      border-radius: 6px 6px 0 0;
+
+      @include mq(588px) {
+        border-radius: 6px 0 0 6px;
+      }
+    }
+  }
+
   &__content-wrapper {
     background-color: var(--colorGinLayerBackground);
+    border-radius: 0 0 6px 6px;
+
+    @include mq(588px) {
+      border-radius: 0 6px 6px 0;
+    }
 
     .gin--dark-mode & {
       background-color: var(--colorGinLayer2Background);

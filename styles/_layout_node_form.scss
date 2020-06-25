@@ -1,6 +1,11 @@
 // Node layout
-.path-node {
+.gin--edit-form {
   $breakpoint: 1024px;
+
+  // Has sidebar, save the space
+  @include breakpoint($breakpoint) {
+    padding-right: var(--ginSidebarWidth);
+  }
 
   .layout-node-form {
     overflow: inherit;
@@ -26,13 +31,6 @@
       flex-basis: 40%;
       flex-shrink: 1;
       flex-grow: 1;
-    }
-  }
-
-  // Has sidebar, save the space
-  .node-edit-form--has-sidebar {
-    @include breakpoint($breakpoint) {
-      padding-right: var(--ginSidebarWidth);
     }
   }
 
@@ -170,5 +168,24 @@
 
   .revision-current {
     background-color: var(--colorGinPrimaryLightActive);
+  }
+}
+
+.revision-current {
+  background-color: transparent;
+
+  td:first-of-type {
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1px;
+      height: 100%;
+      border-left: 6px solid var(--colorGinGreen);
+    }
   }
 }

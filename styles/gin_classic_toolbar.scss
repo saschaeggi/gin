@@ -157,7 +157,7 @@
   }
 }
 
-.toolbar-tray-open.path-node .page-wrapper__node-edit-form .layout-region-node-secondary {
+.toolbar-tray-open.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
   @include breakpoint(1024px) {
     top: $topBar;
     height: calc(100% - #{$topBar});

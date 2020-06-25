@@ -46,7 +46,8 @@
 
 .action-link--icon-trash.action-link--danger,
 .button.button--danger,
-a.button.button--danger {
+a.button.button--danger,
+.button[data-drupal-selector="edit-cancel"] {
   color: var(--colorGinDanger);
 
   .gin--dark-mode & {
