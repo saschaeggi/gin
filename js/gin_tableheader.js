@@ -14,6 +14,10 @@
 
     this.displayWeight = null;
     this.$originalTable.addClass('sticky-table');
+
+    // Wrap table for vertical scrolling ability
+    this.$originalTable.wrap('<div class="gin-table-scroll-wrapper"></div>');
+
     this.tableHeight = $table[0].clientHeight;
     this.tableOffset = this.$originalTable.offset();
 

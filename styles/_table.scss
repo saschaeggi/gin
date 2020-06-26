@@ -1,3 +1,8 @@
+.gin-table-scroll-wrapper {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 table.sticky-header {
   left: auto !important;
   background: transparent;
