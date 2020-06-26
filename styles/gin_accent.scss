@@ -34,6 +34,7 @@
   --colorGinLayer2Border: #d4d4d8;
   --colorGinTableBorder: rgba(0, 0, 0, .15);
   --colorGinTabsBorder: rgba(0, 0, 0, .11);
+  --colorGinFormElementBorder: #8E929C;
 
   --colorGinTitle:#222330;
   --colorGinText: #222330;
@@ -74,6 +75,7 @@
   --colorGinLayer2Border: #76777B;
   --colorGinTableBorder: #43454a;
   --colorGinTabsBorder: rgba(255, 255, 255, .12);
+  --colorGinFormElementBorder: var(--colorGinLayer2Border);
 
   --colorGinTitle: #fff;
   --colorGinText: #ccc;
@@ -133,5 +135,29 @@ $ginDarkmodeColors: (
     --colorGinPrimaryLightHover: #{rgba($color, .30)};
     --colorGinPrimaryLightActive: #{rgba($color, .40)};
     --colorGinItemHover: #{rgba($color, .1)};
+  }
+}
+
+.gin--high-contrast-mode {
+  $highContrastMode: rgba(0, 0, 0, .8);
+
+  --colorGinFocus: #{$highContrastMode};
+  --colorGinBorder: #{$highContrastMode};
+  --colorGinLayerBorder: #{$highContrastMode};
+  --colorGinLayer2Border: #{$highContrastMode};
+  --colorGinTableBorder: #{$highContrastMode};
+  --colorGinTabsBorder: #{$highContrastMode};
+  --colorGinFormElementBorder: #{$highContrastMode};
+
+  &.gin--dark-mode {
+    $highContrastMode: rgba(255, 255, 255, .8);
+
+    --colorGinFocus: #{$highContrastMode};
+    --colorGinBorder: #{$highContrastMode};
+    --colorGinLayerBorder: #{$highContrastMode};
+    --colorGinLayer2Border: #{$highContrastMode};
+    --colorGinTableBorder: #{$highContrastMode};
+    --colorGinTabsBorder: #{$highContrastMode};
+    --colorGinFormElementBorder: #{$highContrastMode};
   }
 }

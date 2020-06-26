@@ -2,7 +2,7 @@ $maxWidth: 520px;
 
 .form-element {
   color: var(--colorGinText);
-  border: 1px solid #8E929C;
+  border: 1px solid var(--colorGinFormElementBorder);
   box-sizing: border-box;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .14);
   border-radius: 4px;
@@ -18,7 +18,6 @@ $maxWidth: 520px;
 
   .gin--dark-mode & {
     background-color: var(--colorGinLayer2Background);
-    border-color: var(--colorGinLayer2Border);
   }
 }
 
@@ -71,12 +70,15 @@ $maxWidth: 520px;
   line-height: 1rem;
 }
 
+.form-boolean {
+  border-color: var(--colorGinFormElementBorder);
+}
+
 // Darkmode Checkbox
 .form-boolean--type-checkbox {
   &:not(:checked) {
     .gin--dark-mode & {
       background: var(--colorGinLayer2Background);
-      border-color: var(--colorGinLayer2Border);
     }
   }
 
@@ -187,11 +189,10 @@ $maxWidth: 520px;
   &, &:hover, &:active, &:focus, &:hover:focus {
     background-image: none;
     background-color: #fff;
-    border-color: var(--colorGinLayer2Border);
+    border-color: var(--colorGinFormElementBorder);
 
     .gin--dark-mode & {
-      background-color: var(--colorGinLayer2Background);
-      border-color: var(--colorGinLayer2Border);
+      background-color: var(--colorGinLayer2Background);;
     }
   }
 
