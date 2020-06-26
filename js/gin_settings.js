@@ -71,16 +71,14 @@
 
         // User setting disabled, use default settings instead.
         if (!active) {
-          darkmode = drupalSettings.gin.darkmode_class;
-          accentColorPreset = drupalSettings.gin.preset_accent_color;
-          focusColorPreset = drupalSettings.gin.preset_focus_color;
-          highContrastMode = drupalSettings.gin.high_contrast_mode;
+          darkmode = drupalSettings.gin.default_darkmode;
+          accentColorPreset = drupalSettings.gin.default_preset_accent_color;
+          highContrastMode = drupalSettings.gin.default_high_contrast_mode;
         }
 
         // Update.
         Drupal.behaviors.ginAccent.darkmode(darkmode);
         Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset);
-        Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset);
         Drupal.behaviors.ginAccent.setHighContrastMode(highContrastMode);
       });
     }

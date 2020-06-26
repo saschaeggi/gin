@@ -134,6 +134,11 @@ function gin_page_attachments_alter(&$page) {
   $page['#attached']['drupalSettings']['gin']['focus_color'] = $focus_color;
   $page['#attached']['drupalSettings']['gin']['highcontrastmode'] = $highcontrastmode;
   $page['#attached']['drupalSettings']['gin']['highcontrastmode_class'] = $highcontrastmode_class;
+
+  // Expose default settings.
+  $page['#attached']['drupalSettings']['gin']['default_darkmode'] = theme_get_setting('enable_darkmode', 'gin');
+  $page['#attached']['drupalSettings']['gin']['default_preset_accent_color'] = theme_get_setting('preset_accent_color', 'gin');
+  $page['#attached']['drupalSettings']['gin']['default_high_contrast_mode'] = theme_get_setting('high_contrast_mode', 'gin');
 }
 
 /**
@@ -716,6 +721,43 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
 }
 
 /**
+ * Validation for logo.
+ */
+function gin_form_system_theme_settings_alter_validate(array &$form, FormStateInterface $form_state) {
+  $module_handler = \Drupal::service('module_handler');
+
+  if (isset($form['icon']) && $module_handler->moduleExists('file')) {
+    $file = _file_save_upload_from_form($form['icon']['settings']['icon_upload'], $form_state, 0);
+    if ($file) {
+      try {
+        $filename = \Drupal::service('file_system')->copy($file->getFileUri(), \Drupal::config('system.file')->get('default_scheme') . '://');
+        $form_state->setValue('icon_default', 0);
+        $form_state->setValue('icon_path', $filename);
+        $form_state->unsetValue('icon_upload');
+      }
+      catch (FileException $e) {
+        \Drupal::logger('gin')->error($e->getMessage());
+      }
+    }
+  }
+
+  // When intending to use the default logo, unset the icon_path.
+  if ($form_state->getValue('icon_default')) {
+    $form_state->unsetValue('icon_path');
+  }
+
+  // If the user provided a path for a logo file, make sure a file
+  // exists at that path.
+  if ($form_state->getValue('icon_path')) {
+    $path = _gin_validate_path_logo($form_state->getValue('icon_path'));
+
+    if (!$path) {
+      $form_state->setErrorByName('icon_path', t('The custom logo path is invalid.'));
+    }
+  }
+}
+
+/**
  * Implements helper function _gin_user_form_submit().
  */
 function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
@@ -1014,43 +1056,6 @@ function _gin_user__get_highcontrastmode_enabled() {
   }
   else {
     return FALSE;
-  }
-}
-
-/**
- * Validation for logo.
- */
-function gin_form_system_theme_settings_alter_validate(array &$form, FormStateInterface $form_state) {
-  $module_handler = \Drupal::service('module_handler');
-
-  if (isset($form['icon']) && $module_handler->moduleExists('file')) {
-    $file = _file_save_upload_from_form($form['icon']['settings']['icon_upload'], $form_state, 0);
-    if ($file) {
-      try {
-        $filename = \Drupal::service('file_system')->copy($file->getFileUri(), \Drupal::config('system.file')->get('default_scheme') . '://');
-        $form_state->setValue('icon_default', 0);
-        $form_state->setValue('icon_path', $filename);
-        $form_state->unsetValue('icon_upload');
-      }
-      catch (FileException $e) {
-        \Drupal::logger('gin')->error($e->getMessage());
-      }
-    }
-  }
-
-  // When intending to use the default logo, unset the icon_path.
-  if ($form_state->getValue('icon_default')) {
-    $form_state->unsetValue('icon_path');
-  }
-
-  // If the user provided a path for a logo file, make sure a file
-  // exists at that path.
-  if ($form_state->getValue('icon_path')) {
-    $path = _gin_validate_path_logo($form_state->getValue('icon_path'));
-
-    if (!$path) {
-      $form_state->setErrorByName('icon_path', t('The custom logo path is invalid.'));
-    }
   }
 }
 
