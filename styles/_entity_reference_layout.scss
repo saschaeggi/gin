@@ -300,3 +300,8 @@
     background: rgba(0, 0, 0, .3);
   }
 }
+
+// If ERL field is first element, remove margin-top
+.erl-layout-wrapper {
+  margin-top: 0;
+}

@@ -14,10 +14,11 @@ $fancy-easing: cubic-bezier(.19, 1, .22, 1);
 $transition: .15s $fancy-easing;
 $transition--fast: .3s $fancy-easing;
 
-$colorAppBackground: #f5f7fb; //#fbfbff; //f5f8f9; //#f8f9ff;
-$colorAppBackgroundShadow: #f5f7fb; //#f5f5f9;
+$colorAppBackground: #fbfbff; //#f5f7fb;
+$colorAppBackgroundShadow: #f5f5f9; //#f5f7fb;
 $colorDarkAppBackground: #1B1B1D;
 $ginPrimary: #0136fd; //#2337f1; //#2337f1; //#2337f1; //#003cc5;
+$ginPrimaryDark: #080090;
 
 $mixColor: #0136fd; //#2353f1;
 
