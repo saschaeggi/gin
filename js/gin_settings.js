@@ -11,10 +11,10 @@
         const accentColorPreset = $('select[name="preset_accent_color"]').val();
         const focusColorPreset = $('select[name="preset_focus_color"]').val();
 
-        // Toggle Darkmode
+        // Toggle Darkmode.
         Drupal.behaviors.ginAccent.darkmode(darkmode);
 
-        // Toggle Accent color
+        // Toggle Accent color.
         Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset);
         Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset);
       });
@@ -23,17 +23,16 @@
       $('select[name="preset_accent_color"]', context).change(function () {
         const accentColorPreset = $(this).val();
 
-        // Update
+        // Update.
         Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset);
       });
 
       // Watch Accent color setting has changed.
       $('input[name="accent_color"]', context).change(function () {
-        const accentColorPreset = $('select[name="preset_accent_color"]').val();
         const accentColorSetting = $(this).val();
 
-        // Update
-        Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset, accentColorSetting);
+        // Update.
+        Drupal.behaviors.ginAccent.setCustomAccentColor('custom', accentColorSetting);
       });
 
       // Watch Accent color setting has changed.

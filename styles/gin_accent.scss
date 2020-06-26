@@ -49,8 +49,8 @@
 .gin--dark-mode {
   $ginPrimary: #90aeef;
   --colorGinPrimary: #{$ginPrimary};
-  --colorGinPrimaryHover: #{lighten(#799eef, 5)};
-  --colorGinPrimaryActive: #{lighten(#799eef, 10)};
+  --colorGinPrimaryHover: #{mix(white, $ginPrimary, 10%)};
+  --colorGinPrimaryActive: #{mix(white, $ginPrimary, 15%)};
   --colorGinPrimaryLight: #{rgba($ginPrimary, .20)};
   --colorGinPrimaryLightHover: #{rgba($ginPrimary, .30)};
   --colorGinPrimaryLightActive: #{rgba($ginPrimary, .40)};
@@ -61,11 +61,8 @@
 
   --colorGinDisabled: #999;
   --colorGinWarning: #dec15f;
-  // --colorGinWarningBackground: #{mix(black, #dec15f, 60%)};
   --colorGinDanger: #ce6060;
-  // --colorGinDangerBackground: #{mix(black, #ce6060, 60%)};
   --colorGinGreen: #32cea4;
-  // --colorGinGreenBackground: #{mix(black, #32cea4, 60%)};
 
   --colorGinAppBackground: #{$colorDarkAppBackground};
   --colorGinLayerBackground: #2A2A2D;
@@ -87,4 +84,54 @@
   --colorGinSwitchShadow: var(--colorGinPrimaryLight);
 
   --colorGinIcons: #888;
+}
+
+$ginColors: (
+  claro_blue: #003cc5,
+  light_blue: #426af4,
+  dark_purple: #35009d,
+  purple: #5b00ff,
+  teal: #10857f,
+  green: #26a769,
+  red: #b34547,
+  orange: #ef5c20,
+  yellow: #d69400,
+  pink: #e23177
+);
+
+@each $name, $color in $ginColors {
+  [data-gin-accent=#{$name}] {
+    --colorGinPrimary: #{$color};
+    --colorGinPrimaryHover: #{mix(black, $color, 15%)};
+    --colorGinPrimaryActive: #{mix(black, $color, 25%)};
+    --colorGinPrimaryLight: #{rgba($color, .15)};
+    --colorGinPrimaryLightHover: #{rgba($color, .25)};
+    --colorGinPrimaryLightActive: #{rgba($color, .35)};
+    --colorGinItemHover: #{rgba($color, .06)};
+  }
+}
+
+$ginDarkmodeColors: (
+  claro_blue: #7391d8,
+  light_blue: #82bfe8,
+  dark_purple: #976bef,
+  purple: #dba5ef,
+  teal: #67efce,
+  green: #6bd4a1,
+  red: #ca6d6d,
+  orange: #f79576,
+  yellow: #f1c970,
+  pink: #e79da3
+);
+
+@each $name, $color in $ginDarkmodeColors {
+  .gin--dark-mode[data-gin-accent=#{$name}] {
+    --colorGinPrimary: #{$color};
+    --colorGinPrimaryHover: #{mix(white, $color, 10%)};
+    --colorGinPrimaryActive: #{mix(white, $color, 15%)};
+    --colorGinPrimaryLight: #{rgba($color, .20)};
+    --colorGinPrimaryLightHover: #{rgba($color, .30)};
+    --colorGinPrimaryLightActive: #{rgba($color, .40)};
+    --colorGinItemHover: #{rgba($color, .1)};
+  }
 }

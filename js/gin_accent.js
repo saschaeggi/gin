@@ -6,7 +6,6 @@
   Drupal.behaviors.ginAccent = {
     attach: function attach() {
       // Set Colors
-      Drupal.behaviors.ginAccent.setAccentColor();
       Drupal.behaviors.ginAccent.setFocusColor();
     },
 
@@ -23,70 +22,39 @@
       }
     },
 
-    colorDefinition: function colorDefinition(darkmodeParam = null) {
-      let accentColors = {};
-      const darkmodeEnabled = darkmodeParam != null ? darkmodeParam : drupalSettings.gin.darkmode;
-
-      // Needs to check for both: backwards compabitility.
-      if (darkmodeEnabled === true || darkmodeEnabled === 1) {
-        // Darkmode colors.
-        accentColors = {
-          claro_blue: '#7391d8',
-          light_blue: '#82bfe8',
-          dark_purple: '#976bef',
-          purple: '#dba5ef',
-          teal: '#67efce',
-          green: '#6bd4a1',
-          red: '#ca6d6d',
-          orange: '#f79576',
-          yellow: '#f1c970',
-          pink: '#e79da3'
-        };
-      }
-      else {
-        // Light theme colors.
-        accentColors = {
-          claro_blue: '#003cc5',
-          light_blue: '#426af4',
-          dark_purple: '#35009d',
-          purple: '#5b00ff',
-          teal: '#10857f',
-          green: '#26a769',
-          red: '#b34547',
-          orange: '#ef5c20',
-          yellow: '#d69400',
-          pink: '#e23177'
-        };
-      }
-
-      return accentColors;
-    },
-
     setAccentColor: function setAccentColor(preset = null, color = null) {
       const accentColorPreset = preset != null ? preset : drupalSettings.gin.preset_accent_color;
-      const accentColorSetting = color != null ? color : drupalSettings.gin.accent_color;
-      const darkmode = preset != null
-        ? $('input[name="enable_darkmode"]').is(':checked')
-        : drupalSettings.gin.darkmode;
-      const darkmodeClass = drupalSettings.gin.darkmode_class;
-      const accentColors = Drupal.behaviors.ginAccent.colorDefinition(darkmode);
-      const ratio = darkmode ? 10 : 6.5;
-      let accentColor;
 
       // First clear things up.
       Drupal.behaviors.ginAccent.clearAccentColor();
 
-      // if (accentColorPreset !== 'blue') {
-        if (accentColorPreset === 'custom') {
-          accentColor = accentColorSetting;
-        }
-        else {
-          accentColor = accentColors[accentColorPreset];
-        }
+      // Set preset color.
+      $('body').attr('data-gin-accent', accentColorPreset);
+
+      // If custom color is set, generate colors through JS.
+      if (accentColorPreset === 'custom') {
+        Drupal.behaviors.ginAccent.setCustomAccentColor('custom');
+      }
+    },
+
+    setCustomAccentColor: function setCustomAccentColor(preset = null, color = null) {
+      // If custom color is set, generate colors through JS.
+      if (preset === 'custom') {
+        // Set preset color.
+        $('body').attr('data-gin-accent', preset);
+
+        const accentColorSetting = color != null ? color : drupalSettings.gin.accent_color;
+        const darkmode = preset != null
+        ? $('input[name="enable_darkmode"]').is(':checked')
+        : drupalSettings.gin.darkmode;
+        const darkmodeClass = drupalSettings.gin.darkmode_class;
+        const ratio = darkmode ? 10 : 6.5;
+        const accentColor = accentColorSetting;
 
         if (accentColor) {
           const strippedAccentColor = accentColor.replace('#', '');
           const body = darkmode ? `.${darkmodeClass}` : 'body';
+
           const styles = `<style class="gin-custom-colors">\
             ${body} {\n\
               --colorGinPrimary: ${accentColor};\n\
@@ -106,7 +74,7 @@
 
           $('body').append(styles);
         }
-      // }
+      }
     },
 
     clearAccentColor: function clearAccentColor() {

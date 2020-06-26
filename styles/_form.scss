@@ -217,8 +217,9 @@ $maxWidth: 520px;
   }
 }
 
+.form-radios,
 .form-checkboxes {
-  .form-type--checkbox {
+  .form-type--boolean {
     margin-top: .5rem;
     margin-bottom: .5rem;
   }

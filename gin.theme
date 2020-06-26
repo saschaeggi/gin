@@ -21,11 +21,17 @@ function gin_preprocess_html(&$variables) {
 
   // Get configs.
   $darkmode = _gin_dark_mode_enabled();
+  $preset_accent_color = _gin_preset_accent_color();
   $toolbar = _gin_toolbar();
 
   // Check if darkmode is enabled.
   if ($darkmode === TRUE) {
     $variables['attributes']['class'][] = 'gin--dark-mode';
+  }
+
+  // Set accent color.
+  if ($preset_accent_color) {
+    $variables['attributes']['data-gin-accent'] = $preset_accent_color;
   }
 
   // Edit form? Use the new Gin Edit form layout.
@@ -273,7 +279,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
 
     $form['gin_theme_settings']['user_settings']['enable_darkmode'] = [
       '#type' => 'checkbox',
-      '#title' => t('Enable Darkmode (EXPERIMENTAL)'),
+      '#title' => t('Enable Darkmode (BETA)'),
       '#description' => t("Enables Darkmode for the admin interface."),
       '#default_value' => $darkModeValue !== NULL ? $darkModeValue : 0,
       '#weight' => 0,
@@ -288,7 +294,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
     // Accent color setting.
     $form['gin_theme_settings']['user_settings']['preset_accent_color'] = [
       '#type' => 'select',
-      '#title' => t('Accent color (EXPERIMENTAL)'),
+      '#title' => t('Accent color'),
       '#default_value' => $accentColorPresetValue,
       '#options' => _gin_get_accent_color_presets(),
     ];
@@ -303,7 +309,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
     $form['gin_theme_settings']['user_settings']['accent_color'] = [
       '#type' => 'textfield',
       '#placeholder' => '#77777',
-      '#title' => t('Accent color (EXPERIMENTAL)'),
+      '#title' => t('Accent color'),
       '#description' => t('Use with caution, values should meet a11y criterias.'),
       '#default_value' => $accentColorValue,
       '#min' => '7',
@@ -490,7 +496,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   }
   $form['custom_settings']['enable_darkmode'] = [
     '#type' => 'checkbox',
-    '#title' => t('Enable Darkmode (EXPERIMENTAL)'),
+    '#title' => t('Enable Darkmode (BETA)'),
     '#description' => $description,
     '#default_value' => $themeDarkMode,
   ];
@@ -501,7 +507,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   $themePresetAccentColor = theme_get_setting('preset_accent_color');
   $form['custom_settings']['preset_accent_color'] = [
     '#type' => 'select',
-    '#title' => t('Accent color (EXPERIMENTAL)'),
+    '#title' => t('Accent color'),
     '#default_value' => $themePresetAccentColor,
     '#options' => _gin_get_accent_color_presets(),
   ];
@@ -519,7 +525,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   $form['custom_settings']['accent_color'] = [
     '#type' => 'textfield',
     '#placeholder' => '#77777',
-    '#title' => t('Accent color (EXPERIMENTAL)'),
+    '#title' => t('Accent color'),
     '#description' => t('Use with caution, values should meet a11y criterias.'),
     '#default_value' => $themeAccentColor,
     '#min' => '7',
@@ -540,7 +546,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   // Focus color setting.
   $form['custom_settings']['preset_focus_color'] = [
     '#type' => 'select',
-    '#title' => t('Focus color (EXPERIMENTAL)'),
+    '#title' => t('Focus color (BETA)'),
     '#default_value' => theme_get_setting('preset_focus_color'),
     '#options' => [
       'gin' => t('Gin Focus color (Default)'),
@@ -557,7 +563,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   $form['custom_settings']['focus_color'] = [
     '#type' => 'textfield',
     '#placeholder' => '#777777',
-    '#title' => t('Custom Focus color (EXPERIMENTAL)'),
+    '#title' => t('Custom Focus color (BETA)'),
     '#description' => t('Use with caution, values should meet a11y criterias.'),
     '#default_value' => theme_get_setting('focus_color'),
     '#min' => '7',
