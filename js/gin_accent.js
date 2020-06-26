@@ -6,6 +6,7 @@
   Drupal.behaviors.ginAccent = {
     attach: function attach() {
       // Set Colors
+      Drupal.behaviors.ginAccent.setAccentColor();
       Drupal.behaviors.ginAccent.setFocusColor();
     },
 
@@ -38,12 +39,13 @@
     },
 
     setCustomAccentColor: function setCustomAccentColor(preset = null, color = null) {
+      const accentColorSetting = color != null ? color : drupalSettings.gin.accent_color;
+
       // If custom color is set, generate colors through JS.
       if (preset === 'custom') {
         // Set preset color.
         $('body').attr('data-gin-accent', preset);
 
-        const accentColorSetting = color != null ? color : drupalSettings.gin.accent_color;
         const darkmode = preset != null
         ? $('input[name="enable_darkmode"]').is(':checked')
         : drupalSettings.gin.darkmode;
@@ -136,7 +138,20 @@
       )
         .toString(16)
         .slice(1)}`;
-    }
+    },
+
+    setHighContrastMode: function setHighContrastMode(param = null) {
+      const enabled = param != null ? param : drupalSettings.gin.highcontrastmode;
+      const className = drupalSettings.gin.highcontrastmode_class;
+
+      // Needs to check for both: backwards compabitility.
+      if (enabled === true || enabled === 1) {
+        $('body').addClass(className);
+      }
+      else {
+        $('body').removeClass(className);
+      }
+    },
   };
 
   Drupal.behaviors.ginTableCheckbox = {

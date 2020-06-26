@@ -5,10 +5,10 @@ gin.settings:
   mapping:
     preset_accent_color:
       type: string
-      label: 'Present accent color'
+      label: 'Preset accent color'
     preset_focus_color:
       type: string
-      label: 'Present focus color'
+      label: 'Preset focus color'
     enable_darkmode:
       type: boolean
       label: 'The dark mode'
@@ -21,3 +21,6 @@ gin.settings:
     icon_path:
       type: string
       label: 'Path to custom logo'
+    high_contrast_mode:
+      type: boolean
+      label: 'High contrast mode'

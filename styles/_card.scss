@@ -18,10 +18,10 @@
 
   &__content-wrapper {
     background-color: var(--colorGinLayerBackground);
-    border-radius: 0 0 6px 6px;
+    border-radius: 0 0 4px 4px;
 
     @include mq(588px) {
-      border-radius: 0 6px 6px 0;
+      border-radius: 0 4px 4px 0;
     }
 
     .gin--dark-mode & {

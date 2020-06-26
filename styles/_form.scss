@@ -177,8 +177,6 @@ $maxWidth: 520px;
 }
 
 .gin--dark-mode .form-boolean {
-  border-color: transparent;
-
   &:hover, &:active {
     box-shadow: none;
     border-color: var(--colorGinText);

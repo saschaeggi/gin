@@ -23,6 +23,7 @@ function gin_preprocess_html(&$variables) {
   $darkmode = _gin_dark_mode_enabled();
   $preset_accent_color = _gin_preset_accent_color();
   $toolbar = _gin_toolbar();
+  $high_contrast_mode = _gin_highcontrastmode_enabled();
 
   // Check if darkmode is enabled.
   if ($darkmode === TRUE) {
@@ -32,6 +33,11 @@ function gin_preprocess_html(&$variables) {
   // Set accent color.
   if ($preset_accent_color) {
     $variables['attributes']['data-gin-accent'] = $preset_accent_color;
+  }
+
+  // High contast mode.
+  if ($high_contrast_mode === TRUE) {
+    $variables['attributes']['class'][] = 'gin--high-contrast-mode';
   }
 
   // Edit form? Use the new Gin Edit form layout.
@@ -97,9 +103,11 @@ function gin_page_attachments_alter(&$page) {
   $preset_focus_color = theme_get_setting('preset_focus_color', 'gin');
   $focus_color = theme_get_setting('focus_color', 'gin');
   $toolbar = _gin_toolbar();
+  $highcontrastmode = _gin_highcontrastmode_enabled();
 
   // Define darkmode class.
   $darkmode_class = 'gin--dark-mode';
+  $highcontrastmode_class = 'gin--high-contrast-mode';
 
   if ($toolbar === 1) {
     // Attach the classic toolbar styles.
@@ -124,6 +132,8 @@ function gin_page_attachments_alter(&$page) {
   $page['#attached']['drupalSettings']['gin']['accent_color'] = $accent_color;
   $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $preset_focus_color;
   $page['#attached']['drupalSettings']['gin']['focus_color'] = $focus_color;
+  $page['#attached']['drupalSettings']['gin']['highcontrastmode'] = $highcontrastmode;
+  $page['#attached']['drupalSettings']['gin']['highcontrastmode_class'] = $highcontrastmode_class;
 }
 
 /**
@@ -323,6 +333,20 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       ],
     ];
 
+    $hcm_value = $userData->get('gin', $user->id(), 'high_contrast_mode');
+
+    if ($hcm_value == NULL) {
+      $hcm_value = theme_get_setting('high_contrast_mode', 'gin') == TRUE ? TRUE : FALSE;
+    }
+
+    $form['gin_theme_settings']['user_settings']['high_contrast_mode'] = [
+      '#type' => 'checkbox',
+      '#title' => ('Increase contrast (EXPERIMENTAL)'),
+      '#description' => t("Enables high contrast mode."),
+      '#default_value' => $hcm_value !== NULL ? $hcm_value : 0,
+      '#weight' => 0,
+    ];
+
     $toolbarValue = $userData->get('gin', $user->id(), 'classic_toolbar');
 
     if ($toolbarValue == NULL) {
@@ -337,6 +361,9 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       '#default_value' => $toolbarValue,
       '#options' => _gin_get_toolbar_presets(),
     ];
+
+    // Attach custom js.
+    $form['#attached']['library'][] = 'gin/gin_settings';
 
     array_unshift($form['actions']['submit']['#submit'], '_gin_user_form_submit');
   }
@@ -494,6 +521,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     $darkmode = $userDarkMode ? t('Enabled') : t('Disabled');
     $description = t("Enables Darkmode for the admin interface.") . '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Darkmode: <strong>@darkmode</strong></span>', ['@darkmode' => $darkmode, '@editUrl' => $userEditUrl]);
   }
+
   $form['custom_settings']['enable_darkmode'] = [
     '#type' => 'checkbox',
     '#title' => t('Enable Darkmode (BETA)'),
@@ -575,6 +603,24 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
         'select[name="preset_focus_color"]' => ['value' => 'custom'],
       ],
     ],
+  ];
+
+  // High contrast mode.
+  // Check if this is overridden by the logged in user.
+  $hcm_user = _gin_highcontrastmode_enabled();
+  $hcm_default = theme_get_setting('high_contrast_mode');
+  $hcm_description = t("Enables high contrast mode.");
+
+  if (!is_null($hcm_user) && $hcm_user !== $hcm_default) {
+    $hcm_active = $hcm_user ? t('Enabled') : t('Disabled');
+    $hcm_description = t("Enables high contrast mode.") . '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. High Contrast Mode: <strong>@highcontrastmode</strong></span>', ['@highcontrastmode' => $hcm_active, '@editUrl' => $userEditUrl]);
+  }
+
+  $form['custom_settings']['high_contrast_mode'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Increase contrast (EXPERIMENTAL)'),
+    '#description' => $hcm_description,
+    '#default_value' => $hcm_default,
   ];
 
   /*
@@ -694,6 +740,9 @@ function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
 
     $toolbarValue = $form_state->getValue('classic_toolbar');
     $userData->set('gin', $user->id(), 'classic_toolbar', $toolbarValue);
+
+    $highContrastValue = $form_state->getValue('high_contrast_mode');
+    $userData->set('gin', $user->id(), 'high_contrast_mode', $highContrastValue);
   }
 }
 
@@ -927,6 +976,44 @@ function _gin_user__toolbar() {
   }
   else {
     return NULL;
+  }
+}
+
+/**
+ * Enable high contrast mode helper function.
+ */
+function _gin_highcontrastmode_enabled() {
+  // Get user config.
+  if (_gin_user__overrides_enabled()) {
+    $uid = _gin_user__get_user_id();
+    $hcm = _gin_user__get_highcontrastmode_enabled();
+
+    // Convert older versions to boolean.
+    $hcm = $hcm === 0 || $hcm === '0' ? FALSE : $hcm;
+    $hcm = $hcm === 1 || $hcm === '1' ? TRUE : $hcm;
+  }
+  // Get general config.
+  else {
+    $hcm = theme_get_setting('high_contrast_mode', 'gin');
+  }
+
+  return $hcm;
+}
+
+/**
+ * Check user has enabled high contrast mode helper function.
+ */
+function _gin_user__get_highcontrastmode_enabled() {
+  $uid = _gin_user__get_user_id();
+
+  if ($uid) {
+    /** @var \Drupal\user\UserDataInterface $userData */
+    $userData = Drupal::service('user.data');
+
+    return $userData->get('gin', $uid, 'high_contrast_mode');
+  }
+  else {
+    return FALSE;
   }
 }
 

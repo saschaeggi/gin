@@ -38,11 +38,8 @@
   form {
     display: flex;
     flex-direction: column;
-
-    @include breakpoint(max-width 1024px) {
-      overflow: auto;
-      -webkit-overflow-scrolling: touch;
-    }
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .views-table {

@@ -2,7 +2,7 @@
 
 'use strict';
 
-(($, Drupal) => {
+(($, Drupal, drupalSettings) => {
   Drupal.behaviors.ginSettings = {
     attach: function attach(context) {
       // Watch Darkmode setting has changed.
@@ -39,7 +39,7 @@
       $('select[name="preset_focus_color"]', context).change(function () {
         const accentColorPreset = $(this).val();
 
-        // Update
+        // Update.
         Drupal.behaviors.ginAccent.setFocusColor(accentColorPreset);
       });
 
@@ -48,9 +48,41 @@
         const focusColorPreset = $('select[name="preset_focus_color"]').val();
         const focusColorSetting = $(this).val();
 
-        // Update
+        // Update.
         Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset, focusColorSetting);
+      });
+
+      // Watch Hight contrast mode setting has changed.
+      $('input[name="high_contrast_mode"]', context).change(function () {
+        const highContrastMode = $(this).is(':checked');
+
+        // Update.
+        Drupal.behaviors.ginAccent.setHighContrastMode(highContrastMode);
+      });
+
+      // Watch user settings has changed.
+      $('input[name="enable_user_settings"]', context).change(function () {
+        const active = $(this).is(':checked');
+
+        let darkmode = $('input[name="enable_darkmode"]').is(':checked');
+        let accentColorPreset = $('select[name="preset_accent_color"]').val();
+        let focusColorPreset = $('select[name="preset_focus_color"]').val();
+        let highContrastMode = $('input[name="high_contrast_mode"]').is(':checked');
+
+        // User setting disabled, use default settings instead.
+        if (!active) {
+          darkmode = drupalSettings.gin.darkmode_class;
+          accentColorPreset = drupalSettings.gin.preset_accent_color;
+          focusColorPreset = drupalSettings.gin.preset_focus_color;
+          highContrastMode = drupalSettings.gin.high_contrast_mode;
+        }
+
+        // Update.
+        Drupal.behaviors.ginAccent.darkmode(darkmode);
+        Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset);
+        Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset);
+        Drupal.behaviors.ginAccent.setHighContrastMode(highContrastMode);
       });
     }
   };
-})(jQuery, Drupal);
+})(jQuery, Drupal, drupalSettings);

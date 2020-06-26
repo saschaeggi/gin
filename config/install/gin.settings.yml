@@ -4,3 +4,4 @@ enable_darkmode: false
 classic_toolbar: 'vertical'
 icon_default: true
 icon_path: ''
+high_contrast_mode: false
