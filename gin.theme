@@ -198,6 +198,15 @@ function gin_form_alter(&$form, $form_state, $form_id) {
     }
   }
 
+  // If not logged in hide changed and author node info on add forms.
+  $not_logged_in = \Drupal::currentUser()->isAnonymous();
+  $route = \Drupal::routeMatch()->getRouteName();
+
+  if ($not_logged_in && $route == 'node.add') {
+    unset($form['meta']['changed']);
+    unset($form['meta']['author']);
+  }
+
   // User form (Login, Register or Forgot password).
   if (strpos($form_id, 'user_login') !== FALSE || strpos($form_id, 'user_register') !== FALSE || strpos($form_id, 'user_pass') !== FALSE) {
     $form['actions']['submit']['#attributes']['class'][] = 'button--primary';
