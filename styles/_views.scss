@@ -10,20 +10,20 @@
 // Option for 6 column layout
 .show-6 {
   .views-row {
-    @include breakpoint(420px) {
+    @include mq($breakpointTiny) {
       float: left;
       width: 50%;
     }
 
-    @include breakpoint(768px) {
+    @include mq($breakpointSmall) {
       width: 25%;
     }
 
-    @include breakpoint(1024px) {
+    @include mq(breakpointLarge) {
       width: 20%;
     }
 
-    @include breakpoint(1280px) {
+    @include mq($breakpointWide) {
       width: 16.666666667%;
     }
   }
@@ -107,7 +107,7 @@
 .layer-wrapper {
   padding: 24px;
 
-  @include breakpoint(max-width 1024px) {
+  @include mq(max-width $breakpointLarge) {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
   }

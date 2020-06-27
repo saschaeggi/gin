@@ -15,9 +15,6 @@
     this.displayWeight = null;
     this.$originalTable.addClass('sticky-table');
 
-    // Wrap table for vertical scrolling ability
-    this.$originalTable.wrap('<div class="gin-table-scroll-wrapper"></div>');
-
     this.tableHeight = $table[0].clientHeight;
     this.tableOffset = this.$originalTable.offset();
 
@@ -51,6 +48,9 @@
 
   Drupal.behaviors.tableHeader = {
     attach: function attach(context) {
+      // Wrap table for vertical scrolling ability
+      $('.views-table').once().wrap('<div class="gin-table-scroll-wrapper"></div>');
+
       $(window).one('scroll.TableHeaderInit', { context: context }, tableHeaderInitHandler);
     }
   };

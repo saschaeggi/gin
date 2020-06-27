@@ -7,7 +7,7 @@ table.sticky-header {
   left: auto !important;
   background: transparent;
 
-  @include mq(1024px) {
+  @include mq($breakpointLarge) {
     border-top: 1px solid var(--colorGinLayer2Background);
   }
 
@@ -27,7 +27,7 @@ table {
     color: var(--colorGinTitle);
     background: var(--colorGinTableHeader);
 
-    @include mq(976px) {
+    @include mq($breakpointMedium) {
       height: auto;
       padding: 1rem;
     }

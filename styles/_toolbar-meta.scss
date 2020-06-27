@@ -1,4 +1,4 @@
-@include mq(976px) {
+@include mq($breakpointMedium) {
   // Hide unused tabs
   .toolbar .toolbar-bar {
     background: transparent;
@@ -30,7 +30,7 @@
 .toolbar-meta {
   display: none;
 
-  @include breakpoint(976px) {
+  @include mq($breakpointMedium) {
     display: block;
     margin-top: -11px;
 
@@ -156,7 +156,7 @@
     }
   }
 
-  @include breakpoint(1140px) {
+  @include mq(1140px) {
     .toolbar-bar {
       .toolbar-tab {
         .toolbar-item {

@@ -10,7 +10,7 @@
     background: rgba($colorDarkAppBackground, .98);
   }
 
-  @include breakpoint(1024px) {
+  @include mq($breakpointLarge) {
     position: sticky;
     z-index: 101;
     top: 0;
@@ -44,8 +44,9 @@
   &__items {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 1rem;
 
-    @include breakpoint(480px) {
+    @include mq($breakpointTiny) {
       flex-wrap: nowrap;
       align-items: center;
 
@@ -53,6 +54,10 @@
       .local-actions {
         margin: 0;
       }
+    }
+
+    @include mq($breakpointLarge) {
+      margin-bottom: 0;
     }
 
     .block-page-title-block {
@@ -68,7 +73,7 @@
       }
     }
 
-    @include breakpoint(768px) {
+    @include mq($breakpointSmall) {
       height: 100%;
 
       .settings-tray-editable {
@@ -84,7 +89,7 @@
   background-color: transparent;
 
   .block-local-tasks-block {
-    @include breakpoint(768px) {
+    @include mq($breakpointSmall) {
       // margin-top: 6px;
       margin-bottom: 1.5rem;
     }
@@ -92,7 +97,7 @@
 }
 
 .page-wrapper {
-  @include breakpoint(1024px) {
+  @include mq($breakpointLarge) {
     margin-top: 1px; // fix for top: auto;
   }
 }
@@ -105,25 +110,30 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  padding: 0 16px;
+  padding: 0 1rem;
   background-color: var(--colorGinAppBackground);
   box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
 
-  @include breakpoint(600px) {
-    padding-left: m#{i}n(5vw, 48px);
-    padding-right: m#{i}n(5vw, 48px);
+  @include mq($breakpointSmall) {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
-  @include breakpoint(976px 1023px) {
+  @include mq($breakpointMedium) {
+    padding-left: m#{i}n(5vw, 96px);
+    padding-right: m#{i}n(5vw, 96px);
+  }
+
+  @include mq($breakpointMedium 1023px) {
     .gin--vertical-toolbar & {
       left: $toolbarWidth;
     }
   }
 
-  @include breakpoint(1024px) {
+  @include mq($breakpointLarge) {
     left: auto;
     top: 4px;
-    right: calc(var(--ginSidebarWidth) + min(5vw, 48px));
+    right: calc(var(--ginSidebarWidth) + min(5vw, 96px));
     bottom: auto;
     width: auto;
     padding-left: 0;
@@ -145,11 +155,11 @@
     }
   }
 
-  @include breakpoint(1440px) {
+  @include mq($breakpointBig) {
     justify-content: flex-end;
   }
 
-  @include breakpoint(1770px) {
+  @include mq(1828px) {
     .gin--classic-toolbar &,
     .gin--classic-toolbar:not([data-toolbar-menu='open']) &,
     .gin--horizontal-toolbar &,
@@ -158,13 +168,13 @@
     }
   }
 
-  @include breakpoint(1920px) {
+  @include mq(1920px) {
     body:not([data-toolbar-menu='open']) & {
       right: calc(50% - 504px);
     }
   }
 
-  @include breakpoint(2070px) {
+  @include mq(2070px) {
     [data-toolbar-menu='open'] & {
       right: calc(50% - 580px);
     }
@@ -181,7 +191,7 @@
   .gin-sticky {
     display: flex;
 
-    @include mq(1024px) {
+    @include mq($breakpointLarge) {
       position: relative;
       padding-left: 12px;
 
@@ -208,7 +218,7 @@
     align-self: center;
     margin-right: 2rem;
 
-    @include breakpoint(1024px) {
+    @include mq($breakpointLarge) {
       flex-grow: 0;
     }
   }
@@ -216,12 +226,22 @@
 
 .toolbar-tray-open:not(.toolbar-vertical) .layout-container,
 body:not(.toolbar-tray-open) .layout-container {
-  margin-left: m#{i}n(5vw, 48px);
-  margin-right: m#{i}n(5vw, 48px);
+  margin-left: 1rem;
+  margin-right: 1rem;
 
-  .layout-container {
-    margin-left: 0;
-    margin-right: 0;
+  @include mq($breakpointSmall) {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  @include mq($breakpointMedium) {
+    margin-left: m#{i}n(5vw, 96px);
+    margin-right: m#{i}n(5vw, 96px);
+
+    .layout-container {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 }
 
@@ -233,7 +253,7 @@ body:not(.toolbar-tray-open) .layout-container {
   display: flex;
   margin-top: 16px;
 
-  @include breakpoint(976px) {
+  @include mq($breakpointMedium) {
     padding: 1.5rem 0 .5rem;
     margin-top: 0;
   }

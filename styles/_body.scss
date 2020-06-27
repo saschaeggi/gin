@@ -1,7 +1,7 @@
 :root {
   --ginSidebarWidth: #{$sidebarSmallWidth};
 
-  @include breakpoint(1240px) {
+  @include mq($breakpointWide) {
     --ginSidebarWidth: #{$sidebarWidth};
   }
 }

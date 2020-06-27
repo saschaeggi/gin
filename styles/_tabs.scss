@@ -90,7 +90,7 @@
 .horizontal-tabs ul.horizontal-tabs-list {
   position: relative;
 
-  @include breakpoint(768px) {
+  @include mq($breakpointSmall) {
     width: calc(100% - 6px);
 
     &::after {
@@ -115,7 +115,7 @@
 .is-horizontal .tabs--secondary {
   margin-left: 0;
 
-  @include breakpoint(768px) {
+  @include mq($breakpointSmall) {
     width: calc(100% - 12px);
   }
 
@@ -140,7 +140,7 @@
     border-bottom: 0 none;
 
     &:after {
-      @include breakpoint(768px) {
+      @include mq($breakpointSmall) {
         left: 6px;
       }
     }

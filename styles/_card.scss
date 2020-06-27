@@ -10,7 +10,7 @@
     img {
       border-radius: 6px 6px 0 0;
 
-      @include mq(588px) {
+      @include mq($breakpointXSmall) {
         border-radius: 6px 0 0 6px;
       }
     }
@@ -20,7 +20,7 @@
     background-color: var(--colorGinLayerBackground);
     border-radius: 0 0 4px 4px;
 
-    @include mq(588px) {
+    @include mq($breakpointXSmall) {
       border-radius: 0 4px 4px 0;
     }
 

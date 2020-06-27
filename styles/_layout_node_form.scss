@@ -1,16 +1,14 @@
 // Node layout
 .gin--edit-form {
-  $breakpoint: 1024px;
-
   // Has sidebar, save the space
-  @include breakpoint($breakpoint) {
+  @include mq($breakpointLarge) {
     padding-right: var(--ginSidebarWidth);
   }
 
   .layout-node-form {
     overflow: inherit;
 
-    @include breakpoint($breakpoint) {
+    @include mq($breakpointLarge) {
       display: flex;
       flex-wrap: wrap;
     }
@@ -27,7 +25,7 @@
     width: 100%;
     padding-right: 0;
 
-    @include breakpoint($breakpoint) {
+    @include mq($breakpointLarge) {
       flex-basis: 40%;
       flex-shrink: 1;
       flex-grow: 1;
@@ -36,16 +34,16 @@
 
   .page-wrapper__node-edit-form {
     .block-page-title-block {
-      @include breakpoint(1730px) {
+      @include mq(1730px) {
         width: 100%;
-        max-width: 1280px;
+        max-width: $breakpointWide;
         margin: 0 auto;
       }
 
       .page-title {
-        @include breakpoint($breakpoint) {
+        @include mq($breakpointLarge) {
           width: 100%;
-          max-width: 1280px;
+          max-width: $breakpointWide;
           margin: 0 auto;
         }
       }
@@ -59,7 +57,7 @@
     .admin-list,
     .help {
       width: 100%;
-      max-width: 1280px;
+      max-width: $breakpointWide;
       margin-left: auto;
       margin-right: auto;
       box-sizing: border-box;
@@ -77,7 +75,7 @@
     .layout-region-node-secondary {
       width: 100%;
 
-      @include breakpoint($breakpoint) {
+      @include mq($breakpointLarge) {
         z-index: 101;
         flex-basis: var(--ginSidebarWidth);
         width: var(--ginSidebarWidth) !important;
@@ -124,10 +122,15 @@
 
         &__header {
           color: var(--colorGinText);
-          padding-left: $sidebarSpacer;
-          padding-right: $sidebarSpacer;
+          padding-left: 0;
+          padding-right: 0;
           background: none;
           border: 0 none;
+
+          @include mq($breakpointLarge) {
+            padding-left: $sidebarSpacer;
+            padding-right: $sidebarSpacer;
+          }
         }
 
         &__title {

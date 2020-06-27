@@ -9,18 +9,17 @@
   font-family: Inter, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
   .toolbar-bar {
-    $breakpoint: 576px;
     overflow: auto;
     background: #100f10;
     box-shadow: none;
 
-    @include mq(976px) {
+    @include mq($breakpointMedium) {
       display: flex;
       overflow: initial;
       background: none;
     }
 
-    @include breakpoint(1024px) {
+    @include mq(breakpointLarge) {
       height: 0;
     }
 
@@ -111,7 +110,7 @@
   }
 
   table.sticky-header {
-    @include mq(1024px) {
+    @include mq(breakpointLarge) {
       margin-top: 0;
     }
   }
@@ -143,7 +142,7 @@
 }
 
 .gin--horizontal-toolbar.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
-  @include breakpoint(1024px) {
+  @include mq(breakpointLarge) {
     top: 54px;
     height: calc(100% - 54px);
   }
@@ -151,7 +150,7 @@
 
 // Main horizontal nav
 .gin--horizontal-toolbar #toolbar-administration {
-  @include breakpoint(976px) {
+  @include mq($breakpointMedium) {
     z-index: 103;
     position: fixed;
     top: 0;
@@ -165,7 +164,7 @@
 
   // align with content nicely
   .toolbar-lining {
-    @include breakpoint(976px) {
+    @include mq($breakpointMedium) {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       padding-right: 0;
@@ -175,7 +174,7 @@
   // home tab
   .menu-item__tools,
   .menu-item__admin_toolbar_tools-help {
-    @include mq(976px) {
+    @include mq($breakpointMedium) {
       margin-left: -16px;
     }
   }
@@ -190,7 +189,7 @@
       mask-size: 21px 21px;
     }
 
-    @include mq(976px) {
+    @include mq($breakpointMedium) {
       &:before {
         top: -1px;
         left: 16px;
@@ -201,9 +200,9 @@
 
   // target fist level only
   .toolbar-menu-administration {
-    @include breakpoint(976px) {
-      margin-left: m#{i}n(5vw, 48px);
-      margin-right: m#{i}n(5vw, 48px);
+    @include mq($breakpointMedium) {
+      margin-left: m#{i}n(5vw, 96px);
+      margin-right: m#{i}n(5vw, 96px);
 
       > .toolbar-menu {
         display: flex;

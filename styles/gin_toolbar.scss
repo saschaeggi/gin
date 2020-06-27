@@ -5,7 +5,7 @@
 
 // Toolbar
 #toolbar-item-administration-tray {
-  @include breakpoint(976px) {
+  @include mq($breakpointMedium) {
     border: 0 none;
   }
 }
@@ -14,14 +14,13 @@
   font-family: Inter, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
   .toolbar-bar {
-    $breakpoint: 576px;
     box-shadow: none;
 
-    @include breakpoint($breakpoint) {
+    @include mq($breakpointXSmall) {
       display: flex;
     }
 
-    @include breakpoint(1024px) {
+    @include mq(breakpointLarge) {
       height: 0;
     }
 
@@ -32,14 +31,14 @@
     #toolbar-item-administration-tray a.toolbar-icon,
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &:before {
-        @include mq(976px) {
+        @include mq($breakpointMedium) {
           left: #{round($toolbarWidth / 2.666666667) - 1px};
           width: 21px;
         }
       }
     }
 
-    @include mq(976px) {
+    @include mq($breakpointMedium) {
       // Toolbar logo
       .toolbar-logo {
         height: 88px;
@@ -70,7 +69,7 @@
     }
 
     #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
-      @include mq(976px) {
+      @include mq($breakpointMedium) {
         font-size: 0;
         height: 88px;
         transition: top $transition;
@@ -79,7 +78,7 @@
       &:before {
         $logoSize: 28px;
 
-        @include mq(976px) {
+        @include mq($breakpointMedium) {
           width: $logoSize;
           left: #{round($toolbarWidth / 2.666666667) - 4px};
           // background-color: var(--colorGinText);
@@ -112,7 +111,7 @@
 
 #toolbar-item-administration-tray a.toolbar-icon.override-icon {
   &:before {
-    @include mq(976px) {
+    @include mq($breakpointMedium) {
       left: 0;
       width: 0;
       content: none;
@@ -125,7 +124,7 @@
   left: 0;
   width: 100%;
 
-  @include breakpoint(max-width 975px) {
+  @include mq(max-width $breakpointMedium) {
     overflow-x: auto;
   }
 }
@@ -148,7 +147,7 @@
   font-weight: 600;
   text-decoration: none;
 
-  @include breakpoint(max-width 975px) {
+  @include mq(max-width $breakpointMedium) {
     background: var(--colorGinItemHover);
   }
 }
@@ -162,7 +161,7 @@ a.toolbar-menu__trigger,
 }
 
 // New Desktop Toolbar
-@include mq(976px) {
+@include mq($breakpointMedium) {
   #toolbar-item-administration-tray {
     display: block;
   }

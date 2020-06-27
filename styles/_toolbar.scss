@@ -1,9 +1,8 @@
 .toolbar {
   .toolbar-bar {
-    $breakpoint: 576px;
     box-shadow: none;
 
-    @include mq($breakpoint) {
+    @include mq($breakpointXSmall) {
       .user-menu {
         order: 99;
         flex-grow: 1;
@@ -99,13 +98,13 @@
       }
 
       &:hover:before {
-        @include mq(976px) {
+        @include mq($breakpointMedium) {
           background-color: var(--colorGinTitle);
         }
       }
 
       &.is-active:hover:before {
-        @include mq(976px) {
+        @include mq($breakpointMedium) {
           background-color: var(--colorGinPrimary);
         }
       }
@@ -454,7 +453,7 @@
       }
 
       &:hover:before {
-        @include mq(976px) {
+        @include mq($breakpointMedium) {
           background-color: var(--colorGinTitle);
         }
       }
@@ -478,7 +477,7 @@
   .toolbar-tab > .toolbar-icon-edit.toolbar-item {
     &:hover:before,
     &.is-active:before {
-      @include breakpoint(max-width 975px) {
+      @include mq(max-width $breakpointMedium) {
         background: #fff;
       }
     }

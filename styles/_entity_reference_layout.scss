@@ -50,7 +50,7 @@
       flex-basis: 33.333%;
       margin-bottom: 16px;
 
-      @media (min-width: 1024px) {
+      @include mq($breakpointLarge) {
         flex-basis: 25%;
       }
 
@@ -61,7 +61,7 @@
         display: block;
         margin: 8px auto;
 
-        @media (min-width: 1024px) {
+        @include mq($breakpointLarge) {
           width: 30px;
           height: 40px;
         }

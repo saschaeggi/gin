@@ -37,7 +37,7 @@
   border: 2px solid var(--colorGinFocus);
 }
 
-@include mq(768px) {
+@include mq($breakpointSmall) {
   .is-horizontal .tabs__link:focus,
   .is-horizontal .tabs--primary .tabs__link:focus {
     box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);

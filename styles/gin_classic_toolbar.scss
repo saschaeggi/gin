@@ -10,7 +10,6 @@
   font-family: Inter, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
   .toolbar-bar {
-    $breakpoint: 576px;
     background: #100f10;
     box-shadow: none;
   }
@@ -93,7 +92,7 @@
   }
 
   table.sticky-header {
-    @include mq(1024px) {
+    @include mq(breakpointLarge) {
       margin-top: 0;
     }
   }
@@ -128,7 +127,7 @@
     mask-size: 21px 21px;
   }
 
-  @include mq(976px) {
+  @include mq($breakpointMedium) {
     &:before {
       left: 16px;
     }
@@ -140,7 +139,7 @@
 
   .toolbar-logo {
     img {
-      @include breakpoint(1024px) {
+      @include mq(breakpointLarge) {
         max-height: 21px;
       }
     }
@@ -158,7 +157,7 @@
 }
 
 .toolbar-tray-open.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
-  @include breakpoint(1024px) {
+  @include mq(breakpointLarge) {
     top: $topBar;
     height: calc(100% - #{$topBar});
   }

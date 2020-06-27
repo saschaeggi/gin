@@ -1,12 +1,10 @@
 .user-form-page {
-  $breakpoint: 1024px;
-
   display: flex;
   flex-wrap: wrap;
   min-height: 100vh;
   max-height: 100%;
 
-  @media (min-width: $breakpoint) {
+  @include mq($breakpointLarge) {
     flex-wrap: nowrap;
   }
 
@@ -14,13 +12,13 @@
   &__wallpaper {
     width: 100%;
 
-    @media (min-width: $breakpoint) {
+    @include mq($breakpointLarge) {
       flex-basis: 50%;
     }
   }
 
   &__user-form {
-    max-width: $breakpoint;
+    max-width: $breakpointLarge;
   }
 
   &__wallpaper {
@@ -29,7 +27,7 @@
     position: relative;
     background-color: #ccc;
 
-    @media (min-width: $breakpoint) {
+    @include mq($breakpointLarge) {
       display: flex;
       flex-grow: 1;
     }
@@ -57,7 +55,7 @@
     margin-top: 3rem;
     margin-bottom: 2rem;
 
-    @media (min-width: $breakpoint) {
+    @include mq($breakpointLarge) {
       font-size: 3rem;
       margin-top: 6rem;
     }
@@ -73,7 +71,7 @@
     padding-left: 24px;
     padding-right: 24px;
 
-    @media (min-width: $breakpoint) {
+    @include mq($breakpointLarge) {
       padding-left: 48px;
       padding-right: 48px;
     }
@@ -89,7 +87,7 @@
 }
 
 .user-form {
-  @media (min-width: $breakpoint) {
+  @include mq($breakpointLarge) {
     margin-top: 4rem;
   }
 }
