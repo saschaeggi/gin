@@ -8,14 +8,34 @@
   font-size: 1.6em;
   font-weight: 500;
   line-height: normal;
-  letter-spacing: -.04em;
+  letter-spacing: -.05em;
   color: var(--colorGinTitle);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 90%;
 
-  @include mq($breakpointWide) {
+  @include mq($breakpointSmall) {
     font-size: 2em;
+  }
+}
+
+.gin--edit-form {
+  .page-title {
+    @include mq($breakpointLarge) {
+      font-size: 1.6em;
+    }
+
+    @include mq($breakpointWide) {
+      font-size: 1.75em;
+    }
+  }
+}
+
+body:not(.gin--edit-form) {
+  .page-title {
+    @include mq($breakpointBig) {
+      font-size: 2.125em;
+    }
   }
 }

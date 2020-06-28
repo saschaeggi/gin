@@ -28,8 +28,9 @@
     };
     const setClass = 'is-sticky';
     const $stickyHeader = $table
-      .parent()
+      .parents('form')
       .find('[data-drupal-selector*="edit-header"]');
+
     const updateSelectAll = function updateSelectAll(state) {
       $table
         .prev('table.sticky-header')

@@ -43,20 +43,20 @@
 .claro-details__summary,
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a
 {
-  font-size: 14px;
   color: var(--colorGinText);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  font-weight: 500;
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
 
-  .gin--dark-mode & {
-    font-weight: 500;
-
-    strong {
-      font-weight: inherit;
-    }
+  strong {
+    font-weight: inherit;
   }
+}
+
+.tabs__link.is-active,
+.claro-details__summary[aria-expanded=true],
+.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.selected a {
+  font-weight: 700;
 }
 
 .is-horizontal .tabs__link,
@@ -90,18 +90,22 @@
 .horizontal-tabs ul.horizontal-tabs-list {
   position: relative;
 
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid var(--colorGinTabsBorder);
+
+    @include mq($breakpointSmall) {
+      width: calc(100% + 6px);
+    }
+  }
+
   @include mq($breakpointSmall) {
     width: calc(100% - 6px);
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      display: block;
-      width: calc(100% + 6px);
-      border-bottom: 1px solid var(--colorGinTabsBorder);
-    }
   }
 }
 
@@ -109,6 +113,11 @@
   .tabs__link {
     min-height: 3rem;
     height: 100%;
+
+    @include mq($breakpointSmall) {
+      padding-right: 1.5rem;
+      padding-left: 1.5rem;
+    }
   }
 }
 
@@ -122,7 +131,7 @@
   .tabs__link {
     min-height: 2.5rem;
     padding: 0.75rem 1.5rem;
-    font-size: .75rem;
+    font-size: .875rem;
   }
 }
 
@@ -133,6 +142,7 @@
   flex-wrap: wrap;
   width: 100%;
   border: 0 none;
+  margin-top: -1rem;
 
   ul.horizontal-tabs-list {
     background: none;
@@ -151,8 +161,8 @@
       border-bottom: 0 none;
 
       a {
-        padding-right: 2rem;
-        padding-left: 2rem;
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
         border-radius: 2px 2px 0 0;
 
         &:before {

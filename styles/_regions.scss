@@ -120,8 +120,8 @@
   }
 
   @include mq($breakpointMedium) {
-    padding-left: m#{i}n(5vw, 96px);
-    padding-right: m#{i}n(5vw, 96px);
+    padding-left: m#{i}n(5vw, 80px);
+    padding-right: m#{i}n(5vw, 80px);
   }
 
   @include mq($breakpointMedium 1023px) {
@@ -133,7 +133,7 @@
   @include mq($breakpointLarge) {
     left: auto;
     top: 4px;
-    right: calc(var(--ginSidebarWidth) + min(5vw, 96px));
+    right: calc(var(--ginSidebarWidth) + min(5vw, 80px));
     bottom: auto;
     width: auto;
     padding-left: 0;
@@ -235,8 +235,8 @@ body:not(.toolbar-tray-open) .layout-container {
   }
 
   @include mq($breakpointMedium) {
-    margin-left: m#{i}n(5vw, 96px);
-    margin-right: m#{i}n(5vw, 96px);
+    margin-left: m#{i}n(5vw, 80px);
+    margin-right: m#{i}n(5vw, 80px);
 
     .layout-container {
       margin-left: 0;

@@ -48,9 +48,6 @@
 
   Drupal.behaviors.tableHeader = {
     attach: function attach(context) {
-      // Wrap table for vertical scrolling ability
-      $('.views-table').once().wrap('<div class="gin-table-scroll-wrapper"></div>');
-
       $(window).one('scroll.TableHeaderInit', { context: context }, tableHeaderInitHandler);
     }
   };
