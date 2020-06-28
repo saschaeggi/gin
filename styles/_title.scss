@@ -39,3 +39,33 @@ body:not(.gin--edit-form) {
     }
   }
 }
+
+.shortcut-action {
+  align-self: center;
+  margin-left: .75rem;
+
+  &__icon {
+    opacity: .8;
+    position: relative;
+    top: 3px;
+    background: var(--colorGinDisabled);
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M49.9,2.3c-0.9,0-1.8,0.7-2.1,1.6L37.1,37.1L2.3,37c-1,0-1.9,0.6-2.2,1.6c-0.3,0.9,0,2,0.8,2.5l28.2,20.4 L18.3,94.7c-0.3,0.9,0,2,0.8,2.5c0.8,0.6,1.9,0.6,2.7,0L50,76.7l28.2,20.5c0.8,0.6,1.9,0.6,2.7,0c0.8-0.6,1.1-1.6,0.8-2.5L70.8,61.6 l28.2-20.4c0.8-0.6,1.1-1.6,0.8-2.5c-0.3-0.9-1.2-1.6-2.2-1.6l-34.8,0.1L52.2,3.9v0C51.8,2.9,50.9,2.3,49.9,2.3L49.9,2.3z'/%3E%3C/svg%3E");
+    mask-size: 80% 80%;
+    mask-position: center center;
+    mask-repeat: no-repeat;
+  }
+
+  &--remove &__icon {
+    background: var(--colorGinPrimary);
+  }
+
+  &__message {
+    color: var(--colorGinText);
+    background: var(--colorGinLayer2Background);
+    border-radius: 4px;
+  }
+
+  &:hover &__icon {
+    opacity: 1;
+  }
+}
