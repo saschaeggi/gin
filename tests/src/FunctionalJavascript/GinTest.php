@@ -12,6 +12,17 @@ use Drupal\Tests\BrowserTestBase;
 class GinTest extends BrowserTestBase {
 
   /**
+   * Modules to enable.
+   *
+   * Install the shortcut module so that gin.settings has its schema checked.
+   * There's currently no way for Gin to provide a default and have valid
+   * configuration as themes cannot react to a module install.
+   *
+   * @var string[]
+   */
+  public static $modules = ['shortcut'];
+
+  /**
    * {@inheritdoc}
    */
   protected $defaultTheme = 'gin';

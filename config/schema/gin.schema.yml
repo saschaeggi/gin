@@ -24,6 +24,3 @@ gin.settings:
     high_contrast_mode:
       type: boolean
       label: 'High contrast mode'
-    third_party_settings.shortcut.module_link:
-        type: boolean
-        label: 'Add shortcut link'
