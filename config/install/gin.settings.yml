@@ -5,3 +5,6 @@ classic_toolbar: 'vertical'
 icon_default: true
 icon_path: ''
 high_contrast_mode: false
+third_party_settings:
+  shortcut:
+    module_link: true
