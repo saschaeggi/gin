@@ -23,15 +23,17 @@ class GinTest extends BrowserTestBase {
   public static $modules = ['shortcut'];
 
   /**
-   * {@inheritdoc}
-   */
-  protected $defaultTheme = 'gin';
-
-  /**
    * Sets up the test.
    */
   public function setUp() {
     parent::setUp();
+
+    $this->assertTrue(\Drupal::service('theme_installer')->install(['gin']));
+    $this->container->get('config.factory')
+      ->getEditable('system.theme')
+      ->set('default', 'gin')
+      ->save();
+
     $adminUser = $this->drupalCreateUser(['access administration pages', 'administer themes']);
     $this->drupalLogin($adminUser);
   }
