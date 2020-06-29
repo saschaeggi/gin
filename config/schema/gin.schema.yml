@@ -24,3 +24,12 @@ gin.settings:
     high_contrast_mode:
       type: boolean
       label: 'High contrast mode'
+
+# Schema for theme settings.
+gin.third_party.shortcut:
+  type: mapping
+  label: 'Shortcut settings'
+  mapping:
+    module_link:
+      type: boolean
+      label: 'Add shortcut link'
