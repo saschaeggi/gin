@@ -23,6 +23,11 @@ class GinTest extends BrowserTestBase {
   public static $modules = ['shortcut'];
 
   /**
+   * {@inheritdoc}
+   */
+  protected $defaultTheme = 'gin';
+
+  /**
    * Sets up the test.
    */
   public function setUp() {
