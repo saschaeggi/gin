@@ -25,7 +25,7 @@ class GinTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'gin';
+  protected $defaultTheme = 'stark';
 
   /**
    * Sets up the test.
@@ -37,6 +37,7 @@ class GinTest extends BrowserTestBase {
     $this->container->get('config.factory')
       ->getEditable('system.theme')
       ->set('default', 'gin')
+      ->set('admin', 'gin')
       ->save();
 
     $adminUser = $this->drupalCreateUser(['access administration pages', 'administer themes']);
@@ -49,9 +50,9 @@ class GinTest extends BrowserTestBase {
   public function testDefaultGinSettings() {
     $response = $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);
-    $this->assertContains('"darkmode":false', $response);
-    $this->assertContains('"preset_accent_color":"blue"', $response);
-    $this->assertContains('"preset_focus_color":"gin"', $response);
+    $this->assertStringContainsString('"darkmode":false', $response);
+    $this->assertStringContainsString('"preset_accent_color":"blue"', $response);
+    $this->assertStringContainsString('"preset_focus_color":"gin"', $response);
     $this->assertSession()->responseContains('gin.css');
     $this->assertSession()->responseContains('gin_toolbar.css');
     $this->assertSession()->responseNotContains('gin_classic_toolbar.css');
@@ -64,7 +65,7 @@ class GinTest extends BrowserTestBase {
     \Drupal::configFactory()->getEditable('gin.settings')->set('enable_darkmode', TRUE)->save();
     $response = $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);
-    $this->assertContains('"darkmode":true', $response);
+    $this->assertStringContainsString('"darkmode":true', $response);
   }
 
   /**
@@ -84,7 +85,7 @@ class GinTest extends BrowserTestBase {
     \Drupal::configFactory()->getEditable('gin.settings')->set('preset_accent_color', 'red')->save();
     $response = $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);
-    $this->assertContains('"preset_accent_color":"red"', $response);
+    $this->assertStringContainsString('"preset_accent_color":"red"', $response);
   }
 
   /**
@@ -94,7 +95,7 @@ class GinTest extends BrowserTestBase {
     \Drupal::configFactory()->getEditable('gin.settings')->set('preset_focus_color', 'blue')->save();
     $response = $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);
-    $this->assertContains('"preset_focus_color":"blue"', $response);
+    $this->assertStringContainsString('"preset_focus_color":"blue"', $response);
   }
 
 }
