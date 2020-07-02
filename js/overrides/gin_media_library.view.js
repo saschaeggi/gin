@@ -1,4 +1,3 @@
-/* eslint-disable */
 (function ($, Drupal) {
   Drupal.behaviors.MediaLibrarySelectAll = {
     attach: function attach(context) {
@@ -39,6 +38,13 @@
           $bulkOperations.addClass('is-sticky');
         } else {
           $bulkOperations.removeClass('is-sticky');
+        }
+
+        var selectAll = $('.media-library-select-all input');
+        var checkboxes = $('.media-library-view .media-library-item input');
+
+        if (selectAll.filter(':checked').length === 1 && checkboxes.length !== checkboxes.filter(':checked').length) {
+          selectAll.prop('checked', false).trigger('change');
         }
       });
     }

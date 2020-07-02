@@ -3,9 +3,10 @@ gin:
     theme:
       dist/css/gin.css: {}
 
-gin_media_library:
+gin_init:
+  header: true
   js:
-    dist/js/gin_media_library.view.js: {}
+    dist/js/gin_init.js: { minified: true, preprocess: false, weight: -99 }
 
 gin_toolbar:
   css:

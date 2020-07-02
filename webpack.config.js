@@ -3,7 +3,6 @@ const isDev = (process.env.NODE_ENV !== 'production');
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const globImporter = require('node-sass-glob-importer');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
@@ -12,6 +11,7 @@ const autoprefixer = require('autoprefixer');
 module.exports = {
   entry: {
     gin: ['./styles/gin.scss'],
+    gin_init: ['./js/gin_init.js'],
     gin_toolbar: ['./js/gin_toolbar.js', './styles/gin_toolbar.scss'],
     gin_horizontal_toolbar: ['./styles/gin_horizontal_toolbar.scss'],
     gin_classic_toolbar: ['./styles/gin_classic_toolbar.scss'],

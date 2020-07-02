@@ -73,6 +73,8 @@ body:not(.gin--edit-form) {
   }
 
   &__message {
+    position: absolute;
+    pointer-events: none;
     color: var(--colorGinText);
     background: var(--colorGinLayer2Background);
     border-radius: 4px;

@@ -1,7 +1,3 @@
-/* eslint-disable func-names, no-mutable-exports, no-continue, comma-dangle, strict */
-
-'use strict';
-
 (function ($, Drupal, displace) {
   function TableHeader(table) {
     var $table = $(table);

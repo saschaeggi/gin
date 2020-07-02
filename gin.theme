@@ -16,70 +16,75 @@ use Drupal\Core\Url;
  * Implements hook_preprocess_HOOK() for html.
  */
 function gin_preprocess_html(&$variables) {
-  // Get route.
-  $route = \Drupal::routeMatch()->getRouteName();
+  // Are we relevant?
+  $gin_activated = _gin_is_active();
 
-  // Get configs.
-  $darkmode = _gin_dark_mode_enabled();
-  $preset_accent_color = _gin_preset_accent_color();
-  $toolbar = _gin_toolbar();
-  $high_contrast_mode = _gin_highcontrastmode_enabled();
+  if ($gin_activated) {
+    // Get route.
+    $route = \Drupal::routeMatch()->getRouteName();
 
-  // Check if darkmode is enabled.
-  if ($darkmode === TRUE) {
-    $variables['attributes']['class'][] = 'gin--dark-mode';
-  }
+    // Get configs.
+    $darkmode = _gin_dark_mode_enabled();
+    $preset_accent_color = _gin_preset_accent_color();
+    $toolbar = _gin_toolbar();
+    $high_contrast_mode = _gin_highcontrastmode_enabled();
 
-  // Set accent color.
-  if ($preset_accent_color) {
-    $variables['attributes']['data-gin-accent'] = $preset_accent_color;
-  }
+    // Check if darkmode is enabled.
+    if ($darkmode === TRUE) {
+      $variables['attributes']['class'][] = 'gin--dark-mode';
+    }
 
-  // High contast mode.
-  if ($high_contrast_mode === TRUE) {
-    $variables['attributes']['class'][] = 'gin--high-contrast-mode';
-  }
+    // Set accent color.
+    if ($preset_accent_color) {
+      $variables['attributes']['data-gin-accent'] = $preset_accent_color;
+    }
 
-  // Edit form? Use the new Gin Edit form layout.
-  if (
-    $route == 'node.add' ||
-    $route == 'entity.node.edit_form' ||
-    $route == 'entity.group_content.create_form'
-  ) {
-    $variables['attributes']['class'][] = 'gin--edit-form';
-  }
+    // High contast mode.
+    if ($high_contrast_mode === TRUE) {
+      $variables['attributes']['class'][] = 'gin--high-contrast-mode';
+    }
 
-  // Only add gin--classic-toolbar class if user has permission.
-  if (!\Drupal::currentUser()->hasPermission('access toolbar')) {
-    return;
-  }
+    // Edit form? Use the new Gin Edit form layout.
+    if (
+      $route == 'node.add' ||
+      $route == 'entity.node.edit_form' ||
+      $route == 'entity.group_content.create_form'
+    ) {
+      $variables['attributes']['class'][] = 'gin--edit-form';
+    }
 
-  // Check if classic_toolbar is active.
-  if ($toolbar === 1) {
-    $variables['attributes']['class'][] = 'gin--classic-toolbar';
-  }
-  // If modern horizontal Toolbar is active.
-  elseif ($toolbar === 'horizontal') {
-    $variables['attributes']['class'][] = 'gin--horizontal-toolbar';
-  }
-  // Sidebar toolbar.
-  else {
-    $variables['attributes']['class'][] = 'gin--vertical-toolbar';
-  }
+    // Only add gin--classic-toolbar class if user has permission.
+    if (!\Drupal::currentUser()->hasPermission('access toolbar')) {
+      return;
+    }
 
-  // Gin secondary toolbar.
-  if ($toolbar !== 1) {
-    $variables['page']['gin_secondary_toolbar'] = [
-      '#type' => 'toolbar',
-      '#access' => \Drupal::currentUser()->hasPermission('access toolbar'),
-      '#cache' => [
-        'keys' => ['toolbar_secondary'],
-        'contexts' => ['user.permissions'],
-      ],
-      '#attributes' => [
-        'id' => 'toolbar-administration-secondary',
-      ],
-    ];
+    // Check if classic_toolbar is active.
+    if ($toolbar === 1) {
+      $variables['attributes']['class'][] = 'gin--classic-toolbar';
+    }
+    // If modern horizontal Toolbar is active.
+    elseif ($toolbar === 'horizontal') {
+      $variables['attributes']['class'][] = 'gin--horizontal-toolbar';
+    }
+    // Sidebar toolbar.
+    else {
+      $variables['attributes']['class'][] = 'gin--vertical-toolbar';
+    }
+
+    // Gin secondary toolbar.
+    if ($toolbar !== 1) {
+      $variables['page']['gin_secondary_toolbar'] = [
+        '#type' => 'toolbar',
+        '#access' => \Drupal::currentUser()->hasPermission('access toolbar'),
+        '#cache' => [
+          'keys' => ['toolbar_secondary'],
+          'contexts' => ['user.permissions'],
+        ],
+        '#attributes' => [
+          'id' => 'toolbar-administration-secondary',
+        ],
+      ];
+    }
   }
 }
 
@@ -96,49 +101,58 @@ function gin_preprocess_page(&$variables) {
  * Implements hook_preprocess_HOOK() for page_attachments.
  */
 function gin_page_attachments_alter(&$page) {
-  // Get theme configs.
-  $darkmode = _gin_dark_mode_enabled();
-  $preset_accent_color = _gin_preset_accent_color();
-  $accent_color = _gin_accent_color();
-  $preset_focus_color = theme_get_setting('preset_focus_color', 'gin');
-  $focus_color = theme_get_setting('focus_color', 'gin');
-  $toolbar = _gin_toolbar();
-  $highcontrastmode = _gin_highcontrastmode_enabled();
+  // Are we relevant?
+  $gin_activated = _gin_is_active();
 
-  // Define darkmode class.
-  $darkmode_class = 'gin--dark-mode';
-  $highcontrastmode_class = 'gin--high-contrast-mode';
+  if ($gin_activated) {
+    // Get theme configs.
+    $darkmode = _gin_dark_mode_enabled();
+    $preset_accent_color = _gin_preset_accent_color();
+    $accent_color = _gin_accent_color();
+    $preset_focus_color = theme_get_setting('preset_focus_color', 'gin');
+    $focus_color = theme_get_setting('focus_color', 'gin');
+    $toolbar = _gin_toolbar();
+    $highcontrastmode = _gin_highcontrastmode_enabled();
 
-  if ($toolbar === 1) {
-    // Attach the classic toolbar styles.
-    $page['#attached']['library'][] = 'gin/gin_classic_toolbar';
+    // Define darkmode class.
+    $darkmode_class = 'gin--dark-mode';
+    $highcontrastmode_class = 'gin--high-contrast-mode';
+
+    // Attach the init script.
+    $page['#attached']['library'][] = 'gin/gin_init';
+
+    if ($toolbar === 1) {
+      // Attach the classic toolbar styles.
+      $page['#attached']['library'][] = 'gin/gin_classic_toolbar';
+    }
+    elseif ($toolbar === 'horizontal') {
+      // Attach the horizontal toolbar styles.
+      $page['#attached']['library'][] = 'gin/gin_horizontal_toolbar';
+    }
+    else {
+      // Attach toolbar styles.
+      $page['#attached']['library'][] = 'gin/gin_toolbar';
+    }
+
+    // Attach accent overrides CSS.
+    $page['#attached']['library'][] = 'gin/gin_accent';
+
+    // Expose settings to JS.
+    $page['#attached']['drupalSettings']['gin']['darkmode'] = $darkmode;
+    $page['#attached']['drupalSettings']['gin']['darkmode_class'] = $darkmode_class;
+    $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $preset_accent_color;
+    $page['#attached']['drupalSettings']['gin']['accent_color'] = $accent_color;
+    $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $preset_focus_color;
+    $page['#attached']['drupalSettings']['gin']['focus_color'] = $focus_color;
+    $page['#attached']['drupalSettings']['gin']['highcontrastmode'] = $highcontrastmode;
+    $page['#attached']['drupalSettings']['gin']['highcontrastmode_class'] = $highcontrastmode_class;
+
+    // Expose default settings.
+    $page['#attached']['drupalSettings']['gin']['default_darkmode'] = theme_get_setting('enable_darkmode', 'gin');
+    $page['#attached']['drupalSettings']['gin']['default_accent_color'] = theme_get_setting('accent_color', 'gin');
+    $page['#attached']['drupalSettings']['gin']['default_preset_accent_color'] = theme_get_setting('preset_accent_color', 'gin');
+    $page['#attached']['drupalSettings']['gin']['default_high_contrast_mode'] = theme_get_setting('high_contrast_mode', 'gin');
   }
-  elseif ($toolbar === 'horizontal') {
-    // Attach the horizontal toolbar styles.
-    $page['#attached']['library'][] = 'gin/gin_horizontal_toolbar';
-  }
-  else {
-    // Attach toolbar styles.
-    $page['#attached']['library'][] = 'gin/gin_toolbar';
-  }
-
-  // Attach accent overrides CSS.
-  $page['#attached']['library'][] = 'gin/gin_accent';
-
-  // Expose settings to JS.
-  $page['#attached']['drupalSettings']['gin']['darkmode'] = $darkmode;
-  $page['#attached']['drupalSettings']['gin']['darkmode_class'] = $darkmode_class;
-  $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $preset_accent_color;
-  $page['#attached']['drupalSettings']['gin']['accent_color'] = $accent_color;
-  $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $preset_focus_color;
-  $page['#attached']['drupalSettings']['gin']['focus_color'] = $focus_color;
-  $page['#attached']['drupalSettings']['gin']['highcontrastmode'] = $highcontrastmode;
-  $page['#attached']['drupalSettings']['gin']['highcontrastmode_class'] = $highcontrastmode_class;
-
-  // Expose default settings.
-  $page['#attached']['drupalSettings']['gin']['default_darkmode'] = theme_get_setting('enable_darkmode', 'gin');
-  $page['#attached']['drupalSettings']['gin']['default_preset_accent_color'] = theme_get_setting('preset_accent_color', 'gin');
-  $page['#attached']['drupalSettings']['gin']['default_high_contrast_mode'] = theme_get_setting('high_contrast_mode', 'gin');
 }
 
 /**
@@ -786,6 +800,24 @@ function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
     $highContrastValue = $form_state->getValue('high_contrast_mode');
     $userData->set('gin', $user->id(), 'high_contrast_mode', $highContrastValue);
   }
+}
+
+/**
+ * Helper function for check if Gin is active.
+ */
+function _gin_is_active() {
+  $admin_theme_name = \Drupal::config('system.theme')->get('admin');
+  $admin_base_themes = \Drupal::service('theme_handler')->listInfo()[$admin_theme_name]->base_themes;
+  $admin_base_themes[$admin_theme_name] = $admin_theme_name;
+
+  $frontend_theme_name = \Drupal::config('system.theme')->get('default');
+  $frontend_base_themes = \Drupal::service('theme_handler')->listInfo()[$frontend_theme_name]->base_themes;
+  $frontend_base_themes[$frontend_theme_name] = $frontend_theme_name;
+
+  $base_themes = array_merge($admin_base_themes, $frontend_base_themes);
+  $gin_activated = array_key_exists('gin', $base_themes);
+
+  return $gin_activated;
 }
 
 /**

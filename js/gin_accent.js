@@ -5,36 +5,46 @@
 (($, Drupal, drupalSettings) => {
   Drupal.behaviors.ginAccent = {
     attach: function attach() {
-      // Set Colors
-      Drupal.behaviors.ginAccent.setAccentColor();
+      const path = drupalSettings.path.currentPath;
+
+      // Set focus color.
       Drupal.behaviors.ginAccent.setFocusColor();
-    },
 
-    darkmode: function darkmode(darkmodeParam = null) {
-      const darkmodeEnabled = darkmodeParam != null ? darkmodeParam : drupalSettings.gin.darkmode;
-      const darkmodeClass = drupalSettings.gin.darkmode_class;
+      // Set accent color to localStorage if not set yet.
+      if ((
+          path.indexOf('user/login') === -1 &&
+          path.indexOf('user/password') === -1 &&
+          path.indexOf('user/register') === -1
+        ) &&
+        !localStorage.getItem('GinAccentColorCustom')
+      ) {
+        Drupal.behaviors.ginAccent.setAccentColor();
 
-      // Needs to check for both: backwards compabitility.
-      if (darkmodeEnabled === true || darkmodeEnabled === 1) {
-        $('body').addClass(darkmodeClass);
-      }
-      else {
-        $('body').removeClass(darkmodeClass);
+        const accentColorPreset = drupalSettings.gin.preset_accent_color;
+
+        if (accentColorPreset === 'custom') {
+          const accentColorSetting = drupalSettings.gin.accent_color;
+
+          localStorage.setItem('GinAccentColorCustom', accentColorSetting);
+        } else {
+          localStorage.setItem('GinAccentColorCustom', '');
+        }
+      } else {
+        Drupal.behaviors.ginAccent.setAccentColor();
       }
     },
 
     setAccentColor: function setAccentColor(preset = null, color = null) {
       const accentColorPreset = preset != null ? preset : drupalSettings.gin.preset_accent_color;
 
-      // First clear things up.
-      Drupal.behaviors.ginAccent.clearAccentColor();
-
-      // Set preset color.
-      $('body').attr('data-gin-accent', accentColorPreset);
-
-      // If custom color is set, generate colors through JS.
+      // Clear things up if not custom color is set.
       if (accentColorPreset === 'custom') {
-        Drupal.behaviors.ginAccent.setCustomAccentColor('custom');
+        // Set preset color.
+        $('body').attr('data-gin-accent', preset);
+        Drupal.behaviors.ginAccent.setCustomAccentColor('custom', color);
+      } else {
+        // Set preset color.
+        $('body').attr('data-gin-accent', accentColorPreset);
       }
     },
 
@@ -55,10 +65,9 @@
 
         if (accentColor) {
           const strippedAccentColor = accentColor.replace('#', '');
-          const body = darkmode ? `.${darkmodeClass}` : 'body';
 
           const styles = `<style class="gin-custom-colors">\
-            ${body} {\n\
+            body:not(.gin-inactive) {\n\
               --colorGinPrimary: ${accentColor};\n\
               --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -10)};\n\
               --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -15)};\n\
@@ -81,6 +90,23 @@
 
     clearAccentColor: function clearAccentColor() {
       $('.gin-custom-colors').remove();
+    },
+
+    shadeColor: function shadeColor(color, percent) {
+      const num = parseInt(color.replace('#', ''), 16);
+      const amt = Math.round(2.55 * percent);
+      const R = (num >> 16) + amt;
+      const B = ((num >> 8) & 0x00ff) + amt;
+      const G = (num & 0x0000ff) + amt;
+
+      return `#${(
+        0x1000000
+        + (R < 255 ? (R < 1 ? 0 : R) : 255) * 0x10000
+        + (B < 255 ? (B < 1 ? 0 : B) : 255) * 0x100
+        + (G < 255 ? (G < 1 ? 0 : G) : 255)
+      )
+        .toString(16)
+        .slice(1)}`;
     },
 
     setFocusColor: function setFocusColor(preset = null, color = null) {
@@ -122,46 +148,5 @@
     clearFocusColor: function clearFocusColor() {
       $('body').css('--colorGinFocus', '');
     },
-
-    shadeColor: function shadeColor(color, percent) {
-      const num = parseInt(color.replace('#', ''), 16);
-      const amt = Math.round(2.55 * percent);
-      const R = (num >> 16) + amt;
-      const B = ((num >> 8) & 0x00ff) + amt;
-      const G = (num & 0x0000ff) + amt;
-
-      return `#${(
-        0x1000000
-        + (R < 255 ? (R < 1 ? 0 : R) : 255) * 0x10000
-        + (B < 255 ? (B < 1 ? 0 : B) : 255) * 0x100
-        + (G < 255 ? (G < 1 ? 0 : G) : 255)
-      )
-        .toString(16)
-        .slice(1)}`;
-    },
-
-    setHighContrastMode: function setHighContrastMode(param = null) {
-      const enabled = param != null ? param : drupalSettings.gin.highcontrastmode;
-      const className = drupalSettings.gin.highcontrastmode_class;
-
-      // Needs to check for both: backwards compabitility.
-      if (enabled === true || enabled === 1) {
-        $('body').addClass(className);
-      }
-      else {
-        $('body').removeClass(className);
-      }
-    },
-  };
-
-  Drupal.behaviors.ginTableCheckbox = {
-    attach: function (context) {
-      if ( $("table td .checkbox-toggle", context).length > 0 ) {
-        $("table td .checkbox-toggle", context).once().bind('click', function () {
-          var checkBoxes = $(this).siblings("input");
-          checkBoxes.prop("checked", !checkBoxes.prop("checked"));
-        });
-      }
-    }
   };
 })(jQuery, Drupal, drupalSettings);

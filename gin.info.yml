@@ -148,15 +148,15 @@ libraries-override:
   # Custom Gin overrides
   core/drupal.tableselect:
     js:
-      misc/tableselect.js: js/gin_tableselect.js
+      misc/tableselect.js: js/overrides/gin_tableselect.js
 
   core/drupal.tableheader:
     js:
-      misc/tableheader.js: js/gin_tableheader.js
+      misc/tableheader.js: js/overrides/gin_tableheader.js
 
   media_library/view:
     js:
-      js/media_library.view.js: js/gin_media_library.view.js
+      js/media_library.view.js: js/overrides/gin_media_library.view.js
 
   libraries-extend:
     ckeditor/drupal.ckeditor:

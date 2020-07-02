@@ -65,18 +65,6 @@
         $('.toolbar-menu__trigger').removeClass('is-active');
       }
 
-      // Change when clicked
-      $('#toolbar-bar .toolbar-item', context).on('click', function () {
-        $('body').attr('data-toolbar-tray', $(this).data('toolbar-tray'));
-
-        // Sticky toolbar width
-        $(document).ready(() => {
-          $('.sticky-header').each(function () {
-            $(this).width($('.sticky-table').width());
-          });
-        });
-      });
-
       // Toolbar toggle
       $('.toolbar-menu__trigger', context).on('click', function (e) {
         e.preventDefault();
@@ -92,7 +80,20 @@
         else {
           $('body').attr('data-toolbar-menu', '');
           localStorage.setItem('GinSidebarOpen', 'false');
+          $('.gin-toolbar-inline-styles').remove();
         }
+      });
+
+      // Change when clicked
+      $('#toolbar-bar .toolbar-item', context).on('click', function () {
+        $('body').attr('data-toolbar-tray', $(this).data('toolbar-tray'));
+
+        // Sticky toolbar width
+        $(document).ready(() => {
+          $('.sticky-header').each(function () {
+            $(this).width($('.sticky-table').width());
+          });
+        });
       });
     }
   };

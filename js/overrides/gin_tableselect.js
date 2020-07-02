@@ -1,7 +1,3 @@
-/* eslint-disable func-names, no-mutable-exports, no-continue, comma-dangle, strict */
-
-'use strict';
-
 (($, Drupal) => {
   Drupal.behaviors.tableSelect = {
     attach: function attach(context) {
@@ -18,27 +14,27 @@
       return;
     }
 
-    const table = this;
-    let checkboxes = 0;
-    let lastChecked = 0;
-    const $table = $(table);
-    const strings = {
+    var table = this;
+    var checkboxes = 0;
+    var lastChecked = 0;
+    var $table = $(table);
+    var strings = {
       selectAll: Drupal.t('Select all rows in this table'),
       selectNone: Drupal.t('Deselect all rows in this table')
     };
-    const setClass = 'is-sticky';
-    const $stickyHeader = $table
+    var setClass = 'is-sticky';
+    var $stickyHeader = $table
       .parents('form')
       .find('[data-drupal-selector*="edit-header"]');
 
-    const updateSelectAll = function updateSelectAll(state) {
+    var updateSelectAll = function updateSelectAll(state) {
       $table
         .prev('table.sticky-header')
         .addBack()
         .find('th.select-all input[type="checkbox"]')
         .each(function () {
-          const $checkbox = $(this);
-          const stateChanged = $checkbox.prop('checked') !== state;
+          var $checkbox = $(this);
+          var stateChanged = $checkbox.prop('checked') !== state;
 
           $checkbox.attr('title', state ? strings.selectNone : strings.selectAll);
 
@@ -47,7 +43,7 @@
           }
         });
     };
-    const updateSticky = function updateSticky(state) {
+    var updateSticky = function updateSticky(state) {
       if (state === true) {
         $stickyHeader.addClass(setClass);
       }
@@ -62,8 +58,8 @@
       .on('click', (event) => {
         if ($(event.target).is('input[type="checkbox"]')) {
           checkboxes.each(function () {
-            const $checkbox = $(this);
-            const stateChanged = $checkbox.prop('checked') !== event.target.checked;
+            var $checkbox = $(this);
+            var stateChanged = $checkbox.prop('checked') !== event.target.checked;
 
             if (stateChanged) {
               $checkbox.prop('checked', event.target.checked).trigger('change');
@@ -99,10 +95,10 @@
   };
 
   Drupal.tableSelectRange = function (from, to, state) {
-    const mode = from.rowIndex > to.rowIndex ? 'previousSibling' : 'nextSibling';
+    var mode = from.rowIndex > to.rowIndex ? 'previousSibling' : 'nextSibling';
 
-    for (let i = from[mode]; i; i = i[mode]) {
-      const $i = $(i);
+    for (var i = from[mode]; i; i = i[mode]) {
+      var $i = $(i);
 
       if (i.nodeType !== 1) {
         continue;
@@ -118,6 +114,17 @@
       }
       else if ($.filter(to, [i]).r.length) {
         break;
+      }
+    }
+  };
+
+  Drupal.behaviors.ginTableCheckbox = {
+    attach: function (context) {
+      if ( $("table td .checkbox-toggle", context).length > 0 ) {
+        $("table td .checkbox-toggle", context).once().bind('click', function () {
+          var checkBoxes = $(this).siblings("input");
+          checkBoxes.prop("checked", !checkBoxes.prop("checked"));
+        });
       }
     }
   };
