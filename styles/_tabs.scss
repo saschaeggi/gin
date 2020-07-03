@@ -126,6 +126,7 @@
 
   @include mq($breakpointSmall) {
     width: calc(100% - 12px);
+    padding-left: 0;
   }
 
   .tabs__link {
