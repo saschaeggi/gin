@@ -1,7 +1,7 @@
 gin:
   css:
     theme:
-      dist/css/gin.css: {}
+      dist/css/gin.css: { minified: true }
 
 gin_init:
   header: true
@@ -11,31 +11,31 @@ gin_init:
 gin_toolbar:
   css:
     theme:
-      dist/css/gin_toolbar.css: {}
+      dist/css/gin_toolbar.css: { minified: true }
   js:
-    dist/js/gin_toolbar.js: {}
+    dist/js/gin_toolbar.js: { minified: true }
 
 gin_classic_toolbar:
   css:
     theme:
-      dist/css/gin_classic_toolbar.css: {}
+      dist/css/gin_classic_toolbar.css: { minified: true }
   js:
-    dist/js/gin_toolbar.js: {}
+    dist/js/gin_toolbar.js: { minified: true }
 
 gin_horizontal_toolbar:
   css:
     theme:
-      dist/css/gin_horizontal_toolbar.css: {}
+      dist/css/gin_horizontal_toolbar.css: { minified: true }
   js:
-    dist/js/gin_toolbar.js: {}
+    dist/js/gin_toolbar.js: { minified: true }
 
 gin_accent:
   css:
     theme:
-      dist/css/gin_accent.css: {}
+      dist/css/gin_accent.css: { minified: true }
   js:
-    dist/js/gin_accent.js: {}
+    dist/js/gin_accent.js: { minified: true }
 
 gin_settings:
   js:
-    dist/js/gin_settings.js: {}
+    dist/js/gin_settings.js: { minified: true }
