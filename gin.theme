@@ -824,10 +824,18 @@ function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
 function _gin_is_active() {
   $theme_handler = \Drupal::service('theme_handler')->listInfo();
 
+  // Check if set as frontend theme.
   $frontend_theme_name = \Drupal::config('system.theme')->get('default');
-  $frontend_base_themes = $theme_handler[$frontend_theme_name]->base_themes;
+
+  // Check if base themes are set.
+  if (isset($theme_handler[$frontend_theme_name]->base_themes)) {
+    $frontend_base_themes = $theme_handler[$frontend_theme_name]->base_themes;
+  }
+
+  // Add theme name to base theme array.
   $frontend_base_themes[$frontend_theme_name] = $frontend_theme_name;
 
+  // Check if set as admin theme.
   $admin_theme_name = \Drupal::config('system.theme')->get('admin');
 
   // Admin theme will have no value if it is set to use the default theme.
