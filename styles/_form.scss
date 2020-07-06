@@ -286,6 +286,7 @@ $maxWidth: 520px;
   margin-right: .5rem;
 }
 
+// Settings: Custom accent color selector.
 [data-drupal-selector="edit-preset-accent-color"] {
   .form-radios {
     display: flex;
@@ -295,6 +296,7 @@ $maxWidth: 520px;
       position: relative;
 
       input {
+        cursor: pointer;
         width: 32px;
         height: 32px;
         margin-right: .5rem;
@@ -365,6 +367,82 @@ $maxWidth: 520px;
       input:focus ~ .form-item__label {
         display: block;
         visibility: visible;
+      }
+    }
+  }
+}
+
+// Settings: Toolbar selector.
+[data-drupal-selector="edit-classic-toolbar"] {
+  .form-radios {
+    display: flex;
+    margin-top: .5rem;
+
+    .form-item--classic-toolbar {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      width: 140px;
+      margin: 0 .75rem 0 0;
+
+      input {
+        cursor: pointer;
+        position: static;
+        width: 140px;
+        height: 100px;
+        margin-left: 0;
+        border-radius: 8px;
+        transform: none;
+
+        &
+        &:focus {
+          border-color: var(--colorGinText);
+          box-shadow: none;
+        }
+
+        &:focus,
+        &:checked,
+        &:hover:checked {
+          border-color: transparent;
+          box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinPrimary);
+        }
+
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+
+        // Standard: Sidebar
+        &[data-gin-toolbar=vertical] {
+          background-image: url(../images/settings/toolbar_sidebar.png);
+
+          .gin--dark-mode & {
+            background-image: url(../images/settings/toolbar_sidebar_darkmode.png);
+          }
+        }
+
+        // Minimal
+        &[data-gin-toolbar=horizontal] {
+          background-image: url(../images/settings/toolbar_minimal.png);
+
+          .gin--dark-mode & {
+            background-image: url(../images/settings/toolbar_minimal_darkmode.png);
+          }
+        }
+
+        // Classic/Legacy
+        &[data-gin-toolbar=legacy] {
+          background-image: url(../images/settings/toolbar_legacy.png);
+
+          .gin--dark-mode & {
+            background-image: url(../images/settings/toolbar_legacy_darkmode.png);
+          }
+        }
+      }
+
+      .form-item__label {
+        font-size: .75rem;
+        display: block;
+        margin-top: .5rem;
+        margin-bottom: 1rem;
       }
     }
   }
