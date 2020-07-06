@@ -301,7 +301,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       '#states' => [
         // Show if met.
         'visible' => [
-          'input[name="enable_user_settings"]' => ['checked' => TRUE],
+          ':input[name="enable_user_settings"]' => ['checked' => TRUE],
         ],
       ],
     ];
@@ -322,10 +322,11 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
 
     // Accent color setting.
     $form['gin_theme_settings']['user_settings']['preset_accent_color'] = [
-      '#type' => 'select',
+      '#type' => 'radios',
       '#title' => t('Accent color'),
       '#default_value' => $accentColorPresetValue,
       '#options' => _gin_get_accent_color_presets(),
+      '#after_build' => ['_gin_accent_radios'],
     ];
 
     $accentColorValue = $userData->get('gin', $user->id(), 'accent_color');
@@ -347,7 +348,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       '#states' => [
         // Show if met.
         'visible' => [
-          'select[name="preset_accent_color"]' => ['value' => 'custom'],
+          ':input[name="preset_accent_color"]' => ['value' => 'custom'],
         ],
       ],
     ];
@@ -528,6 +529,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#title' => t('Settings'),
   ];
 
+  $user_overrides = _gin_user__overrides_enabled();
   $userEditUrl = Url::fromRoute('entity.user.edit_form', ['user' => Drupal::currentUser()->id()])->toString();
 
   // Darkmode setting.
@@ -553,13 +555,14 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   $userPresetAccentColor = _gin_user__get_preset_accentcolor();
   $themePresetAccentColor = theme_get_setting('preset_accent_color');
   $form['custom_settings']['preset_accent_color'] = [
-    '#type' => 'select',
+    '#type' => 'radios',
     '#title' => t('Accent color'),
     '#default_value' => $themePresetAccentColor,
     '#options' => _gin_get_accent_color_presets(),
+    '#after_build' => ['_gin_accent_radios'],
   ];
 
-  if (!is_null($userPresetAccentColor) && $userPresetAccentColor !== $themePresetAccentColor) {
+  if ($user_overrides && !is_null($userPresetAccentColor) && $userPresetAccentColor !== $themePresetAccentColor) {
     $presetActionColorLabel = _gin_get_accent_color_preset_label($userPresetAccentColor);
     $form['custom_settings']['preset_accent_color']['#description'] = '<span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Accent Color: <strong>@colorLabel</strong></span>', ['@editUrl' => $userEditUrl, '@colorLabel' => $presetActionColorLabel]);
   }
@@ -572,7 +575,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   $form['custom_settings']['accent_color'] = [
     '#type' => 'textfield',
     '#placeholder' => '#77777',
-    '#title' => t('Accent color'),
+    '#title' => t('Custom Accent color'),
     '#description' => t('Use with caution, values should meet a11y criterias.'),
     '#default_value' => $themeAccentColor,
     '#min' => '7',
@@ -581,12 +584,12 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#states' => [
       // Show if met.
       'visible' => [
-        'select[name="preset_accent_color"]' => ['value' => 'custom'],
+        ':input[name="preset_accent_color"]' => ['value' => 'custom'],
       ],
     ],
   ];
 
-  if (!is_null($userAccentColor) && $userAccentColor !== $themeAccentColor) {
+  if ($user_overrides && !is_null($userAccentColor) && $userAccentColor !== $themeAccentColor) {
     $form['custom_settings']['accent_color']['#description'] = t('Use with caution, values should meet a11y criterias.') . '<br/>' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Custom Accent Color: <strong>@accentColor</strong>', ['@editUrl' => $userEditUrl, '@accentColor' => $userAccentColor]);
   }
 
@@ -619,7 +622,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#states' => [
       // Show if met.
       'visible' => [
-        'select[name="preset_focus_color"]' => ['value' => 'custom'],
+        ':input[name="preset_focus_color"]' => ['value' => 'custom'],
       ],
     ],
   ];
@@ -630,7 +633,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   $hcm_default = theme_get_setting('high_contrast_mode');
   $hcm_description = t("Enables high contrast mode.");
 
-  if (!is_null($hcm_user) && $hcm_user !== $hcm_default) {
+  if ($user_overrides && !is_null($hcm_user) && $hcm_user !== $hcm_default) {
     $hcm_active = $hcm_user ? t('Enabled') : t('Disabled');
     $hcm_description = t("Enables high contrast mode.") . '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. High Contrast Mode: <strong>@highcontrastmode</strong></span>', ['@highcontrastmode' => $hcm_active, '@editUrl' => $userEditUrl]);
   }
@@ -708,7 +711,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#states' => [
       // Hide the logo settings when using the default logo.
       'invisible' => [
-        'input[name="icon_default"]' => ['checked' => TRUE],
+        ':input[name="icon_default"]' => ['checked' => TRUE],
       ],
     ],
   ];
@@ -769,6 +772,19 @@ function gin_form_system_theme_settings_alter_validate(array &$form, FormStateIn
       $form_state->setErrorByName('icon_path', t('The custom logo path is invalid.'));
     }
   }
+}
+
+/**
+ * Accent color element.
+ */
+function _gin_accent_radios($element) {
+  $options = array_keys($element['#options']);
+
+  foreach ($options as $values) {
+    $element[$values]['#attributes']['data-gin-accent'] = $element[$values]['#return_value'];
+  }
+
+  return $element;
 }
 
 /**
@@ -983,14 +999,14 @@ function _gin_get_accent_color_presets() {
     'blue' => t('Gin Blue (Default)'),
     'claro_blue' => t('Claro Blue'),
     'light_blue' => t('Light Blue'),
-    'teal' => t('Teal'),
     'dark_purple' => t('Dark Purple'),
     'purple' => t('Purple'),
+    'teal' => t('Teal'),
     'green' => t('Green'),
+    'pink' => t('Pink'),
     'red' => t('Red'),
     'orange' => t('Orange'),
     'yellow' => t('Yellow'),
-    'pink' => t('Pink'),
     'custom' => t('Custom'),
   ];
 }

@@ -8,7 +8,7 @@
       // Watch Darkmode setting has changed.
       $('input[name="enable_darkmode"]', context).change(function () {
         const darkmode = $(this).is(':checked');
-        const accentColorPreset = $('select[name="preset_accent_color"]').val();
+        const accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val();
         const focusColorPreset = $('select[name="preset_focus_color"]').val();
 
         // Toggle Darkmode.
@@ -28,7 +28,7 @@
       });
 
       // Watch Accent color setting has changed.
-      $('select[name="preset_accent_color"]', context).change(function () {
+      $('[data-drupal-selector="edit-preset-accent-color"] input', context).change(function () {
         const accentColorPreset = $(this).val();
 
         // Update.
@@ -82,7 +82,7 @@
 
         let darkmode = $('input[name="enable_darkmode"]').is(':checked');
         let accentColorSetting = $('input[name="accent_color"]', context).val();
-        let accentColorPreset = $('select[name="preset_accent_color"]').val();
+        let accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val();
         let highContrastMode = $('input[name="high_contrast_mode"]').is(':checked');
 
         // User setting disabled, use default settings instead.
@@ -101,7 +101,7 @@
 
       // Watch save
       $('[data-drupal-selector="edit-submit"]', context).click(function() {
-        let accentColorPreset = $('select[name="preset_accent_color"]').val();
+        let accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val();
         let accentColorSetting = $('input[name="accent_color"]', context).val();
 
         // If on user form, check if we enable or disable the overrides.

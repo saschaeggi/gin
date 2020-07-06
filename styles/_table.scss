@@ -7,9 +7,9 @@ table.sticky-header {
   left: auto !important;
   background: transparent;
 
-  @include mq($breakpointLarge) {
-    border-top: 1px solid var(--colorGinLayer2Background);
-  }
+  // @include mq($breakpointLarge) {
+  //   border-top: 1px solid var(--colorGinLayer2Background);
+  // }
 
   th {
     &:first-child {

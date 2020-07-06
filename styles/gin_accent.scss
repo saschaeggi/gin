@@ -29,6 +29,8 @@
   --colorGinLayer2Background: #edeff5;
   --colorGinLayer3Background: #fff;
   --colorGinLayer4Background: #e2e5ec; //#dee2ec; //#e3e3e8;
+  --colorGinContextual: var(--colorGinText);
+  --colorGinContextualText: #eee;
   --colorGinBorder: #d4d4d8;
   --colorGinLayerBorder: rgba(0, 0, 0, .08);
   --colorGinLayer2Border: #d4d4d8;
@@ -70,6 +72,7 @@
   --colorGinLayer2Background: #3B3B3F;
   --colorGinLayer3Background: #47474c;
   --colorGinLayer4Background: #19191b;
+  --colorGinContextual: var(--colorGinLayer3Background);
   --colorGinBorder: #43454a;
   --colorGinLayerBorder: rgba(0, 0, 0, .05);
   --colorGinLayer2Border: #76777B;
@@ -91,11 +94,11 @@
 $ginColors: (
   claro_blue: #003cc5,
   light_blue: #426af4,
-  dark_purple: #35009d,
+  dark_purple: #4300bf,
   purple: #5b00ff,
   teal: #10857f,
   green: #26a769,
-  red: #b34547,
+  red: #d8002f,
   orange: #ef5c20,
   yellow: #c58900,
   pink: #e23177
@@ -127,7 +130,8 @@ $ginDarkmodeColors: (
 );
 
 @each $name, $color in $ginDarkmodeColors {
-  .gin--dark-mode[data-gin-accent=#{$name}] {
+  .gin--dark-mode[data-gin-accent=#{$name}],
+  .gin--dark-mode [data-gin-accent=#{$name}] {
     --colorGinPrimary: #{$color};
     --colorGinPrimaryHover: #{mix(white, $color, 10%)};
     --colorGinPrimaryActive: #{mix(white, $color, 15%)};
