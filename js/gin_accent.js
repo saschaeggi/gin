@@ -64,6 +64,8 @@
         const accentColor = accentColorSetting;
 
         if (accentColor) {
+          Drupal.behaviors.ginAccent.clearAccentColor();
+
           const strippedAccentColor = accentColor.replace('#', '');
 
           const styles = `<style class="gin-custom-colors">\
