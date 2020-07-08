@@ -123,6 +123,11 @@
   .gin--dark-mode & {
     box-shadow: 0 0px 4px rgba(0, 0, 0, .3);
   }
+
+  .toolbar-logo {
+    display: flex;
+    height: 100%;
+  }
 }
 
 @import "toolbar";
