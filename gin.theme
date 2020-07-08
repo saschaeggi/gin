@@ -47,6 +47,7 @@ function gin_preprocess_html(&$variables) {
     // Edit form? Use the new Gin Edit form layout.
     if (
       $route == 'node.add' ||
+      $route == 'entity.node.content_translation_add' ||
       $route == 'entity.node.edit_form' ||
       $route == 'entity.group_content.create_form'
     ) {
@@ -181,6 +182,7 @@ function gin_form_alter(&$form, $form_state, $form_id) {
   // Forms to alter.
   if (
     $route == 'node.add' ||
+    $route == 'entity.node.content_translation_add' ||
     $route == 'entity.node.edit_form' ||
     ($route == 'entity.group_content.create_form' && strpos($form_id, 'group_node') === FALSE)
   ) {
