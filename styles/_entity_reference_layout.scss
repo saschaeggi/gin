@@ -196,7 +196,8 @@
     box-sizing: border-box;
   }
 
-  .erl-add-section {
+  .erl-add-section,
+  .erl-add-content--single button {
     display: block;
     width: 100%;
     color: var(--colorGinPrimary);
