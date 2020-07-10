@@ -182,11 +182,12 @@ function gin_form_alter(&$form, $form_state, $form_id) {
 
   // Forms to alter.
   if (
-    $route == 'node.add' ||
-    $route == 'entity.node.content_translation_add' ||
-    $route == 'quick_node_clone.node.quick_clone' ||
-    $route == 'entity.node.edit_form' ||
-    ($route == 'entity.group_content.create_form' && strpos($form_id, 'group_node') === FALSE)
+    ($route == 'node.add' ||
+      $route == 'entity.node.content_translation_add' ||
+      $route == 'quick_node_clone.node.quick_clone' ||
+      $route == 'entity.node.edit_form' ||
+      ($route == 'entity.group_content.create_form' && strpos($form_id, 'group_node') === FALSE)) &&
+    strpos($form_id, 'views_form_media_library_widget_') === FALSE
   ) {
     // Submit change weight.
     if (isset($form['actions']['submit'])) {
