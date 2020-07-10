@@ -290,6 +290,7 @@ $maxWidth: 520px;
 [data-drupal-selector="edit-preset-accent-color"] {
   .form-radios {
     display: flex;
+    flex-wrap: wrap;
     margin-top: .5rem;
 
     .form-item--preset-accent-color {
@@ -376,6 +377,7 @@ $maxWidth: 520px;
 [data-drupal-selector="edit-classic-toolbar"] {
   .form-radios {
     display: flex;
+    flex-wrap: wrap;
     margin-top: .5rem;
 
     .form-item--classic-toolbar {

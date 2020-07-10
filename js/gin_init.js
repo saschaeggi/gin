@@ -10,6 +10,7 @@ if (localStorage.getItem('GinSidebarOpen')) {
   // Sidebar Check.
   if (localStorage.getItem('GinSidebarOpen') === 'true') {
     style.innerHTML = `
+    @media (min-width: 976px) {
       body.gin--vertical-toolbar {
         padding-left: 240px;
         transition: none;
@@ -19,6 +20,7 @@ if (localStorage.getItem('GinSidebarOpen')) {
         width: 240px;
         transition: none;
       }
+    }
     `;
 
     const scriptTag = document.querySelector('script');
