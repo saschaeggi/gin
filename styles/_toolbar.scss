@@ -461,7 +461,9 @@
 
       &.is-active:before,
       &.is-active:hover:before {
-        background-color: var(--colorGinPrimary);
+        @include mq($breakpointMedium) {
+          background-color: var(--colorGinPrimary);
+        }
       }
     }
   }
@@ -506,4 +508,5 @@
 
 #toolbar-item-user {
   display: inline-block;
+  vertical-align: top;
 }
