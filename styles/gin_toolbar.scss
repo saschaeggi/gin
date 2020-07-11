@@ -123,10 +123,6 @@
   position: fixed;
   left: 0;
   width: 100%;
-
-  @include mq(max-width $breakpointMedium) {
-    overflow-x: auto;
-  }
 }
 
 .toolbar .toolbar-menu {
@@ -368,6 +364,7 @@ a.toolbar-menu__trigger,
               content: "";
               opacity: .9;
               position: absolute;
+              top: 22px;
               left: #{round($toolbarWidth / 2)};
               display: block;
               width: 4px;
