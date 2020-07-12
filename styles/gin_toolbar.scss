@@ -20,7 +20,7 @@
       display: flex;
     }
 
-    @include mq(breakpointLarge) {
+    @include mq($breakpointLarge) {
       height: 0;
     }
 

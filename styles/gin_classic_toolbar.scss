@@ -92,7 +92,7 @@
   }
 
   table.sticky-header {
-    @include mq(breakpointLarge) {
+    @include mq($breakpointLarge) {
       margin-top: 0;
     }
   }
@@ -139,7 +139,7 @@
 
   .toolbar-logo {
     img {
-      @include mq(breakpointLarge) {
+      @include mq($breakpointLarge) {
         max-height: 21px;
       }
     }
@@ -157,7 +157,7 @@
 }
 
 .toolbar-tray-open.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
-  @include mq(breakpointLarge) {
+  @include mq($breakpointLarge) {
     top: $topBar;
     height: calc(100% - #{$topBar});
   }

@@ -19,7 +19,7 @@
       width: 25%;
     }
 
-    @include mq(breakpointLarge) {
+    @include mq($breakpointLarge) {
       width: 20%;
     }
 

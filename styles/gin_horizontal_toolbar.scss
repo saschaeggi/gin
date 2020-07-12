@@ -9,17 +9,15 @@
   font-family: Inter, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
   .toolbar-bar {
-    overflow: auto;
     background: #100f10;
     box-shadow: none;
 
     @include mq($breakpointMedium) {
       display: flex;
-      overflow: initial;
       background: none;
     }
 
-    @include mq(breakpointLarge) {
+    @include mq($breakpointLarge) {
       height: 0;
     }
 
@@ -106,14 +104,16 @@
   }
 
   table.sticky-header {
-    @include mq(breakpointLarge) {
+    @include mq($breakpointLarge) {
       margin-top: 0;
     }
   }
 }
 
 .gin--horizontal-toolbar {
-  padding-top: 54px !important;
+  @include mq($breakpointMedium) {
+    padding-top: 54px !important;
+  }
 }
 
 #toolbar-item-administration-tray {
@@ -144,7 +144,7 @@
 }
 
 .gin--horizontal-toolbar.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
-  @include mq(breakpointLarge) {
+  @include mq($breakpointLarge) {
     top: 54px;
     height: calc(100% - 54px);
   }

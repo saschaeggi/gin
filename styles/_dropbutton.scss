@@ -63,6 +63,16 @@
   }
 }
 
+.js .dropbutton {
+  height: auto;
+  min-height: 3rem;
+}
+
+.js.no-touchevents .dropbutton--extrasmall {
+  height: auto;
+  min-height: 1.5rem;
+}
+
 .js .dropbutton--multiple .dropbutton__item:first-of-type {
   margin-right: 0;
 
