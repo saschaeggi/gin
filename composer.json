@@ -1,11 +1,28 @@
 {
-  "name": "drupal/gin",
-  "description": "For a better Content Editor Experience on top of Claro.",
-  "type": "drupal-theme",
-  "license": "GPL-2.0-or-later",
-  "homepage": "https://www.drupal.org/project/gin",
-  "support": {
-    "issues": "https://www.drupal.org/project/issues/gin",
-    "source": "https://git.drupalcode.org/project/gin"
-  }
+    "name": "drupal/gin",
+    "description": "For a better Admin and Content Editor Experience.",
+    "type": "drupal-theme",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://www.drupal.org/project/gin",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/gin",
+        "source": "https://git.drupalcode.org/project/gin"
+    },
+    "authors": [
+        {
+            "name": "Sascha Eggenberger (saschaeggi)",
+            "homepage": "https://www.drupal.org/u/saschaeggi",
+            "role": "Maintainer"
+        }
+    ],
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/saschaeggi"
+        },
+        {
+            "type": "other",
+            "url": "https://paypal.me/saschaeggi"
+        }
+    ]
 }
