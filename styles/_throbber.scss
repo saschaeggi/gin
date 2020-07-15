@@ -36,7 +36,10 @@
     border-color: transparent;
     box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
   }
+}
 
+.ui-dialog .ajax-progress-throbber,
+.contextual-links .ajax-progress-throbber {
   &:before {
     content: "";
     display: block;
@@ -49,6 +52,26 @@
     border: 2px solid var(--colorGinPrimary);
     border-right: 2px dotted transparent;
     border-radius: 50%;
+  }
+}
+
+.contextual-links {
+  li {
+    position: relative;
+  }
+
+  .ajax-progress-throbber {
+    position: absolute;
+    top: 0;
+    right: 4px;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+
+    &:before {
+      top: 0;
+      left: .25em;
+    }
   }
 }
 

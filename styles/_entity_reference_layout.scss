@@ -92,6 +92,8 @@
     }
 
     .erl-item {
+      background: white;
+
       &:hover,
       &:active,
       &:focus {
@@ -152,12 +154,19 @@
     }
   }
 
-  .erl-disabled-items {
+  .erl-disabled-items,
+  .erl-disabled-items.form-item.form-wrapper {
     padding: 24px;
-    background: #f6f6f6;
+    margin-bottom: -6rem;
+    background: #f1f1f3;
+    border-radius: 6px;
+
+    .gin--dark-mode & {
+      background: var(--colorGinLayer2Background);
+    }
 
     &, &:hover, &:active {
-      border: 1px dashed #ccc;
+      border: 0 none;
     }
 
     .fieldset__label {
@@ -167,6 +176,11 @@
     &__description {
       font-size: 0.875rem;
       color: #999;
+    }
+
+    .erl-disabled-wrapper {
+      background: transparent;
+      border-color: var(--colorGinLayer3Border);
     }
   }
 
@@ -192,7 +206,7 @@
     position: static;
     width: 100%;
     left: 0;
-    margin: 0;
+    margin: .5rem 0 0 0;
     box-sizing: border-box;
   }
 

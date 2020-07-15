@@ -1,21 +1,21 @@
 // Fieldgroup
-fieldset:not(.fieldgroup) {
-  padding-top: 40px;
-  padding-left: 0;
-  padding-right: 0;
-  background: transparent;
-  border-color: var(--colorGinLayer2Border);
-  border-left: 0 none;
-  border-right: 0 none;
+// fieldset:not(.fieldgroup) {
+//   padding-top: 40px;
+//   padding-left: 0;
+//   padding-right: 0;
+//   background: transparent;
+//   border-color: var(--colorGinLayer2Border);
+//   border-left: 0 none;
+//   border-right: 0 none;
 
-  > legend {
-    top: 20px;
-  }
+//   > legend {
+//     top: 20px;
+//   }
 
-  > .fieldset-wrapper {
-    margin-top: 20px;
-  }
-}
+//   > .fieldset-wrapper {
+//     margin-top: 20px;
+//   }
+// }
 
 // Summary
 details summary {
@@ -51,19 +51,6 @@ details summary {
 
   .field-add-more-submit {
     margin-top: .75rem;
-  }
-}
-
-.field--type-text-with-summary,
-.field--widget-text-textarea {
-  .form-item {
-    margin-bottom: 0;
-  }
-
-  .filter-wrapper {
-    border: 0 none;
-    padding-left: 0;
-    padding-right: 0;
   }
 }
 

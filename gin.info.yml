@@ -208,7 +208,6 @@ ckeditor_stylesheets:
   - ../../../core/themes/claro/css/base/typography.css
   - ../../../core/themes/claro/css/theme/ckeditor-frame.css
   - ../../../core/themes/claro/css/classy/components/media-embed-error.css
-  - dist/css/gin_accent.css
 
 # Regions
 regions:

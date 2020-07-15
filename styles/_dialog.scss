@@ -1,16 +1,31 @@
-.ui-dialog {
+.ui-dialog:not(.ui-dialog-off-canvas) {
   z-index: 503 !important;
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  border: 0 none !important;
+  border-radius: 8px;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+}
 
+.ui-dialog {
+  &,
   &:focus,
   &:focus:active,
   &:focus:hover {
-    box-shadow: none;
+    box-shadow: 20px 20px 40px rgba(0, 0, 0, .3);
   }
 
   .ui-dialog-titlebar {
     line-height: 1.2;
     padding: 24px;
     background: #1b1b1d;
+    border-bottom: 0 none;
+
+    .gin--dark-mode & {
+      background: var(--colorGinLayer3Background);
+    }
   }
 
   .ui-dialog-title {
@@ -18,10 +33,14 @@
   }
 
   .ui-widget-content.ui-dialog-buttonpane {
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 16px 24px;
     border-top: 1px solid var(--colorGinLayerBorder);
     background: var(--colorGinAppBackground);
+
+    .button {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
 
   .ui-dialog-titlebar-close {
@@ -43,6 +62,8 @@
   }
 
   .ui-widget-content.ui-dialog-content {
+    padding-left: 24px;
+    padding-right: 24px;
     background: var(--colorGinLayerBackground);
   }
 }
@@ -56,5 +77,23 @@
 .views-ui-dialog {
   .views-offset-bottom {
     border-top: 1px solid var(--colorGinBorder);
+  }
+}
+
+.ui-widget-content a {
+  color: var(--colorGinPrimary);
+}
+
+// Off canvas.
+.ui-dialog.ui-dialog-off-canvas {
+  background: var(--colorGinLayerBackground);
+
+  .ui-dialog-titlebar-close {
+    top: 20px;
+  }
+
+  .ui-resizable-w {
+    border: 0 none;
+    background-color: var(--colorGinLayer3Background);
   }
 }

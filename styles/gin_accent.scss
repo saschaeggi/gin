@@ -23,6 +23,9 @@
   --colorGinGreen: #058260;
   --colorGinGreenLight: #32cea4;
   --colorGinGreenBackground: #{mix(black, #32cea4, 60%)};
+  --colorGinInfo: #082538;
+  --colorGinInfoLight: #589ac5;
+  --colorGinInfoBackground: #{mix(black, #2d6c96, 60%)};
 
   --colorGinAppBackground: #{$colorAppBackground};
   --colorGinLayerBackground: #fff;
@@ -66,6 +69,7 @@
   --colorGinWarning: #dec15f;
   --colorGinDanger: #ce6060;
   --colorGinGreen: #32cea4;
+  --colorGinInfo: #559bca;
 
   --colorGinAppBackground: #{$colorDarkAppBackground};
   --colorGinLayerBackground: #2A2A2D;

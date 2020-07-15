@@ -8,6 +8,7 @@
   }
 
   &.cke_chrome {
+    border-color: var(--colorGinFormElementBorder);
     border-radius: 4px;
   }
 
@@ -24,6 +25,11 @@
   .cke_bottom {
     background: var(--colorGinLayer3Background);
     border-radius: 0 0 3px 3px;
+  }
+
+  .cke_contents {
+    padding-left: 8px;
+    padding-right: 8px;
   }
 
   .cke_path_empty:only-child::after {
@@ -100,7 +106,10 @@
 }
 
 .cke:hover .cke_top {
-  border-bottom-color: var(--colorGinBorder);
+  &,
+  .gin--dark-mode & {
+    border-bottom-color: var(--colorGinBorder);
+  }
 }
 
 .cke.cke_chrome.cke_focus:hover,

@@ -1,0 +1,12 @@
+@import "node_modules/breakpoint-sass/stylesheets/breakpoint";
+@import "_vars";
+@import "defaults";
+@import "color-overrides";
+@import "dialog";
+@import "throbber";
+
+.ui-dialog {
+  @import "button";
+  @import "form";
+  @import "ckeditor";
+}

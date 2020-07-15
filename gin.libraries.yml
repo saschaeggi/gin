@@ -39,3 +39,8 @@ gin_accent:
 gin_settings:
   js:
     dist/js/gin_settings.js: { minified: true }
+
+gin_dialog:
+  css:
+    theme:
+      dist/css/gin_dialog.css: { minified: true }

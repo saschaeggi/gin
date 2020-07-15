@@ -442,10 +442,25 @@
   }
 }
 
-// Mobile spacing
+// Mobile.
 .toolbar .toolbar-tray-vertical .toolbar-menu a {
   padding-top: 1.5em;
   padding-bottom: 1.5em;
+
+  &:hover,
+  &:focus {
+    color: var(--colorGinText);
+  }
+
+  &:focus {
+    background: var(--colorGinItemHover);
+  }
+
+  &.is-active {
+    &::before {
+      background-color: var(--colorGinPrimary);
+    }
+  }
 }
 
 .toolbar-bar {
