@@ -123,3 +123,18 @@
   font-size: 0.875rem;
   text-align: right;
 }
+
+// Install & Uninstall search.
+.system-modules,
+.system-modules-uninstall {
+  .table-filter {
+    .form-type--search {
+      margin-top: 0;
+    }
+  }
+
+  .table-filter-text {
+    width: 100%;
+    padding: 1rem;
+  }
+}
