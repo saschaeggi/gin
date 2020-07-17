@@ -3,6 +3,7 @@ const isDev = (process.env.NODE_ENV !== 'production');
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const globImporter = require('node-sass-glob-importer');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
@@ -26,6 +27,7 @@ module.exports = {
     chunkFilename: 'js/async/[name].chunk.js',
     pathinfo: true,
     filename: 'js/[name].js',
+    publicPath: '/themes/custom/gin/dist/',
   },
   module: {
     rules: [{
@@ -48,12 +50,6 @@ module.exports = {
               name: 'images/[name].[ext]?[hash]',
             },
           },
-          // {
-          //   loader: 'img-loader',
-          //   options: {
-          //     enabled: !isDev,
-          //   },
-          // },
         ],
       },
       {
@@ -88,14 +84,15 @@ module.exports = {
             options: {
               plugins: () => [autoprefixer()],
               sourceMap: isDev,
-              // minimize: true
             },
           },
           {
             loader: 'sass-loader',
             options: {
-              importer: globImporter(),
               sourceMap: isDev,
+              sassOptions: {
+                importer: globImporter()
+              },
             },
           },
         ],
@@ -116,7 +113,29 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
-    })
+    }),
+    new SVGSpritemapPlugin(path.resolve(__dirname, 'media/icons/**/*.svg'), {
+      output: {
+        filename: 'sprites/sprite.svg',
+        svg: {
+          sizes: false
+        }
+      },
+      sprite: {
+        prefix: false,
+        gutter: 0,
+        generate: {
+          title: false,
+          symbol: true,
+          use: true,
+          view: '-view'
+        }
+      },
+      styles: {
+        filename: path.resolve(__dirname, 'styles/helpers/_svg-sprite.scss'),
+        format: 'fragment'
+      }
+    }),
   ],
   watchOptions: {
     aggregateTimeout: 300,

@@ -1,0 +1,49 @@
+.draggable {
+  a.tabledrag-handle {
+    float: none;
+  }
+
+  &.drag-previous {
+    background-color: #ffffe9;
+  }
+
+  &.drag, &.drag:focus {
+    background-color: #f0f1f9;
+  }
+}
+
+.tabledrag-toggle-weight-wrapper {
+  margin-top: 0;
+
+  .action-link {
+    margin-bottom: .5rem;
+  }
+}
+
+.tabledrag-handle:after {
+  background-image: none;
+  background-color: var(--colorGinTextLight);
+  mask-image: icon('drag');
+  mask-repeat: no-repeat;
+  mask-position: center center;
+  mask-size: 16px 16px;
+}
+
+.draggable.drag, .draggable.drag:focus {
+  background-color: var(--colorGinLayer2Background);
+
+  .gin--dark-mode & {
+    background-color: var(--colorGinPrimaryLightHover);
+  }
+}
+
+.draggable.drag-previous {
+  background-color: var(--colorGinLayer2Background);
+  border-left: 6px solid var(--colorGinWarning);
+}
+
+.tabledrag-cell-content__item {
+  .checkbox-toggle:hover {
+    cursor: pointer;
+  }
+}

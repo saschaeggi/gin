@@ -1,0 +1,207 @@
+// Core Media preview image override
+.media-library-views-form {
+  flex-wrap: initial;
+
+  .media-library-item--grid {
+    .field--name-thumbnail img {
+      width: 100%;
+      height: auto;
+      min-width: unset;
+      min-height: unset;
+    }
+
+    &.is-hover:before,
+    &.checked:before,
+    &.is-focus:before {
+      border-color: var(--colorGinPrimary);
+    }
+  }
+}
+
+.media-library-item__content {
+  display: flex;
+  height: 100%;
+
+  article {
+    width: 100%;
+  }
+}
+
+.media-library-item__preview {
+  .gin--dark-mode & {
+    background: var(--colorGinLayer2Background);
+  }
+}
+
+.media-library-item {
+  .media-library-item__edit,
+  .media-library-item__remove,
+  .media-library-item__remove.button {
+    border-color: var(--colorGinBorder) !important;
+
+    &:hover,
+    &:focus {
+      border-color: var(--colorGinPrimary) !important;
+    }
+  }
+
+  &__name {
+    color: var(--colorGinText);
+  }
+}
+
+.media-library-item__click-to-select-checkbox input {
+  width: 28px;
+  height: 28px;
+
+  &,
+  .gin--dark-mode & {
+    border: 2px solid var(--colorGinBorder);
+
+    &:checked {
+      border-color: var(--colorGinPrimary);
+    }
+  }
+}
+
+.media-library-item--grid:before {
+  border-color: var(--colorGinBorder);
+}
+
+.media-library-item__attributes:hover .media-library-item__name,
+.media-library-item--grid.is-focus .media-library-item__name,
+.media-library-item--grid.checked .media-library-item__name {
+  white-space: nowrap;
+}
+
+.media-library-item--grid .field--name-thumbnail,
+.media-library-item__attributes,
+.media-library-item--grid {
+  background: none;
+}
+
+fieldset.media-library-widget {
+  padding: 1.5rem;
+  border: 1px solid var(--colorGinBorder);
+  border-radius: 6px;
+
+  .fieldset__label {
+    padding-left: 0;
+  }
+}
+
+.media-library-widget-empty-text {
+  color: var(--colorGinTextLight);
+}
+
+.media-library-add-form__preview {
+  background: var(--colorGinAppBackground);
+}
+
+.media-library-add-form__input-wrapper {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+
+.media-library-menu {
+  border-color: var(--colorGinBorder);
+  background-color: var(--colorGinAppBackground);
+}
+
+.media-library-view {
+  .view-header {
+    padding: 1rem;
+    color: var(--colorGinText);
+    text-decoration: none;
+    background: var(--colorGinAppBackground);
+    border-radius: 4px;
+  }
+
+  .views-form,
+  .views-exposed-form {
+    border: 1px solid var(--colorGinBorder);
+  }
+}
+
+.media-library-wrapper {
+  .views-display-link {
+    position: relative;
+    color: var(--colorGinText);
+    text-decoration: none;
+    background-image: none;
+
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      left: 0;
+      top: 1px;
+      background-color: var(--colorGinText);
+    }
+
+    &.is-active {
+      color: var(--colorGinPrimary);
+
+      &:before {
+        background-color: var(--colorGinPrimary);
+      }
+    }
+  }
+
+  .views-display-link-widget {
+    &:before {
+      mask-image: icon('grid');
+    }
+  }
+
+  .views-display-link-widget_table {
+    &:before {
+      mask-image: icon('list');
+    }
+  }
+}
+
+.media-library-content {
+  border-color: var(--colorGinBorder);
+}
+
+.media-library-menu__link {
+  color: var(--colorGinText);
+  text-shadow: none;
+  border-color: var(--colorGinBorder);
+  background-color: transparent;
+
+  &:active,
+  &:hover,
+  &:focus,
+  &.active {
+    color: var(--colorGinPrimary);
+    text-shadow: none;
+    background-color: var(--colorGinLayerBackground);
+    border-right: 0 none;
+    border-bottom: 1px solid var(--colorGinBorder);
+    box-shadow: none;
+  }
+}
+
+.media-library-select-all {
+  margin-top: 0;
+  padding: 1rem;
+  color: var(--colorGinTitle);
+  background: var(--colorGinTableHeader);
+  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, .03);
+  border-radius: 4px;
+}
+
+// UI Dialog overrode
+.ui-dialog {
+  .views-exposed-form {
+    .gin--dark-mode & {
+      background: var(--colorGinLayer2Background);
+    }
+  }
+}

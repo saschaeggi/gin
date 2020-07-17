@@ -1,0 +1,323 @@
+$maxWidth: 520px;
+
+.form-element {
+  color: var(--colorGinText);
+  border: 1px solid var(--colorGinFormElementBorder);
+  box-sizing: border-box;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .14);
+  border-radius: 4px;
+
+  &:hover {
+    border-color: var(--colorGinText);
+    box-shadow: inset 0 0 0 1px var(--colorGinText);
+  }
+
+  &:focus, &:hover:focus {
+    box-shadow: inset 0 0 0 1px var(--colorGinText), 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
+  }
+
+  .gin--dark-mode & {
+    background-color: var(--colorGinLayer2Background);
+  }
+}
+
+.form-textarea-wrapper {
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+
+  textarea {
+    max-width: 100%;
+  }
+}
+
+.form-element--editor-format {
+  width: auto;
+}
+
+.password-confirm {
+  width: 100%;
+  max-width: $maxWidth;
+}
+
+.password-strength {
+  &__title {
+    color: var(--colorGinTextLight);
+  }
+
+  &__text {
+    color: var(--colorGinTitle);
+  }
+}
+
+.password-suggestions {
+  color: var(--colorGinTextLight);
+  border: 1px solid var(--colorGinLayer2Border);
+  background-color: transparent;
+}
+
+.form-element--type-select {
+  padding-right: calc(2.5rem - 1px);
+
+  .gin--dark-mode & {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath fill='none' stroke-width='1.5' d='M1 1L7 7L13 1' stroke='%23ffffff'/%3E%3C/svg%3E%0A");
+  }
+}
+
+.form-element--type-select--small {
+  padding: calc(0.5rem - 1px) calc(2.25rem - 1px) calc(0.5rem - 1px) calc(1rem - 1px);
+  font-size: 0.79rem;
+  min-height: 32px;
+  line-height: 1rem;
+}
+
+.form-boolean {
+  border-color: var(--colorGinFormElementBorder);
+}
+
+// Darkmode Checkbox
+.form-boolean--type-checkbox {
+  &:not(:checked) {
+    .gin--dark-mode & {
+      background: var(--colorGinLayer2Background);
+    }
+  }
+
+  &:checked {
+    .gin--dark-mode & {
+      $iconColor: 1B1B1D;
+      background-image: icon('checked');
+    }
+  }
+}
+
+// Single Checkbox: show as toggle
+:not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox {
+  position: relative;
+  margin-left: 0;
+
+  .checkbox-toggle {
+    z-index: 0;
+    display: inline-block;
+    vertical-align: top;
+    width: 40px;
+    height: 24px;
+    background-color: #909090;
+    border-radius: 12px;
+    box-sizing: border-box;
+
+    &__inner {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border: 4px solid transparent;
+      border-radius: 12px;
+      box-sizing: border-box;
+
+      &:before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        border-radius: 21px;
+        box-shadow: 1px 1px 12px rgba(0, 0, 0, .3);
+        transform: translateX(-16px);
+        transition: transform .3s;
+
+        .gin--dark-mode & {
+          background-color: var(--colorGinLayer2Background);
+        }
+      }
+    }
+  }
+
+  input {
+    @extend .visually-hidden;
+    width: 40px;
+    height: 24px;
+    clip: auto;
+    margin-left: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:hover:focus,
+    &:active:focus {
+      outline: none;
+      box-shadow: none;
+      border: none;
+    }
+
+    &:checked ~ .checkbox-toggle .checkbox-toggle__inner {
+      background-color: var(--colorGinSwitch);
+
+      &:before {
+        transform: translateX(16px);
+      }
+    }
+
+    &:active ~ .checkbox-toggle .checkbox-toggle__inner,
+    &:focus ~ .checkbox-toggle .checkbox-toggle__inner {
+      box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
+    }
+  }
+
+  label {
+    z-index: 1;
+    position: relative;
+    padding-left: 4px;
+    padding-bottom: 0;
+    color: var(--colorGinText);
+  }
+}
+
+.form-boolean {
+  &:hover, &:active {
+    .gin--dark-mode & {
+      box-shadow: none;
+      border-color: var(--colorGinText);
+    }
+  }
+}
+
+.form-boolean--type-radio {
+  &, &:hover, &:active, &:focus, &:hover:focus {
+    background-image: none;
+    background-color: #fff;
+    border-color: var(--colorGinFormElementBorder);
+
+    .gin--dark-mode & {
+      background-color: var(--colorGinLayer2Background);;
+    }
+  }
+
+  &:hover {
+    box-shadow: inset 0 0 0 1px var(--colorGinLayer2Border);
+
+    &, .gin--dark-mode & {
+      border-color: var(--colorGinText);
+    }
+  }
+
+  &:checked {
+    &, &:hover, &:active, &:focus, &:hover:focus {
+      background-image: none;
+      background-color: #fff;
+      box-shadow: inset 0 0 0 4px var(--colorGinPrimary);
+
+      .gin--dark-mode & {
+        background-color: var(--colorGinLayer2Background);
+        border-color: var(--colorGinPrimary);
+      }
+    }
+  }
+}
+
+.form-radios,
+.form-checkboxes {
+  .form-type--boolean {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+  }
+}
+
+.form-edit .form-actions {
+  padding: 0;
+  margin-bottom: 0;
+  border: 0 none;
+  background-color: transparent;
+}
+
+// Fieldgroup
+fieldset:not(.fieldgroup) {
+  padding-top: 8px;
+  padding-left: 0;
+  padding-right: 0;
+  background: transparent;
+  border-color: var(--colorGinBorder);
+  border-radius: 4px;
+
+  > legend {
+    top: 20px;
+  }
+
+  > .fieldset-wrapper {
+    margin-top: 20px;
+  }
+}
+
+.fieldset__label,
+.fieldset__label--group,
+.form-item__label {
+  color: var(--colorGinText);
+}
+
+.form-item__label.has-error,
+.form-item__error-message {
+  color: var(--colorGinDanger);
+}
+
+.form-item__description,
+.fieldset__description {
+  max-width: $maxWidth;
+  color: var(--colorGinTextLight);
+}
+
+.form-item__label.form-required::after,
+.fieldset__label.form-required::after {
+  content: "*";
+  color: var(--colorGinDanger);
+  vertical-align: text-top;
+  background: none;
+}
+
+.form-item__warning {
+  display: inline-block;
+  margin-top: .5rem;
+}
+
+.js .form-autocomplete {
+  padding-right: 36px;
+}
+
+.entity-form-display-form {
+  > .form-actions {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.required-mark {
+  &::after {
+    background: var(--colorGinDanger);
+    mask-image: icon('asterisk');
+    mask-position: center center;
+    mask-size: 100% 100%;
+  }
+}
+
+.form-wrapper,
+.form-composite {
+  label {
+    color: var(--colorGinText);
+    padding-bottom: 4px;
+  }
+}
+
+.field--type-text-with-summary,
+.field--widget-text-textarea {
+  .form-item {
+    margin-bottom: 0;
+  }
+
+  .filter-wrapper {
+    border: 0 none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

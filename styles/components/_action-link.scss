@@ -1,0 +1,82 @@
+.action-link {
+  color: var(--colorGinPrimary);
+
+  &, &:hover, &:active {
+    background-color: transparent;
+  }
+
+  &:before {
+    background-image: none;
+    background-color: var(--colorGinPrimary);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+  }
+
+  &--icon-checkmark:hover:before,
+  &--icon-show:hover::before,
+  &--icon-cog:hover::before,
+  &--icon-hide:hover::before,
+  &--icon-show:before,
+  &--icon-hide:before {
+    background-image: none;
+    background-color: var(--colorGinPrimaryHover);
+  }
+
+  &--icon-checkmark:before {
+    mask-image: icon('checkmark');
+  }
+
+  &--icon-show:before {
+    mask-image: icon('show');
+  }
+
+  &--icon-hide:before {
+    mask-image: icon('hide');
+  }
+
+  &--icon-cog::before {
+    mask-image: icon('config');
+  }
+
+  &--icon-ex::before {
+    mask-image: icon('remove');
+  }
+}
+
+.action-link--icon-trash.action-link--danger,
+.button.button--danger,
+a.button.button--danger,
+.button[data-drupal-selector="edit-cancel"] {
+  color: var(--colorGinDanger);
+
+  .gin--dark-mode & {
+    background-color: #35282b;
+  }
+
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: var(--colorGinDanger) !important;
+
+    &:before {
+      background-image: none;
+      background-color: var(--colorGinDanger);
+      mask-image: icon('trash');
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--colorGinLayerBackground);
+    background-color: var(--colorGinDanger);
+
+    &:before {
+      background-color: var(--colorGinLayerBackground);
+    }
+  }
+}
+
+

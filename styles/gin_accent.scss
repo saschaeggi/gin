@@ -1,4 +1,8 @@
-@import "_vars";
+// Helpers
+@import "helpers/**/*";
+
+// Settings
+@import "settings/**/*";
 
 :root {
   // Accent color: use Claro defaults for Gin

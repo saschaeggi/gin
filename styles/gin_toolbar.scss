@@ -1,7 +1,14 @@
 // Import breakpoint
 @import "node_modules/breakpoint-sass/stylesheets/breakpoint";
-@import "_vars";
-@import "coffee";
+
+// Helpers
+@import "helpers/**/*";
+
+// Settings
+@import "settings/**/*";
+
+// Components
+@import "components/coffee";
 
 // Toolbar
 #toolbar-item-administration-tray {
@@ -255,7 +262,7 @@ a.toolbar-menu__trigger,
     display: block;
     width: $toolbarWidth;
     height: 100%;
-    background: rgba(255, 255, 255, .075) url(../images/drupal.svg) no-repeat left 21px center;
+    background: rgba(255, 255, 255, .075) url(../media/drupal.svg) no-repeat left 21px center;
     background-size: 56px auto;
 
     &:hover {
@@ -484,8 +491,8 @@ a.toolbar-menu__trigger,
   outline: none;
 }
 
-@import "toolbar";
-@import "toolbar-meta";
+@import "components/toolbar";
+@import "components/toolbar-meta";
 
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {

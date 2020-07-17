@@ -1,0 +1,93 @@
+.user-form-page {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  max-height: 100%;
+
+  @include mq($breakpointLarge) {
+    flex-wrap: nowrap;
+  }
+
+  &__user-form,
+  &__wallpaper {
+    width: 100%;
+
+    @include mq($breakpointLarge) {
+      flex-basis: 50%;
+    }
+  }
+
+  &__user-form {
+    max-width: $breakpointLarge;
+  }
+
+  &__wallpaper {
+    display: none;
+    pointer-events: none;
+    position: relative;
+    background-color: #ccc;
+
+    @include mq($breakpointLarge) {
+      display: flex;
+      flex-grow: 1;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__drupal-logo {
+    display: block;
+    width: 120px;
+    height: 30px;
+    margin-top: 1rem;
+    background: url(../media/drupal.svg) no-repeat top left;
+  }
+
+  &__page-title {
+    font-weight: 400;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+
+    @include mq($breakpointLarge) {
+      font-size: 3rem;
+      margin-top: 6rem;
+    }
+  }
+
+  .content-header {
+    background: transparent;
+  }
+
+  .layout-container {
+    max-width: 480px;
+    margin: 0 auto !important;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    @include mq($breakpointLarge) {
+      padding-left: 48px;
+      padding-right: 48px;
+    }
+  }
+
+  .form-type--text,
+  .form-type--password,
+  .form-type--email {
+    input {
+      width: 100%;
+    }
+  }
+}
+
+.user-form {
+  @include mq($breakpointLarge) {
+    margin-top: 4rem;
+  }
+}

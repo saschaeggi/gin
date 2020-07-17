@@ -1,0 +1,82 @@
+.block-page-title-block {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.page-title {
+  font-size: 1.6em;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -.05em;
+  color: var(--colorGinTitle);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
+
+  @include mq($breakpointSmall) {
+    font-size: 2em;
+  }
+}
+
+.gin--edit-form {
+  .page-title {
+    @include mq($breakpointLarge) {
+      font-size: 1.6em;
+    }
+
+    @include mq($breakpointWide) {
+      font-size: 1.75em;
+    }
+  }
+}
+
+body:not(.gin--edit-form) {
+  .page-title {
+    @include mq($breakpointBig) {
+      font-size: 2.125em;
+    }
+  }
+}
+
+.shortcut-action {
+  align-self: center;
+  margin-left: .75rem;
+  border-radius: 4px;
+
+  &__icon {
+    opacity: .6;
+    position: relative;
+    top: 3px;
+    background: var(--colorGinDisabled);
+    mask-image: icon('shortcut');
+    mask-size: 80% 80%;
+    mask-position: center center;
+    mask-repeat: no-repeat;
+  }
+
+  &:hover &__icon {
+    opacity: 1;
+    background: var(--colorGinPrimary);
+  }
+
+  &--remove {
+    .shortcut-action__icon {
+      background: var(--colorGinPrimary);
+    }
+
+    &:hover .shortcut-action__icon {
+      opacity: 1;
+      background: var(--colorGinDisabled);
+    }
+  }
+
+  &__message {
+    position: absolute;
+    pointer-events: none;
+    color: var(--colorGinText);
+    background: var(--colorGinLayer2Background);
+    border-radius: 4px;
+  }
+}

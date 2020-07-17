@@ -1,0 +1,333 @@
+// Paragraphs in Layout Builder
+.field--widget-entity-reference-layout-widget {
+  fieldset.erl-field {
+    position: relative;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    background: transparent;
+    box-shadow: none;
+
+    > legend {
+      display: none;
+    }
+
+    .fieldset__wrapper {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .erl-layout {
+    background: none;
+
+    .layout {
+      border-left: 1px dashed #ccc;
+      border-bottom: 1px dashed #ccc;
+      background: #fff;
+    }
+
+    .layout-controls,
+    .erl-actions {
+      background: var(--colorGinLayer2Background);
+    }
+  }
+
+  .erl-add-content__group,
+  .erl-add-content--group {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 800px;
+    transform: translateX(-50%);
+    max-height: 480px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    button {
+      color: #000;
+      text-align: center;
+      flex-basis: 33.333%;
+      margin-bottom: 16px;
+
+      @include mq($breakpointLarge) {
+        flex-basis: 25%;
+      }
+
+      img {
+        width: 24px;
+        height: 24px;
+        float: none;
+        display: block;
+        margin: 8px auto;
+
+        @include mq($breakpointLarge) {
+          width: 30px;
+          height: 40px;
+        }
+      }
+    }
+  }
+
+  // Overlay
+  .layout-radio-item.active {
+    background: transparent;
+  }
+
+  .erl-layout-region,
+  .erl-disabled-items {
+    padding: 16px;
+    background: #fff;
+    box-shadow: none;
+
+    &,
+    &:hover {
+      border: 0 none;
+      border-top: 1px dashed #ccc;
+      border-right: 1px dashed #ccc;
+    }
+
+    .layout-label {
+      display: none;
+    }
+
+    .erl-item {
+      background: white;
+
+      &:hover,
+      &:active,
+      &:focus {
+        border-color: var(--colorGinFocus);
+        outline: 1px solid var(--colorGinFocus);
+        z-index: 1;
+
+        .layout-label {
+          display: block;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  // Don't show contextual for pagragraphs
+  .erl-item {
+    .paragraph {
+      .field {
+        line-height: 1.5;
+        margin: .5em 0;
+      }
+
+      .field--name-field-title {
+        font-weight: bold;
+      }
+
+      .field--type-image {
+        max-height: 400px;
+        overflow: hidden;
+      }
+
+      .field--name-field-paragraphs {
+        display: flex;
+        flex-wrap: wrap;
+
+        .field__item {
+          flex-basis: 100px;
+          margin-right: .5rem;
+        }
+      }
+    }
+
+    // Drag & Drop
+    &.gu-transit {
+      background-color: var(--colorGinPrimaryLightActive);
+    }
+  }
+
+  .erl-layout.erl-item {
+    padding-top: 32px;
+    border: 0 none;
+    margin-bottom: 0;
+
+    &:before {
+      height: 2px;
+      background-color: var(--colorGinLayer2Border);
+    }
+  }
+
+  .erl-disabled-items,
+  .erl-disabled-items.form-item.form-wrapper {
+    padding: 24px;
+    margin-bottom: -6rem;
+    background: #f1f1f3;
+    border-radius: 6px;
+
+    .gin--dark-mode & {
+      background: var(--colorGinLayer2Background);
+    }
+
+    &, &:hover, &:active {
+      border: 0 none;
+    }
+
+    .fieldset__label {
+      padding: 16px 0 24px;
+    }
+
+    &__description {
+      font-size: 0.875rem;
+      color: #999;
+    }
+
+    .erl-disabled-wrapper {
+      background: transparent;
+      border-color: var(--colorGinLayer3Border);
+    }
+  }
+
+  .erl-add-content {
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  .erl-actions {
+    .erl-edit,
+    .erl-remove {
+      &, &:hover, &:hover, &:focus {
+        box-shadow: none !important;
+        border-color: transparent !important;
+      }
+    }
+  }
+
+  .erl-add-content--single,
+  .erl-item > .erl-add-content--single {
+    position: static;
+    width: 100%;
+    left: 0;
+    margin: .5rem 0 0 0;
+    box-sizing: border-box;
+  }
+
+  .erl-add-section,
+  .erl-add-content--single button {
+    display: block;
+    width: 100%;
+    color: var(--colorGinPrimary);
+    background: var(--colorGinItemHover);
+    padding: 16px;
+    border: 1px dashed var(--colorGinPrimary);
+
+    &,
+    &:hover,
+    &:active {
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:active {
+      color: var(--colorGinPrimaryHover);
+      background: var(--colorGinPrimaryLight);
+    }
+  }
+
+  .erl-item:last-of-type > .erl-add-content--single {
+    opacity: 1;
+  }
+
+  .erl-add-content--single {
+    button {
+      .icon {
+        margin-right: .5rem;
+      }
+    }
+  }
+
+  .layout-radio-item {
+    > div {
+      display: flex;
+      align-items: center;
+    }
+
+    .form-item {
+      margin-left: 8px;
+    }
+
+    &.active {
+      outline: 2px solid var(--colorGinFocus);
+    }
+  }
+}
+
+// Modal
+.ui-widget-content {
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .erl-form-actions {
+    margin-bottom: 0 !important;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+// Add more item
+.erl-add-more-menu__item {
+  a {
+    color: var(--colorGinPrimary);
+
+    &:hover {
+      background-color: var(--colorGinPrimaryLight);
+    }
+  }
+}
+
+// Add Toggle
+.erl-add-content__toggle {
+  bottom: 2px;
+  background: var(--colorGinPrimary);
+  border-radius: 50%;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: var(--colorGinButtonText);
+    mask-image: icon('add');
+    mask-repeat: no-repeat;
+    mask-position: center center;
+    mask-size: 16px 16px;
+  }
+}
+
+.erl-layout-region:hover button.erl-add-content__toggle {
+  opacity: 1;
+}
+
+// Loader
+.erl-loading div.spinner {
+  width: 1.125rem;
+  height: 1.125rem;
+  animation: gin-throbber 0.75s linear infinite;
+  border: 2px solid var(--colorGinPrimary);
+  border-right: 2px dotted transparent;
+  border-radius: 50%;
+}
+
+// Loader background in overlay
+.erl-overlay.erl-loading div.loading {
+  border-radius: 6px;
+
+  .gin--dark-mode & {
+    background: rgba(0, 0, 0, .3);
+  }
+}
+
+// If ERL field is first element, remove margin-top
+.erl-layout-wrapper {
+  margin-top: 0;
+}

@@ -1,0 +1,540 @@
+.toolbar {
+  .toolbar-bar {
+    box-shadow: none;
+
+    @include mq($breakpointXSmall) {
+      .user-menu {
+        order: 99;
+        flex-grow: 1;
+        text-align: right;
+
+        .toolbar-menu {
+          text-align: left;
+        }
+      }
+
+      .contextual-toolbar-tab {
+        order: 100;
+      }
+    }
+
+    .toolbar-tab > .toolbar-item {
+      white-space: nowrap;
+    }
+
+    .contextual-toolbar-tab.toolbar-tab {
+      float: right; // Set contextual to right
+    }
+
+    .toolbar-tab > .toolbar-item {
+      font-weight: normal;
+    }
+
+    .toolbar-tab > .toolbar-item.is-active {
+      background-image: none;
+      background-color: rgba(255, 255, 255, .1);
+
+      .gin--dark-mode & {
+        background-color: var(--colorGinLayerBackground);
+      }
+    }
+
+    .toolbar-tab > .toolbar-icon:before {
+      @media only screen and (min-width: 36em) {
+        background-size: 90% auto;
+      }
+    }
+
+    .toolbar-icon.toolbar-handle,
+    .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle
+    {
+      &::before {
+        transform: rotate(90deg);
+        background-position: center center;
+        background-size: 14px 14px;
+      }
+
+      &.open::before {
+        transform: rotate(-90deg);
+      }
+    }
+
+    // Inline Edit toggle
+    .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item,
+    .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active,
+    .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item:focus {
+      color: var(--colorGinAppBackground);
+      background: var(--colorGinPrimary);
+    }
+
+    // Overrides for default toolbar items
+    .toolbar-icon-admin-toolbar-tools-help,
+    .toolbar-icon-system-admin-content,
+    .toolbar-icon-system-admin-structure,
+    .toolbar-icon-system-themes-page,
+    .toolbar-icon-system-modules-list,
+    .toolbar-icon-system-admin-config,
+    .toolbar-icon-entity-user-collection,
+    .toolbar-icon-system-admin-group,
+    .toolbar-icon-system-admin-reports,
+    .toolbar-icon-help-main,
+    .toolbar-icon-commerce-admin-commerce,
+    .toolbar-icon-tmgmt-admin-tmgmt,
+    .toolbar-icon-escape-admin,
+    .toolbar-icon-edit,
+    .toolbar-icon-local-tasks,
+    .toolbar-icon-menu,
+    .toolbar-icon-shortcut,
+    .toolbar-icon-coffee,
+    .toolbar-icon-devel,
+    .toolbar-icon-user,
+    #toolbar-item-administration-search,
+    .toolbar-tab > .toolbar-icon-edit.toolbar-item {
+      &:before {
+        background-color: var(--colorGinIcons);
+        background-image: none;
+        mask-repeat: no-repeat;
+        mask-position: center center;
+        mask-size: 18px 18px;
+      }
+
+      &:hover:before {
+        @include mq($breakpointMedium) {
+          background-color: var(--colorGinTitle);
+        }
+      }
+
+      &.is-active:hover:before {
+        @include mq($breakpointMedium) {
+          background-color: var(--colorGinPrimary);
+        }
+      }
+    }
+
+    .menu-item--active-trail {
+      .toolbar-icon {
+        &:before {
+          background: var(--colorGinPrimary);
+        }
+      }
+    }
+
+    #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
+      &:before {
+        $logoSize: 28px;
+        $iconFill: 333333;
+
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        background-color: var(--colorGinText);
+        mask-image: icon('gin');
+        mask-position: center center;
+      }
+
+      &.is-active {
+        background-color: transparent;
+
+        &:after {
+          display: none;
+        }
+      }
+    }
+
+    .toolbar-icon-default {
+      &:before {
+        padding-top: 0;
+      }
+    }
+
+    // Hamburger
+    .toolbar-icon-menu {
+      &:before {
+        mask-image: icon('hamburger');
+      }
+    }
+
+    // Admin tray: Add content
+    .toolbar-icon-system-admin-content {
+      &:before {
+        mask-image: icon('content');
+      }
+    }
+
+    // Admin tray: Structure
+    .toolbar-icon-system-admin-structure {
+      &:before {
+        mask-image: icon('structure');
+      }
+    }
+
+    // Admin tray: Appearance
+    .toolbar-icon-system-themes-page {
+      &:before {
+        mask-image: icon('appearance');
+      }
+    }
+
+    // Admin tray: Extend
+    .toolbar-icon-system-modules-list {
+      &:before {
+        mask-image: icon('extend');
+      }
+    }
+
+    // Admin tray: Configuration
+    .toolbar-icon-system-admin-config {
+      &:before {
+        mask-image: icon('config');
+      }
+    }
+
+    // Admin tray: People
+    .toolbar-icon-entity-user-collection {
+      &:before {
+        mask-image: icon('people');
+      }
+    }
+
+    // Groups
+    .toolbar-icon-system-admin-group {
+      &:before {
+        mask-image: icon('group');
+        mask-size: 24px;
+      }
+    }
+
+    // Admin tray: Statistics
+    .toolbar-icon-system-admin-reports {
+      &:before {
+        mask-image: icon('reports');
+      }
+    }
+
+    // Admin tray: Help
+    .toolbar-icon-help-main {
+      &:before {
+        mask-image: icon('help');
+      }
+    }
+
+    // Commerce
+    .toolbar-icon-commerce-admin-commerce {
+      &:before {
+        mask-image: icon('commerce');
+      }
+    }
+
+    // Admin tray: TMGMT Translation.
+    .toolbar-icon-tmgmt-admin-tmgmt {
+      &:before {
+        mask-image: icon('tmgmt');
+      }
+    }
+
+    // Back to site
+    .toolbar-icon-escape-admin {
+      &:before {
+        mask-image: icon('backtosite');
+      }
+    }
+
+    // Edit
+    .toolbar-icon-edit,
+    .toolbar-icon-local-tasks,
+    .toolbar-tab > .toolbar-icon-edit.toolbar-item {
+      &:before {
+        mask-image: icon('edit');
+      }
+
+      &, &:hover, &:active {
+        &:before {
+          background: var(--colorGinAppBackground);
+        }
+      }
+    }
+
+    // Shortcuts
+    .toolbar-icon-shortcut {
+      &:before {
+        top: -2px;
+        mask-image: icon('shortcut');
+      }
+    }
+
+    // Coffee & Search
+    .toolbar-icon-coffee,
+    #toolbar-item-administration-search {
+      &:before {
+        top: -1px;
+        mask-image: icon('search');
+      }
+    }
+
+    // Devel
+    .toolbar-icon-devel {
+      &:before {
+        mask-image: icon('devel');
+      }
+    }
+
+    // User
+    .toolbar-icon-user {
+      &:before {
+        mask-image: icon('user');
+      }
+    }
+  }
+}
+
+.toolbar-horizontal .toolbar-tray {
+  box-shadow: none;
+  border-bottom: 1px solid var(--colorGinBorder);
+
+  a {
+    color: var(--colorGinText);
+    font-weight: normal;
+
+    &:hover, &:active, &:focus, &.is-active {
+      text-decoration: none;
+    }
+  }
+
+  .menu-item {
+    &:hover, a:focus {
+      background-color: var(--colorGinItemHover);
+
+      .toolbar-icon::before {
+        background-color: var(--colorGinTitle);
+      }
+
+      .toolbar-icon.is-active::before {
+        background-color: var(--colorGinPrimary);
+      }
+    }
+
+    &--no-link {
+      &:hover, a:focus {
+        background-color: transparent;
+      }
+    }
+
+    a:focus {
+      box-shadow: inset 0 0 0 2px var(--colorGinFocus);
+    }
+  }
+
+  .menu-item + .menu-item {
+    border-left: 0 none;
+
+    &:last-child {
+      border-right: 0 none;
+    }
+  }
+}
+
+.gin--dark-mode.toolbar-horizontal .toolbar-tray {
+  border-bottom: 1px solid var(--colorGinLayerBorder);
+}
+
+.toolbar .toolbar-tray-vertical {
+  box-shadow: none;
+  border-right: 1px solid var(--colorGinBorder);
+  background: var(--colorGinLayerBackground);
+
+  .menu-item + .menu-item {
+    border-top: 1px solid var(--colorGinBorder);
+  }
+
+  .menu-item + .menu-item__spacer {
+    border-top: 0 none;
+  }
+
+  .menu-item .toolbar-menu {
+    border-bottom: 0 none;
+  }
+
+  // Custom logo
+  .menu-item .toolbar-logo {
+    padding-left: 16px;
+  }
+
+  .level-1.menu-item:last-child {
+    border-bottom: 1px solid var(--colorGinBorder);
+  }
+
+  .gin--dark-mode & {
+    .toolbar-menu ul ul {
+      border-color: transparent;
+    }
+
+    .level-1 .toolbar-menu {
+      background: var(--colorGinLayer2Background);
+    }
+
+    .level-2 .toolbar-menu {
+      background: var(--colorGinLayer3Background);
+    }
+
+    .level-3 .toolbar-menu {
+      background: #5a5a61;
+    }
+  }
+}
+
+.toolbar-tray-horizontal {
+  ul {
+    li {
+      &.menu-item {
+        .menu-item {
+          background: var(--colorGinLayerBackground);
+          border-left: none;
+          border-right: none;
+          border-bottom: 0 none;
+        }
+
+        &--expanded {
+          background-color: transparent;
+
+          &.hover-intent ul {
+            box-shadow: 0px 8px 14px rgba(0, 0, 0, 0.15);
+          }
+        }
+      }
+    }
+  }
+}
+
+#toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon.toolbar-icon-edit.toolbar-item.is-active {
+  color: var(--colorGinAppBackground);
+}
+
+#toolbar-bar.js-settings-tray-edit-mode {
+  background: var(--colorGinPrimary);
+}
+
+#toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon.toolbar-icon-edit.toolbar-item.is-active:hover {
+  background: var(--colorGinPrimaryHover);
+}
+
+.toolbar .toolbar-icon.toolbar-handle::before,
+.toolbar .toolbar-icon.toolbar-handle.open::before,
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle::before,
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open::before,
+.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
+.toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
+  background-image: none;
+}
+
+.toolbar .toolbar-icon.toolbar-handle,
+.toolbar .toolbar-icon.toolbar-handle.open,
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle,
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open,
+.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded {
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 18px;
+    width: 16px;
+    height: 16px;
+    background-color: var(--colorGinPrimary);
+    mask-image: icon('handle');
+    mask-repeat: no-repeat;
+    mask-position: center center;
+    mask-size: 14px 14px;
+  }
+}
+
+// Mobile.
+.toolbar .toolbar-tray-vertical .toolbar-menu a {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+
+  &:hover,
+  &:focus {
+    color: var(--colorGinText);
+  }
+
+  &:focus {
+    background: var(--colorGinItemHover);
+  }
+
+  &.is-active {
+    &::before {
+      background-color: var(--colorGinPrimary);
+    }
+  }
+}
+
+.toolbar-bar {
+  .toolbar-icon {
+    &.toolbar-icon-shortcut,
+    &.toolbar-icon-coffee,
+    &.toolbar-icon-devel,
+    &.toolbar-icon-user {
+      &:before {
+        background: none;
+        background-color: var(--colorGinIcons);
+        mask-repeat: no-repeat;
+        mask-position: center center;
+      }
+
+      &:hover:before {
+        @include mq($breakpointMedium) {
+          background-color: var(--colorGinTitle);
+        }
+      }
+
+      &.is-active:before,
+      &.is-active:hover:before {
+        @include mq($breakpointMedium) {
+          background-color: var(--colorGinPrimary);
+        }
+      }
+    }
+  }
+
+  .toolbar-icon-escape-admin,
+  .toolbar-icon-edit,
+  .toolbar-icon-local-tasks,
+  .toolbar-icon-menu,
+  .toolbar-icon-shortcut,
+  .toolbar-icon-coffee,
+  .toolbar-icon-devel,
+  .toolbar-icon-user,
+  #toolbar-item-administration-search,
+  .toolbar-tab > .toolbar-icon-edit.toolbar-item {
+    &:hover:before,
+    &.is-active:before {
+      @include mq(max-width $breakpointMedium) {
+        background: #fff;
+      }
+    }
+  }
+}
+
+// Custom logo
+#toolbar-item-administration-tray .toolbar-logo {
+  padding-top: 8px;
+  padding-bottom: 8px;
+
+  img {
+    max-width: 100px;
+    max-height: 35px;
+  }
+}
+
+// Hide logo if accidentially shown in Devel
+.menu-item__tools {
+  .toolbar-icon-admin-toolbar-tools-help,
+  .toolbar-logo {
+    display: none;
+  }
+}
+
+#toolbar-item-user {
+  display: inline-block;
+  vertical-align: top;
+}

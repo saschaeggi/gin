@@ -1,0 +1,313 @@
+$sprites: (
+    'checkmark': "/themes/custom/gin/dist/sprites/sprite.svg#checkmark-view",
+    'hide': "/themes/custom/gin/dist/sprites/sprite.svg#hide-view",
+    'remove': "/themes/custom/gin/dist/sprites/sprite.svg#remove-view",
+    'show': "/themes/custom/gin/dist/sprites/sprite.svg#show-view",
+    'trash': "/themes/custom/gin/dist/sprites/sprite.svg#trash-view",
+    'checked': "/themes/custom/gin/dist/sprites/sprite.svg#checked-view",
+    'add': "/themes/custom/gin/dist/sprites/sprite.svg#add-view",
+    'asterisk': "/themes/custom/gin/dist/sprites/sprite.svg#asterisk-view",
+    'close': "/themes/custom/gin/dist/sprites/sprite.svg#close-view",
+    'drop': "/themes/custom/gin/dist/sprites/sprite.svg#drop-view",
+    'drupal': "/themes/custom/gin/dist/sprites/sprite.svg#drupal-view",
+    'gin': "/themes/custom/gin/dist/sprites/sprite.svg#gin-view",
+    'handle': "/themes/custom/gin/dist/sprites/sprite.svg#handle-view",
+    'grid': "/themes/custom/gin/dist/sprites/sprite.svg#grid-view",
+    'list': "/themes/custom/gin/dist/sprites/sprite.svg#list-view",
+    'error': "/themes/custom/gin/dist/sprites/sprite.svg#error-view",
+    'info': "/themes/custom/gin/dist/sprites/sprite.svg#info-view",
+    'status': "/themes/custom/gin/dist/sprites/sprite.svg#status-view",
+    'warning': "/themes/custom/gin/dist/sprites/sprite.svg#warning-view",
+    'first': "/themes/custom/gin/dist/sprites/sprite.svg#first-view",
+    'last': "/themes/custom/gin/dist/sprites/sprite.svg#last-view",
+    'next': "/themes/custom/gin/dist/sprites/sprite.svg#next-view",
+    'prev': "/themes/custom/gin/dist/sprites/sprite.svg#prev-view",
+    'clock': "/themes/custom/gin/dist/sprites/sprite.svg#clock-view",
+    'database': "/themes/custom/gin/dist/sprites/sprite.svg#database-view",
+    'php': "/themes/custom/gin/dist/sprites/sprite.svg#php-view",
+    'server': "/themes/custom/gin/dist/sprites/sprite.svg#server-view",
+    'drag': "/themes/custom/gin/dist/sprites/sprite.svg#drag-view",
+    'sort-asc': "/themes/custom/gin/dist/sprites/sprite.svg#sort-asc-view",
+    'sort-desc': "/themes/custom/gin/dist/sprites/sprite.svg#sort-desc-view",
+    'sort': "/themes/custom/gin/dist/sprites/sprite.svg#sort-view",
+    'appearance': "/themes/custom/gin/dist/sprites/sprite.svg#appearance-view",
+    'backtosite': "/themes/custom/gin/dist/sprites/sprite.svg#backtosite-view",
+    'commerce': "/themes/custom/gin/dist/sprites/sprite.svg#commerce-view",
+    'config': "/themes/custom/gin/dist/sprites/sprite.svg#config-view",
+    'content': "/themes/custom/gin/dist/sprites/sprite.svg#content-view",
+    'devel': "/themes/custom/gin/dist/sprites/sprite.svg#devel-view",
+    'edit': "/themes/custom/gin/dist/sprites/sprite.svg#edit-view",
+    'extend': "/themes/custom/gin/dist/sprites/sprite.svg#extend-view",
+    'group': "/themes/custom/gin/dist/sprites/sprite.svg#group-view",
+    'hamburger': "/themes/custom/gin/dist/sprites/sprite.svg#hamburger-view",
+    'help': "/themes/custom/gin/dist/sprites/sprite.svg#help-view",
+    'people': "/themes/custom/gin/dist/sprites/sprite.svg#people-view",
+    'reports': "/themes/custom/gin/dist/sprites/sprite.svg#reports-view",
+    'search': "/themes/custom/gin/dist/sprites/sprite.svg#search-view",
+    'shortcut': "/themes/custom/gin/dist/sprites/sprite.svg#shortcut-view",
+    'structure': "/themes/custom/gin/dist/sprites/sprite.svg#structure-view",
+    'tmgmt': "/themes/custom/gin/dist/sprites/sprite.svg#tmgmt-view",
+    'user': "/themes/custom/gin/dist/sprites/sprite.svg#user-view"
+);
+
+$sizes: (
+    'checkmark': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'hide': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'remove': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'show': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'trash': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'checked': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'add': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'asterisk': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'close': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'drop': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'drupal': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'gin': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'handle': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'grid': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'list': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'error': (
+        'width': 14px,
+        'height': 14px
+    ),
+    'info': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'status': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'warning': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'first': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'last': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'next': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'prev': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'clock': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'database': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'php': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'server': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'drag': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'sort-asc': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'sort-desc': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'sort': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'appearance': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'backtosite': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'commerce': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'config': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'content': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'devel': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'edit': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'extend': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'group': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'hamburger': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'help': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'people': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'reports': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'search': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'shortcut': (
+        'width': 100px,
+        'height': 100px
+    ),
+    'structure': (
+        'width': 16px,
+        'height': 16px
+    ),
+    'tmgmt': (
+        'width': 64px,
+        'height': 64px
+    ),
+    'user': (
+        'width': 16px,
+        'height': 16px
+    )
+);
+
+$variables: (
+    /* EMPTY */
+);
+
+// https://github.com/waldemarfm/sass-svg-uri/blob/v1.0.0/_svg-uri.scss
+@function sprite-str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+
+    @if type-of($replace) == 'null' {
+        $replace: '';
+    }
+
+    @if ( $index ) {
+        @return str-slice($string, 1, $index - 1) + $replace + sprite-str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+@function sprite-svg-uri($value) {
+    $encoded: '';
+    $slice: 2000;
+    $index: 0;
+
+    @for $i from 1 through ceil(str-length($value) / $slice) {
+        $chunk: str-slice($value, $index, $index + $slice - 1);
+        $chunk: sprite-str-replace($chunk, '"', "'");
+        $chunk: sprite-str-replace($chunk, '<', '%3C');
+        $chunk: sprite-str-replace($chunk, '>', '%3E');
+        $chunk: sprite-str-replace($chunk, '&', '%26');
+        $chunk: sprite-str-replace($chunk, '#', '%23');
+        $encoded: #{$encoded}#{$chunk};
+        $index: $index + $slice;
+    }
+
+    @return $encoded;
+}
+
+@mixin sprite($name, $user-variables: (), $include-size: false) {
+    $sprite: map-get($sprites, $name);
+
+    // Inject variables
+    $default-variables: map-get($variables, $name);
+    @if type-of($default-variables) == 'map' {
+        @each $key, $value in map-merge($default-variables, $user-variables) {
+            @if ( not map-has-key($default-variables, $key) ) {
+                @warn 'Sprite \'#{$name}\' does not support variable named \'#{$key}\'';
+            }
+
+            $sprite: sprite-str-replace($sprite, '___#{$key}___', sprite-svg-uri(quote(#{$value})));
+        }
+    } @else if type-of($user-variables) == 'map' {
+        @warn 'Sprite \'#{$name}\' does not contain any variables';
+    }
+
+    background: url($sprite) center no-repeat;
+
+    @if $include-size {
+        $size: map-get($sizes, $name);
+        background-size: map-get($size, width) map-get($size, height);
+    }
+}

@@ -1,0 +1,22 @@
+.admin-list {
+  padding: 8px 0;
+}
+
+.admin-item {
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--colorGinTableBorder);
+  }
+
+  &__description {
+    font-size: 0.875rem;
+  }
+
+  &__link::before {
+    background-image: none;
+    background-color: var(--colorGinPrimary);
+    mask-image: icon('handle');
+    mask-size: 1em 1em;
+    mask-repeat: no-repeat;
+    mask-position: center center;
+  }
+}
