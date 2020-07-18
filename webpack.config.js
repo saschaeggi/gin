@@ -27,7 +27,7 @@ module.exports = {
     chunkFilename: 'js/async/[name].chunk.js',
     pathinfo: true,
     filename: 'js/[name].js',
-    publicPath: '/themes/custom/gin/dist/',
+    publicPath: '../',
   },
   module: {
     rules: [{
@@ -44,10 +44,21 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
+        exclude: /sprite\.svg$/,
         use: [{
             loader: 'file-loader',
             options: {
-              name: 'images/[name].[ext]?[hash]',
+              name: 'media/[name].[ext]?[hash]',
+            },
+          },
+        ],
+      },
+      {
+        test: /sprite\.svg$/,
+        use: [{
+            loader: 'file-loader',
+            options: {
+              name: 'media/[name].[ext]',
             },
           },
         ],
@@ -69,7 +80,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: '../'
+              name: '[name].[ext]?[hash]',
             }
           },
           {
@@ -111,12 +122,9 @@ module.exports = {
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname),
     }),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
-    }),
     new SVGSpritemapPlugin(path.resolve(__dirname, 'media/icons/**/*.svg'), {
       output: {
-        filename: 'sprites/sprite.svg',
+        filename: './media/sprite.svg',
         svg: {
           sizes: false
         }
@@ -135,6 +143,9 @@ module.exports = {
         filename: path.resolve(__dirname, 'styles/helpers/_svg-sprite.scss'),
         format: 'fragment'
       }
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css',
     }),
   ],
   watchOptions: {
