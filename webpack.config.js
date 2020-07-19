@@ -141,7 +141,8 @@ module.exports = {
       },
       styles: {
         filename: path.resolve(__dirname, 'styles/helpers/_svg-sprite.scss'),
-        format: 'fragment'
+        // Fragment does not yet work with Firefox with mask-image.
+        // format: 'fragment'
       }
     }),
     new MiniCssExtractPlugin({

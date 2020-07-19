@@ -78,7 +78,7 @@
     &--warning:before,
     &--error:before {
       mask-position: center 16px;
-      mask-size: 24px;
+      mask-size: 24px 24px;
     }
   }
 
