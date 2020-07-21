@@ -95,7 +95,7 @@
         background-image: none;
         mask-repeat: no-repeat;
         mask-position: center center;
-        mask-size: 18px 18px;
+        mask-size: 20px 20px;
       }
 
       &:hover:before {
@@ -200,7 +200,7 @@
     .toolbar-icon-system-admin-group {
       &:before {
         mask-image: icon('group');
-        mask-size: 24px 24px;
+        // mask-size: 24px 24px;
       }
     }
 
@@ -479,6 +479,7 @@
         background-color: var(--colorGinIcons);
         mask-repeat: no-repeat;
         mask-position: center center;
+        mask-size: 18px 18px;
       }
 
       &:hover:before {

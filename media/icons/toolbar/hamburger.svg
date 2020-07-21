@@ -1,3 +1,5 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-  <path d='m92.953 27.328h-85.938c-1.9141 0-3.4688-1.5547-3.4688-3.4688s1.5547-3.4688 3.4688-3.4688h85.938c1.9141 0 3.4688 1.5547 3.4688 3.4688s-1.5547 3.4688-3.4688 3.4688z'/><path d='m92.953 53.469h-85.938c-1.9141 0-3.4688-1.5547-3.4688-3.4688s1.5547-3.4688 3.4688-3.4688h85.938c1.9141 0 3.4688 1.5547 3.4688 3.4688s-1.5547 3.4688-3.4688 3.4688z'/><path d='m92.953 79.688h-85.938c-1.9141 0-3.4688-1.5547-3.4688-3.4688s1.5547-3.4688 3.4688-3.4688h85.938c1.9141 0 3.4688 1.5547 3.4688 3.4688s-1.5547 3.4688-3.4688 3.4688z'/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="feather feather-menu">
+  <line fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="3" y1="12" x2="21" y2="12"></line>
+  <line fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="3" y1="6" x2="21" y2="6"></line>
+  <line fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="3" y1="18" x2="21" y2="18"></line>
 </svg>

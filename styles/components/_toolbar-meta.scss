@@ -175,9 +175,11 @@
           font-size: inherit;
           width: auto;
           height: auto;
+          padding-left: 3em;
 
           &:before {
-            left: 10px;
+            top: -1px;
+            left: 8px;
           }
 
           .icon-user {
