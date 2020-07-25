@@ -1,3 +1,8 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 16 16">
-  <path d='M7 15a1.5 1.5 0 0 1 0-3h7a1.5 1.5 0 0 1 0 3H7zm-4.5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM7 9.5a1.5 1.5 0 0 1 0-3h7a1.5 1.5 0 0 1 0 3H7zm-4.5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM7 4a1.5 1.5 0 0 1 0-3h7a1.5 1.5 0 0 1 0 3H7zM2.5 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z'/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <line fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" x1="8" y1="6" x2="21" y2="6"></line>
+  <line fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" x1="8" y1="12" x2="21" y2="12"></line>
+  <line fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" x1="8" y1="18" x2="21" y2="18"></line>
+  <line fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" x1="3" y1="6" x2="3.01" y2="6"></line>
+  <line fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" x1="3" y1="12" x2="3.01" y2="12"></line>
+  <line fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" x1="3" y1="18" x2="3.01" y2="18"></line>
 </svg>
