@@ -96,8 +96,6 @@ libraries-override:
 
   classy/forum: claro/classy.forum
 
-  classy/image-widget: claro/image-widget
-
   classy/indented: claro/classy.indented
 
   classy/media_embed_ckeditor_theme: claro/classy.media_embed_ckeditor_theme
