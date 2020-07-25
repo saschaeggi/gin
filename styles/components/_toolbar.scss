@@ -87,6 +87,7 @@
     .toolbar-icon-shortcut,
     .toolbar-icon-coffee,
     .toolbar-icon-devel,
+    .toolbar-icon-rebuild-cache-access,
     .toolbar-icon-user,
     #toolbar-item-administration-search,
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
@@ -275,6 +276,13 @@
     .toolbar-icon-devel {
       &:before {
         mask-image: icon('devel');
+      }
+    }
+
+    // Rebuild Cache Access
+    .toolbar-icon-rebuild-cache-access {
+      &:before {
+        mask-image: icon('rebuild-cache-access');
       }
     }
 
@@ -473,6 +481,7 @@
     &.toolbar-icon-shortcut,
     &.toolbar-icon-coffee,
     &.toolbar-icon-devel,
+    &.toolbar-icon-rebuild-cache-access,
     &.toolbar-icon-user {
       &:before {
         background: none;
@@ -503,6 +512,7 @@
   .toolbar-icon-shortcut,
   .toolbar-icon-coffee,
   .toolbar-icon-devel,
+  .toolbar-icon-rebuild-cache-access,
   .toolbar-icon-user,
   #toolbar-item-administration-search,
   .toolbar-tab > .toolbar-icon-edit.toolbar-item {
