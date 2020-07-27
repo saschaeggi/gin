@@ -549,4 +549,9 @@
 #toolbar-item-user {
   display: inline-block;
   vertical-align: top;
+
+  &.icon-user {
+    padding-left: 0;
+    margin-left: 8px;
+  }
 }

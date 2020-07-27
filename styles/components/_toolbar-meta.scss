@@ -59,6 +59,7 @@
           border-radius: 4px 4px 0 0;
 
           &:before {
+            top: 0;
             left: 10px;
           }
 
@@ -175,11 +176,11 @@
           font-size: inherit;
           width: auto;
           height: auto;
-          padding-left: 3em;
+          padding-left: 3.25em;
 
           &:before {
             top: -1px;
-            left: 8px;
+            left: 14px;
           }
 
           .icon-user {
