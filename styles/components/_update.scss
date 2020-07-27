@@ -17,7 +17,7 @@
       mask-image: icon('error');
       mask-position: center center;
       mask-repeat: no-repeat;
-      mask-size: 16px 16px;
+      mask-size: 20px 20px;
     }
 
     &--security-error {
@@ -35,7 +35,7 @@
       mask-image: icon('warning');
       mask-position: center center;
       mask-repeat: no-repeat;
-      mask-size: 16px 16px;
+      mask-size: 20px 20px;
     }
 
     // Current
@@ -44,7 +44,7 @@
       mask-image: icon('status');
       mask-position: center center;
       mask-repeat: no-repeat;
-      mask-size: 16px 16px;
+      mask-size: 20px 20px;
     }
   }
 }
