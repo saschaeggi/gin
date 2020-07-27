@@ -1,4 +1,8 @@
 .project-update {
+  &__version-links {
+    padding-right: 0;
+  }
+
   &__status {
     &-icon {
       width: 24px;
@@ -13,9 +17,10 @@
 
     // Error
     & &-icon {
+      padding-left: 0;
       background-color: var(--colorGinDanger);
       mask-image: icon('error');
-      mask-position: center center;
+      mask-position: center right;
       mask-repeat: no-repeat;
       mask-size: 20px 20px;
     }
@@ -33,7 +38,7 @@
     &--not-current &-icon {
       background-color: var(--colorGinWarning);
       mask-image: icon('warning');
-      mask-position: center center;
+      mask-position: center right;
       mask-repeat: no-repeat;
       mask-size: 20px 20px;
     }
@@ -42,7 +47,7 @@
     &--current &-icon {
       background-color: var(--colorGinGreen);
       mask-image: icon('status');
-      mask-position: center center;
+      mask-position: center right;
       mask-repeat: no-repeat;
       mask-size: 20px 20px;
     }
