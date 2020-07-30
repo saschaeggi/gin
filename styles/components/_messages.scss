@@ -2,7 +2,10 @@
   padding: 1rem;
   border: 2px solid transparent;
   border-radius: 6px;
-  box-shadow:   20px 20px 40px scale-color($colorAppBackgroundShadow, $lightness: -5%),
+  // box-shadow:   20px 20px 40px scale-color($colorAppBackgroundShadow, $lightness: -5%),
+  //               -6px -6px 16px scale-color($colorAppBackgroundShadow, $lightness: -2%);
+
+  box-shadow:   20px 20px 40px #c1c1d2,
                 -6px -6px 16px scale-color($colorAppBackgroundShadow, $lightness: -2%);
 
   .gin--dark-mode & {

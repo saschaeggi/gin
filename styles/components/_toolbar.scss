@@ -478,6 +478,7 @@
 
 .toolbar-bar {
   .toolbar-icon {
+    &.toolbar-icon-menu,
     &.toolbar-icon-escape-admin,
     &.toolbar-icon-shortcut,
     &.toolbar-icon-coffee,
@@ -486,10 +487,10 @@
     &.toolbar-icon-user {
       &:before {
         background: none;
-        background-color: var(--colorGinIcons);
+        background-color: rgba(255, 255, 255, .75);
         mask-repeat: no-repeat;
         mask-position: center center;
-        mask-size: 20px 20px;
+        mask-size: 18px 18px;
       }
 
       &:hover:before {
@@ -522,6 +523,22 @@
     &.is-active:before {
       @include mq(max-width $breakpointMedium) {
         background: #fff;
+      }
+    }
+  }
+}
+
+.toolbar-meta .toolbar-bar {
+  .toolbar-icon {
+    &.toolbar-icon-escape-admin,
+    &.toolbar-icon-shortcut,
+    &.toolbar-icon-coffee,
+    &.toolbar-icon-devel,
+    &.toolbar-icon-rebuild-cache-access,
+    &.toolbar-icon-user {
+      &:before {
+        mask-size: 18px 18px;
+        background-color: var(--colorGinIcons);
       }
     }
   }

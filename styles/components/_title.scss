@@ -43,13 +43,12 @@ body:not(.gin--edit-form) {
 .shortcut-action {
   align-self: center;
   margin-left: .75rem;
-  border-radius: 4px;
+  border-radius: $borderDefault;
 
   &__icon {
-    // opacity: .6;
     position: relative;
-    top: 3px;
-    background: var(--colorGinDisabled);
+    top: 5px;
+    background: var(--colorGinIcons);
     mask-image: icon('shortcut');
     mask-size: 80% 80%;
     mask-position: center center;

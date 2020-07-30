@@ -1,6 +1,6 @@
 .dropbutton {
   border: 2px solid var(--colorGinPrimary);
-  border-radius: 4px;
+  border-radius: $borderDefault;
 
   &:hover {
     border-color: var(--colorGinPrimaryHover);

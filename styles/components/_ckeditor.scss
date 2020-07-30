@@ -9,11 +9,11 @@
 
   &.cke_chrome {
     border-color: var(--colorGinFormElementBorder);
-    border-radius: 4px;
+    border-radius: $borderDefault;
   }
 
   .cke_inner {
-    border-radius: 4px;
+    border-radius: $borderDefault;
   }
 
   .cke_top {
