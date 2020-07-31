@@ -1,6 +1,6 @@
 .card {
   border: 1px solid var(--colorGinBorder);
-  border-radius: 6px;
+  border-radius: $borderDefault;
 
   &-list {
     margin-bottom: 2rem;
@@ -8,10 +8,10 @@
 
   &__image {
     img {
-      border-radius: 6px 6px 0 0;
+      border-radius: $borderDefault $borderDefault 0 0;
 
       @include mq($breakpointXSmall) {
-        border-radius: 6px 0 0 6px;
+        border-radius: $borderDefault 0 0 $borderDefault;
       }
     }
   }

@@ -57,6 +57,7 @@
   &,
   .gin--dark-mode & {
     border: 2px solid var(--colorGinBorder);
+    border-radius: 4px;
 
     &:checked {
       border-color: var(--colorGinPrimary);

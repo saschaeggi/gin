@@ -87,13 +87,6 @@
   padding-top: 0;
   margin-bottom: 0;
   background-color: transparent;
-
-  .block-local-tasks-block {
-    @include mq($breakpointSmall) {
-      // margin-top: 6px;
-      margin-bottom: 1.5rem;
-    }
-  }
 }
 
 .page-wrapper {

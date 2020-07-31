@@ -1,9 +1,12 @@
 .page-content {
   margin-top: 0;
-}
 
-.region-pre-content:not(.region--is-empty) + .page-content {
-  margin-top: 1.5rem;
+  > .help,
+  > .region-content {
+    @include mq($breakpointSmall) {
+      margin-top: 1.5rem;
+    }
+  }
 }
 
 .layer-wrapper,
@@ -43,8 +46,7 @@
     //             20px 20px 40px #e7e7ec,
     //             -6px -6px 16px #f9f9f9,
     //             0 2px 6px 2px rgba(0, 0, 0, .03);
-
-    box-shadow: -8px -8px 40px rgba(255, 255, 255, .4),
+    box-shadow: -8px -8px 40px rgba($colorAppBackground, .8),
                 20px 20px 40px rgba(226, 229, 236, .98),
                 -6px -6px 16px rgba(0, 0, 0, .02);
   }
