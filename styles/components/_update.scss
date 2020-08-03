@@ -56,8 +56,7 @@
 
 .color-success,
 .color-checked,
-.upgrade-status-error-list tr.no-known-error,
-.upgrade-status-summary tr.no-known-error
+.drupal-upgrade-status-summary-form tr.no-known-error
 {
   border-left: 8px solid var(--colorGinGreen);
   background-color: transparent; //rgba(72, 171, 123, .05);
@@ -68,8 +67,8 @@
 }
 
 .color-warning,
-.upgrade-status-error-list tr.known-warnings,
-.upgrade-status-summary tr.known-warnings {
+.upgrade-status-next-step-remove tr,
+.drupal-upgrade-status-summary-form tr.known-warnings {
   border-left: 8px solid var(--colorGinWarning);
   background-color: transparent; //rgba(226, 151, 0, .05);
 
@@ -84,8 +83,7 @@
 }
 
 .color-error,
-.upgrade-status-error-list tr.known-errors,
-.upgrade-status-summary tr.known-errors {
+.drupal-upgrade-status-summary-form tr.known-errors {
   border-left: 8px solid var(--colorGinDanger);
   background-color: transparent; //rgba(222, 117, 96, .1);
 
