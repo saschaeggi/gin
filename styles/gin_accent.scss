@@ -53,7 +53,7 @@
   --colorGinSwitch: #26a769;
   --colorGinSwitchShadow: rgba(38, 167, 105, .3);
 
-  --colorGinIcons: #6e6d7a; //#868791; //#777883; //#6e6d7a;
+  --colorGinIcons: #777883; //#6e6d7a;
 }
 
 .gin--dark-mode {
@@ -129,9 +129,9 @@ $ginDarkmodeColors: (
   light_blue: #82bfe8,
   dark_purple: #ad8fe8,
   purple: #dba5ef,
-  teal: #67efce,
+  teal: #00ead0, //#67efce,
   green: #6bd4a1,
-  red: #ca6d6d,
+  red: #e67373,
   orange: #f79576,
   yellow: #f1c970,
   pink: #e79da3
@@ -154,6 +154,7 @@ $ginDarkmodeColors: (
   $highContrastMode: rgba(0, 0, 0, .8);
 
   --colorGinText: #{$highContrastMode};
+  --colorGinTextLight: #{$highContrastMode};
   --colorGinIcons: #{$highContrastMode};
   --colorGinFocus: #{$highContrastMode};
   --colorGinBorder: #{$highContrastMode};
@@ -167,6 +168,7 @@ $ginDarkmodeColors: (
     $highContrastMode: rgba(255, 255, 255, .8);
 
     --colorGinText: #{$highContrastMode};
+    --colorGinTextLight: #{$highContrastMode};
     --colorGinIcons: #{$highContrastMode};
     --colorGinFocus: #{$highContrastMode};
     --colorGinBorder: #{$highContrastMode};

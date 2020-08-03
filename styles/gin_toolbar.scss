@@ -90,8 +90,7 @@
 
         @include mq($breakpointMedium) {
           width: $logoSize;
-          left: #{round($toolbarWidth / 2.666666667) - 4px};
-          // background-color: var(--colorGinText);
+          left: #{round($toolbarWidth / 2.666666667) - 6px};
           mask-size: $logoSize $logoSize;
           mask-position: center 28px;
         }

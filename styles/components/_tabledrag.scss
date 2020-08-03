@@ -1,6 +1,10 @@
 .draggable {
   a.tabledrag-handle {
     float: none;
+
+    &:focus::before {
+      box-shadow: 0 0 0 2px var(--colorGinPrimary);
+    }
   }
 
   &.drag-previous {
