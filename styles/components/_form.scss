@@ -111,6 +111,7 @@ $maxWidth: 520px;
       width: 100%;
       height: 100%;
       overflow: hidden;
+      clip-path: circle(24px at 50% 50%); // Fix Safari bug
       border: 4px solid transparent;
       border-radius: 12px;
       box-sizing: border-box;

@@ -90,7 +90,7 @@
 
         @include mq($breakpointMedium) {
           width: $logoSize;
-          left: #{round($toolbarWidth / 2.666666667) - 6px};
+          left: #{round($toolbarWidth / 2.666666667) - 5px};
           mask-size: $logoSize $logoSize;
           mask-position: center 28px;
         }
