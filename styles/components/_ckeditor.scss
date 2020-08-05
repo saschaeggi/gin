@@ -19,12 +19,12 @@
   .cke_top {
     background: var(--colorGinAppBackground);
     border-bottom: 1px solid var(--colorGinBorder);
-    border-radius: 3px 3px 0 0;
+    border-radius: #{$borderDefault - 1} #{$borderDefault - 1} 0 0;
   }
 
   .cke_bottom {
     background: var(--colorGinLayer3Background);
-    border-radius: 0 0 3px 3px;
+    border-radius: 0 0 #{$borderDefault - 1} #{$borderDefault - 1};
   }
 
   .cke_contents {
