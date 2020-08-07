@@ -10,6 +10,10 @@
     background: rgba($colorDarkAppBackground, .98);
   }
 
+  .gin--high-contrast-mode & {
+    background: var(--colorGinAppBackground);
+  }
+
   @include mq($breakpointLarge) {
     position: sticky;
     z-index: 101;

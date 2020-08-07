@@ -6,6 +6,7 @@
   mask-image: icon('info');
   mask-repeat: no-repeat;
   mask-position: center center;
+  mask-size: 20px 20px;
 }
 
 // Checked
@@ -23,6 +24,7 @@
   mask-image: icon('status');
   mask-repeat: no-repeat;
   mask-position: center center;
+  mask-size: 20px 20px;
 }
 
 // Warning
@@ -38,6 +40,7 @@
   mask-image: icon('warning');
   mask-repeat: no-repeat;
   mask-position: center center;
+  mask-size: 20px 20px;
 }
 
 // Error
@@ -56,6 +59,7 @@
   mask-image: icon('error');
   mask-repeat: no-repeat;
   mask-position: center center;
+  mask-size: 20px 20px;
 }
 
 .system-status-counter,
@@ -78,7 +82,7 @@
     &--warning:before,
     &--error:before {
       mask-position: center 16px;
-      mask-size: 24px 24px;
+      mask-size: 32px 32px;
     }
   }
 
@@ -178,8 +182,8 @@
       top: 1em;
       left: 10px;
       display: inline-block;
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
       margin-right: 10px;
     }
   }
@@ -187,6 +191,6 @@
 
 .system-status-report__status-title .details-title:before,
 .details .system-status-report__status-icon:before {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }

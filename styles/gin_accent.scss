@@ -42,7 +42,7 @@
   --colorGinLayerBorder: rgba(0, 0, 0, .08);
   --colorGinLayer2Border: #d4d4d8;
   --colorGinTableBorder: rgba(0, 0, 0, .15);
-  --colorGinTabsBorder: rgba(0, 0, 0, .15);
+  --colorGinTabsBorder: rgba(0, 0, 0, .2);
   --colorGinFormElementBorder: #8E929C;
 
   --colorGinTitle:#222330;
@@ -153,6 +153,7 @@ $ginDarkmodeColors: (
 .gin--high-contrast-mode {
   $highContrastMode: rgba(0, 0, 0, .8);
 
+  --colorGinAppBackground: #c6c8ce;
   --colorGinText: #{$highContrastMode};
   --colorGinTextLight: #{$highContrastMode};
   --colorGinIcons: #{$highContrastMode};
@@ -167,6 +168,7 @@ $ginDarkmodeColors: (
   &.gin--dark-mode {
     $highContrastMode: rgba(255, 255, 255, .8);
 
+    --colorGinAppBackground: #000;
     --colorGinText: #{$highContrastMode};
     --colorGinTextLight: #{$highContrastMode};
     --colorGinIcons: #{$highContrastMode};
