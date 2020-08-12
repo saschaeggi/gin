@@ -142,6 +142,11 @@
             display: block;
             padding-left: #{$sidebarSpacer + 1.5rem};
 
+            .details-title {
+              position: static;
+              padding-left: 0;
+            }
+
             &:before {
               left: $sidebarSpacer;
             }

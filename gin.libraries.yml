@@ -2,6 +2,8 @@ gin:
   css:
     theme:
       dist/css/gin.css: { minified: true }
+  js:
+    dist/js/gin_ckeditor.js: { minified: true }
 
 gin_init:
   header: true

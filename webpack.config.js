@@ -19,7 +19,7 @@ module.exports = {
     gin_accent: ['./js/gin_accent.js','./styles/gin_accent.scss'],
     gin_settings: ['./js/gin_settings.js'],
     gin_dialog: ['./styles/gin_dialog.scss'],
-    gin_ckeditor: ['./styles/gin_ckeditor.scss'],
+    gin_ckeditor: ['./js/gin_ckeditor.js', './styles/gin_ckeditor.scss'],
   },
   output: {
     devtoolLineToLine: true,
