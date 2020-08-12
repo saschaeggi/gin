@@ -5,7 +5,7 @@
 (($, Drupal, drupalSettings) => {
   Drupal.behaviors.ginCKEditorContextMenu = {
     attach: function attach() {
-      if (CKEDITOR !== undefined) {
+      if (window.CKEDITOR && CKEDITOR !== undefined) {
         const accentCss = drupalSettings.gin.accent_css_path;
         const contentsCss = drupalSettings.gin.ckeditor_css_path;
         const accentColorPreset = drupalSettings.gin.preset_accent_color;
