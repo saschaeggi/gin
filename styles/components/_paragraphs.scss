@@ -122,3 +122,7 @@
     border-radius: $borderDefault;
   }
 }
+
+.js .paragraph-type-add-modal-button:hover {
+  background: var(--colorGinPrimary);
+}
