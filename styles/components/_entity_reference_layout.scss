@@ -1,6 +1,8 @@
 // Paragraphs in Layout Builder
-.field--widget-entity-reference-layout-widget {
-  fieldset.erl-field {
+.field--widget-entity-reference-layout-widget,
+.layout-paragraphs-field {
+  fieldset.erl-field,
+  fieldset.layout-paragraphs-field {
     position: relative;
     padding-top: 0;
     padding-left: 0;
@@ -18,23 +20,27 @@
     }
   }
 
-  .erl-layout {
+  .erl-layout,
+  .layout-paragraphs-layout {
     background: none;
 
     .layout {
-      border-left: 1px dashed #ccc;
-      border-bottom: 1px dashed #ccc;
+      border-left: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
       background: #fff;
     }
 
     .layout-controls,
-    .erl-actions {
+    .erl-actions,
+    .layout-paragraphs-actions {
       background: var(--colorGinLayer2Background);
     }
   }
 
   .erl-add-content__group,
-  .erl-add-content--group {
+  .erl-add-content--group,
+  .layout-paragraphs-add-content__group,
+  .layout-paragraphs-add-content--group {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -75,7 +81,9 @@
   }
 
   .erl-layout-region,
-  .erl-disabled-items {
+  .erl-disabled-items,
+  .layout-paragraphs-layout-region,
+  .layout-paragraphs-disabled-items {
     padding: 16px;
     background: #fff;
     box-shadow: none;
@@ -83,16 +91,18 @@
     &,
     &:hover {
       border: 0 none;
-      border-top: 1px dashed #ccc;
-      border-right: 1px dashed #ccc;
+      border-top: 1px solid #ccc;
+      border-right: 1px solid #ccc;
     }
 
     .layout-label {
       display: none;
     }
 
-    .erl-item {
+    .erl-item,
+    .layout-paragraphs-item {
       background: white;
+      border: 1px dashed #ccc;
 
       &:hover,
       &:active,
@@ -107,10 +117,21 @@
         }
       }
     }
+
+    .paragraph-type-label {
+      margin: -1px;
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translate(-50%);
+      border: 0 none;
+      color: #999;
+    }
   }
 
   // Don't show contextual for pagragraphs
-  .erl-item {
+  .erl-item,
+  .layout-paragraphs-item {
     .paragraph {
       .field {
         line-height: 1.5;
@@ -143,7 +164,8 @@
     }
   }
 
-  .erl-layout.erl-item {
+  .erl-layout.erl-item,
+  .layout-paragraphs-layout.layout-paragraphs-item {
     padding-top: 32px;
     border: 0 none;
     margin-bottom: 0;
@@ -155,7 +177,9 @@
   }
 
   .erl-disabled-items,
-  .erl-disabled-items.form-item.form-wrapper {
+  .erl-disabled-items.form-item.form-wrapper,
+  .layout-paragraphs-disabled-items,
+  .layout-paragraphs-disabled-items.form-item.form-wrapper {
     padding: 24px;
     margin-bottom: -6rem;
     background: #f1f1f3;
@@ -178,22 +202,27 @@
       color: #999;
     }
 
-    .erl-disabled-wrapper {
+    .erl-disabled-wrapper,
+    .layout-paragraphs-disabled-wrapper {
       background: transparent;
       border-color: var(--colorGinLayer3Border);
     }
   }
 
-  .erl-add-content {
+  .erl-add-content,
+  .layout-paragraphs-add-content {
     &:focus {
       outline: none;
       box-shadow: none;
     }
   }
 
-  .erl-actions {
+  .erl-actions,
+  .layout-paragraphs-actions {
     .erl-edit,
-    .erl-remove {
+    .erl-remove,
+    .layout-paragraphs-edit,
+    .layout-paragraphs-remove {
       &, &:hover, &:hover, &:focus {
         box-shadow: none !important;
         border-color: transparent !important;
@@ -202,7 +231,9 @@
   }
 
   .erl-add-content--single,
-  .erl-item > .erl-add-content--single {
+  .erl-item > .erl-add-content--single,
+  .layout-paragraphs-add-content--single,
+  .layout-paragraphs-item > .layout-paragraphs-add-content--single {
     position: static;
     width: 100%;
     left: 0;
@@ -211,7 +242,9 @@
   }
 
   .erl-add-section,
-  .erl-add-content--single button {
+  .erl-add-content--single button,
+  > .fieldset__wrapper > .layout-paragraphs-add-content__toggle {
+    position: static;
     display: block;
     width: 100%;
     color: var(--colorGinPrimary);
@@ -232,11 +265,13 @@
     }
   }
 
-  .erl-item:last-of-type > .erl-add-content--single {
+  .erl-item:last-of-type > .erl-add-content--single,
+  .layout-paragraphs-item:last-of-type > .layout-paragraphs-add-content--single {
     opacity: 1;
   }
 
-  .erl-add-content--single {
+  .erl-add-content--single,
+  .layout-paragraphs-add-content--single {
     button {
       .icon {
         margin-right: .5rem;
@@ -267,7 +302,8 @@
     box-shadow: none;
   }
 
-  .erl-form-actions {
+  .erl-form-actions,
+  .layout-paragraphs-form-actions {
     margin-bottom: 0 !important;
     padding-top: 0;
     padding-bottom: 0;
@@ -275,7 +311,8 @@
 }
 
 // Add more item
-.erl-add-more-menu__item {
+.erl-add-more-menu__item,
+.layout-paragraphs-add-more-menu__item {
   a {
     color: var(--colorGinPrimary);
 
@@ -286,7 +323,8 @@
 }
 
 // Add Toggle
-.erl-add-content__toggle {
+.erl-add-content__toggle,
+.layout-paragraphs-add-content__toggle {
   bottom: 2px;
   background: var(--colorGinPrimary);
   border-radius: 50%;
@@ -309,7 +347,8 @@
 }
 
 // Loader
-.erl-loading div.spinner {
+.erl-loading div.spinner,
+.layout-paragraphs-loading div.spinner {
   width: 1.125rem;
   height: 1.125rem;
   animation: gin-throbber 0.75s linear infinite;
@@ -328,6 +367,113 @@
 }
 
 // If ERL field is first element, remove margin-top
-.erl-layout-wrapper {
+.erl-layout-wrapper,
+.layout-paragraphs-disabled-items__items {
   margin-top: 0;
+}
+
+/*
+** Specific layout_paragraphs overrides
+*/
+
+.layout-paragraphs-field {
+  border: 0 none;
+  box-shadow: none;
+
+  > .fieldset__legend .fieldset__label {
+    padding-left: 0;
+  }
+
+  > .fieldset__wrapper {
+    margin: 0;
+  }
+
+  // Target first button
+  > .fieldset__wrapper > .layout-paragraphs-add-content__toggle {
+    position: absolute;
+    top: auto;
+    left: 0;
+    bottom: 130px;
+    margin: 0;
+    width: 100%;
+    height: 64px;
+    text-align: center;
+    text-indent: unset;
+    border-radius: 2px;
+
+    &:before {
+      display: none;
+    }
+
+    span {
+      clip: unset;
+      width: auto;
+      height: auto;
+      left: 0;
+      position: relative !important;
+      top: 0;
+      left: 0;
+      line-height: 1;
+      font-size: 16px;
+      margin: 0 0 0 8px;
+      padding: 0;
+      overflow: visible;
+    }
+  }
+
+  .paragraph-layout-label {
+    opacity: .5;
+    top: 6px;
+    transform: translateX(-50%);
+    font-style: normal;
+  }
+
+  .paragraph--view-mode--preview {
+    padding-right: 0;
+  }
+
+  .layout-paragraphs-layout.layout-paragraphs-item {
+    padding: 64px 24px 32px;
+    margin-bottom: 32px;
+    background: #fff;
+    border: 1px solid var(--colorGinBorder);
+    border-radius: $borderDefault;
+    box-shadow: inset 0 40px 0 0 var(--colorGinLayer2Background);
+  }
+
+  .layout-paragraphs-disabled-items {
+    &__items {
+      border: 1px dashed var(--colorGinLayer2Border);
+    }
+
+    .fieldset__wrapper {
+      margin: 0;
+    }
+  }
+
+  .layout-controls {
+    opacity: 1;
+    top: 4px;
+  }
+
+  .layout-paragraphs-actions {
+    visibility: visible;
+    top: 4px;
+  }
+}
+
+.layout-paragraphs-item .layout-paragraphs-add-content__toggle {
+  top: 16px;
+}
+
+.layout-paragraphs-item > .layout-paragraphs-add-content__toggle {
+  top: 100%;
+}
+
+.layout-paragraphs-disabled-items.form-item.form-wrapper {
+  margin-top: 110px;
+}
+
+.layout-paragraphs-layout-region:hover > button.layout-paragraphs-add-content__toggle, .layout-paragraphs-item:hover > button.layout-paragraphs-add-content__toggle {
+   opacity: 1;
 }

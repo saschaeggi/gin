@@ -49,6 +49,14 @@
       }
     }
 
+    // More room for content to breathe
+    .node-form {
+      @include mq($breakpointBig) {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+      }
+    }
+
     .block-local-tasks-block,
     .block-system-main-block,
     .messages-list,
