@@ -43,7 +43,7 @@
 
 .draggable.drag-previous {
   background-color: var(--colorGinLayer2Background);
-  border-left: 6px solid var(--colorGinWarning);
+  box-shadow: inset 8px 0 0 0 var(--colorGinWarning);
 }
 
 .tabledrag-cell-content__item {

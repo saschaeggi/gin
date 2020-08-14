@@ -29,15 +29,13 @@
           CKEDITOR.config.contextmenu_contentsCss.push(contentsCss);
         }
 
-        // Watch for changes and inject styles.
-        const observer = new MutationObserver(function() {
+        CKEDITOR.on('instanceReady', function() {
           // Main window of CKEDITOR.
           $('.cke_wysiwyg_frame').contents().find('body').addClass(ginClasses).attr('data-gin-accent', accentColorPreset);
-          $('.cke_wysiwyg_frame').contents().find('head').once().append(`
-            <link rel="stylesheet" href="${accentCss}" type="text/css" />
-            <link rel="stylesheet" href="${contentsCss}" type="text/css" />
-          `);
+        });
 
+        // Watch for changes and inject styles.
+        const observer = new MutationObserver(function() {
           // Contextmenu.
           $('body > .cke_menu_panel > iframe').contents().find('body').addClass(ginClasses).attr('data-gin-accent', accentColorPreset);
         });
