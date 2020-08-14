@@ -439,6 +439,11 @@
     border: 1px solid var(--colorGinBorder);
     border-radius: $borderDefault;
     box-shadow: inset 0 40px 0 0 var(--colorGinLayer2Background);
+
+    // Drag & Drop
+    &.gu-transit {
+      background-color: var(--colorGinPrimaryLightActive);
+    }
   }
 
   .layout-paragraphs-disabled-items {
