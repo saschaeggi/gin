@@ -13,6 +13,7 @@ html {
 body {
   color: var(--colorGinText);
   background: var(--colorGinAppBackground);
+  overflow-x: hidden;
 }
 
 h1, h2, h3 {
