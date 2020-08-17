@@ -31,6 +31,10 @@
     font-weight: normal;
   }
 
+  .ui-dialog-content {
+    color: var(--colorGinText);
+  }
+
   .ui-widget-content.ui-dialog-buttonpane {
     padding: 16px 24px;
     border-top: 1px solid var(--colorGinLayerBorder);

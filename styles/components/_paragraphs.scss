@@ -17,11 +17,15 @@
   }
 
   .field-multiple-table {
-    thead, tbody {
-      border: 1px solid var(--colorGinBorder);
-    }
+    // thead, tbody {
+    //   border: 1px solid var(--colorGinBorder);
+    // }
 
     thead {
+      th {
+        border-radius: $borderDefault;
+      }
+
       .label {
         display: inline-block;
         font-size: 18px;
