@@ -85,33 +85,15 @@ libraries-override:
         css/components/textarea.css: /core/themes/claro/css/classy/components/textarea.css
         css/components/ui-dialog.css: /core/themes/claro/css/classy/components/ui-dialog.css
 
-  classy/book-navigation: claro/classy.book-navigation
-
   classy/dropbutton:
     css:
       component:
         css/components/dropbutton.css: false
 
-  classy/file: claro/classy.file
-
-  classy/forum: claro/classy.forum
-
-  classy/indented: claro/classy.indented
-
-  classy/media_embed_ckeditor_theme: claro/classy.media_embed_ckeditor_theme
-
-  classy/media_embed_error: claro/classy.media_embed_error
-
   classy/messages:
     css:
       component:
         css/components/messages.css: false
-
-  classy/node: claro/classy.node
-
-  classy/progress: claro/progress
-
-  classy/search-results: claro/classy.search-results
 
   classy/user: false
 
