@@ -253,7 +253,7 @@
     color: var(--colorGinPrimary);
     background: var(--colorGinItemHover);
     padding: 16px;
-    border: 1.5px dashed var(--colorGinPrimary);
+    border: 2px solid var(--colorGinPrimary);
     border-radius: $borderDefault;
 
     &,
@@ -454,8 +454,8 @@
 .active-items .layout-paragraphs-item,
 .layout-paragraphs-item {
   background: #fff;
-  border: 1.5px dashed #ccc;
-  border-radius: $borderDefault;
+  border: 1px dashed #999;
+  border-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='2' ry='2' stroke='%23999999' stroke-width='2' stroke-dasharray='4%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e") 1;
 
   &:not(:last-of-type) {
     margin-bottom: 2rem;
@@ -527,7 +527,7 @@
   }
 
   .layout-paragraphs-layout.layout-paragraphs-item {
-    padding: 64px 24px 32px;
+    padding: 56px 16px 20px;
     margin-bottom: 2rem;
     background: #fff;
     border: 1px solid var(--colorGinBorder);
@@ -565,7 +565,8 @@
 .erl-disabled-wrapper,
 .layout-paragraphs-disabled-items__items {
   padding: 1rem;
-  border: 1.5px dashed var(--colorGinLayer2Border);
+  border: 1px dashed var(--colorGinLayer2Border);
+  border-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='2' ry='2' stroke='%23999999' stroke-width='2' stroke-dasharray='4%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e") 1;
 }
 
 .erl-disabled-wrapper .erl-disabled-items__description {
