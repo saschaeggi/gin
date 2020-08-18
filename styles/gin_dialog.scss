@@ -9,11 +9,12 @@
 // Components
 @import "components/defaults";
 @import "components/color-overrides";
-@import "components/dialog";
-@import "components/throbber";
 
 .ui-dialog {
   @import "components/button";
   @import "components/form";
   @import "components/ckeditor";
 }
+
+@import "components/dialog";
+@import "components/throbber";

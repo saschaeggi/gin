@@ -44,7 +44,10 @@
       margin-top: 0;
       margin-bottom: 0;
     }
+  }
 
+  .ui-widget-content.ui-dialog-buttonpane,
+  [data-drupal-selector*="-remove-form"] {
     .button.button--danger {
       border-color: var(--colorGinDanger) !important;
     }

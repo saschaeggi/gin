@@ -85,6 +85,11 @@ fieldset.media-library-widget {
   padding: 1.5rem;
   border: 1px solid var(--colorGinBorder);
   border-radius: 6px;
+
+  .media-library-widget__toggle-weight {
+    font-size: .75em;
+    padding: 8px;
+  }
 }
 
 .media-library-widget-empty-text {

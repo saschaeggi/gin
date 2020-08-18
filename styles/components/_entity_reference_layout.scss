@@ -25,8 +25,8 @@
     background: none;
 
     .layout {
-      border-left: 1px solid #ccc;
-      border-bottom: 1px solid #ccc;
+      border-left: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
       background: #fff;
     }
 
@@ -34,6 +34,19 @@
     .erl-actions,
     .layout-paragraphs-actions {
       background: var(--colorGinLayer2Background);
+    }
+
+    .layout-controls {
+      opacity: 1;
+      left: 4px;
+      top: 8px;
+    }
+
+    .erl-actions,
+    .layout-paragraphs-actions {
+      visibility: visible;
+      right: 4px;
+      top: 8px;
     }
   }
 
@@ -87,49 +100,20 @@
   .erl-disabled-items,
   .layout-paragraphs-layout-region,
   .layout-paragraphs-disabled-items {
-    padding: 16px;
+    padding: 24px;
     background: #fff;
     box-shadow: none;
 
     &,
     &:hover {
       border: 0 none;
-      border-top: 1px solid #ccc;
-      border-right: 1px solid #ccc;
+      border-top: 1px solid #ddd;
+      border-right: 1px solid #ddd;
     }
 
     .layout-label {
       display: none;
     }
-
-    // .erl-item,
-    // .layout-paragraphs-item {
-    //   background: white;
-    //   border: 1px dashed #ccc;
-
-    //   &:hover,
-    //   &:active,
-    //   &:focus {
-    //     border-color: var(--colorGinFocus);
-    //     // outline: 1px solid var(--colorGinFocus);
-    //     z-index: 1;
-
-    //     .layout-label {
-    //       display: block;
-    //       margin: 0;
-    //     }
-    //   }
-    // }
-
-    // .paragraph-type-label {
-    //   margin: -1px;
-    //   position: absolute;
-    //   top: 6px;
-    //   left: 50%;
-    //   transform: translate(-50%);
-    //   border: 0 none;
-    //   color: #999;
-    // }
   }
 
   // Don't show contextual for pagragraphs
@@ -169,14 +153,51 @@
 
   .erl-layout.erl-item,
   .layout-paragraphs-layout.layout-paragraphs-item {
-    padding-top: 32px;
+    position: relative;
+    padding: 48px 0 0;
+    margin-bottom: 1rem;
     border: 0 none;
-    margin-bottom: 0;
+    border-radius: $borderDefault;
 
-    &:before {
-      height: 2px;
-      background-color: var(--colorGinLayer2Border);
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 48px;
+      background: #eeeef5;
+
+      .gin--dark-mode & {
+        background: var(--colorGinLayer2Background);
+      }
     }
+
+    .paragraph-layout-label {
+      opacity: .6;
+      top: 12px;
+      transform: translateX(-50%);
+      font-style: normal;
+      font-weight: bold !important;
+    }
+
+    &:hover > button.erl-add-content__toggle,
+    &:hover > button.layout-paragraphs-add-content__toggle {
+      opacity: 1;
+    }
+
+    .erl-actions input.erl-edit,
+    .erl-actions input.erl-remove,
+    .layout-paragraphs-actions input.layout-paragraphs-edit,
+    .layout-paragraphs-actions input.layout-paragraphs-remove {
+      opacity: .75;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
   }
 
   .erl-disabled-items,
@@ -240,13 +261,12 @@
     position: static;
     width: 100%;
     left: 0;
-    margin: .5rem 0 0 0;
+    margin: 1rem 0 0 0;
     box-sizing: border-box;
   }
 
   .erl-add-section,
   .erl-add-content--single button {
-  // > .fieldset__wrapper > .layout-paragraphs-add-content__toggle {
     position: static;
     display: block;
     width: 100%;
@@ -385,8 +405,7 @@
   position: relative;
 
   a {
-    color: var(--colorGinPrimary);
-    text-align: left;
+    color: var(--colorGinText);
     padding: .5rem;
 
     &:hover {
@@ -453,6 +472,7 @@
 .erl-field .erl-disabled-items .erl-item,
 .active-items .layout-paragraphs-item,
 .layout-paragraphs-item {
+  padding: 40px 24px 0 24px;
   background: #fff;
   border: 1px dashed #999;
   border-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='2' ry='2' stroke='%23999999' stroke-width='2' stroke-dasharray='4%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e") 1;
@@ -481,10 +501,11 @@
   .paragraph-type-label {
     margin: -1px;
     position: absolute;
-    top: 6px;
+    top: 12px;
     left: 50%;
     transform: translate(-50%);
     border: 0 none;
+    font-style: normal;
     color: #999;
   }
 }
@@ -515,28 +536,19 @@
     display: none;
   }
 
-  .paragraph-layout-label {
-    opacity: .6;
-    top: 6px;
-    transform: translateX(-50%);
-    font-style: normal;
-  }
-
   .paragraph--view-mode--preview {
     padding-right: 0;
   }
 
   .layout-paragraphs-layout.layout-paragraphs-item {
-    padding: 56px 16px 20px;
-    margin-bottom: 2rem;
-    background: #fff;
-    border: 1px solid var(--colorGinBorder);
-    border-radius: $borderDefault;
-    box-shadow: inset 0 40px 0 0 var(--colorGinLayer2Background);
-
     // Drag & Drop
     &.gu-transit {
       background-color: var(--colorGinPrimaryLightActive);
+    }
+
+    .layout-controls,
+    .layout-paragraphs-actions {
+      background-color: transparent;
     }
 
     // Item in layout
@@ -550,16 +562,6 @@
       margin: 0;
     }
   }
-
-  .layout-controls {
-    opacity: 1;
-    top: 4px;
-  }
-
-  .layout-paragraphs-actions {
-    visibility: visible;
-    top: 4px;
-  }
 }
 
 .erl-disabled-wrapper,
@@ -567,6 +569,13 @@
   padding: 1rem;
   border: 1px dashed var(--colorGinLayer2Border);
   border-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='2' ry='2' stroke='%23999999' stroke-width='2' stroke-dasharray='4%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e") 1;
+
+  .erl-item,
+  .layout-paragraphs-item {
+    &:not(:last-of-type) {
+      margin-bottom: 1rem;
+    }
+  }
 }
 
 .erl-disabled-wrapper .erl-disabled-items__description {
@@ -579,8 +588,4 @@
 
 .layout-paragraphs-item > .layout-paragraphs-add-content__toggle {
   top: 100%;
-}
-
-.layout-paragraphs-layout-region:hover > button.layout-paragraphs-add-content__toggle, .layout-paragraphs-item:hover > button.layout-paragraphs-add-content__toggle {
-   opacity: 1;
 }
