@@ -56,7 +56,7 @@
                 <img src="{{ file_url(icon_path) }}" class="toolbar-icon-home" />
               </a>
             {% else %}
-              <a href="/" class="toolbar-icon toolbar-icon-admin-toolbar-tools-help toolbar-icon-default" data-drupal-link-system-path="<front>">
+              <a href="{{ url('<front>') }}" class="toolbar-icon toolbar-icon-admin-toolbar-tools-help toolbar-icon-default" data-drupal-link-system-path="<front>">
                 {{ 'Home'|t }}
               </a>
             {% endif %}
