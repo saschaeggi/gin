@@ -322,3 +322,9 @@ fieldset:not(.fieldgroup) {
     padding-right: 0;
   }
 }
+
+// Autocomplete field
+.js input.form-linkit-autocomplete {
+  padding-right: 2rem;
+  background-position: right 8px center;
+}

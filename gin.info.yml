@@ -138,6 +138,12 @@ libraries-override:
     js:
       js/media_library.view.js: js/overrides/gin_media_library.view.js
 
+  # Gin overrides
+  gin/gin_dialog:
+    css:
+      theme:
+        dist/css/gin_dialog.css: false
+
   libraries-extend:
     ckeditor/drupal.ckeditor:
       - claro/ckeditor-editor
