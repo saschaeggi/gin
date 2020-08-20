@@ -587,8 +587,8 @@
 
 // Drag & Drop
 .gu-transit,
-.erl-field .gu-transit,
-.layout-paragraphs-field .gu-transit {
+.erl-field .erl-item.gu-transit,
+.layout-paragraphs-field .layout-paragraphs-item.gu-transit {
   background-color: var(--colorGinPrimaryLightActive);
 }
 
