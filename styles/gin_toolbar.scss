@@ -195,7 +195,7 @@ a.toolbar-menu__trigger,
     position: fixed;
     left: 0;
     bottom: 0;
-    font-size: 0;
+    font-size: 1rem;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -204,6 +204,7 @@ a.toolbar-menu__trigger,
     padding: 16px 0 16px #{$toolbarWidth};
     margin: 0;
     transition: width $transition;
+    overflow: hidden;
 
     &, &:active, &:focus {
       background-color: transparent;
@@ -233,7 +234,6 @@ a.toolbar-menu__trigger,
 
     &.is-active {
       display: flex;
-      font-size: 1rem;
       font-weight: normal;
       color: var(--colorGinTextLight);
       width: $toolbarOpenWidth;
@@ -345,7 +345,7 @@ a.toolbar-menu__trigger,
           color: var(--colorGinTextLight);
           display: flex;
           align-items: center;
-          width: $toolbarWidth;
+          width: 100%;
           height: 56px;
           padding-left: $toolbarWidth;
           padding-right: 0;
