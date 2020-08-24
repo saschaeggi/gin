@@ -3,6 +3,21 @@
   // Has sidebar, save the space
   @include mq($breakpointLarge) {
     padding-right: var(--ginSidebarWidth);
+
+    .dialog-off-canvas-main-canvas {
+      transition: padding-left $transition;
+    }
+
+    // If off-canvas dialog is shown
+    &.js-off-canvas-dialog-open {
+      padding-right: 0;
+
+      // Hide sidebar when off-canvas is shown
+      .layout-region.layout-region-node-secondary {
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
   }
 
   .layout-node-form {

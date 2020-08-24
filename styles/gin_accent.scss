@@ -54,6 +54,7 @@
   --colorGinSwitchShadow: rgba(38, 167, 105, .3);
 
   --colorGinIcons: #777883; //#6e6d7a;
+  --colorGinStickyBg: #c8cdd8;
 }
 
 .gin--dark-mode {
@@ -97,6 +98,7 @@
   --colorGinSwitchShadow: var(--colorGinPrimaryLight);
 
   --colorGinIcons: #888;
+  --colorGinStickyBg: var(--colorGinLayer4Background);
 }
 
 $ginColors: (

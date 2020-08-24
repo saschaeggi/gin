@@ -94,9 +94,17 @@
   color: var(--colorGinPrimary);
 }
 
-// Off canvas.
-.ui-dialog.ui-dialog-off-canvas {
-  background: var(--colorGinLayerBackground);
+// Off canvas dialog.
+.ui-widget.ui-dialog.ui-dialog-off-canvas {
+  --colorGinOffCanvasActive: var(--colorGinPrimary);
+  background: #444;
+  border: 0 none;
+  box-shadow: 0 0 48px rgba(0, 0, 0, .075);
+
+  .ui-dialog-titlebar {
+    background: #1b1b1d;
+    border-radius: 0;
+  }
 
   .ui-dialog-titlebar-close {
     top: 20px;
@@ -104,10 +112,16 @@
 
   .ui-resizable-w {
     border: 0 none;
-    background-color: var(--colorGinLayer3Background);
+    background-color: transparent;
   }
 
   .fieldset {
     color: var(--colorGinText);
+  }
+
+  #drupal-off-canvas {
+    input[type="submit"].button--primary {
+      background: var(--colorGinOffCanvasActive);
+    }
   }
 }

@@ -1,9 +1,11 @@
 // Category title
 .js .paragraphs-add-dialog--categorized .category-title,
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .category-title,
-.js .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-label, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-label
+.ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-label,
+.js .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-label, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-label,
+.js .paragraphs-add-dialog--categorized .paragraphs-label
 {
-  color: var(--colorGinText);
+  color: #fff;
 }
 
 // Layout selection
@@ -13,21 +15,15 @@
 .js .paragraphs-add-dialog--categorized.paragraphs-style-list .style-list, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized.paragraphs-style-list .style-list
 {
   margin-top: 10px;
-  background: var(--colorGinPrimary);
+  background: var(--colorGinOffCanvasActive);
   border: 0 none;
   box-shadow: none;
-}
-
-// Item
-.js .paragraphs-add-dialog--categorized .paragraphs-label,
-.ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-label
-{
-  color: var(--colorGinText);
 }
 
 // Add button
 .paragraphs-button--icon {
   position: relative;
+  background-size: contain;
 }
 
 .js .paragraphs-add-dialog--categorized:not(.paragraphs-style-list) .paragraphs-button--add-more,
@@ -52,12 +48,12 @@
 
     &::after {
       z-index: 1;
-      background: var(--colorGinPrimary);
+      background: var(--colorGinOffCanvasActive);
     }
 
     &::before {
       z-index: 2;
-      background: var(--colorGinButtonText);
+      background: #222;
       mask-image: icon('add');
       mask-repeat: no-repeat;
       mask-position: center center;
@@ -68,10 +64,6 @@
   &:active,
   &:focus,
   &:hover {
-    .paragraphs-label {
-      color: var(--colorGinButtonText);
-    }
-
     .paragraphs-button--icon {
       &::before,
       &::after {
@@ -79,10 +71,16 @@
       }
 
       &::before {
-        background: var(--colorGinPrimary);
+        background-image: none;
       }
     }
   }
+}
+
+.js .paragraphs-add-dialog--categorized .paragraphs-button--icon,
+.ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-button--icon {
+  width: 196px;
+  background-size: contain;
 }
 
 // Search
@@ -99,4 +97,19 @@
 
 .js .paragraphs-add-dialog--categorized .paragraphs-label, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-label {
   max-width: 180px;
+}
+
+.js .paragraphs-add-dialog--categorized .dialog-header, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .dialog-header {
+  margin: 1rem 0;
+}
+
+.js .paragraphs-add-dialog--categorized .paragraphs-add-dialog-list, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-add-dialog-list {
+  max-width: unset;
+  margin: 0 -.5rem;
+  width: calc(100% + 1rem);
+}
+
+.js .paragraphs-add-dialog--categorized .paragraphs-add-dialog-row, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-add-dialog-row {
+  flex-basis: auto;
+  margin: .5rem;
 }

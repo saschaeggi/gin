@@ -139,6 +139,13 @@ libraries-override:
       js/media_library.view.js: js/overrides/gin_media_library.view.js
 
   # Gin overrides
+  core/drupal.dialog.off_canvas:
+    css:
+      base:
+        misc/dialog/off-canvas.base.css: false
+        misc/dialog/off-canvas.css: false
+        misc/dialog/off-canvas.theme.css: false
+
   gin/gin_dialog:
     css:
       theme:
@@ -185,6 +192,12 @@ libraries-override:
       - claro/media_library.theme
     media_library/widget:
       - claro/media_library.theme
+
+stylesheets-remove:
+  - core/misc/dialog/off-canvas.theme.css
+  - core/themes/stable/css/core/dialog/off-canvas.theme.css
+  - core/themes/stable/css/core/dialog/off-canvas.base.css
+  - modules/contrib/paragraphs_ee/css/paragraphs_ee.off_canvas.css
 
 quickedit_stylesheets:
   - ../../../core/themes/claro/css/components/quickedit.css
