@@ -36,3 +36,8 @@ h3 {
 ::-moz-selection {
   background: var(--colorGinPrimaryLightHover);
 }
+
+a {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}

@@ -57,9 +57,9 @@
 
       .page-title {
         @include mq($breakpointLarge) {
-          width: 100%;
+          width: auto;
           max-width: $breakpointWide;
-          margin: 0 auto;
+          margin: 0;
         }
       }
     }
