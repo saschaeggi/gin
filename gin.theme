@@ -111,8 +111,8 @@ function gin_page_attachments_alter(&$page) {
     $darkmode = _gin_dark_mode_enabled();
     $preset_accent_color = _gin_preset_accent_color();
     $accent_color = _gin_accent_color();
-    $preset_focus_color = theme_get_setting('preset_focus_color', 'gin');
-    $focus_color = theme_get_setting('focus_color', 'gin');
+    $preset_focus_color = theme_get_setting('preset_focus_color');
+    $focus_color = theme_get_setting('focus_color');
     $toolbar = _gin_toolbar();
     $highcontrastmode = _gin_highcontrastmode_enabled();
 
@@ -152,13 +152,13 @@ function gin_page_attachments_alter(&$page) {
     // Add stylesheets for JS use.
     $basethemeurl_with_prefix = \Drupal::urlGenerator()->generateFromRoute('<front>', [], ['absolute' => TRUE]) . drupal_get_path('theme', 'gin');
     $page['#attached']['drupalSettings']['gin']['accent_css_path'] = $basethemeurl_with_prefix . '/dist/css/gin_accent.css';
-    $page['#attached']['drupalSettings']['gin']['ckeditor_css_path'] =  $basethemeurl_with_prefix . '/dist/css/gin_ckeditor.css';
+    $page['#attached']['drupalSettings']['gin']['ckeditor_css_path'] = $basethemeurl_with_prefix . '/dist/css/gin_ckeditor.css';
 
     // Expose default settings.
-    $page['#attached']['drupalSettings']['gin']['default_darkmode'] = theme_get_setting('enable_darkmode', 'gin');
-    $page['#attached']['drupalSettings']['gin']['default_accent_color'] = theme_get_setting('accent_color', 'gin');
-    $page['#attached']['drupalSettings']['gin']['default_preset_accent_color'] = theme_get_setting('preset_accent_color', 'gin');
-    $page['#attached']['drupalSettings']['gin']['default_high_contrast_mode'] = theme_get_setting('high_contrast_mode', 'gin');
+    $page['#attached']['drupalSettings']['gin']['default_darkmode'] = theme_get_setting('enable_darkmode');
+    $page['#attached']['drupalSettings']['gin']['default_accent_color'] = theme_get_setting('accent_color');
+    $page['#attached']['drupalSettings']['gin']['default_preset_accent_color'] = theme_get_setting('preset_accent_color');
+    $page['#attached']['drupalSettings']['gin']['default_high_contrast_mode'] = theme_get_setting('high_contrast_mode');
   }
 }
 
@@ -287,7 +287,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
     $darkModeValue = $userData->get('gin', $user->id(), 'enable_darkmode');
 
     if ($darkModeValue == NULL) {
-      $darkModeValue = theme_get_setting('enable_darkmode', 'gin') == TRUE ? TRUE : FALSE;
+      $darkModeValue = theme_get_setting('enable_darkmode') == TRUE ? TRUE : FALSE;
     }
 
     // Inject the settings for the dark mode feauture.
@@ -366,7 +366,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
     $hcm_value = $userData->get('gin', $user->id(), 'high_contrast_mode');
 
     if ($hcm_value == NULL) {
-      $hcm_value = theme_get_setting('high_contrast_mode', 'gin') == TRUE ? TRUE : FALSE;
+      $hcm_value = theme_get_setting('high_contrast_mode') == TRUE ? TRUE : FALSE;
     }
 
     $form['gin_theme_settings']['user_settings']['high_contrast_mode'] = [
@@ -494,8 +494,8 @@ function gin_css_alter(&$css, $assets) {
  */
 function gin_preprocess_menu__toolbar__gin(&$variables) {
   // Get theme configs.
-  $logo_path = theme_get_setting('icon_path', 'gin');
-  $logo_default = theme_get_setting('icon_default', 'gin');
+  $logo_path = theme_get_setting('icon_path');
+  $logo_default = theme_get_setting('icon_default');
   $variables['icon_default'] = $logo_default;
 
   if (!$logo_default) {
@@ -955,7 +955,7 @@ function _gin_dark_mode_enabled() {
   }
   // Get general config.
   else {
-    $darkmode = theme_get_setting('enable_darkmode', 'gin');
+    $darkmode = theme_get_setting('enable_darkmode');
   }
 
   return $darkmode;
@@ -986,7 +986,7 @@ function _gin_preset_accent_color() {
     return _gin_user__get_preset_accentcolor();
   }
   else {
-    return theme_get_setting('preset_accent_color', 'gin');
+    return theme_get_setting('preset_accent_color');
   }
 }
 
@@ -1015,7 +1015,7 @@ function _gin_accent_color() {
     return _gin_user__accentcolor();
   }
   else {
-    return theme_get_setting('accent_color', 'gin');
+    return theme_get_setting('accent_color');
   }
 }
 
@@ -1090,7 +1090,7 @@ function _gin_toolbar() {
   }
   // Get general config.
   else {
-    $toolbar = theme_get_setting('classic_toolbar', 'gin');
+    $toolbar = theme_get_setting('classic_toolbar');
   }
 
   // Convert older versions to boolean.
@@ -1131,7 +1131,7 @@ function _gin_highcontrastmode_enabled() {
   }
   // Get general config.
   else {
-    $hcm = theme_get_setting('high_contrast_mode', 'gin');
+    $hcm = theme_get_setting('high_contrast_mode');
   }
 
   return $hcm;
