@@ -8,9 +8,9 @@
 
 // Components
 @import "components/defaults";
-@import "components/color-overrides";
 
 .ui-dialog {
+  @import "components/color-overrides";
   @import "components/button";
   @import "components/form";
   @import "components/ckeditor";
