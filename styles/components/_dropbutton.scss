@@ -17,6 +17,7 @@
   &__item:first-of-type > *,
   &__toggle {
     background: none;
+    white-space: nowrap;
   }
 
   &__toggle {
@@ -32,6 +33,7 @@
       > .button {
         color: var(--colorGinPrimary);
         background: var(--colorGinLayer3Background);
+        white-space: nowrap;
 
         &:hover, &:active, &:focus {
           color: var(--colorGinAppBackground);

@@ -125,3 +125,8 @@ table {
 .region-title {
   border-bottom: 2px solid var(--colorGinText);
 }
+
+td.webform-has-field-suffix > .form-item > .form-element {
+  max-width: 100%;
+  width: auto;
+}

@@ -404,6 +404,8 @@ a.toolbar-menu__trigger,
           background: var(--colorGinLayerBackground);
           box-shadow: none;
           border-left: 1px solid rgba(216, 217, 224, 0.8);
+          overflow-y: auto;
+          overflow-x: hidden;
 
           .gin--dark-mode & {
             border-left: 1px solid $colorDarkAppBackground;
