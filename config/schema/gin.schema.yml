@@ -24,3 +24,12 @@ gin.settings:
     high_contrast_mode:
       type: boolean
       label: 'High contrast mode'
+    accent_color:
+      type: string
+      label: 'The accent color'
+    focus_color:
+      type: string
+      label: 'The focus color'
+    icon_upload:
+      type: string
+      label: 'The icon upload'
