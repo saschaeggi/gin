@@ -64,10 +64,9 @@ $maxWidth: 520px;
 }
 
 .form-element--type-select--small {
-  padding: calc(0.5rem - 1px) calc(2.25rem - 1px) calc(0.5rem - 1px) calc(1rem - 1px);
   font-size: 0.79rem;
-  min-height: 32px;
-  line-height: 1rem;
+  min-height: 2.25rem;
+  line-height: 1;
 }
 
 .form-boolean {
