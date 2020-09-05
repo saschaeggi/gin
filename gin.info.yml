@@ -145,59 +145,60 @@ libraries-override:
         misc/dialog/off-canvas.base.css: false
         misc/dialog/off-canvas.css: false
         misc/dialog/off-canvas.theme.css: false
+        /core/themes/stable/css/core/dialog/off-canvas.theme.css: false
+        /core/themes/stable/css/core/dialog/off-canvas.base.css: false
+
+  paragraphs_ee/paragraphs_ee.off_canvas:
+    css:
+      theme:
+        css/paragraphs_ee.off_canvas.css: false
 
   gin/gin_dialog:
     css:
       theme:
         dist/css/gin_dialog.css: false
 
-  libraries-extend:
-    ckeditor/drupal.ckeditor:
-      - claro/ckeditor-editor
-    core/ckeditor:
-      - claro/ckeditor-dialog
-    core/drupal.collapse:
-      - claro/details-focus
-    core/drupal.dialog:
-      - claro/claro.drupal.dialog
-    core/drupal.dropbutton:
-      - claro/dropbutton
-    core/drupal.checkbox:
-      - claro/checkbox
-    core/drupal.message:
-      - claro/messages
-    core/drupal.progress:
-      - claro/progress
-    core/drupal.vertical-tabs:
-      - claro/vertical-tabs
-    core/jquery.ui:
-      - claro/claro.jquery.ui
-    file/drupal.file:
-      - claro/file
-    system/admin:
-      - claro/system.admin
-    core/drupal.autocomplete:
-      - claro/autocomplete
-    tour/tour-styling:
-      - claro/tour-styling
-    shortcut/drupal.shortcut:
-      - claro/drupal.shortcut
-    core/drupal.ajax:
-      - claro/ajax
-    views/views.module:
-      - claro/views
-    media/media_embed_ckeditor_theme:
-      - claro/classy.media_embed_ckeditor_theme
-    media_library/view:
-      - claro/media_library.theme
-    media_library/widget:
-      - claro/media_library.theme
-
-stylesheets-remove:
-  - core/misc/dialog/off-canvas.theme.css
-  - core/themes/stable/css/core/dialog/off-canvas.theme.css
-  - core/themes/stable/css/core/dialog/off-canvas.base.css
-  - modules/contrib/paragraphs_ee/css/paragraphs_ee.off_canvas.css
+libraries-extend:
+  ckeditor/drupal.ckeditor:
+    - claro/ckeditor-editor
+  core/ckeditor:
+    - claro/ckeditor-dialog
+  core/drupal.collapse:
+    - claro/details-focus
+  core/drupal.dialog:
+    - claro/claro.drupal.dialog
+  core/drupal.dropbutton:
+    - claro/dropbutton
+  core/drupal.checkbox:
+    - claro/checkbox
+  core/drupal.message:
+    - claro/messages
+  core/drupal.progress:
+    - claro/progress
+  core/drupal.vertical-tabs:
+    - claro/vertical-tabs
+  core/jquery.ui:
+    - claro/claro.jquery.ui
+  file/drupal.file:
+    - claro/file
+  system/admin:
+    - claro/system.admin
+  core/drupal.autocomplete:
+    - claro/autocomplete
+  tour/tour-styling:
+    - claro/tour-styling
+  shortcut/drupal.shortcut:
+    - claro/drupal.shortcut
+  core/drupal.ajax:
+    - claro/ajax
+  views/views.module:
+    - claro/views
+  media/media_embed_ckeditor_theme:
+    - claro/classy.media_embed_ckeditor_theme
+  media_library/view:
+    - claro/media_library.theme
+  media_library/widget:
+    - claro/media_library.theme
 
 quickedit_stylesheets:
   - ../../../core/themes/claro/css/components/quickedit.css
