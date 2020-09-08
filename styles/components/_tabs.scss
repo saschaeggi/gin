@@ -8,7 +8,7 @@
   padding: 6px 6px 0 6px;
   margin-left: -6px;
   margin-right: -6px;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 // Vertical tabs
@@ -44,7 +44,7 @@
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a
 {
   color: var(--colorGinText);
-  font-weight: 500;
+  font-weight: 600;
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
 
@@ -72,6 +72,7 @@
   color: var(--colorGinText);
   border: 1px solid var(--colorGinBorder);
   border-radius: $borderDefault;
+  box-shadow: none;
 }
 
 .claro-details__summary {
@@ -97,7 +98,7 @@
     left: 0;
     display: block;
     width: 100%;
-    border-bottom: 1px solid var(--colorGinTabsBorder);
+    border-bottom: 1px solid var(--colorGinBorder);
 
     @include mq($breakpointSmall) {
       width: calc(100% + 6px);
@@ -106,6 +107,12 @@
 
   @include mq($breakpointSmall) {
     width: calc(100% - 6px);
+  }
+}
+
+.is-horizontal .tabs--primary {
+  @include mq($breakpointSmall) {
+    box-shadow: 0 8px 16px -16px rgba(0,0,0,0.5);
   }
 }
 
@@ -290,5 +297,6 @@
   .js .vertical-tabs__item {
     overflow: visible;
     float: left;
+    width: 100%;
   }
 }

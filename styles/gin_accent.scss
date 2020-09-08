@@ -10,8 +10,9 @@
   --colorGinPrimaryHover: #{$ginPrimaryHover};
   --colorGinPrimaryActive: #{$ginPrimaryActive};
   --colorGinPrimaryLight: #{mix(white, $mixColor, 85%)};
-  --colorGinPrimaryLightHover: #{mix(white, $mixColor, 70%)};
-  --colorGinPrimaryLightActive: #{mix(white, $mixColor, 60%)};
+  --colorGinPrimaryLightHover: #{mix(white, $mixColor, 80%)};
+  --colorGinPrimaryLightActive: #{mix(white, $mixColor, 70%)};
+  --colorGinPrimaryLightShadow: #{mix(white, $mixColor, 55%)};
   --colorGinItemHover: #{rgba($ginPrimary, .06)};
   --colorGinButtonShadow: #00000033;
   --colorGinButtonText: #fff;
@@ -22,6 +23,7 @@
   --colorGinWarningLight: #efcf64;
   --colorGinWarningBackground: #{mix(black, #efcf64, 60%)};
   --colorGinDanger: #cc3d3d;
+  --colorGinDangerLightest: #fdd9d9;
   --colorGinDangerLight: #f39b9d;
   --colorGinDangerBackground: #{mix(black, #dc7f7f, 60%)};
   --colorGinGreen: #058260;
@@ -49,7 +51,7 @@
   --colorGinText: #222330;
   --colorGinTextLight: #545560;
 
-  --colorGinTableHeader: var(--colorGinLayer4Background);
+  --colorGinTableHeader: #e6e8ef;
   --colorGinSwitch: #26a769;
   --colorGinSwitchShadow: rgba(38, 167, 105, .3);
 
@@ -63,8 +65,9 @@
   --colorGinPrimaryHover: #{mix(white, $ginPrimary, 10%)};
   --colorGinPrimaryActive: #{mix(white, $ginPrimary, 15%)};
   --colorGinPrimaryLight: #{rgba($ginPrimary, .20)};
-  --colorGinPrimaryLightHover: #{rgba($ginPrimary, .30)};
-  --colorGinPrimaryLightActive: #{rgba($ginPrimary, .40)};
+  --colorGinPrimaryLightHover: #{rgba($ginPrimary, .25)};
+  --colorGinPrimaryLightActive: #{rgba($ginPrimary, .35)};
+  --colorGinPrimaryLightShadow: #{rgba($ginPrimary, .5)};
   --colorGinItemHover: #{rgba($ginPrimary, .10)};
   --colorGinButtonShadow: rgba(#111, .9);
   --colorGinButtonText: #111;
@@ -73,6 +76,7 @@
   --colorGinDisabled: #999;
   --colorGinWarning: #dec15f;
   --colorGinDanger: #ce6060;
+  --colorGinDangerLightest: #483439;
   --colorGinGreen: #32cea4;
   --colorGinInfo: #559bca;
 
@@ -102,12 +106,11 @@
 }
 
 $ginColors: (
-  claro_blue: #003cc5,
-  light_blue: #426af4,
+  light_blue: #3275e0, //426af4,
   dark_purple: #4300bf,
   purple: #5b00ff,
   teal: #10857f,
-  green: #26a769,
+  green: #00875f, //26a769,
   red: #d8002f,
   orange: #ef5c20,
   yellow: #c58900,
@@ -120,8 +123,15 @@ $ginColors: (
     --colorGinPrimaryHover: #{mix(black, $color, 15%)};
     --colorGinPrimaryActive: #{mix(black, $color, 25%)};
     --colorGinPrimaryLight: #{rgba($color, .15)};
-    --colorGinPrimaryLightHover: #{rgba($color, .25)};
-    --colorGinPrimaryLightActive: #{rgba($color, .35)};
+    @if $name == dark_purple or $name == purple {
+      --colorGinPrimaryLightHover: #{rgba($color, .15)};
+      --colorGinPrimaryLightActive: #{rgba($color, .25)};
+      --colorGinPrimaryLightShadow: #{rgba($color, .4)};
+    } @else {
+      --colorGinPrimaryLightHover: #{rgba($color, .25)};
+      --colorGinPrimaryLightActive: #{rgba($color, .35)};
+      --colorGinPrimaryLightShadow: #{rgba($color, .5)};
+    }
     --colorGinItemHover: #{rgba($color, .06)};
   }
 }

@@ -50,7 +50,7 @@
     position: relative;
     left: 0;
     padding: 0 16px 16px 16px;
-    background: rgba(#e2e5ec, .98);
+    background: rgba(#e2e5ec, .6);
     border-radius: $borderDefault;
 
     [data-drupal-selector*='edit-views-bulk-operations-bulk-form'] {
@@ -80,13 +80,14 @@
     .form-item__label:not([for='edit-select-all']) {
       display: block;
       float: left;
+      top: 2px;
       margin-right: 1rem;
       line-height: 1.75;
     }
 
     &.is-sticky {
       z-index: 4;
-      opacity: .95;
+      opacity: 1;
       position: sticky;
       left: 0;
       bottom: .5rem;

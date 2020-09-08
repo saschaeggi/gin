@@ -17,7 +17,7 @@
   }
 
   .cke_top {
-    background: var(--colorGinAppBackground);
+    background: var(--colorGinLayerBackground);
     border-bottom: 1px solid var(--colorGinBorder);
     border-radius: #{$borderDefault - 1} #{$borderDefault - 1} 0 0;
   }

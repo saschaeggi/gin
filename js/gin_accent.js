@@ -76,6 +76,7 @@
               --colorGinPrimaryLight: ${accentColor}${Math.round(ratio * 3.5)};\n\
               --colorGinPrimaryLightHover: ${accentColor}${Math.round(ratio * 4.5)};\n\
               --colorGinPrimaryLightActive: ${accentColor}${Math.round(ratio * 5.5)};\n\
+              --colorGinPrimaryLightShadow: ${accentColor}${Math.round(ratio * 10)};\n\
               --colorGinItemHover: ${accentColor}${Math.round(ratio * 1.5)};\n\
             }\n\
             .form-element--type-select:hover,\n\

@@ -986,7 +986,12 @@ function _gin_preset_accent_color() {
     return _gin_user__get_preset_accentcolor();
   }
   else {
-    return theme_get_setting('preset_accent_color');
+    if (theme_get_setting('preset_accent_color') === 'claro_blue') {
+      return 'blue';
+    }
+    else {
+      return theme_get_setting('preset_accent_color');
+    }
   }
 }
 
@@ -1000,7 +1005,12 @@ function _gin_user__get_preset_accentcolor() {
   $userData = Drupal::service('user.data');
 
   if ($userData->get('gin', $uid, 'preset_accent_color') !== NULL) {
-    return $userData->get('gin', $uid, 'preset_accent_color');
+    if ($userData->get('gin', $uid, 'preset_accent_color') === 'claro_blue') {
+      return 'blue';
+    }
+    else {
+      return $userData->get('gin', $uid, 'preset_accent_color');
+    }
   }
   else {
     return NULL;
@@ -1042,7 +1052,6 @@ function _gin_user__accentcolor() {
 function _gin_get_accent_color_presets() {
   return [
     'blue' => t('Gin Blue (Default)'),
-    'claro_blue' => t('Claro Blue'),
     'light_blue' => t('Light Blue'),
     'dark_purple' => t('Dark Purple'),
     'purple' => t('Purple'),

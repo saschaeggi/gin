@@ -156,7 +156,7 @@
     color: var(--colorGinPrimary);
     background: var(--colorGinItemHover);
     padding: 16px;
-    border: 2px solid var(--colorGinPrimary);
+    border: 1px dashed var(--colorGinPrimary);
     border-radius: $borderDefault;
 
     &,

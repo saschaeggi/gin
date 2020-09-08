@@ -26,7 +26,7 @@ table {
   }
 
   th {
-    color: var(--colorGinTitle);
+    color: var(--colorGinText);
     background: var(--colorGinTableHeader);
 
     @include mq($breakpointMedium) {

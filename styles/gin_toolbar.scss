@@ -282,8 +282,7 @@ a.toolbar-menu__trigger,
     max-width: calc(100% - #{$topBar});
     background: var(--colorGinLayerBackground);
     box-shadow: 0 0 48px rgba(0, 0, 0, 0.075);
-    // box-shadow: 0 0 48px scale-color($colorAppBackgroundShadow, $lightness: -3%);
-    border-right: 1px solid var(--colorGinLayerBorder); //rgba(0, 0, 0, .1);
+    // border-right: 1px solid var(--colorGinLayerBorder);
     transition: $transition;
 
     .gin--dark-mode & {
@@ -524,7 +523,7 @@ a.toolbar-menu__trigger,
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &:before {
         @include mq($breakpointMedium) {
-          mask-size: 21px 21px;
+          mask-size: 20px 20px;
         }
       }
     }

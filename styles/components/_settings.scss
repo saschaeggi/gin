@@ -66,6 +66,7 @@
       .form-item__label {
         display: none;
         visibility: hidden;
+        z-index: 1;
         position: absolute;
         top: 100%;
         left: -10px;

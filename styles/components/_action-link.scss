@@ -49,16 +49,14 @@
 a.button.button--danger,
 .button[data-drupal-selector="edit-cancel"] {
   color: var(--colorGinDanger);
-
-  .gin--dark-mode & {
-    background-color: #35282b;
-  }
+  // background: var(--colorGinDangerLightest);
+  box-shadow: 0 1px 2px var(--colorGinDangerLightest);
 
   &,
   &:hover,
   &:focus,
   &:active {
-    border-color: var(--colorGinDanger) !important;
+    // border-color: transparent !important;
 
     &:before {
       background-image: none;

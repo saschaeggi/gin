@@ -67,10 +67,14 @@ $maxWidth: 520px;
   font-size: 0.79rem;
   min-height: 2.25rem;
   line-height: 1;
+  background-position: 100% 52%;
 }
 
 .form-boolean {
+  width: 21px;
+  height: 21px;
   border-color: var(--colorGinFormElementBorder);
+  border-radius: 4px;
 }
 
 // Darkmode Checkbox
@@ -190,6 +194,7 @@ $maxWidth: 520px;
     background-image: none;
     background-color: #fff;
     border-color: var(--colorGinFormElementBorder);
+    border-radius: 50%;
 
     .gin--dark-mode & {
       background-color: var(--colorGinLayer2Background);;
@@ -241,6 +246,7 @@ fieldset:not(.fieldgroup) {
   background: transparent;
   border-color: var(--colorGinBorder);
   border-radius: $borderDefault;
+  box-shadow: none;
 
   > legend {
     top: 20px;
@@ -305,6 +311,7 @@ fieldset:not(.fieldgroup) {
 .form-composite {
   label {
     color: var(--colorGinText);
+    position: relative;
     padding-bottom: 4px;
   }
 }

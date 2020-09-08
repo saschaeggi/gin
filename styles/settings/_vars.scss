@@ -27,10 +27,10 @@ $transition--fast: .3s $fancy-easing;
 $colorAppBackground: #f5f7fb; //#fbfbff; //#f5f7fb;
 $colorAppBackgroundShadow: #f5f5f9;
 $colorDarkAppBackground: #1B1B1D;
-$ginPrimary: #0136fd;
+$ginPrimary: #0550e6; //0136fd;
 $ginPrimaryDark: #080090;
 
-$mixColor: #0136fd;
+$mixColor: $ginPrimary;
 
 $ginPrimaryHover: mix(black, $ginPrimary, 15%);
 $ginPrimaryActive: mix(black, $ginPrimary, 25%);
