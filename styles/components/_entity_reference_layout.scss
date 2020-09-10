@@ -332,7 +332,16 @@
   border-radius: 50%;
 }
 
-// Loader background in overlay
+// ERL overlay
+.erl-overlay {
+  .erl-form {
+    overflow-x: hidden;
+    overflow-y: visible;
+    max-height: 85vh !important;
+  }
+}
+
+// ERL overlay loader
 .erl-overlay.erl-loading div.loading {
   border-radius: 6px;
 

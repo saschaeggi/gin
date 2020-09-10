@@ -84,4 +84,9 @@
   @include mq($breakpointSmall) {
     padding: 1.5rem;
   }
+
+  @include mq($breakpointLarge) {
+    min-width: 100%;
+    width: fit-content;
+  }
 }
