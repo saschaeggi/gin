@@ -173,7 +173,7 @@
   }
 
   @include mq(2070px) {
-    [data-toolbar-menu='open'] & {
+    .gin--vertical-toolbar[data-toolbar-menu='open'] & {
       right: calc(50% - 580px);
     }
   }
