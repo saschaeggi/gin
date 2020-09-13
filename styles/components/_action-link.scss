@@ -57,6 +57,7 @@ a.button.button--danger,
   &:focus,
   &:active {
     // border-color: transparent !important;
+    border-color: var(--colorGinDanger) !important;
 
     &:before {
       background-image: none;

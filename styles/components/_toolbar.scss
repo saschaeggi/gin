@@ -258,7 +258,6 @@
     // Shortcuts
     .toolbar-icon-shortcut {
       &:before {
-        top: -2px;
         mask-image: icon('shortcut');
       }
     }
@@ -267,7 +266,6 @@
     .toolbar-icon-coffee,
     #toolbar-item-administration-search {
       &:before {
-        top: -1px;
         mask-image: icon('search');
       }
     }
@@ -457,6 +455,7 @@
 
 // Mobile.
 .toolbar .toolbar-tray-vertical .toolbar-menu a {
+  padding-left: 3.25em;
   padding-top: 1.5em;
   padding-bottom: 1.5em;
 

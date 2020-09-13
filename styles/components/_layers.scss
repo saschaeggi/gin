@@ -78,7 +78,6 @@
   padding: .75rem;
   background: var(--colorGinLayerBackground);
   border: 1px solid var(--colorGinLayerBorder);
-  border: 0 none;
   box-sizing: border-box;
 
   @include mq($breakpointSmall) {

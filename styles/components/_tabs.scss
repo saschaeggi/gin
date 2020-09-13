@@ -5,10 +5,13 @@
 // Tabs
 .tabs-wrapper,
 .horizontal-tabs ul.horizontal-tabs-list {
-  padding: 6px 6px 0 6px;
-  margin-left: -6px;
-  margin-right: -6px;
-  // overflow: hidden;
+  padding: 0 .5rem;
+  margin-left: -.5rem;
+  margin-right: -.5rem;
+
+  @include mq($breakpointSmall) {
+    padding: 0;
+  }
 }
 
 // Vertical tabs
@@ -91,38 +94,65 @@
 .horizontal-tabs ul.horizontal-tabs-list {
   position: relative;
 
+  @include mq($breakpointSmall) {
+    width: 100%;
+    padding: .5rem .5rem 1.5rem;
+    margin-bottom: -1rem;
+    overflow-x: auto;
+  }
+
   &::after {
+    pointer-events: none;
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     display: block;
     width: 100%;
+    max-width: calc(100% + .5rem);
     border-bottom: 1px solid var(--colorGinBorder);
 
     @include mq($breakpointSmall) {
-      width: calc(100% + 6px);
+      left: .5rem;
+      bottom: 1.5rem;
+      max-width: calc(100% - 1rem);
+    }
+  }
+}
+
+.horizontal-tabs ul.horizontal-tabs-list {
+  &::after {
+    left: .5rem;
+    max-width: calc(100% - 1rem);
+  }
+}
+
+.is-horizontal .tabs--primary,
+.is-horizontal .tabs--secondary {
+  @include mq($breakpointSmall) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.is-horizontal .tabs--primary {
+  @include mq($breakpointSmall) {
+    &::after {
+      height: 40px;
+      border-bottom: 1px solid rgba(0, 0, 0, .1);
+      box-shadow: 0 8px 24px -16px rgba(0, 0 ,0, .3);
+
+      .gin--dark-mode & {
+        border-color: rgba(255, 255, 255, .1);
+        box-shadow: 0 16px 24px -16px rgba(0, 0, 0, .05);
+      }
     }
   }
 
-  @include mq($breakpointSmall) {
-    width: calc(100% - 6px);
-  }
-}
-
-.is-horizontal .tabs--primary {
-  &::after {
-    height: 40px;
-    border-bottom: 1px solid rgba(0, 0, 0, .08);
-    box-shadow: 0 8px 16px -16px rgba(0, 0 ,0, .5);
-  }
-}
-
-.is-horizontal .tabs--primary {
   .tabs__link {
     min-height: 3rem;
     height: 100%;
-    border-radius: 4px 4px 0 0;
+    border-radius: $borderSmall $borderSmall 0 0;
 
     @include mq($breakpointSmall) {
       padding-right: 1.5rem;
@@ -132,11 +162,12 @@
 }
 
 .is-horizontal .tabs--secondary {
-  margin-left: 0;
-
   @include mq($breakpointSmall) {
-    padding-left: 0;
-    margin-top: 1rem;
+    margin-top: .5rem;
+
+    &::before {
+      width: 100%;
+    }
   }
 
   .tabs__link {
@@ -164,7 +195,8 @@
 
     &:after {
       @include mq($breakpointSmall) {
-        left: 6px;
+        left: .5rem;
+        max-width: calc(100% - 1rem);
       }
     }
 

@@ -44,7 +44,7 @@
         position: relative;
 
         &:hover, &:focus-within {
-          border-radius: 4px 4px 0 0;
+          border-radius: $borderSmall $borderSmall 0 0;
 
           .toolbar-tray {
             display: block;
@@ -56,7 +56,7 @@
           color: var(--colorGinTextLight);
           width: 39px;
           height: 39px;
-          border-radius: 4px 4px 0 0;
+          border-radius: $borderSmall $borderSmall 0 0;
 
           &:before {
             top: 0;
@@ -64,7 +64,7 @@
           }
 
           &:focus {
-            border-radius: 4px;
+            border-radius: $borderSmall;
           }
 
           &:focus ~ .toolbar-tray {
@@ -73,7 +73,12 @@
 
           &:hover,
           &:focus {
+            color: var(--colorGinTitle);
             background: none;
+
+            &::before {
+              background-color: var(--colorGinTitle);
+            }
           }
 
           &:focus,
@@ -103,7 +108,7 @@
           a {
             color: var(--colorGinPrimary);
             padding: 12px 16px;
-            border-radius: 4px;
+            border-radius: $borderSmall;
 
             &:hover, &:active {
               color: var(--colorGinButtonText);
@@ -143,12 +148,12 @@
         .toolbar-tray {
           left: auto;
           right: 0;
-          border-radius: 4px 0 4px 4px;
+          border-radius: $borderSmall 0 $borderSmall $borderSmall;
         }
 
         // If custom user image
         .icon-user ~ .toolbar-tray {
-          border-radius: 4px;
+          border-radius: $borderSmall;
         }
 
         .icon-user {

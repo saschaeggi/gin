@@ -6,6 +6,11 @@
   box-sizing: border-box;
   transition: $transition;
 
+  @supports (backdrop-filter: blur()) {
+    backdrop-filter: blur(8px);
+    opacity: .9;
+  }
+
   .gin--dark-mode & {
     background: rgba($colorDarkAppBackground, .98);
   }
@@ -118,8 +123,8 @@
   }
 
   @include mq($breakpointMedium) {
-    padding-left: m#{i}n(5vw, 80px);
-    padding-right: m#{i}n(5vw, 80px);
+    padding-left: m#{i}n(5vw, 64px);
+    padding-right: m#{i}n(5vw, 64px);
   }
 
   @include mq($breakpointMedium 1023px) {
@@ -131,7 +136,7 @@
   @include mq($breakpointLarge) {
     left: auto;
     top: 4px;
-    right: calc(var(--ginSidebarWidth) + min(5vw, 80px));
+    right: calc(var(--ginSidebarWidth) + min(5vw, 64px));
     bottom: auto;
     width: auto;
     padding-left: 0;
@@ -233,8 +238,8 @@ body:not(.toolbar-tray-open) .layout-container {
   }
 
   @include mq($breakpointMedium) {
-    margin-left: m#{i}n(5vw, 80px);
-    margin-right: m#{i}n(5vw, 80px);
+    margin-left: m#{i}n(5vw, 64px);
+    margin-right: m#{i}n(5vw, 64px);
 
     .layout-container {
       margin-left: 0;

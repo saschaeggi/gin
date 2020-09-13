@@ -5,7 +5,7 @@
   width: calc(100% - 2rem) !important;
   max-width: 1280px;
   border: 0 none !important;
-  border-radius: 8px;
+  border-radius: $borderBig;
   transform: translate(-50%, -50%);
   background: var(--colorGinLayerBackground);
 
@@ -27,10 +27,8 @@
     padding: 24px;
     background: #1b1b1d;
     border-bottom: 0 none;
-
-    .gin--dark-mode & {
-      background: var(--colorGinLayer3Background);
-    }
+    border-top-left-radius: $borderBig;
+    border-top-right-radius: $borderBig;
   }
 
   .ui-dialog-title {
@@ -44,6 +42,8 @@
   .ui-widget-content.ui-dialog-buttonpane {
     padding: 16px 24px;
     border-top: 1px solid var(--colorGinLayerBorder);
+    border-bottom-left-radius: $borderBig;
+    border-bottom-right-radius: $borderBig;
     background: var(--colorGinAppBackground);
 
     .button {

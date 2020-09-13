@@ -26,6 +26,8 @@ button.link,
 .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link
 {
   color: var(--colorGinPrimary);
+  text-decoration: none;
+  font-weight: bold;
 
   &:hover {
     color: var(--colorGinPrimaryHover);

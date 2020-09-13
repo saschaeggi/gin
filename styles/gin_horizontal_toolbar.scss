@@ -216,8 +216,8 @@
   // target fist level only
   .toolbar-menu-administration {
     @include mq($breakpointMedium) {
-      margin-left: m#{i}n(5vw, 80px);
-      margin-right: m#{i}n(5vw, 80px);
+      margin-left: m#{i}n(5vw, 64px);
+      margin-right: m#{i}n(5vw, 64px);
 
       > .toolbar-menu {
         display: flex;
