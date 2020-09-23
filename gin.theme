@@ -946,17 +946,16 @@ function _gin_user__overrides_enabled() {
 function _gin_dark_mode_enabled() {
   // Get user config.
   if (_gin_user__overrides_enabled()) {
-    $uid = _gin_user__get_user_id();
     $darkmode = _gin_user__get_darkmode_enabled();
-
-    // Convert older versions to boolean.
-    $darkmode = $darkmode === 0 || $darkmode === '0' ? FALSE : $darkmode;
-    $darkmode = $darkmode === 1 || $darkmode === '1' ? TRUE : $darkmode;
   }
   // Get general config.
   else {
     $darkmode = theme_get_setting('enable_darkmode');
   }
+
+  // Convert older versions to boolean.
+  $darkmode = $darkmode === 0 || $darkmode === '0' ? FALSE : $darkmode;
+  $darkmode = $darkmode === 1 || $darkmode === '1' ? TRUE : $darkmode;
 
   return $darkmode;
 }
@@ -1131,17 +1130,16 @@ function _gin_user__toolbar() {
 function _gin_highcontrastmode_enabled() {
   // Get user config.
   if (_gin_user__overrides_enabled()) {
-    $uid = _gin_user__get_user_id();
     $hcm = _gin_user__get_highcontrastmode_enabled();
-
-    // Convert older versions to boolean.
-    $hcm = $hcm === 0 || $hcm === '0' ? FALSE : $hcm;
-    $hcm = $hcm === 1 || $hcm === '1' ? TRUE : $hcm;
   }
   // Get general config.
   else {
     $hcm = theme_get_setting('high_contrast_mode');
   }
+
+  // Convert older versions to boolean.
+  $hcm = $hcm === 0 || $hcm === '0' ? FALSE : $hcm;
+  $hcm = $hcm === 1 || $hcm === '1' ? TRUE : $hcm;
 
   return $hcm;
 }

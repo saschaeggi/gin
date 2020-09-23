@@ -143,8 +143,8 @@
       box-shadow: 0 8px 24px -16px rgba(0, 0 ,0, .3);
 
       .gin--dark-mode & {
-        border-color: rgba(255, 255, 255, .1);
-        box-shadow: 0 16px 24px -16px rgba(0, 0, 0, .05);
+        border-color: rgba(255, 255, 255, .06);
+        box-shadow: 0 16px 24px -16px rgba(0, 0, 0, 1);
       }
     }
   }
