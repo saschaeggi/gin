@@ -51,9 +51,7 @@
       {% if item_id[0] in allowlist_items %}
         <div{{ tab.attributes.addClass(tab_classes) }}>
           {% if item_id[0] == 'toolbar-id--toolbar-icon-user' and user_picture %}
-            <a href="/user/{{ user.id }}" class="toolbar-item icon-user" role="button" id="toolbar-item-user">
-              <img src="{{ user_picture }}" alt="{{ user.account.name }}" class="icon-user__image" />
-            </a>
+            {{ user_picture }}
           {% else %}
             {{ tab.link }}
           {% endif %}

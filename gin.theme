@@ -431,13 +431,59 @@ function gin_preprocess_toolbar(&$variables) {
     $user = User::load($user_id);
 
     if (!empty($user->user_picture) && !empty($user->user_picture->entity)) {
-      $image = $user->user_picture->entity->getFileUri();
-      $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('thumbnail');
-      $url = $style->buildUrl($image);
-
-      $variables['user_picture'] = $url;
+      $variables['user_picture'] = [
+        '#lazy_builder' => [
+          'gin_theme_toolbar_user_picture',
+          []
+        ],
+        '#create_placeholder' => TRUE,
+      ];
     }
   }
+}
+
+/**
+ * Lazy builder callback for the user picture.
+ *
+ * @return string[]
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ * @throws \Drupal\Core\Entity\EntityMalformedException
+ */
+function gin_theme_toolbar_user_picture() {
+  /** @var \Drupal\Core\Render\Renderer $renderer */
+  $renderer = \Drupal::service('renderer');
+  $user_id = \Drupal::currentUser()->id();
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $user = $entity_type_manager->getStorage('user')->load($user_id);
+  $style = $entity_type_manager->getStorage('image_style')->load('thumbnail');
+  $image = $user->user_picture->entity->getFileUri();
+  $image_url = $style->buildUrl($image);
+  $profile_url = $user->toUrl();
+
+  $build = [
+    '#type' => 'link',
+    '#url' => $profile_url,
+    '#title' => [
+      '#type' => 'html_tag',
+      '#tag' => 'img',
+      '#attributes' => [
+        'src' => $image_url,
+        'class' => [
+          'icon-user__image',
+        ],
+      ],
+    ],
+    '#attributes' => [
+      'id' => 'toolbar-item-user',
+      'class' => ['toolbar-item icon-user'],
+      'role' => 'button',
+    ],
+  ];
+
+  return [
+    '#markup' => (string) $renderer->render($build),
+  ];
 }
 
 /**
