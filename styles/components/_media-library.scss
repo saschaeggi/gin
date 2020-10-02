@@ -219,6 +219,7 @@ fieldset.media-library-widget {
     color: var(--colorGinText);
     text-decoration: none;
     background-image: none;
+    white-space: nowrap;
 
     &:before {
       content: "";

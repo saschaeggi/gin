@@ -7,8 +7,9 @@
   transition: $transition;
 
   @supports (backdrop-filter: blur()) {
+    opacity: .999; /* Fix Chrome issue with mask */
+    background: rgba($colorAppBackground, .9);
     backdrop-filter: blur(8px);
-    opacity: .9;
   }
 
   .gin--dark-mode & {
@@ -97,6 +98,30 @@
   margin-bottom: 0;
   background-color: transparent;
   overflow: initial;
+}
+
+.sticky-shadow {
+  @include mq($breakpointSmall) {
+    pointer-events: none;
+    height: 40px;
+    margin-top: -40px;
+    margin-bottom: 2rem;
+    // border-bottom: 1px solid rgba(0, 0, 0, .1);
+    box-shadow: 0 10px 20px -16px rgba(0, 0, 0, .4);
+
+    .gin--dark-mode & {
+      // border-color: rgba(255, 255, 255, .06);
+      box-shadow: 0 10px 20px -16px rgba(0, 0, 0, 1);
+    }
+  }
+
+  @include mq($breakpointLarge) {
+    position: sticky;
+    z-index: 98;
+    top: 48px;
+    width: calc(100% - min(10vw, 128px) + 16px);
+    transform: translateX(-6px);
+  }
 }
 
 .page-wrapper {

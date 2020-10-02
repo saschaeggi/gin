@@ -103,7 +103,7 @@
           border-bottom: 0 none;
           box-shadow: 0 1px 2px rgba(0, 0, 0, .08),
                      20px 20px 40px rgba(0, 0, 0, .12);
-          border-radius: 0 4px 4px 4px;
+          border-radius: 0 $borderSmall $borderSmall $borderSmall;
 
           a {
             color: var(--colorGinPrimary);

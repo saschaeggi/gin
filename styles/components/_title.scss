@@ -42,17 +42,26 @@ body:not(.gin--edit-form) {
 
 .shortcut-action {
   align-self: center;
-  margin-left: .75rem;
+  margin-left: .5rem;
   border-radius: $borderDefault;
+
+  @include mq($breakpointLarge) {
+    margin-left: .75rem;
+  }
 
   &__icon {
     position: relative;
-    top: 5px;
+    top: 4px;
     background: var(--colorGinIcons);
     mask-image: icon('shortcut');
-    mask-size: 85% 85%;
+    mask-size: 75% 75%;
     mask-position: center center;
     mask-repeat: no-repeat;
+
+    @include mq($breakpointLarge) {
+      top: 5px;
+      mask-size: 85% 85%;
+    }
   }
 
   &:hover &__icon {
