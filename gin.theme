@@ -471,6 +471,7 @@ function gin_theme_toolbar_user_picture() {
       '#tag' => 'img',
       '#attributes' => [
         'src' => $image_url,
+        'alt' => $user->getAccountName(),
         'class' => [
           'icon-user__image',
         ],
