@@ -451,11 +451,13 @@ function gin_preprocess_toolbar(&$variables) {
  * @throws \Drupal\Core\Entity\EntityMalformedException
  */
 function gin_theme_toolbar_user_picture() {
-  /** @var \Drupal\Core\Render\Renderer $renderer */
+  /** @var \Drupal\Core\Render\RendererInterface $renderer */
   $renderer = \Drupal::service('renderer');
   $user_id = \Drupal::currentUser()->id();
   $entity_type_manager = \Drupal::entityTypeManager();
+  /** @var \Drupal\user\UserInterface $user */
   $user = $entity_type_manager->getStorage('user')->load($user_id);
+  /** @var \Drupal\image\ImageStyleInterface $style */
   $style = $entity_type_manager->getStorage('image_style')->load('thumbnail');
   $image = $user->user_picture->entity->getFileUri();
   $image_url = $style->buildUrl($image);
