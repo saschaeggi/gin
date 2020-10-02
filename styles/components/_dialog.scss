@@ -1,17 +1,8 @@
 .ui-dialog:not(.ui-dialog-off-canvas) {
-  position: fixed !important;
-  top: 50% !important;
-  left: 50% !important;
-  width: calc(100% - 2rem) !important;
   max-width: 1280px;
   border: 0 none !important;
   border-radius: $borderBig;
-  transform: translate(-50%, -50%);
   background: var(--colorGinLayerBackground);
-
-  @include mq($breakpointLarge) {
-    width: calc(100% - 4rem) !important;
-  }
 }
 
 .ui-dialog {
@@ -83,6 +74,19 @@
     padding-left: 24px;
     padding-right: 24px;
     background: var(--colorGinLayerBackground);
+  }
+}
+
+.erl-overlay,
+.layout-paragraphs-dialog {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: calc(100% - 2rem) !important;
+  transform: translate(-50%, -50%);
+
+  @include mq($breakpointLarge) {
+    width: calc(100% - 4rem) !important;
   }
 }
 
