@@ -97,7 +97,7 @@
   @include mq($breakpointSmall) {
     width: 100%;
     padding: .5rem .5rem 1.5rem;
-    margin-bottom: -1rem;
+    margin-bottom: -24px;
     overflow-x: auto;
   }
 
@@ -135,18 +135,28 @@
   }
 }
 
+.tabs--primary {
+  @include mq($breakpointSmall) {
+    margin-bottom: 0;
+  }
+}
+
 .is-horizontal .tabs--primary {
   @include mq($breakpointSmall) {
     &::after {
-      height: 40px;
-      border-bottom: 1px solid rgba(0, 0, 0, .1);
-      box-shadow: 0 8px 24px -16px rgba(0, 0 ,0, .3);
-
-      .gin--dark-mode & {
-        border-color: rgba(255, 255, 255, .06);
-        box-shadow: 0 16px 24px -16px rgba(0, 0, 0, 1);
-      }
+      border-bottom: 0 none;
     }
+
+  //   &::after {
+  //     // height: 40px;
+  //     border-bottom: 1px solid rgba(0, 0, 0, .05);
+  //     // box-shadow: 0 8px 24px -16px rgba(0, 0 ,0, .3);
+
+  //     .gin--dark-mode & {
+  //       border-color: rgba(255, 255, 255, .06);
+  //       // box-shadow: 0 16px 24px -16px rgba(0, 0, 0, 1);
+  //     }
+  //   }
   }
 
   .tabs__link {
@@ -163,7 +173,7 @@
 
 .is-horizontal .tabs--secondary {
   @include mq($breakpointSmall) {
-    margin-top: .5rem;
+    margin-top: -1rem;
 
     &::before {
       width: 100%;
@@ -208,7 +218,7 @@
       a {
         padding-right: 1.5rem;
         padding-left: 1.5rem;
-        border-radius: 2px 2px 0 0;
+        border-radius: $borderSmall $borderSmall 0 0;
 
         &:before {
           content: '';
@@ -247,6 +257,10 @@
 
     > .details-wrapper {
       margin: 0;
+
+      > .claro-details__description {
+        margin-top: 1rem;
+      }
     }
   }
 }
