@@ -38,17 +38,13 @@
       {% set tab_id = tab.link['#id'] ? 'toolbar-tab--' ~ tab.link['#id'] %}
       {% set tab_classes = item_id|merge(['toolbar-tab', user_menu, tab_id]) %}
 
-      {% set allowlist_items = [
-        'toolbar-id--toolbar-icon-escape-admin',
-        'toolbar-id--toolbar-icon-shortcut',
-        'toolbar-id--toolbar-icon-coffee',
-        'toolbar-id--toolbar-icon-devel',
-        'toolbar-id--toolbar-icon-rebuild-cache-access',
-        'toolbar-id--toolbar-icon-user'
+      {% set denylist_items = [
+          'toolbar-id--toolbar-icon-menu',
+          'toolbar-id--toolbar-icon-edit',
       ] %}
 
       {# All items except main nav #}
-      {% if item_id[0] in allowlist_items %}
+      {% if item_id[0] not in denylist_items %}
         <div{{ tab.attributes.addClass(tab_classes) }}>
           {% if item_id[0] == 'toolbar-id--toolbar-icon-user' and user_picture %}
             <a href="/user/{{ user.id }}" class="toolbar-item icon-user" role="button" id="toolbar-item-user">
