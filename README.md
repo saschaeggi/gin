@@ -58,7 +58,7 @@ TROUBLESHOOTING
 
 - Compile & minify assets
 
-* `npm run prod`
+* `npm run build`
 
 
 MAINTAINERS
