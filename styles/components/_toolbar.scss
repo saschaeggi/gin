@@ -554,14 +554,6 @@
   }
 }
 
-// Hide logo if accidentially shown in Devel
-.menu-item__tools {
-  .toolbar-icon-admin-toolbar-tools-help,
-  .toolbar-logo {
-    display: none;
-  }
-}
-
 #toolbar-item-user {
   display: inline-block;
   vertical-align: top;
