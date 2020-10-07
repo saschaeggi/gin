@@ -563,3 +563,11 @@
     margin-left: 8px;
   }
 }
+
+// Hide logo if accidentially shown in Devel
+[data-toolbar-tray="toolbar-item-devel-tray"] {
+  .toolbar-icon-admin-toolbar-tools-help,
+  .toolbar-logo {
+    display: none;
+  }
+}
