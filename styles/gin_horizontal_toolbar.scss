@@ -35,6 +35,7 @@
             padding-top: 20px;
             padding-bottom: 20px;
             padding-left: 3.5em;
+            white-space: nowrap;
 
             &:before {
               left: 1.1em;
@@ -61,7 +62,9 @@
 }
 
 .toolbar-tray a,
-.toolbar .toolbar-menu .toolbar-menu a {
+.toolbar-tray span,
+.toolbar .toolbar-menu .toolbar-menu a,
+.toolbar .toolbar-menu .toolbar-menu span {
   color: var(--colorGinText);
 
   &:hover {

@@ -101,6 +101,8 @@
 
 .sticky-shadow {
   @include mq($breakpointSmall) {
+    z-index: 98;
+    position: relative;
     pointer-events: none;
     height: 40px;
     margin-top: -40px;
@@ -116,7 +118,6 @@
 
   @include mq($breakpointLarge) {
     position: sticky;
-    z-index: 98;
     top: 48px;
     width: calc(100% - min(10vw, 128px) + 16px);
     transform: translateX(-6px);

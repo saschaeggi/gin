@@ -68,28 +68,8 @@
     }
 
     // Overrides for default toolbar items
-    .toolbar-icon-admin-toolbar-tools-help,
-    .toolbar-icon-system-admin-content,
-    .toolbar-icon-system-admin-structure,
-    .toolbar-icon-system-themes-page,
-    .toolbar-icon-system-modules-list,
-    .toolbar-icon-system-admin-config,
-    .toolbar-icon-entity-user-collection,
-    .toolbar-icon-system-admin-group,
-    .toolbar-icon-system-admin-reports,
-    .toolbar-icon-help-main,
-    .toolbar-icon-commerce-admin-commerce,
-    .toolbar-icon-tmgmt-admin-tmgmt,
-    .toolbar-icon-escape-admin,
-    .toolbar-icon-edit,
-    .toolbar-icon-local-tasks,
-    .toolbar-icon-menu,
-    .toolbar-icon-shortcut,
-    .toolbar-icon-coffee,
-    .toolbar-icon-devel,
-    .toolbar-icon-rebuild-cache-access,
-    .toolbar-icon-user,
     #toolbar-item-administration-search,
+    .toolbar-menu-administration .toolbar-icon,
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &:before {
         background-color: var(--colorGinIcons);
@@ -120,7 +100,7 @@
       }
     }
 
-    #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
+    #toolbar-item-administration-tray .toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
       &:before {
         $logoSize: 28px;
         $iconFill: 333333;
@@ -145,6 +125,13 @@
     .toolbar-icon-default {
       &:before {
         padding-top: 0;
+      }
+    }
+
+    // Fallback icon if none is set
+    .toolbar-icon {
+      &:before {
+        mask-image: icon('hamburger');
       }
     }
 
@@ -201,7 +188,6 @@
     .toolbar-icon-system-admin-group {
       &:before {
         mask-image: icon('group');
-        // mask-size: 24px 24px;
       }
     }
 
@@ -297,7 +283,8 @@
   box-shadow: none;
   border-bottom: 1px solid var(--colorGinBorder);
 
-  a {
+  a,
+  span {
     color: var(--colorGinText);
     font-weight: normal;
 
@@ -323,6 +310,11 @@
       &:hover, a:focus {
         background-color: transparent;
       }
+    }
+
+    // Hide icons for sub-items.
+    .menu-item .toolbar-icon::before {
+      display: none;
     }
 
     a:focus {
@@ -454,7 +446,9 @@
 }
 
 // Mobile.
-.toolbar .toolbar-tray-vertical .toolbar-menu a {
+.toolbar .toolbar-tray-vertical .toolbar-menu a,
+.toolbar .toolbar-tray-vertical .toolbar-menu span {
+  display: block;
   padding-left: 3.25em;
   padding-top: 1.5em;
   padding-bottom: 1.5em;
@@ -475,72 +469,46 @@
   }
 }
 
-.toolbar-bar {
-  .toolbar-icon {
-    &.toolbar-icon-menu,
-    &.toolbar-icon-escape-admin,
-    &.toolbar-icon-shortcut,
-    &.toolbar-icon-coffee,
-    &.toolbar-icon-devel,
-    &.toolbar-icon-rebuild-cache-access,
-    &.toolbar-icon-user {
-      &:before {
-        background: none;
-        background-color: rgba(255, 255, 255, .75);
-        mask-repeat: no-repeat;
-        mask-position: center center;
-        mask-size: 18px 18px;
-      }
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon {
+  &:before {
+    background: none;
+    background-color: rgba(255, 255, 255, .75);
+    mask-repeat: no-repeat;
+    mask-position: center center;
+    mask-size: 18px 18px;
+  }
 
-      &:hover:before {
-        @include mq($breakpointMedium) {
-          background-color: var(--colorGinTitle);
-        }
-      }
-
-      &.is-active:before,
-      &.is-active:hover:before {
-        @include mq($breakpointMedium) {
-          background-color: var(--colorGinPrimary);
-        }
-      }
+  &:hover:before {
+    @include mq($breakpointMedium) {
+      background-color: var(--colorGinTitle);
     }
   }
 
-  .toolbar-icon-escape-admin,
-  .toolbar-icon-edit,
-  .toolbar-icon-local-tasks,
-  .toolbar-icon-menu,
-  .toolbar-icon-shortcut,
-  .toolbar-icon-coffee,
-  .toolbar-icon-devel,
-  .toolbar-icon-rebuild-cache-access,
-  .toolbar-icon-user,
-  #toolbar-item-administration-search,
-  .toolbar-tab > .toolbar-icon-edit.toolbar-item {
-    &:hover:before,
-    &.is-active:before {
-      @include mq(max-width $breakpointMedium) {
-        background: #fff;
-      }
+  &.is-active:before,
+  &.is-active:hover:before {
+    @include mq($breakpointMedium) {
+      background-color: var(--colorGinPrimary);
     }
   }
 }
 
-.toolbar-meta .toolbar-bar {
-  .toolbar-icon {
-    &.toolbar-icon-escape-admin,
-    &.toolbar-icon-shortcut,
-    &.toolbar-icon-coffee,
-    &.toolbar-icon-devel,
-    &.toolbar-icon-rebuild-cache-access,
-    &.toolbar-icon-user {
-      &:before {
-        mask-size: 18px 18px;
-        background-color: var(--colorGinIcons);
-      }
+.toolbar-meta .toolbar-bar .toolbar-icon,
+.toolbar-icon-edit,
+.toolbar-icon-menu,
+.toolbar-icon-local-tasks,
+#toolbar-item-administration-search,
+.toolbar-tab > .toolbar-icon-edit.toolbar-item {
+  &:hover:before,
+  &.is-active:before {
+    @include mq(max-width $breakpointMedium) {
+      background: #fff;
     }
   }
+}
+
+.toolbar.toolbar-meta .toolbar-bar .toolbar-tab>.toolbar-icon:before {
+  mask-size: 18px 18px;
+  background-color: var(--colorGinIcons);
 }
 
 // Custom logo

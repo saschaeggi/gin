@@ -44,7 +44,9 @@
 }
 
 .toolbar-tray a,
-.toolbar .toolbar-menu .toolbar-menu a {
+.toolbar-tray span,
+.toolbar .toolbar-menu .toolbar-menu a,
+.toolbar .toolbar-menu .toolbar-menu span {
   color: var(--colorGinText);
 
   &:hover {
@@ -104,23 +106,14 @@
   }
 }
 
-.toolbar-bar {
-  .toolbar-icon {
-    &.toolbar-icon-escape-admin,
-    &.toolbar-icon-edit,
-    &.toolbar-icon-local-tasks,
-    &.toolbar-icon-menu,
-    &.toolbar-icon-shortcut,
-    &.toolbar-icon-coffee,
-    &.toolbar-icon-devel,
-    &.toolbar-icon-rebuild-cache-access,
-    &.toolbar-icon-user,
-    &#toolbar-item-administration-search {
-      &:hover:before,
-      &.is-active:before {
-        background-color: #fff;
-      }
-    }
+.toolbar-menu .menu-item > span {
+  padding-left: 2.75em;
+}
+
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon {
+  &:hover:before,
+  &.is-active:before {
+    background-color: #fff;
   }
 }
 

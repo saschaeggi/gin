@@ -35,7 +35,7 @@
       font-weight: normal;
     }
 
-    #toolbar-item-administration-tray a.toolbar-icon,
+    #toolbar-item-administration-tray .toolbar-icon,
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &:before {
         @include mq($breakpointMedium) {
@@ -110,7 +110,8 @@
   }
 }
 
-.toolbar-tray a {
+.toolbar-tray a,
+.toolbar-tray span, {
   color: var(--colorGinText);
 }
 
@@ -140,7 +141,8 @@
   .toolbar-menu {
     background: var(--colorGinAppBackground);
 
-    a {
+    a,
+    span {
       color: var(--colorGinText);
     }
   }
@@ -411,7 +413,8 @@ a.toolbar-menu__trigger,
           }
 
           // Link color
-          a {
+          a,
+          span {
             color: var(--colorGinText);
 
             &.is-active {
@@ -499,26 +502,7 @@ a.toolbar-menu__trigger,
 
 .toolbar {
   .toolbar-bar {
-    .toolbar-icon-admin-toolbar-tools-help,
-    .toolbar-icon-system-admin-content,
-    .toolbar-icon-system-admin-structure,
-    .toolbar-icon-system-themes-page,
-    .toolbar-icon-system-modules-list,
-    .toolbar-icon-system-admin-config,
-    .toolbar-icon-entity-user-collection,
-    .toolbar-icon-system-admin-group,
-    .toolbar-icon-system-admin-reports,
-    .toolbar-icon-help-main,
-    .toolbar-icon-commerce-admin-commerce,
-    .toolbar-icon-tmgmt-admin-tmgmt,
-    .toolbar-icon-escape-admin,
-    .toolbar-icon-edit,
-    .toolbar-icon-local-tasks,
-    .toolbar-icon-menu,
-    .toolbar-icon-shortcut,
-    .toolbar-icon-coffee,
-    .toolbar-icon-devel,
-    .toolbar-icon-user,
+    .toolbar-icon,
     #toolbar-item-administration-search,
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &:before {
