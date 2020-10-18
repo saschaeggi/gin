@@ -103,6 +103,14 @@
       &::after {
         top: 16px;
       }
+
+      &:focus {
+        box-shadow: none;
+
+        &::after {
+          box-shadow: inset 0 0 0 2px var(--colorGinFocus);
+        }
+      }
     }
 
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
@@ -549,6 +557,8 @@ a.toolbar-menu__trigger,
 
   &:hover > .toolbar-icon,
   &.hover-intent > .toolbar-icon {
+    box-shadow: none;
+
     &::before {
       background: var(--colorGinPrimary);
     }
@@ -564,6 +574,10 @@ a.toolbar-menu__trigger,
       background: var(--colorGinPrimaryLight);
       border-radius: $borderDefault;
     }
+
+    &:focus::after {
+      box-shadow: inset 0 0 0 2px var(--colorGinFocus);
+    }
   }
 }
 
@@ -574,7 +588,9 @@ a.toolbar-menu__trigger,
     }
   }
 
-  &.menu-item--expanded:hover > .toolbar-icon::after {
-    width: 52px;
+  &.menu-item--expanded:hover > .toolbar-icon {
+    &::after {
+      width: 52px;
+    }
   }
 }

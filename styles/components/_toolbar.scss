@@ -342,7 +342,7 @@
   background: var(--colorGinLayerBackground);
 
   .menu-item + .menu-item {
-    border-top: 1px solid var(--colorGinBorder);
+    border-top: 1px solid var(--colorGinLayerBorder);
   }
 
   .menu-item + .menu-item__spacer {
@@ -359,7 +359,7 @@
   }
 
   .level-1.menu-item:last-child {
-    border-bottom: 1px solid var(--colorGinBorder);
+    border-bottom: 1px solid var(--colorGinLayerBorder);
   }
 
   .gin--dark-mode & {
