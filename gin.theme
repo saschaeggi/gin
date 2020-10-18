@@ -227,6 +227,7 @@ function gin_form_alter(&$form, $form_state, $form_id) {
         '#group' => 'meta',
         '#type' => 'container',
         '#weight' => 99,
+        '#multilingual' => TRUE,
         '#attributes' => [
           'class' => [
             'gin-sidebar',
