@@ -8,16 +8,21 @@
 
   @supports (backdrop-filter: blur()) {
     opacity: .999; /* Fix Chrome issue with mask */
-    background: rgba($colorAppBackground, .9);
-    backdrop-filter: blur(8px);
+    background: rgba($colorAppBackground, .8);
+    backdrop-filter: blur(12px);
   }
 
   .gin--dark-mode & {
     background: rgba($colorDarkAppBackground, .98);
+
+    @supports (backdrop-filter: blur()) {
+      background: rgba($colorDarkAppBackground, .8);
+    }
   }
 
   .gin--high-contrast-mode & {
     background: var(--colorGinAppBackground);
+    backdrop-filter: none;
   }
 
   @include mq($breakpointLarge) {

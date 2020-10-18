@@ -173,8 +173,12 @@
               padding-left: 0;
             }
 
-            &:before {
+            &::before {
               left: $sidebarSpacer;
+            }
+
+            &:focus::after {
+              border-radius: 6px;
             }
           }
 

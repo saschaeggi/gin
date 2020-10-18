@@ -66,6 +66,7 @@
   box-shadow: 0 .125em .25em var(--colorGinPrimaryLightActive),
               .1em .25em .5em var(--colorGinPrimaryLight),
               -.25em -.5em 1em var(--colorGinAppBackground);
+  filter: drop-shadow(0 6px 10px var(--colorGinPrimaryLight));
 
   &:hover {
     background-color: var(--colorGinPrimaryHover);

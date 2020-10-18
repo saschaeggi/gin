@@ -89,6 +89,11 @@
 
   &:hover, &:active, &:focus {
     background-color: rgba(222, 117, 96, .2);
+
+    .gin--dark-mode & {
+      color: var(--colorGinDanger);
+      background-color: rgba(86, 31, 20, .2);
+    }
   }
 }
 

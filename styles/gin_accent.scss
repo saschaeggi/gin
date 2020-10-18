@@ -9,11 +9,11 @@
   --colorGinPrimary: #{$ginPrimary};
   --colorGinPrimaryHover: #{$ginPrimaryHover};
   --colorGinPrimaryActive: #{$ginPrimaryActive};
-  --colorGinPrimaryLight: #{mix(white, $mixColor, 85%)};
-  --colorGinPrimaryLightHover: #{mix(white, $mixColor, 80%)};
-  --colorGinPrimaryLightActive: #{mix(white, $mixColor, 70%)};
-  --colorGinPrimaryLightShadow: #{mix(white, $mixColor, 55%)};
-  --colorGinItemHover: #{rgba($ginPrimary, .06)};
+  --colorGinPrimaryLight: #{rgba($mixColor, .15)};
+  --colorGinPrimaryLightHover: #{rgba($mixColor, .20)};
+  --colorGinPrimaryLightActive: #{rgba($mixColor, .30)};
+  --colorGinPrimaryLightShadow: #{rgba($mixColor, .45)};
+  --colorGinItemHover: #{rgba($ginPrimary, .10)};
   --colorGinButtonShadow: #00000033;
   --colorGinButtonText: #fff;
   --colorGinFocus: #059fad; //#00a590; //#0ba77d; //#2297c7;
@@ -132,7 +132,7 @@ $ginColors: (
       --colorGinPrimaryLightActive: #{rgba($color, .35)};
       --colorGinPrimaryLightShadow: #{rgba($color, .5)};
     }
-    --colorGinItemHover: #{rgba($color, .06)};
+    --colorGinItemHover: #{rgba($color, .10)};
   }
 }
 

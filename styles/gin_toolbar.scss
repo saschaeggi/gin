@@ -37,9 +37,9 @@
 
     #toolbar-item-administration-tray .toolbar-icon,
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
-      &:before {
+      &::before {
         @include mq($breakpointMedium) {
-          left: #{round($toolbarWidth / 2.666666667) - 1px};
+          left: 17px;
           width: 21px;
         }
       }
@@ -85,15 +85,23 @@
         mask-size: 100% 100%;
       }
 
-      &:before {
+      &::before {
         $logoSize: 28px;
 
         @include mq($breakpointMedium) {
           width: $logoSize;
-          left: #{round($toolbarWidth / 2.666666667) - 5px};
+          left: #{round($toolbarWidth / 2.666666667) - 5px - 12px};
           mask-size: $logoSize $logoSize;
-          mask-position: center 28px;
+          mask-position: center $logoSize;
         }
+      }
+
+      &:hover::before {
+        background: var(--colorGinPrimary);
+      }
+
+      &::after {
+        top: 16px;
       }
     }
 
@@ -101,7 +109,7 @@
       &, &:hover, &:active, &.is-active {
         color: var(--colorGinAppBackground);
 
-        &:before {
+        &::before {
           background-image: none;
           background-color: var(--colorGinAppBackground);
         }
@@ -151,11 +159,11 @@
 .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
 .toolbar .toolbar-tray a.is-active {
   color: var(--colorGinPrimary);
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
 
   @include mq(max-width $breakpointMedium) {
-    background: var(--colorGinItemHover);
+    background: var(--colorGinPrimaryLight);
   }
 }
 
@@ -213,7 +221,7 @@ a.toolbar-menu__trigger,
     }
 
     &:hover {
-      background-color: var(--colorGinItemHover);
+      // background-color: var(--colorGinPrimaryLight);
 
       &:before {
         background-color: var(--colorGinTitle);
@@ -284,7 +292,6 @@ a.toolbar-menu__trigger,
     max-width: calc(100% - #{$topBar});
     background: var(--colorGinLayerBackground);
     box-shadow: 0 0 48px rgba(0, 0, 0, 0.075);
-    // border-right: 1px solid var(--colorGinLayerBorder);
     transition: $transition;
 
     .gin--dark-mode & {
@@ -346,42 +353,25 @@ a.toolbar-menu__trigger,
           color: var(--colorGinTextLight);
           display: flex;
           align-items: center;
-          width: 100%;
+          width: 216px;
           height: 56px;
-          padding-left: $toolbarWidth;
+          padding-left: #{$toolbarWidth - 12px};
           padding-right: 0;
+          margin: 0 12px;
+          border-radius: $borderDefault;
           overflow: hidden;
 
           &:hover {
-            color: var(--colorGinTitle);
+            color: var(--colorGinPrimary);
             background-color: transparent;
-          }
-
-          [data-toolbar-menu='open'] & {
-            width: $toolbarOpenWidth;
-            padding-left: $toolbarWidth;
           }
 
           &.is-active {
             color: var(--colorGinPrimary);
-            font-weight: 600;
+            font-weight: 500;
 
             &:before {
               background: var(--colorGinPrimary);
-            }
-
-            &:after {
-              content: "";
-              opacity: .9;
-              position: absolute;
-              top: 22px;
-              left: #{round($toolbarWidth / 2)};
-              display: block;
-              width: 4px;
-              height: 4px;
-              box-shadow: 2px 3px 15px var(--colorGinPrimary),
-                          2px 3px 20px var(--colorGinPrimary),
-                          2px 3px 30px var(--colorGinPrimary);
             }
           }
 
@@ -420,7 +410,12 @@ a.toolbar-menu__trigger,
             &.is-active {
               color: var(--colorGinPrimary);
               font-weight: 500;
-              background: var(--colorGinItemHover);
+              background: var(--colorGinPrimaryLight);
+
+              &:hover {
+                color: var(--colorGinPrimaryHover);
+                background: var(--colorGinPrimaryLightHover);
+              }
             }
           }
 
@@ -436,7 +431,7 @@ a.toolbar-menu__trigger,
 
             a {
               color: var(--colorGinTitle);
-              padding: 32px 24px 38px 24px;
+              padding: 32px 24px 36px 24px;
             }
           }
 
@@ -446,7 +441,7 @@ a.toolbar-menu__trigger,
             margin-bottom: 5px;
 
             a {
-              padding: 36px 24px 34px 24px;
+              padding: 36px 24px 36px 24px;
             }
           }
 
@@ -457,7 +452,10 @@ a.toolbar-menu__trigger,
 
             .toolbar-icon {
               font-size: 1rem;
-              padding: 1.25em 2rem 1.25em 1.5rem;
+              padding: 1.125em 2rem 1.125em 1.5rem;
+              margin: .25em .5em;
+              border-radius: $borderDefault;
+              overflow: hidden;
             }
           }
         }
@@ -468,6 +466,10 @@ a.toolbar-menu__trigger,
       display: block;
       border-right: 1px solid rgba(0,0,0,.075);
       box-shadow: 7px 0px 16px rgba(0,0,0,.075);
+    }
+
+    .menu-item .menu-item:hover > .toolbar-icon {
+      background: var(--colorGinPrimaryLight);
     }
   }
 
@@ -518,13 +520,61 @@ a.toolbar-menu__trigger,
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
   position: relative;
 
-  &:before {
+  &::before {
     z-index: 1;
-    top: 21px;
-    right: 16px;
+    top: 18px;
+    right: 24px;
   }
 }
 
 #admin-toolbar-search-input {
   display: none;
+}
+
+// New Main level hover; needs refactoring at some point.
+.toolbar-menu-administration > .toolbar-menu > .menu-item {
+  > .toolbar-icon {
+    &.is-active {
+      filter: drop-shadow(0 0 10px var(--colorGinPrimaryLightActive));
+
+      .gin--dark-mode & {
+        filter: drop-shadow(0 0 16px var(--colorGinPrimaryLightActive));
+      }
+    }
+  }
+
+  &:hover {
+    background: transparent;
+  }
+
+  &:hover > .toolbar-icon,
+  &.hover-intent > .toolbar-icon {
+    &::before {
+      background: var(--colorGinPrimary);
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: .125em;
+      left: 2px;
+      width: 52px;
+      height: 52px;
+      background: var(--colorGinPrimaryLight);
+      border-radius: $borderDefault;
+    }
+  }
+}
+
+[data-toolbar-menu='open'] .toolbar-menu-administration > .toolbar-menu > .menu-item {
+  &:not(.hover-intent) > .toolbar-icon {
+    &::after {
+      width: 213px;
+    }
+  }
+
+  &.menu-item--expanded:hover > .toolbar-icon::after {
+    width: 52px;
+  }
 }

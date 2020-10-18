@@ -71,7 +71,7 @@
     #toolbar-item-administration-search,
     .toolbar-menu-administration .toolbar-icon,
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
-      &:before {
+      &::before {
         background-color: var(--colorGinIcons);
         background-image: none;
         mask-repeat: no-repeat;
@@ -79,13 +79,13 @@
         mask-size: 18px 18px;
       }
 
-      &:hover:before {
+      &:hover::before {
         @include mq($breakpointMedium) {
-          background-color: var(--colorGinTitle);
+          background-color: var(--colorGinPrimary);
         }
       }
 
-      &.is-active:hover:before {
+      &.is-active:hover::before {
         @include mq($breakpointMedium) {
           background-color: var(--colorGinPrimary);
         }
@@ -94,7 +94,7 @@
 
     .menu-item--active-trail {
       .toolbar-icon {
-        &:before {
+        &::before {
           background: var(--colorGinPrimary);
         }
       }
@@ -131,7 +131,7 @@
     // Fallback icon if none is set
     .toolbar-icon {
       &:before {
-        mask-image: icon('hamburger');
+        mask-image: icon('fallback');
       }
     }
 
@@ -294,7 +294,8 @@
   }
 
   .menu-item {
-    &:hover, a:focus {
+    a:hover, a:focus {
+      color: var(--colorGinPrimaryHover);
       background-color: var(--colorGinItemHover);
 
       .toolbar-icon::before {
@@ -459,7 +460,7 @@
   }
 
   &:focus {
-    background: var(--colorGinItemHover);
+    background: var(--colorGinPrimaryLight);
   }
 
   &.is-active {

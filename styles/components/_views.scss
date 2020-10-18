@@ -97,8 +97,8 @@
 
       @supports (backdrop-filter: blur()) {
         opacity: .999; /* Fix Chrome issue with mask */
-        background: rgba(#c8cdd8, .9);
-        backdrop-filter: blur(8px);
+        background: rgba(#c8cdd8, .8);
+        backdrop-filter: blur(12px);
       }
     }
   }

@@ -54,6 +54,14 @@
   strong {
     font-weight: inherit;
   }
+
+  &.is-active {
+    filter: drop-shadow(0 -8px 12px var(--colorGinPrimaryLightActive));
+
+    .gin--dark-mode & {
+      filter: drop-shadow(0 4px 12px var(--colorGinPrimaryLightActive));
+    }
+  }
 }
 
 .tabs__link.is-active,
@@ -112,6 +120,7 @@
       width: 100%;
       height: .5rem;
       background: var(--colorGinAppBackground);
+      transition: $transition;
     }
   }
 
@@ -125,6 +134,7 @@
     width: 100%;
     max-width: calc(100% + .5rem);
     border-bottom: 1px solid var(--colorGinBorder);
+    transition: $transition;
 
     @include mq($breakpointSmall) {
       left: .5rem;
@@ -170,7 +180,7 @@
   .tabs__link {
     min-height: 3rem;
     height: 100%;
-    border-radius: $borderSmall $borderSmall 0 0;
+    border-radius: $borderDefault $borderDefault 0 0;
 
     @include mq($breakpointSmall) {
       padding-right: 1.5rem;
@@ -226,7 +236,7 @@
       a {
         padding-right: 1.5rem;
         padding-left: 1.5rem;
-        border-radius: $borderSmall $borderSmall 0 0;
+        border-radius: $borderDefault $borderDefault 0 0;
 
         &:before {
           content: '';
