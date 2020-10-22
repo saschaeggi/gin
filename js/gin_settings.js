@@ -127,7 +127,7 @@
       const darkmodeEnabled = darkmodeParam != null ? darkmodeParam : drupalSettings.gin.darkmode;
       const darkmodeClass = drupalSettings.gin.darkmode_class;
 
-      // Needs to check for both: backwards compabitility.
+      // Needs to check for both: backwards compatibility.
       if (darkmodeEnabled === true || darkmodeEnabled === 1) {
         $('body').addClass(darkmodeClass);
       }
@@ -140,7 +140,7 @@
       const enabled = param != null ? param : drupalSettings.gin.highcontrastmode;
       const className = drupalSettings.gin.highcontrastmode_class;
 
-      // Needs to check for both: backwards compabitility.
+      // Needs to check for both: backwards compatibility.
       if (enabled === true || enabled === 1) {
         $('body').addClass(className);
       }

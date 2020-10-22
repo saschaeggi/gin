@@ -12,7 +12,7 @@
       border-radius: #{$borderBig + 2px};
     }
 
-    // User is draging item.
+    // User is dragging item.
     &.sortable-chosen {
       background: var(--colorGinLayerBackground);
       box-shadow: 0 0 48px rgba(0, 0, 0, 0.075) !important;

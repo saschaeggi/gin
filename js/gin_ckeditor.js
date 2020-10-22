@@ -10,7 +10,7 @@
         const contentsCss = drupalSettings.gin.ckeditor_css_path;
         const accentColorPreset = drupalSettings.gin.preset_accent_color;
 
-        // Collect Gin Clases.
+        // Collect Gin classes.
         let ginClasses = new Array();
 
         if (drupalSettings.gin.darkmode) {

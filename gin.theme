@@ -39,7 +39,7 @@ function gin_preprocess_html(&$variables) {
       $variables['attributes']['data-gin-accent'] = $preset_accent_color;
     }
 
-    // High contast mode.
+    // High contrast mode.
     if ($high_contrast_mode === TRUE) {
       $variables['attributes']['class'][] = 'gin--high-contrast-mode';
     }
@@ -291,7 +291,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       $darkModeValue = theme_get_setting('enable_darkmode') == TRUE ? TRUE : FALSE;
     }
 
-    // Inject the settings for the dark mode feauture.
+    // Inject the settings for the dark mode feature.
     $form['gin_theme_settings'] = [
       '#type' => 'details',
       '#title' => t('Admin theme settings'),
