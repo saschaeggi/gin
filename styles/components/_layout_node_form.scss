@@ -21,6 +21,12 @@
 
     .region-sticky {
       opacity: 1;
+      backdrop-filter: none;
+      background: rgba($colorAppBackground, .98);
+
+      .gin--dark-mode & {
+        background: rgba($colorDarkAppBackground, .98);
+      }
     }
   }
 
@@ -62,8 +68,9 @@
       .page-title {
         @include mq($breakpointLarge) {
           width: auto;
-          max-width: $breakpointWide;
+          max-width: 800px;
           margin: 0;
+          overflow: hidden;
         }
       }
     }

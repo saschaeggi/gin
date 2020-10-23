@@ -110,8 +110,7 @@
     position: relative;
     pointer-events: none;
     height: 40px;
-    margin-top: -40px;
-    margin-bottom: 2rem;
+    margin: -40px auto 2rem;
     // border-bottom: 1px solid rgba(0, 0, 0, .1);
     box-shadow: 0 10px 20px -16px rgba(0, 0, 0, .4);
 
@@ -124,8 +123,11 @@
   @include mq($breakpointLarge) {
     position: sticky;
     top: 48px;
-    width: calc(100% - min(10vw, 128px) + 16px);
-    transform: translateX(-6px);
+    width: calc(100% - min(10vw, 128px) + 24px);
+
+    .gin--edit-form & {
+      max-width: 1300px;
+    }
   }
 }
 

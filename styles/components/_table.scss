@@ -4,11 +4,17 @@
 }
 
 table.sticky-header {
-  z-index: 97;
+  z-index: 98;
   left: auto !important;
   background: transparent;
 
   th {
+    @supports (backdrop-filter: blur()) {
+      opacity: .999; /* Fix Chrome issue with mask */
+      background: rgba(#e6e8ef, .8);
+      backdrop-filter: blur(12px);
+    }
+
     &:first-child {
       border-top-left-radius: 0;
     }

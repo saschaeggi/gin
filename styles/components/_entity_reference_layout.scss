@@ -460,7 +460,7 @@
 }
 
 .layout-paragraphs-item .layout-paragraphs-add-content__toggle {
-  top: 16px;
+  top: 24px;
 }
 
 .layout-paragraphs-item > .layout-paragraphs-add-content__toggle {
@@ -553,6 +553,7 @@
     transform: translateX(-50%);
     font-style: normal;
     font-weight: bold !important;
+    padding: 0;
   }
 
   &:hover > button.erl-add-content__toggle,

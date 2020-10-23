@@ -62,6 +62,10 @@ body:not(.gin--edit-form) {
       top: 5px;
       mask-size: 85% 85%;
     }
+
+    .gin--edit-form & {
+      top: 3px;
+    }
   }
 
   &:hover &__icon {
