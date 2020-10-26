@@ -1,7 +1,7 @@
 #coffee-form {
   padding: 4px;
   background: #000;
-  border-radius: 8px;
+  border-radius: $borderMedium;
 
   #coffee-form-inner,
   #coffee-q {

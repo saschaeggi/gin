@@ -99,6 +99,10 @@
         opacity: .999; /* Fix Chrome issue with mask */
         background: rgba(#c8cdd8, .8);
         backdrop-filter: blur(12px);
+
+        .gin--dark-mode & {
+          background: rgba($colorDarkAppBackground, .8);
+        }
       }
     }
   }

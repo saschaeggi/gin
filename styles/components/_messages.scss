@@ -1,7 +1,7 @@
 .messages {
   padding: 1rem;
   border: 2px solid transparent;
-  border-radius: 6px;
+  border-radius: $borderMedium;
   box-shadow: 10px 10px 30px #c1c1d2,
               -6px -6px 16px scale-color($colorAppBackgroundShadow, $lightness: -2%);
 

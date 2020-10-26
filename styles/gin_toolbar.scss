@@ -231,12 +231,12 @@ a.toolbar-menu__trigger,
     &:hover {
       // background-color: var(--colorGinPrimaryLight);
 
-      &:before {
+      &::before {
         background-color: var(--colorGinTitle);
       }
     }
 
-    &:before {
+    &::before {
       content: "";
       position: absolute;
       left: #{round(($toolbarWidth - 34px) / 2) - 1px};
@@ -468,6 +468,28 @@ a.toolbar-menu__trigger,
           }
         }
       }
+
+      // Shadow as scrolling indicator
+      &,
+      .toolbar-menu {
+        &::after {
+          content: "";
+          pointer-events: none;
+          display: block;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 48px;
+          background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, var(--colorGinLayerBackground) 100%);
+        }
+      }
+
+      // Shadow as scrolling indicator
+      &::after {
+        bottom: 64px;
+        height: 32px;
+      }
     }
 
     .menu-item.hover-intent > .toolbar-menu {
@@ -543,10 +565,10 @@ a.toolbar-menu__trigger,
 .toolbar-menu-administration > .toolbar-menu > .menu-item {
   > .toolbar-icon {
     &.is-active {
-      filter: drop-shadow(0 0 10px var(--colorGinPrimaryLightActive));
+      filter: drop-shadow(0 0 10px var(--colorGinPrimaryLightHover));
 
       .gin--dark-mode & {
-        filter: drop-shadow(0 0 16px var(--colorGinPrimaryLightActive));
+        filter: drop-shadow(0 0 16px var(--colorGinPrimaryLightHover));
       }
     }
   }
@@ -556,6 +578,7 @@ a.toolbar-menu__trigger,
   }
 
   &:hover > .toolbar-icon,
+  > .toolbar-icon:focus,
   &.hover-intent > .toolbar-icon {
     box-shadow: none;
 

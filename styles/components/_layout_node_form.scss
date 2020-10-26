@@ -23,8 +23,11 @@
       opacity: 1;
       backdrop-filter: none;
       background: rgba($colorAppBackground, .98);
+    }
 
-      .gin--dark-mode & {
+    // Darkmode overrides
+    &.gin--dark-mode {
+      .region-sticky {
         background: rgba($colorDarkAppBackground, .98);
       }
     }
