@@ -41,6 +41,7 @@
   .is-horizontal .tabs__link:focus,
   .is-horizontal .tabs--primary .tabs__link:focus {
     box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
+    filter: none;
   }
 }
 

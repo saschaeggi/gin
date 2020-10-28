@@ -64,10 +64,10 @@
   --colorGinPrimary: #{$ginPrimary};
   --colorGinPrimaryHover: #{mix(white, $ginPrimary, 10%)};
   --colorGinPrimaryActive: #{mix(white, $ginPrimary, 15%)};
-  --colorGinPrimaryLight: #{rgba($ginPrimary, .20)};
-  --colorGinPrimaryLightHover: #{rgba($ginPrimary, .25)};
-  --colorGinPrimaryLightActive: #{rgba($ginPrimary, .35)};
-  --colorGinPrimaryLightShadow: #{rgba($ginPrimary, .5)};
+  --colorGinPrimaryLight: #{rgba($ginPrimary, .15)};
+  --colorGinPrimaryLightHover: #{rgba($ginPrimary, .2)};
+  --colorGinPrimaryLightActive: #{rgba($ginPrimary, .3)};
+  --colorGinPrimaryLightShadow: #{rgba($ginPrimary, .45)};
   --colorGinItemHover: #{rgba($ginPrimary, .10)};
   --colorGinButtonShadow: rgba(#111, .9);
   --colorGinButtonText: #111;
@@ -124,15 +124,16 @@ $ginColors: (
     --colorGinPrimaryActive: #{mix(black, $color, 25%)};
     --colorGinPrimaryLight: #{rgba($color, .15)};
     @if $name == dark_purple or $name == purple {
-      --colorGinPrimaryLightHover: #{rgba($color, .15)};
+      --colorGinPrimaryLightHover: #{rgba($color, .2)};
       --colorGinPrimaryLightActive: #{rgba($color, .25)};
       --colorGinPrimaryLightShadow: #{rgba($color, .4)};
+      --colorGinItemHover: #{rgba($color, .08)};
     } @else {
-      --colorGinPrimaryLightHover: #{rgba($color, .25)};
-      --colorGinPrimaryLightActive: #{rgba($color, .35)};
-      --colorGinPrimaryLightShadow: #{rgba($color, .5)};
+      --colorGinPrimaryLightHover: #{rgba($color, .2)};
+      --colorGinPrimaryLightActive: #{rgba($color, .3)};
+      --colorGinPrimaryLightShadow: #{rgba($color, .45)};
+      --colorGinItemHover: #{rgba($color, .10)};
     }
-    --colorGinItemHover: #{rgba($color, .10)};
   }
 }
 
@@ -155,9 +156,9 @@ $ginDarkmodeColors: (
     --colorGinPrimary: #{$color};
     --colorGinPrimaryHover: #{mix(white, $color, 10%)};
     --colorGinPrimaryActive: #{mix(white, $color, 15%)};
-    --colorGinPrimaryLight: #{rgba($color, .20)};
-    --colorGinPrimaryLightHover: #{rgba($color, .30)};
-    --colorGinPrimaryLightActive: #{rgba($color, .40)};
+    --colorGinPrimaryLight: #{rgba($color, .1)};
+    --colorGinPrimaryLightHover: #{rgba($color, .2)};
+    --colorGinPrimaryLightActive: #{rgba($color, .3)};
     --colorGinItemHover: #{rgba($color, .1)};
   }
 }
