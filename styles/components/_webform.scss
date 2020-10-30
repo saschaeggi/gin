@@ -13,6 +13,12 @@
   }
 }
 
+.webform-ui-element-type-change-form {
+  .layer-wrapper {
+    padding: 0;
+  }
+}
+
 .webform-element-help {
   color: var(--colorGinText);
   background: transparent;
@@ -47,10 +53,6 @@
 
 .webform-details-toggle-state {
   color: var(--colorGinPrimary);
-}
-
-.toolbar-tray-open.toolbar-horizontal .webform-ui-dialog {
-  top: 50% !important;
 }
 
 .webform-ui-elements-table {

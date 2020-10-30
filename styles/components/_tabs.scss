@@ -104,9 +104,13 @@
 
   @include mq($breakpointSmall) {
     width: 100%;
-    padding: .5rem .5rem 1.5rem;
+    padding: .2rem .5rem 1.5rem;
     margin-bottom: -24px;
     overflow-x: auto;
+
+    .gin--edit-form & {
+      padding-top: .45rem;
+    }
   }
 
   &::after {
