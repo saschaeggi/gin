@@ -337,6 +337,18 @@
   border-bottom: 1px solid var(--colorGinLayerBorder);
 }
 
+// Fix for Admin_toolbar 2.4+: Remove white borders added by the admin_toolbar module
+.toolbar .toolbar-tray-horizontal {
+  ul ul li.menu-item:first-child {
+    border-top: 0;
+  }
+
+  .menu-item:last-child {
+    border-left: 0;
+    border-right: 0;
+  }
+}
+
 .toolbar .toolbar-tray-vertical {
   box-shadow: none;
   border-right: 1px solid var(--colorGinBorder);
