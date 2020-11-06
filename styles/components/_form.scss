@@ -160,6 +160,11 @@ $maxWidth: 520px;
       border: none;
     }
 
+    &:hover ~ .checkbox-toggle {
+      opacity: .9;
+      box-shadow: 0 0 2px rgba(0, 0, 0, .2);
+    }
+
     &:checked ~ .checkbox-toggle .checkbox-toggle__inner {
       background-color: var(--colorGinSwitch);
 

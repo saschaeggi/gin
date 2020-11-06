@@ -17,12 +17,9 @@
   }
 
   .field-multiple-table {
-    // thead, tbody {
-    //   border: 1px solid var(--colorGinBorder);
-    // }
-
     thead {
       th {
+        padding: .5rem 1rem .5rem .5rem;
         border-radius: $borderDefault;
       }
 
@@ -86,6 +83,10 @@
     margin: 0;
     border: 0 none !important;
   }
+}
+
+.js .paragraph-type-title {
+  align-self: center;
 }
 
 .js .paragraph-type-icon {

@@ -399,7 +399,7 @@
     li {
       &.menu-item {
         .menu-item {
-          background: var(--colorGinLayerBackground);
+          background: transparent;
           border-left: none;
           border-right: none;
           border-bottom: 0 none;
@@ -520,7 +520,7 @@
   }
 }
 
-.toolbar.toolbar-meta .toolbar-bar .toolbar-tab>.toolbar-icon:before {
+.toolbar.toolbar-meta .toolbar-bar .toolbar-tab > .toolbar-icon:before {
   mask-size: 18px 18px;
   background-color: var(--colorGinIcons);
 }
