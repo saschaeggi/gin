@@ -535,7 +535,7 @@ a.toolbar-menu__trigger,
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &:before {
         @include mq($breakpointMedium) {
-          mask-size: 21px 21px;
+          mask-size: 20px 20px;
         }
       }
     }

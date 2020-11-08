@@ -19,15 +19,15 @@
 .panel {
   padding: 16px;
 
+  &__title {
+    margin-bottom: 8px;
+  }
+
   &__content {
-    padding: 8px 16px 0;
+    padding: 0;
   }
 
   .admin-list {
     margin: 0;
-  }
-
-  .admin-item {
-    padding-left: 2rem;
   }
 }

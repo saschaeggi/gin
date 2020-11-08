@@ -11,6 +11,10 @@
   box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
 }
 
+.admin-item__link:focus {
+  border-radius: #{$borderSmall / 2};
+}
+
 .claro-details {
   &:focus,
   &:focus:hover,
