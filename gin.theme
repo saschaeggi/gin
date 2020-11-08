@@ -20,9 +20,6 @@ function gin_preprocess_html(&$variables) {
   $gin_activated = _gin_is_active();
 
   if ($gin_activated) {
-    // Get route.
-    $route = \Drupal::routeMatch()->getRouteName();
-
     // Get configs.
     $darkmode = _gin_dark_mode_enabled();
     $preset_accent_color = _gin_preset_accent_color();
@@ -45,13 +42,7 @@ function gin_preprocess_html(&$variables) {
     }
 
     // Edit form? Use the new Gin Edit form layout.
-    if (
-      $route == 'node.add' ||
-      $route == 'entity.node.content_translation_add' ||
-      $route == 'quick_node_clone.node.quick_clone' ||
-      $route == 'entity.node.edit_form' ||
-      $route == 'entity.group_content.create_form'
-    ) {
+    if (_gin_is_content_form()) {
       $variables['attributes']['class'][] = 'gin--edit-form';
     }
 
@@ -182,18 +173,7 @@ function gin_preprocess_dropbutton_wrapper(&$variables) {
  * Implements form_alter_HOOK() for some major form changes.
  */
 function gin_form_alter(&$form, $form_state, $form_id) {
-  // Get route.
-  $route = \Drupal::routeMatch()->getRouteName();
-
-  // Forms to alter.
-  if (
-    ($route == 'node.add' ||
-      $route == 'entity.node.content_translation_add' ||
-      $route == 'quick_node_clone.node.quick_clone' ||
-      $route == 'entity.node.edit_form' ||
-      ($route == 'entity.group_content.create_form' && strpos($form_id, 'group_node') === FALSE)) &&
-    strpos($form_id, 'views_form_media_library_widget_') === FALSE
-  ) {
+  if (_gin_is_content_form($form, $form_state, $form_id)) {
     // Submit change weight.
     if (isset($form['actions']['submit'])) {
       $form['actions']['submit']['#weight'] = '99';
@@ -1196,4 +1176,35 @@ function _gin_validate_path_logo($path) {
     return $path;
   }
   return FALSE;
+}
+
+/**
+ * Check if were on a content edit form.
+ */
+function _gin_is_content_form($form = NULL, $form_state = NULL, $form_id = NULL) {
+  $is_content_form = &drupal_static(__FUNCTION__);
+  $routeName = \Drupal::routeMatch()->getRouteName();
+
+  if (is_bool($is_content_form)) {
+    return $is_content_form;
+  }
+
+  if ($form_state && ($form_state->getBuildInfo()['base_form_id'] ?? NULL) === 'node_form') {
+    $is_content_form = TRUE;
+  }
+
+  // If media library widget, don't use new content edit form.
+  if ($form_id && strpos($form_id, 'views_form_media_library_widget_') !== FALSE) {
+    $is_content_form = FALSE;
+  }
+
+  // Special routes.
+  if (
+    $routeName === 'entity.node.content_translation_add'
+    || $routeName === 'quick_node_clone.node.quick_clone'
+  ) {
+    $is_content_form = TRUE;
+  }
+
+  return $is_content_form;
 }
