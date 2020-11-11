@@ -33,3 +33,14 @@ gin.settings:
     icon_upload:
       type: string
       label: 'The icon upload'
+    third_party_settings:
+      type: mapping
+      label: 'Third party settings'
+      mapping:
+        shortcut:
+          type: mapping
+          label: 'Shortcut'
+          mapping:
+            module_link:
+              type: boolean
+              label: 'Module Link'
