@@ -33,18 +33,16 @@
         {% else %}
           {{ tab.link }}
         {% endif %}
-        {% apply spaceless %}
-          <div{{ tray.attributes }}>
-            {% if tray.label %}
-              <nav class="toolbar-lining clearfix" role="navigation" aria-label="{{ tray.label }}">
-                <h3 class="toolbar-tray-name visually-hidden">{{ tray.label }}</h3>
-            {% else %}
-              <nav class="toolbar-lining clearfix" role="navigation">
-            {% endif %}
-            {{ tray.links }}
-            </nav>
-          </div>
-        {% endapply %}
+        <div{{ tray.attributes }}>
+          {% if tray.label %}
+            <nav class="toolbar-lining clearfix" role="navigation" aria-label="{{ tray.label }}">
+              <h3 class="toolbar-tray-name visually-hidden">{{ tray.label }}</h3>
+          {% else %}
+            <nav class="toolbar-lining clearfix" role="navigation">
+          {% endif %}
+          {{ tray.links }}
+          </nav>
+        </div>
       </div>
     {% endfor %}
   </nav>
