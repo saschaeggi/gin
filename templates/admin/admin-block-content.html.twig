@@ -24,7 +24,7 @@
   <dl{{ attributes.addClass('admin-list') }}>
     {% for item in content %}
       <div{{ create_attribute({class: item_classes}) }}>
-        <a class="admin-item__link" href="{{ url(item.link.url.routeName) }}"></a>
+        {{ item.link }}
         <dt class="admin-item__title">{{ item.title }}</dt>
         {% if item.description %}
           <dd class="admin-item__description">{{ item.description }}</dd>

@@ -7,7 +7,8 @@
 .cke.cke_chrome.cke_focus,
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a:focus,
 .form-element.error:hover:focus,
-.form-actions .action-link:focus {
+.form-actions .action-link:focus,
+.paragraphs-tabs-wrapper .field-multiple-table .draggable.drag {
   box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
 }
 

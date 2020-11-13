@@ -22,6 +22,7 @@
   --colorGinWarning: #d8b234;
   --colorGinWarningLight: #efcf64;
   --colorGinWarningBackground: #{mix(black, #efcf64, 60%)};
+  --colorGinWarningLightBackground: #{mix(white, #efcf64, 80%)};
   --colorGinDanger: #cc3d3d;
   --colorGinDangerLightest: #fdd9d9;
   --colorGinDangerLight: #f39b9d;
@@ -75,6 +76,7 @@
 
   --colorGinDisabled: #999;
   --colorGinWarning: #dec15f;
+  --colorGinWarningLightBackground: var(--colorGinAppBackground);
   --colorGinDanger: #ce6060;
   --colorGinDangerLightest: #483439;
   --colorGinGreen: #32cea4;

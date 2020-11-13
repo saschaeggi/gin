@@ -91,6 +91,19 @@ function gin_preprocess_page(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_HOOK() for page_alter.
+ */
+function gin_theme_suggestions_page_alter(&$suggestions, $variables) {
+  $path = \Drupal::requestStack()->getCurrentRequest()->getPathInfo();
+
+  if ($path != '/') {
+    $path = trim($path, '/');
+    $arg = str_replace(["/", '-'], ['_', '_'], $path);
+    $suggestions[] = 'page__' . $arg;
+  }
+}
+
+/**
  * Implements hook_preprocess_HOOK() for page_attachments.
  */
 function gin_page_attachments_alter(&$page) {

@@ -13,6 +13,7 @@ $sprites: (
     'drupal': "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath d='M15.792 5.064C14.088 3.408 12.504 1.824 12.024 0c-.48 1.824-2.064 3.408-3.768 5.064-2.496 2.496-5.352 5.352-5.352 9.648-.144 5.016 3.888 9.192 8.904 9.288 5.016.096 9.216-3.888 9.288-8.904v-.384c.048-4.296-2.808-7.152-5.304-9.648zM7.56 15.528a5.498 5.498 0 00-.696 1.128c-.048.048-.096.12-.168.12h-.048c-.216 0-.432-.384-.432-.384-.048-.096-.12-.216-.168-.312L6 15.984c-.552-1.2-.096-2.904-.096-2.904.216-.816.6-1.632 1.08-2.328.312-.432.648-.864.984-1.296l.432.432 2.04 2.064c.096.096.096.216 0 .312L8.328 14.64l-.768.888zm4.56 5.952c-1.728 0-3.168-1.416-3.12-3.168 0-.768.312-1.512.768-2.064.648-.768 1.464-1.56 2.376-2.592 1.032 1.128 1.728 1.848 2.376 2.736.048.048.096.12.12.216.336.528.552 1.128.552 1.776.072 1.728-1.344 3.096-3.072 3.096zm5.904-5.016a.497.497 0 01-.312.264h-.048a.913.913 0 01-.312-.216c-.552-.816-1.176-1.608-1.848-2.28l-.816-.864-2.76-2.856a35.757 35.757 0 01-1.632-1.68c0-.048-.048-.048-.048-.048a1.218 1.218 0 01-.216-.432v-.096c-.096-.48.096-.96.432-1.296.528-.528 1.08-1.08 1.608-1.632.552.6 1.176 1.2 1.776 1.824 1.2 1.128 2.28 2.376 3.288 3.72.816 1.176 1.248 2.496 1.248 3.936-.096.504-.168 1.104-.36 1.656z'/%3e%3c/svg%3e",
     'gin': "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath d='M12 4.92c.6.696 1.272 1.344 1.92 1.992 2.4 2.4 4.56 4.56 4.56 7.776V15.096c-.096 3.528-3 6.384-6.528 6.384h-.12c-1.728-.048-3.384-.744-4.56-1.992-1.176-1.296-1.824-2.952-1.776-4.728v-.048c0-3.216 2.256-5.4 4.56-7.776A49.835 49.835 0 0012 4.92zM12 0c-.48 1.824-2.088 3.432-3.792 5.04-2.472 2.52-5.328 5.4-5.328 9.648-.12 5.04 3.912 9.216 8.904 9.312H12c4.92 0 9-3.96 9.12-8.904v-.384c0-4.296-2.88-7.128-5.352-9.648C14.088 3.432 12.48 1.824 12 0z'/%3e%3c/svg%3e",
     'handle': "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' d='M8 20l8-8-8-8' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e",
+    'more': "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath d='M12 13a1 1 0 100-2 1 1 0 000 2zM12 4a1 1 0 100-2 1 1 0 000 2zM12 22a1 1 0 100-2 1 1 0 000 2z' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e",
     'grid': "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z'/%3e%3c/svg%3e",
     'list': "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01'/%3e%3c/svg%3e",
     'error': "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3ccircle fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' cx='12' cy='12' r='10'/%3e%3cpath fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M4.93 4.93l14.14 14.14'/%3e%3c/svg%3e",
@@ -28,6 +29,7 @@ $sprites: (
     'database': "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cellipse fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' cx='12' cy='5' rx='9' ry='3'/%3e%3cpath fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M21 12c0 1.66-4 3-9 3s-9-1.34-9-3'/%3e%3cpath fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5'/%3e%3c/svg%3e",
     'php': "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z'/%3e%3cpath fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M13 2v7h7'/%3e%3c/svg%3e",
     'server': "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3crect fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' x='2' y='2' width='20' height='8' rx='2' ry='2'/%3e%3crect fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' x='2' y='14' width='20' height='8' rx='2' ry='2'/%3e%3cpath fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M6 6h.01M6 18h.01'/%3e%3c/svg%3e",
+    'drag-dots': "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath d='M7 13a1 1 0 100-2 1 1 0 000 2zM7 4a1 1 0 100-2 1 1 0 000 2zM7 22a1 1 0 100-2 1 1 0 000 2zM16 13a1 1 0 100-2 1 1 0 000 2zM16 4a1 1 0 100-2 1 1 0 000 2zM16 22a1 1 0 100-2 1 1 0 000 2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e",
     'drag': "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20'/%3e%3c/svg%3e",
     'sort-asc': "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' d='M12 21V3M5 10l7-7 7 7' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e",
     'sort-desc': "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' d='M12 3v18M19 14l-7 7-7-7' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e",
@@ -111,6 +113,10 @@ $sizes: (
         'width': 24px,
         'height': 24px
     ),
+    'more': (
+        'width': 24px,
+        'height': 24px
+    ),
     'grid': (
         'width': 24px,
         'height': 24px
@@ -168,6 +174,10 @@ $sizes: (
         'height': 24px
     ),
     'server': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'drag-dots': (
         'width': 24px,
         'height': 24px
     ),

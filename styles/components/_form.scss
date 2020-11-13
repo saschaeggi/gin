@@ -101,6 +101,7 @@ $maxWidth: 520px;
 :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox {
   position: relative;
   margin-left: 0;
+  pointer-events: none;
 
   .checkbox-toggle {
     z-index: 0;
@@ -342,3 +343,19 @@ fieldset:not(.fieldgroup) {
   padding-right: 2rem;
   background-position: right 8px center;
 }
+
+// Show field block
+// .layout-region > .form-wrapper,
+// .details-wrapper > .form-wrapper {
+//   padding-left: 1.5rem;
+//   margin-bottom: 2.5rem;
+//   border-left: 2px solid var(--colorGinDisabled);
+
+//   &:hover {
+//     border-left-color: var(--colorGinIcons);
+//   }
+
+//   &:focus-within {
+//     border-left-color: var(--colorGinPrimary);
+//   }
+// }

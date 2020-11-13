@@ -19,7 +19,7 @@
   .field-multiple-table {
     thead {
       th {
-        padding: .5rem 1rem .5rem .5rem;
+        padding: .5rem 1.5rem .5rem .5rem;
         border-radius: $borderDefault;
       }
 
@@ -33,8 +33,52 @@
     }
 
     .draggable {
+      display: block;
+      padding: 1rem .5rem;
+      margin-top: 1rem;
+      border: 1px solid var(--colorGinTableBorder);
+      border-radius: $borderDefault;
+      box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
+
+      // Current draggable item
+      &.drag {
+        background-color: var(--colorGinWarningLightBackground);
+      }
+
+      // Flag Changes
+      &.drag-previous {
+        position: relative;
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: .5rem;
+          left: .5rem;
+          width: 4px;
+          height: calc(100% - 1rem);
+          background: var(--colorGinWarning);
+          border-radius: 2px;
+        }
+      }
+
       td {
-        padding: 30px 0 20px;
+        padding: .25rem;
+      }
+
+      .td__order {
+        width: 100%;
+      }
+
+      .tabledrag-handle::after {
+        mask-image: icon('drag-dots');
+        mask-repeat: no-repeat;
+        mask-position: center center;
+        mask-size: 16px 16px;
+      }
+
+      .tabledrag-changed {
+        display: none;
       }
     }
   }
@@ -68,11 +112,34 @@
 }
 
 .paragraphs-dropdown-toggle {
+  position: relative;
+  background: none;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: none;
+    background-color: var(--colorGinTextLight);
+    mask-image: icon('more');
+    mask-repeat: no-repeat;
+    mask-position: center center;
+    mask-size: 16px 16px;
+  }
+
   &:hover,
   &:active,
   &:focus {
     background-color: var(--colorGinPrimaryLight);
     border: 0 none;
+
+    &::after {
+      background-color: var(--colorGinPrimary);
+    }
   }
 }
 
