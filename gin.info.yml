@@ -173,8 +173,6 @@ libraries-extend:
     - claro/checkbox
   core/drupal.message:
     - claro/messages
-  core/drupal.progress:
-    - claro/progress
   core/drupal.vertical-tabs:
     - claro/vertical-tabs
   core/jquery.ui:
