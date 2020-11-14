@@ -144,6 +144,13 @@
 }
 
 .paragraphs-dropdown-actions {
+  color: var(--colorGinButtonText);
+  background: var(--colorGinLayer3Background);
+  border: 0 none;
+  border-radius: $borderSmall;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .08),
+              20px 20px 40px rgba(0, 0, 0, .12);
+
   .paragraphs-dropdown-action.button {
     font-size: 0.8125rem;
     padding: .5rem 1rem;
@@ -190,11 +197,21 @@
   }
 
   &__item {
-    background-color: var(--colorGinLayer2Background);
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    background-color: var(--colorGinLayer3Background);
     border-radius: $borderDefault;
+  }
+
+  &__icon {
+    top: .5rem;
   }
 }
 
 .js .paragraph-type-add-modal-button:hover {
   background: var(--colorGinPrimary);
+}
+
+.paragraphs-dragdrop__label--field {
+  text-transform: none;
 }

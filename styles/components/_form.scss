@@ -101,7 +101,6 @@ $maxWidth: 520px;
 :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox {
   position: relative;
   margin-left: 0;
-  pointer-events: none;
 
   .checkbox-toggle {
     z-index: 0;
