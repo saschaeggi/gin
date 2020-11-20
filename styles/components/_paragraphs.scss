@@ -64,6 +64,10 @@
 
       td {
         padding: .25rem;
+
+        + td {
+          width: 100%;
+        }
       }
 
       .td__order {
