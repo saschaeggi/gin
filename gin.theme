@@ -1198,10 +1198,6 @@ function _gin_is_content_form($form = NULL, $form_state = NULL, $form_id = NULL)
   $is_content_form = &drupal_static(__FUNCTION__);
   $routeName = \Drupal::routeMatch()->getRouteName();
 
-  if (is_bool($is_content_form)) {
-    return $is_content_form;
-  }
-
   if ($form_state && ($form_state->getBuildInfo()['base_form_id'] ?? NULL) === 'node_form') {
     $is_content_form = TRUE;
   }
