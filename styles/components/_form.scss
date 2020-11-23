@@ -177,6 +177,19 @@ $maxWidth: 520px;
     &:focus ~ .checkbox-toggle .checkbox-toggle__inner {
       box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
     }
+
+    // Disabled state: set cursor to not-allowed
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    // Disabled styles
+    &:disabled ~ .checkbox-toggle,
+    &:disabled ~ .checkbox-toggle:hover,
+    &:disabled:checked ~ .checkbox-toggle .checkbox-toggle__inner,
+    &:disabled:checked ~ .checkbox-toggle:hover .checkbox-toggle__inner {
+      background-color: var(--colorGinDisabled);
+    }
   }
 
   label {
