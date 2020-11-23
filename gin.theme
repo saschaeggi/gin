@@ -1200,8 +1200,7 @@ function _gin_validate_path_logo($path) {
  * Check if were on a content edit form.
  */
 function _gin_is_content_form($form = NULL, $form_state = NULL, $form_id = NULL) {
-  $is_content_form = &drupal_static(__FUNCTION__);
-  $routeName = \Drupal::routeMatch()->getRouteName();
+  $is_content_form = FALSE;
 
   if ($form_state && ($form_state->getBuildInfo()['base_form_id'] ?? NULL) === 'node_form') {
     $is_content_form = TRUE;
@@ -1213,10 +1212,15 @@ function _gin_is_content_form($form = NULL, $form_state = NULL, $form_id = NULL)
   }
 
   // Special routes.
-  if (
-    $routeName === 'entity.node.content_translation_add'
-    || $routeName === 'quick_node_clone.node.quick_clone'
-  ) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $route_names = [
+    'entity.node.add_form',
+    'entity.node.edit_form',
+    'entity.node.content_translation_add',
+    'quick_node_clone.node.quick_clone',
+  ];
+
+  if (in_array($route_name, $route_names, true)) {
     $is_content_form = TRUE;
   }
 
