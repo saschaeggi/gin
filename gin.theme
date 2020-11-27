@@ -1214,10 +1214,11 @@ function _gin_is_content_form($form = NULL, $form_state = NULL, $form_id = NULL)
   // Special routes.
   $route_name = \Drupal::routeMatch()->getRouteName();
   $route_names = [
-    'entity.node.add_form',
-    'entity.node.edit_form',
+    'node.add',
     'entity.node.content_translation_add',
     'quick_node_clone.node.quick_clone',
+    'entity.node.edit_form',
+    'entity.group_content.create_form',
   ];
 
   if (in_array($route_name, $route_names, true)) {
