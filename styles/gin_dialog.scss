@@ -6,9 +6,6 @@
 // Settings
 @import "settings/**/*";
 
-// Components
-@import "components/defaults";
-
 .ui-dialog {
   @import "components/color-overrides";
   @import "components/button";
