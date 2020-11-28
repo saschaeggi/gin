@@ -1202,12 +1202,10 @@ function _gin_validate_path_logo($path) {
 function _gin_is_content_form($form = NULL, $form_state = NULL, $form_id = NULL) {
   $is_content_form = FALSE;
 
-  if ($form_state && ($form_state->getBuildInfo()['base_form_id'] ?? NULL) === 'node_form') {
-    $is_content_form = TRUE;
-  }
-
-  // Routes to include
+  // Get route name.
   $route_name = \Drupal::routeMatch()->getRouteName();
+
+  // Routes to include.
   $route_names = [
     'node.add',
     'entity.node.content_translation_add',
@@ -1215,13 +1213,10 @@ function _gin_is_content_form($form = NULL, $form_state = NULL, $form_id = NULL)
     'entity.node.edit_form',
   ];
 
-  if (in_array($route_name, $route_names, true)) {
-    $is_content_form = TRUE;
-  }
-
   if (
-    $route_name === 'entity.group_content.create_form'
-    && strpos($form_id, 'group_node') === FALSE
+    in_array($route_name, $route_names, TRUE) ||
+    ($form_state && ($form_state->getBuildInfo()['base_form_id'] ?? NULL) === 'node_form') ||
+    ($route_name === 'entity.group_content.create_form' && strpos($form_id, 'group_node') === FALSE)
   ) {
     $is_content_form = TRUE;
   }
