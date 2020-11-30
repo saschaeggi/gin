@@ -1,0 +1,11 @@
+.dropzone {
+  margin: 0;
+  background: var(--colorGinLayer2Background);
+  border: 2px dashed var(--colorGinFormElementBorder);
+  border-radius: $borderDefault;
+
+  // Dropping
+  &.dz-drag-hover {
+    border: 2px dashed var(--colorGinPrimary);
+  }
+}
