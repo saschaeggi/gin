@@ -97,8 +97,6 @@ libraries-override:
 
   classy/user: false
 
-  user/drupal.user: claro/form.password-confirm
-
   field_ui/drupal.field_ui:
     css:
       theme:
@@ -197,6 +195,8 @@ libraries-extend:
     - claro/media_library.theme
   media_library/widget:
     - claro/media_library.theme
+  user/drupal.user:
+    - claro/form.password-confirm
 
 quickedit_stylesheets:
   - ../../../core/themes/claro/css/components/quickedit.css
