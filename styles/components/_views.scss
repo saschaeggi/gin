@@ -142,6 +142,7 @@
   }
 }
 
+// Preview form
 .view-preview-form {
   &__title {
     padding: 0;
@@ -151,6 +152,7 @@
 
   .preview-section {
     padding: 16px;
+    border: 1px dashed var(--colorGinLayer2Border)
   }
 
   .view-filters .preview-section {
@@ -161,10 +163,28 @@
   .form-actions {
     align-items: flex-end;
   }
+
+  .form-item--live-preview {
+    position: static !important;
+    margin-top: 1.5rem;
+  }
+
+  .arguments-preview {
+    margin-left: 0;
+  }
 }
 
+.views-live-preview {
+  padding: 0;
+
+  .layer-wrapper {
+    border-color: var(--colorGinBorder);
+  }
+}
+
+.views-exposed-form.views-exposed-form,
 .views-displays {
-  border-color: var(--colorGinLayer2Border);
+  border: 1px solid var(--colorGinLayer2Border);
   border-radius: $borderDefault;
   overflow: hidden;
 }
@@ -186,11 +206,16 @@
   background-color: var(--colorGinLayer2Background);
   border: 0 none;
   border-bottom: 1px solid var(--colorGinLayer2Border);
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-top-left-radius: $borderSmall;
+  border-top-right-radius: $borderSmall;
+
+  // #3186729: Drupal 9.1 fix
+  &__extra-actions-wrapper {
+    margin-bottom: 0;
+  }
 
   .dropbutton-wrapper {
-    top: 18px;
+    top: 20px;
     right: 24px;
   }
 
@@ -209,12 +234,25 @@
     padding: 8px 16px;
   }
 
+  .add a,
   li a {
+    font-size: small;
+    color: var(--colorGinPrimary);
+    padding: .5rem 1rem;
     background: var(--colorGinLayer2Background);
-    border: 1px solid var(--colorGinPrimary);
+    border: 2px solid var(--colorGinPrimary);
+    border-radius: $borderSmall;
+
+    &::before {
+      display: none;
+    }
+
+    .icon.add {
+      display: block;
+    }
   }
 
-  li a:hover, li.is-active a, li.is-active a.is-active {
+  .add a:hover, li a:hover, li.is-active a, li.is-active a.is-active {
     color: var(--colorGinAppBackground);
     background: var(--colorGinPrimary);
     border-color: transparent;
@@ -261,7 +299,10 @@
 }
 
 .views-ui-display-tab-bucket {
-  border-bottom-color: var(--colorGinBorder);
+  // #3186729: Drupal 9.1 fix
+  &__header {
+    padding: 0;
+  }
 
   & &__title {
     font-size: 1.2em;
@@ -269,6 +310,19 @@
     color: var(--colorGinTitle);
     text-transform: none;
     padding: 16px;
+  }
+
+  // #3186729: Drupal 9.1 fix
+  &__header {
+    padding: 16px 0 8px;
+
+    .views-ui-display-tab-bucket__title {
+      padding: 0 16px;
+    }
+
+    .views-ui-display-tab-bucket__actions {
+      margin-right: 1rem;
+    }
   }
 
   .views-display-setting,
@@ -285,13 +339,19 @@
   }
 
   .dropbutton-wrapper {
-    top: 16px;
+    top: 14px;
     right: 16px;
   }
 
   &.pager {
     margin: 0;
   }
+}
+
+.views-ui-display-tab-bucket.views-ui-display-tab-bucket {
+  padding-top: 0;
+  margin-bottom: 0;
+  border-bottom-color: var(--colorGinBorder);
 }
 
 .views-ui-display-tab-actions {
@@ -329,7 +389,9 @@
 
 .views-display-column,
 .edit-display-settings-top.views-ui-display-tab-bucket {
+  margin-bottom: 1rem;
   border-color: var(--colorGinBorder);
+  border-radius: $borderDefault;
 }
 
 .views-ui-dialog {
