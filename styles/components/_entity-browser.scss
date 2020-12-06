@@ -1,0 +1,23 @@
+.entities-list {
+  .item-container {
+    // TEMP: Force small variants
+    > .remove-button,
+    >.replace-button,
+    > .edit-button {
+      @extend .button--extrasmall;
+      display: inline-block;
+      font-size: 0.79rem;
+      margin-left: 0;
+    }
+  }
+}
+
+// When entities are embedded
+.entity-browser-form {
+  border: 0 none;
+  box-shadow: none;
+
+  .page-wrapper > .layout-container {
+    margin: 0;
+  }
+}

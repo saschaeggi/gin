@@ -3,6 +3,20 @@
   border: 0 none !important;
   border-radius: $borderBig;
   background: var(--colorGinLayerBackground);
+
+  // Node actions placement
+  .layout-region-node-actions {
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+    top: auto;
+    right: auto;
+  }
+
+  // Show meta full width
+  .layout-region-node-secondary {
+    width: 100%;
+  }
 }
 
 .ui-dialog {
