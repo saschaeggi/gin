@@ -278,8 +278,9 @@ function gin_form_alter(&$form, $form_state, $form_id) {
 function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
   /** @var \Drupal\user\UserInterface $user */
   $user = $form_state->getBuildInfo()['callback_object']->getEntity();
+  $showUserThemeSettings = theme_get_setting('show_user_theme_settings');
 
-  if ($user->id()) {
+  if ($user->id() && $showUserThemeSettings) {
     /** @var \Drupal\user\UserDataInterface $userData */
     $userData = Drupal::service('user.data');
     $enabledUserOverrides = $userData->get('gin', $user->id(), 'enable_user_settings');
@@ -655,6 +656,16 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#default_value' => $hcm_default,
   ];
 
+  // Allow user settings.
+  $showUserThemeSettings = theme_get_setting('show_user_theme_settings');
+
+  $form['custom_settings']['show_user_theme_settings'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Users can override Gin settings'),
+    '#description' => t('Expose the admin theme settings to users.'),
+    '#default_value' => $showUserThemeSettings,
+  ];
+
   /*
    * //////////////////////////
    * Toolbar settings.
@@ -919,9 +930,13 @@ function _gin_user__get_user_id() {
 }
 
 /**
- * Check user has enabled darkmode helper function.
+ * Check if user overrides are enabled.
  */
 function _gin_user__overrides_enabled() {
+  if (theme_get_setting('show_user_theme_settings') !== TRUE) {
+    return FALSE;
+  }
+
   $uid = _gin_user__get_user_id();
 
   /** @var \Drupal\user\UserDataInterface $userData */

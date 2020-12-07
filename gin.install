@@ -38,3 +38,14 @@ function gin_update_8303() {
     ->set('icon_default', true)
     ->save();
 }
+
+/**
+ * Update: Set show_user_theme_settings to true.
+ */
+function gin_update_8304() {
+  /** @var \Drupal\Core\Config\Config $config */
+  $config = \Drupal::configFactory()->getEditable('gin.settings');
+  $config
+    ->set('show_user_theme_settings', false)
+    ->save();
+}
