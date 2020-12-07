@@ -34,7 +34,7 @@
     padding: 16px 0;
     margin-top: -2px;
 
-    .gin--classic-toolbar:not(.gin--edit-form) {
+    .gin--classic-toolbar:not(.gin--edit-form) & {
       position: relative;
     }
 
@@ -123,6 +123,20 @@
     position: sticky;
     top: 48px;
     width: calc(100% - min(10vw, 128px) + 24px);
+
+    // Modern, horizontal toolbar
+    .gin--horizontal-toolbar & {
+      top: 102px;
+    }
+
+    // Classic, legacy toolbar
+    .gin--classic-toolbar & {
+      top: 0;
+    }
+
+    .gin--classic-toolbar.gin--edit-form & {
+      top: 127px;
+    }
 
     .gin--edit-form & {
       max-width: 1300px;
