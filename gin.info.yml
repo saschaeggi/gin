@@ -164,7 +164,7 @@ libraries-extend:
   core/drupal.collapse:
     - claro/details-focus
   core/drupal.dialog:
-    - claro/claro.drupal.dialog
+    - seven/seven.drupal.dialog
   core/drupal.dropbutton:
     - claro/dropbutton
   core/drupal.checkbox:
