@@ -158,3 +158,10 @@
 .ui-dialog.webform-off-canvas .ui-widget-content.ui-dialog-content {
   background: var(--colorGinLayerBackground);
 }
+
+// Token
+table.treetable {
+  tr.branch {
+    background-color: transparent;
+  }
+}
