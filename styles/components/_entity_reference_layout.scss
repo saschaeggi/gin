@@ -149,7 +149,8 @@
   }
 
   .erl-add-section,
-  .erl-add-content--single button {
+  .erl-add-content--single button,
+  .active-items:empty ~ .layout-paragraphs-add-content__toggle {
     position: static;
     display: block;
     width: 100%;
@@ -183,6 +184,22 @@
       .icon {
         margin-right: .5rem;
       }
+    }
+  }
+
+  // No items added, show add as CTA
+  .active-items:empty ~ .layout-paragraphs-add-content__toggle {
+    padding-bottom: 34px;
+    transform: none;
+
+    .visually-hidden {
+      clip: revert;
+      width: auto;
+      overflow: visible;
+      position: relative !important;
+      text-transform: uppercase;
+      font-size: small;
+      font-weight: bold;
     }
   }
 

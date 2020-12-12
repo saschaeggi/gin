@@ -114,3 +114,12 @@ a.button--primary:focus:hover {
     // border: 2px solid transparent !important;
   }
 }
+
+// Autocomplete field remove button
+.multiple-fields-remove-button.button {
+  border: 0 none !important;
+  mask-image: icon('remove');
+  mask-size: 16px 16px;
+  mask-repeat: no-repeat;
+  mask-position: center center;
+}
