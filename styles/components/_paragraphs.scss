@@ -105,7 +105,7 @@
 
   .paragraph-type-add-modal,
   .field--widget-paragraphs .paragraphs-dropbutton-wrapper {
-    margin-right: 8px;
+    margin-right: .5rem;
   }
 }
 
@@ -147,6 +147,14 @@
   }
 }
 
+.js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple {
+  padding: .5rem;
+
+  .dropbutton-widget {
+    margin-right: .5rem;
+  }
+}
+
 .paragraphs-dropdown-actions {
   color: var(--colorGinButtonText);
   background: var(--colorGinLayer3Background);
@@ -168,10 +176,11 @@
 }
 
 .js .paragraph-type-icon {
-  padding: 4px;
-  margin-right: 8px;
+  padding: .25rem;
+  margin-right: .5rem;
 }
 
+// Darkmode overrides
 .gin--dark-mode {
   .paragraphs-dropdown-actions {
     background: var(--colorGinLayer2Background);
@@ -218,4 +227,33 @@
 
 .paragraphs-dragdrop__label--field {
   text-transform: none;
+}
+
+// Classic Paragraphs
+.field--widget-entity-reference-paragraphs {
+  // Ugly addressing the title, but let's go
+  > div > .form-wrapper > strong {
+    display: block;
+    margin-top: 2rem;
+  }
+
+  // No Paragraph added yet text
+  // No dedicated classes so targeting the element as good as possible
+  .form-wrapper .form-wrapper > em {
+    display: block;
+    padding: 1rem 0;
+  }
+
+  // Add buttons
+  .form-actions {
+    align-items: center;
+
+    .dropbutton-multiple {
+      margin-right: .5rem;
+
+      .placeholder {
+        margin-left: .25rem;
+      }
+    }
+  }
 }

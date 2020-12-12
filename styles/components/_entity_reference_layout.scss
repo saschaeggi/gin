@@ -438,6 +438,8 @@
   .layout-paragraphs-layout.layout-paragraphs-item {
     .layout-controls,
     .layout-paragraphs-actions {
+      height: 24px;
+      overflow: hidden;
       background-color: transparent;
     }
 

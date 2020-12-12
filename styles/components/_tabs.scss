@@ -305,7 +305,6 @@
 // Icon
 .claro-details__summary::before,
 .claro-details[open] > .claro-details__summary::before {
-  top: 2rem;
   background: var(--colorGinText);
   mask-image: icon('handle');
   mask-repeat: no-repeat;
