@@ -3,6 +3,11 @@ gin:
   css:
     theme:
       dist/css/gin.css: { minified: true }
+  dependencies:
+    - gin/gin_ckeditor
+
+gin_ckeditor:
+  version: VERSION
   js:
     dist/js/gin_ckeditor.js: { minified: true }
 
