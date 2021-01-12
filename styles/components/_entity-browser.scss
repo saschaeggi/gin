@@ -13,11 +13,27 @@
 }
 
 // When entities are embedded
-.entity-browser-form {
-  border: 0 none;
-  box-shadow: none;
+.gin-entity-browser {
+  .entity-browser-form {
+    padding: 0;
+    border: 0 none;
+    box-shadow: none;
 
-  .page-wrapper > .layout-container {
-    margin: 0;
+    .page-wrapper > .layout-container {
+      margin: 0;
+    }
+  }
+
+  .views-exposed-form {
+    box-shadow: none;
+  }
+}
+
+.eb-tabs {
+  margin-left: 4px; // Fix for outline
+  margin-bottom: 0.75em;
+
+  ul {
+    border-bottom: none; // Remove superflous bottom.
   }
 }
