@@ -10,3 +10,28 @@
   width: 1px;
   word-wrap: normal;
 }
+
+@mixin custom-icon-button($name) {
+  all: unset;
+
+  background-color: white;
+  background-image: icon($name);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 15px;
+
+  border-radius: 50%;
+  border-color: transparent !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+
+  color: transparent;
+  width: 29px;
+  height: 29px;
+  margin: .75rem;
+
+  &:hover,
+  &:focus {
+    border-color: var(--colorGinPrimary) !important;
+    cursor: pointer;
+  }
+}
