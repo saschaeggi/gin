@@ -67,3 +67,11 @@ gin_custom_css:
       public://gin-custom.css: { weight: 100 }
   js:
     public://gin-custom.js: { weight: -99 }
+
+gin_sidebar:
+  version: VERSION
+  css:
+    theme:
+      dist/css/gin_sidebar.css: { minified: true }
+  js:
+    dist/js/gin_sidebar.js: { minified: true }

@@ -20,6 +20,7 @@ module.exports = {
     gin_settings: ['./js/gin_settings.js'],
     gin_dialog: ['./styles/gin_dialog.scss'],
     gin_ckeditor: ['./js/gin_ckeditor.js', './styles/gin_ckeditor.scss'],
+    gin_sidebar: ['./js/gin_sidebar.js', './styles/gin_sidebar.scss'],
   },
   output: {
     devtoolLineToLine: true,
