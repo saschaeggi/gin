@@ -82,6 +82,13 @@ function gin_preprocess_html(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_HOOK() for html__entity_browser__modal.
+ */
+function gin_preprocess_html__entity_browser__modal(&$variables) {
+  gin_preprocess_html($variables);
+}
+
+/**
  * Implements hook_preprocess_HOOK() for page.
  */
 function gin_preprocess_page(&$variables) {
