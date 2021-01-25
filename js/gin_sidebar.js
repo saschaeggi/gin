@@ -6,6 +6,7 @@
   Drupal.behaviors.ginSidebarToggle = {
     attach: function attach(context) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Set meta sidebar state.
       if (localStorage.getItem('GinMetaOpen') === 'true') {
         $('body').attr('data-meta-sidebar', 'open');
@@ -20,18 +21,25 @@
       $('.meta-sidebar__trigger', context).once('metaSidebarToggle').on('click', function (e) {
 =======
       // Set sidebarState.
+=======
+      // Set meta sidebar state.
+>>>>>>> dc484df (use var)
       if (localStorage.getItem('GinMetaOpen') === 'true') {
         $('body').attr('data-meta-sidebar', 'open');
-        $('.sidebar__trigger').addClass('is-active');
+        $('.meta-sidebar__trigger').addClass('is-active');
       }
       else {
         $('body').attr('data-meta-sidebar', '');
-        $('.sidebar__trigger').removeClass('is-active');
+        $('.meta-sidebar__trigger').removeClass('is-active');
       }
 
       // Toolbar toggle
+<<<<<<< HEAD
       $('.sidebar__trigger', context).once('metaSidebarToggle').on('click', function (e) {
 >>>>>>> 3053e8f (js toggle)
+=======
+      $('.meta-sidebar__trigger', context).once('metaSidebarToggle').on('click', function (e) {
+>>>>>>> dc484df (use var)
         e.preventDefault();
 
         // Toggle active class.
@@ -59,6 +67,7 @@
           $('.gin-toolbar-inline-styles').remove();
         }
       });
+<<<<<<< HEAD
 
       // Change when clicked
       // $('#toolbar-bar .toolbar-item', context).on('click', function () {
@@ -72,6 +81,8 @@
       //   });
       // });
 >>>>>>> 3053e8f (js toggle)
+=======
+>>>>>>> dc484df (use var)
     }
   };
 })(jQuery, Drupal);
