@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Import breakpoint
 @import "node_modules/breakpoint-sass/stylesheets/breakpoint";
 
@@ -80,6 +79,34 @@
 // Helpers
 @import "helpers/**/*";
 
+body:not([data-meta-sidebar='open']) {
+  --ginSidebarWidth: 0px;
 
+<<<<<<< HEAD
 .layout-region-node-secondary {}
 >>>>>>> 3053e8f (js toggle)
+=======
+  .meta-sidebar__trigger {
+    @include custom-icon-button('more');
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 0;
+    height: 48px;
+    width: 48px;
+  }
+}
+
+.meta-sidebar__trigger {
+  @include custom-icon-button('handle');
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 0;
+  height: 48px;
+  width: 48px;
+  stroke-width: 2;
+
+  &:hover {
+    color: transparent;
+  }
+
+}
