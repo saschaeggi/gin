@@ -5,18 +5,18 @@
 (($, Drupal) => {
   Drupal.behaviors.ginSidebarToggle = {
     attach: function attach(context) {
-      // Set sidebarState.
+      // Set meta sidebar state.
       if (localStorage.getItem('GinMetaOpen') === 'true') {
         $('body').attr('data-meta-sidebar', 'open');
-        $('.sidebar__trigger').addClass('is-active');
+        $('.meta-sidebar__trigger').addClass('is-active');
       }
       else {
         $('body').attr('data-meta-sidebar', '');
-        $('.sidebar__trigger').removeClass('is-active');
+        $('.meta-sidebar__trigger').removeClass('is-active');
       }
 
       // Toolbar toggle
-      $('.sidebar__trigger', context).once('metaSidebarToggle').on('click', function (e) {
+      $('.meta-sidebar__trigger', context).once('metaSidebarToggle').on('click', function (e) {
         e.preventDefault();
 
         // Toggle active class.
@@ -33,18 +33,6 @@
           $('.gin-toolbar-inline-styles').remove();
         }
       });
-
-      // Change when clicked
-      // $('#toolbar-bar .toolbar-item', context).on('click', function () {
-      //   $('body').attr('data-toolbar-tray', $(this).data('toolbar-tray'));
-      //
-      //   // Sticky toolbar width
-      //   $(document).ready(() => {
-      //     $('.sticky-header').each(function () {
-      //       $(this).width($('.sticky-table').width());
-      //     });
-      //   });
-      // });
     }
   };
 })(jQuery, Drupal);
