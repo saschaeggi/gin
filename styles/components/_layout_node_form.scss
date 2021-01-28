@@ -101,6 +101,7 @@
         background:var(--colorGinLayerBackground);
         box-shadow: 0 0 48px rgba(0, 0, 0, 0.075);
         border-left: 1px solid var(--colorGinLayerBorder);
+        transition: all $transition;
 
         .gin--dark-mode & {
           box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
