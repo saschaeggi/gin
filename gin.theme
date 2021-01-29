@@ -228,7 +228,7 @@ function gin_form_alter(&$form, $form_state, $form_id) {
       $form['gin_sticky']['actions']['preview'] = ($form['actions']['preview']) ?? [];
 
       $form['gin_sticky']['actions']['sidebar_toggle'] = [
-        '#markup' => '<a href="#" class="meta-sidebar__trigger trigger" role="button" title="' . t('Toggle entity meta panel') . '" aria-pressed="false"></a>',
+        '#markup' => '<span class="meta-sidebar__trigger trigger" role="button" title="' . t('Toggle entity meta panel') . '" aria-pressed="false"></span>',
         '#weight' => 101,
       ];
       $form['#attached']['library'][] = 'gin/gin_sidebar';
