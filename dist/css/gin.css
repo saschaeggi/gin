@@ -1,13 +1,3 @@
-@charset "UTF-8";
-:root {
-  --ginSidebarWidth: 300px;
-}
-@media (min-width: 1280px) {
-  :root {
-    --ginSidebarWidth: 360px;
-  }
-}
-
 html {
   font-family: Inter, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   scroll-padding-top: var(--ginScrollOffset);
