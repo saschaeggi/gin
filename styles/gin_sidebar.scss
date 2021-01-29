@@ -102,7 +102,7 @@ body:not([data-meta-sidebar='open']) {
 >>>>>>> e61048c (using a side panel pattern)
 }
 
-a.meta-sidebar__trigger {
+span.meta-sidebar__trigger {
   border-radius: 24px;
   border-color: transparent !important;
   border-bottom-right-radius: 0;
@@ -114,11 +114,12 @@ a.meta-sidebar__trigger {
   right: var(--ginSidebarWidth);
   height: 48px;
   width: 32px;
-  transition: all $transition;
+  transition: all $transition--fast;
 
   &:hover {
     color: transparent;
     width: 48px;
+    cursor: pointer;
   }
 
   &:focus {
