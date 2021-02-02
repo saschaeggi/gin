@@ -17,10 +17,9 @@ span.meta-sidebar__trigger {
   background-color: var(--colorGinLayerBackground);
   position: fixed;
   bottom: 1rem;
-  right: var(--ginSidebarWidth);
+  right: 0px; //var(--ginSidebarWidth);
   height: 48px;
   width: 32px;
-  transition: all $transition--fast;
 
   &:hover {
     color: transparent;
@@ -47,6 +46,7 @@ span.meta-sidebar__trigger {
     mask-position: center center;
     background-color: var(--colorGinIcons);
     transform: rotate(180deg);
+    transition: transform $transition--fast;
 
   }
 
