@@ -257,3 +257,10 @@
     }
   }
 }
+
+// Prevent overfloating paragraphs module
+.paragraphs-subform {
+  input {
+    width: 100%;
+  }
+}
