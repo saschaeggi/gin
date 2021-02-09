@@ -65,8 +65,6 @@ gin_custom_css:
   css:
     theme:
       public://gin-custom.css: { weight: 100 }
-  js:
-    public://gin-custom.js: { weight: -99 }
 
 gin_sidebar:
   version: VERSION
