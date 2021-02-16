@@ -85,6 +85,7 @@
 body:not([data-meta-sidebar='open']) {
   --ginSidebarWidth: 0px;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 .layout-region-node-secondary {}
@@ -100,6 +101,12 @@ body:not([data-meta-sidebar='open']) {
   }
 =======
 >>>>>>> e61048c (using a side panel pattern)
+=======
+
+  [data-drupal-selector="edit-advanced"] {
+    opacity: 0;
+  }
+>>>>>>> aa916b2 (fix jumpy sidebar content)
 }
 
 span.meta-sidebar__trigger {
