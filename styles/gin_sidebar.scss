@@ -116,16 +116,22 @@ body:not([data-meta-sidebar='open']) {
 
 span.meta-sidebar__trigger {
   border-radius: 24px;
-  border-color: transparent !important;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  border-color: var(--colorGinBorder);
+  border-width: 1px 0 1px 1px;
+  border-style: solid;
+
   background-color: var(--colorGinLayerBackground);
   position: fixed;
   bottom: 1rem;
   right: 0px; //var(--ginSidebarWidth);
   height: 48px;
   width: 32px;
+
+  .gin--dark-mode & {
+    border-color: var(--colorGinBorder);
+  }
 
   &:hover {
     color: transparent;
