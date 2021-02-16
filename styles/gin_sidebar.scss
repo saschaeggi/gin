@@ -6,6 +6,10 @@
 
 body:not([data-meta-sidebar='open']) {
   --ginSidebarWidth: 0px;
+
+  [data-drupal-selector="edit-advanced"] {
+    opacity: 0;
+  }
 }
 
 span.meta-sidebar__trigger {
