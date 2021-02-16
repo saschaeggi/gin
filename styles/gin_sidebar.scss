@@ -9,7 +9,12 @@ body:not([data-meta-sidebar='open']) {
 
   [data-drupal-selector="edit-advanced"] {
     opacity: 0;
+    transition: opacity 0s;
   }
+}
+
+[data-drupal-selector="edit-advanced"] {
+  transition: opacity 0.3s cubic-bezier(0.9, 0, 1, 1)
 }
 
 span.meta-sidebar__trigger {
