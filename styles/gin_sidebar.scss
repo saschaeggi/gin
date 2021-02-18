@@ -9,12 +9,12 @@
 
 @include mq($breakpointLarge) {
 
-  body:not([data-meta-sidebar='open']) {
+  body[data-meta-sidebar='closed'] {
     --ginSidebarWidth: 0px;
 
     [data-drupal-selector="edit-advanced"] {
-      //opacity: 0;
-      transition: opacity 0s;
+      opacity: 0;
+      transition: none;
     }
   }
 
