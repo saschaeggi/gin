@@ -227,12 +227,6 @@ function gin_form_alter(&$form, $form_state, $form_id) {
       // Add Preview to gin_sticky actions.
       $form['gin_sticky']['actions']['preview'] = ($form['actions']['preview']) ?? [];
 
-      $form['gin_sticky']['actions']['sidebar_toggle'] = [
-        '#markup' => '<span class="meta-sidebar__trigger trigger" role="button" title="' . t('Toggle entity meta panel') . '" aria-pressed="false"></span>',
-        '#weight' => 101,
-      ];
-      $form['#attached']['library'][] = 'gin/gin_sidebar';
-
       // Create gin_sidebar group.
       $form['gin_sidebar'] = [
         '#group' => 'meta',
@@ -252,10 +246,9 @@ function gin_form_alter(&$form, $form_state, $form_id) {
       // Unset previous added preview & submit.
       unset($form['gin_sidebar']['actions']['preview']);
       unset($form['gin_sidebar']['actions']['submit']);
-      // ADd sidebar zipper.
-      $form['gin_sidebar']['actions']['sidebar_toggle'] = [
+      // Add sidebar zipper.
+      $form['gin_sidebar_toggle'] = [
         '#markup' => '<span class="meta-sidebar__trigger trigger" role="button" title="' . t('Toggle entity meta panel') . '" aria-pressed="false"></span>',
-        '#weight' => 101,
       ];
       $form['#attached']['library'][] = 'gin/gin_sidebar';
     }
