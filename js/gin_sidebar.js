@@ -11,7 +11,7 @@
         $('.meta-sidebar__trigger').addClass('is-active');
       }
       else {
-        $('body').attr('data-meta-sidebar', '');
+        $('body').attr('data-meta-sidebar', 'closed');
         $('.meta-sidebar__trigger').removeClass('is-active');
       }
 
@@ -28,9 +28,9 @@
           localStorage.setItem('GinMetaOpen', 'true');
         }
         else {
-          $('body').attr('data-meta-sidebar', '');
+          $('body').attr('data-meta-sidebar', 'closed');
           localStorage.setItem('GinMetaOpen', 'false');
-          $('.gin-toolbar-inline-styles').remove();
+          $('.gin-meta-inline-styles').remove();
         }
       });
     }

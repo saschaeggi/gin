@@ -30,6 +30,30 @@ if (localStorage.getItem('GinSidebarOpen')) {
   }
 }
 
+if (localStorage.getItem('GinMetaOpen')) {
+  const style = document.createElement('style');
+  const className = 'gin-meta-inline-styles';
+  style.className = className;
+
+  // Sidebar Check.
+  if (localStorage.getItem('GinMetaOpen') === 'false') {
+    style.innerHTML = `
+    @media (min-width: 1024px) {
+      .gin--edit-form {
+        --ginSidebarWidth: 0px;
+      }
+      .gin--edit-form .layout-region-node-secondary {
+        width: 0px !important;
+      }
+    `;
+
+    const scriptTag = document.querySelector('script');
+    scriptTag.parentNode.insertBefore(style, scriptTag);
+  } else if (document.getElementsByClassName(className).length > 0) {
+    document.getElementsByClassName(className)[0].remove();
+  }
+}
+
 const accentColor = localStorage.getItem('GinAccentColorCustom');
 const className = 'gin-custom-colors';
 
