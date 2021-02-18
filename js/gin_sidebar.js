@@ -14,6 +14,7 @@
       }
       else {
         $('body').attr('data-meta-sidebar', 'closed');
+<<<<<<< HEAD
         $('.meta-sidebar__trigger').removeClass('is-active');
       }
 
@@ -30,6 +31,8 @@
       }
       else {
         $('body').attr('data-meta-sidebar', '');
+=======
+>>>>>>> 3b2eb6f (fix duplicate trigger, adhere to set state on page loading without transitioning)
         $('.meta-sidebar__trigger').removeClass('is-active');
       }
 
@@ -57,14 +60,18 @@
         }
         else {
 <<<<<<< HEAD
+<<<<<<< HEAD
           $('body').attr('data-meta-sidebar', 'closed');
           localStorage.setItem('GinMetaOpen', 'false');
         }
       });
 =======
           $('body').attr('data-meta-sidebar', '');
+=======
+          $('body').attr('data-meta-sidebar', 'closed');
+>>>>>>> 3b2eb6f (fix duplicate trigger, adhere to set state on page loading without transitioning)
           localStorage.setItem('GinMetaOpen', 'false');
-          $('.gin-toolbar-inline-styles').remove();
+          $('.gin-meta-inline-styles').remove();
         }
       });
 <<<<<<< HEAD
