@@ -21,6 +21,8 @@
 
         // Toggle active class.
         $(this).toggleClass('is-active');
+        // Remove init styles.
+        $('.gin-meta-inline-styles').remove();
 
         // Set active state.
         if ($(this).hasClass('is-active')) {
@@ -30,7 +32,6 @@
         else {
           $('body').attr('data-meta-sidebar', 'closed');
           localStorage.setItem('GinMetaOpen', 'false');
-          $('.gin-meta-inline-styles').remove();
         }
       });
     }
