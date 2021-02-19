@@ -48,10 +48,15 @@
         // Toggle active class.
         $(this).toggleClass('is-active');
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Remove init styles.
         $('.gin-meta-inline-styles').remove();
 =======
 >>>>>>> 3053e8f (js toggle)
+=======
+        // Remove init styles.
+        $('.gin-meta-inline-styles').remove();
+>>>>>>> bb28c17 (longer transition for firefox esr, remove init styles)
 
         // Set active state.
         if ($(this).hasClass('is-active')) {
@@ -63,6 +68,7 @@
 <<<<<<< HEAD
           $('body').attr('data-meta-sidebar', 'closed');
           localStorage.setItem('GinMetaOpen', 'false');
+<<<<<<< HEAD
         }
       });
 =======
@@ -72,6 +78,8 @@
 >>>>>>> 3b2eb6f (fix duplicate trigger, adhere to set state on page loading without transitioning)
           localStorage.setItem('GinMetaOpen', 'false');
           $('.gin-meta-inline-styles').remove();
+=======
+>>>>>>> bb28c17 (longer transition for firefox esr, remove init styles)
         }
       });
 <<<<<<< HEAD
