@@ -36,11 +36,6 @@
 
   .layout-node-form {
     overflow: inherit;
-
-    @include mq($breakpointLarge) {
-      display: flex;
-      flex-wrap: wrap;
-    }
   }
 
   .layout-region-node-main,
@@ -58,6 +53,7 @@
       flex-basis: 40%;
       flex-shrink: 1;
       flex-grow: 1;
+      min-width: 0;
     }
   }
 

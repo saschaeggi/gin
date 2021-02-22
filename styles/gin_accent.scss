@@ -29,6 +29,7 @@
   --colorGinDangerBackground: #{mix(black, #dc7f7f, 60%)};
   --colorGinGreen: #058260;
   --colorGinGreenLight: #32cea4;
+  --colorGinGreenLightest:  #{mix(white, #32cea4, 60%)};
   --colorGinGreenBackground: #{mix(black, #32cea4, 60%)};
   --colorGinInfo: #082538;
   --colorGinInfoLight: #589ac5;
@@ -78,8 +79,11 @@
   --colorGinWarning: #dec15f;
   --colorGinWarningLightBackground: var(--colorGinAppBackground);
   --colorGinDanger: #ce6060;
+  --colorGinDangerLight: #{mix(black, #ce6060, 80%)};
   --colorGinDangerLightest: #483439;
   --colorGinGreen: #32cea4;
+  --colorGinGreenLight: #{mix(black, #32cea4, 80%)};
+  --colorGinGreenLightest:  #{mix(black, #32cea4, 60%)};
   --colorGinInfo: #559bca;
 
   --colorGinAppBackground: #{$colorDarkAppBackground};

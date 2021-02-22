@@ -73,15 +73,22 @@
         $(this).toggleClass('is-active');
 
         // Set active state.
+        let active = 'true';
         if ($(this).hasClass('is-active')) {
           $('body').attr('data-toolbar-menu', 'open');
-          localStorage.setItem('GinSidebarOpen', 'true');
         }
         else {
           $('body').attr('data-toolbar-menu', '');
-          localStorage.setItem('GinSidebarOpen', 'false');
+          active = 'false';
           $('.gin-toolbar-inline-styles').remove();
         }
+
+        // Write state to localStorage.
+        localStorage.setItem('GinSidebarOpen', active);
+
+        // Dispatch event.
+        const event = new CustomEvent('toolbar-toggle', { detail: active === 'true'})
+        document.dispatchEvent(event);
       });
 
       // Change when clicked
