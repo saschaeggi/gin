@@ -1,5 +1,7 @@
 .card {
-  border: 1px solid var(--colorGinBorder);
+  padding: 0;
+  background: transparent;
+  border: 0 none;
   border-radius: $borderDefault;
 
   &-list {

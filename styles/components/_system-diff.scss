@@ -9,23 +9,24 @@ table.diff {
 
   tr {
     color: var(--colorGinTitle);
+
     .field-name {
       background-color: var(--colorGinTableHeader);
     }
 
     .diff-deletedline {
-      background-color: var(--colorGinDangerLightest);
+      background-color: var(--colorGinDangerBackground);
 
       .diffchange {
-        color: var(--colorGinDanger);
+        color: var(--colorGinDangerLight);
       }
     }
 
     .diff-addedline {
-      background-color: var(--colorGinGreenLightest);
+      background-color: var(--colorGinGreenBackground);
 
       .diffchange {
-        color: var(--colorGinGreen);
+        color: var(--colorGinGreenLight);
       }
     }
   }
