@@ -19,7 +19,7 @@
 .views-exposed-form.views-exposed-form,
 .system-status-counter,
 .system-status-general-info,
-.system-status-report__requirements-group,
+.system-status-report,
 .views-edit-view,
 .views-preview-wrapper,
 .view-block-content .view-content,
@@ -33,9 +33,6 @@
   border-radius: $borderMedium;
 
   @include mq($breakpointMedium) {
-    // box-shadow: -8px -8px 40px rgba($colorAppBackground, .8),
-    //             20px 20px 40px rgba(226, 229, 236, .98),
-    //             -6px -6px 16px rgba(0, 0, 0, .02);
     box-shadow: 20px 20px 40px rgba(226, 229, 236, .98),
                 -16px -16px 24px $colorAppBackground;
   }
@@ -55,7 +52,7 @@
 .view-files .view-content,
 .view-watchdog .view-content,
 .system-status-general-info,
-.system-status-report__requirements-group,
+.system-status-report,
 .views-edit-view,
 .views-preview-wrapper,
 .view-block-content .view-content,

@@ -79,11 +79,9 @@
   --colorGinWarning: #dec15f;
   --colorGinWarningLightBackground: var(--colorGinAppBackground);
   --colorGinDanger: #ce6060;
-  --colorGinDangerLight: #{mix(black, #ce6060, 80%)};
+
   --colorGinDangerLightest: #483439;
   --colorGinGreen: #32cea4;
-  --colorGinGreenLight: #{mix(black, #32cea4, 80%)};
-  --colorGinGreenLightest:  #{mix(black, #32cea4, 60%)};
   --colorGinInfo: #559bca;
 
   --colorGinAppBackground: #{$colorDarkAppBackground};
