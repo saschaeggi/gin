@@ -22,15 +22,17 @@
   --colorGinWarning: #d8b234;
   --colorGinWarningLight: #efcf64;
   --colorGinWarningBackground: #{mix(black, #efcf64, 60%)};
-  --colorGinWarningLightBackground: #{mix(white, #efcf64, 80%)};
+  --colorGinWarningLightBackground: rgba(226, 151, 0, .08);
   --colorGinDanger: #cc3d3d;
   --colorGinDangerLightest: #fdd9d9;
   --colorGinDangerLight: #f39b9d;
   --colorGinDangerBackground: #{mix(black, #dc7f7f, 60%)};
+  --colorGinDangerLightBackground: rgba(222, 117, 96, .1);
   --colorGinGreen: #058260;
   --colorGinGreenLight: #32cea4;
   --colorGinGreenLightest:  #{mix(white, #32cea4, 60%)};
   --colorGinGreenBackground: #{mix(black, #32cea4, 60%)};
+  --colorGinGreenLightBackground: rgba(72, 171, 123, .1);
   --colorGinInfo: #082538;
   --colorGinInfoLight: #589ac5;
   --colorGinInfoBackground: #{mix(black, #2d6c96, 60%)};
@@ -77,8 +79,9 @@
 
   --colorGinDisabled: #555;
   --colorGinWarning: #dec15f;
-  --colorGinWarningLightBackground: var(--colorGinAppBackground);
+  --colorGinWarningLightBackground: rgba(222, 193, 95, .1);
   --colorGinDanger: #ce6060;
+  // --colorGinDangerLightBackground: rgba(86, 31, 20, .2);
 
   --colorGinDangerLightest: #483439;
   --colorGinGreen: #32cea4;

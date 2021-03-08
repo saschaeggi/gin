@@ -42,6 +42,14 @@
   &--icon-ex::before {
     mask-image: icon('remove');
   }
+
+  &--icon-key::before {
+    mask-image: icon('devel');
+  }
+
+  &--icon-questionmark::before {
+    mask-image: icon('help');
+  }
 }
 
 .action-link--icon-trash.action-link--danger,
