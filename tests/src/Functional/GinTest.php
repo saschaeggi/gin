@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\gin\FunctionalJavascript;
+namespace Drupal\Tests\gin\Functional;
 
 use Drupal\Tests\BrowserTestBase;
 
@@ -96,6 +96,43 @@ class GinTest extends BrowserTestBase {
     $response = $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);
     $this->assertStringContainsString('"preset_focus_color":"blue"', $response);
+  }
+
+  /**
+   * Test user settings.
+   */
+  public function testUserSettings() {
+
+    $user1 = $this->createUser();
+    $this->drupalLogin($user1);
+    // Change something on the logged in user form.
+    $this->drupalGet($user1->toUrl('edit-form'));
+    $this->assertSession()->pageTextContains('"darkmode":false');
+    $this->submitForm([
+      'enable_user_settings' => TRUE,
+      'darkmode' => TRUE,
+    ], 'Save');
+    $this->assertSession()->pageTextContains('"darkmode":true');
+
+    // Login as admin.
+    $this->drupalLogin($this->rootUser);
+    $this->assertSession()->pageTextContains('"darkmode":false');
+    // Change something on user1 edit form.
+    $this->drupalGet($user1->toUrl('edit-form'));
+    $this->submitForm([
+      'enable_user_settings' => TRUE,
+      'high_contrast_mode' => TRUE,
+      'darkmode' => TRUE,
+    ], 'Save');
+
+    // Check logged-in's user is not affected.
+    $this->assertSession()->pageTextContains('"highcontrastmode":false');
+    $this->assertSession()->pageTextContains('"darkmode":false');
+
+    // Check settings of user1.
+    $this->drupalLogin($user1);
+    $this->assertSession()->pageTextContains('"highcontrastmode":true');
+    $this->assertSession()->pageTextContains('"darkmode":true');
   }
 
 }

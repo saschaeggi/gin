@@ -107,7 +107,7 @@ class Settings implements ContainerInjectionInterface {
    *   TRUE or FALSE.
    */
   public function allowUserOverrides() {
-    return (bool) theme_get_setting('show_user_theme_settings');
+    return theme_get_setting('show_user_theme_settings');
   }
 
   /**
