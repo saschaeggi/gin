@@ -777,10 +777,8 @@ function _gin_toolbar_radios($element) {
   $element['#attributes']['class'][] = 'toolbar-option';
 
   foreach ($options as $values) {
-    $return_value = $element[$values]['#return_value'] === 1 ? 'legacy' : $element[$values]['#return_value'];
-
-    $element[$values]['#attributes']['class'][] = 'toolbar-option__' . $return_value;
-    $element[$values]['#attributes']['data-gin-toolbar'] = $return_value;
+    $element[$values]['#attributes']['class'][] = 'toolbar-option__' . $element[$values]['#return_value'];
+    $element[$values]['#attributes']['data-gin-toolbar'] = $element[$values]['#return_value'];
   }
 
   return $element;
