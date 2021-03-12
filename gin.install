@@ -49,3 +49,15 @@ function gin_update_8304() {
     ->set('show_user_theme_settings', false)
     ->save();
 }
+
+/**
+ * Update: Rename settings.
+ */
+function gin_update_8305() {
+  /** @var \Drupal\Core\Config\Config $config */
+  $config = \Drupal::configFactory()->getEditable('gin.settings');
+  $config
+    ->set('toolbar', $config->get('classic_toolbar'))
+    ->set('darkmode', $config->get('enable_darkmode'))
+    ->save();
+}
