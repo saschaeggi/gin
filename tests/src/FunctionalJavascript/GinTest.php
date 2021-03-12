@@ -62,7 +62,7 @@ class GinTest extends BrowserTestBase {
    * Tests Darkmode setting.
    */
   public function testDarkModeSetting() {
-    \Drupal::configFactory()->getEditable('gin.settings')->set('enable_darkmode', TRUE)->save();
+    \Drupal::configFactory()->getEditable('gin.settings')->set('darkmode', TRUE)->save();
     $response = $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);
     $this->assertStringContainsString('"darkmode":true', $response);

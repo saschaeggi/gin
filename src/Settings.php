@@ -3,12 +3,12 @@
 namespace Drupal\gin;
 
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
-use Drupal\Core\Session\AccountProxyInterface;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\user\UserDataInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Service to handle the overwritten user settings.
+ * Service to handle overridden user settings.
  */
 class Settings implements ContainerInjectionInterface {
 
@@ -22,7 +22,7 @@ class Settings implements ContainerInjectionInterface {
   /**
    * The current user.
    *
-   * @var \Drupal\Core\Session\AccountProxyInterface
+   * @var \Drupal\Core\Session\AccountInterface
    */
   protected $currentUser;
 
@@ -31,10 +31,10 @@ class Settings implements ContainerInjectionInterface {
    *
    * @param \Drupal\user\UserDataInterface $userData
    *   The user data service.
-   * @param \Drupal\Core\Session\AccountProxyInterface $currentUser
+   * @param \Drupal\Core\Session\AccountInterface $currentUser
    *   The current user.
    */
-  public function __construct(UserDataInterface $userData, AccountProxyInterface $currentUser) {
+  public function __construct(UserDataInterface $userData, AccountInterface $currentUser) {
     $this->userData = $userData;
     $this->currentUser = $currentUser;
   }
@@ -51,14 +51,19 @@ class Settings implements ContainerInjectionInterface {
    *
    * @param string $setting
    *   The name of the setting.
+   * @param \Drupal\Core\Session\AccountInterface|null $account
+   *   The account object. Current user if NULL.
    *
    * @return array|bool|mixed|null
    *   The current value.
    */
-  public function get($setting) {
+  public function get($setting, AccountInterface $account = NULL) {
+    if (!$account) {
+      $account = $this->currentUser;
+    }
 
-    if ($this->userOverwritesEnabled()) {
-      $settings = $this->userData->get('gin', $this->currentUser->id(), 'settings');
+    if ($this->userOverrideEnabled()) {
+      $settings = $this->userData->get('gin', $account->id(), 'settings');
       if (isset($settings[$setting])) {
         return $settings[$setting];
       }
@@ -67,21 +72,32 @@ class Settings implements ContainerInjectionInterface {
   }
 
   /**
-   * Set user overwrites.
+   * Set user overrides.
    *
    * @param array $settings
    *   The user specific theme settings.
+   * @param \Drupal\Core\Session\AccountInterface|null $account
+   *   The account object. Current user if NULL.
    */
-  public function setAll(array $settings) {
-    $this->userData->set('gin', $this->currentUser->id(), 'enable_user_settings', TRUE);
-    $this->userData->set('gin', $this->currentUser->id(), 'settings', $settings);
+  public function setAll(array $settings, AccountInterface $account = NULL) {
+    if (!$account) {
+      $account = $this->currentUser;
+    }
+    $this->userData->set('gin', $account->id(), 'enable_user_settings', TRUE);
+    $this->userData->set('gin', $account->id(), 'settings', $settings);
   }
 
   /**
    * Clears all gin settings for the current user.
+   *
+   * @param \Drupal\Core\Session\AccountInterface|null $account
+   *   The account object. Current user if NULL.
    */
-  public function clear() {
-    $this->userData->delete('gin', $this->currentUser->id());
+  public function clear(AccountInterface $account = NULL) {
+    if (!$account) {
+      $account = $this->currentUser;
+    }
+    $this->userData->delete('gin', $account->id());
   }
 
   /**
@@ -90,18 +106,42 @@ class Settings implements ContainerInjectionInterface {
    * @return bool
    *   TRUE or FALSE.
    */
-  public function allowUserOverwrites() {
+  public function allowUserOverrides() {
     return (bool) theme_get_setting('show_user_theme_settings');
   }
 
   /**
    * Determine if the user enabled overrides.
    *
+   * @param \Drupal\Core\Session\AccountInterface|null $account
+   *   The account object. Current user if NULL.
+   *
    * @return bool
    *   TRUE or FALSE.
    */
-  public function userOverwritesEnabled() {
-    return $this->allowUserOverwrites() && (bool) $this->userData->get('gin', $this->currentUser->id(), 'enable_user_settings');
+  public function userOverrideEnabled(AccountInterface $account = NULL) {
+    if (!$account) {
+      $account = $this->currentUser;
+    }
+    return $this->allowUserOverrides() && (bool) $this->userData->get('gin', $account->id(), 'enable_user_settings');
+  }
+
+  /**
+   * Check if the user setting overrides the global setting.
+   *
+   * @param string $setting
+   *   Name of the setting to check.
+   * @param \Drupal\Core\Session\AccountInterface|null $account
+   *   The account object. Current user if NULL.
+   *
+   * @return bool
+   *   TRUE or FALSE.
+   */
+  public function overridden($setting, AccountInterface $account = NULL) {
+    if (!$account) {
+      $account = $this->currentUser;
+    }
+    return theme_get_setting($setting) !== $this->get($setting, $account);
   }
 
 }

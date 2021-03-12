@@ -27,7 +27,7 @@ function gin_preprocess_html(&$variables) {
     $toolbar = $settings->get('toolbar');
 
     // Check if darkmode is enabled.
-    if ($settings->get('enable_darkmode')) {
+    if ($settings->get('darkmode')) {
       $variables['attributes']['class'][] = 'gin--dark-mode';
     }
 
@@ -139,7 +139,7 @@ function gin_page_attachments_alter(&$page) {
     }
 
     // Expose settings to JS.
-    $page['#attached']['drupalSettings']['gin']['darkmode'] = $settings->get('enable_darkmode');
+    $page['#attached']['drupalSettings']['gin']['darkmode'] = $settings->get('darkmode');
     $page['#attached']['drupalSettings']['gin']['darkmode_class'] = $darkmode_class;
     $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $settings->get('preset_accent_color');
     $page['#attached']['drupalSettings']['gin']['accent_color'] = $settings->get('accent_color');
@@ -154,7 +154,7 @@ function gin_page_attachments_alter(&$page) {
     $page['#attached']['drupalSettings']['gin']['ckeditor_css_path'] = $basethemeurl_with_prefix . '/dist/css/gin_ckeditor.css';
 
     // Expose default settings.
-    $page['#attached']['drupalSettings']['gin']['default_darkmode'] = theme_get_setting('enable_darkmode');
+    $page['#attached']['drupalSettings']['gin']['default_darkmode'] = theme_get_setting('darkmode');
     $page['#attached']['drupalSettings']['gin']['default_accent_color'] = theme_get_setting('accent_color');
     $page['#attached']['drupalSettings']['gin']['default_preset_accent_color'] = theme_get_setting('preset_accent_color');
     $page['#attached']['drupalSettings']['gin']['default_high_contrast_mode'] = theme_get_setting('high_contrast_mode');
@@ -266,13 +266,10 @@ function gin_form_alter(&$form, $form_state, $form_id) {
  * Implements form_user_form_alter().
  */
 function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
-  /** @var \Drupal\user\UserInterface $user */
-  $user = $form_state->getBuildInfo()['callback_object']->getEntity();
-
   /** @var \Drupal\gin\Settings $settings */
   $settings = \Drupal::classResolver(Settings::class);
 
-  if ($user->id() && $settings->allowUserOverwrites()) {
+  if ($settings->allowUserOverrides()) {
     // Inject the settings for the dark mode feature.
     $form['gin_theme_settings'] = [
       '#type' => 'details',
@@ -281,11 +278,13 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       '#weight' => 90,
     ];
 
+    /** @var \Drupal\Core\Session\AccountInterface $account */
+    $account = $form_state->getBuildInfo()['callback_object']->getEntity();
     $form['gin_theme_settings']['enable_user_settings'] = [
       '#type' => 'checkbox',
       '#title' => t('Enable overrides'),
       '#description' => t("Enables default admin theme overrides."),
-      '#default_value' => $settings->userOverwritesEnabled(),
+      '#default_value' => $settings->userOverrideEnabled($account),
       '#weight' => 0,
     ];
 
@@ -299,11 +298,11 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       ],
     ];
 
-    $form['gin_theme_settings']['user_settings']['enable_darkmode'] = [
+    $form['gin_theme_settings']['user_settings']['darkmode'] = [
       '#type' => 'checkbox',
       '#title' => t('Enable Darkmode (BETA)'),
       '#description' => t("Enables Darkmode for the admin interface."),
-      '#default_value' => $settings->get('enable_darkmode'),
+      '#default_value' => $settings->get('darkmode', $account),
       '#weight' => 0,
     ];
 
@@ -311,7 +310,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
     $form['gin_theme_settings']['user_settings']['preset_accent_color'] = [
       '#type' => 'radios',
       '#title' => t('Accent color'),
-      '#default_value' => $settings->get('preset_accent_color'),
+      '#default_value' => $settings->get('preset_accent_color', $account),
       '#options' => _gin_get_accent_color_presets(),
       '#after_build' => ['_gin_accent_radios'],
     ];
@@ -322,7 +321,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       '#placeholder' => '#77777',
       '#title' => t('Accent color'),
       '#description' => t('Use with caution, values should meet a11y criteria.'),
-      '#default_value' => $settings->get('accent_color'),
+      '#default_value' => $settings->get('accent_color', $account),
       '#min' => '7',
       '#max' => '7',
       '#size' => '7',
@@ -338,7 +337,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       '#type' => 'checkbox',
       '#title' => ('Increase contrast (EXPERIMENTAL)'),
       '#description' => t("Enables high contrast mode."),
-      '#default_value' => $settings->get('high_contrast_mode'),
+      '#default_value' => $settings->get('high_contrast_mode', $account),
       '#weight' => 0,
     ];
 
@@ -347,7 +346,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       '#type' => 'radios',
       '#title' => t('Drupal Toolbar'),
       '#description' => t('Choose Drupal Toolbar.'),
-      '#default_value' => $settings->get('toolbar'),
+      '#default_value' => $settings->get('toolbar', $account),
       '#options' => _gin_get_toolbar_presets(),
       '#after_build' => ['_gin_toolbar_radios'],
     ];
@@ -497,49 +496,40 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#open' => TRUE,
     '#title' => t('Settings'),
   ];
+  /** @var \Drupal\gin\Settings $settings */
   $settings = \Drupal::classResolver(Settings::class);
 
-  $user_overrides = $settings->allowUserOverwrites();
   $userEditUrl = Url::fromRoute('entity.user.edit_form', ['user' => Drupal::currentUser()->id()])->toString();
 
   // Darkmode setting.
   // Check if this is overridden by the logged in user.
-  $userDarkMode = $settings->get('enable_darkmode');
-  $themeDarkMode = theme_get_setting('enable_darkmode');
   $description = t("Enables Darkmode for the admin interface.");
-
-  if (!is_null($userDarkMode) && $userDarkMode !== $themeDarkMode) {
-    $darkmode = $userDarkMode ? t('Enabled') : t('Disabled');
-    $description = t("Enables Darkmode for the admin interface.") . '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Darkmode: <strong>@darkmode</strong></span>', ['@darkmode' => $darkmode, '@editUrl' => $userEditUrl]);
+  if ($settings->overridden('darkmode')) {
+    $darkmode = $settings->get('darkmode') ? t('Enabled') : t('Disabled');
+    $description .= '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Darkmode: <strong>@darkmode</strong></span>', ['@darkmode' => $darkmode, '@editUrl' => $userEditUrl]);
   }
 
-  $form['custom_settings']['enable_darkmode'] = [
+  $form['custom_settings']['darkmode'] = [
     '#type' => 'checkbox',
     '#title' => t('Enable Darkmode (BETA)'),
     '#description' => $description,
-    '#default_value' => $themeDarkMode,
+    '#default_value' => theme_get_setting('darkmode'),
   ];
 
   // Accent color setting.
-  // Check if this is overridden by the logged in user.
-  $userPresetAccentColor = $settings->get('preset_accent_color');
-  $themePresetAccentColor = theme_get_setting('preset_accent_color');
   $form['custom_settings']['preset_accent_color'] = [
     '#type' => 'radios',
     '#title' => t('Accent color'),
-    '#default_value' => $themePresetAccentColor,
+    '#default_value' => theme_get_setting('preset_accent_color'),
     '#options' => _gin_get_accent_color_presets(),
     '#after_build' => ['_gin_accent_radios'],
   ];
 
-  if ($user_overrides && !is_null($userPresetAccentColor) && $userPresetAccentColor !== $themePresetAccentColor) {
-    $presetActionColorLabel = _gin_get_accent_color_preset_label($userPresetAccentColor);
+  // Check if this is overridden by the logged in user.
+  if ($settings->overridden('preset_accent_color')) {
+    $presetActionColorLabel = _gin_get_accent_color_preset_label($settings->get('preset_accent_color'));
     $form['custom_settings']['preset_accent_color']['#description'] = '<span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Accent Color: <strong>@colorLabel</strong></span>', ['@editUrl' => $userEditUrl, '@colorLabel' => $presetActionColorLabel]);
   }
-
-  // Check if this is overridden by the logged in user.
-  $userAccentColor = $settings->get('accent_color');
-  $themeAccentColor = theme_get_setting('accent_color');
 
   // Main Accent color setting.
   $form['custom_settings']['accent_color'] = [
@@ -547,7 +537,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#placeholder' => '#77777',
     '#title' => t('Custom Accent color'),
     '#description' => t('Use with caution, values should meet a11y criteria.'),
-    '#default_value' => $themeAccentColor,
+    '#default_value' => theme_get_setting('accent_color'),
     '#min' => '7',
     '#max' => '7',
     '#size' => '7',
@@ -559,7 +549,9 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     ],
   ];
 
-  if ($user_overrides && !is_null($userAccentColor) && $userAccentColor !== $themeAccentColor) {
+  // Check if this is overridden by the logged in user.
+  if ($settings->overridden('accent_color')) {
+    $userAccentColor = $settings->get('accent_color');
     $form['custom_settings']['accent_color']['#description'] = t('Use with caution, values should meet a11y criteria.') . '<br/>' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Custom Accent Color: <strong>@accentColor</strong>', ['@editUrl' => $userEditUrl, '@accentColor' => $userAccentColor]);
   }
 
@@ -599,30 +591,25 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
 
   // High contrast mode.
   // Check if this is overridden by the logged in user.
-  $hcm_user = $settings->get('high_contrast_mode');
-  $hcm_default = theme_get_setting('high_contrast_mode');
   $hcm_description = t("Enables high contrast mode.");
-
-  if ($user_overrides && !is_null($hcm_user) && $hcm_user !== $hcm_default) {
-    $hcm_active = $hcm_user ? t('Enabled') : t('Disabled');
-    $hcm_description = t("Enables high contrast mode.") . '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. High Contrast Mode: <strong>@highcontrastmode</strong></span>', ['@highcontrastmode' => $hcm_active, '@editUrl' => $userEditUrl]);
+  if ($settings->overridden('high_contrast_mode')) {
+    $hcm_active = $settings->get('high_contrast_mode') ? t('Enabled') : t('Disabled');
+    $hcm_description .= '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. High Contrast Mode: <strong>@highcontrastmode</strong></span>', ['@highcontrastmode' => $hcm_active, '@editUrl' => $userEditUrl]);
   }
 
   $form['custom_settings']['high_contrast_mode'] = [
     '#type' => 'checkbox',
     '#title' => t('Increase contrast (EXPERIMENTAL)'),
     '#description' => $hcm_description,
-    '#default_value' => $hcm_default,
+    '#default_value' => theme_get_setting('high_contrast_mode'),
   ];
 
   // Allow user settings.
-  $showUserThemeSettings = theme_get_setting('show_user_theme_settings');
-
   $form['custom_settings']['show_user_theme_settings'] = [
     '#type' => 'checkbox',
     '#title' => t('Users can override Gin settings'),
     '#description' => t('Expose the admin theme settings to users.'),
-    '#default_value' => $showUserThemeSettings,
+    '#default_value' => theme_get_setting('show_user_theme_settings'),
   ];
 
   /*
@@ -638,12 +625,9 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
 
   // Toolbar setting.
   // Check if this is overridden by the logged in user.
-  $userToolbar = $settings->get('toolbar');
-  $toolbar = theme_get_setting('toolbar');
   $description = t('Choose Drupal Toolbar.');
-
-  if (!is_null($userToolbar) && $userToolbar !== $toolbar) {
-    switch ($userToolbar) {
+  if ($settings->overridden('toolbar')) {
+    switch ($settings->get('toolbar')) {
       case 'classic':
         $toolbar = t('Classic');
         break;
@@ -656,7 +640,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
         $toolbar = t('Sidebar');
     }
 
-    $description = t('Choose Drupal Toolbar.') . '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Toolbar: <strong>@toolbar</strong></span>', ['@toolbar' => $toolbar, '@editUrl' => $userEditUrl]);
+    $description .= '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Toolbar: <strong>@toolbar</strong></span>', ['@toolbar' => $toolbar, '@editUrl' => $userEditUrl]);
   }
   $form['toolbar_wrapper']['toolbar'] = [
     '#type' => 'radios',
@@ -788,26 +772,24 @@ function _gin_toolbar_radios($element) {
  * Implements helper function _gin_user_form_submit().
  */
 function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
-  /** @var \Drupal\user\UserInterface $user */
-  $user = $form_state->getBuildInfo()['callback_object']->getEntity();
+  /** @var \Drupal\Core\Session\AccountInterface $account */
+  $account = $form_state->getBuildInfo()['callback_object']->getEntity();
 
-  if ($user instanceof \Drupal\user\UserInterface) {
-    $enabledUserOverrides = $form_state->getValue('enable_user_settings');
-    /** @var \Drupal\gin\Settings $settings */
-    $settings = \Drupal::classResolver(Settings::class);
-    if ($enabledUserOverrides) {
-      $user_settings = [
-        'enable_darkmode' => (bool) $form_state->getValue('enable_darkmode'),
-        'preset_accent_color' => $form_state->getValue('preset_accent_color'),
-        'accent_color' => $form_state->getValue('accent_color'),
-        'toolbar' => $form_state->getValue('toolbar'),
-        'high_contrast_mode' => (bool) $form_state->getValue('high_contrast_mode'),
-      ];
-      $settings->setAll($user_settings);
-    }
-    else {
-      $settings->clear();
-    }
+  $enabledUserOverrides = $form_state->getValue('enable_user_settings');
+  /** @var \Drupal\gin\Settings $settings */
+  $settings = \Drupal::classResolver(Settings::class);
+  if ($enabledUserOverrides) {
+    $user_settings = [
+      'darkmode' => (bool) $form_state->getValue('darkmode'),
+      'preset_accent_color' => $form_state->getValue('preset_accent_color'),
+      'accent_color' => $form_state->getValue('accent_color'),
+      'toolbar' => $form_state->getValue('toolbar'),
+      'high_contrast_mode' => (bool) $form_state->getValue('high_contrast_mode'),
+    ];
+    $settings->setAll($user_settings, $account);
+  }
+  else {
+    $settings->clear($account);
   }
 }
 

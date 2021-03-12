@@ -9,7 +9,7 @@ gin.settings:
     preset_focus_color:
       type: string
       label: 'Preset focus color'
-    enable_darkmode:
+    darkmode:
       type: boolean
       label: 'The dark mode'
     toolbar:

@@ -6,7 +6,7 @@
   Drupal.behaviors.ginSettings = {
     attach: function attach(context) {
       // Watch Darkmode setting has changed.
-      $('input[name="enable_darkmode"]', context).change(function () {
+      $('input[name="darkmode"]', context).change(function () {
         const darkmode = $(this).is(':checked');
         const accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val();
         const focusColorPreset = $('select[name="preset_focus_color"]').val();
@@ -80,7 +80,7 @@
       $('input[name="enable_user_settings"]', context).change(function () {
         const active = $(this).is(':checked');
 
-        let darkmode = $('input[name="enable_darkmode"]').is(':checked');
+        let darkmode = $('input[name="darkmode"]').is(':checked');
         let accentColorSetting = $('input[name="accent_color"]', context).val();
         let accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val();
         let highContrastMode = $('input[name="high_contrast_mode"]').is(':checked');
