@@ -72,7 +72,7 @@ class GinTest extends BrowserTestBase {
    * Tests Classic Drupal Toolbar setting.
    */
   public function testClassicToolbarSetting() {
-    \Drupal::configFactory()->getEditable('gin.settings')->set('classic_toolbar', 1)->save();
+    \Drupal::configFactory()->getEditable('gin.settings')->set('toolbar', 'classic')->save();
     $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);
     $this->assertSession()->responseContains('gin_classic_toolbar.css');

@@ -12,7 +12,7 @@ gin.settings:
     enable_darkmode:
       type: boolean
       label: 'The dark mode'
-    classic_toolbar:
+    toolbar:
       type: string
       label: 'The classic toolbar'
     icon_default:

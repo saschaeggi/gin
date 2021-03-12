@@ -11,6 +11,7 @@ use Drupal\Core\Render\Markup;
 use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\user\Entity\User;
 use Drupal\Core\Url;
+use Drupal\gin\Settings;
 
 /**
  * Implements hook_preprocess_HOOK() for html.
@@ -21,23 +22,20 @@ function gin_preprocess_html(&$variables) {
 
   if ($gin_activated) {
     // Get configs.
-    $darkmode = _gin_dark_mode_enabled();
-    $preset_accent_color = _gin_preset_accent_color();
-    $toolbar = _gin_toolbar();
-    $high_contrast_mode = _gin_highcontrastmode_enabled();
+    /** @var \Drupal\gin\Settings $settings */
+    $settings = \Drupal::classResolver(Settings::class);
+    $toolbar = $settings->get('toolbar');
 
     // Check if darkmode is enabled.
-    if ($darkmode === TRUE) {
+    if ($settings->get('enable_darkmode')) {
       $variables['attributes']['class'][] = 'gin--dark-mode';
     }
 
     // Set accent color.
-    if ($preset_accent_color) {
-      $variables['attributes']['data-gin-accent'] = $preset_accent_color;
-    }
+    $variables['attributes']['data-gin-accent'] = $settings->get('preset_accent_color');
 
     // High contrast mode.
-    if ($high_contrast_mode === TRUE) {
+    if ($settings->get('high_contrast_mode')) {
       $variables['attributes']['class'][] = 'gin--high-contrast-mode';
     }
 
@@ -51,21 +49,9 @@ function gin_preprocess_html(&$variables) {
       return;
     }
 
-    // Check if classic_toolbar is active.
-    if ($toolbar === 1) {
-      $variables['attributes']['class'][] = 'gin--classic-toolbar';
-    }
-    // If modern horizontal Toolbar is active.
-    elseif ($toolbar === 'horizontal') {
-      $variables['attributes']['class'][] = 'gin--horizontal-toolbar';
-    }
-    // Sidebar toolbar.
-    else {
-      $variables['attributes']['class'][] = 'gin--vertical-toolbar';
-    }
-
+    $variables['attributes']['class'][] = 'gin--' . $toolbar . '-toolbar';
     // Gin secondary toolbar.
-    if ($toolbar !== 1) {
+    if ($toolbar !== 'classic') {
       $variables['page']['gin_secondary_toolbar'] = [
         '#type' => 'toolbar',
         '#access' => \Drupal::currentUser()->hasPermission('access toolbar'),
@@ -119,13 +105,10 @@ function gin_page_attachments_alter(&$page) {
 
   if ($gin_activated) {
     // Get theme configs.
-    $darkmode = _gin_dark_mode_enabled();
-    $preset_accent_color = _gin_preset_accent_color();
-    $accent_color = _gin_accent_color();
+    $settings = \Drupal::classResolver(Settings::class);
     $preset_focus_color = theme_get_setting('preset_focus_color');
     $focus_color = theme_get_setting('focus_color');
-    $toolbar = _gin_toolbar();
-    $highcontrastmode = _gin_highcontrastmode_enabled();
+    $toolbar = $settings->get('toolbar');
 
     // Define darkmode class.
     $darkmode_class = 'gin--dark-mode';
@@ -134,7 +117,7 @@ function gin_page_attachments_alter(&$page) {
     // Attach the init script.
     $page['#attached']['library'][] = 'gin/gin_init';
 
-    if ($toolbar === 1) {
+    if ($toolbar === 'classic') {
       // Attach the classic toolbar styles.
       $page['#attached']['library'][] = 'gin/gin_classic_toolbar';
     }
@@ -156,13 +139,13 @@ function gin_page_attachments_alter(&$page) {
     }
 
     // Expose settings to JS.
-    $page['#attached']['drupalSettings']['gin']['darkmode'] = $darkmode;
+    $page['#attached']['drupalSettings']['gin']['darkmode'] = $settings->get('enable_darkmode');
     $page['#attached']['drupalSettings']['gin']['darkmode_class'] = $darkmode_class;
-    $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $preset_accent_color;
-    $page['#attached']['drupalSettings']['gin']['accent_color'] = $accent_color;
+    $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $settings->get('preset_accent_color');
+    $page['#attached']['drupalSettings']['gin']['accent_color'] = $settings->get('accent_color');
     $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $preset_focus_color;
     $page['#attached']['drupalSettings']['gin']['focus_color'] = $focus_color;
-    $page['#attached']['drupalSettings']['gin']['highcontrastmode'] = $highcontrastmode;
+    $page['#attached']['drupalSettings']['gin']['highcontrastmode'] = $settings->get('high_contrast_mode');
     $page['#attached']['drupalSettings']['gin']['highcontrastmode_class'] = $highcontrastmode_class;
 
     // Add stylesheets for JS use.
@@ -285,18 +268,11 @@ function gin_form_alter(&$form, $form_state, $form_id) {
 function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
   /** @var \Drupal\user\UserInterface $user */
   $user = $form_state->getBuildInfo()['callback_object']->getEntity();
-  $showUserThemeSettings = theme_get_setting('show_user_theme_settings');
 
-  if ($user->id() && $showUserThemeSettings) {
-    /** @var \Drupal\user\UserDataInterface $userData */
-    $userData = Drupal::service('user.data');
-    $enabledUserOverrides = $userData->get('gin', $user->id(), 'enable_user_settings');
-    $darkModeValue = $userData->get('gin', $user->id(), 'enable_darkmode');
+  /** @var \Drupal\gin\Settings $settings */
+  $settings = \Drupal::classResolver(Settings::class);
 
-    if ($darkModeValue == NULL) {
-      $darkModeValue = theme_get_setting('enable_darkmode') == TRUE ? TRUE : FALSE;
-    }
-
+  if ($user->id() && $settings->allowUserOverwrites()) {
     // Inject the settings for the dark mode feature.
     $form['gin_theme_settings'] = [
       '#type' => 'details',
@@ -309,7 +285,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       '#type' => 'checkbox',
       '#title' => t('Enable overrides'),
       '#description' => t("Enables default admin theme overrides."),
-      '#default_value' => $enabledUserOverrides,
+      '#default_value' => $settings->userOverwritesEnabled(),
       '#weight' => 0,
     ];
 
@@ -327,30 +303,18 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       '#type' => 'checkbox',
       '#title' => t('Enable Darkmode (BETA)'),
       '#description' => t("Enables Darkmode for the admin interface."),
-      '#default_value' => $darkModeValue !== NULL ? $darkModeValue : 0,
+      '#default_value' => $settings->get('enable_darkmode'),
       '#weight' => 0,
     ];
-
-    $accentColorPresetValue = $userData->get('gin', $user->id(), 'preset_accent_color');
-
-    if ($accentColorPresetValue == NULL) {
-      $accentColorPresetValue = theme_get_setting('preset_accent_color');
-    }
 
     // Accent color setting.
     $form['gin_theme_settings']['user_settings']['preset_accent_color'] = [
       '#type' => 'radios',
       '#title' => t('Accent color'),
-      '#default_value' => $accentColorPresetValue,
+      '#default_value' => $settings->get('preset_accent_color'),
       '#options' => _gin_get_accent_color_presets(),
       '#after_build' => ['_gin_accent_radios'],
     ];
-
-    $accentColorValue = $userData->get('gin', $user->id(), 'accent_color');
-
-    if ($accentColorValue == NULL) {
-      $accentColorValue = theme_get_setting('accent_color');
-    }
 
     // Main Accent color setting.
     $form['gin_theme_settings']['user_settings']['accent_color'] = [
@@ -358,7 +322,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       '#placeholder' => '#77777',
       '#title' => t('Accent color'),
       '#description' => t('Use with caution, values should meet a11y criteria.'),
-      '#default_value' => $accentColorValue,
+      '#default_value' => $settings->get('accent_color'),
       '#min' => '7',
       '#max' => '7',
       '#size' => '7',
@@ -370,32 +334,20 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       ],
     ];
 
-    $hcm_value = $userData->get('gin', $user->id(), 'high_contrast_mode');
-
-    if ($hcm_value == NULL) {
-      $hcm_value = theme_get_setting('high_contrast_mode') == TRUE ? TRUE : FALSE;
-    }
-
     $form['gin_theme_settings']['user_settings']['high_contrast_mode'] = [
       '#type' => 'checkbox',
       '#title' => ('Increase contrast (EXPERIMENTAL)'),
       '#description' => t("Enables high contrast mode."),
-      '#default_value' => $hcm_value !== NULL ? $hcm_value : 0,
+      '#default_value' => $settings->get('high_contrast_mode'),
       '#weight' => 0,
     ];
 
-    $toolbarValue = $userData->get('gin', $user->id(), 'classic_toolbar');
-
-    if ($toolbarValue == NULL) {
-      $toolbarValue = theme_get_setting('classic_toolbar');
-    }
-
     // Classic Toolbar user setting.
-    $form['gin_theme_settings']['user_settings']['classic_toolbar'] = [
+    $form['gin_theme_settings']['user_settings']['toolbar'] = [
       '#type' => 'radios',
       '#title' => t('Drupal Toolbar'),
       '#description' => t('Choose Drupal Toolbar.'),
-      '#default_value' => $toolbarValue,
+      '#default_value' => $settings->get('toolbar'),
       '#options' => _gin_get_toolbar_presets(),
       '#after_build' => ['_gin_toolbar_radios'],
     ];
@@ -458,12 +410,13 @@ function gin_theme_suggestions_form_alter(array &$suggestions, array $variables)
  * Toolbar alter().
  */
 function gin_theme_suggestions_toolbar_alter(array &$suggestions, array $variables) {
-  $toolbar = _gin_toolbar();
+  $settings = \Drupal::classResolver(Settings::class);
+  $toolbar = $settings->get('toolbar');
 
   $suggestions[] = 'toolbar__gin';
 
   // Only if Classic Toolbar is disabled.
-  if ($toolbar !== 1) {
+  if ($toolbar !== 'classic') {
     if ($variables['element']['#attributes']['id'] === 'toolbar-administration-secondary') {
       $suggestions[] = 'toolbar__gin__secondary';
     }
@@ -474,8 +427,6 @@ function gin_theme_suggestions_toolbar_alter(array &$suggestions, array $variabl
  * Toolbar menu alter().
  */
 function gin_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
-  $toolbar = _gin_toolbar();
-
   if (isset($variables['theme_hook_original']) && $variables['theme_hook_original'] == 'menu__toolbar__admin') {
     $suggestions[] = 'menu__toolbar__gin';
   }
@@ -546,13 +497,14 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#open' => TRUE,
     '#title' => t('Settings'),
   ];
+  $settings = \Drupal::classResolver(Settings::class);
 
-  $user_overrides = _gin_user__overrides_enabled();
+  $user_overrides = $settings->allowUserOverwrites();
   $userEditUrl = Url::fromRoute('entity.user.edit_form', ['user' => Drupal::currentUser()->id()])->toString();
 
   // Darkmode setting.
   // Check if this is overridden by the logged in user.
-  $userDarkMode = _gin_dark_mode_enabled();
+  $userDarkMode = $settings->get('enable_darkmode');
   $themeDarkMode = theme_get_setting('enable_darkmode');
   $description = t("Enables Darkmode for the admin interface.");
 
@@ -570,7 +522,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
 
   // Accent color setting.
   // Check if this is overridden by the logged in user.
-  $userPresetAccentColor = _gin_user__get_preset_accentcolor();
+  $userPresetAccentColor = $settings->get('preset_accent_color');
   $themePresetAccentColor = theme_get_setting('preset_accent_color');
   $form['custom_settings']['preset_accent_color'] = [
     '#type' => 'radios',
@@ -586,7 +538,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   }
 
   // Check if this is overridden by the logged in user.
-  $userAccentColor = _gin_user__accentcolor();
+  $userAccentColor = $settings->get('accent_color');
   $themeAccentColor = theme_get_setting('accent_color');
 
   // Main Accent color setting.
@@ -647,7 +599,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
 
   // High contrast mode.
   // Check if this is overridden by the logged in user.
-  $hcm_user = _gin_highcontrastmode_enabled();
+  $hcm_user = $settings->get('high_contrast_mode');
   $hcm_default = theme_get_setting('high_contrast_mode');
   $hcm_description = t("Enables high contrast mode.");
 
@@ -678,7 +630,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
    * Toolbar settings.
    * * //////////////////////////
    */
-  $form['toolbar'] = [
+  $form['toolbar_wrapper'] = [
     '#type' => 'details',
     '#title' => t('Toolbar'),
     '#open' => TRUE,
@@ -686,13 +638,13 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
 
   // Toolbar setting.
   // Check if this is overridden by the logged in user.
-  $userToolbar = _gin_toolbar();
-  $toolbar = theme_get_setting('classic_toolbar');
+  $userToolbar = $settings->get('toolbar');
+  $toolbar = theme_get_setting('toolbar');
   $description = t('Choose Drupal Toolbar.');
 
   if (!is_null($userToolbar) && $userToolbar !== $toolbar) {
     switch ($userToolbar) {
-      case 1:
+      case 'classic':
         $toolbar = t('Classic');
         break;
 
@@ -706,11 +658,11 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
 
     $description = t('Choose Drupal Toolbar.') . '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Toolbar: <strong>@toolbar</strong></span>', ['@toolbar' => $toolbar, '@editUrl' => $userEditUrl]);
   }
-  $form['toolbar']['classic_toolbar'] = [
+  $form['toolbar_wrapper']['toolbar'] = [
     '#type' => 'radios',
     '#title' => t('Drupal Toolbar'),
     '#description' => $description,
-    '#default_value' => theme_get_setting('classic_toolbar'),
+    '#default_value' => theme_get_setting('toolbar'),
     '#options' => _gin_get_toolbar_presets(),
     '#after_build' => ['_gin_toolbar_radios'],
   ];
@@ -838,30 +790,26 @@ function _gin_toolbar_radios($element) {
  * Implements helper function _gin_user_form_submit().
  */
 function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
-  /** @var \Drupal\user\UserDataInterface $userData */
-  $userData = Drupal::service('user.data');
-
   /** @var \Drupal\user\UserInterface $user */
   $user = $form_state->getBuildInfo()['callback_object']->getEntity();
 
-  if ($user->id()) {
+  if ($user instanceof \Drupal\user\UserInterface) {
     $enabledUserOverrides = $form_state->getValue('enable_user_settings');
-    $userData->set('gin', $user->id(), 'enable_user_settings', $enabledUserOverrides);
-
-    $darkModeValue = $form_state->getValue('enable_darkmode');
-    $userData->set('gin', $user->id(), 'enable_darkmode', $darkModeValue);
-
-    $accentColorPresetValue = $form_state->getValue('preset_accent_color');
-    $userData->set('gin', $user->id(), 'preset_accent_color', $accentColorPresetValue);
-
-    $accentColorValue = $form_state->getValue('accent_color');
-    $userData->set('gin', $user->id(), 'accent_color', $accentColorValue);
-
-    $toolbarValue = $form_state->getValue('classic_toolbar');
-    $userData->set('gin', $user->id(), 'classic_toolbar', $toolbarValue);
-
-    $highContrastValue = $form_state->getValue('high_contrast_mode');
-    $userData->set('gin', $user->id(), 'high_contrast_mode', $highContrastValue);
+    /** @var \Drupal\gin\Settings $settings */
+    $settings = \Drupal::classResolver(Settings::class);
+    if ($enabledUserOverrides) {
+      $user_settings = [
+        'enable_darkmode' => (bool) $form_state->getValue('enable_darkmode'),
+        'preset_accent_color' => $form_state->getValue('preset_accent_color'),
+        'accent_color' => $form_state->getValue('accent_color'),
+        'toolbar' => $form_state->getValue('toolbar'),
+        'high_contrast_mode' => (bool) $form_state->getValue('high_contrast_mode'),
+      ];
+      $settings->setAll($user_settings);
+    }
+    else {
+      $settings->clear();
+    }
   }
 }
 
@@ -901,172 +849,6 @@ function _gin_is_active() {
 }
 
 /**
- * Helper function for increasing/decreasing the brightness of a color.
- */
-function _gin_adjust_brightness($hexCode, $adjustPercent) {
-  $hexCode = ltrim($hexCode, '#');
-
-  if (strlen($hexCode) == 3) {
-    $hexCode = $hexCode[0] . $hexCode[0] . $hexCode[1] . $hexCode[1] . $hexCode[2] . $hexCode[2];
-  }
-
-  $hexCode = array_map('hexdec', str_split($hexCode, 2));
-
-  foreach ($hexCode as & $color) {
-    $adjustableLimit = $adjustPercent < 0 ? $color : 255 - $color;
-    $adjustAmount = ceil($adjustableLimit * $adjustPercent);
-
-    $color = str_pad(dechex($color + $adjustAmount), 2, '0', STR_PAD_LEFT);
-  }
-
-  return '#' . implode($hexCode);
-}
-
-/**
- * Check user has enabled darkmode helper function.
- */
-function _gin_user__get_user_id() {
-  $uid = Drupal::currentUser()->id();
-
-  if (empty($uid)) {
-    return NULL;
-  }
-  else {
-    return $uid;
-  }
-}
-
-/**
- * Check if user overrides are enabled.
- */
-function _gin_user__overrides_enabled() {
-  if (theme_get_setting('show_user_theme_settings') !== TRUE) {
-    return FALSE;
-  }
-
-  $uid = _gin_user__get_user_id();
-
-  /** @var \Drupal\user\UserDataInterface $userData */
-  $userData = Drupal::service('user.data');
-
-  $enableUserSetting = $userData->get('gin', $uid, 'enable_user_settings');
-  $enableUserSetting = $enableUserSetting === 1 || $enableUserSetting === '1' ? TRUE : $enableUserSetting;
-  $enableUserSetting = $enableUserSetting === 0 || $enableUserSetting === '0' ? FALSE : $enableUserSetting;
-
-  if ($uid && $enableUserSetting === TRUE) {
-    return TRUE;
-  }
-  else {
-    return FALSE;
-  }
-}
-
-/**
- * Enable darkmode helper function.
- */
-function _gin_dark_mode_enabled() {
-  // Get user config.
-  if (_gin_user__overrides_enabled()) {
-    $darkmode = _gin_user__get_darkmode_enabled();
-  }
-  // Get general config.
-  else {
-    $darkmode = theme_get_setting('enable_darkmode');
-  }
-
-  // Convert older versions to boolean.
-  $darkmode = $darkmode === 0 || $darkmode === '0' ? FALSE : $darkmode;
-  $darkmode = $darkmode === 1 || $darkmode === '1' ? TRUE : $darkmode;
-
-  return $darkmode;
-}
-
-/**
- * Check user has enabled darkmode helper function.
- */
-function _gin_user__get_darkmode_enabled() {
-  $uid = _gin_user__get_user_id();
-
-  if ($uid) {
-    /** @var \Drupal\user\UserDataInterface $userData */
-    $userData = Drupal::service('user.data');
-
-    return $userData->get('gin', $uid, 'enable_darkmode');
-  }
-  else {
-    return FALSE;
-  }
-}
-
-/**
- * Accent color helper function.
- */
-function _gin_preset_accent_color() {
-  if (_gin_user__overrides_enabled()) {
-    return _gin_user__get_preset_accentcolor();
-  }
-  else {
-    if (theme_get_setting('preset_accent_color') === 'claro_blue') {
-      return 'blue';
-    }
-    else {
-      return theme_get_setting('preset_accent_color');
-    }
-  }
-}
-
-/**
- * User Accent color helper function.
- */
-function _gin_user__get_preset_accentcolor() {
-  $uid = _gin_user__get_user_id();
-
-  /** @var \Drupal\user\UserDataInterface $userData */
-  $userData = Drupal::service('user.data');
-
-  if ($userData->get('gin', $uid, 'preset_accent_color') !== NULL) {
-    if ($userData->get('gin', $uid, 'preset_accent_color') === 'claro_blue') {
-      return 'blue';
-    }
-    else {
-      return $userData->get('gin', $uid, 'preset_accent_color');
-    }
-  }
-  else {
-    return NULL;
-  }
-}
-
-/**
- * Accent color helper function.
- */
-function _gin_accent_color() {
-  if (_gin_user__overrides_enabled() && _gin_user__accentcolor()) {
-    return _gin_user__accentcolor();
-  }
-  else {
-    return theme_get_setting('accent_color');
-  }
-}
-
-/**
- * User Accent color helper function.
- */
-function _gin_user__accentcolor() {
-  $uid = _gin_user__get_user_id();
-
-  /** @var \Drupal\user\UserDataInterface $userData */
-  $userData = Drupal::service('user.data');
-
-  if ($uid && $userData->get('gin', $uid, 'preset_accent_color') === 'custom' && $userData->get('gin', $uid, 'accent_color') !== NULL) {
-    return $userData->get('gin', $uid, 'accent_color');
-  }
-  else {
-    return NULL;
-  }
-}
-
-/**
  * Accent color presets helper function.
  */
 function _gin_get_accent_color_presets() {
@@ -1092,7 +874,7 @@ function _gin_get_toolbar_presets() {
   return [
     'vertical' => t('Sidebar, Vertical Toolbar (Default)'),
     'horizontal' => t('Horizontal, Modern Toolbar'),
-    1 => t('Legacy, Classic Drupal Toolbar'),
+    'classic' => t('Legacy, Classic Drupal Toolbar'),
   ];
 }
 
@@ -1106,80 +888,6 @@ function _gin_get_accent_color_preset_label($key) {
     return $options[$key];
   }
   return '';
-}
-
-/**
- * Toolbar helper function.
- */
-function _gin_toolbar() {
-  // Get user config.
-  if (_gin_user__overrides_enabled()) {
-    $uid = _gin_user__get_user_id();
-    $toolbar = _gin_user__toolbar();
-  }
-  // Get general config.
-  else {
-    $toolbar = theme_get_setting('classic_toolbar');
-  }
-
-  // Convert older versions to boolean.
-  $toolbar = $toolbar === TRUE || $toolbar === 'true' ||  $toolbar === '1' || $toolbar === 1 ? 1 : $toolbar;
-
-  return $toolbar;
-}
-
-/**
- * User Classic Toolbar helper function.
- */
-function _gin_user__toolbar() {
-  $uid = _gin_user__get_user_id();
-
-  /** @var \Drupal\user\UserDataInterface $userData */
-  $userData = Drupal::service('user.data');
-
-  if ($userData->get('gin', $uid, 'classic_toolbar') !== NULL) {
-    return $userData->get('gin', $uid, 'classic_toolbar');
-  }
-  else {
-    return NULL;
-  }
-}
-
-/**
- * Enable high contrast mode helper function.
- */
-function _gin_highcontrastmode_enabled() {
-  // Get user config.
-  if (_gin_user__overrides_enabled()) {
-    $hcm = _gin_user__get_highcontrastmode_enabled();
-  }
-  // Get general config.
-  else {
-    $hcm = theme_get_setting('high_contrast_mode');
-  }
-
-  // Convert older versions to boolean.
-  $hcm = $hcm === 0 || $hcm === '0' ? FALSE : $hcm;
-  $hcm = $hcm === 1 || $hcm === '1' ? TRUE : $hcm;
-
-  return $hcm;
-}
-
-/**
- * Check user has enabled high contrast mode helper function.
- */
-function _gin_user__get_highcontrastmode_enabled() {
-  $uid = _gin_user__get_user_id();
-
-  if ($uid) {
-    /** @var \Drupal\user\UserDataInterface $userData */
-    $userData = Drupal::service('user.data');
-
-    return $userData->get('gin', $uid, 'high_contrast_mode');
-  }
-  else {
-    return FALSE;
-  }
 }
 
 /**
