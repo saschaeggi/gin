@@ -59,5 +59,7 @@ function gin_update_8305() {
   $config
     ->set('toolbar', $config->get('classic_toolbar'))
     ->set('darkmode', $config->get('enable_darkmode'))
+    ->clear('classic_toolbar')
+    ->clear('enable_darkmode')
     ->save();
 }
