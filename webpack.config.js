@@ -22,7 +22,6 @@ module.exports = {
     gin_messages: ['./js/gin_messages.js'],
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
     chunkFilename: 'js/async/[name].chunk.js',
     pathinfo: true,
     filename: 'js/[name].js',
