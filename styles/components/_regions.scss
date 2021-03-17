@@ -153,6 +153,10 @@
     }
 
     .gin--classic-toolbar.gin--edit-form & {
+      top: 88px;
+    }
+
+    .gin--classic-toolbar.gin--edit-form.toolbar-tray-open & {
       top: 127px;
     }
 

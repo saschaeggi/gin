@@ -1,3 +1,4 @@
+
 // Import breakpoint
 @import "node_modules/breakpoint-sass/stylesheets/breakpoint";
 
@@ -10,6 +11,15 @@
 // Components
 @import "components/coffee";
 @import "components/responsive-preview";
+
+// Scroll Offset
+:root {
+  --ginScrollOffset: 72px;
+
+  @include mq($breakpointLarge) {
+    --ginScrollOffset: 180px;
+  }
+}
 
 // Toolbar
 .toolbar {

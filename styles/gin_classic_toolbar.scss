@@ -12,6 +12,15 @@
 @import "components/toolbar";
 @import "components/responsive-preview";
 
+// Scroll Offset
+:root {
+  --ginScrollOffset: 72px;
+
+  @include mq($breakpointLarge) {
+    --ginScrollOffset: 200px;
+  }
+}
+
 // Toolbar
 .toolbar {
   font-family: Inter, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
