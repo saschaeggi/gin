@@ -16,7 +16,7 @@
     background: rgba($colorDarkAppBackground, .98);
 
     @supports (backdrop-filter: blur()) {
-      background: rgba($colorDarkAppBackground, .8);
+      background: #{rgba(mix(white, $colorDarkAppBackground, .5%), .9)};
     }
   }
 

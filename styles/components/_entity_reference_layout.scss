@@ -28,6 +28,8 @@
       border-left: 1px solid #ddd;
       border-bottom: 1px solid #ddd;
       background: #fff;
+      border-bottom-left-radius: $borderDefault;
+      border-bottom-right-radius: $borderDefault;
     }
 
     .layout-controls,
@@ -470,6 +472,22 @@
   .layout-down {
     font-size: 0;
   }
+
+  // Layout selection
+  .layout-select {
+    &__item {
+      margin-left: 0;
+
+      input + label {
+        border: 1px solid var(--colorGinBorder);
+        border-radius: $borderDefault;
+      }
+
+      input:checked + label {
+        border: 1px solid var(--colorGinPrimary);
+      }
+    }
+  }
 }
 
 /*
@@ -569,6 +587,7 @@
   position: relative;
   padding: 48px 0 0;
   margin-bottom: 1rem;
+  background: transparent;
   border: 0 none;
   border-radius: $borderDefault;
 
@@ -630,9 +649,13 @@
 
   &,
   &:hover {
+    background: transparent;
     border: 0 none;
     border-top: 1px solid #ddd;
-    border-right: 1px solid #ddd;
+
+    &:not(:last-of-type) {
+      border-right: 1px solid #ddd;
+    }
   }
 
   .layout-label {
