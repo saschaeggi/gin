@@ -18,20 +18,6 @@
         opacity: 0;
       }
     }
-
-    .region-sticky {
-      opacity: 1;
-      height: $stickyBar;
-      backdrop-filter: none;
-      background: rgba($colorAppBackground, .98);
-    }
-
-    // Darkmode overrides
-    &.gin--dark-mode {
-      .region-sticky {
-        background: rgba($colorDarkAppBackground, .98);
-      }
-    }
   }
 
   .layout-node-form {
