@@ -12,7 +12,7 @@ module.exports = merge(webpackConfig, {
         terserOptions: {
           compress: {},
           mangle: true,
-          module: false,
+          module: true,
           format: {
             comments: false,
             indent_level: 2,

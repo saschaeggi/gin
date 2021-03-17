@@ -11,8 +11,8 @@ module.exports = merge(webpackConfig, {
       new TerserPlugin({
         terserOptions: {
           compress: {},
-          mangle: true,
-          module: false,
+          mangle: false,
+          module: true,
           format: {
             beautify: true,
             comments: false,
