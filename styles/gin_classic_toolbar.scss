@@ -10,6 +10,16 @@
 // Components
 @import "components/coffee";
 @import "components/toolbar";
+@import "components/responsive-preview";
+
+// Scroll Offset
+:root {
+  --ginScrollOffset: 72px;
+
+  @include mq($breakpointLarge) {
+    --ginScrollOffset: 200px;
+  }
+}
 
 // Toolbar
 .toolbar {

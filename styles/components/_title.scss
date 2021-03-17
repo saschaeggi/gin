@@ -15,20 +15,8 @@
   text-overflow: ellipsis;
   max-width: 90%;
 
-  @include mq($breakpointSmall) {
+  @include mq($breakpointBig) {
     font-size: 2em;
-  }
-}
-
-.gin--edit-form {
-  .page-title {
-    @include mq($breakpointLarge) {
-      font-size: 1.6em;
-    }
-
-    @include mq($breakpointWide) {
-      font-size: 1.75em;
-    }
   }
 }
 
