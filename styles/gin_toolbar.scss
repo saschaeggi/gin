@@ -9,6 +9,7 @@
 
 // Components
 @import "components/coffee";
+@import "components/responsive-preview";
 
 // Toolbar
 #toolbar-item-administration-tray {
@@ -48,7 +49,7 @@
     @include mq($breakpointMedium) {
       // Toolbar logo
       .toolbar-logo {
-        height: 88px;
+        height: $stickyBar;
       }
 
       // Admin tray: Home icon
@@ -80,7 +81,7 @@
 
       @include mq($breakpointMedium) {
         font-size: 0;
-        height: 88px;
+        height: $stickyBar;
         transition: top $transition;
         mask-size: 100% 100%;
       }
@@ -213,7 +214,8 @@ a.toolbar-menu__trigger,
     position: fixed;
     left: 0;
     bottom: 0;
-    font-size: 1rem;
+    font-size: .875rem;
+    color: var(--colorGinTextLight);
     text-decoration: none;
     display: flex;
     align-items: center;

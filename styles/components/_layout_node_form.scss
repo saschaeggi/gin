@@ -21,7 +21,7 @@
 
     .region-sticky {
       opacity: 1;
-      height: 88px;
+      height: $stickyBar;
       backdrop-filter: none;
       background: rgba($colorAppBackground, .98);
     }

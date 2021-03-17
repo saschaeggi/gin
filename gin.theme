@@ -198,34 +198,33 @@ function gin_preprocess_dropbutton_wrapper(&$variables) {
  * Implements form_alter_HOOK() for some major form changes.
  */
 function gin_form_alter(&$form, $form_state, $form_id) {
+  // Are we on an edit form?
   if (_gin_is_content_form($form, $form_state, $form_id)) {
-    // Submit change weight.
-    if (isset($form['actions']['submit'])) {
-      $form['actions']['submit']['#weight'] = '99';
-    }
-
+    // Action buttons.
     if (isset($form['actions'])) {
-      // Create gin_sticky group.
-      $form['gin_sticky'] = [
+      // Create gin_actions group.
+      $form['gin_actions'] = [
         '#type' => 'container',
+        '#weight' => -1,
+        '#multilingual' => TRUE,
         '#attributes' => [
           'class' => [
             'gin-sticky',
           ],
         ],
       ];
-      // Assign status to gin_sticky.
-      $form['status']['#group'] = 'gin_sticky';
+      // Assign status to gin_actions.
+      $form['status']['#group'] = 'gin_actions';
 
       // Create actions group.
-      $form['gin_sticky']['actions'] = [
+      $form['gin_actions']['actions'] = [
         '#type' => 'actions',
         '#weight' => 130,
       ];
-      // Add Submit to gin_sticky actions.
-      $form['gin_sticky']['actions']['submit'] = ($form['actions']['submit']) ?? [];
-      // Add Preview to gin_sticky actions.
-      $form['gin_sticky']['actions']['preview'] = ($form['actions']['preview']) ?? [];
+      // Add Submit to gin_actions actions.
+      $form['gin_actions']['actions']['submit'] = ($form['actions']['submit']) ?? [];
+      // Add Preview to gin_actions actions.
+      $form['gin_actions']['actions']['preview'] = ($form['actions']['preview']) ?? [];
 
       // Create gin_sidebar group.
       $form['gin_sidebar'] = [
@@ -247,6 +246,9 @@ function gin_form_alter(&$form, $form_state, $form_id) {
       unset($form['gin_sidebar']['actions']['preview']);
       unset($form['gin_sidebar']['actions']['submit']);
     }
+
+    // Attach library.
+    $form['#attached']['library'][] = 'gin/gin_editform';
   }
 
   // If not logged in hide changed and author node info on add forms.
@@ -445,6 +447,9 @@ function gin_preprocess_toolbar(&$variables) {
       $variables['user_picture'] = $url;
     }
   }
+
+  // Expose Toolbar variant.
+  $variables['toolbar_variant'] = _gin_toolbar();
 }
 
 /**

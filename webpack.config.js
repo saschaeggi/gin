@@ -18,6 +18,7 @@ module.exports = {
     gin_classic_toolbar: ['./styles/gin_classic_toolbar.scss'],
     gin_accent: ['./js/gin_accent.js','./styles/gin_accent.scss'],
     gin_settings: ['./js/gin_settings.js'],
+    gin_editform: ['./js/gin_editform.js'],
     gin_dialog: ['./styles/gin_dialog.scss'],
     gin_ckeditor: ['./js/gin_ckeditor.js', './styles/gin_ckeditor.scss'],
     gin_messages: ['./js/gin_messages.js'],

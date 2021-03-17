@@ -566,6 +566,7 @@
     width: 100%;
     height: 48px;
     background: #eeeef5;
+    border-radius: $borderDefault $borderDefault 0 0;
 
     .gin--dark-mode & {
       background: var(--colorGinLayer2Background);

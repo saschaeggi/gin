@@ -101,9 +101,9 @@
           width: 170px;
           background-color: var(--colorGinLayer3Background);
           border-bottom: 0 none;
+          border-radius: 0 $borderSmall $borderSmall $borderSmall;
           box-shadow: 0 1px 2px rgba(0, 0, 0, .08),
                      20px 20px 40px rgba(0, 0, 0, .12);
-          border-radius: 0 $borderSmall $borderSmall $borderSmall;
 
           a {
             color: var(--colorGinPrimary);
@@ -173,8 +173,11 @@
       }
     }
   }
+}
 
-  @include mq(1140px) {
+// Show expanded
+.toolbar-meta {
+  @include mq($breakpointWide) {
     .toolbar-bar {
       .toolbar-tab {
         margin-left: -.25em;
