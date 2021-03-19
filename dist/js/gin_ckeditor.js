@@ -2,6 +2,7 @@
   Drupal.behaviors.ginCKEditorContextMenu = {
     attach: function() {
       if (window.CKEDITOR && void 0 !== CKEDITOR) {
+        if (drupalSettings.path.currentPath.indexOf("admin/config/content/formats/manage") > -1) return;
         var accentCss = drupalSettings.gin.accent_css_path, contentsCss = drupalSettings.gin.ckeditor_css_path, accentColorPreset = drupalSettings.gin.preset_accent_color, ginClasses = new Array;
         drupalSettings.gin.darkmode && ginClasses.push(drupalSettings.gin.darkmode_class), 
         drupalSettings.gin.highcontrastmode && ginClasses.push(drupalSettings.gin.highcontrastmode_class), 

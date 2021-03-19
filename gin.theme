@@ -1256,6 +1256,7 @@ function _gin_is_content_form($form = NULL, $form_state = NULL, $form_id = NULL)
     'media_library_add_form_',
     'views_form_media_library_widget_',
     'views_exposed_form',
+    'date_recur_modular_sierra_occurrences_modal',
   ];
 
   foreach ($form_ids_to_ignore as $form_id_to_ignore) {

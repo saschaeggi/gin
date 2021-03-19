@@ -2166,7 +2166,7 @@ details summary {
 }
 
 .js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
-  top: 8px;
+  top: 0;
   right: -4px;
 }
 
