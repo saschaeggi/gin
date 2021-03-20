@@ -38,3 +38,7 @@
   color: var(--colorGinTextLight);
   opacity: .8;
 }
+
+.module-list__module {
+  border-bottom: 1px solid var(--colorGinBorder);
+}
