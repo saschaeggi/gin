@@ -55,6 +55,7 @@
 }
 
 .color-success,
+tr.color-success,
 .color-checked,
 .drupal-upgrade-status-summary-form tr.no-known-error
 {
@@ -67,6 +68,7 @@
 }
 
 .color-warning,
+tr.color-warning,
 .upgrade-status-next-step-remove tr,
 .drupal-upgrade-status-summary-form tr.known-warnings {
   border-left: 8px solid var(--colorGinWarning);
@@ -82,6 +84,7 @@
 }
 
 .color-error,
+tr.color-error,
 .drupal-upgrade-status-summary-form tr.known-errors {
   border-left: 8px solid var(--colorGinDanger);
   background-color: transparent;
