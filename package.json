@@ -6,7 +6,6 @@
     "start": "npm run dev",
     "dev": "webpack --progress --config  webpack.config.dev.js --watch",
     "build": "webpack --progress --config webpack.config.build.js",
-    "prod": "webpack --progress --config webpack.config.prod.js",
     "lint": "lint-staged",
     "lint-all": "eslint \"src/**/*.js\" --fix && csscomb src --tty-mode",
     "pre-commit": "lint-staged"
