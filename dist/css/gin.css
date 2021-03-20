@@ -871,6 +871,7 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 .claro-details__summary,
 .claro-details__summary.claro-details__summary--package-listing,
 .claro-details__summary.claro-details__summary--system-status-report {
+  color: var(--colorGinText);
   background-color: transparent;
 }
 
@@ -889,6 +890,10 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 .claro-details__summary-summary {
   color: var(--colorGinTextLight);
   opacity: 0.8;
+}
+
+.module-list__module {
+  border-bottom: 1px solid var(--colorGinBorder);
 }
 
 details summary {
@@ -5271,12 +5276,16 @@ table.treetable tr.branch {
 }
 
 .color-success,
+tr.color-success,
 .color-checked,
 .drupal-upgrade-status-summary-form tr.no-known-error {
   border-left: 8px solid var(--colorGinGreen);
   background-color: transparent;
 }
 .color-success:hover, .color-success:active, .color-success:focus,
+tr.color-success:hover,
+tr.color-success:active,
+tr.color-success:focus,
 .color-checked:hover,
 .color-checked:active,
 .color-checked:focus,
@@ -5287,12 +5296,16 @@ table.treetable tr.branch {
 }
 
 .color-warning,
+tr.color-warning,
 .upgrade-status-next-step-remove tr,
 .drupal-upgrade-status-summary-form tr.known-warnings {
   border-left: 8px solid var(--colorGinWarning);
   background-color: transparent;
 }
 .color-warning:hover, .color-warning:active, .color-warning:focus,
+tr.color-warning:hover,
+tr.color-warning:active,
+tr.color-warning:focus,
 .upgrade-status-next-step-remove tr:hover,
 .upgrade-status-next-step-remove tr:active,
 .upgrade-status-next-step-remove tr:focus,
@@ -5302,6 +5315,9 @@ table.treetable tr.branch {
   background-color: var(--colorGinWarningLightBackground);
 }
 .gin--dark-mode .color-warning:hover, .gin--dark-mode .color-warning:active, .gin--dark-mode .color-warning:focus,
+.gin--dark-mode tr.color-warning:hover,
+.gin--dark-mode tr.color-warning:active,
+.gin--dark-mode tr.color-warning:focus,
 .gin--dark-mode .upgrade-status-next-step-remove tr:hover,
 .gin--dark-mode .upgrade-status-next-step-remove tr:active,
 .gin--dark-mode .upgrade-status-next-step-remove tr:focus,
@@ -5312,17 +5328,24 @@ table.treetable tr.branch {
 }
 
 .color-error,
+tr.color-error,
 .drupal-upgrade-status-summary-form tr.known-errors {
   border-left: 8px solid var(--colorGinDanger);
   background-color: transparent;
 }
 .color-error:hover, .color-error:active, .color-error:focus,
+tr.color-error:hover,
+tr.color-error:active,
+tr.color-error:focus,
 .drupal-upgrade-status-summary-form tr.known-errors:hover,
 .drupal-upgrade-status-summary-form tr.known-errors:active,
 .drupal-upgrade-status-summary-form tr.known-errors:focus {
   background-color: var(--colorGinDangerLightBackground);
 }
 .gin--dark-mode .color-error:hover, .gin--dark-mode .color-error:active, .gin--dark-mode .color-error:focus,
+.gin--dark-mode tr.color-error:hover,
+.gin--dark-mode tr.color-error:active,
+.gin--dark-mode tr.color-error:focus,
 .gin--dark-mode .drupal-upgrade-status-summary-form tr.known-errors:hover,
 .gin--dark-mode .drupal-upgrade-status-summary-form tr.known-errors:active,
 .gin--dark-mode .drupal-upgrade-status-summary-form tr.known-errors:focus {

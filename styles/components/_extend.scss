@@ -18,6 +18,7 @@
 .claro-details__summary,
 .claro-details__summary.claro-details__summary--package-listing,
 .claro-details__summary.claro-details__summary--system-status-report {
+  color: var(--colorGinText);
   background-color: transparent;
 }
 
@@ -36,4 +37,8 @@
 .claro-details__summary-summary {
   color: var(--colorGinTextLight);
   opacity: .8;
+}
+
+.module-list__module {
+  border-bottom: 1px solid var(--colorGinBorder);
 }
