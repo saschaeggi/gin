@@ -5,10 +5,7 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "webpack --progress --config  webpack.config.dev.js --watch",
-    "build": "webpack --progress --config webpack.config.build.js",
-    "lint": "lint-staged",
-    "lint-all": "eslint \"src/**/*.js\" --fix && csscomb src --tty-mode",
-    "pre-commit": "lint-staged"
+    "build": "webpack --progress --config webpack.config.build.js"
   },
   "email": "hello@saschaeggenberger.com",
   "author": "Sascha Eggenberger",
@@ -32,7 +29,6 @@
     "breakpoint-sass": "^2.7.1",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.4.1",
-    "csscomb": "4.3.0",
     "dotenv-webpack": "^7.0.1",
     "es6-promise": "^4.1.1",
     "eslint": "6.8.0",
@@ -41,12 +37,10 @@
     "eslint-plugin-import": "2.19.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.19.0",
     "expose-loader": "^2.0.0",
     "fibers": "^5.0.0",
     "file-loader": "^5.0.2",
     "img-loader": "^3.0.2",
-    "lint-staged": "9.5.0",
     "mini-css-extract-plugin": "^0.11.3",
     "node-sass-glob-importer": "^5.3.2",
     "postcss-loader": "^3.0.0",
@@ -69,16 +63,6 @@
     "modernizr": "^3.8.0",
     "normalize.css": "^8.0.0",
     "sass": "^1.26.2"
-  },
-  "lint-staged": {
-    "*.scss": [
-      "csscomb --tty-mode",
-      "git add"
-    ],
-    "*.js": [
-      "eslint --fix \"{,**,**/**}*.js\"",
-      "git add"
-    ]
   },
   "repository": {
     "type": "git",
