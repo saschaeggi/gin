@@ -9,6 +9,16 @@
 
 // Components
 @import "components/coffee";
+@import "components/responsive-preview";
+
+// Scroll Offset
+:root {
+  --ginScrollOffset: 72px;
+
+  @include mq($breakpointLarge) {
+    --ginScrollOffset: 130px;
+  }
+}
 
 // Toolbar
 #toolbar-item-administration-tray {
@@ -39,7 +49,7 @@
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &::before {
         @include mq($breakpointMedium) {
-          left: 17px;
+          left: #{($toolbarWidth - 21) / 2 - 8};
           width: 21px;
         }
       }
@@ -48,7 +58,7 @@
     @include mq($breakpointMedium) {
       // Toolbar logo
       .toolbar-logo {
-        height: 88px;
+        height: $stickyBar;
       }
 
       // Admin tray: Home icon
@@ -70,7 +80,7 @@
     // Custom logo
     #toolbar-item-administration-tray .toolbar-logo {
       img {
-        max-width: 44px;
+        max-width: 36px;
         max-height: 40px;
       }
     }
@@ -80,7 +90,7 @@
 
       @include mq($breakpointMedium) {
         font-size: 0;
-        height: 88px;
+        height: $stickyBar;
         transition: top $transition;
         mask-size: 100% 100%;
       }
@@ -90,7 +100,7 @@
 
         @include mq($breakpointMedium) {
           width: $logoSize;
-          left: #{round($toolbarWidth / 2.666666667) - 5px - 12px};
+          left: #{($toolbarWidth - $logoSize) / 2 - 8};
           mask-size: $logoSize $logoSize;
           mask-position: center $logoSize;
         }
@@ -213,7 +223,8 @@ a.toolbar-menu__trigger,
     position: fixed;
     left: 0;
     bottom: 0;
-    font-size: 1rem;
+    font-size: .875rem;
+    color: var(--colorGinTextLight);
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -237,7 +248,7 @@ a.toolbar-menu__trigger,
     &::before {
       content: "";
       position: absolute;
-      left: #{round(($toolbarWidth - 34px) / 2) - 1px};
+      left: #{($toolbarWidth - 34px) / 2};
       display: inline-block;
       width: 32px;
       height: 32px;
@@ -361,9 +372,9 @@ a.toolbar-menu__trigger,
           align-items: center;
           width: 216px;
           height: 56px;
-          padding-left: #{$toolbarWidth - 12px};
+          padding-left: #{$toolbarWidth - 8px};
           padding-right: 0;
-          margin: 0 12px;
+          margin: 0 8px;
           border-radius: $borderDefault;
           overflow: hidden;
 
@@ -587,7 +598,7 @@ a.toolbar-menu__trigger,
       display: block;
       position: absolute;
       top: .125em;
-      left: 2px;
+      left: #{round(($toolbarWidth - 52) / 2 - 8)};
       width: 52px;
       height: 52px;
       background: var(--colorGinPrimaryLight);

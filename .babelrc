@@ -1,17 +1,11 @@
 {
-  presets: [
-    ["@babel/preset-env",
-    {
-      useBuiltIns: "usage",
-      corejs: "2"
-    }]
-  ],
-  env: {
-    "test": {
-      "presets": ["@babel/preset-env"]
-    }
-  },
-  plugins: [
-    "@babel/plugin-syntax-dynamic-import"
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry",
+        "corejs": "3"
+      }
+    ]
   ]
 }
