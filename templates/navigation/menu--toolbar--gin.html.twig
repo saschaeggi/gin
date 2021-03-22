@@ -97,7 +97,7 @@
         {% elseif item.gin_id == 'admin_toolbar_tools-help' %}
           {{ link(item.title, item.url, {'class': ['toolbar-icon-default']}) }}
         {% else %}
-          {{ link(item.title, item.url) }}
+          {{ link(item.title, item.url, {'class': [item.in_active_trail ? 'is-active']}) }}
         {% endif %}
         {% if item.below %}
           {{ menus.menu_links(item.below, attributes, menu_level + 1, item, menu_name) }}

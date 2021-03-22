@@ -125,7 +125,7 @@ $ginColors: (
 );
 
 @each $name, $color in $ginColors {
-  [data-gin-accent=#{$name}] {
+  [data-gin-accent=#{'' + $name}] {
     --colorGinPrimary: #{$color};
     --colorGinPrimaryHover: #{mix(black, $color, 15%)};
     --colorGinPrimaryActive: #{mix(black, $color, 25%)};
@@ -158,8 +158,8 @@ $ginDarkmodeColors: (
 );
 
 @each $name, $color in $ginDarkmodeColors {
-  .gin--dark-mode[data-gin-accent=#{$name}],
-  .gin--dark-mode [data-gin-accent=#{$name}] {
+  .gin--dark-mode[data-gin-accent=#{'' + $name}],
+  .gin--dark-mode [data-gin-accent=#{'' + $name}] {
     --colorGinPrimary: #{$color};
     --colorGinPrimaryHover: #{mix(white, $color, 10%)};
     --colorGinPrimaryActive: #{mix(white, $color, 15%)};

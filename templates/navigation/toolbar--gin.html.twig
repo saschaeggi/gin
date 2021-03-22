@@ -26,9 +26,14 @@
     {% for key, tab in tabs %}
       {% set tray = trays[key] %}
       {% set user_menu = tray.links['user_links'] ? 'user-menu' : false %}
-      {% if tab.attributes.id == 'admin-toolbar-search-tab' %}
-          {# render nothing #}
-        {% else %}
+      {% if
+        toolbar_variant != 1 and (
+          tab.attributes.id == 'admin-toolbar-search-tab' or
+          tab.attributes.id == 'responsive-preview-toolbar-tab'
+        )
+      %}
+        {# render nothing #}
+      {% else %}
         <div{{ tab.attributes.addClass('toolbar-tab', user_menu, 'toolbar-tab--' ~ tab.link['#id']) }}>
           {% if tab.link['#id'] == 'toolbar-item-administration' %}
             <a class="toolbar-menu__logo" href="/admin/content"></a>

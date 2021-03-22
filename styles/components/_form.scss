@@ -373,6 +373,8 @@ fieldset:not(.fieldgroup) {
 // }
 
 .claro-autocomplete {
+  width: calc(100% - 1rem);
+
   .form-autocomplete {
     width: 100%;
   }
