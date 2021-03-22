@@ -56,9 +56,13 @@ TROUBLESHOOTING
 
 * `npm run dev`
 
-- Compile & minify assets
+- Compile assets (for dev branch)
 
 * `npm run build`
+
+- Compile & minify assets (for Releases)
+
+* `npm run prod`
 
 
 MAINTAINERS
