@@ -30,8 +30,5 @@
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         }
-    ],
-    "require": {
-        "drupal/gin_toolbar": "^1.0@beta"
-    }
+    ]
 }
