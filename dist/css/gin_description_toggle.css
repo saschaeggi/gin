@@ -1,2 +1,61 @@
-.help-icon__element-has-description{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.help-icon__description-toggle{all:unset;margin:0 0 0 8px;height:24px;width:24px;border-radius:50%}.help-icon__description-toggle:before{background-color:var(--colorGinIcons);content:"";display:block;width:24px;height:100%;-webkit-mask-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' d='M23 12c0 6.075-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1s11 4.925 11 11z' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3cpath fill='none' d='M9.09 8a3 3 0 015.83 1c0 2-3 3-3 3' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3cpath fill='none' d='M12 17h.01' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");mask-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' d='M23 12c0 6.075-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1s11 4.925 11 11z' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3cpath fill='none' d='M9.09 8a3 3 0 015.83 1c0 2-3 3-3 3' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3cpath fill='none' d='M12 17h.01' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center center;mask-position:center center;-webkit-mask-size:20px 20px;mask-size:20px 20px}.help-icon__description-toggle:hover:before{background-color:var(--colorGinPrimary)}.form-type--checkbox>.help-icon__element-has-description,.form-type--radio>.help-icon__element-has-description{-webkit-box-align:normal;-ms-flex-align:normal;align-items:normal}.form-type--checkbox>.help-icon__element-has-description>label,.form-type--radio>.help-icon__element-has-description>label{margin-left:6px}.help-icon__element-has-description input:not(.form-checkbox):not(.form-autocomplete):not(.form-file),.help-icon__element-has-description select{max-width:calc(100% - 34px)}details.help-icon__description-container .help-icon__description-toggle{float:right}
+/* Wraps element and toggle. */
+.help-icon__element-has-description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
 
+/* Size of svg + border added by claro*/
+.help-icon__description-toggle {
+  all: unset;
+  margin: 0 0 0 8px;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+}
+.help-icon__description-toggle:before {
+  background-color: var(--colorGinIcons);
+  content: "";
+  display: block;
+  width: 24px;
+  height: 100%;
+  -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' d='M23 12c0 6.075-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1s11 4.925 11 11z' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3cpath fill='none' d='M9.09 8a3 3 0 015.83 1c0 2-3 3-3 3' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3cpath fill='none' d='M12 17h.01' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+          mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' d='M23 12c0 6.075-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1s11 4.925 11 11z' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3cpath fill='none' d='M9.09 8a3 3 0 015.83 1c0 2-3 3-3 3' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3cpath fill='none' d='M12 17h.01' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center center;
+          mask-position: center center;
+  -webkit-mask-size: 20px 20px;
+          mask-size: 20px 20px;
+}
+.help-icon__description-toggle:hover:before {
+  background-color: var(--colorGinPrimary);
+}
+
+.form-type--checkbox > .help-icon__element-has-description,
+.form-type--radio > .help-icon__element-has-description {
+  -webkit-box-align: normal;
+      -ms-flex-align: normal;
+          align-items: normal;
+}
+.form-type--checkbox > .help-icon__element-has-description > label,
+.form-type--radio > .help-icon__element-has-description > label {
+  margin-left: 6px;
+}
+
+/*
+ * 1. Subtract description toggle width from input fields.
+ */
+.help-icon__element-has-description input:not(.form-checkbox):not(.form-autocomplete):not(.form-file),
+.help-icon__element-has-description select {
+  max-width: calc(100% - 34px);
+  /* 1 */
+}
+
+/* Float toggle in detail summary. */
+details.help-icon__description-container .help-icon__description-toggle {
+  float: right;
+}

@@ -67,6 +67,11 @@ gin_description_toggle:
   js:
     dist/js/gin_description_toggle.js: { minified: true}
 
+gin_editform:
+  version: VERSION
+  js:
+    dist/js/gin_editform.js: { minified: true }
+
 gin_messages:
   version: VERSION
   js:

@@ -71,10 +71,11 @@
     // Overrides for default toolbar items
     #toolbar-item-administration-search,
     .toolbar-menu-administration .toolbar-icon,
-    .toolbar-tab > .toolbar-icon-edit.toolbar-item {
+    .toolbar-tab > .toolbar-icon-edit.toolbar-item,
+    .toolbar-icon-toggle-vertical,
+    .toolbar-icon-toggle-horizontal {
       &::before {
-        background-color: var(--colorGinIcons);
-        background-image: none;
+        background: var(--colorGinIcons);
         mask-repeat: no-repeat;
         mask-position: center center;
         mask-size: 18px 18px;
@@ -82,13 +83,13 @@
 
       &:hover::before {
         @include mq($breakpointMedium) {
-          background-color: var(--colorGinPrimary);
+          background: var(--colorGinPrimary);
         }
       }
 
       &.is-active:hover::before {
         @include mq($breakpointMedium) {
-          background-color: var(--colorGinPrimary);
+          background: var(--colorGinPrimary);
         }
       }
     }
@@ -271,10 +272,30 @@
       }
     }
 
+    // Responsive Preview
+    .responsive-preview-icon {
+      &:before {
+        mask-image: icon('responsive-preview');
+      }
+    }
+
     // User
     .toolbar-icon-user {
       &:before {
         mask-image: icon('user');
+      }
+    }
+
+    // Toggle
+    .toolbar-icon-toggle-vertical {
+      &:before {
+        mask-image: icon('nav-toggle-toleft');
+      }
+    }
+
+    .toolbar-icon-toggle-horizontal {
+      &:before {
+        mask-image: icon('nav-toggle-totop');
       }
     }
   }
