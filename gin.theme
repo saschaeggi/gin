@@ -400,7 +400,9 @@ function gin_preprocess_toolbar(&$variables) {
   }
 
   // Expose Toolbar variant.
-  $variables['toolbar_variant'] = _gin_toolbar();
+  /** @var \Drupal\gin\Settings $settings */
+  $settings = \Drupal::classResolver(Settings::class);
+  $variables['toolbar_variant'] = $settings->get('toolbar');
 }
 
 /**
