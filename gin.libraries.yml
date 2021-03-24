@@ -75,3 +75,8 @@ gin_custom_css:
   css:
     theme:
       public://gin-custom.css: { weight: 100 }
+
+gin_tabledrag:
+  version: VERSION
+  js:
+    js/overrides/gin_tabledrag.js: { minified: false }
