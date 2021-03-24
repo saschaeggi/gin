@@ -69,6 +69,14 @@ module.exports = {
             options: {
               sourceMap: isDev,
               importLoaders: 2,
+              url: (url) => {
+                // Don't handle sprite svg
+                if (url.includes('sprite.svg')) {
+                  return false;
+                }
+
+                return true;
+              },
             },
           },
           {
@@ -111,7 +119,18 @@ module.exports = {
         filename: 'media/sprite.svg',
         svg: {
           sizes: false
-        }
+        },
+        svgo: {
+          plugins: [{
+            removeAttrs: {
+              attrs: [
+                'use:fill',
+                'symbol:fill',
+                'svg:fill'
+              ]
+            },
+          }],
+        },
       },
       sprite: {
         prefix: false,
