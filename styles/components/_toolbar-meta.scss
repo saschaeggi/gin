@@ -189,8 +189,11 @@
           padding-left: 3em;
 
           &:before {
-            top: -1px;
+            width: 20px;
+            height: 20px;
+            top: 50%;
             left: 12px;
+            transform: translateY(-50%);
           }
 
           .icon-user {
