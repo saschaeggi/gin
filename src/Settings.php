@@ -97,6 +97,19 @@ class Settings implements ContainerInjectionInterface {
   }
 
   /**
+   * Clears all gin settings for the current user.
+   *
+   * @param \Drupal\Core\Session\AccountInterface|null $account
+   *   The account object. Current user if NULL.
+   */
+  public function clear(AccountInterface $account = NULL) {
+    if (!$account) {
+      $account = $this->currentUser;
+    }
+    $this->userData->delete('gin', $account->id());
+  }
+
+  /**
    * Determine if user overrides are allowed.
    *
    * @return bool
