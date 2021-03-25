@@ -49,7 +49,7 @@ class Settings implements ContainerInjectionInterface {
   /**
    * Get the setting for the current user.
    *
-   * @param string $setting
+   * @param string $name
    *   The name of the setting.
    * @param \Drupal\Core\Session\AccountInterface|null $account
    *   The account object. Current user if NULL.
@@ -57,18 +57,25 @@ class Settings implements ContainerInjectionInterface {
    * @return array|bool|mixed|null
    *   The current value.
    */
-  public function get($setting, AccountInterface $account = NULL) {
+  public function get($name, AccountInterface $account = NULL) {
+    $value = NULL;
     if (!$account) {
       $account = $this->currentUser;
     }
-
     if ($this->userOverrideEnabled()) {
       $settings = $this->userData->get('gin', $account->id(), 'settings');
-      if (isset($settings[$setting])) {
-        return $settings[$setting];
+      if (isset($settings[$name])) {
+        $value = $settings[$name];
+      }
+      else {
+        // Try loading legacy settings from user data.
+        $value = $this->userData->get('gin', $account->id(), $name);
       }
     }
-    return theme_get_setting($setting);
+    if (is_null($value)) {
+      $value = theme_get_setting($name);
+    }
+    return $this->handleLegacySettings($name, $value);
   }
 
   /**
@@ -83,21 +90,10 @@ class Settings implements ContainerInjectionInterface {
     if (!$account) {
       $account = $this->currentUser;
     }
+    // All settings are deleted to remove legacy settings.
+    $this->userData->delete('gin', $account->id());
     $this->userData->set('gin', $account->id(), 'enable_user_settings', TRUE);
     $this->userData->set('gin', $account->id(), 'settings', $settings);
-  }
-
-  /**
-   * Clears all gin settings for the current user.
-   *
-   * @param \Drupal\Core\Session\AccountInterface|null $account
-   *   The account object. Current user if NULL.
-   */
-  public function clear(AccountInterface $account = NULL) {
-    if (!$account) {
-      $account = $this->currentUser;
-    }
-    $this->userData->delete('gin', $account->id());
   }
 
   /**
@@ -129,7 +125,7 @@ class Settings implements ContainerInjectionInterface {
   /**
    * Check if the user setting overrides the global setting.
    *
-   * @param string $setting
+   * @param string $name
    *   Name of the setting to check.
    * @param \Drupal\Core\Session\AccountInterface|null $account
    *   The account object. Current user if NULL.
@@ -137,11 +133,39 @@ class Settings implements ContainerInjectionInterface {
    * @return bool
    *   TRUE or FALSE.
    */
-  public function overridden($setting, AccountInterface $account = NULL) {
+  public function overridden($name, AccountInterface $account = NULL) {
     if (!$account) {
       $account = $this->currentUser;
     }
-    return theme_get_setting($setting) !== $this->get($setting, $account);
+    return $this->handleLegacySettings($name, theme_get_setting($name)) !== $this->get($name, $account);
+  }
+
+  /**
+   * Return a massaged value from deprecated theme settings.
+   *
+   * @param string $name
+   *   Name of the setting to check.
+   * @param array|bool|mixed|null $value
+   *   The value of the currently used setting.
+   *
+   * @return array|bool|mixed|null
+   *   The value determined by a legacy setting.
+   */
+  private function handleLegacySettings($name, $value) {
+    if ($name === 'darkmode' && is_null($value)) {
+      $value = (bool) $this->get('enable_darkmode');
+    }
+    if ($name === 'high_contrast_mode') {
+      $value = (bool) $value;
+    }
+    if ($name === 'preset_accent_color') {
+      $value = $value === 'claro_blue' ? 'blue' : $value;
+    }
+    if ($name === 'toolbar' && is_null($value)) {
+      $value = $this->get('classic_toolbar');
+      $value = $value === TRUE || $value === 'true' ||  $value === '1' || $value === 1 ? 'classic' : $value;
+    }
+    return $value;
   }
 
 }
