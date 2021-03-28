@@ -88,6 +88,8 @@ table {
 }
 
 .sortable-heading {
+  padding: .5rem 1rem;
+
   > a::after {
     background: var(--colorGinTextLight);
     mask-image: icon('sort');

@@ -11,6 +11,8 @@
 @import "components/coffee";
 @import "components/responsive-preview";
 
+$toolbarIconSize: 21px;
+
 // Scroll Offset
 :root {
   --ginScrollOffset: 72px;
@@ -49,8 +51,11 @@
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &::before {
         @include mq($breakpointMedium) {
-          left: #{($toolbarWidth - 21) / 2 - 8};
-          width: 21px;
+          left: #{($toolbarWidth - $toolbarIconSize) / 2 - 8};
+          width: $toolbarIconSize;
+          height: $toolbarIconSize;
+          top: 50%;
+          transform: translateY(-50%);
         }
       }
     }
@@ -86,7 +91,7 @@
     }
 
     #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
-      mask-size: 20px 20px;
+      mask-size: $toolbarIconSize $toolbarIconSize;
 
       @include mq($breakpointMedium) {
         font-size: 0;
@@ -96,13 +101,14 @@
       }
 
       &::before {
-        $logoSize: 28px;
+        $logoSize: 32px;
 
         @include mq($breakpointMedium) {
           width: $logoSize;
+          height: $logoSize;
           left: #{($toolbarWidth - $logoSize) / 2 - 8};
           mask-size: $logoSize $logoSize;
-          mask-position: center $logoSize;
+          mask-position: center center;
         }
       }
 
@@ -291,7 +297,7 @@ a.toolbar-menu__trigger,
     display: block;
     width: $toolbarWidth;
     height: 100%;
-    background: rgba(255, 255, 255, .075) url(../media/drupal.svg) no-repeat left 21px center;
+    background: rgba(255, 255, 255, .075) url(../media/drupal.svg) no-repeat left #{$toolbarIconSize} center;
     background-size: 56px auto;
 
     &:hover {
@@ -546,7 +552,7 @@ a.toolbar-menu__trigger,
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &:before {
         @include mq($breakpointMedium) {
-          mask-size: 20px 20px;
+          mask-size: $toolbarIconSize $toolbarIconSize;
         }
       }
     }
