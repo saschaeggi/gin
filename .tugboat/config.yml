@@ -41,6 +41,7 @@ services:
         # Enable the theme.
         vendor/bin/drush --yes theme:enable gin
         vendor/bin/drush --yes config:set system.theme admin gin
+        # vendor/bin/drush --yes en gin_toolbar
       build: |
         set -eux
         # Delete and re-check out this branch in case this is built from a Base Preview.
