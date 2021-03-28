@@ -51,8 +51,7 @@ services:
         cd $DRUPAL_COMPOSER_ROOT
         composer install --optimize-autoloader
         # Update this module, including all dependencies.
-        composer update drupal/gin
-        composer update drupal/gin_toolbar
+        composer update drupal/gin --with-all-dependencies
         vendor/bin/drush --yes updb
         vendor/bin/drush cache:rebuild
 #  mysql:
