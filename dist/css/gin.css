@@ -3504,6 +3504,9 @@ table td .group-label {
   color: var(--colorGinTitle);
 }
 
+.sortable-heading {
+  padding: 0.5rem 1rem;
+}
 .sortable-heading > a::after {
   background: var(--colorGinTextLight);
   -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' d='M3 12h14M3 6h18M3 18h10' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
@@ -5629,6 +5632,10 @@ tr.color-error:focus,
 .details .system-status-report__status-icon:before {
   width: 24px;
   height: 24px;
+}
+
+.view-watchdog .view-content {
+  padding-top: 0;
 }
 
 .divider {

@@ -2,73 +2,73 @@ gin:
   version: VERSION
   css:
     theme:
-      dist/css/gin.css: { minified: true }
+      dist/css/gin.css: { minified: false }
   dependencies:
     - gin/gin_ckeditor
 
 gin_ckeditor:
   version: VERSION
   js:
-    dist/js/gin_ckeditor.js: { minified: true }
+    dist/js/gin_ckeditor.js: { minified: false }
 
 gin_init:
   version: VERSION
   header: true
   js:
-    dist/js/gin_init.js: { minified: true, preprocess: false, weight: -99 }
+    dist/js/gin_init.js: { minified: false, preprocess: false, weight: -99 }
 
 gin_toolbar:
   version: VERSION
   css:
     theme:
-      dist/css/gin_toolbar.css: { minified: true }
+      dist/css/gin_toolbar.css: { minified: false }
   js:
-    dist/js/gin_toolbar.js: { minified: true }
+    dist/js/gin_toolbar.js: { minified: false }
 
 gin_classic_toolbar:
   version: VERSION
   css:
     theme:
-      dist/css/gin_classic_toolbar.css: { minified: true }
+      dist/css/gin_classic_toolbar.css: { minified: false }
   js:
-    dist/js/gin_toolbar.js: { minified: true }
+    dist/js/gin_toolbar.js: { minified: false }
 
 gin_horizontal_toolbar:
   version: VERSION
   css:
     theme:
-      dist/css/gin_horizontal_toolbar.css: { minified: true }
+      dist/css/gin_horizontal_toolbar.css: { minified: false }
   js:
-    dist/js/gin_toolbar.js: { minified: true }
+    dist/js/gin_toolbar.js: { minified: false }
 
 gin_accent:
   version: VERSION
   css:
     theme:
-      dist/css/gin_accent.css: { minified: true }
+      dist/css/gin_accent.css: { minified: false }
   js:
-    dist/js/gin_accent.js: { minified: true }
+    dist/js/gin_accent.js: { minified: false }
 
 gin_settings:
   version: VERSION
   js:
-    dist/js/gin_settings.js: { minified: true }
+    dist/js/gin_settings.js: { minified: false }
 
 gin_dialog:
   version: VERSION
   css:
     theme:
-      dist/css/gin_dialog.css: { minified: true }
+      dist/css/gin_dialog.css: { minified: false }
 
 gin_editform:
   version: VERSION
   js:
-    dist/js/gin_editform.js: { minified: true }
+    dist/js/gin_editform.js: { minified: false }
 
 gin_messages:
   version: VERSION
   js:
-    dist/js/gin_messages.js: { minified: true }
+    dist/js/gin_messages.js: { minified: false }
 
 gin_custom_css:
   version: VERSION
@@ -83,3 +83,8 @@ gin_sidebar:
       dist/css/gin_sidebar.css: { minified: true }
   js:
     dist/js/gin_sidebar.js: { minified: true }
+
+gin_tabledrag:
+  version: VERSION
+  js:
+    js/overrides/gin_tabledrag.js: { minified: false }

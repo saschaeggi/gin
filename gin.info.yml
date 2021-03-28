@@ -132,6 +132,10 @@ libraries-override:
     js:
       js/media_library.view.js: js/overrides/gin_media_library.view.js
 
+  core/drupal.tabledrag:
+    js:
+      /core/themes/claro/js/tabledrag.js: false
+
   # Gin overrides
   core/drupal.dialog.off_canvas:
     css:
@@ -151,6 +155,8 @@ libraries-override:
     css:
       theme:
         dist/css/gin_dialog.css: false
+
+  media/media_embed_ckeditor_theme: false
 
 libraries-extend:
   ckeditor/drupal.ckeditor:
@@ -185,14 +191,14 @@ libraries-extend:
     - claro/ajax
   views/views.module:
     - claro/views
-  media/media_embed_ckeditor_theme:
-    - claro/classy.media_embed_ckeditor_theme
   media_library/view:
     - claro/media_library.theme
   media_library/widget:
     - claro/media_library.theme
   user/drupal.user:
     - claro/form.password-confirm
+  core/drupal.tabledrag:
+    - gin/gin_tabledrag
 
 quickedit_stylesheets:
   - ../../../core/themes/claro/css/components/quickedit.css
