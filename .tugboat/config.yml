@@ -22,8 +22,12 @@ services:
         # We configure the Drupal project to use the checkout of the module as a
         # Composer package repository.
         composer config repositories.tugboat vcs $TUGBOAT_ROOT
-        # Reuqire Gin Toolbar
+        # Require Gin Toolbar
         composer require 'drupal/gin_toolbar:^1.0@beta'
+        # Require Gin Login
+        composer require 'drupal/gin_login:^1.0@RC'
+        # Require Admin Toolbar
+        composer require 'drupal/admin_toolbar:^3.0'
         # Now we can require this module, specifing the branch name we created
         # above that uses the $TUGBOAT_REPO_ID environment variable.
         composer require drupal/gin:dev-$TUGBOAT_REPO_ID
@@ -45,6 +49,10 @@ services:
         vendor/bin/drush --yes config:set system.theme admin gin
         # Enable gin_toolbar Module.
         vendor/bin/drush --yes en gin_toolbar
+        # Enable gin_login Module.
+        vendor/bin/drush --yes en gin_login
+        # Enable admin_toolbar Module.
+        vendor/bin/drush --yes en admin_toolbar
       build: |
         set -eux
         # Delete and re-check out this branch in case this is built from a Base Preview.
@@ -53,6 +61,8 @@ services:
         cd $DRUPAL_COMPOSER_ROOT
         composer install --optimize-autoloader
         # Update this module, including all dependencies.
+        composer update drupal/admin_toolbar
+        composer update drupal/gin_login
         composer update drupal/gin_toolbar
         composer update drupal/gin
         vendor/bin/drush --yes updb
