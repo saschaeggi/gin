@@ -23,7 +23,7 @@ services:
         # Composer package repository.
         composer config repositories.tugboat vcs $TUGBOAT_ROOT
         # Reuqire Gin Toolbar
-        composer require drupal/gin_toolbar
+        composer require 'drupal/gin_toolbar:^1.0@beta'
         # Now we can require this module, specifing the branch name we created
         # above that uses the $TUGBOAT_REPO_ID environment variable.
         composer require drupal/gin:dev-$TUGBOAT_REPO_ID
