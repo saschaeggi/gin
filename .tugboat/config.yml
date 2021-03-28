@@ -22,6 +22,8 @@ services:
         # We configure the Drupal project to use the checkout of the module as a
         # Composer package repository.
         composer config repositories.tugboat vcs $TUGBOAT_ROOT
+        # Reuqire Gin Toolbar
+        composer require drupal/gin_toolbar
         # Now we can require this module, specifing the branch name we created
         # above that uses the $TUGBOAT_REPO_ID environment variable.
         composer require drupal/gin:dev-$TUGBOAT_REPO_ID
@@ -51,7 +53,7 @@ services:
         cd $DRUPAL_COMPOSER_ROOT
         composer install --optimize-autoloader
         # Update this module, including all dependencies.
-        composer require drupal/gin_toolbar
+        composer update drupal/gin_toolbar
         composer update drupal/gin
         vendor/bin/drush --yes updb
         vendor/bin/drush cache:rebuild
