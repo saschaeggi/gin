@@ -1,7 +1,7 @@
 !function($, Drupal, drupalSettings) {
   Drupal.behaviors.ginSettings = {
     attach: function(context) {
-      $('input[name="darkmode"]', context).change((function() {
+      $('input[name="enable_darkmode"]', context).change((function() {
         var darkmode = $(this).is(":checked"), accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val(), focusColorPreset = $('select[name="preset_focus_color"]').val();
         if (Drupal.behaviors.ginSettings.darkmode(darkmode), "custom" === accentColorPreset) {
           var accentColorSetting = $('input[name="accent_color"]', context).val();
@@ -28,7 +28,7 @@
         var highContrastMode = $(this).is(":checked");
         Drupal.behaviors.ginSettings.setHighContrastMode(highContrastMode);
       })), $('input[name="enable_user_settings"]', context).change((function() {
-        var active = $(this).is(":checked"), darkmode = $('input[name="darkmode"]').is(":checked"), accentColorSetting = $('input[name="accent_color"]', context).val(), accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val(), highContrastMode = $('input[name="high_contrast_mode"]').is(":checked");
+        var active = $(this).is(":checked"), darkmode = $('input[name="enable_darkmode"]').is(":checked"), accentColorSetting = $('input[name="accent_color"]', context).val(), accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val(), highContrastMode = $('input[name="high_contrast_mode"]').is(":checked");
         active || (darkmode = drupalSettings.gin.default_darkmode, accentColorSetting = drupalSettings.gin.default_accent_color, 
         accentColorPreset = drupalSettings.gin.default_preset_accent_color, highContrastMode = drupalSettings.gin.default_high_contrast_mode), 
         Drupal.behaviors.ginSettings.darkmode(darkmode), Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset, accentColorSetting), 

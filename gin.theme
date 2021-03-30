@@ -294,7 +294,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       ],
     ];
 
-    $form['gin_theme_settings']['user_settings']['darkmode'] = [
+    $form['gin_theme_settings']['user_settings']['enable_darkmode'] = [
       '#type' => 'checkbox',
       '#title' => t('Enable Darkmode (BETA)'),
       '#description' => t("Enables Darkmode for the admin interface."),
@@ -338,11 +338,11 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
     ];
 
     // Classic Toolbar user setting.
-    $form['gin_theme_settings']['user_settings']['toolbar'] = [
+    $form['gin_theme_settings']['user_settings']['classic_toolbar'] = [
       '#type' => 'radios',
       '#title' => t('Drupal Toolbar'),
       '#description' => t('Choose Drupal Toolbar.'),
-      '#default_value' => $settings->get('toolbar', $account),
+      '#default_value' => $settings->get('classic_toolbar', $account),
       '#options' => _gin_get_toolbar_presets(),
       '#after_build' => ['_gin_toolbar_radios'],
     ];
@@ -628,8 +628,8 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   // Toolbar setting.
   // Check if this is overridden by the logged in user.
   $description = t('Choose Drupal Toolbar.');
-  if ($settings->overridden('toolbar')) {
-    switch ($settings->get('toolbar')) {
+  if ($settings->overridden('classic_toolbar')) {
+    switch ($settings->get('classic_toolbar')) {
       case 'classic':
         $toolbar = t('Classic');
         break;

@@ -16,7 +16,7 @@
       var preset = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null, color = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null, accentColorSetting = null != color ? color : drupalSettings.gin.accent_color;
       if ("custom" === preset) {
         $("body").attr("data-gin-accent", preset);
-        var darkmode = null != preset ? $('input[name="darkmode"]').is(":checked") : drupalSettings.gin.darkmode, ratio = (drupalSettings.gin.darkmode_class, 
+        var darkmode = null != preset ? $('input[name="enable_darkmode"]').is(":checked") : drupalSettings.gin.darkmode, ratio = (drupalSettings.gin.darkmode_class, 
         darkmode ? 10 : 6.5), accentColor = accentColorSetting;
         if (accentColor) {
           Drupal.behaviors.ginAccent.clearAccentColor();

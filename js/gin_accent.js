@@ -57,7 +57,7 @@
         $('body').attr('data-gin-accent', preset);
 
         const darkmode = preset != null
-        ? $('input[name="darkmode"]').is(':checked')
+        ? $('input[name="enable_darkmode"]').is(':checked')
         : drupalSettings.gin.darkmode;
         const darkmodeClass = drupalSettings.gin.darkmode_class;
         const ratio = darkmode ? 10 : 6.5;
