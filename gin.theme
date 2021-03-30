@@ -24,10 +24,10 @@ function gin_preprocess_html(&$variables) {
     // Get theme settings.
     /** @var \Drupal\gin\Settings $settings */
     $settings = \Drupal::classResolver(Settings::class);
-    $toolbar = $settings->get('toolbar');
+    $toolbar = $settings->get('classic_toolbar');
 
     // Check if darkmode is enabled.
-    if ($settings->get('darkmode')) {
+    if ($settings->get('enable_darkmode')) {
       $variables['attributes']['class'][] = 'gin--dark-mode';
     }
 
@@ -106,7 +106,7 @@ function gin_page_attachments_alter(&$page) {
   if ($gin_activated) {
     // Get theme settings.
     $settings = \Drupal::classResolver(Settings::class);
-    $toolbar = $settings->get('toolbar');
+    $toolbar = $settings->get('classic_toolbar');
 
     // Attach the init script.
     $page['#attached']['library'][] = 'gin/gin_init';
@@ -133,12 +133,12 @@ function gin_page_attachments_alter(&$page) {
     }
 
     // Expose settings to JS.
-    $page['#attached']['drupalSettings']['gin']['darkmode'] = $settings->get('darkmode');
+    $page['#attached']['drupalSettings']['gin']['darkmode'] = $settings->get('enable_darkmode');
     $page['#attached']['drupalSettings']['gin']['darkmode_class'] = 'gin--dark-mode';;
     $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $settings->get('preset_accent_color');
     $page['#attached']['drupalSettings']['gin']['accent_color'] = $settings->get('accent_color');
-    $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = theme_get_setting('preset_focus_color');;
-    $page['#attached']['drupalSettings']['gin']['focus_color'] = theme_get_setting('focus_color');;
+    $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $settings->getDefault('preset_focus_color');;
+    $page['#attached']['drupalSettings']['gin']['focus_color'] = $settings->getDefault('focus_color');;
     $page['#attached']['drupalSettings']['gin']['highcontrastmode'] = $settings->get('high_contrast_mode');
     $page['#attached']['drupalSettings']['gin']['highcontrastmode_class'] = 'gin--high-contrast-mode';
 
@@ -148,10 +148,10 @@ function gin_page_attachments_alter(&$page) {
     $page['#attached']['drupalSettings']['gin']['ckeditor_css_path'] = $basethemeurl_with_prefix . '/dist/css/gin_ckeditor.css';
 
     // Expose default settings.
-    $page['#attached']['drupalSettings']['gin']['default_darkmode'] = theme_get_setting('darkmode');
-    $page['#attached']['drupalSettings']['gin']['default_accent_color'] = theme_get_setting('accent_color');
-    $page['#attached']['drupalSettings']['gin']['default_preset_accent_color'] = theme_get_setting('preset_accent_color');
-    $page['#attached']['drupalSettings']['gin']['default_high_contrast_mode'] = theme_get_setting('high_contrast_mode');
+    $page['#attached']['drupalSettings']['gin']['default_darkmode'] = $settings->getDefault('darkmode');
+    $page['#attached']['drupalSettings']['gin']['default_accent_color'] = $settings->getDefault('accent_color');
+    $page['#attached']['drupalSettings']['gin']['default_preset_accent_color'] = $settings->getDefault('preset_accent_color');
+    $page['#attached']['drupalSettings']['gin']['default_high_contrast_mode'] = $settings->getDefault('high_contrast_mode');
   }
 }
 
@@ -396,7 +396,7 @@ function gin_preprocess_toolbar(&$variables) {
   // Expose Toolbar variant.
   /** @var \Drupal\gin\Settings $settings */
   $settings = \Drupal::classResolver(Settings::class);
-  $variables['toolbar_variant'] = $settings->get('toolbar');
+  $variables['toolbar_variant'] = $settings->get('classic_toolbar');
 }
 
 /**
@@ -411,7 +411,7 @@ function gin_theme_suggestions_form_alter(array &$suggestions, array $variables)
  */
 function gin_theme_suggestions_toolbar_alter(array &$suggestions, array $variables) {
   $settings = \Drupal::classResolver(Settings::class);
-  $toolbar = $settings->get('toolbar');
+  $toolbar = $settings->get('classic_toolbar');
 
   $suggestions[] = 'toolbar__gin';
 
@@ -451,9 +451,10 @@ function gin_css_alter(&$css, $assets) {
  * Implements hook_preprocess_menu__toolbar__gin().
  */
 function gin_preprocess_menu__toolbar__gin(&$variables) {
-  // Get theme configs.
-  $logo_path = theme_get_setting('icon_path');
-  $logo_default = theme_get_setting('icon_default');
+  // Get theme settings.
+  $settings = \Drupal::classResolver(Settings::class);
+  $logo_path = $settings->getDefault('icon_path');
+  $logo_default = $settings->getDefault('icon_default');
   $variables['icon_default'] = $logo_default;
 
   if (!$logo_default) {
@@ -514,14 +515,14 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#type' => 'checkbox',
     '#title' => t('Enable Darkmode (BETA)'),
     '#description' => $description,
-    '#default_value' => theme_get_setting('darkmode'),
+    '#default_value' => $settings->getDefault('darkmode'),
   ];
 
   // Accent color setting.
   $form['custom_settings']['preset_accent_color'] = [
     '#type' => 'radios',
     '#title' => t('Accent color'),
-    '#default_value' => theme_get_setting('preset_accent_color'),
+    '#default_value' => $settings->getDefault('preset_accent_color'),
     '#options' => _gin_get_accent_color_presets(),
     '#after_build' => ['_gin_accent_radios'],
   ];
@@ -538,7 +539,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#placeholder' => '#77777',
     '#title' => t('Custom Accent color'),
     '#description' => t('Use with caution, values should meet a11y criteria.'),
-    '#default_value' => theme_get_setting('accent_color'),
+    '#default_value' => $settings->getDefault('accent_color'),
     '#min' => '7',
     '#max' => '7',
     '#size' => '7',
@@ -560,7 +561,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   $form['custom_settings']['preset_focus_color'] = [
     '#type' => 'select',
     '#title' => t('Focus color (BETA)'),
-    '#default_value' => theme_get_setting('preset_focus_color'),
+    '#default_value' => $settings->getDefault('preset_focus_color'),
     '#options' => [
       'gin' => t('Gin Focus color (Default)'),
       'green' => t('Green'),
@@ -578,7 +579,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#placeholder' => '#777777',
     '#title' => t('Custom Focus color (BETA)'),
     '#description' => t('Use with caution, values should meet a11y criteria.'),
-    '#default_value' => theme_get_setting('focus_color'),
+    '#default_value' => $settings->getDefault('focus_color'),
     '#min' => '7',
     '#max' => '7',
     '#size' => '7',
@@ -602,7 +603,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#type' => 'checkbox',
     '#title' => t('Increase contrast (EXPERIMENTAL)'),
     '#description' => $hcm_description,
-    '#default_value' => theme_get_setting('high_contrast_mode'),
+    '#default_value' => $settings->getDefault('high_contrast_mode'),
   ];
 
   // Allow user settings.
@@ -610,7 +611,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#type' => 'checkbox',
     '#title' => t('Users can override Gin settings'),
     '#description' => t('Expose the admin theme settings to users.'),
-    '#default_value' => theme_get_setting('show_user_theme_settings'),
+    '#default_value' => $settings->getDefault('show_user_theme_settings'),
   ];
 
   /*
@@ -781,10 +782,10 @@ function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
   $settings = \Drupal::classResolver(Settings::class);
   if ($enabledUserOverrides) {
     $user_settings = [
-      'darkmode' => (bool) $form_state->getValue('darkmode'),
+      'enable_darkmode' => (bool) $form_state->getValue('enable_darkmode'),
       'preset_accent_color' => $form_state->getValue('preset_accent_color'),
       'accent_color' => $form_state->getValue('accent_color'),
-      'toolbar' => $form_state->getValue('toolbar'),
+      'classic_toolbar' => $form_state->getValue('classic_toolbar'),
       'high_contrast_mode' => (bool) $form_state->getValue('high_contrast_mode'),
     ];
     $settings->setAll($user_settings, $account);

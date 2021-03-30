@@ -178,8 +178,8 @@ class Settings implements ContainerInjectionInterface {
    *   The value determined by a legacy setting.
    */
   private function handleLegacySettings($name, $value) {
-    if ($name === 'darkmode' && is_null($value)) {
-      $value = (bool) $this->get('enable_darkmode');
+    if ($name === 'enable_darkmode') {
+      $value = (bool) $value;
     }
     if ($name === 'high_contrast_mode') {
       $value = (bool) $value;
@@ -187,8 +187,7 @@ class Settings implements ContainerInjectionInterface {
     if ($name === 'preset_accent_color') {
       $value = $value === 'claro_blue' ? 'blue' : $value;
     }
-    if ($name === 'toolbar' && is_null($value)) {
-      $value = $this->get('classic_toolbar');
+    if ($name === 'classic_toolbar') {
       $value = $value === TRUE || $value === 'true' ||  $value === '1' || $value === 1 ? 'classic' : $value;
     }
     return $value;
