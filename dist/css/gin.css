@@ -3213,8 +3213,7 @@ details summary {
   border-radius: 12px;
 }
 .media-library-item--grid::before, .media-library-item--grid.is-hover::before, .media-library-item--grid.checked::before, .media-library-item--grid.is-focus::before {
-  border-color: transparent;
-  border-radius: 14px;
+  display: none;
 }
 .media-library-item--grid.sortable-chosen {
   background: var(--colorGinLayerBackground);
@@ -3237,8 +3236,12 @@ details summary {
 .media-library-item__content article {
   width: 100%;
 }
+.media-library-item__click-to-select-trigger {
+  overflow: inherit;
+}
 .media-library-item__name {
   color: var(--colorGinText);
+  word-break: break-all;
   text-overflow: initial;
   white-space: initial;
   overflow: visible;
@@ -3252,7 +3255,7 @@ details summary {
 .media-library-item__preview {
   position: relative;
   padding-bottom: 100%;
-  border: 3px solid transparent;
+  border: 1px solid var(--colorGinBorder);
   border-radius: 12px;
   overflow: hidden;
 }
@@ -3267,9 +3270,13 @@ details summary {
 }
 .media-library-item.is-hover .media-library-item__preview {
   border-color: var(--colorGinText);
+  -webkit-box-shadow: 0 0 0 2px var(--colorGinText);
+          box-shadow: 0 0 0 2px var(--colorGinText);
 }
 .media-library-item.checked .media-library-item__preview, .media-library-item.is-active .media-library-item__preview {
   border-color: var(--colorGinPrimary);
+  -webkit-box-shadow: 0 0 0 2px var(--colorGinPrimary);
+          box-shadow: 0 0 0 2px var(--colorGinPrimary);
 }
 .media-library-item .media-library-item__edit, .media-library-item .media-library-item__remove, .media-library-item .media-library-item__remove.button {
   border-color: var(--colorGinBorder) !important;
