@@ -79,6 +79,19 @@ class Settings implements ContainerInjectionInterface {
   }
 
   /**
+   * Get the default setting from theme
+   *
+   * @param string $name
+   *   The name of the setting.
+   *
+   * @return array|bool|mixed|null
+   *   The current value.
+   */
+  public function getDefault($name) {
+    return $this->handleLegacySettings($name, theme_get_setting($name));
+  }
+
+    /**
    * Set user overrides.
    *
    * @param array $settings
