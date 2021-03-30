@@ -3252,6 +3252,10 @@ details summary {
   padding: 0.5rem;
   background: none;
 }
+.media-library-item:focus .media-library-item__preview-wrapper {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
 .media-library-item__preview {
   position: relative;
   padding-bottom: 100%;
@@ -3281,11 +3285,12 @@ details summary {
 .media-library-item .media-library-item__edit, .media-library-item .media-library-item__remove, .media-library-item .media-library-item__remove.button {
   border-color: var(--colorGinBorder) !important;
 }
-.media-library-item .media-library-item__edit:link, .media-library-item .media-library-item__edit:not(:hover):not(:checked), .media-library-item .media-library-item__remove:link, .media-library-item .media-library-item__remove:not(:hover):not(:checked), .media-library-item .media-library-item__remove.button:link, .media-library-item .media-library-item__remove.button:not(:hover):not(:checked) {
+.media-library-item .media-library-item__edit:link, .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__edit:not(:hover):not(:checked), .media-library-item .media-library-item__remove:link, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove:not(:hover):not(:checked), .media-library-item .media-library-item__remove.button:link, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus, .media-library-item .media-library-item__remove.button:not(:hover):not(:checked) {
   border-color: transparent !important;
 }
 .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus {
-  border-color: var(--colorGinPrimary) !important;
+  -webkit-box-shadow: 0 0 0 3px var(--colorGinFocus) !important;
+          box-shadow: 0 0 0 3px var(--colorGinFocus) !important;
 }
 .media-library-item .media-library-item__edit, .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__remove, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove.button, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus {
   width: 29px;
@@ -3315,13 +3320,22 @@ details summary {
 .media-library-item__click-to-select-checkbox .form-boolean:not(:hover):not(:checked), .gin--dark-mode .media-library-item__click-to-select-checkbox .form-boolean:not(:hover):not(:checked) {
   border-color: transparent !important;
 }
+.media-library-item__click-to-select-checkbox .form-boolean:focus, .gin--dark-mode .media-library-item__click-to-select-checkbox .form-boolean:focus {
+  -webkit-box-shadow: 0 0 0 3px var(--colorGinFocus) !important;
+          box-shadow: 0 0 0 3px var(--colorGinFocus) !important;
+}
 .media-library-item__click-to-select-checkbox .form-boolean:checked, .gin--dark-mode .media-library-item__click-to-select-checkbox .form-boolean:checked {
+  background-color: var(--colorGinPrimary);
   border-color: var(--colorGinPrimary);
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 .media-library-item .form-item {
   margin: 0.5rem;
+}
+.media-library-item .ajax-progress {
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .media-library-views-form {
@@ -5141,7 +5155,9 @@ table.treetable tr.branch {
   background-color: transparent;
 }
 
-.ajax-progress__throbber {
+.ajax-progress__throbber, .ajax-progress__throbber--fullscreen,
+.ui-dialog .ajax-progress__throbber,
+.media-library-item .ajax-progress__throbber {
   border: 3px solid var(--colorGinPrimary);
   border-right: 3px dotted transparent;
 }
@@ -5154,7 +5170,7 @@ table.treetable tr.branch {
   -webkit-box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
           box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
 }
-.gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber {
+.gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber, .gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber--fullscreen {
   border: 3px solid var(--colorGinAppBackground);
   border-right: 3px dotted transparent;
 }

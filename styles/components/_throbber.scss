@@ -55,6 +55,12 @@
   }
 }
 
+.ajax-progress__throbber--fullscreen,
+.ui-dialog .ajax-progress__throbber,
+.media-library-item .ajax-progress__throbber {
+  @extend .ajax-progress__throbber;
+}
+
 .contextual-links {
   li {
     position: relative;
