@@ -21,7 +21,7 @@ function gin_preprocess_html(&$variables) {
   $gin_activated = _gin_is_active();
 
   if ($gin_activated) {
-    // Get configs.
+    // Get theme settings.
     /** @var \Drupal\gin\Settings $settings */
     $settings = \Drupal::classResolver(Settings::class);
     $toolbar = $settings->get('toolbar');
@@ -104,15 +104,9 @@ function gin_page_attachments_alter(&$page) {
   $gin_activated = _gin_is_active();
 
   if ($gin_activated) {
-    // Get theme configs.
+    // Get theme settings.
     $settings = \Drupal::classResolver(Settings::class);
-    $preset_focus_color = theme_get_setting('preset_focus_color');
-    $focus_color = theme_get_setting('focus_color');
     $toolbar = $settings->get('toolbar');
-
-    // Define darkmode class.
-    $darkmode_class = 'gin--dark-mode';
-    $highcontrastmode_class = 'gin--high-contrast-mode';
 
     // Attach the init script.
     $page['#attached']['library'][] = 'gin/gin_init';
@@ -140,13 +134,13 @@ function gin_page_attachments_alter(&$page) {
 
     // Expose settings to JS.
     $page['#attached']['drupalSettings']['gin']['darkmode'] = $settings->get('darkmode');
-    $page['#attached']['drupalSettings']['gin']['darkmode_class'] = $darkmode_class;
+    $page['#attached']['drupalSettings']['gin']['darkmode_class'] = 'gin--dark-mode';;
     $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $settings->get('preset_accent_color');
     $page['#attached']['drupalSettings']['gin']['accent_color'] = $settings->get('accent_color');
-    $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $preset_focus_color;
-    $page['#attached']['drupalSettings']['gin']['focus_color'] = $focus_color;
+    $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = theme_get_setting('preset_focus_color');;
+    $page['#attached']['drupalSettings']['gin']['focus_color'] = theme_get_setting('focus_color');;
     $page['#attached']['drupalSettings']['gin']['highcontrastmode'] = $settings->get('high_contrast_mode');
-    $page['#attached']['drupalSettings']['gin']['highcontrastmode_class'] = $highcontrastmode_class;
+    $page['#attached']['drupalSettings']['gin']['highcontrastmode_class'] = 'gin--high-contrast-mode';
 
     // Add stylesheets for JS use.
     $basethemeurl_with_prefix = \Drupal::urlGenerator()->generateFromRoute('<front>', [], ['absolute' => TRUE]) . drupal_get_path('theme', 'gin');
