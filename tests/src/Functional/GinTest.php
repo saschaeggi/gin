@@ -30,7 +30,7 @@ class GinTest extends BrowserTestBase {
   /**
    * Sets up the test.
    */
-  public function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->assertTrue(\Drupal::service('theme_installer')->install(['gin']));
@@ -102,6 +102,7 @@ class GinTest extends BrowserTestBase {
    * Test user settings.
    */
   public function testUserSettings() {
+    \Drupal::configFactory()->getEditable('gin.settings')->set('show_user_theme_settings', TRUE)->save();
 
     $user1 = $this->createUser();
     $this->drupalLogin($user1);
