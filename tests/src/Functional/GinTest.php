@@ -62,7 +62,7 @@ class GinTest extends BrowserTestBase {
    * Tests Darkmode setting.
    */
   public function testDarkModeSetting() {
-    \Drupal::configFactory()->getEditable('gin.settings')->set('darkmode', TRUE)->save();
+    \Drupal::configFactory()->getEditable('gin.settings')->set('enable_darkmode', TRUE)->save();
     $response = $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);
     $this->assertStringContainsString('"darkmode":true', $response);
@@ -72,7 +72,7 @@ class GinTest extends BrowserTestBase {
    * Tests Classic Drupal Toolbar setting.
    */
   public function testClassicToolbarSetting() {
-    \Drupal::configFactory()->getEditable('gin.settings')->set('toolbar', 'classic')->save();
+    \Drupal::configFactory()->getEditable('gin.settings')->set('classic_toolbar', 'classic')->save();
     $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);
     $this->assertSession()->responseContains('gin_classic_toolbar.css');
@@ -111,7 +111,7 @@ class GinTest extends BrowserTestBase {
     $this->assertSession()->pageTextContains('"darkmode":false');
     $this->submitForm([
       'enable_user_settings' => TRUE,
-      'darkmode' => TRUE,
+      'enable_darkmode' => TRUE,
     ], 'Save');
     $this->assertSession()->pageTextContains('"darkmode":true');
 
@@ -123,7 +123,7 @@ class GinTest extends BrowserTestBase {
     $this->submitForm([
       'enable_user_settings' => TRUE,
       'high_contrast_mode' => TRUE,
-      'darkmode' => TRUE,
+      'enable_darkmode' => TRUE,
     ], 'Save');
 
     // Check logged-in's user is not affected.
