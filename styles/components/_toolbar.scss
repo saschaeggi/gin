@@ -81,10 +81,6 @@
         mask-size: 18px 18px;
       }
 
-      &:not(.toolbar-handle)::before {
-        left: 1em;
-      }
-
       &.toolbar-icon-default::before {
         mask-size: 26px 26px;
       }

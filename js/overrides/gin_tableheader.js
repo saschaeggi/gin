@@ -93,7 +93,7 @@
       var offsetTop = 0;
 
       if (!document.querySelector('body').classList.contains('gin--classic-toolbar')) {
-        if (window.innerWidth < 976) {
+        if (window.innerWidth < 1024) {
           offsetTop = document.querySelector('#toolbar-bar').clientHeight - 2;
         } else {
           offsetTop = document.querySelector('#toolbar-bar').clientHeight + document.querySelector('.region-sticky').clientHeight - 2;

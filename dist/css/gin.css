@@ -3463,6 +3463,16 @@ table.sticky-header {
   z-index: 98;
   left: auto !important;
   background: transparent;
+  -webkit-transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
+}
+@media (min-width: 976px) {
+  .gin--vertical-toolbar table.sticky-header {
+    width: calc(100% - min(10vw, 96px) - 3rem - 72px) !important;
+  }
+  .gin--vertical-toolbar[data-toolbar-menu=open] table.sticky-header {
+    width: calc(100% - min(10vw, 96px) - 3rem - 240px) !important;
+  }
 }
 table.sticky-header th:first-child {
   border-top-left-radius: 0;
