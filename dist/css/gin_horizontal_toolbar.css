@@ -316,6 +316,23 @@
   -webkit-mask-size: 18px 18px;
           mask-size: 18px 18px;
 }
+.toolbar .toolbar-bar #toolbar-item-administration-search:not(.toolbar-handle)::before,
+.toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon:not(.toolbar-handle)::before,
+.toolbar .toolbar-bar .toolbar-menu-administration .responsive-preview-icon:not(.toolbar-handle)::before,
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:not(.toolbar-handle)::before,
+.toolbar .toolbar-bar .toolbar-icon-toggle-vertical:not(.toolbar-handle)::before,
+.toolbar .toolbar-bar .toolbar-icon-toggle-horizontal:not(.toolbar-handle)::before {
+  left: 1em;
+}
+.toolbar .toolbar-bar #toolbar-item-administration-search.toolbar-icon-default::before,
+.toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon.toolbar-icon-default::before,
+.toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon-default.responsive-preview-icon::before,
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.toolbar-icon-default::before,
+.toolbar .toolbar-bar .toolbar-icon-toggle-vertical.toolbar-icon-default::before,
+.toolbar .toolbar-bar .toolbar-icon-toggle-horizontal.toolbar-icon-default::before {
+  -webkit-mask-size: 26px 26px;
+          mask-size: 26px 26px;
+}
 @media (min-width: 976px) {
   .toolbar .toolbar-bar #toolbar-item-administration-search:hover::before,
 .toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon:hover::before,

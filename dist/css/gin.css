@@ -343,7 +343,7 @@ svg path:active {
     position: -webkit-sticky;
     position: sticky;
     top: 48px;
-    width: calc(100% - min(10vw, 128px) + 24px);
+    width: calc(100% - min(10vw, 96px) + 24px);
   }
   .gin--horizontal-toolbar .sticky-shadow {
     top: 102px;
@@ -4678,8 +4678,8 @@ a.button.button--danger:active:before,
   text-indent: -99999px;
   border-radius: 50%;
   border-color: transparent !important;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  -webkit-transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .messages .button--dismiss:hover:not(:focus) {
   color: transparent;
