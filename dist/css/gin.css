@@ -1705,8 +1705,8 @@ details summary {
 }
 .erl-item .paragraph .field--name-field-paragraphs .field__item,
 .layout-paragraphs-item .paragraph .field--name-field-paragraphs .field__item {
-  -ms-flex-preferred-size: 100px;
-      flex-basis: 100px;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
   margin-right: 0.5rem;
 }
 
