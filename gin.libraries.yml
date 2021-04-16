@@ -79,4 +79,4 @@ gin_custom_css:
 gin_tabledrag:
   version: VERSION
   js:
-    js/overrides/gin_tabledrag.js: { minified: false }
+    js/overrides/gin_tabledrag.js: { weight: -1, minified: false }

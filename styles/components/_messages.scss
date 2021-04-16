@@ -62,7 +62,7 @@
     text-indent: -99999px;
     border-radius: 50%;
     border-color: transparent !important;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    transition: $transition;
 
     &:hover:not(:focus) {
       color: transparent;

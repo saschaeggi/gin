@@ -851,7 +851,9 @@ table.treetable tr.branch {
   background-color: transparent;
 }
 
-.ajax-progress__throbber {
+.ajax-progress__throbber, .ajax-progress__throbber--fullscreen,
+.ui-dialog .ajax-progress__throbber,
+.media-library-item .ajax-progress__throbber {
   border: 3px solid var(--colorGinPrimary);
   border-right: 3px dotted transparent;
 }
@@ -864,7 +866,7 @@ table.treetable tr.branch {
   -webkit-box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
           box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
 }
-.gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber {
+.gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber, .gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber--fullscreen {
   border: 3px solid var(--colorGinAppBackground);
   border-right: 3px dotted transparent;
 }
