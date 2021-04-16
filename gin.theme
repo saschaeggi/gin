@@ -148,7 +148,7 @@ function gin_page_attachments_alter(&$page) {
     $page['#attached']['drupalSettings']['gin']['ckeditor_css_path'] = $basethemeurl_with_prefix . '/dist/css/gin_ckeditor.css';
 
     // Expose default settings.
-    $page['#attached']['drupalSettings']['gin']['default_darkmode'] = $settings->getDefault('darkmode');
+    $page['#attached']['drupalSettings']['gin']['default_darkmode'] = $settings->getDefault('enable_darkmode');
     $page['#attached']['drupalSettings']['gin']['default_accent_color'] = $settings->getDefault('accent_color');
     $page['#attached']['drupalSettings']['gin']['default_preset_accent_color'] = $settings->getDefault('preset_accent_color');
     $page['#attached']['drupalSettings']['gin']['default_high_contrast_mode'] = $settings->getDefault('high_contrast_mode');
@@ -298,7 +298,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       '#type' => 'checkbox',
       '#title' => t('Enable Darkmode (BETA)'),
       '#description' => t("Enables Darkmode for the admin interface."),
-      '#default_value' => $settings->get('darkmode', $account),
+      '#default_value' => $settings->get('enable_darkmode', $account),
       '#weight' => 0,
     ];
 
@@ -506,8 +506,8 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   // Darkmode setting.
   // Check if this is overridden by the logged in user.
   $description = t("Enables Darkmode for the admin interface.");
-  if ($settings->overridden('darkmode')) {
-    $darkmode = $settings->get('darkmode') ? t('Enabled') : t('Disabled');
+  if ($settings->overridden('enable_darkmode')) {
+    $darkmode = $settings->get('enable_darkmode') ? t('Enabled') : t('Disabled');
     $description .= '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Darkmode: <strong>@darkmode</strong></span>', ['@darkmode' => $darkmode, '@editUrl' => $userEditUrl]);
   }
 
@@ -515,7 +515,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#type' => 'checkbox',
     '#title' => t('Enable Darkmode (BETA)'),
     '#description' => $description,
-    '#default_value' => $settings->getDefault('darkmode'),
+    '#default_value' => $settings->getDefault('enable_darkmode'),
   ];
 
   // Accent color setting.
@@ -648,7 +648,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#type' => 'radios',
     '#title' => t('Drupal Toolbar'),
     '#description' => $description,
-    '#default_value' => theme_get_setting('toolbar'),
+    '#default_value' => $settings->getDefault('classic_toolbar'),
     '#options' => _gin_get_toolbar_presets(),
     '#after_build' => ['_gin_toolbar_radios'],
   ];
@@ -665,7 +665,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   ];
 
   // Make sure that after updating it is set to use the default logo.
-  $defaultIconDefault = theme_get_setting('icon_default') !== NULL ? theme_get_setting('icon_default') : TRUE;
+  $defaultIconDefault = $settings->getDefault('icon_default') !== NULL ? theme_get_setting('icon_default') : TRUE;
 
   $form['icon']['icon_default'] = [
     '#type' => 'checkbox',
@@ -685,7 +685,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   $form['icon']['settings']['icon_path'] = [
     '#type' => 'textfield',
     '#title' => t('Path to custom logo'),
-    '#default_value' => theme_get_setting('icon_path'),
+    '#default_value' => $settings->getDefault('icon_path'),
   ];
   $form['icon']['settings']['icon_upload'] = [
     '#type' => 'file',
