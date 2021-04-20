@@ -6232,10 +6232,8 @@ tr.color-error:focus,
   border-radius: 14px;
   position: relative;
 }
-.gin-entity-browser .entity-browser-form .views-row:hover, .gin-entity-browser .entity-browser-form .views-row:focus {
+.gin-entity-browser .entity-browser-form .views-row .views-field-thumbnail__target-id:hover, .gin-entity-browser .entity-browser-form .views-row .views-field-thumbnail__target-id:focus {
   cursor: pointer;
-}
-.gin-entity-browser .entity-browser-form .views-row:hover .views-field-thumbnail__target-id, .gin-entity-browser .entity-browser-form .views-row:focus .views-field-thumbnail__target-id {
   border-color: var(--colorGinPrimary);
 }
 .gin-entity-browser .entity-browser-form .views-row .views-field-name {
