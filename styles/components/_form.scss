@@ -70,7 +70,9 @@ $maxWidth: 520px;
 .form-element--type-select--small {
   font-size: 0.79rem;
   min-height: 2.25rem;
-  line-height: 1;
+  line-height: 1.2;
+  padding-top: .474rem; // 0.79rem * 1.2 / 2
+  padding-bottom: .474rem; // 0.79rem * 1.2 / 2
   background-position: 100% 52%;
 }
 

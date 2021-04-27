@@ -3848,7 +3848,9 @@ body .cke_notification_info .cke_notification_close {
 .form-element--type-select--small {
   font-size: 0.79rem;
   min-height: 2.25rem;
-  line-height: 1;
+  line-height: 1.2;
+  padding-top: 0.474rem;
+  padding-bottom: 0.474rem;
   background-position: 100% 52%;
 }
 
