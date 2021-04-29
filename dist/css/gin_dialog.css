@@ -706,6 +706,10 @@
   border-radius: 12px;
   background: var(--colorGinLayerBackground);
 }
+.ui-dialog:not(.ui-dialog-off-canvas) .ui-dialog-content:first-of-type {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
 .ui-dialog:not(.ui-dialog-off-canvas) .layout-region-node-actions {
   position: absolute;
   bottom: 0;
