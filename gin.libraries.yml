@@ -106,7 +106,7 @@ gin_messages:
 gin_custom_css:
   css:
     theme:
-      public://gin-custom.css: { preprocess: false, minified: false, weight: 100 }
+      public://gin-custom.css: { weight: 100, preprocess: false, minified: false }
 
 gin_tabledrag:
   js:
