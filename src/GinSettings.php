@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Service to handle overridden user settings.
  */
-class Settings implements ContainerInjectionInterface {
+class GinSettings implements ContainerInjectionInterface {
 
   /**
    * The user data service.
@@ -73,13 +73,14 @@ class Settings implements ContainerInjectionInterface {
       }
     }
     if (is_null($value)) {
-      $value = theme_get_setting($name);
+      $admin_theme = $this->getAdminTheme();
+      $value = theme_get_setting($name, $admin_theme);
     }
     return $this->handleLegacySettings($name, $value);
   }
 
   /**
-   * Get the default setting from theme
+   * Get the default setting from theme.
    *
    * @param string $name
    *   The name of the setting.
@@ -88,10 +89,11 @@ class Settings implements ContainerInjectionInterface {
    *   The current value.
    */
   public function getDefault($name) {
-    return $this->handleLegacySettings($name, theme_get_setting($name));
+    $admin_theme = $this->getAdminTheme();
+    return $this->handleLegacySettings($name, theme_get_setting($name, $admin_theme));
   }
 
-    /**
+  /**
    * Set user overrides.
    *
    * @param array $settings
@@ -129,7 +131,8 @@ class Settings implements ContainerInjectionInterface {
    *   TRUE or FALSE.
    */
   public function allowUserOverrides() {
-    return theme_get_setting('show_user_theme_settings');
+    $admin_theme = $this->getAdminTheme();
+    return theme_get_setting('show_user_theme_settings', $admin_theme);
   }
 
   /**
@@ -163,7 +166,8 @@ class Settings implements ContainerInjectionInterface {
     if (!$account) {
       $account = $this->currentUser;
     }
-    return $this->handleLegacySettings($name, theme_get_setting($name)) !== $this->get($name, $account);
+    $admin_theme = $this->getAdminTheme();
+    return $this->handleLegacySettings($name, theme_get_setting($name, $admin_theme)) !== $this->get($name, $account);
   }
 
   /**
@@ -191,6 +195,17 @@ class Settings implements ContainerInjectionInterface {
       $value = $value === TRUE || $value === 'true' ||  $value === '1' || $value === 1 ? 'classic' : $value;
     }
     return $value;
+  }
+
+  /**
+   * Return the active admin theme.
+   *
+   * @return string
+   *   The active admin theme name.
+   */
+  private function getAdminTheme() {
+    $admin_theme = \Drupal::configFactory()->get('system.theme')->get('admin');
+    return $admin_theme;
   }
 
 }

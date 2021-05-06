@@ -11,7 +11,7 @@ use Drupal\Core\Render\Markup;
 use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\user\Entity\User;
 use Drupal\Core\Url;
-use Drupal\gin\Settings;
+use Drupal\gin\GinSettings;
 
 /**
  * Implements hook_preprocess_HOOK() for html.
@@ -22,8 +22,8 @@ function gin_preprocess_html(&$variables) {
 
   if ($gin_activated) {
     // Get theme settings.
-    /** @var \Drupal\gin\Settings $settings */
-    $settings = \Drupal::classResolver(Settings::class);
+    /** @var \Drupal\gin\GinSettings $settings */
+    $settings = \Drupal::classResolver(GinSettings::class);
     $toolbar = $settings->get('classic_toolbar');
 
     // Check if darkmode is enabled.
@@ -105,7 +105,7 @@ function gin_page_attachments_alter(&$page) {
 
   if ($gin_activated) {
     // Get theme settings.
-    $settings = \Drupal::classResolver(Settings::class);
+    $settings = \Drupal::classResolver(GinSettings::class);
     $toolbar = $settings->get('classic_toolbar');
 
     // Attach the init script.
@@ -266,8 +266,8 @@ function gin_form_alter(&$form, $form_state, $form_id) {
  * Implements form_user_form_alter().
  */
 function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
-  /** @var \Drupal\gin\Settings $settings */
-  $settings = \Drupal::classResolver(Settings::class);
+  /** @var \Drupal\gin\GinSettings $settings */
+  $settings = \Drupal::classResolver(GinSettings::class);
 
   if ($settings->allowUserOverrides()) {
     // Inject the settings for the dark mode feature.
@@ -398,8 +398,8 @@ function gin_preprocess_toolbar(&$variables) {
   }
 
   // Expose Toolbar variant.
-  /** @var \Drupal\gin\Settings $settings */
-  $settings = \Drupal::classResolver(Settings::class);
+  /** @var \Drupal\gin\GinSettings $settings */
+  $settings = \Drupal::classResolver(GinSettings::class);
   $variables['toolbar_variant'] = $settings->get('classic_toolbar');
 }
 
@@ -414,7 +414,7 @@ function gin_theme_suggestions_form_alter(array &$suggestions, array $variables)
  * Toolbar alter().
  */
 function gin_theme_suggestions_toolbar_alter(array &$suggestions, array $variables) {
-  $settings = \Drupal::classResolver(Settings::class);
+  $settings = \Drupal::classResolver(GinSettings::class);
   $toolbar = $settings->get('classic_toolbar');
 
   $suggestions[] = 'toolbar__gin';
@@ -456,7 +456,7 @@ function gin_css_alter(&$css, $assets) {
  */
 function gin_preprocess_menu__toolbar__gin(&$variables) {
   // Get theme settings.
-  $settings = \Drupal::classResolver(Settings::class);
+  $settings = \Drupal::classResolver(GinSettings::class);
   $logo_path = $settings->getDefault('icon_path');
   $logo_default = $settings->getDefault('icon_default');
   $variables['icon_default'] = $logo_default;
@@ -502,8 +502,8 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#open' => TRUE,
     '#title' => t('Settings'),
   ];
-  /** @var \Drupal\gin\Settings $settings */
-  $settings = \Drupal::classResolver(Settings::class);
+  /** @var \Drupal\gin\GinSettings $settings */
+  $settings = \Drupal::classResolver(GinSettings::class);
 
   $userEditUrl = Url::fromRoute('entity.user.edit_form', ['user' => Drupal::currentUser()->id()])->toString();
 
@@ -782,8 +782,8 @@ function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
   $account = $form_state->getBuildInfo()['callback_object']->getEntity();
 
   $enabledUserOverrides = $form_state->getValue('enable_user_settings');
-  /** @var \Drupal\gin\Settings $settings */
-  $settings = \Drupal::classResolver(Settings::class);
+  /** @var \Drupal\gin\GinSettings $settings */
+  $settings = \Drupal::classResolver(GinSettings::class);
   if ($enabledUserOverrides) {
     $user_settings = [
       'enable_darkmode' => (bool) $form_state->getValue('enable_darkmode'),
