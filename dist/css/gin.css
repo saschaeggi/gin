@@ -5011,6 +5011,9 @@ table.diff .diffchange {
 table.diff .diff-context {
   background-color: transparent;
 }
+table.diff td {
+  height: initial;
+}
 table.diff tr {
   color: var(--colorGinTitle);
 }
