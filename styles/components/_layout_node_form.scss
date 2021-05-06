@@ -177,8 +177,21 @@
           }
 
           .claro-details__content {
+            margin-left: $sidebarSpacer;
+            margin-right: $sidebarSpacer;
+
             .claro-details__wrapper {
               margin: 1.5rem;
+            }
+          }
+
+          .form-datetime-wrapper {
+            .form-date {
+              max-width: 170px;
+            }
+
+            .form-time {
+              max-width: 134px;
             }
           }
         }

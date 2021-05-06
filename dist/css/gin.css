@@ -2011,8 +2011,18 @@ details summary {
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary:focus::after {
   border-radius: 6px;
 }
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .claro-details__content {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .claro-details__content .claro-details__wrapper {
   margin: 1.5rem;
+}
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-date {
+  max-width: 170px;
+}
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-time {
+  max-width: 134px;
 }
 .gin--edit-form .revision-current {
   background-color: var(--colorGinPrimaryLightActive);
