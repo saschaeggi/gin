@@ -489,7 +489,7 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
   width: -moz-max-content;
   width: max-content;
 }
-.gin-sticky [data-drupal-selector=edit-preview] {
+.gin-sticky [data-drupal-selector=edit-save] {
   margin-right: 0;
 }
 .gin-sticky .form-actions {
@@ -6288,4 +6288,11 @@ tr.color-error:focus,
 }
 .eb-tabs ul {
   border-bottom: none;
+}
+
+#autosave-notification {
+  font-size: 0.975rem;
+  bottom: 8px;
+  right: 8px;
+  border-radius: 4px;
 }

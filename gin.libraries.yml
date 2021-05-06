@@ -74,7 +74,7 @@ gin_custom_css:
   version: VERSION
   css:
     theme:
-      public://gin-custom.css: { weight: 100 }
+      public://gin-custom.css: { weight: 100, preprocess: false, minified: false }
 
 gin_tabledrag:
   version: VERSION
