@@ -9,6 +9,7 @@ const postcssRTLCSS = require('postcss-rtlcss');
 
 module.exports = {
   entry: {
+<<<<<<< HEAD
     // Javascript
     'accent': ['./js/accent.js'],
     'description_toggle': ['./js/description_toggle.js'],
@@ -63,6 +64,20 @@ module.exports = {
     'theme/dialog': ['./styles/theme/dialog.scss'],
     'theme/font': ['./styles/theme/font.scss'],
     'theme/variables': ['./styles/theme/variables.scss'],
+=======
+    gin: ['./styles/gin.scss'],
+    gin_init: ['./js/gin_init.js'],
+    gin_toolbar: ['./js/gin_toolbar.js', './styles/gin_toolbar.scss'],
+    gin_horizontal_toolbar: ['./styles/gin_horizontal_toolbar.scss'],
+    gin_classic_toolbar: ['./styles/gin_classic_toolbar.scss'],
+    gin_accent: ['./js/gin_accent.js','./styles/gin_accent.scss'],
+    gin_settings: ['./js/gin_settings.js'],
+    gin_editform: ['./js/gin_editform.js'],
+    gin_dialog: ['./styles/gin_dialog.scss'],
+    gin_ckeditor: ['./js/gin_ckeditor.js', './styles/gin_ckeditor.scss'],
+    gin_messages: ['./js/gin_messages.js'],
+    gin_sidebar: ['./js/gin_sidebar.js', './styles/gin_sidebar.scss'],
+>>>>>>> 968a875 (Fix changes during merge)
   },
   output: {
     filename: 'js/[name].js',
