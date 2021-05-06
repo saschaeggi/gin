@@ -9,7 +9,7 @@
  *   - attributes: HTML attributes for the menu item.
  *   - below: The menu item child items.
  *   - title: The menu link title.
- *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - path: The menu link path.
  *   - localized_options: Menu link localized options.
  *   - is_expanded: TRUE if the link has visible children within the current
  *     menu tree.
@@ -52,11 +52,11 @@
         {% if menu_level == 0 and loop.index == 1 and item.gin_id != 'admin_toolbar_tools-help' %}
           <li class="menu-item menu-item--expanded menu-item__tools">
             {% if icon_default == false and icon_path != '' %}
-              <a href="{{ url('<front>') }}" class="toolbar-logo" data-drupal-link-system-path="<front>">
+              <a href="{{ path('<front>') }}" class="toolbar-logo" data-drupal-link-system-path="<front>">
                 <img src="{{ file_url(icon_path) }}" class="toolbar-icon-home" />
               </a>
             {% else %}
-              <a href="{{ url('<front>') }}" class="toolbar-icon toolbar-icon-admin-toolbar-tools-help toolbar-icon-default" data-drupal-link-system-path="<front>">
+              <a href="{{ path('<front>') }}" class="toolbar-icon toolbar-icon-admin-toolbar-tools-help toolbar-icon-default" data-drupal-link-system-path="<front>">
                 {{ 'Home'|t }}
               </a>
             {% endif %}
@@ -91,7 +91,7 @@
 
       <li{{ item.attributes.addClass(classes) }}>
         {% if item.gin_id == 'admin_toolbar_tools-help' and icon_default == false and icon_path != '' %}
-          <a href="{{ url('<front>') }}" class="toolbar-logo" data-drupal-link-system-path="<front>">
+          <a href="{{ path('<front>') }}" class="toolbar-logo" data-drupal-link-system-path="<front>">
             <img src="{{ file_url(icon_path) }}" class="toolbar-icon-home" />
           </a>
         {% elseif item.gin_id == 'admin_toolbar_tools-help' %}
