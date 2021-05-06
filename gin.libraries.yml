@@ -80,3 +80,8 @@ gin_tabledrag:
   version: VERSION
   js:
     js/overrides/gin_tabledrag.js: { weight: -1, minified: false }
+
+gin_media_embed_ckeditor_theme:
+  version: VERSION
+  js:
+    js/overrides/gin_media_embed_ckeditor.theme.js: {}
