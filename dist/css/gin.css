@@ -4298,6 +4298,9 @@ a.button:active {
   background: none;
   white-space: nowrap;
 }
+.js .dropbutton--multiple .dropbutton__item:first-of-type:last-of-type > * {
+  border-radius: 2px;
+}
 .dropbutton__toggle {
   top: 2px;
   right: 2px;

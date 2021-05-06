@@ -28,6 +28,13 @@
     white-space: nowrap;
   }
 
+  // Mutiple Dropbutton only has one item
+  &__item:first-of-type:last-of-type > * {
+    .js .dropbutton--multiple & {
+      border-radius: 2px;
+    }
+  }
+
   &__toggle {
     top: 2px;
     right: 2px;
