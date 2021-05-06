@@ -3269,7 +3269,7 @@ details summary {
   border-radius: 12px;
   overflow: hidden;
 }
-.media-library-item__preview .field--name-thumbnail img {
+.media-library-item__preview .field img {
   position: absolute;
   top: 0;
   left: 0;
