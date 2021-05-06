@@ -967,10 +967,10 @@ details summary {
 .layout-paragraphs-field fieldset.layout-paragraphs-field > legend {
   display: none;
 }
-.field--widget-entity-reference-layout-widget fieldset.erl-field .fieldset__wrapper,
-.field--widget-entity-reference-layout-widget fieldset.layout-paragraphs-field .fieldset__wrapper,
-.layout-paragraphs-field fieldset.erl-field .fieldset__wrapper,
-.layout-paragraphs-field fieldset.layout-paragraphs-field .fieldset__wrapper {
+.field--widget-entity-reference-layout-widget fieldset.erl-field > .fieldset__wrapper,
+.field--widget-entity-reference-layout-widget fieldset.layout-paragraphs-field > .fieldset__wrapper,
+.layout-paragraphs-field fieldset.erl-field > .fieldset__wrapper,
+.layout-paragraphs-field fieldset.layout-paragraphs-field > .fieldset__wrapper {
   margin-left: 0;
   margin-right: 0;
 }
@@ -1320,6 +1320,10 @@ details summary {
 .layout-paragraphs-field .layout-paragraphs-add-content--single button .icon {
   margin-right: 0.5rem;
 }
+.field--widget-entity-reference-layout-widget .active-items,
+.layout-paragraphs-field .active-items {
+  padding-bottom: 2rem;
+}
 .field--widget-entity-reference-layout-widget .active-items:empty ~ .layout-paragraphs-add-content__toggle,
 .layout-paragraphs-field .active-items:empty ~ .layout-paragraphs-add-content__toggle {
   padding-bottom: 34px;
@@ -1598,7 +1602,11 @@ details summary {
 .layout-paragraphs-field .layout-paragraphs-layout.layout-paragraphs-item .layout-paragraphs-item:last-of-type {
   margin-bottom: 1rem;
 }
-.layout-paragraphs-field .layout-paragraphs-disabled-items .fieldset__wrapper {
+.layout-paragraphs-field .layout-paragraphs-disabled-items.form-item.form-wrapper {
+  margin-top: 0;
+}
+.layout-paragraphs-field .layout-paragraphs-disabled-items.form-item.form-wrapper .fieldset__wrapper {
+  padding: 0;
   margin: 0;
 }
 .layout-paragraphs-field .layout-handle,
@@ -1634,8 +1642,12 @@ details summary {
   margin-bottom: 1rem;
 }
 
+.layout-paragraphs-disabled-items__description {
+  margin-bottom: -2.5rem;
+  pointer-events: none;
+}
 .layout-paragraphs-disabled-items__items {
-  padding: 0;
+  padding: 20px;
 }
 
 .erl-disabled-wrapper .erl-disabled-items__description {
@@ -1650,10 +1662,10 @@ details summary {
   top: 100%;
 }
 
-.erl-item .paragraph-type-label,
-.erl-item .paragraph-type--label,
-.layout-paragraphs-item .paragraph-type-label,
-.layout-paragraphs-item .paragraph-type--label {
+.erl-item label.paragraph-type-label,
+.erl-item label.paragraph-type--label,
+.layout-paragraphs-item label.paragraph-type-label,
+.layout-paragraphs-item label.paragraph-type--label {
   margin: -1px;
   position: absolute;
   top: 12px;
@@ -1802,19 +1814,20 @@ details summary {
   background: transparent;
   border: 0 none;
   border-top: 1px solid #ddd;
-}
-.erl-layout-region:not(:last-of-type), .erl-layout-region:hover:not(:last-of-type),
-.erl-field .erl-layout-region:not(:last-of-type),
-.erl-field .erl-layout-region:hover:not(:last-of-type),
-.erl-disabled-items:not(:last-of-type),
-.erl-disabled-items:hover:not(:last-of-type),
-.layout-paragraphs-layout-region:not(:last-of-type),
-.layout-paragraphs-layout-region:hover:not(:last-of-type),
-.layout-paragraphs-field .layout-paragraphs-layout-region:not(:last-of-type),
-.layout-paragraphs-field .layout-paragraphs-layout-region:hover:not(:last-of-type),
-.layout-paragraphs-disabled-items:not(:last-of-type),
-.layout-paragraphs-disabled-items:hover:not(:last-of-type) {
   border-right: 1px solid #ddd;
+}
+.erl-layout-region:last-of-type, .erl-layout-region:hover:last-of-type,
+.erl-field .erl-layout-region:last-of-type,
+.erl-field .erl-layout-region:hover:last-of-type,
+.erl-disabled-items:last-of-type,
+.erl-disabled-items:hover:last-of-type,
+.layout-paragraphs-layout-region:last-of-type,
+.layout-paragraphs-layout-region:hover:last-of-type,
+.layout-paragraphs-field .layout-paragraphs-layout-region:last-of-type,
+.layout-paragraphs-field .layout-paragraphs-layout-region:hover:last-of-type,
+.layout-paragraphs-disabled-items:last-of-type,
+.layout-paragraphs-disabled-items:hover:last-of-type {
+  border-bottom-right-radius: 6px;
 }
 .erl-layout-region .layout-label,
 .erl-field .erl-layout-region .layout-label,
@@ -1823,6 +1836,10 @@ details summary {
 .layout-paragraphs-field .layout-paragraphs-layout-region .layout-label,
 .layout-paragraphs-disabled-items .layout-label {
   display: none;
+}
+
+.erl-disabled-items > .fieldset__wrapper {
+  margin: 0;
 }
 
 .gu-transit,
