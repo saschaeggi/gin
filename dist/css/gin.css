@@ -4051,11 +4051,18 @@ fieldset:not(.fieldgroup) > .fieldset-wrapper {
 }
 
 .form-item__label.form-required::after,
-.fieldset__label.form-required::after {
+.fieldset__label.form-required::after,
+.form-required > .fieldset__label::after {
   content: "*";
   color: var(--colorGinDanger);
+  margin-right: 0.15em;
+  margin-left: 0.15em;
   vertical-align: text-top;
   background: none;
+}
+
+.claro-details__summary:not(.form-required) .required-mark {
+  display: none;
 }
 
 .form-item__warning {

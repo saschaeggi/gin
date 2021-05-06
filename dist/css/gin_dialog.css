@@ -515,11 +515,17 @@
   color: var(--colorGinTextLight);
 }
 .ui-dialog .form-item__label.form-required::after,
-.ui-dialog .fieldset__label.form-required::after {
+.ui-dialog .fieldset__label.form-required::after,
+.ui-dialog .form-required > .fieldset__label::after {
   content: "*";
   color: var(--colorGinDanger);
+  margin-right: 0.15em;
+  margin-left: 0.15em;
   vertical-align: text-top;
   background: none;
+}
+.ui-dialog .claro-details__summary:not(.form-required) .required-mark {
+  display: none;
 }
 .ui-dialog .form-item__warning {
   display: inline-block;
