@@ -76,14 +76,6 @@ gin_custom_css:
     theme:
       public://gin-custom.css: { weight: 100, preprocess: false, minified: false }
 
-gin_sidebar:
-  version: VERSION
-  css:
-    theme:
-      dist/css/gin_sidebar.css: { minified: true }
-  js:
-    dist/js/gin_sidebar.js: { minified: true }
-
 gin_tabledrag:
   version: VERSION
   js:
