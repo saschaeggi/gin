@@ -88,13 +88,13 @@
 }
 
 // Settings: Toolbar selector.
-[data-drupal-selector="edit-toolbar"] {
+[data-drupal-selector="edit-classic-toolbar"] {
   .form-radios {
     display: flex;
     flex-wrap: wrap;
     margin-top: .5rem;
 
-    .form-item--toolbar {
+    .form-item--classic-toolbar {
       position: relative;
       display: flex;
       flex-wrap: wrap;

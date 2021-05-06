@@ -332,7 +332,7 @@ fieldset:not(.fieldgroup) {
 
 .form-wrapper,
 .form-composite {
-  label {
+  .form-item__label {
     color: var(--colorGinText);
     position: relative;
     padding-bottom: 4px;

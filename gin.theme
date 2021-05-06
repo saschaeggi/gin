@@ -134,11 +134,11 @@ function gin_page_attachments_alter(&$page) {
 
     // Expose settings to JS.
     $page['#attached']['drupalSettings']['gin']['darkmode'] = $settings->get('enable_darkmode');
-    $page['#attached']['drupalSettings']['gin']['darkmode_class'] = 'gin--dark-mode';;
+    $page['#attached']['drupalSettings']['gin']['darkmode_class'] = 'gin--dark-mode';
     $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $settings->get('preset_accent_color');
     $page['#attached']['drupalSettings']['gin']['accent_color'] = $settings->get('accent_color');
-    $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $settings->getDefault('preset_focus_color');;
-    $page['#attached']['drupalSettings']['gin']['focus_color'] = $settings->getDefault('focus_color');;
+    $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $settings->getDefault('preset_focus_color');
+    $page['#attached']['drupalSettings']['gin']['focus_color'] = $settings->getDefault('focus_color');
     $page['#attached']['drupalSettings']['gin']['highcontrastmode'] = $settings->get('high_contrast_mode');
     $page['#attached']['drupalSettings']['gin']['highcontrastmode_class'] = 'gin--high-contrast-mode';
 
@@ -515,7 +515,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     $description .= '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Darkmode: <strong>@darkmode</strong></span>', ['@darkmode' => $darkmode, '@editUrl' => $userEditUrl]);
   }
 
-  $form['custom_settings']['darkmode'] = [
+  $form['custom_settings']['enable_darkmode'] = [
     '#type' => 'checkbox',
     '#title' => t('Enable Darkmode (BETA)'),
     '#description' => $description,
@@ -648,7 +648,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
 
     $description .= '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Toolbar: <strong>@toolbar</strong></span>', ['@toolbar' => $toolbar, '@editUrl' => $userEditUrl]);
   }
-  $form['toolbar_wrapper']['toolbar'] = [
+  $form['toolbar_wrapper']['classic_toolbar'] = [
     '#type' => 'radios',
     '#title' => t('Drupal Toolbar'),
     '#description' => $description,

@@ -541,8 +541,8 @@
   -webkit-mask-size: 100% 100%;
           mask-size: 100% 100%;
 }
-.ui-dialog .form-wrapper label,
-.ui-dialog .form-composite label {
+.ui-dialog .form-wrapper .form-item__label,
+.ui-dialog .form-composite .form-item__label {
   color: var(--colorGinText);
   position: relative;
   padding-bottom: 4px;
