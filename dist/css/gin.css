@@ -1,3 +1,13 @@
+@charset "UTF-8";
+:root {
+  --ginSidebarWidth: 300px;
+}
+@media (min-width: 1280px) {
+  :root {
+    --ginSidebarWidth: 360px;
+  }
+}
+
 html {
   font-family: Inter, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   scroll-padding-top: var(--ginScrollOffset);
@@ -1847,8 +1857,8 @@ details summary {
     padding-right: var(--ginSidebarWidth);
   }
   .gin--edit-form .dialog-off-canvas-main-canvas {
-    -webkit-transition: padding-left 0.15s cubic-bezier(0.19, 1, 0.22, 1);
-    transition: padding-left 0.15s cubic-bezier(0.19, 1, 0.22, 1);
+    -webkit-transition: padding-left 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: padding-left 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   }
   .gin--edit-form.js-off-canvas-dialog-open {
     padding-right: 0;
@@ -1939,6 +1949,8 @@ details summary {
     -webkit-box-shadow: 0 0 48px rgba(0, 0, 0, 0.075);
             box-shadow: 0 0 48px rgba(0, 0, 0, 0.075);
     border-left: 1px solid var(--colorGinLayerBorder);
+    -webkit-transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   }
   .gin--dark-mode .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
     -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
