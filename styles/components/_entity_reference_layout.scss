@@ -255,9 +255,10 @@
   &--layout,
   &--content {
     justify-content: flex-start;
+    overflow-y: hidden;
   }
 
-  &--layout .layout-paragraph:not(.hidden),
+  &--layout:not(:empty),
   &--content {
     &::before {
       color: var(--colorGinTitle);
@@ -268,24 +269,15 @@
     }
   }
 
-  &--layout .layout-paragraph:not(.hidden) {
+  &--layout:not(:empty) {
+    border-bottom: 1px solid var(--colorGinLayerBorder);
+
     &::before {
       content: "Layout";
       display: block;
+      width: 100%;
       padding-left: 0;
-      margin-left: -2.25rem;
-    }
-
-    &::after {
-      content: "";
-      display: block;
-      opacity: .6;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 320%;
-      height: 1px;
-      border-bottom: 1px solid var(--colorGinBorder);
+      margin-left: 1rem;
     }
   }
 
@@ -316,13 +308,29 @@
 .erl-add-more-menu__item,
 .layout-paragraphs-add-more-menu__item {
   position: relative;
+  display: flex;
+  align-self: stretch;
 
   a {
+    align-self: stretch;
+    width: 100%;
     color: var(--colorGinText);
     padding: .5rem;
+    border-radius: $borderDefault;
 
     &:hover {
       background-color: var(--colorGinPrimaryLight);
+    }
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: .5rem;
+
+    @include mq($breakpointLarge) {
+      width: 32px;
+      height: 32px;
     }
   }
 }

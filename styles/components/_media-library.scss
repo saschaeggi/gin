@@ -305,3 +305,15 @@ fieldset.media-library-widget {
     }
   }
 }
+
+.media-library-widget-modal .media-library-item--grid {
+  @include mq($breakpointBig) {
+    width: 20%;
+  }
+}
+
+.media-library-selection .media-library-item--grid {
+  @include mq($breakpointWide) {
+    width: 20%;
+  }
+}

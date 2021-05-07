@@ -30,11 +30,13 @@ $maxWidth: 520px;
   }
 }
 
+.form-item--editor-format,
 .form-element--editor-format {
   width: auto;
 
   .form-item__label {
     top: 3px;
+    padding-bottom: 0;
   }
 }
 
@@ -367,26 +369,14 @@ fieldset:not(.fieldgroup) {
   background-position: right 8px center;
 }
 
-// Show field block
-// .layout-region > .form-wrapper,
-// .details-wrapper > .form-wrapper {
-//   padding-left: 1.5rem;
-//   margin-bottom: 2.5rem;
-//   border-left: 2px solid var(--colorGinDisabled);
-
-//   &:hover {
-//     border-left-color: var(--colorGinIcons);
-//   }
-
-//   &:focus-within {
-//     border-left-color: var(--colorGinPrimary);
-//   }
-// }
-
 .claro-autocomplete {
   width: calc(100% - 1rem);
 
   .form-autocomplete {
     width: 100%;
   }
+}
+
+.no-touchevents .form-element--type-select.form-element--extrasmall {
+  min-height: 1.75rem;
 }

@@ -1388,9 +1388,10 @@ details summary {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  overflow-y: hidden;
 }
-.erl-add-more-menu__group--layout .layout-paragraph:not(.hidden)::before, .erl-add-more-menu__group--content::before,
-.layout-paragraphs-add-more-menu__group--layout .layout-paragraph:not(.hidden)::before,
+.erl-add-more-menu__group--layout:not(:empty)::before, .erl-add-more-menu__group--content::before,
+.layout-paragraphs-add-more-menu__group--layout:not(:empty)::before,
 .layout-paragraphs-add-more-menu__group--content::before {
   color: var(--colorGinTitle);
   -ms-flex-preferred-size: 100%;
@@ -1399,24 +1400,17 @@ details summary {
   font-size: 14px;
   opacity: 0.4;
 }
-.erl-add-more-menu__group--layout .layout-paragraph:not(.hidden)::before,
-.layout-paragraphs-add-more-menu__group--layout .layout-paragraph:not(.hidden)::before {
+.erl-add-more-menu__group--layout:not(:empty),
+.layout-paragraphs-add-more-menu__group--layout:not(:empty) {
+  border-bottom: 1px solid var(--colorGinLayerBorder);
+}
+.erl-add-more-menu__group--layout:not(:empty)::before,
+.layout-paragraphs-add-more-menu__group--layout:not(:empty)::before {
   content: "Layout";
   display: block;
+  width: 100%;
   padding-left: 0;
-  margin-left: -2.25rem;
-}
-.erl-add-more-menu__group--layout .layout-paragraph:not(.hidden)::after,
-.layout-paragraphs-add-more-menu__group--layout .layout-paragraph:not(.hidden)::after {
-  content: "";
-  display: block;
-  opacity: 0.6;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 320%;
-  height: 1px;
-  border-bottom: 1px solid var(--colorGinBorder);
+  margin-left: 1rem;
 }
 .erl-add-more-menu__group--content::before,
 .layout-paragraphs-add-more-menu__group--content::before {
@@ -1446,15 +1440,37 @@ details summary {
 .erl-add-more-menu__item,
 .layout-paragraphs-add-more-menu__item {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
 }
 .erl-add-more-menu__item a,
 .layout-paragraphs-add-more-menu__item a {
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
+  width: 100%;
   color: var(--colorGinText);
   padding: 0.5rem;
+  border-radius: 6px;
 }
 .erl-add-more-menu__item a:hover,
 .layout-paragraphs-add-more-menu__item a:hover {
   background-color: var(--colorGinPrimaryLight);
+}
+.erl-add-more-menu__item img,
+.layout-paragraphs-add-more-menu__item img {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 0.5rem;
+}
+@media (min-width: 1024px) {
+  .erl-add-more-menu__item img,
+.layout-paragraphs-add-more-menu__item img {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .erl-add-content__toggle,
@@ -2034,6 +2050,9 @@ details summary {
 }
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .claro-details__content .claro-details__wrapper {
   margin: 1.5rem;
+}
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-type--entity-autocomplete .claro-autocomplete {
+  width: 100%;
 }
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-date {
   max-width: 170px;
@@ -3477,6 +3496,18 @@ fieldset.media-library-widget .fieldset__wrapper {
   background: var(--colorGinLayer2Background);
 }
 
+@media (min-width: 1440px) {
+  .media-library-widget-modal .media-library-item--grid {
+    width: 20%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .media-library-selection .media-library-item--grid {
+    width: 20%;
+  }
+}
+
 .gin-table-scroll-wrapper {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
@@ -3836,11 +3867,14 @@ body .cke_notification_info .cke_notification_close {
   max-width: 100%;
 }
 
+.form-item--editor-format,
 .form-element--editor-format {
   width: auto;
 }
+.form-item--editor-format .form-item__label,
 .form-element--editor-format .form-item__label {
   top: 3px;
+  padding-bottom: 0;
 }
 
 .password-confirm {
@@ -4134,6 +4168,10 @@ fieldset:not(.fieldgroup) > .fieldset-wrapper {
 }
 .claro-autocomplete .form-autocomplete {
   width: 100%;
+}
+
+.no-touchevents .form-element--type-select.form-element--extrasmall {
+  min-height: 1.75rem;
 }
 
 .button,
