@@ -561,6 +561,52 @@
           transform: rotate(180deg);
 }
 
+.node-preview-container {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: rgba(251, 251, 255, 0.98);
+  border-bottom: 1px solid var(--colorGinLayerBorder);
+}
+@supports ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) {
+  .node-preview-container {
+    opacity: 0.999;
+    /* Fix Chrome issue with mask */
+    background: rgba(251, 251, 255, 0.8);
+    -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+  }
+}
+.gin--dark-mode .node-preview-container {
+  background: rgba(27, 27, 29, 0.98);
+}
+@supports ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) {
+  .gin--dark-mode .node-preview-container {
+    background: rgba(28, 28, 30, 0.9);
+  }
+}
+.gin--high-contrast-mode .node-preview-container {
+  background: var(--colorGinAppBackground);
+  -webkit-backdrop-filter: none;
+          backdrop-filter: none;
+}
+.node-preview-container .node-preview-form-select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1rem;
+}
+.node-preview-container .js-hide {
+  display: none;
+}
+
 :root {
   --ginScrollOffset: 72px;
 }
