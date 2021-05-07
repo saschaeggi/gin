@@ -42,10 +42,10 @@
 %}
 {%
   set inner_wrapper_classes = [
-      'claro-details__content',
-      accordion ? 'claro-details__content--accordion',
-      accordion_item ? 'claro-details__content--accordion-item',
-    ]
+    'claro-details__content',
+    accordion ? 'claro-details__content--accordion',
+    accordion_item ? 'claro-details__content--accordion-item',
+  ]
 %}
 <details{{ attributes.addClass(classes) }}>
   {%- if title -%}
