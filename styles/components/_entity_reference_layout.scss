@@ -14,7 +14,7 @@
       display: none;
     }
 
-    .fieldset__wrapper {
+    > .fieldset__wrapper {
       margin-left: 0;
       margin-right: 0;
     }
@@ -189,6 +189,10 @@
     }
   }
 
+  .active-items {
+    padding-bottom: 2rem;
+  }
+
   // No items added, show add as CTA
   .active-items:empty ~ .layout-paragraphs-add-content__toggle {
     padding-bottom: 34px;
@@ -251,9 +255,10 @@
   &--layout,
   &--content {
     justify-content: flex-start;
+    overflow-y: hidden;
   }
 
-  &--layout .layout-paragraph:not(.hidden),
+  &--layout:not(:empty),
   &--content {
     &::before {
       color: var(--colorGinTitle);
@@ -264,24 +269,15 @@
     }
   }
 
-  &--layout .layout-paragraph:not(.hidden) {
+  &--layout:not(:empty) {
+    border-bottom: 1px solid var(--colorGinLayerBorder);
+
     &::before {
       content: "Layout";
       display: block;
+      width: 100%;
       padding-left: 0;
-      margin-left: -2.25rem;
-    }
-
-    &::after {
-      content: "";
-      display: block;
-      opacity: .6;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 320%;
-      height: 1px;
-      border-bottom: 1px solid var(--colorGinBorder);
+      margin-left: 1rem;
     }
   }
 
@@ -312,13 +308,29 @@
 .erl-add-more-menu__item,
 .layout-paragraphs-add-more-menu__item {
   position: relative;
+  display: flex;
+  align-self: stretch;
 
   a {
+    align-self: stretch;
+    width: 100%;
     color: var(--colorGinText);
     padding: .5rem;
+    border-radius: $borderDefault;
 
     &:hover {
       background-color: var(--colorGinPrimaryLight);
+    }
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: .5rem;
+
+    @include mq($breakpointLarge) {
+      width: 32px;
+      height: 32px;
     }
   }
 }
@@ -461,8 +473,11 @@
     }
   }
 
-  .layout-paragraphs-disabled-items {
+  .layout-paragraphs-disabled-items.form-item.form-wrapper {
+    margin-top: 0;
+
     .fieldset__wrapper {
+      padding: 0;
       margin: 0;
     }
   }
@@ -508,8 +523,15 @@
   }
 }
 
-.layout-paragraphs-disabled-items__items {
-  padding: 0;
+.layout-paragraphs-disabled-items {
+  &__description {
+    margin-bottom: -2.5rem;
+    pointer-events: none;
+  }
+
+  &__items {
+    padding: 20px;
+  }
 }
 
 .erl-disabled-wrapper .erl-disabled-items__description {
@@ -527,8 +549,8 @@
 // Basic item styles
 .erl-item,
 .layout-paragraphs-item {
-  .paragraph-type-label,
-  .paragraph-type--label {
+  label.paragraph-type-label,
+  label.paragraph-type--label {
     margin: -1px;
     position: absolute;
     top: 12px;
@@ -652,15 +674,20 @@
     background: transparent;
     border: 0 none;
     border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
 
-    &:not(:last-of-type) {
-      border-right: 1px solid #ddd;
+    &:last-of-type {
+      border-bottom-right-radius: $borderDefault;
     }
   }
 
   .layout-label {
     display: none;
   }
+}
+
+.erl-disabled-items > .fieldset__wrapper {
+  margin: 0;
 }
 
 // Drag & Drop

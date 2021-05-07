@@ -24,39 +24,28 @@ Prefix 'details' class to avoid collision with Modernizr.
 
 @todo Remove prefix after https://www.drupal.org/node/2981732 has been solved.
 #}
-
 {%
   set classes = [
-    'claro-details',
-    accordion ? 'claro-details--accordion',
-    accordion_item ? 'claro-details--accordion-item',
-    description_toggle ? 'help-icon__description-container',
-    element['#module_package_listing'] ? 'claro-details--package-listing',
-  ]
+  'claro-details',
+  accordion ? 'claro-details--accordion',
+  accordion_item ? 'claro-details--accordion-item',
+  description_toggle ? 'help-icon__description-container',
+]
 %}
 {%
   set content_wrapper_classes = [
-    'claro-details__wrapper',
-    'details-wrapper',
-    accordion ? 'claro-details__wrapper--accordion',
-    accordion_item ? 'claro-details__wrapper--accordion-item',
-    element['#module_package_listing'] ? 'claro-details__wrapper--package-listing',
-  ]
+  'claro-details__wrapper',
+  'details-wrapper',
+  accordion ? 'claro-details__wrapper--accordion',
+  accordion_item ? 'claro-details__wrapper--accordion-item',
+]
 %}
 {%
   set inner_wrapper_classes = [
-    'claro-details__content',
-    accordion ? 'claro-details__content--accordion',
-    accordion_item ? 'claro-details__content--accordion-item',
-    element['#module_package_listing']  ? 'claro-details__content--package-listing',
-  ]
-%}
-{%
-  set description_classes = [
-    'claro-details__description',
-    description_display == 'invisible' ? 'visually-hidden',
-    disabled ? 'is-disabled',
-  ]
+  'claro-details__content',
+  accordion ? 'claro-details__content--accordion',
+  accordion_item ? 'claro-details__content--accordion-item',
+]
 %}
 <details{{ attributes.addClass(classes) }}>
   {%- if title -%}
@@ -67,20 +56,17 @@ Prefix 'details' class to avoid collision with Modernizr.
       required ? 'form-required',
       accordion ? 'claro-details__summary--accordion',
       accordion_item ? 'claro-details__summary--accordion-item',
-      element['#module_package_listing']  ? 'claro-details__summary--package-listing',
     ]
     %}
     <summary{{ summary_attributes.addClass(summary_classes) }}>
       {{- title -}}
-      {%- if required -%}
-        <span class="required-mark"></span>
-      {%- endif -%}
-      {% if description and description_toggle %}
-        {{ attach_library('gin/gin_description_toggle') }}
-        <button class="help-icon__description-toggle"></button>
-      {% endif %}
+      <span class="required-mark"></span>
     </summary>
   {%- endif -%}
+  {% if description and description_toggle %}
+    {{ attach_library('gin/gin_description_toggle') }}
+    <button class="help-icon__description-toggle"></button>
+  {% endif %}
   <div{{ content_attributes.addClass(content_wrapper_classes) }}>
     {% if accordion or accordion_item %}
     <div{{ create_attribute({class: inner_wrapper_classes}) }}>
@@ -92,7 +78,7 @@ Prefix 'details' class to avoid collision with Modernizr.
         </div>
       {% endif %}
       {%- if description -%}
-        <div{{ create_attribute({class: description_classes}) }}>{{ description }}</div>
+        <div class="claro-details__description{{ disabled ? ' is-disabled' }}">{{ description }}</div>
       {%- endif -%}
       {%- if children -%}
         {{ children }}

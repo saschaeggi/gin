@@ -7,6 +7,10 @@ table.diff {
     background-color: transparent;
   }
 
+  td {
+    height: initial;
+  }
+
   tr {
     color: var(--colorGinTitle);
 

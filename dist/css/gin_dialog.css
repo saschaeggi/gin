@@ -300,11 +300,14 @@
 .ui-dialog .form-textarea-wrapper textarea {
   max-width: 100%;
 }
+.ui-dialog .form-item--editor-format,
 .ui-dialog .form-element--editor-format {
   width: auto;
 }
+.ui-dialog .form-item--editor-format .form-item__label,
 .ui-dialog .form-element--editor-format .form-item__label {
   top: 3px;
+  padding-bottom: 0;
 }
 .ui-dialog .password-confirm {
   width: 100%;
@@ -515,11 +518,17 @@
   color: var(--colorGinTextLight);
 }
 .ui-dialog .form-item__label.form-required::after,
-.ui-dialog .fieldset__label.form-required::after {
+.ui-dialog .fieldset__label.form-required::after,
+.ui-dialog .form-required > .fieldset__label::after {
   content: "*";
   color: var(--colorGinDanger);
+  margin-right: 0.15em;
+  margin-left: 0.15em;
   vertical-align: text-top;
   background: none;
+}
+.ui-dialog .claro-details__summary:not(.form-required) .required-mark {
+  display: none;
 }
 .ui-dialog .form-item__warning {
   display: inline-block;
@@ -566,6 +575,9 @@
 }
 .ui-dialog .claro-autocomplete .form-autocomplete {
   width: 100%;
+}
+.ui-dialog .no-touchevents .form-element--type-select.form-element--extrasmall {
+  min-height: 1.75rem;
 }
 .gin--dark-mode .ui-dialog .cke .cke_inner,
 .gin--dark-mode .ui-dialog .cke .cke_wysiwyg_frame,

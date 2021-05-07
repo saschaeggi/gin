@@ -156,8 +156,6 @@ libraries-override:
       theme:
         dist/css/gin_dialog.css: false
 
-  media/media_embed_ckeditor_theme: false
-
 libraries-extend:
   ckeditor/drupal.ckeditor:
     - claro/ckeditor-editor
@@ -191,6 +189,8 @@ libraries-extend:
     - claro/ajax
   views/views.module:
     - claro/views
+  media/media_embed_ckeditor_theme:
+    - gin/gin_media_embed_ckeditor_theme
   media_library/view:
     - claro/media_library.theme
   media_library/widget:
