@@ -1,9 +1,9 @@
 .card {
   padding: 0;
   background: transparent;
-  border: 1px solid var(--colorGinBorder);
-  box-shadow: none;
+  border: 1px solid var(--colorGinTableBorder);
   border-radius: $borderDefault;
+  box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
   overflow: hidden;
 
   &-list {
@@ -31,10 +31,6 @@
     .gin--dark-mode & {
       background-color: var(--colorGinLayer2Background);
     }
-  }
-
-  &:hover &__content-wrapper {
-    background-color: var(--colorGinItemHover);
   }
 
   .heading-f {
