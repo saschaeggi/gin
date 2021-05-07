@@ -4869,8 +4869,11 @@ a.button.button--danger:active:before,
 .card {
   padding: 0;
   background: transparent;
-  border: 0 none;
+  border: 1px solid var(--colorGinBorder);
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border-radius: 6px;
+  overflow: hidden;
 }
 .card-list {
   margin-bottom: 2rem;
@@ -4894,6 +4897,9 @@ a.button.button--danger:active:before,
 }
 .gin--dark-mode .card__content-wrapper {
   background-color: var(--colorGinLayer2Background);
+}
+.card:hover .card__content-wrapper {
+  background-color: var(--colorGinItemHover);
 }
 .card .heading-f {
   color: var(--colorGinTitle);
