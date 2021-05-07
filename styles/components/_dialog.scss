@@ -4,6 +4,12 @@
   border-radius: $borderBig;
   background: var(--colorGinLayerBackground);
 
+  // Dialog without title
+  .ui-dialog-content:first-of-type {
+    border-top-left-radius: $borderBig;
+    border-top-right-radius: $borderBig;
+  }
+
   // Node actions placement
   .layout-region-node-actions {
     position: absolute;

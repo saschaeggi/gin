@@ -343,7 +343,7 @@ svg path:active {
     position: -webkit-sticky;
     position: sticky;
     top: 48px;
-    width: calc(100% - min(10vw, 128px) + 24px);
+    width: calc(100% - min(10vw, 96px) + 24px);
   }
   .gin--horizontal-toolbar .sticky-shadow {
     top: 102px;
@@ -489,7 +489,7 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
   width: -moz-max-content;
   width: max-content;
 }
-.gin-sticky [data-drupal-selector=edit-preview] {
+.gin-sticky [data-drupal-selector=edit-save] {
   margin-right: 0;
 }
 .gin-sticky .form-actions {
@@ -1705,8 +1705,8 @@ details summary {
 }
 .erl-item .paragraph .field--name-field-paragraphs .field__item,
 .layout-paragraphs-item .paragraph .field--name-field-paragraphs .field__item {
-  -ms-flex-preferred-size: 100px;
-      flex-basis: 100px;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
   margin-right: 0.5rem;
 }
 
@@ -2017,6 +2017,12 @@ details summary {
 }
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .claro-details__content .claro-details__wrapper {
   margin: 1.5rem;
+}
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-date {
+  max-width: 170px;
+}
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-time {
+  max-width: 134px;
 }
 .gin--edit-form .revision-current {
   background-color: var(--colorGinPrimaryLightActive);
@@ -3213,8 +3219,7 @@ details summary {
   border-radius: 12px;
 }
 .media-library-item--grid::before, .media-library-item--grid.is-hover::before, .media-library-item--grid.checked::before, .media-library-item--grid.is-focus::before {
-  border-color: transparent;
-  border-radius: 14px;
+  display: none;
 }
 .media-library-item--grid.sortable-chosen {
   background: var(--colorGinLayerBackground);
@@ -3237,8 +3242,12 @@ details summary {
 .media-library-item__content article {
   width: 100%;
 }
+.media-library-item__click-to-select-trigger {
+  overflow: inherit;
+}
 .media-library-item__name {
   color: var(--colorGinText);
+  word-break: break-all;
   text-overflow: initial;
   white-space: initial;
   overflow: visible;
@@ -3249,14 +3258,18 @@ details summary {
   padding: 0.5rem;
   background: none;
 }
+.media-library-item:focus .media-library-item__preview-wrapper {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
 .media-library-item__preview {
   position: relative;
   padding-bottom: 100%;
-  border: 3px solid transparent;
+  border: 1px solid var(--colorGinBorder);
   border-radius: 12px;
   overflow: hidden;
 }
-.media-library-item__preview .field--name-thumbnail img {
+.media-library-item__preview .field img {
   position: absolute;
   top: 0;
   left: 0;
@@ -3267,18 +3280,23 @@ details summary {
 }
 .media-library-item.is-hover .media-library-item__preview {
   border-color: var(--colorGinText);
+  -webkit-box-shadow: 0 0 0 2px var(--colorGinText);
+          box-shadow: 0 0 0 2px var(--colorGinText);
 }
 .media-library-item.checked .media-library-item__preview, .media-library-item.is-active .media-library-item__preview {
   border-color: var(--colorGinPrimary);
+  -webkit-box-shadow: 0 0 0 2px var(--colorGinPrimary);
+          box-shadow: 0 0 0 2px var(--colorGinPrimary);
 }
 .media-library-item .media-library-item__edit, .media-library-item .media-library-item__remove, .media-library-item .media-library-item__remove.button {
   border-color: var(--colorGinBorder) !important;
 }
-.media-library-item .media-library-item__edit:link, .media-library-item .media-library-item__edit:not(:hover):not(:checked), .media-library-item .media-library-item__remove:link, .media-library-item .media-library-item__remove:not(:hover):not(:checked), .media-library-item .media-library-item__remove.button:link, .media-library-item .media-library-item__remove.button:not(:hover):not(:checked) {
+.media-library-item .media-library-item__edit:link, .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__edit:not(:hover):not(:checked), .media-library-item .media-library-item__remove:link, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove:not(:hover):not(:checked), .media-library-item .media-library-item__remove.button:link, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus, .media-library-item .media-library-item__remove.button:not(:hover):not(:checked) {
   border-color: transparent !important;
 }
 .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus {
-  border-color: var(--colorGinPrimary) !important;
+  -webkit-box-shadow: 0 0 0 3px var(--colorGinFocus) !important;
+          box-shadow: 0 0 0 3px var(--colorGinFocus) !important;
 }
 .media-library-item .media-library-item__edit, .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__remove, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove.button, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus {
   width: 29px;
@@ -3308,13 +3326,22 @@ details summary {
 .media-library-item__click-to-select-checkbox .form-boolean:not(:hover):not(:checked), .gin--dark-mode .media-library-item__click-to-select-checkbox .form-boolean:not(:hover):not(:checked) {
   border-color: transparent !important;
 }
+.media-library-item__click-to-select-checkbox .form-boolean:focus, .gin--dark-mode .media-library-item__click-to-select-checkbox .form-boolean:focus {
+  -webkit-box-shadow: 0 0 0 3px var(--colorGinFocus) !important;
+          box-shadow: 0 0 0 3px var(--colorGinFocus) !important;
+}
 .media-library-item__click-to-select-checkbox .form-boolean:checked, .gin--dark-mode .media-library-item__click-to-select-checkbox .form-boolean:checked {
+  background-color: var(--colorGinPrimary);
   border-color: var(--colorGinPrimary);
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 .media-library-item .form-item {
   margin: 0.5rem;
+}
+.media-library-item .ajax-progress {
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .media-library-views-form {
@@ -3442,6 +3469,16 @@ table.sticky-header {
   z-index: 98;
   left: auto !important;
   background: transparent;
+  -webkit-transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
+}
+@media (min-width: 976px) {
+  .gin--vertical-toolbar table.sticky-header {
+    width: calc(100% - min(10vw, 96px) - 3rem - 72px) !important;
+  }
+  .gin--vertical-toolbar[data-toolbar-menu=open] table.sticky-header {
+    width: calc(100% - min(10vw, 96px) - 3rem - 240px) !important;
+  }
 }
 table.sticky-header th:first-child {
   border-top-left-radius: 0;
@@ -3502,6 +3539,9 @@ table td .group-label {
   color: var(--colorGinTitle);
 }
 
+.sortable-heading {
+  padding: 0.5rem 1rem;
+}
 .sortable-heading > a::after {
   background: var(--colorGinTextLight);
   -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' d='M3 12h14M3 6h18M3 18h10' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
@@ -3814,7 +3854,9 @@ body .cke_notification_info .cke_notification_close {
 .form-element--type-select--small {
   font-size: 0.79rem;
   min-height: 2.25rem;
-  line-height: 1;
+  line-height: 1.2;
+  padding-top: 0.474rem;
+  padding-bottom: 0.474rem;
   background-position: 100% 52%;
 }
 
@@ -4040,8 +4082,8 @@ fieldset:not(.fieldgroup) > .fieldset-wrapper {
           mask-size: 100% 100%;
 }
 
-.form-wrapper label,
-.form-composite label {
+.form-wrapper .form-item__label,
+.form-composite .form-item__label {
   color: var(--colorGinText);
   position: relative;
   padding-bottom: 4px;
@@ -4255,6 +4297,9 @@ a.button:active {
 .dropbutton__item:first-of-type > *, .dropbutton__toggle {
   background: none;
   white-space: nowrap;
+}
+.js .dropbutton--multiple .dropbutton__item:first-of-type:last-of-type > * {
+  border-radius: 2px;
 }
 .dropbutton__toggle {
   top: 2px;
@@ -4654,8 +4699,8 @@ a.button.button--danger:active:before,
   text-indent: -99999px;
   border-radius: 50%;
   border-color: transparent !important;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  -webkit-transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .messages .button--dismiss:hover:not(:focus) {
   color: transparent;
@@ -4984,6 +5029,10 @@ table.diff tr .diff-addedline .diffchange {
   border-radius: 12px;
   background: var(--colorGinLayerBackground);
 }
+.ui-dialog:not(.ui-dialog-off-canvas) .ui-dialog-content:first-of-type {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
 .ui-dialog:not(.ui-dialog-off-canvas) .layout-region-node-actions {
   position: absolute;
   bottom: 0;
@@ -5131,7 +5180,9 @@ table.treetable tr.branch {
   background-color: transparent;
 }
 
-.ajax-progress__throbber {
+.ajax-progress__throbber, .ajax-progress__throbber--fullscreen,
+.ui-dialog .ajax-progress__throbber,
+.media-library-item .ajax-progress__throbber {
   border: 3px solid var(--colorGinPrimary);
   border-right: 3px dotted transparent;
 }
@@ -5144,7 +5195,7 @@ table.treetable tr.branch {
   -webkit-box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
           box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
 }
-.gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber {
+.gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber, .gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber--fullscreen {
   border: 3px solid var(--colorGinAppBackground);
   border-right: 3px dotted transparent;
 }
@@ -5629,6 +5680,10 @@ tr.color-error:focus,
   height: 24px;
 }
 
+.view-watchdog .view-content {
+  padding-top: 0;
+}
+
 .divider {
   background-color: var(--colorGinBorder);
 }
@@ -5968,10 +6023,10 @@ tr.color-error:focus,
 .gin--dark-mode [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item--classic-toolbar input[data-gin-toolbar=horizontal] {
   background-image: url(../media/toolbar_minimal_darkmode.png?d7d29be5f8d86056a08298146e667fcb);
 }
-[data-drupal-selector=edit-classic-toolbar] .form-radios .form-item--classic-toolbar input[data-gin-toolbar=legacy] {
+[data-drupal-selector=edit-classic-toolbar] .form-radios .form-item--classic-toolbar input[data-gin-toolbar=classic] {
   background-image: url(../media/toolbar_legacy.png?a29dfb6b845b0acffb7eb5b1cdd21e4f);
 }
-.gin--dark-mode [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item--classic-toolbar input[data-gin-toolbar=legacy] {
+.gin--dark-mode [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item--classic-toolbar input[data-gin-toolbar=classic] {
   background-image: url(../media/toolbar_legacy_darkmode.png?2913bf95be57316beaa5f77c75417cde);
 }
 [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item--classic-toolbar .form-item__label {
@@ -6192,10 +6247,8 @@ tr.color-error:focus,
   border-radius: 14px;
   position: relative;
 }
-.gin-entity-browser .entity-browser-form .views-row:hover, .gin-entity-browser .entity-browser-form .views-row:focus {
+.gin-entity-browser .entity-browser-form .views-row .views-field-thumbnail__target-id:hover, .gin-entity-browser .entity-browser-form .views-row .views-field-thumbnail__target-id:focus {
   cursor: pointer;
-}
-.gin-entity-browser .entity-browser-form .views-row:hover .views-field-thumbnail__target-id, .gin-entity-browser .entity-browser-form .views-row:focus .views-field-thumbnail__target-id {
   border-color: var(--colorGinPrimary);
 }
 .gin-entity-browser .entity-browser-form .views-row .views-field-name {
@@ -6244,4 +6297,11 @@ tr.color-error:focus,
 }
 .eb-tabs ul {
   border-bottom: none;
+}
+
+#autosave-notification {
+  font-size: 0.975rem;
+  bottom: 8px;
+  right: 8px;
+  border-radius: 4px;
 }

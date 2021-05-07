@@ -6,7 +6,7 @@ icon_default: true
 icon_path: ''
 high_contrast_mode: false
 show_description_toggle: true
-show_user_theme_settings: true
+show_user_theme_settings: false
 third_party_settings:
   shortcut:
     module_link: true

@@ -146,7 +146,7 @@
         }
 
         // Classic/Legacy
-        &[data-gin-toolbar=legacy] {
+        &[data-gin-toolbar=classic] {
           background-image: url(../media/settings/toolbar_legacy.png);
 
           .gin--dark-mode & {

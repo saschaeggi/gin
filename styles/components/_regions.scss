@@ -140,7 +140,7 @@
   @include mq($breakpointLarge) {
     position: sticky;
     top: 48px;
-    width: calc(100% - min(10vw, 128px) + 24px);
+    width: calc(100% - min(10vw, 96px) + 24px);
 
     // Modern, horizontal toolbar
     .gin--horizontal-toolbar & {
@@ -271,7 +271,7 @@ body:not(.toolbar-tray-open) .layout-container {
   align-items: center;
   width: max-content;
 
-  [data-drupal-selector=edit-preview] {
+  [data-drupal-selector=edit-save] {
     margin-right: 0;
   }
 

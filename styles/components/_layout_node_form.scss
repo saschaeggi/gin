@@ -184,6 +184,16 @@
               margin: 1.5rem;
             }
           }
+
+          .form-datetime-wrapper {
+            .form-date {
+              max-width: 170px;
+            }
+
+            .form-time {
+              max-width: 134px;
+            }
+          }
         }
       }
     }
