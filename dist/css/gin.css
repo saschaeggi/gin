@@ -489,7 +489,7 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
   width: -moz-max-content;
   width: max-content;
 }
-.gin-sticky [data-drupal-selector=edit-save] {
+.gin-sticky [data-drupal-selector=edit-submit] {
   margin-right: 0;
 }
 .gin-sticky .form-actions {
@@ -4986,6 +4986,10 @@ hr {
           box-shadow: inset 0 0 0 2px var(--colorGinFocus);
 }
 
+.page-wrapper *:focus {
+  border-radius: 2px;
+}
+
 .page-wrapper *:focus,
 .ui-dialog *:focus,
 .dropbutton__item:first-of-type > *:focus:hover,
@@ -5628,7 +5632,6 @@ tr.color-error:focus,
 .upgrade-status-counter {
   height: auto;
   padding: 16px 0;
-  border: 1px solid var(--colorGinLayerBorder);
   background: var(--colorGinLayerBackground);
 }
 .system-status-counter__status-title,
@@ -5665,11 +5668,8 @@ tr.color-error:focus,
   border-bottom: 0 none;
 }
 .system-status-general-info__item {
-  border-top: 0 none;
+  padding: 1rem;
   background: transparent;
-}
-.system-status-general-info__item:nth-child(2), .system-status-general-info__item:nth-child(4), .system-status-general-info__item:nth-child(5) {
-  border-left: 0 none;
 }
 .system-status-general-info__item-title {
   font-size: 1rem;
