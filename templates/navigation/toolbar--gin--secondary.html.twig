@@ -45,8 +45,10 @@
 
       {# All items except main nav #}
       {% if item_id[0] not in denylist_items %}
-        <div{{ tab.attributes.addClass(tab_classes) }}>
-          {% if item_id[0] == 'toolbar-id--toolbar-icon-user' and user_picture %}
+        {% set has_user_picture = item_id[0] == 'toolbar-id--toolbar-icon-user' and user_picture %}
+        {% set user_class = has_user_picture ? 'has-user-icon' : false %}
+        <div{{ tab.attributes.addClass(tab_classes, user_class) }}>
+          {% if has_user_picture %}
             <a href="/user/{{ user.id }}" class="toolbar-item icon-user" role="button" id="toolbar-item-user">
               <img src="{{ user_picture }}" alt="{{ user.account.name }}" class="icon-user__image" />
             </a>

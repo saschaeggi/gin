@@ -391,11 +391,11 @@
   background-image: none;
 }
 
-.toolbar .toolbar-icon.toolbar-handle:before, .toolbar .toolbar-handle.responsive-preview-icon:before,
-.toolbar .toolbar-icon.toolbar-handle.open:before,
-.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle:before,
-.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open:before,
-.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:before {
+.toolbar .toolbar-icon.toolbar-handle::before, .toolbar .toolbar-handle.responsive-preview-icon::before,
+.toolbar .toolbar-icon.toolbar-handle.open::before,
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle::before,
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open::before,
+.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded::before {
   content: "";
   display: block;
   position: absolute;
@@ -403,7 +403,7 @@
   top: 18px;
   width: 16px;
   height: 16px;
-  background-color: var(--colorGinPrimary);
+  background-color: var(--colorGinDisabled);
   -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' d='M8 20l8-8-8-8' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
           mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' d='M8 20l8-8-8-8' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
   -webkit-mask-repeat: no-repeat;
@@ -412,6 +412,21 @@
           mask-position: center center;
   -webkit-mask-size: 14px 14px;
           mask-size: 14px 14px;
+}
+.toolbar .toolbar-icon.toolbar-handle.menu-item--active-trail::before, .toolbar .toolbar-handle.menu-item--active-trail.responsive-preview-icon::before, .toolbar .toolbar-icon.toolbar-handle:hover::before, .toolbar .toolbar-handle.responsive-preview-icon:hover::before, .toolbar .toolbar-icon.toolbar-handle:focus::before, .toolbar .toolbar-handle.responsive-preview-icon:focus::before,
+.toolbar .toolbar-icon.toolbar-handle.open.menu-item--active-trail::before,
+.toolbar .toolbar-icon.toolbar-handle.open:hover::before,
+.toolbar .toolbar-icon.toolbar-handle.open:focus::before,
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.menu-item--active-trail::before,
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle:hover::before,
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle:focus::before,
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open.menu-item--active-trail::before,
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open:hover::before,
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open:focus::before,
+.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded.menu-item--active-trail::before,
+.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:hover::before,
+.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:focus::before {
+  background-color: var(--colorGinPrimary);
 }
 
 .toolbar .toolbar-tray-vertical .toolbar-menu a,

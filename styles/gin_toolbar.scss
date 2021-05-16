@@ -12,7 +12,7 @@
 @import "components/responsive-preview";
 @import "components/node-preview";
 
-$toolbarIconSize: 21px;
+$toolbarIconSize: 20px;
 
 // Scroll Offset
 :root {
@@ -96,7 +96,7 @@ $toolbarIconSize: 21px;
 
       @include mq($breakpointMedium) {
         font-size: 0;
-        height: $stickyBar;
+        height: 80px;
         transition: top $transition;
         mask-size: 100% 100%;
       }
@@ -118,7 +118,7 @@ $toolbarIconSize: 21px;
       }
 
       &::after {
-        top: 18px;
+        display: none;
       }
 
       &:focus {
@@ -377,8 +377,8 @@ a.toolbar-menu__trigger,
           color: var(--colorGinTextLight);
           display: flex;
           align-items: center;
-          width: 216px;
-          height: 56px;
+          width: #{$toolbarOpenWidth - 16px};
+          height: 48px;
           padding-left: #{$toolbarWidth - 8px};
           padding-right: 0;
           margin: 0 8px;
@@ -412,12 +412,12 @@ a.toolbar-menu__trigger,
           display: none;
           position: fixed;
           top: 0;
-          margin-left: ($toolbarWidth - 2px);
+          margin-left: $toolbarWidth;
           width: $subToolbarWidth;
           height: 100vh;
           max-width: calc(100% - #{$topBar});
           box-shadow: none;
-          border-left: 1px solid rgba(216, 217, 224, 0.8);
+          border-left: 1px solid var(--colorGinLayerBorder);
           overflow-y: auto;
           overflow-x: hidden;
 
@@ -444,27 +444,35 @@ a.toolbar-menu__trigger,
 
           &__title,
           &__sub-title {
+            position: relative;
             display: block;
             min-height: 36px;
-            font-size: 2em;
-            font-weight: normal;
+            font-size: 1.75em;
             letter-spacing: -.025em;
             padding: 0;
-            margin: 0;
+            margin: 1.25rem .75rem 1.5rem .75rem;
 
             a {
+              font-weight: 500;
               color: var(--colorGinTitle);
-              padding: 32px 24px 36px 24px;
+              padding: .75rem;
+              border-radius: $borderDefault;
+
+              // &::before {
+              //   top: 14px;
+              //   right: 8px;
+              // }
             }
           }
 
           &__sub-title {
-            font-size: 1.667em;
+            font-size: 1.375em;
             letter-spacing: -.01em;
-            margin-bottom: 5px;
+            margin-top: 1.375rem;
+            margin-bottom: 1.4rem;
 
             a {
-              padding: 36px 24px 36px 24px;
+              padding: .9rem .75rem;
             }
           }
 
@@ -474,9 +482,9 @@ a.toolbar-menu__trigger,
             border-bottom: 0 none;
 
             .toolbar-icon {
-              font-size: 1rem;
-              padding: 1.125em 2rem 1.125em 1.5rem;
-              margin: .25em .5em;
+              font-size: .9375rem;
+              padding: 1em 2rem 1em .75rem;
+              margin: .25em .75rem;
               border-radius: $borderDefault;
               overflow: hidden;
             }
@@ -507,6 +515,7 @@ a.toolbar-menu__trigger,
     }
 
     .menu-item.hover-intent > .toolbar-menu {
+      z-index: 2;
       display: block;
       border-right: 1px solid rgba(0,0,0,.075);
       box-shadow: 7px 0px 16px rgba(0,0,0,.075);
@@ -514,6 +523,10 @@ a.toolbar-menu__trigger,
 
     .menu-item .menu-item:hover > .toolbar-icon {
       background: var(--colorGinPrimaryLight);
+    }
+
+    .menu-item .menu-item.hover-intent:hover > .toolbar-icon {
+      color: var(--colorGinPrimaryHover);
     }
   }
 
@@ -566,8 +579,8 @@ a.toolbar-menu__trigger,
 
   &::before {
     z-index: 1;
-    top: 18px;
-    right: 24px;
+    top: 14px;
+    right: 20px;
   }
 }
 
@@ -594,6 +607,7 @@ a.toolbar-menu__trigger,
   &:hover > .toolbar-icon,
   > .toolbar-icon:focus,
   &.hover-intent > .toolbar-icon {
+  // &.menu-item--active-trail > .toolbar-icon {
     box-shadow: none;
 
     &::before {
@@ -604,10 +618,10 @@ a.toolbar-menu__trigger,
       content: "";
       display: block;
       position: absolute;
-      top: .125em;
-      left: #{round(($toolbarWidth - 52) / 2 - 8)};
-      width: 52px;
-      height: 52px;
+      top: 4px;
+      left: #{round(($toolbarWidth - 40px) / 2 - 8)};
+      width: 40px;
+      height: 40px;
       background: var(--colorGinPrimaryLight);
       border-radius: $borderDefault;
     }
@@ -625,13 +639,35 @@ a.toolbar-menu__trigger,
 [data-toolbar-menu='open'] .toolbar-menu-administration > .toolbar-menu > .menu-item {
   &:not(.hover-intent) > .toolbar-icon {
     &::after {
-      width: 213px;
+      width: #{$toolbarOpenWidth - 16px - 12px};
     }
   }
 
   &.menu-item--expanded:hover > .toolbar-icon {
     &::after {
-      width: 52px;
+      width: 40px;
     }
   }
 }
+
+// New navigation approach.
+// .toolbar-fixed[data-toolbar-menu=open] {
+//   @include mq($breakpointMedium) {
+//     padding-left: #{$toolbarWidth + $subToolbarWidth};
+
+//     .toolbar-menu-administration > .toolbar-menu > .menu-item--active-trail > .toolbar-menu {
+//       z-index: 1;
+//       display: block;
+//       border-right: 1px solid var(--colorGinLayerBorder);
+//       box-shadow: 7px 0px 16px rgba(0,0,0,.075);
+
+//       > li {
+//         float: none;
+//       }
+//     }
+
+//     .toolbar-menu-administration > .toolbar-menu > .menu-item:not(.menu-item--active-trail) > .toolbar-menu {
+//       box-shadow: none;
+//     }
+//   }
+// }

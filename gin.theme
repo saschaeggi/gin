@@ -384,19 +384,36 @@ function gin_preprocess_select(&$variables) {
  */
 function gin_preprocess_menu(&$variables) {
   if (isset($variables['theme_hook_original']) && $variables['theme_hook_original'] == 'menu__toolbar__admin') {
-    $moduleHandler = \Drupal::service('module_handler');
-
     // Check if the admin_toolbar module is installed.
     foreach ($variables['items'] as $key => $item) {
       $gin_id = str_replace('.', '-', $key);
-
       $variables['items'][$key]['gin_id'] = $gin_id;
-
-      if ($moduleHandler->moduleExists('admin_toolbar')) {
-        $variables['items'][$key]['gin_admin_toolbar_module'] = TRUE;
-      }
     }
+
+    // Move config & help menu items to end.
+    $variables['items'] += array_splice($variables['items'], array_search('system.admin_config', array_keys($variables['items'])), 1);
+    $variables['items'] += array_splice($variables['items'], array_search('system.admin_reports', array_keys($variables['items'])), 1);
+    $variables['items'] += array_splice($variables['items'], array_search('help.main', array_keys($variables['items'])), 1);
   }
+}
+
+/**
+ * Implements hook_preprocess_menu__toolbar__gin().
+ */
+function gin_preprocess_menu__toolbar__gin(&$variables) {
+  // Get theme settings.
+  /** @var \Drupal\gin\GinSettings $settings */
+  $settings = \Drupal::classResolver(GinSettings::class);
+  $logo_path = $settings->getDefault('icon_path');
+  $logo_default = $settings->getDefault('icon_default');
+  $variables['icon_default'] = $logo_default;
+
+  if (!$logo_default) {
+    $variables['icon_path'] = $logo_path;
+  }
+
+  // Expose Toolbar variant.
+  $variables['toolbar_variant'] = $settings->get('classic_toolbar');
 }
 
 /**
@@ -469,21 +486,6 @@ function gin_css_alter(&$css, $assets) {
     // as CSS_AGGREGATE_THEME is set to 100.
     // Let's be on the safe side and assign a high number to it.
     $css[$path]['group'] = 200;
-  }
-}
-
-/**
- * Implements hook_preprocess_menu__toolbar__gin().
- */
-function gin_preprocess_menu__toolbar__gin(&$variables) {
-  // Get theme settings.
-  $settings = \Drupal::classResolver(GinSettings::class);
-  $logo_path = $settings->getDefault('icon_path');
-  $logo_default = $settings->getDefault('icon_default');
-  $variables['icon_default'] = $logo_default;
-
-  if (!$logo_default) {
-    $variables['icon_path'] = $logo_path;
   }
 }
 

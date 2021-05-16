@@ -459,7 +459,7 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
     margin-left: 0;
   }
   .gin--vertical-toolbar .layout-node-form__actions {
-    left: 72px;
+    left: 68px;
   }
   .gin--vertical-toolbar[data-toolbar-menu=open] .layout-node-form__actions {
     left: 240px;
@@ -723,8 +723,9 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 .shortcut-action__message {
   position: absolute;
   pointer-events: none;
-  color: var(--colorGinText);
-  background: var(--colorGinLayer2Background);
+  padding: 0.5rem;
+  color: var(--colorGinContextualText);
+  background: var(--colorGinContextual);
   border-radius: 4px;
 }
 
@@ -1941,6 +1942,10 @@ details summary {
     overflow: hidden;
   }
 }
+.gin--edit-form .page-wrapper__node-edit-form .node-form {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
 @media (min-width: 1440px) {
   .gin--edit-form .page-wrapper__node-edit-form .node-form {
     padding-left: 2.5rem;
@@ -2974,6 +2979,9 @@ details summary {
 .views-exposed-form.views-exposed-form {
   padding-top: 8px;
 }
+.views-exposed-form.views-exposed-form .form-element--type-select {
+  max-width: 240px;
+}
 
 .view-files .view-content {
   padding-top: 0;
@@ -3522,7 +3530,7 @@ table.sticky-header {
 }
 @media (min-width: 976px) {
   .gin--vertical-toolbar table.sticky-header {
-    width: calc(100% - min(10vw, 96px) - 3rem - 72px) !important;
+    width: calc(100% - min(10vw, 96px) - 3rem - 68px) !important;
   }
   .gin--vertical-toolbar[data-toolbar-menu=open] table.sticky-header {
     width: calc(100% - min(10vw, 96px) - 3rem - 240px) !important;
@@ -4986,7 +4994,7 @@ hr {
           box-shadow: inset 0 0 0 2px var(--colorGinFocus);
 }
 
-.page-wrapper *:focus {
+.page-wrapper a:focus {
   border-radius: 2px;
 }
 
@@ -6009,6 +6017,9 @@ tr.color-error:focus,
 }
 [data-drupal-selector=edit-preset-accent-color] .form-radios .form-item--preset-accent-color input[data-gin-accent=custom] {
   background-color: #fff;
+  background-image: url(../media/custom-color.jpg?2aa765af08565ac6e4553f4bc31daff5);
+  background-size: 100%;
+  background-repeat: no-repeat;
   border-color: var(--colorGinBorder);
 }
 [data-drupal-selector=edit-preset-accent-color] .form-radios .form-item--preset-accent-color input[data-gin-accent=custom]:checked {

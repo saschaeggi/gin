@@ -110,6 +110,10 @@
 
 .views-exposed-form.views-exposed-form {
   padding-top: 8px;
+
+  .form-element--type-select {
+    max-width: 240px;
+  }
 }
 
 .view-files .view-content {

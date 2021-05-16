@@ -151,7 +151,12 @@
           border-radius: $borderSmall 0 $borderSmall $borderSmall;
         }
 
+
         // If custom user image
+        &:not(.has-user-icon) {
+          margin-right: -1.333em;
+        }
+
         .icon-user ~ .toolbar-tray {
           border-radius: $borderSmall;
         }
