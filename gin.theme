@@ -393,9 +393,13 @@ function gin_preprocess_menu(&$variables) {
     }
 
     // Move config & help menu items to end.
-    $variables['items'] += array_splice($variables['items'], array_search('system.admin_config', array_keys($variables['items'])), 1);
-    $variables['items'] += array_splice($variables['items'], array_search('system.admin_reports', array_keys($variables['items'])), 1);
-    $variables['items'] += array_splice($variables['items'], array_search('help.main', array_keys($variables['items'])), 1);
+    $to_move = ['system.admin_config', 'system.admin_reports', 'help.main'];
+    foreach ($to_move as $id) {
+      $index = array_search($id, array_keys($variables['items']));
+      if (is_numeric($index)) {
+        $variables['items'] += array_splice($variables['items'], $index, 1);
+      }
+    }
   }
 }
 
