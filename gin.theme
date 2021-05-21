@@ -179,9 +179,11 @@ function gin_form_alter(&$form, $form_state, $form_id) {
   if (_gin_is_content_form($form, $form_state, $form_id)) {
     // Action buttons.
     if (isset($form['actions'])) {
-      // Put Save after Preview.
-      $save_weight = $form['actions']['preview']['#weight'] ? $form['actions']['preview']['#weight'] + 1 : 11;
-      $form['actions']['submit']['#weight'] = $save_weight;
+      if (isset($form['actions']['preview'])) {
+        // Put Save after Preview.
+        $save_weight = $form['actions']['preview']['#weight'] ? $form['actions']['preview']['#weight'] + 1 : 11;
+        $form['actions']['submit']['#weight'] = $save_weight;
+      }
 
       // Create gin_actions group.
       $form['gin_actions'] = [
