@@ -1390,6 +1390,7 @@ details summary {
       -ms-flex-pack: start;
           justify-content: flex-start;
   overflow-y: hidden;
+  padding-bottom: 0.25rem;
 }
 .erl-add-more-menu__group--layout:not(:empty)::before, .erl-add-more-menu__group--content::before,
 .layout-paragraphs-add-more-menu__group--layout:not(:empty)::before,
@@ -1400,10 +1401,6 @@ details summary {
   padding: 1rem 1rem 0;
   font-size: 14px;
   opacity: 0.4;
-}
-.erl-add-more-menu__group--layout:not(:empty),
-.layout-paragraphs-add-more-menu__group--layout:not(:empty) {
-  border-bottom: 1px solid var(--colorGinLayerBorder);
 }
 .erl-add-more-menu__group--layout:not(:empty)::before,
 .layout-paragraphs-add-more-menu__group--layout:not(:empty)::before {
@@ -1416,6 +1413,17 @@ details summary {
 .erl-add-more-menu__group--content::before,
 .layout-paragraphs-add-more-menu__group--content::before {
   content: "Content";
+}
+.erl-add-more-menu__group--layout + .erl-add-more-menu__group--content,
+.erl-add-more-menu__group--layout + .layout-paragraphs-add-more-menu__group--content,
+.layout-paragraphs-add-more-menu__group--layout + .erl-add-more-menu__group--content,
+.layout-paragraphs-add-more-menu__group--layout + .layout-paragraphs-add-more-menu__group--content {
+  margin-top: -2.6rem;
+  margin-bottom: -2.6rem;
+  z-index: 1;
+  position: relative;
+  background: var(--colorGinLayer3Background);
+  border-top: 1px solid var(--colorGinLayerBorder);
 }
 
 .erl-add-more-menu,
@@ -1446,6 +1454,14 @@ details summary {
   display: flex;
   -ms-flex-item-align: stretch;
       align-self: stretch;
+}
+.erl-add-more-menu__item:last-of-type,
+.layout-paragraphs-add-more-menu__item:last-of-type {
+  margin-bottom: 2.5rem;
+}
+.erl-add-more-menu__item.hidden,
+.layout-paragraphs-add-more-menu__item.hidden {
+  display: none;
 }
 .erl-add-more-menu__item a,
 .layout-paragraphs-add-more-menu__item a {
