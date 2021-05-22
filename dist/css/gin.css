@@ -826,6 +826,9 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
   }
 }
 
+.breadcrumb-wrapper {
+  width: 1px;
+}
 .breadcrumb__item, .breadcrumb__link {
   font-weight: normal;
   color: var(--colorGinTextLight);
@@ -849,6 +852,11 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 }
 .breadcrumb__link {
   border-radius: 2px;
+}
+.breadcrumb__list {
+  text-overflow: ellipsis;
+  width: auto;
+  overflow: hidden;
 }
 
 .modules-table-filter {
