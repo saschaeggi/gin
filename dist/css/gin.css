@@ -1412,7 +1412,7 @@ details summary {
 }
 .erl-add-more-menu__group--layout:not(:empty)::before,
 .layout-paragraphs-add-more-menu__group--layout:not(:empty)::before {
-  content: "Layout";
+  content: var(--ginLPLayoutLabel, "Layout");
   display: block;
   width: 100%;
   padding-left: 0;
@@ -1420,7 +1420,7 @@ details summary {
 }
 .erl-add-more-menu__group--content::before,
 .layout-paragraphs-add-more-menu__group--content::before {
-  content: "Content";
+  content: var(--ginLPContentLabel, "Content");
 }
 .erl-add-more-menu__group--layout + .erl-add-more-menu__group--content,
 .erl-add-more-menu__group--layout + .layout-paragraphs-add-more-menu__group--content,

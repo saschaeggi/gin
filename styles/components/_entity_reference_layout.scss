@@ -272,7 +272,7 @@
 
   &--layout:not(:empty) {
     &::before {
-      content: "Layout";
+      content: var(--ginLPLayoutLabel, 'Layout');
       display: block;
       width: 100%;
       padding-left: 0;
@@ -281,7 +281,7 @@
   }
 
   &--content::before {
-    content: "Content";
+    content: var(--ginLPContentLabel, 'Content');
   }
 
   &--layout + &--content {
