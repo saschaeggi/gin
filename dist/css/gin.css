@@ -2163,7 +2163,7 @@ details summary {
   padding: 0.25rem;
 }
 .paragraphs-tabs-wrapper .field-multiple-table .draggable td + td {
-  width: 100%;
+  width: auto;
 }
 .paragraphs-tabs-wrapper .field-multiple-table .draggable .td__order {
   width: 100%;
