@@ -4,8 +4,11 @@
 
 .page-wrapper *:focus,
 .ui-dialog *:focus,
-.dropbutton__item:first-of-type > *:focus:hover,
-.dropbutton__item:first-of-type > .button:focus:hover,
+.dropbutton .dropbutton__item > *:focus,
+.dropbutton .dropbutton__item > *:focus:hover,
+.dropbutton__items > .dropbutton__item:first-of-type > *:focus,
+.dropbutton__items > .dropbutton__item:first-of-type ~ .dropbutton__item > *:focus,
+.dropbutton__items > .dropbutton__item:first-of-type ~ .dropbutton__item > *:focus:hover,
 .form-boolean:focus:active,
 .form-boolean:focus:hover,
 .cke.cke_chrome.cke_focus,
@@ -58,9 +61,4 @@
 .vertical-tabs__menu-item:focus {
   outline: 0;
   box-shadow: none;
-}
-
-.dropbutton__item:first-of-type ~ .dropbutton__item > *:focus {
-  border-color: var(--colorGinFocus) !important;
-  box-shadow: inset 0 0 0 1px var(--colorGinFocus), 0 0 0 1px var(--colorGinFocus);
 }

@@ -1,17 +1,25 @@
 .dropbutton {
-  // background: var(--colorGinPrimaryLightHover);
   border: 2px solid var(--colorGinPrimary);
-  // border: 2px solid transparent;
   border-radius: $borderDefault;
   box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
-  // box-shadow: 0 1px 2px var(--colorGinPrimaryLightShadow);
+
+  // Offset for select button on first item
+  &--multiple > .dropbutton__item:first-of-type {
+    margin-right: 3rem;
+    border-right: 1px solid var(--colorGinPrimaryLightActive);
+
+    input {
+      background-color: transparent;
+      border: 1px solid transparent !important;
+    }
+  }
 
   .gin--dark-mode & {
     box-shadow: 0 4px 18px var(--colorGinButtonShadow);
   }
 
   &:hover {
-    border-color: var(--colorGinPrimaryHover);
+    border-color: var(--colorGinPrimary);
   }
 
   &:active, &:focus {
@@ -28,99 +36,177 @@
     white-space: nowrap;
   }
 
-  // Mutiple Dropbutton only has one item
-  &__item:first-of-type:last-of-type > * {
-    .js .dropbutton--multiple & {
-      border-radius: 2px;
-    }
-  }
-
   &__toggle {
     top: 2px;
     right: 2px;
-  }
 
-  &__item {
-    &:first-of-type ~ .dropbutton__item {
-      background-color: var(--colorGinBackground);
-
-      > a,
-      > .button {
-        color: var(--colorGinPrimaryActive);
-        background: var(--colorGinLayer3Background);
-        white-space: nowrap;
-
-        &:hover, &:active, &:focus {
-          color: var(--colorGinAppBackground);
-          background: var(--colorGinPrimary);
-        }
-      }
-
-      &, &:last-child {
-        border: 0 none;
-      }
+    &:hover {
+      background-color: var(--colorGinPrimary);
     }
-  }
 
-  &__toggle::before {
-    background-image: none;
-    background-color: var(--colorGinPrimaryActive);
-    mask-image: icon('drop');
-    mask-repeat: no-repeat;
-    mask-position: center center;
-    mask-size: 12px 12px;
-  }
+    &::before {
+      background-image: none;
+      background-color: var(--colorGinPrimary);
+      mask-image: icon('drop');
+      mask-repeat: no-repeat;
+      mask-position: center center;
+      mask-size: 12px 12px;
+    }
 
-  &__toggle {
     &:hover::before,
     &:active::before,
     &:focus::before {
       background-color: var(--colorGinButtonText);
     }
   }
-}
 
-.js .dropbutton {
-  height: 3rem;
-  min-height: 3rem;
-}
-
-.js.no-touchevents .dropbutton--small {
-  height: 2rem;
-  min-height: 2rem;
-}
-
-.js.no-touchevents .dropbutton--extrasmall {
-  height: 1.5rem;
-  min-height: 1.5rem;
-}
-
-.js .dropbutton--multiple .dropbutton__item:first-of-type {
-  margin-right: 0;
-
-  &:not(:last-of-type) {
-    margin-right: calc(3rem + 1px);
+  & &__items {
+    position: absolute;
+    right: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 120px;
+    background: var(--colorGinLayer3Background);
+    border-radius: $borderSmall;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .08),
+                20px 20px 40px rgba(0, 0, 0, .12);
   }
 
-  > .button {
-    border-color: transparent !important;
-
-    &:hover {
-      color: var(--colorGinButtonText);
-      background-color: var(--colorGinPrimary);
+  & > &__items > .dropbutton__item:first-of-type {
+    > a,
+    > input,
+    > .button {
+      border-radius: $borderSmall $borderSmall 0 0;
     }
   }
-}
 
-.js.no-touchevents .dropbutton--multiple.dropbutton--extrasmall .dropbutton__item:first-of-type {
-  margin-right: 0;
+  // The ugly part: make it work for all different dropbutton versions out there
+  &:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item,
+  & &__items > .dropbutton__item,
+  & &__items > .dropbutton__item ~ .dropbutton__item {
+    background-color: var(--colorGinBackground);
+    border: 0 none;
 
-  &:not(:last-of-type) {
-    margin-right: 1.5rem;
-    border-right: 1px solid var(--colorGinPrimaryLightActive);
+    &:first-of-type {
+      margin-right: 0;
+    }
+
+    // Mutiple Dropbutton only has one item
+    &:first-of-type:last-of-type > * {
+      .js .dropbutton--multiple & {
+        border-radius: 2px;
+      }
+    }
+
+    > a,
+    > input,
+    > .button {
+      font-weight: bold;
+      text-align: left;
+      white-space: nowrap;
+      color: var(--colorGinPrimary);
+      display: block;
+      width: 100%;
+      margin: 0;
+      border: 0 none !important;
+      border-radius: 0;
+      background: var(--colorGinLayer3Background);
+      box-shadow: none;
+      box-sizing: border-box;
+
+      &:hover, &:active, &:focus {
+        color: var(--colorGinAppBackground);
+        background: var(--colorGinPrimary);
+        border-radius: $borderSmall;
+      }
+    }
+  }
+
+  & > .dropbutton__item:first-of-type {
+    > a,
+    > input,
+    > .button {
+      &:hover, &:active, &:focus {
+        color: var(--colorGinAppBackground);
+        background: var(--colorGinPrimary);
+        border: 1px solid transparent !important;
+      }
+    }
+  }
+
+  &:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item:last-of-type,
+  & &__items > .dropbutton__item:last-of-type {
+    > a,
+    > input,
+    > .button {
+      border-radius: 0 0 $borderSmall $borderSmall;
+    }
+  }
+
+  & &__items > .dropbutton__item {
+    border-radius: $borderSmall;
+  }
+
+  &:not(.dropbutton--gin) > .dropbutton__item:not(:first-of-type),
+  & &__items > .dropbutton__item,
+  & > &__items > .dropbutton__item ~ .dropbutton__item {
+    > a,
+    > input,
+    > .button {
+      padding: .75em !important;
+    }
+  }
+
+  &__item:first-of-type ~ .dropbutton__item > *:hover {
+    background-color: var(--colorGinLayer3Background);
+  }
+
+  &__item ~ .dropbutton__item:last-child {
+    border-color: var(--colorGinPrimary);
   }
 }
 
-.no-touchevents .dropbutton__item--extrasmall:first-of-type > * {
-  line-height: .8rem;
+.js {
+  .dropbutton {
+    height: 3rem;
+    min-height: 3rem;
+  }
+
+  .dropbutton-wrapper:not(.open) .dropbutton__item:first-of-type ~ .dropbutton__items {
+    display: none;
+  }
+
+  .dropbutton-wrapper:not(.open) .dropbutton__items .dropbutton__item:first-of-type ~ .dropbutton__item {
+    display: block;
+  }
+}
+
+.js.no-touchevents {
+  .dropbutton--multiple.dropbutton--small > .dropbutton__item:first-of-type {
+    margin-right: 2rem;
+  }
+
+  .dropbutton--multiple.dropbutton--extrasmall > .dropbutton__item:first-of-type {
+    margin-right: 1.5rem;
+  }
+
+  .dropbutton--small {
+    height: 2rem;
+    min-height: 2rem;
+  }
+
+  .dropbutton--extrasmall {
+    height: 1.5rem;
+    min-height: 1.5rem;
+  }
+
+  .dropbutton--multiple.dropbutton--extrasmall .dropbutton__items .dropbutton__item {
+    margin-right: 0;
+  }
+}
+
+// Last item in table
+table tr:last-of-type td .dropbutton__items {
+  bottom: 100%;
 }

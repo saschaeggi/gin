@@ -2203,6 +2203,10 @@ details summary {
   display: none;
 }
 
+.paragraphs-dropbutton-wrapper .button--small {
+  margin-bottom: 0.5rem;
+}
+
 .paragraphs-dropdown-toggle {
   position: relative;
   background: none;
@@ -3671,6 +3675,13 @@ td.webform-has-field-suffix > .form-item > .form-element {
   width: auto;
 }
 
+td > .form-item > .form-element,
+td > .ajax-new-content > .form-item > .form-element {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .draggable a.tabledrag-handle {
   float: none;
 }
@@ -4374,12 +4385,20 @@ a.button:active {
   -webkit-box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
           box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
 }
+.dropbutton--multiple > .dropbutton__item:first-of-type {
+  margin-right: 3rem;
+  border-right: 1px solid var(--colorGinPrimaryLightActive);
+}
+.dropbutton--multiple > .dropbutton__item:first-of-type input {
+  background-color: transparent;
+  border: 1px solid transparent !important;
+}
 .gin--dark-mode .dropbutton {
   -webkit-box-shadow: 0 4px 18px var(--colorGinButtonShadow);
           box-shadow: 0 4px 18px var(--colorGinButtonShadow);
 }
 .dropbutton:hover {
-  border-color: var(--colorGinPrimaryHover);
+  border-color: var(--colorGinPrimary);
 }
 .dropbutton:active, .dropbutton:focus {
   border-color: var(--colorGinPrimaryActive);
@@ -4392,35 +4411,16 @@ a.button:active {
   background: none;
   white-space: nowrap;
 }
-.js .dropbutton--multiple .dropbutton__item:first-of-type:last-of-type > * {
-  border-radius: 2px;
-}
 .dropbutton__toggle {
   top: 2px;
   right: 2px;
 }
-.dropbutton__item:first-of-type ~ .dropbutton__item {
-  background-color: var(--colorGinBackground);
-}
-.dropbutton__item:first-of-type ~ .dropbutton__item > a,
-.dropbutton__item:first-of-type ~ .dropbutton__item > .button {
-  color: var(--colorGinPrimaryActive);
-  background: var(--colorGinLayer3Background);
-  white-space: nowrap;
-}
-.dropbutton__item:first-of-type ~ .dropbutton__item > a:hover, .dropbutton__item:first-of-type ~ .dropbutton__item > a:active, .dropbutton__item:first-of-type ~ .dropbutton__item > a:focus,
-.dropbutton__item:first-of-type ~ .dropbutton__item > .button:hover,
-.dropbutton__item:first-of-type ~ .dropbutton__item > .button:active,
-.dropbutton__item:first-of-type ~ .dropbutton__item > .button:focus {
-  color: var(--colorGinAppBackground);
-  background: var(--colorGinPrimary);
-}
-.dropbutton__item:first-of-type ~ .dropbutton__item, .dropbutton__item:first-of-type ~ .dropbutton__item:last-child {
-  border: 0 none;
+.dropbutton__toggle:hover {
+  background-color: var(--colorGinPrimary);
 }
 .dropbutton__toggle::before {
   background-image: none;
-  background-color: var(--colorGinPrimaryActive);
+  background-color: var(--colorGinPrimary);
   -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' d='M4 8l8 8 8-8' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
           mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' d='M4 8l8 8 8-8' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
   -webkit-mask-repeat: no-repeat;
@@ -4433,46 +4433,146 @@ a.button:active {
 .dropbutton__toggle:hover::before, .dropbutton__toggle:active::before, .dropbutton__toggle:focus::before {
   background-color: var(--colorGinButtonText);
 }
+.dropbutton .dropbutton__items {
+  position: absolute;
+  right: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 120px;
+  background: var(--colorGinLayer3Background);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 20px 20px 40px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 20px 20px 40px rgba(0, 0, 0, 0.12);
+}
+.dropbutton > .dropbutton__items > .dropbutton__item:first-of-type > a,
+.dropbutton > .dropbutton__items > .dropbutton__item:first-of-type > input,
+.dropbutton > .dropbutton__items > .dropbutton__item:first-of-type > .button {
+  border-radius: 4px 4px 0 0;
+}
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item, .dropbutton .dropbutton__items > .dropbutton__item, .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item {
+  background-color: var(--colorGinBackground);
+  border: 0 none;
+}
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item:first-of-type, .dropbutton .dropbutton__items > .dropbutton__item:first-of-type, .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item:first-of-type {
+  margin-right: 0;
+}
+.js .dropbutton--multiple .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item:first-of-type:last-of-type > *, .js .dropbutton--multiple .dropbutton .dropbutton__items > .dropbutton__item:first-of-type:last-of-type > *, .js .dropbutton--multiple .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item:first-of-type:last-of-type > * {
+  border-radius: 2px;
+}
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > a,
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > input,
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > .button, .dropbutton .dropbutton__items > .dropbutton__item > a,
+.dropbutton .dropbutton__items > .dropbutton__item > input,
+.dropbutton .dropbutton__items > .dropbutton__item > .button, .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > a,
+.dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > input,
+.dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > .button {
+  font-weight: bold;
+  text-align: left;
+  white-space: nowrap;
+  color: var(--colorGinPrimary);
+  display: block;
+  width: 100%;
+  margin: 0;
+  border: 0 none !important;
+  border-radius: 0;
+  background: var(--colorGinLayer3Background);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > a:hover, .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > a:active, .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > a:focus,
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > input:hover,
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > input:active,
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > input:focus,
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > .button:hover,
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > .button:active,
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > .button:focus, .dropbutton .dropbutton__items > .dropbutton__item > a:hover, .dropbutton .dropbutton__items > .dropbutton__item > a:active, .dropbutton .dropbutton__items > .dropbutton__item > a:focus,
+.dropbutton .dropbutton__items > .dropbutton__item > input:hover,
+.dropbutton .dropbutton__items > .dropbutton__item > input:active,
+.dropbutton .dropbutton__items > .dropbutton__item > input:focus,
+.dropbutton .dropbutton__items > .dropbutton__item > .button:hover,
+.dropbutton .dropbutton__items > .dropbutton__item > .button:active,
+.dropbutton .dropbutton__items > .dropbutton__item > .button:focus, .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > a:hover, .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > a:active, .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > a:focus,
+.dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > input:hover,
+.dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > input:active,
+.dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > input:focus,
+.dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > .button:hover,
+.dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > .button:active,
+.dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > .button:focus {
+  color: var(--colorGinAppBackground);
+  background: var(--colorGinPrimary);
+  border-radius: 4px;
+}
+.dropbutton > .dropbutton__item:first-of-type > a:hover, .dropbutton > .dropbutton__item:first-of-type > a:active, .dropbutton > .dropbutton__item:first-of-type > a:focus,
+.dropbutton > .dropbutton__item:first-of-type > input:hover,
+.dropbutton > .dropbutton__item:first-of-type > input:active,
+.dropbutton > .dropbutton__item:first-of-type > input:focus,
+.dropbutton > .dropbutton__item:first-of-type > .button:hover,
+.dropbutton > .dropbutton__item:first-of-type > .button:active,
+.dropbutton > .dropbutton__item:first-of-type > .button:focus {
+  color: var(--colorGinAppBackground);
+  background: var(--colorGinPrimary);
+  border: 1px solid transparent !important;
+}
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item:last-of-type > a,
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item:last-of-type > input,
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item:last-of-type > .button, .dropbutton .dropbutton__items > .dropbutton__item:last-of-type > a,
+.dropbutton .dropbutton__items > .dropbutton__item:last-of-type > input,
+.dropbutton .dropbutton__items > .dropbutton__item:last-of-type > .button {
+  border-radius: 0 0 4px 4px;
+}
+.dropbutton .dropbutton__items > .dropbutton__item {
+  border-radius: 4px;
+}
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item:not(:first-of-type) > a,
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item:not(:first-of-type) > input,
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item:not(:first-of-type) > .button, .dropbutton .dropbutton__items > .dropbutton__item > a,
+.dropbutton .dropbutton__items > .dropbutton__item > input,
+.dropbutton .dropbutton__items > .dropbutton__item > .button, .dropbutton > .dropbutton__items > .dropbutton__item ~ .dropbutton__item > a,
+.dropbutton > .dropbutton__items > .dropbutton__item ~ .dropbutton__item > input,
+.dropbutton > .dropbutton__items > .dropbutton__item ~ .dropbutton__item > .button {
+  padding: 0.75em !important;
+}
+.dropbutton__item:first-of-type ~ .dropbutton__item > *:hover {
+  background-color: var(--colorGinLayer3Background);
+}
+.dropbutton__item ~ .dropbutton__item:last-child {
+  border-color: var(--colorGinPrimary);
+}
 
 .js .dropbutton {
   height: 3rem;
   min-height: 3rem;
 }
+.js .dropbutton-wrapper:not(.open) .dropbutton__item:first-of-type ~ .dropbutton__items {
+  display: none;
+}
+.js .dropbutton-wrapper:not(.open) .dropbutton__items .dropbutton__item:first-of-type ~ .dropbutton__item {
+  display: block;
+}
 
+.js.no-touchevents .dropbutton--multiple.dropbutton--small > .dropbutton__item:first-of-type {
+  margin-right: 2rem;
+}
+.js.no-touchevents .dropbutton--multiple.dropbutton--extrasmall > .dropbutton__item:first-of-type {
+  margin-right: 1.5rem;
+}
 .js.no-touchevents .dropbutton--small {
   height: 2rem;
   min-height: 2rem;
 }
-
 .js.no-touchevents .dropbutton--extrasmall {
   height: 1.5rem;
   min-height: 1.5rem;
 }
-
-.js .dropbutton--multiple .dropbutton__item:first-of-type {
+.js.no-touchevents .dropbutton--multiple.dropbutton--extrasmall .dropbutton__items .dropbutton__item {
   margin-right: 0;
 }
-.js .dropbutton--multiple .dropbutton__item:first-of-type:not(:last-of-type) {
-  margin-right: calc(3rem + 1px);
-}
-.js .dropbutton--multiple .dropbutton__item:first-of-type > .button {
-  border-color: transparent !important;
-}
-.js .dropbutton--multiple .dropbutton__item:first-of-type > .button:hover {
-  color: var(--colorGinButtonText);
-  background-color: var(--colorGinPrimary);
-}
 
-.js.no-touchevents .dropbutton--multiple.dropbutton--extrasmall .dropbutton__item:first-of-type {
-  margin-right: 0;
-}
-.js.no-touchevents .dropbutton--multiple.dropbutton--extrasmall .dropbutton__item:first-of-type:not(:last-of-type) {
-  margin-right: 1.5rem;
-  border-right: 1px solid var(--colorGinPrimaryLightActive);
-}
-
-.no-touchevents .dropbutton__item--extrasmall:first-of-type > * {
-  line-height: 0.8rem;
+table tr:last-of-type td .dropbutton__items {
+  bottom: 100%;
 }
 
 .action-link {
@@ -5024,8 +5124,11 @@ hr {
 
 .page-wrapper *:focus,
 .ui-dialog *:focus,
-.dropbutton__item:first-of-type > *:focus:hover,
-.dropbutton__item:first-of-type > .button:focus:hover,
+.dropbutton .dropbutton__item > *:focus,
+.dropbutton .dropbutton__item > *:focus:hover,
+.dropbutton__items > .dropbutton__item:first-of-type > *:focus,
+.dropbutton__items > .dropbutton__item:first-of-type ~ .dropbutton__item > *:focus,
+.dropbutton__items > .dropbutton__item:first-of-type ~ .dropbutton__item > *:focus:hover,
 .form-boolean:focus:active,
 .form-boolean:focus:hover,
 .cke.cke_chrome.cke_focus,
@@ -5077,12 +5180,6 @@ hr {
   outline: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
-}
-
-.dropbutton__item:first-of-type ~ .dropbutton__item > *:focus {
-  border-color: var(--colorGinFocus) !important;
-  -webkit-box-shadow: inset 0 0 0 1px var(--colorGinFocus), 0 0 0 1px var(--colorGinFocus);
-          box-shadow: inset 0 0 0 1px var(--colorGinFocus), 0 0 0 1px var(--colorGinFocus);
 }
 
 .system-modules label,
