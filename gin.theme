@@ -170,14 +170,34 @@ function gin_preprocess_node_edit_form(&$variables) {
  * Implements hook_preprocess_HOOK() for links__dropbutton.
  */
 function gin_preprocess_dropbutton_wrapper(&$variables) {
+  // Set the default size.
+  $default_size = 'extrasmall';
+
   $children = (string) $variables['children'];
+
+  // Naively check if a specific size is set
+  if (strpos($children, 'dropbutton--small')) {
+    $default_size = 'small';
+  }
+  // "dropbutton--standard" will not add any additional classes.
+  if (strpos($children, 'dropbutton--standard')) {
+    $default_size = '';
+  }
+
+  // Don't do anything if dropbutton--standard was supplied.
+  if (empty($default_size)) {
+    return;
+  }
 
   $pattern = '/(<ul\sclass\s*= *["\']?)([^"\']*)(.*)(<li)/i';
   $lipattern = '/(<li class\s*= *["\']?)([^"\']*)/i';
 
-  $children = preg_replace($lipattern, '$1$2 dropbutton__item dropbutton__item--extrasmall', $children);
-  $children = preg_replace('/<li>/', '<li class="dropbutton__item dropbutton__item--extrasmall">', $children);
-  $children = preg_replace($pattern, '$1$2 dropbutton--multiple dropbutton--extrasmall $3$4', $children);
+  $lisize = 'dropbutton__item--' . $default_size;
+  $ulsize = 'dropbutton--' . $default_size;
+
+  $children = preg_replace($lipattern, '$1$2 ' . $lisize, $children);
+  $children = preg_replace('/<li>/', '<li class="dropbutton__item ' . $lisize . '">', $children);
+  $children = preg_replace($pattern, '$1$2 ' . $ulsize . ' $3$4', $children);
 
   $variables['children'] = Markup::create($children);
 }
