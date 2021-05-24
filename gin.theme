@@ -179,14 +179,8 @@ function gin_preprocess_dropbutton_wrapper(&$variables) {
   if (strpos($children, 'dropbutton--small')) {
     $default_size = 'small';
   }
-  // "dropbutton--standard" will not add any additional classes.
   if (strpos($children, 'dropbutton--standard')) {
-    $default_size = '';
-  }
-
-  // Don't do anything if dropbutton--standard was supplied.
-  if (empty($default_size)) {
-    return;
+    $default_size = 'standard';
   }
 
   $pattern = '/(<ul\sclass\s*= *["\']?)([^"\']*)(.*)(<li)/i';
