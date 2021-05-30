@@ -28,6 +28,7 @@
 @import "components/title";
 @import "components/user";
 @import "components/breadcrumbs";
+@import "components/extend";
 @import "components/claro_improvements";
 @import "components/entity_reference_layout";
 @import "components/layout_node_form";
@@ -55,6 +56,7 @@
 @import "components/admin-item";
 @import "components/focus";
 @import "components/system-modules";
+@import "components/system-diff";
 @import "components/dialog";
 @import "components/throbber";
 @import "components/update";
@@ -76,3 +78,4 @@
 @import "components/maxlength";
 @import "components/dropzone";
 @import "components/entity-browser";
+@import "components/autosave";

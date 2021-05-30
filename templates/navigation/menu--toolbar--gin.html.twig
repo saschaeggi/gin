@@ -9,7 +9,7 @@
  *   - attributes: HTML attributes for the menu item.
  *   - below: The menu item child items.
  *   - title: The menu link title.
- *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - path: The menu link path.
  *   - localized_options: Menu link localized options.
  *   - is_expanded: TRUE if the link has visible children within the current
  *     menu tree.
@@ -26,9 +26,9 @@
   We call a macro which calls itself to render the full tree.
   @see https://twig.symfony.com/doc/1.x/tags/macro.html
 #}
-{{ menus.menu_links(items, attributes, 0, false, menu_name, icon_default, icon_path) }}
+{{ menus.menu_links(items, attributes, 0, false, menu_name, icon_default, icon_path, toolbar_variant) }}
 
-{% macro menu_links(items, attributes, menu_level, parent, menu_name, icon_default, icon_path) %}
+{% macro menu_links(items, attributes, menu_level, parent, menu_name, icon_default, icon_path, toolbar_variant) %}
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0  %}
@@ -47,60 +47,62 @@
         ]
       %}
 
-      {# {% if menu_name == 'admin' %} #}
-        {# Add Home if it doesn't exist #}
-        {% if menu_level == 0 and loop.index == 1 and item.gin_id != 'admin_toolbar_tools-help' %}
-          <li class="menu-item menu-item--expanded menu-item__tools">
-            {% if icon_default == false and icon_path != '' %}
-              <a href="{{ url('<front>') }}" class="toolbar-logo" data-drupal-link-system-path="<front>">
-                <img src="{{ file_url(icon_path) }}" class="toolbar-icon-home" />
-              </a>
-            {% else %}
-              <a href="{{ url('<front>') }}" class="toolbar-icon toolbar-icon-admin-toolbar-tools-help toolbar-icon-default" data-drupal-link-system-path="<front>">
-                {{ 'Home'|t }}
-              </a>
-            {% endif %}
-          </li>
-        {% endif %}
+      {# Add Home if it doesn't exist #}
+      {% if menu_level == 0 and loop.index == 1 and item.gin_id != 'admin_toolbar_tools-help' %}
+        <li class="menu-item menu-item--expanded menu-item__tools">
+          {% if icon_default == false and icon_path != '' %}
+            <a href="{{ path('<front>') }}" class="toolbar-logo" data-drupal-link-system-path="<front>">
+              <img src="{{ file_url(icon_path) }}" class="toolbar-icon-home" />
+            </a>
+          {% else %}
+            <a href="{{ path('<front>') }}" class="toolbar-icon toolbar-icon-admin-toolbar-tools-help toolbar-icon-default" data-drupal-link-system-path="<front>">
+              {{ 'Home'|t }}
+            </a>
+          {% endif %}
+        </li>
+      {% endif %}
 
-        {% if menu_level == 0 and item.gin_id == 'help-main' %}
-          <li class="menu-item menu-item__spacer menu-item--no-link"></li>
-        {% endif %}
+      {% if menu_level == 0 and item.gin_id == 'system-admin_reports' %}
+        <li class="menu-item menu-item__spacer menu-item--no-link"></li>
+      {% endif %}
 
-        {# Add Menu Titles #}
-        {% if menu_level == 1 and loop.index == 1 %}
-          <li class="menu-item-title">
-            <h2 class="toolbar-menu__title">
-              <a href="{{ parent.url }}">{{ parent.title }}</a>
-            </h2>
-          </li>
-          <li class="menu-item">
-            <a href="{{ parent.url }}" class="toolbar-icon">{{ 'Overview'|t }}</a>
-          </li>
-        {% elseif menu_level > 1 and loop.index == 1 %}
-          <li class="menu-item-title">
-            <h3 class="toolbar-menu__sub-title">
-              <a href="{{ parent.url }}">{{ parent.title }}</a>
-            </h3>
-          </li>
+      {# Add Menu Titles #}
+      {% if menu_level == 1 and loop.index == 1 %}
+        <li class="menu-item-title">
+          <h2 class="toolbar-menu__title">
+            <a href="{{ parent.url }}">{{ parent.title }}</a>
+          </h2>
+        </li>
+        {% if toolbar_variant == 'vertical' %}
           <li class="menu-item">
             <a href="{{ parent.url }}" class="toolbar-icon">{{ 'Overview'|t }}</a>
           </li>
         {% endif %}
-      {# {% endif %} #}
+      {% elseif menu_level > 1 and loop.index == 1 %}
+        <li class="menu-item-title">
+          <h3 class="toolbar-menu__sub-title">
+            <a href="{{ parent.url }}">{{ parent.title }}</a>
+          </h3>
+        </li>
+        {% if toolbar_variant == 'vertical' %}
+          <li class="menu-item">
+            <a href="{{ parent.url }}" class="toolbar-icon">{{ 'Overview'|t }}</a>
+          </li>
+        {% endif %}
+      {% endif %}
 
       <li{{ item.attributes.addClass(classes) }}>
         {% if item.gin_id == 'admin_toolbar_tools-help' and icon_default == false and icon_path != '' %}
-          <a href="{{ url('<front>') }}" class="toolbar-logo" data-drupal-link-system-path="<front>">
+          <a href="{{ path('<front>') }}" class="toolbar-logo" data-drupal-link-system-path="<front>">
             <img src="{{ file_url(icon_path) }}" class="toolbar-icon-home" />
           </a>
         {% elseif item.gin_id == 'admin_toolbar_tools-help' %}
           {{ link(item.title, item.url, {'class': ['toolbar-icon-default']}) }}
         {% else %}
-          {{ link(item.title, item.url) }}
+          {{ link(item.title, item.url, {'class': [item.in_active_trail ? 'is-active']}) }}
         {% endif %}
         {% if item.below %}
-          {{ menus.menu_links(item.below, attributes, menu_level + 1, item, menu_name) }}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1, item, menu_name, icon_default, icon_path, toolbar_variant) }}
         {% endif %}
       </li>
     {% endfor %}

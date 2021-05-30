@@ -53,6 +53,9 @@
         // Custom
         &[data-gin-accent=custom] {
           background-color: #fff;
+          background-image: url(../media/settings/custom-color.jpg);
+          background-size: 100%;
+          background-repeat: no-repeat;
           border-color: var(--colorGinBorder);
 
           &:checked {
@@ -146,7 +149,7 @@
         }
 
         // Classic/Legacy
-        &[data-gin-toolbar=legacy] {
+        &[data-gin-toolbar=classic] {
           background-image: url(../media/settings/toolbar_legacy.png);
 
           .gin--dark-mode & {

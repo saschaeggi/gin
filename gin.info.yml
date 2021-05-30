@@ -34,10 +34,6 @@ libraries-override:
       component:
         /core/themes/stable/css/core/dropbutton/dropbutton.css: /core/themes/claro/css/components/dropbutton.css
 
-  core/drupal.tabledrag:
-    js:
-      misc/tabledrag.js: /core/themes/claro/js/tabledrag.js
-
   core/drupal.vertical-tabs:
     css:
       component:
@@ -136,6 +132,10 @@ libraries-override:
     js:
       js/media_library.view.js: js/overrides/gin_media_library.view.js
 
+  core/drupal.tabledrag:
+    js:
+      /core/themes/claro/js/tabledrag.js: false
+
   # Gin overrides
   core/drupal.dialog.off_canvas:
     css:
@@ -190,13 +190,15 @@ libraries-extend:
   views/views.module:
     - claro/views
   media/media_embed_ckeditor_theme:
-    - claro/classy.media_embed_ckeditor_theme
+    - gin/gin_media_embed_ckeditor_theme
   media_library/view:
     - claro/media_library.theme
   media_library/widget:
     - claro/media_library.theme
   user/drupal.user:
     - claro/form.password-confirm
+  core/drupal.tabledrag:
+    - gin/gin_tabledrag
 
 quickedit_stylesheets:
   - ../../../core/themes/claro/css/components/quickedit.css

@@ -1,3 +1,4 @@
+
 // Import breakpoint
 @import "node_modules/breakpoint-sass/stylesheets/breakpoint";
 
@@ -9,6 +10,17 @@
 
 // Components
 @import "components/coffee";
+@import "components/responsive-preview";
+@import "components/node-preview";
+
+// Scroll Offset
+:root {
+  --ginScrollOffset: 72px;
+
+  @include mq($breakpointLarge) {
+    --ginScrollOffset: 180px;
+  }
+}
 
 // Toolbar
 .toolbar {
@@ -126,7 +138,7 @@
 
 .gin--horizontal-toolbar {
   @include mq($breakpointMedium) {
-    padding-top: 54px !important;
+    padding-top: $toolbarHorizontal !important;
   }
 }
 
@@ -159,8 +171,8 @@
 
 .gin--horizontal-toolbar.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
   @include mq($breakpointLarge) {
-    top: 54px;
-    height: calc(100% - 54px);
+    top: $toolbarHorizontal;
+    height: calc(100% - #{$toolbarHorizontal});
   }
 }
 
@@ -174,7 +186,7 @@
 
     &,
     .toolbar-bar {
-      height: 54px;
+      height: $toolbarHorizontal;
     }
   }
 
@@ -211,7 +223,8 @@
       &:before {
         top: -1px;
         left: 16px;
-        mask-size: 24px 24px;
+        width: 24px;
+        mask-size: 28px 28px;
       }
     }
   }
@@ -219,8 +232,8 @@
   // target fist level only
   .toolbar-menu-administration {
     @include mq($breakpointMedium) {
-      margin-left: m#{i}n(5vw, 64px);
-      margin-right: m#{i}n(5vw, 64px);
+      margin-left: m#{i}n(5vw, 48px);
+      margin-right: m#{i}n(5vw, 48px);
 
       > .toolbar-menu {
         display: flex;

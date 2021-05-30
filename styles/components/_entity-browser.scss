@@ -73,12 +73,10 @@
       border: 1px solid var(--colorGinBorder);
       border-radius: #{$borderBig + 2px};
       position: relative;
-
-      &:hover,
-      &:focus {
-        cursor: pointer;
-
-        .views-field-thumbnail__target-id {
+      .views-field-thumbnail__target-id {
+        &:hover,
+        &:focus {
+          cursor: pointer;
           border-color: var(--colorGinPrimary);
         }
       }

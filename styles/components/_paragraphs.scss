@@ -20,7 +20,10 @@
     thead {
       th {
         padding: .5rem 1.5rem .5rem .5rem;
-        border-radius: $borderDefault;
+
+        &.th__order {
+          display: none;
+        }
       }
 
       .label {
@@ -66,12 +69,13 @@
         padding: .25rem;
 
         + td {
-          width: 100%;
+          width: auto;
         }
       }
 
       .td__order {
         width: 100%;
+        padding-right: 0 !important;
       }
 
       .tabledrag-handle::after {
@@ -115,6 +119,12 @@
   }
 }
 
+.paragraphs-dropbutton-wrapper {
+  .button--small {
+    margin-bottom: .5rem;
+  }
+}
+
 .paragraphs-dropdown-toggle {
   position: relative;
   background: none;
@@ -153,6 +163,11 @@
   .dropbutton-widget {
     margin-right: .5rem;
   }
+}
+
+.js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
+  top: 0;
+  right: -4px;
 }
 
 .paragraphs-dropdown-actions {
@@ -255,12 +270,5 @@
         margin-left: .25rem;
       }
     }
-  }
-}
-
-// Prevent overfloating paragraphs module
-.paragraphs-subform {
-  input {
-    width: 100%;
   }
 }

@@ -8,8 +8,7 @@
     &.is-hover::before,
     &.checked::before,
     &.is-focus::before {
-      border-color: transparent;
-      border-radius: #{$borderBig + 2px};
+      display: none;
     }
 
     // User is dragging item.
@@ -39,8 +38,13 @@
     }
   }
 
+  &__click-to-select-trigger {
+    overflow: inherit;
+  }
+
   &__name {
     color: var(--colorGinText);
+    word-break: break-all;
     text-overflow: initial;
     white-space: initial;
     overflow: visible;
@@ -53,14 +57,19 @@
     background: none;
   }
 
+  // Hide Claro outline, we use Gin's instead
+  &:focus &__preview-wrapper {
+    box-shadow: none;
+  }
+
   &__preview {
     position: relative;
     padding-bottom: 100%;
-    border: 3px solid transparent;
+    border: 1px solid var(--colorGinBorder);
     border-radius: $borderBig;
     overflow: hidden;
 
-    .field--name-thumbnail {
+    .field {
       img {
         position: absolute;
         top: 0;
@@ -74,11 +83,13 @@
 
   &.is-hover &__preview {
     border-color: var(--colorGinText);
+    box-shadow: 0 0 0 2px var(--colorGinText);
   }
 
   &.checked &__preview,
   &.is-active &__preview {
     border-color: var(--colorGinPrimary);
+    box-shadow: 0 0 0 2px var(--colorGinPrimary);
   }
 
   & &__edit,
@@ -87,13 +98,15 @@
     border-color: var(--colorGinBorder) !important;
 
     &:link,
+    &:hover,
+    &:focus,
     &:not(:hover):not(:checked) {
       border-color: transparent !important;
     }
 
     &:hover,
     &:focus {
-      border-color: var(--colorGinPrimary) !important;
+      box-shadow: 0 0 0 3px var(--colorGinFocus) !important;
     }
 
     &,
@@ -130,7 +143,12 @@
         border-color: transparent !important;
       }
 
+      &:focus {
+        box-shadow: 0 0 0 3px var(--colorGinFocus) !important;
+      }
+
       &:checked {
+        background-color: var(--colorGinPrimary);
         border-color: var(--colorGinPrimary);
         box-shadow: none;
       }
@@ -139,6 +157,11 @@
 
   .form-item {
     margin: .5rem;
+  }
+
+  // Drupal 9.2 Throbber Fix
+  .ajax-progress {
+    transform: translateY(-50%);
   }
 }
 
@@ -280,5 +303,17 @@ fieldset.media-library-widget {
     .gin--dark-mode & {
       background: var(--colorGinLayer2Background);
     }
+  }
+}
+
+.media-library-widget-modal .media-library-item--grid {
+  @include mq($breakpointBig) {
+    width: 20%;
+  }
+}
+
+.media-library-selection .media-library-item--grid {
+  @include mq($breakpointWide) {
+    width: 20%;
   }
 }

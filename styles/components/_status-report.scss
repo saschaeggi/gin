@@ -18,7 +18,8 @@
 .color-checked .system-status-report__status-title:before,
 .upgrade-status-counter__status-icon--checked:before,
 .upgrade-status-error-list tr.no-known-error > td.status-info:before,
-.upgrade-status-summary tr.no-known-error > td.status-info:before {
+.upgrade-status-summary tr.no-known-error > td.status-info:before,
+#checked + .claro-details__wrapper--system-status-report .system-status-report__status-title:before {
   background-image: none;
   background-color: var(--colorGinGreen);
   mask-image: icon('status');
@@ -66,7 +67,6 @@
 .upgrade-status-counter {
   height: auto;
   padding: 16px 0;
-  border: 1px solid var(--colorGinLayerBorder);
   background: var(--colorGinLayerBackground);
 
   &__status-title {
@@ -103,14 +103,8 @@
   }
 
   &__item {
-    border-top: 0 none;
+    padding: 1rem;
     background: transparent;
-
-    &:nth-child(2),
-    &:nth-child(4),
-    &:nth-child(5) {
-      border-left: 0 none;
-    }
   }
 
   &__item-title {
@@ -167,25 +161,30 @@
   }
 }
 
+.cron-description__run-cron {
+  margin-top: 1rem;
+}
+
 .system-status-report {
+  margin-top: 1.5rem;
+
   &__status-title {
     font-weight: 500;
     color: var(--colorGinTitle) !important;
   }
 }
 
-.color-checked {
-  .system-status-report__status-title {
-    &:before {
-      content: "";
-      position: absolute;
-      top: 1em;
-      left: 10px;
-      display: inline-block;
-      width: 24px;
-      height: 24px;
-      margin-right: 10px;
-    }
+.color-checked .system-status-report__status-title,
+#checked + .claro-details__wrapper--system-status-report .system-status-report__status-title {
+  &:before {
+    content: "";
+    position: absolute;
+    top: 1em;
+    left: 10px;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
   }
 }
 
@@ -193,4 +192,8 @@
 .details .system-status-report__status-icon:before {
   width: 24px;
   height: 24px;
+}
+
+.view-watchdog .view-content {
+  padding-top: 0;
 }

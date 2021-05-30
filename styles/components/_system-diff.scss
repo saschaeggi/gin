@@ -1,0 +1,38 @@
+table.diff {
+  .diffchange {
+    color: var(--colorGinDanger);
+  }
+
+  .diff-context {
+    background-color: transparent;
+  }
+
+  td {
+    height: initial;
+  }
+
+  tr {
+    color: var(--colorGinTitle);
+
+    .field-name {
+      background-color: var(--colorGinTableHeader);
+    }
+
+    .diff-deletedline {
+      background-color: var(--colorGinDangerBackground);
+
+      .diffchange {
+        color: var(--colorGinDangerLight);
+      }
+    }
+
+    .diff-addedline {
+      background-color: var(--colorGinGreenBackground);
+
+      .diffchange {
+        color: var(--colorGinGreenLight);
+      }
+    }
+  }
+
+}

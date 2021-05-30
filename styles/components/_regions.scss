@@ -16,7 +16,7 @@
     background: rgba($colorDarkAppBackground, .98);
 
     @supports (backdrop-filter: blur()) {
-      background: rgba($colorDarkAppBackground, .8);
+      background: #{rgba(mix(white, $colorDarkAppBackground, .5%), .9)};
     }
   }
 
@@ -30,7 +30,7 @@
     z-index: 101;
     top: 0;
     width: 100%;
-    height: 88px;
+    height: $stickyBar;
     padding: 16px 0;
     margin-top: -2px;
 
@@ -44,7 +44,7 @@
     }
 
     .gin--horizontal-toolbar & {
-      top: 54px;
+      top: $toolbarHorizontal;
     }
 
     .gin--horizontal-toolbar.gin--edit-form & {
@@ -58,21 +58,38 @@
 
   &__items {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     margin-bottom: 1rem;
 
-    @include mq($breakpointTiny) {
-      flex-wrap: nowrap;
-      align-items: center;
+    @include mq($breakpointSmall) {
+      height: 100%;
 
-      .block-page-title-block,
-      .local-actions {
-        margin: 0;
+      .settings-tray-editable {
+        flex-shrink: 0;
       }
     }
 
-    @include mq($breakpointLarge) {
-      margin-bottom: 0;
+    &__inner {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+
+      // Set max-width to max content-width
+      .gin--edit-form & {
+        max-width: $breakpointWide;
+        margin: 0 auto;
+      }
+
+      @include mq($breakpointLarge) {
+        flex-wrap: nowrap;
+        align-items: center;
+        margin-bottom: 0;
+
+        .block-page-title-block,
+        .local-actions {
+          margin: 0;
+        }
+      }
     }
 
     .block-page-title-block {
@@ -80,6 +97,7 @@
       align-self: center;
       display: flex;
       margin: 0;
+      min-width: 0;
 
       .page-title {
         align-self: center;
@@ -87,11 +105,12 @@
       }
     }
 
-    @include mq($breakpointSmall) {
-      height: 100%;
+    .gin-sticky {
+      display: none;
 
-      .settings-tray-editable {
-        flex-shrink: 0;
+      @include mq($breakpointLarge) {
+        display: flex;
+        padding-left: 1.5rem;
       }
     }
   }
@@ -111,7 +130,6 @@
     pointer-events: none;
     height: 40px;
     margin: -40px auto 2rem;
-    // border-bottom: 1px solid rgba(0, 0, 0, .1);
     box-shadow: 0 10px 20px -16px rgba(0, 0, 0, .4);
 
     .gin--dark-mode & {
@@ -122,7 +140,7 @@
   @include mq($breakpointLarge) {
     position: sticky;
     top: 48px;
-    width: calc(100% - min(10vw, 128px) + 24px);
+    width: calc(100% - min(10vw, 96px) + 24px);
 
     // Modern, horizontal toolbar
     .gin--horizontal-toolbar & {
@@ -135,6 +153,10 @@
     }
 
     .gin--classic-toolbar.gin--edit-form & {
+      top: 88px;
+    }
+
+    .gin--classic-toolbar.gin--edit-form.toolbar-tray-open & {
       top: 127px;
     }
 
@@ -150,128 +172,6 @@
   }
 }
 
-.layout-region-node-actions {
-  z-index: 102;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  padding: 0 1rem;
-  background-color: var(--colorGinAppBackground);
-  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
-
-  @include mq($breakpointSmall) {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-
-  @include mq($breakpointMedium) {
-    padding-left: m#{i}n(5vw, 64px);
-    padding-right: m#{i}n(5vw, 64px);
-  }
-
-  @include mq($breakpointMedium 1023px) {
-    .gin--vertical-toolbar & {
-      left: $toolbarWidth;
-    }
-  }
-
-  @include mq($breakpointLarge) {
-    left: auto;
-    top: 0;
-    right: calc(var(--ginSidebarWidth) + min(5vw, 64px));
-    bottom: auto;
-    width: auto;
-    padding-left: 0;
-    padding-right: 0;
-    box-shadow: none;
-    transition: $transition;
-
-    .gin--classic-toolbar & {
-      top: 39px;
-    }
-
-    .gin--classic-toolbar.toolbar-tray-open & {
-      top: 75px;
-    }
-
-    .gin--horizontal-toolbar &,
-    .gin--horizontal-toolbar.toolbar-tray-open & {
-      top: 50px;
-    }
-  }
-
-  @include mq($breakpointBig) {
-    justify-content: flex-end;
-  }
-
-  @include mq(1828px) {
-    .gin--classic-toolbar &,
-    .gin--classic-toolbar:not([data-toolbar-menu='open']) &,
-    .gin--horizontal-toolbar &,
-    .gin--horizontal-toolbar:not([data-toolbar-menu='open']) & {
-      right: calc(50% - 460px);
-    }
-  }
-
-  @include mq(1920px) {
-    body:not([data-toolbar-menu='open']) & {
-      right: calc(50% - 504px);
-    }
-  }
-
-  @include mq(2070px) {
-    .gin--vertical-toolbar[data-toolbar-menu='open'] & {
-      right: calc(50% - 580px);
-    }
-  }
-
-  .form-actions {
-    margin: 0;
-
-    input:last-child {
-      margin-right: 0;
-    }
-  }
-
-  .gin-sticky {
-    display: flex;
-
-    @include mq($breakpointLarge) {
-      position: relative;
-      padding: 4px 0 4px 12px;
-
-      &:after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 10%;
-        margin-left: calc(-10% + 4px);
-        height: 100%;
-        background-image: linear-gradient(to right, #{rgba($colorAppBackground, 0)}, #{$colorAppBackground}, #{$colorAppBackground});
-
-        .gin--dark-mode & {
-          background-image: linear-gradient(to right, #{rgba($colorDarkAppBackground, 0)}, #{$colorDarkAppBackground}, #{$colorDarkAppBackground});
-        }
-      }
-    }
-  }
-
-  .field--name-status {
-    flex-grow: 1;
-    align-self: center;
-    margin-right: 2rem;
-
-    @include mq($breakpointLarge) {
-      flex-grow: 0;
-    }
-  }
-}
-
 .toolbar-tray-open:not(.toolbar-vertical) .layout-container,
 body:not(.toolbar-tray-open) .layout-container {
   margin-left: 1rem;
@@ -283,8 +183,8 @@ body:not(.toolbar-tray-open) .layout-container {
   }
 
   @include mq($breakpointMedium) {
-    margin-left: m#{i}n(5vw, 64px);
-    margin-right: m#{i}n(5vw, 64px);
+    margin-left: m#{i}n(5vw, 48px);
+    margin-right: m#{i}n(5vw, 48px);
 
     .layout-container {
       margin-left: 0;
@@ -295,9 +195,13 @@ body:not(.toolbar-tray-open) .layout-container {
 
 .breadcrumb-wrapper {
   flex-grow: 1;
+  white-space: nowrap;
+  margin-right: 2rem;
 }
 
 .region-meta {
+  z-index: 102;
+  position: relative;
   display: flex;
   margin-top: 16px;
 
@@ -305,16 +209,79 @@ body:not(.toolbar-tray-open) .layout-container {
     padding: 1.5rem 0 .5rem;
     margin-top: 0;
   }
+
+  .gin--edit-form & {
+    @include mq($breakpointBig) {
+      position: relative;
+      left: calc(50% - 3rem);
+      transform: translateX(-50%);
+      max-width: $breakpointWide;
+    }
+  }
 }
 
-// @supports (backdrop-filter: blur(20px)) or (--webkit-backdrop-filter: blur(20px)) {
-//   .region-sticky {
-//     -webkit-backdrop-filter: saturate(180%) blur(20px);
-//     backdrop-filter: saturate(180%) blur(20px);
-//     background: rgba($colorAppBackground, .8);
-//   }
+// Action bar
+.layout-node-form__actions {
+  z-index: 102;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0 1rem;
+  margin-left: calc((.5em + 1.5rem) * -1);
+  background-color: var(--colorGinAppBackground);
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
 
-//   .gin--dark-mode .region-sticky {
-//     background: rgba($colorDarkAppBackground, .8);
-//   }
-// }
+  @include mq($breakpointSmall) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-left: calc((2em + 1.5rem) * -1);
+  }
+
+  @include mq($breakpointMedium) {
+    padding-left: m#{i}n(5vw, 48px);
+    padding-right: m#{i}n(5vw, 48px);
+  }
+
+  @include mq($breakpointMedium 1023px) {
+    margin-left: 0;
+
+    .gin--vertical-toolbar & {
+      left: $toolbarWidth;
+    }
+
+    .gin--vertical-toolbar[data-toolbar-menu='open'] & {
+      left: $toolbarOpenWidth;
+    }
+  }
+
+  @include mq($breakpointLarge) {
+    display: none; // Hide the real deal
+  }
+
+  @include mq($breakpointBig) {
+    margin-left: calc(100% + 2.5rem);
+  }
+}
+
+.gin-sticky {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: max-content;
+
+  [data-drupal-selector=edit-submit] {
+    margin-right: 0;
+  }
+
+  .form-actions {
+    margin: 0;
+  }
+
+  .field--name-status {
+    display: flex;
+    align-items: center;
+    margin-right: 1.5rem;
+  }
+}

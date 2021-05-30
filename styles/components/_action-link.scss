@@ -20,7 +20,7 @@
   &--icon-show:before,
   &--icon-hide:before {
     background-image: none;
-    background-color: var(--colorGinPrimaryHover);
+    background-color: var(--colorGinPrimary);
   }
 
   &--icon-checkmark:before {
@@ -41,6 +41,14 @@
 
   &--icon-ex::before {
     mask-image: icon('remove');
+  }
+
+  &--icon-key::before {
+    mask-image: icon('devel');
+  }
+
+  &--icon-questionmark::before {
+    mask-image: icon('help');
   }
 }
 

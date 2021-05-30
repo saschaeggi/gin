@@ -1,9 +1,11 @@
 .system-status-report__requirements-group {
-  margin-top: 2rem;
-
   h3 {
     margin-top: 0;
   }
+}
+
+.system-status-report__row {
+  border-bottom: 1px solid var(--colorGinBorder);
 }
 
 .system-status-counter__status-icon {
@@ -13,7 +15,8 @@
 }
 
 .system-status-general-info,
-.system-status-report__requirements-group {
+.system-status-report__requirements-group,
+.system-status-report {
   padding: 1rem;
 
   h3 + .divider,
@@ -26,6 +29,11 @@
   &__items {
     margin: 16px 8px 0;
   }
+
+  &__item {
+    border: 0 none;
+    box-shadow: none;
+  }
 }
 
 .system-status-general-info__header,
@@ -33,4 +41,8 @@
 .system-themes-list__header {
   text-transform: none;
   margin: -8px 0 16px 0;
+}
+
+.claro-details__summary--system-status-report {
+  background: transparent;
 }

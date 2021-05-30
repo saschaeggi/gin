@@ -18,29 +18,10 @@
         opacity: 0;
       }
     }
-
-    .region-sticky {
-      opacity: 1;
-      height: 88px;
-      backdrop-filter: none;
-      background: rgba($colorAppBackground, .98);
-    }
-
-    // Darkmode overrides
-    &.gin--dark-mode {
-      .region-sticky {
-        background: rgba($colorDarkAppBackground, .98);
-      }
-    }
   }
 
   .layout-node-form {
     overflow: inherit;
-
-    @include mq($breakpointLarge) {
-      display: flex;
-      flex-wrap: wrap;
-    }
   }
 
   .layout-region-node-main,
@@ -58,6 +39,7 @@
       flex-basis: 40%;
       flex-shrink: 1;
       flex-grow: 1;
+      min-width: 0;
     }
   }
 
@@ -81,6 +63,8 @@
 
     // More room for content to breathe
     .node-form {
+      box-shadow: none;
+
       @include mq($breakpointBig) {
         padding-left: 2.5rem;
         padding-right: 2.5rem;
@@ -200,6 +184,20 @@
 
             .claro-details__wrapper {
               margin: 1.5rem;
+            }
+          }
+
+          .form-type--entity-autocomplete .claro-autocomplete {
+            width: 100%;
+          }
+
+          .form-datetime-wrapper {
+            .form-date {
+              max-width: 170px;
+            }
+
+            .form-time {
+              max-width: 134px;
             }
           }
         }

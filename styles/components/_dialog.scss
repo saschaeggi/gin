@@ -4,6 +4,12 @@
   border-radius: $borderBig;
   background: var(--colorGinLayerBackground);
 
+  // Dialog without title
+  .ui-dialog-content:first-of-type {
+    border-top-left-radius: $borderBig;
+    border-top-right-radius: $borderBig;
+  }
+
   // Node actions placement
   .layout-region-node-actions {
     position: absolute;
@@ -16,6 +22,12 @@
   // Show meta full width
   .layout-region-node-secondary {
     width: 100%;
+  }
+
+  // Views exposed form override for dialog
+  .views-exposed-form.views-exposed-form,
+  .views-displays {
+    border: 1px solid var(--colorGinLayer2Border);
   }
 }
 

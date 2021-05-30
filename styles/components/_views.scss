@@ -110,6 +110,10 @@
 
 .views-exposed-form.views-exposed-form {
   padding-top: 8px;
+
+  .form-element--type-select {
+    max-width: 240px;
+  }
 }
 
 .view-files .view-content {
@@ -184,7 +188,7 @@
 
 .views-exposed-form.views-exposed-form,
 .views-displays {
-  border: 1px solid var(--colorGinLayer2Border);
+  border: 1px solid var(--colorGinLayerBorder);
   border-radius: $borderDefault;
   overflow: hidden;
 }
@@ -373,7 +377,7 @@
   tr.even,
   tr.odd {
     background: none;
-    border-top: 1px solid var(--colorGinLayer2Border);
+    border-top: 1px solid var(--colorGinBorder);
     border-bottom: none;
   }
 }

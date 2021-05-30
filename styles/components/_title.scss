@@ -15,20 +15,8 @@
   text-overflow: ellipsis;
   max-width: 90%;
 
-  @include mq($breakpointSmall) {
+  @include mq($breakpointBig) {
     font-size: 2em;
-  }
-}
-
-.gin--edit-form {
-  .page-title {
-    @include mq($breakpointLarge) {
-      font-size: 1.6em;
-    }
-
-    @include mq($breakpointWide) {
-      font-size: 1.75em;
-    }
   }
 }
 
@@ -87,8 +75,9 @@ body:not(.gin--edit-form) {
   &__message {
     position: absolute;
     pointer-events: none;
-    color: var(--colorGinText);
-    background: var(--colorGinLayer2Background);
+    padding: .5rem;
+    color: var(--colorGinContextualText);
+    background: var(--colorGinContextual);
     border-radius: $borderSmall;
   }
 }
