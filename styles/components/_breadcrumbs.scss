@@ -24,6 +24,7 @@
   }
 
   &__link {
+    line-height: 2; // make sure we have enough room for focus ring
     border-radius: 2px;
   }
 
@@ -31,5 +32,8 @@
     text-overflow: ellipsis;
     width: auto;
     overflow: hidden;
+    padding-left: .25rem;
+    margin-left: -.25rem;
+    margin-top: -.25rem;
   }
 }

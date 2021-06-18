@@ -1,7 +1,7 @@
 #coffee-form {
   padding: 4px;
   background: #000;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 #coffee-form #coffee-form-inner,
 #coffee-form #coffee-q {
@@ -9,7 +9,7 @@
   background: var(--colorGinLayerBackground);
 }
 #coffee-form #coffee-results a {
-  border-radius: 6px;
+  border-radius: 8px;
 }
 #coffee-form #coffee-results a, #coffee-form #coffee-results a .description {
   color: var(--colorGinText);
@@ -178,9 +178,9 @@
 @media (min-width: 976px) {
   .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-icon::before, .toolbar .toolbar-bar #toolbar-item-administration-tray .responsive-preview-icon::before,
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
-    left: 16px;
-    width: 20px;
-    height: 20px;
+    left: 15px;
+    width: 22px;
+    height: 22px;
     top: 50%;
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%);
@@ -188,7 +188,7 @@
 }
 @media (min-width: 976px) {
   .toolbar .toolbar-bar .toolbar-logo {
-    height: 88px;
+    height: 80px;
   }
   .toolbar .toolbar-bar .toolbar-icon-home {
     display: block;
@@ -206,8 +206,8 @@
   max-height: 40px;
 }
 .toolbar .toolbar-bar #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
-  -webkit-mask-size: 20px 20px;
-          mask-size: 20px 20px;
+  -webkit-mask-size: 22px 22px;
+          mask-size: 22px 22px;
 }
 @media (min-width: 976px) {
   .toolbar .toolbar-bar #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
@@ -406,7 +406,7 @@ a.toolbar-menu__trigger,
     display: block;
     width: 68px;
     height: 100%;
-    background: rgba(255, 255, 255, 0.075) url(../media/drupal.svg?b9443b5ba2fe0278c421b8da1c5661a9) no-repeat left 20px center;
+    background: rgba(255, 255, 255, 0.075) url(../media/drupal.svg?b9443b5ba2fe0278c421b8da1c5661a9) no-repeat left 22px center;
     background-size: 56px auto;
   }
   .toolbar-menu__logo:hover {
@@ -500,7 +500,7 @@ a.toolbar-menu__trigger,
     padding-left: 60px;
     padding-right: 0;
     margin: 0 8px;
-    border-radius: 6px;
+    border-radius: 8px;
     overflow: hidden;
   }
   .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:hover, .toolbar-menu-administration > .toolbar-menu > .menu-item > .responsive-preview-icon:hover,
@@ -575,7 +575,7 @@ a.toolbar-menu__trigger,
     font-weight: 500;
     color: var(--colorGinTitle);
     padding: 0.75rem;
-    border-radius: 6px;
+    border-radius: 8px;
   }
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__sub-title {
     font-size: 1.375em;
@@ -595,7 +595,7 @@ a.toolbar-menu__trigger,
     font-size: 0.9375rem;
     padding: 1em 2rem 1em 0.75rem;
     margin: 0.25em 0.75rem;
-    border-radius: 6px;
+    border-radius: 8px;
     overflow: hidden;
   }
   .toolbar-menu-administration > .toolbar-menu .toolbar-menu {
@@ -1294,8 +1294,8 @@ a.toolbar-menu__trigger,
   .toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon:before, .toolbar .toolbar-bar .toolbar-menu-administration .responsive-preview-icon:before,
 .toolbar .toolbar-bar #toolbar-item-administration-search:before,
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:before {
-    -webkit-mask-size: 20px 20px;
-            mask-size: 20px 20px;
+    -webkit-mask-size: 22px 22px;
+            mask-size: 22px 22px;
   }
 }
 
@@ -1347,7 +1347,7 @@ a.toolbar-menu__trigger,
   width: 40px;
   height: 40px;
   background: var(--colorGinPrimaryLight);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon:focus,
 .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus:focus,

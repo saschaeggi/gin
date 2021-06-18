@@ -16,7 +16,8 @@
     background: rgba($colorDarkAppBackground, .98);
 
     @supports (backdrop-filter: blur()) {
-      background: #{rgba(mix(white, $colorDarkAppBackground, .5%), .9)};
+      background: rgb(27 27 29 / 90%);
+      // background: #{rgba(mix(white, $colorDarkAppBackground, .5%), .9)};
     }
   }
 
@@ -139,7 +140,7 @@
 
   @include mq($breakpointLarge) {
     position: sticky;
-    top: 48px;
+    top: 40px;
     width: calc(100% - min(10vw, 96px) + 24px);
 
     // Modern, horizontal toolbar

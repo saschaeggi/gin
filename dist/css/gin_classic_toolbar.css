@@ -1,7 +1,7 @@
 #coffee-form {
   padding: 4px;
   background: #000;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 #coffee-form #coffee-form-inner,
 #coffee-form #coffee-q {
@@ -9,7 +9,7 @@
   background: var(--colorGinLayerBackground);
 }
 #coffee-form #coffee-results a {
-  border-radius: 6px;
+  border-radius: 8px;
 }
 #coffee-form #coffee-results a, #coffee-form #coffee-results a .description {
   color: var(--colorGinText);

@@ -189,7 +189,7 @@
 .views-exposed-form.views-exposed-form,
 .views-displays {
   border: 1px solid var(--colorGinLayerBorder);
-  border-radius: $borderDefault;
+  border-radius: $borderMedium;
   overflow: hidden;
 }
 
@@ -210,8 +210,8 @@
   background-color: var(--colorGinLayer2Background);
   border: 0 none;
   border-bottom: 1px solid var(--colorGinLayer2Border);
-  border-top-left-radius: $borderSmall;
-  border-top-right-radius: $borderSmall;
+  border-top-left-radius: $borderXSmall;
+  border-top-right-radius: $borderXSmall;
 
   // #3186729: Drupal 9.1 fix
   &__extra-actions-wrapper {
@@ -245,7 +245,7 @@
     padding: .5rem 1rem;
     background: var(--colorGinLayer2Background);
     border: 2px solid var(--colorGinPrimary);
-    border-radius: $borderSmall;
+    border-radius: $borderXSmall;
 
     &::before {
       display: none;

@@ -29,7 +29,7 @@ a {
 /* CKE Context Menu */
 .cke_panel_block {
   border-color: var(--colorGinFormElementBorder);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .cke_panel_block .cke_menu .cke_menubutton_icon {
   background-color: var(--colorGinAppBackground);

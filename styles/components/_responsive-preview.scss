@@ -12,7 +12,7 @@
     .responsive-preview-trigger {
       width: 4em;
       background: none;
-      border-radius: $borderSmall;
+      border-radius: $borderXSmall;
 
       // Hover
       &:hover::before {
@@ -41,7 +41,7 @@
     .responsive-preview-options {
       background-color: var(--colorGinLayer3Background);
       border-bottom: 0 none;
-      border-radius: $borderSmall;
+      border-radius: $borderXSmall;
       box-shadow: 0 1px 2px rgba(0, 0, 0, .08),
                   20px 20px 40px rgba(0, 0, 0, .12);
 
@@ -49,7 +49,7 @@
       .responsive-preview-device {
         color: var(--colorGinPrimary);
         width: 100%;
-        border-radius: $borderSmall;
+        border-radius: $borderXSmall;
 
         &:hover {
           color: var(--colorGinButtonText);

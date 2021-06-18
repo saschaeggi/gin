@@ -22,10 +22,10 @@
 
   &__content-wrapper {
     background-color: var(--colorGinLayerBackground);
-    border-radius: 0 0 $borderSmall $borderSmall;
+    border-radius: 0 0 $borderXSmall $borderXSmall;
 
     @include mq($breakpointXSmall) {
-      border-radius: 0 $borderSmall $borderSmall 0;
+      border-radius: 0 $borderXSmall $borderXSmall 0;
     }
 
     .gin--dark-mode & {

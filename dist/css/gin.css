@@ -207,7 +207,7 @@ svg path:active {
 }
 @supports ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) {
   .gin--dark-mode .region-sticky {
-    background: rgba(28, 28, 30, 0.9);
+    background: rgba(27, 27, 29, 0.9);
   }
 }
 .gin--high-contrast-mode .region-sticky {
@@ -222,7 +222,7 @@ svg path:active {
     z-index: 101;
     top: 0;
     width: 100%;
-    height: 88px;
+    height: 80px;
     padding: 16px 0;
     margin-top: -2px;
   }
@@ -342,7 +342,7 @@ svg path:active {
   .sticky-shadow {
     position: -webkit-sticky;
     position: sticky;
-    top: 48px;
+    top: 40px;
     width: calc(100% - min(10vw, 96px) + 24px);
   }
   .gin--horizontal-toolbar .sticky-shadow {
@@ -536,7 +536,7 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
   margin-top: 0;
   -webkit-box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.08);
           box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.08);
-  border-radius: 8px;
+  border-radius: 12px;
 }
 @media (min-width: 976px) {
   .layer-wrapper,
@@ -679,7 +679,7 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
   -ms-flex-item-align: center;
       align-self: center;
   margin-left: 0.5rem;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 @media (min-width: 1024px) {
   .shortcut-action {
@@ -851,12 +851,16 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
   opacity: 0.8;
 }
 .breadcrumb__link {
+  line-height: 2;
   border-radius: 2px;
 }
 .breadcrumb__list {
   text-overflow: ellipsis;
   width: auto;
   overflow: hidden;
+  padding-left: 0.25rem;
+  margin-left: -0.25rem;
+  margin-top: -0.25rem;
 }
 
 .modules-table-filter {
@@ -874,7 +878,7 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 .claro-details.module-list__module-details,
 .system-status-report .claro-details {
   border: 1px solid var(--colorGinBorder);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .claro-details__summary,
@@ -996,8 +1000,8 @@ details summary {
   border-left: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   background: #fff;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 .field--widget-entity-reference-layout-widget .erl-layout .layout-controls,
 .field--widget-entity-reference-layout-widget .erl-layout .erl-actions,
@@ -1035,7 +1039,7 @@ details summary {
   -webkit-overflow-scrolling: touch;
   background: var(--colorGinAppBackground);
   border: 0 none;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .field--widget-entity-reference-layout-widget .erl-add-content__group button,
 .field--widget-entity-reference-layout-widget .erl-add-content--group button,
@@ -1283,7 +1287,7 @@ details summary {
   background: var(--colorGinItemHover);
   padding: 16px;
   border: 1px dashed var(--colorGinPrimary);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .field--widget-entity-reference-layout-widget .erl-add-section, .field--widget-entity-reference-layout-widget .erl-add-section:hover, .field--widget-entity-reference-layout-widget .erl-add-section:active,
 .field--widget-entity-reference-layout-widget .erl-add-content--single button,
@@ -1437,7 +1441,7 @@ details summary {
 .erl-add-more-menu,
 .layout-paragraphs-add-more-menu {
   outline: none;
-  border-radius: 6px;
+  border-radius: 8px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 20px 20px 40px rgba(0, 0, 0, 0.12);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 20px 20px 40px rgba(0, 0, 0, 0.12);
   overflow: hidden;
@@ -1478,7 +1482,7 @@ details summary {
   width: 100%;
   color: var(--colorGinText);
   padding: 0.5rem;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .erl-add-more-menu__item a:hover,
 .layout-paragraphs-add-more-menu__item a:hover {
@@ -1660,7 +1664,7 @@ details summary {
 }
 .layout-paragraphs-field .layout-select__item input + label {
   border: 1px solid var(--colorGinBorder);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .layout-paragraphs-field .layout-select__item input:checked + label {
   border: 1px solid var(--colorGinPrimary);
@@ -1770,7 +1774,7 @@ details summary {
   margin-bottom: 1rem;
   background: transparent;
   border: 0 none;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .erl-layout.erl-item.form-wrapper::before,
 .layout-paragraphs-layout.layout-paragraphs-item::before {
@@ -1782,7 +1786,7 @@ details summary {
   width: 100%;
   height: 48px;
   background: #eeeef5;
-  border-radius: 6px 6px 0 0;
+  border-radius: 8px 8px 0 0;
 }
 .gin--dark-mode .erl-layout.erl-item.form-wrapper::before,
 .gin--dark-mode .layout-paragraphs-layout.layout-paragraphs-item::before {
@@ -1868,7 +1872,7 @@ details summary {
 .layout-paragraphs-field .layout-paragraphs-layout-region:hover:last-of-type,
 .layout-paragraphs-disabled-items:last-of-type,
 .layout-paragraphs-disabled-items:hover:last-of-type {
-  border-bottom-right-radius: 6px;
+  border-bottom-right-radius: 8px;
 }
 .erl-layout-region .layout-label,
 .erl-field .erl-layout-region .layout-label,
@@ -1893,7 +1897,7 @@ details summary {
 .erl-layout.erl-item.gu-mirror,
 .layout-paragraphs-layout.layout-paragraphs-item.gu-mirror {
   border: 2px solid var(--colorGinFocus);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .gu-mirror::before,
 .gu-mirror .erl-actions,
@@ -2138,7 +2142,7 @@ details summary {
   padding: 1rem 0.5rem;
   margin-top: 1rem;
   border: 1px solid var(--colorGinTableBorder);
-  border-radius: 6px;
+  border-radius: 8px;
   -webkit-box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
           box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
 }
@@ -2209,6 +2213,7 @@ details summary {
 
 .paragraphs-dropdown-toggle {
   position: relative;
+  margin: 0.5rem 0;
   background: none;
 }
 .paragraphs-dropdown-toggle::after {
@@ -2302,7 +2307,7 @@ details summary {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   background-color: var(--colorGinLayer3Background);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .paragraphs-dragdrop__icon {
   top: 0.5rem;
@@ -2332,7 +2337,8 @@ details summary {
 .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple {
   margin-right: 0.5rem;
 }
-.field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple .placeholder {
+.field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple .placeholder,
+.field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple ~ .placeholder {
   margin-left: 0.25rem;
 }
 
@@ -2465,7 +2471,7 @@ details summary {
   font-size: 16px;
   padding: 12px;
   border: 1px solid #8e929c;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .js .paragraphs-add-dialog--categorized .paragraphs-add-dialog-row button {
@@ -2577,7 +2583,7 @@ details summary {
 .claro-details {
   color: var(--colorGinText);
   border: 1px solid var(--colorGinBorder);
-  border-radius: 6px;
+  border-radius: 8px;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -2698,7 +2704,7 @@ details summary {
 .is-horizontal .tabs--primary .tabs__link {
   min-height: 3rem;
   height: 100%;
-  border-radius: 6px 6px 0 0;
+  border-radius: 8px 8px 0 0;
 }
 @media (min-width: 768px) {
   .is-horizontal .tabs--primary .tabs__link {
@@ -2718,7 +2724,7 @@ details summary {
   min-height: 2.5rem;
   padding: 0.75rem 1.5rem 1rem;
   font-size: 0.875rem;
-  border-radius: 6px 6px 0 0;
+  border-radius: 8px 8px 0 0;
 }
 
 .horizontal-tabs {
@@ -2752,7 +2758,7 @@ details summary {
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
   padding-right: 1.5rem;
   padding-left: 1.5rem;
-  border-radius: 6px 6px 0 0;
+  border-radius: 8px 8px 0 0;
 }
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a::before {
   content: "";
@@ -2937,7 +2943,7 @@ details summary {
   left: 0;
   padding: 0 16px 16px 16px;
   background: rgba(226, 229, 236, 0.6);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .block-system > .views-form [data-drupal-selector*=edit-header] [data-drupal-selector*=edit-views-bulk-operations-bulk-form] > *,
 .view-content .views-form [data-drupal-selector*=edit-header] [data-drupal-selector*=edit-views-bulk-operations-bulk-form] > * {
@@ -3075,7 +3081,7 @@ details summary {
 .views-exposed-form.views-exposed-form,
 .views-displays {
   border: 1px solid var(--colorGinLayerBorder);
-  border-radius: 6px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
@@ -3244,7 +3250,7 @@ details summary {
 .edit-display-settings-top.views-ui-display-tab-bucket {
   margin-bottom: 1rem;
   border-color: var(--colorGinBorder);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .views-ui-dialog .form--inline {
@@ -3288,7 +3294,7 @@ details summary {
   background: none;
 }
 .media-library-item--grid {
-  border-radius: 12px;
+  border-radius: 16px;
 }
 .media-library-item--grid::before, .media-library-item--grid.is-hover::before, .media-library-item--grid.checked::before, .media-library-item--grid.is-focus::before {
   display: none;
@@ -3338,7 +3344,7 @@ details summary {
   position: relative;
   padding-bottom: 100%;
   border: 1px solid var(--colorGinBorder);
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
 }
 .media-library-item__preview .field img {
@@ -3436,6 +3442,11 @@ fieldset.media-library-widget .fieldset__wrapper {
 
 .media-library-widget-empty-text {
   color: var(--colorGinTextLight);
+  margin: 0 0 -0.5rem 0;
+}
+
+.media-library-open-button {
+  margin-top: 0;
 }
 
 .media-library-add-form__preview {
@@ -3445,6 +3456,15 @@ fieldset.media-library-widget .fieldset__wrapper {
   padding: 0;
   border: none;
   background: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.media-library-add-form__input-wrapper .form-item--upload {
+  margin-top: 0;
+  margin-right: 0;
+}
+.media-library-add-form__input-wrapper .dropzone-enable .button {
+  margin: 0;
 }
 
 .media-library-menu {
@@ -3472,7 +3492,7 @@ fieldset.media-library-widget .fieldset__wrapper {
   color: var(--colorGinText);
   text-decoration: none;
   background: var(--colorGinLayer3Background);
-  border-radius: 6px;
+  border-radius: 8px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 20px 20px 40px rgba(0, 0, 0, 0.12);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 20px 20px 40px rgba(0, 0, 0, 0.12);
 }
@@ -3510,6 +3530,7 @@ fieldset.media-library-widget .fieldset__wrapper {
 }
 
 .media-library-content {
+  border-left: 0 none;
   border-color: var(--colorGinBorder);
 }
 
@@ -3520,7 +3541,7 @@ fieldset.media-library-widget .fieldset__wrapper {
   background: var(--colorGinTableHeader);
   -webkit-box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.03);
           box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.03);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .views-field-thumbnail__target-id img {
@@ -3572,7 +3593,7 @@ table.sticky-header th:last-child {
 }
 
 table thead {
-  border-radius: 6px;
+  border-radius: 8px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
@@ -3587,12 +3608,12 @@ table th {
   }
 }
 table th:first-child {
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
 }
 table th:last-child {
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 table tbody tr {
   border-bottom: 1px solid var(--colorGinTableBorder);
@@ -3702,6 +3723,9 @@ td > .ajax-new-content > .form-item > .form-element {
 .tabledrag-toggle-weight-wrapper .action-link {
   margin-bottom: 0.5rem;
 }
+.tabledrag-toggle-weight-wrapper .action-link .action-link {
+  margin-bottom: 0;
+}
 
 .tabledrag-handle::after {
   background-image: none;
@@ -3738,6 +3762,25 @@ td > .ajax-new-content > .form-item > .form-element {
   cursor: pointer;
 }
 
+.draggable-table thead th {
+  border-radius: 8px;
+}
+.draggable-table thead th:not(:first-of-type)::before, .draggable-table thead th:not(:first-of-type)::after {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: var(--colorGinTableHeader);
+  position: absolute;
+  left: -4px;
+}
+.draggable-table thead th:not(:first-of-type)::before {
+  top: 0;
+}
+.draggable-table thead th:not(:first-of-type)::after {
+  bottom: 0;
+}
+
 .gin--dark-mode .cke .cke_inner,
 .gin--dark-mode .cke .cke_wysiwyg_frame,
 .gin--dark-mode .cke .cke_wysiwyg_div {
@@ -3745,22 +3788,22 @@ td > .ajax-new-content > .form-item > .form-element {
 }
 .cke.cke_chrome {
   border-color: var(--colorGinFormElementBorder);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .cke .cke_inner {
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .cke .cke_top {
   background: var(--colorGinLayerBackground);
   border-bottom: 1px solid var(--colorGinBorder);
-  border-radius: 5px 5px 0 0;
+  border-radius: 7px 7px 0 0;
 }
 .gin--dark-mode .cke .cke_top {
   background: var(--colorGinLayer2Background);
 }
 .cke .cke_bottom {
   background: var(--colorGinLayer3Background);
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 7px 7px;
 }
 .cke .cke_contents {
   padding-left: 8px;
@@ -3854,7 +3897,7 @@ body .cke_notification_info {
   padding: 0.5rem;
   background: var(--colorGinLayer4Background);
   border: 0 none;
-  border-radius: 6px;
+  border-radius: 8px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 20px 20px 40px rgba(0, 0, 0, 0.12);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 20px 20px 40px rgba(0, 0, 0, 0.12);
 }
@@ -3886,7 +3929,9 @@ body .cke_notification_info .cke_notification_close {
           box-sizing: border-box;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-  border-radius: 6px;
+  border-radius: 8px;
+  -webkit-transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .form-element:hover {
   border-color: var(--colorGinText);
@@ -3900,11 +3945,14 @@ body .cke_notification_info .cke_notification_close {
 .gin--dark-mode .form-element {
   background-color: var(--colorGinLayer2Background);
 }
+.form-element--small, .form-element--extrasmall {
+  border-radius: 6px;
+}
 
 .form-textarea-wrapper {
   -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
           box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .form-textarea-wrapper textarea {
   max-width: 100%;
@@ -3978,7 +4026,6 @@ body .cke_notification_info .cke_notification_close {
   vertical-align: top;
   width: 40px;
   height: 24px;
-  background-color: #909090;
   border-radius: 12px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -3991,10 +4038,14 @@ body .cke_notification_info .cke_notification_close {
   overflow: hidden;
   -webkit-clip-path: circle(24px at 50% 50%);
           clip-path: circle(24px at 50% 50%);
-  border: 4px solid transparent;
+  background-color: var(--colorGinDisabled);
+  border: 3px solid transparent;
   border-radius: 12px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+.gin--dark-mode :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner {
+  background-color: var(--colorGinLayer2Background);
 }
 :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner:before {
   position: absolute;
@@ -4011,7 +4062,7 @@ body .cke_notification_info .cke_notification_close {
   transition: transform 0.3s, -webkit-transform 0.3s;
 }
 .gin--dark-mode :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner:before {
-  background-color: var(--colorGinLayer2Background);
+  background-color: var(--colorGinFormElementBorder);
 }
 :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input {
   position: absolute !important;
@@ -4039,12 +4090,28 @@ body .cke_notification_info .cke_notification_close {
   -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
+:not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle {
+  border-color: var(--colorGinPrimaryLightActive);
+}
+.gin--high-contrast-mode :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle {
+  border-color: var(--colorGinBorder);
+}
 :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner {
   background-color: var(--colorGinSwitch);
+}
+.gin--dark-mode :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner {
+  background-color: var(--colorGinPrimaryLightActive);
 }
 :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner:before {
   -webkit-transform: translateX(16px);
           transform: translateX(16px);
+  background-color: #fff;
+}
+.gin--dark-mode :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner:before {
+  background-color: var(--colorGinPrimaryHover);
+}
+.gin--high-contrast-mode :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner:before {
+  background-color: var(--colorGinBorder);
 }
 :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:active ~ .checkbox-toggle .checkbox-toggle__inner, :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:focus ~ .checkbox-toggle .checkbox-toggle__inner {
   -webkit-box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
@@ -4086,15 +4153,22 @@ body .cke_notification_info .cke_notification_close {
 .form-boolean--type-radio:hover, .gin--dark-mode .form-boolean--type-radio:hover {
   border-color: var(--colorGinText);
 }
+.form-boolean--type-radio:active, .form-boolean--type-radio:focus {
+  -webkit-box-shadow: inset 0 0 0 1px var(--colorGinLayer2Border), 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
+          box-shadow: inset 0 0 0 1px var(--colorGinLayer2Border), 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
+}
 .form-boolean--type-radio:checked, .form-boolean--type-radio:checked:hover, .form-boolean--type-radio:checked:active, .form-boolean--type-radio:checked:focus, .form-boolean--type-radio:checked:hover:focus {
   background-image: none;
-  background-color: #fff;
-  -webkit-box-shadow: inset 0 0 0 4px var(--colorGinPrimary);
-          box-shadow: inset 0 0 0 4px var(--colorGinPrimary);
+  background-color: var(--colorGinLayerBackground);
+  -webkit-box-shadow: inset 0 0 0 5px var(--colorGinPrimary);
+          box-shadow: inset 0 0 0 5px var(--colorGinPrimary);
 }
 .gin--dark-mode .form-boolean--type-radio:checked, .gin--dark-mode .form-boolean--type-radio:checked:hover, .gin--dark-mode .form-boolean--type-radio:checked:active, .gin--dark-mode .form-boolean--type-radio:checked:focus, .gin--dark-mode .form-boolean--type-radio:checked:hover:focus {
-  background-color: var(--colorGinLayer2Background);
-  border-color: var(--colorGinPrimary);
+  border-color: var(--colorGinPrimaryActive);
+}
+.form-boolean--type-radio:checked:active, .form-boolean--type-radio:checked:focus {
+  -webkit-box-shadow: inset 0 0 0 5px var(--colorGinPrimary), 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
+          box-shadow: inset 0 0 0 5px var(--colorGinPrimary), 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
 }
 
 .form-radios .form-type--boolean,
@@ -4116,7 +4190,7 @@ fieldset:not(.fieldgroup) {
   padding-right: 0;
   background: transparent;
   border-color: var(--colorGinBorder);
-  border-radius: 6px;
+  border-radius: 8px;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -4217,6 +4291,10 @@ fieldset:not(.fieldgroup) > .fieldset-wrapper {
   min-height: 1.75rem;
 }
 
+#block-gin-content > form > .form-item:first-of-type {
+  margin-top: 0;
+}
+
 .button,
 .dropbutton__item:first-of-type > *,
 .dropbutton__toggle {
@@ -4224,6 +4302,8 @@ fieldset:not(.fieldgroup) > .fieldset-wrapper {
   background-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
+  -webkit-transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .button:hover,
 .dropbutton__item:first-of-type > *:hover,
@@ -4253,9 +4333,11 @@ fieldset:not(.fieldgroup) > .fieldset-wrapper {
 .action-link--icon-trash.action-link {
   padding: calc(1rem - 2px) calc(1.5rem - 2px);
   border: 2px solid var(--colorGinPrimary) !important;
-  border-radius: 6px;
+  border-radius: 8px;
   -webkit-box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
           box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
+  -webkit-transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .gin--dark-mode .button,
 .gin--dark-mode .button:not(:focus),
@@ -4298,10 +4380,12 @@ fieldset:not(.fieldgroup) > .fieldset-wrapper {
 
 .button.button--small {
   padding: 0.5rem 1rem;
+  border-radius: 6px;
 }
 
 .button.button--extrasmall {
   padding: 0.25rem 0.75rem;
+  border-radius: 6px;
 }
 
 .button--primary,
@@ -4310,8 +4394,6 @@ fieldset:not(.fieldgroup) > .fieldset-wrapper {
   background: var(--colorGinPrimary);
   -webkit-box-shadow: 0 0.125em 0.25em var(--colorGinPrimaryLightActive), 0.1em 0.25em 0.5em var(--colorGinPrimaryLight), -0.25em -0.5em 1em var(--colorGinAppBackground);
           box-shadow: 0 0.125em 0.25em var(--colorGinPrimaryLightActive), 0.1em 0.25em 0.5em var(--colorGinPrimaryLight), -0.25em -0.5em 1em var(--colorGinAppBackground);
-  -webkit-filter: drop-shadow(0 6px 10px var(--colorGinPrimaryLight));
-          filter: drop-shadow(0 6px 10px var(--colorGinPrimaryLight));
 }
 .button--primary:hover,
 .button--primary:not(:focus):hover,
@@ -4381,7 +4463,7 @@ a.button:active {
 
 .dropbutton {
   border: 2px solid var(--colorGinPrimary);
-  border-radius: 6px;
+  border-radius: 8px;
   -webkit-box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
           box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
 }
@@ -4533,7 +4615,7 @@ a.button:active {
 .dropbutton .dropbutton__items > .dropbutton__item > .button, .dropbutton > .dropbutton__items > .dropbutton__item ~ .dropbutton__item > a,
 .dropbutton > .dropbutton__items > .dropbutton__item ~ .dropbutton__item > input,
 .dropbutton > .dropbutton__items > .dropbutton__item ~ .dropbutton__item > .button {
-  padding: 0.75em !important;
+  padding: 0.75em 1em !important;
 }
 .dropbutton__item:first-of-type ~ .dropbutton__item > *:hover {
   background-color: var(--colorGinLayer3Background);
@@ -4562,10 +4644,12 @@ a.button:active {
 .js.no-touchevents .dropbutton--small {
   height: 2rem;
   min-height: 2rem;
+  border-radius: 6px;
 }
 .js.no-touchevents .dropbutton--extrasmall {
   height: 1.5rem;
   min-height: 1.5rem;
+  border-radius: 6px;
 }
 .js.no-touchevents .dropbutton--multiple.dropbutton--extrasmall .dropbutton__items .dropbutton__item {
   margin-right: 0;
@@ -4843,7 +4927,7 @@ a.button.button--danger:active:before,
   position: relative;
   padding: 1rem;
   border: 2px solid transparent;
-  border-radius: 8px;
+  border-radius: 12px;
   -webkit-box-shadow: 10px 10px 30px #c1c1d2, -6px -6px 16px #efeff5;
           box-shadow: 10px 10px 30px #c1c1d2, -6px -6px 16px #efeff5;
   -webkit-transition: opacity 0.3s cubic-bezier(0.19, 1, 0.22, 1);
@@ -5002,7 +5086,7 @@ a.button.button--danger:active:before,
   padding: 0;
   background: transparent;
   border: 1px solid var(--colorGinTableBorder);
-  border-radius: 6px;
+  border-radius: 8px;
   -webkit-box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
           box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
   overflow: hidden;
@@ -5011,11 +5095,11 @@ a.button.button--danger:active:before,
   margin-bottom: 2rem;
 }
 .card__image img {
-  border-radius: 6px 6px 0 0;
+  border-radius: 8px 8px 0 0;
 }
 @media (min-width: 588px) {
   .card__image img {
-    border-radius: 6px 0 0 6px;
+    border-radius: 8px 0 0 8px;
   }
 }
 .card__content-wrapper {
@@ -5106,7 +5190,7 @@ hr {
 }
 .admin-item .admin-item__link:hover, .admin-item .admin-item__link:focus {
   background: var(--colorGinPrimaryLight);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .admin-item .admin-item__link:hover ~ .admin-item__title,
 .admin-item .admin-item__link:hover ~ .admin-item__description, .admin-item .admin-item__link:focus ~ .admin-item__title,
@@ -5116,10 +5200,6 @@ hr {
 .admin-item .admin-item__link:focus {
   -webkit-box-shadow: inset 0 0 0 2px var(--colorGinFocus);
           box-shadow: inset 0 0 0 2px var(--colorGinFocus);
-}
-
-.page-wrapper a:focus {
-  border-radius: 2px;
 }
 
 .page-wrapper *:focus,
@@ -5227,12 +5307,12 @@ table.diff tr .diff-addedline .diffchange {
 .ui-dialog:not(.ui-dialog-off-canvas) {
   max-width: 1280px;
   border: 0 none !important;
-  border-radius: 12px;
+  border-radius: 16px;
   background: var(--colorGinLayerBackground);
 }
 .ui-dialog:not(.ui-dialog-off-canvas) .ui-dialog-content:first-of-type {
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 .ui-dialog:not(.ui-dialog-off-canvas) .layout-region-node-actions {
   position: absolute;
@@ -5246,7 +5326,7 @@ table.diff tr .diff-addedline .diffchange {
 }
 .ui-dialog:not(.ui-dialog-off-canvas) .views-exposed-form.views-exposed-form,
 .ui-dialog:not(.ui-dialog-off-canvas) .views-displays {
-  border: 1px solid var(--colorGinLayer2Border);
+  border: 1px solid var(--colorGinLayerBorder);
 }
 
 .ui-dialog, .ui-dialog:focus, .ui-dialog:focus:active, .ui-dialog:focus:hover {
@@ -5258,8 +5338,8 @@ table.diff tr .diff-addedline .diffchange {
   padding: 24px;
   background: #1b1b1d;
   border-bottom: 0 none;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 .ui-dialog .ui-dialog-title {
   font-weight: normal;
@@ -5270,8 +5350,8 @@ table.diff tr .diff-addedline .diffchange {
 .ui-dialog .ui-widget-content.ui-dialog-buttonpane {
   padding: 16px 24px;
   border-top: 1px solid var(--colorGinLayerBorder);
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
   background: var(--colorGinAppBackground);
 }
 .ui-dialog .ui-widget-content.ui-dialog-buttonpane .button {
@@ -6010,7 +6090,7 @@ tr.color-error:focus,
   margin-top: 0;
   background: var(--colorGinLayer4Background);
   border: 0 none;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .panel {
@@ -6091,7 +6171,7 @@ tr.color-error:focus,
 }
 .webform-tabs.ui-tabs .ui-tabs-nav .ui-tabs-active.ui-state-active a {
   border: 2px solid var(--colorGinPrimary);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 [data-drupal-selector=edit-preset-accent-color] .form-radios {
@@ -6193,7 +6273,7 @@ tr.color-error:focus,
   width: 140px;
   height: 100px;
   margin-left: 0;
-  border-radius: 8px;
+  border-radius: 12px;
   -webkit-transform: none;
           transform: none;
   background-repeat: no-repeat;
@@ -6341,7 +6421,7 @@ tr.color-error:focus,
   margin: 0;
   background: var(--colorGinLayer2Background);
   border: 2px dashed var(--colorGinFormElementBorder);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .dropzone.dz-drag-hover {
   border: 2px dashed var(--colorGinPrimary);
@@ -6364,7 +6444,7 @@ tr.color-error:focus,
 }
 .entities-list .item-container .field__item {
   border: 3px solid transparent;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
 }
 .entities-list .item-container .field__item:hover, .entities-list .item-container .field__item:focus {
@@ -6444,7 +6524,7 @@ tr.color-error:focus,
 }
 .gin-entity-browser .entity-browser-form .views-row {
   border: 1px solid var(--colorGinBorder);
-  border-radius: 14px;
+  border-radius: 18px;
   position: relative;
 }
 .gin-entity-browser .entity-browser-form .views-row .views-field-thumbnail__target-id:hover, .gin-entity-browser .entity-browser-form .views-row .views-field-thumbnail__target-id:focus {
@@ -6469,7 +6549,7 @@ tr.color-error:focus,
 }
 .gin-entity-browser .entity-browser-form .views-field-thumbnail__target-id {
   border: 3px solid transparent;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
 }
 .gin-entity-browser .entity-browser-form .views-field-thumbnail__target-id:hover, .gin-entity-browser .entity-browser-form .views-field-thumbnail__target-id:focus {
