@@ -68,6 +68,7 @@
   height: auto;
   padding: 16px 0;
   background: var(--colorGinLayerBackground);
+  border-radius: $borderDefault;
 
   &__status-title {
     padding-left: 0;

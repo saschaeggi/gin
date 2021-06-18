@@ -581,6 +581,7 @@
   position: sticky;
   top: 0;
   width: 100%;
+  padding: 0;
   background: rgba(251, 251, 255, 0.98);
   border-bottom: 1px solid var(--colorGinLayerBorder);
 }
