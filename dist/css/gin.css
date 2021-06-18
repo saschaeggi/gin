@@ -3083,7 +3083,6 @@ details summary {
 .views-displays {
   border: 1px solid var(--colorGinLayerBorder);
   border-radius: 12px;
-  overflow: hidden;
 }
 
 .views-admin .icon.add {
@@ -3109,9 +3108,6 @@ details summary {
 .views-display-top .dropbutton-wrapper {
   top: 20px;
   right: 24px;
-}
-.views-display-top .dropbutton--small .dropbutton__item > a {
-  line-height: 1.3rem;
 }
 
 .edit-display-settings {

@@ -190,7 +190,6 @@
 .views-displays {
   border: 1px solid var(--colorGinLayerBorder);
   border-radius: $borderMedium;
-  overflow: hidden;
 }
 
 .views-admin {
@@ -221,10 +220,6 @@
   .dropbutton-wrapper {
     top: 20px;
     right: 24px;
-  }
-
-  .dropbutton--small .dropbutton__item > a {
-    line-height: 1.3rem;
   }
 }
 
