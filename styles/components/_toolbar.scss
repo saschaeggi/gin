@@ -218,6 +218,13 @@
       }
     }
 
+    // Webform
+    .toolbar-icon-entity-webform-collection {
+      &:before {
+        mask-image: icon('webform');
+      }
+    }
+
     // Admin tray: TMGMT Translation.
     .toolbar-icon-tmgmt-admin-tmgmt {
       &:before {
