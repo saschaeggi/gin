@@ -346,7 +346,7 @@ svg path:active {
     width: calc(100% - min(10vw, 96px) + 24px);
   }
   .gin--horizontal-toolbar .sticky-shadow {
-    top: 102px;
+    top: 92px;
   }
   .gin--classic-toolbar .sticky-shadow {
     top: 0;
@@ -4469,8 +4469,10 @@ a.button:active {
   border-right: 1px solid var(--colorGinPrimaryLightActive);
 }
 .dropbutton--multiple > .dropbutton__item:first-of-type input {
+  color: var(--colorGinPrimary);
   background-color: transparent;
-  border: 1px solid transparent !important;
+  border: 2px solid transparent !important;
+  border-radius: 0 !important;
 }
 .gin--dark-mode .dropbutton {
   -webkit-box-shadow: 0 4px 18px var(--colorGinButtonShadow);
@@ -4632,6 +4634,9 @@ a.button:active {
   display: block;
 }
 
+.js.no-touchevents .dropbutton--multiple.dropbutton--small .dropbutton__item:first-of-type {
+  margin-right: 0;
+}
 .js.no-touchevents .dropbutton--multiple.dropbutton--small > .dropbutton__item:first-of-type {
   margin-right: 2rem;
 }

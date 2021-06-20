@@ -9,8 +9,10 @@
     border-right: 1px solid var(--colorGinPrimaryLightActive);
 
     input {
+      color: var(--colorGinPrimary);
       background-color: transparent;
-      border: 1px solid transparent !important;
+      border: 2px solid transparent !important;
+      border-radius: 0 !important;
     }
   }
 
@@ -183,6 +185,10 @@
 }
 
 .js.no-touchevents {
+  .dropbutton--multiple.dropbutton--small .dropbutton__item:first-of-type {
+    margin-right: 0;
+  }
+
   .dropbutton--multiple.dropbutton--small > .dropbutton__item:first-of-type {
     margin-right: 2rem;
   }
