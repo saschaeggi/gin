@@ -255,7 +255,8 @@
   &--layout,
   &--content {
     justify-content: flex-start;
-    overflow-y: hidden;
+    overflow-x: hidden;
+    padding-bottom: .25rem;
   }
 
   &--layout:not(:empty),
@@ -270,10 +271,8 @@
   }
 
   &--layout:not(:empty) {
-    border-bottom: 1px solid var(--colorGinLayerBorder);
-
     &::before {
-      content: "Layout";
+      content: var(--ginLPLayoutLabel, 'Layout');
       display: block;
       width: 100%;
       padding-left: 0;
@@ -282,7 +281,16 @@
   }
 
   &--content::before {
-    content: "Content";
+    content: var(--ginLPContentLabel, 'Content');
+  }
+
+  &--layout + &--content {
+    margin-top: -2.6rem;
+    margin-bottom: -2.6rem;
+    z-index: 1;
+    position: relative;
+    background: var(--colorGinLayer3Background);
+    border-top: 1px solid var(--colorGinLayerBorder);
   }
 }
 
@@ -310,6 +318,14 @@
   position: relative;
   display: flex;
   align-self: stretch;
+
+  &:last-of-type {
+    margin-bottom: 2.5rem;
+  }
+
+  &.hidden {
+    display: none;
+  }
 
   a {
     align-self: stretch;

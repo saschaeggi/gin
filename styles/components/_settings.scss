@@ -53,6 +53,9 @@
         // Custom
         &[data-gin-accent=custom] {
           background-color: #fff;
+          background-image: url(../media/settings/custom-color.jpg);
+          background-size: 100%;
+          background-repeat: no-repeat;
           border-color: var(--colorGinBorder);
 
           &:checked {
@@ -73,7 +76,7 @@
         padding: .5rem;
         color: var(--colorGinContextualText);
         background: var(--colorGinContextual);
-        border-radius: $borderSmall;
+        border-radius: $borderXSmall;
         transform: translateX(-50%);
       }
 

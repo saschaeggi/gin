@@ -205,6 +205,9 @@ class GinSettings implements ContainerInjectionInterface {
    */
   private function getAdminTheme() {
     $admin_theme = \Drupal::configFactory()->get('system.theme')->get('admin');
+    if (empty($admin_theme)) {
+      $admin_theme = \Drupal::configFactory()->get('system.theme')->get('default');
+    }
     return $admin_theme;
   }
 

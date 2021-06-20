@@ -9,8 +9,8 @@
 
 (($, Drupal, drupalSettings) => {
   Drupal.behaviors.ginMessagesDismiss = {
-    attach: function(context, settings) {
-      $('.messages .button--dismiss').once('messages-dismiss').click(function(event) {
+    attach: function(context) {
+      $('.messages .button--dismiss', context).once('messages-dismiss').click(function(event) {
         event.preventDefault();
         const $elem = $(this).parents('.messages-list__item');
 

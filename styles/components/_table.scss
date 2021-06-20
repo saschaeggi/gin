@@ -143,3 +143,8 @@ td.webform-has-field-suffix > .form-item > .form-element {
   max-width: 100%;
   width: auto;
 }
+
+td > .form-item > .form-element,
+td > .ajax-new-content > .form-item > .form-element {
+  width: fit-content;
+}

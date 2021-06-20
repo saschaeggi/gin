@@ -1,9 +1,9 @@
 .card {
   padding: 0;
   background: transparent;
-  border: 1px solid var(--colorGinBorder);
-  box-shadow: none;
+  border: 1px solid var(--colorGinTableBorder);
   border-radius: $borderDefault;
+  box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
   overflow: hidden;
 
   &-list {
@@ -22,19 +22,15 @@
 
   &__content-wrapper {
     background-color: var(--colorGinLayerBackground);
-    border-radius: 0 0 $borderSmall $borderSmall;
+    border-radius: 0 0 $borderXSmall $borderXSmall;
 
     @include mq($breakpointXSmall) {
-      border-radius: 0 $borderSmall $borderSmall 0;
+      border-radius: 0 $borderXSmall $borderXSmall 0;
     }
 
     .gin--dark-mode & {
       background-color: var(--colorGinLayer2Background);
     }
-  }
-
-  &:hover &__content-wrapper {
-    background-color: var(--colorGinItemHover);
   }
 
   .heading-f {

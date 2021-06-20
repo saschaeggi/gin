@@ -110,6 +110,10 @@
 
 .views-exposed-form.views-exposed-form {
   padding-top: 8px;
+
+  .form-element--type-select {
+    max-width: 240px;
+  }
 }
 
 .view-files .view-content {
@@ -185,8 +189,7 @@
 .views-exposed-form.views-exposed-form,
 .views-displays {
   border: 1px solid var(--colorGinLayerBorder);
-  border-radius: $borderDefault;
-  overflow: hidden;
+  border-radius: $borderMedium;
 }
 
 .views-admin {
@@ -206,8 +209,8 @@
   background-color: var(--colorGinLayer2Background);
   border: 0 none;
   border-bottom: 1px solid var(--colorGinLayer2Border);
-  border-top-left-radius: $borderSmall;
-  border-top-right-radius: $borderSmall;
+  border-top-left-radius: $borderXSmall;
+  border-top-right-radius: $borderXSmall;
 
   // #3186729: Drupal 9.1 fix
   &__extra-actions-wrapper {
@@ -217,10 +220,6 @@
   .dropbutton-wrapper {
     top: 20px;
     right: 24px;
-  }
-
-  .dropbutton--small .dropbutton__item > a {
-    line-height: 1.3rem;
   }
 }
 
@@ -241,7 +240,7 @@
     padding: .5rem 1rem;
     background: var(--colorGinLayer2Background);
     border: 2px solid var(--colorGinPrimary);
-    border-radius: $borderSmall;
+    border-radius: $borderXSmall;
 
     &::before {
       display: none;
