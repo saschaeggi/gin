@@ -119,6 +119,18 @@ function gin_preprocess_details(&$variables) {
 }
 
 /**
+ * Implements template_preprocess_HOOK() for fieldset.
+ */
+function gin_preprocess_fieldset(&$variables) {
+  /** @var \Drupal\gin\GinSettings $settings */
+  $settings = \Drupal::classResolver(GinSettings::class);
+  if ($settings->get('show_description_toggle') && !empty($variables['description'])) {
+    $variables['description_display'] = 'invisible';
+    $variables['description_toggle'] = TRUE;
+  }
+}
+
+/**
  * Implements hook_preprocess_HOOK() for page_alter.
  */
 function gin_theme_suggestions_page_alter(&$suggestions, $variables) {

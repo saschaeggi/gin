@@ -1,4 +1,7 @@
 @charset "UTF-8";
+.ui-dialog {
+  /* Align fieldset label positioning to regular form item label, see claro form.css. */
+}
 .ui-dialog .form-boolean--type-checkbox:checked,
 .ui-dialog .button--primary {
   background-color: var(--colorGinPrimary);
@@ -537,6 +540,9 @@
 }
 .ui-dialog fieldset:not(.fieldgroup) > .fieldset-wrapper {
   margin-top: 20px;
+}
+.ui-dialog .fieldset__label {
+  margin-top: 0.25rem;
 }
 .ui-dialog .fieldset__label,
 .ui-dialog .fieldset__label--group,

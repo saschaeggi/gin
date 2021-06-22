@@ -18,7 +18,7 @@
             event.currentTarget
               .closest('.help-icon__description-container')
               .querySelectorAll(
-                '.form-item__description, .claro-details__description',
+                '.claro-details__description, .fieldset__description, .form-item__description',
               )
               .forEach(toggleFunction);
           });
