@@ -2166,10 +2166,10 @@ details summary {
 .paragraphs-tabs-wrapper .field-multiple-table .draggable td {
   padding: 0.25rem;
 }
-.paragraphs-tabs-wrapper .field-multiple-table .draggable td + td {
-  width: auto;
+.paragraphs-tabs-wrapper .field-multiple-table .draggable > td + td {
+  width: 100%;
 }
-.paragraphs-tabs-wrapper .field-multiple-table .draggable .td__order {
+.paragraphs-tabs-wrapper .field-multiple-table .draggable .has-multiple-fields-remove-button {
   width: 100%;
   padding-right: 0 !important;
 }
