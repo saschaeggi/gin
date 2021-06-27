@@ -500,7 +500,7 @@ a.toolbar-menu__trigger,
     height: 48px;
     padding-left: 60px;
     padding-right: 0;
-    margin: 0 8px;
+    margin: 0 8px 1px;
     border-radius: 8px;
     overflow: hidden;
   }
@@ -1299,8 +1299,8 @@ a.toolbar-menu__trigger,
   .toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon:before, .toolbar .toolbar-bar .toolbar-menu-administration .responsive-preview-icon:before,
 .toolbar .toolbar-bar #toolbar-item-administration-search:before,
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:before {
-    -webkit-mask-size: 22px 22px;
-            mask-size: 22px 22px;
+    -webkit-mask-size: 21px 21px;
+            mask-size: 21px 21px;
   }
 }
 

@@ -46,6 +46,11 @@ $maxWidth: 520px;
   }
 }
 
+// Password
+.password-field {
+  width: 100%;
+}
+
 .password-confirm {
   width: 100%;
   max-width: $maxWidth;
@@ -67,6 +72,7 @@ $maxWidth: 520px;
   background-color: transparent;
 }
 
+// Select
 .form-element--type-select {
   padding-right: calc(2.5rem - 1px);
 

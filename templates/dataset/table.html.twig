@@ -94,22 +94,7 @@
           %}
           <tr{{ row.attributes.addClass(row_classes) }}>
             {% for cell in row.cells %}
-              {% set currentIndex = loop.index %}
-              {% set theadValue = null %}
-
-              {% for value in header %}
-                {% if loop.index == currentIndex %}
-                  {% if '<a' in value.content|render|render %}
-                    {% set theadValue = 'td__item' %}
-                  {% else %}
-                    {% set theadValue = value.content|render|clean_class %}
-                  {% endif %}
-                {% endif %}
-              {% endfor %}
-
-              {% set cell_classes = [theadValue ? 'td__' ~ theadValue] %}
-
-              <{{ cell.tag }}{{ cell.attributes.addClass(cell_classes) }}>
+              <{{ cell.tag }}{{ cell.attributes }}>
                 {{- cell.content -}}
               </{{ cell.tag }}>
             {% endfor %}

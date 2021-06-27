@@ -318,6 +318,9 @@
   top: 3px;
   padding-bottom: 0;
 }
+.ui-dialog .password-field {
+  width: 100%;
+}
 .ui-dialog .password-confirm {
   width: 100%;
   max-width: 520px;

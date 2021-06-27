@@ -175,7 +175,7 @@ function gin_preprocess_dropbutton_wrapper(&$variables) {
 
   $children = (string) $variables['children'];
 
-  // Naively check if a specific size is set
+  // Naively check if a specific size is set.
   if (strpos($children, 'dropbutton--small')) {
     $default_size = 'small';
   }
@@ -300,6 +300,13 @@ function gin_form_alter(&$form, $form_state, $form_id) {
  * Implements form_user_form_alter().
  */
 function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+
+  // If new user account, don't show settings yet.
+  if ($route_name === 'user.admin_create') {
+    return;
+  }
+
   /** @var \Drupal\gin\GinSettings $settings */
   $settings = \Drupal::classResolver(GinSettings::class);
 
@@ -425,7 +432,7 @@ function gin_preprocess_menu(&$variables) {
     }
 
     // Move config & help menu items to end.
-    $to_move = ['system.admin_config', 'system.admin_reports', 'help.main'];
+    $to_move = ['system.admin_config', 'help.main'];
     foreach ($to_move as $id) {
       $index = array_search($id, array_keys($variables['items']));
       if (is_numeric($index)) {
