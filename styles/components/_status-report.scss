@@ -67,8 +67,8 @@
 .upgrade-status-counter {
   height: auto;
   padding: 16px 0;
-  border: 1px solid var(--colorGinLayerBorder);
   background: var(--colorGinLayerBackground);
+  border-radius: $borderDefault;
 
   &__status-title {
     padding-left: 0;
@@ -104,14 +104,8 @@
   }
 
   &__item {
-    border-top: 0 none;
+    padding: 1rem;
     background: transparent;
-
-    &:nth-child(2),
-    &:nth-child(4),
-    &:nth-child(5) {
-      border-left: 0 none;
-    }
   }
 
   &__item-title {

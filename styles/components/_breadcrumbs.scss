@@ -1,4 +1,8 @@
 .breadcrumb {
+  &-wrapper {
+    width: 1px; // Fixes ellipsis with flex overfloating issue.
+  }
+
   &__item,
   &__link {
     font-weight: normal;
@@ -20,6 +24,16 @@
   }
 
   &__link {
+    line-height: 2; // make sure we have enough room for focus ring
     border-radius: 2px;
+  }
+
+  &__list {
+    text-overflow: ellipsis;
+    width: auto;
+    overflow: hidden;
+    padding-left: .25rem;
+    margin-left: -.25rem;
+    margin-top: -.25rem;
   }
 }

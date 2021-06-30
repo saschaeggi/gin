@@ -156,19 +156,51 @@ function gin_page_attachments_alter(&$page) {
 }
 
 /**
+ * Implements hook_preprocess_HOOK() for node_edit_form.
+ */
+function gin_preprocess_node_edit_form(&$variables) {
+  $module_handler = \Drupal::service('module_handler');
+
+  // Check if Layout Paragraphs is active.
+  $layout_paragraphs = $module_handler->moduleExists('layout_paragraphs');
+  $variables['gin_layout_paragraphs'] = $layout_paragraphs;
+}
+
+/**
  * Implements hook_preprocess_HOOK() for links__dropbutton.
  */
 function gin_preprocess_dropbutton_wrapper(&$variables) {
+  // Set the default size.
+  $default_size = 'extrasmall';
+
   $children = (string) $variables['children'];
+
+  // Naively check if a specific size is set.
+  if (strpos($children, 'dropbutton--small')) {
+    $default_size = 'small';
+  }
+  if (strpos($children, 'dropbutton--standard')) {
+    $default_size = 'standard';
+  }
 
   $pattern = '/(<ul\sclass\s*= *["\']?)([^"\']*)(.*)(<li)/i';
   $lipattern = '/(<li class\s*= *["\']?)([^"\']*)/i';
 
-  $children = preg_replace($lipattern, '$1$2 dropbutton__item dropbutton__item--extrasmall', $children);
-  $children = preg_replace('/<li>/', '<li class="dropbutton__item dropbutton__item--extrasmall">', $children);
-  $children = preg_replace($pattern, '$1$2 dropbutton--multiple dropbutton--extrasmall $3$4', $children);
+  $lisize = 'dropbutton__item--' . $default_size;
+  $ulsize = 'dropbutton--' . $default_size;
+
+  $children = preg_replace($lipattern, '$1$2 ' . $lisize, $children);
+  $children = preg_replace('/<li>/', '<li class="dropbutton__item ' . $lisize . '">', $children);
+  $children = preg_replace($pattern, '$1$2 ' . $ulsize . ' $3$4', $children);
 
   $variables['children'] = Markup::create($children);
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for paragraphs operations dropbutton.
+ */
+function gin_preprocess_links__dropbutton__operations__paragraphs(&$variables) {
+  $variables['attributes']['class'][] = 'dropbutton--small';
 }
 
 /**
@@ -179,9 +211,11 @@ function gin_form_alter(&$form, $form_state, $form_id) {
   if (_gin_is_content_form($form, $form_state, $form_id)) {
     // Action buttons.
     if (isset($form['actions'])) {
-      // Put Save after Preview.
-      $save_weight = $form['actions']['preview']['#weight'] ? $form['actions']['preview']['#weight'] + 1 : 11;
-      $form['actions']['submit']['#weight'] = $save_weight;
+      if (isset($form['actions']['preview'])) {
+        // Put Save after Preview.
+        $save_weight = $form['actions']['preview']['#weight'] ? $form['actions']['preview']['#weight'] + 1 : 11;
+        $form['actions']['submit']['#weight'] = $save_weight;
+      }
 
       // Create gin_actions group.
       $form['gin_actions'] = [
@@ -271,6 +305,13 @@ function gin_form_alter(&$form, $form_state, $form_id) {
  * Implements form_user_form_alter().
  */
 function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+
+  // If new user account, don't show settings yet.
+  if ($route_name === 'user.admin_create') {
+    return;
+  }
+
   /** @var \Drupal\gin\GinSettings $settings */
   $settings = \Drupal::classResolver(GinSettings::class);
 
@@ -364,23 +405,65 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
 }
 
 /**
+ * Implements template_preprocess_HOOK() for select.
+ */
+function gin_preprocess_select(&$variables) {
+  if (!empty($variables['element']['#title_display']) && $variables['element']['#title_display'] === 'attribute' && !empty((string) $variables['element']['#title'])) {
+    $variables['attributes']['title'] = (string) $variables['element']['#title'];
+  }
+
+  $variables['attributes']['class'][] = 'form-element';
+  $variables['attributes']['class'][] = $variables['element']['#multiple'] ?
+    'form-element--type-select-multiple' :
+    'form-element--type-select';
+
+  if (
+    in_array('block-region-select', $variables['attributes']['class']) ||
+    in_array('block-weight', $variables['attributes']['class'])
+  ) {
+    $variables['attributes']['class'][] = 'form-element--extrasmall';
+  }
+}
+
+/**
  * Implements hook_preprocess_menu().
  */
 function gin_preprocess_menu(&$variables) {
   if (isset($variables['theme_hook_original']) && $variables['theme_hook_original'] == 'menu__toolbar__admin') {
-    $moduleHandler = \Drupal::service('module_handler');
-
     // Check if the admin_toolbar module is installed.
     foreach ($variables['items'] as $key => $item) {
       $gin_id = str_replace('.', '-', $key);
-
       $variables['items'][$key]['gin_id'] = $gin_id;
+    }
 
-      if ($moduleHandler->moduleExists('admin_toolbar')) {
-        $variables['items'][$key]['gin_admin_toolbar_module'] = TRUE;
+    // Move config & help menu items to end.
+    $to_move = ['system.admin_config', 'help.main'];
+    foreach ($to_move as $id) {
+      $index = array_search($id, array_keys($variables['items']));
+      if (is_numeric($index)) {
+        $variables['items'] += array_splice($variables['items'], $index, 1);
       }
     }
   }
+}
+
+/**
+ * Implements hook_preprocess_menu__toolbar__gin().
+ */
+function gin_preprocess_menu__toolbar__gin(&$variables) {
+  // Get theme settings.
+  /** @var \Drupal\gin\GinSettings $settings */
+  $settings = \Drupal::classResolver(GinSettings::class);
+  $logo_path = $settings->getDefault('icon_path');
+  $logo_default = $settings->getDefault('icon_default');
+  $variables['icon_default'] = $logo_default;
+
+  if (!$logo_default) {
+    $variables['icon_path'] = $logo_path;
+  }
+
+  // Expose Toolbar variant.
+  $variables['toolbar_variant'] = $settings->get('classic_toolbar');
 }
 
 /**
@@ -453,21 +536,6 @@ function gin_css_alter(&$css, $assets) {
     // as CSS_AGGREGATE_THEME is set to 100.
     // Let's be on the safe side and assign a high number to it.
     $css[$path]['group'] = 200;
-  }
-}
-
-/**
- * Implements hook_preprocess_menu__toolbar__gin().
- */
-function gin_preprocess_menu__toolbar__gin(&$variables) {
-  // Get theme settings.
-  $settings = \Drupal::classResolver(GinSettings::class);
-  $logo_path = $settings->getDefault('icon_path');
-  $logo_default = $settings->getDefault('icon_default');
-  $variables['icon_default'] = $logo_default;
-
-  if (!$logo_default) {
-    $variables['icon_path'] = $logo_path;
   }
 }
 

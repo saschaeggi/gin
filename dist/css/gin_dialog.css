@@ -126,6 +126,8 @@
   background-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
+  -webkit-transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .ui-dialog .button:hover,
 .ui-dialog .dropbutton__item:first-of-type > *:hover,
@@ -154,9 +156,11 @@
 .ui-dialog .action-link--icon-trash.action-link {
   padding: calc(1rem - 2px) calc(1.5rem - 2px);
   border: 2px solid var(--colorGinPrimary) !important;
-  border-radius: 6px;
+  border-radius: 8px;
   -webkit-box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
           box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
+  -webkit-transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .gin--dark-mode .ui-dialog .button,
 .gin--dark-mode .ui-dialog .button:not(:focus),
@@ -198,9 +202,11 @@
 }
 .ui-dialog .button.button--small {
   padding: 0.5rem 1rem;
+  border-radius: 6px;
 }
 .ui-dialog .button.button--extrasmall {
   padding: 0.25rem 0.75rem;
+  border-radius: 6px;
 }
 .ui-dialog .button--primary,
 .ui-dialog .button--primary:not(:focus),
@@ -208,8 +214,6 @@
   background: var(--colorGinPrimary);
   -webkit-box-shadow: 0 0.125em 0.25em var(--colorGinPrimaryLightActive), 0.1em 0.25em 0.5em var(--colorGinPrimaryLight), -0.25em -0.5em 1em var(--colorGinAppBackground);
           box-shadow: 0 0.125em 0.25em var(--colorGinPrimaryLightActive), 0.1em 0.25em 0.5em var(--colorGinPrimaryLight), -0.25em -0.5em 1em var(--colorGinAppBackground);
-  -webkit-filter: drop-shadow(0 6px 10px var(--colorGinPrimaryLight));
-          filter: drop-shadow(0 6px 10px var(--colorGinPrimaryLight));
 }
 .ui-dialog .button--primary:hover,
 .ui-dialog .button--primary:not(:focus):hover,
@@ -278,7 +282,9 @@
           box-sizing: border-box;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-  border-radius: 6px;
+  border-radius: 8px;
+  -webkit-transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.15s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .ui-dialog .form-element:hover {
   border-color: var(--colorGinText);
@@ -292,19 +298,28 @@
 .gin--dark-mode .ui-dialog .form-element {
   background-color: var(--colorGinLayer2Background);
 }
+.ui-dialog .form-element--small, .ui-dialog .form-element--extrasmall {
+  border-radius: 6px;
+}
 .ui-dialog .form-textarea-wrapper {
   -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
           box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .ui-dialog .form-textarea-wrapper textarea {
   max-width: 100%;
 }
+.ui-dialog .form-item--editor-format,
 .ui-dialog .form-element--editor-format {
   width: auto;
 }
+.ui-dialog .form-item--editor-format .form-item__label,
 .ui-dialog .form-element--editor-format .form-item__label {
   top: 3px;
+  padding-bottom: 0;
+}
+.ui-dialog .password-field {
+  width: 100%;
 }
 .ui-dialog .password-confirm {
   width: 100%;
@@ -357,7 +372,6 @@
   vertical-align: top;
   width: 40px;
   height: 24px;
-  background-color: #909090;
   border-radius: 12px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -370,10 +384,14 @@
   overflow: hidden;
   -webkit-clip-path: circle(24px at 50% 50%);
           clip-path: circle(24px at 50% 50%);
-  border: 4px solid transparent;
+  background-color: var(--colorGinDisabled);
+  border: 3px solid transparent;
   border-radius: 12px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+.gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner {
+  background-color: var(--colorGinLayer2Background);
 }
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner:before {
   position: absolute;
@@ -390,7 +408,7 @@
   transition: transform 0.3s, -webkit-transform 0.3s;
 }
 .gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner:before {
-  background-color: var(--colorGinLayer2Background);
+  background-color: var(--colorGinFormElementBorder);
 }
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input {
   position: absolute !important;
@@ -418,12 +436,28 @@
   -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
+.ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle {
+  border-color: var(--colorGinPrimaryLightActive);
+}
+.gin--high-contrast-mode .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle {
+  border-color: var(--colorGinBorder);
+}
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner {
   background-color: var(--colorGinSwitch);
+}
+.gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner {
+  background-color: var(--colorGinPrimaryLightActive);
 }
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner:before {
   -webkit-transform: translateX(16px);
           transform: translateX(16px);
+  background-color: #fff;
+}
+.gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner:before {
+  background-color: var(--colorGinPrimaryHover);
+}
+.gin--high-contrast-mode .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner:before {
+  background-color: var(--colorGinBorder);
 }
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:active ~ .checkbox-toggle .checkbox-toggle__inner, .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:focus ~ .checkbox-toggle .checkbox-toggle__inner {
   -webkit-box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
@@ -463,15 +497,22 @@
 .ui-dialog .form-boolean--type-radio:hover, .gin--dark-mode .ui-dialog .form-boolean--type-radio:hover {
   border-color: var(--colorGinText);
 }
+.ui-dialog .form-boolean--type-radio:active, .ui-dialog .form-boolean--type-radio:focus {
+  -webkit-box-shadow: inset 0 0 0 1px var(--colorGinLayer2Border), 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
+          box-shadow: inset 0 0 0 1px var(--colorGinLayer2Border), 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
+}
 .ui-dialog .form-boolean--type-radio:checked, .ui-dialog .form-boolean--type-radio:checked:hover, .ui-dialog .form-boolean--type-radio:checked:active, .ui-dialog .form-boolean--type-radio:checked:focus, .ui-dialog .form-boolean--type-radio:checked:hover:focus {
   background-image: none;
-  background-color: #fff;
-  -webkit-box-shadow: inset 0 0 0 4px var(--colorGinPrimary);
-          box-shadow: inset 0 0 0 4px var(--colorGinPrimary);
+  background-color: var(--colorGinLayerBackground);
+  -webkit-box-shadow: inset 0 0 0 5px var(--colorGinPrimary);
+          box-shadow: inset 0 0 0 5px var(--colorGinPrimary);
 }
 .gin--dark-mode .ui-dialog .form-boolean--type-radio:checked, .gin--dark-mode .ui-dialog .form-boolean--type-radio:checked:hover, .gin--dark-mode .ui-dialog .form-boolean--type-radio:checked:active, .gin--dark-mode .ui-dialog .form-boolean--type-radio:checked:focus, .gin--dark-mode .ui-dialog .form-boolean--type-radio:checked:hover:focus {
-  background-color: var(--colorGinLayer2Background);
-  border-color: var(--colorGinPrimary);
+  border-color: var(--colorGinPrimaryActive);
+}
+.ui-dialog .form-boolean--type-radio:checked:active, .ui-dialog .form-boolean--type-radio:checked:focus, .ui-dialog .form-boolean--type-radio:checked:hover:focus {
+  -webkit-box-shadow: inset 0 0 0 5px var(--colorGinPrimary), 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
+          box-shadow: inset 0 0 0 5px var(--colorGinPrimary), 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
 }
 .ui-dialog .form-radios .form-type--boolean,
 .ui-dialog .form-checkboxes .form-type--boolean {
@@ -485,12 +526,13 @@
   background-color: transparent;
 }
 .ui-dialog fieldset:not(.fieldgroup) {
+  color: var(--colorGinTextLight);
   padding-top: 8px;
   padding-left: 0;
   padding-right: 0;
   background: transparent;
   border-color: var(--colorGinBorder);
-  border-radius: 6px;
+  border-radius: 8px;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -515,11 +557,17 @@
   color: var(--colorGinTextLight);
 }
 .ui-dialog .form-item__label.form-required::after,
-.ui-dialog .fieldset__label.form-required::after {
+.ui-dialog .fieldset__label.form-required::after,
+.ui-dialog .form-required > .fieldset__label::after {
   content: "*";
   color: var(--colorGinDanger);
+  margin-right: 0.15em;
+  margin-left: 0.15em;
   vertical-align: text-top;
   background: none;
+}
+.ui-dialog .claro-details__summary:not(.form-required) .required-mark {
+  display: none;
 }
 .ui-dialog .form-item__warning {
   display: inline-block;
@@ -567,6 +615,12 @@
 .ui-dialog .claro-autocomplete .form-autocomplete {
   width: 100%;
 }
+.ui-dialog .no-touchevents .form-element--type-select.form-element--extrasmall {
+  min-height: 1.75rem;
+}
+.ui-dialog #block-gin-content > form > .form-item:first-of-type {
+  margin-top: 0;
+}
 .gin--dark-mode .ui-dialog .cke .cke_inner,
 .gin--dark-mode .ui-dialog .cke .cke_wysiwyg_frame,
 .gin--dark-mode .ui-dialog .cke .cke_wysiwyg_div {
@@ -574,22 +628,22 @@
 }
 .ui-dialog .cke.cke_chrome {
   border-color: var(--colorGinFormElementBorder);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .ui-dialog .cke .cke_inner {
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .ui-dialog .cke .cke_top {
   background: var(--colorGinLayerBackground);
   border-bottom: 1px solid var(--colorGinBorder);
-  border-radius: 5px 5px 0 0;
+  border-radius: 7px 7px 0 0;
 }
 .gin--dark-mode .ui-dialog .cke .cke_top {
   background: var(--colorGinLayer2Background);
 }
 .ui-dialog .cke .cke_bottom {
   background: var(--colorGinLayer3Background);
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 7px 7px;
 }
 .ui-dialog .cke .cke_contents {
   padding-left: 8px;
@@ -676,7 +730,7 @@
   padding: 0.5rem;
   background: var(--colorGinLayer4Background);
   border: 0 none;
-  border-radius: 6px;
+  border-radius: 8px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 20px 20px 40px rgba(0, 0, 0, 0.12);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 20px 20px 40px rgba(0, 0, 0, 0.12);
 }
@@ -703,12 +757,12 @@
 .ui-dialog:not(.ui-dialog-off-canvas) {
   max-width: 1280px;
   border: 0 none !important;
-  border-radius: 12px;
+  border-radius: 16px;
   background: var(--colorGinLayerBackground);
 }
 .ui-dialog:not(.ui-dialog-off-canvas) .ui-dialog-content:first-of-type {
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 .ui-dialog:not(.ui-dialog-off-canvas) .layout-region-node-actions {
   position: absolute;
@@ -722,7 +776,7 @@
 }
 .ui-dialog:not(.ui-dialog-off-canvas) .views-exposed-form.views-exposed-form,
 .ui-dialog:not(.ui-dialog-off-canvas) .views-displays {
-  border: 1px solid var(--colorGinLayer2Border);
+  border: 1px solid var(--colorGinLayerBorder);
 }
 
 .ui-dialog, .ui-dialog:focus, .ui-dialog:focus:active, .ui-dialog:focus:hover {
@@ -734,8 +788,8 @@
   padding: 24px;
   background: #1b1b1d;
   border-bottom: 0 none;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 .ui-dialog .ui-dialog-title {
   font-weight: normal;
@@ -746,8 +800,8 @@
 .ui-dialog .ui-widget-content.ui-dialog-buttonpane {
   padding: 16px 24px;
   border-top: 1px solid var(--colorGinLayerBorder);
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
   background: var(--colorGinAppBackground);
 }
 .ui-dialog .ui-widget-content.ui-dialog-buttonpane .button {

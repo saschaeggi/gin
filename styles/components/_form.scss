@@ -6,6 +6,7 @@ $maxWidth: 520px;
   box-sizing: border-box;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .25);
   border-radius: $borderDefault;
+  transition: $transition;
 
   &:hover {
     border-color: var(--colorGinText);
@@ -19,6 +20,11 @@ $maxWidth: 520px;
   .gin--dark-mode & {
     background-color: var(--colorGinLayer2Background);
   }
+
+  &--small,
+  &--extrasmall {
+    border-radius: $borderSmall;
+  }
 }
 
 .form-textarea-wrapper {
@@ -30,12 +36,19 @@ $maxWidth: 520px;
   }
 }
 
+.form-item--editor-format,
 .form-element--editor-format {
   width: auto;
 
   .form-item__label {
     top: 3px;
+    padding-bottom: 0;
   }
+}
+
+// Password
+.password-field {
+  width: 100%;
 }
 
 .password-confirm {
@@ -59,6 +72,7 @@ $maxWidth: 520px;
   background-color: transparent;
 }
 
+// Select
 .form-element--type-select {
   padding-right: calc(2.5rem - 1px);
 
@@ -80,7 +94,7 @@ $maxWidth: 520px;
   width: 21px;
   height: 21px;
   border-color: var(--colorGinFormElementBorder);
-  border-radius: $borderSmall;
+  border-radius: $borderXSmall;
 }
 
 // Darkmode Checkbox
@@ -110,7 +124,6 @@ $maxWidth: 520px;
     vertical-align: top;
     width: 40px;
     height: 24px;
-    background-color: #909090;
     border-radius: 12px;
     box-sizing: border-box;
 
@@ -121,9 +134,14 @@ $maxWidth: 520px;
       height: 100%;
       overflow: hidden;
       clip-path: circle(24px at 50% 50%); // Fix Safari bug
-      border: 4px solid transparent;
+      background-color: var(--colorGinDisabled);
+      border: 3px solid transparent;
       border-radius: 12px;
       box-sizing: border-box;
+
+      .gin--dark-mode & {
+        background-color: var(--colorGinLayer2Background);
+      }
 
       &:before {
         position: absolute;
@@ -136,7 +154,7 @@ $maxWidth: 520px;
         transition: transform .3s;
 
         .gin--dark-mode & {
-          background-color: var(--colorGinLayer2Background);
+          background-color: var(--colorGinFormElementBorder);
         }
       }
     }
@@ -167,11 +185,32 @@ $maxWidth: 520px;
       box-shadow: 0 0 2px rgba(0, 0, 0, .2);
     }
 
-    &:checked ~ .checkbox-toggle .checkbox-toggle__inner {
-      background-color: var(--colorGinSwitch);
+    &:checked ~ .checkbox-toggle {
+      border-color: var(--colorGinPrimaryLightActive);
 
-      &:before {
-        transform: translateX(16px);
+      .gin--high-contrast-mode & {
+        border-color: var(--colorGinBorder);
+      }
+
+      .checkbox-toggle__inner {
+        background-color: var(--colorGinSwitch);
+
+        .gin--dark-mode & {
+          background-color: var(--colorGinPrimaryLightActive);
+        }
+
+        &:before {
+          transform: translateX(16px);
+          background-color: #fff; //#007d6e; // Lighter variant
+
+          .gin--dark-mode & {
+            background-color: var(--colorGinPrimaryHover);
+          }
+
+          .gin--high-contrast-mode & {
+            background-color: var(--colorGinBorder);
+          }
+        }
       }
     }
 
@@ -232,16 +271,27 @@ $maxWidth: 520px;
     }
   }
 
+  &:active, &:focus {
+    box-shadow: inset 0 0 0 1px var(--colorGinLayer2Border),
+                0 0 0 2px var(--colorGinLayerBackground),
+                0 0 0 4px var(--colorGinFocus);
+  }
+
   &:checked {
     &, &:hover, &:active, &:focus, &:hover:focus {
       background-image: none;
-      background-color: #fff;
-      box-shadow: inset 0 0 0 4px var(--colorGinPrimary);
+      background-color: var(--colorGinLayerBackground);
+      box-shadow: inset 0 0 0 5px var(--colorGinPrimary);
 
       .gin--dark-mode & {
-        background-color: var(--colorGinLayer2Background);
-        border-color: var(--colorGinPrimary);
+        border-color: var(--colorGinPrimaryActive);
       }
+    }
+
+    &:active, &:focus, &:hover:focus {
+      box-shadow: inset 0 0 0 5px var(--colorGinPrimary),
+                  0 0 0 2px var(--colorGinLayerBackground),
+                  0 0 0 4px var(--colorGinFocus);
     }
   }
 }
@@ -263,6 +313,7 @@ $maxWidth: 520px;
 
 // Fieldgroup
 fieldset:not(.fieldgroup) {
+  color: var(--colorGinTextLight);
   padding-top: 8px;
   padding-left: 0;
   padding-right: 0;
@@ -298,11 +349,20 @@ fieldset:not(.fieldgroup) {
 }
 
 .form-item__label.form-required::after,
-.fieldset__label.form-required::after {
+.fieldset__label.form-required::after,
+.form-required > .fieldset__label::after {
   content: "*";
   color: var(--colorGinDanger);
+  margin-right: .15em;
+  margin-left: .15em;
   vertical-align: text-top;
   background: none;
+}
+
+.claro-details__summary:not(.form-required) {
+  .required-mark {
+    display: none;
+  }
 }
 
 .form-item__warning {
@@ -358,26 +418,19 @@ fieldset:not(.fieldgroup) {
   background-position: right 8px center;
 }
 
-// Show field block
-// .layout-region > .form-wrapper,
-// .details-wrapper > .form-wrapper {
-//   padding-left: 1.5rem;
-//   margin-bottom: 2.5rem;
-//   border-left: 2px solid var(--colorGinDisabled);
-
-//   &:hover {
-//     border-left-color: var(--colorGinIcons);
-//   }
-
-//   &:focus-within {
-//     border-left-color: var(--colorGinPrimary);
-//   }
-// }
-
 .claro-autocomplete {
   width: calc(100% - 1rem);
 
   .form-autocomplete {
     width: 100%;
   }
+}
+
+.no-touchevents .form-element--type-select.form-element--extrasmall {
+  min-height: 1.75rem;
+}
+
+// Special case, form starts with a form item, remove margin-top.
+#block-gin-content > form > .form-item:first-of-type {
+  margin-top: 0;
 }

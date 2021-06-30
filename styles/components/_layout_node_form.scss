@@ -63,6 +63,8 @@
 
     // More room for content to breathe
     .node-form {
+      box-shadow: none;
+
       @include mq($breakpointBig) {
         padding-left: 2.5rem;
         padding-right: 2.5rem;
@@ -184,6 +186,10 @@
             .claro-details__wrapper {
               margin: 1.5rem;
             }
+          }
+
+          .form-type--entity-autocomplete .claro-autocomplete {
+            width: 100%;
           }
 
           .form-datetime-wrapper {

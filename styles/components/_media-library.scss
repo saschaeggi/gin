@@ -128,12 +128,12 @@
   &__click-to-select-checkbox .form-boolean {
     width: 29px;
     height: 29px;
-    border-radius: $borderSmall;
+    border-radius: $borderXSmall;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
 
     &,
     .gin--dark-mode & {
-      border-radius: $borderSmall;
+      border-radius: $borderXSmall;
 
       &:not(:checked) {
         background-color: white;
@@ -186,6 +186,11 @@ fieldset.media-library-widget {
 
 .media-library-widget-empty-text {
   color: var(--colorGinTextLight);
+  margin: 0 0 -.5rem 0;
+}
+
+.media-library-open-button {
+  margin-top: 0;
 }
 
 .media-library-add-form {
@@ -197,6 +202,18 @@ fieldset.media-library-widget {
     padding: 0;
     border: none;
     background: transparent;
+    box-shadow: none;
+
+    .form-item--upload {
+      margin-top: 0;
+      margin-right: 0;
+    }
+
+    .dropzone-enable {
+      .button {
+        margin: 0;
+      }
+    }
   }
 }
 
@@ -278,6 +295,7 @@ fieldset.media-library-widget {
 }
 
 .media-library-content {
+  border-left: 0 none;
   border-color: var(--colorGinBorder);
 }
 
@@ -303,5 +321,17 @@ fieldset.media-library-widget {
     .gin--dark-mode & {
       background: var(--colorGinLayer2Background);
     }
+  }
+}
+
+.media-library-widget-modal .media-library-item--grid {
+  @include mq($breakpointBig) {
+    width: 20%;
+  }
+}
+
+.media-library-selection .media-library-item--grid {
+  @include mq($breakpointWide) {
+    width: 20%;
   }
 }

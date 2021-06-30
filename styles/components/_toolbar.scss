@@ -218,6 +218,13 @@
       }
     }
 
+    // Webform
+    .toolbar-icon-entity-webform-collection {
+      &:before {
+        mask-image: icon('webform');
+      }
+    }
+
     // Admin tray: TMGMT Translation.
     .toolbar-icon-tmgmt-admin-tmgmt {
       &:before {
@@ -468,7 +475,7 @@
 .toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle,
 .toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open,
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded {
-  &:before {
+  &::before {
     content: "";
     display: block;
     position: absolute;
@@ -476,11 +483,19 @@
     top: 18px;
     width: 16px;
     height: 16px;
-    background-color: var(--colorGinPrimary);
+    background-color: var(--colorGinDisabled);
     mask-image: icon('handle');
     mask-repeat: no-repeat;
     mask-position: center center;
     mask-size: 14px 14px;
+  }
+
+  &.menu-item--active-trail,
+  &:hover,
+  &:focus {
+    &::before {
+      background-color: var(--colorGinPrimary);
+    }
   }
 }
 
