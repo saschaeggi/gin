@@ -4179,6 +4179,7 @@ body .cke_notification_info .cke_notification_close {
 }
 
 fieldset:not(.fieldgroup) {
+  color: var(--colorGinTextLight);
   padding-top: 8px;
   padding-left: 0;
   padding-right: 0;
