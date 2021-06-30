@@ -35,6 +35,7 @@
       set description_classes = [
       aria_description ? 'form-item__description',
       disabled ? 'is-disabled',
+      description_display == 'invisible' ? 'visually-hidden',
     ]
     %}
     <div{{ description_attributes.addClass(description_classes) }}>{{ description }}</div>

@@ -141,11 +141,11 @@ function gin_preprocess_fieldset(&$variables) {
  * Implements hook_element_info_alter().
  */
 function gin_element_info_alter(&$info) {
-  foreach(['datetime', 'text_format'] as $key) {
+  foreach (['datetime', 'text_format'] as $key) {
     if (array_key_exists($key, $info)) {
       $info['text_format']['#pre_render'][] = [
         GinPreRender::class,
-        'textFormat'
+        'textFormat',
       ];
     }
   }
@@ -158,6 +158,7 @@ function gin_preprocess_text_format_wrapper(&$variables) {
   /** @var \Drupal\gin\GinSettings $settings */
   $settings = \Drupal::classResolver(GinSettings::class);
   if ($settings->get('show_description_toggle') && !empty($variables['description'])) {
+    $variables['description_display'] = 'invisible';
     $variables['description_toggle'] = TRUE;
   }
 }
