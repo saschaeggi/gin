@@ -11,7 +11,10 @@
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a:focus,
 .form-element.error:hover:focus,
 .form-actions .action-link:focus,
-.paragraphs-tabs-wrapper .field-multiple-table .draggable.drag {
+.paragraphs-tabs-wrapper .field-multiple-table .draggable.drag,
+.layout-paragraphs-field .layout-paragraphs-actions input.layout-paragraphs-edit:focus,
+.layout-paragraphs-field .layout-paragraphs-actions input.layout-paragraphs-remove:focus {
+  outline: none;
   box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
 }
 

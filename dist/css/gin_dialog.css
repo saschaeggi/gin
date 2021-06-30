@@ -321,6 +321,9 @@
   top: 3px;
   padding-bottom: 0;
 }
+.ui-dialog .password-field {
+  width: 100%;
+}
 .ui-dialog .password-confirm {
   width: 100%;
   max-width: 520px;
@@ -526,6 +529,7 @@
   background-color: transparent;
 }
 .ui-dialog fieldset:not(.fieldgroup) {
+  color: var(--colorGinTextLight);
   padding-top: 8px;
   padding-left: 0;
   padding-right: 0;

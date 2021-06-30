@@ -381,7 +381,7 @@ a.toolbar-menu__trigger,
           height: 48px;
           padding-left: #{$toolbarWidth - 8px};
           padding-right: 0;
-          margin: 0 8px;
+          margin: 0 8px 1px;
           border-radius: $borderDefault;
           overflow: hidden;
 
@@ -566,7 +566,7 @@ a.toolbar-menu__trigger,
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &:before {
         @include mq($breakpointMedium) {
-          mask-size: $toolbarIconSize $toolbarIconSize;
+          mask-size: 21px 21px;
         }
       }
     }
