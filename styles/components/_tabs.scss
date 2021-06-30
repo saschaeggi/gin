@@ -88,8 +88,9 @@
 }
 
 .claro-details__summary {
-  &:after {
+  &::after {
     left: 0;
+    border-radius: $borderDefault;
   }
 
   &:hover {

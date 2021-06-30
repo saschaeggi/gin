@@ -119,8 +119,10 @@
   }
 }
 
+.paragraphs-add-wrapper,
 .paragraphs-dropbutton-wrapper {
   .button--small {
+    float: left;
     margin-bottom: .5rem;
   }
 }

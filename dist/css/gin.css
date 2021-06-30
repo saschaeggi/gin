@@ -2200,7 +2200,9 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
   display: none;
 }
 
+.paragraphs-add-wrapper .button--small,
 .paragraphs-dropbutton-wrapper .button--small {
+  float: left;
   margin-bottom: 0.5rem;
 }
 
@@ -2582,8 +2584,9 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
           box-shadow: none;
 }
 
-.claro-details__summary:after {
+.claro-details__summary::after {
   left: 0;
+  border-radius: 8px;
 }
 .claro-details__summary:hover {
   color: var(--colorGinPrimary);
@@ -5003,6 +5006,9 @@ a.button.button--danger:active:before,
   -webkit-mask-position: center;
           mask-position: center;
   background-color: #fff;
+}
+.messages--webform .button--dismiss {
+  display: none;
 }
 .messages.messages--info {
   color: var(--colorGinInfoLight);
