@@ -4183,6 +4183,7 @@ fieldset:not(.fieldgroup) {
   padding-left: 0;
   padding-right: 0;
   background: transparent;
+  color: var(--colorGinTextLight);
   border-color: var(--colorGinBorder);
   border-radius: 8px;
   -webkit-box-shadow: none;

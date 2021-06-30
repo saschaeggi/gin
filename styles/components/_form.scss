@@ -317,6 +317,7 @@ fieldset:not(.fieldgroup) {
   padding-left: 0;
   padding-right: 0;
   background: transparent;
+  color: var(--colorGinTextLight);
   border-color: var(--colorGinBorder);
   border-radius: $borderDefault;
   box-shadow: none;
