@@ -36,6 +36,9 @@
 
 .form-type--checkbox > .help-icon__element-has-description,
 .form-type--radio > .help-icon__element-has-description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: normal;
       -ms-flex-align: normal;
           align-items: normal;
@@ -70,4 +73,16 @@ fieldset:not(.fieldgroup) .help-icon > .fieldset__legend .fieldset__label {
 fieldset:not(.fieldgroup) .help-icon__description-toggle {
   -ms-flex-item-align: center;
       align-self: center;
+}
+
+/* System Modules Search fields */
+.system-modules .table-filter .form-type--search,
+.system-modules-uninstall .table-filter .form-type--search {
+  position: relative;
+}
+.system-modules .table-filter .form-type--search .help-icon__description-toggle,
+.system-modules-uninstall .table-filter .form-type--search .help-icon__description-toggle {
+  position: absolute;
+  right: -8px;
+  top: 16px;
 }

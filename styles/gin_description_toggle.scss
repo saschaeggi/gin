@@ -35,6 +35,7 @@
 .form-type--checkbox,
 .form-type--radio {
   > .help-icon__element-has-description {
+    display: flex;
     align-items: normal;
 
     > label {
@@ -72,5 +73,17 @@ fieldset:not(.fieldgroup) {
     &__description-toggle {
       align-self: center;
     }
+  }
+}
+
+/* System Modules Search fields */
+.system-modules .table-filter .form-type--search,
+.system-modules-uninstall .table-filter .form-type--search {
+  position: relative;
+
+  .help-icon__description-toggle {
+    position: absolute;
+    right: -8px;
+    top: 16px;
   }
 }
