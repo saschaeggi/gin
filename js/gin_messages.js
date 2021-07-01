@@ -11,7 +11,6 @@
   Drupal.behaviors.ginMessagesDismiss = {
     attach: function (context) {
       const el = $('.js-message-close', context);
-      console.log(el);
       $('.js-message-close', context).once('messages-dismiss').click(function (event) {
         event.preventDefault();
         const $elem = $(this).parents('.messages-list');

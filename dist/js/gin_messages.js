@@ -1,8 +1,7 @@
 !function($, Drupal, drupalSettings) {
   Drupal.behaviors.ginMessagesDismiss = {
     attach: function(context) {
-      var el = $(".js-message-close", context);
-      console.log(el), $(".js-message-close", context).once("messages-dismiss").click((function(event) {
+      $(".js-message-close", context), $(".js-message-close", context).once("messages-dismiss").click((function(event) {
         event.preventDefault();
         var $elem = $(this).parents(".messages-list");
         $elem.css("opacity", 0), $elem.bind("transitionend", (function() {
