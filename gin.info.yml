@@ -169,8 +169,6 @@ libraries-extend:
     - claro/dropbutton
   core/drupal.checkbox:
     - claro/checkbox
-  core/drupal.message:
-    - claro/messages
   core/drupal.vertical-tabs:
     - claro/vertical-tabs
   core/jquery.ui:
@@ -199,6 +197,8 @@ libraries-extend:
     - claro/form.password-confirm
   core/drupal.tabledrag:
     - gin/gin_tabledrag
+  core/drupal.message:
+    - gin/gin_message
 
 quickedit_stylesheets:
   - ../../../core/themes/claro/css/components/quickedit.css

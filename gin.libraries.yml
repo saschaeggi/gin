@@ -65,10 +65,19 @@ gin_editform:
   js:
     dist/js/gin_editform.js: { minified: false }
 
+gin_message:
+  js:
+    dist/js/gin_message.js: { minified: false }
+  dependencies:
+    - gin/gin_messages
+    - core/jquery.once
+
 gin_messages:
   version: VERSION
   js:
     dist/js/gin_messages.js: { minified: false }
+  dependencies:
+    - core/jquery.once
 
 gin_custom_css:
   version: VERSION
