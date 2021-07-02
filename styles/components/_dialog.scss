@@ -1,5 +1,6 @@
 .ui-dialog:not(.ui-dialog-off-canvas) {
   max-width: 1280px;
+  margin: 1rem;
   border: 0 none !important;
   border-radius: $borderBig;
   background: var(--colorGinLayerBackground);
@@ -43,6 +44,7 @@
     line-height: 1.2;
     padding: 24px;
     background: #1b1b1d;
+    border-right: 0 none;
     border-bottom: 0 none;
     border-top-left-radius: $borderBig;
     border-top-right-radius: $borderBig;

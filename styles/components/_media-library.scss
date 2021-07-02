@@ -230,13 +230,24 @@ fieldset.media-library-widget {
     &:active,
     &:hover,
     &:focus,
-    &.active {
+    &.active,
+    &:hover:focus,
+    &.active:hover,
+    &.active:focus {
       color: var(--colorGinPrimary);
       text-shadow: none;
       background-color: var(--colorGinLayerBackground);
       border-right: 0 none;
       border-bottom: 1px solid var(--colorGinBorder);
       box-shadow: none;
+    }
+
+    &.active::before {
+      border-left-color: var(--colorGinPrimary);
+    }
+
+    &:focus::after {
+      border: 2px solid var(--colorGinFocus);
     }
   }
 }

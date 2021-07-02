@@ -3470,7 +3470,7 @@ fieldset.media-library-widget .fieldset__wrapper {
   border-color: var(--colorGinBorder);
   background-color: transparent;
 }
-.media-library-menu__link:active, .media-library-menu__link:hover, .media-library-menu__link:focus, .media-library-menu__link.active {
+.media-library-menu__link:active, .media-library-menu__link:hover, .media-library-menu__link:focus, .media-library-menu__link.active, .media-library-menu__link:hover:focus, .media-library-menu__link.active:hover, .media-library-menu__link.active:focus {
   color: var(--colorGinPrimary);
   text-shadow: none;
   background-color: var(--colorGinLayerBackground);
@@ -3478,6 +3478,12 @@ fieldset.media-library-widget .fieldset__wrapper {
   border-bottom: 1px solid var(--colorGinBorder);
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+.media-library-menu__link.active::before {
+  border-left-color: var(--colorGinPrimary);
+}
+.media-library-menu__link:focus::after {
+  border: 2px solid var(--colorGinFocus);
 }
 
 .media-library-view .view-header {
@@ -4466,6 +4472,7 @@ a.button:active {
           box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
 }
 .dropbutton--multiple > .dropbutton__item:first-of-type {
+  height: 100%;
   margin-right: 3rem;
   border-right: 1px solid var(--colorGinPrimaryLightActive);
 }
@@ -4519,28 +4526,30 @@ a.button:active {
   position: absolute;
   right: 0;
   list-style: none;
-  padding: 0;
+  padding: 0.5em;
   margin: 0;
   min-width: 120px;
   background: var(--colorGinLayer3Background);
-  border-radius: 4px;
+  border-radius: 6px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 20px 20px 40px rgba(0, 0, 0, 0.12);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 20px 20px 40px rgba(0, 0, 0, 0.12);
 }
 .dropbutton > .dropbutton__items > .dropbutton__item:first-of-type > a,
 .dropbutton > .dropbutton__items > .dropbutton__item:first-of-type > input,
 .dropbutton > .dropbutton__items > .dropbutton__item:first-of-type > .button {
-  border-radius: 4px 4px 0 0;
+  border-radius: 6px 6px 0 0;
 }
 .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item, .dropbutton .dropbutton__items > .dropbutton__item, .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item {
   background-color: var(--colorGinBackground);
   border: 0 none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item:first-of-type, .dropbutton .dropbutton__items > .dropbutton__item:first-of-type, .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item:first-of-type {
   margin-right: 0;
 }
 .js .dropbutton--multiple .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item:first-of-type:last-of-type > *, .js .dropbutton--multiple .dropbutton .dropbutton__items > .dropbutton__item:first-of-type:last-of-type > *, .js .dropbutton--multiple .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item:first-of-type:last-of-type > * {
-  border-radius: 2px;
+  border-radius: 6px;
 }
 .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > a,
 .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > input,
@@ -4585,7 +4594,7 @@ a.button:active {
 .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > .button:focus {
   color: var(--colorGinAppBackground);
   background: var(--colorGinPrimary);
-  border-radius: 4px;
+  border-radius: 6px;
 }
 .dropbutton > .dropbutton__item:first-of-type > a:hover, .dropbutton > .dropbutton__item:first-of-type > a:active, .dropbutton > .dropbutton__item:first-of-type > a:focus,
 .dropbutton > .dropbutton__item:first-of-type > input:hover,
@@ -4596,17 +4605,16 @@ a.button:active {
 .dropbutton > .dropbutton__item:first-of-type > .button:focus {
   color: var(--colorGinAppBackground);
   background: var(--colorGinPrimary);
-  border: 1px solid transparent !important;
 }
 .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item:last-of-type > a,
 .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item:last-of-type > input,
 .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item:last-of-type > .button, .dropbutton .dropbutton__items > .dropbutton__item:last-of-type > a,
 .dropbutton .dropbutton__items > .dropbutton__item:last-of-type > input,
 .dropbutton .dropbutton__items > .dropbutton__item:last-of-type > .button {
-  border-radius: 0 0 4px 4px;
+  border-radius: 0 0 6px 6px;
 }
 .dropbutton .dropbutton__items > .dropbutton__item {
-  border-radius: 4px;
+  border-radius: 6px;
 }
 .dropbutton:not(.dropbutton--gin) > .dropbutton__item:not(:first-of-type) > a,
 .dropbutton:not(.dropbutton--gin) > .dropbutton__item:not(:first-of-type) > input,
@@ -4635,6 +4643,10 @@ a.button:active {
   display: block;
 }
 
+.js .dropbutton--multiple .dropbutton__item:first-of-type > * {
+  border-radius: 4px 0 0 4px;
+}
+
 .js.no-touchevents .dropbutton--multiple.dropbutton--small .dropbutton__item:first-of-type {
   margin-right: 0;
 }
@@ -4658,6 +4670,7 @@ a.button:active {
   margin-right: 0;
 }
 
+table tr:nth-last-child(2) td .dropbutton__items,
 table tr:last-of-type td .dropbutton__items {
   bottom: 100%;
 }
@@ -5325,6 +5338,7 @@ table.diff tr .diff-addedline .diffchange {
 
 .ui-dialog:not(.ui-dialog-off-canvas) {
   max-width: 1280px;
+  margin: 1rem;
   border: 0 none !important;
   border-radius: 16px;
   background: var(--colorGinLayerBackground);
@@ -5356,6 +5370,7 @@ table.diff tr .diff-addedline .diffchange {
   line-height: 1.2;
   padding: 24px;
   background: #1b1b1d;
+  border-right: 0 none;
   border-bottom: 0 none;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -5498,6 +5513,11 @@ table.treetable tr.branch {
 .gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber, .gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber--fullscreen {
   border: 3px solid var(--colorGinAppBackground);
   border-right: 3px dotted transparent;
+}
+
+.media-library-widget .ajax-progress__throbber, .media-library-widget .ajax-progress__throbber--fullscreen {
+  border: 2px solid var(--colorGinPrimary);
+  border-right: 2px dotted transparent;
 }
 
 .ui-dialog .ajax-progress-throbber {

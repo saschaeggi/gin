@@ -44,7 +44,7 @@
         position: relative;
 
         &:hover, &:focus-within {
-          border-radius: $borderXSmall $borderXSmall 0 0;
+          border-radius: $borderSmall $borderSmall 0 0;
 
           .toolbar-tray {
             display: block;
@@ -57,7 +57,7 @@
           width: 39px;
           height: 39px;
           margin: 0;
-          border-radius: $borderXSmall $borderXSmall 0 0;
+          border-radius: $borderSmall $borderSmall 0 0;
 
           &:before {
             top: 0;
@@ -65,7 +65,7 @@
           }
 
           &:focus {
-            border-radius: $borderXSmall;
+            border-radius: $borderSmall;
           }
 
           &:focus ~ .toolbar-tray {
@@ -102,14 +102,14 @@
           width: 170px;
           background-color: var(--colorGinLayer3Background);
           border-bottom: 0 none;
-          border-radius: 0 $borderXSmall $borderXSmall $borderXSmall;
+          border-radius: 0 $borderSmall $borderSmall $borderSmall;
           box-shadow: 0 1px 2px rgba(0, 0, 0, .08),
                      20px 20px 40px rgba(0, 0, 0, .12);
 
           a {
             color: var(--colorGinPrimary);
             padding: 12px 16px;
-            border-radius: $borderXSmall;
+            border-radius: $borderSmall;
 
             &:hover, &:active {
               color: var(--colorGinButtonText);
@@ -128,8 +128,8 @@
             }
           }
 
-          .toolbar-lining {
-            padding-right: 0;
+          .toolbar-lining:not(:empty) {
+            padding: .5rem;
           }
         }
 
@@ -149,7 +149,7 @@
         .toolbar-tray {
           left: auto;
           right: 0;
-          border-radius: $borderXSmall 0 $borderXSmall $borderXSmall;
+          border-radius: $borderSmall 0 $borderSmall $borderSmall;
         }
 
 
@@ -159,7 +159,7 @@
         }
 
         .icon-user ~ .toolbar-tray {
-          border-radius: $borderXSmall;
+          border-radius: $borderSmall;
         }
 
         .icon-user {
