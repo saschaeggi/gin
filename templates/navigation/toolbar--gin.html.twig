@@ -27,7 +27,7 @@
       {% set tray = trays[key] %}
       {% set user_menu = tray.links['user_links'] ? 'user-menu' : false %}
       {% if
-        toolbar_variant != 1 and (
+        toolbar_variant != 'classic' and (
           tab.attributes.id == 'admin-toolbar-search-tab' or
           tab.attributes.id == 'responsive-preview-toolbar-tab'
         )

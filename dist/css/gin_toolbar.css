@@ -35,6 +35,10 @@
 .responsive-preview {
   z-index: 502;
 }
+.responsive-preview-item-list {
+  top: 74px !important;
+}
+
 .toolbar .toolbar-tab-responsive-preview.toolbar-tab .responsive-preview-trigger {
   width: 4em;
   background: none;
@@ -62,6 +66,7 @@
           mask-repeat: no-repeat;
 }
 .toolbar .toolbar-tab-responsive-preview.toolbar-tab .responsive-preview-options {
+  padding: 0.5rem;
   background-color: var(--colorGinLayer3Background);
   border-bottom: 0 none;
   border-radius: 4px;

@@ -35,6 +35,10 @@
 .responsive-preview {
   z-index: 502;
 }
+.responsive-preview-item-list {
+  top: 74px !important;
+}
+
 .toolbar .toolbar-tab-responsive-preview.toolbar-tab .responsive-preview-trigger {
   width: 4em;
   background: none;
@@ -62,6 +66,7 @@
           mask-repeat: no-repeat;
 }
 .toolbar .toolbar-tab-responsive-preview.toolbar-tab .responsive-preview-options {
+  padding: 0.5rem;
   background-color: var(--colorGinLayer3Background);
   border-bottom: 0 none;
   border-radius: 4px;
@@ -225,6 +230,11 @@
 .toolbar .toolbar-tray .menu-item > .toolbar-box > .is-active.responsive-preview-icon:before,
 .toolbar .toolbar-tray a.is-active:before {
   background: var(--colorGinPrimary);
+}
+
+.toolbar .toolbar-tray .hover-intent > .toolbar-icon, .toolbar .toolbar-tray .hover-intent > .responsive-preview-icon {
+  color: var(--colorGinPrimaryHover);
+  background-color: var(--colorGinItemHover);
 }
 
 .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item, .toolbar-tab > .toolbar-icon-edit.toolbar-item.responsive-preview-icon,
@@ -955,7 +965,7 @@
 
 @media (min-width: 976px) {
   .gin--horizontal-toolbar #toolbar-administration {
-    z-index: 103;
+    z-index: 106;
     position: fixed;
     top: 0;
     width: 100%;
@@ -993,7 +1003,7 @@
   }
   .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help:before {
     top: -1px;
-    left: 16px;
+    left: 14px;
     width: 24px;
     -webkit-mask-size: 28px 28px;
             mask-size: 28px 28px;
@@ -1010,6 +1020,7 @@
     display: flex;
     -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
+    width: 100%;
   }
 }
 

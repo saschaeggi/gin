@@ -96,6 +96,11 @@
   }
 }
 
+.toolbar .toolbar-tray .hover-intent > .toolbar-icon {
+  color: var(--colorGinPrimaryHover);
+  background-color: var(--colorGinItemHover);
+}
+
 // Inline Edit toggle
 .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item,
 .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active,
@@ -179,7 +184,7 @@
 // Main horizontal nav
 .gin--horizontal-toolbar #toolbar-administration {
   @include mq($breakpointMedium) {
-    z-index: 103;
+    z-index: 106;
     position: fixed;
     top: 0;
     width: 100%;
@@ -222,7 +227,7 @@
 
       &:before {
         top: -1px;
-        left: 16px;
+        left: 14px;
         width: 24px;
         mask-size: 28px 28px;
       }
@@ -238,6 +243,7 @@
       > .toolbar-menu {
         display: flex;
         flex-wrap: nowrap;
+        width: 100%;
       }
     }
   }
