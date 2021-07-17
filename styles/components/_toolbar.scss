@@ -232,6 +232,13 @@
       }
     }
 
+    // BAT
+    .toolbar-icon-bat-admin {
+      &:before {
+        mask-image: icon('bat');
+      }
+    }
+
     // Back to site
     .toolbar-icon-escape-admin {
       &:before {
