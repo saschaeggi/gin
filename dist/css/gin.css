@@ -2202,7 +2202,7 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
 
 .paragraphs-add-wrapper .button--small,
 .paragraphs-dropbutton-wrapper .button--small {
-  float: left;
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
@@ -2454,6 +2454,14 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized:not(.paragraphs-style-list) .paragraphs-button--add-more:focus .paragraphs-button--icon::before,
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized:not(.paragraphs-style-list) .paragraphs-button--add-more:hover .paragraphs-button--icon::before {
   background-image: none;
+}
+
+@media (min-width: 976px) {
+  .paragraphs-add-dialog-list {
+    -webkit-columns: 3;
+       -moz-columns: 3;
+            columns: 3;
+  }
 }
 
 .js .paragraphs-add-dialog--categorized .paragraphs-button--icon,

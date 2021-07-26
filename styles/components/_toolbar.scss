@@ -304,13 +304,21 @@
       }
     }
 
-    // Toggle
+    // Environment
+    .toolbar-icon-environment {
+      &:before {
+        mask-image: icon('server');
+      }
+    }
+
+    // Toggle vertical
     .toolbar-icon-toggle-vertical {
       &:before {
         mask-image: icon('nav-toggle-toleft');
       }
     }
 
+    // Toogle horizontal
     .toolbar-icon-toggle-horizontal {
       &:before {
         mask-image: icon('nav-toggle-totop');

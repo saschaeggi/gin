@@ -48,10 +48,18 @@
             padding-bottom: 20px;
             padding-left: 3.5em;
             white-space: nowrap;
+          }
 
-            &:before {
-              left: 1.1em;
-            }
+          > .toolbar-box > .toolbar-icon:not(.toolbar-handle)::before {
+            left: .75rem;
+          }
+        }
+
+        .toolbar-icon.toolbar-handle {
+          width: 48px;
+
+          &:before {
+            left: 1rem;
           }
         }
       }

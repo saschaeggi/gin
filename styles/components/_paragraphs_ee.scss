@@ -121,6 +121,12 @@
   }
 }
 
+.paragraphs-add-dialog-list {
+  @include mq($breakpointMedium) {
+    columns: 3;
+  }
+}
+
 .js .paragraphs-add-dialog--categorized .paragraphs-button--icon,
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-button--icon {
   width: 196px;
