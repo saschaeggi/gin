@@ -312,6 +312,7 @@
   // Basic Paragraph style adjustments
   .paragraph {
     .field {
+      color: #222;
       line-height: 1.5;
       margin: .5em 0;
     }
@@ -345,7 +346,7 @@
   position: relative;
   padding: 47px 0 0;
   margin-bottom: 1rem;
-  background: #fff;
+  background: none;
   border: 0 none;
   border-radius: $borderDefault;
   transition: none;
