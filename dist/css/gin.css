@@ -1018,6 +1018,7 @@ details summary {
   display: block;
   width: 100%;
   color: var(--colorGinPrimary);
+  line-height: 1.3;
   background: var(--colorGinItemHover);
   padding: 16px 16px 34px 16px;
   border: 1px dashed var(--colorGinPrimary);
