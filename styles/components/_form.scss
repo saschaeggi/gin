@@ -277,7 +277,7 @@ $maxWidth: 520px;
                 0 0 0 4px var(--colorGinFocus);
   }
 
-  &:checked {
+  &:checked:not(:disabled) {
     &, &:hover, &:active, &:focus, &:hover:focus {
       background-image: none;
       background-color: var(--colorGinLayerBackground);
