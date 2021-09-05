@@ -2461,14 +2461,6 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
   background-image: none;
 }
 
-@media (min-width: 976px) {
-  .paragraphs-add-dialog-list {
-    -webkit-columns: 3;
-       -moz-columns: 3;
-            columns: 3;
-  }
-}
-
 .js .paragraphs-add-dialog--categorized .paragraphs-button--icon,
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-button--icon {
   width: 196px;
@@ -2480,6 +2472,11 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
   padding: 12px;
   border: 1px solid #8e929c;
   border-radius: 8px;
+}
+
+.js .paragraphs-add-dialog--categorized .search-description label, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .search-description label {
+  font-size: 0.75rem;
+  color: var(--colorGinButtonText);
 }
 
 .js .paragraphs-add-dialog--categorized .paragraphs-add-dialog-row button {
@@ -2511,7 +2508,37 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
 }
 
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-add-dialog-row {
+  padding: 0;
   margin: 0.5rem;
+}
+
+.js .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-add-dialog-row, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-add-dialog-row {
+  width: auto;
+}
+
+.js .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-button--add-more, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-button--add-more {
+  max-width: 100%;
+}
+
+.paragraphs_ee__add-in-between__row:last-of-type .paragraphs_ee__add-in-between__wrapper {
+  -webkit-box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
+          box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
+}
+
+.js .paragraphs_ee__add-in-between__wrapper .paragraphs_ee__add-in-between__button {
+  color: var(--colorText);
+}
+
+.js .paragraphs_ee__add-in-between__wrapper .paragraphs_ee__add-in-between__button::before,
+.js .paragraphs_ee__add-in-between__wrapper .paragraphs_ee__add-in-between__button.last::before {
+  border: 1px solid var(--colorGinPrimary) !important;
+  -webkit-box-shadow: 0 0 1px var(--colorGinPrimary);
+          box-shadow: 0 0 1px var(--colorGinPrimary);
+}
+.js .paragraphs_ee__add-in-between__wrapper .paragraphs_ee__add-in-between__button:focus::before,
+.js .paragraphs_ee__add-in-between__wrapper .paragraphs_ee__add-in-between__button.last:focus::before {
+  -webkit-box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
+          box-shadow: 0 0 0 2px var(--colorGinLayerBackground), 0 0 0 4px var(--colorGinFocus);
 }
 
 .tabs {

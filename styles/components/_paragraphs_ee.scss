@@ -121,12 +121,6 @@
   }
 }
 
-.paragraphs-add-dialog-list {
-  @include mq($breakpointMedium) {
-    columns: 3;
-  }
-}
-
 .js .paragraphs-add-dialog--categorized .paragraphs-button--icon,
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-button--icon {
   width: 196px;
@@ -139,6 +133,11 @@
   padding: 12px;
   border: 1px solid #8e929c;
   border-radius: $borderDefault;
+}
+
+.js .paragraphs-add-dialog--categorized .search-description label, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .search-description label {
+  font-size: .75rem;
+  color: var(--colorGinButtonText);
 }
 
 .js .paragraphs-add-dialog--categorized .paragraphs-add-dialog-row button {
@@ -169,5 +168,36 @@
 }
 
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-add-dialog-row {
+  padding: 0;
   margin: .5rem;
+}
+
+.js .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-add-dialog-row, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-add-dialog-row {
+  width: auto;
+}
+
+.js .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-button--add-more, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-button--add-more {
+  max-width: 100%;
+}
+
+// In between add buttons
+.paragraphs_ee__add-in-between__row:last-of-type .paragraphs_ee__add-in-between__wrapper {
+  box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
+}
+
+.js .paragraphs_ee__add-in-between__wrapper .paragraphs_ee__add-in-between__button {
+  color: var(--colorText);
+}
+
+.js .paragraphs_ee__add-in-between__wrapper .paragraphs_ee__add-in-between__button,
+.js .paragraphs_ee__add-in-between__wrapper .paragraphs_ee__add-in-between__button.last {
+  &::before {
+    border: 1px solid var(--colorGinPrimary) !important;
+    box-shadow: 0 0 1px var(--colorGinPrimary);
+  }
+
+  &:focus::before {
+    box-shadow: 0 0 0 2px var(--colorGinLayerBackground),
+                0 0 0 4px var(--colorGinFocus);
+  }
 }
