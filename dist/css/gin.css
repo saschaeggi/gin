@@ -2468,8 +2468,10 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
 }
 
 .js .paragraphs-add-dialog--categorized .item-filter, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .item-filter {
+  font-family: inherit;
   font-size: 16px;
   padding: 12px;
+  background: white;
   border: 1px solid #8e929c;
   border-radius: 8px;
 }
