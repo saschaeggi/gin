@@ -34,7 +34,11 @@
       %}
         {# render nothing #}
       {% else %}
-        <div{{ tab.attributes.addClass('toolbar-tab', user_menu, 'toolbar-tab--' ~ tab.link['#id']) }}>
+        {% if tab.attributes.id == 'toolbar-tab-tour' %}
+        <div{{ tab.attributes.addClass('toolbar-tab', user_menu, tab.link['#id'] ? 'toolbar-tab--' ~ tab.link['#id'] : null).removeAttribute('id') }}>
+        {% else %}
+        <div{{ tab.attributes.addClass('toolbar-tab', user_menu, tab.link['#id'] ? 'toolbar-tab--' ~ tab.link['#id'] : null) }}>
+        {% endif %}
           {% if tab.link['#id'] == 'toolbar-item-administration' %}
             <a class="toolbar-menu__logo" href="/admin/content"></a>
             {{ tab.link }}

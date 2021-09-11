@@ -205,7 +205,8 @@
     }
 
     // Admin tray: Help
-    .toolbar-icon-help-main {
+    .toolbar-icon-help-main,
+    .toolbar-icon-help {
       &:before {
         mask-image: icon('help');
       }
