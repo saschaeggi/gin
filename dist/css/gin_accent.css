@@ -302,7 +302,7 @@
 }
 
 .gin--high-contrast-mode {
-  --colorGinAppBackground: #c6c8ce;
+  --colorGinAppBackground: #d9dbde;
   --colorGinText: rgba(0, 0, 0, 0.8);
   --colorGinTextLight: rgba(0, 0, 0, 0.8);
   --colorGinIcons: rgba(0, 0, 0, 0.8);
