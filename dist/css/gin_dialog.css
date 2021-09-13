@@ -562,6 +562,7 @@
 .ui-dialog .horizontal-tab-button .form-required::after {
   content: "*";
   color: var(--colorGinDanger);
+  line-height: 1;
   margin-right: 0.15em;
   margin-left: 0.15em;
   vertical-align: text-top;

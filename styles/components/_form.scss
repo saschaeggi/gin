@@ -354,6 +354,7 @@ fieldset:not(.fieldgroup) {
 .horizontal-tab-button .form-required::after {
   content: "*";
   color: var(--colorGinDanger);
+  line-height: 1;
   margin-right: .15em;
   margin-left: .15em;
   vertical-align: text-top;

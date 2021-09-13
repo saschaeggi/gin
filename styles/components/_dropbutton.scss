@@ -11,8 +11,9 @@
 
     input {
       color: var(--colorGinPrimary);
+      height: 100%;
       background-color: transparent;
-      border: 2px solid transparent !important;
+      border: 0 none !important;
       border-radius: 0 !important;
     }
   }
@@ -39,9 +40,15 @@
     white-space: nowrap;
   }
 
+  &__item:first-of-type > * {
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  }
+
   &__toggle {
     top: 2px;
     right: 2px;
+    width: calc(3rem + 1px);
+    height: 2.75rem;
 
     &:hover {
       background-color: var(--colorGinPrimary);
@@ -74,6 +81,11 @@
     border-radius: $borderSmall;
     box-shadow: 0 1px 2px rgba(0, 0, 0, .08),
                 20px 20px 40px rgba(0, 0, 0, .12);
+
+    .node-form & {
+      left: 0;
+      right: auto;
+    }
   }
 
   & > &__items > .dropbutton__item:first-of-type {
@@ -138,15 +150,6 @@
     }
   }
 
-  &:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item:last-of-type,
-  & &__items > .dropbutton__item:last-of-type {
-    > a,
-    > input,
-    > .button {
-      border-radius: 0 0 $borderSmall $borderSmall;
-    }
-  }
-
   & &__items > .dropbutton__item {
     border-radius: $borderSmall;
   }
@@ -174,6 +177,7 @@
   .dropbutton {
     height: 3rem;
     min-height: 3rem;
+    box-sizing: border-box;
   }
 
   .dropbutton-wrapper:not(.open) .dropbutton__item:first-of-type ~ .dropbutton__items {
@@ -205,14 +209,14 @@
   }
 
   .dropbutton--small {
-    height: 2rem;
-    min-height: 2rem;
+    height: 2.25rem;
+    min-height: 2.25rem;
     border-radius: $borderSmall;
   }
 
   .dropbutton--extrasmall {
-    height: 1.5rem;
-    min-height: 1.5rem;
+    height: 1.75rem;
+    min-height: 1.75rem;
     border-radius: $borderSmall;
   }
 

@@ -440,6 +440,8 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
   background-color: var(--colorGinAppBackground);
   -webkit-box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
           box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 @media (min-width: 768px) {
   .layout-node-form__actions {
@@ -457,6 +459,7 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 @media (min-width: 976px) and (max-width: 1023px) {
   .layout-node-form__actions {
     margin-left: 0;
+    left: 0;
   }
   .gin--vertical-toolbar .layout-node-form__actions {
     left: 68px;
@@ -494,6 +497,9 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 }
 .gin-sticky .form-actions {
   margin: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .gin-sticky .field--name-status {
   display: -webkit-box;
@@ -4336,6 +4342,7 @@ fieldset:not(.fieldgroup) > .fieldset-wrapper {
 .horizontal-tab-button .form-required::after {
   content: "*";
   color: var(--colorGinDanger);
+  line-height: 1;
   margin-right: 0.15em;
   margin-left: 0.15em;
   vertical-align: text-top;
@@ -4587,8 +4594,9 @@ a.button:active {
 }
 .dropbutton--multiple > .dropbutton__item:first-of-type input {
   color: var(--colorGinPrimary);
+  height: 100%;
   background-color: transparent;
-  border: 2px solid transparent !important;
+  border: 0 none !important;
   border-radius: 0 !important;
 }
 .gin--dark-mode .dropbutton {
@@ -4609,9 +4617,14 @@ a.button:active {
   background: none;
   white-space: nowrap;
 }
+.dropbutton__item:first-of-type > * {
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+}
 .dropbutton__toggle {
   top: 2px;
   right: 2px;
+  width: calc(3rem + 1px);
+  height: 2.75rem;
 }
 .dropbutton__toggle:hover {
   background-color: var(--colorGinPrimary);
@@ -4642,6 +4655,10 @@ a.button:active {
   border-radius: 6px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 20px 20px 40px rgba(0, 0, 0, 0.12);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 20px 20px 40px rgba(0, 0, 0, 0.12);
+}
+.node-form .dropbutton .dropbutton__items {
+  left: 0;
+  right: auto;
 }
 .dropbutton > .dropbutton__items > .dropbutton__item:first-of-type > a,
 .dropbutton > .dropbutton__items > .dropbutton__item:first-of-type > input,
@@ -4715,13 +4732,6 @@ a.button:active {
   color: var(--colorGinAppBackground);
   background: var(--colorGinPrimary);
 }
-.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item:last-of-type > a,
-.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item:last-of-type > input,
-.dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item:last-of-type > .button, .dropbutton .dropbutton__items > .dropbutton__item:last-of-type > a,
-.dropbutton .dropbutton__items > .dropbutton__item:last-of-type > input,
-.dropbutton .dropbutton__items > .dropbutton__item:last-of-type > .button {
-  border-radius: 0 0 6px 6px;
-}
 .dropbutton .dropbutton__items > .dropbutton__item {
   border-radius: 6px;
 }
@@ -4744,6 +4754,8 @@ a.button:active {
 .js .dropbutton {
   height: 3rem;
   min-height: 3rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .js .dropbutton-wrapper:not(.open) .dropbutton__item:first-of-type ~ .dropbutton__items {
   display: none;
@@ -4766,13 +4778,13 @@ a.button:active {
   margin-right: 1.5rem;
 }
 .js.no-touchevents .dropbutton--small {
-  height: 2rem;
-  min-height: 2rem;
+  height: 2.25rem;
+  min-height: 2.25rem;
   border-radius: 6px;
 }
 .js.no-touchevents .dropbutton--extrasmall {
-  height: 1.5rem;
-  min-height: 1.5rem;
+  height: 1.75rem;
+  min-height: 1.75rem;
   border-radius: 6px;
 }
 .js.no-touchevents .dropbutton--multiple.dropbutton--extrasmall .dropbutton__items .dropbutton__item {

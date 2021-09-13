@@ -42,10 +42,10 @@
   <ul{{ attributes.addClass('dropbutton--gin') }}>
     {%- for item in links -%}
       {% if loop.index == 2 %}
-      <li>
+      <li class="dropbutton__item">
         <ul class="dropbutton__items">
       {% endif %}
-      <li{{ item.attributes }}>
+      <li{{ item.attributes.addClass('dropbutton__item') }}>
         {%- if item.link -%}
           {{ item.link }}
         {%- elseif item.text_attributes -%}

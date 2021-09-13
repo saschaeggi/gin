@@ -232,7 +232,8 @@ body:not(.toolbar-tray-open) .layout-container {
   padding: 0 1rem;
   margin-left: calc((.5em + 1.5rem) * -1);
   background-color: var(--colorGinAppBackground);
-  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, .1);
+  box-sizing: border-box;
 
   @include mq($breakpointSmall) {
     padding-left: 2rem;
@@ -247,6 +248,7 @@ body:not(.toolbar-tray-open) .layout-container {
 
   @include mq($breakpointMedium 1023px) {
     margin-left: 0;
+    left: 0;
 
     .gin--vertical-toolbar & {
       left: $toolbarWidth;
@@ -278,6 +280,7 @@ body:not(.toolbar-tray-open) .layout-container {
 
   .form-actions {
     margin: 0;
+    align-items: center;
   }
 
   .field--name-status {
