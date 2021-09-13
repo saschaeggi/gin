@@ -1,0 +1,7 @@
+.shepherd-element {
+  border-radius: $borderDefault;
+}
+
+.button--primary:not(:focus).shepherd-button {
+  box-shadow: none;
+}

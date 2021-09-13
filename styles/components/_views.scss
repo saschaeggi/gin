@@ -119,10 +119,12 @@
   // Exposed filter with fieldgroup
   fieldset {
     margin-right: .75rem;
-    margin-bottom: .6rem;
+    margin-bottom: .4rem;
 
     > .fieldset__legend > .fieldset__label {
-      padding: 0 .5rem .5rem;
+      font-size: .889rem;
+      padding: 0 .5rem;
+      margin-bottom: 0.25rem;
     }
 
     .fieldset__wrapper {

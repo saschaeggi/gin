@@ -114,16 +114,6 @@ button.link:active,
   color: var(--colorGinPrimaryActive);
 }
 
-svg path {
-  fill: var(--colorGinPrimary);
-}
-svg path:hover {
-  fill: var(--colorGinPrimaryHover);
-}
-svg path:active {
-  fill: var(--colorGinPrimaryActive);
-}
-
 .form-boolean--type-checkbox:checked,
 .form-boolean--type-radio:checked:not(:disabled),
 .is-horizontal .tabs__link.is-active::before,
@@ -3120,10 +3110,12 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
 }
 .views-exposed-form.views-exposed-form fieldset {
   margin-right: 0.75rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.4rem;
 }
 .views-exposed-form.views-exposed-form fieldset > .fieldset__legend > .fieldset__label {
-  padding: 0 0.5rem 0.5rem;
+  font-size: 0.889rem;
+  padding: 0 0.5rem;
+  margin-bottom: 0.25rem;
 }
 .views-exposed-form.views-exposed-form fieldset .fieldset__wrapper {
   display: -webkit-box;
@@ -6775,4 +6767,13 @@ tr.color-error:focus,
   bottom: 8px;
   right: 8px;
   border-radius: 4px;
+}
+
+.shepherd-element {
+  border-radius: 8px;
+}
+
+.button--primary:not(:focus).shepherd-button {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }

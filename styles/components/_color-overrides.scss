@@ -55,19 +55,6 @@ button.link,
   }
 }
 
-// SVG
-svg path {
-  fill: var(--colorGinPrimary);
-
-  &:hover {
-    fill: var(--colorGinPrimaryHover);
-  }
-
-  &:active {
-    fill: var(--colorGinPrimaryActive);
-  }
-}
-
 // Border color
 .form-boolean--type-checkbox:checked,
 .form-boolean--type-radio:checked:not(:disabled),

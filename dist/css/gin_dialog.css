@@ -55,15 +55,6 @@
 .ui-dialog .claro-details[open] > .claro-details__summary:focus {
   color: var(--colorGinPrimaryActive);
 }
-.ui-dialog svg path {
-  fill: var(--colorGinPrimary);
-}
-.ui-dialog svg path:hover {
-  fill: var(--colorGinPrimaryHover);
-}
-.ui-dialog svg path:active {
-  fill: var(--colorGinPrimaryActive);
-}
 .ui-dialog .form-boolean--type-checkbox:checked,
 .ui-dialog .form-boolean--type-radio:checked:not(:disabled),
 .ui-dialog .is-horizontal .tabs__link.is-active::before,
