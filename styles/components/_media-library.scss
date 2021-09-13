@@ -346,3 +346,36 @@ fieldset.media-library-widget {
     width: 20%;
   }
 }
+
+.field--name-field-media {
+  &.field--widget-entity-reference-autocomplete {
+    fieldset.form-item {
+      padding: 2rem 1.25rem 1rem 1.25rem;
+      border: 1px solid var(--colorGinBorder);
+
+      > legend {
+        font-weight: bold;
+        position: relative;
+        top: 1.25rem;
+        transform: translateY(50%);
+
+        &::before {
+          content: "";
+          display: block;
+          width: 100%;
+          height: 1px;
+          position: absolute;
+          top: -1.25rem;
+          left: 0;
+          background: var(--colorGinBorder);
+        }
+      }
+
+      > .form-item {
+        h4 {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
