@@ -3105,9 +3105,28 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
 
 .views-exposed-form.views-exposed-form {
   padding-top: 8px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .views-exposed-form.views-exposed-form .form-element--type-select {
   max-width: 240px;
+}
+.views-exposed-form.views-exposed-form fieldset {
+  margin-right: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+.views-exposed-form.views-exposed-form fieldset > .fieldset__legend > .fieldset__label {
+  padding: 0 0.5rem 0.5rem;
+}
+.views-exposed-form.views-exposed-form fieldset .fieldset__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0 0 0.5rem;
+}
+.views-exposed-form.views-exposed-form fieldset .form-item {
+  margin: 0 0.5rem 0.5rem 0;
 }
 
 .view-files .view-content {
