@@ -7,7 +7,6 @@
 
 use Drupal\Core\File\Exception\FileException;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\Markup;
 use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\user\Entity\User;
 use Drupal\Core\Url;

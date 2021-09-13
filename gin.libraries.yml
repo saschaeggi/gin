@@ -69,6 +69,8 @@ gin_messages:
   version: VERSION
   js:
     dist/js/gin_messages.js: { minified: false }
+  dependencies:
+    - core/jquery.once
 
 gin_custom_css:
   version: VERSION
