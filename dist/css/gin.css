@@ -2164,6 +2164,10 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
   -webkit-box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
           box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
 }
+.gin--dark-mode .paragraphs-tabs-wrapper .field-multiple-table .draggable {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
 .paragraphs-tabs-wrapper .field-multiple-table .draggable.drag {
   background-color: var(--colorGinWarningLightBackground);
 }
@@ -6620,10 +6624,12 @@ tr.color-error:focus,
   max-width: 180px;
 }
 .entities-list .item-container {
-  margin: 0;
-  border: 1px solid var(--colorGinBorder);
-  border-radius: 14px;
+  word-break: break-all;
   position: relative;
+  margin: 0;
+  min-height: 80px;
+  border: 1px solid var(--colorGinBorder);
+  border-radius: 12px;
 }
 .entities-list .item-container .field__item {
   border: 3px solid transparent;
@@ -6633,6 +6639,9 @@ tr.color-error:focus,
 .entities-list .item-container .field__item:hover, .entities-list .item-container .field__item:focus {
   border-color: var(--colorGinPrimary) !important;
   cursor: pointer;
+}
+.entities-list .item-container.label {
+  padding: 0.75rem 3rem 0.75rem 0.75rem;
 }
 .entities-list .item-container img {
   vertical-align: middle;
