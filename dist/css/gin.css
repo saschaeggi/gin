@@ -3607,6 +3607,10 @@ fieldset.media-library-widget .fieldset__wrapper {
   border: 2px solid var(--colorGinFocus);
 }
 
++ .media-library-content {
+  border-left: 1px solid var(--colorGinBorder);
+}
+
 .media-library-view .view-header {
   padding: 1rem;
   color: var(--colorGinText);

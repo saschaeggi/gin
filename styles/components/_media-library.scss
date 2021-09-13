@@ -252,6 +252,10 @@ fieldset.media-library-widget {
   }
 }
 
++ .media-library-content {
+  border-left: 1px solid var(--colorGinBorder);
+}
+
 .media-library-view {
   .view-header {
     padding: 1rem;
