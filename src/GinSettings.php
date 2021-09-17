@@ -2,6 +2,7 @@
 
 namespace Drupal\gin;
 
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\user\UserDataInterface;
@@ -11,6 +12,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Service to handle overridden user settings.
  */
 class GinSettings implements ContainerInjectionInterface {
+
+  /**
+   * The config factory.
+   *
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   */
+  protected $configFactory;
 
   /**
    * The user data service.
@@ -33,17 +41,24 @@ class GinSettings implements ContainerInjectionInterface {
    *   The user data service.
    * @param \Drupal\Core\Session\AccountInterface $currentUser
    *   The current user.
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
+   *   The config factory.
    */
-  public function __construct(UserDataInterface $userData, AccountInterface $currentUser) {
+  public function __construct(UserDataInterface $userData, AccountInterface $currentUser, ConfigFactoryInterface $configFactory) {
     $this->userData = $userData;
     $this->currentUser = $currentUser;
+    $this->configFactory = $configFactory;
   }
 
   /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    return new static($container->get('user.data'), $container->get('current_user'));
+    return new static(
+      $container->get('user.data'),
+      $container->get('current_user'),
+      $container->get('config.factory')
+    );
   }
 
   /**
@@ -204,9 +219,9 @@ class GinSettings implements ContainerInjectionInterface {
    *   The active admin theme name.
    */
   private function getAdminTheme() {
-    $admin_theme = \Drupal::configFactory()->get('system.theme')->get('admin');
+    $admin_theme = $this->configFactory->get('system.theme')->get('admin');
     if (empty($admin_theme)) {
-      $admin_theme = \Drupal::configFactory()->get('system.theme')->get('default');
+      $admin_theme = $this->configFactory->get('system.theme')->get('default');
     }
     return $admin_theme;
   }
