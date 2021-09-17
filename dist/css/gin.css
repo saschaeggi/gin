@@ -3105,9 +3105,6 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
 
 .views-exposed-form.views-exposed-form {
   padding-top: 8px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 .views-exposed-form.views-exposed-form .form-element--type-select {
   max-width: 240px;
