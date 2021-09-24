@@ -1,8 +1,8 @@
 name: Gin
 type: theme
 base theme: claro
-description: 'For a better Content Editor Experience on top of Claro'
-core_version_requirement: ^8.8 || ^9
+description: 'Admin theme with a strong focus on improving the Editorial Experience'
+core_version_requirement: ^8.8 || ^9 || ^10
 
 # Dependency on module > Drupal 8.9
 # dependencies:
@@ -40,16 +40,6 @@ libraries-override:
         /core/themes/stable/css/core/vertical-tabs.css: false
     js:
       misc/vertical-tabs.js: /core/themes/claro/js/vertical-tabs.js
-
-  core/jquery.ui:
-    css:
-      theme:
-        assets/vendor/jquery.ui/themes/base/theme.css: false
-
-  core/jquery.ui.dialog:
-    css:
-      component:
-        assets/vendor/jquery.ui/themes/base/dialog.css: false
 
   classy/dialog: claro/claro.drupal.dialog
 
@@ -173,8 +163,6 @@ libraries-extend:
     - claro/messages
   core/drupal.vertical-tabs:
     - claro/vertical-tabs
-  core/jquery.ui:
-    - claro/claro.jquery.ui
   file/drupal.file:
     - claro/file
   system/admin:
