@@ -436,3 +436,9 @@ fieldset:not(.fieldgroup) {
 #block-gin-content > form > .form-item:first-of-type {
   margin-top: 0;
 }
+
+.image-style-new {
+  .form-item {
+    margin-right: .25rem;
+  }
+}

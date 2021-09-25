@@ -614,6 +614,9 @@
 .ui-dialog #block-gin-content > form > .form-item:first-of-type {
   margin-top: 0;
 }
+.ui-dialog .image-style-new .form-item {
+  margin-right: 0.25rem;
+}
 .gin--dark-mode .ui-dialog .cke .cke_inner,
 .gin--dark-mode .ui-dialog .cke .cke_wysiwyg_frame,
 .gin--dark-mode .ui-dialog .cke .cke_wysiwyg_div {

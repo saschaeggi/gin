@@ -4426,6 +4426,10 @@ fieldset:not(.fieldgroup) > .fieldset-wrapper {
   margin-top: 0;
 }
 
+.image-style-new .form-item {
+  margin-right: 0.25rem;
+}
+
 .button,
 .dropbutton__item:first-of-type > *,
 .dropbutton__toggle {
@@ -5924,10 +5928,6 @@ tr.color-error:focus,
 }
 .ief-form.ief-form-bottom .fieldset__wrapper {
   margin-bottom: 0;
-}
-.ief-form.ief-form-bottom .form-wrapper:last-of-type {
-  margin: 0 -1.5rem;
-  padding: 0 1.5rem;
 }
 
 .upgrade-status-counter__status-icon--not-scanned:before,
