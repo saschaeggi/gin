@@ -15,7 +15,7 @@
         // Input Elements
         newParent.querySelectorAll('input[type="submit"]')
           .forEach((el) => {
-            el.setAttribute('form', form.id);
+            el.setAttribute('form', form.getAttribute('id'));
             el.setAttribute('id', el.getAttribute('id') + '--gin-edit-form');
           });
 
