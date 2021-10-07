@@ -1463,22 +1463,6 @@ details summary {
   display: block;
   margin: 0;
 }
-.layout-paragraphs-item .layout-paragraphs-add-content__toggle,
-.active-items .layout-paragraphs-item .layout-paragraphs-add-content__toggle,
-.layout-paragraphs-field.is-moving .layout-paragraphs-item:hover .layout-paragraphs-add-content__toggle,
-.erl-item .layout-paragraphs-add-content__toggle,
-.erl-field .erl-layout .erl-item .layout-paragraphs-add-content__toggle,
-.erl-field .erl-disabled-items .erl-item .layout-paragraphs-add-content__toggle {
-  top: 24px;
-}
-.layout-paragraphs-item > .layout-paragraphs-add-content__toggle,
-.active-items .layout-paragraphs-item > .layout-paragraphs-add-content__toggle,
-.layout-paragraphs-field.is-moving .layout-paragraphs-item:hover > .layout-paragraphs-add-content__toggle,
-.erl-item > .layout-paragraphs-add-content__toggle,
-.erl-field .erl-layout .erl-item > .layout-paragraphs-add-content__toggle,
-.erl-field .erl-disabled-items .erl-item > .layout-paragraphs-add-content__toggle {
-  top: 100%;
-}
 
 .layout-paragraphs-field.is-moving .layout-paragraphs-item.is-moving {
   border-color: #fff;
