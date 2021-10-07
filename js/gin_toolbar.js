@@ -5,6 +5,11 @@
 (($, Drupal, drupalSettings) => {
   Drupal.behaviors.ginToolbarToggle = {
     attach: function attach(context) {
+      // Check for Drupal trayVerticalLocked and remove it.
+      if (localStorage.getItem('Drupal.toolbar.trayVerticalLocked')) {
+        localStorage.removeItem('Drupal.toolbar.trayVerticalLocked');
+      }
+
       // Set sidebarState.
       if (localStorage.getItem('GinSidebarOpen') === 'true') {
         $('body').attr('data-toolbar-menu', 'open');
