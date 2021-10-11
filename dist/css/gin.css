@@ -2491,7 +2491,8 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
   background-size: contain;
 }
 
-.js .paragraphs-add-dialog--categorized .item-filter, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .item-filter {
+.js .paragraphs-add-dialog--categorized .item-filter,
+.ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .item-filter {
   font-family: inherit;
   font-size: 16px;
   padding: 12px;
@@ -2500,8 +2501,12 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
   border-radius: 8px;
 }
 
-.js .paragraphs-add-dialog--categorized .search-description label, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .search-description label {
+.js .paragraphs-add-dialog--categorized .search-description label,
+.ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .search-description label {
   font-size: 0.75rem;
+}
+
+.ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .search-description label {
   color: var(--colorGinButtonText);
 }
 
