@@ -142,7 +142,7 @@ function gin_page_attachments_alter(&$page) {
     $page['#attached']['drupalSettings']['gin']['highcontrastmode_class'] = 'gin--high-contrast-mode';
 
     // Add stylesheets for JS use.
-    $basethemeurl_with_prefix = \Drupal::urlGenerator()->generateFromRoute('<front>', [], ['absolute' => TRUE]) . drupal_get_path('theme', 'gin');
+    $basethemeurl_with_prefix = \Drupal::urlGenerator()->generateFromRoute('<front>', [], ['absolute' => TRUE]) . \Drupal::service('extension.list.theme')->getPath('gin');
     $page['#attached']['drupalSettings']['gin']['accent_css_path'] = $basethemeurl_with_prefix . '/dist/css/gin_accent.css';
     $page['#attached']['drupalSettings']['gin']['ckeditor_css_path'] = $basethemeurl_with_prefix . '/dist/css/gin_ckeditor.css';
 
@@ -506,7 +506,7 @@ function gin_theme_suggestions_menu_alter(array &$suggestions, array $variables)
  */
 function gin_css_alter(&$css, $assets) {
   // UPDATE THIS PATH TO YOUR MODULE'S CSS PATH.
-  $path = drupal_get_path('theme', 'gin') . '/dist/css/gin.css';
+  $path = \Drupal::service('extension.list.theme')->getPath('gin') . '/dist/css/gin.css';
 
   if (isset($css[$path])) {
     // Use anything greater than 100 to have it load after the theme
