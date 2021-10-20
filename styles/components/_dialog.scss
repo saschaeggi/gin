@@ -166,7 +166,7 @@
   }
 
   #drupal-off-canvas {
-    input[type="submit"].button--primary {
+    .button--primary[type=submit] {
       background: var(--colorGinOffCanvasActive);
     }
   }

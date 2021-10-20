@@ -896,7 +896,7 @@
 .ui-widget.ui-dialog.ui-dialog-off-canvas .fieldset {
   color: var(--colorGinText);
 }
-.ui-widget.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas input[type=submit].button--primary {
+.ui-widget.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .button--primary[type=submit] {
   background: var(--colorGinOffCanvasActive);
 }
 

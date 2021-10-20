@@ -13,7 +13,7 @@
         newParent.appendChild(sticky);
 
         // Input Elements
-        newParent.querySelectorAll('input[type="submit"]')
+        newParent.querySelectorAll('button[type="submit"], input[type="submit"]')
           .forEach((el) => {
             el.setAttribute('form', form.getAttribute('id'));
             el.setAttribute('id', el.getAttribute('id') + '--gin-edit-form');
