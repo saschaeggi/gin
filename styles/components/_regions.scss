@@ -1,5 +1,6 @@
 .region-sticky {
   position: relative;
+  z-index: 101;
   padding: 16px 0 0;
   width: 100%;
   background: rgba($colorAppBackground, .98);
@@ -28,7 +29,6 @@
 
   @include mq($breakpointLarge) {
     position: sticky;
-    z-index: 101;
     top: 0;
     width: 100%;
     height: $stickyBar;
