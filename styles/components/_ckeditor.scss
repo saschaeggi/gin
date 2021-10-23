@@ -8,6 +8,7 @@
   }
 
   &.cke_chrome {
+    width: 100% !important; // Fix issue with field_group
     border-color: var(--colorGinFormElementBorder);
     border-radius: $borderDefault;
   }
@@ -136,6 +137,8 @@
 }
 
 .cke textarea.cke_source {
+  padding: .75rem .5rem;
+  color: var(--colorGinText);
   background-color: transparent;
 }
 
