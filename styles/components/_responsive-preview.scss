@@ -4,6 +4,10 @@
   &-icon {
     @extend .toolbar-icon;
   }
+
+  &-item-list {
+    top: 74px !important;
+  }
 }
 
 .toolbar {
@@ -39,6 +43,7 @@
 
     // Menu style
     .responsive-preview-options {
+      padding: .5rem;
       background-color: var(--colorGinLayer3Background);
       border-bottom: 0 none;
       border-radius: $borderXSmall;

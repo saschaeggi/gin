@@ -1,6 +1,7 @@
 !function($, Drupal, drupalSettings) {
   Drupal.behaviors.ginToolbarToggle = {
     attach: function(context) {
+      localStorage.getItem("Drupal.toolbar.trayVerticalLocked") && localStorage.removeItem("Drupal.toolbar.trayVerticalLocked"), 
       "true" === localStorage.getItem("GinSidebarOpen") ? ($("body").attr("data-toolbar-menu", "open"), 
       $(".toolbar-menu__trigger").addClass("is-active")) : ($("body").attr("data-toolbar-menu", ""), 
       $(".toolbar-menu__trigger").removeClass("is-active")), $(".toolbar-menu__trigger", context).on("click", (function(e) {

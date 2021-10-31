@@ -55,22 +55,9 @@ button.link,
   }
 }
 
-// SVG
-svg path {
-  fill: var(--colorGinPrimary);
-
-  &:hover {
-    fill: var(--colorGinPrimaryHover);
-  }
-
-  &:active {
-    fill: var(--colorGinPrimaryActive);
-  }
-}
-
 // Border color
 .form-boolean--type-checkbox:checked,
-.form-boolean--type-radio:checked,
+.form-boolean--type-radio:checked:not(:disabled),
 .is-horizontal .tabs__link.is-active::before,
 .tabs__tab.is-active::before,
 .sortable-heading.is-active > a::before,
@@ -93,7 +80,7 @@ svg path {
   }
 }
 
-.form-boolean--type-radio:checked {
+.form-boolean--type-radio:checked:not(:disabled) {
   box-shadow: inset 0 0 0 1px var(--colorGinPrimary);
 }
 

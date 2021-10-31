@@ -114,6 +114,27 @@
   .form-element--type-select {
     max-width: 240px;
   }
+
+  // Exposed filter with fieldgroup
+  fieldset {
+    margin-right: .75rem;
+    margin-bottom: .4rem;
+
+    > .fieldset__legend > .fieldset__label {
+      font-size: .889rem;
+      padding: 0 .5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .fieldset__wrapper {
+      display: flex;
+      margin: 0 0 0 .5rem;
+    }
+
+    .form-item {
+      margin: 0 .5rem .5rem 0;
+    }
+  }
 }
 
 .view-files .view-content {

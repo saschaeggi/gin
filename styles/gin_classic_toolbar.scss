@@ -77,6 +77,11 @@
   }
 }
 
+.toolbar .toolbar-tray .hover-intent > .toolbar-icon {
+  color: var(--colorGinPrimaryHover);
+  background-color: var(--colorGinItemHover);
+}
+
 // Inline Edit toggle
 .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item,
 .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active,

@@ -23,6 +23,14 @@
   }
 }
 
+// Media library Throbber
+.media-library-widget {
+  .ajax-progress__throbber {
+    border: 2px solid var(--colorGinPrimary);
+    border-right: 2px dotted transparent;
+  }
+}
+
 // UI Dialog Throbber
 .ui-dialog .ajax-progress-throbber {
   padding: .5rem;

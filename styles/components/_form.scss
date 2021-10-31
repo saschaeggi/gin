@@ -277,7 +277,7 @@ $maxWidth: 520px;
                 0 0 0 4px var(--colorGinFocus);
   }
 
-  &:checked {
+  &:checked:not(:disabled) {
     &, &:hover, &:active, &:focus, &:hover:focus {
       background-image: none;
       background-color: var(--colorGinLayerBackground);
@@ -350,9 +350,11 @@ fieldset:not(.fieldgroup) {
 
 .form-item__label.form-required::after,
 .fieldset__label.form-required::after,
-.form-required > .fieldset__label::after {
+.form-required > .fieldset__label::after,
+.horizontal-tab-button .form-required::after {
   content: "*";
   color: var(--colorGinDanger);
+  line-height: 1;
   margin-right: .15em;
   margin-left: .15em;
   vertical-align: text-top;
@@ -433,4 +435,10 @@ fieldset:not(.fieldgroup) {
 // Special case, form starts with a form item, remove margin-top.
 #block-gin-content > form > .form-item:first-of-type {
   margin-top: 0;
+}
+
+.image-style-new {
+  .form-item {
+    margin-right: .25rem;
+  }
 }

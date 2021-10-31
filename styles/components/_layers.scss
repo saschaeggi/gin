@@ -40,6 +40,10 @@
   .gin--dark-mode & {
     box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.05);
   }
+
+  .gin--high-contrast-mode & {
+    box-shadow: none;
+  }
 }
 
 .layer-wrapper,

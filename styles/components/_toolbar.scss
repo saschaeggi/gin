@@ -205,7 +205,8 @@
     }
 
     // Admin tray: Help
-    .toolbar-icon-help-main {
+    .toolbar-icon-help-main,
+    .toolbar-icon-help {
       &:before {
         mask-image: icon('help');
       }
@@ -229,6 +230,13 @@
     .toolbar-icon-tmgmt-admin-tmgmt {
       &:before {
         mask-image: icon('tmgmt');
+      }
+    }
+
+    // BAT
+    .toolbar-icon-bat-admin {
+      &:before {
+        mask-image: icon('bat');
       }
     }
 
@@ -297,13 +305,21 @@
       }
     }
 
-    // Toggle
+    // Environment
+    .toolbar-icon-environment {
+      &:before {
+        mask-image: icon('server');
+      }
+    }
+
+    // Toggle vertical
     .toolbar-icon-toggle-vertical {
       &:before {
         mask-image: icon('nav-toggle-toleft');
       }
     }
 
+    // Toogle horizontal
     .toolbar-icon-toggle-horizontal {
       &:before {
         mask-image: icon('nav-toggle-totop');

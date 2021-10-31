@@ -27,16 +27,22 @@
       {% set tray = trays[key] %}
       {% set user_menu = tray.links['user_links'] ? 'user-menu' : false %}
       {% if
-        toolbar_variant != 1 and (
+        toolbar_variant != 'classic' and (
           tab.attributes.id == 'admin-toolbar-search-tab' or
           tab.attributes.id == 'responsive-preview-toolbar-tab'
         )
       %}
         {# render nothing #}
       {% else %}
-        <div{{ tab.attributes.addClass('toolbar-tab', user_menu, 'toolbar-tab--' ~ tab.link['#id']) }}>
+        {% if tab.attributes.id == 'toolbar-tab-tour' %}
+        <div{{ tab.attributes.addClass('toolbar-tab', user_menu, tab.link['#id'] ? 'toolbar-tab--' ~ tab.link['#id'] : null).removeAttribute('id') }}>
+        {% else %}
+        <div{{ tab.attributes.addClass('toolbar-tab', user_menu, tab.link['#id'] ? 'toolbar-tab--' ~ tab.link['#id'] : null) }}>
+        {% endif %}
           {% if tab.link['#id'] == 'toolbar-item-administration' %}
-            <a class="toolbar-menu__logo" href="/admin/content"></a>
+            <a class="toolbar-menu__logo" href="/admin/content" aria-label="{{ 'Toolbar Menu Logo'|t }}">
+              <span class="visually-hidden">{{ 'Toolbar Menu Logo'|t }}</span>
+            </a>
             {{ tab.link }}
           {% else %}
             {{ tab.link }}

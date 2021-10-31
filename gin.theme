@@ -7,7 +7,6 @@
 
 use Drupal\Core\File\Exception\FileException;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\Markup;
 use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\user\Entity\User;
 use Drupal\Core\Url;
@@ -143,7 +142,7 @@ function gin_page_attachments_alter(&$page) {
     $page['#attached']['drupalSettings']['gin']['highcontrastmode_class'] = 'gin--high-contrast-mode';
 
     // Add stylesheets for JS use.
-    $basethemeurl_with_prefix = \Drupal::urlGenerator()->generateFromRoute('<front>', [], ['absolute' => TRUE]) . drupal_get_path('theme', 'gin');
+    $basethemeurl_with_prefix = \Drupal::urlGenerator()->generateFromRoute('<front>', [], ['absolute' => TRUE]) . \Drupal::service('extension.list.theme')->getPath('gin');
     $page['#attached']['drupalSettings']['gin']['accent_css_path'] = $basethemeurl_with_prefix . '/dist/css/gin_accent.css';
     $page['#attached']['drupalSettings']['gin']['ckeditor_css_path'] = $basethemeurl_with_prefix . '/dist/css/gin_ckeditor.css';
 
@@ -164,36 +163,6 @@ function gin_preprocess_node_edit_form(&$variables) {
   // Check if Layout Paragraphs is active.
   $layout_paragraphs = $module_handler->moduleExists('layout_paragraphs');
   $variables['gin_layout_paragraphs'] = $layout_paragraphs;
-}
-
-/**
- * Implements hook_preprocess_HOOK() for links__dropbutton.
- */
-function gin_preprocess_dropbutton_wrapper(&$variables) {
-  // Set the default size.
-  $default_size = 'extrasmall';
-
-  $children = (string) $variables['children'];
-
-  // Naively check if a specific size is set.
-  if (strpos($children, 'dropbutton--small')) {
-    $default_size = 'small';
-  }
-  if (strpos($children, 'dropbutton--standard')) {
-    $default_size = 'standard';
-  }
-
-  $pattern = '/(<ul\sclass\s*= *["\']?)([^"\']*)(.*)(<li)/i';
-  $lipattern = '/(<li class\s*= *["\']?)([^"\']*)/i';
-
-  $lisize = 'dropbutton__item--' . $default_size;
-  $ulsize = 'dropbutton--' . $default_size;
-
-  $children = preg_replace($lipattern, '$1$2 ' . $lisize, $children);
-  $children = preg_replace('/<li>/', '<li class="dropbutton__item ' . $lisize . '">', $children);
-  $children = preg_replace($pattern, '$1$2 ' . $ulsize . ' $3$4', $children);
-
-  $variables['children'] = Markup::create($children);
 }
 
 /**
@@ -494,6 +463,19 @@ function gin_theme_suggestions_form_alter(array &$suggestions, array $variables)
 }
 
 /**
+ * Implements form_alter() for input.
+ */
+function gin_theme_suggestions_input_alter(array &$suggestions, array $variables) {
+  if ($variables['element']['#type'] === 'checkbox') {
+    // Way to identify if checkbox is in a checkboxes group
+    // as Drupal doesn't provide one yet (see #2643012)
+    if (!isset($variables['element']['#error_no_message'])) {
+      $suggestions[] = 'input__checkbox__toggle';
+    }
+  }
+}
+
+/**
  * Toolbar alter().
  */
 function gin_theme_suggestions_toolbar_alter(array &$suggestions, array $variables) {
@@ -524,7 +506,7 @@ function gin_theme_suggestions_menu_alter(array &$suggestions, array $variables)
  */
 function gin_css_alter(&$css, $assets) {
   // UPDATE THIS PATH TO YOUR MODULE'S CSS PATH.
-  $path = drupal_get_path('theme', 'gin') . '/dist/css/gin.css';
+  $path = \Drupal::service('extension.list.theme')->getPath('gin') . '/dist/css/gin.css';
 
   if (isset($css[$path])) {
     // Use anything greater than 100 to have it load after the theme

@@ -12,10 +12,12 @@
   }
 
   .item-container {
-    margin: 0;
-    border: 1px solid var(--colorGinBorder);
-    border-radius: 14px;
+    word-break: break-all;
     position: relative;
+    margin: 0;
+    min-height: 80px;
+    border: 1px solid var(--colorGinBorder);
+    border-radius: $borderMedium;
 
     .field__item {
       border: 3px solid transparent;
@@ -27,6 +29,10 @@
         border-color: var(--colorGinPrimary) !important;
         cursor: pointer;
       }
+    }
+
+    &.label {
+      padding: .75rem 3rem .75rem .75rem;
     }
 
     img {

@@ -52,7 +52,7 @@
         <li class="menu-item menu-item--expanded menu-item__tools">
           {% if icon_default == false and icon_path != '' %}
             <a href="{{ path('<front>') }}" class="toolbar-logo" data-drupal-link-system-path="<front>">
-              <img src="{{ file_url(icon_path) }}" class="toolbar-icon-home" />
+              <img src="{{ file_url(icon_path) }}" class="toolbar-icon-home" alt="{{ 'Home'|t }}" />
             </a>
           {% else %}
             <a href="{{ path('<front>') }}" class="toolbar-icon toolbar-icon-admin-toolbar-tools-help toolbar-icon-default" data-drupal-link-system-path="<front>">
