@@ -8,8 +8,8 @@
   }
 
   .paragraphs-subform {
-    margin-top: 20px;
-    margin-right: 31px;
+    margin-top: 0;
+    margin-right: 1rem;
   }
 
   .tabledrag-toggle-weight-wrapper {
@@ -92,6 +92,14 @@
       .tabledrag-changed {
         display: none;
       }
+
+      // Highlight current paragraph.
+      &:hover,
+      &:focus-within {
+        position: relative;
+        border: 1px solid var(--colorGinText);
+        box-shadow: 0 0 0 1px var(--colorGinText);
+      }
     }
   }
 
@@ -160,6 +168,34 @@
 
     &::after {
       background-color: var(--colorGinPrimary);
+    }
+  }
+}
+
+.js .field--widget-entity-reference-paragraphs,
+.js .field--widget-paragraphs {
+  .draggable .tabledrag-handle {
+    min-width: 20px;
+
+    @include mq($breakpointMedium) {
+      min-width: 24px;
+    }
+
+    &::after {
+      position: relative;
+      left: 0;
+      padding: 0;
+      margin-left: 0;
+    }
+  }
+}
+
+.js .field--widget-entity-reference-paragraphs {
+  .draggable .tabledrag-handle {
+    min-width: 32px;
+
+    @include mq($breakpointMedium) {
+      min-width: 40px;
     }
   }
 }

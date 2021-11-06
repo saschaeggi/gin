@@ -2120,8 +2120,8 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
   background-color: inherit;
 }
 .paragraphs-tabs-wrapper .paragraphs-subform {
-  margin-top: 20px;
-  margin-right: 31px;
+  margin-top: 0;
+  margin-right: 1rem;
 }
 .paragraphs-tabs-wrapper .tabledrag-toggle-weight-wrapper {
   padding-bottom: 12px;
@@ -2192,6 +2192,12 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
 .paragraphs-tabs-wrapper .field-multiple-table .draggable .tabledrag-changed {
   display: none;
 }
+.paragraphs-tabs-wrapper .field-multiple-table .draggable:hover, .paragraphs-tabs-wrapper .field-multiple-table .draggable:focus-within {
+  position: relative;
+  border: 1px solid var(--colorGinText);
+  -webkit-box-shadow: 0 0 0 1px var(--colorGinText);
+          box-shadow: 0 0 0 1px var(--colorGinText);
+}
 .paragraphs-tabs-wrapper .paragraph-type-label {
   font-size: 16px;
   font-weight: bold !important;
@@ -2249,6 +2255,33 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
 }
 .paragraphs-dropdown-toggle:hover::after, .paragraphs-dropdown-toggle:active::after, .paragraphs-dropdown-toggle:focus::after {
   background-color: var(--colorGinPrimary);
+}
+
+.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle,
+.js .field--widget-paragraphs .draggable .tabledrag-handle {
+  min-width: 20px;
+}
+@media (min-width: 976px) {
+  .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle,
+.js .field--widget-paragraphs .draggable .tabledrag-handle {
+    min-width: 24px;
+  }
+}
+.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after,
+.js .field--widget-paragraphs .draggable .tabledrag-handle::after {
+  position: relative;
+  left: 0;
+  padding: 0;
+  margin-left: 0;
+}
+
+.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
+  min-width: 32px;
+}
+@media (min-width: 976px) {
+  .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
+    min-width: 40px;
+  }
 }
 
 .js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple {
@@ -2835,7 +2868,8 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
   height: 3px;
   width: 100%;
 }
-.horizontal-tabs .horizontal-tabs-panes {
+.horizontal-tabs .horizontal-tabs-panes,
+.horizontal-tabs [data-horizontal-tabs-panes] {
   width: 100%;
 }
 .horizontal-tabs .horizontal-tabs-pane {
