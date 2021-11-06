@@ -7,6 +7,7 @@
 #coffee-form #coffee-q {
   color: var(--colorGinText);
   background: var(--colorGinLayerBackground);
+  border-radius: 8px;
 }
 #coffee-form #coffee-results a {
   border-radius: 8px;

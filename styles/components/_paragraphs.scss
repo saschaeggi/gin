@@ -43,10 +43,6 @@
       border-radius: $borderDefault;
       box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
 
-      .gin--dark-mode & {
-        box-shadow: none;
-      }
-
       // Current draggable item
       &.drag {
         background-color: var(--colorGinWarningLightBackground);
@@ -190,6 +186,12 @@
   }
 }
 
+.js .paragraphs-collapsed-description::after,
+.js .draggable:hover .paragraphs-collapsed-description::after {
+  background: var(--colorGinLayer2Background);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayer2Background) 100%);
+}
+
 .js .field--widget-entity-reference-paragraphs {
   .draggable .tabledrag-handle {
     min-width: 32px;
@@ -197,6 +199,12 @@
     @include mq($breakpointMedium) {
       min-width: 40px;
     }
+  }
+
+  .paragraphs-collapsed-description::after,
+  .draggable:hover .paragraphs-collapsed-description::after {
+    background: var(--colorGinLayerBackground);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayerBackground) 100%);
   }
 }
 
@@ -240,6 +248,11 @@
 
 // Darkmode overrides
 .gin--dark-mode {
+  .paragraphs-tabs-wrapper .field-multiple-table .draggable {
+    background: var(--colorGinLayer2Background);
+    box-shadow: none;
+  }
+
   .paragraphs-dropdown-actions {
     background: var(--colorGinLayer2Background);
     border-color: var(--colorGinBorder);

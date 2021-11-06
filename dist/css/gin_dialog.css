@@ -623,6 +623,7 @@
   background: var(--colorGinLayer2Background);
 }
 .ui-dialog .cke.cke_chrome {
+  width: 100% !important;
   border-color: var(--colorGinFormElementBorder);
   border-radius: 8px;
 }
@@ -719,6 +720,8 @@
   border-bottom: 1px solid var(--colorGinBorder);
 }
 .ui-dialog .cke textarea.cke_source {
+  padding: 0.75rem 0.5rem;
+  color: var(--colorGinText);
   background-color: transparent;
 }
 .ui-dialog body .cke_notification_info {

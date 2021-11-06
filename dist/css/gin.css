@@ -2148,10 +2148,6 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
   -webkit-box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
           box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
 }
-.gin--dark-mode .paragraphs-tabs-wrapper .field-multiple-table .draggable {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
 .paragraphs-tabs-wrapper .field-multiple-table .draggable.drag {
   background-color: var(--colorGinWarningLightBackground);
 }
@@ -2275,6 +2271,13 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
   margin-left: 0;
 }
 
+.js .paragraphs-collapsed-description::after,
+.js .draggable:hover .paragraphs-collapsed-description::after {
+  background: var(--colorGinLayer2Background);
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(var(--colorGinLayer2Background)));
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayer2Background) 100%);
+}
+
 .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
   min-width: 32px;
 }
@@ -2282,6 +2285,12 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
   .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
     min-width: 40px;
   }
+}
+.js .field--widget-entity-reference-paragraphs .paragraphs-collapsed-description::after,
+.js .field--widget-entity-reference-paragraphs .draggable:hover .paragraphs-collapsed-description::after {
+  background: var(--colorGinLayerBackground);
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(var(--colorGinLayerBackground)));
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayerBackground) 100%);
 }
 
 .js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple {
@@ -2321,6 +2330,11 @@ fieldset.fieldset.erl-field > .fieldset__wrapper > .active-items:not(:empty) ~ .
   margin-right: 0.5rem;
 }
 
+.gin--dark-mode .paragraphs-tabs-wrapper .field-multiple-table .draggable {
+  background: var(--colorGinLayer2Background);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
 .gin--dark-mode .paragraphs-dropdown-actions {
   background: var(--colorGinLayer2Background);
   border-color: var(--colorGinBorder);
@@ -3945,6 +3959,7 @@ td.webform-has-field-suffix > .form-item > .form-element {
   background: var(--colorGinLayer2Background);
 }
 .cke.cke_chrome {
+  width: 100% !important;
   border-color: var(--colorGinFormElementBorder);
   border-radius: 8px;
 }
@@ -4047,6 +4062,8 @@ td.webform-has-field-suffix > .form-item > .form-element {
 }
 
 .cke textarea.cke_source {
+  padding: 0.75rem 0.5rem;
+  color: var(--colorGinText);
   background-color: transparent;
 }
 
