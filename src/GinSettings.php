@@ -198,7 +198,7 @@ class GinSettings implements ContainerInjectionInterface {
    */
   private function handleLegacySettings($name, $value) {
     if ($name === 'enable_darkmode') {
-      $value = (bool) $value;
+      $value = (string) $value;
     }
     if ($name === 'high_contrast_mode') {
       $value = (bool) $value;

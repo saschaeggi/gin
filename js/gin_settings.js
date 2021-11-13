@@ -7,7 +7,7 @@
     attach: function attach(context) {
       // Watch Darkmode setting has changed.
       $('input[name="enable_darkmode"]', context).change(function () {
-        const darkmode = $(this).is(':checked');
+        const darkmode = $(this).val();
         const accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val();
         const focusColorPreset = $('select[name="preset_focus_color"]').val();
 
@@ -103,6 +103,7 @@
       $('[data-drupal-selector="edit-submit"]', context).click(function() {
         let accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val();
         let accentColorSetting = $('input[name="accent_color"]', context).val();
+        let darkmodeSetitng = $('input[name="enable_darkmode"]:checked').val();
 
         // If on user form, check if we enable or disable the overrides.
         if ($(this).parents('[data-drupal-selector="user-form"]').length > 0) {
@@ -111,6 +112,7 @@
           if (!userSettings) {
             accentColorSetting = drupalSettings.gin.default_accent_color;
             accentColorPreset = drupalSettings.gin.default_preset_accent_color;
+            darkmodeSetitng = drupalSettings.gin.darkmode;
           }
         }
 
@@ -120,6 +122,9 @@
         } else {
           localStorage.setItem('GinAccentColorCustom', '');
         }
+
+        // Reset darkmode localStorage.
+        localStorage.setItem('GinDarkMode', '');
       });
     },
 
@@ -127,13 +132,32 @@
       const darkmodeEnabled = darkmodeParam != null ? darkmodeParam : drupalSettings.gin.darkmode;
       const darkmodeClass = drupalSettings.gin.darkmode_class;
 
-      // Needs to check for both: backwards compatibility.
-      if (darkmodeEnabled === true || darkmodeEnabled === 1) {
+      if (
+        darkmodeEnabled == 1 ||
+        (darkmodeEnabled === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
         $('body').addClass(darkmodeClass);
       }
       else {
         $('body').removeClass(darkmodeClass);
       }
+
+      // Reset localStorage.
+      localStorage.setItem('GinDarkMode', '');
+
+      // Change to Darkmode.
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (e.matches && $('input[name="enable_darkmode"]:checked').val() === 'auto') {
+          $('body').addClass(darkmodeClass);
+        }
+      });
+
+      // Change to Lightmode.
+      window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+        if (e.matches && $('input[name="enable_darkmode"]:checked').val() === 'auto') {
+          $('body').removeClass(darkmodeClass);
+        }
+      });
     },
 
     setHighContrastMode: function setHighContrastMode(param = null) {

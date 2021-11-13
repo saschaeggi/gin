@@ -7,6 +7,9 @@
     attach: function attach() {
       const path = drupalSettings.path.currentPath;
 
+      // Check Darkmode.
+      Drupal.behaviors.ginAccent.checkDarkmode();
+
       // Set focus color.
       Drupal.behaviors.ginAccent.setFocusColor();
 
@@ -151,5 +154,23 @@
     clearFocusColor: function clearFocusColor() {
       $('body').css('--colorGinFocus', '');
     },
+
+    checkDarkmode: function checkDarkmode() {
+      const darkmodeClass = drupalSettings.gin.darkmode_class;
+
+      // Change to Darkmode.
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (e.matches && localStorage.getItem('GinDarkMode') === 'auto') {
+          $('body').addClass(darkmodeClass);
+        }
+      });
+
+      // Change to Lightmode.
+      window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+        if (e.matches && localStorage.getItem('GinDarkMode') === 'auto') {
+          $('body').removeClass(darkmodeClass);
+        }
+      });
+    }
   };
 })(jQuery, Drupal, drupalSettings);

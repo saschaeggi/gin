@@ -10,8 +10,8 @@ gin.settings:
       type: string
       label: 'Preset focus color'
     enable_darkmode:
-      type: boolean
-      label: 'The dark mode'
+      type: string
+      label: 'The darkmode'
     classic_toolbar:
       type: string
       label: 'The classic toolbar'

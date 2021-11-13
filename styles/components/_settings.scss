@@ -90,6 +90,58 @@
   }
 }
 
+// Darkmode
+[data-drupal-selector="edit-enable-darkmode"] {
+  .form-radios {
+    display: inline-flex;
+    flex-wrap: wrap;
+    padding: .1875rem .5rem;
+    margin-top: .5rem;
+    border: 1px solid var(--colorGinFormElementBorder);
+    border-radius: 2rem;
+
+    .gin--dark-mode & {
+      background: var(--colorGinLayer2Background);
+    }
+
+    .form-type--radio {
+      margin-left: 0;
+    }
+
+    .form-item__label {
+      padding: .375rem 1rem;
+      border: 2px solid transparent;
+      border-radius: $borderBig;
+      box-sizing: border-box;
+
+      &:hover {
+        color: var(--colorGinPrimary);
+        background: var(--colorGinPrimaryLightHover);
+      }
+    }
+
+    input {
+      opacity: 0;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: 0;
+      border: 0;
+
+      &:focus + .form-item__label {
+        box-shadow: 0 0 0 2px var(--colorGinLayerBackground),
+                    0 0 0 4px var(--colorGinFocus);
+      }
+
+      &:checked + .form-item__label {
+        font-weight: 600;
+        color: var(--colorGinPrimaryActive);
+        background: var(--colorGinPrimaryLightActive);
+      }
+    }
+  }
+}
+
 // Settings: Toolbar selector.
 [data-drupal-selector="edit-classic-toolbar"] {
   .form-radios {

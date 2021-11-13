@@ -2,7 +2,8 @@
   Drupal.behaviors.ginAccent = {
     attach: function() {
       var path = drupalSettings.path.currentPath;
-      if (Drupal.behaviors.ginAccent.setFocusColor(), -1 !== path.indexOf("user/login") || -1 !== path.indexOf("user/password") || -1 !== path.indexOf("user/register") || localStorage.getItem("GinAccentColorCustom")) Drupal.behaviors.ginAccent.setAccentColor(); else if (Drupal.behaviors.ginAccent.setAccentColor(), 
+      if (Drupal.behaviors.ginAccent.checkDarkmode(), Drupal.behaviors.ginAccent.setFocusColor(), 
+      -1 !== path.indexOf("user/login") || -1 !== path.indexOf("user/password") || -1 !== path.indexOf("user/register") || localStorage.getItem("GinAccentColorCustom")) Drupal.behaviors.ginAccent.setAccentColor(); else if (Drupal.behaviors.ginAccent.setAccentColor(), 
       "custom" === drupalSettings.gin.preset_accent_color) {
         var accentColorSetting = drupalSettings.gin.accent_color;
         localStorage.setItem("GinAccentColorCustom", accentColorSetting);
@@ -66,6 +67,14 @@
     },
     clearFocusColor: function() {
       $("body").css("--colorGinFocus", "");
+    },
+    checkDarkmode: function() {
+      var darkmodeClass = drupalSettings.gin.darkmode_class;
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (function(e) {
+        e.matches && "auto" === localStorage.getItem("GinDarkMode") && $("body").addClass(darkmodeClass);
+      })), window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (function(e) {
+        e.matches && "auto" === localStorage.getItem("GinDarkMode") && $("body").removeClass(darkmodeClass);
+      }));
     }
   };
 }(jQuery, Drupal, drupalSettings);

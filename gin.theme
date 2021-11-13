@@ -25,11 +25,6 @@ function gin_preprocess_html(&$variables) {
     $settings = \Drupal::classResolver(GinSettings::class);
     $toolbar = $settings->get('classic_toolbar');
 
-    // Check if darkmode is enabled.
-    if ($settings->get('enable_darkmode')) {
-      $variables['attributes']['class'][] = 'gin--dark-mode';
-    }
-
     // Set accent color.
     $variables['attributes']['data-gin-accent'] = $settings->get('preset_accent_color');
 
@@ -309,10 +304,11 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
     ];
 
     $form['gin_theme_settings']['user_settings']['enable_darkmode'] = [
-      '#type' => 'checkbox',
-      '#title' => t('Enable Darkmode (BETA)'),
+      '#type' => 'radios',
+      '#title' => t('Appearance') . ' (BETA)',
       '#description' => t("Enables Darkmode for the admin interface."),
-      '#default_value' => $settings->get('enable_darkmode', $account),
+      '#default_value' => strval($settings->get('enable_darkmode', $account)),
+      '#options' => _gin_get_darkmode_presets(),
       '#weight' => 0,
     ];
 
@@ -559,17 +555,18 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
 
   // Darkmode setting.
   // Check if this is overridden by the logged in user.
-  $description = t("Enables Darkmode for the admin interface.");
+  $description = t('Enables Darkmode for the admin interface.');
   if ($settings->overridden('enable_darkmode')) {
-    $darkmode = $settings->get('enable_darkmode') ? t('Enabled') : t('Disabled');
+    $darkmode = $settings->get('enable_darkmode') === '1' ? t('Enabled') : ($settings->get('enable_darkmode') === 'auto' ? t('Auto') : t('Disabled'));
     $description .= '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Darkmode: <strong>@darkmode</strong></span>', ['@darkmode' => $darkmode, '@editUrl' => $userEditUrl]);
   }
 
   $form['custom_settings']['enable_darkmode'] = [
-    '#type' => 'checkbox',
-    '#title' => t('Enable Darkmode (BETA)'),
+    '#type' => 'radios',
+    '#title' => t('Appearance') . ' (BETA)',
     '#description' => $description,
-    '#default_value' => $settings->getDefault('enable_darkmode'),
+    '#default_value' => strval($settings->getDefault('enable_darkmode')),
+    '#options' => _gin_get_darkmode_presets(),
   ];
 
   // Accent color setting.
@@ -836,7 +833,7 @@ function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
   $settings = \Drupal::classResolver(GinSettings::class);
   if ($enabledUserOverrides) {
     $user_settings = [
-      'enable_darkmode' => (bool) $form_state->getValue('enable_darkmode'),
+      'enable_darkmode' => $form_state->getValue('enable_darkmode'),
       'preset_accent_color' => $form_state->getValue('preset_accent_color'),
       'accent_color' => $form_state->getValue('accent_color'),
       'classic_toolbar' => $form_state->getValue('classic_toolbar'),
@@ -900,6 +897,17 @@ function _gin_get_accent_color_presets() {
     'orange' => t('Orange'),
     'yellow' => t('Yellow'),
     'custom' => t('Custom'),
+  ];
+}
+
+/**
+ * Darkmode presets helper function.
+ */
+function _gin_get_darkmode_presets() {
+  return [
+    0 => t('Light'),
+    1 => t('Dark'),
+    'auto' => t('Auto'),
   ];
 }
 

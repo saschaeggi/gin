@@ -3,7 +3,7 @@
 'use strict';
 
 (($, Drupal, drupalSettings) => {
-  Drupal.behaviors.ginCKEditorContextMenu = {
+  Drupal.behaviors.ginCKEditor = {
     attach: function attach(context) {
       if (typeof CKEDITOR != 'undefined') {
         // If on CKEditor config, do nothing.
@@ -15,20 +15,14 @@
         const accentCss = drupalSettings.gin.accent_css_path;
         const contentsCss = drupalSettings.gin.ckeditor_css_path;
         const accentColorPreset = drupalSettings.gin.preset_accent_color;
-
-        // Collect Gin classes.
-        let ginClasses = new Array();
+        const darkmodeClass = drupalSettings.gin.darkmode_class;
 
         // Class for Darkmode.
-        if (drupalSettings.gin.darkmode) {
-          ginClasses.push(drupalSettings.gin.darkmode_class);
-          CKEDITOR.config.bodyClass = drupalSettings.gin.darkmode_class;
-        }
-
-        // Class for Highcontrast mode.
-        if (drupalSettings.gin.highcontrastmode) {
-          ginClasses.push(drupalSettings.gin.highcontrastmode_class);
-          CKEDITOR.config.bodyClass = drupalSettings.gin.highcontrastmode_class;
+        if (
+          localStorage.getItem('GinDarkMode') == 1 ||
+          localStorage.getItem('GinDarkMode') === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches
+        ) {
+          CKEDITOR.config.bodyClass = darkmodeClass;
         }
 
         // Content stylesheets.
@@ -59,16 +53,57 @@
                   $(editor.document.$)
                     .find('body')
                     .attr('data-gin-accent', accentColorPreset);
+
+                  if (localStorage.getItem('GinDarkMode') === 'auto') {
+                    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                      $(editor.document.$)
+                        .find('body')
+                        .addClass(darkmodeClass);
+                    } else {
+                      $(editor.document.$)
+                        .find('body')
+                        .removeClass(darkmodeClass);
+                    }
+                  }
                 }
               });
 
               // Contextual menu.
               editor.on('menuShow', function() {
+                const darkModeClass = window.matchMedia('(prefers-color-scheme: dark)').matches ? darkmodeClass : '';
                 $('body > .cke_menu_panel > iframe')
                   .contents()
                   .find('body')
-                  .addClass(ginClasses)
+                  .addClass(darkModeClass)
                   .attr('data-gin-accent', accentColorPreset);
+              });
+
+              // Toggle Darkmode.
+              window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (e.matches && localStorage.getItem('GinDarkMode') === 'auto') {
+                  $(editor.document.$)
+                    .find('body')
+                    .addClass(darkmodeClass);
+
+                  $('body > .cke_menu_panel > iframe')
+                    .contents()
+                    .find('body')
+                    .addClass(darkmodeClass);
+                }
+              });
+
+              // Change to Lightmode.
+              window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+                if (e.matches && localStorage.getItem('GinDarkMode') === 'auto') {
+                  $(editor.document.$)
+                    .find('body')
+                    .removeClass(darkmodeClass);
+
+                  $('body > .cke_menu_panel > iframe')
+                    .contents()
+                    .find('body')
+                    .removeClass(darkmodeClass);
+                }
               });
             });
           });

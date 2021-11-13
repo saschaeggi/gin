@@ -2,7 +2,7 @@
   Drupal.behaviors.ginSettings = {
     attach: function(context) {
       $('input[name="enable_darkmode"]', context).change((function() {
-        var darkmode = $(this).is(":checked"), accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val(), focusColorPreset = $('select[name="preset_focus_color"]').val();
+        var darkmode = $(this).val(), accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val(), focusColorPreset = $('select[name="preset_focus_color"]').val();
         if (Drupal.behaviors.ginSettings.darkmode(darkmode), "custom" === accentColorPreset) {
           var accentColorSetting = $('input[name="accent_color"]', context).val();
           Drupal.behaviors.ginAccent.setCustomAccentColor("custom", accentColorSetting);
@@ -35,13 +35,20 @@
         Drupal.behaviors.ginSettings.setHighContrastMode(highContrastMode);
       })), $('[data-drupal-selector="edit-submit"]', context).click((function() {
         var accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val(), accentColorSetting = $('input[name="accent_color"]', context).val();
-        $(this).parents('[data-drupal-selector="user-form"]').length > 0 && ($('input[name="enable_user_settings"]', context).is(":checked") || (accentColorSetting = drupalSettings.gin.default_accent_color, 
-        accentColorPreset = drupalSettings.gin.default_preset_accent_color)), "custom" === accentColorPreset ? localStorage.setItem("GinAccentColorCustom", accentColorSetting) : localStorage.setItem("GinAccentColorCustom", "");
+        $('input[name="enable_darkmode"]:checked').val(), $(this).parents('[data-drupal-selector="user-form"]').length > 0 && ($('input[name="enable_user_settings"]', context).is(":checked") || (accentColorSetting = drupalSettings.gin.default_accent_color, 
+        accentColorPreset = drupalSettings.gin.default_preset_accent_color, drupalSettings.gin.darkmode)), 
+        "custom" === accentColorPreset ? localStorage.setItem("GinAccentColorCustom", accentColorSetting) : localStorage.setItem("GinAccentColorCustom", ""), 
+        localStorage.setItem("GinDarkMode", "");
       }));
     },
     darkmode: function() {
       var darkmodeParam = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null, darkmodeEnabled = null != darkmodeParam ? darkmodeParam : drupalSettings.gin.darkmode, darkmodeClass = drupalSettings.gin.darkmode_class;
-      !0 === darkmodeEnabled || 1 === darkmodeEnabled ? $("body").addClass(darkmodeClass) : $("body").removeClass(darkmodeClass);
+      1 == darkmodeEnabled || "auto" === darkmodeEnabled && window.matchMedia("(prefers-color-scheme: dark)").matches ? $("body").addClass(darkmodeClass) : $("body").removeClass(darkmodeClass), 
+      localStorage.setItem("GinDarkMode", ""), window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (function(e) {
+        e.matches && "auto" === $('input[name="enable_darkmode"]:checked').val() && $("body").addClass(darkmodeClass);
+      })), window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (function(e) {
+        e.matches && "auto" === $('input[name="enable_darkmode"]:checked').val() && $("body").removeClass(darkmodeClass);
+      }));
     },
     setHighContrastMode: function() {
       var param = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null, enabled = null != param ? param : drupalSettings.gin.highcontrastmode, className = drupalSettings.gin.highcontrastmode_class;
