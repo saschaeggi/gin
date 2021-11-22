@@ -1,0 +1,306 @@
+:root {
+  --colorGinButtonShadow: #00000033;
+  --colorGinButtonText: #fff;
+  --colorGinFocusBorder: rgba(0, 0, 0, .2);
+  --colorGinFocus: rgba(0, 125, 250, .6);
+  --colorGinDisabled: #bbb;
+  --colorGinWarning: #d8b234;
+  --colorGinWarningLight: #efcf64;
+  --colorGinWarningBackground: #605328;
+  --colorGinWarningLightBackground: rgba(226, 151, 0, .08);
+  --colorGinDanger: #cc3d3d;
+  --colorGinDangerLightest: #fdd9d9;
+  --colorGinDangerLight: #f39b9d;
+  --colorGinDangerBackground: #583333;
+  --colorGinDangerLightBackground: rgba(222, 117, 96, .1);
+  --colorGinGreen: #058260;
+  --colorGinGreenLight: #32cea4;
+  --colorGinGreenLightest: #adebdb;
+  --colorGinGreenBackground: #145242;
+  --colorGinGreenLightBackground: rgba(72, 171, 123, .1);
+  --colorGinInfo: #082538;
+  --colorGinInfoLight: #589ac5;
+  --colorGinInfoBackground: #122b3c;
+  --colorGinLayerBackground: #fff;
+  --colorGinLayer2Background: #edeff5;
+  --colorGinLayer3Background: #fff;
+  --colorGinLayer4Background: #e2e5ec;
+  --colorGinContextual: var(--colorGinText);
+  --colorGinContextualText: #eee;
+  --colorGinBorder: #d4d4d8;
+  --colorGinMetaBorder: rgba(0, 0, 0, .08);
+  --colorGinLayerBorder: rgba(0, 0, 0, .08);
+  --colorGinLayer2Border: #d4d4d8;
+  --colorGinTableBorder: rgba(0, 0, 0, .15);
+  --colorGinTabsBorder: rgba(0, 0, 0, .2);
+  --colorGinFormElementBorder: #8E929C;
+  --colorGinTitle:#222330;
+  --colorGinText: #222330;
+  --colorGinTextLight: #545560;
+  --colorGinSwitch: #26a769;
+  --colorGinSwitchShadow: rgba(38, 167, 105, .3);
+  --colorGinIcons: #414247;
+  --colorGinStickyBg: #c8cdd8;
+  --ginSidebarWidth: 300px;
+}
+@media (min-width: 1280px) {
+  :root {
+    --ginSidebarWidth: 360px;
+  }
+}
+
+[data-gin-accent] {
+  --colorGinPrimary: rgb(var(--colorGinPrimaryRGB));
+  --colorGinPrimaryLight: rgba(var(--colorGinPrimaryRGB), .15);
+  --colorGinAppBackground: rgb(var(--colorGinAppBackgroundRGB));
+  --colorGinPrimaryLightHover: rgba(var(--colorGinPrimaryRGB), .2);
+  --colorGinPrimaryLightActive: rgba(var(--colorGinPrimaryRGB), .3);
+  --colorGinPrimaryLightShadow: rgba(var(--colorGinPrimaryRGB), .45);
+  --colorGinItemHover: rgba(var(--colorGinPrimaryRGB), .1);
+  --colorGinTableHeader: rgba(var(--colorGinPrimaryRGB), .125);
+}
+
+.gin--dark-mode {
+  --colorGinButtonShadow: rgba(#111, .9);
+  --colorGinButtonText: #111;
+  --colorGinFocus: rgb(81, 168, 255);
+  --colorGinFocusBorder: rgba(0, 0, 0, .8);
+  --colorGinDisabled: #555;
+  --colorGinWarning: #dec15f;
+  --colorGinWarningLightBackground: rgba(222, 193, 95, .1);
+  --colorGinDanger: #ce6060;
+  --colorGinDangerLightest: #483439;
+  --colorGinGreen: #32cea4;
+  --colorGinInfo: #559bca;
+  --colorGinAppBackground: #1B1B1D;
+  --colorGinLayerBackground: #2A2A2D;
+  --colorGinLayer2Background: #3B3B3F;
+  --colorGinLayer3Background: #47474c;
+  --colorGinLayer4Background: #19191b;
+  --colorGinContextual: var(--colorGinLayer3Background);
+  --colorGinBorder: #43454a;
+  --colorGinMetaBorder: rgba(255, 255, 255, .075);
+  --colorGinLayerBorder: rgba(0, 0, 0, .05);
+  --colorGinLayer2Border: #76777B;
+  --colorGinTableBorder: #43454a;
+  --colorGinTabsBorder: rgba(255, 255, 255, .12);
+  --colorGinFormElementBorder: var(--colorGinLayer2Border);
+  --colorGinTitle: #fff;
+  --colorGinText: #ccc;
+  --colorGinTextLight: #9e9fa0;
+  --colorGinTableHeader: rgba(var(--colorGinPrimaryRGB), .175);
+  --colorGinSwitch: var(--colorGinPrimary);
+  --colorGinSwitchShadow: var(--colorGinPrimaryLight);
+  --colorGinIcons: #888;
+  --colorGinStickyBg: var(--colorGinLayer4Background);
+}
+
+[data-gin-accent=blue] {
+  --colorGinPrimaryRGB: 5, 80, 230;
+  --colorGinPrimaryHover: #0444c4;
+  --colorGinPrimaryActive: #043cad;
+  --colorGinAppBackgroundRGB: 248, 250, 254;
+}
+
+[data-gin-accent=light_blue] {
+  --colorGinPrimaryRGB: 50, 117, 224;
+  --colorGinPrimaryHover: #2b63be;
+  --colorGinPrimaryActive: #2658a8;
+  --colorGinAppBackgroundRGB: 249, 251, 254;
+}
+
+[data-gin-accent=dark_purple] {
+  --colorGinPrimaryRGB: 67, 0, 191;
+  --colorGinPrimaryHover: #3900a2;
+  --colorGinPrimaryActive: #32008f;
+  --colorGinAppBackgroundRGB: 249, 247, 253;
+  --colorGinPrimaryLightHover: rgba(var(--colorGinPrimaryRGB), .2);
+  --colorGinPrimaryLightActive: rgba(var(--colorGinPrimaryRGB), .25);
+  --colorGinPrimaryLightShadow: rgba(var(--colorGinPrimaryRGB), .4);
+  --colorGinItemHover: rgba(var(--colorGinPrimaryRGB), .08);
+}
+
+[data-gin-accent=purple] {
+  --colorGinPrimaryRGB: 91, 0, 255;
+  --colorGinPrimaryHover: #4d00d9;
+  --colorGinPrimaryActive: #4400bf;
+  --colorGinAppBackgroundRGB: 250, 247, 255;
+  --colorGinPrimaryLightHover: rgba(var(--colorGinPrimaryRGB), .2);
+  --colorGinPrimaryLightActive: rgba(var(--colorGinPrimaryRGB), .25);
+  --colorGinPrimaryLightShadow: rgba(var(--colorGinPrimaryRGB), .4);
+  --colorGinItemHover: rgba(var(--colorGinPrimaryRGB), .08);
+}
+
+[data-gin-accent=teal] {
+  --colorGinPrimaryRGB: 16, 133, 127;
+  --colorGinPrimaryHover: #0e716c;
+  --colorGinPrimaryActive: #0c645f;
+  --colorGinAppBackgroundRGB: 248, 251, 251;
+}
+
+[data-gin-accent=green] {
+  --colorGinPrimaryRGB: 0, 135, 95;
+  --colorGinPrimaryHover: #007351;
+  --colorGinPrimaryActive: #006547;
+  --colorGinAppBackgroundRGB: 247, 251, 250;
+}
+
+[data-gin-accent=red] {
+  --colorGinPrimaryRGB: 216, 0, 47;
+  --colorGinPrimaryHover: #b80028;
+  --colorGinPrimaryActive: #a20023;
+  --colorGinAppBackgroundRGB: 254, 247, 249;
+}
+
+[data-gin-accent=orange] {
+  --colorGinPrimaryRGB: 239, 92, 32;
+  --colorGinPrimaryHover: #cb4e1b;
+  --colorGinPrimaryActive: #b34518;
+  --colorGinAppBackgroundRGB: 255, 250, 248;
+}
+
+[data-gin-accent=yellow] {
+  --colorGinPrimaryRGB: 197, 137, 0;
+  --colorGinPrimaryHover: #a77400;
+  --colorGinPrimaryActive: #946700;
+  --colorGinAppBackgroundRGB: 253, 251, 247;
+}
+
+[data-gin-accent=pink] {
+  --colorGinPrimaryRGB: 226, 49, 119;
+  --colorGinPrimaryHover: #c02a65;
+  --colorGinPrimaryActive: #aa2559;
+  --colorGinAppBackgroundRGB: 254, 249, 251;
+}
+
+[data-gin-accent=neutral] {
+  --colorGinPrimaryRGB: 0, 0, 0;
+  --colorGinPrimaryHover: black;
+  --colorGinPrimaryActive: black;
+  --colorGinAppBackgroundRGB: 247, 247, 247;
+}
+
+.gin--dark-mode[data-gin-accent=blue],
+.gin--dark-mode [data-gin-accent=blue] {
+  --colorGinPrimaryRGB: 144, 174, 239;
+  --colorGinAppBackgroundRGB: 27, 27, 29;
+  --colorGinPrimaryHover: #9bb6f1;
+  --colorGinPrimaryActive: #a1baf1;
+}
+
+.gin--dark-mode[data-gin-accent=claro_blue],
+.gin--dark-mode [data-gin-accent=claro_blue] {
+  --colorGinPrimaryRGB: 115, 145, 216;
+  --colorGinAppBackgroundRGB: 27, 27, 29;
+  --colorGinPrimaryHover: #819cdc;
+  --colorGinPrimaryActive: #88a2de;
+}
+
+.gin--dark-mode[data-gin-accent=light_blue],
+.gin--dark-mode [data-gin-accent=light_blue] {
+  --colorGinPrimaryRGB: 130, 191, 232;
+  --colorGinAppBackgroundRGB: 27, 27, 29;
+  --colorGinPrimaryHover: #8fc5ea;
+  --colorGinPrimaryActive: #95c9eb;
+}
+
+.gin--dark-mode[data-gin-accent=dark_purple],
+.gin--dark-mode [data-gin-accent=dark_purple] {
+  --colorGinPrimaryRGB: 173, 143, 232;
+  --colorGinAppBackgroundRGB: 27, 27, 29;
+  --colorGinPrimaryHover: #b59aea;
+  --colorGinPrimaryActive: #b9a0eb;
+}
+
+.gin--dark-mode[data-gin-accent=purple],
+.gin--dark-mode [data-gin-accent=purple] {
+  --colorGinPrimaryRGB: 219, 165, 239;
+  --colorGinAppBackgroundRGB: 27, 27, 29;
+  --colorGinPrimaryHover: #dfaef1;
+  --colorGinPrimaryActive: #e0b3f1;
+}
+
+.gin--dark-mode[data-gin-accent=teal],
+.gin--dark-mode [data-gin-accent=teal] {
+  --colorGinPrimaryRGB: 0, 234, 208;
+  --colorGinAppBackgroundRGB: 27, 27, 29;
+  --colorGinPrimaryHover: #1aecd5;
+  --colorGinPrimaryActive: #26edd7;
+}
+
+.gin--dark-mode[data-gin-accent=green],
+.gin--dark-mode [data-gin-accent=green] {
+  --colorGinPrimaryRGB: 107, 212, 161;
+  --colorGinAppBackgroundRGB: 27, 27, 29;
+  --colorGinPrimaryHover: #7ad8aa;
+  --colorGinPrimaryActive: #81daaf;
+}
+
+.gin--dark-mode[data-gin-accent=red],
+.gin--dark-mode [data-gin-accent=red] {
+  --colorGinPrimaryRGB: 233, 130, 130;
+  --colorGinAppBackgroundRGB: 27, 27, 29;
+  --colorGinPrimaryHover: #eb8f8f;
+  --colorGinPrimaryActive: #ec9595;
+}
+
+.gin--dark-mode[data-gin-accent=orange],
+.gin--dark-mode [data-gin-accent=orange] {
+  --colorGinPrimaryRGB: 247, 149, 118;
+  --colorGinAppBackgroundRGB: 27, 27, 29;
+  --colorGinPrimaryHover: #f8a084;
+  --colorGinPrimaryActive: #f8a58b;
+}
+
+.gin--dark-mode[data-gin-accent=yellow],
+.gin--dark-mode [data-gin-accent=yellow] {
+  --colorGinPrimaryRGB: 241, 201, 112;
+  --colorGinAppBackgroundRGB: 27, 27, 29;
+  --colorGinPrimaryHover: #f2ce7e;
+  --colorGinPrimaryActive: #f3d185;
+}
+
+.gin--dark-mode[data-gin-accent=pink],
+.gin--dark-mode [data-gin-accent=pink] {
+  --colorGinPrimaryRGB: 231, 157, 163;
+  --colorGinAppBackgroundRGB: 27, 27, 29;
+  --colorGinPrimaryHover: #e9a7ac;
+  --colorGinPrimaryActive: #ebacb1;
+}
+
+.gin--dark-mode[data-gin-accent=neutral],
+.gin--dark-mode [data-gin-accent=neutral] {
+  --colorGinPrimaryRGB: 255, 255, 255;
+  --colorGinAppBackgroundRGB: 27, 27, 29;
+  --colorGinPrimaryHover: white;
+  --colorGinPrimaryActive: white;
+}
+
+.gin--high-contrast-mode {
+  --colorGinAppBackground: #d9dbde;
+  --colorGinText: rgba(0, 0, 0, 0.8);
+  --colorGinTextLight: rgba(0, 0, 0, 0.8);
+  --colorGinIcons: rgba(0, 0, 0, 0.8);
+  --colorGinFocus: rgba(0, 0, 0, 0.8);
+  --colorGinBorder: rgba(0, 0, 0, 0.8);
+  --colorGinMetaBorder: rgba(0, 0, 0, .6);
+  --colorGinLayerBorder: rgba(0, 0, 0, .6);
+  --colorGinLayer2Border: rgba(0, 0, 0, 0.8);
+  --colorGinTableBorder: rgba(0, 0, 0, 0.8);
+  --colorGinTabsBorder: rgba(0, 0, 0, 0.8);
+  --colorGinFormElementBorder: rgba(0, 0, 0, 0.8);
+}
+.gin--high-contrast-mode.gin--dark-mode {
+  --colorGinAppBackground: #000;
+  --colorGinText: rgba(255, 255, 255, 0.8);
+  --colorGinTextLight: rgba(255, 255, 255, 0.8);
+  --colorGinIcons: rgba(255, 255, 255, 0.8);
+  --colorGinFocus: rgba(255, 255, 255, 0.8);
+  --colorGinBorder: rgba(255, 255, 255, 0.8);
+  --colorGinMetaBorder: rgba(255, 255, 255, .6);
+  --colorGinLayerBorder: rgba(255, 255, 255, .6);
+  --colorGinLayer2Border: rgba(255, 255, 255, 0.8);
+  --colorGinTableBorder: rgba(255, 255, 255, 0.8);
+  --colorGinTabsBorder: rgba(255, 255, 255, 0.8);
+  --colorGinFormElementBorder: rgba(255, 255, 255, 0.8);
+}

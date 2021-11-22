@@ -1,0 +1,222 @@
+:root {
+  // Accent color: use Claro defaults for Gin
+  // --colorGinPrimary: #{$ginPrimary};
+  // --colorGinPrimaryHover: #{$ginPrimaryHover};
+  // --colorGinPrimaryActive: #{$ginPrimaryActive};
+  // --colorGinPrimaryLight: #{rgba($mixColor, .15)};
+  // --colorGinPrimaryLightHover: #{rgba($mixColor, .20)};
+  // --colorGinPrimaryLightActive: #{rgba($mixColor, .30)};
+  // --colorGinPrimaryLightShadow: #{rgba($mixColor, .45)};
+  // --colorGinItemHover: #{rgba($ginPrimary, .10)};
+  --colorGinButtonShadow: #00000033;
+  --colorGinButtonText: #fff;
+  --colorGinFocusBorder: rgba(0, 0, 0, .2); //rgb(0, 125, 250);
+  --colorGinFocus: rgba(0, 125, 250, .6); // #059fad; //#00a590; //#0ba77d; //#2297c7;
+
+  --colorGinDisabled: #bbb;
+  --colorGinWarning: #d8b234;
+  --colorGinWarningLight: #efcf64;
+  --colorGinWarningBackground: #{mix(black, #efcf64, 60%)};
+  --colorGinWarningLightBackground: rgba(226, 151, 0, .08);
+  --colorGinDanger: #cc3d3d;
+  --colorGinDangerLightest: #fdd9d9;
+  --colorGinDangerLight: #f39b9d;
+  --colorGinDangerBackground: #{mix(black, #dc7f7f, 60%)};
+  --colorGinDangerLightBackground: rgba(222, 117, 96, .1);
+  --colorGinGreen: #058260;
+  --colorGinGreenLight: #32cea4;
+  --colorGinGreenLightest:  #{mix(white, #32cea4, 60%)};
+  --colorGinGreenBackground: #{mix(black, #32cea4, 60%)};
+  --colorGinGreenLightBackground: rgba(72, 171, 123, .1);
+  --colorGinInfo: #082538;
+  --colorGinInfoLight: #589ac5;
+  --colorGinInfoBackground: #{mix(black, #2d6c96, 60%)};
+
+  // --colorGinAppBackground: #{$colorAppBackground};
+  --colorGinLayerBackground: #fff;
+  --colorGinLayer2Background: #edeff5;
+  --colorGinLayer3Background: #fff;
+  --colorGinLayer4Background: #e2e5ec;
+  --colorGinContextual: var(--colorGinText);
+  --colorGinContextualText: #eee;
+  --colorGinBorder: #d4d4d8;
+  --colorGinMetaBorder: rgba(0, 0, 0, .08);
+  --colorGinLayerBorder: rgba(0, 0, 0, .08);
+  --colorGinLayer2Border: #d4d4d8;
+  --colorGinTableBorder: rgba(0, 0, 0, .15);
+  --colorGinTabsBorder: rgba(0, 0, 0, .2);
+  --colorGinFormElementBorder: #8E929C;
+
+  --colorGinTitle:#222330;
+  --colorGinText: #222330;
+  --colorGinTextLight: #545560;
+
+  // --colorGinTableHeader: #e6e8ef;
+  --colorGinSwitch: #26a769; //#0e9888;
+  --colorGinSwitchShadow: rgba(38, 167, 105, .3);
+
+  --colorGinIcons: #414247; //#5d6069;
+  --colorGinStickyBg: #c8cdd8;
+
+  --ginSidebarWidth: #{$sidebarSmallWidth};
+
+  @include mq($breakpointWide) {
+    --ginSidebarWidth: #{$sidebarWidth};
+  }
+}
+
+[data-gin-accent] {
+  --colorGinPrimary: rgb(var(--colorGinPrimaryRGB));
+  --colorGinPrimaryLight: rgba(var(--colorGinPrimaryRGB), .15);
+  --colorGinAppBackground: rgb(var(--colorGinAppBackgroundRGB));
+  --colorGinPrimaryLightHover: rgba(var(--colorGinPrimaryRGB), .2);
+  --colorGinPrimaryLightActive: rgba(var(--colorGinPrimaryRGB), .3);
+  --colorGinPrimaryLightShadow: rgba(var(--colorGinPrimaryRGB), .45);
+  --colorGinItemHover: rgba(var(--colorGinPrimaryRGB), .1);
+  --colorGinTableHeader: rgba(var(--colorGinPrimaryRGB), .125);
+}
+
+.gin--dark-mode {
+  // $ginPrimary: #90aeef;
+  // --colorGinPrimary: #{$ginPrimary};
+  // --colorGinPrimaryHover: #{mix(white, $ginPrimary, 10%)};
+  // --colorGinPrimaryActive: #{mix(white, $ginPrimary, 15%)};
+  // --colorGinPrimaryLight: #{rgba($ginPrimary, .15)};
+  // --colorGinPrimaryLightHover: #{rgba($ginPrimary, .2)};
+  // --colorGinPrimaryLightActive: #{rgba($ginPrimary, .3)};
+  // --colorGinPrimaryLightShadow: #{rgba($ginPrimary, .45)};
+  // --colorGinItemHover: #{rgba($ginPrimary, .10)};
+  --colorGinButtonShadow: rgba(#111, .9);
+  --colorGinButtonText: #111;
+  // --colorGinFocus: var(--colorGinPrimary);
+  --colorGinFocus: rgb(81, 168, 255);
+  --colorGinFocusBorder: rgba(0, 0, 0, .8); //rgba(81, 168, 255, .6);
+
+  --colorGinDisabled: #555;
+  --colorGinWarning: #dec15f;
+  --colorGinWarningLightBackground: rgba(222, 193, 95, .1);
+  --colorGinDanger: #ce6060;
+  // --colorGinDangerLightBackground: rgba(86, 31, 20, .2);
+
+  --colorGinDangerLightest: #483439;
+  --colorGinGreen: #32cea4;
+  --colorGinInfo: #559bca;
+
+  --colorGinAppBackground: #{$colorDarkAppBackground};
+  --colorGinLayerBackground: #2A2A2D;
+  --colorGinLayer2Background: #3B3B3F;
+  --colorGinLayer3Background: #47474c;
+  --colorGinLayer4Background: #19191b;
+  --colorGinContextual: var(--colorGinLayer3Background);
+  --colorGinBorder: #43454a;
+  --colorGinMetaBorder: rgba(255, 255, 255, .075);
+  --colorGinLayerBorder: rgba(0, 0, 0, .05);
+  --colorGinLayer2Border: #76777B;
+  --colorGinTableBorder: #43454a;
+  --colorGinTabsBorder: rgba(255, 255, 255, .12);
+  --colorGinFormElementBorder: var(--colorGinLayer2Border);
+
+  --colorGinTitle: #fff;
+  --colorGinText: #ccc;
+  --colorGinTextLight: #9e9fa0;
+
+  // --colorGinTableHeader: var(--colorGinAppBackground);
+  --colorGinTableHeader: rgba(var(--colorGinPrimaryRGB), .175);
+  --colorGinSwitch: var(--colorGinPrimary);
+  --colorGinSwitchShadow: var(--colorGinPrimaryLight);
+
+  --colorGinIcons: #888;
+  --colorGinStickyBg: var(--colorGinLayer4Background);
+}
+
+$ginColors: (
+  blue: #0550e6,
+  light_blue: #3275e0,
+  dark_purple: #4300bf,
+  purple: #5b00ff,
+  teal: #10857f,
+  green: #00875f,
+  red: #d8002f,
+  orange: #ef5c20,
+  yellow: #c58900,
+  pink: #e23177,
+  neutral: #000000,
+);
+
+@each $name, $color in $ginColors {
+  [data-gin-accent=#{'' + $name}] {
+    $colorLight: mix(white, $color, 97%);
+
+    --colorGinPrimaryRGB: #{color.red($color)}, #{color.green($color)}, #{color.blue($color)};
+    --colorGinPrimaryHover: #{mix(black, $color, 15%)};
+    --colorGinPrimaryActive: #{mix(black, $color, 25%)};
+    --colorGinAppBackgroundRGB: #{color.red($colorLight)}, #{color.green($colorLight)}, #{color.blue($colorLight)};
+    @if $name == dark_purple or $name == purple {
+      --colorGinPrimaryLightHover: rgba(var(--colorGinPrimaryRGB), .2);
+      --colorGinPrimaryLightActive: rgba(var(--colorGinPrimaryRGB), .25);
+      --colorGinPrimaryLightShadow: rgba(var(--colorGinPrimaryRGB), .4);
+      --colorGinItemHover: rgba(var(--colorGinPrimaryRGB), .08);
+    }
+  }
+}
+
+$ginDarkmodeColors: (
+  blue: #90aeef,
+  claro_blue: #7391d8,
+  light_blue: #82bfe8,
+  dark_purple: #ad8fe8,
+  purple: #dba5ef,
+  teal: #00ead0,
+  green: #6bd4a1,
+  red: #e98282,
+  orange: #f79576,
+  yellow: #f1c970,
+  pink: #e79da3,
+  neutral: #ffffff,
+);
+
+@each $name, $color in $ginDarkmodeColors {
+  .gin--dark-mode[data-gin-accent=#{'' + $name}],
+  .gin--dark-mode [data-gin-accent=#{'' + $name}] {
+    $colorLight: $colorDarkAppBackground;
+
+    --colorGinPrimaryRGB: #{color.red($color)}, #{color.green($color)}, #{color.blue($color)};
+    --colorGinAppBackgroundRGB: #{color.red($colorLight)}, #{color.green($colorLight)}, #{color.blue($colorLight)};
+    --colorGinPrimaryHover: #{mix(white, $color, 10%)};
+    --colorGinPrimaryActive: #{mix(white, $color, 15%)};
+  }
+}
+
+.gin--high-contrast-mode {
+  $highContrastMode: rgba(0, 0, 0, .8);
+
+  --colorGinAppBackground: #d9dbde;
+  --colorGinText: #{$highContrastMode};
+  --colorGinTextLight: #{$highContrastMode};
+  --colorGinIcons: #{$highContrastMode};
+  --colorGinFocus: #{$highContrastMode};
+  --colorGinBorder: #{$highContrastMode};
+  --colorGinMetaBorder: rgba(0, 0, 0, .6);
+  --colorGinLayerBorder: rgba(0, 0, 0, .6);
+  --colorGinLayer2Border: #{$highContrastMode};
+  --colorGinTableBorder: #{$highContrastMode};
+  --colorGinTabsBorder: #{$highContrastMode};
+  --colorGinFormElementBorder: #{$highContrastMode};
+
+  &.gin--dark-mode {
+    $highContrastMode: rgba(255, 255, 255, .8);
+
+    --colorGinAppBackground: #000;
+    --colorGinText: #{$highContrastMode};
+    --colorGinTextLight: #{$highContrastMode};
+    --colorGinIcons: #{$highContrastMode};
+    --colorGinFocus: #{$highContrastMode};
+    --colorGinBorder: #{$highContrastMode};
+    --colorGinMetaBorder: rgba(255, 255, 255, .6);
+    --colorGinLayerBorder: rgba(255, 255, 255, .6);
+    --colorGinLayer2Border: #{$highContrastMode};
+    --colorGinTableBorder: #{$highContrastMode};
+    --colorGinTabsBorder: #{$highContrastMode};
+    --colorGinFormElementBorder: #{$highContrastMode};
+  }
+}

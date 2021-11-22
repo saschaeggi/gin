@@ -10,23 +10,53 @@ const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 
 module.exports = {
   entry: {
-    gin: ['./styles/gin.scss'],
-    gin_init: ['./js/gin_init.js'],
-    gin_toolbar: ['./js/gin_toolbar.js', './styles/gin_toolbar.scss'],
-    gin_horizontal_toolbar: ['./styles/gin_horizontal_toolbar.scss'],
-    gin_classic_toolbar: ['./styles/gin_classic_toolbar.scss'],
-    gin_accent: ['./js/gin_accent.js','./styles/gin_accent.scss'],
-    gin_settings: ['./js/gin_settings.js'],
-    gin_editform: ['./js/gin_editform.js'],
-    gin_dialog: ['./styles/gin_dialog.scss'],
-    gin_ckeditor: ['./js/gin_ckeditor.js', './styles/gin_ckeditor.scss'],
-    gin_messages: ['./js/gin_messages.js'],
+    // Javascript
+    'init': ['./js/init.js'],
+    'accent': ['./js/accent.js'],
+    'toolbar': ['./js/toolbar.js'],
+    'edit_form': ['./js/edit_form.js'],
+    'messages': ['./js/messages.js'],
+    'settings': ['./js/settings.js'],
+    'gin_ckeditor': ['./js/gin_ckeditor.js'], // Can't rename as we would be in trouble
+    // Base
+    'base/gin': ['./styles/gin.scss'],
+    // Components
+    'components/autosave': ['./styles/components/autosave.scss'],
+    'components/chosen': ['./styles/components/chosen.scss'],
+    'components/ckeditor': ['./styles/components/ckeditor.scss'],
+    'components/coffee': ['./styles/components/coffee.scss'],
+    'components/dialog': ['./styles/components/dialog.scss'],
+    'components/dropzonejs': ['./styles/components/dropzonejs.scss'],
+    'components/edit_form': ['./styles/components/edit_form.scss'],
+    'components/entity_browser': ['./styles/components/entity_browser.scss'],
+    'components/entity_reference_layout': ['./styles/components/entity_reference_layout.scss'],
+    'components/inline_entity_form': ['./styles/components/inline_entity_form.scss'],
+    'components/layout_paragraphs': ['./styles/components/layout_paragraphs.scss'],
+    'components/linkit': ['./styles/components/linkit.scss'],
+    'components/module_filter': ['./styles/components/module_filter.scss'],
+    'components/node_preview': ['./styles/components/node_preview.scss'],
+    'components/paragraphs': ['./styles/components/paragraphs.scss'],
+    'components/paragraphs_ee': ['./styles/components/paragraphs_ee.scss'],
+    'components/responsive_preview': ['./styles/components/responsive_preview.scss'],
+    'components/settings': ['./styles/components/settings.scss'],
+    'components/toolbar': ['./styles/components/toolbar.scss'],
+    'components/toolbar_meta': ['./styles/components/toolbar_meta.scss'],
+    'components/upgrade_status': ['./styles/components/upgrade_status.scss'],
+    'components/webform': ['./styles/components/webform.scss'],
+    // Layout
+    'layout/toolbar': ['./styles/layout/toolbar.scss'],
+    'layout/horizontal_toolbar': ['./styles/layout/horizontal_toolbar.scss'],
+    'layout/classic_toolbar': ['./styles/layout/classic_toolbar.scss'],
+    // Theme
+    'theme/accent': ['./styles/theme/accent.scss'],
+    'theme/dialog': ['./styles/theme/dialog.scss'],
+    'theme/ckeditor': ['./styles/theme/ckeditor.scss'],
   },
   output: {
-    chunkFilename: 'js/async/[name].chunk.js',
-    pathinfo: true,
     filename: 'js/[name].js',
-    path: path.resolve(__dirname, './dist'),
+    chunkFilename: 'js/async/[name].chunk.js',
+    path: path.resolve(__dirname, 'dist'),
+    pathinfo: true,
     publicPath: '../',
   },
   module: {
@@ -37,7 +67,16 @@ module.exports = {
         use: [{
             loader: 'file-loader',
             options: {
-              name: 'media/[name].[ext]?[contenthash]',
+              name: '[path][name].[ext]', //?[contenthash]
+              publicPath: (url, resourcePath, context) => {
+                const relativePath = path.relative(context, resourcePath);
+
+                if (resourcePath.includes('media/settings')) {
+                  return `../../${relativePath}`;
+                }
+
+                return `../${relativePath}`;
+              },
             },
           },
           {
@@ -94,6 +133,13 @@ module.exports = {
                 importer: globImporter(),
                 fiber: Fiber,
               },
+              // Global SCSS imports:
+              additionalData: `
+                @use "sass:color";
+                @import "node_modules/breakpoint-sass/stylesheets/breakpoint";
+                @import "styles/helpers/_tools.scss";
+                @import "styles/helpers/_vars.scss";
+              `,
             },
           },
         ],
@@ -101,6 +147,10 @@ module.exports = {
     ],
   },
   resolve: {
+    alias: {
+      media: path.join(__dirname, 'media'),
+      settings: path.join(__dirname, 'media/settings'),
+    },
     modules: [
       path.join(__dirname, 'node_modules'),
     ],

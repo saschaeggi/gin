@@ -112,15 +112,15 @@ libraries-override:
   # Custom Gin overrides
   core/drupal.tableselect:
     js:
-      misc/tableselect.js: js/overrides/gin_tableselect.js
+      misc/tableselect.js: js/overrides/tableselect.js
 
   core/drupal.tableheader:
     js:
-      misc/tableheader.js: js/overrides/gin_tableheader.js
+      misc/tableheader.js: js/overrides/tableheader.js
 
   media_library/view:
     js:
-      js/media_library.view.js: js/overrides/gin_media_library.view.js
+      js/media_library.view.js: js/overrides/media_library.view.js
 
   core/drupal.tabledrag:
     js:
@@ -144,17 +144,19 @@ libraries-override:
   gin/gin_dialog:
     css:
       theme:
-        dist/css/gin_dialog.css: false
+        dist/css/theme/dialog.css: false
 
 libraries-extend:
   ckeditor/drupal.ckeditor:
     - claro/ckeditor-editor
   core/ckeditor:
     - claro/ckeditor-dialog
+    - gin/ckeditor
   core/drupal.collapse:
     - claro/details-focus
   core/drupal.dialog:
     - seven/seven.drupal.dialog
+    - gin/dialog
   core/drupal.dropbutton:
     - claro/dropbutton
   core/drupal.checkbox:

@@ -1,0 +1,280 @@
+.gin--dark-mode .paragraphs-tabs-wrapper tr:hover, .paragraphs-tabs-wrapper tr:hover, .gin--dark-mode .paragraphs-tabs-wrapper tr:focus, .paragraphs-tabs-wrapper tr:focus {
+  background-color: inherit;
+}
+.paragraphs-tabs-wrapper .paragraphs-subform {
+  margin-top: 0;
+  margin-right: 1rem;
+}
+.paragraphs-tabs-wrapper .tabledrag-toggle-weight-wrapper {
+  padding-bottom: 12px;
+}
+.paragraphs-tabs-wrapper .field-multiple-table thead th {
+  padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+}
+.paragraphs-tabs-wrapper .field-multiple-table thead th.th__order {
+  display: none;
+}
+.paragraphs-tabs-wrapper .field-multiple-table thead .label {
+  display: inline-block;
+  font-size: 18px;
+  color: var(--colorGinTitle);
+  padding: 0;
+  margin: 10px;
+}
+.paragraphs-tabs-wrapper .field-multiple-table .draggable {
+  display: block;
+  padding: 1rem 0.5rem;
+  margin-top: 1rem;
+  border: 1px solid var(--colorGinTableBorder);
+  border-radius: 8px;
+  -webkit-box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
+          box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
+}
+.paragraphs-tabs-wrapper .field-multiple-table .draggable.drag {
+  background-color: var(--colorGinWarningLightBackground);
+}
+.paragraphs-tabs-wrapper .field-multiple-table .draggable.drag-previous {
+  position: relative;
+}
+.paragraphs-tabs-wrapper .field-multiple-table .draggable.drag-previous::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  width: 4px;
+  height: calc(100% - 1rem);
+  background: var(--colorGinWarning);
+  border-radius: 2px;
+}
+.paragraphs-tabs-wrapper .field-multiple-table .draggable td {
+  padding: 0.25rem;
+}
+.paragraphs-tabs-wrapper .field-multiple-table .draggable > td + td {
+  width: 100%;
+}
+.paragraphs-tabs-wrapper .field-multiple-table .draggable .has-multiple-fields-remove-button {
+  width: 100%;
+  padding-right: 0 !important;
+}
+.paragraphs-tabs-wrapper .field-multiple-table .draggable .tabledrag-handle::after {
+  -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath d='M7 13a1 1 0 100-2 1 1 0 000 2zM7 4a1 1 0 100-2 1 1 0 000 2zM7 22a1 1 0 100-2 1 1 0 000 2zM16 13a1 1 0 100-2 1 1 0 000 2zM16 4a1 1 0 100-2 1 1 0 000 2zM16 22a1 1 0 100-2 1 1 0 000 2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+          mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath d='M7 13a1 1 0 100-2 1 1 0 000 2zM7 4a1 1 0 100-2 1 1 0 000 2zM7 22a1 1 0 100-2 1 1 0 000 2zM16 13a1 1 0 100-2 1 1 0 000 2zM16 4a1 1 0 100-2 1 1 0 000 2zM16 22a1 1 0 100-2 1 1 0 000 2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center center;
+          mask-position: center center;
+  -webkit-mask-size: 16px 16px;
+          mask-size: 16px 16px;
+}
+.paragraphs-tabs-wrapper .field-multiple-table .draggable .tabledrag-changed {
+  display: none;
+}
+.paragraphs-tabs-wrapper .field-multiple-table .draggable:hover, .paragraphs-tabs-wrapper .field-multiple-table .draggable:focus-within {
+  position: relative;
+  border: 1px solid var(--colorGinText);
+  -webkit-box-shadow: 0 0 0 1px var(--colorGinText);
+          box-shadow: 0 0 0 1px var(--colorGinText);
+}
+.paragraphs-tabs-wrapper .paragraph-type-label {
+  font-size: 16px;
+  font-weight: bold !important;
+  font-style: normal;
+  color: var(--colorGinTitle);
+  position: static;
+  border: 0 none;
+  padding-left: 0;
+}
+.paragraphs-tabs-wrapper .paragraphs-subform .paragraph-type-label {
+  font-size: 14px;
+}
+.paragraphs-tabs-wrapper .paragraph-type-add-modal,
+.paragraphs-tabs-wrapper .field--widget-paragraphs .paragraphs-dropbutton-wrapper {
+  margin-right: 0.5rem;
+}
+
+.paragraph .contextual {
+  display: none;
+}
+
+.paragraphs-add-wrapper .button--small,
+.paragraphs-dropbutton-wrapper .button--small {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.paragraphs-dropdown-toggle {
+  position: relative;
+  margin: 0.5rem 0;
+  background: none;
+}
+.paragraphs-dropdown-toggle::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: none;
+  background-color: var(--colorGinTextLight);
+  -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath d='M12 13a1 1 0 100-2 1 1 0 000 2zM12 4a1 1 0 100-2 1 1 0 000 2zM12 22a1 1 0 100-2 1 1 0 000 2z' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+          mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath d='M12 13a1 1 0 100-2 1 1 0 000 2zM12 4a1 1 0 100-2 1 1 0 000 2zM12 22a1 1 0 100-2 1 1 0 000 2z' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center center;
+          mask-position: center center;
+  -webkit-mask-size: 16px 16px;
+          mask-size: 16px 16px;
+}
+.paragraphs-dropdown-toggle:hover, .paragraphs-dropdown-toggle:active, .paragraphs-dropdown-toggle:focus {
+  background-color: var(--colorGinPrimaryLight);
+  border: 0 none;
+}
+.paragraphs-dropdown-toggle:hover::after, .paragraphs-dropdown-toggle:active::after, .paragraphs-dropdown-toggle:focus::after {
+  background-color: var(--colorGinPrimary);
+}
+
+.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle,
+.js .field--widget-paragraphs .draggable .tabledrag-handle {
+  min-width: 20px;
+}
+@media (min-width: 976px) {
+  .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle,
+.js .field--widget-paragraphs .draggable .tabledrag-handle {
+    min-width: 24px;
+  }
+}
+.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after,
+.js .field--widget-paragraphs .draggable .tabledrag-handle::after {
+  position: relative;
+  left: 0;
+  padding: 0;
+  margin-left: 0;
+}
+
+.js .paragraphs-collapsed-description::after,
+.js .draggable:hover .paragraphs-collapsed-description::after {
+  background: var(--colorGinLayer2Background);
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(var(--colorGinLayer2Background)));
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayer2Background) 100%);
+}
+
+.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
+  min-width: 32px;
+}
+@media (min-width: 976px) {
+  .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
+    min-width: 40px;
+  }
+}
+.js .field--widget-entity-reference-paragraphs .paragraphs-collapsed-description::after,
+.js .field--widget-entity-reference-paragraphs .draggable:hover .paragraphs-collapsed-description::after {
+  background: var(--colorGinLayerBackground);
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(var(--colorGinLayerBackground)));
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayerBackground) 100%);
+}
+
+.js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple {
+  padding: 0.5rem;
+}
+.js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple .dropbutton-widget {
+  margin-right: 0.5rem;
+}
+
+.js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
+  top: 0;
+  right: -4px;
+}
+
+.paragraphs-dropdown-actions {
+  color: var(--colorGinButtonText);
+  background: var(--colorGinLayer3Background);
+  border: 0 none;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 2px rgba(20, 45, 82, 0.02), 0 3px 4px rgba(20, 45, 82, 0.03), 0 5px 8px rgba(20, 45, 82, 0.04);
+          box-shadow: 0 1px 2px rgba(20, 45, 82, 0.02), 0 3px 4px rgba(20, 45, 82, 0.03), 0 5px 8px rgba(20, 45, 82, 0.04);
+}
+.paragraphs-dropdown-actions .paragraphs-dropdown-action.button {
+  font-size: 0.8125rem;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  border: 0 none !important;
+}
+
+.js .paragraph-type-title {
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.js .paragraph-type-icon {
+  padding: 0.25rem;
+  margin-right: 0.5rem;
+}
+
+.gin--dark-mode .paragraphs-tabs-wrapper .field-multiple-table .draggable {
+  background: var(--colorGinLayer2Background);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.gin--dark-mode .paragraphs-dropdown-actions {
+  background: var(--colorGinLayer2Background);
+  border-color: var(--colorGinBorder);
+  -webkit-box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
+          box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
+}
+.gin--dark-mode .paragraph-type-icon {
+  background-color: var(--colorGinPrimary);
+}
+.gin--dark-mode .paragraphs-type-icon {
+  -webkit-box-shadow: inset 0 0 0 10px var(--colorGinLayerBackground);
+          box-shadow: inset 0 0 0 10px var(--colorGinLayerBackground);
+  background-color: #fff;
+}
+
+.js .paragraphs-description .summary-content {
+  color: var(--colorGinText);
+}
+
+.paragraphs-dragdrop__list {
+  --dnd-item-ghost-border: var(--colorGinPrimary);
+  --dnd-item-ghost-bg: var(--colorGinItemHover);
+}
+.paragraphs-dragdrop__item {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: var(--colorGinLayer3Background);
+  border-radius: 8px;
+}
+.paragraphs-dragdrop__icon {
+  top: 0.5rem;
+}
+
+.js .paragraph-type-add-modal-button:hover {
+  background: var(--colorGinPrimary);
+}
+
+.paragraphs-dragdrop__label--field {
+  text-transform: none;
+}
+
+.field--widget-entity-reference-paragraphs > div > .form-wrapper > strong {
+  display: block;
+  margin-top: 2rem;
+}
+.field--widget-entity-reference-paragraphs .form-wrapper .form-wrapper > em {
+  display: block;
+  padding: 1rem 0;
+}
+.field--widget-entity-reference-paragraphs .form-actions {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple {
+  margin-right: 0.5rem;
+}
+.field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple .placeholder,
+.field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple ~ .placeholder {
+  margin-left: 0.25rem;
+}

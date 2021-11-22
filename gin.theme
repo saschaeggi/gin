@@ -98,6 +98,8 @@ function gin_page_attachments_alter(&$page) {
   $gin_activated = _gin_is_active();
 
   if ($gin_activated) {
+    $module_handler = \Drupal::service('module_handler');
+
     // Get theme settings.
     $settings = \Drupal::classResolver(GinSettings::class);
     $toolbar = $settings->get('classic_toolbar');
@@ -126,6 +128,44 @@ function gin_page_attachments_alter(&$page) {
       $page['#attached']['library'][] = 'gin/gin_custom_css';
     }
 
+    // Attach components for Drupal modules.
+    // Autosave.
+    if ($module_handler->moduleExists('autosave')) {
+      $page['#attached']['library'][] = 'gin/autosave';
+    }
+    // Chosen.
+    if ($module_handler->moduleExists('chosen')) {
+      $page['#attached']['library'][] = 'gin/chosen';
+    }
+    // Dropzonejs.
+    if ($module_handler->moduleExists('dropzonejs')) {
+      $page['#attached']['library'][] = 'gin/dropzonejs';
+    }
+    // Entity browser.
+    if ($module_handler->moduleExists('entity_browser')) {
+      $page['#attached']['library'][] = 'gin/entity_browser';
+    }
+    // Inline entity form.
+    if ($module_handler->moduleExists('inline_entity_form')) {
+      $page['#attached']['library'][] = 'gin/inline_entity_form';
+    }
+    // Linkit.
+    if ($module_handler->moduleExists('linkit')) {
+      $page['#attached']['library'][] = 'gin/linkit';
+    }
+    // Module Filter.
+    if ($module_handler->moduleExists('module_filter')) {
+      $page['#attached']['library'][] = 'gin/module_filter';
+    }
+    // Upgrade status.
+    if ($module_handler->moduleExists('upgrade_status')) {
+      $page['#attached']['library'][] = 'gin/upgrade_status';
+    }
+    // Webform.
+    if ($module_handler->moduleExists('webform')) {
+      $page['#attached']['library'][] = 'gin/webform';
+    }
+
     // Expose settings to JS.
     $page['#attached']['drupalSettings']['gin']['darkmode'] = $settings->get('enable_darkmode');
     $page['#attached']['drupalSettings']['gin']['darkmode_class'] = 'gin--dark-mode';
@@ -138,8 +178,8 @@ function gin_page_attachments_alter(&$page) {
 
     // Add stylesheets for JS use.
     $basethemeurl_with_prefix = \Drupal::urlGenerator()->generateFromRoute('<front>', [], ['absolute' => TRUE]) . \Drupal::service('extension.list.theme')->getPath('gin');
-    $page['#attached']['drupalSettings']['gin']['accent_css_path'] = $basethemeurl_with_prefix . '/dist/css/gin_accent.css';
-    $page['#attached']['drupalSettings']['gin']['ckeditor_css_path'] = $basethemeurl_with_prefix . '/dist/css/gin_ckeditor.css';
+    $page['#attached']['drupalSettings']['gin']['accent_css_path'] = $basethemeurl_with_prefix . '/dist/css/theme/accent.css';
+    $page['#attached']['drupalSettings']['gin']['ckeditor_css_path'] = $basethemeurl_with_prefix . '/dist/css/theme/ckeditor.css';
 
     // Expose default settings.
     $page['#attached']['drupalSettings']['gin']['default_darkmode'] = $settings->getDefault('enable_darkmode');
@@ -173,6 +213,8 @@ function gin_preprocess_links__dropbutton__operations__paragraphs(&$variables) {
 function gin_form_alter(&$form, $form_state, $form_id) {
   // Are we on an edit form?
   if (_gin_is_content_form($form, $form_state, $form_id)) {
+    $module_handler = \Drupal::service('module_handler');
+
     // Action buttons.
     if (isset($form['actions'])) {
       if (isset($form['actions']['preview'])) {
@@ -227,7 +269,31 @@ function gin_form_alter(&$form, $form_state, $form_id) {
     }
 
     // Attach library.
-    $form['#attached']['library'][] = 'gin/gin_editform';
+    $form['#attached']['library'][] = 'gin/edit_form';
+
+    // Attach libraries for specific modules.
+    // Paragraphs.
+    if ($module_handler->moduleExists('paragraphs')) {
+      $form['#attached']['library'][] = 'gin/paragraphs';
+    }
+    // Paragraphs EE.
+    if ($module_handler->moduleExists('paragraphs_ee')) {
+      $form['#attached']['library'][] = 'gin/paragraphs_ee';
+    }
+    // ERL.
+    if ($module_handler->moduleExists('enity_reference_layout')) {
+      $form['#attached']['library'][] = 'gin/entity_reference_layout';
+      $form['#attached']['library'][] = 'gin/layout_paragraphs';
+    }
+    // Layout Paragraphs.
+    if ($module_handler->moduleExists('layout_paragraphs')) {
+      $form['#attached']['library'][] = 'gin/layout_paragraphs';
+    }
+
+    // Responsive Preview.
+    if ($module_handler->moduleExists('responsive_preview')) {
+      $form['#attached']['library'][] = 'gin/responsive_preview';
+    }
   }
 
   // If not logged in hide changed and author node info on add forms.
@@ -266,8 +332,13 @@ function gin_form_alter(&$form, $form_state, $form_id) {
 function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
   $route_name = \Drupal::routeMatch()->getRouteName();
 
+  $route_names = [
+    'user.admin_create',
+    'user.register',
+  ];
+
   // If new user account, don't show settings yet.
-  if ($route_name === 'user.admin_create') {
+  if (in_array($route_name, $route_names, TRUE)) {
     return;
   }
 
@@ -357,8 +428,8 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       '#after_build' => ['_gin_toolbar_radios'],
     ];
 
-    // Attach custom js.
-    $form['#attached']['library'][] = 'gin/gin_settings';
+    // Attach custom library.
+    $form['#attached']['library'][] = 'gin/settings';
 
     array_unshift($form['actions']['submit']['#submit'], '_gin_user_form_submit');
   }
@@ -501,14 +572,13 @@ function gin_theme_suggestions_menu_alter(array &$suggestions, array $variables)
  * Set Gin CSS on top of all other CSS files.
  */
 function gin_css_alter(&$css, $assets) {
-  // UPDATE THIS PATH TO YOUR MODULE'S CSS PATH.
-  $path = \Drupal::service('extension.list.theme')->getPath('gin') . '/dist/css/gin.css';
+  // Use anything greater than 100 to have it load after the theme
+  // as CSS_AGGREGATE_THEME is set to 100.
+  // Let's be on the safe side and assign a high number to it.
+  $base_css = \Drupal::service('extension.list.theme')->getPath('gin') . '/dist/css/base/gin.css';
 
-  if (isset($css[$path])) {
-    // Use anything greater than 100 to have it load after the theme
-    // as CSS_AGGREGATE_THEME is set to 100.
-    // Let's be on the safe side and assign a high number to it.
-    $css[$path]['group'] = 200;
+  if (isset($css[$base_css])) {
+    $css[$base_css]['group'] = 200;
   }
 }
 
@@ -751,8 +821,8 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   // Add submit/validate function.
   $form['#validate'][] = 'gin_form_system_theme_settings_alter_validate';
 
-  // Attach custom js.
-  $form['#attached']['library'][] = 'gin/gin_settings';
+  // Attach custom library.
+  $form['#attached']['library'][] = 'gin/settings';
 }
 
 /**
@@ -788,6 +858,28 @@ function gin_form_system_theme_settings_alter_validate(array &$form, FormStateIn
 
     if (!$path) {
       $form_state->setErrorByName('icon_path', t('The custom logo path is invalid.'));
+    }
+  }
+}
+
+/**
+ * Page title.
+ */
+function gin_preprocess_page_title(&$variables) {
+  if (($node = \Drupal::routeMatch()->getParameter('node'))) {
+    $variables['title'] = $node->getTitle();
+  }
+}
+
+/**
+ * Breadcrumb.
+ */
+function gin_preprocess_breadcrumb(&$variables) {
+  if (($node = \Drupal::routeMatch()->getParameter('node')) && $variables['breadcrumb']) {
+    foreach ($variables['breadcrumb'] as $key => $item) {
+      if ($item['url'] === '/node') {
+        $variables['breadcrumb'][$key]['text'] = t('Edit') . ' ' . $node->type->entity->label();
+      }
     }
   }
 }
@@ -896,6 +988,7 @@ function _gin_get_accent_color_presets() {
     'red' => t('Red'),
     'orange' => t('Orange'),
     'yellow' => t('Yellow'),
+    'neutral' => t('Neutral'),
     'custom' => t('Custom'),
   ];
 }

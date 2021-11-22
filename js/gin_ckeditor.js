@@ -5,7 +5,7 @@
 (($, Drupal, drupalSettings) => {
   Drupal.behaviors.ginCKEditor = {
     attach: function attach(context) {
-      if (typeof CKEDITOR != 'undefined') {
+      if (window.CKEDITOR && CKEDITOR !== undefined) {
         // If on CKEditor config, do nothing.
         if (drupalSettings.path.currentPath.indexOf('admin/config/content/formats/manage') > -1) {
           return;

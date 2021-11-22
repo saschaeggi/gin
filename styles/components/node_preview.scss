@@ -1,0 +1,64 @@
+.node-preview-container {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 0;
+  background: rgba($colorAppBackground, .98);
+  border-bottom: 1px solid var(--colorGinLayerBorder);
+
+  @supports (backdrop-filter: blur()) {
+    opacity: .999; /* Fix Chrome issue with mask */
+    background: rgba($colorAppBackground, .8);
+    backdrop-filter: blur(12px);
+  }
+
+  .gin--dark-mode & {
+    background: rgba($colorDarkAppBackground, .98);
+
+    @supports (backdrop-filter: blur()) {
+      background: #{rgba(mix(white, $colorDarkAppBackground, .5%), .9)};
+    }
+  }
+
+  .gin--high-contrast-mode & {
+    background: var(--colorGinAppBackground);
+    backdrop-filter: none;
+  }
+
+  .node-preview-backlink,
+  .node-preview-form-select label {
+    color: var(--colorGinText);
+  }
+
+  .node-preview-backlink {
+    position: relative;
+    padding-left: 28px;
+    text-decoration: none;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      transform: translateY(-50%);
+      background-color: var(--colorGinText);
+      mask-image: icon('backtosite');
+      mask-size: 18px 18px;
+      mask-position: center center;
+    }
+  }
+
+  .node-preview-form-select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  .js-hide {
+    display: none;
+  }
+}
