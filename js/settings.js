@@ -103,7 +103,7 @@
       $('[data-drupal-selector="edit-submit"]', context).click(function() {
         let accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val();
         let accentColorSetting = $('input[name="accent_color"]', context).val();
-        let darkmodeSetitng = $('input[name="enable_darkmode"]:checked').val();
+        let darkmodeSetting = $('input[name="enable_darkmode"]:checked').val();
 
         // If on user form, check if we enable or disable the overrides.
         if ($(this).parents('[data-drupal-selector="user-form"]').length > 0) {
@@ -112,7 +112,7 @@
           if (!userSettings) {
             accentColorSetting = drupalSettings.gin.default_accent_color;
             accentColorPreset = drupalSettings.gin.default_preset_accent_color;
-            darkmodeSetitng = drupalSettings.gin.darkmode;
+            darkmodeSetting = drupalSettings.gin.darkmode;
           }
         }
 
@@ -136,10 +136,10 @@
         darkmodeEnabled == 1 ||
         (darkmodeEnabled === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)
       ) {
-        $('body').addClass(darkmodeClass);
+        $('html').addClass(darkmodeClass);
       }
       else {
-        $('body').removeClass(darkmodeClass);
+        $('html').removeClass(darkmodeClass);
       }
 
       // Reset localStorage.
@@ -148,14 +148,14 @@
       // Change to Darkmode.
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
         if (e.matches && $('input[name="enable_darkmode"]:checked').val() === 'auto') {
-          $('body').addClass(darkmodeClass);
+          $('html').addClass(darkmodeClass);
         }
       });
 
       // Change to Lightmode.
       window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
         if (e.matches && $('input[name="enable_darkmode"]:checked').val() === 'auto') {
-          $('body').removeClass(darkmodeClass);
+          $('html').removeClass(darkmodeClass);
         }
       });
     },

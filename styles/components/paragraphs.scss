@@ -40,7 +40,7 @@
       padding: 1rem .5rem;
       margin-top: 1rem;
       border: 1px solid var(--colorGinTableBorder);
-      border-radius: $borderDefault;
+      border-radius: var(--ginBorderDefault);
       box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
 
       // Current draggable item
@@ -225,8 +225,8 @@
   color: var(--colorGinButtonText);
   background: var(--colorGinLayer3Background);
   border: 0 none;
-  border-radius: $borderXSmall;
-  box-shadow: $shadowLevel1;
+  border-radius: var(--ginBorderXSmall);
+  box-shadow: $shadowLevel2;
 
   .paragraphs-dropdown-action.button {
     font-size: 0.8125rem;
@@ -283,7 +283,7 @@
     padding-top: .5rem;
     padding-bottom: .5rem;
     background-color: var(--colorGinLayer3Background);
-    border-radius: $borderDefault;
+    border-radius: var(--ginBorderDefault);
   }
 
   &__icon {

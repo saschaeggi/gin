@@ -11,11 +11,11 @@ table.sticky-header {
 
   @include mq($breakpointMedium) {
     .gin--vertical-toolbar & {
-      width: calc(100% - min(10vw, 96px) - 3rem - #{$toolbarWidth}) !important;
+      width: calc(100% - min(10vw, 96px) - 3rem - var(--ginToolbarWidthCollapsed)) !important;
     }
 
     .gin--vertical-toolbar[data-toolbar-menu='open'] & {
-      width: calc(100% - min(10vw, 96px) - 3rem - #{$toolbarOpenWidth}) !important;
+      width: calc(100% - min(10vw, 96px) - 3rem - var(--ginToolbarWidth)) !important;
     }
   }
 
@@ -33,12 +33,20 @@ table.sticky-header {
 table {
   thead {
     background: var(--colorGinLayerBackground);
-    border-radius: $borderDefault;
+    border-radius: var(--ginBorderDefault);
+
+    tr:hover {
+      background: transparent;
+    }
   }
 
   th {
-    color: var(--colorGinPrimaryActive);
     background: var(--colorGinTableHeader);
+    box-shadow: $shadowLevel1;
+
+    &, .form-item__label {
+      color: var(--colorGinPrimaryActive);
+    }
 
     @include mq($breakpointMedium) {
       height: auto;
@@ -46,13 +54,13 @@ table {
     }
 
     &:first-child {
-      border-top-left-radius: $borderDefault;
-      border-bottom-left-radius: $borderDefault;
+      border-top-left-radius: var(--ginBorderDefault);
+      border-bottom-left-radius: var(--ginBorderDefault);
     }
 
     &:last-child {
-      border-top-right-radius: $borderDefault;
-      border-bottom-right-radius: $borderDefault;
+      border-top-right-radius: var(--ginBorderDefault);
+      border-bottom-right-radius: var(--ginBorderDefault);
     }
   }
 
@@ -70,6 +78,10 @@ table {
     &:hover {
       color: var(--colorGinText);
       background: var(--colorGinItemHover);
+    }
+
+    &.selected:hover {
+      background: transparent;
     }
   }
 

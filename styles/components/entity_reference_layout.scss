@@ -11,7 +11,7 @@
   padding: 1rem;
   margin-bottom: -6rem;
   background: #f1f1f3;
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
 
   .gin--dark-mode & {
     background: var(--colorGinLayer2Background);
@@ -65,7 +65,7 @@
   background: var(--colorGinItemHover);
   padding: 16px 16px 34px 16px;
   border: 1px dashed var(--colorGinPrimary);
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
   transform: none;
 
   &,

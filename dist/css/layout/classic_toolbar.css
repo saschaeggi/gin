@@ -1,19 +1,21 @@
 :root {
   --ginScrollOffset: 72px;
 }
+
 @media (min-width: 1024px) {
   :root {
     --ginScrollOffset: 200px;
+    --iconGinToolbar: 16px;
   }
 }
 
-.toolbar {
-  font-family: Inter, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+.region-breadcrumb {
+  margin-top: 1.5rem;
 }
+
 .toolbar .toolbar-bar {
   background: #100f10;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 .toolbar .toolbar-menu,
@@ -36,6 +38,7 @@
 .toolbar .toolbar-menu .toolbar-menu span {
   color: var(--colorGinText);
 }
+
 .toolbar-tray a:hover,
 .toolbar-tray span:hover,
 .toolbar .toolbar-menu .toolbar-menu a:hover,
@@ -50,16 +53,21 @@
   color: var(--colorGinPrimary);
   font-weight: 500;
 }
-.toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a:before,
-.toolbar .toolbar-tray .menu-item > .toolbar-icon.is-active:before,
-.toolbar .toolbar-tray .menu-item > .toolbar-box > .toolbar-icon.is-active:before,
-.toolbar .toolbar-tray a.is-active:before {
+
+.toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a::before,
+.toolbar .toolbar-tray .menu-item > .toolbar-icon.is-active::before,
+.toolbar .toolbar-tray .menu-item > .toolbar-box > .toolbar-icon.is-active::before,
+.toolbar .toolbar-tray a.is-active::before {
   background: var(--colorGinPrimary);
 }
 
-.toolbar .toolbar-tray .hover-intent > .toolbar-icon {
+.toolbar .toolbar-tray .menu-item:hover > .toolbar-icon {
   color: var(--colorGinPrimaryHover);
   background-color: var(--colorGinItemHover);
+}
+
+.toolbar .toolbar-tray .menu-item:hover > .toolbar-icon::before {
+  background: var(--colorGinPrimary);
 }
 
 .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item,
@@ -96,6 +104,7 @@
 .gin--classic-toolbar .page-wrapper__node-edit-form .layout-region-node-secondary {
   padding-top: 39px;
 }
+
 @media (min-width: 1024px) {
   .gin--classic-toolbar table.sticky-header {
     margin-top: 0;
@@ -115,10 +124,12 @@
   height: 100%;
   text-indent: -999em;
 }
+
 .toolbar .toolbar-bar .toolbar-icon-admin-toolbar-tools-help:before {
   -webkit-mask-size: 20px 20px;
           mask-size: 20px 20px;
 }
+
 @media (min-width: 976px) {
   .toolbar .toolbar-bar .toolbar-icon-admin-toolbar-tools-help:before {
     left: 16px;
@@ -126,9 +137,9 @@
 }
 
 #toolbar-item-administration-tray {
-  -webkit-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 4px rgba(0, 0, 0, .1);
 }
+
 @media (min-width: 1024px) {
   #toolbar-item-administration-tray .toolbar-logo img {
     max-height: 21px;
@@ -139,6 +150,7 @@
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
   position: relative;
 }
+
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:before,
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus:before {
   top: 12px;
@@ -151,3 +163,12 @@
     height: calc(100% - 39px);
   }
 }
+
+#admin-toolbar-search-tab .form-type--search::before {
+  left: .5rem;
+}
+
+#admin-toolbar-search-input {
+  padding-left: 32px;
+}
+

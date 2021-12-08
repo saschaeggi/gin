@@ -4,78 +4,86 @@
   grid-gap: 1rem;
   margin-bottom: 1rem;
 }
+
 .entities-list.entities-list--single-item .item-container {
   max-width: 180px;
 }
+
 .entities-list .item-container {
   word-break: break-all;
   position: relative;
   margin: 0;
   min-height: 80px;
   border: 1px solid var(--colorGinBorder);
-  border-radius: 12px;
+  border-radius: var(--ginBorderMedium);
 }
+
 .entities-list .item-container .field__item {
   border: 3px solid transparent;
-  border-radius: 16px;
+  border-radius: var(--ginBorderBig);
   overflow: hidden;
 }
+
 .entities-list .item-container .field__item:hover, .entities-list .item-container .field__item:focus {
   border-color: var(--colorGinPrimary) !important;
   cursor: pointer;
 }
+
 .entities-list .item-container.label {
-  padding: 0.75rem 3rem 0.75rem 0.75rem;
+  padding: .75rem 3rem .75rem .75rem;
 }
+
 .entities-list .item-container img {
   vertical-align: middle;
 }
+
 .entities-list .item-container > .entity-browser-remove-selected-entity,
 .entities-list .item-container > .remove-button {
   all: unset;
   background-color: white;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2M10 11v6M14 11v6'/%3e%3c/svg%3e");
+  background-image: url("../../media/sprite.svg#trash-view");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 15px;
   border-radius: 50%;
   border-color: transparent !important;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
   color: transparent;
   width: 29px;
   height: 29px;
-  margin: 0.75rem;
+  margin: .75rem;
   position: absolute;
   top: 0;
   right: 0;
 }
+
 .entities-list .item-container > .entity-browser-remove-selected-entity:hover, .entities-list .item-container > .entity-browser-remove-selected-entity:focus,
 .entities-list .item-container > .remove-button:hover,
 .entities-list .item-container > .remove-button:focus {
   border-color: var(--colorGinPrimary) !important;
   cursor: pointer;
 }
+
 .entities-list .item-container > .replace-button,
 .entities-list .item-container > .edit-button {
   all: unset;
   background-color: white;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' clip-rule='evenodd' d='M13.045 14.136l-3.712.531.53-3.713 9.546-9.546a2.25 2.25 0 113.182 3.182l-9.546 9.546z' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3cpath fill='none' d='M18.75 14.25v7.5a1.5 1.5 0 01-1.5 1.5h-15a1.5 1.5 0 01-1.5-1.5v-15a1.5 1.5 0 011.5-1.5h7.5' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+  background-image: url("../../media/sprite.svg#edit-view");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 15px;
   border-radius: 50%;
   border-color: transparent !important;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
   color: transparent;
   width: 29px;
   height: 29px;
-  margin: 0.75rem;
+  margin: .75rem;
   position: absolute;
   bottom: 0;
   right: 0;
 }
+
 .entities-list .item-container > .replace-button:hover, .entities-list .item-container > .replace-button:focus,
 .entities-list .item-container > .edit-button:hover,
 .entities-list .item-container > .edit-button:focus {
@@ -86,58 +94,68 @@
 .gin-entity-browser .entity-browser-form {
   padding: 0;
   border: 0 none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
+
 .gin-entity-browser .entity-browser-form .page-wrapper > .layout-container {
   margin: 0;
 }
+
 .gin-entity-browser .entity-browser-form .view-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   grid-gap: 1rem;
   margin-bottom: 1rem;
 }
+
 .gin-entity-browser .entity-browser-form .views-row {
   border: 1px solid var(--colorGinBorder);
-  border-radius: 18px;
+  border-radius: calc(var(--ginBorderBig) + 2px);
   position: relative;
 }
+
 .gin-entity-browser .entity-browser-form .views-row .views-field-thumbnail__target-id:hover, .gin-entity-browser .entity-browser-form .views-row .views-field-thumbnail__target-id:focus {
   cursor: pointer;
   border-color: var(--colorGinPrimary);
 }
+
 .gin-entity-browser .entity-browser-form .views-row .views-field-name {
-  padding: 0.5rem;
+  padding: .5rem;
 }
+
 .gin-entity-browser .entity-browser-form .views-row .views-field-entity-browser-select {
   position: absolute;
   top: 0;
   left: 0;
-  margin: 0.75rem;
+  margin: .75rem;
 }
+
 .gin-entity-browser .entity-browser-form .views-row .views-field-entity-browser-select .form-item {
   margin: 0;
 }
+
 .gin-entity-browser .entity-browser-form .media-info {
   word-wrap: break-word;
   font-size: 14px;
 }
+
 .gin-entity-browser .entity-browser-form .views-field-thumbnail__target-id {
   border: 3px solid transparent;
-  border-radius: 16px;
+  border-radius: var(--ginBorderBig);
   overflow: hidden;
 }
+
 .gin-entity-browser .entity-browser-form .views-field-thumbnail__target-id:hover, .gin-entity-browser .entity-browser-form .views-field-thumbnail__target-id:focus {
   border-color: var(--colorGinPrimary);
 }
+
 .gin-entity-browser .entity-browser-form .entities-list {
-  border-top: 4px solid var(--colorGinFormElementBorder);
+  border-top: var(--ginBorderXSmall) solid var(--colorGinFormElementBorder);
   padding-top: 1rem;
 }
+
 .gin-entity-browser .views-exposed-form {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 .field--widget-entity-browser-entity-reference .entities-list.sortable .item-container:hover, .field--widget-entity-browser-entity-reference .entities-list.sortable .item-container:focus,
@@ -149,8 +167,10 @@
 
 .eb-tabs {
   margin-left: 4px;
-  margin-bottom: 0.75em;
+  margin-bottom: .75em;
 }
+
 .eb-tabs ul {
   border-bottom: none;
 }
+

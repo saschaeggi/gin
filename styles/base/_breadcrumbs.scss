@@ -1,6 +1,6 @@
 .breadcrumb {
   &-wrapper {
-    width: 1px; // Fixes ellipsis with flex overfloating issue.
+    min-width: 1px; // Fixes ellipsis with flex overfloating issue.
   }
 
   &__item,
@@ -19,7 +19,7 @@
 
   &__item:first-of-type &__link {
     position: relative;
-    padding-left: 1.75rem;
+    padding-left: 2em;
 
     &::before {
       content: "";
@@ -27,12 +27,12 @@
       position: absolute;
       top: 50%;
       left: 0;
-      width: 20px;
-      height: 20px;
+      width: var(--iconGinMeta);
+      height: var(--iconGinMeta);
       transform: translateY(-50%);
       background-color: var(--colorGinIcons);
       mask-image: icon('backtosite');
-      mask-size: 18px 18px;
+      mask-size: 100% 100%;
       mask-position: center center;
     }
 

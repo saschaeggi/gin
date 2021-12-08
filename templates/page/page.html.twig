@@ -42,12 +42,20 @@
 {% set page_title_block = active_admin_theme ~ '_page_title' %}
 {% set local_actions_block = active_admin_theme ~ '_local_actions' %}
 
+{% if toolbar_variant == 'horizontal' %}
+<div class="region-sticky-watcher"></div>
+{% endif %}
+
 <div class="region region-meta layout-container">
   <div class="breadcrumb-wrapper">
     {{ page.breadcrumb }}
   </div>
   {{ page.gin_secondary_toolbar }}
 </div>
+
+{% if toolbar_variant == 'vertical' %}
+<div class="region-sticky-watcher"></div>
+{% endif %}
 
 <header class="region region-sticky">
   <div class="layout-container region-sticky__items">

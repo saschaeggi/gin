@@ -5,7 +5,7 @@ $maxWidth: 520px;
   border: 1px solid var(--colorGinFormElementBorder);
   box-sizing: border-box;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .25);
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
   transition: $transition;
 
   &:hover {
@@ -19,7 +19,7 @@ $maxWidth: 520px;
 
   &--small,
   &--extrasmall {
-    border-radius: $borderSmall;
+    border-radius: var(--ginBorderSmall);
   }
 
   &[disabled],
@@ -32,7 +32,7 @@ $maxWidth: 520px;
 
 .form-textarea-wrapper {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
 
   textarea {
     max-width: 100%;
@@ -97,7 +97,7 @@ $maxWidth: 520px;
   width: 21px;
   height: 21px;
   border-color: var(--colorGinFormElementBorder);
-  border-radius: $borderXSmall;
+  border-radius: var(--ginBorderXSmall);
 }
 
 // Darkmode Checkbox
@@ -328,7 +328,7 @@ fieldset:not(.fieldgroup) {
   padding-right: 0;
   background: transparent;
   border-color: var(--colorGinBorder);
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
   box-shadow: none;
 
   > legend {
@@ -404,7 +404,7 @@ fieldset:not(.fieldgroup) {
 .form-wrapper,
 .form-composite {
   .form-item__label {
-    color: var(--colorGinText);
+    // color: var(--colorGinPrimaryActive);
     position: relative;
     padding-bottom: 4px;
   }

@@ -1,0 +1,25 @@
+.contextual {
+  z-index: 100;
+
+  .trigger {
+    width: 32px !important;
+    height: 32px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
+    border-radius: 50%;
+    box-sizing: border-box;
+
+    &,
+    &:hover,
+    &:focus {
+      background-image: icon('media-edit');
+      background-size: 0.75rem;
+      background-position: center center;
+    }
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 0 1px var(--colorGinFocusBorder),
+                  0 0 0 4px var(--colorGinFocus);
+    }
+  }
+}

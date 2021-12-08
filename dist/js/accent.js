@@ -1,13 +1,13 @@
-!function() {
+(() => {
   function _slicedToArray(arr, i) {
     return function(arr) {
       if (Array.isArray(arr)) return arr;
     }(arr) || function(arr, i) {
-      if ("undefined" == typeof Symbol || !(Symbol.iterator in Object(arr))) return;
-      var _arr = [], _n = !0, _d = !1, _e = void 0;
+      var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"];
+      if (null == _i) return;
+      var _s, _e, _arr = [], _n = !0, _d = !1;
       try {
-        for (var _s, _i = arr[Symbol.iterator](); !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), 
-        !i || _arr.length !== i); _n = !0) ;
+        for (_i = _i.call(arr); !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !i || _arr.length !== i); _n = !0) ;
       } catch (err) {
         _d = !0, _e = err;
       } finally {
@@ -39,10 +39,10 @@
       attach: function() {
         document.querySelectorAll(".region-sticky").length > 0 && new IntersectionObserver((function(_ref) {
           var e = _slicedToArray(_ref, 1)[0];
-          return e.target.classList.toggle("region-sticky--is-sticky", e.intersectionRatio < 1);
+          return document.querySelector(".region-sticky").classList.toggle("region-sticky--is-sticky", e.intersectionRatio < 1);
         }), {
           threshold: [ 1 ]
-        }).observe(document.querySelector(".region-sticky"));
+        }).observe(document.querySelector(".region-sticky-watcher"));
       }
     }, Drupal.behaviors.ginAccent = {
       attach: function() {
@@ -65,7 +65,7 @@
           var accentColor = accentColorSetting;
           if (accentColor) {
             Drupal.behaviors.ginAccent.clearAccentColor();
-            var strippedAccentColor = accentColor.replace("#", ""), styles = '<style class="gin-custom-colors">            [data-gin-accent="custom"] {\n              --colorGinPrimaryRGB: '.concat(Drupal.behaviors.ginAccent.hexToRgb(accentColor), ";\n              --colorGinPrimaryHover: ").concat(Drupal.behaviors.ginAccent.shadeColor(accentColor, -10), ";\n              --colorGinPrimaryActive: ").concat(Drupal.behaviors.ginAccent.shadeColor(accentColor, -15), ";\n              --colorGinAppBackgroundRGB: ").concat(Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 97)), ';\n            }\n            .gin--dark-mode[data-gin-accent="custom"],\n            .gin--dark-mode [data-gin-accent="custom"] {\n              --colorGinPrimaryRGB: ').concat(Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 65)), ";\n              --colorGinPrimaryHover: ").concat(Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 55), ";\n              --colorGinPrimaryActive: ").concat(Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 50), ";\n              --colorGinAppBackgroundRGB: ").concat(Drupal.behaviors.ginAccent.hexToRgb("#1B1B1D"), ";\n            }\n            .form-element--type-select:hover,\n            .form-element--type-select:active,\n            .form-element--type-select:focus {\n              background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath fill='none' stroke-width='1.5' d='M1 1L7 7L13 1' stroke='%23").concat(strippedAccentColor, "'/%3E%3C/svg%3E%0A\");\n            }\n            </style>");
+            var strippedAccentColor = accentColor.replace("#", ""), styles = '<style class="gin-custom-colors">            [data-gin-accent="custom"] {\n              --colorGinPrimaryRGB: '.concat(Drupal.behaviors.ginAccent.hexToRgb(accentColor), ";\n              --colorGinPrimaryHover: ").concat(Drupal.behaviors.ginAccent.shadeColor(accentColor, -10), ";\n              --colorGinPrimaryActive: ").concat(Drupal.behaviors.ginAccent.shadeColor(accentColor, -15), ";\n              --colorGinAppBackgroundRGB: ").concat(Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 97)), ';\n            }\n            .gin--dark-mode[data-gin-accent="custom"],\n            .gin--dark-mode [data-gin-accent="custom"] {\n              --colorGinPrimaryRGB: ').concat(Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 65)), ";\n              --colorGinPrimaryHover: ").concat(Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 55), ";\n              --colorGinPrimaryActive: ").concat(Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 50), ";\n            }\n            </style>");
             $("body").append(styles);
           }
         } else Drupal.behaviors.ginAccent.clearAccentColor();
@@ -82,35 +82,8 @@
       },
       setFocusColor: function() {
         var preset = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null, color = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null, focusColorPreset = null != preset ? preset : drupalSettings.gin.preset_focus_color, focusColorSetting = null != color ? color : drupalSettings.gin.focus_color;
-        if (Drupal.behaviors.ginAccent.clearFocusColor(), "gin" !== focusColorPreset) {
-          var setColor;
-          switch (focusColorPreset) {
-           default:
-           case "claro":
-            setColor = "rgba(38, 167, 105, .6)";
-            break;
-
-           case "green":
-            setColor = "rgba(8, 163, 144, .6)";
-            break;
-
-           case "orange":
-            setColor = "rgba(236, 124, 87, .6)";
-            break;
-
-           case "dark":
-            setColor = "rgba(92, 90, 103, .6)";
-            break;
-
-           case "accent":
-            setColor = "rgba(var(--colorGinPrimaryRGB), .4)";
-            break;
-
-           case "custom":
-            setColor = focusColorSetting;
-          }
-          $("body").css("--colorGinFocus", setColor);
-        }
+        Drupal.behaviors.ginAccent.clearFocusColor(), $("body").attr("data-gin-focus", focusColorPreset), 
+        "custom" === focusColorSetting && $("body").css("--colorGinFocus", focusColorSetting);
       },
       clearFocusColor: function() {
         $("body").css("--colorGinFocus", "");
@@ -118,9 +91,9 @@
       checkDarkmode: function() {
         var darkmodeClass = drupalSettings.gin.darkmode_class;
         window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (function(e) {
-          e.matches && "auto" === localStorage.getItem("GinDarkMode") && $("body").addClass(darkmodeClass);
+          e.matches && "auto" === localStorage.getItem("GinDarkMode") && $("html").addClass(darkmodeClass);
         })), window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (function(e) {
-          e.matches && "auto" === localStorage.getItem("GinDarkMode") && $("body").removeClass(darkmodeClass);
+          e.matches && "auto" === localStorage.getItem("GinDarkMode") && $("html").removeClass(darkmodeClass);
         }));
       },
       mixColor: function(color_1, color_2, weight) {
@@ -140,4 +113,4 @@
       }
     };
   }(jQuery, Drupal, drupalSettings);
-}();
+})();

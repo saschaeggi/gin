@@ -29,7 +29,7 @@ a {
 /* CKE Context Menu */
 .cke_panel_block {
   border-color: var(--colorGinFormElementBorder);
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
 
   .cke_menu {
     .cke_menubutton_icon {

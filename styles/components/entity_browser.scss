@@ -17,11 +17,11 @@
     margin: 0;
     min-height: 80px;
     border: 1px solid var(--colorGinBorder);
-    border-radius: $borderMedium;
+    border-radius: var(--ginBorderMedium);
 
     .field__item {
       border: 3px solid transparent;
-      border-radius: $borderBig;
+      border-radius: var(--ginBorderBig);
       overflow: hidden;
 
       &:hover,
@@ -77,7 +77,7 @@
 
     .views-row {
       border: 1px solid var(--colorGinBorder);
-      border-radius: #{$borderBig + 2px};
+      border-radius: calc(var(--ginBorderBig) + 2px);
       position: relative;
       .views-field-thumbnail__target-id {
         &:hover,
@@ -110,7 +110,7 @@
 
     .views-field-thumbnail__target-id {
       border: 3px solid transparent;
-      border-radius: $borderBig;
+      border-radius: var(--ginBorderBig);
       overflow: hidden;
 
       &:hover,
@@ -120,7 +120,7 @@
     }
 
     .entities-list {
-      border-top: $borderXSmall solid var(--colorGinFormElementBorder);
+      border-top: var(--ginBorderXSmall) solid var(--colorGinFormElementBorder);
       padding-top: 1rem;
     }
   }

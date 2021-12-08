@@ -2,13 +2,13 @@
   max-width: $breakpointWide;
   margin: 1rem;
   border: 0 none !important;
-  border-radius: $borderBig;
+  border-radius: var(--ginBorderBig);
   background: var(--colorGinLayerBackground);
 
   // Dialog without title
   .ui-dialog-content:first-of-type {
-    border-top-left-radius: $borderBig;
-    border-top-right-radius: $borderBig;
+    border-top-left-radius: var(--ginBorderBig);
+    border-top-right-radius: var(--ginBorderBig);
   }
 
   // Node actions placement
@@ -43,10 +43,10 @@
   .ui-dialog-titlebar {
     line-height: 1.2;
     padding: 24px;
-    background: #1b1b1d;
+    background: $colorDarkAppBackground;
     border: 0 none;
-    border-top-left-radius: $borderBig;
-    border-top-right-radius: $borderBig;
+    border-top-left-radius: var(--ginBorderBig);
+    border-top-right-radius: var(--ginBorderBig);
   }
 
   .ui-dialog-title {
@@ -60,8 +60,8 @@
   .ui-widget-content.ui-dialog-buttonpane {
     padding: 16px 24px;
     border-top: 1px solid var(--colorGinLayerBorder);
-    border-bottom-left-radius: $borderBig;
-    border-bottom-right-radius: $borderBig;
+    border-bottom-left-radius: var(--ginBorderBig);
+    border-bottom-right-radius: var(--ginBorderBig);
     background: var(--colorGinAppBackground);
 
     .button {
@@ -148,7 +148,7 @@
   box-shadow: 0 0 48px rgba(0, 0, 0, .075);
 
   .ui-dialog-titlebar {
-    background: #1b1b1d;
+    background: $colorDarkAppBackground;
     border-radius: 0;
   }
 

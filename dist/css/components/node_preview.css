@@ -1,73 +1,94 @@
 .node-preview-container {
+  font-size: .79rem;
+  z-index: 998;
+  /* on top of the Drupal world */
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   width: 100%;
   padding: 0;
-  background: rgba(251, 251, 255, 0.98);
+  background: rgba(255, 255, 255, .98);
   border-bottom: 1px solid var(--colorGinLayerBorder);
 }
+
 @supports ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) {
   .node-preview-container {
-    opacity: 0.999;
+    opacity: .999;
     /* Fix Chrome issue with mask */
-    background: rgba(251, 251, 255, 0.8);
+    background: rgba(255, 255, 255, .8);
     -webkit-backdrop-filter: blur(12px);
             backdrop-filter: blur(12px);
   }
 }
+
 .gin--dark-mode .node-preview-container {
-  background: rgba(27, 27, 29, 0.98);
+  background: rgba(27, 27, 29, .98);
 }
+
 @supports ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) {
   .gin--dark-mode .node-preview-container {
-    background: rgba(28, 28, 30, 0.9);
+    background: rgba(22, 22, 23, .9);
   }
 }
+
 .gin--high-contrast-mode .node-preview-container {
   background: var(--colorGinAppBackground);
   -webkit-backdrop-filter: none;
           backdrop-filter: none;
 }
+
 .node-preview-container .node-preview-backlink,
 .node-preview-container .node-preview-form-select label {
-  color: var(--colorGinText);
+  color: var(--colorGinTextLight);
 }
+
 .node-preview-container .node-preview-backlink {
   position: relative;
-  padding-left: 28px;
+  padding-left: 2em;
   text-decoration: none;
 }
+
 .node-preview-container .node-preview-backlink::before {
   content: "";
   display: inline-block;
   position: absolute;
   top: 50%;
   left: 0;
-  width: 20px;
-  height: 20px;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  background-color: var(--colorGinText);
-  -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' d='M21 12H3M9 18l-6-6 6-6' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
-          mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' d='M21 12H3M9 18l-6-6 6-6' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
-  -webkit-mask-size: 18px 18px;
-          mask-size: 18px 18px;
+  width: var(--iconGinMeta);
+  height: var(--iconGinMeta);
+  transform: translateY(-50%);
+  background-color: var(--colorGinIcons);
+  -webkit-mask-image: url("../../media/sprite.svg#backtosite-view");
+          mask-image: url("../../media/sprite.svg#backtosite-view");
+  -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
   -webkit-mask-position: center center;
           mask-position: center center;
 }
+
 .node-preview-container .node-preview-form-select {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+  padding: 1rem 0;
 }
+
+@media (min-width: 1024px) {
+  .node-preview-container .node-preview-form-select {
+    padding: 1.25rem 0;
+  }
+}
+
+.node-preview-container .node-preview-form-select label {
+  padding-right: .5em;
+}
+
 .node-preview-container .js-hide {
   display: none;
 }
+
+.node-preview-container ~ .region-meta--frontend {
+  display: none;
+}
+

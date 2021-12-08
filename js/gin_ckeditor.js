@@ -12,6 +12,7 @@
         }
 
         // Get configs.
+        const variablesCss = drupalSettings.gin.variables_css_path;
         const accentCss = drupalSettings.gin.accent_css_path;
         const contentsCss = drupalSettings.gin.ckeditor_css_path;
         const accentColorPreset = drupalSettings.gin.preset_accent_color;
@@ -27,16 +28,22 @@
 
         // Content stylesheets.
         if (CKEDITOR.config.contentsCss === undefined) {
-          CKEDITOR.config.contentsCss.push(accentCss);
-          CKEDITOR.config.contentsCss.push(contentsCss);
+          CKEDITOR.config.contentsCss.push(
+            variablesCss,
+            accentCss,
+            contentsCss
+          );
         }
 
         // Contextmenu stylesheets.
         if (CKEDITOR.config.contextmenu_contentsCss === undefined) {
           CKEDITOR.config.contextmenu_contentsCss = new Array();
-          CKEDITOR.config.contextmenu_contentsCss.push(CKEDITOR.skin.getPath('editor'));
-          CKEDITOR.config.contextmenu_contentsCss.push(accentCss);
-          CKEDITOR.config.contextmenu_contentsCss.push(contentsCss);
+          CKEDITOR.config.contextmenu_contentsCss.push(
+            CKEDITOR.skin.getPath('editor'),
+            variablesCss,
+            accentCss,
+            contentsCss
+          );
         }
 
         $(CKEDITOR.instances, context).once('gin_ckeditor').each(function(index, value) {

@@ -2,7 +2,7 @@
   background: none;
 
   &--grid {
-    border-radius: $borderBig;
+    border-radius: var(--ginBorderBig);
 
     &::before,
     &.is-hover::before,
@@ -66,7 +66,7 @@
     position: relative;
     padding-bottom: 100%;
     border: 1px solid var(--colorGinBorder);
-    border-radius: $borderBig;
+    border-radius: var(--ginBorderBig);
     overflow: hidden;
 
     .field {
@@ -100,40 +100,50 @@
     &:link,
     &:hover,
     &:focus,
+    &:active,
     &:not(:hover):not(:checked) {
       border-color: transparent !important;
     }
 
     &:hover,
-    &:focus {
-      box-shadow: 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus) !important;
+    &:focus,
+    &:active {
+      box-shadow: 0 0 0 1px var(--colorGinFocusBorder),
+                  0 0 0 4px var(--colorGinFocus) !important;
     }
 
     &,
     &:hover,
-    &:focus {
-      width: 29px;
-      height: 29px;
+    &:focus,
+    &:active {
+      width: 32px;
+      height: 32px;
       margin: .75rem;
       background-color: white;
       border-radius: 50%;
       box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
+      box-sizing: border-box;
     }
   }
 
-  &__edit {
+  & &__edit.icon-link {
     right: 3.125rem;
+    background-image: icon('media-edit');
+  }
+
+  & &__remove.icon-link {
+    background-image: icon('media-remove');
   }
 
   &__click-to-select-checkbox .form-boolean {
     width: 29px;
     height: 29px;
-    border-radius: $borderXSmall;
+    border-radius: var(--ginBorderXSmall);
     box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
 
     &,
     .gin--dark-mode & {
-      border-radius: $borderXSmall;
+      border-radius: var(--ginBorderXSmall);
 
       &:not(:checked) {
         background-color: white;
@@ -262,7 +272,7 @@ fieldset.media-library-widget {
     color: var(--colorGinText);
     text-decoration: none;
     background: var(--colorGinLayer3Background);
-    border-radius: $borderDefault;
+    border-radius: var(--ginBorderDefault);
     box-shadow: $shadowLevel1;
   }
 }
@@ -275,7 +285,7 @@ fieldset.media-library-widget {
     background-image: none;
     white-space: nowrap;
 
-    &:before {
+    &::before {
       content: "";
       display: inline-block;
       width: 16px;
@@ -289,20 +299,20 @@ fieldset.media-library-widget {
     &.is-active {
       color: var(--colorGinPrimary);
 
-      &:before {
+      &::before {
         background-color: var(--colorGinPrimary);
       }
     }
   }
 
   .views-display-link-widget {
-    &:before {
+    &::before {
       mask-image: icon('grid');
     }
   }
 
   .views-display-link-widget_table {
-    &:before {
+    &::before {
       mask-image: icon('list');
     }
   }
@@ -319,7 +329,7 @@ fieldset.media-library-widget {
   color: var(--colorGinTitle);
   background: var(--colorGinTableHeader);
   box-shadow: 0 2px 6px 2px rgba(0, 0, 0, .03);
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
 }
 
 .views-field-thumbnail__target-id {

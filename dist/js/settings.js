@@ -43,11 +43,11 @@
     },
     darkmode: function() {
       var darkmodeParam = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null, darkmodeEnabled = null != darkmodeParam ? darkmodeParam : drupalSettings.gin.darkmode, darkmodeClass = drupalSettings.gin.darkmode_class;
-      1 == darkmodeEnabled || "auto" === darkmodeEnabled && window.matchMedia("(prefers-color-scheme: dark)").matches ? $("body").addClass(darkmodeClass) : $("body").removeClass(darkmodeClass), 
+      1 == darkmodeEnabled || "auto" === darkmodeEnabled && window.matchMedia("(prefers-color-scheme: dark)").matches ? $("html").addClass(darkmodeClass) : $("html").removeClass(darkmodeClass), 
       localStorage.setItem("GinDarkMode", ""), window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (function(e) {
-        e.matches && "auto" === $('input[name="enable_darkmode"]:checked').val() && $("body").addClass(darkmodeClass);
+        e.matches && "auto" === $('input[name="enable_darkmode"]:checked').val() && $("html").addClass(darkmodeClass);
       })), window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (function(e) {
-        e.matches && "auto" === $('input[name="enable_darkmode"]:checked').val() && $("body").removeClass(darkmodeClass);
+        e.matches && "auto" === $('input[name="enable_darkmode"]:checked').val() && $("html").removeClass(darkmodeClass);
       }));
     },
     setHighContrastMode: function() {

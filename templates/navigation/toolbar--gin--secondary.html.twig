@@ -20,7 +20,7 @@
  * @see template_preprocess_toolbar()
  */
 #}
-<div{{ attributes.addClass('toolbar', 'toolbar-meta') }}>
+<div{{ attributes.addClass('toolbar', 'toolbar-meta').setAttribute('id', 'toolbar-administration-secondary') }}>
   <nav{{ toolbar_attributes.addClass('toolbar-bar', 'clearfix') }}>
     <h2 class="visually-hidden">{{ toolbar_heading }}</h2>
 

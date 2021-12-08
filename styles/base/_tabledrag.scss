@@ -67,18 +67,18 @@
 
 // Hack to fix border-radius
 .draggable-table thead th {
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
 
   &:not(:first-of-type) {
     &::before,
     &::after {
       content: "";
       display: block;
-      width: $borderDefault;
-      height: $borderDefault;
+      width: calc(var(--ginBorderDefault) * 2);
+      height: var(--ginBorderDefault);
       background: var(--colorGinTableHeader);
       position: absolute;
-      left: -#{$borderDefault / 2};
+      left: calc(var(--ginBorderDefault) * -1);
     }
 
     &::before {

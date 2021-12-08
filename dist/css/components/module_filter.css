@@ -2,39 +2,48 @@
   background: transparent;
   border: 0 none;
 }
+
 .modules-tabs__pane, .modules-tabs__menu, .modules-tabs__menu-item {
   background: var(--colorGinLayerBackground);
 }
+
 .modules-tabs__pane {
   padding: 1.5rem 1.5rem 0 1.5rem;
   border-left: 1px solid var(--colorGinBorder);
 }
+
 .modules-tabs__pane table tr.enabling {
   background: var(--colorGinGreenLightBackground);
 }
+
 .modules-tabs__menu-item {
   border-top: 1px solid var(--colorGinBorder);
 }
+
 .modules-tabs__menu-item.tab__new {
   border-bottom: 1px solid var(--colorGinBorder);
 }
+
 .modules-tabs__menu-item.disabled {
   background-color: transparent;
   border-top-color: var(--colorGinBorder);
   border-bottom-color: transparent;
 }
+
 .modules-tabs__menu-item.suggest,
 .modules-tabs__menu-item a:hover,
 .modules-tabs__menu-item a:focus,
 .modules-tabs__menu-item a:active {
   background: var(--colorGinItemHover);
 }
+
 .modules-tabs__menu-item.is-selected a,
 .modules-tabs__menu-item.is-selected a:hover,
 .modules-tabs__menu-item.is-selected a:focus,
 .modules-tabs__menu-item.is-selected a:active {
   background: var(--colorGinLayerBackground);
 }
+
 .modules-tabs__menu-item ul.enabling {
   color: var(--colorGinGreen);
 }
@@ -43,22 +52,27 @@
   float: none;
   text-align: left;
 }
+
 #module-filter-update-status-form .table-filter .winnow-input {
   width: 100%;
 }
+
 #module-filter-update-status-form .table-filter .winnow-clear {
   width: 44px;
 }
+
 #module-filter-update-status-form .table-filter .winnow-clear:after {
   top: 10px;
   right: 8px;
 }
+
 #module-filter-update-status-form .table-filter input.form-search {
   width: 100%;
   padding: 1rem;
 }
+
 #module-filter-update-status-form .table-filter .form-type--search {
-  margin-bottom: 0.5rem;
+  margin-bottom: .5rem;
 }
 
 .system-modules-uninstall .winnow-input {
@@ -76,3 +90,4 @@
 .system-modules td details a {
   color: var(--colorGinPrimary);
 }
+

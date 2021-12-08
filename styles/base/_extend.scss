@@ -12,7 +12,7 @@
 .claro-details.module-list__module-details,
 .system-status-report .claro-details {
   border: 1px solid var(--colorGinBorder);
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
 }
 
 .claro-details__summary,

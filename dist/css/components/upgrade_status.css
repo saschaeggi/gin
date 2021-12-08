@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 .drupal-upgrade-status-summary-form tr.known-errors,
 .upgrade-status-error-list tr.rector-covered,
 .upgrade-status-next-step-collaborate tr,
@@ -23,6 +24,7 @@
   position: relative;
   background-image: none;
 }
+
 .upgrade-status-summary tr.not-scanned > td.status-info:before,
 .upgrade-status-error-list tr.no-known-error > td.status-info:before,
 .upgrade-status-summary tr.no-known-error > td.status-info:before,
@@ -75,3 +77,4 @@
 .drupal-upgrade-status-summary-form tr.known-errors {
   color: var(--colorGinDanger);
 }
+

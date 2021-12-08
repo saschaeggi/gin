@@ -17,8 +17,6 @@ $toolbarIconSize: 22px;
 }
 
 .toolbar {
-  font-family: Inter, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-
   .toolbar-bar {
     box-shadow: none;
 
@@ -37,8 +35,10 @@ $toolbarIconSize: 22px;
     #toolbar-item-administration-tray .toolbar-icon,
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &::before {
+        left: 1em;
+
         @include mq($breakpointMedium) {
-          left: #{($toolbarWidth - $toolbarIconSize) / 2 - 8};
+          left: calc((var(--ginToolbarWidthCollapsed) - #{$toolbarIconSize}) / 2 - 8px);
           width: $toolbarIconSize;
           height: $toolbarIconSize;
           top: 50%;
@@ -78,13 +78,11 @@ $toolbarIconSize: 22px;
     }
 
     #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
-      mask-size: $toolbarIconSize $toolbarIconSize;
-
       @include mq($breakpointMedium) {
         font-size: 0;
-        height: 80px;
+        height: 74px;
+        margin-bottom: 6px;
         transition: top $transition;
-        mask-size: 100% 100%;
       }
 
       &::before {
@@ -93,7 +91,7 @@ $toolbarIconSize: 22px;
         @include mq($breakpointMedium) {
           width: $logoSize;
           height: $logoSize;
-          left: #{($toolbarWidth - $logoSize) / 2 - 8};
+          left: calc((var(--ginToolbarWidthCollapsed) - #{$logoSize}) / 2 - 8px);
           mask-size: $logoSize $logoSize;
           mask-position: center center;
         }
@@ -194,11 +192,11 @@ a.toolbar-menu__trigger,
 
   .toolbar-fixed {
     padding-top: 0 !important;
-    padding-left: $toolbarWidth;
+    padding-left: var(--ginToolbarWidthCollapsed);
     transition: $transition;
 
     &[data-toolbar-menu='open'] {
-      padding-left: $toolbarOpenWidth;
+      padding-left: var(--ginToolbarWidth);
     }
   }
 
@@ -221,9 +219,9 @@ a.toolbar-menu__trigger,
     text-decoration: none;
     display: flex;
     align-items: center;
-    width: $toolbarWidth;
+    width: var(--ginToolbarWidthCollapsed);
     height: 64px;
-    padding: 16px 0 16px #{$toolbarWidth};
+    padding: 16px 0 16px var(--ginToolbarWidthCollapsed);
     margin: 0;
     transition: width $transition;
     overflow: hidden;
@@ -241,7 +239,7 @@ a.toolbar-menu__trigger,
     &::before {
       content: "";
       position: absolute;
-      left: #{($toolbarWidth - 34px) / 2};
+      left: calc((var(--ginToolbarWidthCollapsed) - 34px) / 2);
       display: inline-block;
       width: 32px;
       height: 32px;
@@ -256,7 +254,7 @@ a.toolbar-menu__trigger,
       display: flex;
       font-weight: normal;
       color: var(--colorGinTextLight);
-      width: $toolbarOpenWidth;
+      width: var(--ginToolbarWidth);
 
       &:hover {
         color: var(--colorGinTitle);
@@ -285,7 +283,7 @@ a.toolbar-menu__trigger,
     position: fixed;
     top: auto;
     left: 0;
-    width: $toolbarWidth;
+    width: var(--ginToolbarWidthCollapsed);
     height: 100vh;
     max-width: calc(100% - #{$topBar});
     background: var(--colorGinLayerBackground);
@@ -297,19 +295,19 @@ a.toolbar-menu__trigger,
     }
 
     [data-toolbar-menu='open'] & {
-      width: $toolbarOpenWidth;
+      width: var(--ginToolbarWidth);
     }
 
     .toolbar-tray-horizontal & {
       ul li.menu-item--expanded .menu-item.hover-intent ul {
         margin-top: 0;
-        margin-left: ($subToolbarWidth - 2px);
+        margin-left: calc(var(--ginToolbarWidth) - 2px);
       }
     }
 
     // Open Menu
     .toolbar-vertical & {
-      width: $subToolbarWidth;
+      width: var(--ginToolbarWidth);
 
       > .toolbar-menu {
         > .menu-item {
@@ -323,7 +321,7 @@ a.toolbar-menu__trigger,
           }
 
           .toolbar-menu {
-            left: $subToolbarWidth;
+            left: var(--ginToolbarWidth);
           }
         }
       }
@@ -332,7 +330,7 @@ a.toolbar-menu__trigger,
     > .toolbar-menu {
       align-self: flex-start;
       height: 100%;
-      max-height: calc(100% - 68px);
+      max-height: calc(100% - var(--ginToolbarWidthCollapsed));
       overflow-y: auto;
       background: transparent;
       -webkit-overflow-scrolling: touch;
@@ -351,12 +349,12 @@ a.toolbar-menu__trigger,
           color: var(--colorGinTextLight);
           display: flex;
           align-items: center;
-          width: #{$toolbarOpenWidth - 16px};
+          width: calc(var(--ginToolbarWidth) - 16px);
           height: 48px;
-          padding-left: #{$toolbarWidth - 8px};
+          padding-left: calc(var(--ginToolbarWidthCollapsed) - 8px);
           padding-right: 0;
           margin: 0 8px 1px;
-          border-radius: $borderDefault;
+          border-radius: var(--ginBorderDefault);
           overflow: hidden;
 
           &:hover {
@@ -374,7 +372,7 @@ a.toolbar-menu__trigger,
           }
 
           &.toolbar-handle {
-            width: $toolbarWidth;
+            width: var(--ginToolbarWidthCollapsed);
 
             &:before {
               display: none;
@@ -386,8 +384,8 @@ a.toolbar-menu__trigger,
           display: none;
           position: fixed;
           top: 0;
-          margin-left: $toolbarWidth;
-          width: $subToolbarWidth;
+          margin-left: calc(var(--ginToolbarWidthCollapsed) - 1px);
+          width: var(--ginToolbarWidth);
           height: 100vh;
           max-width: calc(100% - #{$topBar});
           box-shadow: none;
@@ -424,21 +422,20 @@ a.toolbar-menu__trigger,
             font-size: 1.75em;
             letter-spacing: -.025em;
             padding: 0;
-            margin: 1.25rem .75rem 1rem .75rem;
+            margin: 1rem .75rem 1.25rem .75rem;
 
             a {
               font-weight: 500;
               color: var(--colorGinTitle);
               padding: .75rem;
-              border-radius: $borderDefault;
+              border-radius: var(--ginBorderDefault);
             }
           }
 
           &__sub-title {
             font-size: 1.375em;
             letter-spacing: -.01em;
-            margin-top: 1.375rem;
-            margin-bottom: 1.4rem;
+            margin-bottom: 1.275rem;
 
             a {
               padding: .9rem .75rem;
@@ -454,7 +451,7 @@ a.toolbar-menu__trigger,
               font-size: .9375rem;
               padding: 1em 2rem 1em .75rem;
               margin: .25em .75rem;
-              border-radius: $borderDefault;
+              border-radius: var(--ginBorderDefault);
               overflow: hidden;
             }
           }
@@ -491,11 +488,8 @@ a.toolbar-menu__trigger,
     }
 
     .menu-item .menu-item:hover > .toolbar-icon {
-      background: var(--colorGinPrimaryLight);
-    }
-
-    .menu-item .menu-item.hover-intent:hover > .toolbar-icon {
       color: var(--colorGinPrimaryHover);
+      background: var(--colorGinPrimaryLight);
     }
   }
 
@@ -503,12 +497,6 @@ a.toolbar-menu__trigger,
   .toolbar .toolbar-toggle-orientation button {
     display: none;
   }
-
-  // home tab
-  // .menu-item__tools,
-  // .menu-item__admin_toolbar_tools-help {
-  //   margin-bottom: 8px;
-  // }
 }
 
 .gin--dark-mode.toolbar-horizontal .toolbar-tray > .toolbar-lining {
@@ -525,23 +513,6 @@ a.toolbar-menu__trigger,
   outline: none;
 }
 
-// @import "components/toolbar";
-// @import "components/toolbar_meta";
-
-.toolbar {
-  .toolbar-bar {
-    .toolbar-menu-administration .toolbar-icon,
-    #toolbar-item-administration-search,
-    .toolbar-tab > .toolbar-icon-edit.toolbar-item {
-      &:before {
-        @include mq($breakpointMedium) {
-          mask-size: 20px 20px;
-        }
-      }
-    }
-  }
-}
-
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
   position: relative;
@@ -553,10 +524,6 @@ a.toolbar-menu__trigger,
   }
 }
 
-#admin-toolbar-search-input {
-  display: none;
-}
-
 // New Main level hover; needs refactoring at some point.
 .toolbar-menu-administration > .toolbar-menu > .menu-item {
   &:hover {
@@ -564,55 +531,59 @@ a.toolbar-menu__trigger,
   }
 
   &:hover > .toolbar-icon,
+  &:hover > .toolbar-box > a.toolbar-icon,
   > .toolbar-icon:focus,
   &.hover-intent > .toolbar-icon,
-  &.menu-item--active-trail > .toolbar-icon {
-    box-shadow: none;
+  &.menu-item--active-trail > .toolbar-icon,
+  &.menu-item--active-trail > .toolbar-box > a.toolbar-icon {
+    @include mq($breakpointLarge) {
+      box-shadow: none;
 
-    &::before {
-      background: var(--colorGinPrimaryActive);
-    }
-
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 4px;
-      left: #{round(($toolbarWidth - 40px) / 2 - 8)};
-      width: 40px;
-      height: 40px;
-      background: var(--colorGinPrimaryLight);
-      border-radius: $borderDefault;
-    }
-
-    &:focus {
-      background: transparent;
+      &::before {
+        background: var(--colorGinPrimaryActive);
+      }
 
       &::after {
-        box-shadow: inset 0 0 0 1px var(--colorGinFocusBorder), inset 0 0 0 4px var(--colorGinFocus);
+        content: "";
+        display: block;
+        position: absolute;
+        top: 4px;
+        left: calc((var(--ginToolbarWidthCollapsed) - 40px) / 2 - 8px);
+        width: 40px;
+        height: 40px;
+        background: var(--colorGinPrimaryLight);
+        border-radius: var(--ginBorderDefault);
+      }
+
+      &:focus {
+        background: transparent;
+
+        &::after {
+          box-shadow: inset 0 0 0 1px var(--colorGinFocusBorder), inset 0 0 0 4px var(--colorGinFocus);
+        }
       }
     }
   }
 }
 
-[data-toolbar-menu='open'] .toolbar-menu-administration > .toolbar-menu > .menu-item {
-  &:not(.hover-intent) > .toolbar-icon {
-    &::after {
-      width: #{$toolbarOpenWidth - 16px - 12px};
-    }
-  }
+// [data-toolbar-menu='open'] .toolbar-menu-administration > .toolbar-menu > .menu-item {
+//   &:not(.hover-intent) > .toolbar-icon {
+//     &::after {
+//       width: calc(var(--ginToolbarWidth) - 16px - 12px);
+//     }
+//   }
 
-  &.menu-item--expanded:hover > .toolbar-icon {
-    &::after {
-      width: 40px;
-    }
-  }
-}
+//   &.menu-item--expanded:hover > .toolbar-icon {
+//     &::after {
+//       width: 40px;
+//     }
+//   }
+// }
 
 // New navigation approach.
 // .toolbar-fixed[data-toolbar-menu=open] {
 //   @include mq($breakpointMedium) {
-//     padding-left: #{$toolbarWidth + $subToolbarWidth};
+//     padding-left: calc(var(--ginToolbarWidthCollapsed) + var(--ginToolbarWidth));
 
 //     .toolbar-menu-administration > .toolbar-menu > .menu-item--active-trail > .toolbar-menu {
 //       z-index: 1;

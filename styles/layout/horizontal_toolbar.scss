@@ -4,13 +4,12 @@
 
   @include mq($breakpointLarge) {
     --ginScrollOffset: 180px;
+    --iconGinToolbar: 18px;
   }
 }
 
 // Toolbar
 .toolbar {
-  font-family: Inter, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-
   .toolbar-bar {
     background: #100f10;
     box-shadow: none;
@@ -31,7 +30,7 @@
           > .toolbar-box > .toolbar-icon {
             padding-top: 20px;
             padding-bottom: 20px;
-            padding-left: 3.5em;
+            padding-left: 2.875em;
             white-space: nowrap;
           }
 
@@ -54,6 +53,10 @@
       display: none !important;
     }
   }
+}
+
+.toolbar-horizontal .toolbar-tray {
+  border-bottom: 0 none;
 }
 
 .toolbar .toolbar-menu,
@@ -84,7 +87,7 @@
   color: var(--colorGinPrimary);
   font-weight: 500;
 
-  &:before {
+  &::before {
     background: var(--colorGinPrimary);
   }
 }
@@ -92,6 +95,10 @@
 .toolbar .toolbar-tray .hover-intent > .toolbar-icon {
   color: var(--colorGinPrimaryHover);
   background-color: var(--colorGinItemHover);
+
+  &::before {
+    background: var(--colorGinPrimary);
+  }
 }
 
 // Inline Edit toggle
@@ -153,9 +160,6 @@
     height: 100%;
   }
 }
-
-// @import "components/toolbar";
-// @import "components/toolbar_meta";
 
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
@@ -220,13 +224,18 @@
     }
 
     @include mq($breakpointMedium) {
-      padding-left: 2.75em;
+      padding-left: 2.875em;
 
       &:before {
         top: -1px;
         left: 14px;
         width: 24px;
         mask-size: 28px 28px;
+      }
+
+      // Default
+      &.toolbar-icon-default {
+        margin-right: .5rem;
       }
     }
   }
@@ -243,9 +252,10 @@
         width: 100%;
       }
     }
-  }
-}
 
-#admin-toolbar-search-input {
-  display: none;
+    .menu-item .menu-item:hover > .toolbar-icon {
+      color: var(--colorGinPrimaryHover);
+      background: var(--colorGinPrimaryLight);
+    }
+  }
 }

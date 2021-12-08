@@ -1,0 +1,22 @@
+.contextual {
+  z-index: 100;
+}
+
+.contextual .trigger {
+  width: 32px !important;
+  height: 32px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.contextual .trigger, .contextual .trigger:hover, .contextual .trigger:focus {
+  background-image: url("../../media/sprite.svg#media-edit-view");
+  background-size: .75rem;
+  background-position: center center;
+}
+
+.contextual .trigger:hover, .contextual .trigger:focus {
+  box-shadow: 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus);
+}
+

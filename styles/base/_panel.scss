@@ -14,7 +14,7 @@
   margin-top: 0;
   background: var(--colorGinTableHeader);
   border: 0 none;
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
 }
 
 .panel {

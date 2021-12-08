@@ -45,13 +45,13 @@
     margin-top: 0;
   }
 
-  [data-drupal-selector*="edit-header"] {
+  [data-drupal-selector*=edit-header] {
     order: 99;
     position: relative;
     left: 0;
     padding: 0 16px 16px 16px;
     background: rgba(#e2e5ec, .6);
-    border-radius: $borderDefault;
+    border-radius: var(--ginBorderDefault);
 
     [data-drupal-selector*='edit-views-bulk-operations-bulk-form'] {
       > * {
@@ -137,6 +137,10 @@
   }
 }
 
+.views-exposed-form__item--preceding-actions.views-exposed-form__item--preceding-actions {
+  margin-right: .5rem;
+}
+
 .view-files .view-content {
   padding-top: 0;
 }
@@ -207,10 +211,9 @@
   }
 }
 
-.views-exposed-form.views-exposed-form,
 .views-displays {
-  border: 1px solid var(--colorGinLayerBorder);
-  border-radius: $borderMedium;
+  border: 1px solid var(--colorGinBorder);
+  border-radius: var(--ginBorderMedium);
 }
 
 .views-admin {
@@ -226,12 +229,10 @@
 }
 
 .views-display-top {
-  padding: 16px;
-  background-color: var(--colorGinLayer2Background);
+  padding: 1rem;
+  background-color: var(--colorGinTableHeader);
   border: 0 none;
-  border-bottom: 1px solid var(--colorGinLayer2Border);
-  border-top-left-radius: $borderXSmall;
-  border-top-right-radius: $borderXSmall;
+  border-radius: var(--ginBorderMedium);
 
   // #3186729: Drupal 9.1 fix
   &__extra-actions-wrapper {
@@ -257,11 +258,12 @@
   .add a,
   li a {
     font-size: small;
+    font-weight: bold;
     color: var(--colorGinPrimary);
     padding: .5rem 1rem;
-    background: var(--colorGinLayer2Background);
+    background: transparent;
     border: 2px solid var(--colorGinPrimary);
-    border-radius: $borderXSmall;
+    border-radius: var(--ginBorderXSmall);
 
     &::before {
       display: none;
@@ -272,10 +274,21 @@
     }
   }
 
-  .add a:hover, li a:hover, li.is-active a, li.is-active a.is-active {
+  .add a:hover,
+  .add a:focus,
+  li a:hover,
+  li a:focus,
+  li.is-active a,
+  li.is-active a.is-active {
     color: var(--colorGinAppBackground);
     background: var(--colorGinPrimary);
     border-color: transparent;
+  }
+
+  .add a:focus,
+  li a:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus);
   }
 
   .add {
@@ -411,7 +424,7 @@
 .edit-display-settings-top.views-ui-display-tab-bucket {
   margin-bottom: 1rem;
   border-color: var(--colorGinBorder);
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
 }
 
 .views-ui-dialog {

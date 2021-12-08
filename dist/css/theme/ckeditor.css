@@ -27,26 +27,33 @@ a {
 }
 
 /* CKE Context Menu */
+
 .cke_panel_block {
   border-color: var(--colorGinFormElementBorder);
-  border-radius: 8px;
+  border-radius: var(--ginBorderDefault);
 }
+
 .cke_panel_block .cke_menu .cke_menubutton_icon {
   background-color: var(--colorGinAppBackground);
 }
+
 .gin--dark-mode .cke_panel_block .cke_menu .cke_menubutton_icon .cke_button_icon {
-  -webkit-filter: invert(1);
-          filter: invert(1);
+  filter: invert(1);
 }
+
 .cke_panel_block .cke_menu .cke_menubutton_label {
   color: var(--colorGinText);
 }
+
 .cke_panel_block .cke_menu .cke_menubutton_shortcut {
   color: var(--colorGinTextLight);
 }
+
 .cke_panel_block .cke_menu a:hover, .cke_panel_block .cke_menu a:focus, .cke_panel_block .cke_menu a:active {
   background-color: var(--colorGinPrimaryLight);
 }
+
 .cke_panel_block .cke_menu a:hover .cke_menubutton_icon, .cke_panel_block .cke_menu a:focus .cke_menubutton_icon, .cke_panel_block .cke_menu a:active .cke_menubutton_icon {
   background-color: var(--colorGinPrimaryLight);
 }
+

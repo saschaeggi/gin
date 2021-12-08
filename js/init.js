@@ -1,27 +1,31 @@
-/* To inject this as early as possible and to bypass Drupal's
- * behaviors we use native JS.
+/* To inject this as early as possible
+ * we use native JS instead of Drupal's behaviors.
 */
 
-function ginCheckDarkmode() {
+// Darkmode Check.
+function ginInitDarkmode() {
+  const darkModeClass = 'gin--dark-mode';
   if (
     localStorage.getItem('GinDarkMode') == 1 ||
     (localStorage.getItem('GinDarkMode') === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)
   ) {
-    document.body.classList.add('gin--dark-mode');
+    document.documentElement.classList.add(darkModeClass);
   } else {
-    document.body.classList.contains('gin--dark-mode') === true && document.body.classList.remove('gin--dark-mode');
+    document.documentElement.classList.contains(darkModeClass) === true && document.documentElement.classList.remove(darkModeClass);
   }
 }
+
+ginInitDarkmode();
 
 // GinDarkMode is not set yet.
 window.addEventListener('DOMContentLoaded', (e) => {
   if (!localStorage.getItem('GinDarkMode')) {
     localStorage.setItem('GinDarkMode', drupalSettings.gin.darkmode);
+    ginInitDarkmode();
   }
-
-  ginCheckDarkmode();
 });
 
+// Sidebar Check.
 if (localStorage.getItem('GinSidebarOpen')) {
   const style = document.createElement('style');
   const className = 'gin-toolbar-inline-styles';

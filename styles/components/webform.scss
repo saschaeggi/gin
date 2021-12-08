@@ -71,7 +71,7 @@
 
     .ui-tabs-active.ui-state-active a {
       border: 2px solid var(--colorGinPrimary);
-      border-radius: $borderDefault;
+      border-radius: var(--ginBorderDefault);
     }
   }
 }

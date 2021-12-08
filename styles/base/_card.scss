@@ -1,9 +1,9 @@
 .card {
   padding: 0;
   background: transparent;
-  border: 1px solid var(--colorGinTableBorder);
-  border-radius: $borderDefault;
-  box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
+  border: 1px solid var(--colorGinLayer2Border);
+  border-radius: var(--ginBorderDefault);
+  box-shadow: none;
   overflow: hidden;
 
   .gin--dark-mode & {
@@ -16,20 +16,20 @@
 
   &__image {
     img {
-      border-radius: $borderDefault $borderDefault 0 0;
+      border-radius: var(--ginBorderDefault) var(--ginBorderDefault) 0 0;
 
       @include mq($breakpointXSmall) {
-        border-radius: $borderDefault 0 0 $borderDefault;
+        border-radius: var(--ginBorderDefault) 0 0 var(--ginBorderDefault);
       }
     }
   }
 
   &__content-wrapper {
     background-color: var(--colorGinLayerBackground);
-    border-radius: 0 0 $borderXSmall $borderXSmall;
+    border-radius: 0 0 var(--ginBorderXSmall) var(--ginBorderXSmall);
 
     @include mq($breakpointXSmall) {
-      border-radius: 0 $borderXSmall $borderXSmall 0;
+      border-radius: 0 var(--ginBorderXSmall) var(--ginBorderXSmall) 0;
     }
 
     .gin--dark-mode & {

@@ -1,5 +1,5 @@
 .shepherd-element {
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
 }
 
 .button--primary:not(:focus).shepherd-button {

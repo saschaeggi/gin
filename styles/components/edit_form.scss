@@ -214,23 +214,12 @@
   .revision-current {
     background-color: var(--colorGinPrimaryLightActive);
   }
-}
 
-.revision-current {
-  background-color: transparent;
-
-  td:first-of-type {
-    position: relative;
-
-    &::before {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 1px;
-      height: 100%;
-      border-left: 6px solid var(--colorGinGreen);
-    }
+  .field--name-title .form-element {
+    font-size: 1.6em;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.025em;
+    width: 100%;
   }
 }

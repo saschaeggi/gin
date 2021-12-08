@@ -2,7 +2,7 @@
   position: relative;
   padding: 1rem;
   border: 2px solid transparent;
-  border-radius: $borderMedium;
+  border-radius: var(--ginBorderMedium);
   // box-shadow: 10px 10px 30px #c1c1d2,
   //             -6px -6px 16px #d3d3d3;
   transition: opacity $transition--fast;
@@ -88,10 +88,10 @@
       top: 0;
       left: 0;
       mask-image: icon('close');
-      mask-size: 20px 20px;
+      mask-size: 16px 16px;
       mask-repeat: no-repeat;
       mask-position: center;
-      background-color: #fff; // --messages-fg-color
+      background-color: #fff;
     }
   }
 

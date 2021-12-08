@@ -1,11 +1,15 @@
 .button,
 .dropbutton__item:first-of-type > *,
 .dropbutton__toggle {
+  font-size: .875rem;
   color: var(--colorGinPrimary);
-  // color: var(--colorGinPrimaryActive);
   background-color: transparent;
   box-shadow: none;
   transition: $transition;
+
+  @include mq($breakpointWide) {
+    font-size: 1rem;
+  }
 
   &:hover {
     background-color: var(--colorGinPrimaryHover);
@@ -26,7 +30,7 @@
 .action-link--icon-trash.action-link {
   padding: calc(1rem - 2px) calc(1.5rem - 2px);
   border: 2px solid var(--colorGinPrimary) !important;
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
   box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
   transition: $transition;
 
@@ -50,12 +54,12 @@
 
 .button.button--small {
   padding: .5rem 1rem;
-  border-radius: $borderSmall;
+  border-radius: var(--ginBorderSmall);
 }
 
 .button.button--extrasmall {
   padding: .25rem .75rem;
-  border-radius: $borderSmall;
+  border-radius: var(--ginBorderSmall);
 }
 
 .button--primary,

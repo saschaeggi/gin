@@ -1,21 +1,23 @@
 #coffee-form {
   padding: 4px;
   background: #000;
-  border-radius: $borderMedium;
+  border-radius: var(--ginBorderMedium);
 
   #coffee-form-inner,
   #coffee-q {
-    color: var(--colorGinText);
+    color: var(--colorGinTitle);
     background: var(--colorGinLayerBackground);
-    border-radius: $borderDefault;
+    border-radius: var(--ginBorderDefault);
   }
 
   #coffee-results {
     a {
-      border-radius: $borderDefault;
+      color: var(--colorGinTitle);
+      border-radius: var(--ginBorderDefault);
 
-      &, .description {
-        color: var(--colorGinText);
+      .description {
+        color: var(--colorGinTextLight);
+        padding-top: .25rem;
       }
 
       &:hover,

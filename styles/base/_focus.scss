@@ -9,6 +9,7 @@
 .form-boolean:focus:hover,
 .cke.cke_chrome.cke_focus,
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a:focus,
+.form-element:focus,
 .form-element:hover:focus,
 .form-element.error:hover:focus,
 .form-actions .action-link:focus,
@@ -20,7 +21,7 @@
 }
 
 .admin-item__link:focus {
-  border-radius: #{$borderXSmall / 2};
+  border-radius: calc(var(--ginBorderXSmall) / 2);
 }
 
 .claro-details {

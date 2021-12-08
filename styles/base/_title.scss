@@ -28,7 +28,7 @@
 .shortcut-action {
   align-self: center;
   margin-left: .5rem;
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
 
   @include mq($breakpointLarge) {
     margin-left: .5rem;
@@ -77,8 +77,9 @@
     position: absolute;
     pointer-events: none;
     padding: .5rem;
+    margin-top: -0.25rem;
     color: var(--colorGinContextualText);
     background: var(--colorGinContextual);
-    border-radius: $borderXSmall;
+    border-radius: var(--ginBorderXSmall);
   }
 }

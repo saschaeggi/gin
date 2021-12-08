@@ -183,12 +183,16 @@ libraries-extend:
     - gin/gin_media_embed_ckeditor_theme
   media_library/view:
     - claro/media_library.theme
+    - gin/media_library
   media_library/widget:
     - claro/media_library.theme
+    - gin/media_library
   user/drupal.user:
     - claro/form.password-confirm
   core/drupal.tabledrag:
     - gin/gin_tabledrag
+  contextual/drupal.contextual-links:
+    - gin/contextual_links
 
 quickedit_stylesheets:
   - ../../../core/themes/claro/css/components/quickedit.css

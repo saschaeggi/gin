@@ -6,32 +6,40 @@
   Drupal.behaviors.ginEditForm = {
     attach: function attach() {
       const form = document.querySelector('.region-content form');
-      const sticky = document.querySelector('.gin-sticky').cloneNode(true);
+      const sticky = $('.gin-sticky').clone(true, true);
       const newParent = document.querySelector('.region-sticky__items__inner');
 
       if (newParent && newParent.querySelectorAll('.gin-sticky').length === 0) {
-        newParent.appendChild(sticky);
+        sticky.appendTo($(newParent));
 
         // Input Elements
-        newParent.querySelectorAll('button[type="submit"], input[type="submit"]')
-          .forEach((el) => {
-            el.setAttribute('form', form.getAttribute('id'));
-            el.setAttribute('id', el.getAttribute('id') + '--gin-edit-form');
-          });
+        const actionButtons = newParent.querySelectorAll('button[type="submit"], input[type="submit"]');
+
+        if (actionButtons.length > 0) {
+          actionButtons
+            .forEach((el) => {
+              el.setAttribute('form', form.getAttribute('id'));
+              el.setAttribute('id', el.getAttribute('id') + '--gin-edit-form');
+            });
+        }
 
         // Make Published Status reactive
-        document.querySelectorAll('.field--name-status [name="status[value]"]').forEach((publishedState) => {
-          publishedState.addEventListener('click', (event) => {
-            const value = event.target.checked;
-            // Sync value
-            document.querySelectorAll('.field--name-status [name="status[value]"]').forEach((publishedState) => {
-              publishedState.checked = value;
+        const statusToggle = document.querySelectorAll('.field--name-status [name="status[value]"]');
+
+        if (statusToggle.length > 0) {
+          statusToggle.forEach((publishedState) => {
+            publishedState.addEventListener('click', (event) => {
+              const value = event.target.checked;
+              // Sync value
+              statusToggle.forEach((publishedState) => {
+                publishedState.checked = value;
+              });
             });
           });
-        });
+        }
 
         setTimeout(() => {
-          sticky.classList.add('gin-sticky--visible');
+          sticky.addClass('gin-sticky--visible');
         });
       }
     }

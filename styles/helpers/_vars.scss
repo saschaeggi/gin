@@ -6,25 +6,9 @@ $breakpointLarge: 1024px;
 $breakpointWide: 1280px;
 $breakpointBig: 1440px;
 
-$toolbarHorizontal: 54px;
+$toolbarHorizontal: 53px;
 $topBar: 39px;
 $stickyBar: 80px;
-$contentHeaderSpacer: 52px;
-$toolbarWidth: 68px;
-$toolbarOpenWidth: 240px;
-$subToolbarWidth: 245px;
-$sidebarSmallWidth: 300px;
-$sidebarWidth: 360px;
-
-$borderXSmall: 4px;
-$borderSmall: 6px;
-$borderDefault: 8px;
-$borderMedium: 12px;
-$borderBig: 16px;
-
-$shadowLevel1: 0 1px 2px rgb(20 45 82 / 2%),
-               0 3px 4px rgb(20 45 82 / 3%),
-               0 5px 8px rgb(20 45 82 / 4%);
 
 $iconFill: '787878';
 $iconActiveFill: '003cc5';
@@ -34,13 +18,16 @@ $fancy-easing: cubic-bezier(.19, 1, .22, 1);
 $transition: .15s $fancy-easing;
 $transition--fast: .3s $fancy-easing;
 
+$font: Ginter, Inter, 'Helvetica Neue', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
+
 $colorAppBackground: #fbfbff; //#f5f7fb;
-// $colorAppBackgroundShadow: #f5f5f9;
 $colorDarkAppBackground: #1B1B1D;
-// $ginPrimary: #0550e6; //0136fd;
-// $ginPrimaryDark: #080090;
 
-// $mixColor: $ginPrimary;
+$shadowLevel1: 0 1px 2px rgb(20 45 82 / 2%),
+               0 3px 4px rgb(20 45 82 / 3%),
+               0 5px 8px rgb(20 45 82 / 4%);
 
-// $ginPrimaryHover: mix(black, $ginPrimary, 15%);
-// $ginPrimaryActive: mix(black, $ginPrimary, 25%);
+$shadowLevel2: 0 1px 2px rgb(20 45 82 / 2%),
+               0 3px 4px rgb(20 45 82 / 3%),
+               0 5px 8px rgb(20 45 82 / 4%),
+               0 20px 24px rgb(20 45 82 / 12%);

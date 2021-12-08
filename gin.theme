@@ -28,6 +28,9 @@ function gin_preprocess_html(&$variables) {
     // Set accent color.
     $variables['attributes']['data-gin-accent'] = $settings->get('preset_accent_color');
 
+    // Set focus color.
+    $variables['attributes']['data-gin-focus'] = $settings->get('preset_focus_color');
+
     // High contrast mode.
     if ($settings->get('high_contrast_mode')) {
       $variables['attributes']['class'][] = 'gin--high-contrast-mode';
@@ -43,7 +46,9 @@ function gin_preprocess_html(&$variables) {
       return;
     }
 
+    // Set toolbar class.
     $variables['attributes']['class'][] = 'gin--' . $toolbar . '-toolbar';
+
     // Gin secondary toolbar.
     if ($toolbar !== 'classic') {
       $variables['page']['gin_secondary_toolbar'] = [
@@ -75,6 +80,12 @@ function gin_preprocess_page(&$variables) {
   // Required for allowing subtheming Gin.
   $activeThemeName = \Drupal::theme()->getActiveTheme()->getName();
   $variables['active_admin_theme'] = $activeThemeName;
+
+  /** @var \Drupal\gin\GinSettings $settings */
+  $settings = \Drupal::classResolver(GinSettings::class);
+
+  // Expose Toolbar variant.
+  $variables['toolbar_variant'] = $settings->get('classic_toolbar');
 }
 
 /**
@@ -178,6 +189,7 @@ function gin_page_attachments_alter(&$page) {
 
     // Add stylesheets for JS use.
     $basethemeurl_with_prefix = \Drupal::urlGenerator()->generateFromRoute('<front>', [], ['absolute' => TRUE]) . \Drupal::service('extension.list.theme')->getPath('gin');
+    $page['#attached']['drupalSettings']['gin']['variables_css_path'] = $basethemeurl_with_prefix . '/dist/css/theme/variables.css';
     $page['#attached']['drupalSettings']['gin']['accent_css_path'] = $basethemeurl_with_prefix . '/dist/css/theme/accent.css';
     $page['#attached']['drupalSettings']['gin']['ckeditor_css_path'] = $basethemeurl_with_prefix . '/dist/css/theme/ckeditor.css';
 
@@ -223,6 +235,13 @@ function gin_form_alter(&$form, $form_state, $form_id) {
         $form['actions']['submit']['#weight'] = $save_weight;
       }
 
+      // Move entity_save_and_addanother_node after preview.
+      if (isset($form['actions']['entity_save_and_addanother_node'])) {
+        // Put Save after Preview.
+        $save_weight = $form['actions']['entity_save_and_addanother_node']['#weight'];
+        $form['actions']['preview']['#weight'] = $save_weight - 1;
+      }
+
       // Create gin_actions group.
       $form['gin_actions'] = [
         '#type' => 'container',
@@ -242,10 +261,11 @@ function gin_form_alter(&$form, $form_state, $form_id) {
         '#type' => 'actions',
         '#weight' => 130,
       ];
-      // Add Preview to gin_actions actions.
-      $form['gin_actions']['actions']['preview'] = ($form['actions']['preview']) ?? [];
-      // Add Submit to gin_actions actions.
-      $form['gin_actions']['actions']['submit'] = ($form['actions']['submit']) ?? [];
+
+      // Move all actions over.
+      $form['gin_actions']['actions'] = ($form['actions']) ?? [];
+      // Now let's just remove delete, as we'll move that over to gin_sidebar.
+      unset($form['gin_actions']['actions']['delete']);
 
       // Create gin_sidebar group.
       $form['gin_sidebar'] = [
@@ -261,11 +281,10 @@ function gin_form_alter(&$form, $form_state, $form_id) {
       ];
       // Copy footer over.
       $form['gin_sidebar']['footer'] = ($form['footer']) ?? [];
-      // Copy actions over.
-      $form['gin_sidebar']['actions'] = ($form['actions']) ?? [];
-      // Unset previous added preview & submit.
-      unset($form['gin_sidebar']['actions']['preview']);
-      unset($form['gin_sidebar']['actions']['submit']);
+      // Copy delete action.
+      $form['gin_sidebar']['actions'] = [];
+      $form['gin_sidebar']['actions']['#type'] = ($form['actions']['#type']) ?? [];
+      $form['gin_sidebar']['actions']['delete'] = ($form['actions']['delete']) ?? [];
     }
 
     // Attach library.
@@ -324,6 +343,12 @@ function gin_form_alter(&$form, $form_state, $form_id) {
       }
     }
   }
+
+  // Delete forms: alter buttons.
+  if (strpos($form_id, 'delete_form') !== FALSE) {
+    $form['actions']['submit']['#attributes']['class'][] = 'button--danger';
+    $form['actions']['cancel']['#attributes']['class'][] = 'button--secondary';
+  }
 }
 
 /**
@@ -374,9 +399,10 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       ],
     ];
 
+    $beta_label = ' (BETA)';
     $form['gin_theme_settings']['user_settings']['enable_darkmode'] = [
       '#type' => 'radios',
-      '#title' => t('Appearance') . ' (BETA)',
+      '#title' => t('Appearance') . $beta_label,
       '#description' => t("Enables Darkmode for the admin interface."),
       '#default_value' => strval($settings->get('enable_darkmode', $account)),
       '#options' => _gin_get_darkmode_presets(),
@@ -395,7 +421,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
     // Main Accent color setting.
     $form['gin_theme_settings']['user_settings']['accent_color'] = [
       '#type' => 'textfield',
-      '#placeholder' => '#77777',
+      '#placeholder' => '#777777',
       '#title' => t('Accent color'),
       '#description' => t('Use with caution, values should meet a11y criteria.'),
       '#default_value' => $settings->get('accent_color', $account),
@@ -523,6 +549,29 @@ function gin_preprocess_toolbar(&$variables) {
 }
 
 /**
+ * Implements toolbar preprocess.
+ */
+function gin_preprocess_toolbar__gin__secondary(&$variables) {
+  // Expose Toolbar variant.
+  /** @var \Drupal\gin\GinSettings $settings */
+  $settings = \Drupal::classResolver(GinSettings::class);
+  $variables['toolbar_variant'] = $settings->get('classic_toolbar');
+
+  if ($variables['toolbar_variant'] !== 'classic') {
+    // Move Admin Toolbar Search to start.
+    $toolbar_search = array_search('administration_search', array_keys($variables['tabs']));
+    if (is_numeric($toolbar_search)) {
+      foreach ($variables['tabs'] as $key => $item) {
+        if ($key === 'administration_search') {
+          array_unshift($variables['tabs'], $variables['tabs'][$key]);
+          unset($variables['tabs'][$key]);
+        }
+      }
+    }
+  }
+}
+
+/**
  * Implements form_alter() for forms.
  */
 function gin_theme_suggestions_form_alter(array &$suggestions, array $variables) {
@@ -546,6 +595,7 @@ function gin_theme_suggestions_input_alter(array &$suggestions, array $variables
  * Toolbar alter().
  */
 function gin_theme_suggestions_toolbar_alter(array &$suggestions, array $variables) {
+  /** @var \Drupal\gin\GinSettings $settings */
   $settings = \Drupal::classResolver(GinSettings::class);
   $toolbar = $settings->get('classic_toolbar');
 
@@ -631,9 +681,10 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     $description .= '<br/><span class="form-item__warning">' . t('This setting is overridden by the <a href="@editUrl">current user</a>. Darkmode: <strong>@darkmode</strong></span>', ['@darkmode' => $darkmode, '@editUrl' => $userEditUrl]);
   }
 
+  $beta_label = ' (BETA)';
   $form['custom_settings']['enable_darkmode'] = [
     '#type' => 'radios',
-    '#title' => t('Appearance') . ' (BETA)',
+    '#title' => t('Appearance') . $beta_label,
     '#description' => $description,
     '#default_value' => strval($settings->getDefault('enable_darkmode')),
     '#options' => _gin_get_darkmode_presets(),
@@ -657,7 +708,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   // Main Accent color setting.
   $form['custom_settings']['accent_color'] = [
     '#type' => 'textfield',
-    '#placeholder' => '#77777',
+    '#placeholder' => '#777777',
     '#title' => t('Custom Accent color'),
     '#description' => t('Use with caution, values should meet a11y criteria.'),
     '#default_value' => $settings->getDefault('accent_color'),
@@ -688,7 +739,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
       'green' => t('Green'),
       'claro' => t('Claro Green'),
       'orange' => t('Orange'),
-      'dark' => t('Dark'),
+      'dark' => t('Neutral'),
       'accent' => t('Same as Accent color'),
       'custom' => t('Custom'),
     ],
@@ -875,10 +926,20 @@ function gin_preprocess_page_title(&$variables) {
  * Breadcrumb.
  */
 function gin_preprocess_breadcrumb(&$variables) {
+  // Alter node breadcrumb.
   if (($node = \Drupal::routeMatch()->getParameter('node')) && $variables['breadcrumb']) {
     foreach ($variables['breadcrumb'] as $key => $item) {
       if ($item['url'] === '/node') {
         $variables['breadcrumb'][$key]['text'] = t('Edit') . ' ' . $node->type->entity->label();
+      }
+    }
+  }
+
+  // Node add: Fix Drupal 9 issue.
+  if (\Drupal::routeMatch()->getRouteName() === 'node.add') {
+    foreach ($variables['breadcrumb'] as $key => $item) {
+      if ($variables['breadcrumb'][$key]['text'] == '') {
+        unset($variables['breadcrumb'][$key]);
       }
     }
   }

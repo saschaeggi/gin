@@ -1,4 +1,6 @@
 .toolbar {
+  font-family: $font;
+
   .toolbar-bar {
     box-shadow: none;
 
@@ -78,7 +80,7 @@
         background: var(--colorGinIcons);
         mask-repeat: no-repeat;
         mask-position: center center;
-        mask-size: 18px 18px;
+        mask-size: var(--iconGinToolbar) var(--iconGinToolbar);
       }
 
       &.toolbar-icon-default::before {
@@ -98,13 +100,13 @@
       }
     }
 
-    .menu-item--active-trail {
-      .toolbar-icon {
-        &::before {
-          background: var(--colorGinPrimary) !important;
-        }
-      }
-    }
+    // .menu-item--active-trail {
+    //   .toolbar-icon {
+    //     &::before {
+    //       background: var(--colorGinPrimaryActive) !important;
+    //     }
+    //   }
+    // }
 
     #toolbar-item-administration-tray .toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
       &:before {
@@ -122,14 +124,14 @@
       &.is-active {
         background-color: transparent;
 
-        &:after {
+        &::after {
           display: none;
         }
       }
     }
 
     .toolbar-icon-default {
-      &:before {
+      &::before {
         padding-top: 0;
       }
     }
@@ -541,15 +543,15 @@
 }
 
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon {
-  &:before {
+  &::before {
     background: none;
     background-color: rgba(255, 255, 255, .75);
     mask-repeat: no-repeat;
     mask-position: center center;
-    mask-size: 18px 18px;
+    mask-size: var(--iconGinMeta) var(--iconGinMeta);
   }
 
-  &:hover:before {
+  &:hover::before {
     @include mq($breakpointMedium) {
       background-color: var(--colorGinTitle);
     }
@@ -577,8 +579,7 @@
   }
 }
 
-.toolbar.toolbar-meta .toolbar-bar .toolbar-tab > .toolbar-icon:before {
-  mask-size: 18px 18px;
+.toolbar.toolbar-meta .toolbar-bar .toolbar-tab > .toolbar-icon::before {
   background-color: var(--colorGinIcons);
 }
 
@@ -604,7 +605,7 @@
 }
 
 // Hide logo if accidentally shown in Devel.
-[data-toolbar-tray="toolbar-item-devel-tray"] {
+[data-toolbar-tray=toolbar-item-devel-tray] {
   .toolbar-icon-admin-toolbar-tools-help,
   .toolbar-logo {
     display: none;
@@ -613,4 +614,82 @@
 
 .responsive-preview-icon {
   @extend .toolbar-icon;
+
+  &::before {
+    mask-size: var(--iconGinMeta) var(--iconGinMeta);
+  }
+}
+
+// Admin Toolbar QuickSearch
+#admin-toolbar-search-input {
+  color: var(--colorGinText);
+  width: 245px;
+  padding-left: 40px;
+  background-color: #fff;
+  border: 1px solid var(--colorGinBorder);
+  border-radius: 25px;
+  box-sizing: border-box;
+
+  &:not(:hover):not(:focus) {
+    box-shadow: none;
+  }
+
+  .gin--dark-mode & {
+    background-color: rgba(255, 255, 255, .15);
+    border: 1px solid transparent;
+
+    &:hover {
+      border-color: var(--colorGinFormElementBorder);
+    }
+  }
+}
+
+#admin-toolbar-search-tab .js-form-type-search {
+  position: relative;
+
+  &::before {
+    content: "";
+    opacity: .75;
+    display: block;
+    width: var(--iconGinMeta);
+    height: var(--iconGinMeta);
+    position: absolute;
+    top: 7px;
+    left: 1rem;
+    background-color: var(--colorGinIcons);
+    mask-image: icon('search');
+    mask-size: 100% 100%;
+    mask-position: center center;
+  }
+}
+
+// Admin Toolbar QuickSearch Results
+.admin-toolbar-search-autocomplete-list {
+  color: var(--colorGinText);
+  background-color: var(--colorGinLayer3Background);
+  border-radius: var(--ginBorderMedium);
+  box-shadow: $shadowLevel2;
+
+  &.ui-widget-content {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    border: 0 none;
+    overflow-y: auto;
+  }
+
+  .ui-menu-item {
+    padding: 0 .5rem;
+  }
+
+  .ui-menu-item-wrapper {
+    line-height: 1.3;
+    padding: .5rem 1rem;
+    border-radius: var(--ginBorderDefault);
+
+    &.ui-state-active {
+      color: var(--colorGinButtonText);
+      background-color: var(--colorGinPrimary);
+      border: 0 none;
+    }
+  }
 }

@@ -3,11 +3,16 @@ gin:
   css:
     theme:
       dist/css/base/gin.css: { minified: false }
-    # component:
-    #   dist/css/components/ckeditor.css: { minified: false }
-      # dist/css/components/dialog.css: { minified: false }
   dependencies:
+    - gin/gin_base
     - gin/gin_ckeditor
+
+gin_base:
+  version: VERSION
+  css:
+    component:
+      dist/css/theme/font.css: { minified: false }
+      dist/css/theme/variables.css: { minified: false }
 
 gin_ckeditor:
   version: VERSION
@@ -32,18 +37,8 @@ gin_toolbar:
       dist/css/layout/toolbar.css: { minified: false }
   js:
     dist/js/toolbar.js: { minified: false }
-
-gin_classic_toolbar:
-  version: VERSION
-  css:
-    component:
-      dist/css/components/toolbar.css: { minified: false }
-      dist/css/components/coffee.css: { minified: false }
-      dist/css/components/node_preview.css: { minified: false }
-    theme:
-      dist/css/layout/classic_toolbar.css: { minified: false }
-  js:
-    dist/js/toolbar.js: { minified: false }
+  dependencies:
+    - gin/responsive_preview
 
 gin_horizontal_toolbar:
   version: VERSION
@@ -55,6 +50,20 @@ gin_horizontal_toolbar:
       dist/css/components/node_preview.css: { minified: false }
     theme:
       dist/css/layout/horizontal_toolbar.css: { minified: false }
+  js:
+    dist/js/toolbar.js: { minified: false }
+  dependencies:
+    - gin/responsive_preview
+
+gin_classic_toolbar:
+  version: VERSION
+  css:
+    component:
+      dist/css/components/toolbar.css: { minified: false }
+      dist/css/components/coffee.css: { minified: false }
+      dist/css/components/node_preview.css: { minified: false }
+    theme:
+      dist/css/layout/classic_toolbar.css: { minified: false }
   js:
     dist/js/toolbar.js: { minified: false }
 
@@ -71,9 +80,12 @@ gin_dialog:
   css:
     theme:
       dist/css/theme/dialog.css: { minified: false }
-    # component:
-    #   dist/css/components/ckeditor.css: { minified: false }
-    #   dist/css/components/dialog.css: { minified: false }
+  dependencies:
+    - gin/dialog
+    - gin/gin_base
+    - gin/gin_accent
+    - gin/gin_ckeditor
+    - gin/ckeditor
 
 gin_messages:
   version: VERSION
@@ -115,6 +127,18 @@ edit_form:
   css:
     layout:
       dist/css/components/edit_form.css: { minified: false }
+
+media_library:
+  version: VERSION
+  css:
+    theme:
+      dist/css/components/media_library.css: { minified: false, weight: 99 }
+
+contextual_links:
+  version: VERSION
+  css:
+    theme:
+      dist/css/components/contextual_links.css: { minified: false, weight: 99 }
 
 dialog:
   version: VERSION

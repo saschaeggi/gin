@@ -8,10 +8,10 @@
       if (document.querySelectorAll('.region-sticky').length > 0) {
         // Watch sticky header
         const observer = new IntersectionObserver(
-          ([e]) => e.target.classList.toggle('region-sticky--is-sticky', e.intersectionRatio < 1),
+          ([e]) => document.querySelector('.region-sticky').classList.toggle('region-sticky--is-sticky', e.intersectionRatio < 1),
           { threshold: [1] }
         );
-        observer.observe(document.querySelector('.region-sticky'));
+        observer.observe(document.querySelector('.region-sticky-watcher'));
       }
     }
   };
@@ -91,12 +91,6 @@
               --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 65))};\n\
               --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 55)};\n\
               --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 50)};\n\
-              --colorGinAppBackgroundRGB: ${Drupal.behaviors.ginAccent.hexToRgb('#1B1B1D')};\n\
-            }\n\
-            .form-element--type-select:hover,\n\
-            .form-element--type-select:active,\n\
-            .form-element--type-select:focus {\n\
-              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath fill='none' stroke-width='1.5' d='M1 1L7 7L13 1' stroke='%23${strippedAccentColor}'/%3E%3C/svg%3E%0A");\n\
             }\n\
             </style>`;
 
@@ -129,32 +123,11 @@
       // First clear things up.
       Drupal.behaviors.ginAccent.clearFocusColor();
 
-      if (focusColorPreset !== 'gin') {
-        let setColor;
+      // Set focus name.
+      $('body').attr('data-gin-focus', focusColorPreset);
 
-        switch (focusColorPreset) {
-          default:
-          case 'claro':
-            setColor = 'rgba(38, 167, 105, .6)'; //= #26a769
-            break;
-          case 'green':
-            setColor = 'rgba(8, 163, 144, .6)'; //= #08a390
-            break;
-          case 'orange':
-            setColor = 'rgba(236, 124, 87, .6)'; //= #ec7c57
-            break;
-          case 'dark':
-            setColor = 'rgba(92, 90, 103, .6)'; //= #5c5a67
-            break;
-          case 'accent':
-            setColor = 'rgba(var(--colorGinPrimaryRGB), .4)';
-            break;
-          case 'custom':
-            setColor = focusColorSetting;
-            break;
-        }
-
-        $('body').css('--colorGinFocus', setColor);
+      if (focusColorSetting === 'custom') {
+        $('body').css('--colorGinFocus', focusColorSetting);
       }
     },
 
@@ -168,14 +141,14 @@
       // Change to Darkmode.
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
         if (e.matches && localStorage.getItem('GinDarkMode') === 'auto') {
-          $('body').addClass(darkmodeClass);
+          $('html').addClass(darkmodeClass);
         }
       });
 
       // Change to Lightmode.
       window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
         if (e.matches && localStorage.getItem('GinDarkMode') === 'auto') {
-          $('body').removeClass(darkmodeClass);
+          $('html').removeClass(darkmodeClass);
         }
       });
     },

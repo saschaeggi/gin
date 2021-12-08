@@ -1,6 +1,6 @@
 .dropbutton {
   border: 2px solid var(--colorGinPrimary);
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
   box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
 
   // Offset for select button on first item
@@ -78,8 +78,8 @@
     margin: 0;
     min-width: 120px;
     background: var(--colorGinLayer3Background);
-    border-radius: $borderSmall;
-    box-shadow: $shadowLevel1;
+    border-radius: var(--ginBorderSmall);
+    box-shadow: $shadowLevel2;
 
     .node-form & {
       left: 0;
@@ -91,7 +91,7 @@
     > a,
     > input,
     > .button {
-      border-radius: $borderSmall $borderSmall 0 0;
+      border-radius: var(--ginBorderSmall) var(--ginBorderSmall) 0 0;
     }
   }
 
@@ -110,7 +110,7 @@
     // Mutiple Dropbutton only has one item
     &:first-of-type:last-of-type > * {
       .js .dropbutton--multiple & {
-        border-radius: $borderSmall;
+        border-radius: var(--ginBorderSmall);
       }
     }
 
@@ -133,7 +133,7 @@
       &:hover, &:active, &:focus {
         color: var(--colorGinButtonText);
         background: var(--colorGinPrimary);
-        border-radius: $borderSmall;
+        border-radius: var(--ginBorderSmall);
       }
     }
   }
@@ -150,7 +150,7 @@
   }
 
   & &__items > .dropbutton__item {
-    border-radius: $borderSmall;
+    border-radius: var(--ginBorderSmall);
   }
 
   &:not(.dropbutton--gin) > .dropbutton__item:not(:first-of-type),
@@ -190,7 +190,7 @@
 
 .js {
   .dropbutton--multiple .dropbutton__item:first-of-type > * {
-    border-radius: $borderXSmall 0 0 $borderXSmall;
+    border-radius: var(--ginBorderXSmall) 0 0 var(--ginBorderXSmall);
   }
 }
 
@@ -210,13 +210,13 @@
   .dropbutton--small {
     height: 2.25rem;
     min-height: 2.25rem;
-    border-radius: $borderSmall;
+    border-radius: var(--ginBorderSmall);
   }
 
   .dropbutton--extrasmall {
     height: 1.75rem;
     min-height: 1.75rem;
-    border-radius: $borderSmall;
+    border-radius: var(--ginBorderSmall);
   }
 
   .dropbutton--multiple.dropbutton--extrasmall .dropbutton__items .dropbutton__item {

@@ -3,7 +3,6 @@ const isDev = (process.env.NODE_ENV !== 'production');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
-const globImporter = require('node-sass-glob-importer');
 const Fiber = require('fibers');
 const autoprefixer = require('autoprefixer');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
@@ -43,11 +42,15 @@ module.exports = {
     'components/toolbar_meta': ['./styles/components/toolbar_meta.scss'],
     'components/upgrade_status': ['./styles/components/upgrade_status.scss'],
     'components/webform': ['./styles/components/webform.scss'],
+    'components/media_library': ['./styles/components/media_library.scss'],
+    'components/contextual_links': ['./styles/components/contextual_links.scss'],
     // Layout
     'layout/toolbar': ['./styles/layout/toolbar.scss'],
     'layout/horizontal_toolbar': ['./styles/layout/horizontal_toolbar.scss'],
     'layout/classic_toolbar': ['./styles/layout/classic_toolbar.scss'],
     // Theme
+    'theme/font': ['./styles/theme/font.scss'],
+    'theme/variables': ['./styles/theme/variables.scss'],
     'theme/accent': ['./styles/theme/accent.scss'],
     'theme/dialog': ['./styles/theme/dialog.scss'],
     'theme/ckeditor': ['./styles/theme/ckeditor.scss'],
@@ -57,13 +60,14 @@ module.exports = {
     chunkFilename: 'js/async/[name].chunk.js',
     path: path.resolve(__dirname, 'dist'),
     pathinfo: true,
-    publicPath: '../',
+    publicPath: '../../',
   },
   module: {
     rules: [
       {
         test: /\.(png|jpe?g|gif|svg)$/,
         exclude: /sprite\.svg$/,
+        type: 'javascript/auto',
         use: [{
             loader: 'file-loader',
             options: {
@@ -71,6 +75,7 @@ module.exports = {
               publicPath: (url, resourcePath, context) => {
                 const relativePath = path.relative(context, resourcePath);
 
+                // Settings
                 if (resourcePath.includes('media/settings')) {
                   return `../../${relativePath}`;
                 }
@@ -121,8 +126,21 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: () => [autoprefixer()],
               sourceMap: isDev,
+              postcssOptions: {
+                plugins: [
+                  autoprefixer(),
+                  ['postcss-perfectionist', {
+                    format: 'expanded',
+                    indentSize: 2,
+                    trimLeadingZero: true,
+                    zeroLengthNoUnit: true,
+                    maxAtRuleLength: false,
+                    maxSelectorLength: false,
+                    maxValueLength: false,
+                  }]
+                ],
+              },
             },
           },
           {
@@ -130,7 +148,6 @@ module.exports = {
             options: {
               sourceMap: isDev,
               sassOptions: {
-                importer: globImporter(),
                 fiber: Fiber,
               },
               // Global SCSS imports:
@@ -144,12 +161,33 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(woff(2))(\?v=\d+\.\d+\.\d+)?$/,
+        type: 'javascript/auto',
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[path][name].[ext]?[hash]',
+            publicPath: (url, resourcePath, context) => {
+              const relativePath = path.relative(context, resourcePath);
+
+              // Settings
+              if (resourcePath.includes('media/font')) {
+                return `../../${relativePath}`;
+              }
+
+              return `../${relativePath}`;
+            },
+          }
+        }],
+      },
     ],
   },
   resolve: {
     alias: {
       media: path.join(__dirname, 'media'),
       settings: path.join(__dirname, 'media/settings'),
+      font: path.join(__dirname, 'media/font'),
     },
     modules: [
       path.join(__dirname, 'node_modules'),
@@ -171,15 +209,14 @@ module.exports = {
           sizes: false
         },
         svgo: {
-          plugins: [{
-            removeAttrs: {
-              attrs: [
-                'use:fill',
-                'symbol:fill',
-                'svg:fill'
-              ]
-            },
-          }],
+          plugins: [
+            {
+              name: 'removeAttrs',
+              params: {
+                attrs: '(use|symbol|svg):fill'
+              }
+            }
+          ],
         },
       },
       sprite: {
@@ -196,7 +233,7 @@ module.exports = {
         filename: path.resolve(__dirname, 'styles/helpers/_svg-sprite.scss'),
         keepAttributes: true,
         // Fragment does not yet work with Firefox with mask-image.
-        // format: 'fragment',
+        format: 'fragment',
       }
     }),
   ],

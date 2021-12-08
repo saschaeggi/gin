@@ -131,7 +131,7 @@
   padding: 12px;
   background: white;
   border: 1px solid #8e929c;
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
 }
 
 .js .paragraphs-add-dialog--categorized .search-description label,

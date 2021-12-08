@@ -70,7 +70,7 @@
     &:hover,
     &:focus {
       background: var(--colorGinPrimaryLight);
-      border-radius: $borderDefault;
+      border-radius: var(--ginBorderDefault);
 
       ~ .admin-item__title,
       ~ .admin-item__description {

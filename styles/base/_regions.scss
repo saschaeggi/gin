@@ -3,29 +3,9 @@
   z-index: 101;
   padding: 1rem 0 0;
   width: 100%;
-  // background: rgba($colorAppBackground, .98);
   background: var(--colorGinAppBackground);
   box-sizing: border-box;
   transition: $transition;
-
-  // @supports (backdrop-filter: blur()) {
-  //   opacity: .999; /* Fix Chrome issue with mask */
-  //   background: rgba($colorAppBackground, .8);
-  //   backdrop-filter: blur(12px);
-  // }
-
-  .gin--dark-mode & {
-    background: rgba($colorDarkAppBackground, .98);
-
-    @supports (backdrop-filter: blur()) {
-      background: rgb(27 27 29 / 90%);
-    }
-  }
-
-  .gin--high-contrast-mode & {
-    background: var(--colorGinAppBackground);
-    backdrop-filter: none;
-  }
 
   @include mq($breakpointLarge) {
     position: sticky;
@@ -35,6 +15,12 @@
     padding: 1rem 0;
     margin-top: .25rem;
 
+    &-watcher {
+      position: sticky;
+      top: -1px;
+      height: 1px;
+    }
+
     &--is-sticky {
       opacity: .95;
       background: var(--colorGinAppBackground);
@@ -43,6 +29,11 @@
         opacity: .999;
         background: rgba(var(--colorGinAppBackgroundRGB), .8);
         backdrop-filter: blur(12px);
+      }
+
+      .gin--high-contrast-mode & {
+        background: var(--colorGinAppBackground);
+        backdrop-filter: none;
       }
     }
 
@@ -136,7 +127,7 @@
 }
 
 .sticky-shadow {
-  @include mq($breakpointSmall) {
+  @include mq($breakpointLarge) {
     z-index: 98;
     position: relative;
     pointer-events: none;
@@ -205,34 +196,6 @@ body:not(.toolbar-tray-open) .layout-container {
   }
 }
 
-.breadcrumb-wrapper {
-  flex-grow: 1;
-  white-space: nowrap;
-  margin-right: 2rem;
-}
-
-.region-meta {
-  z-index: 102;
-  position: relative;
-  display: flex;
-  margin-top: .5rem;
-  padding-bottom: .5rem;
-  border-bottom: 1px solid var(--colorGinMetaBorder);
-
-  @include mq($breakpointMedium) {
-    padding: 1rem 0 .875rem;
-  }
-
-  .gin--edit-form & {
-    @include mq($breakpointBig) {
-      position: relative;
-      left: calc(50% - 3rem);
-      transform: translateX(-50%);
-      // max-width: $breakpointWide;
-    }
-  }
-}
-
 // Action bar
 .layout-node-form__actions {
   z-index: 102;
@@ -258,16 +221,22 @@ body:not(.toolbar-tray-open) .layout-container {
     padding-right: m#{i}n(5vw, 48px);
   }
 
+  .toolbar-vertical.toolbar-tray-open & {
+    width: calc(100% - 240px);
+  }
+
   @include mq($breakpointMedium 1023px) {
     margin-left: 0;
     left: 0;
 
     .gin--vertical-toolbar & {
-      left: $toolbarWidth;
+      left: var(--ginToolbarWidthCollapsed);
+      width: calc(100% - var(--ginToolbarWidthCollapsed));
     }
 
     .gin--vertical-toolbar[data-toolbar-menu='open'] & {
-      left: $toolbarOpenWidth;
+      left: var(--ginToolbarWidth);
+      width: calc(100% - var(--ginToolbarWidth));
     }
   }
 
@@ -284,7 +253,12 @@ body:not(.toolbar-tray-open) .layout-container {
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  width: max-content;
+  justify-content: space-between;
+  width: 100%;
+
+  @include mq($breakpointLarge) {
+    width: max-content;
+  }
 
   [data-drupal-selector=edit-submit] {
     margin-right: 0;

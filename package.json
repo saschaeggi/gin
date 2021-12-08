@@ -22,12 +22,12 @@
     "@babel/core": "^7.13.8",
     "@babel/plugin-syntax-dynamic-import": "7.0.0",
     "@babel/preset-env": "^7.13.9",
-    "autoprefixer": "^9.7.3",
+    "autoprefixer": "^10.4.0",
     "babel-eslint": "10.0.1",
     "babel-loader": "^8.2.2",
     "breakpoint-sass": "^2.7.1",
-    "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "^3.4.1",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^5.2.7",
     "dotenv-webpack": "^7.0.1",
     "es6-promise": "^4.1.1",
     "eslint": "6.8.0",
@@ -36,18 +36,18 @@
     "eslint-plugin-import": "2.19.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
-    "expose-loader": "^2.0.0",
+    "expose-loader": "^3.1.0",
     "fibers": "^5.0.0",
     "file-loader": "^5.0.2",
-    "img-loader": "^3.0.2",
+    "img-loader": "^4.0.0",
     "mini-css-extract-plugin": "^0.11.3",
-    "node-sass-glob-importer": "^5.3.2",
-    "postcss-loader": "^3.0.0",
+    "postcss-loader": "^6.2.1",
+    "postcss-perfectionist": "^2.3.9",
     "raw-loader": "^4.0.2",
-    "sass-loader": "^11.0.1",
-    "sass-resources-loader": "^2.0.3",
-    "svg-inline-loader": "^0.8.0",
-    "svg-spritemap-webpack-plugin": "^3.9.0",
+    "sass-loader": "^12.3.0",
+    "sass-resources-loader": "^2.2.4",
+    "svg-inline-loader": "^0.8.2",
+    "svg-spritemap-webpack-plugin": "^4.4.0",
     "url-loader": "^4.1.1",
     "webpack": "^5.26.3",
     "webpack-cli": "^4.5.0",
@@ -58,17 +58,11 @@
   },
   "dependencies": {
     "core-js": "^3.9.1",
-    "sass": "^1.26.2"
+    "postcss": "^8.1.0",
+    "sass": "^1.44.0"
   },
   "repository": {
     "type": "git",
     "url": "git.drupalcode.org/project/gin"
-  },
-  "browserslist": [
-    "last 2 versions",
-    "> 1%",
-    "firefox esr",
-    "ie > 11",
-    "iOS > 9"
-  ]
+  }
 }

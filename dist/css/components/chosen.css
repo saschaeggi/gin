@@ -2,18 +2,19 @@
   width: auto !important;
   padding: 0;
 }
+
 .form-element.chosen-container-single .chosen-single {
   min-width: 160px;
   background: none;
   border: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   width: 100%;
   height: 100%;
   display: block;
   line-height: 1.5rem;
-  padding: calc(0.75rem - 1px) calc(1rem - 1px);
+  padding: calc(.75rem - 1px) calc(1rem - 1px);
 }
+
 .form-element.chosen-container-single .chosen-single b {
   background: none !important;
 }
@@ -21,10 +22,11 @@
 .form-element.chosen-container-multi {
   width: auto !important;
 }
+
 .form-element.chosen-container-multi .chosen-choices {
   min-width: 160px;
   border: 0 none;
   background: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
+

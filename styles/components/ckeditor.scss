@@ -10,17 +10,17 @@
   &.cke_chrome {
     width: 100% !important; // Fix issue with field_group
     border-color: var(--colorGinFormElementBorder);
-    border-radius: $borderDefault;
+    border-radius: var(--ginBorderDefault);
   }
 
   .cke_inner {
-    border-radius: $borderDefault;
+    border-radius: var(--ginBorderDefault);
   }
 
   .cke_top {
     background: var(--colorGinLayerBackground);
     border-bottom: 1px solid var(--colorGinBorder);
-    border-radius: #{$borderDefault - 1} #{$borderDefault - 1} 0 0;
+    border-radius: calc(var(--ginBorderDefault) - 1px) calc(var(--ginBorderDefault) - 1px) 0 0;
 
     .gin--dark-mode & {
       background: var(--colorGinLayer2Background);
@@ -29,7 +29,7 @@
 
   .cke_bottom {
     background: var(--colorGinLayer3Background);
-    border-radius: 0 0 #{$borderDefault - 1} #{$borderDefault - 1};
+    border-radius: 0 0 calc(var(--ginBorderDefault) - 1px) calc(var(--ginBorderDefault) - 1px);
   }
 
   .cke_contents {
@@ -147,7 +147,7 @@ body .cke_notification_info {
   padding: .5rem;
   background: var(--colorGinLayer4Background);
   border: 0 none;
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
   box-shadow: $shadowLevel1;
 
   .cke_notification_message {

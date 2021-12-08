@@ -68,7 +68,7 @@
   height: auto;
   padding: 16px 0;
   background: var(--colorGinLayerBackground);
-  border-radius: $borderDefault;
+  border-radius: var(--ginBorderDefault);
 
   &__status-title {
     padding-left: 0;
@@ -106,6 +106,7 @@
   &__item {
     padding: 1rem;
     background: transparent;
+    box-shadow: none;
   }
 
   &__item-title {
@@ -115,9 +116,7 @@
   }
 
   &__sub-item-title {
-    font-size: 1rem;
-    font-weight: normal;
-    display: inline-block;
+    font-weight: 600;
 
     &:after {
       content: ":\00a0";
@@ -168,6 +167,11 @@
 
 .system-status-report {
   margin-top: 1.5rem;
+
+  &-counters &-counters__item {
+    border: 1px solid var(--colorGinLayerBorder);
+    box-shadow: $shadowLevel1;
+  }
 
   &__status-title {
     font-weight: 500;
