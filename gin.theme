@@ -10,6 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\user\Entity\User;
 use Drupal\Core\Url;
+use Drupal\image\Entity\ImageStyle;
 use Drupal\gin\GinSettings;
 
 /**
@@ -534,11 +535,13 @@ function gin_preprocess_toolbar(&$variables) {
     $user = User::load($user_id);
 
     if (!empty($user->user_picture) && !empty($user->user_picture->entity)) {
-      $image = $user->user_picture->entity->getFileUri();
-      $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('thumbnail');
-      $url = $style->buildUrl($image);
+      $image_style = ImageStyle::load('thumbnail');
 
-      $variables['user_picture'] = $url;
+      if ($image_style) {
+        $image = $user->user_picture->entity->getFileUri();
+        $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('thumbnail');
+        $variables['user_picture'] = $style->buildUrl($image);
+      }
     }
   }
 
