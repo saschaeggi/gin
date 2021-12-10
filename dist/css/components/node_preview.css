@@ -1,6 +1,6 @@
 .node-preview-container {
   font-size: .79rem;
-  z-index: 998;
+  z-index: 501;
   /* on top of the Drupal world */
   position: -webkit-sticky;
   position: sticky;

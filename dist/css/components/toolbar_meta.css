@@ -19,7 +19,7 @@
 }
 
 .region-meta--frontend {
-  z-index: 998;
+  z-index: 501;
   /* on top of the Drupal world */
   position: -webkit-sticky;
   position: sticky;
