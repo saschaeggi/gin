@@ -737,8 +737,8 @@
   box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
 }
 
-.ui-dialog .ajax-progress-throbber:before,
-.contextual-links .ajax-progress-throbber:before {
+.ui-dialog .ajax-progress-throbber::before,
+.contextual-links .ajax-progress-throbber::before {
   content: "";
   display: block;
   position: absolute;
@@ -766,7 +766,7 @@
   background: #fff;
 }
 
-.contextual-links .ajax-progress-throbber:before {
+.contextual-links .ajax-progress-throbber::before {
   top: 0;
   left: .25em;
 }

@@ -247,13 +247,13 @@
     width: 170px;
     background-color: var(--colorGinLayer3Background);
     border-bottom: 0 none;
-    border-radius: 0 var(--ginBorderSmall) var(--ginBorderSmall) var(--ginBorderSmall);
+    border-radius: 0 var(--ginBorderMedium) var(--ginBorderMedium) var(--ginBorderMedium);
     box-shadow: 0 1px 2px rgba(20, 45, 82, .02), 0 3px 4px rgba(20, 45, 82, .03), 0 5px 8px rgba(20, 45, 82, .04), 0 20px 24px rgba(20, 45, 82, .12);
   }
 
   .toolbar-meta .toolbar-bar .toolbar-tab .toolbar-tray a {
     color: var(--colorGinPrimary);
-    padding: 12px 16px;
+    padding: .75rem 1rem;
     border-radius: var(--ginBorderSmall);
   }
 
@@ -285,7 +285,7 @@
   .toolbar-meta .toolbar-bar .toolbar-id--toolbar-icon-user .toolbar-tray {
     left: auto;
     right: 0;
-    border-radius: var(--ginBorderSmall) 0 var(--ginBorderSmall) var(--ginBorderSmall);
+    border-radius: var(--ginBorderMedium) 0 var(--ginBorderMedium) var(--ginBorderMedium);
   }
 
   .toolbar-meta .toolbar-bar .toolbar-id--toolbar-icon-user:not(.has-user-icon) {

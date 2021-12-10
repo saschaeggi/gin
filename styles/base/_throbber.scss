@@ -48,7 +48,7 @@
 
 .ui-dialog .ajax-progress-throbber,
 .contextual-links .ajax-progress-throbber {
-  &:before {
+  &::before {
     content: "";
     display: block;
     position: absolute;
@@ -82,7 +82,7 @@
     height: 24px;
     background: #fff;
 
-    &:before {
+    &::before {
       top: 0;
       left: .25em;
     }

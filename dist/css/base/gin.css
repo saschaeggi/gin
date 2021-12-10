@@ -2699,7 +2699,7 @@ a.button:active {
   margin: 0;
   min-width: 120px;
   background: var(--colorGinLayer3Background);
-  border-radius: var(--ginBorderSmall);
+  border-radius: var(--ginBorderMedium);
   box-shadow: 0 1px 2px rgba(20, 45, 82, .02), 0 3px 4px rgba(20, 45, 82, .03), 0 5px 8px rgba(20, 45, 82, .04), 0 20px 24px rgba(20, 45, 82, .12);
 }
 
@@ -3589,8 +3589,8 @@ table.diff tr .diff-addedline .diffchange {
   box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
 }
 
-.ui-dialog .ajax-progress-throbber:before,
-.contextual-links .ajax-progress-throbber:before {
+.ui-dialog .ajax-progress-throbber::before,
+.contextual-links .ajax-progress-throbber::before {
   content: "";
   display: block;
   position: absolute;
@@ -3618,7 +3618,7 @@ table.diff tr .diff-addedline .diffchange {
   background: #fff;
 }
 
-.contextual-links .ajax-progress-throbber:before {
+.contextual-links .ajax-progress-throbber::before {
   top: 0;
   left: .25em;
 }
