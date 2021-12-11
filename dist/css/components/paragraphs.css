@@ -22,7 +22,7 @@
 .paragraphs-tabs-wrapper .field-multiple-table thead .label {
   display: inline-block;
   font-size: 18px;
-  color: var(--colorGinTitle);
+  color: var(--colorGinPrimaryActive);
   padding: 0;
   margin: 10px;
 }
@@ -302,5 +302,42 @@
 .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple .placeholder,
 .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple ~ .placeholder {
   margin-left: .25rem;
+}
+
+.toolbar-fixed .is-horizontal .paragraphs-tabs {
+  padding: .5rem 1rem !important;
+  background-color: var(--colorGinLayer3Background);
+  border-radius: var(--ginBorderSmall);
+}
+
+.toolbar-fixed .is-horizontal .paragraphs-tabs:first-of-type {
+  z-index: 100;
+  top: calc(var(--ginHorizontalToolbarOffset) + var(--ginStickyHeight));
+}
+
+.toolbar-fixed .is-horizontal .paragraphs-tabs .tabs__tab {
+  float: left;
+  margin-right: 1rem;
+}
+
+.toolbar-fixed .is-horizontal .paragraphs-tabs .tabs__tab a {
+  display: block;
+  padding: .5rem 0;
+  color: var(--colorGinText);
+}
+
+.toolbar-fixed .is-horizontal .paragraphs-tabs .tabs__tab.is-active a {
+  color: var(--colorGinPrimary);
+}
+
+.toolbar-fixed .is-horizontal .paragraphs-tabs .tabs__tab.is-active a::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  border-bottom: 2px solid var(--colorGinPrimary);
 }
 

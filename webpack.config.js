@@ -134,7 +134,7 @@ module.exports = {
                     format: 'expanded',
                     indentSize: 2,
                     trimLeadingZero: true,
-                    zeroLengthNoUnit: true,
+                    zeroLengthNoUnit: false,
                     maxAtRuleLength: false,
                     maxSelectorLength: false,
                     maxValueLength: false,
@@ -232,7 +232,7 @@ module.exports = {
       styles: {
         filename: path.resolve(__dirname, 'styles/helpers/_svg-sprite.scss'),
         keepAttributes: true,
-        // Fragment does not yet work with Firefox with mask-image.
+        // Fragment now works with Firefox 84+ and 91esr+
         format: 'fragment',
       }
     }),

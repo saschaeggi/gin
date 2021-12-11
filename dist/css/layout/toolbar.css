@@ -1,15 +1,15 @@
 :root {
   --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
-  --ginHorizontalToolbarOffset: 0;
-  --ginVerticalToolbarOffset: 0;
+  --ginHorizontalToolbarOffset: 0px;
+  --ginVerticalToolbarOffset: 0px;
 }
 
 @media (min-width: 1024px) {
   :root {
     --iconGinToolbar: 22px;
     --ginScrollOffset: 130px;
-    --ginHorizontalToolbarOffset: 0;
+    --ginHorizontalToolbarOffset: 0px;
     --ginVerticalToolbarOffset: var(--ginToolbarWidthCollapsed);
   }
 }

@@ -2,15 +2,15 @@
   --colorGinPrimary: rgb(var(--colorGinPrimaryRGB));
   --colorGinPrimaryLight: rgba(var(--colorGinPrimaryRGB), .15);
   --colorGinAppBackground: rgb(var(--colorGinAppBackgroundRGB));
+  --colorGinItemHover: rgba(var(--colorGinPrimaryRGB), .1);
   --colorGinPrimaryLightHover: rgba(var(--colorGinPrimaryRGB), .2);
   --colorGinPrimaryLightActive: rgba(var(--colorGinPrimaryRGB), .3);
   --colorGinPrimaryLightShadow: rgba(var(--colorGinPrimaryRGB), .45);
-  --colorGinItemHover: rgba(var(--colorGinPrimaryRGB), .1);
-  // --colorGinTableHeader: rgba(var(--colorGinPrimaryRGB), .125);
 }
 
 .gin--dark-mode[data-gin-accent],
 .gin--dark-mode [data-gin-accent] {
+  --colorGinItemHover: rgba(var(--colorGinPrimaryRGB), .08);
   --colorGinAppBackgroundRGB: #{color.red($colorDarkAppBackground)}, #{color.green($colorDarkAppBackground)}, #{color.blue($colorDarkAppBackground)};
 }
 
@@ -40,7 +40,7 @@ $ginColors: (
     --colorGinPrimaryHover: #{mix(black, $color, 15%)};
     --colorGinPrimaryActive: #{mix(black, $color, 25%)};
     --colorGinAppBackgroundRGB: #{color.red($bgColor)}, #{color.green($bgColor)}, #{color.blue($bgColor)};
-    --colorGinTableHeader: #{mix(white, $color, 85%)};
+    --colorGinTableHeader: #{mix(white, $color, 88%)};
 
     @if $name == dark_purple or $name == purple {
       --colorGinPrimaryLightHover: rgba(var(--colorGinPrimaryRGB), .2);
@@ -97,7 +97,6 @@ $ginDarkmodeColors: (
   --colorGinTableBorder: #{$highContrastMode};
   --colorGinTabsBorder: #{$highContrastMode};
   --colorGinFormElementBorder: #{$highContrastMode};
-  // --colorGinTableHeader: #000;
 
   .gin--dark-mode & {
     $highContrastMode: rgba(255, 255, 255, .8);

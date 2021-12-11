@@ -29,7 +29,7 @@
       .label {
         display: inline-block;
         font-size: 18px;
-        color: var(--colorGinTitle);
+        color: var(--colorGinPrimaryActive);
         padding: 0;
         margin: 10px;
       }
@@ -325,6 +325,45 @@
       .placeholder,
       ~ .placeholder {
         margin-left: .25rem;
+      }
+    }
+  }
+}
+
+.toolbar-fixed .is-horizontal .paragraphs-tabs {
+  padding: .5rem 1rem !important;
+  background-color: var(--colorGinLayer3Background);
+  border-radius: var(--ginBorderSmall);
+
+  &:first-of-type {
+    z-index: 100;
+    top: calc(var(--ginHorizontalToolbarOffset) + var(--ginStickyHeight));
+  }
+
+  .tabs__tab {
+    float: left;
+    margin-right: 1rem;
+
+    a {
+      display: block;
+      padding: .5rem 0;
+      color: var(--colorGinText);
+    }
+
+    &.is-active {
+      a {
+        color: var(--colorGinPrimary);
+
+        &::after {
+          pointer-events: none;
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          display: block;
+          width: 100%;
+          border-bottom: 2px solid var(--colorGinPrimary);
+        }
       }
     }
   }

@@ -2,13 +2,13 @@
 :root {
   --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
-  --ginHorizontalToolbarOffset: 0;
-  --ginVerticalToolbarOffset: 0;
+  --ginHorizontalToolbarOffset: 0px; // Needs px to work in calc() functions.
+  --ginVerticalToolbarOffset: 0px; // Needs px to work in calc() functions.
 
   @include mq($breakpointLarge) {
     --iconGinToolbar: 22px;
     --ginScrollOffset: 130px;
-    --ginHorizontalToolbarOffset: 0;
+    --ginHorizontalToolbarOffset: 0px; // Needs px to work in calc() functions.
     --ginVerticalToolbarOffset: var(--ginToolbarWidthCollapsed);
   }
 }
@@ -465,8 +465,8 @@ a.toolbar-menu__trigger,
       // Shadow as scrolling indicator
       background: linear-gradient(var(--colorGinLayerBackground) 30%, rgba(255, 255, 255, 0)),
                   linear-gradient(rgba(255, 255, 255, 0), var(--colorGinLayerBackground) 80%) 0 100%,
-                  radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0)),
-                  radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0)) 0 100%;
+                  radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .15), rgba(0, 0, 0, 0)),
+                  radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .15), rgba(0, 0, 0, 0)) 0 100%;
       background-color: var(--colorGinLayerBackground);
       background-repeat: no-repeat;
       background-attachment: local, local, scroll, scroll;
@@ -475,8 +475,8 @@ a.toolbar-menu__trigger,
       .toolbar-menu {
         background: linear-gradient(var(--colorGinLayerBackground) 30%, rgba(255, 255, 255, 0)),
                     linear-gradient(rgba(255, 255, 255, 0), var(--colorGinLayerBackground) 80%) 0 100%,
-                    radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)),
-                    radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)) 0 100%;
+                    radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)),
+                    radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
         background-color: var(--colorGinLayerBackground);
         background-repeat: no-repeat;
         background-attachment: local, local, scroll, scroll;
@@ -488,7 +488,7 @@ a.toolbar-menu__trigger,
       z-index: 2;
       display: block;
       border-right: 1px solid rgba(0,0,0,.075);
-      box-shadow: 7px 0px 16px rgba(0,0,0,.075);
+      box-shadow: 7px 0 16px rgba(0,0,0,.075);
     }
 
     .menu-item .menu-item:hover > .toolbar-icon {
@@ -593,7 +593,7 @@ a.toolbar-menu__trigger,
 //       z-index: 1;
 //       display: block;
 //       border-right: 1px solid var(--colorGinLayerBorder);
-//       box-shadow: 7px 0px 16px rgba(0,0,0,.075);
+//       box-shadow: 7px 0 16px rgba(0,0,0,.075);
 
 //       > li {
 //         float: none;

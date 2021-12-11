@@ -4,6 +4,10 @@
   color: var(--colorGinText);
 }
 
+.js .paragraphs-add-dialog--categorized .paragraphs-button--add-more:hover .paragraphs-label {
+  color: var(--colorGinButtonText);
+}
+
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .category-title,
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-label,
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-label {

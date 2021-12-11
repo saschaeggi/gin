@@ -2,14 +2,15 @@
   --colorGinPrimary: rgb(var(--colorGinPrimaryRGB));
   --colorGinPrimaryLight: rgba(var(--colorGinPrimaryRGB), .15);
   --colorGinAppBackground: rgb(var(--colorGinAppBackgroundRGB));
+  --colorGinItemHover: rgba(var(--colorGinPrimaryRGB), .1);
   --colorGinPrimaryLightHover: rgba(var(--colorGinPrimaryRGB), .2);
   --colorGinPrimaryLightActive: rgba(var(--colorGinPrimaryRGB), .3);
   --colorGinPrimaryLightShadow: rgba(var(--colorGinPrimaryRGB), .45);
-  --colorGinItemHover: rgba(var(--colorGinPrimaryRGB), .1);
 }
 
 .gin--dark-mode[data-gin-accent],
 .gin--dark-mode [data-gin-accent] {
+  --colorGinItemHover: rgba(var(--colorGinPrimaryRGB), .08);
   --colorGinAppBackgroundRGB: 27, 27, 29;
 }
 
@@ -19,7 +20,7 @@
   --colorGinPrimaryHover: #0444c4;
   --colorGinPrimaryActive: #043cad;
   --colorGinAppBackgroundRGB: 248, 250, 254;
-  --colorGinTableHeader: #dae5fb;
+  --colorGinTableHeader: #e1eafc;
 }
 
 [data-gin-accent=light_blue] {
@@ -28,7 +29,7 @@
   --colorGinPrimaryHover: #2b63be;
   --colorGinPrimaryActive: #2658a8;
   --colorGinAppBackgroundRGB: 249, 251, 254;
-  --colorGinTableHeader: #e0eafa;
+  --colorGinTableHeader: #e6eefb;
 }
 
 [data-gin-accent=dark_purple] {
@@ -37,7 +38,7 @@
   --colorGinPrimaryHover: #3900a2;
   --colorGinPrimaryActive: #32008f;
   --colorGinAppBackgroundRGB: 249, 247, 253;
-  --colorGinTableHeader: #e3d9f5;
+  --colorGinTableHeader: #e8e0f7;
   --colorGinPrimaryLightHover: rgba(var(--colorGinPrimaryRGB), .2);
   --colorGinPrimaryLightActive: rgba(var(--colorGinPrimaryRGB), .25);
   --colorGinPrimaryLightShadow: rgba(var(--colorGinPrimaryRGB), .4);
@@ -50,7 +51,7 @@
   --colorGinPrimaryHover: #4d00d9;
   --colorGinPrimaryActive: #4400bf;
   --colorGinAppBackgroundRGB: 250, 247, 255;
-  --colorGinTableHeader: #e6d9ff;
+  --colorGinTableHeader: #ebe0ff;
   --colorGinPrimaryLightHover: rgba(var(--colorGinPrimaryRGB), .2);
   --colorGinPrimaryLightActive: rgba(var(--colorGinPrimaryRGB), .25);
   --colorGinPrimaryLightShadow: rgba(var(--colorGinPrimaryRGB), .4);
@@ -63,7 +64,7 @@
   --colorGinPrimaryHover: #0e716c;
   --colorGinPrimaryActive: #0c645f;
   --colorGinAppBackgroundRGB: 248, 251, 251;
-  --colorGinTableHeader: #dbedec;
+  --colorGinTableHeader: #e2f0f0;
 }
 
 [data-gin-accent=green] {
@@ -72,7 +73,7 @@
   --colorGinPrimaryHover: #007351;
   --colorGinPrimaryActive: #006547;
   --colorGinAppBackgroundRGB: 247, 251, 250;
-  --colorGinTableHeader: #d9ede7;
+  --colorGinTableHeader: #e0f1ec;
 }
 
 [data-gin-accent=red] {
@@ -81,7 +82,7 @@
   --colorGinPrimaryHover: #b80028;
   --colorGinPrimaryActive: #a20023;
   --colorGinAppBackgroundRGB: 254, 247, 249;
-  --colorGinTableHeader: #f9d9e0;
+  --colorGinTableHeader: #fae0e6;
 }
 
 [data-gin-accent=orange] {
@@ -90,7 +91,7 @@
   --colorGinPrimaryHover: #cb4e1b;
   --colorGinPrimaryActive: #b34518;
   --colorGinAppBackgroundRGB: 255, 250, 248;
-  --colorGinTableHeader: #fde7de;
+  --colorGinTableHeader: #fdebe4;
 }
 
 [data-gin-accent=yellow] {
@@ -99,7 +100,7 @@
   --colorGinPrimaryHover: #a77400;
   --colorGinPrimaryActive: #946700;
   --colorGinAppBackgroundRGB: 253, 251, 247;
-  --colorGinTableHeader: #f6edd9;
+  --colorGinTableHeader: #f8f1e0;
 }
 
 [data-gin-accent=pink] {
@@ -108,7 +109,7 @@
   --colorGinPrimaryHover: #c02a65;
   --colorGinPrimaryActive: #aa2559;
   --colorGinAppBackgroundRGB: 254, 249, 251;
-  --colorGinTableHeader: #fbe0eb;
+  --colorGinTableHeader: #fce6ef;
 }
 
 [data-gin-accent=neutral] {
@@ -117,7 +118,7 @@
   --colorGinPrimaryHover: #0e0e0e;
   --colorGinPrimaryActive: #0d0d0d;
   --colorGinAppBackgroundRGB: 248, 248, 248;
-  --colorGinTableHeader: #dbdbdb;
+  --colorGinTableHeader: #e2e2e2;
 }
 
 [data-gin-accent=custom] {
@@ -126,7 +127,7 @@
   --colorGinPrimaryHover: #0e0e0e;
   --colorGinPrimaryActive: #0d0d0d;
   --colorGinAppBackgroundRGB: 248, 248, 248;
-  --colorGinTableHeader: #dbdbdb;
+  --colorGinTableHeader: #e2e2e2;
 }
 
 .gin--dark-mode[data-gin-accent=blue],

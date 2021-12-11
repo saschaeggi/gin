@@ -3,7 +3,7 @@
   --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
   --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
-  --ginVerticalToolbarOffset: 0;
+  --ginVerticalToolbarOffset: 0px; // Needs px to work in calc() functions.
 
   @include mq($breakpointLarge) {
     --iconGinToolbar: 16px;
@@ -156,7 +156,7 @@
 }
 
 #toolbar-item-administration-tray {
-  box-shadow: 0 0px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
 
   .toolbar-logo {
     img {
