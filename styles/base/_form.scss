@@ -243,6 +243,11 @@ $maxWidth: 520px;
     &:disabled:checked ~ .checkbox-toggle .checkbox-toggle__inner,
     &:disabled:checked ~ .checkbox-toggle:hover .checkbox-toggle__inner {
       background-color: var(--colorGinDisabled);
+
+      &::before {
+        background-color: #fff;
+        opacity: .4;
+      }
     }
   }
 

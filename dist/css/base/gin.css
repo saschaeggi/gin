@@ -2246,6 +2246,11 @@ td.webform-has-field-suffix > .form-item > .form-element {
   background-color: var(--colorGinDisabled);
 }
 
+:not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:disabled ~ .checkbox-toggle::before, :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:disabled ~ .checkbox-toggle:hover::before, :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:disabled:checked ~ .checkbox-toggle .checkbox-toggle__inner::before, :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:disabled:checked ~ .checkbox-toggle:hover .checkbox-toggle__inner::before {
+  background-color: #fff;
+  opacity: .4;
+}
+
 :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox label {
   z-index: 1;
   position: relative;
@@ -4160,5 +4165,30 @@ tr.color-error:focus,
 
 .button--primary:not(:focus).shepherd-button {
   box-shadow: none;
+}
+
+blockquote {
+  font-size: 1.2em;
+  position: relative;
+  padding-left: 1.5rem;
+  margin: 1rem;
+}
+
+@media (min-width: 976px) {
+  blockquote {
+    font-size: 1.5em;
+  }
+}
+
+blockquote::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--colorGinPrimary);
+  border-radius: 2px;
 }
 
