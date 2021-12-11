@@ -44,3 +44,8 @@
     background: var(--colorGinAppBackground);
   }
 }
+
+.pager__link.is-active,
+.pager__item--current {
+  background-color: var(--colorGinPrimary);
+}

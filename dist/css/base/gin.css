@@ -133,20 +133,6 @@ button.link:active,
   border-color: var(--colorGinPrimaryActive);
 }
 
-.form-boolean--type-radio:checked:not(:disabled) {
-  box-shadow: inset 0 0 0 1px var(--colorGinPrimary);
-}
-
-.form-boolean--type-checkbox[disabled]:checked {
-  border-color: var(--colorGinDisabled);
-  background-color: var(--colorGinDisabled);
-  box-shadow: none;
-}
-
-.pager__link.is-active, .pager__item--current {
-  background-color: var(--colorGinPrimary);
-}
-
 .region-sticky {
   position: relative;
   z-index: 101;
@@ -1896,6 +1882,14 @@ table td .group-label {
           mask-position: center center;
 }
 
+.sortable-heading.is-active > a, .sortable-heading.is-active > a:hover, .sortable-heading.is-active > a:active {
+  color: var(--colorGinPrimaryActive);
+}
+
+.sortable-heading.is-active > a::before {
+  border-bottom: .1875rem solid var(--colorGinPrimaryActive);
+}
+
 .tablesort {
   background-color: var(--colorGinPrimaryActive);
   background-image: none;
@@ -2296,6 +2290,16 @@ td.webform-has-field-suffix > .form-item > .form-element {
 
 .form-boolean--type-radio:checked:not(:disabled):active, .form-boolean--type-radio:checked:not(:disabled):focus, .form-boolean--type-radio:checked:not(:disabled):hover:focus {
   box-shadow: inset 0 0 0 5px var(--colorGinPrimary), 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus);
+}
+
+.form-boolean--type-radio:checked:not(:disabled) {
+  box-shadow: inset 0 0 0 1px var(--colorGinPrimary);
+}
+
+.form-boolean--type-checkbox[disabled]:checked {
+  border-color: var(--colorGinDisabled);
+  background-color: var(--colorGinDisabled);
+  box-shadow: none;
 }
 
 .form-radios .form-type--boolean,
@@ -3031,6 +3035,11 @@ a.button.button--danger:active:before {
 .pager__item--last .pager__link:hover::before,
 .pager__item--last .pager__link:hover::after {
   background: var(--colorGinAppBackground);
+}
+
+.pager__link.is-active,
+.pager__item--current {
+  background-color: var(--colorGinPrimary);
 }
 
 .block-help-block {

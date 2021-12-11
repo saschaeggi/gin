@@ -119,6 +119,16 @@ table {
     mask-repeat: no-repeat;
     mask-position: center center;
   }
+
+  &.is-active > a {
+    &, &:hover, &:active {
+      color: var(--colorGinPrimaryActive);
+    }
+
+    &::before {
+      border-bottom: .1875rem solid var(--colorGinPrimaryActive);
+    }
+  }
 }
 
 .tablesort {

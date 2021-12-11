@@ -61,17 +61,3 @@ button.link,
     border-color: var(--colorGinPrimaryActive);
   }
 }
-
-.form-boolean--type-radio:checked:not(:disabled) {
-  box-shadow: inset 0 0 0 1px var(--colorGinPrimary);
-}
-
-.form-boolean--type-checkbox[disabled]:checked {
-  border-color: var(--colorGinDisabled);
-  background-color: var(--colorGinDisabled);
-  box-shadow: none;
-}
-
-.pager__link.is-active, .pager__item--current {
-  background-color: var(--colorGinPrimary);
-}
