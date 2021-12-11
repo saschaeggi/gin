@@ -48,7 +48,13 @@
 
 <div class="region region-meta layout-container">
   <div class="breadcrumb-wrapper">
+  {% if route_name == 'entity.node.canonical' %}
+    <div class="region region-breadcrumb">
+      <a class="gin-back-to-admin" href="/node/{{ node_id }}/edit">{{ 'Edit'|t }} {{ node_title }}</a>
+    </div>
+  {% else %}
     {{ page.breadcrumb }}
+  {% endif %}
   </div>
   {{ page.gin_secondary_toolbar }}
 </div>

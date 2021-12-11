@@ -87,6 +87,15 @@ function gin_preprocess_page(&$variables) {
 
   // Expose Toolbar variant.
   $variables['toolbar_variant'] = $settings->get('classic_toolbar');
+
+  // Expose Route name.
+  $variables['route_name'] = \Drupal::routeMatch()->getRouteName();
+
+  if ($variables['route_name'] === 'entity.node.canonical') {
+    $node = \Drupal::request()->attributes->get('node');
+    $variables['node_id'] = $node->id();
+    $variables['node_title'] = $node->getTitle();
+  }
 }
 
 /**
