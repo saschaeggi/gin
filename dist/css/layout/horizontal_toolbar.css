@@ -1,12 +1,20 @@
 :root {
+  --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
+  --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
+  --ginVerticalToolbarOffset: 0;
 }
 
 @media (min-width: 1024px) {
   :root {
+    --ginToolbarHeight: 53px;
     --ginScrollOffset: 180px;
     --iconGinToolbar: 18px;
   }
+}
+
+.region-meta--frontend {
+  top: -60px;
 }
 
 .toolbar .toolbar-bar {
@@ -31,8 +39,13 @@
 .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-left: 2.875em;
+  padding-left: 3em;
   white-space: nowrap;
+}
+
+.toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon::before,
+.toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon::before {
+  margin-top: -1px;
 }
 
 .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:not(.toolbar-handle)::before {
@@ -130,19 +143,9 @@
   background-color: var(--colorGinAppBackground);
 }
 
-.gin--classic-toolbar .page-wrapper__node-edit-form .layout-region-node-secondary {
-  padding-top: 39px;
-}
-
 @media (min-width: 1024px) {
   .gin--classic-toolbar table.sticky-header {
     margin-top: 0;
-  }
-}
-
-@media (min-width: 976px) {
-  .gin--horizontal-toolbar {
-    padding-top: 53px !important;
   }
 }
 
@@ -176,14 +179,14 @@
 
 @media (min-width: 1024px) {
   .gin--horizontal-toolbar.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
-    top: 53px;
-    height: calc(100% - 53px);
+    top: var(--ginToolbarHeight);
+    height: calc(100% - var(--ginToolbarHeight));
   }
 }
 
 @media (min-width: 976px) {
   .gin--horizontal-toolbar #toolbar-administration {
-    z-index: 106;
+    z-index: 502;
     position: fixed;
     top: 0;
     width: 100%;
@@ -191,7 +194,7 @@
 
   .gin--horizontal-toolbar #toolbar-administration,
 .gin--horizontal-toolbar #toolbar-administration .toolbar-bar {
-    height: 53px;
+    height: var(--ginToolbarHeight);
   }
 }
 

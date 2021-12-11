@@ -1,11 +1,19 @@
-// Scroll Offset
+// Toolbar Variables
 :root {
+  --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
+  --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
+  --ginVerticalToolbarOffset: 0;
 
   @include mq($breakpointLarge) {
+    --ginToolbarHeight: 53px;
     --ginScrollOffset: 180px;
     --iconGinToolbar: 18px;
   }
+}
+
+.region-meta--frontend {
+  top: -60px;
 }
 
 // Toolbar
@@ -30,8 +38,12 @@
           > .toolbar-box > .toolbar-icon {
             padding-top: 20px;
             padding-bottom: 20px;
-            padding-left: 2.875em;
+            padding-left: 3em;
             white-space: nowrap;
+
+            &::before {
+              margin-top: -1px;
+            }
           }
 
           > .toolbar-box > .toolbar-icon:not(.toolbar-handle)::before {
@@ -130,20 +142,14 @@
 }
 
 .gin--classic-toolbar {
-  .page-wrapper__node-edit-form .layout-region-node-secondary {
-    padding-top: 39px;
-  }
+  // .page-wrapper__node-edit-form .layout-region-node-secondary {
+  //   padding-top: 39px;
+  // }
 
   table.sticky-header {
     @include mq($breakpointLarge) {
       margin-top: 0;
     }
-  }
-}
-
-.gin--horizontal-toolbar {
-  @include mq($breakpointMedium) {
-    padding-top: $toolbarHorizontal !important;
   }
 }
 
@@ -177,22 +183,22 @@
 
 .gin--horizontal-toolbar.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
   @include mq($breakpointLarge) {
-    top: $toolbarHorizontal;
-    height: calc(100% - #{$toolbarHorizontal});
+    top: var(--ginToolbarHeight);
+    height: calc(100% - var(--ginToolbarHeight));
   }
 }
 
 // Main horizontal nav
 .gin--horizontal-toolbar #toolbar-administration {
   @include mq($breakpointMedium) {
-    z-index: 106;
+    z-index: 502;
     position: fixed;
     top: 0;
     width: 100%;
 
     &,
     .toolbar-bar {
-      height: $toolbarHorizontal;
+      height: var(--ginToolbarHeight);
     }
   }
 

@@ -1,10 +1,19 @@
-// Scroll Offset
+// Toolbar Variables
 :root {
+  --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
+  --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
+  --ginVerticalToolbarOffset: 0;
 
   @include mq($breakpointLarge) {
-    --ginScrollOffset: 200px;
     --iconGinToolbar: 16px;
+    --ginScrollOffset: 200px;
+  }
+}
+
+.toolbar-fixed.toolbar-tray-open {
+  @include mq($breakpointMedium) {
+    --ginHorizontalToolbarOffset: 78px;
   }
 }
 
@@ -108,7 +117,7 @@
 
 .gin--classic-toolbar {
   .page-wrapper__node-edit-form .layout-region-node-secondary {
-    padding-top: 39px;
+    padding-top: var(--ginHorizontalToolbarOffset); // 39px;
   }
 
   table.sticky-header {
@@ -141,7 +150,7 @@
 
   @include mq($breakpointMedium) {
     &:before {
-      left: 16px;
+      left: 1rem;
     }
   }
 }
@@ -163,15 +172,8 @@
   position: relative;
 
   &:before {
-    top: 12px;
-    right: 12px;
-  }
-}
-
-.toolbar-tray-open.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
-  @include mq($breakpointLarge) {
-    top: $topBar;
-    height: calc(100% - #{$topBar});
+    top: .75rem;
+    right: .75rem;
   }
 }
 
@@ -182,5 +184,5 @@
 }
 
 #admin-toolbar-search-input {
-  padding-left: 32px;
+  padding-left: 2rem;
 }

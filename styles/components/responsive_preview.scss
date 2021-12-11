@@ -36,7 +36,7 @@
         mask-position: center center;
         mask-repeat: no-repeat;
         box-sizing: border-box;
-        transition: transform .2s $fancy-easing;
+        transition: transform .2s var(--ginEasing);
       }
     }
 
@@ -47,7 +47,7 @@
       background-color: var(--colorGinLayer3Background);
       border-bottom: 0 none;
       border-radius: var(--ginBorderMedium);
-      box-shadow: $shadowLevel2;
+      box-shadow: var(--ginShadowLevel2);
 
       // Device links
       .responsive-preview-device.responsive-preview-device {

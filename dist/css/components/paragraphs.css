@@ -53,7 +53,7 @@
   width: 4px;
   height: calc(100% - 1rem);
   background: var(--colorGinWarning);
-  border-radius: 2px;
+  border-radius: var(--ginBorderTiny);
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable td {
@@ -214,7 +214,7 @@
   background: var(--colorGinLayer3Background);
   border: 0 none;
   border-radius: var(--ginBorderXSmall);
-  box-shadow: 0 1px 2px rgba(20, 45, 82, .02), 0 3px 4px rgba(20, 45, 82, .03), 0 5px 8px rgba(20, 45, 82, .04), 0 20px 24px rgba(20, 45, 82, .12);
+  box-shadow: var(--ginShadowLevel2);
 }
 
 .paragraphs-dropdown-actions .paragraphs-dropdown-action.button {

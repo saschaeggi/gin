@@ -5,7 +5,7 @@
     padding-right: var(--ginSidebarWidth);
 
     .dialog-off-canvas-main-canvas {
-      transition: padding-left $transition;
+      transition: padding-left var(--ginTransition);
     }
 
     // If off-canvas dialog is shown

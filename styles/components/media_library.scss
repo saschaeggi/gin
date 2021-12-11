@@ -273,7 +273,7 @@ fieldset.media-library-widget {
     text-decoration: none;
     background: var(--colorGinLayer3Background);
     border-radius: var(--ginBorderDefault);
-    box-shadow: $shadowLevel1;
+    box-shadow: var(--ginShadowLevel1);
   }
 }
 

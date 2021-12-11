@@ -1,11 +1,21 @@
-$toolbarIconSize: 22px;
-
-// Scroll Offset
+// Toolbar Variables
 :root {
+  --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
+  --ginHorizontalToolbarOffset: 0;
+  --ginVerticalToolbarOffset: 0;
 
   @include mq($breakpointLarge) {
+    --iconGinToolbar: 22px;
     --ginScrollOffset: 130px;
+    --ginHorizontalToolbarOffset: 0;
+    --ginVerticalToolbarOffset: var(--ginToolbarWidthCollapsed);
+  }
+}
+
+.toolbar-fixed[data-toolbar-menu=open] {
+  @include mq($breakpointLarge) {
+    --ginVerticalToolbarOffset: var(--ginToolbarWidth);
   }
 }
 
@@ -38,9 +48,9 @@ $toolbarIconSize: 22px;
         left: 1em;
 
         @include mq($breakpointMedium) {
-          left: calc((var(--ginToolbarWidthCollapsed) - #{$toolbarIconSize}) / 2 - 8px);
-          width: $toolbarIconSize;
-          height: $toolbarIconSize;
+          left: calc((var(--ginToolbarWidthCollapsed) - var(--iconGinToolbar)) / 2 - 8px);
+          width: var(--iconGinToolbar);
+          height: var(--iconGinToolbar);
           top: 50%;
           transform: translateY(-50%);
         }
@@ -50,7 +60,7 @@ $toolbarIconSize: 22px;
     @include mq($breakpointMedium) {
       // Toolbar logo
       .toolbar-logo {
-        height: $stickyBar;
+        height: var(--ginStickyHeight);
       }
 
       // Admin tray: Home icon
@@ -82,7 +92,7 @@ $toolbarIconSize: 22px;
         font-size: 0;
         height: 74px;
         margin-bottom: 6px;
-        transition: top $transition;
+        transition: top var(--ginTransition);
       }
 
       &::before {
@@ -191,13 +201,7 @@ a.toolbar-menu__trigger,
   }
 
   .toolbar-fixed {
-    padding-top: 0 !important;
-    padding-left: var(--ginToolbarWidthCollapsed);
-    transition: $transition;
-
-    &[data-toolbar-menu='open'] {
-      padding-left: var(--ginToolbarWidth);
-    }
+    transition: var(--ginTransition);
   }
 
   .toolbar .toolbar-box {
@@ -223,7 +227,7 @@ a.toolbar-menu__trigger,
     height: 64px;
     padding: 16px 0 16px var(--ginToolbarWidthCollapsed);
     margin: 0;
-    transition: width $transition;
+    transition: width var(--ginTransition);
     overflow: hidden;
 
     &, &:active, &:focus {
@@ -247,7 +251,7 @@ a.toolbar-menu__trigger,
       border: 1px solid var(--colorGinBorder);
       background: var(--colorGinLayerBackground) url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='%23999999'/%3E%3C/svg%3E") no-repeat center center;
       background-size: 11px 11px;
-      transition: transform $transition;
+      transition: transform var(--ginTransition);
     }
 
     &.is-active {
@@ -285,10 +289,10 @@ a.toolbar-menu__trigger,
     left: 0;
     width: var(--ginToolbarWidthCollapsed);
     height: 100vh;
-    max-width: calc(100% - #{$topBar});
+    max-width: calc(100% - var(--ginToolbarHeight));
     background: var(--colorGinLayerBackground);
     border-right: 1px solid var(--colorGinLayerBorder);
-    transition: $transition;
+    transition: var(--ginTransition);
 
     .gin--dark-mode & {
       box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
@@ -387,7 +391,7 @@ a.toolbar-menu__trigger,
           margin-left: calc(var(--ginToolbarWidthCollapsed) - 1px);
           width: var(--ginToolbarWidth);
           height: 100vh;
-          max-width: calc(100% - #{$topBar});
+          max-width: calc(100% - var(--ginToolbarHeight));
           box-shadow: none;
           border-left: 1px solid var(--colorGinLayerBorder);
           overflow-y: auto;

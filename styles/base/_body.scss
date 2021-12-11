@@ -1,5 +1,5 @@
 html {
-  font-family: $font;
+  font-family: var(--ginFont);
   scroll-padding-top: var(--ginScrollOffset);
 }
 

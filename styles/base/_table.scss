@@ -7,7 +7,7 @@ table.sticky-header {
   z-index: 98;
   left: auto !important;
   background: transparent;
-  transition: $transition;
+  transition: var(--ginTransition);
 
   @include mq($breakpointMedium) {
     .gin--vertical-toolbar & {
@@ -42,7 +42,7 @@ table {
 
   th {
     background: var(--colorGinTableHeader);
-    box-shadow: $shadowLevel1;
+    box-shadow: var(--ginShadowLevel1);
 
     &, .form-item__label {
       color: var(--colorGinPrimaryActive);

@@ -79,7 +79,7 @@
     min-width: 120px;
     background: var(--colorGinLayer3Background);
     border-radius: var(--ginBorderMedium);
-    box-shadow: $shadowLevel2;
+    box-shadow: var(--ginShadowLevel2);
 
     .node-form & {
       left: 0;

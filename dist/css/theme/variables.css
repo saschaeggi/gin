@@ -36,6 +36,7 @@
   --colorGinTableBorder: rgba(0, 0, 0, .15);
   --colorGinTabsBorder: rgba(0, 0, 0, .2);
   --colorGinFormElementBorder: #8e929c;
+  --ginFont: Ginter, Inter, "Helvetica Neue", BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
   --colorGinTitle: #222330;
   --colorGinText: #222330;
   --colorGinTextLight: #545560;
@@ -43,10 +44,17 @@
   --colorGinSwitch: #26a769;
   --colorGinSwitchShadow: rgba(38, 167, 105, .3);
   --colorGinIcons: #414247;
+  --ginStickyHeight: 80px;
   --colorGinStickyBg: #c8cdd8;
   --ginToolbarWidthCollapsed: 68px;
   --ginToolbarWidth: 240px;
   --ginSidebarWidth: 300px;
+  --ginShadowLevel1: 0 1px 2px rgb(20 45 82 / 2%), 0 3px 4px rgb(20 45 82 / 3%), 0 5px 8px rgb(20 45 82 / 4%);
+  --ginShadowLevel2: 0 1px 2px rgb(20 45 82 / 2%), 0 3px 4px rgb(20 45 82 / 3%), 0 5px 8px rgb(20 45 82 / 4%), 0 20px 24px rgb(20 45 82 / 12%);
+  --ginEasing: cubic-bezier(.19, 1, .22, 1);
+  --ginTransition: .15s var(--ginEasing);
+  --ginTransitionFast: .3s var(--ginEasing);
+  --ginBorderTiny: 2px;
   --ginBorderXSmall: 4px;
   --ginBorderSmall: 6px;
   --ginBorderDefault: 8px;

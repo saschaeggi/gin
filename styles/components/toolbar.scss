@@ -1,5 +1,13 @@
+// Offset
+.gin--vertical-toolbar,
+.gin--horizontal-toolbar,
+.gin--classic-toolbar {
+  padding-top: var(--ginHorizontalToolbarOffset) !important;
+  padding-left: var(--ginVerticalToolbarOffset) !important;
+}
+
 .toolbar {
-  font-family: $font;
+  font-family: var(--ginFont);
 
   .toolbar-bar {
     box-shadow: none;
@@ -668,7 +676,7 @@
   color: var(--colorGinText);
   background-color: var(--colorGinLayer3Background);
   border-radius: var(--ginBorderMedium);
-  box-shadow: $shadowLevel2;
+  box-shadow: var(--ginShadowLevel2);
 
   &.ui-widget-content {
     padding-top: .5rem;

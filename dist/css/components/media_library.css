@@ -239,7 +239,7 @@ fieldset.media-library-widget .fieldset__wrapper {
   text-decoration: none;
   background: var(--colorGinLayer3Background);
   border-radius: var(--ginBorderDefault);
-  box-shadow: 0 1px 2px rgba(20, 45, 82, .02), 0 3px 4px rgba(20, 45, 82, .03), 0 5px 8px rgba(20, 45, 82, .04);
+  box-shadow: var(--ginShadowLevel1);
 }
 
 .media-library-wrapper .views-display-link {

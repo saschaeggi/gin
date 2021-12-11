@@ -148,7 +148,7 @@ body .cke_notification_info {
   background: var(--colorGinLayer4Background);
   border: 0 none;
   border-radius: var(--ginBorderDefault);
-  box-shadow: $shadowLevel1;
+  box-shadow: var(--ginShadowLevel1);
 
   .cke_notification_message {
     color: var(--colorGinText);

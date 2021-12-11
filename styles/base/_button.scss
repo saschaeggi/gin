@@ -5,7 +5,7 @@
   color: var(--colorGinPrimary);
   background-color: transparent;
   box-shadow: none;
-  transition: $transition;
+  transition: var(--ginTransition);
 
   @include mq($breakpointWide) {
     font-size: 1rem;
@@ -32,7 +32,7 @@
   border: 2px solid var(--colorGinPrimary) !important;
   border-radius: var(--ginBorderDefault);
   box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
-  transition: $transition;
+  transition: var(--ginTransition);
 
   .gin--dark-mode & {
     box-shadow: 0 2px 18px var(--colorGinButtonShadow);

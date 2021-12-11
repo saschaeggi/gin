@@ -1,11 +1,20 @@
 :root {
+  --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
+  --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
+  --ginVerticalToolbarOffset: 0;
 }
 
 @media (min-width: 1024px) {
   :root {
-    --ginScrollOffset: 200px;
     --iconGinToolbar: 16px;
+    --ginScrollOffset: 200px;
+  }
+}
+
+@media (min-width: 976px) {
+  .toolbar-fixed.toolbar-tray-open {
+    --ginHorizontalToolbarOffset: 78px;
   }
 }
 
@@ -102,7 +111,7 @@
 }
 
 .gin--classic-toolbar .page-wrapper__node-edit-form .layout-region-node-secondary {
-  padding-top: 39px;
+  padding-top: var(--ginHorizontalToolbarOffset);
 }
 
 @media (min-width: 1024px) {
@@ -132,7 +141,7 @@
 
 @media (min-width: 976px) {
   .toolbar .toolbar-bar .toolbar-icon-admin-toolbar-tools-help:before {
-    left: 16px;
+    left: 1rem;
   }
 }
 
@@ -153,15 +162,8 @@
 
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:before,
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus:before {
-  top: 12px;
-  right: 12px;
-}
-
-@media (min-width: 1024px) {
-  .toolbar-tray-open.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
-    top: 39px;
-    height: calc(100% - 39px);
-  }
+  top: .75rem;
+  right: .75rem;
 }
 
 #admin-toolbar-search-tab .form-type--search::before {
@@ -169,6 +171,6 @@
 }
 
 #admin-toolbar-search-input {
-  padding-left: 32px;
+  padding-left: 2rem;
 }
 

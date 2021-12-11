@@ -113,7 +113,7 @@
   color: var(--colorGinPrimary);
   background-color: transparent;
   box-shadow: none;
-  transition: .15s cubic-bezier(.19, 1, .22, 1);
+  transition: var(--ginTransition);
 }
 
 @media (min-width: 1280px) {
@@ -156,7 +156,7 @@
   border: 2px solid var(--colorGinPrimary) !important;
   border-radius: var(--ginBorderDefault);
   box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
-  transition: .15s cubic-bezier(.19, 1, .22, 1);
+  transition: var(--ginTransition);
 }
 
 .gin--dark-mode .ui-dialog .button,
@@ -292,7 +292,7 @@
   box-sizing: border-box;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .25);
   border-radius: var(--ginBorderDefault);
-  transition: .15s cubic-bezier(.19, 1, .22, 1);
+  transition: var(--ginTransition);
 }
 
 .ui-dialog .form-element:hover {

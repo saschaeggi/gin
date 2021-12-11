@@ -116,7 +116,7 @@
     width: 100%;
     max-width: calc(100% + .5rem);
     border-bottom: 1px solid var(--colorGinBorder);
-    transition: $transition;
+    transition: var(--ginTransition);
 
     @include mq($breakpointSmall) {
       left: .5rem;

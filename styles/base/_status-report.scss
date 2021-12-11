@@ -170,7 +170,7 @@
 
   &-counters &-counters__item {
     border: 1px solid var(--colorGinLayerBorder);
-    box-shadow: $shadowLevel1;
+    box-shadow: var(--ginShadowLevel1);
   }
 
   &__status-title {

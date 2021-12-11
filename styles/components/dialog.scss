@@ -37,7 +37,7 @@
   &:focus,
   &:focus:active,
   &:focus:hover {
-    box-shadow: $shadowLevel1;
+    box-shadow: var(--ginShadowLevel1);
   }
 
   .ui-dialog-titlebar {

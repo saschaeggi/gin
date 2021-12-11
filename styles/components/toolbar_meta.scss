@@ -36,7 +36,7 @@
       background: rgba($colorDarkAppBackground, .98);
 
       @supports (backdrop-filter: blur()) {
-        background: #{rgba(mix(black, $colorDarkAppBackground, 20%), .9)};
+        background: rgba(1, 1, 1, .9);
       }
     }
 
@@ -90,6 +90,7 @@
   position: relative;
   top: -.0825rem;
   padding-left: 2em;
+  border-radius: var(--ginBorderTiny);
 
   &::before {
     content: "";
@@ -161,7 +162,7 @@
     margin-top: -11px;
 
     .toolbar-bar {
-      height: $topBar;
+      height: var(--ginToolbarHeight);
       z-index: 102;
 
       .toolbar-tab {
@@ -236,7 +237,7 @@
           background-color: var(--colorGinLayer3Background);
           border-bottom: 0 none;
           border-radius: 0 var(--ginBorderMedium) var(--ginBorderMedium) var(--ginBorderMedium);
-          box-shadow: $shadowLevel2;
+          box-shadow: var(--ginShadowLevel2);
 
           a {
             color: var(--colorGinPrimary);

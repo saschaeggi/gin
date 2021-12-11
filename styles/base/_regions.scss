@@ -5,13 +5,13 @@
   width: 100%;
   background: var(--colorGinAppBackground);
   box-sizing: border-box;
-  transition: $transition;
+  transition: var(--ginTransition);
 
   @include mq($breakpointLarge) {
     position: sticky;
     top: -1px;
     width: 100%;
-    height: $stickyBar;
+    height: var(--ginStickyHeight);
     padding: 1rem 0;
     margin-top: .25rem;
 
@@ -43,11 +43,11 @@
 
     .gin--classic-toolbar.gin--edit-form & {
       padding-top: 1rem;
-      top: $topBar;
+      top: var(--ginToolbarHeight);
     }
 
     .gin--horizontal-toolbar & {
-      top: $toolbarHorizontal;
+      top: var(--ginToolbarHeight);
     }
 
     .gin--horizontal-toolbar.gin--edit-form & {
@@ -142,7 +142,7 @@
 
   @include mq($breakpointLarge) {
     position: sticky;
-    top: 39px;
+    top: var(--ginToolbarHeight);
     width: calc(100% - min(10vw, 96px) + 24px);
 
     // Modern, horizontal toolbar

@@ -1,10 +1,22 @@
 :root {
+  --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
+  --ginHorizontalToolbarOffset: 0;
+  --ginVerticalToolbarOffset: 0;
 }
 
 @media (min-width: 1024px) {
   :root {
+    --iconGinToolbar: 22px;
     --ginScrollOffset: 130px;
+    --ginHorizontalToolbarOffset: 0;
+    --ginVerticalToolbarOffset: var(--ginToolbarWidthCollapsed);
+  }
+}
+
+@media (min-width: 1024px) {
+  .toolbar-fixed[data-toolbar-menu=open] {
+    --ginVerticalToolbarOffset: var(--ginToolbarWidth);
   }
 }
 
@@ -42,9 +54,9 @@
 @media (min-width: 976px) {
   .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-icon::before,
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
-    left: calc((var(--ginToolbarWidthCollapsed) - 22px) / 2 - 8px);
-    width: 22px;
-    height: 22px;
+    left: calc((var(--ginToolbarWidthCollapsed) - var(--iconGinToolbar)) / 2 - 8px);
+    width: var(--iconGinToolbar);
+    height: var(--iconGinToolbar);
     top: 50%;
     transform: translateY(-50%);
   }
@@ -52,7 +64,7 @@
 
 @media (min-width: 976px) {
   .toolbar .toolbar-bar .toolbar-logo {
-    height: 80px;
+    height: var(--ginStickyHeight);
   }
 
   .toolbar .toolbar-bar .toolbar-icon-home {
@@ -78,7 +90,7 @@
     font-size: 0;
     height: 74px;
     margin-bottom: 6px;
-    transition: top .15s cubic-bezier(.19, 1, .22, 1);
+    transition: top var(--ginTransition);
   }
 }
 
@@ -182,13 +194,7 @@ a.toolbar-menu__trigger,
   }
 
   .toolbar-fixed {
-    padding-top: 0 !important;
-    padding-left: var(--ginToolbarWidthCollapsed);
-    transition: .15s cubic-bezier(.19, 1, .22, 1);
-  }
-
-  .toolbar-fixed[data-toolbar-menu=open] {
-    padding-left: var(--ginToolbarWidth);
+    transition: var(--ginTransition);
   }
 
   .toolbar .toolbar-box {
@@ -212,7 +218,7 @@ a.toolbar-menu__trigger,
     height: 64px;
     padding: 16px 0 16px var(--ginToolbarWidthCollapsed);
     margin: 0;
-    transition: width .15s cubic-bezier(.19, 1, .22, 1);
+    transition: width var(--ginTransition);
     overflow: hidden;
   }
 
@@ -235,7 +241,7 @@ a.toolbar-menu__trigger,
     border: 1px solid var(--colorGinBorder);
     background: var(--colorGinLayerBackground) url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='%23999999'/%3E%3C/svg%3E") no-repeat center center;
     background-size: 11px 11px;
-    transition: transform .15s cubic-bezier(.19, 1, .22, 1);
+    transition: transform var(--ginTransition);
   }
 
   .toolbar-menu-administration a.toolbar-menu__trigger.is-active {
@@ -272,10 +278,10 @@ a.toolbar-menu__trigger,
     left: 0;
     width: var(--ginToolbarWidthCollapsed);
     height: 100vh;
-    max-width: calc(100% - 39px);
+    max-width: calc(100% - var(--ginToolbarHeight));
     background: var(--colorGinLayerBackground);
     border-right: 1px solid var(--colorGinLayerBorder);
-    transition: .15s cubic-bezier(.19, 1, .22, 1);
+    transition: var(--ginTransition);
   }
 
   .gin--dark-mode .toolbar-menu-administration {
@@ -380,7 +386,7 @@ a.toolbar-menu__trigger,
     margin-left: calc(var(--ginToolbarWidthCollapsed) - 1px);
     width: var(--ginToolbarWidth);
     height: 100vh;
-    max-width: calc(100% - 39px);
+    max-width: calc(100% - var(--ginToolbarHeight));
     box-shadow: none;
     border-left: 1px solid var(--colorGinLayerBorder);
     overflow-y: auto;

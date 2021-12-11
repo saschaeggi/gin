@@ -6,28 +6,4 @@ $breakpointLarge: 1024px;
 $breakpointWide: 1280px;
 $breakpointBig: 1440px;
 
-$toolbarHorizontal: 53px;
-$topBar: 39px;
-$stickyBar: 80px;
-
-$iconFill: '787878';
-$iconActiveFill: '003cc5';
-
-$basic-easing: cubic-bezier(.455, .03, .515, .955);
-$fancy-easing: cubic-bezier(.19, 1, .22, 1);
-$transition: .15s $fancy-easing;
-$transition--fast: .3s $fancy-easing;
-
-$font: Ginter, Inter, 'Helvetica Neue', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
-
-$colorAppBackground: #fbfbff; //#f5f7fb;
 $colorDarkAppBackground: #1B1B1D;
-
-$shadowLevel1: 0 1px 2px rgb(20 45 82 / 2%),
-               0 3px 4px rgb(20 45 82 / 3%),
-               0 5px 8px rgb(20 45 82 / 4%);
-
-$shadowLevel2: 0 1px 2px rgb(20 45 82 / 2%),
-               0 3px 4px rgb(20 45 82 / 3%),
-               0 5px 8px rgb(20 45 82 / 4%),
-               0 20px 24px rgb(20 45 82 / 12%);

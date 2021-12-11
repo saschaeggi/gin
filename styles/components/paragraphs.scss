@@ -61,7 +61,7 @@
           width: 4px;
           height: calc(100% - 1rem);
           background: var(--colorGinWarning);
-          border-radius: 2px;
+          border-radius: var(--ginBorderTiny);
         }
       }
 
@@ -226,7 +226,7 @@
   background: var(--colorGinLayer3Background);
   border: 0 none;
   border-radius: var(--ginBorderXSmall);
-  box-shadow: $shadowLevel2;
+  box-shadow: var(--ginShadowLevel2);
 
   .paragraphs-dropdown-action.button {
     font-size: 0.8125rem;

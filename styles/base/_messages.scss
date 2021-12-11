@@ -3,9 +3,7 @@
   padding: 1rem;
   border: 2px solid transparent;
   border-radius: var(--ginBorderMedium);
-  // box-shadow: 10px 10px 30px #c1c1d2,
-  //             -6px -6px 16px #d3d3d3;
-  transition: opacity $transition--fast;
+  transition: opacity var(--ginTransitionFast);
   opacity: 1;
 
   .gin--dark-mode & {
@@ -66,7 +64,7 @@
     text-indent: -99999px;
     border-radius: 50%;
     border-color: transparent !important;
-    transition: $transition;
+    transition: var(--ginTransition);
 
     &:hover:not(:focus) {
       color: transparent;

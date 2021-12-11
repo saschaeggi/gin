@@ -4,7 +4,7 @@
   }
 
   .gin--edit-form .dialog-off-canvas-main-canvas {
-    transition: padding-left .15s cubic-bezier(.19, 1, .22, 1);
+    transition: padding-left var(--ginTransition);
   }
 
   .gin--edit-form.js-off-canvas-dialog-open {

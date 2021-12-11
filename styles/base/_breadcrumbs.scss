@@ -43,7 +43,7 @@
 
   &__link {
     line-height: 2; // make sure we have enough room for focus ring
-    border-radius: 2px;
+    border-radius: var(--ginBorderTiny);
   }
 
   &__list {

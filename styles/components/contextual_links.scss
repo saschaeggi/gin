@@ -55,13 +55,13 @@
     background: var(--colorGinLayer3Background);
     border: 0 none;
     border-radius: var(--ginBorderMedium);
-    box-shadow: $shadowLevel2;
+    box-shadow: var(--ginShadowLevel2);
 
     li {
       background: transparent;
 
       a {
-        font-family: $font;
+        font-family: var(--ginFont);
         color: var(--colorGinPrimary);
         line-height: 1;
         white-space: nowrap;
