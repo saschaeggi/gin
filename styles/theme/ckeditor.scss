@@ -1,9 +1,9 @@
 body.cke_editable_themed {
   color: var(--colorGinText);
-}
 
-body.cke_editable_themed.gin--dark-mode {
-  background-color: var(--colorGinLayer2Background);
+  &.gin--dark-mode {
+    background-color: var(--colorGinLayer2Background);
+  }
 }
 
 a {
@@ -59,4 +59,9 @@ a {
       }
     }
   }
+}
+
+// Include quote style
+body.cke_editable_themed {
+  @import "../base/quotation";
 }

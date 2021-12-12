@@ -57,3 +57,28 @@ a {
   background-color: var(--colorGinPrimaryLight);
 }
 
+body.cke_editable_themed blockquote {
+  font-size: 1.1em;
+  position: relative;
+  padding-left: 1.5rem;
+  margin: 1rem;
+}
+
+@media (min-width: 976px) {
+  body.cke_editable_themed blockquote {
+    font-size: 1.2em;
+  }
+}
+
+body.cke_editable_themed blockquote::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--colorGinPrimary);
+  border-radius: 2px;
+}
+

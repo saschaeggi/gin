@@ -36,7 +36,7 @@
       background: rgba($colorDarkAppBackground, .98);
 
       @supports (backdrop-filter: blur()) {
-        background: rgba(1, 1, 1, .9);
+        background: #{rgba(mix(black, $colorDarkAppBackground, 15%), .9)};
       }
     }
 
@@ -352,6 +352,7 @@
 }
 
 #admin-toolbar-search-input {
+  line-height: 1; // FF fix
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
   margin-top: -0.25rem;

@@ -4168,7 +4168,7 @@ tr.color-error:focus,
 }
 
 blockquote {
-  font-size: 1.2em;
+  font-size: 1.1em;
   position: relative;
   padding-left: 1.5rem;
   margin: 1rem;
@@ -4176,7 +4176,7 @@ blockquote {
 
 @media (min-width: 976px) {
   blockquote {
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
 }
 

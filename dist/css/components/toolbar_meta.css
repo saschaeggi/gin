@@ -50,7 +50,7 @@
 
 @supports ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) {
   .gin--dark-mode .region-meta--frontend {
-    background: rgba(1, 1, 1, .9);
+    background: rgba(23, 23, 25, .9);
   }
 }
 
@@ -345,6 +345,7 @@
 }
 
 #admin-toolbar-search-input {
+  line-height: 1;
   padding-top: .625rem;
   padding-bottom: .625rem;
   margin-top: -0.25rem;

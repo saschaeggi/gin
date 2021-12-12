@@ -570,20 +570,6 @@ a.toolbar-menu__trigger,
   }
 }
 
-// [data-toolbar-menu='open'] .toolbar-menu-administration > .toolbar-menu > .menu-item {
-//   &:not(.hover-intent) > .toolbar-icon {
-//     &::after {
-//       width: calc(var(--ginToolbarWidth) - 16px - 12px);
-//     }
-//   }
-
-//   &.menu-item--expanded:hover > .toolbar-icon {
-//     &::after {
-//       width: 40px;
-//     }
-//   }
-// }
-
 // New navigation approach.
 // .toolbar-fixed[data-toolbar-menu=open] {
 //   @include mq($breakpointMedium) {
@@ -602,6 +588,25 @@ a.toolbar-menu__trigger,
 
 //     .toolbar-menu-administration > .toolbar-menu > .menu-item:not(.menu-item--active-trail) > .toolbar-menu {
 //       box-shadow: none;
+//     }
+
+//     // Submenu
+//     .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-menu > .menu-item:hover .toolbar-menu,
+//     .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-menu > .menu-item.menu-item--active-trail .toolbar-menu {
+//       position: relative;
+//       opacity: 1;
+//       display: block;
+//       margin-left: 1.5rem;
+//       border-left-color: var(--colorGinTextLight);
+//       height: auto;
+
+//       .menu-item-title {
+//         display: none;
+//       }
+
+//       .toolbar-icon {
+//         padding: .75em;
+//       }
 //     }
 //   }
 // }
