@@ -690,9 +690,10 @@
   }
 
   .ui-menu-item-wrapper {
+    font-size: .875rem;
     line-height: 1.3;
     padding: .5rem 1rem;
-    border-radius: var(--ginBorderDefault);
+    border-radius: var(--ginBorderSmall);
 
     &.ui-state-active {
       color: var(--colorGinButtonText);
