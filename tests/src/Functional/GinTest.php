@@ -54,8 +54,8 @@ class GinTest extends BrowserTestBase {
     $this->assertStringContainsString('"preset_accent_color":"blue"', $response);
     $this->assertStringContainsString('"preset_focus_color":"gin"', $response);
     $this->assertSession()->responseContains('gin.css');
-    $this->assertSession()->responseContains('gin_toolbar.css');
-    $this->assertSession()->responseNotContains('gin_classic_toolbar.css');
+    $this->assertSession()->responseContains('toolbar.css');
+    $this->assertSession()->responseNotContains('classic_toolbar.css');
   }
 
   /**
@@ -75,7 +75,7 @@ class GinTest extends BrowserTestBase {
     \Drupal::configFactory()->getEditable('gin.settings')->set('classic_toolbar', 'classic')->save();
     $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);
-    $this->assertSession()->responseContains('gin_classic_toolbar.css');
+    $this->assertSession()->responseContains('classic_toolbar.css');
   }
 
   /**
