@@ -687,6 +687,11 @@
 
   .ui-menu-item {
     padding: 0 .5rem;
+
+    // Hide url
+    span.admin-toolbar-search-url {
+      display: none;
+    }
   }
 
   .ui-menu-item-wrapper {
