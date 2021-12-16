@@ -15,7 +15,7 @@
 
 .toolbar-fixed[data-toolbar-menu=open] {
   @include mq($breakpointLarge) {
-    --ginVerticalToolbarOffset: var(--ginToolbarWidth);
+    --ginVerticalToolbarOffset: var(--ginToolbarWidth, 240px);
   }
 }
 

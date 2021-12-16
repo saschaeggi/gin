@@ -118,13 +118,13 @@
 
         // Set custom color if 'custom' is set.
         if (accentColorPreset === 'custom') {
-          localStorage.setItem('GinAccentColorCustom', accentColorSetting);
+          localStorage.setItem('Drupal.gin.customAccentColor', accentColorSetting);
         } else {
-          localStorage.setItem('GinAccentColorCustom', '');
+          localStorage.setItem('Drupal.gin.customAccentColor', '');
         }
 
         // Reset darkmode localStorage.
-        localStorage.setItem('GinDarkMode', '');
+        localStorage.setItem('Drupal.gin.darkmode', '');
       });
     },
 
@@ -143,7 +143,7 @@
       }
 
       // Reset localStorage.
-      localStorage.setItem('GinDarkMode', '');
+      localStorage.setItem('Drupal.gin.darkmode', '');
 
       // Change to Darkmode.
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {

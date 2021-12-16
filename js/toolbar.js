@@ -11,7 +11,7 @@
       }
 
       // Set sidebarState.
-      if (localStorage.getItem('GinSidebarOpen') === 'true') {
+      if (localStorage.getItem('Drupal.gin.sidebarExpanded') === 'true') {
         $('body').attr('data-toolbar-menu', 'open');
         $('.toolbar-menu__trigger').addClass('is-active');
       }
@@ -39,7 +39,7 @@
         }
 
         // Write state to localStorage.
-        localStorage.setItem('GinSidebarOpen', active);
+        localStorage.setItem('Drupal.gin.sidebarExpanded', active);
 
         // Dispatch event.
         const event = new CustomEvent('toolbar-toggle', { detail: active === 'true'})

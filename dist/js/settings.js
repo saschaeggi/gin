@@ -37,14 +37,14 @@
         var accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val(), accentColorSetting = $('input[name="accent_color"]', context).val();
         $('input[name="enable_darkmode"]:checked').val(), $(this).parents('[data-drupal-selector="user-form"]').length > 0 && ($('input[name="enable_user_settings"]', context).is(":checked") || (accentColorSetting = drupalSettings.gin.default_accent_color, 
         accentColorPreset = drupalSettings.gin.default_preset_accent_color, drupalSettings.gin.darkmode)), 
-        "custom" === accentColorPreset ? localStorage.setItem("GinAccentColorCustom", accentColorSetting) : localStorage.setItem("GinAccentColorCustom", ""), 
-        localStorage.setItem("GinDarkMode", "");
+        "custom" === accentColorPreset ? localStorage.setItem("Drupal.gin.customAccentColor", accentColorSetting) : localStorage.setItem("Drupal.gin.customAccentColor", ""), 
+        localStorage.setItem("Drupal.gin.darkmode", "");
       }));
     },
     darkmode: function() {
       var darkmodeParam = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null, darkmodeEnabled = null != darkmodeParam ? darkmodeParam : drupalSettings.gin.darkmode, darkmodeClass = drupalSettings.gin.darkmode_class;
       1 == darkmodeEnabled || "auto" === darkmodeEnabled && window.matchMedia("(prefers-color-scheme: dark)").matches ? $("html").addClass(darkmodeClass) : $("html").removeClass(darkmodeClass), 
-      localStorage.setItem("GinDarkMode", ""), window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (function(e) {
+      localStorage.setItem("Drupal.gin.darkmode", ""), window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (function(e) {
         e.matches && "auto" === $('input[name="enable_darkmode"]:checked').val() && $("html").addClass(darkmodeClass);
       })), window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (function(e) {
         e.matches && "auto" === $('input[name="enable_darkmode"]:checked').val() && $("html").removeClass(darkmodeClass);

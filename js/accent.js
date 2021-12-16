@@ -32,7 +32,7 @@
           path.indexOf('user/password') === -1 &&
           path.indexOf('user/register') === -1
         ) &&
-        !localStorage.getItem('GinAccentColorCustom')
+        !localStorage.getItem('Drupal.gin.customAccentColor')
       ) {
         Drupal.behaviors.ginAccent.setAccentColor();
 
@@ -41,9 +41,9 @@
         if (accentColorPreset === 'custom') {
           const accentColorSetting = drupalSettings.gin.accent_color;
 
-          localStorage.setItem('GinAccentColorCustom', accentColorSetting);
+          localStorage.setItem('Drupal.gin.customAccentColor', accentColorSetting);
         } else {
-          localStorage.setItem('GinAccentColorCustom', '');
+          localStorage.setItem('Drupal.gin.customAccentColor', '');
         }
       } else {
         Drupal.behaviors.ginAccent.setAccentColor();
@@ -143,14 +143,14 @@
 
       // Change to Darkmode.
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (e.matches && localStorage.getItem('GinDarkMode') === 'auto') {
+        if (e.matches && localStorage.getItem('Drupal.gin.darkmode') === 'auto') {
           $('html').addClass(darkmodeClass);
         }
       });
 
       // Change to Lightmode.
       window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
-        if (e.matches && localStorage.getItem('GinDarkMode') === 'auto') {
+        if (e.matches && localStorage.getItem('Drupal.gin.darkmode') === 'auto') {
           $('html').removeClass(darkmodeClass);
         }
       });

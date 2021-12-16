@@ -2,12 +2,32 @@
  * we use native JS instead of Drupal's behaviors.
 */
 
+// Legacy Check: Transform old localStorage items to newer ones.
+function checkLegacy() {
+  if (localStorage.getItem('GinDarkMode')) {
+    localStorage.setItem('Drupal.gin.darkmode', localStorage.getItem('GinDarkMode'));
+    localStorage.removeItem('GinDarkMode');
+  }
+
+  if (localStorage.getItem('GinSidebarOpen')) {
+    localStorage.setItem('Drupal.gin.sidebarExpanded', localStorage.getItem('GinSidebarOpen'));
+    localStorage.removeItem('GinSidebarOpen');
+  }
+
+  if (localStorage.getItem('GinAccentColorCustom')) {
+    localStorage.setItem('Drupal.gin.customAccentColor', localStorage.getItem('GinAccentColorCustom'));
+    localStorage.removeItem('GinAccentColorCustom');
+  }
+}
+
+checkLegacy();
+
 // Darkmode Check.
 function ginInitDarkmode() {
   const darkModeClass = 'gin--dark-mode';
   if (
-    localStorage.getItem('GinDarkMode') == 1 ||
-    (localStorage.getItem('GinDarkMode') === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    localStorage.getItem('Drupal.gin.darkmode') == 1 ||
+    (localStorage.getItem('Drupal.gin.darkmode') === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)
   ) {
     document.documentElement.classList.add(darkModeClass);
   } else {
@@ -18,30 +38,30 @@ function ginInitDarkmode() {
 ginInitDarkmode();
 
 // GinDarkMode is not set yet.
-window.addEventListener('DOMContentLoaded', (e) => {
-  if (!localStorage.getItem('GinDarkMode')) {
-    localStorage.setItem('GinDarkMode', drupalSettings.gin.darkmode);
+window.addEventListener('DOMContentLoaded', () => {
+  if (!localStorage.getItem('Drupal.gin.darkmode')) {
+    localStorage.setItem('Drupal.gin.darkmode', drupalSettings.gin.darkmode);
     ginInitDarkmode();
   }
 });
 
 // Sidebar Check.
-if (localStorage.getItem('GinSidebarOpen')) {
+if (localStorage.getItem('Drupal.gin.sidebarExpanded')) {
   const style = document.createElement('style');
   const className = 'gin-toolbar-inline-styles';
   style.className = className;
 
   // Sidebar Check.
-  if (localStorage.getItem('GinSidebarOpen') === 'true') {
+  if (localStorage.getItem('Drupal.gin.sidebarExpanded') === 'true') {
     style.innerHTML = `
     @media (min-width: 976px) {
-      body.gin--vertical-toolbar {
+      body.gin--vertical-toolbar:not([data-toolbar-menu=open]) {
         padding-left: 240px;
         transition: none;
       }
 
       .gin--vertical-toolbar .toolbar-menu-administration {
-        width: 240px;
+        min-width: var(--ginToolbarWidth, 240px);
         transition: none;
       }
     }

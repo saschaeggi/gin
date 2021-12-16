@@ -48,11 +48,11 @@
       attach: function() {
         var path = drupalSettings.path.currentPath;
         if (Drupal.behaviors.ginAccent.checkDarkmode(), Drupal.behaviors.ginAccent.setFocusColor(), 
-        -1 !== path.indexOf("user/login") || -1 !== path.indexOf("user/password") || -1 !== path.indexOf("user/register") || localStorage.getItem("GinAccentColorCustom")) Drupal.behaviors.ginAccent.setAccentColor(); else if (Drupal.behaviors.ginAccent.setAccentColor(), 
+        -1 !== path.indexOf("user/login") || -1 !== path.indexOf("user/password") || -1 !== path.indexOf("user/register") || localStorage.getItem("Drupal.gin.customAccentColor")) Drupal.behaviors.ginAccent.setAccentColor(); else if (Drupal.behaviors.ginAccent.setAccentColor(), 
         "custom" === drupalSettings.gin.preset_accent_color) {
           var accentColorSetting = drupalSettings.gin.accent_color;
-          localStorage.setItem("GinAccentColorCustom", accentColorSetting);
-        } else localStorage.setItem("GinAccentColorCustom", "");
+          localStorage.setItem("Drupal.gin.customAccentColor", accentColorSetting);
+        } else localStorage.setItem("Drupal.gin.customAccentColor", "");
       },
       setAccentColor: function() {
         var preset = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null, color = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null, accentColorPreset = null != preset ? preset : drupalSettings.gin.preset_accent_color;
@@ -91,9 +91,9 @@
       checkDarkmode: function() {
         var darkmodeClass = drupalSettings.gin.darkmode_class;
         window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (function(e) {
-          e.matches && "auto" === localStorage.getItem("GinDarkMode") && $("html").addClass(darkmodeClass);
+          e.matches && "auto" === localStorage.getItem("Drupal.gin.darkmode") && $("html").addClass(darkmodeClass);
         })), window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (function(e) {
-          e.matches && "auto" === localStorage.getItem("GinDarkMode") && $("html").removeClass(darkmodeClass);
+          e.matches && "auto" === localStorage.getItem("Drupal.gin.darkmode") && $("html").removeClass(darkmodeClass);
         }));
       },
       mixColor: function(color_1, color_2, weight) {

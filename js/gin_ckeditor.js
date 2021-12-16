@@ -20,8 +20,8 @@
 
         // Class for Darkmode.
         if (
-          localStorage.getItem('GinDarkMode') == 1 ||
-          localStorage.getItem('GinDarkMode') === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches
+          localStorage.getItem('Drupal.gin.darkmode') == 1 ||
+          localStorage.getItem('Drupal.gin.darkmode') === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches
         ) {
           CKEDITOR.config.bodyClass = darkmodeClass;
         }
@@ -61,7 +61,7 @@
                     .find('body')
                     .attr('data-gin-accent', accentColorPreset);
 
-                  if (localStorage.getItem('GinDarkMode') === 'auto') {
+                  if (localStorage.getItem('Drupal.gin.darkmode') === 'auto') {
                     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
                       $(editor.document.$)
                         .find('body')
@@ -87,7 +87,7 @@
 
               // Toggle Darkmode.
               window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-                if (e.matches && localStorage.getItem('GinDarkMode') === 'auto') {
+                if (e.matches && localStorage.getItem('Drupal.gin.darkmode') === 'auto') {
                   $(editor.document.$)
                     .find('body')
                     .addClass(darkmodeClass);
@@ -101,7 +101,7 @@
 
               // Change to Lightmode.
               window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
-                if (e.matches && localStorage.getItem('GinDarkMode') === 'auto') {
+                if (e.matches && localStorage.getItem('Drupal.gin.darkmode') === 'auto') {
                   $(editor.document.$)
                     .find('body')
                     .removeClass(darkmodeClass);

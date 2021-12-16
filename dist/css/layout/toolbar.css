@@ -16,7 +16,7 @@
 
 @media (min-width: 1024px) {
   .toolbar-fixed[data-toolbar-menu=open] {
-    --ginVerticalToolbarOffset: var(--ginToolbarWidth);
+    --ginVerticalToolbarOffset: var(--ginToolbarWidth, 240px);
   }
 }
 
