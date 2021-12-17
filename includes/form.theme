@@ -1,0 +1,292 @@
+<?php
+
+/**
+ * @file
+ * form.theme
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\gin\GinSettings;
+
+/**
+ * Implements form_alter_HOOK() for some major form changes.
+ */
+function gin_form_alter(&$form, $form_state, $form_id) {
+  // Are we on an edit form?
+  if (_gin_is_content_form($form, $form_state, $form_id)) {
+    $module_handler = \Drupal::service('module_handler');
+
+    // Action buttons.
+    if (isset($form['actions'])) {
+      if (isset($form['actions']['preview'])) {
+        // Put Save after Preview.
+        $save_weight = $form['actions']['preview']['#weight'] ? $form['actions']['preview']['#weight'] + 1 : 11;
+        $form['actions']['submit']['#weight'] = $save_weight;
+      }
+
+      // Move entity_save_and_addanother_node after preview.
+      if (isset($form['actions']['entity_save_and_addanother_node'])) {
+        // Put Save after Preview.
+        $save_weight = $form['actions']['entity_save_and_addanother_node']['#weight'];
+        $form['actions']['preview']['#weight'] = $save_weight - 1;
+      }
+
+      // Create gin_actions group.
+      $form['gin_actions'] = [
+        '#type' => 'container',
+        '#weight' => -1,
+        '#multilingual' => TRUE,
+        '#attributes' => [
+          'class' => [
+            'gin-sticky',
+          ],
+        ],
+      ];
+      // Assign status to gin_actions.
+      $form['status']['#group'] = 'gin_actions';
+
+      // Create actions group.
+      $form['gin_actions']['actions'] = [
+        '#type' => 'actions',
+        '#weight' => 130,
+      ];
+
+      // Move all actions over.
+      $form['gin_actions']['actions'] = ($form['actions']) ?? [];
+      // Now let's just remove delete, as we'll move that over to gin_sidebar.
+      unset($form['gin_actions']['actions']['delete']);
+
+      // Create gin_sidebar group.
+      $form['gin_sidebar'] = [
+        '#group' => 'meta',
+        '#type' => 'container',
+        '#weight' => 99,
+        '#multilingual' => TRUE,
+        '#attributes' => [
+          'class' => [
+            'gin-sidebar',
+          ],
+        ],
+      ];
+      // Copy footer over.
+      $form['gin_sidebar']['footer'] = ($form['footer']) ?? [];
+      // Copy delete action.
+      $form['gin_sidebar']['actions'] = [];
+      $form['gin_sidebar']['actions']['#type'] = ($form['actions']['#type']) ?? [];
+      $form['gin_sidebar']['actions']['delete'] = ($form['actions']['delete']) ?? [];
+    }
+
+    // Attach library.
+    $form['#attached']['library'][] = 'gin/edit_form';
+
+    // Attach libraries for specific modules.
+    // Paragraphs.
+    if ($module_handler->moduleExists('paragraphs')) {
+      $form['#attached']['library'][] = 'gin/paragraphs';
+    }
+    // Paragraphs EE.
+    if ($module_handler->moduleExists('paragraphs_ee')) {
+      $form['#attached']['library'][] = 'gin/paragraphs_ee';
+    }
+    // ERL.
+    if ($module_handler->moduleExists('enity_reference_layout')) {
+      $form['#attached']['library'][] = 'gin/entity_reference_layout';
+      $form['#attached']['library'][] = 'gin/layout_paragraphs';
+    }
+    // Layout Paragraphs.
+    if ($module_handler->moduleExists('layout_paragraphs')) {
+      $form['#attached']['library'][] = 'gin/layout_paragraphs';
+    }
+
+    // Responsive Preview.
+    if ($module_handler->moduleExists('responsive_preview')) {
+      $form['#attached']['library'][] = 'gin/responsive_preview';
+    }
+  }
+
+  // If not logged in hide changed and author node info on add forms.
+  $not_logged_in = \Drupal::currentUser()->isAnonymous();
+  $route = \Drupal::routeMatch()->getRouteName();
+
+  if ($not_logged_in && $route == 'node.add') {
+    unset($form['meta']['changed']);
+    unset($form['meta']['author']);
+  }
+
+  // User form (Login, Register or Forgot password).
+  if (strpos($form_id, 'user_login') !== FALSE || strpos($form_id, 'user_register') !== FALSE || strpos($form_id, 'user_pass') !== FALSE) {
+    $form['actions']['submit']['#attributes']['class'][] = 'button--primary';
+  }
+
+  // Bulk forms: update action & actions to small variants.
+  if (strpos($form_id, 'views_form') !== FALSE) {
+    if (isset($form['header'])) {
+      $bulk_form = current(preg_grep('/_bulk_form/', array_keys($form['header'])));
+
+      if (isset($form['header'][$bulk_form])) {
+        $form['header'][$bulk_form]['action']['#attributes']['class'][] = 'form-element--type-select--small';
+        $form['header'][$bulk_form]['actions']['submit']['#attributes']['class'][] = 'button--small';
+
+        // Remove double entry of submit button.
+        unset($form['actions']['submit']);
+      }
+    }
+  }
+
+  // Delete forms: alter buttons.
+  if (strpos($form_id, 'delete_form') !== FALSE) {
+    $form['actions']['submit']['#attributes']['class'][] = 'button--danger';
+    $form['actions']['cancel']['#attributes']['class'][] = 'button--secondary';
+  }
+}
+
+/**
+ * Implements form_user_form_alter().
+ */
+function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+
+  $route_names = [
+    'user.admin_create',
+    'user.register',
+  ];
+
+  // If new user account, don't show settings yet.
+  if (in_array($route_name, $route_names, TRUE)) {
+    return;
+  }
+
+  /** @var \Drupal\gin\GinSettings $settings */
+  $settings = \Drupal::classResolver(GinSettings::class);
+
+  if ($settings->allowUserOverrides()) {
+    // Inject the settings for the dark mode feature.
+    $form['gin_theme_settings'] = [
+      '#type' => 'details',
+      '#title' => t('Admin theme settings'),
+      '#open' => TRUE,
+      '#weight' => 90,
+    ];
+
+    /** @var \Drupal\Core\Session\AccountInterface $account */
+    $account = $form_state->getBuildInfo()['callback_object']->getEntity();
+    $form['gin_theme_settings']['enable_user_settings'] = [
+      '#type' => 'checkbox',
+      '#title' => t('Enable overrides'),
+      '#description' => t("Enables default admin theme overrides."),
+      '#default_value' => $settings->userOverrideEnabled($account),
+      '#weight' => 0,
+    ];
+
+    $form['gin_theme_settings']['user_settings'] = [
+      '#type' => 'container',
+      '#states' => [
+        // Show if met.
+        'visible' => [
+          ':input[name="enable_user_settings"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+
+    $beta_label = ' (BETA)';
+    $form['gin_theme_settings']['user_settings']['enable_darkmode'] = [
+      '#type' => 'radios',
+      '#title' => t('Appearance') . $beta_label,
+      '#description' => t("Enables Darkmode for the admin interface."),
+      '#default_value' => strval($settings->get('enable_darkmode', $account)),
+      '#options' => _gin_get_darkmode_presets(),
+      '#weight' => 0,
+    ];
+
+    // Accent color setting.
+    $form['gin_theme_settings']['user_settings']['preset_accent_color'] = [
+      '#type' => 'radios',
+      '#title' => t('Accent color'),
+      '#default_value' => $settings->get('preset_accent_color', $account),
+      '#options' => _gin_get_accent_color_presets(),
+      '#after_build' => ['_gin_accent_radios'],
+    ];
+
+    // Main Accent color setting.
+    $form['gin_theme_settings']['user_settings']['accent_color'] = [
+      '#type' => 'textfield',
+      '#placeholder' => '#777777',
+      '#title' => t('Accent color'),
+      '#description' => t('Use with caution, values should meet a11y criteria.'),
+      '#default_value' => $settings->get('accent_color', $account),
+      '#min' => '7',
+      '#max' => '7',
+      '#size' => '7',
+      '#states' => [
+        // Show if met.
+        'visible' => [
+          ':input[name="preset_accent_color"]' => ['value' => 'custom'],
+        ],
+      ],
+    ];
+
+    $form['gin_theme_settings']['user_settings']['high_contrast_mode'] = [
+      '#type' => 'checkbox',
+      '#title' => ('Increase contrast (EXPERIMENTAL)'),
+      '#description' => t("Enables high contrast mode."),
+      '#default_value' => $settings->get('high_contrast_mode', $account),
+      '#weight' => 0,
+    ];
+
+    // Classic Toolbar user setting.
+    $form['gin_theme_settings']['user_settings']['classic_toolbar'] = [
+      '#type' => 'radios',
+      '#title' => t('Drupal Toolbar'),
+      '#description' => t('Choose Drupal Toolbar.'),
+      '#default_value' => $settings->get('classic_toolbar', $account),
+      '#options' => _gin_get_toolbar_presets(),
+      '#after_build' => ['_gin_toolbar_radios'],
+    ];
+
+    // Attach custom library.
+    $form['#attached']['library'][] = 'gin/settings';
+
+    array_unshift($form['actions']['submit']['#submit'], '_gin_user_form_submit');
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for select.
+ */
+function gin_preprocess_select(&$variables) {
+  if (!empty($variables['element']['#title_display']) && $variables['element']['#title_display'] === 'attribute' && !empty((string) $variables['element']['#title'])) {
+    $variables['attributes']['title'] = (string) $variables['element']['#title'];
+  }
+
+  $variables['attributes']['class'][] = 'form-element';
+  $variables['attributes']['class'][] = $variables['element']['#multiple'] ?
+    'form-element--type-select-multiple' :
+    'form-element--type-select';
+
+  if (
+    in_array('block-region-select', $variables['attributes']['class']) ||
+    in_array('block-weight', $variables['attributes']['class'])
+  ) {
+    $variables['attributes']['class'][] = 'form-element--extrasmall';
+  }
+}
+
+/**
+ * Implements form_alter() for forms.
+ */
+function gin_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#id']);
+}
+
+/**
+ * Implements form_alter() for input.
+ */
+function gin_theme_suggestions_input_alter(array &$suggestions, array $variables) {
+  if ($variables['element']['#type'] === 'checkbox') {
+    // Way to identify if checkbox is in a checkboxes group
+    // as Drupal doesn't provide one yet (see #2643012)
+    if (!isset($variables['element']['#error_no_message'])) {
+      $suggestions[] = 'input__checkbox__toggle';
+    }
+  }
+}

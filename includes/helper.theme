@@ -1,0 +1,234 @@
+<?php
+
+/**
+ * @file
+ * helper.theme
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StreamWrapper\StreamWrapperManager;
+use Drupal\gin\GinSettings;
+
+/**
+ * Accent color element.
+ */
+function _gin_accent_radios($element) {
+  $options = array_keys($element['#options']);
+
+  foreach ($options as $values) {
+    $element[$values]['#attributes']['data-gin-accent'] = $element[$values]['#return_value'];
+  }
+
+  return $element;
+}
+
+/**
+ * Toolbar element.
+ */
+function _gin_toolbar_radios($element) {
+  $options = array_keys($element['#options']);
+
+  $element['#attributes']['class'][] = 'toolbar-option';
+
+  foreach ($options as $values) {
+    $element[$values]['#attributes']['class'][] = 'toolbar-option__' . $element[$values]['#return_value'];
+    $element[$values]['#attributes']['data-gin-toolbar'] = $element[$values]['#return_value'];
+  }
+
+  return $element;
+}
+
+/**
+ * Implements helper function _gin_user_form_submit().
+ */
+function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
+  /** @var \Drupal\Core\Session\AccountInterface $account */
+  $account = $form_state->getBuildInfo()['callback_object']->getEntity();
+
+  $enabledUserOverrides = $form_state->getValue('enable_user_settings');
+  /** @var \Drupal\gin\GinSettings $settings */
+  $settings = \Drupal::classResolver(GinSettings::class);
+  if ($enabledUserOverrides) {
+    $user_settings = [
+      'enable_darkmode' => $form_state->getValue('enable_darkmode'),
+      'preset_accent_color' => $form_state->getValue('preset_accent_color'),
+      'accent_color' => $form_state->getValue('accent_color'),
+      'classic_toolbar' => $form_state->getValue('classic_toolbar'),
+      'high_contrast_mode' => (bool) $form_state->getValue('high_contrast_mode'),
+    ];
+    $settings->setAll($user_settings, $account);
+  }
+  else {
+    $settings->clear($account);
+  }
+}
+
+/**
+ * Helper function for check if Gin is active.
+ */
+function _gin_is_active() {
+  $theme_handler = \Drupal::service('theme_handler')->listInfo();
+
+  // Check if set as frontend theme.
+  $frontend_theme_name = \Drupal::config('system.theme')->get('default');
+
+  // Check if base themes are set.
+  if (isset($theme_handler[$frontend_theme_name]->base_themes)) {
+    $frontend_base_themes = $theme_handler[$frontend_theme_name]->base_themes;
+  }
+
+  // Add theme name to base theme array.
+  $frontend_base_themes[$frontend_theme_name] = $frontend_theme_name;
+
+  // Check if set as admin theme.
+  $admin_theme_name = \Drupal::config('system.theme')->get('admin');
+
+  // Admin theme will have no value if it is set to use the default theme.
+  if ($admin_theme_name) {
+    $admin_base_themes = $theme_handler[$admin_theme_name]->base_themes;
+    $admin_base_themes[$admin_theme_name] = $admin_theme_name;
+  }
+  else {
+    $admin_base_themes = $frontend_base_themes;
+  }
+
+  $base_themes = array_merge($admin_base_themes, $frontend_base_themes);
+  $gin_activated = array_key_exists('gin', $base_themes);
+
+  return $gin_activated;
+}
+
+/**
+ * Accent color presets helper function.
+ */
+function _gin_get_accent_color_presets() {
+  return [
+    'blue' => t('Gin Blue (Default)'),
+    'light_blue' => t('Light Blue'),
+    'dark_purple' => t('Dark Purple'),
+    'purple' => t('Purple'),
+    'teal' => t('Teal'),
+    'green' => t('Green'),
+    'pink' => t('Pink'),
+    'red' => t('Red'),
+    'orange' => t('Orange'),
+    'yellow' => t('Yellow'),
+    'neutral' => t('Neutral'),
+    'custom' => t('Custom'),
+  ];
+}
+
+/**
+ * Darkmode presets helper function.
+ */
+function _gin_get_darkmode_presets() {
+  return [
+    0 => t('Light'),
+    1 => t('Dark'),
+    'auto' => t('Auto'),
+  ];
+}
+
+/**
+ * Toolbar presets helper function.
+ */
+function _gin_get_toolbar_presets() {
+  return [
+    'vertical' => t('Sidebar, Vertical Toolbar (Default)'),
+    'horizontal' => t('Horizontal, Modern Toolbar'),
+    'classic' => t('Legacy, Classic Drupal Toolbar'),
+  ];
+}
+
+/**
+ * Accent color preset label helper function.
+ */
+function _gin_get_accent_color_preset_label($key) {
+  $options = _gin_get_accent_color_presets();
+
+  if (!empty($options[$key])) {
+    return $options[$key];
+  }
+  return '';
+}
+
+/**
+ * Helper function for logo.
+ *
+ * Attempts to validate normal system paths, paths relative to the public files
+ * directory, or stream wrapper URIs. If the given path is any of the above,
+ * returns a valid path or URI that the theme system can display.
+ *
+ * @param string $path
+ *   A path relative to the Drupal root or to the public files directory, or
+ *   a stream wrapper URI.
+ *
+ * @return mixed
+ *   A valid path that can be displayed through the theme system, or FALSE if
+ *   the path could not be validated.
+ */
+function _gin_validate_path_logo($path) {
+  $file_system = \Drupal::service('file_system');
+
+  // // Absolute local file paths are invalid.
+  if ($file_system->realpath($path) == $path) {
+    return FALSE;
+  }
+  // A path relative to the Drupal root or a fully qualified URI is valid.
+  if (is_file($path)) {
+    return $path;
+  }
+  // Prepend 'public://' for relative file paths within public filesystem.
+  if (StreamWrapperManager::getScheme($path) === FALSE) {
+    $path = 'public://' . $path;
+  }
+  if (is_file($path)) {
+    return $path;
+  }
+  return FALSE;
+}
+
+/**
+ * Check if were on a content edit form.
+ */
+function _gin_is_content_form($form = NULL, $form_state = NULL, $form_id = NULL) {
+  $is_content_form = FALSE;
+
+  // Get route name.
+  $route_name = \Drupal::routeMatch()->getRouteName();
+
+  // Routes to include.
+  $route_names = [
+    'node.add',
+    'entity.node.content_translation_add',
+    'quick_node_clone.node.quick_clone',
+    'entity.node.edit_form',
+  ];
+
+  if (
+    in_array($route_name, $route_names, TRUE) ||
+    ($form_state && ($form_state->getBuildInfo()['base_form_id'] ?? NULL) === 'node_form') ||
+    ($route_name === 'entity.group_content.create_form' && strpos($form_id, 'group_node') === FALSE)
+  ) {
+    $is_content_form = TRUE;
+  }
+
+  // Forms to exclude.
+  // If media library widget, don't use new content edit form.
+  // gin_preprocess_html is not triggered here, so checking
+  // the form id is enough.
+  $form_ids_to_ignore = [
+    'media_library_add_form_',
+    'views_form_media_library_widget_',
+    'views_exposed_form',
+    'date_recur_modular_sierra_occurrences_modal',
+  ];
+
+  foreach ($form_ids_to_ignore as $form_id_to_ignore) {
+    if ($form_id && strpos($form_id, $form_id_to_ignore) !== FALSE) {
+      $is_content_form = FALSE;
+    }
+  }
+
+  return $is_content_form;
+}

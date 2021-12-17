@@ -1,0 +1,318 @@
+<?php
+
+/**
+ * @file
+ * settings.theme
+ */
+
+use Drupal\Core\File\Exception\FileException;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\gin\GinSettings;
+
+/**
+ * Custom theme settings.
+ */
+function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_state, $form_id = NULL) {
+  // Work-around for a core bug affecting admin themes. See issue #943212.
+  if (isset($form_id)) {
+    return;
+  }
+
+  /*
+   * //////////////////////////
+   * Unset unused settings.
+   * * //////////////////////////
+   */
+  unset($form['logo']);
+
+  /*
+   * //////////////////////////
+   * Move default theme settings to bottom.
+   * * //////////////////////////
+   */
+  $form['favicon']['#open'] = FALSE;
+  $form['favicon']['#weight'] = 98;
+  $form['theme_settings']['#open'] = FALSE;
+  $form['theme_settings']['#weight'] = 99;
+
+  /*
+   * //////////////////////////
+   * General settings.
+   * * //////////////////////////
+   */
+  $form['custom_settings'] = [
+    '#type' => 'details',
+    '#open' => TRUE,
+    '#title' => t('Settings'),
+  ];
+  /** @var \Drupal\gin\GinSettings $settings */
+  $settings = \Drupal::classResolver(GinSettings::class);
+
+  $userEditUrl = Url::fromRoute('entity.user.edit_form', ['user' => Drupal::currentUser()->id()])->toString();
+
+  // Darkmode setting.
+  // Check if this is overridden by the logged in user.
+  $description = t('Enables Darkmode for the admin interface.');
+  if ($settings->overridden('enable_darkmode')) {
+    $darkmode = $settings->get('enable_darkmode') === '1' ? t('Enabled') : ($settings->get('enable_darkmode') === 'auto' ? t('Auto') : t('Disabled'));
+    $description .= '<br/><span class="form-item__warning">' .
+      t('This setting is overridden by the <a href="@editUrl">current user</a>. Darkmode: <strong>@darkmode</strong></span>',
+      [
+        '@darkmode' => $darkmode,
+        '@editUrl' => $userEditUrl,
+      ]);
+  }
+
+  $beta_label = ' (BETA)';
+  $form['custom_settings']['enable_darkmode'] = [
+    '#type' => 'radios',
+    '#title' => t('Appearance') . $beta_label,
+    '#description' => $description,
+    '#default_value' => strval($settings->getDefault('enable_darkmode')),
+    '#options' => _gin_get_darkmode_presets(),
+  ];
+
+  // Accent color setting.
+  $form['custom_settings']['preset_accent_color'] = [
+    '#type' => 'radios',
+    '#title' => t('Accent color'),
+    '#default_value' => $settings->getDefault('preset_accent_color'),
+    '#options' => _gin_get_accent_color_presets(),
+    '#after_build' => ['_gin_accent_radios'],
+  ];
+
+  // Check if this is overridden by the logged in user.
+  if ($settings->overridden('preset_accent_color')) {
+    $presetActionColorLabel = _gin_get_accent_color_preset_label($settings->get('preset_accent_color'));
+    $form['custom_settings']['preset_accent_color']['#description'] = '<span class="form-item__warning">' .
+                                                                      t('This setting is overridden by the <a href="@editUrl">current user</a>. Accent Color: <strong>@colorLabel</strong></span>',
+                                                                      [
+                                                                        '@editUrl' => $userEditUrl,
+                                                                        '@colorLabel' => $presetActionColorLabel,
+                                                                      ]);
+  }
+
+  // Main Accent color setting.
+  $form['custom_settings']['accent_color'] = [
+    '#type' => 'textfield',
+    '#placeholder' => '#777777',
+    '#title' => t('Custom Accent color'),
+    '#description' => t('Use with caution, values should meet a11y criteria.'),
+    '#default_value' => $settings->getDefault('accent_color'),
+    '#min' => '7',
+    '#max' => '7',
+    '#size' => '7',
+    '#states' => [
+      // Show if met.
+      'visible' => [
+        ':input[name="preset_accent_color"]' => ['value' => 'custom'],
+      ],
+    ],
+  ];
+
+  // Check if this is overridden by the logged in user.
+  if ($settings->overridden('accent_color')) {
+    $userAccentColor = $settings->get('accent_color');
+    $form['custom_settings']['accent_color']['#description'] = t('Use with caution, values should meet a11y criteria.') .
+                                                              '<br/>' .
+                                                              t('This setting is overridden by the <a href="@editUrl">current user</a>. Custom Accent Color: <strong>@accentColor</strong>',
+                                                              [
+                                                                '@editUrl' => $userEditUrl,
+                                                                '@accentColor' => $userAccentColor,
+                                                              ]);
+  }
+
+  // Focus color setting.
+  $form['custom_settings']['preset_focus_color'] = [
+    '#type' => 'select',
+    '#title' => t('Focus color (BETA)'),
+    '#default_value' => $settings->getDefault('preset_focus_color'),
+    '#options' => [
+      'gin' => t('Gin Focus color (Default)'),
+      'green' => t('Green'),
+      'claro' => t('Claro Green'),
+      'orange' => t('Orange'),
+      'dark' => t('Neutral'),
+      'accent' => t('Same as Accent color'),
+      'custom' => t('Custom'),
+    ],
+  ];
+
+  // Custom Focus color setting.
+  $form['custom_settings']['focus_color'] = [
+    '#type' => 'textfield',
+    '#placeholder' => '#777777',
+    '#title' => t('Custom Focus color (BETA)'),
+    '#description' => t('Use with caution, values should meet a11y criteria.'),
+    '#default_value' => $settings->getDefault('focus_color'),
+    '#min' => '7',
+    '#max' => '7',
+    '#size' => '7',
+    '#states' => [
+      // Show if met.
+      'visible' => [
+        ':input[name="preset_focus_color"]' => ['value' => 'custom'],
+      ],
+    ],
+  ];
+
+  // High contrast mode.
+  // Check if this is overridden by the logged in user.
+  $hcm_description = t("Enables high contrast mode.");
+  if ($settings->overridden('high_contrast_mode')) {
+    $hcm_active = $settings->get('high_contrast_mode') ? t('Enabled') : t('Disabled');
+    $hcm_description .= '<br/><span class="form-item__warning">' .
+                        t('This setting is overridden by the <a href="@editUrl">current user</a>. High Contrast Mode: <strong>@highcontrastmode</strong></span>',
+                        [
+                          '@highcontrastmode' => $hcm_active,
+                          '@editUrl' => $userEditUrl,
+                        ]);
+  }
+
+  $form['custom_settings']['high_contrast_mode'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Increase contrast (EXPERIMENTAL)'),
+    '#description' => $hcm_description,
+    '#default_value' => $settings->getDefault('high_contrast_mode'),
+  ];
+
+  // Allow user settings.
+  $form['custom_settings']['show_user_theme_settings'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Users can override Gin settings'),
+    '#description' => t('Expose the admin theme settings to users.'),
+    '#default_value' => $settings->getDefault('show_user_theme_settings'),
+  ];
+
+  /*
+   * //////////////////////////
+   * Toolbar settings.
+   * * //////////////////////////
+   */
+  $form['toolbar_wrapper'] = [
+    '#type' => 'details',
+    '#title' => t('Toolbar'),
+    '#open' => TRUE,
+  ];
+
+  // Toolbar setting.
+  // Check if this is overridden by the logged in user.
+  $description = t('Choose Drupal Toolbar.');
+  if ($settings->overridden('classic_toolbar')) {
+    switch ($settings->get('classic_toolbar')) {
+      case 'classic':
+        $toolbar = t('Classic');
+        break;
+
+      case 'horizontal':
+        $toolbar = t('Horizontal');
+        break;
+
+      default:
+        $toolbar = t('Sidebar');
+    }
+
+    $description .= '<br/><span class="form-item__warning">' .
+                    t('This setting is overridden by the <a href="@editUrl">current user</a>. Toolbar: <strong>@toolbar</strong></span>',
+                    [
+                      '@toolbar' => $toolbar,
+                      '@editUrl' => $userEditUrl,
+                    ]);
+  }
+  $form['toolbar_wrapper']['classic_toolbar'] = [
+    '#type' => 'radios',
+    '#title' => t('Drupal Toolbar'),
+    '#description' => $description,
+    '#default_value' => $settings->getDefault('classic_toolbar'),
+    '#options' => _gin_get_toolbar_presets(),
+    '#after_build' => ['_gin_toolbar_radios'],
+  ];
+
+  /*
+   * //////////////////////////
+   * Logo settings.
+   * * //////////////////////////
+   */
+  $form['icon'] = [
+    '#type' => 'details',
+    '#title' => t('Logo'),
+    '#open' => TRUE,
+  ];
+
+  // Make sure that after updating it is set to use the default logo.
+  $defaultIconDefault = $settings->getDefault('icon_default') !== NULL ? theme_get_setting('icon_default') : TRUE;
+
+  $form['icon']['icon_default'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Use the default logo supplied by the theme'),
+    '#default_value' => $defaultIconDefault,
+    '#tree' => FALSE,
+  ];
+  $form['icon']['settings'] = [
+    '#type' => 'container',
+    '#states' => [
+      // Hide the logo settings when using the default logo.
+      'invisible' => [
+        ':input[name="icon_default"]' => ['checked' => TRUE],
+      ],
+    ],
+  ];
+  $form['icon']['settings']['icon_path'] = [
+    '#type' => 'textfield',
+    '#title' => t('Path to custom logo'),
+    '#default_value' => $settings->getDefault('icon_path'),
+  ];
+  $form['icon']['settings']['icon_upload'] = [
+    '#type' => 'file',
+    '#title' => t('Upload logo image'),
+    '#maxlength' => 40,
+    '#description' => t("If you don't have direct file access to the server, use this field to upload your logo."),
+    '#upload_validators' => [
+      'file_validate_extensions' => ['png gif jpg jpeg apng svg'],
+    ],
+  ];
+
+  // Add submit/validate function.
+  $form['#validate'][] = 'gin_form_system_theme_settings_alter_validate';
+
+  // Attach custom library.
+  $form['#attached']['library'][] = 'gin/settings';
+}
+
+/**
+ * Validation for logo.
+ */
+function gin_form_system_theme_settings_alter_validate(array &$form, FormStateInterface $form_state) {
+  $module_handler = \Drupal::service('module_handler');
+
+  if (isset($form['icon']) && $module_handler->moduleExists('file')) {
+    $file = _file_save_upload_from_form($form['icon']['settings']['icon_upload'], $form_state, 0);
+    if ($file) {
+      try {
+        $filename = \Drupal::service('file_system')->copy($file->getFileUri(), \Drupal::config('system.file')->get('default_scheme') . '://');
+        $form_state->setValue('icon_default', 0);
+        $form_state->setValue('icon_path', $filename);
+        $form_state->unsetValue('icon_upload');
+      }
+      catch (FileException $e) {
+        \Drupal::logger('gin')->error($e->getMessage());
+      }
+    }
+  }
+
+  // When intending to use the default logo, unset the icon_path.
+  if ($form_state->getValue('icon_default')) {
+    $form_state->unsetValue('icon_path');
+  }
+
+  // If the user provided a path for a logo file, make sure a file
+  // exists at that path.
+  if ($form_state->getValue('icon_path')) {
+    $path = _gin_validate_path_logo($form_state->getValue('icon_path'));
+
+    if (!$path) {
+      $form_state->setErrorByName('icon_path', t('The custom logo path is invalid.'));
+    }
+  }
+}
