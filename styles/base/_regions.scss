@@ -12,8 +12,8 @@
     top: -1px;
     width: 100%;
     height: var(--ginStickyHeight);
-    padding: 1rem 0;
-    // margin-top: .25rem;
+    padding: .75rem 0;
+    margin-top: .25rem;
 
     &-watcher {
       position: sticky;
@@ -37,25 +37,14 @@
       }
     }
 
+    .gin--vertical-toolbar &,
+    .gin--horizontal-toolbar &,
+    .gin--classic-toolbar & {
+      top: var(--ginHorizontalToolbarOffset);
+    }
+
     .gin--classic-toolbar:not(.gin--edit-form) & {
-      position: relative;
-    }
-
-    .gin--classic-toolbar.gin--edit-form & {
-      padding-top: 1rem;
-      top: var(--ginToolbarHeight);
-    }
-
-    .gin--horizontal-toolbar & {
-      top: var(--ginToolbarHeight);
-    }
-
-    .gin--horizontal-toolbar.gin--edit-form & {
-      padding-top: 16px;
-    }
-
-    .gin--classic-toolbar.gin--edit-form.toolbar-tray-open & {
-      top: 79px;
+      position: static;
     }
   }
 
@@ -142,25 +131,12 @@
 
   @include mq($breakpointLarge) {
     position: sticky;
-    top: var(--ginToolbarHeight);
+    top: calc(var(--ginHorizontalToolbarOffset) + 32px);
     width: calc(100% - min(10vw, 96px) + 24px);
 
-    // Modern, horizontal toolbar
-    .gin--horizontal-toolbar & {
-      top: 91px;
-    }
-
     // Classic, legacy toolbar
-    .gin--classic-toolbar & {
-      top: -1px;
-    }
-
-    .gin--classic-toolbar.gin--edit-form & {
-      top: 87px;
-    }
-
-    .gin--classic-toolbar.gin--edit-form.toolbar-tray-open & {
-      top: 126px;
+    .gin--classic-toolbar:not(.gin--edit-form) & {
+      display: none;
     }
 
     .gin--edit-form & {

@@ -29,12 +29,8 @@
 #views-entity-list
 {
   margin-top: 0;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
+  box-shadow: var(--ginShadowLevel1);
   border-radius: var(--ginBorderMedium);
-
-  @include mq($breakpointMedium) {
-    box-shadow: var(--ginShadowLevel1);
-  }
 
   .gin--dark-mode & {
     box-shadow: 0 6px 16px var(--colorGinLayerBorder);

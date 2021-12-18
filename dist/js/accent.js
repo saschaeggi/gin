@@ -37,12 +37,15 @@
   !function($, Drupal, drupalSettings) {
     Drupal.behaviors.ginSticky = {
       attach: function() {
-        document.querySelectorAll(".region-sticky").length > 0 && new IntersectionObserver((function(_ref) {
-          var e = _slicedToArray(_ref, 1)[0];
-          return document.querySelector(".region-sticky").classList.toggle("region-sticky--is-sticky", e.intersectionRatio < 1);
-        }), {
-          threshold: [ 1 ]
-        }).observe(document.querySelector(".region-sticky-watcher"));
+        if (document.querySelectorAll(".region-sticky").length > 0) {
+          var observer = new IntersectionObserver((function(_ref) {
+            var e = _slicedToArray(_ref, 1)[0];
+            return document.querySelector(".region-sticky").classList.toggle("region-sticky--is-sticky", e.intersectionRatio < 1);
+          }), {
+            threshold: [ 1 ]
+          });
+          document.querySelectorAll(".region-sticky-watcher").length > 0 && observer.observe(document.querySelector(".region-sticky-watcher"));
+        }
       }
     }, Drupal.behaviors.ginAccent = {
       attach: function() {

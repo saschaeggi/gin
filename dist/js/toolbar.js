@@ -2,13 +2,13 @@
   Drupal.behaviors.ginToolbarToggle = {
     attach: function(context) {
       localStorage.getItem("Drupal.toolbar.trayVerticalLocked") && localStorage.removeItem("Drupal.toolbar.trayVerticalLocked"), 
-      "true" === localStorage.getItem("Drupal.gin.sidebarExpanded") ? ($("body").attr("data-toolbar-menu", "open"), 
+      "true" === localStorage.getItem("Drupal.gin.toolbarExpanded") ? ($("body").attr("data-toolbar-menu", "open"), 
       $(".toolbar-menu__trigger").addClass("is-active")) : ($("body").attr("data-toolbar-menu", ""), 
       $(".toolbar-menu__trigger").removeClass("is-active")), $(".toolbar-menu__trigger", context).on("click", (function(e) {
         e.preventDefault(), $(this).toggleClass("is-active");
         var active = "true";
         $(this).hasClass("is-active") ? $("body").attr("data-toolbar-menu", "open") : ($("body").attr("data-toolbar-menu", ""), 
-        active = "false", $(".gin-toolbar-inline-styles").remove()), localStorage.setItem("Drupal.gin.sidebarExpanded", active);
+        active = "false", $(".gin-toolbar-inline-styles").remove()), localStorage.setItem("Drupal.gin.toolbarExpanded", active);
         var event = new CustomEvent("toolbar-toggle", {
           detail: "true" === active
         });

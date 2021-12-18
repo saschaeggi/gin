@@ -11,7 +11,10 @@
           ([e]) => document.querySelector('.region-sticky').classList.toggle('region-sticky--is-sticky', e.intersectionRatio < 1),
           { threshold: [1] }
         );
-        observer.observe(document.querySelector('.region-sticky-watcher'));
+
+        if (document.querySelectorAll('.region-sticky-watcher').length > 0) {
+          observer.observe(document.querySelector('.region-sticky-watcher'));
+        }
       }
     }
   };

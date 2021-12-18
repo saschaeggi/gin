@@ -10,7 +10,7 @@ function checkLegacy() {
   }
 
   if (localStorage.getItem('GinSidebarOpen')) {
-    localStorage.setItem('Drupal.gin.sidebarExpanded', localStorage.getItem('GinSidebarOpen'));
+    localStorage.setItem('Drupal.gin.toolbarExpanded', localStorage.getItem('GinSidebarOpen'));
     localStorage.removeItem('GinSidebarOpen');
   }
 
@@ -46,13 +46,13 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // Sidebar Check.
-if (localStorage.getItem('Drupal.gin.sidebarExpanded')) {
+if (localStorage.getItem('Drupal.gin.toolbarExpanded')) {
   const style = document.createElement('style');
   const className = 'gin-toolbar-inline-styles';
   style.className = className;
 
   // Sidebar Check.
-  if (localStorage.getItem('Drupal.gin.sidebarExpanded') === 'true') {
+  if (localStorage.getItem('Drupal.gin.toolbarExpanded') === 'true') {
     style.innerHTML = `
     @media (min-width: 976px) {
       body.gin--vertical-toolbar:not([data-toolbar-menu=open]) {

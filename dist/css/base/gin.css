@@ -150,7 +150,8 @@ button.link:active,
     top: -1px;
     width: 100%;
     height: var(--ginStickyHeight);
-    padding: 1rem 0;
+    padding: .75rem 0;
+    margin-top: .25rem;
   }
 
   .region-sticky-watcher {
@@ -180,25 +181,12 @@ button.link:active,
             backdrop-filter: none;
   }
 
+  .gin--vertical-toolbar .region-sticky, .gin--horizontal-toolbar .region-sticky, .gin--classic-toolbar .region-sticky {
+    top: var(--ginHorizontalToolbarOffset);
+  }
+
   .gin--classic-toolbar:not(.gin--edit-form) .region-sticky {
-    position: relative;
-  }
-
-  .gin--classic-toolbar.gin--edit-form .region-sticky {
-    padding-top: 1rem;
-    top: var(--ginToolbarHeight);
-  }
-
-  .gin--horizontal-toolbar .region-sticky {
-    top: var(--ginToolbarHeight);
-  }
-
-  .gin--horizontal-toolbar.gin--edit-form .region-sticky {
-    padding-top: 16px;
-  }
-
-  .gin--classic-toolbar.gin--edit-form.toolbar-tray-open .region-sticky {
-    top: 79px;
+    position: static;
   }
 }
 
@@ -287,24 +275,12 @@ button.link:active,
   .sticky-shadow {
     position: -webkit-sticky;
     position: sticky;
-    top: var(--ginToolbarHeight);
+    top: calc(var(--ginHorizontalToolbarOffset) + 32px);
     width: calc(100% - min(10vw, 96px) + 24px);
   }
 
-  .gin--horizontal-toolbar .sticky-shadow {
-    top: 91px;
-  }
-
-  .gin--classic-toolbar .sticky-shadow {
-    top: -1px;
-  }
-
-  .gin--classic-toolbar.gin--edit-form .sticky-shadow {
-    top: 87px;
-  }
-
-  .gin--classic-toolbar.gin--edit-form.toolbar-tray-open .sticky-shadow {
-    top: 126px;
+  .gin--classic-toolbar:not(.gin--edit-form) .sticky-shadow {
+    display: none;
   }
 
   .gin--edit-form .sticky-shadow {
@@ -469,30 +445,8 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 .modules-tabs,
 #views-entity-list {
   margin-top: 0;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
+  box-shadow: var(--ginShadowLevel1);
   border-radius: var(--ginBorderMedium);
-}
-
-@media (min-width: 976px) {
-  .layer-wrapper,
-.block-system > form,
-.view-content .views-form,
-.panel,
-.admin-list,
-.view-watchdog .view-content,
-.views-exposed-form.views-exposed-form,
-.system-status-counter,
-.system-status-general-info,
-.system-status-report,
-.views-edit-view,
-.views-preview-wrapper,
-.view-block-content .view-content,
-.view-files .view-content,
-.system-themes-list,
-.modules-tabs,
-#views-entity-list {
-    box-shadow: var(--ginShadowLevel1);
-  }
 }
 
 .gin--dark-mode .layer-wrapper,
@@ -1122,7 +1076,7 @@ details summary {
 }
 
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
-  padding: 1rem 1.2rem 1.2rem;
+  padding: .75rem 1.2rem 1rem;
   font-size: .875rem;
   border-radius: var(--ginBorderDefault) var(--ginBorderDefault) 0 0;
 }
@@ -2019,7 +1973,6 @@ td.webform-has-field-suffix > .form-item > .form-element {
   color: var(--colorGinText);
   border: 1px solid var(--colorGinFormElementBorder);
   box-sizing: border-box;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .25);
   border-radius: var(--ginBorderDefault);
   transition: var(--ginTransition);
 }
@@ -2044,7 +1997,6 @@ td.webform-has-field-suffix > .form-item > .form-element {
 }
 
 .form-textarea-wrapper {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
   border-radius: var(--ginBorderDefault);
 }
 

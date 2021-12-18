@@ -42,7 +42,7 @@
 {% set page_title_block = active_admin_theme ~ '_page_title' %}
 {% set local_actions_block = active_admin_theme ~ '_local_actions' %}
 
-{% if toolbar_variant == 'horizontal' %}
+{% if toolbar_variant != 'vertical' %}
 <div class="region-sticky-watcher"></div>
 {% endif %}
 
