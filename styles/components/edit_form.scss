@@ -116,6 +116,7 @@
           margin: 0;
 
           .action-link {
+            margin-top: .5rem;
             margin-bottom: 0;
           }
         }
@@ -158,8 +159,12 @@
         > .accordion__item {
           margin: 0;
           border: 0 none;
-          border-bottom: 1px solid var(--colorGinBorder);
+          border-bottom: 1px solid var(--colorGinLayerBorder);
           border-radius: 0;
+
+          .gin--dark-mode & {
+            border-color: var(--colorGinBorder);
+          }
 
           > .claro-details__summary {
             display: block;

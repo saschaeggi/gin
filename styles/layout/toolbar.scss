@@ -48,7 +48,7 @@
         left: 1em;
 
         @include mq($breakpointMedium) {
-          left: calc((var(--ginToolbarWidthCollapsed) - var(--iconGinToolbar)) / 2 - 8px);
+          left: calc((var(--ginToolbarWidthCollapsed) - var(--iconGinToolbar)) / 2 - 9px);
           width: var(--iconGinToolbar);
           height: var(--iconGinToolbar);
           top: 50%;
@@ -101,7 +101,7 @@
         @include mq($breakpointMedium) {
           width: $logoSize;
           height: $logoSize;
-          left: calc((var(--ginToolbarWidthCollapsed) - #{$logoSize}) / 2 - 8px);
+          left: calc((var(--ginToolbarWidthCollapsed) - #{$logoSize}) / 2 - 9px);
           mask-size: $logoSize $logoSize;
           mask-position: center center;
         }
@@ -243,7 +243,7 @@ a.toolbar-menu__trigger,
     &::before {
       content: "";
       position: absolute;
-      left: calc((var(--ginToolbarWidthCollapsed) - 34px) / 2);
+      left: calc((var(--ginToolbarWidthCollapsed) - 36px) / 2);
       display: inline-block;
       width: 32px;
       height: 32px;
@@ -355,7 +355,7 @@ a.toolbar-menu__trigger,
           align-items: center;
           width: calc(var(--ginToolbarWidth) - 16px);
           height: 48px;
-          padding-left: calc(var(--ginToolbarWidthCollapsed) - 8px);
+          padding-left: calc(var(--ginToolbarWidthCollapsed) - 9px);
           padding-right: 0;
           margin: 0 8px 1px;
           border-radius: var(--ginBorderDefault);
@@ -552,7 +552,7 @@ a.toolbar-menu__trigger,
         display: block;
         position: absolute;
         top: 4px;
-        left: calc((var(--ginToolbarWidthCollapsed) - 40px) / 2 - 8px);
+        left: calc((var(--ginToolbarWidthCollapsed) - 40px) / 2 - 9px);
         width: 40px;
         height: 40px;
         background: var(--colorGinPrimaryLight);

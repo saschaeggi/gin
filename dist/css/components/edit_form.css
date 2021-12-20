@@ -113,6 +113,7 @@
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .gin-sidebar .form-actions .action-link {
+  margin-top: .5rem;
   margin-bottom: 0;
 }
 
@@ -152,8 +153,12 @@
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item {
   margin: 0;
   border: 0 none;
-  border-bottom: 1px solid var(--colorGinBorder);
+  border-bottom: 1px solid var(--colorGinLayerBorder);
   border-radius: 0;
+}
+
+.gin--dark-mode .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item {
+  border-color: var(--colorGinBorder);
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary {

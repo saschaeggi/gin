@@ -1009,7 +1009,7 @@ details summary {
 
 @media (min-width: 768px) {
   .is-horizontal .tabs--primary .tabs__link {
-    padding: .75rem 1.2rem;
+    padding: .75rem 1rem;
     margin-right: .25em;
     min-height: 0;
     border-radius: 48px;
@@ -1041,7 +1041,7 @@ details summary {
 
 .is-horizontal .tabs--secondary .tabs__link {
   min-height: 2.5rem;
-  padding: .75rem 1.2rem 1rem;
+  padding: .5rem 1rem 1rem;
   font-size: .875rem;
   border-radius: var(--ginBorderDefault) var(--ginBorderDefault) 0 0;
 }
@@ -1076,7 +1076,7 @@ details summary {
 }
 
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
-  padding: .75rem 1.2rem 1rem;
+  padding: .5rem 1rem 1rem;
   font-size: .875rem;
   border-radius: var(--ginBorderDefault) var(--ginBorderDefault) 0 0;
 }
