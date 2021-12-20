@@ -4,6 +4,7 @@ body.gin--horizontal-toolbar,
 body.gin--classic-toolbar {
   padding-top: var(--ginHorizontalToolbarOffset) !important;
   padding-left: var(--ginVerticalToolbarOffset, 240px);
+  margin-left: 0; // Fix for Drupal 9.3+
 }
 
 .toolbar {
