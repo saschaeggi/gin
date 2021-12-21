@@ -5,7 +5,6 @@ gin:
       dist/css/base/gin.css: { minified: false }
   dependencies:
     - gin/gin_base
-    - gin/gin_ckeditor
 
 gin_base:
   version: VERSION
@@ -14,10 +13,11 @@ gin_base:
       dist/css/theme/font.css: { minified: false }
       dist/css/theme/variables.css: { minified: false }
 
+# Legacy
 gin_ckeditor:
   version: VERSION
-  js:
-    dist/js/gin_ckeditor.js: { minified: false }
+  dependencies:
+    - gin/ckeditor
 
 gin_init:
   version: VERSION
@@ -88,8 +88,6 @@ gin_dialog:
     - gin/dialog
     - gin/gin_base
     - gin/gin_accent
-    - gin/gin_ckeditor
-    - gin/ckeditor
 
 gin_messages:
   version: VERSION
@@ -152,9 +150,17 @@ dialog:
 
 ckeditor:
   version: VERSION
+  js:
+    dist/js/gin_ckeditor.js: { minified: false }
   css:
     theme:
       dist/css/components/ckeditor.css: { minified: false }
+
+ajax:
+  version: VERSION
+  css:
+    theme:
+      dist/css/components/ajax.css: { minified: false, weight: 99 }
 
 # Modules
 

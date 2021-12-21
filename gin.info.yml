@@ -141,11 +141,6 @@ libraries-override:
       theme:
         css/paragraphs_ee.off_canvas.css: false
 
-  gin/gin_dialog:
-    css:
-      theme:
-        dist/css/theme/dialog.css: false
-
 libraries-extend:
   ckeditor/drupal.ckeditor:
     - claro/ckeditor-editor
@@ -177,6 +172,7 @@ libraries-extend:
     - claro/drupal.shortcut
   core/drupal.ajax:
     - claro/ajax
+    - gin/ajax
   views/views.module:
     - claro/views
   media/media_embed_ckeditor_theme:

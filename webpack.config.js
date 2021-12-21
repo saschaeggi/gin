@@ -44,6 +44,7 @@ module.exports = {
     'components/webform': ['./styles/components/webform.scss'],
     'components/media_library': ['./styles/components/media_library.scss'],
     'components/contextual_links': ['./styles/components/contextual_links.scss'],
+    'components/ajax': ['./styles/components/ajax.scss'],
     // Layout
     'layout/toolbar': ['./styles/layout/toolbar.scss'],
     'layout/horizontal_toolbar': ['./styles/layout/horizontal_toolbar.scss'],
