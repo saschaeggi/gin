@@ -83,41 +83,9 @@ function gin_page_attachments_alter(&$page) {
     }
 
     // Attach components for Drupal modules.
-    // Autosave.
-    if ($module_handler->moduleExists('autosave')) {
-      $page['#attached']['library'][] = 'gin/autosave';
-    }
-    // Chosen.
-    if ($module_handler->moduleExists('chosen')) {
-      $page['#attached']['library'][] = 'gin/chosen';
-    }
-    // Dropzonejs.
-    if ($module_handler->moduleExists('dropzonejs')) {
-      $page['#attached']['library'][] = 'gin/dropzonejs';
-    }
-    // Entity browser.
-    if ($module_handler->moduleExists('entity_browser')) {
-      $page['#attached']['library'][] = 'gin/entity_browser';
-    }
     // Inline entity form.
     if ($module_handler->moduleExists('inline_entity_form')) {
       $page['#attached']['library'][] = 'gin/inline_entity_form';
-    }
-    // Linkit.
-    if ($module_handler->moduleExists('linkit')) {
-      $page['#attached']['library'][] = 'gin/linkit';
-    }
-    // Module Filter.
-    if ($module_handler->moduleExists('module_filter')) {
-      $page['#attached']['library'][] = 'gin/module_filter';
-    }
-    // Upgrade status.
-    if ($module_handler->moduleExists('upgrade_status')) {
-      $page['#attached']['library'][] = 'gin/upgrade_status';
-    }
-    // Webform.
-    if ($module_handler->moduleExists('webform')) {
-      $page['#attached']['library'][] = 'gin/webform';
     }
 
     // Expose settings to JS.

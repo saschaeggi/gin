@@ -189,6 +189,40 @@ libraries-extend:
     - gin/gin_tabledrag
   contextual/drupal.contextual-links:
     - gin/contextual_links
+  autosave_form/drupal.autosave_form:
+    - gin/autosave
+  chosen/drupal.chosen:
+    - gin/chosen
+  dropzonejs/widget:
+    - gin/dropzonejs
+  entity_browser/entity_browser:
+    - gin/entity_browser
+  entity_browser/tabs:
+    - gin/entity_browser
+  entity_browser/entity_list:
+    - gin/entity_browser
+  entity_browser/entity_reference:
+    - gin/entity_browser
+  linkit/linkit.admin:
+    - gin/linkit
+  module_filter/modules.tabs:
+    - gin/module_filter
+  module_filter/update.status:
+    - gin/module_filter
+  module_filter/modules:
+    - gin/module_filter
+  upgrade_status/upgrade_status.admin:
+    - gin/upgrade_status
+  webform/webform.filter:
+    - gin/webform
+  webform_ui/webform_ui:
+    - gin/webform
+  webform/webform.element.help:
+    - gin/webform
+  webform/webform.element.details.toggle:
+    - gin/webform
+  webform/webform.form.tabs:
+    - gin/webform
 
 quickedit_stylesheets:
   - ../../../core/themes/claro/css/components/quickedit.css
