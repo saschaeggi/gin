@@ -2,11 +2,12 @@ name: Gin
 type: theme
 base theme: claro
 description: 'Admin theme with a strong focus on improving the Editorial Experience'
-core_version_requirement: ^8.8 || ^9 || ^10
+core_version_requirement: ^8.9 || ^9 || ^10
 
-# Dependency on module > Drupal 8.9
+# These dependencies will not allow the installation of Gin at all if gin_toolbar is not activated.
+# A bit harsh, so we'll continue to just rely on the composer requirement for now.
 # dependencies:
-#   - gin_toolbar:gin_toolbar
+#   - drupal:gin_toolbar
 #   - drupal:link
 
 libraries:
