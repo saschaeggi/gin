@@ -142,62 +142,23 @@ libraries-override:
         css/paragraphs_ee.off_canvas.css: false
 
 libraries-extend:
-  ckeditor/drupal.ckeditor:
-    - claro/ckeditor-editor
   core/ckeditor:
-    - claro/ckeditor-dialog
     - gin/ckeditor
-  core/drupal.collapse:
-    - claro/details-focus
   core/drupal.dialog:
     - seven/seven.drupal.dialog
     - gin/dialog
-  core/drupal.dropbutton:
-    - claro/dropbutton
-  core/drupal.checkbox:
-    - claro/checkbox
-  core/drupal.message:
-    - claro/messages
-  core/drupal.vertical-tabs:
-    - claro/vertical-tabs
-  file/drupal.file:
-    - claro/file
-  system/admin:
-    - claro/system.admin
-  core/drupal.autocomplete:
-    - claro/autocomplete
-  tour/tour-styling:
-    - claro/tour-styling
-  shortcut/drupal.shortcut:
-    - claro/drupal.shortcut
   core/drupal.ajax:
-    - claro/ajax
     - gin/ajax
-  views/views.module:
-    - claro/views
   media/media_embed_ckeditor_theme:
     - gin/gin_media_embed_ckeditor_theme
   media_library/view:
-    - claro/media_library.theme
     - gin/media_library
   media_library/widget:
-    - claro/media_library.theme
     - gin/media_library
-  user/drupal.user:
-    - claro/form.password-confirm
   core/drupal.tabledrag:
     - gin/gin_tabledrag
   contextual/drupal.contextual-links:
     - gin/contextual_links
-
-quickedit_stylesheets:
-  - ../../../core/themes/claro/css/components/quickedit.css
-
-ckeditor_stylesheets:
-  - ../../../core/themes/claro/css/base/elements.css
-  - ../../../core/themes/claro/css/base/typography.css
-  - ../../../core/themes/claro/css/theme/ckeditor-frame.css
-  - ../../../core/themes/claro/css/classy/components/media-embed-error.css
 
 # Regions
 regions:

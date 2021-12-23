@@ -126,12 +126,12 @@
     }
   }
 
-  & &__edit.icon-link {
+  & &__edit {
     right: 3.125rem;
     background-image: icon('media-edit');
   }
 
-  & &__remove.icon-link {
+  & &__remove {
     background-image: icon('media-remove');
   }
 

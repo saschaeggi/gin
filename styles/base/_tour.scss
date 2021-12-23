@@ -2,6 +2,7 @@
   border-radius: var(--ginBorderDefault);
 }
 
-.button--primary:not(:focus).shepherd-button {
+.joyride-content-wrapper .button,
+.button:not(:focus).shepherd-button {
   box-shadow: none;
 }
