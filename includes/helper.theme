@@ -141,18 +141,6 @@ function _gin_get_toolbar_presets() {
 }
 
 /**
- * Accent color preset label helper function.
- */
-function _gin_get_accent_color_preset_label($key) {
-  $options = _gin_get_accent_color_presets();
-
-  if (!empty($options[$key])) {
-    return $options[$key];
-  }
-  return '';
-}
-
-/**
  * Helper function for logo.
  *
  * Attempts to validate normal system paths, paths relative to the public files
