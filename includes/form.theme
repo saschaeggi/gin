@@ -144,15 +144,8 @@ function gin_form_alter(&$form, $form_state, $form_id) {
  * Implements form_user_form_alter().
  */
 function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
-  $route_name = \Drupal::routeMatch()->getRouteName();
-
-  $route_names = [
-    'user.admin_create',
-    'user.register',
-  ];
-
   // If new user account, don't show settings yet.
-  if (in_array($route_name, $route_names, TRUE)) {
+  if ($form_state->getFormObject()->getEntity()->isNew()) {
     return;
   }
 
