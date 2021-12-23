@@ -83,7 +83,7 @@ function gin_page_attachments_alter(&$page) {
     }
 
     // Attach components for Drupal modules.
-    // Inline entity form.
+    // Inline entity form here as the module doesn't define any library itself.
     if ($module_handler->moduleExists('inline_entity_form')) {
       $page['#attached']['library'][] = 'gin/inline_entity_form';
     }

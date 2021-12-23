@@ -78,30 +78,6 @@ function gin_form_alter(&$form, $form_state, $form_id) {
 
     // Attach library.
     $form['#attached']['library'][] = 'gin/edit_form';
-
-    // Attach libraries for specific modules.
-    // Paragraphs.
-    if ($module_handler->moduleExists('paragraphs')) {
-      $form['#attached']['library'][] = 'gin/paragraphs';
-    }
-    // Paragraphs EE.
-    if ($module_handler->moduleExists('paragraphs_ee')) {
-      $form['#attached']['library'][] = 'gin/paragraphs_ee';
-    }
-    // ERL.
-    if ($module_handler->moduleExists('enity_reference_layout')) {
-      $form['#attached']['library'][] = 'gin/entity_reference_layout';
-      $form['#attached']['library'][] = 'gin/layout_paragraphs';
-    }
-    // Layout Paragraphs.
-    if ($module_handler->moduleExists('layout_paragraphs')) {
-      $form['#attached']['library'][] = 'gin/layout_paragraphs';
-    }
-
-    // Responsive Preview.
-    if ($module_handler->moduleExists('responsive_preview')) {
-      $form['#attached']['library'][] = 'gin/responsive_preview';
-    }
   }
 
   // If not logged in hide changed and author node info on add forms.

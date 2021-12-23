@@ -223,6 +223,17 @@ libraries-extend:
     - gin/webform
   webform/webform.form.tabs:
     - gin/webform
+  paragraphs/drupal.paragraphs.widget:
+    - gin/paragraphs
+  paragraphs_ee/paragraphs_ee.paragraphs:
+    - gin/paragraphs_ee
+  entity_reference_layout/erl_widget:
+    - gin/entity_reference_layout
+    - gin/layout_paragraphs
+  layout_paragraphs/layout_paragraphs_widget:
+    - gin/layout_paragraphs
+  responsive_preview/drupal.responsive-preview:
+    - gin/responsive_preview
 
 quickedit_stylesheets:
   - ../../../core/themes/claro/css/components/quickedit.css
