@@ -21,9 +21,10 @@
     top: 0;
     background: rgba(#fff, .98);
     border-bottom: 1px solid var(--colorGinLayerBorder);
+    box-sizing: border-box;
 
     @include mq($breakpointLarge) {
-      min-height: 60px;
+      height: 60px;
     }
 
     @supports (backdrop-filter: blur()) {
@@ -62,34 +63,48 @@
   }
 
   .region-breadcrumb {
+    padding: 0;
+    margin: 0;
     min-height: 1.25rem;
+  }
+
+  .breadcrumb {
+    &__list {
+      text-overflow: ellipsis;
+      width: auto;
+      overflow: hidden;
+      padding-left: 0.25rem;
+      margin-left: -0.25rem;
+      margin-top: -0.25rem;
+    }
   }
 }
 
 .gin-layout-container {
   display: flex;
   width: 100%;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  padding-top: 2px;
+  margin: 0 1rem;
 
   @include mq($breakpointSmall) {
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin: 0 2rem;
   }
 
   @include mq($breakpointMedium) {
-    margin-left: m#{i}n(5vw, 48px);
-    margin-right: m#{i}n(5vw, 48px);
+    margin: 0 m#{i}n(5vw, 48px);
   }
 }
 
 .gin-back-to-admin {
+  font-family: var(--ginFont);
   font-size: 0.79rem;
+  font-weight: normal;
+  line-height: 2;
   color: var(--colorGinTextLight);
   text-decoration: none;
   position: relative;
-  top: -.0825rem;
   padding-left: 2em;
+  border-bottom: 0 none;
   border-radius: var(--ginBorderTiny);
 
   &::before {
@@ -98,7 +113,6 @@
     position: absolute;
     top: 50%;
     left: 0;
-    margin-top: 1px;
     width: var(--iconGinMeta);
     height: var(--iconGinMeta);
     transform: translateY(-50%);

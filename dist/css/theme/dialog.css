@@ -546,8 +546,11 @@
   box-shadow: inset 0 0 0 5px var(--colorGinPrimary), 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus);
 }
 
-.ui-dialog .form-boolean--type-radio:checked:not(:disabled) {
-  box-shadow: inset 0 0 0 1px var(--colorGinPrimary);
+.ui-dialog .form-boolean--type-radio:checked:disabled, .ui-dialog .form-boolean--type-radio:checked:disabled:hover {
+  background-image: none;
+  background-color: var(--colorGinDisabledText);
+  border-color: var(--colorGinDisabled);
+  box-shadow: inset 0 0 0 5px var(--colorGinDisabled);
 }
 
 .ui-dialog .form-boolean--type-checkbox[disabled]:checked {

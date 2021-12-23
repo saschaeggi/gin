@@ -10,6 +10,7 @@
 
   // Disabled
   --colorGinDisabled: #bbb;
+  --colorGinDisabledText: #8d8d8d;
 
   // Messages
   --colorGinWarning: #d8b234;
@@ -125,8 +126,11 @@
   --colorGinFocusNeutralRGB: rgba(255, 255, 255, .8);
   --colorGinFocusBorder: rgba(0, 0, 0, .8); //rgba(81, 168, 255, .6);
 
-  // Messages
+  // Disabled
   --colorGinDisabled: #555;
+  --colorGinDisabledText: #{$colorDarkAppBackground};
+
+  // Messages
   --colorGinWarning: #dec15f;
   --colorGinWarningLightBackground: rgba(222, 193, 95, .1);
   --colorGinDanger: #ce6060;

@@ -50,7 +50,14 @@
   <div class="breadcrumb-wrapper">
   {% if route_name == 'entity.node.canonical' %}
     <div class="region region-breadcrumb">
-      <a class="gin-back-to-admin" href="/node/{{ node_id }}/edit">{{ 'Edit'|t }} {{ node_title }}</a>
+      <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
+        <h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
+        <ol class="breadcrumb__list">
+          <li class="breadcrumb__item">
+            <a class="breadcrumb__link gin-back-to-admin" href="/node/{{ node_id }}/edit">{{ 'Edit'|t }} {{ node_title }}</a>
+          </li>
+        </ol>
+      </nav>
     </div>
   {% else %}
     {{ page.breadcrumb }}

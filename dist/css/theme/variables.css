@@ -5,6 +5,7 @@
   --colorGinFocusBorder: rgba(0, 0, 0, .2);
   --colorGinFocusNeutralRGB: rgba(0, 0, 0, .4);
   --colorGinDisabled: #bbb;
+  --colorGinDisabledText: #8d8d8d;
   --colorGinWarning: #d8b234;
   --colorGinWarningLight: #efcf64;
   --colorGinWarningBackground: #605328;
@@ -83,6 +84,7 @@
   --colorGinFocusNeutralRGB: rgba(255, 255, 255, .8);
   --colorGinFocusBorder: rgba(0, 0, 0, .8);
   --colorGinDisabled: #555;
+  --colorGinDisabledText: #1b1b1d;
   --colorGinWarning: #dec15f;
   --colorGinWarningLightBackground: rgba(222, 193, 95, .1);
   --colorGinDanger: #ce6060;
