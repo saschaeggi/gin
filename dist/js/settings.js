@@ -1,4 +1,4 @@
-!function($, Drupal, drupalSettings) {
+(($, Drupal, drupalSettings) => {
   Drupal.behaviors.ginSettings = {
     attach: function(context) {
       $('input[name="enable_darkmode"]', context).change((function() {
@@ -44,9 +44,9 @@
     darkmode: function() {
       var darkmodeParam = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null, darkmodeEnabled = null != darkmodeParam ? darkmodeParam : drupalSettings.gin.darkmode, darkmodeClass = drupalSettings.gin.darkmode_class;
       1 == darkmodeEnabled || "auto" === darkmodeEnabled && window.matchMedia("(prefers-color-scheme: dark)").matches ? $("html").addClass(darkmodeClass) : $("html").removeClass(darkmodeClass), 
-      localStorage.setItem("Drupal.gin.darkmode", ""), window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (function(e) {
+      localStorage.setItem("Drupal.gin.darkmode", ""), window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e => {
         e.matches && "auto" === $('input[name="enable_darkmode"]:checked').val() && $("html").addClass(darkmodeClass);
-      })), window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (function(e) {
+      })), window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e => {
         e.matches && "auto" === $('input[name="enable_darkmode"]:checked').val() && $("html").removeClass(darkmodeClass);
       }));
     },
@@ -55,4 +55,4 @@
       !0 === enabled || 1 === enabled ? $("body").addClass(className) : $("body").removeClass(className);
     }
   };
-}(jQuery, Drupal, drupalSettings);
+})(jQuery, Drupal, drupalSettings);

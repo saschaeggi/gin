@@ -1,4 +1,4 @@
-!function($, Drupal, drupalSettings) {
+(($, Drupal, drupalSettings) => {
   Drupal.behaviors.ginToolbarToggle = {
     attach: function(context) {
       localStorage.getItem("Drupal.toolbar.trayVerticalLocked") && localStorage.removeItem("Drupal.toolbar.trayVerticalLocked"), 
@@ -14,7 +14,7 @@
         });
         document.dispatchEvent(event);
       })), $("#toolbar-bar .toolbar-item", context).on("click", (function() {
-        $("body").attr("data-toolbar-tray", $(this).data("toolbar-tray")), $(document).ready((function() {
+        $("body").attr("data-toolbar-tray", $(this).data("toolbar-tray")), $(document).ready((() => {
           $(".sticky-header").each((function() {
             $(this).width($(".sticky-table").width());
           }));
@@ -22,4 +22,4 @@
       }));
     }
   };
-}(jQuery, Drupal, drupalSettings);
+})(jQuery, Drupal, drupalSettings);

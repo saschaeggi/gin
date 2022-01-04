@@ -369,22 +369,12 @@
   opacity: 1;
 }
 
-#admin-toolbar-search-input:-ms-input-placeholder {
-  color: var(--colorGinDisabled);
-  opacity: 1;
-}
-
 #admin-toolbar-search-input::placeholder {
   color: var(--colorGinDisabled);
   opacity: 1;
 }
 
 .gin--dark-mode #admin-toolbar-search-input::-moz-placeholder {
-  color: var(--colorGinTextLight);
-  opacity: .75;
-}
-
-.gin--dark-mode #admin-toolbar-search-input:-ms-input-placeholder {
   color: var(--colorGinTextLight);
   opacity: .75;
 }

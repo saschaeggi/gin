@@ -1,11 +1,11 @@
-(() => {
+!function() {
   function ginInitDarkmode() {
     1 == localStorage.getItem("Drupal.gin.darkmode") || "auto" === localStorage.getItem("Drupal.gin.darkmode") && window.matchMedia("(prefers-color-scheme: dark)").matches ? document.documentElement.classList.add("gin--dark-mode") : !0 === document.documentElement.classList.contains("gin--dark-mode") && document.documentElement.classList.remove("gin--dark-mode");
   }
   if (localStorage.getItem("GinDarkMode") && (localStorage.setItem("Drupal.gin.darkmode", localStorage.getItem("GinDarkMode")), 
   localStorage.removeItem("GinDarkMode")), localStorage.getItem("GinSidebarOpen") && (localStorage.setItem("Drupal.gin.toolbarExpanded", localStorage.getItem("GinSidebarOpen")), 
   localStorage.removeItem("GinSidebarOpen")), localStorage.getItem("GinAccentColorCustom") && (localStorage.setItem("Drupal.gin.customAccentColor", localStorage.getItem("GinAccentColorCustom")), 
-  localStorage.removeItem("GinAccentColorCustom")), ginInitDarkmode(), window.addEventListener("DOMContentLoaded", (function() {
+  localStorage.removeItem("GinAccentColorCustom")), ginInitDarkmode(), window.addEventListener("DOMContentLoaded", (() => {
     localStorage.getItem("Drupal.gin.darkmode") || (localStorage.setItem("Drupal.gin.darkmode", drupalSettings.gin.darkmode), 
     ginInitDarkmode());
   })), localStorage.getItem("Drupal.gin.toolbarExpanded")) {
@@ -16,4 +16,4 @@
       scriptTag.parentNode.insertBefore(style, scriptTag);
     } else document.getElementsByClassName(className).length > 0 && document.getElementsByClassName(className)[0].remove();
   }
-})();
+}();

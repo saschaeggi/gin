@@ -1,4 +1,4 @@
-!function($, Drupal, drupalSettings) {
+(($, Drupal, drupalSettings) => {
   Drupal.behaviors.ginMessagesDismiss = {
     attach: function(context) {
       $(".messages .button--dismiss", context).once("messages-dismiss").click((function(event) {
@@ -10,4 +10,4 @@
       }));
     }
   };
-}(jQuery, Drupal, drupalSettings);
+})(jQuery, Drupal, drupalSettings);
