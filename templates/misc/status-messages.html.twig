@@ -53,7 +53,7 @@
               {% endif %}
             </div>
           {% endif %}
-          <button type="button" class="button button--dismiss" title="Dismiss"><span class="icon-close"></span>Close</button>
+          <button type="button" class="button button--dismiss" title="{{ 'Dismiss'|t }}"><span class="icon-close"></span>{{ 'Close'|t }}</button>
           <div class="messages__content">
             {% if messages|length > 1 %}
               <ul class="messages__list">
