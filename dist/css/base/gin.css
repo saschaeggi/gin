@@ -30,10 +30,6 @@ h3 {
   font-size: 1.5rem;
 }
 
-::-moz-selection {
-  background: var(--colorGinPrimaryLightHover);
-}
-
 ::selection {
   background: var(--colorGinPrimaryLightHover);
 }
@@ -145,7 +141,6 @@ button.link:active,
 
 @media (min-width: 1024px) {
   .region-sticky {
-    position: -webkit-sticky;
     position: sticky;
     top: -1px;
     width: 100%;
@@ -155,7 +150,6 @@ button.link:active,
   }
 
   .region-sticky-watcher {
-    position: -webkit-sticky;
     position: sticky;
     top: -1px;
     height: 1px;
@@ -273,7 +267,6 @@ button.link:active,
 
 @media (min-width: 1024px) {
   .sticky-shadow {
-    position: -webkit-sticky;
     position: sticky;
     top: calc(var(--ginHorizontalToolbarOffset) + 32px);
     width: calc(100% - min(10vw, 96px) + 24px);
@@ -394,8 +387,6 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 
 @media (min-width: 1024px) {
   .gin-sticky {
-    width: -webkit-max-content;
-    width: -moz-max-content;
     width: max-content;
   }
 }
@@ -551,7 +542,6 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 .system-themes-list,
 #views-entity-list {
     min-width: 100%;
-    width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
   }
@@ -1239,16 +1229,6 @@ details summary {
   }
 }
 
-@-webkit-keyframes fadeInBottom {
-  0% {
-    transform: translateY(100%);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
 @keyframes fadeInBottom {
   0% {
     transform: translateY(100%);
@@ -1352,14 +1332,12 @@ details summary {
 .view-content .views-form [data-drupal-selector*=edit-header].is-sticky {
   z-index: 4;
   opacity: 1;
-  position: -webkit-sticky;
   position: sticky;
   left: 0;
   bottom: .5rem;
   background: var(--colorGinStickyBg);
   box-shadow: 0 2px 6px 2px rgba(0, 0, 0, .03);
-  -webkit-animation: fadeInBottom 320ms 1 forwards;
-          animation: fadeInBottom 320ms 1 forwards;
+  animation: fadeInBottom 320ms 1 forwards;
 }
 
 @supports ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) {

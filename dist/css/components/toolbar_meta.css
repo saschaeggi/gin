@@ -21,7 +21,6 @@
 .region-meta--frontend {
   z-index: 501;
   /* on top of the Drupal world */
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   background: rgba(255, 255, 255, .98);
@@ -321,8 +320,7 @@
   .toolbar-meta .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user__image {
     width: 39px;
     height: 39px;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
 
   .toolbar-meta .toolbar-bar .toolbar-menu {
@@ -364,19 +362,9 @@
   margin-right: .75rem;
 }
 
-#admin-toolbar-search-input::-moz-placeholder {
-  color: var(--colorGinDisabled);
-  opacity: 1;
-}
-
 #admin-toolbar-search-input::placeholder {
   color: var(--colorGinDisabled);
   opacity: 1;
-}
-
-.gin--dark-mode #admin-toolbar-search-input::-moz-placeholder {
-  color: var(--colorGinTextLight);
-  opacity: .75;
 }
 
 .gin--dark-mode #admin-toolbar-search-input::placeholder {

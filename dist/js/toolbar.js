@@ -6,10 +6,10 @@
       $(".toolbar-menu__trigger").addClass("is-active")) : ($("body").attr("data-toolbar-menu", ""), 
       $(".toolbar-menu__trigger").removeClass("is-active")), $(".toolbar-menu__trigger", context).on("click", (function(e) {
         e.preventDefault(), $(this).toggleClass("is-active");
-        var active = "true";
+        let active = "true";
         $(this).hasClass("is-active") ? $("body").attr("data-toolbar-menu", "open") : ($("body").attr("data-toolbar-menu", ""), 
         active = "false", $(".gin-toolbar-inline-styles").remove()), localStorage.setItem("Drupal.gin.toolbarExpanded", active);
-        var event = new CustomEvent("toolbar-toggle", {
+        const event = new CustomEvent("toolbar-toggle", {
           detail: "true" === active
         });
         document.dispatchEvent(event);
