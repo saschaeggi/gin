@@ -161,6 +161,11 @@ libraries-extend:
   contextual/drupal.contextual-links:
     - gin/contextual_links
 
+ckeditor_stylesheets:
+  - dist/css/theme/accent.css
+  - dist/css/theme/variables.css
+  - dist/css/theme/ckeditor.css
+
 # Regions
 regions:
   header: 'Header'
