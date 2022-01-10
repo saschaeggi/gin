@@ -192,19 +192,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
  * Implements template_preprocess_HOOK() for select.
  */
 function gin_preprocess_select(&$variables) {
-  if (!empty($variables['element']['#title_display']) && $variables['element']['#title_display'] === 'attribute' && !empty((string) $variables['element']['#title'])) {
-    $variables['attributes']['title'] = (string) $variables['element']['#title'];
-  }
-
-  $variables['attributes']['class'][] = 'form-element';
-  $variables['attributes']['class'][] = $variables['element']['#multiple'] ?
-    'form-element--type-select-multiple' :
-    'form-element--type-select';
-
-  if (
-    in_array('block-region-select', $variables['attributes']['class']) ||
-    in_array('block-weight', $variables['attributes']['class'])
-  ) {
+  if (in_array('block-weight', $variables['attributes']['class'], TRUE)) {
     $variables['attributes']['class'][] = 'form-element--extrasmall';
   }
 }
