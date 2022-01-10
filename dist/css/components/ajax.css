@@ -51,8 +51,7 @@
   border: 2px solid var(--colorGinPrimary);
   border-right: 2px dotted transparent;
   border-radius: 50%;
-  -webkit-animation: gin-throbber .75s linear infinite;
-          animation: gin-throbber .75s linear infinite;
+  animation: gin-throbber .75s linear infinite;
 }
 
 .gin--dark-mode .ui-dialog .ajax-progress,
@@ -76,16 +75,6 @@
 .contextual-links .ajax-progress-throbber::before {
   top: 0;
   left: .25em;
-}
-
-@-webkit-keyframes gin-throbber {
-  0% {
-    transform: rotateZ(0);
-  }
-
-  100% {
-    transform: rotateZ(360deg);
-  }
 }
 
 @keyframes gin-throbber {
