@@ -125,8 +125,8 @@ function gin_page_attachments_alter(&$page) {
     $page['#attached']['drupalSettings']['gin']['darkmode_class'] = 'gin--dark-mode';
     $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $settings->get('preset_accent_color');
     $page['#attached']['drupalSettings']['gin']['accent_color'] = $settings->get('accent_color');
-    $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $settings->getDefault('preset_focus_color');
-    $page['#attached']['drupalSettings']['gin']['focus_color'] = $settings->getDefault('focus_color');
+    $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $settings->get('preset_focus_color');
+    $page['#attached']['drupalSettings']['gin']['focus_color'] = $settings->get('focus_color');
     $page['#attached']['drupalSettings']['gin']['highcontrastmode'] = $settings->get('high_contrast_mode');
     $page['#attached']['drupalSettings']['gin']['highcontrastmode_class'] = 'gin--high-contrast-mode';
 

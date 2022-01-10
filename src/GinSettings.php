@@ -7,11 +7,14 @@ use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\user\UserDataInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
  * Service to handle overridden user settings.
  */
 class GinSettings implements ContainerInjectionInterface {
+
+  use StringTranslationTrait;
 
   /**
    * The config factory.
@@ -77,7 +80,7 @@ class GinSettings implements ContainerInjectionInterface {
     if (!$account) {
       $account = $this->currentUser;
     }
-    if ($this->userOverrideEnabled()) {
+    if ($this->userOverrideEnabled($account)) {
       $settings = $this->userData->get('gin', $account->id(), 'settings');
       if (isset($settings[$name])) {
         $value = $settings[$name];
@@ -224,6 +227,145 @@ class GinSettings implements ContainerInjectionInterface {
       $admin_theme = $this->configFactory->get('system.theme')->get('default');
     }
     return $admin_theme;
+  }
+
+  /**
+   * Build the settings form for the theme.
+   *
+   * @param \Drupal\Core\Session\AccountInterface|null $account
+   *   The account object.
+   *
+   * @return array
+   *   The theme setting form elements.
+   */
+  public function getSettingsForm(AccountInterface $account = NULL): array {
+    $beta_label = ' (BETA)';
+    $form['enable_darkmode'] = [
+      '#type' => 'radios',
+      '#title' => $this->t('Appearance') . $beta_label,
+      '#description' => $this->t('Enables Darkmode for the admin interface.'),
+      '#default_value' => (string) ($account ? $this->get('enable_darkmode', $account) : $this->getDefault('enable_darkmode')),
+      '#options' => [
+        0 => $this->t('Light'),
+        1 => $this->t('Dark'),
+        'auto' => $this->t('Auto'),
+      ],
+      '#after_build' => [],
+    ];
+
+    // Accent color setting.
+    $form['preset_accent_color'] = [
+      '#type' => 'radios',
+      '#title' => $this->t('Accent color'),
+      '#default_value' => $account ? $this->get('preset_accent_color', $account) : $this->getDefault('preset_accent_color'),
+      '#options' => [
+        'blue' => $this->t('Gin Blue (Default)'),
+        'light_blue' => $this->t('Light Blue'),
+        'dark_purple' => $this->t('Dark Purple'),
+        'purple' => $this->t('Purple'),
+        'teal' => $this->t('Teal'),
+        'green' => $this->t('Green'),
+        'pink' => $this->t('Pink'),
+        'red' => $this->t('Red'),
+        'orange' => $this->t('Orange'),
+        'yellow' => $this->t('Yellow'),
+        'neutral' => $this->t('Neutral'),
+        'custom' => $this->t('Custom'),
+      ],
+      '#description' => '',
+      '#after_build' => [
+        '_gin_accent_radios',
+      ],
+    ];
+
+    // Main Accent color setting.
+    $form['accent_color'] = [
+      '#type' => 'textfield',
+      '#placeholder' => '#777777',
+      '#title' => $this->t('Custom Accent color'),
+      '#description' => $this->t('Use with caution, values should meet a11y criteria.'),
+      '#default_value' => $account ? $this->get('accent_color', $account) : $this->getDefault('accent_color'),
+      '#min' => '7',
+      '#max' => '7',
+      '#size' => '7',
+      '#states' => [
+        // Show if met.
+        'visible' => [
+          ':input[name="preset_accent_color"]' => ['value' => 'custom'],
+        ],
+      ],
+      '#after_build' => [],
+    ];
+
+    // Focus color setting.
+    $form['preset_focus_color'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Focus color (BETA)'),
+      '#description' => '',
+      '#default_value' => $account ? $this->get('preset_focus_color', $account) : $this->getDefault('preset_focus_color'),
+      '#options' => [
+        'gin' => $this->t('Gin Focus color (Default)'),
+        'green' => $this->t('Green'),
+        'claro' => $this->t('Claro Green'),
+        'orange' => $this->t('Orange'),
+        'dark' => $this->t('Neutral'),
+        'accent' => $this->t('Same as Accent color'),
+        'custom' => $this->t('Custom'),
+      ],
+      '#after_build' => [],
+    ];
+
+    // Custom Focus color setting.
+    $form['focus_color'] = [
+      '#type' => 'textfield',
+      '#placeholder' => '#777777',
+      '#title' => $this->t('Custom Focus color (BETA)'),
+      '#description' => $this->t('Use with caution, values should meet a11y criteria.'),
+      '#default_value' => $account ? $this->get('focus_color', $account) : $this->getDefault('focus_color'),
+      '#min' => '7',
+      '#max' => '7',
+      '#size' => '7',
+      '#states' => [
+        // Show if met.
+        'visible' => [
+          ':input[name="preset_focus_color"]' => ['value' => 'custom'],
+        ],
+      ],
+      '#after_build' => [],
+    ];
+
+    $form['high_contrast_mode'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Increase contrast (EXPERIMENTAL)'),
+      '#description' => $this->t('Enables high contrast mode.'),
+      '#default_value' => $account ? $this->get('high_contrast_mode', $account) : $this->getDefault('high_contrast_mode'),
+      '#after_build' => [],
+    ];
+
+    $form['classic_toolbar'] = [
+      '#type' => 'radios',
+      '#title' => $this->t('Drupal Toolbar'),
+      '#description' => $this->t('Choose Drupal Toolbar.'),
+      '#default_value' => $account ? $this->get('classic_toolbar', $account) : $this->getDefault('classic_toolbar'),
+      '#options' => [
+        'vertical' => $this->t('Sidebar, Vertical Toolbar (Default)'),
+        'horizontal' => $this->t('Horizontal, Modern Toolbar'),
+        'classic' => $this->t('Legacy, Classic Drupal Toolbar'),
+      ],
+      '#after_build' => [
+        '_gin_toolbar_radios',
+      ],
+    ];
+
+    if (!$account) {
+      foreach ($form as $key => $element) {
+        $form[$key]['#after_build'][] = [
+          GinAfterBuild::class, 'overriddenSettingByUser',
+        ];
+      }
+    }
+
+    return $form;
   }
 
 }

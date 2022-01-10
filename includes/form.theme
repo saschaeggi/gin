@@ -179,62 +179,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
           ':input[name="enable_user_settings"]' => ['checked' => TRUE],
         ],
       ],
-    ];
-
-    $beta_label = ' (BETA)';
-    $form['gin_theme_settings']['user_settings']['enable_darkmode'] = [
-      '#type' => 'radios',
-      '#title' => t('Appearance') . $beta_label,
-      '#description' => t("Enables Darkmode for the admin interface."),
-      '#default_value' => strval($settings->get('enable_darkmode', $account)),
-      '#options' => _gin_get_darkmode_presets(),
-      '#weight' => 0,
-    ];
-
-    // Accent color setting.
-    $form['gin_theme_settings']['user_settings']['preset_accent_color'] = [
-      '#type' => 'radios',
-      '#title' => t('Accent color'),
-      '#default_value' => $settings->get('preset_accent_color', $account),
-      '#options' => _gin_get_accent_color_presets(),
-      '#after_build' => ['_gin_accent_radios'],
-    ];
-
-    // Main Accent color setting.
-    $form['gin_theme_settings']['user_settings']['accent_color'] = [
-      '#type' => 'textfield',
-      '#placeholder' => '#777777',
-      '#title' => t('Accent color'),
-      '#description' => t('Use with caution, values should meet a11y criteria.'),
-      '#default_value' => $settings->get('accent_color', $account),
-      '#min' => '7',
-      '#max' => '7',
-      '#size' => '7',
-      '#states' => [
-        // Show if met.
-        'visible' => [
-          ':input[name="preset_accent_color"]' => ['value' => 'custom'],
-        ],
-      ],
-    ];
-
-    $form['gin_theme_settings']['user_settings']['high_contrast_mode'] = [
-      '#type' => 'checkbox',
-      '#title' => ('Increase contrast (EXPERIMENTAL)'),
-      '#description' => t("Enables high contrast mode."),
-      '#default_value' => $settings->get('high_contrast_mode', $account),
-      '#weight' => 0,
-    ];
-
-    // Classic Toolbar user setting.
-    $form['gin_theme_settings']['user_settings']['classic_toolbar'] = [
-      '#type' => 'radios',
-      '#title' => t('Drupal Toolbar'),
-      '#description' => t('Choose Drupal Toolbar.'),
-      '#default_value' => $settings->get('classic_toolbar', $account),
-      '#options' => _gin_get_toolbar_presets(),
-      '#after_build' => ['_gin_toolbar_radios'],
-    ];
+    ] + $settings->getSettingsForm($account);
 
     // Attach custom library.
     $form['#attached']['library'][] = 'gin/settings';

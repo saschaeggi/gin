@@ -29,7 +29,7 @@ class GinAfterBuild implements TrustedCallbackInterface {
       $userEditUrl = Url::fromRoute('entity.user.edit_form', ['user' => \Drupal::currentUser()->id()])->toString();
 
       $value = $settings->get($element['#name']);
-      if ($element['#type'] === 'radios') {
+      if ($element['#type'] === 'radios' || $element['#type'] === 'select') {
         $value = $element['#options'][$value];
       }
       if ($element['#type'] === 'checkbox') {

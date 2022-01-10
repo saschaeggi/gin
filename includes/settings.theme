@@ -7,7 +7,6 @@
 
 use Drupal\Core\File\Exception\FileException;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\gin\GinAfterBuild;
 use Drupal\gin\GinSettings;
 
 /**
@@ -41,103 +40,14 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
    * General settings.
    * * //////////////////////////
    */
+  /** @var \Drupal\gin\GinSettings $settings */
+  $settings = \Drupal::classResolver(GinSettings::class);
+
   $form['custom_settings'] = [
     '#type' => 'details',
     '#open' => TRUE,
     '#title' => t('Settings'),
-  ];
-  /** @var \Drupal\gin\GinSettings $settings */
-  $settings = \Drupal::classResolver(GinSettings::class);
-
-  $beta_label = ' (BETA)';
-  $form['custom_settings']['enable_darkmode'] = [
-    '#type' => 'radios',
-    '#title' => t('Appearance') . $beta_label,
-    '#description' => t('Enables Darkmode for the admin interface.'),
-    '#default_value' => strval($settings->getDefault('enable_darkmode')),
-    '#options' => _gin_get_darkmode_presets(),
-    '#after_build' => [
-      [GinAfterBuild::class, 'overriddenSettingByUser'],
-    ],
-  ];
-
-  // Accent color setting.
-  $form['custom_settings']['preset_accent_color'] = [
-    '#type' => 'radios',
-    '#title' => t('Accent color'),
-    '#default_value' => $settings->getDefault('preset_accent_color'),
-    '#options' => _gin_get_accent_color_presets(),
-    '#description' => '',
-    '#after_build' => [
-      '_gin_accent_radios',
-      [GinAfterBuild::class, 'overriddenSettingByUser'],
-    ],
-  ];
-
-  // Main Accent color setting.
-  $form['custom_settings']['accent_color'] = [
-    '#type' => 'textfield',
-    '#placeholder' => '#777777',
-    '#title' => t('Custom Accent color'),
-    '#description' => t('Use with caution, values should meet a11y criteria.'),
-    '#default_value' => $settings->getDefault('accent_color'),
-    '#min' => '7',
-    '#max' => '7',
-    '#size' => '7',
-    '#states' => [
-      // Show if met.
-      'visible' => [
-        ':input[name="preset_accent_color"]' => ['value' => 'custom'],
-      ],
-    ],
-    '#after_build' => [
-      [GinAfterBuild::class, 'overriddenSettingByUser'],
-    ],
-  ];
-
-  // Focus color setting.
-  $form['custom_settings']['preset_focus_color'] = [
-    '#type' => 'select',
-    '#title' => t('Focus color (BETA)'),
-    '#default_value' => $settings->getDefault('preset_focus_color'),
-    '#options' => [
-      'gin' => t('Gin Focus color (Default)'),
-      'green' => t('Green'),
-      'claro' => t('Claro Green'),
-      'orange' => t('Orange'),
-      'dark' => t('Neutral'),
-      'accent' => t('Same as Accent color'),
-      'custom' => t('Custom'),
-    ],
-  ];
-
-  // Custom Focus color setting.
-  $form['custom_settings']['focus_color'] = [
-    '#type' => 'textfield',
-    '#placeholder' => '#777777',
-    '#title' => t('Custom Focus color (BETA)'),
-    '#description' => t('Use with caution, values should meet a11y criteria.'),
-    '#default_value' => $settings->getDefault('focus_color'),
-    '#min' => '7',
-    '#max' => '7',
-    '#size' => '7',
-    '#states' => [
-      // Show if met.
-      'visible' => [
-        ':input[name="preset_focus_color"]' => ['value' => 'custom'],
-      ],
-    ],
-  ];
-
-  $form['custom_settings']['high_contrast_mode'] = [
-    '#type' => 'checkbox',
-    '#title' => t('Increase contrast (EXPERIMENTAL)'),
-    '#description' => t("Enables high contrast mode."),
-    '#default_value' => $settings->getDefault('high_contrast_mode'),
-    '#after_build' => [
-      [GinAfterBuild::class, 'overriddenSettingByUser'],
-    ],
-  ];
+  ] + $settings->getSettingsForm();
 
   // Allow user settings.
   $form['custom_settings']['show_user_theme_settings'] = [
@@ -145,29 +55,6 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
     '#title' => t('Users can override Gin settings'),
     '#description' => t('Expose the admin theme settings to users.'),
     '#default_value' => $settings->getDefault('show_user_theme_settings'),
-  ];
-
-  /*
-   * //////////////////////////
-   * Toolbar settings.
-   * * //////////////////////////
-   */
-  $form['toolbar_wrapper'] = [
-    '#type' => 'details',
-    '#title' => t('Toolbar'),
-    '#open' => TRUE,
-  ];
-
-  $form['toolbar_wrapper']['classic_toolbar'] = [
-    '#type' => 'radios',
-    '#title' => t('Drupal Toolbar'),
-    '#description' => t('Choose Drupal Toolbar.'),
-    '#default_value' => $settings->getDefault('classic_toolbar'),
-    '#options' => _gin_get_toolbar_presets(),
-    '#after_build' => [
-      '_gin_toolbar_radios',
-      [GinAfterBuild::class, 'overriddenSettingByUser'],
-    ],
   ];
 
   /*

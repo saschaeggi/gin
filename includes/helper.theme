@@ -54,6 +54,8 @@ function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
       'preset_accent_color' => $form_state->getValue('preset_accent_color'),
       'accent_color' => $form_state->getValue('accent_color'),
       'classic_toolbar' => $form_state->getValue('classic_toolbar'),
+      'preset_focus_color' => $form_state->getValue('preset_focus_color'),
+      'focus_color' => $form_state->getValue('focus_color'),
       'high_contrast_mode' => (bool) $form_state->getValue('high_contrast_mode'),
     ];
     $settings->setAll($user_settings, $account);
@@ -96,48 +98,6 @@ function _gin_is_active() {
   $gin_activated = array_key_exists('gin', $base_themes);
 
   return $gin_activated;
-}
-
-/**
- * Accent color presets helper function.
- */
-function _gin_get_accent_color_presets() {
-  return [
-    'blue' => t('Gin Blue (Default)'),
-    'light_blue' => t('Light Blue'),
-    'dark_purple' => t('Dark Purple'),
-    'purple' => t('Purple'),
-    'teal' => t('Teal'),
-    'green' => t('Green'),
-    'pink' => t('Pink'),
-    'red' => t('Red'),
-    'orange' => t('Orange'),
-    'yellow' => t('Yellow'),
-    'neutral' => t('Neutral'),
-    'custom' => t('Custom'),
-  ];
-}
-
-/**
- * Darkmode presets helper function.
- */
-function _gin_get_darkmode_presets() {
-  return [
-    0 => t('Light'),
-    1 => t('Dark'),
-    'auto' => t('Auto'),
-  ];
-}
-
-/**
- * Toolbar presets helper function.
- */
-function _gin_get_toolbar_presets() {
-  return [
-    'vertical' => t('Sidebar, Vertical Toolbar (Default)'),
-    'horizontal' => t('Horizontal, Modern Toolbar'),
-    'classic' => t('Legacy, Classic Drupal Toolbar'),
-  ];
 }
 
 /**
