@@ -15,12 +15,6 @@ gin.settings:
     classic_toolbar:
       type: string
       label: 'The classic toolbar'
-    icon_default:
-      type: boolean
-      label: 'Use default logo'
-    icon_path:
-      type: string
-      label: 'Path to custom logo'
     high_contrast_mode:
       type: boolean
       label: 'High contrast mode'
@@ -30,9 +24,6 @@ gin.settings:
     focus_color:
       type: string
       label: 'The focus color'
-    icon_upload:
-      type: string
-      label: 'The icon upload'
     show_user_theme_settings:
       type: boolean
       label: 'Let user override theme'

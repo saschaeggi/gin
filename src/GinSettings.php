@@ -212,6 +212,18 @@ class GinSettings implements ContainerInjectionInterface {
     if ($name === 'classic_toolbar') {
       $value = $value === TRUE || $value === 'true' ||  $value === '1' || $value === 1 ? 'classic' : $value;
     }
+    if ($name === 'logo.use_default') {
+      if ($this->get('icon_default') === FALSE) {
+        return FALSE;
+      }
+      return $value;
+    }
+    if ($name === 'logo.path') {
+      if ($this->get('icon_default') === FALSE && !is_null($this->get('icon_path'))) {
+        return $this->get('icon_path');
+      }
+      return $value;
+    }
     return $value;
   }
 
