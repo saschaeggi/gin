@@ -280,14 +280,11 @@ class GinSettings implements ContainerInjectionInterface {
 
     // Main Accent color setting.
     $form['accent_color'] = [
-      '#type' => 'textfield',
+      '#type' => 'color',
       '#placeholder' => '#777777',
       '#title' => $this->t('Custom Accent color'),
       '#description' => $this->t('Use with caution, values should meet a11y criteria.'),
       '#default_value' => $account ? $this->get('accent_color', $account) : $this->getDefault('accent_color'),
-      '#min' => '7',
-      '#max' => '7',
-      '#size' => '7',
       '#states' => [
         // Show if met.
         'visible' => [
@@ -317,14 +314,11 @@ class GinSettings implements ContainerInjectionInterface {
 
     // Custom Focus color setting.
     $form['focus_color'] = [
-      '#type' => 'textfield',
+      '#type' => 'color',
       '#placeholder' => '#777777',
       '#title' => $this->t('Custom Focus color (BETA)'),
       '#description' => $this->t('Use with caution, values should meet a11y criteria.'),
       '#default_value' => $account ? $this->get('focus_color', $account) : $this->getDefault('focus_color'),
-      '#min' => '7',
-      '#max' => '7',
-      '#size' => '7',
       '#states' => [
         // Show if met.
         'visible' => [
