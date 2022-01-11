@@ -38,8 +38,8 @@ function gin_preprocess_menu__toolbar__gin(&$variables) {
   // Get theme settings.
   /** @var \Drupal\gin\GinSettings $settings */
   $settings = \Drupal::classResolver(GinSettings::class);
-  $logo_path = $settings->getDefault('icon_path');
-  $logo_default = $settings->getDefault('icon_default');
+  $logo_path = $settings->getDefault('logo.path');
+  $logo_default = $settings->getDefault('logo.use_default');
   $variables['icon_default'] = $logo_default;
 
   if (!$logo_default) {

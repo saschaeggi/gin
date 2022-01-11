@@ -5,7 +5,6 @@
  * settings.theme
  */
 
-use Drupal\Core\File\Exception\FileException;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\gin\GinSettings;
 
@@ -17,13 +16,6 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   if (isset($form_id)) {
     return;
   }
-
-  /*
-   * //////////////////////////
-   * Unset unused settings.
-   * * //////////////////////////
-   */
-  unset($form['logo']);
 
   /*
    * //////////////////////////
@@ -62,85 +54,24 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
    * Logo settings.
    * * //////////////////////////
    */
-  $form['icon'] = [
-    '#type' => 'details',
-    '#title' => t('Logo'),
-    '#open' => TRUE,
-  ];
+  $form['logo']['settings']['logo_upload']['#upload_validators'] = ['file_validate_extensions' => ['png gif jpg jpeg apng svg']];
 
-  // Make sure that after updating it is set to use the default logo.
-  $defaultIconDefault = $settings->getDefault('icon_default') !== NULL ? theme_get_setting('icon_default') : TRUE;
-
-  $form['icon']['icon_default'] = [
-    '#type' => 'checkbox',
-    '#title' => t('Use the default logo supplied by the theme'),
-    '#default_value' => $defaultIconDefault,
-    '#tree' => FALSE,
-  ];
-  $form['icon']['settings'] = [
-    '#type' => 'container',
-    '#states' => [
-      // Hide the logo settings when using the default logo.
-      'invisible' => [
-        ':input[name="icon_default"]' => ['checked' => TRUE],
-      ],
-    ],
-  ];
-  $form['icon']['settings']['icon_path'] = [
-    '#type' => 'textfield',
-    '#title' => t('Path to custom logo'),
-    '#default_value' => $settings->getDefault('icon_path'),
-  ];
-  $form['icon']['settings']['icon_upload'] = [
-    '#type' => 'file',
-    '#title' => t('Upload logo image'),
-    '#maxlength' => 40,
-    '#description' => t("If you don't have direct file access to the server, use this field to upload your logo."),
-    '#upload_validators' => [
-      'file_validate_extensions' => ['png gif jpg jpeg apng svg'],
-    ],
-  ];
-
-  // Add submit/validate function.
-  $form['#validate'][] = 'gin_form_system_theme_settings_alter_validate';
+  if ($settings->getDefault('icon_default') === FALSE) {
+    $form['logo']['default_logo']['#default_value'] = FALSE;
+    $form['logo']['settings']['logo_path']['#default_value'] = $settings->getDefault('icon_path');
+    $form['actions']['submit']['#submit'] = ['_gin_form_system_theme_settings_form_submit'];
+  }
 
   // Attach custom library.
   $form['#attached']['library'][] = 'gin/settings';
 }
 
 /**
- * Validation for logo.
+ * Implements helper function _gin_form_system_theme_settings_form_submit().
  */
-function gin_form_system_theme_settings_alter_validate(array &$form, FormStateInterface $form_state) {
-  $module_handler = \Drupal::service('module_handler');
-
-  if (isset($form['icon']) && $module_handler->moduleExists('file')) {
-    $file = _file_save_upload_from_form($form['icon']['settings']['icon_upload'], $form_state, 0);
-    if ($file) {
-      try {
-        $filename = \Drupal::service('file_system')->copy($file->getFileUri(), \Drupal::config('system.file')->get('default_scheme') . '://');
-        $form_state->setValue('icon_default', 0);
-        $form_state->setValue('icon_path', $filename);
-        $form_state->unsetValue('icon_upload');
-      }
-      catch (FileException $e) {
-        \Drupal::logger('gin')->error($e->getMessage());
-      }
-    }
-  }
-
-  // When intending to use the default logo, unset the icon_path.
-  if ($form_state->getValue('icon_default')) {
-    $form_state->unsetValue('icon_path');
-  }
-
-  // If the user provided a path for a logo file, make sure a file
-  // exists at that path.
-  if ($form_state->getValue('icon_path')) {
-    $path = _gin_validate_path_logo($form_state->getValue('icon_path'));
-
-    if (!$path) {
-      $form_state->setErrorByName('icon_path', t('The custom logo path is invalid.'));
-    }
-  }
+function _gin_form_system_theme_settings_form_submit(&$form, FormStateInterface $form_state) {
+  $config = \Drupal::configFactory()->getEditable('gin.settings');
+  $config->clear('icon_path')
+    ->clear('icon_default')
+    ->save();
 }
