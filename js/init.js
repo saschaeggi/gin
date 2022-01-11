@@ -13,11 +13,6 @@ function checkLegacy() {
     localStorage.setItem('Drupal.gin.toolbarExpanded', localStorage.getItem('GinSidebarOpen'));
     localStorage.removeItem('GinSidebarOpen');
   }
-
-  if (localStorage.getItem('GinAccentColorCustom')) {
-    localStorage.setItem('Drupal.gin.customAccentColor', localStorage.getItem('GinAccentColorCustom'));
-    localStorage.removeItem('GinAccentColorCustom');
-  }
 }
 
 checkLegacy();

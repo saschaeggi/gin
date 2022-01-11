@@ -13,31 +13,22 @@
     }
   }, Drupal.behaviors.ginAccent = {
     attach: function() {
-      const path = drupalSettings.path.currentPath;
-      if (Drupal.behaviors.ginAccent.checkDarkmode(), Drupal.behaviors.ginAccent.setFocusColor(), 
-      -1 !== path.indexOf("user/login") || -1 !== path.indexOf("user/password") || -1 !== path.indexOf("user/register") || localStorage.getItem("Drupal.gin.customAccentColor")) Drupal.behaviors.ginAccent.setAccentColor(); else if (Drupal.behaviors.ginAccent.setAccentColor(), 
-      "custom" === drupalSettings.gin.preset_accent_color) {
-        const accentColorSetting = drupalSettings.gin.accent_color;
-        localStorage.setItem("Drupal.gin.customAccentColor", accentColorSetting);
-      } else localStorage.setItem("Drupal.gin.customAccentColor", "");
+      Drupal.behaviors.ginAccent.checkDarkmode(), Drupal.behaviors.ginAccent.setAccentColor(), 
+      Drupal.behaviors.ginAccent.setFocusColor();
     },
     setAccentColor: function() {
       let preset = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null, color = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null;
       const accentColorPreset = null != preset ? preset : drupalSettings.gin.preset_accent_color;
-      "custom" === accentColorPreset ? ($("body").attr("data-gin-accent", preset), Drupal.behaviors.ginAccent.setCustomAccentColor("custom", color)) : $("body").attr("data-gin-accent", accentColorPreset);
+      $("body").attr("data-gin-accent", accentColorPreset), "custom" === accentColorPreset && Drupal.behaviors.ginAccent.setCustomAccentColor(color);
     },
     setCustomAccentColor: function() {
-      let preset = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null, color = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null;
-      const accentColorSetting = null != color ? color : drupalSettings.gin.accent_color;
-      if ("custom" === preset) {
-        $("body").attr("data-gin-accent", preset);
-        const accentColor = accentColorSetting;
-        if (accentColor) {
-          Drupal.behaviors.ginAccent.clearAccentColor();
-          const strippedAccentColor = accentColor.replace("#", ""), darkAccentColor = Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 65).replace("#", ""), styles = `<style class="gin-custom-colors">            [data-gin-accent="custom"] {\n              --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(accentColor)};\n              --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -10)};\n              --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -15)};\n              --colorGinAppBackgroundRGB: ${Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 97))};\n              --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 85)};\n            }\n            .gin--dark-mode[data-gin-accent="custom"],\n            .gin--dark-mode [data-gin-accent="custom"] {\n              --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(darkAccentColor)};\n              --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 55)};\n              --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 50)};\n              --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor("2A2A2D", darkAccentColor, 88)};\n            }\n            </style>`;
-          $("body").append(styles);
-        }
-      } else Drupal.behaviors.ginAccent.clearAccentColor();
+      let color = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null;
+      const accentColor = null != color ? color : drupalSettings.gin.accent_color;
+      if (accentColor) {
+        Drupal.behaviors.ginAccent.clearAccentColor();
+        const strippedAccentColor = accentColor.replace("#", ""), darkAccentColor = Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 65).replace("#", ""), styles = `<style class="gin-custom-colors">            [data-gin-accent="custom"] {\n              --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(accentColor)};\n              --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -10)};\n              --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -15)};\n              --colorGinAppBackgroundRGB: ${Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 97))};\n              --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 85)};\n            }\n            .gin--dark-mode[data-gin-accent="custom"],\n            .gin--dark-mode [data-gin-accent="custom"] {\n              --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(darkAccentColor)};\n              --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 55)};\n              --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 50)};\n              --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor("2A2A2D", darkAccentColor, 88)};\n            }\n            </style>`;
+        $("body").append(styles);
+      }
     },
     clearAccentColor: function() {
       $(".gin-custom-colors").remove();
@@ -51,12 +42,20 @@
     },
     setFocusColor: function() {
       let preset = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null, color = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null;
-      const focusColorPreset = null != preset ? preset : drupalSettings.gin.preset_focus_color, focusColorSetting = null != color ? color : drupalSettings.gin.focus_color;
-      Drupal.behaviors.ginAccent.clearFocusColor(), $("body").attr("data-gin-focus", focusColorPreset), 
-      "custom" === focusColorSetting && $("body").css("--colorGinFocus", focusColorSetting);
+      const focusColorPreset = null != preset ? preset : drupalSettings.gin.preset_focus_color;
+      $("body").attr("data-gin-focus", focusColorPreset), "custom" === focusColorPreset && Drupal.behaviors.ginAccent.setCustomFocusColor(color);
+    },
+    setCustomFocusColor: function() {
+      let color = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null;
+      const accentColor = null != color ? color : drupalSettings.gin.focus_color;
+      if (accentColor) {
+        Drupal.behaviors.ginAccent.clearFocusColor();
+        const strippedAccentColor = accentColor.replace("#", ""), styles = `<style class="gin-custom-focus">            [data-gin-focus="custom"] {\n              --colorGinFocus: ${accentColor};\n            }\n            .gin--dark-mode[data-gin-focus="custom"],\n            .gin--dark-mode [data-gin-focus="custom"] {\n              --colorGinFocus: ${Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 65)};\n            }\n            </style>`;
+        $("body").append(styles);
+      }
     },
     clearFocusColor: function() {
-      $("body").css("--colorGinFocus", "");
+      $(".gin-custom-focus").remove();
     },
     checkDarkmode: function() {
       const darkmodeClass = drupalSettings.gin.darkmode_class;

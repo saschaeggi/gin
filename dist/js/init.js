@@ -4,8 +4,7 @@
   }
   if (localStorage.getItem("GinDarkMode") && (localStorage.setItem("Drupal.gin.darkmode", localStorage.getItem("GinDarkMode")), 
   localStorage.removeItem("GinDarkMode")), localStorage.getItem("GinSidebarOpen") && (localStorage.setItem("Drupal.gin.toolbarExpanded", localStorage.getItem("GinSidebarOpen")), 
-  localStorage.removeItem("GinSidebarOpen")), localStorage.getItem("GinAccentColorCustom") && (localStorage.setItem("Drupal.gin.customAccentColor", localStorage.getItem("GinAccentColorCustom")), 
-  localStorage.removeItem("GinAccentColorCustom")), ginInitDarkmode(), window.addEventListener("DOMContentLoaded", (() => {
+  localStorage.removeItem("GinSidebarOpen")), ginInitDarkmode(), window.addEventListener("DOMContentLoaded", (() => {
     localStorage.getItem("Drupal.gin.darkmode") || (localStorage.setItem("Drupal.gin.darkmode", drupalSettings.gin.darkmode), 
     ginInitDarkmode());
   })), localStorage.getItem("Drupal.gin.toolbarExpanded")) {

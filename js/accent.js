@@ -21,69 +21,34 @@
 
   Drupal.behaviors.ginAccent = {
     attach: function attach() {
-      const path = drupalSettings.path.currentPath;
-
       // Check Darkmode.
       Drupal.behaviors.ginAccent.checkDarkmode();
 
+      // Set accent color.
+      Drupal.behaviors.ginAccent.setAccentColor();
+
       // Set focus color.
       Drupal.behaviors.ginAccent.setFocusColor();
-
-      // Set accent color to localStorage if not set yet.
-      if ((
-          path.indexOf('user/login') === -1 &&
-          path.indexOf('user/password') === -1 &&
-          path.indexOf('user/register') === -1
-        ) &&
-        !localStorage.getItem('Drupal.gin.customAccentColor')
-      ) {
-        Drupal.behaviors.ginAccent.setAccentColor();
-
-        const accentColorPreset = drupalSettings.gin.preset_accent_color;
-
-        if (accentColorPreset === 'custom') {
-          const accentColorSetting = drupalSettings.gin.accent_color;
-
-          localStorage.setItem('Drupal.gin.customAccentColor', accentColorSetting);
-        } else {
-          localStorage.setItem('Drupal.gin.customAccentColor', '');
-        }
-      } else {
-        Drupal.behaviors.ginAccent.setAccentColor();
-      }
     },
 
     setAccentColor: function setAccentColor(preset = null, color = null) {
       const accentColorPreset = preset != null ? preset : drupalSettings.gin.preset_accent_color;
+      $('body').attr('data-gin-accent', accentColorPreset);
 
-      // Clear things up if not custom color is set.
       if (accentColorPreset === 'custom') {
-        // Set preset color.
-        $('body').attr('data-gin-accent', preset);
-        Drupal.behaviors.ginAccent.setCustomAccentColor('custom', color);
-      } else {
-        // Set preset color.
-        $('body').attr('data-gin-accent', accentColorPreset);
+        Drupal.behaviors.ginAccent.setCustomAccentColor(color);
       }
     },
 
-    setCustomAccentColor: function setCustomAccentColor(preset = null, color = null) {
-      const accentColorSetting = color != null ? color : drupalSettings.gin.accent_color;
-
+    setCustomAccentColor: function setCustomAccentColor(color = null) {
       // If custom color is set, generate colors through JS.
-      if (preset === 'custom') {
-        // Set preset color.
-        $('body').attr('data-gin-accent', preset);
+      const accentColor = color != null ? color : drupalSettings.gin.accent_color;
+      if (accentColor) {
+        Drupal.behaviors.ginAccent.clearAccentColor();
 
-        const accentColor = accentColorSetting;
-
-        if (accentColor) {
-          Drupal.behaviors.ginAccent.clearAccentColor();
-
-          const strippedAccentColor = accentColor.replace('#', '');
-          const darkAccentColor = Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 65).replace('#', '');
-
-          const styles = `<style class="gin-custom-colors">\
+        const strippedAccentColor = accentColor.replace('#', '');
+        const darkAccentColor = Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 65).replace('#', '');
+        const styles = `<style class="gin-custom-colors">\
             [data-gin-accent="custom"] {\n\
               --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(accentColor)};\n\
               --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -10)};\n\
@@ -100,10 +65,7 @@
             }\n\
             </style>`;
 
-          $('body').append(styles);
-        }
-      } else {
-        Drupal.behaviors.ginAccent.clearAccentColor();
+        $('body').append(styles);
       }
     },
 
@@ -124,21 +86,38 @@
 
     setFocusColor: function setFocusColor(preset = null, color = null) {
       const focusColorPreset = preset != null ? preset : drupalSettings.gin.preset_focus_color;
-      const focusColorSetting = color != null ? color : drupalSettings.gin.focus_color;
-
-      // First clear things up.
-      Drupal.behaviors.ginAccent.clearFocusColor();
-
-      // Set focus name.
       $('body').attr('data-gin-focus', focusColorPreset);
 
-      if (focusColorSetting === 'custom') {
-        $('body').css('--colorGinFocus', focusColorSetting);
+      if (focusColorPreset === 'custom') {
+       Drupal.behaviors.ginAccent.setCustomFocusColor(color);
+      }
+    },
+
+    setCustomFocusColor: function setCustomFocusColor(color = null) {
+      const accentColor = color != null ? color : drupalSettings.gin.focus_color;
+
+      // Set preset color.
+      if (accentColor) {
+        Drupal.behaviors.ginAccent.clearFocusColor();
+
+        const strippedAccentColor = accentColor.replace('#', '');
+        const darkAccentColor = Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 65);
+        const styles = `<style class="gin-custom-focus">\
+            [data-gin-focus="custom"] {\n\
+              --colorGinFocus: ${accentColor};\n\
+            }\n\
+            .gin--dark-mode[data-gin-focus="custom"],\n\
+            .gin--dark-mode [data-gin-focus="custom"] {\n\
+              --colorGinFocus: ${darkAccentColor};\n\
+            }\n\
+            </style>`;
+
+        $('body').append(styles);
       }
     },
 
     clearFocusColor: function clearFocusColor() {
-      $('body').css('--colorGinFocus', '');
+      $('.gin-custom-focus').remove();
     },
 
     checkDarkmode: function checkDarkmode() {

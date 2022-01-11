@@ -18,13 +18,19 @@
         if (accentColorPreset === 'custom') {
           const accentColorSetting = $('input[name="accent_color"]', context).val();
 
-          Drupal.behaviors.ginAccent.setCustomAccentColor('custom', accentColorSetting);
+          Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
         } else {
           Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset);
         }
 
         // Toggle Focus color.
-        Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset);
+        if (focusColorPreset === 'custom') {
+          const focusColorSetting = $('input[name="focus_color"]', context).val();
+
+          Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
+        } else {
+          Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset);
+        }
       });
 
       // Watch Accent color setting has changed.
@@ -39,7 +45,7 @@
         if (accentColorPreset === 'custom') {
           const accentColorSetting = $('input[name="accent_color"]').val();
 
-          Drupal.behaviors.ginAccent.setCustomAccentColor('custom', accentColorSetting);
+          Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
         }
       });
 
@@ -48,24 +54,31 @@
         const accentColorSetting = $(this).val();
 
         // Update.
-        Drupal.behaviors.ginAccent.setCustomAccentColor('custom', accentColorSetting);
+        Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
       });
 
       // Watch Accent color setting has changed.
       $('select[name="preset_focus_color"]', context).change(function () {
-        const accentColorPreset = $(this).val();
+        const focusColorPreset = $(this).val();
 
         // Update.
-        Drupal.behaviors.ginAccent.setFocusColor(accentColorPreset);
+        Drupal.behaviors.ginAccent.clearFocusColor();
+        Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset);
+
+        // Set custom color if 'custom' is set.
+        if (focusColorPreset === 'custom') {
+          const focusColorSetting = $('input[name="focus_color"]').val();
+
+          Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
+        }
       });
 
       // Watch Accent color setting has changed.
       $('input[name="focus_color"]', context).change(function () {
-        const focusColorPreset = $('select[name="preset_focus_color"]').val();
         const focusColorSetting = $(this).val();
 
         // Update.
-        Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset, focusColorSetting);
+        Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
       });
 
       // Watch Hight contrast mode setting has changed.
@@ -100,29 +113,7 @@
       });
 
       // Watch save
-      $('[data-drupal-selector="edit-submit"]', context).click(function() {
-        let accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val();
-        let accentColorSetting = $('input[name="accent_color"]', context).val();
-        let darkmodeSetting = $('input[name="enable_darkmode"]:checked').val();
-
-        // If on user form, check if we enable or disable the overrides.
-        if ($(this).parents('[data-drupal-selector="user-form"]').length > 0) {
-          const userSettings = $('input[name="enable_user_settings"]', context).is(':checked');
-
-          if (!userSettings) {
-            accentColorSetting = drupalSettings.gin.default_accent_color;
-            accentColorPreset = drupalSettings.gin.default_preset_accent_color;
-            darkmodeSetting = drupalSettings.gin.darkmode;
-          }
-        }
-
-        // Set custom color if 'custom' is set.
-        if (accentColorPreset === 'custom') {
-          localStorage.setItem('Drupal.gin.customAccentColor', accentColorSetting);
-        } else {
-          localStorage.setItem('Drupal.gin.customAccentColor', '');
-        }
-
+      $('[data-drupal-selector="edit-submit"]', context).click(function () {
         // Reset darkmode localStorage.
         localStorage.setItem('Drupal.gin.darkmode', '');
       });
