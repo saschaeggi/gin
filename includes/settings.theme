@@ -60,7 +60,7 @@ function gin_form_system_theme_settings_alter(&$form, FormStateInterface $form_s
   if ($settings->getDefault('icon_default') === FALSE) {
     $form['logo']['default_logo']['#default_value'] = FALSE;
     $form['logo']['settings']['logo_path']['#default_value'] = $settings->getDefault('icon_path');
-    $form['actions']['submit']['#submit'] = ['_gin_form_system_theme_settings_form_submit'];
+    $form['#submit'][] = '_gin_form_system_theme_settings_form_submit';
   }
 
   // Attach custom library.
