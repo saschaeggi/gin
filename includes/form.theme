@@ -14,8 +14,6 @@ use Drupal\gin\GinSettings;
 function gin_form_alter(&$form, $form_state, $form_id) {
   // Are we on an edit form?
   if (_gin_is_content_form($form, $form_state, $form_id)) {
-    $module_handler = \Drupal::service('module_handler');
-
     // Action buttons.
     if (isset($form['actions'])) {
       if (isset($form['actions']['preview'])) {
@@ -78,30 +76,6 @@ function gin_form_alter(&$form, $form_state, $form_id) {
 
     // Attach library.
     $form['#attached']['library'][] = 'gin/edit_form';
-
-    // Attach libraries for specific modules.
-    // Paragraphs.
-    if ($module_handler->moduleExists('paragraphs')) {
-      $form['#attached']['library'][] = 'gin/paragraphs';
-    }
-    // Paragraphs EE.
-    if ($module_handler->moduleExists('paragraphs_ee')) {
-      $form['#attached']['library'][] = 'gin/paragraphs_ee';
-    }
-    // ERL.
-    if ($module_handler->moduleExists('enity_reference_layout')) {
-      $form['#attached']['library'][] = 'gin/entity_reference_layout';
-      $form['#attached']['library'][] = 'gin/layout_paragraphs';
-    }
-    // Layout Paragraphs.
-    if ($module_handler->moduleExists('layout_paragraphs')) {
-      $form['#attached']['library'][] = 'gin/layout_paragraphs';
-    }
-
-    // Responsive Preview.
-    if ($module_handler->moduleExists('responsive_preview')) {
-      $form['#attached']['library'][] = 'gin/responsive_preview';
-    }
   }
 
   // If not logged in hide changed and author node info on add forms.
@@ -215,4 +189,11 @@ function gin_theme_suggestions_input_alter(array &$suggestions, array $variables
       $suggestions[] = 'input__checkbox__toggle';
     }
   }
+}
+
+/**
+ * Implements template_preprocess_inline_entity_form_entity_table() for forms.
+ */
+function gin_preprocess_inline_entity_form_entity_table(array &$variables) {
+  $variables['table']['#attached']['library'][] = 'gin/inline_entity_form';
 }
