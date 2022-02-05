@@ -1,3 +1,36 @@
+.media-library-edit__link, .media-library-item .media-library-item__edit, .media-library-item .media-library-item__remove, .media-library-item .media-library-item__remove.button {
+  border-color: var(--colorGinBorder) !important;
+}
+
+.media-library-edit__link:link, .media-library-edit__link:hover, .media-library-edit__link:focus, .media-library-edit__link:active, .media-library-edit__link:not(:hover):not(:checked), .media-library-item .media-library-item__edit:link, .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__edit:active, .media-library-item .media-library-item__edit:not(:hover):not(:checked), .media-library-item .media-library-item__remove:link, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove:active, .media-library-item .media-library-item__remove:not(:hover):not(:checked), .media-library-item .media-library-item__remove.button:link, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus, .media-library-item .media-library-item__remove.button:active, .media-library-item .media-library-item__remove.button:not(:hover):not(:checked) {
+  border-color: transparent !important;
+}
+
+.media-library-edit__link:hover, .media-library-edit__link:focus, .media-library-edit__link:active, .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__edit:active, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove:active, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus, .media-library-item .media-library-item__remove.button:active {
+  box-shadow: 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus) !important;
+}
+
+.media-library-edit__link, .media-library-edit__link:hover, .media-library-edit__link:focus, .media-library-edit__link:active, .media-library-item .media-library-item__edit, .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__edit:active, .media-library-item .media-library-item__remove, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove:active, .media-library-item .media-library-item__remove.button, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus, .media-library-item .media-library-item__remove.button:active {
+  width: 32px;
+  height: 32px;
+  margin: .75rem;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
+  box-sizing: border-box;
+}
+
+.media-library-edit__link, .media-library-item .media-library-item__edit {
+  top: .625rem;
+  right: 3.125rem;
+  background-image: url("../../media/sprite.svg#media-edit-view");
+  background-size: .75rem .75rem;
+}
+
+.media-library-item .media-library-item__remove {
+  background-image: url("../../media/sprite.svg#media-remove-view");
+}
+
 .media-library-item {
   background: none;
 }
@@ -81,37 +114,6 @@
 .media-library-item.checked .media-library-item__preview, .media-library-item.is-active .media-library-item__preview {
   border-color: var(--colorGinPrimary);
   box-shadow: 0 0 0 2px var(--colorGinPrimary);
-}
-
-.media-library-item .media-library-item__edit, .media-library-item .media-library-item__remove, .media-library-item .media-library-item__remove.button {
-  border-color: var(--colorGinBorder) !important;
-}
-
-.media-library-item .media-library-item__edit:link, .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__edit:active, .media-library-item .media-library-item__edit:not(:hover):not(:checked), .media-library-item .media-library-item__remove:link, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove:active, .media-library-item .media-library-item__remove:not(:hover):not(:checked), .media-library-item .media-library-item__remove.button:link, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus, .media-library-item .media-library-item__remove.button:active, .media-library-item .media-library-item__remove.button:not(:hover):not(:checked) {
-  border-color: transparent !important;
-}
-
-.media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__edit:active, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove:active, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus, .media-library-item .media-library-item__remove.button:active {
-  box-shadow: 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus) !important;
-}
-
-.media-library-item .media-library-item__edit, .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__edit:active, .media-library-item .media-library-item__remove, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove:active, .media-library-item .media-library-item__remove.button, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus, .media-library-item .media-library-item__remove.button:active {
-  width: 32px;
-  height: 32px;
-  margin: .75rem;
-  background-color: white;
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
-  box-sizing: border-box;
-}
-
-.media-library-item .media-library-item__edit {
-  right: 3.125rem;
-  background-image: url("../../media/sprite.svg#media-edit-view");
-}
-
-.media-library-item .media-library-item__remove {
-  background-image: url("../../media/sprite.svg#media-remove-view");
 }
 
 .media-library-item__click-to-select-checkbox .form-boolean {

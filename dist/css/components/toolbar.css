@@ -594,6 +594,7 @@ body.gin--classic-toolbar {
 
 #admin-toolbar-search-tab .js-form-type-search {
   position: relative;
+  margin: 5px 0;
 }
 
 #admin-toolbar-search-tab .js-form-type-search::before {
