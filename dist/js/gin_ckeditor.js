@@ -16,7 +16,7 @@
                 "wysiwyg" == this.mode && ($(editor.document.$).find("body").attr("data-gin-accent", accentColorPreset), 
                 "auto" === localStorage.getItem("Drupal.gin.darkmode") && (window.matchMedia("(prefers-color-scheme: dark)").matches ? $(editor.document.$).find("body").addClass(darkmodeClass) : $(editor.document.$).find("body").removeClass(darkmodeClass)));
               })), editor.on("menuShow", (function() {
-                const darkModeClass = window.matchMedia("(prefers-color-scheme: dark)").matches ? darkmodeClass : "";
+                const darkModeClass = 1 == localStorage.getItem("Drupal.gin.darkmode") || "auto" === localStorage.getItem("Drupal.gin.darkmode") && window.matchMedia("(prefers-color-scheme: dark)").matches ? darkmodeClass : "";
                 $("body > .cke_menu_panel > iframe").contents().find("body").addClass(darkModeClass).attr("data-gin-accent", accentColorPreset);
               })), window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e => {
                 e.matches && "auto" === localStorage.getItem("Drupal.gin.darkmode") && ($(editor.document.$).find("body").addClass(darkmodeClass), 

@@ -77,7 +77,9 @@
 
               // Contextual menu.
               editor.on('menuShow', function() {
-                const darkModeClass = window.matchMedia('(prefers-color-scheme: dark)').matches ? darkmodeClass : '';
+                const darkModeClass = localStorage.getItem('Drupal.gin.darkmode') == 1 || localStorage.getItem('Drupal.gin.darkmode') === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? darkmodeClass
+                  : '';
                 $('body > .cke_menu_panel > iframe')
                   .contents()
                   .find('body')
