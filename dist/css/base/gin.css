@@ -1754,9 +1754,17 @@ table th:first-child {
   border-bottom-left-radius: var(--ginBorderDefault);
 }
 
+[dir=rtl] table th:first-child {
+  border-radius: 0 var(--ginBorderDefault) var(--ginBorderDefault) 0;
+}
+
 table th:last-child {
   border-top-right-radius: var(--ginBorderDefault);
   border-bottom-right-radius: var(--ginBorderDefault);
+}
+
+[dir=rtl] table th:last-child {
+  border-radius: var(--ginBorderDefault) 0 0 var(--ginBorderDefault);
 }
 
 table tbody tr {
