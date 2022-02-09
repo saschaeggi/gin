@@ -89,7 +89,7 @@
   box-shadow: none;
 }
 
-.media-library-item__preview {
+.media-library-item .media-library-item__preview {
   position: relative;
   padding-bottom: 100%;
   border: 1px solid var(--colorGinBorder);
@@ -97,7 +97,7 @@
   overflow: hidden;
 }
 
-.media-library-item__preview .field img {
+.media-library-item .media-library-item__preview .field img {
   position: absolute;
   top: 0;
   left: 0;
