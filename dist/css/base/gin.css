@@ -391,13 +391,13 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
   }
 }
 
-.gin-sticky [data-drupal-selector=edit-submit] {
-  margin-right: 0;
-}
-
 .gin-sticky .form-actions {
   margin: 0;
   align-items: center;
+}
+
+.gin-sticky .form-actions :last-child {
+  margin-right: 0;
 }
 
 .gin-sticky .field--name-status {

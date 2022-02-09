@@ -236,13 +236,13 @@ body:not(.toolbar-tray-open) .layout-container {
     width: max-content;
   }
 
-  [data-drupal-selector=edit-submit] {
-    margin-right: 0;
-  }
-
   .form-actions {
     margin: 0;
     align-items: center;
+
+    :last-child {
+      margin-right: 0;
+    }
   }
 
   .field--name-status {
