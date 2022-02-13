@@ -2,7 +2,7 @@
 :root {
   --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
-  --ginHorizontalToolbarOffset: 0px; // Needs px to work in calc() functions.
+  --ginHorizontalToolbarOffset: var(--ginToolbarHeight); // Needs px to work in calc() functions.
   --ginVerticalToolbarOffset: 0px; // Needs px to work in calc() functions.
 
   @include mq($breakpointLarge) {

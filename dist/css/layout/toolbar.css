@@ -1,7 +1,7 @@
 :root {
   --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
-  --ginHorizontalToolbarOffset: 0px;
+  --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
   --ginVerticalToolbarOffset: 0px;
 }
 

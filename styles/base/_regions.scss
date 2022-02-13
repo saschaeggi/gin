@@ -227,12 +227,14 @@ body:not(.toolbar-tray-open) .layout-container {
 
 .gin-sticky {
   display: flex;
+  flex-wrap: wrap;
   flex-shrink: 0;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 
   @include mq($breakpointLarge) {
+    flex-wrap: nowrap;
     width: max-content;
   }
 
@@ -249,5 +251,10 @@ body:not(.toolbar-tray-open) .layout-container {
     display: flex;
     align-items: center;
     margin-right: 1.5rem;
+
+    .form-type--checkbox {
+      margin-top: .5rem;
+      margin-bottom: .5rem;
+    }
   }
 }
