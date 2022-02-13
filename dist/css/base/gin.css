@@ -17,12 +17,6 @@ body {
   }
 }
 
-@media (max-width: 976px) {
-  .page-wrapper.dialog-off-canvas-main-canvas {
-    overflow: hidden;
-  }
-}
-
 h1, h2, .views-edit-view .unit-title, h3 {
   letter-spacing: -0.025em;
   font-weight: normal;

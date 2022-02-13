@@ -13,12 +13,6 @@ body {
   }
 }
 
-.page-wrapper.dialog-off-canvas-main-canvas {
-  @include mq(max-width $breakpointMedium) {
-    overflow: hidden;
-  }
-}
-
 h1, h2, h3 {
   letter-spacing: -.025em;
   font-weight: normal;
