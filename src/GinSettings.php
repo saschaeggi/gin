@@ -278,20 +278,33 @@ class GinSettings implements ContainerInjectionInterface {
       ],
     ];
 
-    // Main Accent color setting.
-    $form['accent_color'] = [
-      '#type' => 'color',
-      '#placeholder' => '#777777',
+    // Accent color group.
+    $form['accent_group'] = [
+      '#type' => 'fieldset',
       '#title' => $this->t('Custom Accent color'),
       '#description' => $this->t('Use with caution, values should meet a11y criteria.'),
-      '#default_value' => $account ? $this->get('accent_color', $account) : $this->getDefault('accent_color'),
       '#states' => [
-        // Show if met.
+      // Show if met.
         'visible' => [
           ':input[name="preset_accent_color"]' => ['value' => 'custom'],
         ],
       ],
+    ];
+
+    // Main Accent color setting.
+    $form['accent_color'] = [
+      '#type' => 'textfield',
+      '#placeholder' => '#777777',
+      '#default_value' => $account ? $this->get('accent_color', $account) : $this->getDefault('accent_color'),
       '#after_build' => [],
+      '#group' => 'accent_group',
+    ];
+
+    // Accent color picker (helper field).
+    $form['accent_group']['accent_picker'] = [
+      '#type' => 'color',
+      '#placeholder' => '#777777',
+      '#default_value' => $account ? $this->get('accent_color', $account) : $this->getDefault('accent_color'),
     ];
 
     // Focus color setting.
@@ -312,22 +325,36 @@ class GinSettings implements ContainerInjectionInterface {
       '#after_build' => [],
     ];
 
-    // Custom Focus color setting.
-    $form['focus_color'] = [
-      '#type' => 'color',
-      '#placeholder' => '#777777',
+    // Focus color group.
+    $form['focus_group'] = [
+      '#type' => 'fieldset',
       '#title' => $this->t('Custom Focus color (BETA)'),
       '#description' => $this->t('Use with caution, values should meet a11y criteria.'),
-      '#default_value' => $account ? $this->get('focus_color', $account) : $this->getDefault('focus_color'),
       '#states' => [
         // Show if met.
         'visible' => [
           ':input[name="preset_focus_color"]' => ['value' => 'custom'],
         ],
       ],
-      '#after_build' => [],
     ];
 
+    // Focus color picker (helper).
+    $form['focus_group']['focus_picker'] = [
+      '#type' => 'color',
+      '#placeholder' => '#777777',
+      '#default_value' => $account ? $this->get('focus_color', $account) : $this->getDefault('focus_color'),
+    ];
+
+    // Custom Focus color setting.
+    $form['focus_color'] = [
+      '#type' => 'textfield',
+      '#placeholder' => '#777777',
+      '#default_value' => $account ? $this->get('focus_color', $account) : $this->getDefault('focus_color'),
+      '#after_build' => [],
+      '#group' => 'focus_group',
+    ];
+
+    // High contrast mode.
     $form['high_contrast_mode'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Increase contrast (EXPERIMENTAL)'),
@@ -336,6 +363,7 @@ class GinSettings implements ContainerInjectionInterface {
       '#after_build' => [],
     ];
 
+    // Toolbar setting.
     $form['classic_toolbar'] = [
       '#type' => 'radios',
       '#title' => $this->t('Drupal Toolbar'),

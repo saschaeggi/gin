@@ -79,6 +79,24 @@
   }
 }
 
+// Groups
+[data-drupal-selector="edit-accent-group"],
+[data-drupal-selector="edit-focus-group"] {
+  .form-type--color,
+  .form-type--textfield {
+    float: left;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .form-type--color {
+    margin-right: .5rem;
+  }
+
+  .fieldset__description {
+    clear: both;
+  }
+}
+
 // Darkmode
 [data-drupal-selector="edit-enable-darkmode"] {
   .form-radios {

@@ -25,7 +25,7 @@ class GinAfterBuild implements TrustedCallbackInterface {
     $settings = \Drupal::classResolver(GinSettings::class);
 
     // Check if this is overridden by the logged in user.
-    if ($settings->overridden($element['#name'])) {
+    if ($element && isset($element['#name']) && $settings->overridden($element['#name'])) {
       $userEditUrl = Url::fromRoute('entity.user.edit_form', ['user' => \Drupal::currentUser()->id()])->toString();
 
       $value = $settings->get($element['#name']);

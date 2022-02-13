@@ -71,6 +71,24 @@
   visibility: visible;
 }
 
+[data-drupal-selector=edit-accent-group] .form-type--color,
+[data-drupal-selector=edit-accent-group] .form-type--textfield,
+[data-drupal-selector=edit-focus-group] .form-type--color,
+[data-drupal-selector=edit-focus-group] .form-type--textfield {
+  float: left;
+  margin: 0 0 .5rem 0;
+}
+
+[data-drupal-selector=edit-accent-group] .form-type--color,
+[data-drupal-selector=edit-focus-group] .form-type--color {
+  margin-right: .5rem;
+}
+
+[data-drupal-selector=edit-accent-group] .fieldset__description,
+[data-drupal-selector=edit-focus-group] .fieldset__description {
+  clear: both;
+}
+
 [data-drupal-selector=edit-enable-darkmode] .form-radios {
   display: inline-flex;
   flex-wrap: wrap;
