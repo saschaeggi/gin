@@ -54,7 +54,11 @@
         <h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
         <ol class="breadcrumb__list">
           <li class="breadcrumb__item">
-            <a class="breadcrumb__link gin-back-to-admin" href="/node/{{ node_id }}/edit">{{ 'Edit'|t }} {{ node_title }}</a>
+            {% if entity_edit_url and entity_title %}
+              <a class="breadcrumb__link gin-back-to-admin" href="{{ entity_edit_url }}">{{ 'Edit %title'|t({ '%title': entity_title }) }}</a>
+            {% else %}
+              <a class="breadcrumb__link gin-back-to-admin" href="{{ path('system.admin_content') }}">{{ 'Back to Administration'|t }}</a>
+            {% endif %}
           </li>
         </ol>
       </nav>

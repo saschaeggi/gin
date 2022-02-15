@@ -5,6 +5,7 @@
  * page.theme
  */
 
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\gin\GinSettings;
 
 /**
@@ -24,10 +25,13 @@ function gin_preprocess_page(&$variables) {
   // Expose Route name.
   $variables['route_name'] = \Drupal::routeMatch()->getRouteName();
 
-  if ($variables['route_name'] === 'entity.node.canonical') {
-    $node = \Drupal::request()->attributes->get('node');
-    $variables['node_id'] = $node->id();
-    $variables['node_title'] = $node->getTitle();
+  if (preg_match('#entity\.(?<entity_type_id>.+)\.canonical#', $variables['route_name'], $matches)) {
+    $entity = \Drupal::request()->attributes->get($matches['entity_type_id']);
+
+    if ($entity instanceof EntityInterface && $entity->hasLinkTemplate('edit-form')) {
+      $variables['entity_title'] = $entity->label();
+      $variables['entity_edit_url'] = $entity->toUrl('edit-form');
+    }
   }
 }
 
