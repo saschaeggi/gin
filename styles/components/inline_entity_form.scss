@@ -27,3 +27,14 @@
     margin-bottom: 0;
   }
 }
+
+/* Fixes for 'Inline entity form - Complex' widgets inside paragraphs */
+.paragraphs-tabs-wrapper .field-multiple-table {
+  .ief-entity-table .draggable {
+    display: table-row;
+  }
+
+  .ief-entity-operations {
+    display: flex;
+  }
+}
