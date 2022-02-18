@@ -5,6 +5,7 @@
  * html.theme
  */
 
+use Drupal\gin\GinContentFormHelper;
 use Drupal\gin\GinSettings;
 
 /**
@@ -32,7 +33,7 @@ function gin_preprocess_html(&$variables) {
     }
 
     // Edit form? Use the new Gin Edit form layout.
-    if (_gin_is_content_form()) {
+    if (\Drupal::classResolver(GinContentFormHelper::class)->isContentForm()) {
       $variables['attributes']['class'][] = 'gin--edit-form';
     }
 

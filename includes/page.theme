@@ -5,6 +5,7 @@
  * page.theme
  */
 
+use Drupal\gin\GinContentFormHelper;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\gin\GinSettings;
 
@@ -45,6 +46,12 @@ function gin_theme_suggestions_page_alter(&$suggestions, $variables) {
     $path = trim($path, '/');
     $arg = str_replace(["/", '-'], ['_', '_'], $path);
     $suggestions[] = 'page__' . $arg;
+  }
+
+  // The node page template is required to use the node content form.
+  if (\Drupal::classResolver(GinContentFormHelper::class)->isContentForm()
+    && !in_array('page__node', $suggestions)) {
+    $suggestions[] = 'page__node';
   }
 }
 
