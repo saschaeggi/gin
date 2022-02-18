@@ -18,9 +18,12 @@
           const accentColorSetting = $('input[name="accent_color"]').val();
           Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
         }
+      })), $('input[name="accent_picker"]', context).change((function() {
+        const accentColorSetting = $(this).val();
+        $('input[name="accent_color"]', context).val(accentColorSetting), Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
       })), $('input[name="accent_color"]', context).change((function() {
         const accentColorSetting = $(this).val();
-        Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
+        $('input[name="accent_picker"]', context).val(accentColorSetting), Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
       })), $('select[name="preset_focus_color"]', context).change((function() {
         const focusColorPreset = $(this).val();
         if (Drupal.behaviors.ginAccent.clearFocusColor(), Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset), 
@@ -28,9 +31,12 @@
           const focusColorSetting = $('input[name="focus_color"]').val();
           Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
         }
+      })), $('input[name="focus_picker"]', context).change((function() {
+        const focusColorSetting = $(this).val();
+        $('input[name="focus_color"]', context).val(focusColorSetting), Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
       })), $('input[name="focus_color"]', context).change((function() {
         const focusColorSetting = $(this).val();
-        Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
+        $('input[name="focus_picker"]', context).val(focusColorSetting), Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
       })), $('input[name="high_contrast_mode"]', context).change((function() {
         const highContrastMode = $(this).is(":checked");
         Drupal.behaviors.ginSettings.setHighContrastMode(highContrastMode);

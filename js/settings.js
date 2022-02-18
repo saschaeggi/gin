@@ -49,15 +49,29 @@
         }
       });
 
-      // Watch Accent color setting has changed.
-      $('input[name="accent_color"]', context).change(function () {
+      // Watch Accent color picker has changed.
+      $('input[name="accent_picker"]', context).change(function () {
         const accentColorSetting = $(this).val();
+
+        // Sync fields.
+        $('input[name="accent_color"]', context).val(accentColorSetting);
 
         // Update.
         Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
       });
 
       // Watch Accent color setting has changed.
+      $('input[name="accent_color"]', context).change(function () {
+        const accentColorSetting = $(this).val();
+
+        // Sync fields.
+        $('input[name="accent_picker"]', context).val(accentColorSetting);
+
+        // Update.
+        Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
+      });
+
+      // Watch Focus color setting has changed.
       $('select[name="preset_focus_color"]', context).change(function () {
         const focusColorPreset = $(this).val();
 
@@ -73,9 +87,23 @@
         }
       });
 
+      // Watch Focus color picker has changed.
+      $('input[name="focus_picker"]', context).change(function () {
+        const focusColorSetting = $(this).val();
+
+        // Sync fields.
+        $('input[name="focus_color"]', context).val(focusColorSetting);
+
+        // Update.
+        Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
+      });
+
       // Watch Accent color setting has changed.
       $('input[name="focus_color"]', context).change(function () {
         const focusColorSetting = $(this).val();
+
+        // Sync fields.
+        $('input[name="focus_picker"]', context).val(focusColorSetting);
 
         // Update.
         Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);

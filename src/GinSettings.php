@@ -4,6 +4,7 @@ namespace Drupal\gin;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\user\UserDataInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -308,23 +309,41 @@ class GinSettings implements ContainerInjectionInterface {
       ],
     ];
 
-    // Main Accent color setting.
-    $form['accent_color'] = [
-      '#type' => 'textfield',
-      '#placeholder' => '#777777',
+    // Accent color group.
+    $form['accent_group'] = [
+      '#type' => 'fieldset',
       '#title' => $this->t('Custom Accent color'),
       '#description' => $this->t('Use with caution, values should meet a11y criteria.'),
-      '#default_value' => $account ? $this->get('accent_color', $account) : $this->getDefault('accent_color'),
-      '#min' => '7',
-      '#max' => '7',
-      '#size' => '7',
       '#states' => [
-        // Show if met.
+      // Show if met.
         'visible' => [
           ':input[name="preset_accent_color"]' => ['value' => 'custom'],
         ],
       ],
+    ];
+
+    // Main Accent color setting.
+    $form['accent_color'] = [
+      '#type' => 'textfield',
+      '#placeholder' => '#777777',
+      '#maxlength' => 7,
+      '#size' => 7,
+      '#default_value' => $account ? $this->get('accent_color', $account) : $this->getDefault('accent_color'),
       '#after_build' => [],
+      '#group' => 'accent_group',
+      '#attributes' => [
+        'pattern' => '^#[a-fA-F0-9]{6}',
+      ],
+    ];
+
+    // Accent color picker (helper field).
+    $form['accent_group']['accent_picker'] = [
+      '#type' => 'color',
+      '#placeholder' => '#777777',
+      '#default_value' => $account ? $this->get('accent_color', $account) : $this->getDefault('accent_color'),
+      '#process' => [
+        [static::class, 'processColorPicker'],
+      ],
     ];
 
     // Focus color setting.
@@ -345,25 +364,44 @@ class GinSettings implements ContainerInjectionInterface {
       '#after_build' => [],
     ];
 
-    // Custom Focus color setting.
-    $form['focus_color'] = [
-      '#type' => 'textfield',
-      '#placeholder' => '#777777',
+    // Focus color group.
+    $form['focus_group'] = [
+      '#type' => 'fieldset',
       '#title' => $this->t('Custom Focus color (BETA)'),
       '#description' => $this->t('Use with caution, values should meet a11y criteria.'),
-      '#default_value' => $account ? $this->get('focus_color', $account) : $this->getDefault('focus_color'),
-      '#min' => '7',
-      '#max' => '7',
-      '#size' => '7',
       '#states' => [
         // Show if met.
         'visible' => [
           ':input[name="preset_focus_color"]' => ['value' => 'custom'],
         ],
       ],
-      '#after_build' => [],
     ];
 
+    // Focus color picker (helper).
+    $form['focus_group']['focus_picker'] = [
+      '#type' => 'color',
+      '#placeholder' => '#777777',
+      '#default_value' => $account ? $this->get('focus_color', $account) : $this->getDefault('focus_color'),
+      '#process' => [
+        [static::class, 'processColorPicker'],
+      ],
+    ];
+
+    // Custom Focus color setting.
+    $form['focus_color'] = [
+      '#type' => 'textfield',
+      '#placeholder' => '#777777',
+      '#maxlength' => 7,
+      '#size' => 7,
+      '#default_value' => $account ? $this->get('focus_color', $account) : $this->getDefault('focus_color'),
+      '#after_build' => [],
+      '#group' => 'focus_group',
+      '#attributes' => [
+        'pattern' => '^#[a-fA-F0-9]{6}',
+      ],
+    ];
+
+    // High contrast mode.
     $form['high_contrast_mode'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Increase contrast (EXPERIMENTAL)'),
@@ -372,6 +410,7 @@ class GinSettings implements ContainerInjectionInterface {
       '#after_build' => [],
     ];
 
+    // Toolbar setting.
     $form['classic_toolbar'] = [
       '#type' => 'radios',
       '#title' => $this->t('Drupal Toolbar'),
@@ -396,6 +435,25 @@ class GinSettings implements ContainerInjectionInterface {
     }
 
     return $form;
+  }
+
+  /**
+   * Unset color picker fields.
+   *
+   * @param array $element
+   *   An associative array containing the properties and children of the
+   *   element.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
+   *
+   * @return array
+   *   The form element.
+   */
+  public static function processColorPicker(array $element, FormStateInterface $form_state) {
+    $keys = $form_state->getCleanValueKeys();
+    $form_state->setCleanValueKeys(array_merge((array) $keys, $element['#parents']));
+
+    return $element;
   }
 
 }
