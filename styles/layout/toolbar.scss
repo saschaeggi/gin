@@ -81,8 +81,10 @@
 
     // Custom logo
     #toolbar-item-administration-tray .toolbar-logo {
+      padding: 8px 0;
+
       img {
-        max-width: 36px;
+        max-width: calc(var(--ginToolbarWidthCollapsed) - 1px);
         max-height: 40px;
       }
     }

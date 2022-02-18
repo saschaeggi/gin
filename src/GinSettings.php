@@ -200,18 +200,48 @@ class GinSettings implements ContainerInjectionInterface {
    *   The value determined by a legacy setting.
    */
   private function handleLegacySettings($name, $value) {
+    $admin_theme = $this->getAdminTheme();
+
+    // Darkmode legacy setting.
     if ($name === 'enable_darkmode') {
       $value = (string) $value;
     }
+
+    // High contrast mode legacy setting.
     if ($name === 'high_contrast_mode') {
       $value = (bool) $value;
     }
+
+    // Accent color legacy setting check.
     if ($name === 'preset_accent_color') {
       $value = $value === 'claro_blue' ? 'blue' : $value;
     }
+
+    // Toolbar legacy setting check.
     if ($name === 'classic_toolbar') {
       $value = $value === TRUE || $value === 'true' ||  $value === '1' || $value === 1 ? 'classic' : $value;
     }
+
+    // Logo legacy settings check.
+    if ($name === 'icon_default' && is_null($value)) {
+      $value = $this->get('logo.use_default');
+    }
+    if ($name === 'icon_path' && is_null($value)) {
+      $value = $this->get('logo.path');
+    }
+
+    // Handles switching new version code with old config present.
+    if ($name === 'logo.use_default') {
+      if (theme_get_setting('icon_default', $admin_theme) === FALSE) {
+        return FALSE;
+      }
+    }
+    if ($name === 'logo.path') {
+      if (theme_get_setting('icon_default', $admin_theme) === FALSE && !is_null($this->get('icon_path'))) {
+        return $this->get('icon_path');
+      }
+    }
+
     return $value;
   }
 

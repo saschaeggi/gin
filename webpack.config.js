@@ -3,7 +3,6 @@ const isDev = (process.env.NODE_ENV !== 'production');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
-const Fiber = require('fibers');
 const autoprefixer = require('autoprefixer');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 
@@ -148,9 +147,6 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               sourceMap: isDev,
-              sassOptions: {
-                fiber: Fiber,
-              },
               // Global SCSS imports:
               additionalData: `
                 @use "sass:color";

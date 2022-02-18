@@ -80,8 +80,12 @@
   }
 }
 
+.toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-logo {
+  padding: 8px 0;
+}
+
 .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-logo img {
-  max-width: 36px;
+  max-width: calc(var(--ginToolbarWidthCollapsed) - 1px);
   max-height: 40px;
 }
 
