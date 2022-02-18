@@ -40,37 +40,37 @@
       }
     },
 
-    setCustomAccentColor: function setCustomAccentColor(color = null) {
+    setCustomAccentColor: function setCustomAccentColor(color = null, $element = $('body')) {
       // If custom color is set, generate colors through JS.
       const accentColor = color != null ? color : drupalSettings.gin.accent_color;
       if (accentColor) {
-        Drupal.behaviors.ginAccent.clearAccentColor();
+        Drupal.behaviors.ginAccent.clearAccentColor($element);
 
         const strippedAccentColor = accentColor.replace('#', '');
         const darkAccentColor = Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 65).replace('#', '');
         const styles = `<style class="gin-custom-colors">\
-            [data-gin-accent="custom"] {\n\
-              --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(accentColor)};\n\
-              --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -10)};\n\
-              --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -15)};\n\
-              --colorGinAppBackgroundRGB: ${Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 97))};\n\
-              --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 85)};\n\
-            }\n\
-            .gin--dark-mode[data-gin-accent="custom"],\n\
-            .gin--dark-mode [data-gin-accent="custom"] {\n\
-              --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(darkAccentColor)};\n\
-              --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 55)};\n\
-              --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 50)};\n\
-              --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor('2A2A2D', darkAccentColor, 88)};\n\
-            }\n\
-            </style>`;
+          [data-gin-accent="custom"] {\n\
+            --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(accentColor)};\n\
+            --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -10)};\n\
+            --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -15)};\n\
+            --colorGinAppBackgroundRGB: ${Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 97))};\n\
+            --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 85)};\n\
+          }\n\
+          .gin--dark-mode[data-gin-accent="custom"],\n\
+          .gin--dark-mode [data-gin-accent="custom"] {\n\
+            --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(darkAccentColor)};\n\
+            --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 55)};\n\
+            --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 50)};\n\
+            --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor('2A2A2D', darkAccentColor, 88)};\n\
+          }\n\
+          </style>`;
 
-        $('body').append(styles);
+        $element.append(styles);
       }
     },
 
-    clearAccentColor: function clearAccentColor() {
-      $('.gin-custom-colors').remove();
+    clearAccentColor: function clearAccentColor($element = $('body')) {
+      $element.find('.gin-custom-colors').remove();
     },
 
     // https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb

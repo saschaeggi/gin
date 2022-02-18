@@ -16,6 +16,7 @@
         const accentCss = drupalSettings.gin.accent_css_path;
         const contentsCss = drupalSettings.gin.ckeditor_css_path;
         const accentColorPreset = drupalSettings.gin.preset_accent_color;
+        const accentColor = drupalSettings.gin.accent_color;
         const darkmodeClass = drupalSettings.gin.darkmode_class;
 
         // Class for Darkmode.
@@ -51,8 +52,12 @@
             Object.entries(value).forEach(([key, editor]) => {
               // Initial accent color.
               $(editor.document.$)
-                  .find('body')
-                  .attr('data-gin-accent', accentColorPreset);
+                .find('body')
+                .attr('data-gin-accent', accentColorPreset);
+
+              if (accentColorPreset === 'custom' && accentColor) {
+                Drupal.behaviors.ginAccent.setCustomAccentColor(accentColor, $(editor.document.$).find('head'));
+              }
 
               // Change from Code to Editor.
               editor.on('mode', function() {
@@ -60,6 +65,10 @@
                   $(editor.document.$)
                     .find('body')
                     .attr('data-gin-accent', accentColorPreset);
+
+                  if (accentColorPreset === 'custom' && accentColor) {
+                    Drupal.behaviors.ginAccent.setCustomAccentColor(accentColor, $(editor.document.$).find('head'));
+                  }
 
                   if (localStorage.getItem('Drupal.gin.darkmode') === 'auto') {
                     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -85,6 +94,10 @@
                   .find('body')
                   .addClass(darkModeClass)
                   .attr('data-gin-accent', accentColorPreset);
+
+                if (accentColorPreset === 'custom' && accentColor) {
+                  Drupal.behaviors.ginAccent.setCustomAccentColor(accentColor, $('body > .cke_menu_panel > iframe').contents().find('head'));
+                }
               });
 
               // Toggle Darkmode.
