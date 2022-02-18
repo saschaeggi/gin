@@ -285,6 +285,15 @@
         }
       }
 
+      div:nth-last-child(2),
+      div:last-child {
+        .toolbar-tray {
+          left: auto;
+          right: 0;
+          border-radius: var(--ginBorderMedium) 0 var(--ginBorderMedium) var(--ginBorderMedium);
+        }
+      }
+
       .toolbar-id--toolbar-icon-user {
         &:hover {
           .icon-user {
@@ -293,20 +302,9 @@
           }
         }
 
-        .toolbar-tray {
-          left: auto;
-          right: 0;
-          border-radius: var(--ginBorderMedium) 0 var(--ginBorderMedium) var(--ginBorderMedium);
-        }
-
-
         // If custom user image
         &:not(.has-user-icon) {
           margin-right: -1.333em;
-        }
-
-        .icon-user ~ .toolbar-tray {
-          border-radius: var(--ginBorderSmall);
         }
 
         .icon-user {
