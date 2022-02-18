@@ -1,0 +1,31 @@
+.ui-autocomplete,
+.ui-dialog .ui-autocomplete {
+  color: var(--colorGinText);
+  background: var(--colorGinLayerBackground);
+  border-radius: 0 0 var(--ginBorderDefault) var(--ginBorderDefault);
+
+  .gin--dark-mode & {
+    background: var(--colorGinLayer2Background);
+  }
+
+  .ui-menu-item-wrapper.ui-state-active {
+    color: var(--colorGinPrimaryHover);
+    background-color: var(--colorGinItemHover);
+  }
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+  &,
+  .ui-dialog & {
+    border: none;
+  }
+}
+
+.ui-widget.ui-widget-content {
+  border: 1px solid var(--colorGinBorder);
+}

@@ -1,0 +1,19 @@
+.revision-current {
+  background-color: transparent;
+}
+
+.revision-current td:first-of-type {
+  position: relative;
+}
+
+.revision-current td:first-of-type::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  border-left: 6px solid var(--colorGinGreen);
+}
+

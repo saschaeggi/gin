@@ -143,6 +143,8 @@ libraries-override:
         css/paragraphs_ee.off_canvas.css: false
 
 libraries-extend:
+  core/drupal.autocomplete:
+    - gin/autocomplete
   core/ckeditor:
     - gin/ckeditor
   core/drupal.dialog:
