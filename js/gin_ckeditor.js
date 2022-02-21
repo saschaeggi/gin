@@ -39,6 +39,12 @@
         // Contextmenu stylesheets.
         if (CKEDITOR.config.contextmenu_contentsCss === undefined) {
           CKEDITOR.config.contextmenu_contentsCss = new Array();
+
+          // Check if skinName is set.
+          if (typeof CKEDITOR.skinName === 'undefined') {
+            CKEDITOR.skinName = CKEDITOR.skin.name;
+          }
+
           CKEDITOR.config.contextmenu_contentsCss.push(
             CKEDITOR.skin.getPath('editor'),
             variablesCss,
