@@ -9,20 +9,23 @@ const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 module.exports = {
   entry: {
     // Javascript
-    'init': ['./js/init.js'],
     'accent': ['./js/accent.js'],
-    'toolbar': ['./js/toolbar.js'],
     'edit_form': ['./js/edit_form.js'],
+    'gin_ckeditor': ['./js/gin_ckeditor.js'], // Can't rename as we would be in trouble
+    'init': ['./js/init.js'],
     'messages': ['./js/messages.js'],
     'settings': ['./js/settings.js'],
-    'gin_ckeditor': ['./js/gin_ckeditor.js'], // Can't rename as we would be in trouble
+    'toolbar': ['./js/toolbar.js'],
     // Base
     'base/gin': ['./styles/gin.scss'],
     // Components
+    'components/ajax': ['./styles/components/ajax.scss'],
+    'components/autocomplete': ['./styles/components/autocomplete.scss'],
     'components/autosave': ['./styles/components/autosave.scss'],
     'components/chosen': ['./styles/components/chosen.scss'],
     'components/ckeditor': ['./styles/components/ckeditor.scss'],
     'components/coffee': ['./styles/components/coffee.scss'],
+    'components/contextual_links': ['./styles/components/contextual_links.scss'],
     'components/dialog': ['./styles/components/dialog.scss'],
     'components/dropzonejs': ['./styles/components/dropzonejs.scss'],
     'components/edit_form': ['./styles/components/edit_form.scss'],
@@ -31,29 +34,28 @@ module.exports = {
     'components/inline_entity_form': ['./styles/components/inline_entity_form.scss'],
     'components/layout_paragraphs': ['./styles/components/layout_paragraphs.scss'],
     'components/linkit': ['./styles/components/linkit.scss'],
+    'components/media_library': ['./styles/components/media_library.scss'],
     'components/module_filter': ['./styles/components/module_filter.scss'],
     'components/node_preview': ['./styles/components/node_preview.scss'],
     'components/paragraphs': ['./styles/components/paragraphs.scss'],
     'components/paragraphs_ee': ['./styles/components/paragraphs_ee.scss'],
     'components/responsive_preview': ['./styles/components/responsive_preview.scss'],
+    'components/revisions': ['./styles/components/revisions.scss'],
     'components/settings': ['./styles/components/settings.scss'],
     'components/toolbar': ['./styles/components/toolbar.scss'],
     'components/toolbar_meta': ['./styles/components/toolbar_meta.scss'],
     'components/upgrade_status': ['./styles/components/upgrade_status.scss'],
     'components/webform': ['./styles/components/webform.scss'],
-    'components/media_library': ['./styles/components/media_library.scss'],
-    'components/contextual_links': ['./styles/components/contextual_links.scss'],
-    'components/ajax': ['./styles/components/ajax.scss'],
     // Layout
     'layout/toolbar': ['./styles/layout/toolbar.scss'],
     'layout/horizontal_toolbar': ['./styles/layout/horizontal_toolbar.scss'],
     'layout/classic_toolbar': ['./styles/layout/classic_toolbar.scss'],
     // Theme
+    'theme/accent': ['./styles/theme/accent.scss'],
+    'theme/ckeditor': ['./styles/theme/ckeditor.scss'],
+    'theme/dialog': ['./styles/theme/dialog.scss'],
     'theme/font': ['./styles/theme/font.scss'],
     'theme/variables': ['./styles/theme/variables.scss'],
-    'theme/accent': ['./styles/theme/accent.scss'],
-    'theme/dialog': ['./styles/theme/dialog.scss'],
-    'theme/ckeditor': ['./styles/theme/ckeditor.scss'],
   },
   output: {
     filename: 'js/[name].js',

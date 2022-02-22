@@ -123,3 +123,11 @@ function gin_preprocess_page_title(&$variables) {
     $variables['title'] = $node->getTitle();
   }
 }
+
+/**
+ * Node revisions.
+ */
+function gin_preprocess_page__node__revisions(&$page) {
+  // Attach the init script.
+  $page['#attached']['library'][] = 'gin/revisions';
+}

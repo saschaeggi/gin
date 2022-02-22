@@ -162,6 +162,18 @@ ajax:
     theme:
       dist/css/components/ajax.css: { minified: false, weight: 99 }
 
+revisions:
+  version: VERSION
+  css:
+    theme:
+      dist/css/components/revisions.css: { minified: false }
+
+autocomplete:
+  version: VERSION
+  css:
+    theme:
+      dist/css/components/autocomplete.css: { minified: false }
+
 # Modules
 
 paragraphs:
