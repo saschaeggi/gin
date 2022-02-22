@@ -33,6 +33,9 @@
   --colorGinInfoLight: #589ac5;
   --colorGinInfoBackground: #{mix(black, #2d6c96, 60%)};
 
+  // Input
+  --colorGinInputBackground: #fff;
+
   // Layers
   --colorGinLayerBackground: #fff;
   --colorGinLayer2Background: #edeff5;
@@ -137,6 +140,9 @@
   --colorGinDangerLightest: #483439;
   --colorGinGreen: #32cea4;
   --colorGinInfo: #559bca;
+
+  // Input
+  --colorGinInputBackground: var(--colorGinLayer2Background);
 
   // Layers
   --colorGinAppBackground: #{$colorDarkAppBackground};

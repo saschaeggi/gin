@@ -2,19 +2,16 @@ $maxWidth: 520px;
 
 .form-element {
   color: var(--colorGinText);
+  background-color: var(--colorGinInputBackground);
   border: 1px solid var(--colorGinFormElementBorder);
+  border-radius: var(--ginBorderDefault);
   box-sizing: border-box;
   // box-shadow: 0 1px 2px rgba(0, 0, 0, .25);
-  border-radius: var(--ginBorderDefault);
   transition: var(--ginTransition);
 
   &:hover {
     border-color: var(--colorGinText);
     box-shadow: inset 0 0 0 1px var(--colorGinText);
-  }
-
-  .gin--dark-mode & {
-    background-color: var(--colorGinLayer2Background);
   }
 
   &--small,
@@ -104,7 +101,7 @@ $maxWidth: 520px;
 .form-boolean--type-checkbox {
   &:not(:checked) {
     .gin--dark-mode & {
-      background: var(--colorGinLayer2Background);
+      background: var(--colorGinInputBackground);
     }
   }
 
@@ -152,7 +149,7 @@ $maxWidth: 520px;
       box-sizing: border-box;
 
       .gin--dark-mode & {
-        background-color: var(--colorGinLayer2Background);
+        background-color: var(--colorGinInputBackground);
       }
 
       &:before {
@@ -271,13 +268,9 @@ $maxWidth: 520px;
 .form-boolean--type-radio {
   &, &:hover, &:active, &:focus, &:hover:focus {
     background-image: none;
-    background-color: #fff;
+    background-color: var(--colorGinInputBackground);
     border-color: var(--colorGinFormElementBorder);
     border-radius: 50%;
-
-    .gin--dark-mode & {
-      background-color: var(--colorGinLayer2Background);
-    }
   }
 
   &:hover {

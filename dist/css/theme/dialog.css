@@ -241,7 +241,7 @@
 
 .gin--dark-mode .ui-dialog .button.button:disabled, .gin--dark-mode .ui-dialog .button.button.is-disabled {
   color: var(--colorGinDisabled);
-  background-color: var(--colorGinLayer2Background);
+  background-color: var(--colorGinInputBackground);
 }
 
 .ui-dialog .action-link.action-link--icon-trash {
@@ -268,19 +268,16 @@
 
 .ui-dialog .form-element {
   color: var(--colorGinText);
+  background-color: var(--colorGinInputBackground);
   border: 1px solid var(--colorGinFormElementBorder);
-  box-sizing: border-box;
   border-radius: var(--ginBorderDefault);
+  box-sizing: border-box;
   transition: var(--ginTransition);
 }
 
 .ui-dialog .form-element:hover {
   border-color: var(--colorGinText);
   box-shadow: inset 0 0 0 1px var(--colorGinText);
-}
-
-.gin--dark-mode .ui-dialog .form-element {
-  background-color: var(--colorGinLayer2Background);
 }
 
 .ui-dialog .form-element--small, .ui-dialog .form-element--extrasmall {
@@ -360,7 +357,7 @@
 }
 
 .gin--dark-mode .ui-dialog .form-boolean--type-checkbox:not(:checked) {
-  background: var(--colorGinLayer2Background);
+  background: var(--colorGinInputBackground);
 }
 
 .ui-dialog .form-boolean--type-checkbox:checked {
@@ -409,7 +406,7 @@
 }
 
 .gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner {
-  background-color: var(--colorGinLayer2Background);
+  background-color: var(--colorGinInputBackground);
 }
 
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner:before {
@@ -515,13 +512,9 @@
 
 .ui-dialog .form-boolean--type-radio, .ui-dialog .form-boolean--type-radio:hover, .ui-dialog .form-boolean--type-radio:active, .ui-dialog .form-boolean--type-radio:focus, .ui-dialog .form-boolean--type-radio:hover:focus {
   background-image: none;
-  background-color: #fff;
+  background-color: var(--colorGinInputBackground);
   border-color: var(--colorGinFormElementBorder);
   border-radius: 50%;
-}
-
-.gin--dark-mode .ui-dialog .form-boolean--type-radio, .gin--dark-mode .ui-dialog .form-boolean--type-radio:hover, .gin--dark-mode .ui-dialog .form-boolean--type-radio:active, .gin--dark-mode .ui-dialog .form-boolean--type-radio:focus, .gin--dark-mode .ui-dialog .form-boolean--type-radio:hover:focus {
-  background-color: var(--colorGinLayer2Background);
 }
 
 .ui-dialog .form-boolean--type-radio:hover {

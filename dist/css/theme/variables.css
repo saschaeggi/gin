@@ -23,6 +23,7 @@
   --colorGinInfo: #082538;
   --colorGinInfoLight: #589ac5;
   --colorGinInfoBackground: #122b3c;
+  --colorGinInputBackground: #fff;
   --colorGinLayerBackground: #fff;
   --colorGinLayer2Background: #edeff5;
   --colorGinLayer3Background: #fff;
@@ -91,6 +92,7 @@
   --colorGinDangerLightest: #483439;
   --colorGinGreen: #32cea4;
   --colorGinInfo: #559bca;
+  --colorGinInputBackground: var(--colorGinLayer2Background);
   --colorGinAppBackground: #1b1b1d;
   --colorGinLayerBackground: #2a2a2d;
   --colorGinLayer2Background: #3b3b3f;

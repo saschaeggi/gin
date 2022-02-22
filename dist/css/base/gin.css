@@ -1964,19 +1964,16 @@ td.webform-has-field-suffix > .form-item > .form-element {
 
 .form-element {
   color: var(--colorGinText);
+  background-color: var(--colorGinInputBackground);
   border: 1px solid var(--colorGinFormElementBorder);
-  box-sizing: border-box;
   border-radius: var(--ginBorderDefault);
+  box-sizing: border-box;
   transition: var(--ginTransition);
 }
 
 .form-element:hover {
   border-color: var(--colorGinText);
   box-shadow: inset 0 0 0 1px var(--colorGinText);
-}
-
-.gin--dark-mode .form-element {
-  background-color: var(--colorGinLayer2Background);
 }
 
 .form-element--small, .form-element--extrasmall {
@@ -2056,7 +2053,7 @@ td.webform-has-field-suffix > .form-item > .form-element {
 }
 
 .gin--dark-mode .form-boolean--type-checkbox:not(:checked) {
-  background: var(--colorGinLayer2Background);
+  background: var(--colorGinInputBackground);
 }
 
 .form-boolean--type-checkbox:checked {
@@ -2105,7 +2102,7 @@ td.webform-has-field-suffix > .form-item > .form-element {
 }
 
 .gin--dark-mode :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner {
-  background-color: var(--colorGinLayer2Background);
+  background-color: var(--colorGinInputBackground);
 }
 
 :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner:before {
@@ -2211,13 +2208,9 @@ td.webform-has-field-suffix > .form-item > .form-element {
 
 .form-boolean--type-radio, .form-boolean--type-radio:hover, .form-boolean--type-radio:active, .form-boolean--type-radio:focus, .form-boolean--type-radio:hover:focus {
   background-image: none;
-  background-color: #fff;
+  background-color: var(--colorGinInputBackground);
   border-color: var(--colorGinFormElementBorder);
   border-radius: 50%;
-}
-
-.gin--dark-mode .form-boolean--type-radio, .gin--dark-mode .form-boolean--type-radio:hover, .gin--dark-mode .form-boolean--type-radio:active, .gin--dark-mode .form-boolean--type-radio:focus, .gin--dark-mode .form-boolean--type-radio:hover:focus {
-  background-color: var(--colorGinLayer2Background);
 }
 
 .form-boolean--type-radio:hover {
@@ -2543,7 +2536,7 @@ a.button:active {
 
 .gin--dark-mode .button.button:disabled, .gin--dark-mode .button.button.is-disabled {
   color: var(--colorGinDisabled);
-  background-color: var(--colorGinLayer2Background);
+  background-color: var(--colorGinInputBackground);
 }
 
 .action-link.action-link--icon-trash {
