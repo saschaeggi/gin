@@ -32,6 +32,15 @@
 .paragraphs-tabs-wrapper .field-multiple-table {
   .ief-entity-table .draggable {
     display: table-row;
+
+    /* The .draggable padding is not applied because of display: table-row */
+    &.drag-previous > .tabledrag-cell::before {
+      left: .5rem;
+    }
+
+    .tabledrag-cell-content__item {
+      padding-left: 0.75rem;
+    }
   }
 
   .ief-entity-operations {

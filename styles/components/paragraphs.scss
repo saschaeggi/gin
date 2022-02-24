@@ -57,7 +57,7 @@
       }
 
       // Flag Changes
-      &.drag-previous {
+      &.drag-previous > .tabledrag-cell {
         position: relative;
 
         &::before {
@@ -65,7 +65,7 @@
           display: block;
           position: absolute;
           top: .5rem;
-          left: .5rem;
+          left: 0;
           width: 4px;
           height: calc(100% - 1rem);
           background: var(--colorGinWarning);
