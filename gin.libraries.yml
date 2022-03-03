@@ -2,94 +2,275 @@ gin:
   version: VERSION
   css:
     theme:
-      dist/css/gin.css: { minified: false }
+      dist/css/base/gin.css: { minified: false }
   dependencies:
-    - gin/gin_ckeditor
+    - gin/gin_base
 
+gin_base:
+  version: VERSION
+  css:
+    component:
+      dist/css/theme/font.css: { minified: false }
+      dist/css/theme/variables.css: { minified: false }
+
+# Legacy
 gin_ckeditor:
   version: VERSION
-  js:
-    dist/js/gin_ckeditor.js: { minified: false }
+  dependencies:
+    - gin/ckeditor
 
 gin_init:
   version: VERSION
   header: true
   js:
-    dist/js/gin_init.js: { minified: false, preprocess: false, weight: -99 }
+    dist/js/init.js: { minified: false, preprocess: false, weight: -99 }
 
 gin_toolbar:
   version: VERSION
   css:
+    component:
+      dist/css/components/toolbar.css: { minified: false }
+      dist/css/components/toolbar_meta.css: { minified: false }
+      dist/css/components/coffee.css: { minified: false }
+      dist/css/components/node_preview.css: { minified: false }
     theme:
-      dist/css/gin_toolbar.css: { minified: false }
+      dist/css/layout/toolbar.css: { minified: false }
   js:
-    dist/js/gin_toolbar.js: { minified: false }
-
-gin_classic_toolbar:
-  version: VERSION
-  css:
-    theme:
-      dist/css/gin_classic_toolbar.css: { minified: false }
-  js:
-    dist/js/gin_toolbar.js: { minified: false }
+    dist/js/toolbar.js: { minified: false }
+  dependencies:
+    - gin/responsive_preview
+    - gin/contextual_links
 
 gin_horizontal_toolbar:
   version: VERSION
   css:
+    component:
+      dist/css/components/toolbar.css: { minified: false }
+      dist/css/components/toolbar_meta.css: { minified: false }
+      dist/css/components/coffee.css: { minified: false }
+      dist/css/components/node_preview.css: { minified: false }
     theme:
-      dist/css/gin_horizontal_toolbar.css: { minified: false }
+      dist/css/layout/horizontal_toolbar.css: { minified: false }
   js:
-    dist/js/gin_toolbar.js: { minified: false }
+    dist/js/toolbar.js: { minified: false }
+  dependencies:
+    - gin/responsive_preview
+    - gin/contextual_links
+
+gin_classic_toolbar:
+  version: VERSION
+  css:
+    component:
+      dist/css/components/toolbar.css: { minified: false }
+      dist/css/components/coffee.css: { minified: false }
+      dist/css/components/node_preview.css: { minified: false }
+    theme:
+      dist/css/layout/classic_toolbar.css: { minified: false }
+  js:
+    dist/js/toolbar.js: { minified: false }
+  dependencies:
+    - gin/contextual_links
 
 gin_accent:
   version: VERSION
   css:
     theme:
-      dist/css/gin_accent.css: { minified: false }
+      dist/css/theme/accent.css: { minified: false }
   js:
-    dist/js/gin_accent.js: { minified: false }
-
-gin_settings:
-  version: VERSION
-  js:
-    dist/js/gin_settings.js: { minified: false }
+    dist/js/accent.js: { minified: false }
 
 gin_dialog:
   version: VERSION
   css:
     theme:
-      dist/css/gin_dialog.css: { minified: false }
+      dist/css/theme/dialog.css: { minified: false }
+  dependencies:
+    - gin/dialog
+    - gin/gin_base
+    - gin/gin_accent
 
-gin_editform:
-  version: VERSION
+gin_description_toggle:
+  css:
+    theme:
+      dist/css/components/description_toggle.css: { minified: false }
   js:
-    dist/js/gin_editform.js: { minified: false }
+    dist/js/description_toggle.js: { minified: false }
 
 gin_messages:
   version: VERSION
   js:
-    dist/js/gin_messages.js: { minified: false }
+    dist/js/messages.js: { minified: false }
+  dependencies:
+    - core/jquery.once
 
 gin_custom_css:
   version: VERSION
   css:
     theme:
-      public://gin-custom.css: { weight: 100, preprocess: false, minified: false }
+      public://gin-custom.css: { preprocess: false, minified: false, weight: 100 }
 
 gin_tabledrag:
   version: VERSION
   js:
-    js/overrides/gin_tabledrag.js: { weight: -1, minified: false }
+    js/overrides/tabledrag.js: { minified: false, weight: -1 }
 
 gin_media_embed_ckeditor_theme:
   version: VERSION
   js:
-    js/overrides/gin_media_embed_ckeditor.theme.js: {}
+    js/overrides/media_embed_ckeditor.theme.js: {}
 
 gin_sidebar:
   version: VERSION
   css:
     theme:
-      dist/css/gin_sidebar.css: { minified: true }
+      dist/css/components/sidebar.css: { minified: true }
   js:
-    dist/js/gin_sidebar.js: { minified: true }
+    dist/js/sidebar.js: { minified: true }
+
+# Components
+
+settings:
+  version: VERSION
+  js:
+    dist/js/settings.js: { minified: false }
+  css:
+    component:
+      dist/css/components/settings.css: { minified: false }
+
+edit_form:
+  version: VERSION
+  js:
+    dist/js/edit_form.js: { minified: false }
+  css:
+    layout:
+      dist/css/components/edit_form.css: { minified: false }
+
+media_library:
+  version: VERSION
+  css:
+    theme:
+      dist/css/components/media_library.css: { minified: false, weight: 99 }
+
+contextual_links:
+  version: VERSION
+  css:
+    theme:
+      dist/css/components/contextual_links.css: { minified: false, weight: 99 }
+
+dialog:
+  version: VERSION
+  css:
+    theme:
+      dist/css/components/dialog.css: { minified: false }
+
+ckeditor:
+  version: VERSION
+  js:
+    dist/js/gin_ckeditor.js: { minified: false }
+  css:
+    theme:
+      dist/css/components/ckeditor.css: { minified: false }
+
+ajax:
+  version: VERSION
+  css:
+    theme:
+      dist/css/components/ajax.css: { minified: false, weight: 99 }
+
+revisions:
+  version: VERSION
+  css:
+    theme:
+      dist/css/components/revisions.css: { minified: false }
+
+autocomplete:
+  version: VERSION
+  css:
+    theme:
+      dist/css/components/autocomplete.css: { minified: false }
+
+# Modules
+
+paragraphs:
+  version: VERSION
+  css:
+    component:
+      dist/css/components/paragraphs.css: { minified: false }
+
+paragraphs_ee:
+  version: VERSION
+  css:
+    component:
+      dist/css/components/paragraphs_ee.css: { minified: false }
+
+layout_paragraphs:
+  version: VERSION
+  css:
+    component:
+      dist/css/components/layout_paragraphs.css: { minified: false }
+
+entity_reference_layout:
+  version: VERSION
+  css:
+    component:
+      dist/css/components/entity_reference_layout.css: { minified: false }
+
+responsive_preview:
+  version: VERSION
+  css:
+    component:
+      dist/css/components/responsive_preview.css: { minified: false }
+
+upgrade_status:
+  version: VERSION
+  css:
+    component:
+      dist/css/components/upgrade_status.css: { minified: false }
+
+webform:
+  version: VERSION
+  css:
+    component:
+      dist/css/components/webform.css: { minified: false }
+
+autosave:
+  version: VERSION
+  css:
+    component:
+      dist/css/components/autosave.css: { minified: false }
+
+module_filter:
+  version: VERSION
+  css:
+    component:
+      dist/css/components/module_filter.css: { minified: false }
+
+chosen:
+  version: VERSION
+  css:
+    component:
+      dist/css/components/chosen.css: { minified: false }
+
+dropzonejs:
+  version: VERSION
+  css:
+    component:
+      dist/css/components/dropzonejs.css: { minified: false }
+
+entity_browser:
+  version: VERSION
+  css:
+    component:
+      dist/css/components/entity_browser.css: { minified: false }
+
+inline_entity_form:
+  version: VERSION
+  css:
+    component:
+      dist/css/components/inline_entity_form.css: { minified: false }
+
+linkit:
+  version: VERSION
+  css:
+    component:
+      dist/css/components/linkit.css: { minified: false }

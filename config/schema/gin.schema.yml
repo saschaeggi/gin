@@ -10,17 +10,11 @@ gin.settings:
       type: string
       label: 'Preset focus color'
     enable_darkmode:
-      type: boolean
-      label: 'The dark mode'
+      type: string
+      label: 'The darkmode'
     classic_toolbar:
       type: string
       label: 'The classic toolbar'
-    icon_default:
-      type: boolean
-      label: 'Use default logo'
-    icon_path:
-      type: string
-      label: 'Path to custom logo'
     high_contrast_mode:
       type: boolean
       label: 'High contrast mode'
@@ -30,9 +24,9 @@ gin.settings:
     focus_color:
       type: string
       label: 'The focus color'
-    icon_upload:
-      type: string
-      label: 'The icon upload'
+    show_description_toggle:
+      type: boolean
+      label: 'Display help icon to toggle form description'
     show_user_theme_settings:
       type: boolean
       label: 'Let user override theme'

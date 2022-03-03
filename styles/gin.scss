@@ -1,82 +1,40 @@
-// Import breakpoint
-@import "node_modules/breakpoint-sass/stylesheets/breakpoint";
-
-// Import variables, abstractions, base styles and components using globbing.
-//
-// Globbing will always import files alphabetically. Optimally, all your
-// components should be self-contained and explicit enough to not have any
-// contained styles leak into unrelated components: The import order should not
-// affect the result.
-//
-// If there are variables, functions or mixins that depend on each other and
-// therefore need to be imported in a specific order you can import them
-// directly. Variables-, function- or mixin providing partials should never
-// output any styles themselves: Importing them multiple times to resolve
-// dependencies shouldn't be a problem.
-
-// Helpers
-@import "helpers/**/*";
-
-// Settings
-@import "settings/**/*";
-
 // Components
-@import "components/body";
-@import "components/color-overrides";
-@import "components/regions";
-@import "components/layers";
-@import "components/title";
-@import "components/user";
-@import "components/breadcrumbs";
-@import "components/extend";
-@import "components/claro_improvements";
-@import "components/entity_reference_layout";
-@import "components/layout_paragraphs";
-@import "components/layout_node_form";
-@import "components/paragraphs";
-@import "components/paragraphs_ee";
-@import "components/tabs";
-@import "components/views";
-@import "components/media-library";
-@import "components/table";
-@import "components/tabledrag";
-@import "components/ckeditor";
-@import "components/form";
-// @import "components/custom-select";
-@import "components/button";
-@import "components/dropbutton";
-@import "components/action-link";
-@import "components/chosen";
-@import "components/pager";
-@import "components/help";
-@import "components/system-report";
-@import "components/messages";
-@import "components/field-ui";
-@import "components/card";
-@import "components/elements";
-@import "components/admin-item";
-@import "components/focus";
-@import "components/system-modules";
-@import "components/system-diff";
-@import "components/dialog";
-@import "components/throbber";
-@import "components/update";
-@import "components/ief";
-@import "components/status-report";
-@import "components/divider";
-@import "components/progress";
-@import "components/upgrade-status";
-@import "components/insert";
-@import "components/system-themes";
-@import "components/panel";
-@import "components/blocks";
-@import "components/webform";
-@import "components/settings";
-@import "components/module-filter";
-@import "components/batch";
-@import "components/linkit";
-@import "components/contextual";
-@import "components/maxlength";
-@import "components/dropzone";
-@import "components/entity-browser";
-@import "components/autosave";
+@import "base/body";
+@import "base/color-overrides";
+@import "base/regions";
+@import "base/layers";
+@import "base/title";
+@import "base/breadcrumbs";
+@import "base/extend";
+@import "base/claro_improvements";
+@import "base/tabs";
+@import "base/views";
+@import "base/table";
+@import "base/tabledrag";
+@import "base/form";
+@import "base/button";
+@import "base/dropbutton";
+@import "base/action-link";
+@import "base/pager";
+@import "base/help";
+@import "base/system-report";
+@import "base/messages";
+@import "base/field-ui";
+@import "base/card";
+@import "base/elements";
+@import "base/admin-item";
+@import "base/focus";
+@import "base/system-modules";
+@import "base/system-diff";
+@import "base/update";
+@import "base/status-report";
+@import "base/divider";
+@import "base/progress";
+@import "base/insert";
+@import "base/system-themes";
+@import "base/panel";
+@import "base/blocks";
+@import "base/batch";
+@import "base/maxlength";
+@import "base/tour";
+@import "base/quotation";

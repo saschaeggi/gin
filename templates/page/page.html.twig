@@ -42,12 +42,37 @@
 {% set page_title_block = active_admin_theme ~ '_page_title' %}
 {% set local_actions_block = active_admin_theme ~ '_local_actions' %}
 
+{% if toolbar_variant != 'vertical' %}
+<div class="region-sticky-watcher"></div>
+{% endif %}
+
 <div class="region region-meta layout-container">
   <div class="breadcrumb-wrapper">
+  {% if route_name == 'entity.node.canonical' %}
+    <div class="region region-breadcrumb">
+      <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
+        <h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
+        <ol class="breadcrumb__list">
+          <li class="breadcrumb__item">
+            {% if entity_edit_url and entity_title %}
+              <a class="breadcrumb__link gin-back-to-admin" href="{{ entity_edit_url }}">{{ 'Edit %title'|t({ '%title': entity_title }) }}</a>
+            {% else %}
+              <a class="breadcrumb__link gin-back-to-admin" href="{{ path('system.admin_content') }}">{{ 'Back to Administration'|t }}</a>
+            {% endif %}
+          </li>
+        </ol>
+      </nav>
+    </div>
+  {% else %}
     {{ page.breadcrumb }}
+  {% endif %}
   </div>
   {{ page.gin_secondary_toolbar }}
 </div>
+
+{% if toolbar_variant == 'vertical' %}
+<div class="region-sticky-watcher"></div>
+{% endif %}
 
 <header class="region region-sticky">
   <div class="layout-container region-sticky__items">
@@ -58,13 +83,13 @@
   </div>
 </header>
 
+<div class="sticky-shadow"></div>
+
 <div class="content-header clearfix">
   <div class="layout-container">
     {{ page.header|without(page_title_block) }}
   </div>
 </div>
-
-<div class="sticky-shadow"></div>
 
 <div class="layout-container">
   {{ page.pre_content }}
