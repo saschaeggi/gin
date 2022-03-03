@@ -2280,6 +2280,12 @@ fieldset:not(.fieldgroup) > .fieldset-wrapper {
   margin-top: 20px;
 }
 
+/* Align fieldset label positioning to regular form item label, see claro form.css. */
+
+.fieldset__label {
+  margin-top: .25rem;
+}
+
 .fieldset__label,
 .fieldset__label--group,
 .form-item__label {

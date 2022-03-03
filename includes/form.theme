@@ -6,6 +6,8 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\gin\GinDescriptionToggle;
+use Drupal\gin\GinPreRender;
 use Drupal\gin\GinContentFormHelper;
 use Drupal\gin\GinSettings;
 
@@ -116,6 +118,58 @@ function gin_theme_suggestions_input_alter(array &$suggestions, array $variables
     if (!isset($variables['element']['#error_no_message'])) {
       $suggestions[] = 'input__checkbox__toggle';
     }
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for form_element.
+ */
+function gin_preprocess_form_element(&$variables) {
+  \Drupal::classResolver(GinDescriptionToggle::class)->preprocess($variables);
+}
+
+/**
+ * Implements template_preprocess_HOOK() for datetime_wrapper.
+ */
+function gin_preprocess_datetime_wrapper(&$variables) {
+  \Drupal::classResolver(GinDescriptionToggle::class)->preprocess($variables);
+}
+
+/**
+ * Implements template_preprocess_HOOK() for details.
+ */
+function gin_preprocess_details(&$variables) {
+  \Drupal::classResolver(GinDescriptionToggle::class)->preprocess($variables);
+}
+
+/**
+ * Implements template_preprocess_HOOK() for fieldset.
+ */
+function gin_preprocess_fieldset(&$variables) {
+  \Drupal::classResolver(GinDescriptionToggle::class)->preprocess($variables);
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function gin_element_info_alter(&$info) {
+  if (array_key_exists('text_format', $info)) {
+    $info['text_format']['#pre_render'][] = [
+      GinPreRender::class,
+      'textFormat',
+    ];
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for text_format_wrapper.
+ */
+function gin_preprocess_text_format_wrapper(&$variables) {
+  /** @var \Drupal\gin\GinSettings $settings */
+  $settings = \Drupal::classResolver(GinSettings::class);
+  if ($settings->get('show_description_toggle') && !empty($variables['description'])) {
+    $variables['description_display'] = 'invisible';
+    $variables['description_toggle'] = TRUE;
   }
 }
 

@@ -352,6 +352,11 @@ fieldset:not(.fieldgroup) {
   }
 }
 
+/* Align fieldset label positioning to regular form item label, see claro form.css. */
+.fieldset__label {
+  margin-top: 0.25rem;
+}
+
 .fieldset__label,
 .fieldset__label--group,
 .form-item__label {

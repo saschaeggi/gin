@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.ui-dialog {
+  /* Align fieldset label positioning to regular form item label, see claro form.css. */
+}
+
 .ui-dialog a,
 .ui-dialog .link,
 .ui-dialog button.link,
@@ -582,6 +586,10 @@
 
 .ui-dialog fieldset:not(.fieldgroup) > .fieldset-wrapper {
   margin-top: 20px;
+}
+
+.ui-dialog .fieldset__label {
+  margin-top: .25rem;
 }
 
 .ui-dialog .fieldset__label,

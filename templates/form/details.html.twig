@@ -29,6 +29,7 @@
     'claro-details',
     accordion ? 'claro-details--accordion',
     accordion_item ? 'claro-details--accordion-item',
+    description_toggle ? 'help-icon__description-container',
   ]
 %}
 {%
@@ -46,6 +47,13 @@
     accordion_item ? 'claro-details__content--accordion-item',
   ]
 %}
+{%
+  set description_classes = [
+  'claro-details__description',
+  disabled ? 'is-disabled',
+  description_display == 'invisible' ? 'visually-hidden',
+]
+%}
 <details{{ attributes.addClass(classes) }}>
   {%- if title -%}
     {%
@@ -60,6 +68,10 @@
     <summary{{ summary_attributes.addClass(summary_classes) }}>
       {{- title -}}
       <span class="required-mark"></span>
+      {% if description and description_toggle %}
+        {{ attach_library('gin/gin_description_toggle') }}
+        <button class="help-icon__description-toggle"></button>
+      {% endif %}
     </summary>
   {%- endif -%}
   <div{{ content_attributes.addClass(content_wrapper_classes) }}>
@@ -73,7 +85,7 @@
         </div>
       {% endif %}
       {%- if description -%}
-        <div class="claro-details__description{{ disabled ? ' is-disabled' }}">{{ description }}</div>
+        <div{{ create_attribute().addClass(description_classes) }}>{{ description }}</div>
       {%- endif -%}
       {%- if children -%}
         {{ children }}

@@ -10,6 +10,7 @@ module.exports = {
   entry: {
     // Javascript
     'accent': ['./js/accent.js'],
+    'description_toggle': ['./js/description_toggle.js'],
     'edit_form': ['./js/edit_form.js'],
     'gin_ckeditor': ['./js/gin_ckeditor.js'], // Can't rename as we would be in trouble
     'init': ['./js/init.js'],
@@ -26,6 +27,7 @@ module.exports = {
     'components/ckeditor': ['./styles/components/ckeditor.scss'],
     'components/coffee': ['./styles/components/coffee.scss'],
     'components/contextual_links': ['./styles/components/contextual_links.scss'],
+    'components/description_toggle': ['./styles/components/description_toggle.scss'],
     'components/dialog': ['./styles/components/dialog.scss'],
     'components/dropzonejs': ['./styles/components/dropzonejs.scss'],
     'components/edit_form': ['./styles/components/edit_form.scss'],

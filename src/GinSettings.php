@@ -315,7 +315,7 @@ class GinSettings implements ContainerInjectionInterface {
       '#title' => $this->t('Custom Accent color'),
       '#description' => $this->t('Use with caution, values should meet a11y criteria.'),
       '#states' => [
-      // Show if met.
+        // Show if met.
         'visible' => [
           ':input[name="preset_accent_color"]' => ['value' => 'custom'],
         ],
@@ -424,6 +424,13 @@ class GinSettings implements ContainerInjectionInterface {
       '#after_build' => [
         '_gin_toolbar_radios',
       ],
+    ];
+
+    $form['show_description_toggle'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Enable form description toggle.'),
+      '#description' => $this->t('Show a help icon to show/hide form descriptions on content forms.'),
+      '#default_value' => $account ? $this->get('show_description_toggle', $account) : $this->getDefault('show_description_toggle'),
     ];
 
     if (!$account) {

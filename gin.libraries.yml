@@ -89,6 +89,13 @@ gin_dialog:
     - gin/gin_base
     - gin/gin_accent
 
+gin_description_toggle:
+  css:
+    theme:
+      dist/css/components/description_toggle.css: { minified: false }
+  js:
+    dist/js/description_toggle.js: { minified: false }
+
 gin_messages:
   version: VERSION
   js:
