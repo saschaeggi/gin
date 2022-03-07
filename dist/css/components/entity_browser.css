@@ -101,6 +101,10 @@
   margin: 0;
 }
 
+.gin-entity-browser .entity-browser-form .views-view-grid .views-col {
+  position: relative;
+}
+
 .gin-entity-browser .entity-browser-form .view-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
