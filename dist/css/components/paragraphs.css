@@ -27,6 +27,10 @@
   margin: 10px;
 }
 
+.paragraphs-tabs-wrapper .field-multiple-table > tbody > .draggable > td + td {
+  width: 100%;
+}
+
 .paragraphs-tabs-wrapper .field-multiple-table .draggable {
   display: block;
   padding: 1rem .5rem;
@@ -58,10 +62,6 @@
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable td {
   padding: .25rem;
-}
-
-.paragraphs-tabs-wrapper .field-multiple-table .draggable > td + td {
-  width: 100%;
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable .has-multiple-fields-remove-button {
@@ -176,6 +176,7 @@
 
 .js .paragraphs-collapsed-description::after,
 .js .draggable:hover .paragraphs-collapsed-description::after {
+  top: 2px;
   background: var(--colorGinLayer2Background);
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayer2Background) 100%);
 }

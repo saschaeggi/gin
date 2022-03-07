@@ -35,6 +35,14 @@
       }
     }
 
+    > tbody {
+      > .draggable {
+        > td + td {
+          width: 100%;
+        }
+      }
+    }
+
     .draggable {
       display: block;
       padding: 1rem .5rem;
@@ -67,10 +75,6 @@
 
       td {
         padding: .25rem;
-      }
-
-      > td + td {
-        width: 100%;
       }
 
       .has-multiple-fields-remove-button {
@@ -188,6 +192,7 @@
 
 .js .paragraphs-collapsed-description::after,
 .js .draggable:hover .paragraphs-collapsed-description::after {
+  top: 2px;
   background: var(--colorGinLayer2Background);
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayer2Background) 100%);
 }
