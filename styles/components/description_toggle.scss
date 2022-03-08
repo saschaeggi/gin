@@ -77,8 +77,7 @@ fieldset:not(.fieldgroup) {
 
 .field-group-fieldset >,
 fieldset.media-library-widget,
-.field--type-datetime fieldset,
-fieldset {
+.field--type-datetime fieldset {
   .help-icon {
     > .help-icon__description-toggle {
       margin-top: 1.3rem;

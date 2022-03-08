@@ -67,23 +67,20 @@ fieldset:not(.fieldgroup) .help-icon > .fieldset__legend .fieldset__label {
 
 .field-group-fieldset > .help-icon > .help-icon__description-toggle,
 fieldset.media-library-widget .help-icon > .help-icon__description-toggle,
-.field--type-datetime fieldset .help-icon > .help-icon__description-toggle,
-fieldset .help-icon > .help-icon__description-toggle {
+.field--type-datetime fieldset .help-icon > .help-icon__description-toggle {
   margin-top: 1.3rem;
 }
 
 .field-group-fieldset > .fieldset__description,
 fieldset.media-library-widget .fieldset__description,
-.field--type-datetime fieldset .fieldset__description,
-fieldset .fieldset__description {
+.field--type-datetime fieldset .fieldset__description {
   padding-left: 1rem;
 }
 
 @media (min-width: 768px) {
   .field-group-fieldset > .fieldset__description,
 fieldset.media-library-widget .fieldset__description,
-.field--type-datetime fieldset .fieldset__description,
-fieldset .fieldset__description {
+.field--type-datetime fieldset .fieldset__description {
     padding-left: 1.5rem;
   }
 }
