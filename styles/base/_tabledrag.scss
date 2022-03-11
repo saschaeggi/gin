@@ -17,13 +17,13 @@
 }
 
 .tabledrag-toggle-weight-wrapper {
-  margin-top: 0;
+  margin-block-start: 0;
 
   .action-link {
-    margin-bottom: .5rem;
+    margin-block-end: .5rem;
 
     .action-link {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
   }
 }
@@ -74,19 +74,19 @@
     &::after {
       content: "";
       display: block;
-      width: calc(var(--ginBorderDefault) * 2);
-      height: var(--ginBorderDefault);
+      inline-size: calc(var(--ginBorderDefault) * 2);
+      block-size: var(--ginBorderDefault);
       background: var(--colorGinTableHeader);
       position: absolute;
-      left: calc(var(--ginBorderDefault) * -1);
+      inset-inline-start: calc(var(--ginBorderDefault) * -1);
     }
 
     &::before {
-      top: 0;
+      inset-block-start: 0;
     }
 
     &::after {
-      bottom: 0;
+      inset-block-end: 0;
     }
   }
 }

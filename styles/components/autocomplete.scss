@@ -47,7 +47,7 @@ div.autocomplete-deluxe-multiple {
 
 .autocomplete-deluxe-container {
   input.autocomplete-deluxe-form {
-    min-height: 0;
+    min-block-size: 0;
     background: none;
   }
 }
@@ -67,8 +67,8 @@ div.autocomplete-deluxe-multiple {
   }
 
   .autocomplete-deluxe-item-delete {
-    top: 6px;
-    right: 6px;
+    inset-block-start: 6px;
+    inset-inline-end: 6px;
     mask-image: icon('close');
     mask-size: 10px 10px;
     mask-repeat: no-repeat;

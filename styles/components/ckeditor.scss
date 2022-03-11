@@ -8,7 +8,7 @@
   }
 
   &.cke_chrome {
-    width: 100% !important; // Fix issue with field_group
+    inline-size: 100% !important; // Fix issue with field_group
     border-color: var(--colorGinFormElementBorder);
     border-radius: var(--ginBorderDefault);
   }
@@ -19,7 +19,7 @@
 
   .cke_top {
     background: var(--colorGinLayerBackground);
-    border-bottom: 1px solid var(--colorGinBorder);
+    border-block-end: 1px solid var(--colorGinBorder);
     border-radius: calc(var(--ginBorderDefault) - 1px) calc(var(--ginBorderDefault) - 1px) 0 0;
 
     .gin--dark-mode & {
@@ -33,8 +33,8 @@
   }
 
   .cke_contents {
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-inline-start: 8px;
+    padding-inline-end: 8px;
   }
 
   .cke_path_empty:only-child::after {
@@ -43,7 +43,7 @@
 
   .cke_combo {
     &::after {
-      border-right: 1px solid var(--colorGinBorder);
+      border-inline-end: 1px solid var(--colorGinBorder);
     }
   }
 
@@ -113,7 +113,7 @@
 .cke:hover .cke_top {
   &,
   .gin--dark-mode & {
-    border-bottom-color: var(--colorGinBorder);
+    border-block-end-color: var(--colorGinBorder);
   }
 }
 
@@ -133,7 +133,7 @@
 .cke.cke_focus .cke_top,
 .error + .cke.cke_focus .cke_top,
 .error + .cke.cke_chrome.cke_focus:hover .cke_top {
-  border-bottom: 1px solid var(--colorGinBorder);
+  border-block-end: 1px solid var(--colorGinBorder);
 }
 
 .cke textarea.cke_source {
@@ -155,8 +155,8 @@ body .cke_notification_info {
   }
 
   .cke_notification_close {
-    top: 4px;
-    right: 4px;
+    inset-block-start: 4px;
+    inset-inline-end: 4px;
     background: var(--colorGinText);
     mask-image: icon('close');
     mask-position: center center;

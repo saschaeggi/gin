@@ -11,20 +11,20 @@
 .show-6 {
   .views-row {
     @include mq($breakpointTiny) {
-      float: left;
-      width: 50%;
+      float: inline-start;
+      inline-size: 50%;
     }
 
     @include mq($breakpointSmall) {
-      width: 25%;
+      inline-size: 25%;
     }
 
     @include mq($breakpointLarge) {
-      width: 20%;
+      inline-size: 20%;
     }
 
     @include mq($breakpointWide) {
-      width: 16.666666667%;
+      inline-size: 16.666666667%;
     }
   }
 }
@@ -42,26 +42,26 @@
 
   .views-table {
     order: -1;
-    margin-top: 0;
+    margin-block-start: 0;
   }
 
   [data-drupal-selector*=edit-header] {
     order: 99;
     position: relative;
-    left: 0;
+    inset-inline-start: 0;
     padding: 0 16px 16px 16px;
     background: rgba(#e2e5ec, .6);
     border-radius: var(--ginBorderDefault);
 
     [data-drupal-selector*='edit-views-bulk-operations-bulk-form'] {
       > * {
-        margin-right: .5rem;
+        margin-inline-end: .5rem;
       }
 
       .form-type--select,
       .form-actions {
         flex: 0 0 100%;
-        max-width: 100%;
+        max-inline-size: 100%;
       }
 
       .form-actions {
@@ -79,9 +79,9 @@
 
     .form-item__label:not([for='edit-select-all']) {
       display: block;
-      float: left;
-      top: 2px;
-      margin-right: 1rem;
+      float: inline-start;
+      inset-block-start: 2px;
+      margin-inline-end: 1rem;
       line-height: 1.75;
     }
 
@@ -89,8 +89,8 @@
       z-index: 4;
       opacity: 1;
       position: sticky;
-      left: 0;
-      bottom: .5rem;
+      inset-inline-start: 0;
+      inset-block-end: .5rem;
       background: var(--colorGinStickyBg);
       box-shadow: 0 2px 6px 2px rgba(0, 0, 0, .03);
       animation: fadeInBottom 320ms 1 forwards;
@@ -109,21 +109,21 @@
 }
 
 .views-exposed-form.views-exposed-form {
-  padding-top: 8px;
+  padding-block-start: 8px;
 
   .form-element--type-select {
-    max-width: 240px;
+    max-inline-size: 240px;
   }
 
   // Exposed filter with fieldgroup
   fieldset {
-    margin-right: .75rem;
-    margin-bottom: .4rem;
+    margin-inline-end: .75rem;
+    margin-block-end: .4rem;
 
     > .fieldset__legend > .fieldset__label {
       font-size: .889rem;
       padding: 0 .5rem;
-      margin-bottom: 0.25rem;
+      margin-block-end: 0.25rem;
     }
 
     .fieldset__wrapper {
@@ -138,11 +138,11 @@
 }
 
 .views-exposed-form__item--preceding-actions.views-exposed-form__item--preceding-actions {
-  margin-right: .5rem;
+  margin-inline-end: .5rem;
 }
 
 .view-files .view-content {
-  padding-top: 0;
+  padding-block-start: 0;
 }
 
 .layer-wrapper {
@@ -154,19 +154,19 @@
   }
 
   & + .layer-wrapper {
-    margin-top: 24px;
+    margin-block-start: 24px;
   }
 
   & + h2,
   & + h3 {
-    margin-top: 32px;
+    margin-block-start: 32px;
   }
 }
 
 .views-edit-view {
   .unit-title {
-    margin-top: 0;
-    margin-bottom: 1rem;
+    margin-block-start: 0;
+    margin-block-end: 1rem;
     @extend h2;
   }
 }
@@ -176,7 +176,7 @@
   &__title {
     padding: 0;
     background-color: transparent;
-    border-bottom: 0 none;
+    border-block-end: 0 none;
   }
 
   .preview-section {
@@ -195,11 +195,11 @@
 
   .form-item--live-preview {
     position: static !important;
-    margin-top: 1.5rem;
+    margin-block-start: 1.5rem;
   }
 
   .arguments-preview {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 }
 
@@ -236,12 +236,12 @@
 
   // #3186729: Drupal 9.1 fix
   &__extra-actions-wrapper {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 
   .dropbutton-wrapper {
-    top: 20px;
-    right: 24px;
+    inset-block-start: 20px;
+    inset-inline-end: 24px;
   }
 }
 
@@ -304,7 +304,7 @@
   }
 
   .action-list {
-    top: 36px;
+    inset-block-start: 36px;
     background: var(--colorGinLayer3Background);
     box-shadow: 0 1px 2px var(--colorGinButtonShadow);
 
@@ -313,8 +313,8 @@
       border: none;
 
       input.button {
-        width: 100%;
-        text-align: left;
+        inline-size: 100%;
+        text-align: start;
         line-height: 1.2;
         box-shadow: none;
         border: none !important;
@@ -354,7 +354,7 @@
     }
 
     .views-ui-display-tab-bucket__actions {
-      margin-right: 1rem;
+      margin-inline-end: 1rem;
     }
   }
 
@@ -372,8 +372,8 @@
   }
 
   .dropbutton-wrapper {
-    top: 14px;
-    right: 16px;
+    inset-block-start: 14px;
+    inset-inline-end: 16px;
   }
 
   &.pager {
@@ -382,9 +382,9 @@
 }
 
 .views-ui-display-tab-bucket.views-ui-display-tab-bucket {
-  padding-top: 0;
-  margin-bottom: 0;
-  border-bottom-color: var(--colorGinBorder);
+  padding-block-start: 0;
+  margin-block-end: 0;
+  border-block-end-color: var(--colorGinBorder);
 }
 
 .views-ui-display-tab-actions {
@@ -406,14 +406,14 @@
   tr.even,
   tr.odd {
     background: none;
-    border-top: 1px solid var(--colorGinBorder);
-    border-bottom: none;
+    border-block-start: 1px solid var(--colorGinBorder);
+    border-block-end: none;
   }
 }
 
 .system-modules td {
   padding: 1rem;
-  height: auto;
+  block-size: auto;
 
   details summary {
     background-color: transparent;
@@ -422,33 +422,33 @@
 
 .views-display-column,
 .edit-display-settings-top.views-ui-display-tab-bucket {
-  margin-bottom: 1rem;
+  margin-block-end: 1rem;
   border-color: var(--colorGinBorder);
   border-radius: var(--ginBorderDefault);
 }
 
 .views-ui-dialog {
   .form--inline {
-    padding-top: 0;
+    padding-block-start: 0;
   }
 
   .views-override:not(:empty) {
     background-color: var(--colorGinAppBackground);
-    border-bottom: 0 none;
+    border-block-end: 0 none;
   }
 
   .form-item--fields-area-text-custom-removed {
     display: inline-block;
-    margin-right: 4px;
+    margin-inline-end: 4px;
   }
 }
 
 .views-filterable-options {
-  border-top: none;
+  border-block-start: none;
 }
 
 .view-block-content .views-table {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 .views-display-columns {
@@ -466,6 +466,6 @@
 }
 
 .views-exposed-form .form-datetime-wrapper {
-  margin-bottom: 0;
-  margin-right: .5rem;
+  margin-block-end: 0;
+  margin-inline-end: .5rem;
 }

@@ -1,12 +1,12 @@
 .project-update {
   &__version-links {
-    padding-right: 0;
+    padding-inline-end: 0;
   }
 
   &__status {
     &-icon {
-      width: 24px;
-      height: 24px;
+      inline-size: 24px;
+      block-size: 24px;
       display: inline-block;
       vertical-align: bottom;
 
@@ -17,7 +17,7 @@
 
     // Error
     & &-icon {
-      padding-left: 0;
+      padding-inline-start: 0;
       background-color: var(--colorGinDanger);
       mask-image: icon('error');
       mask-position: center right;
@@ -30,7 +30,7 @@
 
       span {
         position: relative;
-        top: 2px;
+        inset-block-start: 2px;
       }
     }
 
@@ -59,7 +59,7 @@ tr.color-success,
 .color-checked,
 .drupal-upgrade-status-summary-form tr.no-known-error
 {
-  border-left: 8px solid var(--colorGinGreen);
+  border-inline-start: 8px solid var(--colorGinGreen);
   background-color: transparent;
 
   &:hover, &:active, &:focus {
@@ -71,7 +71,7 @@ tr.color-success,
 tr.color-warning,
 .upgrade-status-next-step-remove tr,
 .drupal-upgrade-status-summary-form tr.known-warnings {
-  border-left: 8px solid var(--colorGinWarning);
+  border-inline-start: 8px solid var(--colorGinWarning);
   background-color: transparent;
 
   &:hover, &:active, &:focus {
@@ -86,7 +86,7 @@ tr.color-warning,
 .color-error,
 tr.color-error,
 .drupal-upgrade-status-summary-form tr.known-errors {
-  border-left: 8px solid var(--colorGinDanger);
+  border-inline-start: 8px solid var(--colorGinDanger);
   background-color: transparent;
 
   &:hover, &:active, &:focus {
@@ -112,14 +112,14 @@ tr.color-error,
 
   tbody {
     tr:last-child {
-      border-bottom: 0 none;
+      border-block-end: 0 none;
     }
   }
 }
 
 .layer-wrapper {
   .responsive-enabled {
-    margin-top: 0;
+    margin-block-start: 0;
   }
 }
 
@@ -133,7 +133,7 @@ tr.color-error,
 
 .compact-link {
   font-size: 0.875rem;
-  text-align: right;
+  text-align: end;
 }
 
 // Install & Uninstall search.
@@ -141,18 +141,18 @@ tr.color-error,
 .system-modules-uninstall {
   .table-filter {
     .form-type--search {
-      margin-top: 0;
+      margin-block-start: 0;
     }
   }
 
   .table-filter-text {
-    width: 100%;
+    inline-size: 100%;
     padding: 1rem;
   }
 }
 
 #update-status {
   > p {
-    margin-bottom: 2rem;
+    margin-block-end: 2rem;
   }
 }

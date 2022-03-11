@@ -2,7 +2,7 @@
 .gin--edit-form {
   // Has sidebar, save the space
   @include mq($breakpointLarge) {
-    padding-right: var(--ginSidebarWidth);
+    padding-inline-end: var(--ginSidebarWidth);
 
     .dialog-off-canvas-main-canvas {
       transition: padding-left var(--ginTransition);
@@ -10,7 +10,7 @@
 
     // If off-canvas dialog is shown
     &.js-off-canvas-dialog-open {
-      padding-right: 0;
+      padding-inline-end: 0;
 
       // Hide sidebar when off-canvas is shown
       .layout-region.layout-region-node-secondary {
@@ -37,29 +37,29 @@
 
   .layout-region-node-main,
   .layout-region-node-footer {
-    width: 100%;
-    padding-right: 0;
+    inline-size: 100%;
+    padding-inline-end: 0;
 
     @include mq($breakpointLarge) {
       flex-basis: 40%;
       flex-shrink: 1;
       flex-grow: 1;
-      min-width: 0;
+      min-inline-size: 0;
     }
   }
 
   .page-wrapper__node-edit-form {
     .block-page-title-block {
       @include mq(1730px) {
-        width: 100%;
-        // max-width: $breakpointWide;
+        inline-size: 100%;
+        // max-inline-size: $breakpointWide;
         // margin: 0 auto;
       }
 
       .page-title {
         @include mq($breakpointLarge) {
-          width: auto;
-          max-width: 800px;
+          inline-size: auto;
+          max-inline-size: 800px;
           margin: 0;
           overflow: hidden;
         }
@@ -69,8 +69,8 @@
     // More room for content to breathe
     .node-form {
       @include mq($breakpointBig) {
-        padding-left: 2.5rem;
-        padding-right: 2.5rem;
+        padding-inline-start: 2.5rem;
+        padding-inline-end: 2.5rem;
       }
     }
 
@@ -81,30 +81,30 @@
     .node-confirm-form,
     .admin-list,
     .help {
-      width: 100%;
-      max-width: $breakpointWide;
-      margin-left: auto;
-      margin-right: auto;
+      inline-size: 100%;
+      max-inline-size: $breakpointWide;
+      margin-inline-start: auto;
+      margin-inline-end: auto;
       box-sizing: border-box;
     }
 
     .layout-region-node-secondary {
-      width: 100%;
+      inline-size: 100%;
 
       @include mq($breakpointLarge) {
         z-index: 101;
         flex-basis: var(--ginSidebarWidth);
-        width: var(--ginSidebarWidth) !important;
+        inline-size: var(--ginSidebarWidth) !important;
         position: fixed;
-        top: 0;
-        right: 0;
+        inset-block-start: 0;
+        inset-inline-end: 0;
         margin: 0;
         overflow-x: hidden;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        height: 100%;
+        block-size: 100%;
         background:var(--colorGinLayerBackground);
-        border-left: 1px solid var(--colorGinLayerBorder);
+        border-inline-start: 1px solid var(--colorGinLayerBorder);
 
         .gin--dark-mode & {
           box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
@@ -116,14 +116,14 @@
           margin: 0;
 
           .action-link {
-            margin-top: .5rem;
-            margin-bottom: 0;
+            margin-block-start: .5rem;
+            margin-block-end: 0;
           }
         }
       }
 
       .field--name-revision-log {
-        margin-top: 1.5rem;
+        margin-block-start: 1.5rem;
       }
 
       .accordion {
@@ -137,29 +137,29 @@
 
         &__header {
           color: var(--colorGinText);
-          padding-left: 0;
-          padding-right: 0;
+          padding-inline-start: 0;
+          padding-inline-end: 0;
           background: none;
           border: 0 none;
 
           @include mq($breakpointLarge) {
-            padding-left: $sidebarSpacer;
-            padding-right: $sidebarSpacer;
+            padding-inline-start: $sidebarSpacer;
+            padding-inline-end: $sidebarSpacer;
           }
         }
 
         &__title {
           color: var(--colorGinTitle);
           font-weight: 500;
-          margin-top: .25rem;
-          margin-bottom: 1rem;
+          margin-block-start: .25rem;
+          margin-block-end: 1rem;
           text-shadow: none;
         }
 
         > .accordion__item {
           margin: 0;
           border: 0 none;
-          border-bottom: 1px solid var(--colorGinLayerBorder);
+          border-block-end: 1px solid var(--colorGinLayerBorder);
           border-radius: 0;
 
           .gin--dark-mode & {
@@ -168,16 +168,16 @@
 
           > .claro-details__summary {
             display: block;
-            padding-left: #{$sidebarSpacer + 1.5rem};
+            padding-inline-start: #{$sidebarSpacer + 1.5rem};
 
             .details-title {
               position: static;
-              padding-left: 0;
+              padding-inline-start: 0;
             }
 
             &::before {
-              top: 2rem;
-              left: $sidebarSpacer;
+              inset-block-start: 2rem;
+              inset-inline-start: $sidebarSpacer;
             }
 
             &:focus::after {
@@ -186,8 +186,8 @@
           }
 
           .claro-details__content {
-            margin-left: $sidebarSpacer;
-            margin-right: $sidebarSpacer;
+            margin-inline-start: $sidebarSpacer;
+            margin-inline-end: $sidebarSpacer;
 
             .claro-details__wrapper {
               margin: 1.5rem;
@@ -195,20 +195,20 @@
           }
 
           .redirect-table__path {
-            width: 47%;
+            inline-size: 47%;
           }
 
           .form-type--entity-autocomplete .claro-autocomplete {
-            width: 100%;
+            inline-size: 100%;
           }
 
           .form-datetime-wrapper {
             .form-date {
-              max-width: 170px;
+              max-inline-size: 170px;
             }
 
             .form-time {
-              max-width: 134px;
+              max-inline-size: 134px;
             }
           }
         }
@@ -225,6 +225,6 @@
     font-weight: 500;
     line-height: normal;
     letter-spacing: -0.025em;
-    width: 100%;
+    inline-size: 100%;
   }
 }

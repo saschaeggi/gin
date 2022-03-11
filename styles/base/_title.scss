@@ -1,6 +1,6 @@
 .block-page-title-block {
   &:last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 }
 
@@ -13,7 +13,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 90%;
+  max-inline-size: 90%;
   transition: font-size 0.25s ease;
 
   @include mq($breakpointBig) {
@@ -27,16 +27,16 @@
 
 .shortcut-action {
   align-self: center;
-  margin-left: .5rem;
+  margin-inline-start: .5rem;
   border-radius: var(--ginBorderDefault);
 
   @include mq($breakpointLarge) {
-    margin-left: .5rem;
+    margin-inline-start: .5rem;
   }
 
   &__icon {
     position: relative;
-    top: 3px;
+    inset-block-start: 3px;
     background: var(--colorGinIcons);
     mask-image: icon('shortcut');
     mask-size: 75% 75%;
@@ -44,12 +44,12 @@
     mask-repeat: no-repeat;
 
     @include mq($breakpointLarge) {
-      top: 4px;
+      inset-block-start: 4px;
       mask-size: 85% 85%;
     }
 
     .gin--edit-form & {
-      top: 3px;
+      inset-block-start: 3px;
     }
   }
 
@@ -77,7 +77,7 @@
     position: absolute;
     pointer-events: none;
     padding: .5rem;
-    margin-top: -0.25rem;
+    margin-block-start: -0.25rem;
     color: var(--colorGinContextualText);
     background: var(--colorGinContextual);
     border-radius: var(--ginBorderXSmall);

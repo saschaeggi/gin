@@ -8,8 +8,8 @@
   position: absolute !important;
   clip: rect(1px, 1px, 1px, 1px);
   overflow: hidden;
-  height: 1px;
-  width: 1px;
+  block-size: 1px;
+  inline-size: 1px;
   word-wrap: normal;
 }
 
@@ -27,8 +27,8 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 
   color: transparent;
-  width: 29px;
-  height: 29px;
+  inline-size: 29px;
+  block-size: 29px;
   margin: .75rem;
 
   &:hover,

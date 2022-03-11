@@ -9,7 +9,7 @@
 .erl-field .erl-disabled-items,
 .erl-field .erl-disabled-items.form-item.form-wrapper {
   padding: 1rem;
-  margin-bottom: -6rem;
+  margin-block-end: -6rem;
   background: #f1f1f3;
   border-radius: var(--ginBorderDefault);
 
@@ -59,7 +59,7 @@
 .erl-field .erl-add-content--single button {
   position: static;
   display: block;
-  width: 100%;
+  inline-size: 100%;
   color: var(--colorGinPrimary);
   line-height: 1.3;
   background: var(--colorGinItemHover);
@@ -89,7 +89,7 @@
   .erl-add-content--single {
     button {
       .icon {
-        margin-right: .5rem;
+        margin-inline-end: .5rem;
       }
     }
   }
@@ -101,7 +101,7 @@
     }
 
     .form-item {
-      margin-left: 8px;
+      margin-inline-start: 8px;
     }
 
     &.active {
@@ -119,7 +119,7 @@
   .erl-form {
     overflow-x: hidden;
     overflow-y: visible;
-    max-height: 85vh !important;
+    max-block-size: 85vh !important;
   }
 }
 
@@ -137,13 +137,13 @@
   border-color: #fff;
 
   &:not(:last-of-type) {
-    margin-bottom: 1rem;
+    margin-block-end: 1rem;
   }
 }
 
 // Disabled description position
 .erl-disabled-wrapper .erl-disabled-items__description {
-  top: 16px;
+  inset-block-start: 16px;
 }
 
 // Basic item styles
@@ -152,8 +152,8 @@
   label.paragraph-type--label {
     margin: -1px;
     position: absolute;
-    top: 12px;
-    left: 50%;
+    inset-block-start: 12px;
+    inset-inline-start: 50%;
     transform: translate(-50%);
     border: 0 none;
     font-style: normal;
@@ -164,8 +164,8 @@
   .layout-controls {
     opacity: 1;
     position: absolute;
-    left: 4px;
-    top: 8px;
+    inset-inline-start: 4px;
+    inset-block-start: 8px;
   }
 
   .paragraph {
@@ -179,7 +179,7 @@
     }
 
     .field--type-image {
-      max-height: 400px;
+      max-block-size: 400px;
       overflow: hidden;
     }
 
@@ -189,7 +189,7 @@
 
       .field__item {
         flex-basis: 100%;
-        margin-right: .5rem;
+        margin-inline-end: .5rem;
       }
     }
   }
@@ -199,8 +199,8 @@
 .erl-item .erl-actions {
   visibility: visible;
   position: absolute;
-  right: 4px;
-  top: 8px;
+  inset-inline-end: 4px;
+  inset-block-start: 8px;
 }
 
 // Form wrapper

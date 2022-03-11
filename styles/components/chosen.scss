@@ -1,14 +1,14 @@
 .form-element.chosen-container-single {
-    width: auto !important;
+    inline-size: auto !important;
     padding: 0;
 
     .chosen-single {
-        min-width: 160px;
+        min-inline-size: 160px;
         background: none;
         border: none;
         box-shadow: none;
-        width: 100%;
-        height: 100%;
+        inline-size: 100%;
+        block-size: 100%;
         display: block;
         line-height: 1.5rem;
         padding: calc(0.75rem - 1px) calc(1rem - 1px);
@@ -20,10 +20,10 @@
 }
 
 .form-element.chosen-container-multi {
-    width: auto !important;
+    inline-size: auto !important;
 
     .chosen-choices {
-        min-width: 160px;
+        min-inline-size: 160px;
         border: 0 none;
         background: none;
         box-shadow: none;

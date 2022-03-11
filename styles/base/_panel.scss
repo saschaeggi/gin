@@ -1,6 +1,6 @@
 .block-system > .node-confirm-form,
 .block-system > .confirmation {
-  padding-top: 24px;
+  padding-block-start: 24px;
 }
 
 .panel__title,
@@ -11,7 +11,7 @@
   font-weight: 600;
   color: var(--colorGinPrimaryActive);
   padding: 24px;
-  margin-top: 0;
+  margin-block-start: 0;
   background: var(--colorGinTableHeader);
   border: 0 none;
   border-radius: var(--ginBorderDefault);
