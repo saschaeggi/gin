@@ -11,7 +11,7 @@ details summary {
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding-top: 16px;
+  padding-block-start: 16px;
 
   .form-item,
   .form-actions {
@@ -21,8 +21,8 @@ details summary {
 
   .button,
   .action-link {
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
   }
 
   .form-actions {
@@ -30,6 +30,6 @@ details summary {
   }
 
   .field-add-more-submit {
-    margin-top: .75rem;
+    margin-block-start: .75rem;
   }
 }

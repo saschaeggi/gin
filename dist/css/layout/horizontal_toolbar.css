@@ -18,7 +18,7 @@
 }
 
 .gin-secondary-toolbar--frontend {
-  top: calc(var(--ginToolbarSecondaryHeight) * -1);
+  inset-block-start: calc(var(--ginToolbarSecondaryHeight) * -1);
 }
 
 .toolbar .toolbar-bar {
@@ -30,55 +30,37 @@
   .toolbar .toolbar-bar {
     display: flex;
     background: none;
-  }
-}
-
-@media (min-width: 976px) {
-  .toolbar .toolbar-bar {
-    height: 0;
+    block-size: 0;
   }
 }
 
 .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
 .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  -webkit-padding-before: 20px;
+          padding-block-start: 20px;
+  -webkit-padding-after: 20px;
+          padding-block-end: 20px;
+  -webkit-padding-start: 3em;
+          padding-inline-start: 3em;
   white-space: nowrap;
-}
-
-[dir="ltr"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
-[dir="ltr"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
-  padding-left: 3em;
-}
-
-[dir="rtl"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
-[dir="rtl"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
-  padding-right: 3em;
 }
 
 .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon::before,
 .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon::before {
-  margin-top: -1px;
+  -webkit-margin-before: -1px;
+          margin-block-start: -1px;
 }
 
-[dir="ltr"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:not(.toolbar-handle)::before {
-  left: .75rem;
-}
-
-[dir="rtl"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:not(.toolbar-handle)::before {
-  right: .75rem;
+.toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:not(.toolbar-handle)::before {
+  inset-inline-start: .75rem;
 }
 
 .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu .toolbar-icon.toolbar-handle {
-  width: 48px;
+  inline-size: 48px;
 }
 
-[dir="ltr"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu .toolbar-icon.toolbar-handle:before {
-  left: 1rem;
-}
-
-[dir="rtl"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu .toolbar-icon.toolbar-handle:before {
-  right: 1rem;
+.toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu .toolbar-icon.toolbar-handle:before {
+  inset-inline-start: 1rem;
 }
 
 .toolbar .toolbar-bar .toolbar-toggle-orientation {
@@ -86,7 +68,8 @@
 }
 
 .toolbar-horizontal .toolbar-tray {
-  border-bottom: 0 none;
+  -webkit-border-after: 0 none;
+          border-block-end: 0 none;
 }
 
 .toolbar .toolbar-menu,
@@ -95,12 +78,9 @@
   background-color: var(--colorGinLayerBackground);
 }
 
-[dir="ltr"] .toolbar-horizontal .toolbar-tray .toolbar-toggle-orientation {
-  border-left: 1px solid var(--colorGinBorder);
-}
-
-[dir="rtl"] .toolbar-horizontal .toolbar-tray .toolbar-toggle-orientation {
-  border-right: 1px solid var(--colorGinBorder);
+.toolbar-horizontal .toolbar-tray .toolbar-toggle-orientation {
+  -webkit-border-start: 1px solid var(--colorGinBorder);
+          border-inline-start: 1px solid var(--colorGinBorder);
 }
 
 .toolbar-tray a,
@@ -164,7 +144,8 @@
 
 @media (min-width: 1024px) {
   .gin--classic-toolbar table.sticky-header {
-    margin-top: 0;
+    -webkit-margin-before: 0;
+            margin-block-start: 0;
   }
 }
 
@@ -178,7 +159,7 @@
 
 #toolbar-item-administration-tray .toolbar-logo {
   display: flex;
-  height: 100%;
+  block-size: 100%;
 }
 
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
@@ -188,17 +169,8 @@
 
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:before,
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus:before {
-  top: 12px;
-}
-
-[dir="ltr"] .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:before,
-[dir="ltr"] .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus:before {
-  right: 12px;
-}
-
-[dir="rtl"] .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:before,
-[dir="rtl"] .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus:before {
-  left: 12px;
+  inset-block-start: 12px;
+  inset-inline-end: 12px;
 }
 
 .toolbar-tray-horizontal .menu-item:hover {
@@ -207,8 +179,8 @@
 
 @media (min-width: 1024px) {
   .gin--horizontal-toolbar.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
-    top: var(--ginToolbarHeight);
-    height: calc(100% - var(--ginToolbarHeight));
+    inset-block-start: var(--ginToolbarHeight);
+    block-size: calc(100% - var(--ginToolbarHeight));
   }
 }
 
@@ -216,13 +188,13 @@
   .gin--horizontal-toolbar #toolbar-administration {
     z-index: 502;
     position: fixed;
-    top: 0;
-    width: 100%;
+    inset-block-start: 0;
+    inline-size: 100%;
   }
 
   .gin--horizontal-toolbar #toolbar-administration,
 .gin--horizontal-toolbar #toolbar-administration .toolbar-bar {
-    height: var(--ginToolbarHeight);
+    block-size: var(--ginToolbarHeight);
     background: var(--colorGinLayerBackground);
   }
 }
@@ -231,32 +203,22 @@
   .gin--horizontal-toolbar #toolbar-administration .toolbar-lining {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-  }
-
-  [dir="ltr"] .gin--horizontal-toolbar #toolbar-administration .toolbar-lining {
-    padding-right: 0;
-  }
-
-  [dir="rtl"] .gin--horizontal-toolbar #toolbar-administration .toolbar-lining {
-    padding-left: 0;
+    -webkit-padding-end: 0;
+            padding-inline-end: 0;
   }
 }
 
 @media (min-width: 976px) {
-  [dir="ltr"] .gin--horizontal-toolbar #toolbar-administration .menu-item__tools,
-[dir="ltr"] .gin--horizontal-toolbar #toolbar-administration .menu-item__admin_toolbar_tools-help {
-    margin-left: -16px;
-  }
-
-  [dir="rtl"] .gin--horizontal-toolbar #toolbar-administration .menu-item__tools,
-[dir="rtl"] .gin--horizontal-toolbar #toolbar-administration .menu-item__admin_toolbar_tools-help {
-    margin-right: -16px;
+  .gin--horizontal-toolbar #toolbar-administration .menu-item__tools,
+.gin--horizontal-toolbar #toolbar-administration .menu-item__admin_toolbar_tools-help {
+    -webkit-margin-start: -16px;
+            margin-inline-start: -16px;
   }
 }
 
 .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help {
-  width: auto;
-  height: 100%;
+  inline-size: auto;
+  block-size: 100%;
   text-indent: -999em;
 }
 
@@ -266,48 +228,37 @@
 }
 
 @media (min-width: 976px) {
-  [dir="ltr"] .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help {
-    padding-left: 2.875em;
-  }
-
-  [dir="rtl"] .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help {
-    padding-right: 2.875em;
+  .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help {
+    -webkit-padding-start: 2.875em;
+            padding-inline-start: 2.875em;
   }
 
   .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help:before {
-    top: -1px;
-    width: 24px;
+    inset-block-start: -1px;
+    inset-inline-start: 14px;
+    inline-size: 24px;
     -webkit-mask-size: 28px 28px;
             mask-size: 28px 28px;
   }
 
-  [dir="ltr"] .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help:before {
-    left: 14px;
-  }
-
-  [dir="rtl"] .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help:before {
-    right: 14px;
-  }
-
-  [dir="ltr"] .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
-    margin-right: .5rem;
-  }
-
-  [dir="rtl"] .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
-    margin-left: .5rem;
+  .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
+    -webkit-margin-end: .5rem;
+            margin-inline-end: .5rem;
   }
 }
 
 @media (min-width: 976px) {
   .gin--horizontal-toolbar #toolbar-administration .toolbar-menu-administration {
-    margin-left: min(5vw, 48px);
-    margin-right: min(5vw, 48px);
+    -webkit-margin-start: min(5vw, 48px);
+            margin-inline-start: min(5vw, 48px);
+    -webkit-margin-end: min(5vw, 48px);
+            margin-inline-end: min(5vw, 48px);
   }
 
   .gin--horizontal-toolbar #toolbar-administration .toolbar-menu-administration > .toolbar-menu {
     display: flex;
     flex-wrap: nowrap;
-    width: 100%;
+    inline-size: 100%;
   }
 }
 

@@ -20,7 +20,7 @@
 }
 
 .region-breadcrumb {
-  margin-top: 1rem;
+  margin-block-start: 1rem;
 }
 
 // Toolbar
@@ -38,7 +38,7 @@
 }
 
 .toolbar-horizontal .toolbar-tray .toolbar-toggle-orientation {
-  border-left: 1px solid var(--colorGinBorder);
+  border-inline-start: 1px solid var(--colorGinBorder);
 }
 
 .toolbar-tray-horizontal {
@@ -46,7 +46,7 @@
     li {
       &.menu-item {
         .menu-item {
-          border-bottom: 1px solid var(--colorGinBorder);
+          border-block-end: 1px solid var(--colorGinBorder);
         }
       }
     }
@@ -134,24 +134,24 @@
 
 .gin--classic-toolbar {
   .page-wrapper__node-edit-form .layout-region-node-secondary {
-    padding-top: var(--ginHorizontalToolbarOffset); // 39px;
+    padding-block-start: var(--ginHorizontalToolbarOffset); // 39px;
   }
 
   table.sticky-header {
     @include mq($breakpointLarge) {
-      margin-top: 0;
+      margin-block-start: 0;
     }
   }
 }
 
 .toolbar-menu .menu-item > span {
-  padding-left: 2.75em;
+  padding-inline-start: 2.75em;
 }
 
 // Home icon
 .toolbar .toolbar-bar .toolbar-icon-admin-toolbar-tools-help {
-  width: auto;
-  height: 100%;
+  inline-size: auto;
+  block-size: 100%;
   text-indent: -999em;
 
   &:before {
@@ -160,7 +160,7 @@
 
   @include mq($breakpointMedium) {
     &:before {
-      left: 1rem;
+      inset-inline-start: 1rem;
     }
   }
 }
@@ -171,7 +171,7 @@
   .toolbar-logo {
     img {
       @include mq($breakpointLarge) {
-        max-height: 21px;
+        max-block-size: 21px;
       }
     }
   }
@@ -182,18 +182,18 @@
   position: relative;
 
   &:before {
-    top: .75rem;
-    right: .75rem;
+    inset-block-start: .75rem;
+    inset-inline-end: .75rem;
   }
 }
 
 #admin-toolbar-search-tab .form-item {
   &::before {
-    top: 6px;
-    left: 26px;
+    inset-block-start: 6px;
+    inset-inline-start: 26px;
   }
 }
 
 #admin-toolbar-search-input {
-  padding-left: 2rem;
+  padding-inline-start: 2rem;
 }

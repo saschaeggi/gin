@@ -5,7 +5,7 @@
 }
 
 .package-listing {
-  margin-top: 1rem;
+  margin-block-start: 1rem;
 }
 
 .claro-details.claro-details--package-listing,
@@ -40,5 +40,5 @@
 }
 
 .module-list__module {
-  border-bottom: 1px solid var(--colorGinBorder);
+  border-block-end: 1px solid var(--colorGinBorder);
 }

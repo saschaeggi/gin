@@ -1,15 +1,15 @@
 .webform-filter-form {
-  margin-bottom: 2rem;
+  margin-block-end: 2rem;
 
   .details-wrapper {
-    margin-top: 0;
-    margin-bottom: .5rem;
+    margin-block-start: 0;
+    margin-block-end: .5rem;
   }
 
   // Followed by a title
   + div:not(.layer-wrapper) {
     // @extend h3;
-    margin-bottom: .75rem;
+    margin-block-end: .75rem;
   }
 }
 
@@ -58,8 +58,8 @@
 .webform-ui-elements-table {
   tr.webform-ui-element-type-webform_actions {
     td {
-      border-top: none;
-      border-bottom: none;
+      border-block-start: none;
+      border-block-end: none;
       background: none;
     }
   }
@@ -67,7 +67,7 @@
 
 .webform-tabs.ui-tabs {
   .ui-tabs-nav {
-    border-bottom: 0 none;
+    border-block-end: 0 none;
 
     .ui-tabs-active.ui-state-active a {
       border: 2px solid var(--colorGinPrimary);

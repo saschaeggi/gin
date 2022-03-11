@@ -5,13 +5,13 @@
 
   // Offset for select button on first item
   &--multiple > .dropbutton__item:first-of-type {
-    height: 100%;
-    margin-right: 3rem;
-    border-right: 1px solid var(--colorGinPrimaryLightActive);
+    block-size: 100%;
+    margin-inline-end: 3rem;
+    border-inline-end: 1px solid var(--colorGinPrimaryLightActive);
 
     input {
       color: var(--colorGinPrimary);
-      height: 100%;
+      block-size: 100%;
       background-color: transparent;
       border: 0 none !important;
       border-radius: 0 !important;
@@ -45,10 +45,10 @@
   }
 
   &__toggle {
-    top: 2px;
-    right: 2px;
-    width: calc(3rem + 1px);
-    height: 2.75rem;
+    inset-block-start: 2px;
+    inset-inline-end: 2px;
+    inline-size: calc(3rem + 1px);
+    block-size: 2.75rem;
 
     &:hover {
       background-color: var(--colorGinPrimary);
@@ -72,18 +72,18 @@
 
   & &__items {
     position: absolute;
-    right: 0;
+    inset-inline-end: 0;
     list-style: none;
     padding: .5em;
     margin: 0;
-    min-width: 120px;
+    min-inline-size: 120px;
     background: var(--colorGinLayer3Background);
     border-radius: var(--ginBorderMedium);
     box-shadow: var(--ginShadowLevel2);
 
     .node-form & {
-      left: 0;
-      right: auto;
+      inset-inline-start: 0;
+      inset-inline-end: auto;
     }
   }
 
@@ -104,7 +104,7 @@
     box-shadow: none;
 
     &:first-of-type {
-      margin-right: 0;
+      margin-inline-end: 0;
     }
 
     // Mutiple Dropbutton only has one item
@@ -118,11 +118,11 @@
     > input,
     > .button {
       font-weight: bold;
-      text-align: left;
+      text-align: start;
       white-space: nowrap;
       color: var(--colorGinPrimary);
       display: block;
-      width: 100%;
+      inline-size: 100%;
       margin: 0;
       border: 0 none !important;
       border-radius: 0;
@@ -175,8 +175,8 @@
 
 .js {
   .dropbutton {
-    height: 3rem;
-    min-height: 3rem;
+    block-size: 3rem;
+    min-block-size: 3rem;
     box-sizing: border-box;
   }
 
@@ -197,36 +197,36 @@
 
 .js.no-touchevents {
   .dropbutton--multiple.dropbutton--small .dropbutton__item:first-of-type {
-    margin-right: 0;
+    margin-inline-end: 0;
   }
 
   .dropbutton--multiple.dropbutton--small > .dropbutton__item:first-of-type {
-    margin-right: 2rem;
+    margin-inline-end: 2rem;
   }
 
   .dropbutton--multiple.dropbutton--extrasmall > .dropbutton__item:first-of-type {
-    margin-right: 1.5rem;
+    margin-inline-end: 1.5rem;
   }
 
   .dropbutton--small {
-    height: 2.25rem;
-    min-height: 2.25rem;
+    block-size: 2.25rem;
+    min-block-size: 2.25rem;
     border-radius: var(--ginBorderSmall);
   }
 
   .dropbutton--extrasmall {
-    height: 1.75rem;
-    min-height: 1.75rem;
+    block-size: 1.75rem;
+    min-block-size: 1.75rem;
     border-radius: var(--ginBorderSmall);
   }
 
   .dropbutton--multiple.dropbutton--extrasmall .dropbutton__items .dropbutton__item {
-    margin-right: 0;
+    margin-inline-end: 0;
   }
 }
 
 // Last item in table
 table tr:not(:first-of-type):nth-last-child(2) td .dropbutton__items,
 table tr:not(:first-of-type):last-of-type td .dropbutton__items {
-  bottom: 100%;
+  inset-block-end: 100%;
 }

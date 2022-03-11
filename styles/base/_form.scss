@@ -32,28 +32,28 @@ $maxWidth: 520px;
   border-radius: var(--ginBorderDefault);
 
   textarea {
-    max-width: 100%;
+    max-inline-size: 100%;
   }
 }
 
 .form-item--editor-format,
 .form-element--editor-format {
-  width: auto;
+  inline-size: auto;
 
   .form-item__label {
-    top: 3px;
-    padding-bottom: 0;
+    inset-block-start: 3px;
+    padding-block-end: 0;
   }
 }
 
 // Password
 .password-field {
-  width: 100%;
+  inline-size: 100%;
 }
 
 .password-confirm {
-  width: 100%;
-  max-width: $maxWidth;
+  inline-size: 100%;
+  max-inline-size: $maxWidth;
 }
 
 .password-strength {
@@ -74,7 +74,7 @@ $maxWidth: 520px;
 
 // Select
 .form-element--type-select {
-  padding-right: calc(2.5rem - 1px);
+  padding-inline-end: calc(2.5rem - 1px);
 
   .gin--dark-mode & {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath fill='none' stroke-width='1.5' d='M1 1L7 7L13 1' stroke='%23ffffff'/%3E%3C/svg%3E%0A");
@@ -83,16 +83,16 @@ $maxWidth: 520px;
 
 .form-element--type-select--small {
   font-size: 0.79rem;
-  min-height: 2.25rem;
+  min-block-size: 2.25rem;
   line-height: 1.2;
-  padding-top: .474rem; // 0.79rem * 1.2 / 2
-  padding-bottom: .474rem; // 0.79rem * 1.2 / 2
+  padding-block-start: .474rem; // 0.79rem * 1.2 / 2
+  padding-block-end: .474rem; // 0.79rem * 1.2 / 2
   background-position: 100% 52%;
 }
 
 .form-boolean {
-  width: 21px;
-  height: 21px;
+  inline-size: 21px;
+  block-size: 21px;
   border-color: var(--colorGinFormElementBorder);
   border-radius: var(--ginBorderXSmall);
 }
@@ -125,22 +125,22 @@ $maxWidth: 520px;
 // Single Checkbox: show as toggle
 :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox {
   position: relative;
-  margin-left: 0;
+  margin-inline-start: 0;
 
   .checkbox-toggle {
     z-index: 0;
     display: inline-block;
     vertical-align: top;
-    width: 40px;
-    height: 24px;
+    inline-size: 40px;
+    block-size: 24px;
     border-radius: 12px;
     box-sizing: border-box;
 
     &__inner {
       position: relative;
       display: block;
-      width: 100%;
-      height: 100%;
+      inline-size: 100%;
+      block-size: 100%;
       overflow: hidden;
       clip-path: circle(24px at 50% 50%); // Fix Safari bug
       background-color: var(--colorGinDisabled);
@@ -155,8 +155,8 @@ $maxWidth: 520px;
       &:before {
         position: absolute;
         content: "";
-        width: 100%;
-        height: 100%;
+        inline-size: 100%;
+        block-size: 100%;
         background-color: #fff;
         border-radius: 21px;
         transform: translateX(-16px);
@@ -171,10 +171,10 @@ $maxWidth: 520px;
 
   input {
     @include visually-hidden;
-    width: 40px;
-    height: 24px;
+    inline-size: 40px;
+    block-size: 24px;
     clip: auto;
-    margin-left: 0;
+    margin-inline-start: 0;
     opacity: 0;
     cursor: pointer;
     z-index: 1;
@@ -250,8 +250,8 @@ $maxWidth: 520px;
   label {
     z-index: 1;
     position: relative;
-    padding-left: 4px;
-    padding-bottom: 0;
+    padding-inline-start: 4px;
+    padding-block-end: 0;
     color: var(--colorGinText);
   }
 }
@@ -320,14 +320,14 @@ $maxWidth: 520px;
 .form-radios,
 .form-checkboxes {
   .form-type--boolean {
-    margin-top: .5rem;
-    margin-bottom: .5rem;
+    margin-block-start: .5rem;
+    margin-block-end: .5rem;
   }
 }
 
 .form-edit .form-actions {
   padding: 0;
-  margin-bottom: 0;
+  margin-block-end: 0;
   border: 0 none;
   background-color: transparent;
 }
@@ -335,26 +335,26 @@ $maxWidth: 520px;
 // Fieldgroup
 fieldset:not(.fieldgroup) {
   color: var(--colorGinTextLight);
-  padding-top: 8px;
-  padding-left: 0;
-  padding-right: 0;
+  padding-block-start: 8px;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
   background: transparent;
   border-color: var(--colorGinBorder);
   border-radius: var(--ginBorderDefault);
   box-shadow: none;
 
   > legend {
-    top: 20px;
+    inset-block-start: 20px;
   }
 
   > .fieldset-wrapper {
-    margin-top: 20px;
+    margin-block-start: 20px;
   }
 }
 
 /* Align fieldset label positioning to regular form item label, see claro form.css. */
 .fieldset__label {
-  margin-top: 0.25rem;
+  margin-block-start: 0.25rem;
 }
 
 .fieldset__label,
@@ -370,7 +370,7 @@ fieldset:not(.fieldgroup) {
 
 .form-item__description,
 .fieldset__description {
-  max-width: $maxWidth;
+  max-inline-size: $maxWidth;
   color: var(--colorGinTextLight);
 }
 
@@ -381,8 +381,8 @@ fieldset:not(.fieldgroup) {
   content: "*";
   color: var(--colorGinDanger);
   line-height: 1;
-  margin-right: .15em;
-  margin-left: .15em;
+  margin-inline-end: .15em;
+  margin-inline-start: .15em;
   vertical-align: text-top;
   background: none;
 }
@@ -395,17 +395,17 @@ fieldset:not(.fieldgroup) {
 
 .form-item__warning {
   display: inline-block;
-  margin-top: .5rem;
+  margin-block-start: .5rem;
 }
 
 .js .form-autocomplete {
-  padding-right: 36px;
+  padding-inline-end: 36px;
 }
 
 .entity-form-display-form {
   > .form-actions {
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
   }
 }
 
@@ -423,48 +423,48 @@ fieldset:not(.fieldgroup) {
   .form-item__label {
     // color: var(--colorGinPrimaryActive);
     position: relative;
-    padding-bottom: 4px;
+    padding-block-end: 4px;
   }
 }
 
 .field--type-text-with-summary,
 .field--widget-text-textarea {
   .form-item {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 
   .filter-wrapper {
     border: 0 none;
-    padding-left: 0;
-    padding-right: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
   }
 }
 
 // Autocomplete field
 .js input.form-linkit-autocomplete {
-  padding-right: 2rem;
+  padding-inline-end: 2rem;
   background-position: right 8px center;
 }
 
 .claro-autocomplete {
-  width: calc(100% - 1rem);
+  inline-size: calc(100% - 1rem);
 
   .form-autocomplete {
-    width: 100%;
+    inline-size: 100%;
   }
 }
 
 .no-touchevents .form-element--type-select.form-element--extrasmall {
-  min-height: 1.75rem;
+  min-block-size: 1.75rem;
 }
 
 // Special case, form starts with a form item, remove margin-top.
 #block-gin-content > form > .form-item:first-of-type {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 .image-style-new {
   .form-item {
-    margin-right: .25rem;
+    margin-inline-end: .25rem;
   }
 }

@@ -3,11 +3,12 @@
   z-index: 501;
   /* on top of the Drupal world */
   position: sticky;
-  top: 0;
-  width: 100%;
+  inset-block-start: 0;
+  inline-size: 100%;
   padding: 0;
   background: rgba(255, 255, 255, .98);
-  border-bottom: 1px solid var(--colorGinLayerBorder);
+  -webkit-border-after: 1px solid var(--colorGinLayerBorder);
+          border-block-end: 1px solid var(--colorGinLayerBorder);
 }
 
 @supports ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) {
@@ -43,24 +44,19 @@
 
 .node-preview-container .node-preview-backlink {
   position: relative;
+  -webkit-padding-start: 2em;
+          padding-inline-start: 2em;
   text-decoration: none;
-}
-
-[dir="ltr"] .node-preview-container .node-preview-backlink {
-  padding-left: 2em;
-}
-
-[dir="rtl"] .node-preview-container .node-preview-backlink {
-  padding-right: 2em;
 }
 
 .node-preview-container .node-preview-backlink::before {
   content: "";
   display: inline-block;
   position: absolute;
-  top: 50%;
-  width: var(--iconGinSecondaryToolbar);
-  height: var(--iconGinSecondaryToolbar);
+  inset-block-start: 50%;
+  inset-inline-start: 0;
+  inline-size: var(--iconGinSecondaryToolbar);
+  block-size: var(--iconGinSecondaryToolbar);
   transform: translateY(-50%);
   background-color: var(--colorGinIcons);
   -webkit-mask-image: url("../../media/sprite.svg#backtosite-view");
@@ -71,19 +67,11 @@
           mask-position: center center;
 }
 
-[dir="ltr"] .node-preview-container .node-preview-backlink::before {
-  left: 0;
-}
-
-[dir="rtl"] .node-preview-container .node-preview-backlink::before {
-  right: 0;
-}
-
 .node-preview-container .node-preview-form-select {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: auto;
+  inline-size: auto;
   padding: 1rem 0;
 }
 
@@ -93,12 +81,9 @@
   }
 }
 
-[dir="ltr"] .node-preview-container .node-preview-form-select label {
-  padding-right: .5em;
-}
-
-[dir="rtl"] .node-preview-container .node-preview-form-select label {
-  padding-left: .5em;
+.node-preview-container .node-preview-form-select label {
+  -webkit-padding-end: .5em;
+          padding-inline-end: .5em;
 }
 
 .node-preview-container .js-hide {

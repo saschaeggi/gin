@@ -17,7 +17,7 @@
 }
 
 .gin-secondary-toolbar--frontend {
-  top: calc(var(--ginToolbarSecondaryHeight) * -1);
+  inset-block-start: calc(var(--ginToolbarSecondaryHeight) * -1);
 }
 
 // Toolbar
@@ -29,10 +29,7 @@
     @include mq($breakpointMedium) {
       display: flex;
       background: none;
-    }
-
-    @include mq($breakpointMedium) {
-      height: 0;
+      block-size: 0;
     }
 
     .toolbar-menu-administration {
@@ -40,26 +37,26 @@
         > .menu-item {
           > .toolbar-icon,
           > .toolbar-box > .toolbar-icon {
-            padding-top: 20px;
-            padding-bottom: 20px;
-            padding-left: 3em;
+            padding-block-start: 20px;
+            padding-block-end: 20px;
+            padding-inline-start: 3em;
             white-space: nowrap;
 
             &::before {
-              margin-top: -1px;
+              margin-block-start: -1px;
             }
           }
 
           > .toolbar-box > .toolbar-icon:not(.toolbar-handle)::before {
-            left: .75rem;
+            inset-inline-start: .75rem;
           }
         }
 
         .toolbar-icon.toolbar-handle {
-          width: 48px;
+          inline-size: 48px;
 
           &:before {
-            left: 1rem;
+            inset-inline-start: 1rem;
           }
         }
       }
@@ -72,7 +69,7 @@
 }
 
 .toolbar-horizontal .toolbar-tray {
-  border-bottom: 0 none;
+  border-block-end: 0 none;
 }
 
 .toolbar .toolbar-menu,
@@ -82,7 +79,7 @@
 }
 
 .toolbar-horizontal .toolbar-tray .toolbar-toggle-orientation {
-  border-left: 1px solid var(--colorGinBorder);
+  border-inline-start: 1px solid var(--colorGinBorder);
 }
 
 .toolbar-tray a,
@@ -141,7 +138,7 @@
 .gin--classic-toolbar {
   table.sticky-header {
     @include mq($breakpointLarge) {
-      margin-top: 0;
+      margin-block-start: 0;
     }
   }
 }
@@ -156,7 +153,7 @@
 
   .toolbar-logo {
     display: flex;
-    height: 100%;
+    block-size: 100%;
   }
 }
 
@@ -165,8 +162,8 @@
   position: relative;
 
   &:before {
-    top: 12px;
-    right: 12px;
+    inset-block-start: 12px;
+    inset-inline-end: 12px;
   }
 }
 
@@ -176,8 +173,8 @@
 
 .gin--horizontal-toolbar.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
   @include mq($breakpointLarge) {
-    top: var(--ginToolbarHeight);
-    height: calc(100% - var(--ginToolbarHeight));
+    inset-block-start: var(--ginToolbarHeight);
+    block-size: calc(100% - var(--ginToolbarHeight));
   }
 }
 
@@ -186,12 +183,12 @@
   @include mq($breakpointMedium) {
     z-index: 502;
     position: fixed;
-    top: 0;
-    width: 100%;
+    inset-block-start: 0;
+    inline-size: 100%;
 
     &,
     .toolbar-bar {
-      height: var(--ginToolbarHeight);
+      block-size: var(--ginToolbarHeight);
       background: var(--colorGinLayerBackground);
     }
   }
@@ -201,7 +198,7 @@
     @include mq($breakpointMedium) {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-      padding-right: 0;
+      padding-inline-end: 0;
     }
   }
 
@@ -209,14 +206,14 @@
   .menu-item__tools,
   .menu-item__admin_toolbar_tools-help {
     @include mq($breakpointMedium) {
-      margin-left: -16px;
+      margin-inline-start: -16px;
     }
   }
 
   // home logo
   .toolbar-icon-admin-toolbar-tools-help {
-    width: auto;
-    height: 100%;
+    inline-size: auto;
+    block-size: 100%;
     text-indent: -999em;
 
     &:before {
@@ -224,18 +221,18 @@
     }
 
     @include mq($breakpointMedium) {
-      padding-left: 2.875em;
+      padding-inline-start: 2.875em;
 
       &:before {
-        top: -1px;
-        left: 14px;
-        width: 24px;
+        inset-block-start: -1px;
+        inset-inline-start: 14px;
+        inline-size: 24px;
         mask-size: 28px 28px;
       }
 
       // Default
       &.toolbar-icon-default {
-        margin-right: .5rem;
+        margin-inline-end: .5rem;
       }
     }
   }
@@ -243,13 +240,13 @@
   // target fist level only
   .toolbar-menu-administration {
     @include mq($breakpointMedium) {
-      margin-left: m#{i}n(5vw, 48px);
-      margin-right: m#{i}n(5vw, 48px);
+      margin-inline-start: m#{i}n(5vw, 48px);
+      margin-inline-end: m#{i}n(5vw, 48px);
 
       > .toolbar-menu {
         display: flex;
         flex-wrap: nowrap;
-        width: 100%;
+        inline-size: 100%;
       }
     }
 

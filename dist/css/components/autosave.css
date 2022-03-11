@@ -1,14 +1,7 @@
 #autosave-notification {
   font-size: .975rem;
-  bottom: 8px;
+  inset-block-end: 8px;
+  inset-inline-end: 8px;
   border-radius: var(--ginBorderXSmall);
-}
-
-[dir="ltr"] #autosave-notification {
-  right: 8px;
-}
-
-[dir="rtl"] #autosave-notification {
-  left: 8px;
 }
 

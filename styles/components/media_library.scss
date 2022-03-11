@@ -24,8 +24,8 @@
     &:hover,
     &:focus,
     &:active {
-      width: 32px;
-      height: 32px;
+      inline-size: 32px;
+      block-size: 32px;
       margin: .75rem;
       background-color: white;
       border-radius: 50%;
@@ -36,8 +36,8 @@
 
   &-edit__link,
   &-item &-item__edit {
-    top: .625rem;
-    right: 3.125rem;
+    inset-block-start: .625rem;
+    inset-inline-end: 3.125rem;
     background-image: icon('media-edit');
     background-size: .75rem .75rem;
   }
@@ -80,10 +80,10 @@
 
   &__content {
     display: flex;
-    height: 100%;
+    block-size: 100%;
 
     article {
-      width: 100%;
+      inline-size: 100%;
     }
   }
 
@@ -113,7 +113,7 @@
 
   & &__preview {
     position: relative;
-    padding-bottom: 100%;
+    padding-block-end: 100%;
     border: 1px solid var(--colorGinBorder);
     border-radius: var(--ginBorderBig);
     overflow: hidden;
@@ -121,10 +121,10 @@
     .field {
       img {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        inset-block-start: 0;
+        inset-inline-start: 0;
+        inline-size: 100%;
+        block-size: 100%;
         object-fit: cover;
       }
     }
@@ -142,8 +142,8 @@
   }
 
   &__click-to-select-checkbox .form-boolean {
-    width: 29px;
-    height: 29px;
+    inline-size: 29px;
+    block-size: 29px;
     border-radius: var(--ginBorderXSmall);
     box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
 
@@ -196,7 +196,7 @@ fieldset.media-library-widget {
   }
 
   .fieldset__wrapper {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 }
 
@@ -206,7 +206,7 @@ fieldset.media-library-widget {
 }
 
 .media-library-open-button {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 .media-library-add-form {
@@ -221,8 +221,8 @@ fieldset.media-library-widget {
     box-shadow: none;
 
     .form-item--upload {
-      margin-top: 0;
-      margin-right: 0;
+      margin-block-start: 0;
+      margin-inline-end: 0;
     }
 
     .dropzone-enable {
@@ -253,13 +253,13 @@ fieldset.media-library-widget {
       color: var(--colorGinPrimary);
       text-shadow: none;
       background-color: var(--colorGinLayerBackground);
-      border-right: 0 none;
-      border-bottom: 1px solid var(--colorGinBorder);
+      border-inline-end: 0 none;
+      border-block-end: 1px solid var(--colorGinBorder);
       box-shadow: none;
     }
 
     &.active::before {
-      border-left-color: var(--colorGinPrimary);
+      border-inline-start-color: var(--colorGinPrimary);
     }
 
     &:focus::after {
@@ -269,7 +269,7 @@ fieldset.media-library-widget {
 }
 
 + .media-library-content {
-  border-left: 1px solid var(--colorGinBorder);
+  border-inline-start: 1px solid var(--colorGinBorder);
 }
 
 .media-library-view {
@@ -294,11 +294,11 @@ fieldset.media-library-widget {
     &::before {
       content: "";
       display: inline-block;
-      width: 16px;
-      height: 16px;
+      inline-size: 16px;
+      block-size: 16px;
       position: absolute;
-      left: 0;
-      top: 1px;
+      inset-inline-start: 0;
+      inset-block-start: 1px;
       background-color: var(--colorGinText);
     }
 
@@ -325,12 +325,12 @@ fieldset.media-library-widget {
 }
 
 .media-library-content {
-  border-left: 0 none;
+  border-inline-start: 0 none;
   border-color: var(--colorGinBorder);
 }
 
 .media-library-select-all {
-  margin-top: 0;
+  margin-block-start: 0;
   padding: 1rem;
   color: var(--colorGinTitle);
   background: var(--colorGinTableHeader);
@@ -356,13 +356,13 @@ fieldset.media-library-widget {
 
 .media-library-widget-modal .media-library-item--grid {
   @include mq($breakpointBig) {
-    width: 20%;
+    inline-size: 20%;
   }
 }
 
 .media-library-selection .media-library-item--grid {
   @include mq($breakpointWide) {
-    width: 20%;
+    inline-size: 20%;
   }
 }
 
@@ -375,24 +375,24 @@ fieldset.media-library-widget {
       > legend {
         font-weight: bold;
         position: relative;
-        top: 1.25rem;
+        inset-block-start: 1.25rem;
         transform: translateY(50%);
 
         &::before {
           content: "";
           display: block;
-          width: 100%;
-          height: 1px;
+          inline-size: 100%;
+          block-size: 1px;
           position: absolute;
-          top: -1.25rem;
-          left: 0;
+          inset-block-start: -1.25rem;
+          inset-inline-start: 0;
           background: var(--colorGinBorder);
         }
       }
 
       > .form-item {
         h4 {
-          margin-bottom: 0;
+          margin-block-end: 0;
         }
       }
     }

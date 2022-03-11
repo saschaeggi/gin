@@ -3,7 +3,7 @@
   padding: 0;
 
   &-wrapper {
-    min-width: 1px; // Fixes ellipsis with flex overfloating issue.
+    min-inline-size: 1px; // Fixes ellipsis with flex overfloating issue.
   }
 
   &__list {
@@ -13,9 +13,9 @@
     width: auto;
     text-overflow: ellipsis;
     overflow: hidden;
-    padding-left: .25rem;
-    margin-top: 0;
-    margin-left: -.25rem;
+    padding-inline-start: .25rem;
+    margin-block-start: 0;
+    margin-inline-start: -.25rem;
   }
 
   &__item,
@@ -43,16 +43,16 @@
 
   &__item:first-of-type &__link {
     position: relative;
-    padding-left: 1.75em;
+    padding-inline-start: 1.75em;
 
     &::before {
       content: "";
       display: inline-block;
       position: absolute;
-      top: 50%;
-      left: 0;
-      width: var(--iconGinSecondaryToolbar);
-      height: var(--iconGinSecondaryToolbar);
+      inset-block-start: 50%;
+      inset-inline-start: 0;
+      inline-size: var(--iconGinSecondaryToolbar);
+      block-size: var(--iconGinSecondaryToolbar);
       transform: translateY(-50%);
       background-color: var(--colorGinIcons);
       mask-image: icon('backtosite');

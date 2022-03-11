@@ -43,7 +43,7 @@
     }
 
     @include mq($breakpointLarge) {
-      height: 0;
+      block-size: 0;
     }
 
     .toolbar-tab > .toolbar-item {
@@ -53,13 +53,13 @@
     #toolbar-item-administration-tray .toolbar-icon,
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &::before {
-        left: 1em;
+        inset-inline-start: 1em;
 
         @include mq($breakpointMedium) {
-          left: calc((var(--ginToolbarWidthCollapsed) - var(--iconGinToolbar)) / 2 - 9px);
-          width: var(--iconGinToolbar);
-          height: var(--iconGinToolbar);
-          top: 50%;
+          inset-inline-start: calc((var(--ginToolbarWidthCollapsed) - var(--iconGinToolbar)) / 2 - 9px);
+          inline-size: var(--iconGinToolbar);
+          block-size: var(--iconGinToolbar);
+          inset-block-start: 50%;
           transform: translateY(-50%);
         }
       }
@@ -74,20 +74,20 @@
     @include mq($breakpointMedium) {
       // Toolbar logo
       .toolbar-logo {
-        height: var(--ginStickyHeight);
+        block-size: var(--ginStickyHeight);
       }
 
       // Admin tray: Home icon
       .toolbar-icon-home {
         display: block;
-        width: 100%;
+        inline-size: 100%;
         margin: 8px 0;
       }
 
       #toolbar-item-administration-tray a.toolbar-icon.override-icon {
         &:before {
-          left: 0;
-          width: 0;
+          inset-inline-start: 0;
+          inline-size: 0;
           content: none;
         }
       }
@@ -98,16 +98,16 @@
       padding: 8px 0;
 
       img {
-        max-width: calc(var(--ginToolbarWidthCollapsed) - 1px);
-        max-height: 40px;
+        max-inline-size: calc(var(--ginToolbarWidthCollapsed) - 1px);
+        max-block-size: 40px;
       }
     }
 
     #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
       @include mq($breakpointMedium) {
         font-size: 0;
-        height: 74px;
-        margin-bottom: 6px;
+        block-size: 74px;
+        margin-block-end: 6px;
         transition: top var(--ginTransition);
       }
 
@@ -115,9 +115,9 @@
         $logoSize: 32px;
 
         @include mq($breakpointMedium) {
-          width: $logoSize;
-          height: $logoSize;
-          left: calc((var(--ginToolbarWidthCollapsed) - #{$logoSize}) / 2 - 9px);
+          inline-size: $logoSize;
+          block-size: $logoSize;
+          inset-inline-start: calc((var(--ginToolbarWidthCollapsed) - #{$logoSize}) / 2 - 9px);
           mask-size: $logoSize $logoSize;
           mask-position: center center;
         }
@@ -155,8 +155,8 @@
 #toolbar-item-administration-tray a.toolbar-icon.override-icon {
   &:before {
     @include mq($breakpointMedium) {
-      left: 0;
-      width: 0;
+      inset-inline-start: 0;
+      inline-size: 0;
       content: none;
     }
   }
@@ -164,8 +164,8 @@
 
 .toolbar .toolbar-bar {
   position: fixed;
-  left: 0;
-  width: 100%;
+  inset-inline-start: 0;
+  inline-size: 100%;
 }
 
 .toolbar .toolbar-menu {
@@ -222,15 +222,15 @@ a.toolbar-menu__trigger,
 
   .toolbar-menu-administration a.toolbar-menu__trigger {
     position: fixed;
-    left: 0;
-    bottom: 0;
+    inset-inline-start: 0;
+    inset-block-end: 0;
     font-size: .875rem;
     color: var(--colorGinTextLight);
     text-decoration: none;
     display: flex;
     align-items: center;
-    width: var(--ginToolbarWidthCollapsed);
-    height: 64px;
+    inline-size: var(--ginToolbarWidthCollapsed);
+    block-size: 64px;
     padding: 16px 0 16px var(--ginToolbarWidthCollapsed);
     margin: 0;
     transition: width var(--ginTransition);
@@ -249,10 +249,10 @@ a.toolbar-menu__trigger,
     &::before {
       content: "";
       position: absolute;
-      left: calc((var(--ginToolbarWidthCollapsed) - 36px) / 2);
+      inset-inline-start: calc((var(--ginToolbarWidthCollapsed) - 36px) / 2);
       display: inline-block;
-      width: 32px;
-      height: 32px;
+      inline-size: 32px;
+      block-size: 32px;
       border-radius: 50%;
       border: 1px solid var(--colorGinBorder);
       background: var(--colorGinLayerBackground) url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='%23999999'/%3E%3C/svg%3E") no-repeat center center;
@@ -264,7 +264,7 @@ a.toolbar-menu__trigger,
       display: flex;
       font-weight: normal;
       color: var(--colorGinTextLight);
-      width: var(--ginToolbarWidth);
+      inline-size: var(--ginToolbarWidth);
 
       &:hover {
         color: var(--colorGinTitle);
@@ -291,13 +291,13 @@ a.toolbar-menu__trigger,
   .toolbar-menu-administration {
     display: flex;
     position: fixed;
-    top: auto;
-    left: 0;
-    width: var(--ginToolbarWidthCollapsed);
-    height: 100vh;
-    max-width: calc(100% - var(--ginToolbarHeight));
+    inset-block-start: auto;
+    inset-inline-start: 0;
+    inline-size: var(--ginToolbarWidthCollapsed);
+    block-size: 100vh;
+    max-inline-size: calc(100% - var(--ginToolbarHeight));
     background: var(--colorGinLayerBackground);
-    border-right: 1px solid var(--colorGinLayerBorder);
+    border-inline-end: 1px solid var(--colorGinLayerBorder);
     transition: var(--ginTransition);
 
     .gin--dark-mode & {
@@ -305,33 +305,33 @@ a.toolbar-menu__trigger,
     }
 
     [data-toolbar-menu='open'] & {
-      width: var(--ginToolbarWidth);
+      inline-size: var(--ginToolbarWidth);
     }
 
     .toolbar-tray-horizontal & {
       ul li.menu-item--expanded .menu-item.hover-intent ul {
-        margin-top: 0;
-        margin-left: calc(var(--ginToolbarWidth) - 2px);
+        margin-block-start: 0;
+        margin-inline-start: calc(var(--ginToolbarWidth) - 2px);
       }
     }
 
     // Open Menu
     .toolbar-vertical & {
-      width: var(--ginToolbarWidth);
+      inline-size: var(--ginToolbarWidth);
 
       > .toolbar-menu {
         > .menu-item {
-          border-top: 0 none;
-          border-bottom: 0 none;
+          border-block-start: 0 none;
+          border-block-end: 0 none;
 
           > .toolbar-icon,
           > .toolbar-box > .toolbar-icon {
-            width: auto;
-            padding-left: 3.5rem;
+            inline-size: auto;
+            padding-inline-start: 3.5rem;
           }
 
           .toolbar-menu {
-            left: var(--ginToolbarWidth);
+            inset-inline-start: var(--ginToolbarWidth);
           }
         }
       }
@@ -339,8 +339,8 @@ a.toolbar-menu__trigger,
 
     > .toolbar-menu {
       align-self: flex-start;
-      height: 100%;
-      max-height: calc(100% - var(--ginToolbarWidthCollapsed));
+      block-size: 100%;
+      max-block-size: calc(100% - var(--ginToolbarWidthCollapsed));
       overflow-y: auto;
       background: transparent;
       -webkit-overflow-scrolling: touch;
@@ -359,10 +359,10 @@ a.toolbar-menu__trigger,
           color: var(--colorGinTextLight);
           display: flex;
           align-items: center;
-          width: calc(var(--ginToolbarWidth) - 16px);
-          height: 48px;
-          padding-left: calc(var(--ginToolbarWidthCollapsed) - 9px);
-          padding-right: 0;
+          inline-size: calc(var(--ginToolbarWidth) - 16px);
+          block-size: 48px;
+          padding-inline-start: calc(var(--ginToolbarWidthCollapsed) - 9px);
+          padding-inline-end: 0;
           margin: 0 8px 1px;
           border-radius: var(--ginBorderDefault);
           overflow: hidden;
@@ -382,7 +382,7 @@ a.toolbar-menu__trigger,
           }
 
           &.toolbar-handle {
-            width: var(--ginToolbarWidthCollapsed);
+            inline-size: var(--ginToolbarWidthCollapsed);
 
             &:before {
               display: none;
@@ -392,12 +392,12 @@ a.toolbar-menu__trigger,
 
         .toolbar-menu {
           display: none;
-          top: 0;
-          margin-left: calc(var(--ginToolbarWidthCollapsed) - 1px);
-          height: 100vh;
-          max-width: calc(100% - var(--ginToolbarHeight));
+          inset-block-start: 0;
+          margin-inline-start: calc(var(--ginToolbarWidthCollapsed) - 1px);
+          block-size: 100vh;
+          max-inline-size: calc(100% - var(--ginToolbarHeight));
           box-shadow: none;
-          border-left: 1px solid var(--colorGinLayerBorder);
+          border-inline-start: 1px solid var(--colorGinLayerBorder);
           overflow-y: auto;
           overflow-x: hidden;
 
@@ -409,7 +409,7 @@ a.toolbar-menu__trigger,
           }
 
           .gin--dark-mode & {
-            border-left: 1px solid $colorDarkAppBackground;
+            border-inline-start: 1px solid $colorDarkAppBackground;
           }
 
           // Link color
@@ -433,7 +433,7 @@ a.toolbar-menu__trigger,
           &__sub-title {
             position: relative;
             display: block;
-            min-height: 36px;
+            min-block-size: 36px;
             font-size: 1.75em;
             letter-spacing: -.025em;
             padding: 0;
@@ -450,7 +450,7 @@ a.toolbar-menu__trigger,
           &__sub-title {
             font-size: 1.375em;
             letter-spacing: -.01em;
-            margin-bottom: 1.275rem;
+            margin-block-end: 1.275rem;
 
             a {
               padding: .9rem .75rem;
@@ -458,9 +458,9 @@ a.toolbar-menu__trigger,
           }
 
           .menu-item {
-            border-top: 0 none;
-            border-left: 0 none;
-            border-bottom: 0 none;
+            border-block-start: 0 none;
+            border-inline-start: 0 none;
+            border-block-end: 0 none;
 
             .toolbar-icon {
               font-size: .9375rem;
@@ -493,7 +493,7 @@ a.toolbar-menu__trigger,
     .menu-item.hover-intent > .toolbar-menu {
       z-index: 2;
       display: block;
-      border-right: 1px solid rgba(0,0,0,.075);
+      border-inline-end: 1px solid rgba(0,0,0,.075);
       box-shadow: 7px 0 16px rgba(0,0,0,.075);
     }
 
@@ -510,7 +510,7 @@ a.toolbar-menu__trigger,
 }
 
 .gin--dark-mode.toolbar-horizontal .toolbar-tray > .toolbar-lining {
-  padding-right: 0;
+  padding-inline-end: 0;
 }
 
 .toolbar .toolbar-icon.toolbar-handle:focus {
@@ -518,8 +518,8 @@ a.toolbar-menu__trigger,
 }
 
 #toolbar-item-administration-search-tray input {
-  width: 100%;
-  max-width: calc(100% - 16px);
+  inline-size: 100%;
+  max-inline-size: calc(100% - 16px);
   outline: none;
 }
 
@@ -529,8 +529,8 @@ a.toolbar-menu__trigger,
 
   &::before {
     z-index: 1;
-    top: 14px;
-    right: 20px;
+    inset-block-start: 14px;
+    inset-inline-end: 20px;
   }
 }
 
@@ -557,10 +557,10 @@ a.toolbar-menu__trigger,
         content: "";
         display: block;
         position: absolute;
-        top: 4px;
-        left: calc((var(--ginToolbarWidthCollapsed) - 40px) / 2 - 9px);
-        width: 40px;
-        height: 40px;
+        inset-block-start: 4px;
+        inset-inline-start: calc((var(--ginToolbarWidthCollapsed) - 40px) / 2 - 9px);
+        inline-size: 40px;
+        block-size: 40px;
         background: var(--colorGinPrimaryLight);
         border-radius: var(--ginBorderDefault);
       }
@@ -579,12 +579,12 @@ a.toolbar-menu__trigger,
 // New navigation approach.
 // .toolbar-fixed[data-toolbar-menu=open] {
 //   @include mq($breakpointMedium) {
-//     padding-left: calc(var(--ginToolbarWidthCollapsed) + var(--ginToolbarWidth));
+//     padding-inline-start: calc(var(--ginToolbarWidthCollapsed) + var(--ginToolbarWidth));
 
 //     .toolbar-menu-administration > .toolbar-menu > .menu-item--active-trail > .toolbar-menu {
 //       z-index: 1;
 //       display: block;
-//       border-right: 1px solid var(--colorGinLayerBorder);
+//       border-inline-end: 1px solid var(--colorGinLayerBorder);
 //       box-shadow: 7px 0 16px rgba(0,0,0,.075);
 
 //       > li {
@@ -602,9 +602,9 @@ a.toolbar-menu__trigger,
 //       position: relative;
 //       opacity: 1;
 //       display: block;
-//       margin-left: 1.5rem;
-//       border-left-color: var(--colorGinTextLight);
-//       height: auto;
+//       margin-inline-start: 1.5rem;
+//       border-inline-start-color: var(--colorGinTextLight);
+//       block-size: auto;
 
 //       .menu-item-title {
 //         display: none;

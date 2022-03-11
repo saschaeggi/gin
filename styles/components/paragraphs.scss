@@ -8,12 +8,12 @@
   }
 
   .paragraphs-subform {
-    margin-top: 0;
-    margin-right: 1rem;
+    margin-block-start: 0;
+    margin-inline-end: 1rem;
   }
 
   .tabledrag-toggle-weight-wrapper {
-    padding-bottom: 12px;
+    padding-block-end: 12px;
   }
 
   .field-multiple-table {
@@ -38,7 +38,7 @@
     > tbody {
       > .draggable {
         > td + td {
-          width: 100%;
+          inline-size: 100%;
         }
       }
     }
@@ -46,7 +46,7 @@
     .draggable {
       display: block;
       padding: 1rem .5rem;
-      margin-top: 1rem;
+      margin-block-start: 1rem;
       border: 1px solid var(--colorGinTableBorder);
       border-radius: var(--ginBorderDefault);
       box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
@@ -64,10 +64,10 @@
           content: "";
           display: block;
           position: absolute;
-          top: .5rem;
-          left: .5rem;
-          width: 4px;
-          height: calc(100% - 1rem);
+          inset-block-start: .5rem;
+          inset-inline-start: .5rem;
+          inline-size: 4px;
+          block-size: calc(100% - 1rem);
           background: var(--colorGinWarning);
           border-radius: var(--ginBorderTiny);
         }
@@ -78,8 +78,8 @@
       }
 
       .has-multiple-fields-remove-button {
-        width: 100%;
-        padding-right: 0 !important;
+        inline-size: 100%;
+        padding-inline-end: 0 !important;
       }
 
       .tabledrag-handle::after {
@@ -110,7 +110,7 @@
     color: var(--colorGinTitle);
     position: static;
     border: 0 none;
-    padding-left: 0;
+    padding-inline-start: 0;
   }
 
   .paragraphs-subform {
@@ -121,7 +121,7 @@
 
   .paragraph-type-add-modal,
   .field--widget-paragraphs .paragraphs-dropbutton-wrapper {
-    margin-right: .5rem;
+    margin-inline-end: .5rem;
   }
 }
 
@@ -134,8 +134,8 @@
 .paragraphs-add-wrapper,
 .paragraphs-dropbutton-wrapper {
   .button--small {
-    margin-top: .5rem;
-    margin-bottom: .5rem;
+    margin-block-start: .5rem;
+    margin-block-end: .5rem;
   }
 }
 
@@ -148,10 +148,10 @@
     content: "";
     display: block;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    inline-size: 100%;
+    block-size: 100%;
     background-image: none;
     background-color: var(--colorGinTextLight);
     mask-image: icon('more');
@@ -175,34 +175,34 @@
 .js .field--widget-entity-reference-paragraphs,
 .js .field--widget-paragraphs {
   .draggable .tabledrag-handle {
-    min-width: 20px;
+    min-inline-size: 20px;
 
     @include mq($breakpointMedium) {
-      min-width: 24px;
+      min-inline-size: 24px;
     }
 
     &::after {
       position: relative;
-      left: 0;
+      inset-inline-start: 0;
       padding: 0;
-      margin-left: 0;
+      margin-inline-start: 0;
     }
   }
 }
 
 .js .paragraphs-collapsed-description::after,
 .js .draggable:hover .paragraphs-collapsed-description::after {
-  top: 2px;
+  inset-block-start: 2px;
   background: var(--colorGinLayer2Background);
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayer2Background) 100%);
 }
 
 .js .field--widget-entity-reference-paragraphs {
   .draggable .tabledrag-handle {
-    min-width: 32px;
+    min-inline-size: 32px;
 
     @include mq($breakpointMedium) {
-      min-width: 40px;
+      min-inline-size: 40px;
     }
   }
 
@@ -217,13 +217,13 @@
   padding: .5rem;
 
   .dropbutton-widget {
-    margin-right: .5rem;
+    margin-inline-end: .5rem;
   }
 }
 
 .js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
-  top: 0;
-  right: -4px;
+  inset-block-start: 0;
+  inset-inline-end: -4px;
 }
 
 .paragraphs-dropdown-actions {
@@ -247,7 +247,7 @@
 
 .js .paragraph-type-icon {
   padding: .25rem;
-  margin-right: .5rem;
+  margin-inline-end: .5rem;
 }
 
 .js .paragraph-top {
@@ -289,14 +289,14 @@
   }
 
   &__item {
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+    padding-block-start: .5rem;
+    padding-block-end: .5rem;
     background-color: var(--colorGinLayer3Background);
     border-radius: var(--ginBorderDefault);
   }
 
   &__icon {
-    top: .5rem;
+    inset-block-start: .5rem;
   }
 }
 
@@ -313,7 +313,7 @@
   // Ugly addressing the title, but let's go
   > div > .form-wrapper > strong {
     display: block;
-    margin-top: 2rem;
+    margin-block-start: 2rem;
   }
 
   // No Paragraph added yet text
@@ -328,12 +328,12 @@
     align-items: center;
 
     .dropbutton-multiple {
-      margin-right: .5rem;
+      margin-inline-end: .5rem;
 
       // Support different paragraphs versions
       .placeholder,
       ~ .placeholder {
-        margin-left: .25rem;
+        margin-inline-start: .25rem;
       }
     }
   }
@@ -346,12 +346,12 @@
 
   &:first-of-type {
     z-index: 100;
-    top: calc(var(--ginHorizontalToolbarOffset) + var(--ginStickyHeight));
+    inset-block-start: calc(var(--ginHorizontalToolbarOffset) + var(--ginStickyHeight));
   }
 
   .tabs__tab {
-    float: left;
-    margin-right: 1rem;
+    float: inline-start;
+    margin-inline-end: 1rem;
 
     a {
       display: block;
@@ -367,11 +367,11 @@
           pointer-events: none;
           content: "";
           position: absolute;
-          bottom: 0;
-          left: 0;
+          inset-block-end: 0;
+          inset-inline-start: 0;
           display: block;
-          width: 100%;
-          border-bottom: 2px solid var(--colorGinPrimary);
+          inline-size: 100%;
+          border-block-end: 2px solid var(--colorGinPrimary);
         }
       }
     }

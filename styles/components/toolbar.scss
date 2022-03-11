@@ -2,9 +2,9 @@
 body.gin--vertical-toolbar,
 body.gin--horizontal-toolbar,
 body.gin--classic-toolbar {
-  padding-top: var(--ginHorizontalToolbarOffset) !important;
-  padding-left: var(--ginVerticalToolbarOffset, 240px);
-  margin-left: 0; // Fix for Drupal 9.3+
+  padding-block-start: var(--ginHorizontalToolbarOffset) !important;
+  padding-inline-start: var(--ginVerticalToolbarOffset, 240px);
+  margin-inline-start: 0; // Fix for Drupal 9.3+
 }
 
 .toolbar {
@@ -17,10 +17,10 @@ body.gin--classic-toolbar {
       .user-menu {
         flex-grow: 1;
         flex-shrink: 0;
-        text-align: right;
+        text-align: end;
 
         .toolbar-menu {
-          text-align: left;
+          text-align: start;
         }
       }
     }
@@ -30,7 +30,7 @@ body.gin--classic-toolbar {
     }
 
     .contextual-toolbar-tab.toolbar-tab {
-      float: right; // Set contextual to right
+      float: inline-end; // Set contextual to right
     }
 
     .toolbar-tab > .toolbar-item {
@@ -67,7 +67,7 @@ body.gin--classic-toolbar {
     }
 
     .toolbar-tab > .toolbar-icon:before {
-      @media only screen and (min-width: 36em) {
+      @media only screen and (min-inline-size: 36em) {
         background-size: 90% auto;
       }
     }
@@ -141,9 +141,9 @@ body.gin--classic-toolbar {
         $logoSize: 28px;
         $iconFill: 333333;
 
-        padding-left: 0;
-        padding-right: 0;
-        margin-left: 0;
+        padding-inline-start: 0;
+        padding-inline-end: 0;
+        margin-inline-start: 0;
         background-color: var(--colorGinText);
         mask-image: icon('gin');
         mask-position: center center;
@@ -160,7 +160,7 @@ body.gin--classic-toolbar {
 
     .toolbar-icon-default {
       &::before {
-        padding-top: 0;
+        padding-block-start: 0;
       }
     }
 
@@ -353,7 +353,7 @@ body.gin--classic-toolbar {
 
 .toolbar-horizontal .toolbar-tray {
   box-shadow: none;
-  border-bottom: 1px solid var(--colorGinBorder);
+  border-block-end: 1px solid var(--colorGinBorder);
 
   a,
   span {
@@ -396,54 +396,54 @@ body.gin--classic-toolbar {
   }
 
   .menu-item + .menu-item {
-    border-left: 0 none;
+    border-inline-start: 0 none;
 
     &:last-child {
-      border-right: 0 none;
+      border-inline-end: 0 none;
     }
   }
 }
 
 .gin--dark-mode.toolbar-horizontal .toolbar-tray {
-  border-bottom: 1px solid var(--colorGinLayerBorder);
+  border-block-end: 1px solid var(--colorGinLayerBorder);
 }
 
 // Fix for Admin_toolbar 2.4+: Remove white borders added by the admin_toolbar module
 .toolbar .toolbar-tray-horizontal {
   ul ul li.menu-item:first-child {
-    border-top: 0;
+    border-block-start: 0;
   }
 
   .menu-item:last-child {
-    border-left: 0;
-    border-right: 0;
+    border-inline-start: 0;
+    border-inline-end: 0;
   }
 }
 
 .toolbar .toolbar-tray-vertical {
   box-shadow: none;
-  border-right: 1px solid var(--colorGinBorder);
+  border-inline-end: 1px solid var(--colorGinBorder);
   background: var(--colorGinLayerBackground);
 
   .menu-item + .menu-item {
-    border-top: 1px solid var(--colorGinLayerBorder);
+    border-block-start: 1px solid var(--colorGinLayerBorder);
   }
 
   .menu-item + .menu-item__spacer {
-    border-top: 0 none;
+    border-block-start: 0 none;
   }
 
   .menu-item .toolbar-menu {
-    border-bottom: 0 none;
+    border-block-end: 0 none;
   }
 
   // Custom logo
   .menu-item .toolbar-logo {
-    padding-left: 16px;
+    padding-inline-start: 16px;
   }
 
   .level-1.menu-item:last-child {
-    border-bottom: 1px solid var(--colorGinLayerBorder);
+    border-block-end: 1px solid var(--colorGinLayerBorder);
   }
 
   .gin--dark-mode & {
@@ -471,9 +471,9 @@ body.gin--classic-toolbar {
       &.menu-item {
         .menu-item {
           background: transparent;
-          border-left: none;
-          border-right: none;
-          border-bottom: 0 none;
+          border-inline-start: none;
+          border-inline-end: none;
+          border-block-end: 0 none;
         }
 
         &--expanded {
@@ -520,10 +520,10 @@ body.gin--classic-toolbar {
     content: "";
     display: block;
     position: absolute;
-    right: 0;
-    top: 18px;
-    width: 16px;
-    height: 16px;
+    inset-inline-end: 0;
+    inset-block-start: 18px;
+    inline-size: 16px;
+    block-size: 16px;
     background-color: var(--colorGinDisabled);
     mask-image: icon('handle');
     mask-repeat: no-repeat;
@@ -545,9 +545,9 @@ body.gin--classic-toolbar {
 .toolbar .toolbar-tray-vertical .toolbar-menu a,
 .toolbar .toolbar-tray-vertical .toolbar-menu span {
   display: block;
-  padding-left: 3.25em;
-  padding-top: 1.5em;
-  padding-bottom: 1.5em;
+  padding-inline-start: 3.25em;
+  padding-block-start: 1.5em;
+  padding-block-end: 1.5em;
 
   &:hover,
   &:focus {
@@ -606,12 +606,12 @@ body.gin--classic-toolbar {
 
 // Custom logo
 #toolbar-item-administration-tray .toolbar-logo {
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-block-start: 8px;
+  padding-block-end: 8px;
 
   img {
-    max-width: 100px;
-    max-height: 35px;
+    max-inline-size: 100px;
+    max-block-size: 35px;
     object-fit: contain;
     object-position: center;
   }
@@ -622,9 +622,8 @@ body.gin--classic-toolbar {
   vertical-align: top;
 
   &.icon-user {
-    padding-left: 0;
-    margin-left: 8px;
-    margin-top: 2px;
+    padding-inline-start: 0;
+    margin-inline-start: 8px;
   }
 }
 
@@ -647,8 +646,8 @@ body.gin--classic-toolbar {
 // Admin Toolbar QuickSearch
 #admin-toolbar-search-input {
   color: var(--colorGinText);
-  width: 245px;
-  padding-left: 40px;
+  inline-size: 245px;
+  padding-inline-start: 40px;
   background-color: #fff;
   border: 1px solid var(--colorGinBorder);
   border-radius: 25px;
@@ -676,11 +675,11 @@ body.gin--classic-toolbar {
     content: "";
     opacity: .75;
     display: block;
-    width: var(--iconGinSecondaryToolbar);
-    height: var(--iconGinSecondaryToolbar);
+    inline-size: var(--iconGinSecondaryToolbar);
+    block-size: var(--iconGinSecondaryToolbar);
     position: absolute;
-    top: 11px;
-    left: 16px;
+    inset-block-start: 11px;
+    inset-inline-start: 1rem;
     background-color: var(--colorGinIcons);
     mask-image: icon('search');
     mask-size: 100% 100%;
@@ -696,8 +695,8 @@ body.gin--classic-toolbar {
   box-shadow: var(--ginShadowLevel2);
 
   &.ui-widget-content {
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+    padding-block-start: .5rem;
+    padding-block-end: .5rem;
     border: 0 none;
     overflow-y: auto;
   }

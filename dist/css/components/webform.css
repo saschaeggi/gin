@@ -1,14 +1,18 @@
 .webform-filter-form {
-  margin-bottom: 2rem;
+  -webkit-margin-after: 2rem;
+          margin-block-end: 2rem;
 }
 
 .webform-filter-form .details-wrapper {
-  margin-top: 0;
-  margin-bottom: .5rem;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+  -webkit-margin-after: .5rem;
+          margin-block-end: .5rem;
 }
 
 .webform-filter-form + div:not(.layer-wrapper) {
-  margin-bottom: .75rem;
+  -webkit-margin-after: .75rem;
+          margin-block-end: .75rem;
 }
 
 .webform-ui-element-type-change-form .layer-wrapper {
@@ -57,13 +61,16 @@
 }
 
 .webform-ui-elements-table tr.webform-ui-element-type-webform_actions td {
-  border-top: none;
-  border-bottom: none;
+  -webkit-border-before: none;
+          border-block-start: none;
+  -webkit-border-after: none;
+          border-block-end: none;
   background: none;
 }
 
 .webform-tabs.ui-tabs .ui-tabs-nav {
-  border-bottom: 0 none;
+  -webkit-border-after: 0 none;
+          border-block-end: 0 none;
 }
 
 .webform-tabs.ui-tabs .ui-tabs-nav .ui-tabs-active.ui-state-active a {

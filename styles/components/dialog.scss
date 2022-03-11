@@ -1,5 +1,5 @@
 .ui-dialog:not(.ui-dialog-off-canvas) {
-  max-width: $breakpointWide;
+  max-inline-size: $breakpointWide;
   margin: 1rem;
   border: 0 none !important;
   border-radius: var(--ginBorderBig);
@@ -7,22 +7,22 @@
 
   // Dialog without title
   .ui-dialog-content:first-of-type {
-    border-top-left-radius: var(--ginBorderBig);
-    border-top-right-radius: var(--ginBorderBig);
+    border-start-start-radius: var(--ginBorderBig);
+    border-end-start-radius: var(--ginBorderBig);
   }
 
   // Node actions placement
   .layout-region-node-actions {
     position: absolute;
-    bottom: 0;
-    left: 1rem;
-    top: auto;
-    right: auto;
+    inset-block-end: 0;
+    inset-inline-start: 1rem;
+    inset-block-start: auto;
+    inset-inline-end: auto;
   }
 
   // Show meta full width
   .layout-region-node-secondary {
-    width: 100%;
+    inline-size: 100%;
   }
 
   // Views exposed form override for dialog
@@ -48,8 +48,8 @@
     padding: 24px;
     background: $colorDarkAppBackground;
     border: 0 none;
-    border-top-left-radius: var(--ginBorderBig);
-    border-top-right-radius: var(--ginBorderBig);
+    border-start-start-radius: var(--ginBorderBig);
+    border-end-start-radius: var(--ginBorderBig);
   }
 
   .ui-dialog-title {
@@ -62,15 +62,15 @@
 
   .ui-widget-content.ui-dialog-buttonpane {
     padding: 16px 24px;
-    border-top: 1px solid var(--colorGinLayerBorder);
-    border-bottom-left-radius: var(--ginBorderBig);
-    border-bottom-right-radius: var(--ginBorderBig);
+    border-block-start: 1px solid var(--colorGinLayerBorder);
+    border-start-end-radius: var(--ginBorderBig);
+    border-end-end-radius: var(--ginBorderBig);
     background: var(--colorGinAppBackground);
 
     .button {
       font-weight: bold;
-      margin-top: 0;
-      margin-bottom: 0;
+      margin-block-start: 0;
+      margin-block-end: 0;
     }
   }
 
@@ -82,8 +82,8 @@
   }
 
   .ui-dialog-titlebar-close {
-    top: 20px;
-    right: 18px;
+    inset-block-start: 20px;
+    inset-inline-end: 18px;
     opacity: .8;
     margin: 0;
     transform: none;
@@ -91,10 +91,10 @@
     border: none;
 
     .ui-icon-closethick {
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
+      inline-size: 100%;
+      block-size: 100%;
+      inset-block-start: 0;
+      inset-inline-start: 0;
       margin: 0;
       transform: none;
       background: #fff;
@@ -110,8 +110,8 @@
   }
 
   .ui-widget-content.ui-dialog-content {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-inline-start: 24px;
+    padding-inline-end: 24px;
     background: var(--colorGinLayerBackground);
   }
 }
@@ -119,13 +119,13 @@
 .erl-overlay,
 .layout-paragraphs-dialog {
   position: fixed !important;
-  top: 50% !important;
-  left: 50% !important;
-  width: calc(100% - 2rem) !important;
+  inset-block-start: 50% !important;
+  inset-inline-start: 50% !important;
+  inline-size: calc(100% - 2rem) !important;
   transform: translate(-50%, -50%);
 
   @include mq($breakpointLarge) {
-    width: calc(100% - 4rem) !important;
+    inline-size: calc(100% - 4rem) !important;
   }
 }
 
@@ -136,7 +136,7 @@
 
 .views-ui-dialog {
   .views-offset-bottom {
-    border-top: 1px solid var(--colorGinBorder);
+    border-block-start: 1px solid var(--colorGinBorder);
   }
 }
 
@@ -157,7 +157,7 @@
   }
 
   .ui-dialog-titlebar-close {
-    top: 20px;
+    inset-block-start: 20px;
   }
 
   .ui-resizable-w {

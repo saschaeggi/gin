@@ -107,7 +107,7 @@ a.button--primary:focus:hover {
 }
 
 .action-link.action-link--icon-trash {
-  min-height: 48px;
+  min-block-size: 48px;
   padding: calc(.75rem - 1px) calc(1.5rem - 2px);
   box-sizing: border-box;
 

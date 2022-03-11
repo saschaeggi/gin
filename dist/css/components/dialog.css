@@ -1,5 +1,5 @@
 .ui-dialog:not(.ui-dialog-off-canvas) {
-  max-width: 1280px;
+  max-inline-size: 1280px;
   margin: 1rem;
   border: 0 none !important;
   border-radius: var(--ginBorderBig);
@@ -7,28 +7,20 @@
 }
 
 .ui-dialog:not(.ui-dialog-off-canvas) .ui-dialog-content:first-of-type {
-  border-top-left-radius: var(--ginBorderBig);
-  border-top-right-radius: var(--ginBorderBig);
+  border-start-start-radius: var(--ginBorderBig);
+  border-end-start-radius: var(--ginBorderBig);
 }
 
 .ui-dialog:not(.ui-dialog-off-canvas) .layout-region-node-actions {
   position: absolute;
-  bottom: 0;
-  top: auto;
-}
-
-[dir="ltr"] .ui-dialog:not(.ui-dialog-off-canvas) .layout-region-node-actions {
-  left: 1rem;
-  right: auto;
-}
-
-[dir="rtl"] .ui-dialog:not(.ui-dialog-off-canvas) .layout-region-node-actions {
-  right: 1rem;
-  left: auto;
+  inset-block-end: 0;
+  inset-inline-start: 1rem;
+  inset-block-start: auto;
+  inset-inline-end: auto;
 }
 
 .ui-dialog:not(.ui-dialog-off-canvas) .layout-region-node-secondary {
-  width: 100%;
+  inline-size: 100%;
 }
 
 .ui-dialog:not(.ui-dialog-off-canvas) .views-exposed-form.views-exposed-form,
@@ -50,8 +42,8 @@
   padding: 24px;
   background: #1b1b1d;
   border: 0 none;
-  border-top-left-radius: var(--ginBorderBig);
-  border-top-right-radius: var(--ginBorderBig);
+  border-start-start-radius: var(--ginBorderBig);
+  border-end-start-radius: var(--ginBorderBig);
 }
 
 .ui-dialog .ui-dialog-title {
@@ -64,16 +56,19 @@
 
 .ui-dialog .ui-widget-content.ui-dialog-buttonpane {
   padding: 16px 24px;
-  border-top: 1px solid var(--colorGinLayerBorder);
-  border-bottom-left-radius: var(--ginBorderBig);
-  border-bottom-right-radius: var(--ginBorderBig);
+  -webkit-border-before: 1px solid var(--colorGinLayerBorder);
+          border-block-start: 1px solid var(--colorGinLayerBorder);
+  border-start-end-radius: var(--ginBorderBig);
+  border-end-end-radius: var(--ginBorderBig);
   background: var(--colorGinAppBackground);
 }
 
 .ui-dialog .ui-widget-content.ui-dialog-buttonpane .button {
   font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 0;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
 }
 
 .ui-dialog .ui-widget-content.ui-dialog-buttonpane .button.button--danger,
@@ -82,7 +77,8 @@
 }
 
 .ui-dialog .ui-dialog-titlebar-close {
-  top: 20px;
+  inset-block-start: 20px;
+  inset-inline-end: 18px;
   opacity: .8;
   margin: 0;
   transform: none;
@@ -90,18 +86,11 @@
   border: none;
 }
 
-[dir="ltr"] .ui-dialog .ui-dialog-titlebar-close {
-  right: 18px;
-}
-
-[dir="rtl"] .ui-dialog .ui-dialog-titlebar-close {
-  left: 18px;
-}
-
 .ui-dialog .ui-dialog-titlebar-close .ui-icon-closethick {
-  width: 100%;
-  height: 100%;
-  top: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  inset-block-start: 0;
+  inset-inline-start: 0;
   margin: 0;
   transform: none;
   background: #fff;
@@ -115,47 +104,40 @@
           mask-position: center center;
 }
 
-[dir="ltr"] .ui-dialog .ui-dialog-titlebar-close .ui-icon-closethick {
-  left: 0;
-}
-
-[dir="rtl"] .ui-dialog .ui-dialog-titlebar-close .ui-icon-closethick {
-  right: 0;
-}
-
 .ui-dialog .ui-dialog-titlebar-close:hover {
   opacity: 1;
 }
 
 .ui-dialog .ui-widget-content.ui-dialog-content {
-  padding-left: 24px;
-  padding-right: 24px;
+  -webkit-padding-start: 24px;
+          padding-inline-start: 24px;
+  -webkit-padding-end: 24px;
+          padding-inline-end: 24px;
   background: var(--colorGinLayerBackground);
 }
 
 .erl-overlay,
 .layout-paragraphs-dialog {
   position: fixed !important;
-  top: 50% !important;
-  width: calc(100% - 2rem) !important;
+  inset-block-start: 50% !important;
+  inset-inline-start: 50% !important;
+  inline-size: calc(100% - 2rem) !important;
 }
 
 [dir="ltr"] .erl-overlay,
 [dir="ltr"] .layout-paragraphs-dialog {
-  left: 50% !important;
   transform: translate(-50%, -50%);
 }
 
 [dir="rtl"] .erl-overlay,
 [dir="rtl"] .layout-paragraphs-dialog {
-  right: 50% !important;
   transform: translate(50%, -50%);
 }
 
 @media (min-width: 1024px) {
   .erl-overlay,
 .layout-paragraphs-dialog {
-    width: calc(100% - 4rem) !important;
+    inline-size: calc(100% - 4rem) !important;
   }
 }
 
@@ -165,7 +147,8 @@
 }
 
 .views-ui-dialog .views-offset-bottom {
-  border-top: 1px solid var(--colorGinBorder);
+  -webkit-border-before: 1px solid var(--colorGinBorder);
+          border-block-start: 1px solid var(--colorGinBorder);
 }
 
 .ui-widget-content a {
@@ -185,7 +168,7 @@
 }
 
 .ui-widget.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar-close {
-  top: 20px;
+  inset-block-start: 20px;
 }
 
 .ui-widget.ui-dialog.ui-dialog-off-canvas .ui-resizable-w {

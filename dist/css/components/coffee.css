@@ -18,7 +18,8 @@
 
 #coffee-form #coffee-results a .description {
   color: var(--colorGinTextLight);
-  padding-top: .25rem;
+  -webkit-padding-before: .25rem;
+          padding-block-start: .25rem;
 }
 
 #coffee-form #coffee-results a:hover, #coffee-form #coffee-results a.ui-state-active {

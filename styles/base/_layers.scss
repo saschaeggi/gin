@@ -1,11 +1,11 @@
 .page-content {
-  margin-top: 0;
+  margin-block-start: 0;
 
   > .help,
   > .region-content,
   > .region-highlighted {
     @include mq($breakpointSmall) {
-      margin-top: 1.5rem;
+      margin-block-start: 1.5rem;
     }
   }
 }
@@ -28,7 +28,7 @@
 .modules-tabs,
 #views-entity-list
 {
-  margin-top: 0;
+  margin-block-start: 0;
   box-shadow: var(--ginShadowLevel1);
   border-radius: var(--ginBorderMedium);
 
@@ -58,7 +58,7 @@
 .system-themes-list,
 #views-entity-list
 {
-  width: 100%;
+  inline-size: 100%;
   padding: .75rem;
   background: var(--colorGinLayerBackground);
   border: 1px solid var(--colorGinLayerBorder);
@@ -69,7 +69,7 @@
   }
 
   @include mq($breakpointLarge) {
-    min-width: 100%;
-    width: fit-content;
+    min-inline-size: 100%;
+    inline-size: fit-content;
   }
 }
