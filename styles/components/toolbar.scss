@@ -601,7 +601,7 @@ body.gin--classic-toolbar {
 }
 
 .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item::before {
-  left: .55rem;
+  inset-inline-start: .55rem;
 }
 
 // Custom logo

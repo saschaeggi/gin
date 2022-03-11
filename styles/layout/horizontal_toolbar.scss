@@ -31,7 +31,7 @@
       background: none;
     }
 
-    @include mq($breakpointLarge) {
+    @include mq($breakpointMedium) {
       block-size: 0;
     }
 
