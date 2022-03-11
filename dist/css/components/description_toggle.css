@@ -6,8 +6,8 @@
   all: unset;
   flex-shrink: 0;
   margin: .3rem 1rem 0 .3rem;
-  height: 16px;
-  width: 16px;
+  block-size: 16px;
+  inline-size: 16px;
   border-radius: 50%;
 }
 
@@ -15,8 +15,8 @@
   background-color: var(--colorGinIcons);
   content: "";
   display: block;
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
   -webkit-mask-image: url("../../media/sprite.svg#help-view");
           mask-image: url("../../media/sprite.svg#help-view");
   -webkit-mask-repeat: no-repeat;
@@ -39,49 +39,56 @@
 
 .form-type--checkbox > .help-icon__element-has-description > label,
 .form-type--radio > .help-icon__element-has-description > label {
-  margin-left: 6px;
+  -webkit-margin-start: 6px;
+          margin-inline-start: 6px;
 }
 
 .form-type--checkbox .checkbox-toggle + .help-icon,
 .form-type--radio .checkbox-toggle + .help-icon {
-  padding-left: 4px;
+  -webkit-padding-start: 4px;
+          padding-inline-start: 4px;
 }
 
 .form-type-checkbox .help-icon__element-has-description .checkbox-toggle {
-  width: 50px !important;
+  inline-size: 50px !important;
 }
 
 .help-icon__element-has-description input:not(.form-checkbox):not(.form-autocomplete):not(.form-file),
 .help-icon__element-has-description select {
-  max-width: calc(100% - 34px);
+  max-inline-size: calc(100% - 34px);
   /* 1 */
 }
 
 .field-group-details.help-icon__description-container .help-icon__description-toggle {
-  margin-top: 0;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
 }
 
 fieldset:not(.fieldgroup) .help-icon > .fieldset__legend .fieldset__label {
-  padding-right: 0;
+  -webkit-padding-end: 0;
+          padding-inline-end: 0;
 }
 
 .field-group-fieldset > .help-icon > .help-icon__description-toggle,
 fieldset.media-library-widget .help-icon > .help-icon__description-toggle,
 .field--type-datetime fieldset .help-icon > .help-icon__description-toggle {
-  margin-top: 1.3rem;
+  -webkit-margin-before: 1.3rem;
+          margin-block-start: 1.3rem;
 }
 
 .field-group-fieldset > .fieldset__description,
 fieldset.media-library-widget .fieldset__description,
 .field--type-datetime fieldset .fieldset__description {
-  padding-left: 1rem;
+  -webkit-padding-start: 1rem;
+          padding-inline-start: 1rem;
 }
 
 @media (min-width: 768px) {
   .field-group-fieldset > .fieldset__description,
 fieldset.media-library-widget .fieldset__description,
 .field--type-datetime fieldset .fieldset__description {
-    padding-left: 1.5rem;
+    -webkit-padding-start: 1.5rem;
+            padding-inline-start: 1.5rem;
   }
 }
 
@@ -93,7 +100,7 @@ fieldset.media-library-widget .fieldset__description,
 .system-modules .table-filter .form-type--search .help-icon__description-toggle,
 .system-modules-uninstall .table-filter .form-type--search .help-icon__description-toggle {
   position: absolute;
-  right: -8px;
-  top: 16px;
+  inset-inline-end: -8px;
+  inset-block-start: 16px;
 }
 

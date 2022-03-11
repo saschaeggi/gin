@@ -1,5 +1,5 @@
 :root {
-  --ginToolbarHeight: 39px;
+  --ginToolbarblock-size: 39px;
   --ginScrollOffset: 72px;
   --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
   --ginVerticalToolbarOffset: 0px;
@@ -19,7 +19,8 @@
 }
 
 .region-breadcrumb {
-  margin-top: 1.5rem;
+  -webkit-margin-before: 1.5rem;
+          margin-block-start: 1.5rem;
 }
 
 .toolbar .toolbar-bar {
@@ -34,11 +35,13 @@
 }
 
 .toolbar-horizontal .toolbar-tray .toolbar-toggle-orientation {
-  border-left: 1px solid var(--colorGinBorder);
+  -webkit-border-start: 1px solid var(--colorGinBorder);
+          border-inline-start: 1px solid var(--colorGinBorder);
 }
 
 .toolbar-tray-horizontal ul li.menu-item .menu-item {
-  border-bottom: 1px solid var(--colorGinBorder);
+  -webkit-border-after: 1px solid var(--colorGinBorder);
+          border-block-end: 1px solid var(--colorGinBorder);
 }
 
 .toolbar-tray a,
@@ -111,17 +114,20 @@
 }
 
 .gin--classic-toolbar .page-wrapper__node-edit-form .layout-region-node-secondary {
-  padding-top: var(--ginHorizontalToolbarOffset);
+  -webkit-padding-before: var(--ginHorizontalToolbarOffset);
+          padding-block-start: var(--ginHorizontalToolbarOffset);
 }
 
 @media (min-width: 1024px) {
   .gin--classic-toolbar table.sticky-header {
-    margin-top: 0;
+    -webkit-margin-before: 0;
+            margin-block-start: 0;
   }
 }
 
 .toolbar-menu .menu-item > span {
-  padding-left: 2.75em;
+  -webkit-padding-start: 2.75em;
+          padding-inline-start: 2.75em;
 }
 
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon:hover:before, .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active:before {
@@ -129,8 +135,8 @@
 }
 
 .toolbar .toolbar-bar .toolbar-icon-admin-toolbar-tools-help {
-  width: auto;
-  height: 100%;
+  inline-size: auto;
+  block-size: 100%;
   text-indent: -999em;
 }
 
@@ -141,7 +147,7 @@
 
 @media (min-width: 976px) {
   .toolbar .toolbar-bar .toolbar-icon-admin-toolbar-tools-help:before {
-    left: 1rem;
+    inset-inline-start: 1rem;
   }
 }
 
@@ -151,7 +157,7 @@
 
 @media (min-width: 1024px) {
   #toolbar-item-administration-tray .toolbar-logo img {
-    max-height: 21px;
+    max-block-size: 21px;
   }
 }
 
@@ -162,15 +168,16 @@
 
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:before,
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus:before {
-  top: .75rem;
-  right: .75rem;
+  inset-block-start: .75rem;
+  inset-inline-end: .75rem;
 }
 
 #admin-toolbar-search-tab .form-type--search::before {
-  left: .5rem;
+  inset-inline-start: .5rem;
 }
 
 #admin-toolbar-search-input {
-  padding-left: 2rem;
+  -webkit-padding-start: 2rem;
+          padding-inline-start: 2rem;
 }
 

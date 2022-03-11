@@ -11,8 +11,8 @@
 }
 
 .media-library-edit__link, .media-library-edit__link:hover, .media-library-edit__link:focus, .media-library-edit__link:active, .media-library-item .media-library-item__edit, .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__edit:active, .media-library-item .media-library-item__remove, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove:active, .media-library-item .media-library-item__remove.button, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus, .media-library-item .media-library-item__remove.button:active {
-  width: 32px;
-  height: 32px;
+  inline-size: 32px;
+  block-size: 32px;
   margin: .75rem;
   background-color: white;
   border-radius: 50%;
@@ -21,8 +21,8 @@
 }
 
 .media-library-edit__link, .media-library-item .media-library-item__edit {
-  top: .625rem;
-  right: 3.125rem;
+  inset-block-start: .625rem;
+  inset-inline-end: 3.125rem;
   background-image: url("../../media/sprite.svg#media-edit-view");
   background-size: .75rem .75rem;
 }
@@ -59,11 +59,11 @@
 
 .media-library-item__content {
   display: flex;
-  height: 100%;
+  block-size: 100%;
 }
 
 .media-library-item__content article {
-  width: 100%;
+  inline-size: 100%;
 }
 
 .media-library-item__click-to-select-trigger {
@@ -91,7 +91,8 @@
 
 .media-library-item .media-library-item__preview {
   position: relative;
-  padding-bottom: 100%;
+  -webkit-padding-after: 100%;
+          padding-block-end: 100%;
   border: 1px solid var(--colorGinBorder);
   border-radius: var(--ginBorderBig);
   overflow: hidden;
@@ -99,10 +100,10 @@
 
 .media-library-item .media-library-item__preview .field img {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 100%;
+  block-size: 100%;
   object-fit: cover;
 }
 
@@ -117,8 +118,8 @@
 }
 
 .media-library-item__click-to-select-checkbox .form-boolean {
-  width: 29px;
-  height: 29px;
+  inline-size: 29px;
+  block-size: 29px;
   border-radius: var(--ginBorderXSmall);
   box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
 }
@@ -169,7 +170,8 @@ fieldset.media-library-widget .media-library-widget__toggle-weight {
 }
 
 fieldset.media-library-widget .fieldset__wrapper {
-  margin-bottom: 0;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
 }
 
 .media-library-widget-empty-text {
@@ -178,7 +180,8 @@ fieldset.media-library-widget .fieldset__wrapper {
 }
 
 .media-library-open-button {
-  margin-top: 0;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
 }
 
 .media-library-add-form__preview {
@@ -193,8 +196,10 @@ fieldset.media-library-widget .fieldset__wrapper {
 }
 
 .media-library-add-form__input-wrapper .form-item--upload {
-  margin-top: 0;
-  margin-right: 0;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+  -webkit-margin-end: 0;
+          margin-inline-end: 0;
 }
 
 .media-library-add-form__input-wrapper .dropzone-enable .button {
@@ -217,13 +222,15 @@ fieldset.media-library-widget .fieldset__wrapper {
   color: var(--colorGinPrimary);
   text-shadow: none;
   background-color: var(--colorGinLayerBackground);
-  border-right: 0 none;
-  border-bottom: 1px solid var(--colorGinBorder);
+  -webkit-border-end: 0 none;
+          border-inline-end: 0 none;
+  -webkit-border-after: 1px solid var(--colorGinBorder);
+          border-block-end: 1px solid var(--colorGinBorder);
   box-shadow: none;
 }
 
 .media-library-menu__link.active::before {
-  border-left-color: var(--colorGinPrimary);
+  border-inline-start-color: var(--colorGinPrimary);
 }
 
 .media-library-menu__link:focus::after {
@@ -231,7 +238,8 @@ fieldset.media-library-widget .fieldset__wrapper {
 }
 
 + .media-library-content {
-  border-left: 1px solid var(--colorGinBorder);
+  -webkit-border-start: 1px solid var(--colorGinBorder);
+          border-inline-start: 1px solid var(--colorGinBorder);
 }
 
 .media-library-view .view-header {
@@ -254,11 +262,11 @@ fieldset.media-library-widget .fieldset__wrapper {
 .media-library-wrapper .views-display-link::before {
   content: "";
   display: inline-block;
-  width: 16px;
-  height: 16px;
+  inline-size: 16px;
+  block-size: 16px;
   position: absolute;
-  left: 0;
-  top: 1px;
+  inset-inline-start: 0;
+  inset-block-start: 1px;
   background-color: var(--colorGinText);
 }
 
@@ -281,12 +289,14 @@ fieldset.media-library-widget .fieldset__wrapper {
 }
 
 .media-library-content {
-  border-left: 0 none;
+  -webkit-border-start: 0 none;
+          border-inline-start: 0 none;
   border-color: var(--colorGinBorder);
 }
 
 .media-library-select-all {
-  margin-top: 0;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
   padding: 1rem;
   color: var(--colorGinTitle);
   background: var(--colorGinTableHeader);
@@ -305,13 +315,13 @@ fieldset.media-library-widget .fieldset__wrapper {
 
 @media (min-width: 1440px) {
   .media-library-widget-modal .media-library-item--grid {
-    width: 20%;
+    inline-size: 20%;
   }
 }
 
 @media (min-width: 1280px) {
   .media-library-selection .media-library-item--grid {
-    width: 20%;
+    inline-size: 20%;
   }
 }
 
@@ -323,23 +333,24 @@ fieldset.media-library-widget .fieldset__wrapper {
 .field--name-field-media.field--widget-entity-reference-autocomplete fieldset.form-item > legend {
   font-weight: bold;
   position: relative;
-  top: 1.25rem;
+  inset-block-start: 1.25rem;
   transform: translateY(50%);
 }
 
 .field--name-field-media.field--widget-entity-reference-autocomplete fieldset.form-item > legend::before {
   content: "";
   display: block;
-  width: 100%;
-  height: 1px;
+  inline-size: 100%;
+  block-size: 1px;
   position: absolute;
-  top: -1.25rem;
-  left: 0;
+  inset-block-start: -1.25rem;
+  inset-inline-start: 0;
   background: var(--colorGinBorder);
 }
 
 .field--name-field-media.field--widget-entity-reference-autocomplete fieldset.form-item > .form-item h4 {
-  margin-bottom: 0;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
 }
 
 .media-library-selected-count {

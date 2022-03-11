@@ -11,7 +11,8 @@
 
 .upgrade-status-summary > summary {
   background-color: transparent;
-  border-bottom: 1px solid transparent;
+  -webkit-border-after: 1px solid transparent;
+          border-block-end: 1px solid transparent;
 }
 
 .upgrade-status-summary tr.not-scanned > td.status-info,
@@ -33,12 +34,13 @@
 .upgrade-status-error-list tr.known-errors > td.status-info:before,
 .upgrade-status-summary tr.known-errors > td.status-info:before {
   content: "";
-  width: 20px;
-  height: 20px;
+  inline-size: 20px;
+  block-size: 20px;
   display: inline-block;
   position: absolute;
-  left: 8px;
-  margin-top: 2px;
+  inset-inline-start: 8px;
+  -webkit-margin-before: 2px;
+          margin-block-start: 2px;
 }
 
 .upgrade-status-counter__status-icon--not-scanned:before {
@@ -48,7 +50,8 @@
 
 .upgrade-status-summary .select-all,
 .upgrade-status-summary th.project-label, .upgrade-status-summary th.requirement-label {
-  border-left: 8px solid var(--colorGinTableHeader);
+  -webkit-border-start: 8px solid var(--colorGinTableHeader);
+          border-inline-start: 8px solid var(--colorGinTableHeader);
 }
 
 .upgrade-status-error-list tr.rector-covered,
@@ -62,7 +65,8 @@
 .upgrade-status-summary > summary,
 .upgrade-status-summary-environment > summary {
   background-color: transparent;
-  border-bottom: 0 none;
+  -webkit-border-after: 0 none;
+          border-block-end: 0 none;
 }
 
 .drupal-upgrade-status-summary-form tr.no-known-error {

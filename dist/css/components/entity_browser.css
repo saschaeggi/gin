@@ -2,18 +2,19 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   grid-gap: 1rem;
-  margin-bottom: 1rem;
+  -webkit-margin-after: 1rem;
+          margin-block-end: 1rem;
 }
 
 .entities-list.entities-list--single-item .item-container {
-  max-width: 180px;
+  max-inline-size: 180px;
 }
 
 .entities-list .item-container {
   word-break: break-all;
   position: relative;
   margin: 0;
-  min-height: 80px;
+  min-block-size: 80px;
   border: 1px solid var(--colorGinBorder);
   border-radius: var(--ginBorderMedium);
 }
@@ -49,12 +50,12 @@
   border-color: transparent !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
   color: transparent;
-  width: 29px;
-  height: 29px;
+  inline-size: 29px;
+  block-size: 29px;
   margin: .75rem;
   position: absolute;
-  top: 0;
-  right: 0;
+  inset-block-start: 0;
+  inset-inline-end: 0;
 }
 
 .entities-list .item-container > .entity-browser-remove-selected-entity:hover, .entities-list .item-container > .entity-browser-remove-selected-entity:focus,
@@ -76,12 +77,12 @@
   border-color: transparent !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
   color: transparent;
-  width: 29px;
-  height: 29px;
+  inline-size: 29px;
+  block-size: 29px;
   margin: .75rem;
   position: absolute;
-  bottom: 0;
-  right: 0;
+  inset-block-end: 0;
+  inset-inline-end: 0;
 }
 
 .entities-list .item-container > .replace-button:hover, .entities-list .item-container > .replace-button:focus,
@@ -109,7 +110,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   grid-gap: 1rem;
-  margin-bottom: 1rem;
+  -webkit-margin-after: 1rem;
+          margin-block-end: 1rem;
 }
 
 .gin-entity-browser .entity-browser-form .views-row {
@@ -129,8 +131,8 @@
 
 .gin-entity-browser .entity-browser-form .views-row .views-field-entity-browser-select {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset-block-start: 0;
+  inset-inline-start: 0;
   margin: .75rem;
 }
 
@@ -154,8 +156,10 @@
 }
 
 .gin-entity-browser .entity-browser-form .entities-list {
-  border-top: var(--ginBorderXSmall) solid var(--colorGinFormElementBorder);
-  padding-top: 1rem;
+  -webkit-border-before: var(--ginBorderXSmall) solid var(--colorGinFormElementBorder);
+          border-block-start: var(--ginBorderXSmall) solid var(--colorGinFormElementBorder);
+  -webkit-padding-before: 1rem;
+          padding-block-start: 1rem;
 }
 
 .gin-entity-browser .views-exposed-form {
@@ -170,11 +174,14 @@
 }
 
 .eb-tabs {
-  margin-left: 4px;
-  margin-bottom: .75em;
+  -webkit-margin-start: 4px;
+          margin-inline-start: 4px;
+  -webkit-margin-after: .75em;
+          margin-block-end: .75em;
 }
 
 .eb-tabs ul {
-  border-bottom: none;
+  -webkit-border-after: none;
+          border-block-end: none;
 }
 

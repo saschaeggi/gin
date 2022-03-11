@@ -3,12 +3,15 @@
 }
 
 .paragraphs-tabs-wrapper .paragraphs-subform {
-  margin-top: 0;
-  margin-right: 1rem;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+  -webkit-margin-end: 1rem;
+          margin-inline-end: 1rem;
 }
 
 .paragraphs-tabs-wrapper .tabledrag-toggle-weight-wrapper {
-  padding-bottom: 12px;
+  -webkit-padding-after: 12px;
+          padding-block-end: 12px;
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table thead th {
@@ -28,13 +31,14 @@
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table > tbody > .draggable > td + td {
-  width: 100%;
+  inline-size: 100%;
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable {
   display: block;
   padding: 1rem .5rem;
-  margin-top: 1rem;
+  -webkit-margin-before: 1rem;
+          margin-block-start: 1rem;
   border: 1px solid var(--colorGinTableBorder);
   border-radius: var(--ginBorderDefault);
   box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
@@ -52,10 +56,10 @@
   content: "";
   display: block;
   position: absolute;
-  top: .5rem;
-  left: .5rem;
-  width: 4px;
-  height: calc(100% - 1rem);
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  inline-size: 4px;
+  block-size: calc(100% - 1rem);
   background: var(--colorGinWarning);
   border-radius: var(--ginBorderTiny);
 }
@@ -65,8 +69,9 @@
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable .has-multiple-fields-remove-button {
-  width: 100%;
-  padding-right: 0 !important;
+  inline-size: 100%;
+  -webkit-padding-end: 0 !important;
+          padding-inline-end: 0 !important;
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable .tabledrag-handle::after {
@@ -97,7 +102,8 @@
   color: var(--colorGinTitle);
   position: static;
   border: 0 none;
-  padding-left: 0;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
 }
 
 .paragraphs-tabs-wrapper .paragraphs-subform .paragraph-type-label {
@@ -106,7 +112,8 @@
 
 .paragraphs-tabs-wrapper .paragraph-type-add-modal,
 .paragraphs-tabs-wrapper .field--widget-paragraphs .paragraphs-dropbutton-wrapper {
-  margin-right: .5rem;
+  -webkit-margin-end: .5rem;
+          margin-inline-end: .5rem;
 }
 
 .paragraph .contextual {
@@ -115,8 +122,10 @@
 
 .paragraphs-add-wrapper .button--small,
 .paragraphs-dropbutton-wrapper .button--small {
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+  -webkit-margin-before: .5rem;
+          margin-block-start: .5rem;
+  -webkit-margin-after: .5rem;
+          margin-block-end: .5rem;
 }
 
 .paragraphs-dropdown-toggle {
@@ -129,10 +138,10 @@
   content: "";
   display: block;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 100%;
+  block-size: 100%;
   background-image: none;
   background-color: var(--colorGinTextLight);
   -webkit-mask-image: url("../../media/sprite.svg#more-view");
@@ -156,38 +165,39 @@
 
 .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle,
 .js .field--widget-paragraphs .draggable .tabledrag-handle {
-  min-width: 20px;
+  min-inline-size: 20px;
 }
 
 @media (min-width: 976px) {
   .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle,
 .js .field--widget-paragraphs .draggable .tabledrag-handle {
-    min-width: 24px;
+    min-inline-size: 24px;
   }
 }
 
 .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after,
 .js .field--widget-paragraphs .draggable .tabledrag-handle::after {
   position: relative;
-  left: 0;
+  inset-inline-start: 0;
   padding: 0;
-  margin-left: 0;
+  -webkit-margin-start: 0;
+          margin-inline-start: 0;
 }
 
 .js .paragraphs-collapsed-description::after,
 .js .draggable:hover .paragraphs-collapsed-description::after {
-  top: 2px;
+  inset-block-start: 2px;
   background: var(--colorGinLayer2Background);
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayer2Background) 100%);
 }
 
 .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
-  min-width: 32px;
+  min-inline-size: 32px;
 }
 
 @media (min-width: 976px) {
   .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
-    min-width: 40px;
+    min-inline-size: 40px;
   }
 }
 
@@ -202,12 +212,13 @@
 }
 
 .js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple .dropbutton-widget {
-  margin-right: .5rem;
+  -webkit-margin-end: .5rem;
+          margin-inline-end: .5rem;
 }
 
 .js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
-  top: 0;
-  right: -4px;
+  inset-block-start: 0;
+  inset-inline-end: -4px;
 }
 
 .paragraphs-dropdown-actions {
@@ -231,7 +242,8 @@
 
 .js .paragraph-type-icon {
   padding: .25rem;
-  margin-right: .5rem;
+  -webkit-margin-end: .5rem;
+          margin-inline-end: .5rem;
 }
 
 .gin--dark-mode .paragraphs-tabs-wrapper .field-multiple-table .draggable {
@@ -264,14 +276,16 @@
 }
 
 .paragraphs-dragdrop__item {
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  -webkit-padding-before: .5rem;
+          padding-block-start: .5rem;
+  -webkit-padding-after: .5rem;
+          padding-block-end: .5rem;
   background-color: var(--colorGinLayer3Background);
   border-radius: var(--ginBorderDefault);
 }
 
 .paragraphs-dragdrop__icon {
-  top: .5rem;
+  inset-block-start: .5rem;
 }
 
 .js .paragraph-type-add-modal-button:hover {
@@ -284,7 +298,8 @@
 
 .field--widget-entity-reference-paragraphs > div > .form-wrapper > strong {
   display: block;
-  margin-top: 2rem;
+  -webkit-margin-before: 2rem;
+          margin-block-start: 2rem;
 }
 
 .field--widget-entity-reference-paragraphs .form-wrapper .form-wrapper > em {
@@ -297,12 +312,14 @@
 }
 
 .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple {
-  margin-right: .5rem;
+  -webkit-margin-end: .5rem;
+          margin-inline-end: .5rem;
 }
 
 .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple .placeholder,
 .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple ~ .placeholder {
-  margin-left: .25rem;
+  -webkit-margin-start: .25rem;
+          margin-inline-start: .25rem;
 }
 
 .toolbar-fixed .is-horizontal .paragraphs-tabs {
@@ -313,12 +330,13 @@
 
 .toolbar-fixed .is-horizontal .paragraphs-tabs:first-of-type {
   z-index: 100;
-  top: calc(var(--ginHorizontalToolbarOffset) + var(--ginStickyHeight));
+  inset-block-start: calc(var(--ginHorizontalToolbarOffset) + var(--ginStickyHeight));
 }
 
 .toolbar-fixed .is-horizontal .paragraphs-tabs .tabs__tab {
-  float: left;
-  margin-right: 1rem;
+  float: inline-start;
+  -webkit-margin-end: 1rem;
+          margin-inline-end: 1rem;
 }
 
 .toolbar-fixed .is-horizontal .paragraphs-tabs .tabs__tab a {
@@ -335,10 +353,11 @@
   pointer-events: none;
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 0;
+  inset-block-end: 0;
+  inset-inline-start: 0;
   display: block;
-  width: 100%;
-  border-bottom: 2px solid var(--colorGinPrimary);
+  inline-size: 100%;
+  -webkit-border-after: 2px solid var(--colorGinPrimary);
+          border-block-end: 2px solid var(--colorGinPrimary);
 }
 

@@ -2,7 +2,8 @@
 .ui-dialog .ajax-progress__throbber,
 .media-library-item .ajax-progress__throbber {
   border: 3px solid var(--colorGinPrimary);
-  border-right: 3px dotted transparent;
+  -webkit-border-end: 3px dotted transparent;
+          border-inline-end: 3px dotted transparent;
 }
 
 .ajax-progress .ajax-progress__message {
@@ -17,12 +18,14 @@
 
 .gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber, .gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber--fullscreen {
   border: 3px solid var(--colorGinAppBackground);
-  border-right: 3px dotted transparent;
+  -webkit-border-end: 3px dotted transparent;
+          border-inline-end: 3px dotted transparent;
 }
 
 .media-library-widget .ajax-progress__throbber, .media-library-widget .ajax-progress__throbber--fullscreen {
   border: 2px solid var(--colorGinPrimary);
-  border-right: 2px dotted transparent;
+  -webkit-border-end: 2px dotted transparent;
+          border-inline-end: 2px dotted transparent;
 }
 
 .ui-dialog .ajax-progress-throbber {
@@ -44,12 +47,13 @@
   content: "";
   display: block;
   position: absolute;
-  top: .5rem;
-  left: .5rem;
-  width: 1.125rem;
-  height: 1.125rem;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
   border: 2px solid var(--colorGinPrimary);
-  border-right: 2px dotted transparent;
+  -webkit-border-end: 2px dotted transparent;
+          border-inline-end: 2px dotted transparent;
   border-radius: 50%;
   animation: gin-throbber .75s linear infinite;
 }
@@ -66,15 +70,15 @@
 
 .contextual-links .ajax-progress-throbber {
   position: absolute;
-  top: 0;
-  right: 4px;
-  width: 24px;
-  height: 24px;
+  inset-block-start: 0;
+  inset-inline-end: 4px;
+  inline-size: 24px;
+  block-size: 24px;
 }
 
 .contextual-links .ajax-progress-throbber::before {
-  top: 0;
-  left: .25em;
+  inset-block-start: 0;
+  inset-inline-start: .25em;
 }
 
 @keyframes gin-throbber {

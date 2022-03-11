@@ -1,5 +1,5 @@
 :root {
-  --ginToolbarHeight: 39px;
+  --ginToolbarblock-size: 39px;
   --ginScrollOffset: 72px;
   --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
   --ginVerticalToolbarOffset: 0px;
@@ -7,14 +7,14 @@
 
 @media (min-width: 1024px) {
   :root {
-    --ginToolbarHeight: 53px;
+    --ginToolbarblock-size: 53px;
     --ginScrollOffset: 180px;
     --iconGinToolbar: 18px;
   }
 }
 
 .region-meta--frontend {
-  top: -60px;
+  inset-block-start: -60px;
 }
 
 .toolbar .toolbar-bar {
@@ -31,33 +31,37 @@
 
 @media (min-width: 1024px) {
   .toolbar .toolbar-bar {
-    height: 0;
+    block-size: 0;
   }
 }
 
 .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
 .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 3em;
+  -webkit-padding-before: 20px;
+          padding-block-start: 20px;
+  -webkit-padding-after: 20px;
+          padding-block-end: 20px;
+  -webkit-padding-start: 3em;
+          padding-inline-start: 3em;
   white-space: nowrap;
 }
 
 .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon::before,
 .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon::before {
-  margin-top: -1px;
+  -webkit-margin-before: -1px;
+          margin-block-start: -1px;
 }
 
 .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:not(.toolbar-handle)::before {
-  left: .75rem;
+  inset-inline-start: .75rem;
 }
 
 .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu .toolbar-icon.toolbar-handle {
-  width: 48px;
+  inline-size: 48px;
 }
 
 .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu .toolbar-icon.toolbar-handle:before {
-  left: 1rem;
+  inset-inline-start: 1rem;
 }
 
 .toolbar .toolbar-bar .toolbar-toggle-orientation {
@@ -65,7 +69,8 @@
 }
 
 .toolbar-horizontal .toolbar-tray {
-  border-bottom: 0 none;
+  -webkit-border-after: 0 none;
+          border-block-end: 0 none;
 }
 
 .toolbar .toolbar-menu,
@@ -75,7 +80,8 @@
 }
 
 .toolbar-horizontal .toolbar-tray .toolbar-toggle-orientation {
-  border-left: 1px solid var(--colorGinBorder);
+  -webkit-border-start: 1px solid var(--colorGinBorder);
+          border-inline-start: 1px solid var(--colorGinBorder);
 }
 
 .toolbar-tray a,
@@ -145,7 +151,8 @@
 
 @media (min-width: 1024px) {
   .gin--classic-toolbar table.sticky-header {
-    margin-top: 0;
+    -webkit-margin-before: 0;
+            margin-block-start: 0;
   }
 }
 
@@ -159,7 +166,7 @@
 
 #toolbar-item-administration-tray .toolbar-logo {
   display: flex;
-  height: 100%;
+  block-size: 100%;
 }
 
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
@@ -169,8 +176,8 @@
 
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:before,
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus:before {
-  top: 12px;
-  right: 12px;
+  inset-block-start: 12px;
+  inset-inline-end: 12px;
 }
 
 .toolbar-tray-horizontal .menu-item:hover {
@@ -179,8 +186,8 @@
 
 @media (min-width: 1024px) {
   .gin--horizontal-toolbar.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
-    top: var(--ginToolbarHeight);
-    height: calc(100% - var(--ginToolbarHeight));
+    inset-block-start: var(--ginToolbarHeight);
+    block-size: calc(100% - var(--ginToolbarHeight));
   }
 }
 
@@ -188,13 +195,13 @@
   .gin--horizontal-toolbar #toolbar-administration {
     z-index: 502;
     position: fixed;
-    top: 0;
-    width: 100%;
+    inset-block-start: 0;
+    inline-size: 100%;
   }
 
   .gin--horizontal-toolbar #toolbar-administration,
 .gin--horizontal-toolbar #toolbar-administration .toolbar-bar {
-    height: var(--ginToolbarHeight);
+    block-size: var(--ginToolbarHeight);
   }
 }
 
@@ -202,20 +209,22 @@
   .gin--horizontal-toolbar #toolbar-administration .toolbar-lining {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    padding-right: 0;
+    -webkit-padding-end: 0;
+            padding-inline-end: 0;
   }
 }
 
 @media (min-width: 976px) {
   .gin--horizontal-toolbar #toolbar-administration .menu-item__tools,
 .gin--horizontal-toolbar #toolbar-administration .menu-item__admin_toolbar_tools-help {
-    margin-left: -16px;
+    -webkit-margin-start: -16px;
+            margin-inline-start: -16px;
   }
 }
 
 .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help {
-  width: auto;
-  height: 100%;
+  inline-size: auto;
+  block-size: 100%;
   text-indent: -999em;
 }
 
@@ -226,32 +235,36 @@
 
 @media (min-width: 976px) {
   .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help {
-    padding-left: 2.875em;
+    -webkit-padding-start: 2.875em;
+            padding-inline-start: 2.875em;
   }
 
   .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help:before {
-    top: -1px;
-    left: 14px;
-    width: 24px;
+    inset-block-start: -1px;
+    inset-inline-start: 14px;
+    inline-size: 24px;
     -webkit-mask-size: 28px 28px;
             mask-size: 28px 28px;
   }
 
   .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
-    margin-right: .5rem;
+    -webkit-margin-end: .5rem;
+            margin-inline-end: .5rem;
   }
 }
 
 @media (min-width: 976px) {
   .gin--horizontal-toolbar #toolbar-administration .toolbar-menu-administration {
-    margin-left: min(5vw, 48px);
-    margin-right: min(5vw, 48px);
+    -webkit-margin-start: min(5vw, 48px);
+            margin-inline-start: min(5vw, 48px);
+    -webkit-margin-end: min(5vw, 48px);
+            margin-inline-end: min(5vw, 48px);
   }
 
   .gin--horizontal-toolbar #toolbar-administration .toolbar-menu-administration > .toolbar-menu {
     display: flex;
     flex-wrap: nowrap;
-    width: 100%;
+    inline-size: 100%;
   }
 }
 

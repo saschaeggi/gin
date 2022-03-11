@@ -3,11 +3,12 @@
   z-index: 501;
   /* on top of the Drupal world */
   position: sticky;
-  top: 0;
-  width: 100%;
+  inset-block-start: 0;
+  inline-size: 100%;
   padding: 0;
   background: rgba(255, 255, 255, .98);
-  border-bottom: 1px solid var(--colorGinLayerBorder);
+  -webkit-border-after: 1px solid var(--colorGinLayerBorder);
+          border-block-end: 1px solid var(--colorGinLayerBorder);
 }
 
 @supports ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) {
@@ -43,7 +44,8 @@
 
 .node-preview-container .node-preview-backlink {
   position: relative;
-  padding-left: 2em;
+  -webkit-padding-start: 2em;
+          padding-inline-start: 2em;
   text-decoration: none;
 }
 
@@ -51,10 +53,10 @@
   content: "";
   display: inline-block;
   position: absolute;
-  top: 50%;
-  left: 0;
-  width: var(--iconGinMeta);
-  height: var(--iconGinMeta);
+  inset-block-start: 50%;
+  inset-inline-start: 0;
+  inline-size: var(--iconGinMeta);
+  block-size: var(--iconGinMeta);
   transform: translateY(-50%);
   background-color: var(--colorGinIcons);
   -webkit-mask-image: url("../../media/sprite.svg#backtosite-view");
@@ -69,7 +71,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: auto;
+  inline-size: auto;
   padding: 1rem 0;
 }
 
@@ -80,7 +82,8 @@
 }
 
 .node-preview-container .node-preview-form-select label {
-  padding-right: .5em;
+  -webkit-padding-end: .5em;
+          padding-inline-end: .5em;
 }
 
 .node-preview-container .js-hide {
