@@ -181,7 +181,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    height: 100%;
+    block-size: 100%;
   }
 }
 
@@ -333,12 +333,9 @@
     background-color: var(--colorGinIcons);
   }
 
-  [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user {
-    margin-right: -1.333em;
-  }
-
-  [dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user {
-    margin-left: -1.333em;
+  .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user {
+    -webkit-margin-end: -1.333em;
+            margin-inline-end: -1.333em;
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user:hover .icon-user {

@@ -593,12 +593,8 @@ body.gin--classic-toolbar {
   background-color: var(--colorGinIcons);
 }
 
-[dir="ltr"] .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item::before, [dir="ltr"] .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.responsive-preview-icon::before {
-  left: .55rem;
-}
-
-[dir="rtl"] .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item::before, [dir="rtl"] .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.responsive-preview-icon::before {
-  right: .55rem;
+.toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item::before, .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.responsive-preview-icon::before {
+  inset-inline-start: .55rem;
 }
 
 #toolbar-item-administration-tray .toolbar-logo {
