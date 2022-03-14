@@ -31,6 +31,7 @@
             "url": "https://packages.drupal.org/8"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "drupal/gin_toolbar": "^1.0@beta"
     }
