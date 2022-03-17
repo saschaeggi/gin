@@ -8,6 +8,7 @@
 use Drupal\gin\GinContentFormHelper;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\gin\GinSettings;
+use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_preprocess_HOOK() for page.
@@ -121,7 +122,9 @@ function gin_page_attachments_alter(&$page) {
 function gin_preprocess_page_title(&$variables) {
   if (preg_match('/entity\.node\..*/', \Drupal::routeMatch()->getRouteName(), $matches)) {
     $node = \Drupal::routeMatch()->getParameter('node');
-    $variables['title'] = $node->getTitle();
+    if ($node instanceof Node) {
+      $variables['title'] = $node->getTitle();
+    }
   }
 }
 
