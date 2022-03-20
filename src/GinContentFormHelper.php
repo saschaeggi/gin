@@ -90,108 +90,114 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    * @see hook_form_alter()
    */
   public function formAlter(array &$form, FormStateInterface $form_state, $form_id) {
-    // Are we on an edit form?
-    if (!$this->isContentForm($form, $form_state, $form_id)) {
-      return;
+    // Sticky action buttons.
+    if ($this->stickyActionButtons($form, $form_state, $form_id)) {
+      // Action buttons.
+      if (isset($form['actions'])) {
+        if (isset($form['actions']['preview'])) {
+          // Put Save after Preview.
+          $save_weight = $form['actions']['preview']['#weight'] ? $form['actions']['preview']['#weight'] + 1 : 11;
+          $form['actions']['submit']['#weight'] = $save_weight;
+        }
+
+        // Move entity_save_and_addanother_node after preview.
+        if (isset($form['actions']['entity_save_and_addanother_node'])) {
+          // Put Save after Preview.
+          $save_weight = $form['actions']['entity_save_and_addanother_node']['#weight'];
+          $form['actions']['preview']['#weight'] = $save_weight - 1;
+        }
+
+        // Create gin_actions group.
+        $form['gin_actions'] = [
+          '#type' => 'container',
+          '#weight' => -1,
+          '#multilingual' => TRUE,
+          '#attributes' => [
+            'class' => [
+              'gin-sticky',
+            ],
+          ],
+        ];
+
+        if (isset($form['status'])) {
+          // Assign status to gin_actions.
+          $form['status']['#group'] = 'gin_actions';
+        }
+
+        // Move all actions over.
+        $form['gin_actions']['actions'] = ($form['actions']) ?? [];
+        $form['gin_actions']['actions']['#weight'] = 130;
+      }
     }
 
-    // Provide a default meta form element if not already provided.
-    // @see NodeForm::form()
-    $form['advanced']['#attributes']['class'][] = 'entity-meta';
-    if (!isset($form['meta'])) {
-      $form['meta'] = [
-        '#type' => 'container',
-        '#group' => 'advanced',
-        '#weight' => -10,
-        '#title' => $this->t('Status'),
-        '#attributes' => ['class' => ['entity-meta__header']],
-        '#tree' => TRUE,
-        '#access' => TRUE,
-      ];
-    }
-
-    // Ensure correct settings for advanced, meta and revision form elements.
-    $form['advanced']['#type'] = 'container';
-    $form['advanced']['#accordion'] = TRUE;
-    $form['meta']['#type'] = 'container';
-    $form['meta']['#access'] = TRUE;
-
-    $form['revision_information']['#type'] = 'container';
-    $form['revision_information']['#group'] = 'meta';
-    $form['revision_information']['#attributes']['class'][] = 'entity-meta__revision';
-
-    // Action buttons.
-    if (isset($form['actions'])) {
-      if (isset($form['actions']['preview'])) {
-        // Put Save after Preview.
-        $save_weight = $form['actions']['preview']['#weight'] ? $form['actions']['preview']['#weight'] + 1 : 11;
-        $form['actions']['submit']['#weight'] = $save_weight;
+    // Show Gin edit form with sidebar.
+    if ($this->isContentForm($form, $form_state, $form_id)) {
+      // Provide a default meta form element if not already provided.
+      // @see NodeForm::form()
+      $form['advanced']['#attributes']['class'][] = 'entity-meta';
+      if (!isset($form['meta'])) {
+        $form['meta'] = [
+          '#type' => 'container',
+          '#group' => 'advanced',
+          '#weight' => -10,
+          '#title' => $this->t('Status'),
+          '#attributes' => ['class' => ['entity-meta__header']],
+          '#tree' => TRUE,
+          '#access' => TRUE,
+        ];
       }
 
-      // Move entity_save_and_addanother_node after preview.
-      if (isset($form['actions']['entity_save_and_addanother_node'])) {
-        // Put Save after Preview.
-        $save_weight = $form['actions']['entity_save_and_addanother_node']['#weight'];
-        $form['actions']['preview']['#weight'] = $save_weight - 1;
+      // Ensure correct settings for advanced, meta and revision form elements.
+      $form['advanced']['#type'] = 'container';
+      $form['advanced']['#accordion'] = TRUE;
+      $form['meta']['#type'] = 'container';
+      $form['meta']['#access'] = TRUE;
+      $form['revision_information']['#type'] = 'container';
+      $form['revision_information']['#group'] = 'meta';
+      $form['revision_information']['#attributes']['class'][] = 'entity-meta__revision';
+
+      // Action buttons.
+      if (isset($form['actions'])) {
+        // Create gin_sidebar group.
+        $form['gin_sidebar'] = [
+          '#group' => 'meta',
+          '#type' => 'container',
+          '#weight' => 99,
+          '#multilingual' => TRUE,
+          '#attributes' => [
+            'class' => [
+              'gin-sidebar',
+            ],
+          ],
+        ];
+        // Copy footer over.
+        $form['gin_sidebar']['footer'] = ($form['footer']) ?? [];
+        // Copy delete action.
+        $form['gin_sidebar']['actions'] = [];
+        $form['gin_sidebar']['actions']['#type'] = ($form['actions']['#type']) ?? [];
+        $form['gin_sidebar']['actions']['delete'] = ($form['actions']['delete']) ?? [];
+
+        // Now let's just remove delete, as we'll move that over to gin_sidebar.
+        unset($form['gin_actions']['actions']['delete']);
       }
 
-      // Create gin_actions group.
-      $form['gin_actions'] = [
-        '#type' => 'container',
-        '#weight' => -1,
-        '#multilingual' => TRUE,
-        '#attributes' => [
-          'class' => [
-            'gin-sticky',
-          ],
-        ],
-      ];
-      // Assign status to gin_actions.
-      $form['status']['#group'] = 'gin_actions';
+      // If not logged in hide changed and author node info on add forms.
+      $not_logged_in = $this->currentUser->isAnonymous();
+      $route = $this->routeMatch->getRouteName();
 
-      // Move all actions over.
-      $form['gin_actions']['actions'] = ($form['actions']) ?? [];
-      $form['gin_actions']['actions']['#weight'] = 130;
-
-      // Now let's just remove delete, as we'll move that over to gin_sidebar.
-      unset($form['gin_actions']['actions']['delete']);
-
-      // Create gin_sidebar group.
-      $form['gin_sidebar'] = [
-        '#group' => 'meta',
-        '#type' => 'container',
-        '#weight' => 99,
-        '#multilingual' => TRUE,
-        '#attributes' => [
-          'class' => [
-            'gin-sidebar',
-          ],
-        ],
-      ];
-      // Copy footer over.
-      $form['gin_sidebar']['footer'] = ($form['footer']) ?? [];
-      // Copy delete action.
-      $form['gin_sidebar']['actions'] = [];
-      $form['gin_sidebar']['actions']['#type'] = ($form['actions']['#type']) ?? [];
-      $form['gin_sidebar']['actions']['delete'] = ($form['actions']['delete']) ?? [];
+      if ($not_logged_in && $route == 'node.add') {
+        unset($form['meta']['changed']);
+        unset($form['meta']['author']);
+      }
     }
 
     // Specify necessary node form theme and library.
     // @see claro_form_node_form_alter
     $form['#theme'] = ['node_edit_form'];
+
     // Attach libraries.
     $form['#attached']['library'][] = 'claro/node-form';
     $form['#attached']['library'][] = 'gin/edit_form';
-
-    // If not logged in hide changed and author node info on add forms.
-    $not_logged_in = $this->currentUser->isAnonymous();
-    $route = $this->routeMatch->getRouteName();
-
-    if ($not_logged_in && $route == 'node.add') {
-      unset($form['meta']['changed']);
-      unset($form['meta']['author']);
-    }
-
   }
 
   /**
@@ -252,6 +258,43 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     }
 
     return $is_content_form;
+  }
+
+  /**
+   * Sticky action buttons.
+   *
+   * @param array $form
+   *   An associative array containing the structure of the form.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
+   * @param string $form_id
+   *   The form id.
+   */
+  public function stickyActionButtons(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = NULL) {
+    $sticky_action_buttons = FALSE;
+
+    // Get route name.
+    $route_name = $this->routeMatch->getRouteName();
+
+    // Routes to include.
+    $route_names = [
+      'node.add',
+      'entity.node.content_translation_add',
+      'quick_node_clone.node.quick_clone',
+      'entity.node.edit_form',
+      'entity.taxonomy_term.add_form',
+      'entity.taxonomy_term.edit_form',
+    ];
+
+    if (
+      in_array($route_name, $route_names, TRUE) ||
+      ($form_state && ($form_state->getBuildInfo()['base_form_id'] ?? NULL) === 'node_form') ||
+      ($route_name === 'entity.group_content.create_form' && strpos($form_id, 'group_node') === FALSE)
+    ) {
+      $sticky_action_buttons = TRUE;
+    }
+
+    return $sticky_action_buttons;
   }
 
 }
