@@ -110,12 +110,6 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       ];
     }
 
-    // Specify necessary node form theme and library.
-    // @see claro_form_node_form_alter
-    $form['#theme'] = ['node_edit_form'];
-    $form['#attached']['library'][] = 'claro/node-form';
-    $form['#attached']['library'][] = 'gin/edit_form';
-
     // Ensure correct settings for advanced, meta and revision form elements.
     $form['advanced']['#type'] = 'container';
     $form['advanced']['#accordion'] = TRUE;
@@ -134,6 +128,13 @@ class GinContentFormHelper implements ContainerInjectionInterface {
         $form['actions']['submit']['#weight'] = $save_weight;
       }
 
+      // Move entity_save_and_addanother_node after preview.
+      if (isset($form['actions']['entity_save_and_addanother_node'])) {
+        // Put Save after Preview.
+        $save_weight = $form['actions']['entity_save_and_addanother_node']['#weight'];
+        $form['actions']['preview']['#weight'] = $save_weight - 1;
+      }
+
       // Create gin_actions group.
       $form['gin_actions'] = [
         '#type' => 'container',
@@ -148,15 +149,12 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       // Assign status to gin_actions.
       $form['status']['#group'] = 'gin_actions';
 
-      // Create actions group.
-      $form['gin_actions']['actions'] = [
-        '#type' => 'actions',
-        '#weight' => 130,
-      ];
-      // Add Preview to gin_actions actions.
-      $form['gin_actions']['actions']['preview'] = ($form['actions']['preview']) ?? [];
-      // Add Submit to gin_actions actions.
-      $form['gin_actions']['actions']['submit'] = ($form['actions']['submit']) ?? [];
+      // Move all actions over.
+      $form['gin_actions']['actions'] = ($form['actions']) ?? [];
+      $form['gin_actions']['actions']['#weight'] = 130;
+
+      // Now let's just remove delete, as we'll move that over to gin_sidebar.
+      unset($form['gin_actions']['actions']['delete']);
 
       // Create gin_sidebar group.
       $form['gin_sidebar'] = [
@@ -172,15 +170,18 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       ];
       // Copy footer over.
       $form['gin_sidebar']['footer'] = ($form['footer']) ?? [];
-      // Copy actions over.
-      $form['gin_sidebar']['actions'] = ($form['actions']) ?? [];
-      // Unset previous added preview & submit.
-      unset($form['gin_sidebar']['actions']['preview']);
-      unset($form['gin_sidebar']['actions']['submit']);
+      // Copy delete action.
+      $form['gin_sidebar']['actions'] = [];
+      $form['gin_sidebar']['actions']['#type'] = ($form['actions']['#type']) ?? [];
+      $form['gin_sidebar']['actions']['delete'] = ($form['actions']['delete']) ?? [];
     }
 
-    // Attach library.
-    $form['#attached']['library'][] = 'gin/gin_editform';
+    // Specify necessary node form theme and library.
+    // @see claro_form_node_form_alter
+    $form['#theme'] = ['node_edit_form'];
+    // Attach libraries.
+    $form['#attached']['library'][] = 'claro/node-form';
+    $form['#attached']['library'][] = 'gin/edit_form';
 
     // If not logged in hide changed and author node info on add forms.
     $not_logged_in = $this->currentUser->isAnonymous();
