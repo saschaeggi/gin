@@ -5,6 +5,8 @@
  * breadcrumb.theme
  */
 
+use Drupal\node\NodeInterface;
+
 /**
  * Breadcrumb.
  */
@@ -13,7 +15,9 @@ function gin_preprocess_breadcrumb(&$variables) {
   if (($node = \Drupal::routeMatch()->getParameter('node')) && $variables['breadcrumb']) {
     foreach ($variables['breadcrumb'] as $key => $item) {
       if ($item['url'] === '/node') {
-        $variables['breadcrumb'][$key]['text'] = t('Edit') . ' ' . $node->type->entity->label();
+        if ($node instanceof NodeInterface) {
+          $variables['breadcrumb'][$key]['text'] = t('Edit') . ' ' . $node->type->entity->label();
+        }
       }
     }
   }
