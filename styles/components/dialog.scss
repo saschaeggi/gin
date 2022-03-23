@@ -187,3 +187,16 @@ table.treetable {
     background-color: transparent;
   }
 }
+
+// Add content modal
+.gin--add-modal {
+  overflow: hidden;
+
+  .ui-widget-content.ui-dialog-content {
+    padding: 0;
+  }
+
+  .panel {
+    margin-bottom: 0;
+  }
+}
