@@ -243,6 +243,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       'views_form_media_library_widget_',
       'views_exposed_form',
       'date_recur_modular_sierra_occurrences_modal',
+      'date_recur_modular_sierra_modal',
     ];
 
     foreach ($form_ids_to_ignore as $form_id_to_ignore) {
