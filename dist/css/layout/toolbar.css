@@ -5,7 +5,7 @@
   --ginVerticalToolbarOffset: 0px;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 976px) {
   :root {
     --iconGinToolbar: 22px;
     --ginScrollOffset: 130px;
@@ -14,7 +14,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 976px) {
   .toolbar-fixed[data-toolbar-menu=open] {
     --ginVerticalToolbarOffset: var(--ginToolbarWidth, 240px);
   }
