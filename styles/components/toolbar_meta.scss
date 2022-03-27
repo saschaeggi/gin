@@ -295,16 +295,13 @@
       }
 
       .toolbar-id--toolbar-icon-user {
+        margin-right: -1.333em;
+
         &:hover {
           .icon-user {
             box-shadow: 0 0 0 2px var(--colorGinAppBackground),
                         0 0 0 5px var(--colorGinLayer3Background);
           }
-        }
-
-        // If custom user image
-        &:not(.has-user-icon) {
-          margin-right: -1.333em;
         }
 
         .icon-user {
@@ -319,6 +316,11 @@
             width: 39px;
             height: 39px;
             object-fit: cover;
+          }
+
+          &,
+          ~ .toolbar-tray {
+            margin-right: 1.333em;
           }
         }
       }
