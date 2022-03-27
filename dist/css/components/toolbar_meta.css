@@ -310,13 +310,12 @@
     border-radius: var(--ginBorderMedium) 0 var(--ginBorderMedium) var(--ginBorderMedium);
   }
 
-  .toolbar-meta .toolbar-bar .toolbar-id--toolbar-icon-user:hover .icon-user {
-    box-shadow: 0 0 0 2px var(--colorGinAppBackground), 0 0 0 5px var(--colorGinLayer3Background);
+  .toolbar-meta .toolbar-bar .toolbar-id--toolbar-icon-user {
+    margin-right: -1.333em;
   }
 
-  .toolbar-meta .toolbar-bar .toolbar-id--toolbar-icon-user:not(.has-user-icon) {
-    -webkit-margin-end: -1.333em;
-            margin-inline-end: -1.333em;
+  .toolbar-meta .toolbar-bar .toolbar-id--toolbar-icon-user:hover .icon-user {
+    box-shadow: 0 0 0 2px var(--colorGinAppBackground), 0 0 0 5px var(--colorGinLayer3Background);
   }
 
   .toolbar-meta .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user {
@@ -333,6 +332,11 @@
     inline-size: 39px;
     block-size: 39px;
     object-fit: cover;
+  }
+
+  .toolbar-meta .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user,
+.toolbar-meta .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user ~ .toolbar-tray {
+    margin-right: 1.333em;
   }
 
   .toolbar-meta .toolbar-bar .toolbar-menu {
