@@ -5,7 +5,7 @@
   --ginHorizontalToolbarOffset: var(--ginToolbarHeight); // Needs px to work in calc() functions.
   --ginVerticalToolbarOffset: 0px; // Needs px to work in calc() functions.
 
-  @include mq($breakpointLarge) {
+  @include mq($breakpointMedium) {
     --iconGinToolbar: 22px;
     --ginScrollOffset: 130px;
     --ginHorizontalToolbarOffset: 0px; // Needs px to work in calc() functions.
@@ -14,7 +14,7 @@
 }
 
 .toolbar-fixed[data-toolbar-menu=open] {
-  @include mq($breakpointLarge) {
+  @include mq($breakpointMedium) {
     --ginVerticalToolbarOffset: var(--ginToolbarWidth, 240px);
   }
 }
