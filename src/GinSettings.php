@@ -349,7 +349,7 @@ class GinSettings implements ContainerInjectionInterface {
     // Focus color setting.
     $form['preset_focus_color'] = [
       '#type' => 'select',
-      '#title' => $this->t('Focus color (BETA)'),
+      '#title' => $this->t('Focus color'),
       '#description' => '',
       '#default_value' => $account ? $this->get('preset_focus_color', $account) : $this->getDefault('preset_focus_color'),
       '#options' => [
@@ -413,8 +413,7 @@ class GinSettings implements ContainerInjectionInterface {
     // Toolbar setting.
     $form['classic_toolbar'] = [
       '#type' => 'radios',
-      '#title' => $this->t('Drupal Toolbar'),
-      '#description' => $this->t('Choose Drupal Toolbar.'),
+      '#title' => $this->t('Navigation (Drupal Toolbar)'),
       '#default_value' => $account ? $this->get('classic_toolbar', $account) : $this->getDefault('classic_toolbar'),
       '#options' => [
         'vertical' => $this->t('Sidebar, Vertical Toolbar (Default)'),
@@ -428,7 +427,7 @@ class GinSettings implements ContainerInjectionInterface {
 
     $form['show_description_toggle'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('Enable form description toggle.'),
+      '#title' => $this->t('Enable form description toggle'),
       '#description' => $this->t('Show a help icon to show/hide form descriptions on content forms.'),
       '#default_value' => $account ? $this->get('show_description_toggle', $account) : $this->getDefault('show_description_toggle'),
     ];
