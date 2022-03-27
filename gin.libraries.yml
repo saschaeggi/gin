@@ -12,6 +12,8 @@ gin_base:
     component:
       dist/css/theme/font.css: { minified: false }
       dist/css/theme/variables.css: { minified: false }
+  dependencies:
+    - gin/dialog
 
 # Legacy
 gin_ckeditor:
@@ -153,7 +155,7 @@ dialog:
   version: VERSION
   css:
     theme:
-      dist/css/components/dialog.css: { minified: false }
+      dist/css/components/dialog.css: { minified: false, weight: 99 }
 
 ckeditor:
   version: VERSION
