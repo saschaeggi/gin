@@ -28,6 +28,11 @@
   border: 1px solid var(--colorGinLayerBorder);
 }
 
+.ui-dialog {
+  font-family: var(--ginFont);
+  outline: none;
+}
+
 .ui-dialog, .ui-dialog:focus, .ui-dialog:focus:active, .ui-dialog:focus:hover {
   box-shadow: var(--ginShadowLevel1);
 }
@@ -71,10 +76,11 @@
 .ui-dialog .ui-dialog-titlebar-close {
   top: 20px;
   right: 18px;
-  border: none;
   opacity: .8;
-  transform: none;
   margin: 0;
+  transform: none;
+  background: none;
+  border: none;
 }
 
 .ui-dialog .ui-dialog-titlebar-close .ui-icon-closethick {

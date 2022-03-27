@@ -44,6 +44,12 @@ libraries-override:
 
   classy/dialog: claro/claro.drupal.dialog
 
+  # needed override to overcome dialog styling issues
+  claro/claro.drupal.dialog:
+    css:
+      theme:
+        css/components/dialog.css: false
+
   classy/base:
     css:
       component:
