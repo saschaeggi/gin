@@ -90,6 +90,18 @@ function gin_preprocess_toolbar__gin__secondary(&$variables) {
       }
     }
   }
+
+  // Move user tab to end.
+  $toolbar_user = array_search('user', array_keys($variables['tabs']));
+  if (is_numeric($toolbar_user)) {
+    foreach ($variables['tabs'] as $key => $item) {
+      if ($key === 'user') {
+        $user_tab = $variables['tabs'][$key];
+        unset($variables['tabs'][$key]);
+        $variables['tabs'][$key] = $user_tab;
+      }
+    }
+  }
 }
 
 /**

@@ -1,12 +1,12 @@
 :root {
-  --ginToolbarblock-size: 39px;
+  --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
   --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
   --ginVerticalToolbarOffset: 0px;
 }
 
 @media (min-width: 976px) {
-  :root {
+   :root {
     --iconGinToolbar: 22px;
     --ginScrollOffset: 130px;
     --ginHorizontalToolbarOffset: 0px;
@@ -42,18 +42,18 @@
   }
 }
 
-.toolbar .toolbar-bar .toolbar-tab > .toolbar-item {
+.toolbar .toolbar-bar .toolbar-tab>.toolbar-item {
   font-weight: normal;
 }
 
 .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-icon::before,
-.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
+.toolbar .toolbar-bar .toolbar-tab>.toolbar-icon-edit.toolbar-item::before {
   inset-inline-start: 1em;
 }
 
 @media (min-width: 976px) {
   .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-icon::before,
-.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
+  .toolbar .toolbar-bar .toolbar-tab>.toolbar-icon-edit.toolbar-item::before {
     inset-inline-start: calc((var(--ginToolbarWidthCollapsed) - var(--iconGinToolbar)) / 2 - 9px);
     inline-size: var(--iconGinToolbar);
     block-size: var(--iconGinToolbar);
@@ -66,13 +66,11 @@
   .toolbar .toolbar-bar .toolbar-logo {
     block-size: var(--ginStickyHeight);
   }
-
   .toolbar .toolbar-bar .toolbar-icon-home {
     display: block;
     inline-size: 100%;
     margin: 8px 0;
   }
-
   .toolbar .toolbar-bar #toolbar-item-administration-tray a.toolbar-icon.override-icon:before {
     inset-inline-start: 0;
     inline-size: 0;
@@ -94,7 +92,7 @@
     font-size: 0;
     block-size: 74px;
     -webkit-margin-after: 6px;
-            margin-block-end: 6px;
+    margin-block-end: 6px;
     transition: top var(--ginTransition);
   }
 }
@@ -105,9 +103,9 @@
     block-size: 32px;
     inset-inline-start: calc((var(--ginToolbarWidthCollapsed) - 32px) / 2 - 9px);
     -webkit-mask-size: 32px 32px;
-            mask-size: 32px 32px;
+    mask-size: 32px 32px;
     -webkit-mask-position: center center;
-            mask-position: center center;
+    mask-position: center center;
   }
 }
 
@@ -127,11 +125,17 @@
   box-shadow: inset 0 0 0 1px var(--colorGinFocusBorder), inset 0 0 0 4px var(--colorGinFocus);
 }
 
-.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item, .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:hover, .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:active, .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.is-active {
+.toolbar .toolbar-bar .toolbar-tab>.toolbar-icon-edit.toolbar-item,
+.toolbar .toolbar-bar .toolbar-tab>.toolbar-icon-edit.toolbar-item:hover,
+.toolbar .toolbar-bar .toolbar-tab>.toolbar-icon-edit.toolbar-item:active,
+.toolbar .toolbar-bar .toolbar-tab>.toolbar-icon-edit.toolbar-item.is-active {
   color: var(--colorGinAppBackground);
 }
 
-.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before, .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:hover::before, .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:active::before, .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.is-active::before {
+.toolbar .toolbar-bar .toolbar-tab>.toolbar-icon-edit.toolbar-item::before,
+.toolbar .toolbar-bar .toolbar-tab>.toolbar-icon-edit.toolbar-item:hover::before,
+.toolbar .toolbar-bar .toolbar-tab>.toolbar-icon-edit.toolbar-item:active::before,
+.toolbar .toolbar-bar .toolbar-tab>.toolbar-icon-edit.toolbar-item.is-active::before {
   background-image: none;
   background-color: var(--colorGinAppBackground);
 }
@@ -172,7 +176,7 @@
   color: var(--colorGinText);
 }
 
-.toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
+.toolbar .toolbar-tray .menu-item--active-trail>.toolbar-box a,
 .toolbar .toolbar-tray a.is-active {
   color: var(--colorGinPrimary);
   font-weight: 500;
@@ -180,8 +184,8 @@
 }
 
 @media (max-width: 976px) {
-  .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
-.toolbar .toolbar-tray a.is-active {
+  .toolbar .toolbar-tray .menu-item--active-trail>.toolbar-box a,
+  .toolbar .toolbar-tray a.is-active {
     background: var(--colorGinPrimaryLight);
   }
 }
@@ -197,19 +201,15 @@ a.toolbar-menu__trigger,
   #toolbar-item-administration-tray {
     display: block;
   }
-
   .toolbar-fixed {
     transition: var(--ginTransition);
   }
-
   .toolbar .toolbar-box {
     position: static;
   }
-
-  .toolbar-tab > .toolbar-item.toolbar-icon-menu {
+  .toolbar-tab>.toolbar-item.toolbar-icon-menu {
     display: none;
   }
-
   .toolbar-menu-administration a.toolbar-menu__trigger {
     position: fixed;
     inset-inline-start: 0;
@@ -226,15 +226,14 @@ a.toolbar-menu__trigger,
     transition: width var(--ginTransition);
     overflow: hidden;
   }
-
-  .toolbar-menu-administration a.toolbar-menu__trigger, .toolbar-menu-administration a.toolbar-menu__trigger:active, .toolbar-menu-administration a.toolbar-menu__trigger:focus {
+  .toolbar-menu-administration a.toolbar-menu__trigger,
+  .toolbar-menu-administration a.toolbar-menu__trigger:active,
+  .toolbar-menu-administration a.toolbar-menu__trigger:focus {
     background-color: transparent;
   }
-
   .toolbar-menu-administration a.toolbar-menu__trigger:hover::before {
     background-color: var(--colorGinTitle);
   }
-
   .toolbar-menu-administration a.toolbar-menu__trigger::before {
     content: "";
     position: absolute;
@@ -248,34 +247,27 @@ a.toolbar-menu__trigger,
     background-size: 11px 11px;
     transition: transform var(--ginTransition);
   }
-
   .toolbar-menu-administration a.toolbar-menu__trigger.is-active {
     display: flex;
     font-weight: normal;
     color: var(--colorGinTextLight);
     inline-size: var(--ginToolbarWidth);
   }
-
   .toolbar-menu-administration a.toolbar-menu__trigger.is-active:hover {
     color: var(--colorGinTitle);
   }
-
   .toolbar-menu-administration a.toolbar-menu__trigger.is-active:before {
     transform: rotate(180deg);
   }
-
   .toolbar-menu-administration a.toolbar-menu__trigger .menu {
     display: none;
   }
-
   .toolbar-menu-administration a.toolbar-menu__trigger .close {
     display: inline;
   }
-
   .toolbar-tab--toolbar-item-administration {
     order: -1;
   }
-
   .toolbar-menu-administration {
     display: flex;
     position: fixed;
@@ -286,48 +278,40 @@ a.toolbar-menu__trigger,
     max-inline-size: calc(100% - var(--ginToolbarHeight));
     background: var(--colorGinLayerBackground);
     -webkit-border-end: 1px solid var(--colorGinLayerBorder);
-            border-inline-end: 1px solid var(--colorGinLayerBorder);
+    border-inline-end: 1px solid var(--colorGinLayerBorder);
     transition: var(--ginTransition);
   }
-
   .gin--dark-mode .toolbar-menu-administration {
     box-shadow: 0 0 4px rgba(0, 0, 0, .1);
   }
-
   [data-toolbar-menu=open] .toolbar-menu-administration {
     inline-size: var(--ginToolbarWidth);
   }
-
   .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item.hover-intent ul {
     -webkit-margin-before: 0;
-            margin-block-start: 0;
+    margin-block-start: 0;
     -webkit-margin-start: calc(var(--ginToolbarWidth) - 2px);
-            margin-inline-start: calc(var(--ginToolbarWidth) - 2px);
+    margin-inline-start: calc(var(--ginToolbarWidth) - 2px);
   }
-
   .toolbar-vertical .toolbar-menu-administration {
     inline-size: var(--ginToolbarWidth);
   }
-
-  .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item {
+  .toolbar-vertical .toolbar-menu-administration>.toolbar-menu>.menu-item {
     -webkit-border-before: 0 none;
-            border-block-start: 0 none;
+    border-block-start: 0 none;
     -webkit-border-after: 0 none;
-            border-block-end: 0 none;
+    border-block-end: 0 none;
   }
-
-  .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
-.toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
+  .toolbar-vertical .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon,
+  .toolbar-vertical .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon {
     inline-size: auto;
     -webkit-padding-start: 3.5rem;
-            padding-inline-start: 3.5rem;
+    padding-inline-start: 3.5rem;
   }
-
-  .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
+  .toolbar-vertical .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu {
     inset-inline-start: var(--ginToolbarWidth);
   }
-
-  .toolbar-menu-administration > .toolbar-menu {
+  .toolbar-menu-administration>.toolbar-menu {
     align-self: flex-start;
     block-size: 100%;
     max-block-size: calc(100% - var(--ginToolbarWidthCollapsed));
@@ -338,13 +322,11 @@ a.toolbar-menu__trigger,
     flex-direction: column;
     overflow-x: hidden;
   }
-
-  .toolbar-menu-administration > .toolbar-menu .menu-item__spacer {
+  .toolbar-menu-administration>.toolbar-menu .menu-item__spacer {
     flex-grow: 1;
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon {
     font-size: 1rem;
     color: var(--colorGinTextLight);
     display: flex;
@@ -352,81 +334,71 @@ a.toolbar-menu__trigger,
     inline-size: calc(var(--ginToolbarWidth) - 16px);
     block-size: 48px;
     -webkit-padding-start: calc(var(--ginToolbarWidthCollapsed) - 9px);
-            padding-inline-start: calc(var(--ginToolbarWidthCollapsed) - 9px);
+    padding-inline-start: calc(var(--ginToolbarWidthCollapsed) - 9px);
     -webkit-padding-end: 0;
-            padding-inline-end: 0;
+    padding-inline-end: 0;
     margin: 0 8px 1px;
     border-radius: var(--ginBorderDefault);
     overflow: hidden;
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:hover,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:hover {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon:hover,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon:hover {
     color: var(--colorGinPrimary);
     background-color: transparent;
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.is-active,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.is-active {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon.is-active,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon.is-active {
     color: var(--colorGinPrimary);
     font-weight: 500;
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.is-active:before,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.is-active:before {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon.is-active:before,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon.is-active:before {
     background: var(--colorGinPrimary);
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.toolbar-handle,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.toolbar-handle {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon.toolbar-handle,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon.toolbar-handle {
     inline-size: var(--ginToolbarWidthCollapsed);
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.toolbar-handle:before,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.toolbar-handle:before {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon.toolbar-handle:before,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon.toolbar-handle:before {
     display: none;
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu {
     display: none;
     position: fixed;
     inset-block-start: 0;
     -webkit-margin-start: calc(var(--ginToolbarWidthCollapsed) - 1px);
-            margin-inline-start: calc(var(--ginToolbarWidthCollapsed) - 1px);
+    margin-inline-start: calc(var(--ginToolbarWidthCollapsed) - 1px);
     inline-size: var(--ginToolbarWidth);
     block-size: 100vh;
     max-inline-size: calc(100% - var(--ginToolbarHeight));
     box-shadow: none;
     -webkit-border-start: 1px solid var(--colorGinLayerBorder);
-            border-inline-start: 1px solid var(--colorGinLayerBorder);
+    border-inline-start: 1px solid var(--colorGinLayerBorder);
     overflow-y: auto;
     overflow-x: hidden;
   }
-
-  .gin--dark-mode .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
+  .gin--dark-mode .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu {
     -webkit-border-start: 1px solid #1b1b1d;
-            border-inline-start: 1px solid #1b1b1d;
+    border-inline-start: 1px solid #1b1b1d;
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu a,
-.toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu span {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu a,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu span {
     color: var(--colorGinText);
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu a.is-active,
-.toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu span.is-active {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu a.is-active,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu span.is-active {
     color: var(--colorGinPrimary);
     font-weight: 500;
     background: var(--colorGinPrimaryLight);
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu a.is-active:hover,
-.toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu span.is-active:hover {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu a.is-active:hover,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu span.is-active:hover {
     color: var(--colorGinPrimaryHover);
     background: var(--colorGinPrimaryLightHover);
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__title, .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__sub-title {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu__title,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu__sub-title {
     position: relative;
     display: block;
     min-block-size: 36px;
@@ -435,75 +407,67 @@ a.toolbar-menu__trigger,
     padding: 0;
     margin: 1rem .75rem 1.25rem .75rem;
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__title a, .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__sub-title a {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu__title a,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu__sub-title a {
     font-weight: 500;
     color: var(--colorGinTitle);
     padding: .75rem;
     border-radius: var(--ginBorderDefault);
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__sub-title {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu__sub-title {
     font-size: 1.375em;
     letter-spacing: -0.01em;
     -webkit-margin-after: 1.275rem;
-            margin-block-end: 1.275rem;
+    margin-block-end: 1.275rem;
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__sub-title a {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu__sub-title a {
     padding: .9rem .75rem;
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu .menu-item {
     -webkit-border-before: 0 none;
-            border-block-start: 0 none;
+    border-block-start: 0 none;
     -webkit-border-start: 0 none;
-            border-inline-start: 0 none;
+    border-inline-start: 0 none;
     -webkit-border-after: 0 none;
-            border-block-end: 0 none;
+    border-block-end: 0 none;
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item .toolbar-icon {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu .menu-item .toolbar-icon {
     font-size: .9375rem;
     padding: 1em 2rem 1em .75rem;
     margin: .25em .75rem;
     border-radius: var(--ginBorderDefault);
     overflow: hidden;
   }
-
-  .toolbar-menu-administration > .toolbar-menu, .toolbar-menu-administration > .toolbar-menu .toolbar-menu {
+  .toolbar-menu-administration>.toolbar-menu,
+  .toolbar-menu-administration>.toolbar-menu .toolbar-menu {
     background: linear-gradient(var(--colorGinLayerBackground) 30%, var(--colorGinLayerBackground)), linear-gradient(var(--colorGinLayerBackground), var(--colorGinLayerBackground) 80%) 0 100%, radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .15), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .15), rgba(0, 0, 0, 0)) 0 100%;
     background-color: var(--colorGinLayerBackground);
     background-repeat: no-repeat;
     background-attachment: local, local, scroll, scroll;
     background-size: 100% 40px, 100% 40px, 100% 16px, 100% 16px;
   }
-
-  .toolbar-menu-administration > .toolbar-menu .toolbar-menu {
+  .toolbar-menu-administration>.toolbar-menu .toolbar-menu {
     background-size: 100% 40px, 100% 40px, 100% 24px, 100% 24px;
   }
-
-  .toolbar-menu-administration .menu-item.hover-intent > .toolbar-menu {
+  .toolbar-menu-administration .menu-item.hover-intent>.toolbar-menu {
     z-index: 2;
     display: block;
     -webkit-border-end: 1px solid rgba(0, 0, 0, .075);
-            border-inline-end: 1px solid rgba(0, 0, 0, .075);
+    border-inline-end: 1px solid rgba(0, 0, 0, .075);
     box-shadow: 7px 0 16px rgba(0, 0, 0, .075);
   }
-
-  .toolbar-menu-administration .menu-item .menu-item:hover > .toolbar-icon {
+  .toolbar-menu-administration .menu-item .menu-item:hover>.toolbar-icon {
     color: var(--colorGinPrimaryHover);
     background: var(--colorGinPrimaryLight);
   }
-
   .toolbar .toolbar-toggle-orientation button {
     display: none;
   }
 }
 
-.gin--dark-mode.toolbar-horizontal .toolbar-tray > .toolbar-lining {
+.gin--dark-mode.toolbar-horizontal .toolbar-tray>.toolbar-lining {
   -webkit-padding-end: 0;
-          padding-inline-end: 0;
+  padding-inline-end: 0;
 }
 
 .toolbar .toolbar-icon.toolbar-handle:focus {
@@ -517,34 +481,44 @@ a.toolbar-menu__trigger,
 }
 
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
-.toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
+.toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded>a:focus {
   position: relative;
 }
 
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded::before,
-.toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus::before {
+.toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded>a:focus::before {
   z-index: 1;
   inset-block-start: 14px;
   inset-inline-end: 20px;
 }
 
-.toolbar-menu-administration > .toolbar-menu > .menu-item:hover {
+.toolbar-menu-administration>.toolbar-menu>.menu-item:hover {
   background: transparent;
 }
 
 @media (min-width: 1024px) {
-  .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.hover-intent > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-icon,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-box>a.toolbar-icon,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon:focus,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item.hover-intent>.toolbar-icon,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-icon,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-box>a.toolbar-icon {
     box-shadow: none;
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::before,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.hover-intent > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::before {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-icon::before,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-box>a.toolbar-icon::before,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon:focus::before,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item.hover-intent>.toolbar-icon::before,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-icon::before,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-box>a.toolbar-icon::before {
     background: var(--colorGinPrimaryActive);
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::after,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.hover-intent > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-icon::after,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-box>a.toolbar-icon::after,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon:focus::after,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item.hover-intent>.toolbar-icon::after,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-icon::after,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-box>a.toolbar-icon::after {
     content: "";
     display: block;
     position: absolute;
@@ -555,15 +529,20 @@ a.toolbar-menu__trigger,
     background: var(--colorGinPrimaryLight);
     border-radius: var(--ginBorderDefault);
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon:focus,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.hover-intent > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon:focus {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-icon:focus,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-box>a.toolbar-icon:focus,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon:focus:focus,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item.hover-intent>.toolbar-icon:focus,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-icon:focus,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-box>a.toolbar-icon:focus {
     background: transparent;
   }
-
-  .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon:focus::after,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.hover-intent > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon:focus::after {
+  .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-icon:focus::after,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-box>a.toolbar-icon:focus::after,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon:focus:focus::after,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item.hover-intent>.toolbar-icon:focus::after,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-icon:focus::after,
+  .toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-box>a.toolbar-icon:focus::after {
     box-shadow: inset 0 0 0 1px var(--colorGinFocusBorder), inset 0 0 0 4px var(--colorGinFocus);
   }
 }
-

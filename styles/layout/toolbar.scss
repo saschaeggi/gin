@@ -1,6 +1,6 @@
 // Toolbar Variables
 :root {
-  --ginToolbarblock-size: 39px;
+  --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
   --ginHorizontalToolbarOffset: var(--ginToolbarHeight); // Needs px to work in calc() functions.
   --ginVerticalToolbarOffset: 0px; // Needs px to work in calc() functions.

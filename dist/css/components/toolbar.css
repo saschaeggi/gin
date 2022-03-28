@@ -19,7 +19,6 @@ body.gin--classic-toolbar {
 
 @media (min-width: 588px) {
   .toolbar .toolbar-bar .user-menu {
-    order: 99;
     flex-grow: 1;
     flex-shrink: 0;
     text-align: end;
