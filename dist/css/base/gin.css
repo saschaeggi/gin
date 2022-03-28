@@ -3335,6 +3335,7 @@ hr {
 
 .admin-item__description {
   font-size: .875rem;
+  color: var(--colorGinTextLight);
 }
 
 .admin-item .admin-item__link {

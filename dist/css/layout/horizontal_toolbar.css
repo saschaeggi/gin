@@ -5,7 +5,7 @@
   --ginVerticalToolbarOffset: 0px;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 976px) {
   :root {
     --ginToolbarHeight: 53px;
     --ginScrollOffset: 180px;
@@ -29,7 +29,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 976px) {
   .toolbar .toolbar-bar {
     height: 0;
   }
