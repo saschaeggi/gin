@@ -140,7 +140,7 @@
   color: var(--colorGinText);
 }
 
-#toolbar-bar.js-settings-tray-edit-mode {
+#gin-toolbar-bar.js-settings-tray-edit-mode {
   justify-content: flex-end;
 }
 

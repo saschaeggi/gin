@@ -20,8 +20,9 @@
  * @see template_preprocess_toolbar()
  */
 #}
+{% set gin_toolbar_id = toolbar_variant != 'classic' ? 'gin-toolbar-bar' : 'toolbar-bar' %}
 <div{{ attributes.addClass('toolbar') }}>
-  <nav{{ toolbar_attributes.addClass('toolbar-bar', 'clearfix') }}>
+  <nav{{ toolbar_attributes.addClass('toolbar-bar', 'clearfix').setAttribute('id', gin_toolbar_id) }}>
     <h2 class="visually-hidden">{{ toolbar_heading }}</h2>
     {% for key, tab in tabs %}
       {% set tray = trays[key] %}

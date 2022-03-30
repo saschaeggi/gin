@@ -47,7 +47,7 @@
       });
 
       // Change when clicked
-      $('#toolbar-bar .toolbar-item', context).on('click', function () {
+      $('#gin-toolbar-bar .toolbar-item', context).on('click', function () {
         $('body').attr('data-toolbar-tray', $(this).data('toolbar-tray'));
 
         // Sticky toolbar width

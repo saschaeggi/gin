@@ -411,15 +411,15 @@ body.gin--classic-toolbar {
   box-shadow: 0 8px 14px rgba(0, 0, 0, .15);
 }
 
-#toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon.toolbar-icon-edit.toolbar-item.is-active, #toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon-edit.toolbar-item.is-active.responsive-preview-icon {
+#gin-toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon.toolbar-icon-edit.toolbar-item.is-active, #gin-toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon-edit.toolbar-item.is-active.responsive-preview-icon {
   color: var(--colorGinAppBackground);
 }
 
-#toolbar-bar.js-settings-tray-edit-mode {
+#gin-toolbar-bar.js-settings-tray-edit-mode {
   background: var(--colorGinPrimary);
 }
 
-#toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon.toolbar-icon-edit.toolbar-item.is-active:hover, #toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon-edit.toolbar-item.is-active.responsive-preview-icon:hover {
+#gin-toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon.toolbar-icon-edit.toolbar-item.is-active:hover, #gin-toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon-edit.toolbar-item.is-active.responsive-preview-icon:hover {
   background: var(--colorGinPrimaryHover);
 }
 
@@ -617,36 +617,36 @@ body.gin--classic-toolbar {
           mask-position: center center;
 }
 
-.admin-toolbar-search-autocomplete-list {
+.ui-autocomplete.admin-toolbar-search-autocomplete-list {
   color: var(--colorGinText);
   background-color: var(--colorGinLayer3Background);
   border-radius: var(--ginBorderMedium);
   box-shadow: var(--ginShadowLevel2);
 }
 
-.admin-toolbar-search-autocomplete-list.ui-widget-content {
+.ui-autocomplete.admin-toolbar-search-autocomplete-list.ui-widget-content {
   padding-top: .5rem;
   padding-bottom: .5rem;
   border: 0 none;
   overflow-y: auto;
 }
 
-.admin-toolbar-search-autocomplete-list .ui-menu-item {
+.ui-autocomplete.admin-toolbar-search-autocomplete-list .ui-menu-item {
   padding: 0 .5rem;
 }
 
-.admin-toolbar-search-autocomplete-list .ui-menu-item span.admin-toolbar-search-url {
+.ui-autocomplete.admin-toolbar-search-autocomplete-list .ui-menu-item span.admin-toolbar-search-url {
   display: none;
 }
 
-.admin-toolbar-search-autocomplete-list .ui-menu-item-wrapper {
+.ui-autocomplete.admin-toolbar-search-autocomplete-list .ui-menu-item-wrapper {
   font-size: .875rem;
   line-height: 1.3;
   padding: .5rem 1rem;
   border-radius: var(--ginBorderSmall);
 }
 
-.admin-toolbar-search-autocomplete-list .ui-menu-item-wrapper.ui-state-active {
+.ui-autocomplete.admin-toolbar-search-autocomplete-list .ui-menu-item-wrapper.ui-state-active {
   color: var(--colorGinButtonText);
   background-color: var(--colorGinPrimary);
   border: 0 none;

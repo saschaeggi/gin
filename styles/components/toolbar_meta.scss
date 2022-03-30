@@ -383,6 +383,7 @@
   }
 }
 
-.admin-toolbar-search-autocomplete-list {
+.ui-autocomplete.admin-toolbar-search-autocomplete-list {
   max-width: 320px;
+  border-radius: var(--ginBorderDefault);
 }
