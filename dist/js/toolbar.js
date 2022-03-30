@@ -13,7 +13,7 @@
           detail: "true" === active
         });
         document.dispatchEvent(event);
-      })), $("#toolbar-bar .toolbar-item", context).on("click", (function() {
+      })), $("#gin-toolbar-bar .toolbar-item", context).on("click", (function() {
         $("body").attr("data-toolbar-tray", $(this).data("toolbar-tray")), $(document).ready((() => {
           $(".sticky-header").each((function() {
             $(this).width($(".sticky-table").width());
