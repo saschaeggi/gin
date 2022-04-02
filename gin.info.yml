@@ -148,6 +148,11 @@ libraries-override:
       theme:
         css/paragraphs_ee.off_canvas.css: false
 
+  claro/global-styling:
+    css:
+      layout:
+        css/layout/local-actions.css: false
+
 libraries-extend:
   core/drupal.autocomplete:
     - gin/autocomplete
