@@ -216,8 +216,7 @@ button.link:active,
             margin-block-end: 0;
   }
 
-  .region-sticky__items__inner .block-page-title-block,
-.region-sticky__items__inner .local-actions {
+  .region-sticky__items__inner .block-page-title-block {
     margin: 0;
   }
 }
@@ -4181,6 +4180,22 @@ tr.color-error:focus,
   line-height: 1.3;
   -webkit-margin-before: .5rem;
           margin-block-start: .5rem;
+}
+
+/**
+ * Action link layout styles.
+ */
+
+.local-actions {
+  font-size: 0;
+  margin: 1rem -0.25rem .5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.local-actions__item {
+  display: inline-block;
+  margin: 0 .25rem .5rem;
 }
 
 .shepherd-element {
