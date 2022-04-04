@@ -29,8 +29,12 @@
   cursor: pointer;
 }
 
-.entities-list .item-container.label {
+[dir="ltr"] .entities-list .item-container.label {
   padding: .75rem 3rem .75rem .75rem;
+}
+
+[dir="rtl"] .entities-list .item-container.label {
+  padding: .75rem .75rem .75rem 3rem;
 }
 
 .entities-list .item-container img {
@@ -54,7 +58,16 @@
   margin: .75rem;
   position: absolute;
   top: 0;
+}
+
+[dir="ltr"] .entities-list .item-container > .entity-browser-remove-selected-entity,
+[dir="ltr"] .entities-list .item-container > .remove-button {
   right: 0;
+}
+
+[dir="rtl"] .entities-list .item-container > .entity-browser-remove-selected-entity,
+[dir="rtl"] .entities-list .item-container > .remove-button {
+  left: 0;
 }
 
 .entities-list .item-container > .entity-browser-remove-selected-entity:hover, .entities-list .item-container > .entity-browser-remove-selected-entity:focus,
@@ -81,7 +94,16 @@
   margin: .75rem;
   position: absolute;
   bottom: 0;
+}
+
+[dir="ltr"] .entities-list .item-container > .replace-button,
+[dir="ltr"] .entities-list .item-container > .edit-button {
   right: 0;
+}
+
+[dir="rtl"] .entities-list .item-container > .replace-button,
+[dir="rtl"] .entities-list .item-container > .edit-button {
+  left: 0;
 }
 
 .entities-list .item-container > .replace-button:hover, .entities-list .item-container > .replace-button:focus,
@@ -130,8 +152,15 @@
 .gin-entity-browser .entity-browser-form .views-row .views-field-entity-browser-select {
   position: absolute;
   top: 0;
-  left: 0;
   margin: .75rem;
+}
+
+[dir="ltr"] .gin-entity-browser .entity-browser-form .views-row .views-field-entity-browser-select {
+  left: 0;
+}
+
+[dir="rtl"] .gin-entity-browser .entity-browser-form .views-row .views-field-entity-browser-select {
+  right: 0;
 }
 
 .gin-entity-browser .entity-browser-form .views-row .views-field-entity-browser-select .form-item {
@@ -170,8 +199,15 @@
 }
 
 .eb-tabs {
-  margin-left: 4px;
   margin-bottom: .75em;
+}
+
+[dir="ltr"] .eb-tabs {
+  margin-left: 4px;
+}
+
+[dir="rtl"] .eb-tabs {
+  margin-right: 4px;
 }
 
 .eb-tabs ul {

@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
+const postcssRTLCSS = require('postcss-rtlcss');
 
 module.exports = {
   entry: {
@@ -135,6 +136,7 @@ module.exports = {
               postcssOptions: {
                 plugins: [
                   autoprefixer(),
+                  postcssRTLCSS(),
                   ['postcss-perfectionist', {
                     format: 'expanded',
                     indentSize: 2,

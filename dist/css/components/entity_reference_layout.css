@@ -82,8 +82,12 @@
   opacity: 1;
 }
 
-.erl-field .erl-add-content--single button .icon {
+[dir="ltr"] .erl-field .erl-add-content--single button .icon {
   margin-right: .5rem;
+}
+
+[dir="rtl"] .erl-field .erl-add-content--single button .icon {
+  margin-left: .5rem;
 }
 
 .erl-field .layout-radio-item > div {
@@ -91,8 +95,12 @@
   align-items: center;
 }
 
-.erl-field .layout-radio-item .form-item {
+[dir="ltr"] .erl-field .layout-radio-item .form-item {
   margin-left: 8px;
+}
+
+[dir="rtl"] .erl-field .layout-radio-item .form-item {
+  margin-right: 8px;
 }
 
 .erl-field .layout-radio-item.active {
@@ -134,19 +142,36 @@
   margin: -1px;
   position: absolute;
   top: 12px;
-  left: 50%;
-  transform: translate(-50%);
   border: 0 none;
   font-style: normal;
   color: var(--colorGinTextLight);
   opacity: .75;
 }
 
+[dir="ltr"] .erl-item label.paragraph-type-label,
+[dir="ltr"] .erl-item label.paragraph-type--label {
+  left: 50%;
+  transform: translate(-50%);
+}
+
+[dir="rtl"] .erl-item label.paragraph-type-label,
+[dir="rtl"] .erl-item label.paragraph-type--label {
+  right: 50%;
+  transform: translate(50%);
+}
+
 .erl-item .layout-controls {
   opacity: 1;
   position: absolute;
-  left: 4px;
   top: 8px;
+}
+
+[dir="ltr"] .erl-item .layout-controls {
+  left: 4px;
+}
+
+[dir="rtl"] .erl-item .layout-controls {
+  right: 4px;
 }
 
 .erl-item .paragraph .field {
@@ -170,14 +195,28 @@
 
 .erl-item .paragraph .field--name-field-paragraphs .field__item {
   flex-basis: 100%;
+}
+
+[dir="ltr"] .erl-item .paragraph .field--name-field-paragraphs .field__item {
   margin-right: .5rem;
+}
+
+[dir="rtl"] .erl-item .paragraph .field--name-field-paragraphs .field__item {
+  margin-left: .5rem;
 }
 
 .erl-item .erl-actions {
   visibility: visible;
   position: absolute;
-  right: 4px;
   top: 8px;
+}
+
+[dir="ltr"] .erl-item .erl-actions {
+  right: 4px;
+}
+
+[dir="rtl"] .erl-item .erl-actions {
+  left: 4px;
 }
 
 .erl-layout.erl-item.form-wrapper:hover > button.erl-add-content__toggle, .erl-layout.erl-item.form-wrapper:hover > button.layout-paragraphs-add-content__toggle {
