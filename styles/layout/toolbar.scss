@@ -29,6 +29,10 @@
 .toolbar {
   .toolbar-bar {
     box-shadow: none;
+    // Reset `box-shadow` style from the `.toolbar-bar` class if we use RTL mode.
+    [dir="rtl"] & {
+      box-shadow: none;
+    }
 
     @include mq($breakpointXSmall) {
       display: flex;
@@ -389,16 +393,21 @@ a.toolbar-menu__trigger,
 
         .toolbar-menu {
           display: none;
-          position: fixed;
           top: 0;
           margin-left: calc(var(--ginToolbarWidthCollapsed) - 1px);
-          width: var(--ginToolbarWidth);
           height: 100vh;
           max-width: calc(100% - var(--ginToolbarHeight));
           box-shadow: none;
           border-left: 1px solid var(--colorGinLayerBorder);
           overflow-y: auto;
           overflow-x: hidden;
+
+          &,
+          [dir='rtl'] &,
+          [dir='ltr'] & {
+            position: fixed;
+            width: var(--ginToolbarWidth);
+          }
 
           .gin--dark-mode & {
             border-left: 1px solid $colorDarkAppBackground;

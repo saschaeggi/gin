@@ -37,8 +37,27 @@
   height: 20px;
   display: inline-block;
   position: absolute;
-  left: 8px;
   margin-top: 2px;
+}
+
+[dir="ltr"] .upgrade-status-summary tr.not-scanned > td.status-info:before,
+[dir="ltr"] .upgrade-status-error-list tr.no-known-error > td.status-info:before,
+[dir="ltr"] .upgrade-status-summary tr.no-known-error > td.status-info:before,
+[dir="ltr"] .upgrade-status-error-list tr.known-warnings > td.status-info:before,
+[dir="ltr"] .upgrade-status-summary tr.known-warnings > td.status-info:before,
+[dir="ltr"] .upgrade-status-error-list tr.known-errors > td.status-info:before,
+[dir="ltr"] .upgrade-status-summary tr.known-errors > td.status-info:before {
+  left: 8px;
+}
+
+[dir="rtl"] .upgrade-status-summary tr.not-scanned > td.status-info:before,
+[dir="rtl"] .upgrade-status-error-list tr.no-known-error > td.status-info:before,
+[dir="rtl"] .upgrade-status-summary tr.no-known-error > td.status-info:before,
+[dir="rtl"] .upgrade-status-error-list tr.known-warnings > td.status-info:before,
+[dir="rtl"] .upgrade-status-summary tr.known-warnings > td.status-info:before,
+[dir="rtl"] .upgrade-status-error-list tr.known-errors > td.status-info:before,
+[dir="rtl"] .upgrade-status-summary tr.known-errors > td.status-info:before {
+  right: 8px;
 }
 
 .upgrade-status-counter__status-icon--not-scanned:before {
@@ -46,9 +65,16 @@
           mask-size: 24px 24px;
 }
 
-.upgrade-status-summary .select-all,
-.upgrade-status-summary th.project-label, .upgrade-status-summary th.requirement-label {
+[dir="ltr"] .upgrade-status-summary .select-all,
+[dir="ltr"] .upgrade-status-summary th.project-label,
+[dir="ltr"] .upgrade-status-summary th.requirement-label {
   border-left: 8px solid var(--colorGinTableHeader);
+}
+
+[dir="rtl"] .upgrade-status-summary .select-all,
+[dir="rtl"] .upgrade-status-summary th.project-label,
+[dir="rtl"] .upgrade-status-summary th.requirement-label {
+  border-right: 8px solid var(--colorGinTableHeader);
 }
 
 .upgrade-status-error-list tr.rector-covered,
