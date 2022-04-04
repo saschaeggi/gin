@@ -4,15 +4,26 @@
 
 .paragraphs-tabs-wrapper .paragraphs-subform {
   margin-top: 0;
+}
+
+[dir="ltr"] .paragraphs-tabs-wrapper .paragraphs-subform {
   margin-right: 1rem;
+}
+
+[dir="rtl"] .paragraphs-tabs-wrapper .paragraphs-subform {
+  margin-left: 1rem;
 }
 
 .paragraphs-tabs-wrapper .tabledrag-toggle-weight-wrapper {
   padding-bottom: 12px;
 }
 
-.paragraphs-tabs-wrapper .field-multiple-table thead th {
+[dir="ltr"] .paragraphs-tabs-wrapper .field-multiple-table thead th {
   padding: .5rem 1.5rem .5rem .5rem;
+}
+
+[dir="rtl"] .paragraphs-tabs-wrapper .field-multiple-table thead th {
+  padding: .5rem .5rem .5rem 1.5rem;
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table thead th.th__order {
@@ -37,7 +48,14 @@
   margin-top: 1rem;
   border: 1px solid var(--colorGinTableBorder);
   border-radius: var(--ginBorderDefault);
+}
+
+[dir="ltr"] .paragraphs-tabs-wrapper .field-multiple-table .draggable {
   box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
+}
+
+[dir="rtl"] .paragraphs-tabs-wrapper .field-multiple-table .draggable {
+  box-shadow: -4px 4px 10px var(--colorGinLayer2Background);
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable.drag {
@@ -53,11 +71,18 @@
   display: block;
   position: absolute;
   top: .5rem;
-  left: .5rem;
   width: 4px;
   height: calc(100% - 1rem);
   background: var(--colorGinWarning);
   border-radius: var(--ginBorderTiny);
+}
+
+[dir="ltr"] .paragraphs-tabs-wrapper .field-multiple-table .draggable.drag-previous::before {
+  left: .5rem;
+}
+
+[dir="rtl"] .paragraphs-tabs-wrapper .field-multiple-table .draggable.drag-previous::before {
+  right: .5rem;
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable td {
@@ -66,7 +91,14 @@
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable .has-multiple-fields-remove-button {
   width: 100%;
+}
+
+[dir="ltr"] .paragraphs-tabs-wrapper .field-multiple-table .draggable .has-multiple-fields-remove-button {
   padding-right: 0 !important;
+}
+
+[dir="rtl"] .paragraphs-tabs-wrapper .field-multiple-table .draggable .has-multiple-fields-remove-button {
+  padding-left: 0 !important;
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable .tabledrag-handle::after {
@@ -97,16 +129,28 @@
   color: var(--colorGinTitle);
   position: static;
   border: 0 none;
+}
+
+[dir="ltr"] .paragraphs-tabs-wrapper .paragraph-type-label {
   padding-left: 0;
+}
+
+[dir="rtl"] .paragraphs-tabs-wrapper .paragraph-type-label {
+  padding-right: 0;
 }
 
 .paragraphs-tabs-wrapper .paragraphs-subform .paragraph-type-label {
   font-size: 14px;
 }
 
-.paragraphs-tabs-wrapper .paragraph-type-add-modal,
-.paragraphs-tabs-wrapper .field--widget-paragraphs .paragraphs-dropbutton-wrapper {
+[dir="ltr"] .paragraphs-tabs-wrapper .paragraph-type-add-modal,
+[dir="ltr"] .paragraphs-tabs-wrapper .field--widget-paragraphs .paragraphs-dropbutton-wrapper {
   margin-right: .5rem;
+}
+
+[dir="rtl"] .paragraphs-tabs-wrapper .paragraph-type-add-modal,
+[dir="rtl"] .paragraphs-tabs-wrapper .field--widget-paragraphs .paragraphs-dropbutton-wrapper {
+  margin-left: .5rem;
 }
 
 .paragraph .contextual {
@@ -130,7 +174,6 @@
   display: block;
   position: absolute;
   top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   background-image: none;
@@ -143,6 +186,14 @@
           mask-position: center center;
   -webkit-mask-size: 16px 16px;
           mask-size: 16px 16px;
+}
+
+[dir="ltr"] .paragraphs-dropdown-toggle::after {
+  left: 0;
+}
+
+[dir="rtl"] .paragraphs-dropdown-toggle::after {
+  right: 0;
 }
 
 .paragraphs-dropdown-toggle:hover, .paragraphs-dropdown-toggle:active, .paragraphs-dropdown-toggle:focus {
@@ -169,16 +220,35 @@
 .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after,
 .js .field--widget-paragraphs .draggable .tabledrag-handle::after {
   position: relative;
-  left: 0;
   padding: 0;
+}
+
+[dir="ltr"] .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after,
+[dir="ltr"] .js .field--widget-paragraphs .draggable .tabledrag-handle::after {
+  left: 0;
   margin-left: 0;
+}
+
+[dir="rtl"] .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after,
+[dir="rtl"] .js .field--widget-paragraphs .draggable .tabledrag-handle::after {
+  right: 0;
+  margin-right: 0;
 }
 
 .js .paragraphs-collapsed-description::after,
 .js .draggable:hover .paragraphs-collapsed-description::after {
   top: 2px;
   background: var(--colorGinLayer2Background);
+}
+
+[dir="ltr"] .js .paragraphs-collapsed-description::after,
+[dir="ltr"] .js .draggable:hover .paragraphs-collapsed-description::after {
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayer2Background) 100%);
+}
+
+[dir="rtl"] .js .paragraphs-collapsed-description::after,
+[dir="rtl"] .js .draggable:hover .paragraphs-collapsed-description::after {
+  background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, var(--colorGinLayer2Background) 100%);
 }
 
 .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
@@ -194,20 +264,40 @@
 .js .field--widget-entity-reference-paragraphs .paragraphs-collapsed-description::after,
 .js .field--widget-entity-reference-paragraphs .draggable:hover .paragraphs-collapsed-description::after {
   background: var(--colorGinLayerBackground);
+}
+
+[dir="ltr"] .js .field--widget-entity-reference-paragraphs .paragraphs-collapsed-description::after,
+[dir="ltr"] .js .field--widget-entity-reference-paragraphs .draggable:hover .paragraphs-collapsed-description::after {
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayerBackground) 100%);
+}
+
+[dir="rtl"] .js .field--widget-entity-reference-paragraphs .paragraphs-collapsed-description::after,
+[dir="rtl"] .js .field--widget-entity-reference-paragraphs .draggable:hover .paragraphs-collapsed-description::after {
+  background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, var(--colorGinLayerBackground) 100%);
 }
 
 .js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple {
   padding: .5rem;
 }
 
-.js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple .dropbutton-widget {
+[dir="ltr"] .js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple .dropbutton-widget {
   margin-right: .5rem;
+}
+
+[dir="rtl"] .js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple .dropbutton-widget {
+  margin-left: .5rem;
 }
 
 .js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
   top: 0;
+}
+
+[dir="ltr"] .js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
   right: -4px;
+}
+
+[dir="rtl"] .js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
+  left: -4px;
 }
 
 .paragraphs-dropdown-actions {
@@ -231,7 +321,14 @@
 
 .js .paragraph-type-icon {
   padding: .25rem;
+}
+
+[dir="ltr"] .js .paragraph-type-icon {
   margin-right: .5rem;
+}
+
+[dir="rtl"] .js .paragraph-type-icon {
+  margin-left: .5rem;
 }
 
 .js .paragraph-top {
@@ -300,13 +397,22 @@
   align-items: center;
 }
 
-.field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple {
+[dir="ltr"] .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple {
   margin-right: .5rem;
 }
 
-.field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple .placeholder,
-.field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple ~ .placeholder {
+[dir="rtl"] .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple {
+  margin-left: .5rem;
+}
+
+[dir="ltr"] .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple .placeholder,
+[dir="ltr"] .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple ~ .placeholder {
   margin-left: .25rem;
+}
+
+[dir="rtl"] .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple .placeholder,
+[dir="rtl"] .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple ~ .placeholder {
+  margin-right: .25rem;
 }
 
 .toolbar-fixed .is-horizontal .paragraphs-tabs {
@@ -320,9 +426,14 @@
   top: calc(var(--ginHorizontalToolbarOffset) + var(--ginStickyHeight));
 }
 
-.toolbar-fixed .is-horizontal .paragraphs-tabs .tabs__tab {
+[dir="ltr"] .toolbar-fixed .is-horizontal .paragraphs-tabs .tabs__tab {
   float: left;
   margin-right: 1rem;
+}
+
+[dir="rtl"] .toolbar-fixed .is-horizontal .paragraphs-tabs .tabs__tab {
+  float: right;
+  margin-left: 1rem;
 }
 
 .toolbar-fixed .is-horizontal .paragraphs-tabs .tabs__tab a {
@@ -340,9 +451,16 @@
   content: "";
   position: absolute;
   bottom: 0;
-  left: 0;
   display: block;
   width: 100%;
   border-bottom: 2px solid var(--colorGinPrimary);
+}
+
+[dir="ltr"] .toolbar-fixed .is-horizontal .paragraphs-tabs .tabs__tab.is-active a::after {
+  left: 0;
+}
+
+[dir="rtl"] .toolbar-fixed .is-horizontal .paragraphs-tabs .tabs__tab.is-active a::after {
+  right: 0;
 }
 
