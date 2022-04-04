@@ -9,7 +9,14 @@
 
 .modules-tabs__pane {
   padding: 1.5rem 1.5rem 0 1.5rem;
+}
+
+[dir="ltr"] .modules-tabs__pane {
   border-left: 1px solid var(--colorGinBorder);
+}
+
+[dir="rtl"] .modules-tabs__pane {
+  border-right: 1px solid var(--colorGinBorder);
 }
 
 .modules-tabs__pane table tr.enabling {
@@ -50,7 +57,14 @@
 
 #module-filter-update-status-form .table-filter {
   float: none;
+}
+
+[dir="ltr"] #module-filter-update-status-form .table-filter {
   text-align: left;
+}
+
+[dir="rtl"] #module-filter-update-status-form .table-filter {
+  text-align: right;
 }
 
 #module-filter-update-status-form .table-filter .winnow-input {
@@ -63,7 +77,14 @@
 
 #module-filter-update-status-form .table-filter .winnow-clear:after {
   top: 10px;
+}
+
+[dir="ltr"] #module-filter-update-status-form .table-filter .winnow-clear:after {
   right: 8px;
+}
+
+[dir="rtl"] #module-filter-update-status-form .table-filter .winnow-clear:after {
+  left: 8px;
 }
 
 #module-filter-update-status-form .table-filter input.form-search {
@@ -79,12 +100,20 @@
   width: 100%;
 }
 
-.module-filter-status {
+[dir="ltr"] .module-filter-status {
   margin-left: -1em;
 }
 
-.modules-tabs .module-filter-status {
+[dir="rtl"] .module-filter-status {
+  margin-right: -1em;
+}
+
+[dir="ltr"] .modules-tabs .module-filter-status {
   margin-left: 0;
+}
+
+[dir="rtl"] .modules-tabs .module-filter-status {
+  margin-right: 0;
 }
 
 .system-modules td details a {

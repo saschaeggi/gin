@@ -1,14 +1,26 @@
 @media (min-width: 1024px) {
-  .gin--edit-form {
+  [dir="ltr"] .gin--edit-form {
     padding-right: var(--ginSidebarWidth);
   }
 
-  .gin--edit-form .dialog-off-canvas-main-canvas {
+  [dir="rtl"] .gin--edit-form {
+    padding-left: var(--ginSidebarWidth);
+  }
+
+  [dir="ltr"] .gin--edit-form .dialog-off-canvas-main-canvas {
     transition: padding-left var(--ginTransition);
   }
 
-  .gin--edit-form.js-off-canvas-dialog-open {
+  [dir="rtl"] .gin--edit-form .dialog-off-canvas-main-canvas {
+    transition: padding-right var(--ginTransition);
+  }
+
+  [dir="ltr"] .gin--edit-form.js-off-canvas-dialog-open {
     padding-right: 0;
+  }
+
+  [dir="rtl"] .gin--edit-form.js-off-canvas-dialog-open {
+    padding-left: 0;
   }
 
   .gin--edit-form.js-off-canvas-dialog-open .layout-region.layout-region-node-secondary {
@@ -33,7 +45,16 @@
 .gin--edit-form .layout-region-node-main,
 .gin--edit-form .layout-region-node-footer {
   width: 100%;
+}
+
+[dir="ltr"] .gin--edit-form .layout-region-node-main,
+[dir="ltr"] .gin--edit-form .layout-region-node-footer {
   padding-right: 0;
+}
+
+[dir="rtl"] .gin--edit-form .layout-region-node-main,
+[dir="rtl"] .gin--edit-form .layout-region-node-footer {
+  padding-left: 0;
 }
 
 @media (min-width: 1024px) {
@@ -93,14 +114,22 @@
     width: var(--ginSidebarWidth) !important;
     position: fixed;
     top: 0;
-    right: 0;
     margin: 0;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     height: 100%;
     background: var(--colorGinLayerBackground);
+  }
+
+  [dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
+    right: 0;
     border-left: 1px solid var(--colorGinLayerBorder);
+  }
+
+  [dir="rtl"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
+    left: 0;
+    border-right: 1px solid var(--colorGinLayerBorder);
   }
 
   .gin--dark-mode .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
@@ -163,17 +192,38 @@
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary {
   display: block;
+}
+
+[dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary {
   padding-left: 3rem;
+}
+
+[dir="rtl"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary {
+  padding-right: 3rem;
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary .details-title {
   position: static;
+}
+
+[dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary .details-title {
   padding-left: 0;
+}
+
+[dir="rtl"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary .details-title {
+  padding-right: 0;
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary::before {
   top: 2rem;
+}
+
+[dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary::before {
   left: 1.5rem;
+}
+
+[dir="rtl"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary::before {
+  right: 1.5rem;
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary:focus::after {
@@ -233,14 +283,22 @@
 }
 
 @media (min-width: 420px) {
-  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
+  [dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
     margin-right: .5rem;
+  }
+
+  [dir="rtl"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
+    margin-left: .5rem;
   }
 }
 
 @media (min-width: 1024px) and (max-width: 1280px) {
-  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
+  [dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
     margin-right: 0;
+  }
+
+  [dir="rtl"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
+    margin-left: 0;
   }
 }
 

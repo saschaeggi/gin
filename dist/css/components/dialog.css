@@ -14,9 +14,17 @@
 .ui-dialog:not(.ui-dialog-off-canvas) .layout-region-node-actions {
   position: absolute;
   bottom: 0;
-  left: 1rem;
   top: auto;
+}
+
+[dir="ltr"] .ui-dialog:not(.ui-dialog-off-canvas) .layout-region-node-actions {
+  left: 1rem;
   right: auto;
+}
+
+[dir="rtl"] .ui-dialog:not(.ui-dialog-off-canvas) .layout-region-node-actions {
+  right: 1rem;
+  left: auto;
 }
 
 .ui-dialog:not(.ui-dialog-off-canvas) .layout-region-node-secondary {
@@ -75,7 +83,6 @@
 
 .ui-dialog .ui-dialog-titlebar-close {
   top: 20px;
-  right: 18px;
   opacity: .8;
   margin: 0;
   transform: none;
@@ -83,11 +90,18 @@
   border: none;
 }
 
+[dir="ltr"] .ui-dialog .ui-dialog-titlebar-close {
+  right: 18px;
+}
+
+[dir="rtl"] .ui-dialog .ui-dialog-titlebar-close {
+  left: 18px;
+}
+
 .ui-dialog .ui-dialog-titlebar-close .ui-icon-closethick {
   width: 100%;
   height: 100%;
   top: 0;
-  left: 0;
   margin: 0;
   transform: none;
   background: #fff;
@@ -99,6 +113,14 @@
           mask-repeat: no-repeat;
   -webkit-mask-position: center center;
           mask-position: center center;
+}
+
+[dir="ltr"] .ui-dialog .ui-dialog-titlebar-close .ui-icon-closethick {
+  left: 0;
+}
+
+[dir="rtl"] .ui-dialog .ui-dialog-titlebar-close .ui-icon-closethick {
+  right: 0;
 }
 
 .ui-dialog .ui-dialog-titlebar-close:hover {
@@ -115,9 +137,19 @@
 .layout-paragraphs-dialog {
   position: fixed !important;
   top: 50% !important;
-  left: 50% !important;
   width: calc(100% - 2rem) !important;
+}
+
+[dir="ltr"] .erl-overlay,
+[dir="ltr"] .layout-paragraphs-dialog {
+  left: 50% !important;
   transform: translate(-50%, -50%);
+}
+
+[dir="rtl"] .erl-overlay,
+[dir="rtl"] .layout-paragraphs-dialog {
+  right: 50% !important;
+  transform: translate(50%, -50%);
 }
 
 @media (min-width: 1024px) {

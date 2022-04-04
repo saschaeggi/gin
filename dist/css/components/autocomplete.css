@@ -55,11 +55,18 @@ div.autocomplete-deluxe-multiple {
 
 .autocomplete-deluxe-item {
   color: var(--colorGinPrimaryHover);
-  padding: 6px 24px 6px 12px;
   background-color: var(--colorGinPrimaryLightHover);
   border-radius: var(--ginBorderMedium);
   border: 0 none;
   box-shadow: none;
+}
+
+[dir="ltr"] .autocomplete-deluxe-item {
+  padding: 6px 24px 6px 12px;
+}
+
+[dir="rtl"] .autocomplete-deluxe-item {
+  padding: 6px 12px 6px 24px;
 }
 
 .autocomplete-deluxe-item:hover, .autocomplete-deluxe-item:active {
@@ -69,7 +76,6 @@ div.autocomplete-deluxe-multiple {
 
 .autocomplete-deluxe-item .autocomplete-deluxe-item-delete {
   top: 6px;
-  right: 6px;
   -webkit-mask-image: url("../../media/sprite.svg#close-view");
           mask-image: url("../../media/sprite.svg#close-view");
   -webkit-mask-size: 10px 10px;
@@ -79,6 +85,14 @@ div.autocomplete-deluxe-multiple {
   -webkit-mask-position: center;
           mask-position: center;
   background: var(--colorGinPrimary);
+}
+
+[dir="ltr"] .autocomplete-deluxe-item .autocomplete-deluxe-item-delete {
+  right: 6px;
+}
+
+[dir="rtl"] .autocomplete-deluxe-item .autocomplete-deluxe-item-delete {
+  left: 6px;
 }
 
 .autocomplete-deluxe-item:hover .autocomplete-deluxe-item-delete,
