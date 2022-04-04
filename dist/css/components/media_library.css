@@ -67,11 +67,18 @@
 .media-library-item__preview .field img {
   position: absolute;
   top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+[dir="ltr"] .media-library-item__preview .field img {
+  left: 0;
+}
+
+[dir="rtl"] .media-library-item__preview .field img {
+  right: 0;
 }
 
 .media-library-item.is-hover .media-library-item__preview {
@@ -107,8 +114,15 @@
 }
 
 .media-library-item .media-library-item__edit {
-  right: 3.125rem;
   background-image: url("../../media/sprite.svg#media-edit-view");
+}
+
+[dir="ltr"] .media-library-item .media-library-item__edit {
+  right: 3.125rem;
+}
+
+[dir="rtl"] .media-library-item .media-library-item__edit {
+  left: 3.125rem;
 }
 
 .media-library-item .media-library-item__remove {
@@ -193,7 +207,14 @@ fieldset.media-library-widget .fieldset__wrapper {
 
 .media-library-add-form__input-wrapper .form-item--upload {
   margin-top: 0;
+}
+
+[dir="ltr"] .media-library-add-form__input-wrapper .form-item--upload {
   margin-right: 0;
+}
+
+[dir="rtl"] .media-library-add-form__input-wrapper .form-item--upload {
+  margin-left: 0;
 }
 
 .media-library-add-form__input-wrapper .dropzone-enable .button {
@@ -216,21 +237,36 @@ fieldset.media-library-widget .fieldset__wrapper {
   color: var(--colorGinPrimary);
   text-shadow: none;
   background-color: var(--colorGinLayerBackground);
-  border-right: 0 none;
   border-bottom: 1px solid var(--colorGinBorder);
   box-shadow: none;
 }
 
-.media-library-menu__link.active::before {
+[dir="ltr"] .media-library-menu__link:active, [dir="ltr"] .media-library-menu__link:hover, [dir="ltr"] .media-library-menu__link:focus, [dir="ltr"] .media-library-menu__link.active, [dir="ltr"] .media-library-menu__link:hover:focus, [dir="ltr"] .media-library-menu__link.active:hover, [dir="ltr"] .media-library-menu__link.active:focus {
+  border-right: 0 none;
+}
+
+[dir="rtl"] .media-library-menu__link:active, [dir="rtl"] .media-library-menu__link:hover, [dir="rtl"] .media-library-menu__link:focus, [dir="rtl"] .media-library-menu__link.active, [dir="rtl"] .media-library-menu__link:hover:focus, [dir="rtl"] .media-library-menu__link.active:hover, [dir="rtl"] .media-library-menu__link.active:focus {
+  border-left: 0 none;
+}
+
+[dir="ltr"] .media-library-menu__link.active::before {
   border-left-color: var(--colorGinPrimary);
+}
+
+[dir="rtl"] .media-library-menu__link.active::before {
+  border-right-color: var(--colorGinPrimary);
 }
 
 .media-library-menu__link:focus::after {
   border: 4px solid var(--colorGinFocus);
 }
 
-+ .media-library-content {
+[dir="ltr"] + .media-library-content {
   border-left: 1px solid var(--colorGinBorder);
+}
+
+[dir="rtl"] + .media-library-content {
+  border-right: 1px solid var(--colorGinBorder);
 }
 
 .media-library-view .view-header {
@@ -256,9 +292,16 @@ fieldset.media-library-widget .fieldset__wrapper {
   width: 16px;
   height: 16px;
   position: absolute;
-  left: 0;
   top: 1px;
   background-color: var(--colorGinText);
+}
+
+[dir="ltr"] .media-library-wrapper .views-display-link::before {
+  left: 0;
+}
+
+[dir="rtl"] .media-library-wrapper .views-display-link::before {
+  right: 0;
 }
 
 .media-library-wrapper .views-display-link.is-active {
@@ -280,8 +323,15 @@ fieldset.media-library-widget .fieldset__wrapper {
 }
 
 .media-library-content {
-  border-left: 0 none;
   border-color: var(--colorGinBorder);
+}
+
+[dir="ltr"] .media-library-content {
+  border-left: 0 none;
+}
+
+[dir="rtl"] .media-library-content {
+  border-right: 0 none;
 }
 
 .media-library-select-all {
@@ -333,8 +383,15 @@ fieldset.media-library-widget .fieldset__wrapper {
   height: 1px;
   position: absolute;
   top: -1.25rem;
-  left: 0;
   background: var(--colorGinBorder);
+}
+
+[dir="ltr"] .field--name-field-media.field--widget-entity-reference-autocomplete fieldset.form-item > legend::before {
+  left: 0;
+}
+
+[dir="rtl"] .field--name-field-media.field--widget-entity-reference-autocomplete fieldset.form-item > legend::before {
+  right: 0;
 }
 
 .field--name-field-media.field--widget-entity-reference-autocomplete fieldset.form-item > .form-item h4 {

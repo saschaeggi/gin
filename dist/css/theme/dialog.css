@@ -194,7 +194,18 @@
 .ui-dialog .button--primary:not(:focus),
 .ui-dialog .ief-entity-submit {
   background: var(--colorGinPrimary);
+}
+
+[dir="ltr"] .ui-dialog .button--primary,
+[dir="ltr"] .ui-dialog .button--primary:not(:focus),
+[dir="ltr"] .ui-dialog .ief-entity-submit {
   box-shadow: .1em .25em .5em var(--colorGinPrimaryLight), -0.25em -0.5em 1em var(--colorGinAppBackground);
+}
+
+[dir="rtl"] .ui-dialog .button--primary,
+[dir="rtl"] .ui-dialog .button--primary:not(:focus),
+[dir="rtl"] .ui-dialog .ief-entity-submit {
+  box-shadow: -0.1em .25em .5em var(--colorGinPrimaryLight), .25em -0.5em 1em var(--colorGinAppBackground);
 }
 
 .ui-dialog .button--primary:hover,
@@ -335,8 +346,12 @@
   background-color: transparent;
 }
 
-.ui-dialog .form-element--type-select {
+[dir="ltr"] .ui-dialog .form-element--type-select {
   padding-right: calc(2.5rem - 1px);
+}
+
+[dir="rtl"] .ui-dialog .form-element--type-select {
+  padding-left: calc(2.5rem - 1px);
 }
 
 .gin--dark-mode .ui-dialog .form-element--type-select {
@@ -349,7 +364,14 @@
   line-height: 1.2;
   padding-top: .474rem;
   padding-bottom: .474rem;
+}
+
+[dir="ltr"] .ui-dialog .form-element--type-select--small {
   background-position: 100% 52%;
+}
+
+[dir="rtl"] .ui-dialog .form-element--type-select--small {
+  background-position: 0% 52%;
 }
 
 .ui-dialog .form-boolean {
@@ -381,7 +403,14 @@
 
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox {
   position: relative;
+}
+
+[dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox {
   margin-left: 0;
+}
+
+[dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox {
+  margin-right: 0;
 }
 
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle {
@@ -419,8 +448,15 @@
   height: 100%;
   background-color: #fff;
   border-radius: 21px;
-  transform: translateX(-16px);
   transition: transform .3s;
+}
+
+[dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner:before {
+  transform: translateX(-16px);
+}
+
+[dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner:before {
+  transform: translateX(16px);
 }
 
 .gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner:before {
@@ -437,10 +473,17 @@
   width: 40px;
   height: 24px;
   clip: auto;
-  margin-left: 0;
   opacity: 0;
   cursor: pointer;
   z-index: 1;
+}
+
+[dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input {
+  margin-left: 0;
+}
+
+[dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input {
+  margin-right: 0;
 }
 
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:hover, .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:focus, .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:active, .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:hover:focus, .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:active:focus {
@@ -471,8 +514,15 @@
 }
 
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner:before {
-  transform: translateX(16px);
   background-color: #fff;
+}
+
+[dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner:before {
+  transform: translateX(16px);
+}
+
+[dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner:before {
+  transform: translateX(-16px);
 }
 
 .gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner:before {
@@ -503,9 +553,16 @@
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox label {
   z-index: 1;
   position: relative;
-  padding-left: 4px;
   padding-bottom: 0;
   color: var(--colorGinText);
+}
+
+[dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox label {
+  padding-left: 4px;
+}
+
+[dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox label {
+  padding-right: 4px;
 }
 
 .gin--dark-mode .ui-dialog .form-boolean:hover, .gin--dark-mode .ui-dialog .form-boolean:active {
@@ -630,8 +687,12 @@
   margin-top: .5rem;
 }
 
-.ui-dialog .js .form-autocomplete {
+[dir="ltr"] .ui-dialog .js .form-autocomplete {
   padding-right: 36px;
+}
+
+[dir="rtl"] .ui-dialog .js .form-autocomplete {
+  padding-left: 36px;
 }
 
 .ui-dialog .entity-form-display-form > .form-actions {
@@ -667,9 +728,14 @@
   padding-right: 0;
 }
 
-.ui-dialog .js input.form-linkit-autocomplete {
+[dir="ltr"] .ui-dialog .js input.form-linkit-autocomplete {
   padding-right: 2rem;
   background-position: right 8px center;
+}
+
+[dir="rtl"] .ui-dialog .js input.form-linkit-autocomplete {
+  padding-left: 2rem;
+  background-position: left 8px center;
 }
 
 .ui-dialog .claro-autocomplete {
@@ -688,7 +754,11 @@
   margin-top: 0;
 }
 
-.ui-dialog .image-style-new .form-item {
+[dir="ltr"] .ui-dialog .image-style-new .form-item {
   margin-right: .25rem;
+}
+
+[dir="rtl"] .ui-dialog .image-style-new .form-item {
+  margin-left: .25rem;
 }
 
