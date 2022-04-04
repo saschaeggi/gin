@@ -12,8 +12,15 @@
   cursor: pointer;
   width: 32px;
   height: 32px;
-  margin-right: .5rem;
   border-color: transparent;
+}
+
+[dir="ltr"] [data-drupal-selector=edit-preset-accent-color] .form-radios .form-item--preset-accent-color input {
+  margin-right: .5rem;
+}
+
+[dir="rtl"] [data-drupal-selector=edit-preset-accent-color] .form-radios .form-item--preset-accent-color input {
+  margin-left: .5rem;
 }
 
 [data-drupal-selector=edit-preset-accent-color] .form-radios .form-item--preset-accent-color input, .gin--dark-mode [data-drupal-selector=edit-preset-accent-color] .form-radios .form-item--preset-accent-color input {
@@ -56,12 +63,20 @@
   z-index: 1;
   position: absolute;
   top: 100%;
-  left: -10px;
   padding: .5rem;
   color: var(--colorGinContextualText);
   background: var(--colorGinContextual);
   border-radius: var(--ginBorderXSmall);
+}
+
+[dir="ltr"] [data-drupal-selector=edit-preset-accent-color] .form-radios .form-item--preset-accent-color .form-item__label {
+  left: -10px;
   transform: translateX(-50%);
+}
+
+[dir="rtl"] [data-drupal-selector=edit-preset-accent-color] .form-radios .form-item--preset-accent-color .form-item__label {
+  right: -10px;
+  transform: translateX(50%);
 }
 
 [data-drupal-selector=edit-preset-accent-color] .form-radios .form-item--preset-accent-color:hover .form-item__label,
@@ -75,13 +90,31 @@
 [data-drupal-selector=edit-accent-group] .form-type--textfield,
 [data-drupal-selector=edit-focus-group] .form-type--color,
 [data-drupal-selector=edit-focus-group] .form-type--textfield {
-  float: left;
   margin: 0 0 .5rem 0;
 }
 
-[data-drupal-selector=edit-accent-group] .form-type--color,
-[data-drupal-selector=edit-focus-group] .form-type--color {
+[dir="ltr"] [data-drupal-selector=edit-accent-group] .form-type--color,
+[dir="ltr"] [data-drupal-selector=edit-accent-group] .form-type--textfield,
+[dir="ltr"] [data-drupal-selector=edit-focus-group] .form-type--color,
+[dir="ltr"] [data-drupal-selector=edit-focus-group] .form-type--textfield {
+  float: left;
+}
+
+[dir="rtl"] [data-drupal-selector=edit-accent-group] .form-type--color,
+[dir="rtl"] [data-drupal-selector=edit-accent-group] .form-type--textfield,
+[dir="rtl"] [data-drupal-selector=edit-focus-group] .form-type--color,
+[dir="rtl"] [data-drupal-selector=edit-focus-group] .form-type--textfield {
+  float: right;
+}
+
+[dir="ltr"] [data-drupal-selector=edit-accent-group] .form-type--color,
+[dir="ltr"] [data-drupal-selector=edit-focus-group] .form-type--color {
   margin-right: .5rem;
+}
+
+[dir="rtl"] [data-drupal-selector=edit-accent-group] .form-type--color,
+[dir="rtl"] [data-drupal-selector=edit-focus-group] .form-type--color {
+  margin-left: .5rem;
 }
 
 [data-drupal-selector=edit-accent-group] .fieldset__description,
@@ -102,8 +135,12 @@
   background: var(--colorGinLayer2Background);
 }
 
-[data-drupal-selector=edit-enable-darkmode] .form-radios .form-type--radio {
+[dir="ltr"] [data-drupal-selector=edit-enable-darkmode] .form-radios .form-type--radio {
   margin-left: 0;
+}
+
+[dir="rtl"] [data-drupal-selector=edit-enable-darkmode] .form-radios .form-type--radio {
+  margin-right: 0;
 }
 
 [data-drupal-selector=edit-enable-darkmode] .form-radios .form-item__label {
@@ -148,7 +185,14 @@
   display: flex;
   flex-wrap: wrap;
   width: 140px;
+}
+
+[dir="ltr"] [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item--classic-toolbar {
   margin: 0 .75rem 0 0;
+}
+
+[dir="rtl"] [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item--classic-toolbar {
+  margin: 0 0 0 .75rem;
 }
 
 [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item--classic-toolbar input {
@@ -156,11 +200,18 @@
   position: static;
   width: 140px;
   height: 100px;
-  margin-left: 0;
   border-radius: var(--ginBorderMedium);
   transform: none;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+
+[dir="ltr"] [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item--classic-toolbar input {
+  margin-left: 0;
+}
+
+[dir="rtl"] [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item--classic-toolbar input {
+  margin-right: 0;
 }
 
 [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item--classic-toolbar input [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item--classic-toolbar input:focus {
