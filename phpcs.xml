@@ -3,7 +3,7 @@
   <rule ref="vendor/drupal/coder/coder_sniffer/Drupal/ruleset.xml"/>
 
   <!-- Ignore files -->
-  <exclude-pattern>*/\.css/*</exclude-pattern>
-  <exclude-pattern>*/\.js/*</exclude-pattern>
+  <exclude-pattern>*/dist/*\.(css|js)$</exclude-pattern>
+  <exclude-pattern>*/js/*\.js$</exclude-pattern>
 
 </ruleset>
