@@ -1,7 +1,3 @@
 include:
   # This remote project centralize our CI "golden path" https://docs.gitlab.com/ee/ci/yaml/#includefile
   remote: 'https://gitlab.com/drupalspoons/composer-plugin/-/raw/master/templates/.gitlab-ci.yml'
-
-workflow:
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
