@@ -20,4 +20,6 @@ phpcs:
 # Disable stylelint
 stylelint:
   stage: test
+  script:
+    - yarn version
   allow_failure: true
