@@ -5,6 +5,6 @@
   <!-- Ignore files -->
   <exclude-pattern>*/dist/*\.(css|js)$</exclude-pattern>
   <exclude-pattern>*/js/*\.js$</exclude-pattern>
-  <exclude-pattern>webpack.config.\*.js$</exclude-pattern>
+  <exclude-pattern>*/webpack.config.\*.js$</exclude-pattern>
 
 </ruleset>
