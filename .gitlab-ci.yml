@@ -18,5 +18,6 @@ phpcs:
       junit: junit.xml
 
 # Disable stylelint
-stylelint: false
-
+stylelint:
+  stage: test
+  allow_failure: true
