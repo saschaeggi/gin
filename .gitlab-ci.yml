@@ -3,21 +3,136 @@ include:
   remote: 'https://gitlab.com/drupalspoons/composer-plugin/-/raw/master/templates/.gitlab-ci.yml'
 
 composer:
+  stage: build
+  variables:
+    # Used the bin/setup script.
+    NONINTERACTIVE: 1
+  # Use artifacts to copy codebase to subsequent jobs.
+  # See https://lorisleiva.com/laravel-deployment-using-gitlab-pipelines/.
+  artifacts:
+    expire_in: 1 week
+    expose_as: 'web-vendor'
+    paths:
+      - vendor/
+      - $WEB_ROOT
+      - .composer-plugin.env
+      - composer.spoons.json
+      - composer.spoons.lock
+  script:
+    - export
+    - bash <(curl -s https://gitlab.com/drupalspoons/composer-plugin/-/raw/master/bin/setup)
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+
+validate:
+  stage: test
+  script:
+    - composer validate
+    - composer lint
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 
 phpcs:
+  stage: test
+  script:
+    - cp -u vendor/drupalspoons/composer-plugin/templates/phpcs.xml.dist $WEB_ROOT/modules/custom
+    - composer phpcs -- --report-junit=junit.xml --report-full --report-summary
+  allow_failure: true
+  artifacts:
+    expose_as: junit
+    expire_in: 6 mos
+    paths:
+      - junit.xml
+    reports:
+      junit: junit.xml
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 
 stylelint:
+  stage: test
+  script:
+    # Installs all core javascript dependencies.
+    - yarn --cwd $WEB_ROOT/core add stylelint-junit-formatter
+    - composer stylelint -- --color || true
+    - composer stylelint -- --color --custom-formatter node_modules/stylelint-junit-formatter > junit.xml || true
+  allow_failure: true
+  artifacts:
+    expose_as: junit
+    expire_in: 6 mos
+    paths:
+      - junit.xml
+    reports:
+      junit: junit.xml
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 
 eslint:
+  stage: test
+  script:
+    # Installs all core javascript dependencies.
+    - yarn --cwd $WEB_ROOT/core add stylelint-junit-formatter
+    - composer eslint -- --format junit --output-file junit.xml || true
+  allow_failure: true
+  artifacts:
+    expose_as: junit
+    expire_in: 6 mos
+    paths:
+      - junit.xml
+    reports:
+      junit: junit.xml
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 
 phpunit:
+  stage: test
+  variables:
+    # https://docs.gitlab.com/runner/configuration/feature-flags.html#available-feature-flags
+    FF_NETWORK_PER_BUILD: 1
+    SIMPLETEST_BASE_URL: http://localhost:8888
+    DB_DRIVER: mysql
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: db
+    MYSQL_USER: db
+    MYSQL_PASSWORD: db
+    MARIADB_TAG: "10.3"
+    POSTGRES_TAG: "10.5"
+    POSTGRES_PASSWORD: db
+    POSTGRES_DB: db
+    POSTGRES_USER: db
+  services:
+    - name: wodby/mariadb:$MARIADB_TAG
+      alias: mariadb
+    - name: wodby/postgres:$POSTGRES_TAG
+      alias: postgres
+    - name: drupalci/webdriver-chromedriver:production
+      alias: chrome
+      entrypoint:
+        - chromedriver
+        - "--no-sandbox"
+        - "--log-path=/tmp/chromedriver.log"
+        - "--verbose"
+        - "--whitelisted-ips="
+  script:
+    #  Determine DB driver.
+    - |
+      [[ $DB_DRIVER == "sqlite" ]] && export SIMPLETEST_DB=sqlite://localhost/sites/default/files/.sqlite
+      [[ $DB_DRIVER == "mysql" ]] && export SIMPLETEST_DB=mysql://$MYSQL_USER:$MYSQL_PASSWORD@mariadb/$MYSQL_DATABASE
+      [[ $DB_DRIVER == "pgsql" ]] && export SIMPLETEST_DB=pgsql://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres/$POSTGRES_DB
+    - export
+    - mkdir $WEB_ROOT/sites/simpletest
+    - composer webserver >> webserver.log 2>&1 &
+    # Provide some context on the test run.
+    - vendor/bin/drush status
+    # Finally, execute tests.
+    - composer unit -- --log-junit junit.xml
+  artifacts:
+    expire_in: 6 mos
+    expose_as: 'junit-browser_output-webserver_log'
+    reports:
+      junit: junit.xml
+    paths:
+      - junit.xml
+      - webserver.log
+      - $WEB_ROOT/sites/simpletest/browser_output
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
