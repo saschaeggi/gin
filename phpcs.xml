@@ -2,20 +2,8 @@
 <ruleset name="drupal-project">
   <rule ref="vendor/drupal/coder/coder_sniffer/Drupal/ruleset.xml"/>
 
-  <!-- Exceptions which keep us sane. -->
-  <rule ref="Drupal.Classes.FullyQualifiedNamespace.UseStatementMissing"><severity>0</severity></rule>
-  <rule ref="Drupal.Commenting.ClassComment.Missing"><severity>0</severity></rule>
-  <rule ref="Drupal.Commenting.FunctionComment.MissingReturnType"><severity>0</severity></rule>
-  <rule ref="Drupal.Commenting.InlineComment.InvalidEndChar"><severity>0</severity></rule>
-  <rule ref="Drupal.Arrays.Array.LongLineDeclaration"><severity>0</severity></rule>
-  <rule ref="Drupal.Commenting.VariableComment.Missing"><severity>0</severity></rule>
-  <rule ref="Drupal.Commenting.DataTypeNamespace.DataTypeNamespace"><severity>0</severity></rule>
-  <rule ref="Drupal.Classes.UseGlobalClass.RedundantUseStatement"><severity>0</severity></rule>
-  <rule ref="Drupal.Semantics.FunctionTriggerError.TriggerErrorTextLayoutRelaxed"><severity>0</severity></rule>
-  <rule ref="Drupal.Commenting.FunctionComment.MissingParamComment"><severity>0</severity></rule>
-  <rule ref="Drupal.Commenting.Deprecated.IncorrectTextLayout"><severity>0</severity></rule>
-  <rule ref="Drupal.Commenting.Deprecated.DeprecatedMissingSeeTag"><severity>0</severity></rule>
-  <rule ref="Drupal.NamingConventions.ValidVariableName.LowerCamelName"><severity>0</severity></rule>
-  <rule ref="Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps"><severity>0</severity></rule>
+  <!-- Ignore files -->
+  <exclude-pattern>*/\.css/*</exclude-pattern>
+  <exclude-pattern>*/\.js/*</exclude-pattern>
 
 </ruleset>
