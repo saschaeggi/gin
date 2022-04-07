@@ -7,8 +7,8 @@ phpcs:
   stage: test
   script:
     - cp -u phpcs.xml $WEB_ROOT/modules/custom
-    - composer phpcs -- --report-junit=junit.xml --report-full --report-summary
-  allow_failure: false
+    - composer phpcs -- --report-junit=junit.xml --report-full --report-summary --runtime-set ignore_errors_on_exit 0
+  allow_failure: true
   artifacts:
     expose_as: junit
     expire_in: 6 mos
@@ -22,4 +22,3 @@ stylelint:
   stage: test
   script:
     - yarn version
-  allow_failure: true
