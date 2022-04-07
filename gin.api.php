@@ -42,9 +42,6 @@ function hook_gin_content_form_routes() {
  * @param array $routes
  *   The list of routes.
  *
- * @return array
- *   An array of route names.
- *
  * @see GinContentFormHelper->isContentForm()
  * @see hook_gin_content_form_routes()
  */

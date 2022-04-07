@@ -40,7 +40,10 @@ class GinTest extends BrowserTestBase {
       ->set('admin', 'gin')
       ->save();
 
-    $adminUser = $this->drupalCreateUser(['access administration pages', 'administer themes']);
+    $adminUser = $this->drupalCreateUser([
+      'access administration pages',
+      'administer themes',
+    ]);
     $this->drupalLogin($adminUser);
   }
 
