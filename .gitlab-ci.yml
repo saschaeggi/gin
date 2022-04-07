@@ -7,7 +7,7 @@ phpcs:
   stage: test
   script:
     - cp -u phpcs.xml $WEB_ROOT/modules/custom
-    - composer phpcs -- --report-junit=junit.xml --report-full --report-summary --runtime-set ignore_errors_on_exit 0
+    - composer phpcs --runtime-set ignore_errors_on_exit 0 -- --report-junit=junit.xml --report-full --report-summary
   allow_failure: true
   artifacts:
     expose_as: junit
