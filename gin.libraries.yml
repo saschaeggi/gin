@@ -32,7 +32,7 @@ gin_toolbar:
   css:
     component:
       dist/css/components/toolbar.css: { minified: false }
-      dist/css/components/toolbar_meta.css: { minified: false }
+      dist/css/components/toolbar_secondary.css: { minified: false }
       dist/css/components/coffee.css: { minified: false }
       dist/css/components/node_preview.css: { minified: false }
     theme:
@@ -42,13 +42,14 @@ gin_toolbar:
   dependencies:
     - gin/responsive_preview
     - gin/contextual_links
+    - gin/breadcrumb
 
 gin_horizontal_toolbar:
   version: VERSION
   css:
     component:
       dist/css/components/toolbar.css: { minified: false }
-      dist/css/components/toolbar_meta.css: { minified: false }
+      dist/css/components/toolbar_secondary.css: { minified: false }
       dist/css/components/coffee.css: { minified: false }
       dist/css/components/node_preview.css: { minified: false }
     theme:
@@ -58,6 +59,7 @@ gin_horizontal_toolbar:
   dependencies:
     - gin/responsive_preview
     - gin/contextual_links
+    - gin/breadcrumb
 
 gin_classic_toolbar:
   version: VERSION
@@ -72,6 +74,7 @@ gin_classic_toolbar:
     dist/js/toolbar.js: { minified: false }
   dependencies:
     - gin/contextual_links
+    - gin/breadcrumb
 
 gin_accent:
   version: VERSION
@@ -182,6 +185,12 @@ autocomplete:
   css:
     theme:
       dist/css/components/autocomplete.css: { minified: false }
+
+breadcrumb:
+  version: VERSION
+  css:
+    theme:
+      dist/css/components/breadcrumb.css: { minified: false }
 
 # Modules
 

@@ -43,8 +43,8 @@
       position: absolute;
       inset-block-start: 50%;
       inset-inline-start: 0;
-      inline-size: var(--iconGinMeta);
-      block-size: var(--iconGinMeta);
+      inline-size: var(--iconGinSecondaryToolbar);
+      block-size: var(--iconGinSecondaryToolbar);
       transform: translateY(-50%);
       background-color: var(--colorGinIcons);
       mask-image: icon('backtosite');
@@ -73,8 +73,8 @@
     display: none;
   }
 
-  // Hide Meta Level while in Preview mode.
-  ~ .region-meta--frontend {
+  // Hide Secondary Toolbar while in Preview mode.
+  ~ .gin-secondary-toolbar--frontend {
     display: none;
   }
 }

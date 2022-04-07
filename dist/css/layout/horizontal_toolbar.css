@@ -1,20 +1,22 @@
 :root {
+  --ginToolbarSecondaryHeight: 48px;
   --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
   --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
   --ginVerticalToolbarOffset: 0px;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 976px) {
   :root {
+    --ginToolbarSecondaryHeight: 60px;
     --ginToolbarHeight: 53px;
     --ginScrollOffset: 180px;
     --iconGinToolbar: 18px;
   }
 }
 
-.region-meta--frontend {
-  inset-block-start: -60px;
+.gin-secondary-toolbar--frontend {
+  inset-block-start: calc(var(--ginToolbarSecondaryHeight) * -1);
 }
 
 .toolbar .toolbar-bar {
