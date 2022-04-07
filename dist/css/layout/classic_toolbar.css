@@ -1,4 +1,5 @@
 :root {
+  --ginToolbarSecondaryHeight: 0px;
   --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
   --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
@@ -19,7 +20,7 @@
 }
 
 .region-breadcrumb {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 .toolbar .toolbar-bar {
@@ -124,10 +125,6 @@
   padding-left: 2.75em;
 }
 
-.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon:hover:before, .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active:before {
-  background-color: #fff;
-}
-
 .toolbar .toolbar-bar .toolbar-icon-admin-toolbar-tools-help {
   width: auto;
   height: 100%;
@@ -166,8 +163,9 @@
   right: .75rem;
 }
 
-#admin-toolbar-search-tab .form-type--search::before {
-  left: .5rem;
+#admin-toolbar-search-tab .form-item::before {
+  top: 6px;
+  left: 26px;
 }
 
 #admin-toolbar-search-input {

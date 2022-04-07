@@ -257,7 +257,7 @@
 
   .add a,
   li a {
-    font-size: small;
+    font-size: var(--ginFontSizeSmall);
     font-weight: bold;
     color: var(--colorGinPrimary);
     padding: .5rem 1rem;

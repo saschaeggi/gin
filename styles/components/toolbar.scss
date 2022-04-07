@@ -41,12 +41,32 @@ body.gin--classic-toolbar {
       font-weight: normal;
     }
 
-    .toolbar-tab > .toolbar-item.is-active {
-      background-image: none;
-      background-color: rgba(255, 255, 255, .1);
+    .toolbar-tab > .toolbar-icon {
+      &:hover {
+        background: rgba(255, 255, 255, .1);
 
-      .gin--dark-mode & {
-        background-color: var(--colorGinLayerBackground);
+        &::before {
+          background-color: #fff;
+        }
+      }
+
+      &.is-active {
+        color: var(--colorGinButtonText);
+        background-image: none;
+        background-color: var(--colorGinPrimary);
+
+        .gin--dark-mode & {
+          color: var(--colorGinPrimaryActive);
+          background-color: var(--colorGinPrimaryLightActive);
+        }
+
+        &::before {
+          background-color: var(--colorGinButtonText);
+
+          .gin--dark-mode & {
+            background-color: var(--colorGinPrimaryActive);
+          }
+        }
       }
     }
 
@@ -253,9 +273,6 @@ body.gin--classic-toolbar {
     // Back to site
     .toolbar-icon-escape-admin {
       display: none;
-      // &:before {
-      //   mask-image: icon('backtosite');
-      // }
     }
 
     // Edit
@@ -556,24 +573,18 @@ body.gin--classic-toolbar {
     background-color: rgba(255, 255, 255, .75);
     mask-repeat: no-repeat;
     mask-position: center center;
-    mask-size: var(--iconGinMeta) var(--iconGinMeta);
-  }
-
-  &:hover::before {
-    @include mq($breakpointMedium) {
-      background-color: var(--colorGinTitle);
-    }
+    mask-size: var(--iconGinSecondaryToolbar) var(--iconGinSecondaryToolbar);
   }
 
   &.is-active:before,
   &.is-active:hover:before {
     @include mq($breakpointMedium) {
-      background-color: var(--colorGinPrimary);
+      background-color: var(--colorGinButtonText);
     }
   }
 }
 
-.toolbar-meta .toolbar-bar .toolbar-icon,
+.toolbar-secondary .toolbar-bar .toolbar-icon,
 .toolbar-icon-edit,
 .toolbar-icon-menu,
 .toolbar-icon-local-tasks,
@@ -587,7 +598,7 @@ body.gin--classic-toolbar {
   }
 }
 
-.toolbar.toolbar-meta .toolbar-bar .toolbar-tab > .toolbar-icon::before {
+.toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon::before {
   background-color: var(--colorGinIcons);
 }
 
@@ -627,7 +638,7 @@ body.gin--classic-toolbar {
   @extend .toolbar-icon;
 
   &::before {
-    mask-size: var(--iconGinMeta) var(--iconGinMeta);
+    mask-size: var(--iconGinSecondaryToolbar) var(--iconGinSecondaryToolbar);
   }
 }
 
@@ -657,17 +668,17 @@ body.gin--classic-toolbar {
 
 #admin-toolbar-search-tab .js-form-type-search {
   position: relative;
-  margin: 5px 0;
+  margin: 0;
 
   &::before {
     content: "";
     opacity: .75;
     display: block;
-    width: var(--iconGinMeta);
-    height: var(--iconGinMeta);
+    width: var(--iconGinSecondaryToolbar);
+    height: var(--iconGinSecondaryToolbar);
     position: absolute;
-    top: 7px;
-    left: 1rem;
+    top: 11px;
+    left: 16px;
     background-color: var(--colorGinIcons);
     mask-image: icon('search');
     mask-size: 100% 100%;

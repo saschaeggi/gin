@@ -1,5 +1,6 @@
 // Toolbar Variables
 :root {
+  --ginToolbarSecondaryHeight: 0px; // Needs px to work in calc() functions.
   --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
   --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
@@ -18,7 +19,7 @@
 }
 
 .region-breadcrumb {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 // Toolbar
@@ -131,13 +132,6 @@
   padding-left: 2.75em;
 }
 
-.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon {
-  &:hover:before,
-  &.is-active:before {
-    background-color: #fff;
-  }
-}
-
 // Home icon
 .toolbar .toolbar-bar .toolbar-icon-admin-toolbar-tools-help {
   width: auto;
@@ -177,9 +171,10 @@
   }
 }
 
-#admin-toolbar-search-tab .form-type--search {
+#admin-toolbar-search-tab .form-item {
   &::before {
-    left: .5rem;
+    top: 6px;
+    left: 26px;
   }
 }
 

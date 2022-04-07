@@ -42,13 +42,31 @@ body.gin--classic-toolbar {
   font-weight: normal;
 }
 
-.toolbar .toolbar-bar .toolbar-tab > .toolbar-item.is-active {
-  background-image: none;
-  background-color: rgba(255, 255, 255, .1);
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon:hover, .toolbar .toolbar-bar .toolbar-tab > .responsive-preview-icon:hover {
+  background: rgba(255, 255, 255, .1);
 }
 
-.gin--dark-mode .toolbar .toolbar-bar .toolbar-tab > .toolbar-item.is-active {
-  background-color: var(--colorGinLayerBackground);
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon:hover::before, .toolbar .toolbar-bar .toolbar-tab > .responsive-preview-icon:hover::before {
+  background-color: #fff;
+}
+
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active, .toolbar .toolbar-bar .toolbar-tab > .is-active.responsive-preview-icon {
+  color: var(--colorGinButtonText);
+  background-image: none;
+  background-color: var(--colorGinPrimary);
+}
+
+.gin--dark-mode .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active, .gin--dark-mode .toolbar .toolbar-bar .toolbar-tab > .is-active.responsive-preview-icon {
+  color: var(--colorGinPrimaryActive);
+  background-color: var(--colorGinPrimaryLightActive);
+}
+
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active::before, .toolbar .toolbar-bar .toolbar-tab > .is-active.responsive-preview-icon::before {
+  background-color: var(--colorGinButtonText);
+}
+
+.gin--dark-mode .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active::before, .gin--dark-mode .toolbar .toolbar-bar .toolbar-tab > .is-active.responsive-preview-icon::before {
+  background-color: var(--colorGinPrimaryActive);
 }
 
 @media only screen and (min-width: 36em) {
@@ -502,24 +520,18 @@ body.gin--classic-toolbar {
           mask-repeat: no-repeat;
   -webkit-mask-position: center center;
           mask-position: center center;
-  -webkit-mask-size: var(--iconGinMeta) var(--iconGinMeta);
-          mask-size: var(--iconGinMeta) var(--iconGinMeta);
-}
-
-@media (min-width: 976px) {
-  .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon:hover::before, .toolbar .toolbar-bar .toolbar-tab > .responsive-preview-icon:hover::before {
-    background-color: var(--colorGinTitle);
-  }
+  -webkit-mask-size: var(--iconGinSecondaryToolbar) var(--iconGinSecondaryToolbar);
+          mask-size: var(--iconGinSecondaryToolbar) var(--iconGinSecondaryToolbar);
 }
 
 @media (min-width: 976px) {
   .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active:before, .toolbar .toolbar-bar .toolbar-tab > .is-active.responsive-preview-icon:before, .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active:hover:before {
-    background-color: var(--colorGinPrimary);
+    background-color: var(--colorGinButtonText);
   }
 }
 
 @media (max-width: 976px) {
-  .toolbar-meta .toolbar-bar .toolbar-icon:hover:before, .toolbar-meta .toolbar-bar .responsive-preview-icon:hover:before, .toolbar-meta .toolbar-bar .toolbar-icon.is-active:before, .toolbar-meta .toolbar-bar .is-active.responsive-preview-icon:before,
+  .toolbar-secondary .toolbar-bar .toolbar-icon:hover:before, .toolbar-secondary .toolbar-bar .responsive-preview-icon:hover:before, .toolbar-secondary .toolbar-bar .toolbar-icon.is-active:before, .toolbar-secondary .toolbar-bar .is-active.responsive-preview-icon:before,
 .toolbar-icon-edit:hover:before,
 .toolbar-icon-edit.is-active:before,
 .toolbar-icon-menu:hover:before,
@@ -534,7 +546,7 @@ body.gin--classic-toolbar {
   }
 }
 
-.toolbar.toolbar-meta .toolbar-bar .toolbar-tab > .toolbar-icon::before, .toolbar.toolbar-meta .toolbar-bar .toolbar-tab > .responsive-preview-icon::before {
+.toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon::before, .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .responsive-preview-icon::before {
   background-color: var(--colorGinIcons);
 }
 
@@ -567,8 +579,8 @@ body.gin--classic-toolbar {
 }
 
 .responsive-preview-icon::before {
-  -webkit-mask-size: var(--iconGinMeta) var(--iconGinMeta);
-          mask-size: var(--iconGinMeta) var(--iconGinMeta);
+  -webkit-mask-size: var(--iconGinSecondaryToolbar) var(--iconGinSecondaryToolbar);
+          mask-size: var(--iconGinSecondaryToolbar) var(--iconGinSecondaryToolbar);
 }
 
 #admin-toolbar-search-input {
@@ -596,18 +608,18 @@ body.gin--classic-toolbar {
 
 #admin-toolbar-search-tab .js-form-type-search {
   position: relative;
-  margin: 5px 0;
+  margin: 0;
 }
 
 #admin-toolbar-search-tab .js-form-type-search::before {
   content: "";
   opacity: .75;
   display: block;
-  width: var(--iconGinMeta);
-  height: var(--iconGinMeta);
+  width: var(--iconGinSecondaryToolbar);
+  height: var(--iconGinSecondaryToolbar);
   position: absolute;
-  top: 7px;
-  left: 1rem;
+  top: 11px;
+  left: 16px;
   background-color: var(--colorGinIcons);
   -webkit-mask-image: url("../../media/sprite.svg#search-view");
           mask-image: url("../../media/sprite.svg#search-view");
