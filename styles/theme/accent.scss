@@ -91,7 +91,7 @@ $ginDarkmodeColors: (
   --colorGinIcons: #{$highContrastMode};
   --colorGinFocus: #{$highContrastMode};
   --colorGinBorder: #{$highContrastMode};
-  --colorGinMetaBorder: rgba(0, 0, 0, .6);
+  --colorGinSecondaryBorder: rgba(0, 0, 0, .6);
   --colorGinLayerBorder: rgba(0, 0, 0, .6);
   --colorGinLayer2Border: #{$highContrastMode};
   --colorGinTableBorder: #{$highContrastMode};
@@ -107,7 +107,7 @@ $ginDarkmodeColors: (
     --colorGinIcons: #{$highContrastMode};
     --colorGinFocus: #{$highContrastMode};
     --colorGinBorder: #{$highContrastMode};
-    --colorGinMetaBorder: rgba(255, 255, 255, .6);
+    --colorGinSecondaryBorder: rgba(255, 255, 255, .6);
     --colorGinLayerBorder: rgba(255, 255, 255, .6);
     --colorGinLayer2Border: #{$highContrastMode};
     --colorGinTableBorder: #{$highContrastMode};

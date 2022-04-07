@@ -1,31 +1,33 @@
-.gin-layout-container *:focus {
+.gin-secondary-toolbar__layout-container *:focus {
   outline: none;
   box-shadow: 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus);
 }
 
-.region-meta {
+.gin-secondary-toolbar {
   z-index: 102;
   position: relative;
   display: flex;
+  align-items: center;
   padding-top: .5rem;
   padding-bottom: .5rem;
-  border-bottom: 1px solid var(--colorGinMetaBorder);
+  margin-top: -1px;
+  height: var(--ginToolbarSecondaryHeight);
+  border-bottom: 1px solid var(--colorGinSecondaryBorder);
+  box-sizing: border-box;
 
   @include mq($breakpointMedium) {
-    padding: 1.25rem 0 1.125rem;
+    padding: 10px 0;
   }
 
   &--frontend {
     z-index: 501; /* on top of the Drupal world */
     position: sticky;
     top: 0;
+    margin-top: 0;
+    height: var(--ginToolbarSecondaryHeight);
     background: rgba(#fff, .98);
     border-bottom: 1px solid var(--colorGinLayerBorder);
     box-sizing: border-box;
-
-    @include mq($breakpointLarge) {
-      height: 60px;
-    }
 
     @supports (backdrop-filter: blur()) {
       opacity: .999; /* Fix Chrome issue with mask */
@@ -37,7 +39,7 @@
       background: rgba($colorDarkAppBackground, .98);
 
       @supports (backdrop-filter: blur()) {
-        background: #{rgba(mix(black, $colorDarkAppBackground, 15%), .9)};
+        background: #{rgba(mix(black, $colorDarkAppBackground, 75%), .9)};
       }
     }
 
@@ -52,52 +54,38 @@
       position: relative;
       left: calc(50% - 3rem);
       transform: translateX(-50%);
-      // max-width: $breakpointWide;
     }
   }
 
-  .breadcrumb-wrapper {
-    flex-grow: 1;
-    white-space: nowrap;
-    margin-right: 2rem;
+  &__layout-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0 1rem;
+
+    @include mq($breakpointSmall) {
+      margin: 0 2rem;
+    }
+
+    @include mq($breakpointMedium) {
+      margin: 0 m#{i}n(5vw, 48px);
+    }
   }
 
   .region-breadcrumb {
-    padding: 0;
-    margin: 0;
     min-height: 1.25rem;
-  }
-
-  .breadcrumb {
-    &__list {
-      text-overflow: ellipsis;
-      width: auto;
-      overflow: hidden;
-      padding-left: 0.25rem;
-      margin-left: -0.25rem;
-      margin-top: -0.25rem;
-    }
   }
 }
 
-.gin-layout-container {
-  display: flex;
-  width: 100%;
-  padding-top: 2px;
-  margin: 0 1rem;
-
-  @include mq($breakpointSmall) {
-    margin: 0 2rem;
-  }
-
-  @include mq($breakpointMedium) {
-    margin: 0 m#{i}n(5vw, 48px);
-  }
+.gin-breadcrumb-wrapper {
+  flex-grow: 1;
+  white-space: nowrap;
+  margin-right: 2rem;
 }
 
 .gin-back-to-admin {
   font-family: var(--ginFont);
-  font-size: 0.79rem;
+  font-size: var(--ginFontSizeSmall);
   font-weight: normal;
   line-height: 2;
   color: var(--colorGinTextLight);
@@ -113,8 +101,8 @@
     position: absolute;
     top: 50%;
     left: 0;
-    width: var(--iconGinMeta);
-    height: var(--iconGinMeta);
+    width: var(--iconGinSecondaryToolbar);
+    height: var(--iconGinSecondaryToolbar);
     transform: translateY(-50%);
     background-color: var(--colorGinIcons);
     mask-image: icon('backtosite');
@@ -164,16 +152,18 @@
   @include mq($breakpointMedium) {
     .toolbar-bar {
       position: relative;
+      display: flex;
+      align-items: center;
+      height: 100%;
     }
   }
 }
 
-.toolbar-meta {
+.gin-secondary-toolbar .toolbar-secondary {
   display: none;
 
   @include mq($breakpointMedium) {
     display: block;
-    margin-top: -11px;
 
     .toolbar-bar {
       height: var(--ginToolbarHeight);
@@ -257,6 +247,7 @@
             color: var(--colorGinPrimary);
             padding: .75rem 1rem;
             border-radius: var(--ginBorderSmall);
+            font-size: var(--ginFontSizeSmall);
 
             &:hover, &:active {
               color: var(--colorGinButtonText);
@@ -308,7 +299,7 @@
           border: 1px solid var(--colorGinBorder);
           border-radius: 50%;
           overflow: hidden;
-          margin-left: 1rem;
+          margin-left: 16px;
           padding: 0;
           line-height: 0;
 
@@ -333,21 +324,21 @@
 }
 
 // Show expanded
-.toolbar-meta {
+.gin-secondary-toolbar .toolbar-secondary {
   @include mq($breakpointWide) {
     .toolbar-bar {
       .toolbar-tab {
         margin-left: -.25em;
 
         .toolbar-item {
-          font-size: inherit;
+          font-size: var(--ginFontSizeSmall);
           width: auto;
           height: auto;
           padding-left: 2.875em;
 
           &::before {
-            width: var(--iconGinMeta);
-            height: var(--iconGinMeta);
+            width: var(--iconGinSecondaryToolbar);
+            height: var(--iconGinSecondaryToolbar);
             top: 50%;
             left: 12px;
             transform: translateY(-50%);
@@ -367,10 +358,10 @@
 
 #admin-toolbar-search-input {
   line-height: 1; // FF fix
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
-  margin-top: -0.25rem;
-  margin-right: .75rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-right: 12px;
+  font-size: var(--ginFontSizeSmall);
 
   &::placeholder {
     color: var(--colorGinDisabled);
@@ -383,7 +374,15 @@
   }
 }
 
+#admin-toolbar-search-tab .js-form-item.form-item {
+  margin-top: 0;
+}
+
 .ui-autocomplete.admin-toolbar-search-autocomplete-list {
   max-width: 320px;
   border-radius: var(--ginBorderDefault);
+
+  .ui-menu-item-wrapper {
+    font-size: var(--ginFontSizeSmall);
+  }
 }

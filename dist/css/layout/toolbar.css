@@ -1,4 +1,5 @@
 :root {
+  --ginToolbarSecondaryHeight: 48px;
   --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
   --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
@@ -7,6 +8,7 @@
 
 @media (min-width: 976px) {
   :root {
+    --ginToolbarSecondaryHeight: 60px;
     --iconGinToolbar: 22px;
     --ginScrollOffset: 130px;
     --ginHorizontalToolbarOffset: 0px;
@@ -77,6 +79,16 @@
   [dir="rtl"] .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-icon::before,
 [dir="rtl"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
     right: calc((var(--ginToolbarWidthCollapsed) - var(--iconGinToolbar)) / 2 - 9px);
+  }
+}
+
+@media (max-width: 588px) {
+  [dir="ltr"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
+    left: 0;
+  }
+
+  [dir="rtl"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
+    right: 0;
   }
 }
 

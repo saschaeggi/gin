@@ -59,8 +59,8 @@
   display: inline-block;
   position: absolute;
   top: 50%;
-  width: var(--iconGinMeta);
-  height: var(--iconGinMeta);
+  width: var(--iconGinSecondaryToolbar);
+  height: var(--iconGinSecondaryToolbar);
   transform: translateY(-50%);
   background-color: var(--colorGinIcons);
   -webkit-mask-image: url("../../media/sprite.svg#backtosite-view");
@@ -105,7 +105,7 @@
   display: none;
 }
 
-.node-preview-container ~ .region-meta--frontend {
+.node-preview-container ~ .gin-secondary-toolbar--frontend {
   display: none;
 }
 

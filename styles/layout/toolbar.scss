@@ -1,11 +1,13 @@
 // Toolbar Variables
 :root {
+  --ginToolbarSecondaryHeight: 48px;
   --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
   --ginHorizontalToolbarOffset: var(--ginToolbarHeight); // Needs px to work in calc() functions.
   --ginVerticalToolbarOffset: 0px; // Needs px to work in calc() functions.
 
   @include mq($breakpointMedium) {
+    --ginToolbarSecondaryHeight: 60px;
     --iconGinToolbar: 22px;
     --ginScrollOffset: 130px;
     --ginHorizontalToolbarOffset: 0px; // Needs px to work in calc() functions.
@@ -58,6 +60,12 @@
           top: 50%;
           transform: translateY(-50%);
         }
+      }
+    }
+
+    .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
+      @include mq(max-width $breakpointXSmall) {
+        left: 0;
       }
     }
 

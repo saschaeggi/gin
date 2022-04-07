@@ -152,7 +152,7 @@ button.link:active,
   .region-sticky-watcher {
     position: sticky;
     top: -1px;
-    height: 1px;
+    height: 0;
   }
 
   .region-sticky--is-sticky {
@@ -711,86 +711,6 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
   color: var(--colorGinContextualText);
   background: var(--colorGinContextual);
   border-radius: var(--ginBorderXSmall);
-}
-
-.breadcrumb-wrapper {
-  min-width: 1px;
-}
-
-.breadcrumb__item, .breadcrumb__link {
-  font-weight: normal;
-  color: var(--colorGinTextLight);
-}
-
-.breadcrumb__item + .breadcrumb__item::before {
-  content: "/";
-  opacity: .3;
-  display: inline-block;
-  padding: 0 4px;
-  background: none;
-}
-
-.breadcrumb__item:first-of-type .breadcrumb__link {
-  position: relative;
-}
-
-[dir="ltr"] .breadcrumb__item:first-of-type .breadcrumb__link {
-  padding-left: 2em;
-}
-
-[dir="rtl"] .breadcrumb__item:first-of-type .breadcrumb__link {
-  padding-right: 2em;
-}
-
-.breadcrumb__item:first-of-type .breadcrumb__link::before {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  top: 50%;
-  width: var(--iconGinMeta);
-  height: var(--iconGinMeta);
-  transform: translateY(-50%);
-  background-color: var(--colorGinIcons);
-  -webkit-mask-image: url("../../media/sprite.svg#backtosite-view");
-          mask-image: url("../../media/sprite.svg#backtosite-view");
-  -webkit-mask-size: 100% 100%;
-          mask-size: 100% 100%;
-  -webkit-mask-position: center center;
-          mask-position: center center;
-}
-
-[dir="ltr"] .breadcrumb__item:first-of-type .breadcrumb__link::before {
-  left: 0;
-}
-
-[dir="rtl"] .breadcrumb__item:first-of-type .breadcrumb__link::before {
-  right: 0;
-}
-
-.breadcrumb__item:first-of-type .breadcrumb__link:hover::before {
-  background-color: var(--colorGinPrimary);
-}
-
-.breadcrumb__link {
-  line-height: 2;
-  border-radius: var(--ginBorderTiny);
-}
-
-.breadcrumb__list {
-  text-overflow: ellipsis;
-  width: auto;
-  overflow: hidden;
-  margin-top: -0.25rem;
-}
-
-[dir="ltr"] .breadcrumb__list {
-  padding-left: .25rem;
-  margin-left: -0.25rem;
-}
-
-[dir="rtl"] .breadcrumb__list {
-  padding-right: .25rem;
-  margin-right: -0.25rem;
 }
 
 .modules-table-filter {
@@ -1773,7 +1693,7 @@ details summary {
 
 .views-tabs .add a,
 .views-tabs li a {
-  font-size: small;
+  font-size: var(--ginFontSizeSmall);
   font-weight: bold;
   color: var(--colorGinPrimary);
   padding: .5rem 1rem;

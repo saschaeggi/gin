@@ -1,12 +1,18 @@
-.breadcrumb {
+.gin-breadcrumb {
+  font-size: var(--ginFontSizeSmall);
+  color: var(--colorGinText);
+  padding: 0;
+
   &-wrapper {
     min-width: 1px; // Fixes ellipsis with flex overfloating issue.
   }
 
   &__item,
   &__link {
+    display: inline;
     font-weight: normal;
     color: var(--colorGinTextLight);
+    text-decoration: none;
   }
 
   &__item + &__item::before {
@@ -27,8 +33,8 @@
       position: absolute;
       top: 50%;
       left: 0;
-      width: var(--iconGinMeta);
-      height: var(--iconGinMeta);
+      width: var(--iconGinSecondaryToolbar);
+      height: var(--iconGinSecondaryToolbar);
       transform: translateY(-50%);
       background-color: var(--colorGinIcons);
       mask-image: icon('backtosite');
@@ -47,11 +53,14 @@
   }
 
   &__list {
-    text-overflow: ellipsis;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
     width: auto;
+    text-overflow: ellipsis;
     overflow: hidden;
     padding-left: .25rem;
+    margin-top: 0;
     margin-left: -.25rem;
-    margin-top: -.25rem;
   }
 }

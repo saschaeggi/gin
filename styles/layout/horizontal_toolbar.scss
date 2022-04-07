@@ -1,19 +1,21 @@
 // Toolbar Variables
 :root {
+  --ginToolbarSecondaryHeight: 48px;
   --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
   --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
   --ginVerticalToolbarOffset: 0px; // Needs px to work in calc() functions.
 
   @include mq($breakpointMedium) {
+    --ginToolbarSecondaryHeight: 60px;
     --ginToolbarHeight: 53px;
     --ginScrollOffset: 180px;
     --iconGinToolbar: 18px;
   }
 }
 
-.region-meta--frontend {
-  top: -60px;
+.gin-secondary-toolbar--frontend {
+  top: calc(var(--ginToolbarSecondaryHeight) * -1);
 }
 
 // Toolbar
