@@ -345,8 +345,8 @@
     border: 1px solid var(--colorGinBorder);
     border-radius: 50%;
     overflow: hidden;
-    -webkit-margin-start: 1rem;
-            margin-inline-start: 1rem;
+    -webkit-margin-start: 16px;
+            margin-inline-start: 16px;
     padding: 0;
     line-height: 0;
   }

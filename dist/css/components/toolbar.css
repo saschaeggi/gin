@@ -676,7 +676,7 @@ body.gin--classic-toolbar {
   block-size: var(--iconGinSecondaryToolbar);
   position: absolute;
   inset-block-start: 11px;
-  inset-inline-start: 1rem;
+  inset-inline-start: 16px;
   background-color: var(--colorGinIcons);
   -webkit-mask-image: url("../../media/sprite.svg#search-view");
           mask-image: url("../../media/sprite.svg#search-view");
