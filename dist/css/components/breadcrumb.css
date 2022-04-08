@@ -1,5 +1,5 @@
 .gin-breadcrumb {
-  font-size: var(--ginFontSizeSmall);
+  font-size: 0;
   color: var(--colorGinText);
   padding: 0;
 }
@@ -18,8 +18,9 @@
 .gin-breadcrumb__item + .gin-breadcrumb__item::before {
   content: "/";
   opacity: .3;
+  font-size: var(--ginFontSizeSmall);
   display: inline-block;
-  padding: 0 4px;
+  padding: 0 .5em;
   background: none;
 }
 
@@ -65,6 +66,7 @@
 }
 
 .gin-breadcrumb__link {
+  font-size: var(--ginFontSizeSmall);
   line-height: 2;
   border-radius: var(--ginBorderTiny);
 }
