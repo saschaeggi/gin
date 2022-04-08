@@ -36,6 +36,7 @@ class GinAfterBuild implements TrustedCallbackInterface {
         $value = $value ? t('Enabled') : t('Disabled');
       }
 
+      $element += ['#description' => ''];
       $element['#description'] .= '<span class="form-item__warning">' .
         t('This setting is overridden by the <a href=":editUrl">current user</a>. @title: %value',
           [
