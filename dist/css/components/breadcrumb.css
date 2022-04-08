@@ -26,8 +26,8 @@
 
 .gin-breadcrumb__item:first-of-type .gin-breadcrumb__link {
   position: relative;
-  -webkit-padding-start: 2em;
-          padding-inline-start: 2em;
+  -webkit-padding-start: 1.75em;
+          padding-inline-start: 1.75em;
 }
 
 .gin-breadcrumb__item:first-of-type .gin-breadcrumb__link::before {
