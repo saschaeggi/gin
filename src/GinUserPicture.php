@@ -2,6 +2,7 @@
 
 namespace Drupal\gin;
 
+use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Security\TrustedCallbackInterface;
@@ -77,12 +78,19 @@ class GinUserPicture implements ContainerInjectionInterface, TrustedCallbackInte
     ];
 
     /** @var \Drupal\image\ImageStyleInterface $style */
-    $style = $this->entityTypeManager->getStorage('image_style')->load('thumbnail');
+    $style = NULL;
+    try {
+      $style = $this->entityTypeManager->getStorage('image_style')->load('thumbnail');
+    }
+    catch (PluginNotFoundException $e) {
+      // The image style plugin does not exists. $style stays NULL and no user
+      // picture will be added.
+    }
     if ($style === NULL) {
       return ['link' => $build];
     }
 
-    $file = $user->user_picture->entity;
+    $file = $user->user_picture ? $user->user_picture->entity : NULL;
     if ($file === NULL) {
       return ['link' => $build];
     }
