@@ -8,7 +8,7 @@ phpcs:
   script:
     - cp -u phpcs.xml $WEB_ROOT/modules/custom
     - composer phpcs -- --report-junit=junit.xml --report-full --report-summary
-  allow_failure: true
+  allow_failure: false
   artifacts:
     expose_as: junit
     expire_in: 6 mos
