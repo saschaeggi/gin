@@ -234,6 +234,10 @@
   margin-right: .5rem;
 }
 
+.js .paragraph-top {
+  grid-template-columns: 1fr auto 1fr auto;
+}
+
 .gin--dark-mode .paragraphs-tabs-wrapper .field-multiple-table .draggable {
   background: var(--colorGinLayer2Background);
   box-shadow: none;
