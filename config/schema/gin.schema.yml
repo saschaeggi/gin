@@ -15,6 +15,9 @@ gin.settings:
     classic_toolbar:
       type: string
       label: 'The classic toolbar'
+    secondary_toolbar_frontend:
+      type: boolean
+      label: 'Secondary toolbar in Frontend'
     high_contrast_mode:
       type: boolean
       label: 'High contrast mode'
