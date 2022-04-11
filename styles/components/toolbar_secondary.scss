@@ -285,6 +285,25 @@
         }
       }
 
+      // Edit button
+      .toolbar-tab > .toolbar-icon-edit.toolbar-item {
+        &,
+        &:hover,
+        &:active,
+        &:focus,
+        &.is-active,
+        &.is-active:hover {
+          font-weight: normal;
+          color: var(--colorGinTextLight);
+          background-color: transparent;
+
+          &::before {
+            background-image: none;
+            background-color: var(--colorGinIcons);
+          }
+        }
+      }
+
       .toolbar-id--toolbar-icon-user {
         margin-right: -1.333em;
 

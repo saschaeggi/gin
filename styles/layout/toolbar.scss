@@ -134,17 +134,6 @@
         }
       }
     }
-
-    .toolbar-tab > .toolbar-icon-edit.toolbar-item {
-      &, &:hover, &:active, &.is-active {
-        color: var(--colorGinAppBackground);
-
-        &::before {
-          background-image: none;
-          background-color: var(--colorGinAppBackground);
-        }
-      }
-    }
   }
 }
 

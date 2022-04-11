@@ -44,6 +44,8 @@ module.exports = {
     'components/paragraphs_ee': ['./styles/components/paragraphs_ee.scss'],
     'components/responsive_preview': ['./styles/components/responsive_preview.scss'],
     'components/revisions': ['./styles/components/revisions.scss'],
+    'components/settings_tray': ['./styles/components/settings_tray.scss'],
+    'components/settings_tray_edit': ['./styles/components/settings_tray_edit.scss'],
     'components/settings': ['./styles/components/settings.scss'],
     'components/toolbar': ['./styles/components/toolbar.scss'],
     'components/toolbar_secondary': ['./styles/components/toolbar_secondary.scss'],
