@@ -277,8 +277,8 @@
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date .form-element {
-  min-width: 0;
-  width: 100%;
+  min-inline-size: 0;
+  inline-size: 100%;
 }
 
 .gin--edit-form .revision-current {

@@ -244,8 +244,8 @@
               }
 
               .form-element {
-                min-width: 0;
-                width: 100%;
+                min-inline-size: 0;
+                inline-size: 100%;
               }
             }
           }
