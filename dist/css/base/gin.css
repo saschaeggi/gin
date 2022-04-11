@@ -2742,8 +2742,8 @@ a.button:active {
   margin-right: 0;
 }
 
-table tr:nth-last-child(2) td .dropbutton__items,
-table tr:last-of-type td .dropbutton__items {
+table tr:not(:first-of-type):nth-last-child(2) td .dropbutton__items,
+table tr:not(:first-of-type):last-of-type td .dropbutton__items {
   bottom: 100%;
 }
 
