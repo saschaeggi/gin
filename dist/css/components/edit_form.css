@@ -219,12 +219,60 @@
   inline-size: 100%;
 }
 
-.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-date {
-  max-inline-size: 170px;
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-items-inline {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-time {
-  max-inline-size: 134px;
+@media (min-width: 420px) {
+  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-items-inline {
+    flex-wrap: nowrap;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-items-inline {
+    flex-wrap: wrap;
+  }
+}
+
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date {
+  display: block;
+  flex-basis: 100%;
+  flex-grow: 1;
+}
+
+@media (min-width: 420px) {
+  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date {
+    flex-basis: 50%;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date {
+    flex-basis: 100%;
+  }
+}
+
+@media (min-width: 420px) {
+  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
+    margin-inline-end: .5rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
+    margin-inline-end: 0;
+  }
+}
+
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:nth-of-type(2) {
+  flex-basis: 134px;
+}
+
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date .form-element {
+  min-inline-size: 0;
+  inline-size: 100%;
 }
 
 .gin--edit-form .revision-current {

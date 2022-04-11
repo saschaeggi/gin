@@ -203,12 +203,50 @@
           }
 
           .form-datetime-wrapper {
-            .form-date {
-              max-inline-size: 170px;
+            .form-items-inline {
+              display: flex;
+              flex-wrap: wrap;
+
+              @include mq($breakpointTiny) {
+                flex-wrap: nowrap;
+              }
+
+              @include mq($breakpointLarge $breakpointWide) {
+                flex-wrap: wrap;
+              }
             }
 
-            .form-time {
-              max-inline-size: 134px;
+            .form-type--date {
+              display: block;
+              flex-basis: 100%;
+              flex-grow: 1;
+
+              @include mq($breakpointTiny) {
+                flex-basis: 50%;
+              }
+
+              @include mq($breakpointLarge $breakpointWide) {
+                flex-basis: 100%;
+              }
+
+              &:first-of-type {
+                @include mq($breakpointTiny) {
+                  margin-inline-end: .5rem;
+                }
+
+                @include mq($breakpointLarge $breakpointWide) {
+                  margin-inline-end: 0;
+                }
+              }
+
+              &:nth-of-type(2) {
+                flex-basis: 134px;
+              }
+
+              .form-element {
+                min-inline-size: 0;
+                inline-size: 100%;
+              }
             }
           }
         }
