@@ -197,12 +197,60 @@
   width: 100%;
 }
 
-.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-date {
-  max-width: 170px;
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-items-inline {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-time {
-  max-width: 134px;
+@media (min-width: 420px) {
+  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-items-inline {
+    flex-wrap: nowrap;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-items-inline {
+    flex-wrap: wrap;
+  }
+}
+
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date {
+  display: block;
+  flex-basis: 100%;
+  flex-grow: 1;
+}
+
+@media (min-width: 420px) {
+  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date {
+    flex-basis: 50%;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date {
+    flex-basis: 100%;
+  }
+}
+
+@media (min-width: 420px) {
+  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
+    margin-right: .5rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
+    margin-right: 0;
+  }
+}
+
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:nth-of-type(2) {
+  flex-basis: 134px;
+}
+
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date .form-element {
+  min-width: 0;
+  width: 100%;
 }
 
 .gin--edit-form .revision-current {
