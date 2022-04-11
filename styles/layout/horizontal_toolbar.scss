@@ -115,13 +115,6 @@
   }
 }
 
-// Inline Edit toggle
-.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item,
-.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active,
-.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item:focus {
-  background: var(--colorGinPrimary);
-}
-
 .toolbar-tray-horizontal a:focus,
 .toolbar-box a:focus,
 .toolbar .toolbar-icon.toolbar-handle:focus {
@@ -144,10 +137,6 @@
 }
 
 .gin--classic-toolbar {
-  // .page-wrapper__node-edit-form .layout-region-node-secondary {
-  //   padding-block-start: 39px;
-  // }
-
   table.sticky-header {
     @include mq($breakpointLarge) {
       margin-block-start: 0;
@@ -156,18 +145,7 @@
 }
 
 #toolbar-item-administration-tray {
-  box-shadow: 0 0 4px rgba(0, 0, 0, .1),
-              0 2px 6px 2px rgba(0, 0, 0, .03);
-
-  .gin--dark-mode & {
-    box-shadow: 0 0 4px rgba(0, 0, 0, .3);
-  }
-
-  .toolbar-logo {
-    display: flex;
-    block-size: 100%;
-  }
-}
+  box-shadow: 0 0 4px rgba(t
 
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
@@ -201,6 +179,7 @@
     &,
     .toolbar-bar {
       block-size: var(--ginToolbarHeight);
+      background: var(--colorGinLayerBackground);
     }
   }
 

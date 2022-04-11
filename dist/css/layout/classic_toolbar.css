@@ -83,10 +83,20 @@
   background: var(--colorGinPrimary);
 }
 
-.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item,
-.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active,
-.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item:focus {
+#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode {
+  background: #100f10;
+}
+
+#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item, #toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active, #toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item:focus {
   background: var(--colorGinPrimary);
+}
+
+#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item:hover, #toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active:hover {
+  background: var(--colorGinPrimaryHover);
+}
+
+#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item:hover::before, #toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active:hover::before {
+  background: #fff;
 }
 
 .toolbar-tray-horizontal a:focus,

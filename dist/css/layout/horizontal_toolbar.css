@@ -124,12 +124,6 @@
   background: var(--colorGinPrimary);
 }
 
-.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item,
-.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active,
-.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item:focus {
-  background: var(--colorGinPrimary);
-}
-
 .toolbar-tray-horizontal a:focus,
 .toolbar-box a:focus,
 .toolbar .toolbar-icon.toolbar-handle:focus {
@@ -204,6 +198,7 @@
   .gin--horizontal-toolbar #toolbar-administration,
 .gin--horizontal-toolbar #toolbar-administration .toolbar-bar {
     block-size: var(--ginToolbarHeight);
+    background: var(--colorGinLayerBackground);
   }
 }
 

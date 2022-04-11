@@ -85,10 +85,25 @@
 }
 
 // Inline Edit toggle
-.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item,
-.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active,
-.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item:focus {
-  background: var(--colorGinPrimary);
+#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode {
+  background: #100f10;
+
+  .toolbar-icon.toolbar-icon-edit.toolbar-item {
+    &,
+    &.is-active,
+    &:focus {
+      background: var(--colorGinPrimary);
+    }
+
+    &:hover,
+    &.is-active:hover {
+      background: var(--colorGinPrimaryHover);
+
+      &::before {
+        background: #fff;
+      }
+    }
+  }
 }
 
 .toolbar-tray-horizontal a:focus,

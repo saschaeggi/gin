@@ -28,46 +28,51 @@ gin_toolbar:
     component:
       dist/css/components/toolbar.css: { minified: false }
       dist/css/components/toolbar_secondary.css: { minified: false }
-      dist/css/components/coffee.css: { minified: false }
-      dist/css/components/node_preview.css: { minified: false }
     theme:
       dist/css/layout/toolbar.css: { minified: false }
   js:
     dist/js/toolbar.js: { minified: false }
   dependencies:
+    - gin/coffee
+    - gin/node_preview
     - gin/responsive_preview
     - gin/contextual_links
     - gin/breadcrumb
+    - gin/settings_tray
+    - gin/settings_tray_edit
 
 gin_horizontal_toolbar:
   css:
     component:
       dist/css/components/toolbar.css: { minified: false }
       dist/css/components/toolbar_secondary.css: { minified: false }
-      dist/css/components/coffee.css: { minified: false }
-      dist/css/components/node_preview.css: { minified: false }
     theme:
       dist/css/layout/horizontal_toolbar.css: { minified: false }
   js:
     dist/js/toolbar.js: { minified: false }
   dependencies:
+    - gin/coffee
+    - gin/node_preview
     - gin/responsive_preview
     - gin/contextual_links
     - gin/breadcrumb
+    - gin/settings_tray
+    - gin/settings_tray_edit
 
 gin_classic_toolbar:
   css:
     component:
       dist/css/components/toolbar.css: { minified: false }
-      dist/css/components/coffee.css: { minified: false }
-      dist/css/components/node_preview.css: { minified: false }
     theme:
       dist/css/layout/classic_toolbar.css: { minified: false }
   js:
     dist/js/toolbar.js: { minified: false }
   dependencies:
+    - gin/coffee
+    - gin/node_preview
     - gin/contextual_links
     - gin/breadcrumb
+    - gin/settings_tray_edit
 
 gin_accent:
   css:
@@ -169,6 +174,26 @@ breadcrumb:
   css:
     theme:
       dist/css/components/breadcrumb.css: { minified: false }
+
+coffee:
+  css:
+    component:
+      dist/css/components/coffee.css: { minified: false }
+
+node_preview:
+  css:
+    component:
+      dist/css/components/node_preview.css: { minified: false }
+
+settings_tray:
+  css:
+    component:
+      dist/css/components/settings_tray.css: { minified: false }
+
+settings_tray_edit:
+  css:
+    component:
+      dist/css/components/settings_tray_edit.css: { minified: false }
 
 # Modules
 

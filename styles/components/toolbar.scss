@@ -23,10 +23,6 @@ body.gin--classic-toolbar {
           text-align: start;
         }
       }
-
-      .contextual-toolbar-tab {
-        order: 100;
-      }
     }
 
     .toolbar-tab > .toolbar-item {
@@ -96,6 +92,10 @@ body.gin--classic-toolbar {
     .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item:focus {
       color: var(--colorGinAppBackground);
       background: var(--colorGinPrimary);
+
+      &::before {
+        background: var(--colorGinAppBackground);
+      }
     }
 
     // Overrides for default toolbar items
@@ -281,12 +281,7 @@ body.gin--classic-toolbar {
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &:before {
         mask-image: icon('edit');
-      }
-
-      &, &:hover, &:active {
-        &:before {
-          background: var(--colorGinAppBackground);
-        }
+        mask-size: var(--iconGinSecondaryToolbar) var(--iconGinSecondaryToolbar);
       }
     }
 
@@ -493,16 +488,12 @@ body.gin--classic-toolbar {
   }
 }
 
-#gin-toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon.toolbar-icon-edit.toolbar-item.is-active {
-  color: var(--colorGinAppBackground);
-}
+#toolbar-administration .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item {
+  font-weight: 600;
 
-#gin-toolbar-bar.js-settings-tray-edit-mode {
-  background: var(--colorGinPrimary);
-}
-
-#gin-toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon.toolbar-icon-edit.toolbar-item.is-active:hover {
-  background: var(--colorGinPrimaryHover);
+  &:hover::before {
+    background: #fff;
+  }
 }
 
 .toolbar .toolbar-icon.toolbar-handle::before,
@@ -600,6 +591,10 @@ body.gin--classic-toolbar {
 
 .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon::before {
   background-color: var(--colorGinIcons);
+}
+
+.toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item::before {
+  left: .55rem;
 }
 
 // Custom logo
