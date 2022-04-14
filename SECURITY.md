@@ -12,4 +12,5 @@ The following versions are supported:
 
 ## Reporting a Vulnerability
 
-Please report Security issues on the drupal.org issue queue over at https://www.drupal.org/project/issues/gin
+Please report Security issues on the drupal.org issue queue
+over at https://www.drupal.org/project/issues/gin
