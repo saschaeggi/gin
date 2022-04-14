@@ -125,7 +125,7 @@
 }
 
 .toolbar-menu__trigger,
-.menu-item-title,
+.toolbar .menu-item-title,
 .menu-item-sub-title {
   display: none !important;
 }
