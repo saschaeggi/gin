@@ -198,7 +198,7 @@
 .ui-dialog .button--primary:not(:focus),
 .ui-dialog .ief-entity-submit {
   background: var(--colorGinPrimary);
-  box-shadow: .1em .25em .5em var(--colorGinPrimaryLight), -0.25em -0.5em 1em var(--colorGinAppBackground);
+  box-shadow: .1em .25em .5em var(--colorGinPrimaryLight);
 }
 
 .ui-dialog .button--primary:hover,
