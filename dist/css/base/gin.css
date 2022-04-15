@@ -2436,7 +2436,7 @@ fieldset:not(.fieldgroup) > .fieldset-wrapper {
 .button--primary:not(:focus),
 .ief-entity-submit {
   background: var(--colorGinPrimary);
-  box-shadow: .1em .25em .5em var(--colorGinPrimaryLight), -0.25em -0.5em 1em var(--colorGinAppBackground);
+  box-shadow: .1em .25em .5em var(--colorGinPrimaryLight);
 }
 
 .button--primary:hover,
