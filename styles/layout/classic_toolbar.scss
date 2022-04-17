@@ -5,6 +5,7 @@
   --ginScrollOffset: 72px;
   --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
   --ginVerticalToolbarOffset: 0px; // Needs px to work in calc() functions.
+  --ginStickyOffset: 0px; // Needs px to work in calc() functions.
 
   @include mq($breakpointLarge) {
     --iconGinToolbar: 16px;

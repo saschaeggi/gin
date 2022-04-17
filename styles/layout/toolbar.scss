@@ -5,6 +5,7 @@
   --ginScrollOffset: 72px;
   --ginHorizontalToolbarOffset: var(--ginToolbarHeight); // Needs px to work in calc() functions.
   --ginVerticalToolbarOffset: 0px; // Needs px to work in calc() functions.
+  --ginStickyOffset: 0px; // Needs px to work in calc() functions.
 
   @include mq($breakpointMedium) {
     --ginToolbarSecondaryHeight: 60px;
@@ -12,6 +13,7 @@
     --ginScrollOffset: 130px;
     --ginHorizontalToolbarOffset: 0px; // Needs px to work in calc() functions.
     --ginVerticalToolbarOffset: var(--ginToolbarWidthCollapsed);
+    --ginStickyOffset: var(--ginStickyHeight);
   }
 }
 
