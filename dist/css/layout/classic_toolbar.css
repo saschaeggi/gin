@@ -4,6 +4,7 @@
   --ginScrollOffset: 72px;
   --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
   --ginVerticalToolbarOffset: 0px;
+  --ginStickyOffset: 0px;
 }
 
 @media (min-width: 1024px) {
