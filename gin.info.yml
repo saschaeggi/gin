@@ -176,7 +176,7 @@ libraries-extend:
   autosave_form/drupal.autosave_form:
     - gin/autosave
   chosen/drupal.chosen:
-    - gin/chosen
+    - chosen/chosen.claro
   dropzonejs/widget:
     - gin/dropzonejs
   entity_browser/entity_browser:
