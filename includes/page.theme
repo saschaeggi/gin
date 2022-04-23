@@ -123,7 +123,17 @@ function gin_preprocess_page_title(&$variables) {
   if (preg_match('/entity\.node\..*/', \Drupal::routeMatch()->getRouteName(), $matches)) {
     $node = \Drupal::routeMatch()->getParameter('node');
     if ($node instanceof Node) {
-      $variables['title'] = $node->getTitle();
+      if ($node->isDefaultTranslation() && $matches[0] !== 'entity.node.content_translation_add') {
+        $variables['title'] = $node->getTitle();
+      }
+      elseif ($matches[0] === 'entity.node.edit_form') {
+        $variables['title_attributes']['class'][] = 'page-title--is-translation';
+        $args = [
+          '@title' => $node->getTitle(),
+          '@language' => $node->language()->getName(),
+        ];
+        $variables['title'] = t('@title <span class="page-title__language">(@language translation)</span>', $args);
+      }
     }
   }
 }

@@ -580,6 +580,18 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
   }
 }
 
+.page-title__language {
+  display: block;
+  font-size: var(--ginFontSizeSmall);
+  font-weight: normal;
+  letter-spacing: normal;
+  color: var(--colorGinText);
+}
+
+.page-title--is-translation + .shortcut-action .shortcut-action__icon {
+  top: -3px;
+}
+
 .shortcut-action {
   align-self: center;
   margin-left: .5rem;
