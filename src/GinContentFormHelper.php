@@ -155,6 +155,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
 
       // Now let's just remove delete, as we'll move that over to gin_sidebar.
       unset($form['gin_actions']['actions']['delete']);
+      unset($form['gin_actions']['actions']['delete_translation']);
 
       // Create gin_sidebar group.
       $form['gin_sidebar'] = [
@@ -170,10 +171,17 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       ];
       // Copy footer over.
       $form['gin_sidebar']['footer'] = ($form['footer']) ?? [];
-      // Copy delete action.
+      // Copy actions.
       $form['gin_sidebar']['actions'] = [];
       $form['gin_sidebar']['actions']['#type'] = ($form['actions']['#type']) ?? [];
+      // Copy delete action.
       $form['gin_sidebar']['actions']['delete'] = ($form['actions']['delete']) ?? [];
+      // Copy delete_translation action.
+      if (isset($form['actions']['delete_translation'])) {
+        $form['gin_sidebar']['actions']['delete_translation'] = ($form['actions']['delete_translation']) ?? [];
+        $form['gin_sidebar']['actions']['delete_translation']['#attributes']['class'][] = 'button--danger';
+        $form['gin_sidebar']['actions']['delete_translation']['#attributes']['class'][] = 'action-link';
+      }
     }
 
     // Specify necessary node form theme and library.

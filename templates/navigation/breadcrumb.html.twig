@@ -12,6 +12,7 @@
     <h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
     <ol class="gin-breadcrumb__list">
     {% for item in breadcrumb %}
+      {% if item.text %}
       <li class="gin-breadcrumb__item">
         {% if item.url %}
           <a href="{{ item.url }}" class="gin-breadcrumb__link">{{ item.text }}</a>
@@ -19,6 +20,7 @@
           {{ item.text }}
         {% endif %}
       </li>
+      {% endif %}
     {% endfor %}
     </ol>
   </nav>
