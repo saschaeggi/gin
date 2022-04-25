@@ -66,8 +66,7 @@
 .button--primary:not(:focus),
 .ief-entity-submit {
   background: var(--colorGinPrimary);
-  box-shadow: .1em .25em .5em var(--colorGinPrimaryLight),
-              -.25em -.5em 1em var(--colorGinAppBackground);
+  box-shadow: .1em .25em .5em var(--colorGinPrimaryLight);
 
   &:hover {
     background-color: var(--colorGinPrimaryHover);
