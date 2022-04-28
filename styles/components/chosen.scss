@@ -1,5 +1,4 @@
 .form-element.chosen-container-single {
-    width: auto !important;
     padding: 0;
 
     .chosen-single {
@@ -20,12 +19,19 @@
 }
 
 .form-element.chosen-container-multi {
-    width: auto !important;
-
     .chosen-choices {
         min-width: 160px;
         border: 0 none;
         background: none;
         box-shadow: none;
     }
+}
+
+
+.chosen-container-multi input[type="text"] {
+    width: auto !important;
+}
+
+.chosen-container .chosen-drop {
+    left: 0;
 }
