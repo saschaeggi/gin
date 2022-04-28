@@ -245,7 +245,7 @@ module_filter:
 chosen:
   css:
     component:
-      dist/css/components/chosen.css: { minified: false, weight: 99 }
+      dist/css/components/chosen.css: { minified: false }
 
 dropzonejs:
   css:
