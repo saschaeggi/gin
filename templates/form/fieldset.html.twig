@@ -60,9 +60,9 @@
       {{ attach_library('gin/gin_description_toggle') }}
       <button class="help-icon__description-toggle"></button>
     </div>
-    {% if description.content %}
-      <div{{ description.attributes.addClass(description_classes) }}>{{ description.content }}</div>
-    {% endif %}
+  {% endif %}
+  {% if description_display == 'before' and description.content %}
+    <div{{ description.attributes.addClass(description_classes) }}>{{ description.content }}</div>
   {% endif %}
   <div{{ content_attributes.addClass(wrapper_classes) }}>
     {% if inline_items %}
@@ -81,7 +81,7 @@
           {{ errors }}
         </div>
       {% endif %}
-      {% if description.content and not description_toggle %}
+      {% if description_display == 'after' and description.content %}
         <div{{ description.attributes.addClass(description_classes) }}>{{ description.content }}</div>
       {% endif %}
 
