@@ -4663,3 +4663,24 @@ blockquote::before {
   right: 0;
 }
 
+.image-preview img {
+  background-color: var(--colorPatternFallback);
+  background-size: calc(var(--sizePatternSquare) * 2) calc(var(--sizePatternSquare) * 2);
+}
+
+[dir="ltr"] .image-preview img {
+  background-image: linear-gradient(-45deg, var(--colorPattern) 25%, transparent 26%), linear-gradient(-45deg, var(--colorPattern) 25%, transparent 26%), linear-gradient(135deg, var(--colorPattern) 25%, transparent 26%), linear-gradient(135deg, var(--colorPattern) 25%, transparent 26%);
+  background-position: 0 0, var(--sizePatternSquare) var(--sizePatternSquare), var(--sizePatternSquare) var(--sizePatternSquare), 0 0;
+}
+
+[dir="rtl"] .image-preview img {
+  background-image: linear-gradient(45deg, var(--colorPattern) 25%, transparent 26%), linear-gradient(45deg, var(--colorPattern) 25%, transparent 26%), linear-gradient(-135deg, var(--colorPattern) 25%, transparent 26%), linear-gradient(-135deg, var(--colorPattern) 25%, transparent 26%);
+  background-position: 100% 0, var(--sizePatternSquare) var(--sizePatternSquare), var(--sizePatternSquare) var(--sizePatternSquare), 100% 0;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .image-preview img {
+    background: none;
+  }
+}
+

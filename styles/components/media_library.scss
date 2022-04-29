@@ -50,6 +50,10 @@
 .media-library-item {
   background: none;
 
+  img {
+    @include color-pattern;
+  }
+
   &--grid {
     border-radius: var(--ginBorderBig);
 
