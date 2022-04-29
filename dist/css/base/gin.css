@@ -4000,3 +4000,16 @@ blockquote::before {
   border-radius: 2px;
 }
 
+.image-preview img {
+  background-color: var(--colorPatternFallback);
+  background-image: linear-gradient(-45deg, var(--colorPattern) 25%, transparent 26%), linear-gradient(-45deg, var(--colorPattern) 25%, transparent 26%), linear-gradient(135deg, var(--colorPattern) 25%, transparent 26%), linear-gradient(135deg, var(--colorPattern) 25%, transparent 26%);
+  background-position: 0 0, var(--sizePatternSquare) var(--sizePatternSquare), var(--sizePatternSquare) var(--sizePatternSquare), 0 0;
+  background-size: calc(var(--sizePatternSquare) * 2) calc(var(--sizePatternSquare) * 2);
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .image-preview img {
+    background: none;
+  }
+}
+
