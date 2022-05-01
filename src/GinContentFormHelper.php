@@ -225,6 +225,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     $route_names = [
       'node.add',
       'entity.node.content_translation_add',
+      'entity.node.content_translation_edit',
       'quick_node_clone.node.quick_clone',
       'entity.node.edit_form',
     ];
