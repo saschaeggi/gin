@@ -23,6 +23,18 @@
       font-size: 1.6em;
     }
   }
+
+  &__language {
+    display: block;
+    font-size: var(--ginFontSizeSmall);
+    font-weight: normal;
+    letter-spacing: normal;
+    color: var(--colorGinText);
+  }
+
+  &--is-translation + .shortcut-action .shortcut-action__icon {
+    top: -3px;
+  }
 }
 
 .shortcut-action {
