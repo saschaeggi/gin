@@ -19,7 +19,8 @@
   .field-multiple-table {
     thead {
       th {
-        padding: .5rem 1.5rem .5rem .5rem;
+        padding-block: .5rem;
+        padding-inline: .5rem 1.5rem;
 
         &.th__order {
           display: none;

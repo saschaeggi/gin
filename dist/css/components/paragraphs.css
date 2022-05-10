@@ -14,12 +14,9 @@
           padding-block-end: 12px;
 }
 
-[dir="ltr"] .paragraphs-tabs-wrapper .field-multiple-table thead th {
-  padding: .5rem 1.5rem .5rem .5rem;
-}
-
-[dir="rtl"] .paragraphs-tabs-wrapper .field-multiple-table thead th {
-  padding: .5rem .5rem .5rem 1.5rem;
+.paragraphs-tabs-wrapper .field-multiple-table thead th {
+  padding-block: .5rem;
+  padding-inline: .5rem 1.5rem;
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table thead th.th__order {

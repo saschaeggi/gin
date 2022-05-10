@@ -10,12 +10,12 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
-    width: auto;
+    inline-size: auto;
     text-overflow: ellipsis;
     overflow: hidden;
-    padding-left: .25rem;
-    margin-top: 0;
-    margin-left: -.25rem;
+    padding-inline-start: .25rem;
+    margin-block-start: 0;
+    margin-inline-start: -.25rem;
   }
 
   &__item,
@@ -53,7 +53,7 @@
       inset-inline-start: 0;
       inline-size: var(--iconGinSecondaryToolbar);
       block-size: var(--iconGinSecondaryToolbar);
-      transform: translateY(-50%);
+      transform: translateY(-50%) unquote("/*! rtl:append scaleX(-1) */");
       background-color: var(--colorGinIcons);
       mask-image: icon('backtosite');
       mask-size: 100% 100%;

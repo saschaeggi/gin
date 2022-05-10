@@ -33,7 +33,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 976px) {
   .toolbar .toolbar-bar {
     block-size: 0;
   }

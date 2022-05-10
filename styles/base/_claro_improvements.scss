@@ -15,7 +15,8 @@ details summary {
 
   .form-item,
   .form-actions {
-    margin: .5rem .5rem .5rem 0;
+    margin-block: .5rem;
+    margin-inline: 0 .5rem;
     align-self: flex-start;
   }
 
