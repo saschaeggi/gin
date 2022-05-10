@@ -59,7 +59,7 @@
       inset-inline-end: 16px;
       inset-inline-start: auto;
       inset-block-start: 50%;
-      transform: translateY(-50%);
+      transform: translateY(-50%) unquote("/*! rtl:append scaleX(-1) */");
       background-image: none;
       background-color: var(--colorGinPrimary);
       mask-image: icon('handle');

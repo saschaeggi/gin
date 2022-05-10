@@ -4,8 +4,12 @@
             padding-inline-end: var(--ginSidebarWidth);
   }
 
-  .gin--edit-form .dialog-off-canvas-main-canvas {
+  [dir="ltr"] .gin--edit-form .dialog-off-canvas-main-canvas {
     transition: padding-left var(--ginTransition);
+  }
+
+  [dir="rtl"] .gin--edit-form .dialog-off-canvas-main-canvas {
+    transition: padding-right var(--ginTransition);
   }
 
   .gin--edit-form.js-off-canvas-dialog-open {
@@ -256,13 +260,15 @@
 
 @media (min-width: 420px) {
   .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
-    margin-inline-end: .5rem;
+    -webkit-margin-end: .5rem;
+            margin-inline-end: .5rem;
   }
 }
 
 @media (min-width: 1024px) and (max-width: 1280px) {
   .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
-    margin-inline-end: 0;
+    -webkit-margin-end: 0;
+            margin-inline-end: 0;
   }
 }
 

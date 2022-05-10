@@ -139,11 +139,20 @@
   position: absolute;
   inset-block-start: 12px;
   inset-inline-start: 50%;
-  transform: translate(-50%);
   border: 0 none;
   font-style: normal;
   color: var(--colorGinTextLight);
   opacity: .75;
+}
+
+[dir="ltr"] .erl-item label.paragraph-type-label,
+[dir="ltr"] .erl-item label.paragraph-type--label {
+  transform: translate(-50%);
+}
+
+[dir="rtl"] .erl-item label.paragraph-type-label,
+[dir="rtl"] .erl-item label.paragraph-type--label {
+  transform: translate(50%);
 }
 
 .erl-item .layout-controls {

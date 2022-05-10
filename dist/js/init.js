@@ -10,7 +10,7 @@
   })), localStorage.getItem("Drupal.gin.toolbarExpanded")) {
     const style = document.createElement("style"), className = "gin-toolbar-inline-styles";
     if (style.className = className, "true" === localStorage.getItem("Drupal.gin.toolbarExpanded")) {
-      style.innerHTML = "\n    @media (min-width: 976px) {\n      body.gin--vertical-toolbar:not([data-toolbar-menu=open]) {\n        padding-left: 240px;\n        transition: none;\n      }\n\n      .gin--vertical-toolbar .toolbar-menu-administration {\n        min-width: var(--ginToolbarWidth, 240px);\n        transition: none;\n      }\n    }\n    ";
+      style.innerHTML = "\n    @media (min-width: 976px) {\n      body.gin--vertical-toolbar:not([data-toolbar-menu=open]) {\n        padding-inline-start: 240px;\n        transition: none;\n      }\n\n      .gin--vertical-toolbar .toolbar-menu-administration {\n        min-width: var(--ginToolbarWidth, 240px);\n        transition: none;\n      }\n    }\n    ";
       const scriptTag = document.querySelector("script");
       scriptTag.parentNode.insertBefore(style, scriptTag);
     } else document.getElementsByClassName(className).length > 0 && document.getElementsByClassName(className)[0].remove();

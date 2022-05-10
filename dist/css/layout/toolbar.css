@@ -34,6 +34,10 @@
   box-shadow: none;
 }
 
+[dir=rtl] .toolbar .toolbar-bar {
+  box-shadow: none;
+}
+
 @media (min-width: 588px) {
   .toolbar .toolbar-bar {
     display: flex;
@@ -68,7 +72,7 @@
 
 @media (max-width: 588px) {
   .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
-    left: 0;
+    inset-inline-start: 0;
   }
 }
 
@@ -222,10 +226,17 @@ a.toolbar-menu__trigger,
     align-items: center;
     inline-size: var(--ginToolbarWidthCollapsed);
     block-size: 64px;
-    padding: 16px 0 16px var(--ginToolbarWidthCollapsed);
     margin: 0;
     transition: width var(--ginTransition);
     overflow: hidden;
+  }
+
+  [dir="ltr"] .toolbar-menu-administration a.toolbar-menu__trigger {
+    padding: 16px 0 16px var(--ginToolbarWidthCollapsed);
+  }
+
+  [dir="rtl"] .toolbar-menu-administration a.toolbar-menu__trigger {
+    padding: 16px var(--ginToolbarWidthCollapsed) 16px 0;
   }
 
   .toolbar-menu-administration a.toolbar-menu__trigger, .toolbar-menu-administration a.toolbar-menu__trigger:active, .toolbar-menu-administration a.toolbar-menu__trigger:focus {
@@ -261,8 +272,12 @@ a.toolbar-menu__trigger,
     color: var(--colorGinTitle);
   }
 
-  .toolbar-menu-administration a.toolbar-menu__trigger.is-active:before {
+  [dir="ltr"] .toolbar-menu-administration a.toolbar-menu__trigger.is-active:before {
     transform: rotate(180deg);
+  }
+
+  [dir="rtl"] .toolbar-menu-administration a.toolbar-menu__trigger.is-active:before {
+    transform: rotate(-180deg);
   }
 
   .toolbar-menu-administration a.toolbar-menu__trigger .menu {
@@ -390,11 +405,9 @@ a.toolbar-menu__trigger,
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
     display: none;
-    position: fixed;
     inset-block-start: 0;
     -webkit-margin-start: calc(var(--ginToolbarWidthCollapsed) - 1px);
             margin-inline-start: calc(var(--ginToolbarWidthCollapsed) - 1px);
-    inline-size: var(--ginToolbarWidth);
     block-size: 100vh;
     max-inline-size: calc(100% - var(--ginToolbarHeight));
     box-shadow: none;
@@ -402,6 +415,11 @@ a.toolbar-menu__trigger,
             border-inline-start: 1px solid var(--colorGinLayerBorder);
     overflow-y: auto;
     overflow-x: hidden;
+  }
+
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu, [dir=rtl] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu, [dir=ltr] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
+    position: fixed;
+    inline-size: var(--ginToolbarWidth);
   }
 
   .gin--dark-mode .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
@@ -466,14 +484,28 @@ a.toolbar-menu__trigger,
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item .toolbar-icon {
     font-size: .9375rem;
-    padding: 1em 2rem 1em .75rem;
     margin: .25em .75rem;
     border-radius: var(--ginBorderDefault);
     overflow: hidden;
   }
 
-  .toolbar-menu-administration > .toolbar-menu, .toolbar-menu-administration > .toolbar-menu .toolbar-menu {
+  [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item .toolbar-icon {
+    padding: 1em 2rem 1em .75rem;
+  }
+
+  [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item .toolbar-icon {
+    padding: 1em .75rem 1em 2rem;
+  }
+
+  [dir="ltr"] .toolbar-menu-administration > .toolbar-menu, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu .toolbar-menu {
     background: linear-gradient(var(--colorGinLayerBackground) 30%, var(--colorGinLayerBackground)), linear-gradient(var(--colorGinLayerBackground), var(--colorGinLayerBackground) 80%) 0 100%, radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .15), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .15), rgba(0, 0, 0, 0)) 0 100%;
+  }
+
+  [dir="rtl"] .toolbar-menu-administration > .toolbar-menu, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu .toolbar-menu {
+    background: linear-gradient(var(--colorGinLayerBackground) 30%, var(--colorGinLayerBackground)), linear-gradient(var(--colorGinLayerBackground), var(--colorGinLayerBackground) 80%) 100% 100%, radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .15), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .15), rgba(0, 0, 0, 0)) 100% 100%;
+  }
+
+  [dir] .toolbar-menu-administration > .toolbar-menu, [dir] .toolbar-menu-administration > .toolbar-menu .toolbar-menu {
     background-color: var(--colorGinLayerBackground);
     background-repeat: no-repeat;
     background-attachment: local, local, scroll, scroll;
@@ -489,7 +521,14 @@ a.toolbar-menu__trigger,
     display: block;
     -webkit-border-end: 1px solid rgba(0, 0, 0, .075);
             border-inline-end: 1px solid rgba(0, 0, 0, .075);
+  }
+
+  [dir="ltr"] .toolbar-menu-administration .menu-item.hover-intent > .toolbar-menu {
     box-shadow: 7px 0 16px rgba(0, 0, 0, .075);
+  }
+
+  [dir="rtl"] .toolbar-menu-administration .menu-item.hover-intent > .toolbar-menu {
+    box-shadow: -7px 0 16px rgba(0, 0, 0, .075);
   }
 
   .toolbar-menu-administration .menu-item .menu-item:hover > .toolbar-icon {

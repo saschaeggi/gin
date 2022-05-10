@@ -30,8 +30,12 @@
   cursor: pointer;
 }
 
-.entities-list .item-container.label {
+[dir="ltr"] .entities-list .item-container.label {
   padding: .75rem 3rem .75rem .75rem;
+}
+
+[dir="rtl"] .entities-list .item-container.label {
+  padding: .75rem .75rem .75rem 3rem;
 }
 
 .entities-list .item-container img {

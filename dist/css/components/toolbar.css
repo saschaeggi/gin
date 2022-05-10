@@ -76,14 +76,24 @@ body.gin--classic-toolbar {
 
 .toolbar .toolbar-bar .toolbar-icon.toolbar-handle::before, .toolbar .toolbar-bar .toolbar-handle.responsive-preview-icon::before,
 .toolbar .toolbar-bar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle::before {
-  transform: rotate(90deg);
   background-position: center center;
   background-size: 14px 14px;
 }
 
-.toolbar .toolbar-bar .toolbar-icon.toolbar-handle.open::before, .toolbar .toolbar-bar .toolbar-handle.open.responsive-preview-icon::before,
-.toolbar .toolbar-bar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open::before {
+[dir="ltr"] .toolbar .toolbar-bar .toolbar-icon.toolbar-handle::before, [dir="ltr"] .toolbar .toolbar-bar .toolbar-handle.responsive-preview-icon::before, [dir="ltr"] .toolbar .toolbar-bar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle::before {
+  transform: rotate(90deg);
+}
+
+[dir="rtl"] .toolbar .toolbar-bar .toolbar-icon.toolbar-handle::before, [dir="rtl"] .toolbar .toolbar-bar .toolbar-handle.responsive-preview-icon::before, [dir="rtl"] .toolbar .toolbar-bar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle::before {
   transform: rotate(-90deg);
+}
+
+[dir="ltr"] .toolbar .toolbar-bar .toolbar-icon.toolbar-handle.open::before, [dir="ltr"] .toolbar .toolbar-bar .toolbar-handle.open.responsive-preview-icon::before, [dir="ltr"] .toolbar .toolbar-bar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open::before {
+  transform: rotate(-90deg);
+}
+
+[dir="rtl"] .toolbar .toolbar-bar .toolbar-icon.toolbar-handle.open::before, [dir="rtl"] .toolbar .toolbar-bar .toolbar-handle.open.responsive-preview-icon::before, [dir="rtl"] .toolbar .toolbar-bar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open::before {
+  transform: rotate(90deg);
 }
 
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item, .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.responsive-preview-icon,
@@ -442,6 +452,10 @@ body.gin--classic-toolbar {
   background-color: transparent;
 }
 
+[dir=rtl] .toolbar-tray-horizontal ul li.menu-item--expanded {
+  background-color: transparent;
+}
+
 .toolbar-tray-horizontal ul li.menu-item--expanded.hover-intent ul {
   box-shadow: 0 8px 14px rgba(0, 0, 0, .15);
 }
@@ -460,6 +474,15 @@ body.gin--classic-toolbar {
 .toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open::before,
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
+  background-image: none;
+}
+
+[dir=rtl] .toolbar .toolbar-icon.toolbar-handle::before, [dir=rtl] .toolbar .toolbar-handle.responsive-preview-icon::before,
+[dir=rtl] .toolbar .toolbar-icon.toolbar-handle.open::before,
+[dir=rtl] .toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle::before,
+[dir=rtl] .toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open::before,
+[dir=rtl] .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
+[dir=rtl] .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
   background-image: none;
 }
 
@@ -484,6 +507,10 @@ body.gin--classic-toolbar {
           mask-position: center center;
   -webkit-mask-size: 14px 14px;
           mask-size: 14px 14px;
+}
+
+[dir="rtl"] .toolbar .toolbar-icon.toolbar-handle::before, [dir="rtl"] .toolbar .toolbar-handle.responsive-preview-icon::before, [dir="rtl"] .toolbar .toolbar-icon.toolbar-handle.open::before, [dir="rtl"] .toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle::before, [dir="rtl"] .toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open::before, [dir="rtl"] .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded::before {
+  transform: scaleX(-1);
 }
 
 .toolbar .toolbar-icon.toolbar-handle.menu-item--active-trail::before, .toolbar .toolbar-handle.menu-item--active-trail.responsive-preview-icon::before, .toolbar .toolbar-icon.toolbar-handle:hover::before, .toolbar .toolbar-handle.responsive-preview-icon:hover::before, .toolbar .toolbar-icon.toolbar-handle:focus::before, .toolbar .toolbar-handle.responsive-preview-icon:focus::before,
@@ -566,8 +593,12 @@ body.gin--classic-toolbar {
   background-color: var(--colorGinIcons);
 }
 
-.toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item::before, .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.responsive-preview-icon::before {
+[dir="ltr"] .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item::before, [dir="ltr"] .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.responsive-preview-icon::before {
   left: .55rem;
+}
+
+[dir="rtl"] .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item::before, [dir="rtl"] .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.responsive-preview-icon::before {
+  right: .55rem;
 }
 
 #toolbar-item-administration-tray .toolbar-logo {

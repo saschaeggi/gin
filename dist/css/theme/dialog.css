@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-.ui-dialog {
-  /* Align fieldset label positioning to regular form item label, see claro form.css. */
-}
-
 .ui-dialog a,
 .ui-dialog .link,
 .ui-dialog button.link,
@@ -198,7 +194,18 @@
 .ui-dialog .button--primary:not(:focus),
 .ui-dialog .ief-entity-submit {
   background: var(--colorGinPrimary);
+}
+
+[dir="ltr"] .ui-dialog .button--primary,
+[dir="ltr"] .ui-dialog .button--primary:not(:focus),
+[dir="ltr"] .ui-dialog .ief-entity-submit {
   box-shadow: .1em .25em .5em var(--colorGinPrimaryLight);
+}
+
+[dir="rtl"] .ui-dialog .button--primary,
+[dir="rtl"] .ui-dialog .button--primary:not(:focus),
+[dir="rtl"] .ui-dialog .ief-entity-submit {
+  box-shadow: -0.1em .25em .5em var(--colorGinPrimaryLight);
 }
 
 .ui-dialog .button--primary:hover,
@@ -354,7 +361,14 @@
           padding-block-start: .474rem;
   -webkit-padding-after: .474rem;
           padding-block-end: .474rem;
+}
+
+[dir="ltr"] .ui-dialog .form-element--type-select--small {
   background-position: 100% 52%;
+}
+
+[dir="rtl"] .ui-dialog .form-element--type-select--small {
+  background-position: 0% 52%;
 }
 
 .ui-dialog .form-boolean {
@@ -425,8 +439,15 @@
   block-size: 100%;
   background-color: #fff;
   border-radius: 21px;
-  transform: translateX(-16px);
   transition: transform .3s;
+}
+
+[dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner:before {
+  transform: translateX(-16px);
+}
+
+[dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner:before {
+  transform: translateX(16px);
 }
 
 .gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner:before {
@@ -478,8 +499,15 @@
 }
 
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner:before {
-  transform: translateX(16px);
   background-color: #fff;
+}
+
+[dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner:before {
+  transform: translateX(16px);
+}
+
+[dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner:before {
+  transform: translateX(-16px);
 }
 
 .gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner:before {
@@ -697,7 +725,14 @@
 .ui-dialog .js input.form-linkit-autocomplete {
   -webkit-padding-end: 2rem;
           padding-inline-end: 2rem;
+}
+
+[dir="ltr"] .ui-dialog .js input.form-linkit-autocomplete {
   background-position: right 8px center;
+}
+
+[dir="rtl"] .ui-dialog .js input.form-linkit-autocomplete {
+  background-position: left 8px center;
 }
 
 .ui-dialog .claro-autocomplete {

@@ -78,7 +78,11 @@
   background-color: #111;
 }
 
-.toolbar .toolbar-tab-responsive-preview.toolbar-tab.open .responsive-preview-trigger::after {
+[dir="ltr"] .toolbar .toolbar-tab-responsive-preview.toolbar-tab.open .responsive-preview-trigger::after {
   transform: rotate(180deg);
+}
+
+[dir="rtl"] .toolbar .toolbar-tab-responsive-preview.toolbar-tab.open .responsive-preview-trigger::after {
+  transform: rotate(-180deg);
 }
 

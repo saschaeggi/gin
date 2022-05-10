@@ -14,9 +14,17 @@
   width: auto;
   text-overflow: ellipsis;
   overflow: hidden;
-  padding-left: .25rem;
   margin-top: 0;
+}
+
+[dir="ltr"] .gin-breadcrumb__list {
+  padding-left: .25rem;
   margin-left: -0.25rem;
+}
+
+[dir="rtl"] .gin-breadcrumb__list {
+  padding-right: .25rem;
+  margin-right: -0.25rem;
 }
 
 .gin-breadcrumb__item, .gin-breadcrumb__link {

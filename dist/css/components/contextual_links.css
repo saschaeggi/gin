@@ -15,7 +15,6 @@
   position: absolute;
   inset-block-start: 50%;
   inset-inline-start: 50%;
-  transform: translate(-50%, -50%);
   display: block;
   inline-size: .75rem;
   block-size: .75rem;
@@ -26,6 +25,14 @@
   -webkit-mask-position: 100% 100%;
           mask-position: 100% 100%;
   background: var(--colorGinPrimary);
+}
+
+[dir="ltr"] .contextual .trigger::before {
+  transform: translate(-50%, -50%);
+}
+
+[dir="rtl"] .contextual .trigger::before {
+  transform: translate(50%, -50%);
 }
 
 .contextual .trigger, .contextual .trigger:hover, .contextual .trigger:focus {

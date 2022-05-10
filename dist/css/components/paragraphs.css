@@ -14,8 +14,12 @@
           padding-block-end: 12px;
 }
 
-.paragraphs-tabs-wrapper .field-multiple-table thead th {
+[dir="ltr"] .paragraphs-tabs-wrapper .field-multiple-table thead th {
   padding: .5rem 1.5rem .5rem .5rem;
+}
+
+[dir="rtl"] .paragraphs-tabs-wrapper .field-multiple-table thead th {
+  padding: .5rem .5rem .5rem 1.5rem;
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table thead th.th__order {
@@ -41,7 +45,14 @@
           margin-block-start: 1rem;
   border: 1px solid var(--colorGinTableBorder);
   border-radius: var(--ginBorderDefault);
+}
+
+[dir="ltr"] .paragraphs-tabs-wrapper .field-multiple-table .draggable {
   box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
+}
+
+[dir="rtl"] .paragraphs-tabs-wrapper .field-multiple-table .draggable {
+  box-shadow: -4px 4px 10px var(--colorGinLayer2Background);
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable.drag {
@@ -188,7 +199,16 @@
 .js .draggable:hover .paragraphs-collapsed-description::after {
   inset-block-start: 2px;
   background: var(--colorGinLayer2Background);
+}
+
+[dir="ltr"] .js .paragraphs-collapsed-description::after,
+[dir="ltr"] .js .draggable:hover .paragraphs-collapsed-description::after {
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayer2Background) 100%);
+}
+
+[dir="rtl"] .js .paragraphs-collapsed-description::after,
+[dir="rtl"] .js .draggable:hover .paragraphs-collapsed-description::after {
+  background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, var(--colorGinLayer2Background) 100%);
 }
 
 .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
@@ -204,7 +224,16 @@
 .js .field--widget-entity-reference-paragraphs .paragraphs-collapsed-description::after,
 .js .field--widget-entity-reference-paragraphs .draggable:hover .paragraphs-collapsed-description::after {
   background: var(--colorGinLayerBackground);
+}
+
+[dir="ltr"] .js .field--widget-entity-reference-paragraphs .paragraphs-collapsed-description::after,
+[dir="ltr"] .js .field--widget-entity-reference-paragraphs .draggable:hover .paragraphs-collapsed-description::after {
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayerBackground) 100%);
+}
+
+[dir="rtl"] .js .field--widget-entity-reference-paragraphs .paragraphs-collapsed-description::after,
+[dir="rtl"] .js .field--widget-entity-reference-paragraphs .draggable:hover .paragraphs-collapsed-description::after {
+  background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, var(--colorGinLayerBackground) 100%);
 }
 
 .js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple {

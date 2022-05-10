@@ -5,10 +5,17 @@
 .help-icon__description-toggle {
   all: unset;
   flex-shrink: 0;
-  margin: .3rem 1rem 0 .3rem;
   block-size: 16px;
   inline-size: 16px;
   border-radius: 50%;
+}
+
+[dir="ltr"] .help-icon__description-toggle {
+  margin: .3rem 1rem 0 .3rem;
+}
+
+[dir="rtl"] .help-icon__description-toggle {
+  margin: .3rem .3rem 0 1rem;
 }
 
 .help-icon__description-toggle:before {

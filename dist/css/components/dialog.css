@@ -122,7 +122,16 @@
   inset-block-start: 50% !important;
   inset-inline-start: 50% !important;
   inline-size: calc(100% - 2rem) !important;
+}
+
+[dir="ltr"] .erl-overlay,
+[dir="ltr"] .layout-paragraphs-dialog {
   transform: translate(-50%, -50%);
+}
+
+[dir="rtl"] .erl-overlay,
+[dir="rtl"] .layout-paragraphs-dialog {
+  transform: translate(50%, -50%);
 }
 
 @media (min-width: 1024px) {
