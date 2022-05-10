@@ -11,7 +11,7 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
-  width: auto;
+  inline-size: auto;
   text-overflow: ellipsis;
   overflow: hidden;
   -webkit-padding-start: .25rem;
@@ -58,7 +58,6 @@
   inset-inline-start: 0;
   inline-size: var(--iconGinSecondaryToolbar);
   block-size: var(--iconGinSecondaryToolbar);
-  transform: translateY(-50%);
   background-color: var(--colorGinIcons);
   -webkit-mask-image: url("../../media/sprite.svg#backtosite-view");
           mask-image: url("../../media/sprite.svg#backtosite-view");
@@ -66,6 +65,14 @@
           mask-size: 100% 100%;
   -webkit-mask-position: center center;
           mask-position: center center;
+}
+
+[dir="ltr"] .gin-breadcrumb__item:first-of-type .gin-breadcrumb__link::before {
+  transform: translateY(-50%);
+}
+
+[dir="rtl"] .gin-breadcrumb__item:first-of-type .gin-breadcrumb__link::before {
+  transform: translateY(-50%) scaleX(-1);
 }
 
 .gin-breadcrumb__item:first-of-type .gin-breadcrumb__link:hover::before {

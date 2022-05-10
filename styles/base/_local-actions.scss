@@ -3,12 +3,14 @@
  */
 .local-actions {
   font-size: 0; // Chrome fix.
-  margin: 1rem -.25rem .5rem;
+  margin-block: 1rem .5rem;
+  margin-inline: -.25rem;
   padding: 0;
   list-style: none;
 
   &__item {
     display: inline-block;
-    margin: 0 .25rem .5rem;
+    margin-block: 0 .5rem;
+    margin-inline: .25rem;
   }
 }

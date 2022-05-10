@@ -446,10 +446,17 @@ body.gin--classic-toolbar {
           border-inline-end: none;
   -webkit-border-after: 0 none;
           border-block-end: 0 none;
+  /* necessary to override Claro */
+}
+
+[dir=rtl] .toolbar-tray-horizontal ul li.menu-item .menu-item {
+  -webkit-border-end: none;
+          border-inline-end: none;
 }
 
 .toolbar-tray-horizontal ul li.menu-item--expanded {
   background-color: transparent;
+  /* necessary to override Claro */
 }
 
 [dir=rtl] .toolbar-tray-horizontal ul li.menu-item--expanded {
@@ -475,6 +482,7 @@ body.gin--classic-toolbar {
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
   background-image: none;
+  /* necessary to override claro */
 }
 
 [dir=rtl] .toolbar .toolbar-icon.toolbar-handle::before, [dir=rtl] .toolbar .toolbar-handle.responsive-preview-icon::before,

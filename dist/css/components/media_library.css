@@ -176,7 +176,8 @@ fieldset.media-library-widget .fieldset__wrapper {
 
 .media-library-widget-empty-text {
   color: var(--colorGinTextLight);
-  margin: 0 0 -0.5rem 0;
+  margin-block: 0 -0.5rem;
+  margin-inline: 0;
 }
 
 .media-library-open-button {
@@ -326,7 +327,8 @@ fieldset.media-library-widget .fieldset__wrapper {
 }
 
 .field--name-field-media.field--widget-entity-reference-autocomplete fieldset.form-item {
-  padding: 2rem 1.25rem 1rem 1.25rem;
+  padding-block: 2rem 1rem;
+  padding-inline: 1.25rem;
   border: 1px solid var(--colorGinBorder);
 }
 

@@ -180,7 +180,8 @@
 
 .layout-paragraphs-field .layout-paragraphs-disabled-items .fieldset__label,
 .layout-paragraphs-field .layout-paragraphs-disabled-items.form-item.form-wrapper .fieldset__label {
-  padding: 16px 0 24px;
+  padding-block: 16px 24px;
+  padding-inline: 0;
 }
 
 .layout-paragraphs-field .layout-paragraphs-disabled-items__description,
@@ -269,7 +270,8 @@
 .erl-field .erl-layout .erl-item,
 .erl-field .erl-disabled-items .erl-item {
   position: relative;
-  padding: 40px 24px 0 24px;
+  padding-block: 40px 0;
+  padding-inline: 24px;
   background: #fff;
   border: 4px solid #fff;
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='8' ry='8' stroke='%2300000045' stroke-width='4' stroke-dasharray='8%2c8' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
@@ -421,7 +423,8 @@
 .layout-paragraphs-field.is-moving .layout-paragraphs-item.layout-paragraphs-layout:hover,
 .erl-layout.erl-item.form-wrapper {
   position: relative;
-  padding: 47px 0 0;
+  padding-block: 47px 0;
+  padding-inline: 0;
   -webkit-margin-after: 1rem;
           margin-block-end: 1rem;
   background: none;
@@ -601,7 +604,8 @@
   position: static;
   inline-size: 100%;
   inset-inline-start: 0;
-  margin: 1rem 0 0 0;
+  margin-block: 1rem 0;
+  margin-inline: 0;
   box-sizing: border-box;
 }
 
@@ -703,7 +707,8 @@
 .erl-add-more-menu__group--content::before {
   color: var(--colorGinTitle);
   flex-basis: 100%;
-  padding: 1rem 1rem 0;
+  padding-block: 1rem 0;
+  padding-inline: 1rem;
   font-size: 14px;
   opacity: .4;
 }

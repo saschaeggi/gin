@@ -32,7 +32,8 @@
     }
 
     &.label {
-      padding: .75rem 3rem .75rem .75rem;
+      padding-block: .75rem;
+      padding-inline: .75rem 3rem;
     }
 
     img {

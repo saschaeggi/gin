@@ -55,20 +55,12 @@ table {
 
     &:first-child {
       border-start-start-radius: var(--ginBorderDefault);
-      border-start-end-radius: var(--ginBorderDefault);
-
-      [dir='rtl'] & {
-        border-radius: 0 var(--ginBorderDefault) var(--ginBorderDefault) 0;
-      }
+      border-end-start-radius: var(--ginBorderDefault);
     }
 
     &:last-child {
-      border-end-start-radius: var(--ginBorderDefault);
+      border-start-end-radius: var(--ginBorderDefault);
       border-end-end-radius: var(--ginBorderDefault);
-
-      [dir='rtl'] & {
-        border-radius: var(--ginBorderDefault) 0 0 var(--ginBorderDefault);
-      }
     }
   }
 

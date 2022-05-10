@@ -49,7 +49,8 @@
     order: 99;
     position: relative;
     inset-inline-start: 0;
-    padding: 0 16px 16px 16px;
+    padding-block: 0 16px;
+    padding-inline: 16px;
     background: rgba(#e2e5ec, .6);
     border-radius: var(--ginBorderDefault);
 
@@ -128,11 +129,13 @@
 
     .fieldset__wrapper {
       display: flex;
-      margin: 0 0 0 .5rem;
+      margin-block: 0;
+      margin-inline: .5rem 0;
     }
 
     .form-item {
-      margin: 0 .5rem .5rem 0;
+      margin-block: 0 .5rem;
+      margin-inline: 0 .5rem;
     }
   }
 }

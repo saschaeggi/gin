@@ -85,7 +85,8 @@
 [data-drupal-selector=edit-focus-group] .form-type--color,
 [data-drupal-selector=edit-focus-group] .form-type--textfield {
   float: inline-start;
-  margin: 0 0 .5rem 0;
+  margin-block: 0 .5rem;
+  margin-inline: 0;
 }
 
 [data-drupal-selector=edit-accent-group] .form-type--color,
@@ -161,14 +162,8 @@
   display: flex;
   flex-wrap: wrap;
   inline-size: 140px;
-}
-
-[dir="ltr"] [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item--classic-toolbar {
-  margin: 0 .75rem 0 0;
-}
-
-[dir="rtl"] [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item--classic-toolbar {
-  margin: 0 0 0 .75rem;
+  margin-block: 0;
+  margin-inline: 0 .75rem;
 }
 
 [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item--classic-toolbar input {

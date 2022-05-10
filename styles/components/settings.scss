@@ -85,7 +85,8 @@
   .form-type--color,
   .form-type--textfield {
     float: inline-start;
-    margin: 0 0 0.5rem 0;
+    margin-block: 0 .5rem;
+    margin-inline: 0;
   }
 
   .form-type--color {
@@ -161,7 +162,8 @@
       display: flex;
       flex-wrap: wrap;
       inline-size: 140px;
-      margin: 0 .75rem 0 0;
+      margin-block: 0;
+      margin-inline: 0 .75rem;
 
       input {
         cursor: pointer;

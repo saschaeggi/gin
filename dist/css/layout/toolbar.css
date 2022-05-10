@@ -226,17 +226,11 @@ a.toolbar-menu__trigger,
     align-items: center;
     inline-size: var(--ginToolbarWidthCollapsed);
     block-size: 64px;
+    padding-block: 16px;
+    padding-inline: var(--ginToolbarWidthCollapsed) 0;
     margin: 0;
     transition: width var(--ginTransition);
     overflow: hidden;
-  }
-
-  [dir="ltr"] .toolbar-menu-administration a.toolbar-menu__trigger {
-    padding: 16px 0 16px var(--ginToolbarWidthCollapsed);
-  }
-
-  [dir="rtl"] .toolbar-menu-administration a.toolbar-menu__trigger {
-    padding: 16px var(--ginToolbarWidthCollapsed) 16px 0;
   }
 
   .toolbar-menu-administration a.toolbar-menu__trigger, .toolbar-menu-administration a.toolbar-menu__trigger:active, .toolbar-menu-administration a.toolbar-menu__trigger:focus {
@@ -371,7 +365,8 @@ a.toolbar-menu__trigger,
             padding-inline-start: calc(var(--ginToolbarWidthCollapsed) - 9px);
     -webkit-padding-end: 0;
             padding-inline-end: 0;
-    margin: 0 8px 1px;
+    margin-block: 0 1px;
+    margin-inline: 8px;
     border-radius: var(--ginBorderDefault);
     overflow: hidden;
   }
@@ -452,7 +447,8 @@ a.toolbar-menu__trigger,
     font-size: 1.75em;
     letter-spacing: -0.025em;
     padding: 0;
-    margin: 1rem .75rem 1.25rem .75rem;
+    margin-block: 1rem 1.25rem;
+    margin-inline: .75rem;
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__title a, .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__sub-title a {
@@ -484,17 +480,11 @@ a.toolbar-menu__trigger,
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item .toolbar-icon {
     font-size: .9375rem;
+    padding-block: 1em;
+    padding-inline: .75rem 2rem;
     margin: .25em .75rem;
     border-radius: var(--ginBorderDefault);
     overflow: hidden;
-  }
-
-  [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item .toolbar-icon {
-    padding: 1em 2rem 1em .75rem;
-  }
-
-  [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item .toolbar-icon {
-    padding: 1em .75rem 1em 2rem;
   }
 
   [dir="ltr"] .toolbar-menu-administration > .toolbar-menu, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu .toolbar-menu {

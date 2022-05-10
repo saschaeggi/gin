@@ -4,8 +4,9 @@
 
 .admin-item {
   position: relative;
-  padding: 1em 40px 1em 24px;
   margin: 1.5rem .75rem;
+  padding-block: 1rem;
+  padding-inline: 24px 40px;
 
   &--panel {
     margin: 0 -1.5rem;
