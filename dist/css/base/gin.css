@@ -3557,7 +3557,6 @@ hr {
   inset-inline-end: 16px;
   inset-inline-start: auto;
   inset-block-start: 50%;
-  transform: translateY(-50%);
   background-image: none;
   background-color: var(--colorGinPrimary);
   -webkit-mask-image: url("../../media/sprite.svg#handle-view");
@@ -3568,6 +3567,14 @@ hr {
           mask-repeat: no-repeat;
   -webkit-mask-position: center center;
           mask-position: center center;
+}
+
+[dir="ltr"] .admin-item .admin-item__link::before {
+  transform: translateY(-50%);
+}
+
+[dir="rtl"] .admin-item .admin-item__link::before {
+  transform: translateY(-50%) scaleX(-1);
 }
 
 .admin-item .admin-item__link:hover, .admin-item .admin-item__link:focus {

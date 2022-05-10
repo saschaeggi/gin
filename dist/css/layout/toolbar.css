@@ -71,12 +71,8 @@
 }
 
 @media (max-width: 588px) {
-  [dir="ltr"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
-    left: 0;
-  }
-
-  [dir="rtl"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
-    right: 0;
+  .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
+    inset-inline-start: 0;
   }
 }
 
@@ -423,7 +419,7 @@ a.toolbar-menu__trigger,
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu, [dir=rtl] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu, [dir=ltr] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
     position: fixed;
-    width: var(--ginToolbarWidth);
+    inline-size: var(--ginToolbarWidth);
   }
 
   .gin--dark-mode .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {

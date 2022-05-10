@@ -67,7 +67,7 @@
 
     .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
       @include mq(max-width $breakpointXSmall) {
-        left: 0;
+        inset-inline-start: 0;
       }
     }
 
@@ -405,7 +405,7 @@ a.toolbar-menu__trigger,
           [dir='rtl'] &,
           [dir='ltr'] & {
             position: fixed;
-            width: var(--ginToolbarWidth);
+            inline-size: var(--ginToolbarWidth);
           }
 
           .gin--dark-mode & {
