@@ -35,8 +35,12 @@
   background-color: var(--colorGinLayerBackground);
 }
 
-.toolbar-horizontal .toolbar-tray .toolbar-toggle-orientation {
+[dir="ltr"] .toolbar-horizontal .toolbar-tray .toolbar-toggle-orientation {
   border-left: 1px solid var(--colorGinBorder);
+}
+
+[dir="rtl"] .toolbar-horizontal .toolbar-tray .toolbar-toggle-orientation {
+  border-right: 1px solid var(--colorGinBorder);
 }
 
 .toolbar-tray-horizontal ul li.menu-item .menu-item {
@@ -132,8 +136,12 @@
   }
 }
 
-.toolbar-menu .menu-item > span {
+[dir="ltr"] .toolbar-menu .menu-item > span {
   padding-left: 2.75em;
+}
+
+[dir="rtl"] .toolbar-menu .menu-item > span {
+  padding-right: 2.75em;
 }
 
 .toolbar .toolbar-bar .toolbar-icon-admin-toolbar-tools-help {
@@ -148,8 +156,12 @@
 }
 
 @media (min-width: 976px) {
-  .toolbar .toolbar-bar .toolbar-icon-admin-toolbar-tools-help:before {
+  [dir="ltr"] .toolbar .toolbar-bar .toolbar-icon-admin-toolbar-tools-help:before {
     left: 1rem;
+  }
+
+  [dir="rtl"] .toolbar .toolbar-bar .toolbar-icon-admin-toolbar-tools-help:before {
+    right: 1rem;
   }
 }
 
@@ -171,15 +183,35 @@
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:before,
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus:before {
   top: .75rem;
+}
+
+[dir="ltr"] .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:before,
+[dir="ltr"] .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus:before {
   right: .75rem;
+}
+
+[dir="rtl"] .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:before,
+[dir="rtl"] .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus:before {
+  left: .75rem;
 }
 
 #admin-toolbar-search-tab .form-item::before {
   top: 6px;
+}
+
+[dir="ltr"] #admin-toolbar-search-tab .form-item::before {
   left: 26px;
 }
 
-#admin-toolbar-search-input {
+[dir="rtl"] #admin-toolbar-search-tab .form-item::before {
+  right: 26px;
+}
+
+[dir="ltr"] #admin-toolbar-search-input {
   padding-left: 2rem;
+}
+
+[dir="rtl"] #admin-toolbar-search-input {
+  padding-right: 2rem;
 }
 
