@@ -396,9 +396,13 @@ body.gin--classic-toolbar {
   }
 
   .menu-item + .menu-item {
-    border-inline-start: 0 none;
+    &,
+    [dir="rtl"] & {
+      border-inline-start: 0 none;
+    }
 
     &:last-child {
+      border-inline-start: 0 none;
       border-inline-end: 0 none;
     }
   }

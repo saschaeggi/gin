@@ -363,12 +363,14 @@ body.gin--classic-toolbar {
   box-shadow: inset 0 0 0 1px var(--colorGinFocusBorder), inset 0 0 0 4px var(--colorGinFocus);
 }
 
-.toolbar-horizontal .toolbar-tray .menu-item + .menu-item {
+.toolbar-horizontal .toolbar-tray .menu-item + .menu-item, [dir=rtl] .toolbar-horizontal .toolbar-tray .menu-item + .menu-item {
   -webkit-border-start: 0 none;
           border-inline-start: 0 none;
 }
 
 .toolbar-horizontal .toolbar-tray .menu-item + .menu-item:last-child {
+  -webkit-border-start: 0 none;
+          border-inline-start: 0 none;
   -webkit-border-end: 0 none;
           border-inline-end: 0 none;
 }

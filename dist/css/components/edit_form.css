@@ -4,12 +4,10 @@
             padding-inline-end: var(--ginSidebarWidth);
   }
 
-  [dir="ltr"] .gin--edit-form .dialog-off-canvas-main-canvas {
-    transition: padding-left var(--ginTransition);
-  }
-
-  [dir="rtl"] .gin--edit-form .dialog-off-canvas-main-canvas {
-    transition: padding-right var(--ginTransition);
+  .gin--edit-form .dialog-off-canvas-main-canvas {
+    transition: -webkit-padding-end var(--ginTransition);
+    transition: padding-inline-end var(--ginTransition);
+    transition: padding-inline-end var(--ginTransition), -webkit-padding-end var(--ginTransition);
   }
 
   .gin--edit-form.js-off-canvas-dialog-open {

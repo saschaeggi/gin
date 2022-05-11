@@ -24,7 +24,11 @@
 .toolbar {
   .toolbar-bar {
     background: #100f10;
-    box-shadow: none;
+
+    &,
+    [dir="rtl"] & {
+      box-shadow: none;
+    }
 
     @include mq($breakpointMedium) {
       display: flex;
@@ -169,6 +173,21 @@
 
 .toolbar-tray-horizontal .menu-item:hover {
   background-color: transparent;
+}
+
+/* necessary to override Claro */
+[dir=rtl] .toolbar-tray-horizontal {
+  ul {
+    li {
+      &.menu-item {
+        .menu-item {
+          border-inline-start: none;
+          border-inline-end: none;
+          border-block-end: 0 none;
+        }
+      }
+    }
+  }
 }
 
 .gin--horizontal-toolbar.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {

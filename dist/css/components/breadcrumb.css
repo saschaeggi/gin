@@ -22,6 +22,11 @@
           margin-inline-start: -0.25rem;
 }
 
+[dir=rtl] .gin-breadcrumb__list {
+  -webkit-margin-start: 0;
+          margin-inline-start: 0;
+}
+
 .gin-breadcrumb__item, .gin-breadcrumb__link {
   display: inline;
   font-weight: normal;

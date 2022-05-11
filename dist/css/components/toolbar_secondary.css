@@ -181,6 +181,7 @@
     display: flex;
     align-items: center;
     block-size: 100%;
+    box-shadow: none;
   }
 }
 

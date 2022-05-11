@@ -23,6 +23,9 @@
 
 .toolbar .toolbar-bar {
   background: #100f10;
+}
+
+.toolbar .toolbar-bar, [dir=rtl] .toolbar .toolbar-bar {
   box-shadow: none;
 }
 
@@ -175,6 +178,17 @@
 
 .toolbar-tray-horizontal .menu-item:hover {
   background-color: transparent;
+}
+
+/* necessary to override Claro */
+
+[dir=rtl] .toolbar-tray-horizontal ul li.menu-item .menu-item {
+  -webkit-border-start: none;
+          border-inline-start: none;
+  -webkit-border-end: none;
+          border-inline-end: none;
+  -webkit-border-after: 0 none;
+          border-block-end: 0 none;
 }
 
 @media (min-width: 1024px) {
