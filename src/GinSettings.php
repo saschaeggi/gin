@@ -326,6 +326,7 @@ class GinSettings implements ContainerInjectionInterface {
       '#placeholder' => '#777777',
       '#maxlength' => 7,
       '#size' => 7,
+      '#title' => $this->t('Custom Accent color'),
       '#default_value' => $account ? $this->get('accent_color', $account) : $this->getDefault('accent_color'),
       '#group' => 'accent_group',
       '#attributes' => [
@@ -388,6 +389,7 @@ class GinSettings implements ContainerInjectionInterface {
       '#placeholder' => '#777777',
       '#maxlength' => 7,
       '#size' => 7,
+      '#title' => $this->t('Custom Focus color (BETA)'),
       '#default_value' => $account ? $this->get('focus_color', $account) : $this->getDefault('focus_color'),
       '#group' => 'focus_group',
       '#attributes' => [
