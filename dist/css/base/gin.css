@@ -1541,6 +1541,20 @@ details summary {
   max-width: 240px;
 }
 
+[dir="ltr"] .views-exposed-form.views-exposed-form .form-type--boolean .form-boolean {
+  margin-left: 0;
+  margin-right: .5rem;
+}
+
+[dir="rtl"] .views-exposed-form.views-exposed-form .form-type--boolean .form-boolean {
+  margin-right: 0;
+  margin-left: .5rem;
+}
+
+.views-exposed-form.views-exposed-form .fieldset--group {
+  margin-top: .75rem;
+}
+
 .views-exposed-form.views-exposed-form fieldset {
   margin-bottom: .4rem;
 }
