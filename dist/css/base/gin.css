@@ -4663,3 +4663,24 @@ blockquote::before {
   right: 0;
 }
 
+.image-preview img {
+  background-color: var(--colorGinPatternFallback);
+  background-size: calc(var(--ginSizePatternSquare) * 2) calc(var(--ginSizePatternSquare) * 2);
+}
+
+[dir="ltr"] .image-preview img {
+  background-image: linear-gradient(-45deg, var(--colorGinPattern) 25%, transparent 26%), linear-gradient(-45deg, var(--colorGinPattern) 25%, transparent 26%), linear-gradient(135deg, var(--colorGinPattern) 25%, transparent 26%), linear-gradient(135deg, var(--colorGinPattern) 25%, transparent 26%);
+  background-position: 0 0, var(--ginSizePatternSquare) var(--ginSizePatternSquare), var(--ginSizePatternSquare) var(--ginSizePatternSquare), 0 0;
+}
+
+[dir="rtl"] .image-preview img {
+  background-image: linear-gradient(45deg, var(--colorGinPattern) 25%, transparent 26%), linear-gradient(45deg, var(--colorGinPattern) 25%, transparent 26%), linear-gradient(-135deg, var(--colorGinPattern) 25%, transparent 26%), linear-gradient(-135deg, var(--colorGinPattern) 25%, transparent 26%);
+  background-position: 100% 0, var(--ginSizePatternSquare) var(--ginSizePatternSquare), var(--ginSizePatternSquare) var(--ginSizePatternSquare), 100% 0;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .image-preview img {
+    background: none;
+  }
+}
+

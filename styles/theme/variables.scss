@@ -75,6 +75,11 @@
   // Icons
   --colorGinIcons: #414247; //#5d6069;
 
+  // Color pattern
+  --colorGinPatternFallback: var(--colorGinLayer2Background);
+  --colorGinPattern: var(--colorGinBorder);
+  --ginSizePatternSquare: .5rem;
+
   // Sticky bar
   --ginStickyHeight: 72px;
   --colorGinStickyBg: #c8cdd8;
@@ -192,6 +197,10 @@
 
   // Icons
   --colorGinIcons: #888;
+
+  // Color pattern
+  --colorGinPatternFallback: var(--colorGinLayer2Background);
+  --colorGinPattern: var(--colorGinBorder);
 
   // Sticky bg
   --colorGinStickyBg: var(--colorGinLayer4Background);

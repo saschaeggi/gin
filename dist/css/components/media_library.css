@@ -42,6 +42,27 @@
   background: none;
 }
 
+.media-library-item img {
+  background-color: var(--colorGinPatternFallback);
+  background-size: calc(var(--ginSizePatternSquare) * 2) calc(var(--ginSizePatternSquare) * 2);
+}
+
+[dir="ltr"] .media-library-item img {
+  background-image: linear-gradient(-45deg, var(--colorGinPattern) 25%, transparent 26%), linear-gradient(-45deg, var(--colorGinPattern) 25%, transparent 26%), linear-gradient(135deg, var(--colorGinPattern) 25%, transparent 26%), linear-gradient(135deg, var(--colorGinPattern) 25%, transparent 26%);
+  background-position: 0 0, var(--ginSizePatternSquare) var(--ginSizePatternSquare), var(--ginSizePatternSquare) var(--ginSizePatternSquare), 0 0;
+}
+
+[dir="rtl"] .media-library-item img {
+  background-image: linear-gradient(45deg, var(--colorGinPattern) 25%, transparent 26%), linear-gradient(45deg, var(--colorGinPattern) 25%, transparent 26%), linear-gradient(-135deg, var(--colorGinPattern) 25%, transparent 26%), linear-gradient(-135deg, var(--colorGinPattern) 25%, transparent 26%);
+  background-position: 100% 0, var(--ginSizePatternSquare) var(--ginSizePatternSquare), var(--ginSizePatternSquare) var(--ginSizePatternSquare), 100% 0;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .media-library-item img {
+    background: none;
+  }
+}
+
 .media-library-item--grid {
   border-radius: var(--ginBorderBig);
 }

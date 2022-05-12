@@ -47,6 +47,9 @@
   --colorGinSwitch: #0e9888;
   --colorGinSwitchShadow: rgba(38, 167, 105, .3);
   --colorGinIcons: #414247;
+  --colorGinPatternFallback: var(--colorGinLayer2Background);
+  --colorGinPattern: var(--colorGinBorder);
+  --ginSizePatternSquare: .5rem;
   --ginStickyHeight: 72px;
   --colorGinStickyBg: #c8cdd8;
   --ginToolbarWidthCollapsed: 66px;
@@ -117,6 +120,8 @@
   --ginShadowLevel1: 0 1px 2px rgb(0 0 0 / 2%), 0 3px 4px rgb(0 0 0 / 3%), 0 5px 8px rgb(0 0 0 / 4%);
   --ginShadowLevel2: 0 1px 2px rgb(0 0 0 / 2%), 0 3px 4px rgb(0 0 0 / 3%), 0 5px 8px rgb(0 0 0 / 4%), 0 20px 24px rgb(0 0 0 / 12%);
   --colorGinIcons: #888;
+  --colorGinPatternFallback: var(--colorGinLayer2Background);
+  --colorGinPattern: var(--colorGinBorder);
   --colorGinStickyBg: var(--colorGinLayer4Background);
 }
 
