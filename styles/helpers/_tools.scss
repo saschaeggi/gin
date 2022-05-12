@@ -14,18 +14,18 @@
 }
 
 @mixin color-pattern {
-  background-color: var(--colorPatternFallback);
+  background-color: var(--colorGinPatternFallback);
   background-image:
-    linear-gradient(-45deg, var(--colorPattern) 25%, transparent 26%),
-    linear-gradient(-45deg, var(--colorPattern) 25%, transparent 26%),
-    linear-gradient(135deg, var(--colorPattern) 25%, transparent 26%),
-    linear-gradient(135deg, var(--colorPattern) 25%, transparent 26%);
+    linear-gradient(-45deg, var(--colorGinPattern) 25%, transparent 26%),
+    linear-gradient(-45deg, var(--colorGinPattern) 25%, transparent 26%),
+    linear-gradient(135deg, var(--colorGinPattern) 25%, transparent 26%),
+    linear-gradient(135deg, var(--colorGinPattern) 25%, transparent 26%);
   background-position:
     0 0,
-    var(--sizePatternSquare) var(--sizePatternSquare),
-    var(--sizePatternSquare) var(--sizePatternSquare),
+    var(--ginSizePatternSquare) var(--ginSizePatternSquare),
+    var(--ginSizePatternSquare) var(--ginSizePatternSquare),
     0 0;
-  background-size: calc(var(--sizePatternSquare) * 2) calc(var(--sizePatternSquare) * 2);
+  background-size: calc(var(--ginSizePatternSquare) * 2) calc(var(--ginSizePatternSquare) * 2);
 
   @media screen and (-ms-high-contrast: active) {
     background: none;

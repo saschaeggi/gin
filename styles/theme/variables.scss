@@ -76,9 +76,9 @@
   --colorGinIcons: #414247; //#5d6069;
 
   // Color pattern
-  --colorPatternFallback: var(--colorGinLayer2Background);
-  --colorPattern: var(--colorGinBorder);
-  --sizePatternSquare: 0.5rem;
+  --colorGinPatternFallback: var(--colorGinLayer2Background);
+  --colorGinPattern: var(--colorGinBorder);
+  --ginSizePatternSquare: .5rem;
 
   // Sticky bar
   --ginStickyHeight: 72px;
@@ -199,8 +199,8 @@
   --colorGinIcons: #888;
 
   // Color pattern
-  --colorPatternFallback: var(--colorGinLayer2Background);
-  --colorPattern: var(--colorGinBorder);
+  --colorGinPatternFallback: var(--colorGinLayer2Background);
+  --colorGinPattern: var(--colorGinBorder);
 
   // Sticky bg
   --colorGinStickyBg: var(--colorGinLayer4Background);
