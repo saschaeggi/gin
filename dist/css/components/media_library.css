@@ -380,6 +380,15 @@ fieldset.media-library-widget .fieldset__wrapper {
   }
 }
 
+.media-library-widget-modal .ui-dialog-buttonpane .form-actions {
+  flex-grow: 0;
+  white-space: nowrap;
+}
+
+.media-library-widget-modal .ui-dialog-buttonpane .media-library-selected-count {
+  flex-grow: 1;
+}
+
 @media (min-width: 1280px) {
   .media-library-selection .media-library-item--grid {
     width: 20%;

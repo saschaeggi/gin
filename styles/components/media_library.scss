@@ -364,6 +364,17 @@ fieldset.media-library-widget {
   }
 }
 
+.media-library-widget-modal .ui-dialog-buttonpane {
+  .form-actions {
+    flex-grow: 0;
+    white-space: nowrap;
+  }
+
+  .media-library-selected-count {
+    flex-grow: 1;
+  }
+}
+
 .media-library-selection .media-library-item--grid {
   @include mq($breakpointWide) {
     width: 20%;
