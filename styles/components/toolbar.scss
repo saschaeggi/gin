@@ -348,6 +348,13 @@ body.gin--classic-toolbar {
         mask-image: icon('nav-toggle-totop');
       }
     }
+
+    // Workbench
+    .toolbar-icon-workbench-content-tab {
+      &:before {
+        mask-image: icon('tool');
+      }
+    }
   }
 }
 

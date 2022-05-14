@@ -345,6 +345,11 @@ body.gin--classic-toolbar {
           mask-image: url("../../media/sprite.svg#nav-toggle-totop-view");
 }
 
+.toolbar .toolbar-bar .toolbar-icon-workbench-content-tab:before {
+  -webkit-mask-image: url("../../media/sprite.svg#tool-view");
+          mask-image: url("../../media/sprite.svg#tool-view");
+}
+
 .toolbar-horizontal .toolbar-tray {
   box-shadow: none;
   border-bottom: 1px solid var(--colorGinBorder);

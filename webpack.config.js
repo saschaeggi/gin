@@ -52,6 +52,7 @@ module.exports = {
     'components/toolbar_secondary': ['./styles/components/toolbar_secondary.scss'],
     'components/upgrade_status': ['./styles/components/upgrade_status.scss'],
     'components/webform': ['./styles/components/webform.scss'],
+    'components/workbench': ['./styles/components/workbench.scss'],
     // Layout
     'layout/toolbar': ['./styles/layout/toolbar.scss'],
     'layout/horizontal_toolbar': ['./styles/layout/horizontal_toolbar.scss'],

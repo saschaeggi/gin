@@ -269,6 +269,13 @@
           .toolbar-lining:not(:empty) {
             padding: .5rem;
           }
+
+          // Hide icons for custom modules
+          .toolbar-icon {
+            &:before {
+              display: none;
+            }
+          }
         }
 
         &.hidden {
