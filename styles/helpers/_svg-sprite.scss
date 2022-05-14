@@ -15,6 +15,7 @@ $sprites: (
     'gin': "../../media/sprite.svg#gin-view",
     'handle': "../../media/sprite.svg#handle-view",
     'more': "../../media/sprite.svg#more-view",
+    'tool': "../../media/sprite.svg#tool-view",
     'grid': "../../media/sprite.svg#grid-view",
     'list': "../../media/sprite.svg#list-view",
     'media-edit': "../../media/sprite.svg#media-edit-view",
@@ -127,6 +128,10 @@ $sizes: (
         'height': 24px
     ),
     'more': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'tool': (
         'width': 24px,
         'height': 24px
     ),

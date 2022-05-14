@@ -322,6 +322,10 @@
     padding: .5rem;
   }
 
+  .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray .toolbar-icon:before {
+    display: none;
+  }
+
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab.hidden {
     display: none;
   }
