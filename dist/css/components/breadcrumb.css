@@ -27,7 +27,7 @@
   margin-right: -0.25rem;
 }
 
-.gin-breadcrumb__item, .gin-breadcrumb__link {
+.gin-breadcrumb__item, .gin-breadcrumb__link, .gin-breadcrumb__text {
   display: inline;
   font-weight: normal;
   color: var(--colorGinTextLight);
@@ -90,22 +90,22 @@
   background-color: var(--colorGinPrimary);
 }
 
-.gin-breadcrumb__link {
+.gin-breadcrumb__link, .gin-breadcrumb__text {
   font-size: var(--ginFontSizeSmall);
   line-height: 2;
   border-radius: var(--ginBorderTiny);
 }
 
-.gin-breadcrumb__link, .gin-breadcrumb__link:link, .gin-breadcrumb__link:visited, .gin-breadcrumb__link em, .gin-breadcrumb__link em:link, .gin-breadcrumb__link em:visited {
+.gin-breadcrumb__link, .gin-breadcrumb__link:link, .gin-breadcrumb__link:visited, .gin-breadcrumb__link em, .gin-breadcrumb__link em:link, .gin-breadcrumb__link em:visited, .gin-breadcrumb__text, .gin-breadcrumb__text:link, .gin-breadcrumb__text:visited, .gin-breadcrumb__text em, .gin-breadcrumb__text em:link, .gin-breadcrumb__text em:visited {
   font-weight: normal;
   color: var(--colorGinTextLight);
 }
 
-.gin-breadcrumb__link:hover, .gin-breadcrumb__link em:hover {
-  color: var(--colorGinPrimaryHover);
+.gin-breadcrumb__link em, .gin-breadcrumb__text em {
+  font-style: italic;
 }
 
-.gin-breadcrumb__link em {
-  font-style: italic;
+.gin-breadcrumb__link:hover, .gin-breadcrumb__link em:hover {
+  color: var(--colorGinPrimaryHover);
 }
 

@@ -2006,7 +2006,6 @@ table thead tr:hover {
 
 table th {
   background: var(--colorGinTableHeader);
-  box-shadow: var(--ginShadowLevel1);
 }
 
 table th, table th .form-item__label {
