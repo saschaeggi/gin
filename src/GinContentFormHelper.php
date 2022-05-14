@@ -215,7 +215,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    * @param string $form_id
    *   The form id.
    */
-  public function isContentForm(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = NULL) {
+  public function isContentForm(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = '') {
     $is_content_form = FALSE;
 
     // Get route name.
