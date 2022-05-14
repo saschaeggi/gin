@@ -51,6 +51,7 @@
   font-weight: 600;
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+  padding-left: 2.75rem;
 
   strong {
     font-weight: inherit;
@@ -330,6 +331,7 @@
 // Icon
 .claro-details__summary::before,
 .claro-details[open] > .claro-details__summary::before {
+  left: 1.125rem;
   background: var(--colorGinText);
   mask-image: icon('handle');
   mask-repeat: no-repeat;

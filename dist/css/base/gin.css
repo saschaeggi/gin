@@ -880,6 +880,18 @@ details summary {
   padding-bottom: 1.25rem;
 }
 
+[dir="ltr"] .tabs__link,
+[dir="ltr"] .claro-details__summary,
+[dir="ltr"] .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
+  padding-left: 2.75rem;
+}
+
+[dir="rtl"] .tabs__link,
+[dir="rtl"] .claro-details__summary,
+[dir="rtl"] .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
+  padding-right: 2.75rem;
+}
+
 .tabs__link strong,
 .claro-details__summary strong,
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a strong {
@@ -1241,6 +1253,16 @@ details summary {
           mask-position: center center;
   -webkit-mask-size: 100% 100%;
           mask-size: 100% 100%;
+}
+
+[dir="ltr"] .claro-details__summary::before,
+[dir="ltr"] .claro-details[open] > .claro-details__summary::before {
+  left: 1.125rem;
+}
+
+[dir="rtl"] .claro-details__summary::before,
+[dir="rtl"] .claro-details[open] > .claro-details__summary::before {
+  right: 1.125rem;
 }
 
 .claro-details__summary:hover::before,
