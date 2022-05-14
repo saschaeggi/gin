@@ -735,6 +735,14 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
   margin-top: 1rem;
 }
 
+[dir="ltr"] .claro-details__summary {
+  padding-left: 2.75rem;
+}
+
+[dir="rtl"] .claro-details__summary {
+  padding-right: 2.75rem;
+}
+
 .claro-details.claro-details--package-listing,
 .claro-details.module-list__module-details,
 .system-status-report .claro-details {
@@ -878,18 +886,6 @@ details summary {
   font-weight: 600;
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-}
-
-[dir="ltr"] .tabs__link,
-[dir="ltr"] .claro-details__summary,
-[dir="ltr"] .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
-  padding-left: 2.75rem;
-}
-
-[dir="rtl"] .tabs__link,
-[dir="rtl"] .claro-details__summary,
-[dir="rtl"] .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
-  padding-right: 2.75rem;
 }
 
 .tabs__link strong,
