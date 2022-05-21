@@ -207,6 +207,8 @@ libraries-extend:
     - gin/webform
   webform/webform.form.tabs:
     - gin/webform
+  workbench/workbench.toolbar:
+   - gin/workbench
   paragraphs/drupal.paragraphs.widget:
     - gin/paragraphs
   paragraphs_ee/paragraphs_ee.paragraphs:

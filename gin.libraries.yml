@@ -232,6 +232,11 @@ webform:
     component:
       dist/css/components/webform.css: { minified: false }
 
+workbench:
+  css:
+    component:
+      dist/css/components/workbench.css: { minified: false }
+
 autosave:
   css:
     component:
