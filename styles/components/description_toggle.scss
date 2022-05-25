@@ -53,14 +53,6 @@
   }
 }
 
-// Subtract description toggle width from input fields
-.help-icon__element-has-description {
-  input:not(.form-checkbox):not(.form-autocomplete):not(.form-file),
-  select {
-    max-width: calc(100% - 34px); /* 1 */
-  }
-}
-
 // Detail summary
 .field-group-details.help-icon__description-container .help-icon__description-toggle {
   margin-top: 0;

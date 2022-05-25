@@ -68,12 +68,6 @@
   width: 50px !important;
 }
 
-.help-icon__element-has-description input:not(.form-checkbox):not(.form-autocomplete):not(.form-file),
-.help-icon__element-has-description select {
-  max-width: calc(100% - 34px);
-  /* 1 */
-}
-
 .field-group-details.help-icon__description-container .help-icon__description-toggle {
   margin-top: 0;
 }
