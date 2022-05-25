@@ -1317,6 +1317,17 @@ details summary {
 
 .vertical-tabs__items {
   border-radius: var(--ginBorderDefault);
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  [dir="ltr"] .vertical-tabs__items {
+    border-top-left-radius: 0;
+  }
+
+  [dir="rtl"] .vertical-tabs__items {
+    border-top-right-radius: 0;
+  }
 }
 
 .vertical-tabs__items .vertical-tabs__item {
@@ -1341,14 +1352,9 @@ details summary {
   }
 }
 
-.vertical-tabs__items .vertical-tabs__item:first-of-type, .vertical-tabs__items .vertical-tabs__item:first-of-type .claro-details__summary::after {
-  border-top-left-radius: var(--ginBorderDefault);
-  border-top-right-radius: var(--ginBorderDefault);
-}
-
-.vertical-tabs__items .vertical-tabs__item:last-of-type, .vertical-tabs__items .vertical-tabs__item:not([open=open]):last-of-type .claro-details__summary::after {
-  border-bottom-left-radius: var(--ginBorderDefault);
-  border-bottom-right-radius: var(--ginBorderDefault);
+.vertical-tabs__items .vertical-tabs__item .claro-details__wrapper {
+  display: inline-block;
+  width: 100%;
 }
 
 .vertical-tabs__menu-item::before, .vertical-tabs__menu-item::after {

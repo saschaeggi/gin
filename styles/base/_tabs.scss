@@ -397,6 +397,11 @@
 .vertical-tabs {
   &__items {
     border-radius: var(--ginBorderDefault);
+    overflow: hidden;
+
+    @include mq($breakpointLarge) {
+      border-top-left-radius: 0;
+    }
 
     .vertical-tabs__item {
       border-radius: 0;
@@ -411,16 +416,9 @@
         }
       }
 
-      &:first-of-type {
-        &, .claro-details__summary::after {
-          border-top-left-radius: var(--ginBorderDefault);
-          border-top-right-radius: var(--ginBorderDefault);
-        }
-      }
-
-      &:last-of-type, &:not([open='open']):last-of-type .claro-details__summary::after {
-        border-bottom-left-radius: var(--ginBorderDefault);
-        border-bottom-right-radius: var(--ginBorderDefault);
+      .claro-details__wrapper {
+        display: inline-block;
+        width: 100%;
       }
     }
   }
