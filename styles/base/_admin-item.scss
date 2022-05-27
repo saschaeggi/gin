@@ -42,6 +42,7 @@
 
   &__description {
     font-size: 0.875rem;
+    color: var(--colorGinTextLight);
   }
 
   & &__link {
@@ -58,7 +59,7 @@
       right: 16px;
       left: auto;
       top: 50%;
-      transform: translateY(-50%);
+      transform: translateY(-50%) unquote("/*! rtl:append scaleX(-1) */");
       background-image: none;
       background-color: var(--colorGinPrimary);
       mask-image: icon('handle');

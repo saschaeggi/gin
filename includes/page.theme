@@ -8,6 +8,7 @@
 use Drupal\gin\GinContentFormHelper;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\gin\GinSettings;
+use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_preprocess_HOOK() for page.
@@ -119,8 +120,21 @@ function gin_page_attachments_alter(&$page) {
  * Page title.
  */
 function gin_preprocess_page_title(&$variables) {
-  if (($node = \Drupal::routeMatch()->getParameter('node'))) {
-    $variables['title'] = $node->getTitle();
+  if (preg_match('/entity\.node\..*/', \Drupal::routeMatch()->getRouteName(), $matches)) {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node instanceof Node) {
+      if ($node->isDefaultTranslation() && $matches[0] !== 'entity.node.content_translation_add') {
+        $variables['title'] = $node->getTitle();
+      }
+      elseif ($matches[0] === 'entity.node.edit_form') {
+        $variables['title_attributes']['class'][] = 'page-title--is-translation';
+        $args = [
+          '@title' => $node->getTitle(),
+          '@language' => $node->language()->getName(),
+        ];
+        $variables['title'] = t('@title <span class="page-title__language">(@language translation)</span>', $args);
+      }
+    }
   }
 }
 

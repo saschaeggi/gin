@@ -60,8 +60,15 @@ a {
 body.cke_editable_themed blockquote {
   font-size: 1.1em;
   position: relative;
-  padding-left: 1.5rem;
   margin: 1rem;
+}
+
+[dir="ltr"] body.cke_editable_themed blockquote {
+  padding-left: 1.5rem;
+}
+
+[dir="rtl"] body.cke_editable_themed blockquote {
+  padding-right: 1.5rem;
 }
 
 @media (min-width: 976px) {
@@ -75,10 +82,17 @@ body.cke_editable_themed blockquote::before {
   display: block;
   position: absolute;
   top: 0;
-  left: 0;
   width: 4px;
   height: 100%;
   background-color: var(--colorGinPrimary);
   border-radius: 2px;
+}
+
+[dir="ltr"] body.cke_editable_themed blockquote::before {
+  left: 0;
+}
+
+[dir="rtl"] body.cke_editable_themed blockquote::before {
+  right: 0;
 }
 

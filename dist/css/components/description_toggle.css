@@ -5,10 +5,17 @@
 .help-icon__description-toggle {
   all: unset;
   flex-shrink: 0;
-  margin: .3rem 1rem 0 .3rem;
   height: 16px;
   width: 16px;
   border-radius: 50%;
+}
+
+[dir="ltr"] .help-icon__description-toggle {
+  margin: .3rem 1rem 0 .3rem;
+}
+
+[dir="rtl"] .help-icon__description-toggle {
+  margin: .3rem .3rem 0 1rem;
 }
 
 .help-icon__description-toggle:before {
@@ -37,54 +44,71 @@
   align-items: normal;
 }
 
-.form-type--checkbox > .help-icon__element-has-description > label,
-.form-type--radio > .help-icon__element-has-description > label {
+[dir="ltr"] .form-type--checkbox > .help-icon__element-has-description > label,
+[dir="ltr"] .form-type--radio > .help-icon__element-has-description > label {
   margin-left: 6px;
 }
 
-.form-type--checkbox .checkbox-toggle + .help-icon,
-.form-type--radio .checkbox-toggle + .help-icon {
+[dir="rtl"] .form-type--checkbox > .help-icon__element-has-description > label,
+[dir="rtl"] .form-type--radio > .help-icon__element-has-description > label {
+  margin-right: 6px;
+}
+
+[dir="ltr"] .form-type--checkbox .checkbox-toggle + .help-icon,
+[dir="ltr"] .form-type--radio .checkbox-toggle + .help-icon {
   padding-left: 4px;
+}
+
+[dir="rtl"] .form-type--checkbox .checkbox-toggle + .help-icon,
+[dir="rtl"] .form-type--radio .checkbox-toggle + .help-icon {
+  padding-right: 4px;
 }
 
 .form-type-checkbox .help-icon__element-has-description .checkbox-toggle {
   width: 50px !important;
 }
 
-.help-icon__element-has-description input:not(.form-checkbox):not(.form-autocomplete):not(.form-file),
-.help-icon__element-has-description select {
-  max-width: calc(100% - 34px);
-  /* 1 */
-}
-
 .field-group-details.help-icon__description-container .help-icon__description-toggle {
   margin-top: 0;
 }
 
-fieldset:not(.fieldgroup) .help-icon > .fieldset__legend .fieldset__label {
+[dir="ltr"] fieldset:not(.fieldgroup) .help-icon > .fieldset__legend .fieldset__label {
   padding-right: 0;
+}
+
+[dir="rtl"] fieldset:not(.fieldgroup) .help-icon > .fieldset__legend .fieldset__label {
+  padding-left: 0;
 }
 
 .field-group-fieldset > .help-icon > .help-icon__description-toggle,
 fieldset.media-library-widget .help-icon > .help-icon__description-toggle,
-.field--type-datetime fieldset .help-icon > .help-icon__description-toggle,
-fieldset .help-icon > .help-icon__description-toggle {
+.field--type-datetime fieldset .help-icon > .help-icon__description-toggle {
   margin-top: 1.3rem;
 }
 
-.field-group-fieldset > .fieldset__description,
-fieldset.media-library-widget .fieldset__description,
-.field--type-datetime fieldset .fieldset__description,
-fieldset .fieldset__description {
+[dir="ltr"] .field-group-fieldset > .fieldset__description,
+[dir="ltr"] fieldset.media-library-widget .fieldset__description,
+[dir="ltr"] .field--type-datetime fieldset .fieldset__description {
   padding-left: 1rem;
 }
 
+[dir="rtl"] .field-group-fieldset > .fieldset__description,
+[dir="rtl"] fieldset.media-library-widget .fieldset__description,
+[dir="rtl"] .field--type-datetime fieldset .fieldset__description {
+  padding-right: 1rem;
+}
+
 @media (min-width: 768px) {
-  .field-group-fieldset > .fieldset__description,
-fieldset.media-library-widget .fieldset__description,
-.field--type-datetime fieldset .fieldset__description,
-fieldset .fieldset__description {
+  [dir="ltr"] .field-group-fieldset > .fieldset__description,
+[dir="ltr"] fieldset.media-library-widget .fieldset__description,
+[dir="ltr"] .field--type-datetime fieldset .fieldset__description {
     padding-left: 1.5rem;
+  }
+
+  [dir="rtl"] .field-group-fieldset > .fieldset__description,
+[dir="rtl"] fieldset.media-library-widget .fieldset__description,
+[dir="rtl"] .field--type-datetime fieldset .fieldset__description {
+    padding-right: 1.5rem;
   }
 }
 
@@ -96,7 +120,16 @@ fieldset .fieldset__description {
 .system-modules .table-filter .form-type--search .help-icon__description-toggle,
 .system-modules-uninstall .table-filter .form-type--search .help-icon__description-toggle {
   position: absolute;
-  right: -8px;
   top: 16px;
+}
+
+[dir="ltr"] .system-modules .table-filter .form-type--search .help-icon__description-toggle,
+[dir="ltr"] .system-modules-uninstall .table-filter .form-type--search .help-icon__description-toggle {
+  right: -8px;
+}
+
+[dir="rtl"] .system-modules .table-filter .form-type--search .help-icon__description-toggle,
+[dir="rtl"] .system-modules-uninstall .table-filter .form-type--search .help-icon__description-toggle {
+  left: -8px;
 }
 

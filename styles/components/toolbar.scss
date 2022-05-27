@@ -15,7 +15,6 @@ body.gin--classic-toolbar {
 
     @include mq($breakpointXSmall) {
       .user-menu {
-        order: 99;
         flex-grow: 1;
         flex-shrink: 0;
         text-align: right;
@@ -23,10 +22,6 @@ body.gin--classic-toolbar {
         .toolbar-menu {
           text-align: left;
         }
-      }
-
-      .contextual-toolbar-tab {
-        order: 100;
       }
     }
 
@@ -42,12 +37,32 @@ body.gin--classic-toolbar {
       font-weight: normal;
     }
 
-    .toolbar-tab > .toolbar-item.is-active {
-      background-image: none;
-      background-color: rgba(255, 255, 255, .1);
+    .toolbar-tab > .toolbar-icon {
+      &:hover {
+        background: rgba(255, 255, 255, .1);
 
-      .gin--dark-mode & {
-        background-color: var(--colorGinLayerBackground);
+        &::before {
+          background-color: #fff;
+        }
+      }
+
+      &.is-active {
+        color: var(--colorGinButtonText);
+        background-image: none;
+        background-color: var(--colorGinPrimary);
+
+        .gin--dark-mode & {
+          color: var(--colorGinPrimaryActive);
+          background-color: var(--colorGinPrimaryLightActive);
+        }
+
+        &::before {
+          background-color: var(--colorGinButtonText);
+
+          .gin--dark-mode & {
+            background-color: var(--colorGinPrimaryActive);
+          }
+        }
       }
     }
 
@@ -77,6 +92,10 @@ body.gin--classic-toolbar {
     .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item:focus {
       color: var(--colorGinAppBackground);
       background: var(--colorGinPrimary);
+
+      &::before {
+        background: var(--colorGinAppBackground);
+      }
     }
 
     // Overrides for default toolbar items
@@ -254,9 +273,6 @@ body.gin--classic-toolbar {
     // Back to site
     .toolbar-icon-escape-admin {
       display: none;
-      // &:before {
-      //   mask-image: icon('backtosite');
-      // }
     }
 
     // Edit
@@ -265,12 +281,7 @@ body.gin--classic-toolbar {
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &:before {
         mask-image: icon('edit');
-      }
-
-      &, &:hover, &:active {
-        &:before {
-          background: var(--colorGinAppBackground);
-        }
+        mask-size: var(--iconGinSecondaryToolbar) var(--iconGinSecondaryToolbar);
       }
     }
 
@@ -335,6 +346,13 @@ body.gin--classic-toolbar {
     .toolbar-icon-toggle-horizontal {
       &:before {
         mask-image: icon('nav-toggle-totop');
+      }
+    }
+
+    // Workbench
+    .toolbar-icon-workbench-content-tab {
+      &:before {
+        mask-image: icon('tool');
       }
     }
   }
@@ -467,6 +485,9 @@ body.gin--classic-toolbar {
 
         &--expanded {
           background-color: transparent;
+          [dir=rtl] & {
+            background-color: transparent;
+          }
 
           &.hover-intent ul {
             box-shadow: 0 8px 14px rgba(0, 0, 0, .15);
@@ -477,16 +498,12 @@ body.gin--classic-toolbar {
   }
 }
 
-#toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon.toolbar-icon-edit.toolbar-item.is-active {
-  color: var(--colorGinAppBackground);
-}
+#toolbar-administration .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item {
+  font-weight: 600;
 
-#toolbar-bar.js-settings-tray-edit-mode {
-  background: var(--colorGinPrimary);
-}
-
-#toolbar-bar.js-settings-tray-edit-mode button.toolbar-icon.toolbar-icon-edit.toolbar-item.is-active:hover {
-  background: var(--colorGinPrimaryHover);
+  &:hover::before {
+    background: #fff;
+  }
 }
 
 .toolbar .toolbar-icon.toolbar-handle::before,
@@ -496,6 +513,9 @@ body.gin--classic-toolbar {
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
   background-image: none;
+  [dir="rtl"] & {
+    background-image: none;
+  }
 }
 
 .toolbar .toolbar-icon.toolbar-handle,
@@ -516,6 +536,7 @@ body.gin--classic-toolbar {
     mask-repeat: no-repeat;
     mask-position: center center;
     mask-size: 14px 14px;
+    /*! rtl:raw:transform: scaleX(-1); */
   }
 
   &.menu-item--active-trail,
@@ -557,24 +578,18 @@ body.gin--classic-toolbar {
     background-color: rgba(255, 255, 255, .75);
     mask-repeat: no-repeat;
     mask-position: center center;
-    mask-size: var(--iconGinMeta) var(--iconGinMeta);
-  }
-
-  &:hover::before {
-    @include mq($breakpointMedium) {
-      background-color: var(--colorGinTitle);
-    }
+    mask-size: var(--iconGinSecondaryToolbar) var(--iconGinSecondaryToolbar);
   }
 
   &.is-active:before,
   &.is-active:hover:before {
     @include mq($breakpointMedium) {
-      background-color: var(--colorGinPrimary);
+      background-color: var(--colorGinButtonText);
     }
   }
 }
 
-.toolbar-meta .toolbar-bar .toolbar-icon,
+.toolbar-secondary .toolbar-bar .toolbar-icon,
 .toolbar-icon-edit,
 .toolbar-icon-menu,
 .toolbar-icon-local-tasks,
@@ -588,8 +603,12 @@ body.gin--classic-toolbar {
   }
 }
 
-.toolbar.toolbar-meta .toolbar-bar .toolbar-tab > .toolbar-icon::before {
+.toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon::before {
   background-color: var(--colorGinIcons);
+}
+
+.toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item::before {
+  left: .55rem;
 }
 
 // Custom logo
@@ -612,6 +631,7 @@ body.gin--classic-toolbar {
   &.icon-user {
     padding-left: 0;
     margin-left: 8px;
+    margin-top: 2px;
   }
 }
 
@@ -627,7 +647,7 @@ body.gin--classic-toolbar {
   @extend .toolbar-icon;
 
   &::before {
-    mask-size: var(--iconGinMeta) var(--iconGinMeta);
+    mask-size: var(--iconGinSecondaryToolbar) var(--iconGinSecondaryToolbar);
   }
 }
 
@@ -657,17 +677,17 @@ body.gin--classic-toolbar {
 
 #admin-toolbar-search-tab .js-form-type-search {
   position: relative;
-  margin: 5px 0;
+  margin: 0;
 
   &::before {
     content: "";
     opacity: .75;
     display: block;
-    width: var(--iconGinMeta);
-    height: var(--iconGinMeta);
+    width: var(--iconGinSecondaryToolbar);
+    height: var(--iconGinSecondaryToolbar);
     position: absolute;
-    top: 7px;
-    left: 1rem;
+    top: 11px;
+    left: 16px;
     background-color: var(--colorGinIcons);
     mask-image: icon('search');
     mask-size: 100% 100%;
@@ -676,7 +696,7 @@ body.gin--classic-toolbar {
 }
 
 // Admin Toolbar QuickSearch Results
-.admin-toolbar-search-autocomplete-list {
+.ui-autocomplete.admin-toolbar-search-autocomplete-list {
   color: var(--colorGinText);
   background-color: var(--colorGinLayer3Background);
   border-radius: var(--ginBorderMedium);

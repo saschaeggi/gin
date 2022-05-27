@@ -13,6 +13,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding-right: .25em;
   max-width: 90%;
   transition: font-size 0.25s ease;
 
@@ -23,16 +24,24 @@
       font-size: 1.6em;
     }
   }
+
+  &__language {
+    display: block;
+    font-size: var(--ginFontSizeSmall);
+    font-weight: normal;
+    letter-spacing: normal;
+    color: var(--colorGinText);
+  }
+
+  &--is-translation + .shortcut-action .shortcut-action__icon {
+    top: -3px;
+  }
 }
 
 .shortcut-action {
   align-self: center;
-  margin-left: .5rem;
+  margin-left: 0;
   border-radius: var(--ginBorderDefault);
-
-  @include mq($breakpointLarge) {
-    margin-left: .5rem;
-  }
 
   &__icon {
     position: relative;

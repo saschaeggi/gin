@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
+const postcssRTLCSS = require('postcss-rtlcss');
 
 module.exports = {
   entry: {
@@ -24,6 +25,7 @@ module.exports = {
     'components/ajax': ['./styles/components/ajax.scss'],
     'components/autocomplete': ['./styles/components/autocomplete.scss'],
     'components/autosave': ['./styles/components/autosave.scss'],
+    'components/breadcrumb': ['./styles/components/breadcrumb.scss'],
     'components/chosen': ['./styles/components/chosen.scss'],
     'components/ckeditor': ['./styles/components/ckeditor.scss'],
     'components/coffee': ['./styles/components/coffee.scss'],
@@ -44,12 +46,15 @@ module.exports = {
     'components/paragraphs_ee': ['./styles/components/paragraphs_ee.scss'],
     'components/responsive_preview': ['./styles/components/responsive_preview.scss'],
     'components/revisions': ['./styles/components/revisions.scss'],
+    'components/settings_tray': ['./styles/components/settings_tray.scss'],
+    'components/settings_tray_edit': ['./styles/components/settings_tray_edit.scss'],
     'components/settings': ['./styles/components/settings.scss'],
     'components/sidebar': ['./styles/components/sidebar.scss'],
     'components/toolbar': ['./styles/components/toolbar.scss'],
-    'components/toolbar_meta': ['./styles/components/toolbar_meta.scss'],
+    'components/toolbar_secondary': ['./styles/components/toolbar_secondary.scss'],
     'components/upgrade_status': ['./styles/components/upgrade_status.scss'],
     'components/webform': ['./styles/components/webform.scss'],
+    'components/workbench': ['./styles/components/workbench.scss'],
     // Layout
     'layout/toolbar': ['./styles/layout/toolbar.scss'],
     'layout/horizontal_toolbar': ['./styles/layout/horizontal_toolbar.scss'],
@@ -136,6 +141,7 @@ module.exports = {
               postcssOptions: {
                 plugins: [
                   autoprefixer(),
+                  postcssRTLCSS(),
                   ['postcss-perfectionist', {
                     format: 'expanded',
                     indentSize: 2,

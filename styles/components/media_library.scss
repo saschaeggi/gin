@@ -50,6 +50,10 @@
 .media-library-item {
   background: none;
 
+  img {
+    @include color-pattern;
+  }
+
   &--grid {
     border-radius: var(--ginBorderBig);
 
@@ -357,6 +361,17 @@ fieldset.media-library-widget {
 .media-library-widget-modal .media-library-item--grid {
   @include mq($breakpointBig) {
     width: 20%;
+  }
+}
+
+.media-library-widget-modal .ui-dialog-buttonpane {
+  .form-actions {
+    flex-grow: 0;
+    white-space: nowrap;
+  }
+
+  .media-library-selected-count {
+    flex-grow: 1;
   }
 }
 

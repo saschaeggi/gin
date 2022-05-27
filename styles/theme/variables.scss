@@ -41,7 +41,7 @@
   --colorGinLayer2Background: #edeff5;
   --colorGinLayer3Background: #fff;
   --colorGinLayer4Background: #e2e5ec;
-  --colorGinMetaBackground: var(--colorGinLayerBackground);
+  --colorGinSecondaryBackground: var(--colorGinLayerBackground);
 
   // Context
   --colorGinContextual: var(--colorGinText);
@@ -49,7 +49,7 @@
 
   // Borders
   --colorGinBorder: #d4d4d8;
-  --colorGinMetaBorder: rgba(0, 0, 0, .08);
+  --colorGinSecondaryBorder: rgba(0, 0, 0, .08);
   --colorGinLayerBorder: rgba(0, 0, 0, .08);
   --colorGinLayer2Border: #d4d4d8;
   --colorGinTableBorder: rgba(0, 0, 0, .15);
@@ -58,6 +58,7 @@
 
   // Font
   --ginFont: Ginter, Inter, 'Helvetica Neue', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
+  --ginFontSizeSmall: small;
 
   // Text
   --colorGinTitle:#222330;
@@ -73,6 +74,11 @@
 
   // Icons
   --colorGinIcons: #414247; //#5d6069;
+
+  // Color pattern
+  --colorGinPatternFallback: var(--colorGinLayer2Background);
+  --colorGinPattern: var(--colorGinBorder);
+  --ginSizePatternSquare: .5rem;
 
   // Sticky bar
   --ginStickyHeight: 72px;
@@ -111,7 +117,7 @@
   --ginBorderBig: 16px;
 
   // Icons
-  --iconGinMeta: 17px;
+  --iconGinSecondaryToolbar: 17px;
   --iconGinToolbar: 17px;
 
   @include mq($breakpointMedium) {
@@ -150,14 +156,14 @@
   --colorGinLayer2Background: #3B3B3F;
   --colorGinLayer3Background: #47474c;
   --colorGinLayer4Background: #19191b;
-  --colorGinMetaBackground: var(--colorGinAppBackground);
+  --colorGinSecondaryBackground: var(--colorGinAppBackground);
 
   // Context
   --colorGinContextual: var(--colorGinLayer3Background);
 
   // Borders
   --colorGinBorder: #43454a;
-  --colorGinMetaBorder: rgba(255, 255, 255, .075);
+  --colorGinSecondaryBorder: rgba(255, 255, 255, .075);
   --colorGinLayerBorder: rgba(0, 0, 0, .05);
   --colorGinLayer2Border: #76777B;
   --colorGinTableBorder: #43454a;
@@ -180,8 +186,21 @@
   --colorGinSwitch: var(--colorGinPrimary);
   --colorGinSwitchShadow: var(--colorGinPrimaryLight);
 
+  // Shadows
+  --ginShadowLevel1: 0 1px 2px rgb(0 0 0 / 2%),
+               0 3px 4px rgb(0 0 0 / 3%),
+               0 5px 8px rgb(0 0 0 / 4%);
+  --ginShadowLevel2: 0 1px 2px rgb(0 0 0 / 2%),
+                0 3px 4px rgb(0 0 0 / 3%),
+                0 5px 8px rgb(0 0 0 / 4%),
+                0 20px 24px rgb(0 0 0 / 12%);
+
   // Icons
   --colorGinIcons: #888;
+
+  // Color pattern
+  --colorGinPatternFallback: var(--colorGinLayer2Background);
+  --colorGinPattern: var(--colorGinBorder);
 
   // Sticky bg
   --colorGinStickyBg: var(--colorGinLayer4Background);

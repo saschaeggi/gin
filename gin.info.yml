@@ -44,6 +44,12 @@ libraries-override:
 
   classy/dialog: claro/claro.drupal.dialog
 
+  # needed override to overcome dialog styling issues
+  claro/claro.drupal.dialog:
+    css:
+      theme:
+        css/components/dialog.css: false
+
   classy/base:
     css:
       component:
@@ -142,6 +148,11 @@ libraries-override:
       theme:
         css/paragraphs_ee.off_canvas.css: false
 
+  claro/global-styling:
+    css:
+      layout:
+        css/layout/local-actions.css: false
+
 libraries-extend:
   core/drupal.autocomplete:
     - gin/autocomplete
@@ -196,6 +207,8 @@ libraries-extend:
     - gin/webform
   webform/webform.form.tabs:
     - gin/webform
+  workbench/workbench.toolbar:
+   - gin/workbench
   paragraphs/drupal.paragraphs.widget:
     - gin/paragraphs
   paragraphs_ee/paragraphs_ee.paragraphs:

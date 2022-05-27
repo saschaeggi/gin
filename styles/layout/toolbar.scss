@@ -1,20 +1,24 @@
 // Toolbar Variables
 :root {
+  --ginToolbarSecondaryHeight: 48px;
   --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
   --ginHorizontalToolbarOffset: var(--ginToolbarHeight); // Needs px to work in calc() functions.
   --ginVerticalToolbarOffset: 0px; // Needs px to work in calc() functions.
+  --ginStickyOffset: 0px; // Needs px to work in calc() functions.
 
-  @include mq($breakpointLarge) {
+  @include mq($breakpointMedium) {
+    --ginToolbarSecondaryHeight: 60px;
     --iconGinToolbar: 22px;
     --ginScrollOffset: 130px;
     --ginHorizontalToolbarOffset: 0px; // Needs px to work in calc() functions.
     --ginVerticalToolbarOffset: var(--ginToolbarWidthCollapsed);
+    --ginStickyOffset: var(--ginStickyHeight);
   }
 }
 
 .toolbar-fixed[data-toolbar-menu=open] {
-  @include mq($breakpointLarge) {
+  @include mq($breakpointMedium) {
     --ginVerticalToolbarOffset: var(--ginToolbarWidth, 240px);
   }
 }
@@ -29,6 +33,10 @@
 .toolbar {
   .toolbar-bar {
     box-shadow: none;
+    // Reset `box-shadow` style from the `.toolbar-bar` class if we use RTL mode.
+    [dir="rtl"] & {
+      box-shadow: none;
+    }
 
     @include mq($breakpointXSmall) {
       display: flex;
@@ -54,6 +62,12 @@
           top: 50%;
           transform: translateY(-50%);
         }
+      }
+    }
+
+    .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
+      @include mq(max-width $breakpointXSmall) {
+        left: 0;
       }
     }
 
@@ -126,17 +140,6 @@
         }
       }
     }
-
-    .toolbar-tab > .toolbar-icon-edit.toolbar-item {
-      &, &:hover, &:active, &.is-active {
-        color: var(--colorGinAppBackground);
-
-        &::before {
-          background-image: none;
-          background-color: var(--colorGinAppBackground);
-        }
-      }
-    }
   }
 }
 
@@ -145,7 +148,7 @@
   color: var(--colorGinText);
 }
 
-#toolbar-bar.js-settings-tray-edit-mode {
+#gin-toolbar-bar.js-settings-tray-edit-mode {
   justify-content: flex-end;
 }
 
@@ -389,16 +392,21 @@ a.toolbar-menu__trigger,
 
         .toolbar-menu {
           display: none;
-          position: fixed;
           top: 0;
           margin-left: calc(var(--ginToolbarWidthCollapsed) - 1px);
-          width: var(--ginToolbarWidth);
           height: 100vh;
           max-width: calc(100% - var(--ginToolbarHeight));
           box-shadow: none;
           border-left: 1px solid var(--colorGinLayerBorder);
           overflow-y: auto;
           overflow-x: hidden;
+
+          &,
+          [dir='rtl'] &,
+          [dir='ltr'] & {
+            position: fixed;
+            width: var(--ginToolbarWidth);
+          }
 
           .gin--dark-mode & {
             border-left: 1px solid $colorDarkAppBackground;

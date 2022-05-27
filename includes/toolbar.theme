@@ -5,8 +5,7 @@
  * toolbar.theme
  */
 
-use Drupal\user\Entity\User;
-use Drupal\image\Entity\ImageStyle;
+use Drupal\gin\GinUserPicture;
 use Drupal\gin\GinSettings;
 
 /**
@@ -54,22 +53,15 @@ function gin_preprocess_menu__toolbar__gin(&$variables) {
  * Implements toolbar preprocess.
  */
 function gin_preprocess_toolbar(&$variables) {
-  $user_id = \Drupal::currentUser()->id();
-
-  // Check that the field exists and that it has a value.
-  if ($user_id) {
-    $user = User::load($user_id);
-
-    if (!empty($user->user_picture) && !empty($user->user_picture->entity)) {
-      $image_style = ImageStyle::load('thumbnail');
-
-      if ($image_style) {
-        $image = $user->user_picture->entity->getFileUri();
-        $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('thumbnail');
-        $variables['user_picture'] = $style->buildUrl($image);
-      }
-    }
-  }
+  // Use single `:` to make ControllerResolver get the class from definition.
+  // @see Drupal\Core\Controller\ControllerResolver->createController().
+  $variables['user_picture'] = [
+    '#lazy_builder' => [
+      GinUserPicture::class . ':build',
+      [],
+    ],
+    '#create_placeholder' => TRUE,
+  ];
 
   // Expose Toolbar variant.
   /** @var \Drupal\gin\GinSettings $settings */
@@ -95,6 +87,18 @@ function gin_preprocess_toolbar__gin__secondary(&$variables) {
           array_unshift($variables['tabs'], $variables['tabs'][$key]);
           unset($variables['tabs'][$key]);
         }
+      }
+    }
+  }
+
+  // Move user tab to end.
+  $toolbar_user = array_search('user', array_keys($variables['tabs']));
+  if (is_numeric($toolbar_user)) {
+    foreach ($variables['tabs'] as $key => $item) {
+      if ($key === 'user') {
+        $user_tab = $variables['tabs'][$key];
+        unset($variables['tabs'][$key]);
+        $variables['tabs'][$key] = $user_tab;
       }
     }
   }

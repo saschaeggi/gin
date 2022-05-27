@@ -33,6 +33,9 @@
 }
 
 .ui-dialog {
+  font-family: var(--ginFont);
+  outline: none;
+
   &,
   &:focus,
   &:focus:active,
@@ -81,10 +84,11 @@
   .ui-dialog-titlebar-close {
     top: 20px;
     right: 18px;
-    border: none;
     opacity: .8;
-    transform: none;
     margin: 0;
+    transform: none;
+    background: none;
+    border: none;
 
     .ui-icon-closethick {
       width: 100%;

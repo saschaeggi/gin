@@ -281,7 +281,6 @@ class GinSettings implements ContainerInjectionInterface {
         1 => $this->t('Dark'),
         'auto' => $this->t('Auto'),
       ],
-      '#after_build' => [],
     ];
 
     // Accent color setting.
@@ -303,7 +302,6 @@ class GinSettings implements ContainerInjectionInterface {
         'neutral' => $this->t('Neutral'),
         'custom' => $this->t('Custom'),
       ],
-      '#description' => '',
       '#after_build' => [
         '_gin_accent_radios',
       ],
@@ -328,8 +326,9 @@ class GinSettings implements ContainerInjectionInterface {
       '#placeholder' => '#777777',
       '#maxlength' => 7,
       '#size' => 7,
+      '#title' => $this->t('Custom Accent color'),
+      '#title_display' => 'invisible',
       '#default_value' => $account ? $this->get('accent_color', $account) : $this->getDefault('accent_color'),
-      '#after_build' => [],
       '#group' => 'accent_group',
       '#attributes' => [
         'pattern' => '^#[a-fA-F0-9]{6}',
@@ -349,8 +348,7 @@ class GinSettings implements ContainerInjectionInterface {
     // Focus color setting.
     $form['preset_focus_color'] = [
       '#type' => 'select',
-      '#title' => $this->t('Focus color (BETA)'),
-      '#description' => '',
+      '#title' => $this->t('Focus color'),
       '#default_value' => $account ? $this->get('preset_focus_color', $account) : $this->getDefault('preset_focus_color'),
       '#options' => [
         'gin' => $this->t('Gin Focus color (Default)'),
@@ -361,7 +359,6 @@ class GinSettings implements ContainerInjectionInterface {
         'accent' => $this->t('Same as Accent color'),
         'custom' => $this->t('Custom'),
       ],
-      '#after_build' => [],
     ];
 
     // Focus color group.
@@ -390,11 +387,12 @@ class GinSettings implements ContainerInjectionInterface {
     // Custom Focus color setting.
     $form['focus_color'] = [
       '#type' => 'textfield',
+      '#title' => $this->t('Custom Focus color (BETA)'),
+      '#title_display' => 'invisible',
       '#placeholder' => '#777777',
       '#maxlength' => 7,
       '#size' => 7,
       '#default_value' => $account ? $this->get('focus_color', $account) : $this->getDefault('focus_color'),
-      '#after_build' => [],
       '#group' => 'focus_group',
       '#attributes' => [
         'pattern' => '^#[a-fA-F0-9]{6}',
@@ -407,14 +405,12 @@ class GinSettings implements ContainerInjectionInterface {
       '#title' => $this->t('Increase contrast (EXPERIMENTAL)'),
       '#description' => $this->t('Enables high contrast mode.'),
       '#default_value' => $account ? $this->get('high_contrast_mode', $account) : $this->getDefault('high_contrast_mode'),
-      '#after_build' => [],
     ];
 
     // Toolbar setting.
     $form['classic_toolbar'] = [
       '#type' => 'radios',
-      '#title' => $this->t('Drupal Toolbar'),
-      '#description' => $this->t('Choose Drupal Toolbar.'),
+      '#title' => $this->t('Navigation (Drupal Toolbar)'),
       '#default_value' => $account ? $this->get('classic_toolbar', $account) : $this->getDefault('classic_toolbar'),
       '#options' => [
         'vertical' => $this->t('Sidebar, Vertical Toolbar (Default)'),
@@ -426,9 +422,19 @@ class GinSettings implements ContainerInjectionInterface {
       ],
     ];
 
+    // Show secondary toolbar in Frontend.
+    if (!$account) {
+      $form['secondary_toolbar_frontend'] = [
+        '#type' => 'checkbox',
+        '#title' => $this->t('Show Secondary Toolbar in Frontend'),
+        '#description' => $this->t('Show the secondary toolbar in the Frontend (when logged in to Drupal).'),
+        '#default_value' => $this->getDefault('secondary_toolbar_frontend'),
+      ];
+    }
+
     $form['show_description_toggle'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('Enable form description toggle.'),
+      '#title' => $this->t('Enable form description toggle'),
       '#description' => $this->t('Show a help icon to show/hide form descriptions on content forms.'),
       '#default_value' => $account ? $this->get('show_description_toggle', $account) : $this->getDefault('show_description_toggle'),
     ];

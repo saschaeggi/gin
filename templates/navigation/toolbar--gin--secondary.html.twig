@@ -20,8 +20,8 @@
  * @see template_preprocess_toolbar()
  */
 #}
-<div{{ attributes.addClass('toolbar', 'toolbar-meta').setAttribute('id', 'toolbar-administration-secondary') }}>
-  <nav{{ toolbar_attributes.addClass('toolbar-bar', 'clearfix') }}>
+<div{{ attributes.addClass('toolbar', 'toolbar-secondary').setAttribute('id', 'toolbar-administration-secondary') }}>
+  <nav{{ toolbar_attributes.addClass('toolbar-bar', 'clearfix').setAttribute('id', 'toolbar-bar') }}>
     <h2 class="visually-hidden">{{ toolbar_heading }}</h2>
 
     {% for key, tab in tabs %}
@@ -39,19 +39,14 @@
       {% set tab_classes = item_id|merge(['toolbar-tab', user_menu, tab_id]) %}
 
       {% set denylist_items = [
-          'toolbar-id--toolbar-icon-menu',
-          'toolbar-id--toolbar-icon-edit',
+        'toolbar-id--toolbar-icon-menu',
       ] %}
 
       {# All items except main nav #}
       {% if item_id[0] not in denylist_items %}
-        {% set has_user_picture = item_id[0] == 'toolbar-id--toolbar-icon-user' and user_picture %}
-        {% set user_class = has_user_picture ? 'has-user-icon' : false %}
-        <div{{ tab.attributes.addClass(tab_classes, user_class) }}>
-          {% if has_user_picture %}
-            <a href="/user/{{ user.id }}" class="toolbar-item icon-user" role="button" id="toolbar-item-user">
-              <img src="{{ user_picture }}" alt="{{ user.account.name }}" class="icon-user__image" />
-            </a>
+        <div{{ tab.attributes.addClass(tab_classes) }}>
+          {% if item_id[0] == 'toolbar-id--toolbar-icon-user' %}
+            {{ user_picture }}
           {% else %}
             {{ tab.link }}
           {% endif %}

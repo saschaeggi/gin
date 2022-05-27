@@ -68,6 +68,12 @@
       margin: 0;
     }
 
+    .views-view-grid {
+      .views-col {
+        position: relative;
+      }
+    }
+
     .view-content {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));

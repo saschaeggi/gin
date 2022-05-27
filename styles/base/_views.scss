@@ -115,6 +115,15 @@
     max-width: 240px;
   }
 
+  .form-type--boolean .form-boolean {
+    margin-left: 0;
+    margin-right: .5rem;
+  }
+
+  .fieldset--group {
+    margin-top: .75rem;
+  }
+
   // Exposed filter with fieldgroup
   fieldset {
     margin-right: .75rem;
@@ -257,7 +266,7 @@
 
   .add a,
   li a {
-    font-size: small;
+    font-size: var(--ginFontSizeSmall);
     font-weight: bold;
     color: var(--colorGinPrimary);
     padding: .5rem 1rem;

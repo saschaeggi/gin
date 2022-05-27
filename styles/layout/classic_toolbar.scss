@@ -1,9 +1,11 @@
 // Toolbar Variables
 :root {
+  --ginToolbarSecondaryHeight: 0px; // Needs px to work in calc() functions.
   --ginToolbarHeight: 39px;
   --ginScrollOffset: 72px;
   --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
   --ginVerticalToolbarOffset: 0px; // Needs px to work in calc() functions.
+  --ginStickyOffset: 0px; // Needs px to work in calc() functions.
 
   @include mq($breakpointLarge) {
     --iconGinToolbar: 16px;
@@ -18,7 +20,7 @@
 }
 
 .region-breadcrumb {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 // Toolbar
@@ -84,10 +86,25 @@
 }
 
 // Inline Edit toggle
-.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item,
-.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active,
-.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item:focus {
-  background: var(--colorGinPrimary);
+#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode {
+  background: #100f10;
+
+  .toolbar-icon.toolbar-icon-edit.toolbar-item {
+    &,
+    &.is-active,
+    &:focus {
+      background: var(--colorGinPrimary);
+    }
+
+    &:hover,
+    &.is-active:hover {
+      background: var(--colorGinPrimaryHover);
+
+      &::before {
+        background: #fff;
+      }
+    }
+  }
 }
 
 .toolbar-tray-horizontal a:focus,
@@ -101,7 +118,7 @@
 }
 
 .toolbar-menu__trigger,
-.menu-item-title,
+.toolbar .menu-item-title,
 .menu-item-sub-title {
   display: none !important;
 }
@@ -129,13 +146,6 @@
 
 .toolbar-menu .menu-item > span {
   padding-left: 2.75em;
-}
-
-.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon {
-  &:hover:before,
-  &.is-active:before {
-    background-color: #fff;
-  }
 }
 
 // Home icon
@@ -177,9 +187,10 @@
   }
 }
 
-#admin-toolbar-search-tab .form-type--search {
+#admin-toolbar-search-tab .form-item {
   &::before {
-    left: .5rem;
+    top: 6px;
+    left: 26px;
   }
 }
 

@@ -20,7 +20,7 @@ class GinTest extends BrowserTestBase {
    *
    * @var string[]
    */
-  public static $modules = ['shortcut'];
+  protected static $modules = ['shortcut'];
 
   /**
    * {@inheritdoc}
@@ -40,7 +40,10 @@ class GinTest extends BrowserTestBase {
       ->set('admin', 'gin')
       ->save();
 
-    $adminUser = $this->drupalCreateUser(['access administration pages', 'administer themes']);
+    $adminUser = $this->drupalCreateUser([
+      'access administration pages',
+      'administer themes',
+    ]);
     $this->drupalLogin($adminUser);
   }
 
@@ -106,18 +109,20 @@ class GinTest extends BrowserTestBase {
 
     $user1 = $this->createUser();
     $this->drupalLogin($user1);
+
     // Change something on the logged in user form.
-    $this->drupalGet($user1->toUrl('edit-form'));
-    $this->assertSession()->pageTextContains('"darkmode":"0"');
+    $this->assertStringContainsString('"darkmode":"0"', $this->drupalGet($user1->toUrl('edit-form')));
+
     $this->submitForm([
       'enable_user_settings' => TRUE,
       'enable_darkmode' => '1',
     ], 'Save');
-    $this->assertSession()->pageTextContains('"darkmode":"1"');
+    $this->assertStringContainsString('"darkmode":"1"', $this->drupalGet($user1->toUrl('edit-form')));
 
     // Login as admin.
     $this->drupalLogin($this->rootUser);
-    $this->assertSession()->pageTextContains('"darkmode":"0"');
+    $this->assertStringContainsString('"darkmode":"0"', $this->drupalGet('edit-form'));
+
     // Change something on user1 edit form.
     $this->drupalGet($user1->toUrl('edit-form'));
     $this->submitForm([
@@ -127,13 +132,15 @@ class GinTest extends BrowserTestBase {
     ], 'Save');
 
     // Check logged-in's user is not affected.
-    $this->assertSession()->pageTextContains('"highcontrastmode":false');
-    $this->assertSession()->pageTextContains('"darkmode":"0"');
+    $loggedInUserResponse = $this->drupalGet('edit-form');
+    $this->assertStringContainsString('"highcontrastmode":false', $loggedInUserResponse);
+    $this->assertStringContainsString('"darkmode":"0"', $loggedInUserResponse);
 
     // Check settings of user1.
     $this->drupalLogin($user1);
-    $this->assertSession()->pageTextContains('"highcontrastmode":true');
-    $this->assertSession()->pageTextContains('"darkmode":"1"');
+    $rootUserResponse = $this->drupalGet($user1->toUrl('edit-form'));
+    $this->assertStringContainsString('"highcontrastmode":true', $rootUserResponse);
+    $this->assertStringContainsString('"darkmode":"1"', $rootUserResponse);
   }
 
 }

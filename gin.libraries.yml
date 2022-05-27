@@ -1,5 +1,4 @@
 gin:
-  version: VERSION
   css:
     theme:
       dist/css/base/gin.css: { minified: false }
@@ -7,72 +6,75 @@ gin:
     - gin/gin_base
 
 gin_base:
-  version: VERSION
   css:
     component:
       dist/css/theme/font.css: { minified: false }
       dist/css/theme/variables.css: { minified: false }
+  dependencies:
+    - gin/dialog
 
 # Legacy
 gin_ckeditor:
-  version: VERSION
   dependencies:
     - gin/ckeditor
 
 gin_init:
-  version: VERSION
   header: true
   js:
     dist/js/init.js: { minified: false, preprocess: false, weight: -99 }
 
 gin_toolbar:
-  version: VERSION
   css:
     component:
       dist/css/components/toolbar.css: { minified: false }
-      dist/css/components/toolbar_meta.css: { minified: false }
-      dist/css/components/coffee.css: { minified: false }
-      dist/css/components/node_preview.css: { minified: false }
+      dist/css/components/toolbar_secondary.css: { minified: false }
     theme:
       dist/css/layout/toolbar.css: { minified: false }
   js:
     dist/js/toolbar.js: { minified: false }
   dependencies:
+    - gin/coffee
+    - gin/node_preview
     - gin/responsive_preview
     - gin/contextual_links
+    - gin/breadcrumb
+    - gin/settings_tray
+    - gin/settings_tray_edit
 
 gin_horizontal_toolbar:
-  version: VERSION
   css:
     component:
       dist/css/components/toolbar.css: { minified: false }
-      dist/css/components/toolbar_meta.css: { minified: false }
-      dist/css/components/coffee.css: { minified: false }
-      dist/css/components/node_preview.css: { minified: false }
+      dist/css/components/toolbar_secondary.css: { minified: false }
     theme:
       dist/css/layout/horizontal_toolbar.css: { minified: false }
   js:
     dist/js/toolbar.js: { minified: false }
   dependencies:
+    - gin/coffee
+    - gin/node_preview
     - gin/responsive_preview
     - gin/contextual_links
+    - gin/breadcrumb
+    - gin/settings_tray
+    - gin/settings_tray_edit
 
 gin_classic_toolbar:
-  version: VERSION
   css:
     component:
       dist/css/components/toolbar.css: { minified: false }
-      dist/css/components/coffee.css: { minified: false }
-      dist/css/components/node_preview.css: { minified: false }
     theme:
       dist/css/layout/classic_toolbar.css: { minified: false }
   js:
     dist/js/toolbar.js: { minified: false }
   dependencies:
+    - gin/coffee
+    - gin/node_preview
     - gin/contextual_links
+    - gin/breadcrumb
+    - gin/settings_tray_edit
 
 gin_accent:
-  version: VERSION
   css:
     theme:
       dist/css/theme/accent.css: { minified: false }
@@ -80,7 +82,6 @@ gin_accent:
     dist/js/accent.js: { minified: false }
 
 gin_dialog:
-  version: VERSION
   css:
     theme:
       dist/css/theme/dialog.css: { minified: false }
@@ -97,25 +98,21 @@ gin_description_toggle:
     dist/js/description_toggle.js: { minified: false }
 
 gin_messages:
-  version: VERSION
   js:
     dist/js/messages.js: { minified: false }
   dependencies:
     - core/jquery.once
 
 gin_custom_css:
-  version: VERSION
   css:
     theme:
       public://gin-custom.css: { preprocess: false, minified: false, weight: 100 }
 
 gin_tabledrag:
-  version: VERSION
   js:
     js/overrides/tabledrag.js: { minified: false, weight: -1 }
 
 gin_media_embed_ckeditor_theme:
-  version: VERSION
   js:
     js/overrides/media_embed_ckeditor.theme.js: {}
 
@@ -130,7 +127,6 @@ gin_sidebar:
 # Components
 
 settings:
-  version: VERSION
   js:
     dist/js/settings.js: { minified: false }
   css:
@@ -138,7 +134,6 @@ settings:
       dist/css/components/settings.css: { minified: false }
 
 edit_form:
-  version: VERSION
   js:
     dist/js/edit_form.js: { minified: false }
   css:
@@ -146,25 +141,21 @@ edit_form:
       dist/css/components/edit_form.css: { minified: false }
 
 media_library:
-  version: VERSION
   css:
     theme:
       dist/css/components/media_library.css: { minified: false, weight: 99 }
 
 contextual_links:
-  version: VERSION
   css:
     theme:
       dist/css/components/contextual_links.css: { minified: false, weight: 99 }
 
 dialog:
-  version: VERSION
   css:
     theme:
-      dist/css/components/dialog.css: { minified: false }
+      dist/css/components/dialog.css: { minified: false, weight: 99 }
 
 ckeditor:
-  version: VERSION
   js:
     dist/js/gin_ckeditor.js: { minified: false }
   css:
@@ -172,105 +163,119 @@ ckeditor:
       dist/css/components/ckeditor.css: { minified: false }
 
 ajax:
-  version: VERSION
   css:
     theme:
       dist/css/components/ajax.css: { minified: false, weight: 99 }
 
 revisions:
-  version: VERSION
   css:
     theme:
       dist/css/components/revisions.css: { minified: false }
 
 autocomplete:
-  version: VERSION
   css:
     theme:
       dist/css/components/autocomplete.css: { minified: false }
 
+breadcrumb:
+  version: VERSION
+  css:
+    theme:
+      dist/css/components/breadcrumb.css: { minified: false }
+
+coffee:
+  css:
+    component:
+      dist/css/components/coffee.css: { minified: false }
+
+node_preview:
+  css:
+    component:
+      dist/css/components/node_preview.css: { minified: false }
+
+settings_tray:
+  css:
+    component:
+      dist/css/components/settings_tray.css: { minified: false }
+
+settings_tray_edit:
+  css:
+    component:
+      dist/css/components/settings_tray_edit.css: { minified: false }
+
 # Modules
 
 paragraphs:
-  version: VERSION
   css:
     component:
       dist/css/components/paragraphs.css: { minified: false }
 
 paragraphs_ee:
-  version: VERSION
   css:
     component:
       dist/css/components/paragraphs_ee.css: { minified: false }
 
 layout_paragraphs:
-  version: VERSION
   css:
     component:
       dist/css/components/layout_paragraphs.css: { minified: false }
 
 entity_reference_layout:
-  version: VERSION
   css:
     component:
       dist/css/components/entity_reference_layout.css: { minified: false }
 
 responsive_preview:
-  version: VERSION
   css:
     component:
       dist/css/components/responsive_preview.css: { minified: false }
 
 upgrade_status:
-  version: VERSION
   css:
     component:
       dist/css/components/upgrade_status.css: { minified: false }
 
 webform:
-  version: VERSION
   css:
     component:
       dist/css/components/webform.css: { minified: false }
 
+workbench:
+  css:
+    component:
+      dist/css/components/workbench.css: { minified: false }
+
 autosave:
-  version: VERSION
   css:
     component:
       dist/css/components/autosave.css: { minified: false }
 
 module_filter:
-  version: VERSION
   css:
     component:
       dist/css/components/module_filter.css: { minified: false }
 
 chosen:
-  version: VERSION
   css:
     component:
       dist/css/components/chosen.css: { minified: false }
 
 dropzonejs:
-  version: VERSION
   css:
     component:
       dist/css/components/dropzonejs.css: { minified: false }
 
 entity_browser:
-  version: VERSION
   css:
     component:
       dist/css/components/entity_browser.css: { minified: false }
 
 inline_entity_form:
-  version: VERSION
   css:
     component:
       dist/css/components/inline_entity_form.css: { minified: false }
 
 linkit:
-  version: VERSION
   css:
     component:
       dist/css/components/linkit.css: { minified: false }

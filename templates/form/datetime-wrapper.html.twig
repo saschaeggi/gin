@@ -8,11 +8,12 @@
  * @see template_preprocess_form_element()
  */
 #}
+{% set show_description_toggle = description_toggle and description %}
 {%
   set classes = [
     'form-item',
     'form-datetime-wrapper',
-    description_toggle ? 'help-icon__description-container',
+    show_description_toggle ? 'help-icon__description-container',
   ]
   %}
 {%
@@ -30,13 +31,13 @@
   ]
 %}
 <div {{ attributes.addClass(classes) }}>
-  {% if description and description_toggle %}
+  {% if show_description_toggle %}
   <div class="help-icon">
   {% endif %}
   {% if title %}
   <h4{{ title_attributes.addClass(title_classes) }}>{{ title }}</h4>
   {% endif %}
-  {% if description and description_toggle %}
+  {% if show_description_toggle %}
     {{ attach_library('gin/gin_description_toggle') }}
     <button class="help-icon__description-toggle"></button>
   </div>

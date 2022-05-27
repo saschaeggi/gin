@@ -36,9 +36,16 @@
   color: var(--colorGinText);
   padding: 1rem;
   background: var(--colorGinLayer3Background);
-  box-shadow: 20px 20px 60px rgba(0, 0, 0, .2);
   border: 0 none;
   border-radius: 6px;
+}
+
+[dir="ltr"] .ui-tooltip.ui-widget {
+  box-shadow: 20px 20px 60px rgba(0, 0, 0, .2);
+}
+
+[dir="rtl"] .ui-tooltip.ui-widget {
+  box-shadow: -20px 20px 60px rgba(0, 0, 0, .2);
 }
 
 .ui-tooltip.ui-widget hr {

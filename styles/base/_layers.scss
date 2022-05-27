@@ -26,7 +26,8 @@
 .view-files .view-content,
 .system-themes-list,
 .modules-tabs,
-#views-entity-list
+#views-entity-list,
+.admin.my-workbench
 {
   margin-top: 0;
   box-shadow: var(--ginShadowLevel1);
@@ -56,7 +57,8 @@
 .views-preview-wrapper,
 .view-block-content .view-content,
 .system-themes-list,
-#views-entity-list
+#views-entity-list,
+.admin.my-workbench
 {
   width: 100%;
   padding: .75rem;

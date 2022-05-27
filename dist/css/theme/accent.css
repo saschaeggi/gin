@@ -254,7 +254,7 @@
   --colorGinIcons: rgba(0, 0, 0, .8);
   --colorGinFocus: rgba(0, 0, 0, .8);
   --colorGinBorder: rgba(0, 0, 0, .8);
-  --colorGinMetaBorder: rgba(0, 0, 0, .6);
+  --colorGinSecondaryBorder: rgba(0, 0, 0, .6);
   --colorGinLayerBorder: rgba(0, 0, 0, .6);
   --colorGinLayer2Border: rgba(0, 0, 0, .8);
   --colorGinTableBorder: rgba(0, 0, 0, .8);
@@ -269,7 +269,7 @@
   --colorGinIcons: rgba(255, 255, 255, .8);
   --colorGinFocus: rgba(255, 255, 255, .8);
   --colorGinBorder: rgba(255, 255, 255, .8);
-  --colorGinMetaBorder: rgba(255, 255, 255, .6);
+  --colorGinSecondaryBorder: rgba(255, 255, 255, .6);
   --colorGinLayerBorder: rgba(255, 255, 255, .6);
   --colorGinLayer2Border: rgba(255, 255, 255, .8);
   --colorGinTableBorder: rgba(255, 255, 255, .8);
