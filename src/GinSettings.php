@@ -432,6 +432,19 @@ class GinSettings implements ContainerInjectionInterface {
       ];
     }
 
+    $form['bundle_select'] = [
+      '#type' => 'radios',
+      '#title' => $this->t('Add content (Bundle select)'),
+      '#description' => $this->t('How to select a bundle (type) when creating new content.'),
+      '#default_value' => (string) ($account ? $this->get('bundle_select', $account) : $this->getDefault('bundle_select')),
+      '#options' => [
+        '' => $this->t('Page'),
+        'drop' => $this->t('Dropbutton'),
+        'modal' => $this->t('Modal'),
+      ],
+      '#after_build' => [],
+    ];
+
     $form['show_description_toggle'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Enable form description toggle'),

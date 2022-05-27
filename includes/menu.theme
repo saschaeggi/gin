@@ -5,20 +5,27 @@
  * menu.theme
  */
 
+use Drupal\gin\GinSettings;
+
 /**
  * Local actions preprocess.
  */
 function gin_preprocess_menu_local_action(&$variables) {
-  $classes = &$variables['link']['#options']['attributes']['class'];
-  $classes = array_filter($classes, function ($e) {
-    return $e != 'button--primary';
-  });
-
+  // Get theme settings.
+  $settings = \Drupal::classResolver(GinSettings::class);
+  $bundle_select = $settings->get('bundle_select');
   $routeName = $variables['link']['#url']->getRouteName();
 
-  if ($routeName === 'node.add_page' || $routeName === 'entity.media.add_page') {
-    $variables['link']['#options']['attributes']['class'][] = 'use-ajax';
-    $variables['link']['#options']['attributes']['data-dialog-type'] = 'modal';
-    $variables['link']['#options']['attributes']['data-dialog-options'] = '{ "width": "800px", "dialogClass": "gin--add-modal" }';
+  // Modal variant.
+  if ($bundle_select === 'modal') {
+    if ($routeName === 'node.add_page' || $routeName === 'entity.media.add_page') {
+      $variables['link']['#options']['attributes']['class'][] = 'use-ajax';
+      $variables['link']['#options']['attributes']['data-dialog-type'] = 'modal';
+      $variables['link']['#options']['attributes']['data-dialog-options'] = '{ "width": "800px", "dialogClass": "gin--add-modal" }';
+    }
+  }
+  // Dropbutton variant.
+  elseif ($bundle_select === 'drop') {
+    // Dropbutton variant code.
   }
 }

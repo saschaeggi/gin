@@ -3,6 +3,7 @@ preset_focus_color: 'gin'
 enable_darkmode: '0'
 classic_toolbar: 'vertical'
 secondary_toolbar_frontend: true
+bundle_select: ''
 logo:
   use_default: true
 high_contrast_mode: false
