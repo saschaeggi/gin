@@ -89,6 +89,10 @@ if (localStorage.getItem('Drupal.gin.sidebarExpanded')) {
       transform: translateX(var(--ginSidebarWidth, 360px));
       transition: none;
     }
+
+    .meta-sidebar__overlay {
+      display: none;
+    }
     `;
 
     const scriptTag = document.querySelector('script');

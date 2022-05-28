@@ -18,12 +18,14 @@
       // Toolbar toggle
       $('.meta-sidebar__trigger', context).once('metaSidebarToggle').on('click', function (e) {
         e.preventDefault();
+        Drupal.behaviors.ginSidebar.removeInlineStyles();
         Drupal.behaviors.ginSidebar.toggleSidebar($(this));
       });
 
       // Toolbar close
       $('.meta-sidebar__close, .meta-sidebar__overlay', context).once('metaSidebarClose').on('click', function (e) {
         e.preventDefault();
+        Drupal.behaviors.ginSidebar.removeInlineStyles();
         Drupal.behaviors.ginSidebar.collapseSidebar();
       });
 
@@ -32,22 +34,19 @@
         .trigger('resize');
     },
     toggleSidebar: function toggleSidebar(element) {
-      // Remove init styles.
-      Drupal.behaviors.ginSidebar.removeInlineStyles();
-
       // Set active state.
       if (element.hasClass('is-active')) {
-        element.removeClass('is-active');
-        $('body').attr('data-meta-sidebar', 'closed');
+        Drupal.behaviors.ginSidebar.collapseSidebar();
         localStorage.setItem('Drupal.gin.sidebarExpanded', 'false');
       }
       else {
-        element.addClass('is-active');
-        $('body').attr('data-meta-sidebar', 'open');
+        Drupal.behaviors.ginSidebar.showSidebar();
         localStorage.setItem('Drupal.gin.sidebarExpanded', 'true');
       }
     },
     collapseSidebarMobile: function collapseSidebarMobile() {
+      Drupal.behaviors.ginSidebar.removeInlineStyles();
+
       // If small viewport, collapse sidebar.
       if (localStorage.getItem('Drupal.gin.sidebarExpanded') === 'true') {
         if (window.innerWidth < 1024) {
@@ -58,17 +57,11 @@
       }
     },
     showSidebar: function showSidebar() {
-      // Remove init styles.
-      Drupal.behaviors.ginSidebar.removeInlineStyles();
-
       // Remove attributes.
       $('.meta-sidebar__trigger').addClass('is-active');
       $('body').attr('data-meta-sidebar', 'open');
     },
     collapseSidebar: function collapseSidebar() {
-      // Remove init styles.
-      Drupal.behaviors.ginSidebar.removeInlineStyles();
-
       // Remove attributes.
       $('.meta-sidebar__trigger').removeClass('is-active');
       $('body').attr('data-meta-sidebar', 'closed');
