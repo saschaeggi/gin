@@ -2,7 +2,7 @@
 .gin--edit-form {
   // Has sidebar, save the space
   @include mq($breakpointLarge) {
-    padding-right: var(--ginSidebarWidth);
+    padding-right: var(--ginSidebarOffset);
 
     .dialog-off-canvas-main-canvas {
       transition: padding-left var(--ginTransition);
@@ -89,7 +89,20 @@
     }
 
     .layout-region-node-secondary {
-      width: 100%;
+      z-index: 103;
+      flex-basis: var(--ginSidebarWidth);
+      width: var(--ginSidebarWidth) !important;
+      height: calc(100% - var(--ginHorizontalToolbarOffset));
+      position: fixed;
+      top: var(--ginHorizontalToolbarOffset);
+      right: 0;
+      margin: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      background:var(--colorGinLayerBackground);
+      border-left: 1px solid var(--colorGinLayerBorder);
+      transition: all var(--ginTransitionFast);
 
       @include mq($breakpointLarge) {
         z-index: 101;
@@ -138,15 +151,10 @@
 
         &__header {
           color: var(--colorGinText);
-          padding-left: 0;
-          padding-right: 0;
-          background: none;
+          padding-left: $sidebarSpacer;
+          padding-right: $sidebarSpacer;
+          background-color: var(--colorGinLayerBackground);
           border: 0 none;
-
-          @include mq($breakpointLarge) {
-            padding-left: $sidebarSpacer;
-            padding-right: $sidebarSpacer;
-          }
         }
 
         &__title {

@@ -46,7 +46,7 @@ if (localStorage.getItem('Drupal.gin.toolbarExpanded')) {
   const className = 'gin-toolbar-inline-styles';
   style.className = className;
 
-  // Sidebar Check.
+  // Toolbar Check.
   if (localStorage.getItem('Drupal.gin.toolbarExpanded') === 'true') {
     style.innerHTML = `
     @media (min-width: 976px) {
@@ -68,3 +68,33 @@ if (localStorage.getItem('Drupal.gin.toolbarExpanded')) {
     document.getElementsByClassName(className)[0].remove();
   }
 }
+<<<<<<< HEAD
+=======
+
+if (localStorage.getItem('Drupal.gin.sidebarExpanded')) {
+  const style = document.createElement('style');
+  const className = 'gin-sidebar-inline-styles';
+  style.className = className;
+
+  // Sidebar Check.
+  if (window.innerWidth < 1024 || localStorage.getItem('Drupal.gin.sidebarExpanded') === 'false') {
+    style.innerHTML = `
+    body {
+      --ginSidebarOffset: 0px;
+      padding-inline-end: 0;
+      transition: none;
+    }
+
+    .layout-region-node-secondary {
+      transform: translateX(var(--ginSidebarWidth, 360px));
+      transition: none;
+    }
+    `;
+
+    const scriptTag = document.querySelector('script');
+    scriptTag.parentNode.insertBefore(style, scriptTag);
+  } else if (document.getElementsByClassName(className).length > 0) {
+    document.getElementsByClassName(className)[0].remove();
+  }
+}
+>>>>>>> 9092c1a (Update sidebar styles, add auto-hide for smaller screens)
