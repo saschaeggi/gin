@@ -116,15 +116,15 @@ gin_media_embed_ckeditor_theme:
   js:
     js/overrides/media_embed_ckeditor.theme.js: {}
 
-gin_sidebar:
+# Components
+
+sidebar:
   version: VERSION
   css:
     theme:
       dist/css/components/sidebar.css: { minified: true }
   js:
     dist/js/sidebar.js: { minified: true }
-
-# Components
 
 settings:
   js:

@@ -1,68 +1,101 @@
-@include mq($breakpointLarge) {
+$toggleSize: 40px;
+$closeSize: 32px;
 
-  body[data-meta-sidebar='closed'] {
-    --ginSidebarWidth: 0px;
+body[data-meta-sidebar=closed] {
+  --ginSidebarOffset: 0px;
 
-    [data-drupal-selector="edit-advanced"] {
-      opacity: 0;
-      transition: none;
-    }
+  .layout-region-node-secondary {
+    transform: translateX(var(--ginSidebarWidth));
   }
+}
 
-  [data-drupal-selector="edit-advanced"] {
-    transition: opacity 0.4s cubic-bezier(0.9, 0, 1, 1)
-  }
+.layout-region-node-secondary {
+  transition: transform var(--ginTransitionFast);
+}
 
-  span.meta-sidebar__trigger {
-    border-radius: 24px;
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    border-color: var(--colorGinBorder);
-    border-width: 1px 0 1px 1px;
-    border-style: solid;
-
-    background-color: var(--colorGinLayerBackground);
-    position: fixed;
-    bottom: 1rem;
-    right: 0px; //var(--ginSidebarWidth);
-    height: 48px;
-    width: 32px;
-
-    .gin--dark-mode & {
-      border-color: var(--colorGinBorder);
-    }
-
-    &:hover {
-      color: transparent;
-      width: 48px;
-      cursor: pointer;
-    }
-
-    &:focus {
-      box-shadow: none;
-    }
-
-    &.is-active {
-      width: 48px;
-    }
+.meta-sidebar {
+  &__trigger,
+  &__close {
+    cursor: pointer;
+    background: transparent;
+    height: $toggleSize;
+    width: $toggleSize;
+    border-radius: var(--ginBorderDefault);
+    transition: background var(--ginTransitionFast);
 
     &::before {
       display: inline-block;
       width: 100%;
       height: 100%;
       content: "";
-      mask-image: icon('handle');
-      mask-size: 20px 20px;
       mask-repeat: no-repeat;
       mask-position: center center;
       background-color: var(--colorGinIcons);
-      transform: rotate(180deg);
-      transition: transform var(--ginTransitionFast);;
-
+      transition: transform var(--ginTransitionFast);
     }
 
-    &.is-active::before {
-      transform: rotate(0deg);
+    &:hover, &:focus {
+      background-color: var(--colorGinPrimaryLight);
+
+      &::before {
+        transform: rotate(180deg);
+        background-color: var(--colorGinPrimary);
+      }
+    }
+
+    &.is-active {
+      background-color: var(--colorGinPrimaryLightActive);
+
+      &::before {
+        background-color: var(--colorGinPrimaryActive);
+      }
+    }
+  }
+
+  &__trigger {
+    &::before {
+      mask-image: icon('config');
+      mask-size: 20px 20px;
+    }
+  }
+
+  &__close {
+    z-index: 104;
+    position: absolute;
+    top: 18px;
+    right: 16px;
+    width: $closeSize;
+    height: $closeSize;
+
+    @include mq($breakpointLarge) {
+      display: none;
+    }
+
+    &::before {
+      mask-image: icon('close');
+      mask-size: 16px 16px;
+    }
+  }
+
+  &__overlay {
+    z-index: 102;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    background: var(--colorGinLayer2Background);
+    transition: opacity var(--ginTransitionFast);
+
+    body[data-meta-sidebar=open] & {
+      opacity: .9;
+      visibility: visible;
+    }
+
+    @include mq($breakpointLarge) {
+      display: none;
     }
   }
 }

@@ -46,7 +46,7 @@ if (localStorage.getItem('Drupal.gin.toolbarExpanded')) {
   const className = 'gin-toolbar-inline-styles';
   style.className = className;
 
-  // Sidebar Check.
+  // Toolbar Check.
   if (localStorage.getItem('Drupal.gin.toolbarExpanded') === 'true') {
     style.innerHTML = `
     @media (min-width: 976px) {
@@ -69,21 +69,24 @@ if (localStorage.getItem('Drupal.gin.toolbarExpanded')) {
   }
 }
 
-if (localStorage.getItem('GinMetaOpen')) {
+if (localStorage.getItem('Drupal.gin.sidebarExpanded')) {
   const style = document.createElement('style');
-  const className = 'gin-meta-inline-styles';
+  const className = 'gin-sidebar-inline-styles';
   style.className = className;
 
   // Sidebar Check.
-  if (localStorage.getItem('GinMetaOpen') === 'false') {
+  if (window.innerWidth < 1024 || localStorage.getItem('Drupal.gin.sidebarExpanded') === 'false') {
     style.innerHTML = `
-    @media (min-width: 1024px) {
-      .gin--edit-form {
-        --ginSidebarWidth: 0px;
-      }
-      .gin--edit-form .layout-region-node-secondary {
-        width: 0px !important;
-      }
+    body {
+      --ginSidebarOffset: 0px;
+      padding-inline-end: 0;
+      transition: none;
+    }
+
+    .layout-region-node-secondary {
+      transform: translateX(var(--ginSidebarWidth, 360px));
+      transition: none;
+    }
     `;
 
     const scriptTag = document.querySelector('script');

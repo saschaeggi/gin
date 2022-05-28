@@ -1,10 +1,10 @@
 @media (min-width: 1024px) {
   [dir="ltr"] .gin--edit-form {
-    padding-right: var(--ginSidebarWidth);
+    padding-right: var(--ginSidebarOffset);
   }
 
   [dir="rtl"] .gin--edit-form {
-    padding-left: var(--ginSidebarWidth);
+    padding-left: var(--ginSidebarOffset);
   }
 
   [dir="ltr"] .gin--edit-form .dialog-off-canvas-main-canvas {
@@ -104,38 +104,32 @@
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
-  width: 100%;
+  z-index: 103;
+  flex-basis: var(--ginSidebarWidth);
+  width: var(--ginSidebarWidth) !important;
+  height: calc(100% - var(--ginHorizontalToolbarOffset));
+  position: fixed;
+  top: var(--ginHorizontalToolbarOffset);
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--colorGinLayerBackground);
+  transition: all var(--ginTransitionFast);
 }
 
-@media (min-width: 1024px) {
-  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
-    z-index: 101;
-    flex-basis: var(--ginSidebarWidth);
-    width: var(--ginSidebarWidth) !important;
-    position: fixed;
-    top: 0;
-    margin: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    height: 100%;
-    background: var(--colorGinLayerBackground);
-    transition: all var(--ginTransitionFast);
-  }
+[dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
+  right: 0;
+  border-left: 1px solid var(--colorGinLayerBorder);
+}
 
-  [dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
-    right: 0;
-    border-left: 1px solid var(--colorGinLayerBorder);
-  }
+[dir="rtl"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
+  left: 0;
+  border-right: 1px solid var(--colorGinLayerBorder);
+}
 
-  [dir="rtl"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
-    left: 0;
-    border-right: 1px solid var(--colorGinLayerBorder);
-  }
-
-  .gin--dark-mode .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
-    box-shadow: 0 0 4px rgba(0, 0, 0, .1);
-  }
+.gin--dark-mode .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
+  box-shadow: 0 0 4px rgba(0, 0, 0, .1);
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .gin-sidebar .form-actions {
@@ -159,17 +153,10 @@
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__header {
   color: var(--colorGinText);
-  padding-left: 0;
-  padding-right: 0;
-  background: none;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  background-color: var(--colorGinLayerBackground);
   border: 0 none;
-}
-
-@media (min-width: 1024px) {
-  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__header {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__title {
