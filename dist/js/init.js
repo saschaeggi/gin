@@ -15,4 +15,15 @@
       scriptTag.parentNode.insertBefore(style, scriptTag);
     } else document.getElementsByClassName(className).length > 0 && document.getElementsByClassName(className)[0].remove();
   }
+<<<<<<< HEAD
+=======
+  if (localStorage.getItem("Drupal.gin.sidebarExpanded")) {
+    const style = document.createElement("style"), className = "gin-sidebar-inline-styles";
+    if (style.className = className, window.innerWidth < 1024 || "false" === localStorage.getItem("Drupal.gin.sidebarExpanded")) {
+      style.innerHTML = "\n    body {\n      --ginSidebarOffset: 0px;\n      padding-inline-end: 0;\n      transition: none;\n    }\n\n    .layout-region-node-secondary {\n      transform: translateX(var(--ginSidebarWidth, 360px));\n      transition: none;\n    }\n    ";
+      const scriptTag = document.querySelector("script");
+      scriptTag.parentNode.insertBefore(style, scriptTag);
+    } else document.getElementsByClassName(className).length > 0 && document.getElementsByClassName(className)[0].remove();
+  }
+>>>>>>> 9092c1a (Update sidebar styles, add auto-hide for smaller screens)
 })();

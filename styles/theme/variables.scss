@@ -90,6 +90,7 @@
 
   // Sidebar
   --ginSidebarWidth: 300px;
+  --ginSidebarOffset: var(--ginSidebarWidth);
   @include mq($breakpointWide) {
     --ginSidebarWidth: 360px;
   }
