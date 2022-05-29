@@ -1,4 +1,4 @@
-$toggleSize: 40px;
+$toggleSize: 32px;
 $closeSize: 32px;
 
 body[data-meta-sidebar=closed] {
@@ -31,20 +31,18 @@ body[data-meta-sidebar=closed] {
       mask-repeat: no-repeat;
       mask-position: center center;
       background-color: var(--colorGinIcons);
-      transition: transform var(--ginTransitionFast);
     }
 
     &:hover, &:focus {
       background-color: var(--colorGinPrimaryLight);
 
       &::before {
-        transform: rotate(180deg);
         background-color: var(--colorGinPrimary);
       }
     }
 
     &.is-active {
-      background-color: var(--colorGinPrimaryLightActive);
+      background-color: var(--colorGinPrimaryLightHover);
 
       &::before {
         background-color: var(--colorGinPrimaryActive);
@@ -54,7 +52,7 @@ body[data-meta-sidebar=closed] {
 
   &__trigger {
     &::before {
-      mask-image: icon('config');
+      mask-image: icon('sidebar');
       mask-size: 20px 20px;
       border-radius: 50%;
     }
