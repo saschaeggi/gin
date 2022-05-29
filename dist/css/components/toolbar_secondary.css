@@ -236,8 +236,8 @@
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-item {
     font-size: 0;
     color: var(--colorGinTextLight);
-    width: 39px;
-    height: 39px;
+    width: 32px;
+    height: 32px;
     margin: 0;
     border-radius: var(--ginBorderSmall) var(--ginBorderSmall) 0 0;
   }
@@ -354,7 +354,9 @@
     background-image: none;
     background-color: var(--colorGinIcons);
   }
+}
 
+@media (min-width: 976px) and (min-width: 1280px) {
   [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user {
     margin-right: -1.333em;
   }
@@ -362,14 +364,18 @@
   [dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user {
     margin-left: -1.333em;
   }
+}
 
+@media (min-width: 976px) {
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user:hover .icon-user {
     box-shadow: 0 0 0 2px var(--colorGinAppBackground), 0 0 0 5px var(--colorGinLayer3Background);
   }
+}
 
+@media (min-width: 976px) {
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user {
     border: 1px solid var(--colorGinBorder);
-    border-radius: 50%;
+    border-radius: 50% !important;
     overflow: hidden;
     padding: 0;
     line-height: 0;
@@ -384,11 +390,13 @@
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user__image {
-    width: 39px;
-    height: 39px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
   }
+}
 
+@media (min-width: 976px) and (min-width: 1280px) {
   [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user,
 [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user ~ .toolbar-tray {
     margin-right: 1.333em;
@@ -398,7 +406,9 @@
 [dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user ~ .toolbar-tray {
     margin-left: 1.333em;
   }
+}
 
+@media (min-width: 976px) {
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-menu {
     background-color: transparent;
   }

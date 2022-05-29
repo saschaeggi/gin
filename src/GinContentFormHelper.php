@@ -137,7 +137,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
 
       // Add sidebar toggle.
       $form['actions']['gin_sidebar_toggle'] = [
-        '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger" role="button" title="' . t('Toggle entity meta panel') . '" aria-controls="ginSidebar"><span class="visually-hidden">' . t('Toggle entity meta panel') . '</span></a>',
+        '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger" role="button" title="' . t('Show sidebar panel') . '" aria-controls="ginSidebar"><span class="visually-hidden">' . t('Show sidebar panel') . '</span></a>',
         '#weight' => '999',
       ];
       $form['#attached']['library'][] = 'gin/sidebar';
@@ -192,7 +192,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
 
       // Add sidebar toggle.
       $form['gin_sidebar']['gin_sidebar_close'] = [
-        '#markup' => '<a href="#close-sidebar" class="meta-sidebar__close trigger" role="button" title="' . t('Close entity meta panel') . '"><span class="visually-hidden">' . t('Close entity meta panel') . '</span></a>',
+        '#markup' => '<a href="#close-sidebar" class="meta-sidebar__close trigger" role="button" title="' . t('Close sidebar panel') . '"><span class="visually-hidden">' . t('Close sidebar panel') . '</span></a>',
       ];
 
       $form['gin_sidebar_overlay'] = [
