@@ -6,7 +6,7 @@
   Drupal.behaviors.ginToolbarToggle = {
     attach: function attach(context) {
       // Check for Drupal trayVerticalLocked and remove it.
-      if (localStorage.getItem('Drupal.toolbar.trayVerticalLocked')) {
+      if (drupalSettings.gin.toolbar_variant != 'classic' && localStorage.getItem('Drupal.toolbar.trayVerticalLocked')) {
         localStorage.removeItem('Drupal.toolbar.trayVerticalLocked');
       }
 
