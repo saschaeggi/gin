@@ -66,6 +66,17 @@
     }
   }
 
+  &__item:first-of-type + &__item::before {
+    content: "";
+    opacity: .3;
+    border-right: 1px solid var(--colorGinText);
+    width: 1px;
+    height: 20px;
+    padding-left: .75em;
+    padding-right: 0;
+    margin-right: .75em;
+  }
+
   &__link,
   &__text {
     font-size: var(--ginFontSizeSmall);
@@ -85,8 +96,8 @@
   }
 
   &__link {
-    &, em {
-      &:hover {
+    &:hover {
+      &, em {
         color: var(--colorGinPrimaryHover);
       }
     }

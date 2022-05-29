@@ -6,16 +6,44 @@
  */
 
 use Drupal\node\NodeInterface;
+use Drupal\Core\Entity\ContentEntityInterface;
 
 /**
  * Breadcrumb.
  */
 function gin_preprocess_breadcrumb(&$variables) {
   // Alter node breadcrumb.
-  if (($node = \Drupal::routeMatch()->getParameter('node')) && $variables['breadcrumb']) {
+  if ($variables['breadcrumb']) {
     foreach ($variables['breadcrumb'] as $key => $item) {
-      if ($item['url'] === '/node') {
-        if ($node instanceof NodeInterface) {
+      $entity = _gin_get_route_entity();
+      $entity_id = $entity ? $entity->getEntityTypeId() : NULL;
+      $url = $entity ? $entity->toUrl()->toString() : NULL;
+
+      if ($item['url'] === '/') {
+        $variables['breadcrumb'][$key]['text'] = t('Back to site');
+        $variables['breadcrumb'][$key]['attributes']['title'] = t('Return to site content');
+
+        if ($entity_id === 'media') {
+          $config = \Drupal::config('media.settings');
+
+          if ($config->get('standalone_url') === TRUE) {
+            $url = '/' . $entity_id . '/' . $entity->id();
+          }
+          else {
+            $url = '/';
+          }
+        }
+
+        if ($url) {
+          $variables['breadcrumb'][$key]['url'] = $url;
+        }
+      }
+      elseif ($item['url'] === $url) {
+        // Remove as we already have the back to site link set.
+        unset($variables['breadcrumb'][$key]);
+      }
+      elseif ($item['url'] === '/node') {
+        if ($node = \Drupal::routeMatch()->getParameter('node') && $node instanceof NodeInterface) {
           $variables['breadcrumb'][$key]['text'] = t('Edit') . ' ' . $node->type->entity->label();
         }
       }
@@ -27,6 +55,31 @@ function gin_preprocess_breadcrumb(&$variables) {
     foreach ($variables['breadcrumb'] as $key => $item) {
       if ($variables['breadcrumb'][$key]['text'] == '') {
         unset($variables['breadcrumb'][$key]);
+      }
+    }
+  }
+}
+
+/**
+ * Helper function to extract the entity for the supplied route.
+ *
+ * @return null|\Drupal\Core\Entity\ContentEntityInterface
+ *   Returns the content entity.
+ */
+function _gin_get_route_entity() {
+  $route_match = \Drupal::routeMatch();
+  // Entity will be found in the route parameters.
+  if (($route = $route_match->getRouteObject()) && ($parameters = $route->getOption('parameters'))) {
+    // Determine if the current route represents an entity.
+    foreach ($parameters as $name => $options) {
+      if (isset($options['type']) && strpos($options['type'], 'entity:') === 0) {
+        $entity = $route_match->getParameter($name);
+        if ($entity instanceof ContentEntityInterface && $entity->hasLinkTemplate('canonical')) {
+          return $entity;
+        }
+
+        // Since entity was found, no need to iterate further.
+        return NULL;
       }
     }
   }
