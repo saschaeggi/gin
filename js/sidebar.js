@@ -9,10 +9,12 @@
       if (localStorage.getItem('Drupal.gin.sidebarExpanded') === 'true') {
         $('body').attr('data-meta-sidebar', 'open');
         $('.meta-sidebar__trigger').addClass('is-active');
+        $('.meta-sidebar__trigger').attr('aria-expanded', 'true');
       }
       else {
         $('body').attr('data-meta-sidebar', 'closed');
         $('.meta-sidebar__trigger').removeClass('is-active');
+        $('.meta-sidebar__trigger').attr('aria-expanded', 'false');
       }
 
       // Toolbar toggle
@@ -60,11 +62,13 @@
       // Remove attributes.
       $('.meta-sidebar__trigger').addClass('is-active');
       $('body').attr('data-meta-sidebar', 'open');
+      $('.meta-sidebar__trigger').attr('aria-expanded', 'true');
     },
     collapseSidebar: function collapseSidebar() {
       // Remove attributes.
       $('.meta-sidebar__trigger').removeClass('is-active');
       $('body').attr('data-meta-sidebar', 'closed');
+      $('.meta-sidebar__trigger').attr('aria-expanded', 'false');
     },
     removeInlineStyles: function removeInlineStyles() {
       // Remove init styles.
