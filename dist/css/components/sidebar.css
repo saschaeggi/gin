@@ -61,6 +61,7 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
           mask-image: url("../../media/sprite.svg#config-view");
   -webkit-mask-size: 20px 20px;
           mask-size: 20px 20px;
+  border-radius: 50%;
 }
 
 .meta-sidebar__close {

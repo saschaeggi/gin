@@ -2,8 +2,9 @@
   Drupal.behaviors.ginSidebar = {
     attach: function(context) {
       "true" === localStorage.getItem("Drupal.gin.sidebarExpanded") ? ($("body").attr("data-meta-sidebar", "open"), 
-      $(".meta-sidebar__trigger").addClass("is-active")) : ($("body").attr("data-meta-sidebar", "closed"), 
-      $(".meta-sidebar__trigger").removeClass("is-active")), $(".meta-sidebar__trigger", context).once("metaSidebarToggle").on("click", (function(e) {
+      $(".meta-sidebar__trigger").addClass("is-active"), $(".meta-sidebar__trigger").attr("aria-expanded", "true")) : ($("body").attr("data-meta-sidebar", "closed"), 
+      $(".meta-sidebar__trigger").removeClass("is-active"), $(".meta-sidebar__trigger").attr("aria-expanded", "false")), 
+      $(".meta-sidebar__trigger", context).once("metaSidebarToggle").on("click", (function(e) {
         e.preventDefault(), Drupal.behaviors.ginSidebar.removeInlineStyles(), Drupal.behaviors.ginSidebar.toggleSidebar($(this));
       })), $(".meta-sidebar__close, .meta-sidebar__overlay", context).once("metaSidebarClose").on("click", (function(e) {
         e.preventDefault(), Drupal.behaviors.ginSidebar.removeInlineStyles(), Drupal.behaviors.ginSidebar.collapseSidebar();
@@ -18,10 +19,12 @@
       Drupal.behaviors.ginSidebar.removeInlineStyles(), "true" === localStorage.getItem("Drupal.gin.sidebarExpanded") && (window.innerWidth < 1024 ? Drupal.behaviors.ginSidebar.collapseSidebar() : Drupal.behaviors.ginSidebar.showSidebar());
     },
     showSidebar: function() {
-      $(".meta-sidebar__trigger").addClass("is-active"), $("body").attr("data-meta-sidebar", "open");
+      $(".meta-sidebar__trigger").addClass("is-active"), $("body").attr("data-meta-sidebar", "open"), 
+      $(".meta-sidebar__trigger").attr("aria-expanded", "true");
     },
     collapseSidebar: function() {
-      $(".meta-sidebar__trigger").removeClass("is-active"), $("body").attr("data-meta-sidebar", "closed");
+      $(".meta-sidebar__trigger").removeClass("is-active"), $("body").attr("data-meta-sidebar", "closed"), 
+      $(".meta-sidebar__trigger").attr("aria-expanded", "false");
     },
     removeInlineStyles: function() {
       $(".gin-sidebar-inline-styles").remove();
