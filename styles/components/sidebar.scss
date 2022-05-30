@@ -1,5 +1,12 @@
-$toggleSize: 32px;
-$closeSize: 32px;
+.layout-region-node-secondary {
+  transition: transform var(--ginTransitionFast);
+
+  // Fixes the flickering happinging on smaller devices.
+  @include mq(max-width $breakpointLarge) {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 
 body[data-meta-sidebar=closed] {
   --ginSidebarOffset: 0px;
@@ -9,8 +16,13 @@ body[data-meta-sidebar=closed] {
   }
 }
 
-.layout-region-node-secondary {
-  transition: transform var(--ginTransitionFast);
+body[data-meta-sidebar=open] {
+  .layout-region-node-secondary {
+    @include mq(max-width $breakpointLarge) {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 }
 
 .meta-sidebar {
@@ -18,8 +30,8 @@ body[data-meta-sidebar=closed] {
   &__close {
     cursor: pointer;
     background: transparent;
-    height: $toggleSize;
-    width: $toggleSize;
+    height: 32px;
+    width: 32px;
     border-radius: var(--ginBorderDefault);
     transition: background var(--ginTransitionFast);
 
@@ -63,8 +75,6 @@ body[data-meta-sidebar=closed] {
     position: absolute;
     top: 18px;
     right: 16px;
-    width: $closeSize;
-    height: $closeSize;
 
     @include mq($breakpointLarge) {
       display: none;
@@ -86,7 +96,6 @@ body[data-meta-sidebar=closed] {
     opacity: 0;
     visibility: hidden;
     background: var(--colorGinLayer2Background);
-    transition: opacity var(--ginTransitionFast);
 
     body[data-meta-sidebar=open] & {
       opacity: .9;

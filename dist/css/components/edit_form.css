@@ -105,8 +105,7 @@
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
   z-index: 103;
-  flex-basis: var(--ginSidebarWidth);
-  width: var(--ginSidebarWidth) !important;
+  width: var(--ginSidebarWidth);
   height: calc(100% - var(--ginHorizontalToolbarOffset));
   position: fixed;
   top: var(--ginHorizontalToolbarOffset);

@@ -325,11 +325,15 @@
 
         .icon-user {
           border: 1px solid var(--colorGinBorder);
-          border-radius: 50% !important;
           overflow: hidden;
           margin-left: 16px;
           padding: 0;
           line-height: 0;
+
+          &,
+          &:focus {
+            border-radius: 50%;
+          }
 
           &__image {
             width: 100%;

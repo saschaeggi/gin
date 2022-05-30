@@ -577,42 +577,44 @@ a.toolbar-menu__trigger,
 }
 
 // New navigation approach.
-// .toolbar-fixed[data-toolbar-menu=open] {
-//   @include mq($breakpointMedium) {
-//     padding-left: calc(var(--ginToolbarWidthCollapsed) + var(--ginToolbarWidth));
+.toolbar-fixed[data-toolbar-menu=open] {
+  @include mq($breakpointMedium) {
+    padding-left: calc(var(--ginToolbarWidthCollapsed) + var(--ginToolbarWidth));
 
-//     .toolbar-menu-administration > .toolbar-menu > .menu-item--active-trail > .toolbar-menu {
-//       z-index: 1;
-//       display: block;
-//       border-right: 1px solid var(--colorGinLayerBorder);
-//       box-shadow: 7px 0 16px rgba(0,0,0,.075);
+    .toolbar-menu-administration > .toolbar-menu > .menu-item--active-trail > .toolbar-menu {
+      z-index: 1;
+      display: block;
+      border-right: 1px solid var(--colorGinLayerBorder);
+      box-shadow: 7px 0 16px rgba(0,0,0,.075);
 
-//       > li {
-//         float: none;
-//       }
-//     }
+      > li {
+        float: none;
+      }
+    }
 
-//     .toolbar-menu-administration > .toolbar-menu > .menu-item:not(.menu-item--active-trail) > .toolbar-menu {
-//       box-shadow: none;
-//     }
+    .toolbar-menu-administration > .toolbar-menu > .menu-item:not(.menu-item--active-trail) > .toolbar-menu {
+      box-shadow: none;
+    }
 
-//     // Submenu
-//     .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-menu > .menu-item:hover .toolbar-menu,
-//     .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-menu > .menu-item.menu-item--active-trail .toolbar-menu {
-//       position: relative;
-//       opacity: 1;
-//       display: block;
-//       margin-left: 1.5rem;
-//       border-left-color: var(--colorGinTextLight);
-//       height: auto;
+    // Submenu
+    .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-menu > .menu-item.hover-intent .toolbar-menu,
+    .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-menu > .menu-item.menu-item--active-trail .toolbar-menu {
+      position: relative;
+      opacity: 1;
+      display: block;
+      height: auto;
+      margin-left: 1.5rem;
+      border-left: 2px solid var(--colorGinDisabled);
+      border-right: 0;
+      box-shadow: none;
 
-//       .menu-item-title {
-//         display: none;
-//       }
+      .menu-item-title {
+        display: none;
+      }
 
-//       .toolbar-icon {
-//         padding: .75em;
-//       }
-//     }
-//   }
-// }
+      .toolbar-icon {
+        padding: .75em;
+      }
+    }
+  }
+}

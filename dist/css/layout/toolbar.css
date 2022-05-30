@@ -721,3 +721,69 @@ a.toolbar-menu__trigger,
   }
 }
 
+@media (min-width: 976px) {
+  [dir="ltr"] .toolbar-fixed[data-toolbar-menu=open] {
+    padding-left: calc(var(--ginToolbarWidthCollapsed) + var(--ginToolbarWidth));
+  }
+
+  [dir="rtl"] .toolbar-fixed[data-toolbar-menu=open] {
+    padding-right: calc(var(--ginToolbarWidthCollapsed) + var(--ginToolbarWidth));
+  }
+
+  .toolbar-fixed[data-toolbar-menu=open] .toolbar-menu-administration > .toolbar-menu > .menu-item--active-trail > .toolbar-menu {
+    z-index: 1;
+    display: block;
+  }
+
+  [dir="ltr"] .toolbar-fixed[data-toolbar-menu=open] .toolbar-menu-administration > .toolbar-menu > .menu-item--active-trail > .toolbar-menu {
+    border-right: 1px solid var(--colorGinLayerBorder);
+    box-shadow: 7px 0 16px rgba(0, 0, 0, .075);
+  }
+
+  [dir="rtl"] .toolbar-fixed[data-toolbar-menu=open] .toolbar-menu-administration > .toolbar-menu > .menu-item--active-trail > .toolbar-menu {
+    border-left: 1px solid var(--colorGinLayerBorder);
+    box-shadow: -7px 0 16px rgba(0, 0, 0, .075);
+  }
+
+  .toolbar-fixed[data-toolbar-menu=open] .toolbar-menu-administration > .toolbar-menu > .menu-item--active-trail > .toolbar-menu > li {
+    float: none;
+  }
+
+  .toolbar-fixed[data-toolbar-menu=open] .toolbar-menu-administration > .toolbar-menu > .menu-item:not(.menu-item--active-trail) > .toolbar-menu {
+    box-shadow: none;
+  }
+
+  .toolbar-fixed[data-toolbar-menu=open] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-menu > .menu-item.hover-intent .toolbar-menu,
+.toolbar-fixed[data-toolbar-menu=open] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-menu > .menu-item.menu-item--active-trail .toolbar-menu {
+    position: relative;
+    opacity: 1;
+    display: block;
+    height: auto;
+    box-shadow: none;
+  }
+
+  [dir="ltr"] .toolbar-fixed[data-toolbar-menu=open] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-menu > .menu-item.hover-intent .toolbar-menu,
+[dir="ltr"] .toolbar-fixed[data-toolbar-menu=open] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-menu > .menu-item.menu-item--active-trail .toolbar-menu {
+    margin-left: 1.5rem;
+    border-left: 2px solid var(--colorGinDisabled);
+    border-right: 0;
+  }
+
+  [dir="rtl"] .toolbar-fixed[data-toolbar-menu=open] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-menu > .menu-item.hover-intent .toolbar-menu,
+[dir="rtl"] .toolbar-fixed[data-toolbar-menu=open] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-menu > .menu-item.menu-item--active-trail .toolbar-menu {
+    margin-right: 1.5rem;
+    border-right: 2px solid var(--colorGinDisabled);
+    border-left: 0;
+  }
+
+  .toolbar-fixed[data-toolbar-menu=open] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-menu > .menu-item.hover-intent .toolbar-menu .menu-item-title,
+.toolbar-fixed[data-toolbar-menu=open] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-menu > .menu-item.menu-item--active-trail .toolbar-menu .menu-item-title {
+    display: none;
+  }
+
+  .toolbar-fixed[data-toolbar-menu=open] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-menu > .menu-item.hover-intent .toolbar-menu .toolbar-icon,
+.toolbar-fixed[data-toolbar-menu=open] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-menu > .menu-item.menu-item--active-trail .toolbar-menu .toolbar-icon {
+    padding: .75em;
+  }
+}
+
