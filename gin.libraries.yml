@@ -119,7 +119,6 @@ gin_media_embed_ckeditor_theme:
 # Components
 
 sidebar:
-  version: VERSION
   css:
     theme:
       dist/css/components/sidebar.css: { minified: true }
@@ -178,7 +177,6 @@ autocomplete:
       dist/css/components/autocomplete.css: { minified: false }
 
 breadcrumb:
-  version: VERSION
   css:
     theme:
       dist/css/components/breadcrumb.css: { minified: false }

@@ -137,7 +137,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
 
       // Add sidebar toggle.
       $form['actions']['gin_sidebar_toggle'] = [
-        '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger" role="button" title="' . t('Show sidebar panel') . '" aria-controls="ginSidebar"><span class="visually-hidden">' . t('Show sidebar panel') . '</span></a>',
+        '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger" role="button" title="' . t('Show sidebar panel') . '" aria-controls="gin_sidebar"><span class="visually-hidden">' . t('Show sidebar panel') . '</span></a>',
         '#weight' => '999',
       ];
       $form['#attached']['library'][] = 'gin/sidebar';

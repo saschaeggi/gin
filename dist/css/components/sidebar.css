@@ -1,3 +1,14 @@
+.layout-region-node-secondary {
+  transition: transform var(--ginTransitionFast);
+}
+
+@media (max-width: 1024px) {
+  .layout-region-node-secondary {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 body[data-meta-sidebar=closed] {
   --ginSidebarOffset: 0px;
 }
@@ -6,8 +17,11 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
   transform: translateX(var(--ginSidebarWidth));
 }
 
-.layout-region-node-secondary {
-  transition: transform var(--ginTransitionFast);
+@media (max-width: 1024px) {
+  body[data-meta-sidebar=open] .layout-region-node-secondary {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .meta-sidebar__trigger, .meta-sidebar__close {
@@ -59,8 +73,6 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
   z-index: 104;
   position: absolute;
   top: 18px;
-  width: 32px;
-  height: 32px;
 }
 
 [dir="ltr"] .meta-sidebar__close {
@@ -93,7 +105,6 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
   opacity: 0;
   visibility: hidden;
   background: var(--colorGinLayer2Background);
-  transition: opacity var(--ginTransitionFast);
 }
 
 [dir="ltr"] .meta-sidebar__overlay {
