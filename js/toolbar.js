@@ -75,8 +75,6 @@
         const $toolbarEscape = $(toolbarEscape);
         if (escapeAdminPath !== null) {
           $toolbarEscape.attr('href', escapeAdminPath);
-        } else {
-          $toolbarEscape.text(Drupal.t('Home'));
         }
       }
     },

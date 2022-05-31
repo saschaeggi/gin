@@ -22,7 +22,6 @@ function gin_preprocess_breadcrumb(&$variables) {
       if ($item['url'] === '/') {
         $variables['breadcrumb'][$key]['text'] = t('Back to site');
         $variables['breadcrumb'][$key]['attributes']['title'] = t('Return to site content');
-        $variables['breadcrumb'][$key]['attributes']['data'] = 'data-gin-toolbar-escape-admin';
 
         if ($entity_id === 'media') {
           $config = \Drupal::config('media.settings');
@@ -38,14 +37,21 @@ function gin_preprocess_breadcrumb(&$variables) {
         if ($url) {
           $variables['breadcrumb'][$key]['url'] = $url;
         }
+        else {
+          // Let escapeAdmin override the return URL.
+          $variables['breadcrumb'][$key]['attributes']['data'] = 'data-gin-toolbar-escape-admin';
+        }
       }
       elseif ($item['url'] === $url) {
         // Remove as we already have the back to site link set.
         unset($variables['breadcrumb'][$key]);
       }
       elseif ($item['url'] === '/node') {
-        if ($node = \Drupal::routeMatch()->getParameter('node') && $node instanceof NodeInterface) {
-          $variables['breadcrumb'][$key]['text'] = t('Edit') . ' ' . $node->type->entity->label();
+        if ($node = \Drupal::routeMatch()->getParameter('node')) {
+          if ($node instanceof NodeInterface) {
+            $variables['breadcrumb'][$key]['text'] = t('Edit') . ' ' . $node->type->entity->label();
+            $variables['breadcrumb'][$key]['url'] = '';
+          }
         }
       }
     }
