@@ -59,4 +59,26 @@
       });
     }
   };
+
+  /**
+   * Replaces the "Home" link with "Back to site" link.
+   *
+   * Back to site link points to the last non-administrative page the user
+   * visited within the same browser tab.
+   */
+  Drupal.behaviors.ginEscapeAdmin = {
+    attach: function attach() {
+      const toolbarEscape = once('ginEscapeAdmin', '[data-gin-toolbar-escape-admin]');
+      const escapeAdminPath = sessionStorage.getItem('escapeAdminPath');
+
+      if (toolbarEscape.length && drupalSettings.path.currentPathIsAdmin) {
+        const $toolbarEscape = $(toolbarEscape);
+        if (escapeAdminPath !== null) {
+          $toolbarEscape.attr('href', escapeAdminPath);
+        } else {
+          $toolbarEscape.text(Drupal.t('Home'));
+        }
+      }
+    },
+  };
 })(jQuery, Drupal, drupalSettings);

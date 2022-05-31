@@ -22,6 +22,7 @@ function gin_preprocess_breadcrumb(&$variables) {
       if ($item['url'] === '/') {
         $variables['breadcrumb'][$key]['text'] = t('Back to site');
         $variables['breadcrumb'][$key]['attributes']['title'] = t('Return to site content');
+        $variables['breadcrumb'][$key]['attributes']['data'] = 'data-gin-toolbar-escape-admin';
 
         if ($entity_id === 'media') {
           $config = \Drupal::config('media.settings');
