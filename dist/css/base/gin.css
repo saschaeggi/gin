@@ -1205,7 +1205,7 @@ details summary {
 
 .gin--dark-mode .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link {
   background: var(--colorGinAppBackground);
-  border-color: var(--colorGinBorder);
+  border-color: transparent;
 }
 
 .gin--dark-mode .vertical-tabs__menu-link {
@@ -1214,6 +1214,10 @@ details summary {
 
 .gin--dark-mode .vertical-tabs__menu-link-summary {
   color: var(--colorGinTextLight);
+}
+
+.gin--dark-mode .vertical-tabs .claro-details__wrapper {
+  background: var(--colorGinAppBackground);
 }
 
 .vertical-tabs__items {
