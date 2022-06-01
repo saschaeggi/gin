@@ -14,20 +14,21 @@
       }
 
       // Toolbar toggle
-      $('.meta-sidebar__trigger', context).once('metaSidebarToggle').on('click', function (e) {
+      $('.meta-sidebar__trigger', context).once('ginMetaSidebarToggle').on('click', function (e) {
         e.preventDefault();
         Drupal.behaviors.ginSidebar.removeInlineStyles();
         Drupal.behaviors.ginSidebar.toggleSidebar($(this));
       });
 
       // Toolbar close
-      $('.meta-sidebar__close, .meta-sidebar__overlay', context).once('metaSidebarClose').on('click', function (e) {
+      $('.meta-sidebar__close, .meta-sidebar__overlay', context).once('ginMetaSidebarClose').on('click', function (e) {
         e.preventDefault();
         Drupal.behaviors.ginSidebar.removeInlineStyles();
         Drupal.behaviors.ginSidebar.collapseSidebar();
       });
 
       $(window)
+        .once('ginMetaSidebarMobileResize')
         .on('resize', Drupal.debounce(Drupal.behaviors.ginSidebar.collapseSidebarMobile, 150))
         .trigger('resize');
     },
@@ -35,11 +36,9 @@
       // Set active state.
       if (element.hasClass('is-active')) {
         Drupal.behaviors.ginSidebar.collapseSidebar();
-        localStorage.setItem('Drupal.gin.sidebarExpanded', 'false');
       }
       else {
         Drupal.behaviors.ginSidebar.showSidebar();
-        localStorage.setItem('Drupal.gin.sidebarExpanded', 'true');
       }
     },
     collapseSidebarMobile: function collapseSidebarMobile() {
@@ -64,6 +63,9 @@
       $('.meta-sidebar__trigger').attr('aria-expanded', 'true');
       $('.meta-sidebar__trigger').addClass('is-active');
       $('body').attr('data-meta-sidebar', 'open');
+
+      // Update local storage.
+      localStorage.setItem('Drupal.gin.sidebarExpanded', 'true');
     },
     collapseSidebar: function collapseSidebar() {
       const hideLabel = Drupal.t('Hide sidebar panel');
@@ -75,6 +77,9 @@
       $('.meta-sidebar__trigger').removeClass('is-active');
       $('body').attr('data-meta-sidebar', 'closed');
       $('.meta-sidebar__trigger').attr('aria-expanded', 'false');
+
+      // Update local storage.
+      localStorage.setItem('Drupal.gin.sidebarExpanded', 'false');
     },
     removeInlineStyles: function removeInlineStyles() {
       // Remove init styles.
