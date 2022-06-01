@@ -36,9 +36,11 @@
       // Set active state.
       if (element.hasClass('is-active')) {
         Drupal.behaviors.ginSidebar.collapseSidebar();
+        localStorage.setItem('Drupal.gin.sidebarExpanded', 'false');
       }
       else {
         Drupal.behaviors.ginSidebar.showSidebar();
+        localStorage.setItem('Drupal.gin.sidebarExpanded', 'true');
       }
     },
     collapseSidebarMobile: function collapseSidebarMobile() {
@@ -63,9 +65,6 @@
       $('.meta-sidebar__trigger').attr('aria-expanded', 'true');
       $('.meta-sidebar__trigger').addClass('is-active');
       $('body').attr('data-meta-sidebar', 'open');
-
-      // Update local storage.
-      localStorage.setItem('Drupal.gin.sidebarExpanded', 'true');
     },
     collapseSidebar: function collapseSidebar() {
       const hideLabel = Drupal.t('Hide sidebar panel');
@@ -77,9 +76,6 @@
       $('.meta-sidebar__trigger').removeClass('is-active');
       $('body').attr('data-meta-sidebar', 'closed');
       $('.meta-sidebar__trigger').attr('aria-expanded', 'false');
-
-      // Update local storage.
-      localStorage.setItem('Drupal.gin.sidebarExpanded', 'false');
     },
     removeInlineStyles: function removeInlineStyles() {
       // Remove init styles.
