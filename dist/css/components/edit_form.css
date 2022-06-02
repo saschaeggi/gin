@@ -8,11 +8,11 @@
   }
 
   [dir="ltr"] .gin--edit-form .dialog-off-canvas-main-canvas {
-    transition: padding-left var(--ginTransition);
+    transition: padding-left var(--ginTransitionFast);
   }
 
   [dir="rtl"] .gin--edit-form .dialog-off-canvas-main-canvas {
-    transition: padding-right var(--ginTransition);
+    transition: padding-right var(--ginTransitionFast);
   }
 
   [dir="ltr"] .gin--edit-form.js-off-canvas-dialog-open {
@@ -117,27 +117,10 @@
   transition: all var(--ginTransitionFast);
 }
 
-<<<<<<< HEAD
-@media (min-width: 1024px) {
-  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
-    z-index: 101;
-    flex-basis: var(--ginSidebarWidth);
-    width: var(--ginSidebarWidth) !important;
-    position: fixed;
-    top: 0;
-    margin: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    height: 100%;
-    background: var(--colorGinLayerBackground);
-  }
-=======
 [dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
   right: 0;
   border-left: 1px solid var(--colorGinLayerBorder);
 }
->>>>>>> 9092c1a (Update sidebar styles, add auto-hide for smaller screens)
 
 [dir="rtl"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
   left: 0;
