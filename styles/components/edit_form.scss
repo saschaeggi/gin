@@ -5,7 +5,7 @@
     padding-right: var(--ginSidebarOffset);
 
     .dialog-off-canvas-main-canvas {
-      transition: padding-left var(--ginTransition);
+      transition: padding-left var(--ginTransitionFast);
     }
 
     // If off-canvas dialog is shown
@@ -103,25 +103,8 @@
       border-left: 1px solid var(--colorGinLayerBorder);
       transition: all var(--ginTransitionFast);
 
-      @include mq($breakpointLarge) {
-        z-index: 101;
-        flex-basis: var(--ginSidebarWidth);
-        width: var(--ginSidebarWidth) !important;
-        position: fixed;
-        top: 0;
-        right: 0;
-        margin: 0;
-        overflow-x: hidden;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        height: 100%;
-        background:var(--colorGinLayerBackground);
-        border-left: 1px solid var(--colorGinLayerBorder);
-        transition: all $transition--fast;
-
-        .gin--dark-mode & {
-          box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-        }
+      .gin--dark-mode & {
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
       }
 
       .gin-sidebar {

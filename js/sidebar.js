@@ -3,14 +3,21 @@
 'use strict';
 
 (($, Drupal) => {
+  const breakpoint = 1024;
+  const storageMobile = 'Drupal.gin.sidebarExpanded.mobile';
+  const storageDesktop = 'Drupal.gin.sidebarExpanded.desktop';
+
   Drupal.behaviors.ginSidebar = {
     attach: function attach(context) {
-      // Set meta sidebar state.
-      if (localStorage.getItem('Drupal.gin.sidebarExpanded') === 'true') {
-        Drupal.behaviors.ginSidebar.showSidebar();
-      }
-      else {
-        Drupal.behaviors.ginSidebar.collapseSidebar();
+
+      // Set mobile initial to false.
+      if (window.innerWidth >= breakpoint) {
+        if (localStorage.getItem(storageDesktop) === 'true') {
+          Drupal.behaviors.ginSidebar.showSidebar();
+        }
+        else {
+          Drupal.behaviors.ginSidebar.collapseSidebar();
+        }
       }
 
       // Toolbar toggle
@@ -28,38 +35,28 @@
       });
 
       $(window)
-        .once('ginMetaSidebarMobileResize')
-        .on('resize', Drupal.debounce(Drupal.behaviors.ginSidebar.collapseSidebarMobile, 150))
+        .once('ginMetaSidebarResize')
+        .on('resize', Drupal.debounce(Drupal.behaviors.ginSidebar.handleResize, 150))
         .trigger('resize');
     },
     toggleSidebar: function toggleSidebar(element) {
       // Set active state.
       if (element.hasClass('is-active')) {
         Drupal.behaviors.ginSidebar.collapseSidebar();
-        localStorage.setItem('Drupal.gin.sidebarExpanded', 'false');
       }
       else {
         Drupal.behaviors.ginSidebar.showSidebar();
-        localStorage.setItem('Drupal.gin.sidebarExpanded', 'true');
-      }
-    },
-    collapseSidebarMobile: function collapseSidebarMobile() {
-      Drupal.behaviors.ginSidebar.removeInlineStyles();
-
-      // If small viewport, collapse sidebar.
-      if (localStorage.getItem('Drupal.gin.sidebarExpanded') === 'true') {
-        if (window.innerWidth < 1024) {
-          Drupal.behaviors.ginSidebar.collapseSidebar();
-        } else {
-          Drupal.behaviors.ginSidebar.showSidebar();
-        }
       }
     },
     showSidebar: function showSidebar() {
+      const chooseStorage = window.innerWidth < breakpoint ? storageMobile : storageDesktop;
       const showLabel = Drupal.t('Show sidebar panel');
       // Change labels.
       $('.meta-sidebar__trigger').attr('title', showLabel);
       $('.meta-sidebar__trigger span').html(showLabel);
+
+      // Expose to localStorage.
+      localStorage.setItem(chooseStorage, 'true');
 
       // Attributes.
       $('.meta-sidebar__trigger').attr('aria-expanded', 'true');
@@ -67,15 +64,34 @@
       $('body').attr('data-meta-sidebar', 'open');
     },
     collapseSidebar: function collapseSidebar() {
+      const chooseStorage = window.innerWidth < breakpoint ? storageMobile : storageDesktop;
       const hideLabel = Drupal.t('Hide sidebar panel');
       // Change labels.
       $('.meta-sidebar__trigger').attr('title', hideLabel);
       $('.meta-sidebar__trigger span').html(hideLabel);
 
+      // Expose to localStorage.
+      localStorage.setItem(chooseStorage, 'false');
+
       // Attributes.
       $('.meta-sidebar__trigger').removeClass('is-active');
       $('body').attr('data-meta-sidebar', 'closed');
       $('.meta-sidebar__trigger').attr('aria-expanded', 'false');
+    },
+    handleResize: function handleResize() {
+      Drupal.behaviors.ginSidebar.removeInlineStyles();
+
+      // If small viewport, always collapse sidebar.
+      if (window.innerWidth < breakpoint) {
+        Drupal.behaviors.ginSidebar.collapseSidebar();
+      } else {
+        // If large viewport, show sidebar if it was open before.
+        if (localStorage.getItem(storageDesktop) === 'true') {
+          Drupal.behaviors.ginSidebar.showSidebar();
+        } else {
+          Drupal.behaviors.ginSidebar.collapseSidebar();
+        }
+      }
     },
     removeInlineStyles: function removeInlineStyles() {
       // Remove init styles.
