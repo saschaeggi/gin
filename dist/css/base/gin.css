@@ -590,30 +590,6 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
   }
 }
 
-@media (min-width: 1024px) {
-  .layer-wrapper,
-.block-system > form,
-.view-content .views-form,
-.views-exposed-form.views-exposed-form,
-.panel,
-.admin-list,
-.update,
-.view-files .view-content,
-.view-watchdog .view-content,
-.system-status-general-info,
-.system-status-report,
-.views-edit-view,
-.views-preview-wrapper,
-.view-block-content .view-content,
-.system-themes-list,
-#views-entity-list,
-.admin.my-workbench {
-    min-width: 100%;
-    width: -moz-fit-content;
-    width: fit-content;
-  }
-}
-
 .block-page-title-block:last-child {
   margin-bottom: 0;
 }
@@ -1985,6 +1961,8 @@ details summary {
 .gin-table-scroll-wrapper {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  padding-bottom: 240px;
+  margin-bottom: -240px;
 }
 
 table.sticky-header {
