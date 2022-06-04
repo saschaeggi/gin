@@ -21,5 +21,13 @@
         }));
       }));
     }
+  }, Drupal.behaviors.ginEscapeAdmin = {
+    attach: function() {
+      const toolbarEscape = once("ginEscapeAdmin", "[data-gin-toolbar-escape-admin]"), escapeAdminPath = sessionStorage.getItem("escapeAdminPath");
+      if (toolbarEscape.length && drupalSettings.path.currentPathIsAdmin) {
+        const $toolbarEscape = $(toolbarEscape);
+        null !== escapeAdminPath && $toolbarEscape.attr("href", escapeAdminPath);
+      }
+    }
   };
 })(jQuery, Drupal, drupalSettings);

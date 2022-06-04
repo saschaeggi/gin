@@ -3612,7 +3612,7 @@ a.button.button--danger:active:before {
   width: 29px;
   color: transparent;
   text-indent: -99999px;
-  border-radius: 50%;
+  border-radius: var(--ginBorderDefault);
   border-color: transparent !important;
   transition: var(--ginTransition);
 }

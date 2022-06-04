@@ -15,7 +15,7 @@
       {% if item.text %}
       <li class="gin-breadcrumb__item">
         {% if item.url %}
-          <a href="{{ item.url }}" class="gin-breadcrumb__link">{{ item.text }}</a>
+          <a href="{{ item.url }}" class="gin-breadcrumb__link"{% if item.attributes.title %} title="{{ item.attributes.title }}"{% endif %}{% if item.attributes.data %} {{ item.attributes.data }}{% endif %}>{{ item.text }}</a>
         {% else %}
           <span class="gin-breadcrumb__text">{{ item.text }}</span>
         {% endif %}
