@@ -1,6 +1,8 @@
 .gin-table-scroll-wrapper {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  padding-bottom: 240px;
+  margin-bottom: -240px;
 }
 
 table.sticky-header {
