@@ -1641,7 +1641,7 @@ details summary {
   padding: 24px;
 }
 
-@media (max-width: 1024px) {
+@media (: ) {
   .layer-wrapper {
     overflow: auto;
     -webkit-overflow-scrolling: touch;

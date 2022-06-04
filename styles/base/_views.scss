@@ -157,7 +157,7 @@
 .layer-wrapper {
   padding: 24px;
 
-  @include mq(max-width $breakpointLarge) {
+  @include mq(max-width #{$breakpointLarge - 1}) {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
   }

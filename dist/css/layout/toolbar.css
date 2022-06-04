@@ -84,7 +84,7 @@
   }
 }
 
-@media (max-width: 588px) {
+@media (: ) {
   [dir="ltr"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
     left: 0;
   }
@@ -229,7 +229,7 @@
   text-decoration: none;
 }
 
-@media (max-width: 976px) {
+@media (: ) {
   .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
 .toolbar .toolbar-tray a.is-active {
     background: var(--colorGinPrimaryLight);
@@ -679,7 +679,7 @@ a.toolbar-menu__trigger,
   background: transparent;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 976px) {
   .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon,
 .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.hover-intent > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon {
     box-shadow: none;

@@ -66,7 +66,7 @@
     }
 
     .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
-      @include mq(max-width $breakpointXSmall) {
+      @include mq(max-width #{$breakpointXSmall - 1}) {
         left: 0;
       }
     }
@@ -187,7 +187,7 @@
   font-weight: 500;
   text-decoration: none;
 
-  @include mq(max-width $breakpointMedium) {
+  @include mq(max-width #{$breakpointMedium - 1}) {
     background: var(--colorGinPrimaryLight);
   }
 }
@@ -546,7 +546,7 @@ a.toolbar-menu__trigger,
   &.hover-intent > .toolbar-icon,
   &.menu-item--active-trail > .toolbar-icon,
   &.menu-item--active-trail > .toolbar-box > a.toolbar-icon {
-    @include mq($breakpointLarge) {
+    @include mq($breakpointMedium) {
       box-shadow: none;
 
       &::before {

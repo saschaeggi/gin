@@ -440,7 +440,8 @@ body.gin--classic-toolbar {
     border-top: 0 none;
   }
 
-  .menu-item .toolbar-menu {
+  .menu-item .toolbar-menu,
+  .menu-item:last-child {
     border-bottom: 0 none;
   }
 
@@ -597,7 +598,7 @@ body.gin--classic-toolbar {
 .toolbar-tab > .toolbar-icon-edit.toolbar-item {
   &:hover:before,
   &.is-active:before {
-    @include mq(max-width $breakpointMedium) {
+    @include mq(max-width #{$breakpointMedium - 1}) {
       background: #fff;
     }
   }
@@ -638,6 +639,7 @@ body.gin--classic-toolbar {
 // Hide logo if accidentally shown in Devel.
 [data-toolbar-tray=toolbar-item-devel-tray] {
   .toolbar-icon-admin-toolbar-tools-help,
+  .menu-item__tools,
   .toolbar-logo {
     display: none;
   }

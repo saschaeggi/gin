@@ -444,7 +444,8 @@ body.gin--classic-toolbar {
   border-top: 0 none;
 }
 
-.toolbar .toolbar-tray-vertical .menu-item .toolbar-menu {
+.toolbar .toolbar-tray-vertical .menu-item .toolbar-menu,
+.toolbar .toolbar-tray-vertical .menu-item:last-child {
   border-bottom: 0 none;
 }
 
@@ -618,7 +619,7 @@ body.gin--classic-toolbar {
   }
 }
 
-@media (max-width: 976px) {
+@media (: ) {
   .toolbar-secondary .toolbar-bar .toolbar-icon:hover:before, .toolbar-secondary .toolbar-bar .responsive-preview-icon:hover:before, .toolbar-secondary .toolbar-bar .toolbar-icon.is-active:before, .toolbar-secondary .toolbar-bar .is-active.responsive-preview-icon:before,
 .toolbar-icon-edit:hover:before,
 .toolbar-icon-edit.is-active:before,
@@ -678,6 +679,7 @@ body.gin--classic-toolbar {
 }
 
 [data-toolbar-tray=toolbar-item-devel-tray] .toolbar-icon-admin-toolbar-tools-help,
+[data-toolbar-tray=toolbar-item-devel-tray] .menu-item__tools,
 [data-toolbar-tray=toolbar-item-devel-tray] .toolbar-logo {
   display: none;
 }
