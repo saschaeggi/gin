@@ -377,7 +377,8 @@ fieldset:not(.fieldgroup) {
 .form-item__label.form-required::after,
 .fieldset__label.form-required::after,
 .form-required > .fieldset__label::after,
-.horizontal-tab-button .form-required::after {
+.horizontal-tab-button .form-required::after,
+.vertical-tabs__menu-link .form-required::after {
   content: "*";
   color: var(--colorGinDanger);
   line-height: 1;
