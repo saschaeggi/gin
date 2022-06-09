@@ -62,15 +62,19 @@
   background-color: var(--colorGinWarningLightBackground);
 }
 
-.paragraphs-tabs-wrapper .field-multiple-table .draggable.drag-previous {
+.paragraphs-tabs-wrapper .field-multiple-table .draggable.drag-previous > .tabledrag-cell {
   position: relative;
 }
 
-.paragraphs-tabs-wrapper .field-multiple-table .draggable.drag-previous::before {
+.paragraphs-tabs-wrapper .field-multiple-table .draggable.drag-previous > .tabledrag-cell::before {
   content: "";
   display: block;
   position: absolute;
   top: .5rem;
+<<<<<<< HEAD
+=======
+  left: 0;
+>>>>>>> 04d26d1 (Update compiled css)
   width: 4px;
   height: calc(100% - 1rem);
   background: var(--colorGinWarning);
