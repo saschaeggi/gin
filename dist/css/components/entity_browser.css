@@ -113,6 +113,15 @@
   cursor: pointer;
 }
 
+table.entities-list:not(.entities-list--single-item) {
+  display: block;
+}
+
+table.entities-list td {
+  height: auto;
+  padding: 10px 12px;
+}
+
 .gin-entity-browser .entity-browser-form {
   padding: 0;
   border: 0 none;

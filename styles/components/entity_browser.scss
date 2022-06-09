@@ -57,6 +57,18 @@
   }
 }
 
+// Entity list in table views.
+table.entities-list {
+  &:not(.entities-list--single-item) {
+    display: block;
+  }
+
+  td {
+    height: auto;
+    padding: 10px 12px;
+  }
+}
+
 // Entity browser view in overlay
 .gin-entity-browser {
   .entity-browser-form {
