@@ -1297,7 +1297,6 @@ details summary {
 
 .vertical-tabs__items {
   border-radius: var(--ginBorderDefault);
-  overflow: hidden;
 }
 
 @media (min-width: 1024px) {

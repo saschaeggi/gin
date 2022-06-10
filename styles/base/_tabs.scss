@@ -401,7 +401,6 @@
 .vertical-tabs {
   &__items {
     border-radius: var(--ginBorderDefault);
-    overflow: hidden;
 
     @include mq($breakpointLarge) {
       border-top-left-radius: 0;

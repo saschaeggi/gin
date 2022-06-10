@@ -669,7 +669,8 @@
 .ui-dialog .form-item__label.form-required::after,
 .ui-dialog .fieldset__label.form-required::after,
 .ui-dialog .form-required > .fieldset__label::after,
-.ui-dialog .horizontal-tab-button .form-required::after {
+.ui-dialog .horizontal-tab-button .form-required::after,
+.ui-dialog .vertical-tabs__menu-link .form-required::after {
   content: "*";
   color: var(--colorGinDanger);
   line-height: 1;
