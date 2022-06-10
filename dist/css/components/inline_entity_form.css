@@ -24,3 +24,30 @@
   margin-bottom: 0;
 }
 
+/* Fixes for 'Inline entity form - Complex' widgets inside paragraphs */
+
+.paragraphs-tabs-wrapper .field-multiple-table .ief-entity-table .draggable {
+  display: table-row;
+  /* The .draggable padding is not applied because of display: table-row */
+}
+
+[dir="ltr"] .paragraphs-tabs-wrapper .field-multiple-table .ief-entity-table .draggable.drag-previous > .tabledrag-cell::before {
+  left: .5rem;
+}
+
+[dir="rtl"] .paragraphs-tabs-wrapper .field-multiple-table .ief-entity-table .draggable.drag-previous > .tabledrag-cell::before {
+  right: .5rem;
+}
+
+[dir="ltr"] .paragraphs-tabs-wrapper .field-multiple-table .ief-entity-table .draggable .tabledrag-cell-content__item {
+  padding-left: .75rem;
+}
+
+[dir="rtl"] .paragraphs-tabs-wrapper .field-multiple-table .ief-entity-table .draggable .tabledrag-cell-content__item {
+  padding-right: .75rem;
+}
+
+.paragraphs-tabs-wrapper .field-multiple-table .ief-entity-operations {
+  display: flex;
+}
+
