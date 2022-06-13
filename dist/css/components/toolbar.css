@@ -351,8 +351,11 @@ body.gin--classic-toolbar {
 }
 
 .toolbar-horizontal .toolbar-tray {
-  box-shadow: none;
   border-bottom: 1px solid var(--colorGinBorder);
+}
+
+.toolbar-horizontal .toolbar-tray, [dir=rtl] .toolbar-horizontal .toolbar-tray {
+  box-shadow: none;
 }
 
 .toolbar-horizontal .toolbar-tray a,

@@ -16,6 +16,12 @@ body[data-meta-sidebar=closed] {
   }
 }
 
+// RTL handling.
+[dir=rtl] body[data-meta-sidebar=closed] .layout-region-node-secondary {
+  /*rtl:ignore*/
+  transform: translateX(calc(var(--ginSidebarWidth) * -1));
+}
+
 body[data-meta-sidebar=open] {
   .layout-region-node-secondary {
     @include mq(max-width $breakpointLarge) {

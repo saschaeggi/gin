@@ -17,6 +17,10 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
   transform: translateX(var(--ginSidebarWidth));
 }
 
+[dir=rtl] body[data-meta-sidebar=closed] .layout-region-node-secondary {
+  transform: translateX(calc(var(--ginSidebarWidth) * -1));
+}
+
 @media (max-width: 1024px) {
   body[data-meta-sidebar=open] .layout-region-node-secondary {
     opacity: 1;
