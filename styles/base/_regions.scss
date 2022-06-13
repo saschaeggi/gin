@@ -66,12 +66,6 @@
       flex-wrap: wrap;
       width: 100%;
 
-      // Set max-width to max content-width
-      // .gin--edit-form & {
-      //   max-width: $breakpointWide;
-      //   margin: 0 auto;
-      // }
-
       @include mq($breakpointLarge) {
         flex-wrap: nowrap;
         align-items: center;

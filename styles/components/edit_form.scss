@@ -25,6 +25,11 @@
     display: none;
   }
 
+  // Hide edit secondary toolbar item
+  .toolbar-secondary .contextual-toolbar-tab {
+    display: none;
+  }
+
   .layout-node-form {
     overflow: inherit;
   }

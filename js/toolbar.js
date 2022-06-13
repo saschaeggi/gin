@@ -20,30 +20,18 @@
         $('.toolbar-menu__trigger').removeClass('is-active');
       }
 
+      // Show toolbar navigation with shortcut:
+      // OPTION + T (Mac) / ALT + T (Windows)
+      $(document).once('ginToolbarShortcut').on('keydown', function (e) {
+        if (e.altKey === true && e.keyCode === 84) {
+          Drupal.behaviors.ginToolbarToggle.toggleToolbar();
+        }
+      });
+
       // Toolbar toggle
       $('.toolbar-menu__trigger', context).on('click', function (e) {
         e.preventDefault();
-
-        // Toggle active class.
-        $(this).toggleClass('is-active');
-
-        // Set active state.
-        let active = 'true';
-        if ($(this).hasClass('is-active')) {
-          $('body').attr('data-toolbar-menu', 'open');
-        }
-        else {
-          $('body').attr('data-toolbar-menu', '');
-          active = 'false';
-          $('.gin-toolbar-inline-styles').remove();
-        }
-
-        // Write state to localStorage.
-        localStorage.setItem('Drupal.gin.toolbarExpanded', active);
-
-        // Dispatch event.
-        const event = new CustomEvent('toolbar-toggle', { detail: active === 'true'})
-        document.dispatchEvent(event);
+        Drupal.behaviors.ginToolbarToggle.toggleToolbar();
       });
 
       // Change when clicked
@@ -57,6 +45,30 @@
           });
         });
       });
+    },
+    toggleToolbar: function toggleToolbar(context) {
+      $this = $('.toolbar-menu__trigger', context);
+
+      // Toggle active class.
+      $this.toggleClass('is-active');
+
+      // Set active state.
+      let active = 'true';
+      if ($this.hasClass('is-active')) {
+        $('body').attr('data-toolbar-menu', 'open');
+      }
+      else {
+        $('body').attr('data-toolbar-menu', '');
+        active = 'false';
+        $('.gin-toolbar-inline-styles').remove();
+      }
+
+      // Write state to localStorage.
+      localStorage.setItem('Drupal.gin.toolbarExpanded', active);
+
+      // Dispatch event.
+      const event = new CustomEvent('toolbar-toggle', { detail: active === 'true'})
+      document.dispatchEvent(event);
     }
   };
 

@@ -15,7 +15,7 @@
 }
 
 @media (min-width: 976px) {
-  .toolbar-fixed.toolbar-tray-open {
+  .toolbar-fixed.toolbar-tray-open:not(.toolbar-vertical) {
     --ginHorizontalToolbarOffset: 78px;
   }
 }

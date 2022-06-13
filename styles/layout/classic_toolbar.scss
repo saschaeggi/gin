@@ -13,7 +13,7 @@
   }
 }
 
-.toolbar-fixed.toolbar-tray-open {
+.toolbar-fixed.toolbar-tray-open:not(.toolbar-vertical) {
   @include mq($breakpointMedium) {
     --ginHorizontalToolbarOffset: 78px;
   }

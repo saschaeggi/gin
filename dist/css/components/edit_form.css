@@ -33,6 +33,10 @@
   display: none;
 }
 
+.gin--edit-form .toolbar-secondary .contextual-toolbar-tab {
+  display: none;
+}
+
 .gin--edit-form .layout-node-form {
   overflow: inherit;
 }
