@@ -135,6 +135,13 @@ class GinContentFormHelper implements ContainerInjectionInterface {
         $form['actions']['preview']['#weight'] = $save_weight - 1;
       }
 
+      // Add sidebar toggle.
+      $form['actions']['gin_sidebar_toggle'] = [
+        '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger" role="button" title="' . t('Show sidebar panel') . '" aria-controls="gin_sidebar"><span class="visually-hidden">' . t('Show sidebar panel') . '</span></a>',
+        '#weight' => '999',
+      ];
+      $form['#attached']['library'][] = 'gin/sidebar';
+
       // Create gin_actions group.
       $form['gin_actions'] = [
         '#type' => 'container',
@@ -182,6 +189,15 @@ class GinContentFormHelper implements ContainerInjectionInterface {
         $form['gin_sidebar']['actions']['delete_translation']['#attributes']['class'][] = 'button--danger';
         $form['gin_sidebar']['actions']['delete_translation']['#attributes']['class'][] = 'action-link';
       }
+
+      // Add sidebar toggle.
+      $form['gin_sidebar']['gin_sidebar_close'] = [
+        '#markup' => '<a href="#close-sidebar" class="meta-sidebar__close trigger" role="button" title="' . t('Close sidebar panel') . '"><span class="visually-hidden">' . t('Close sidebar panel') . '</span></a>',
+      ];
+
+      $form['gin_sidebar_overlay'] = [
+        '#markup' => '<div class="meta-sidebar__overlay trigger"></div>',
+      ];
     }
 
     // Specify necessary node form theme and library.

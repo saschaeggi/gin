@@ -1,0 +1,115 @@
+.layout-region-node-secondary {
+  transition: transform var(--ginTransitionFast);
+
+  // Fixes the flickering happinging on smaller devices.
+  @include mq(max-width $breakpointLarge) {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+body[data-meta-sidebar=closed] {
+  --ginSidebarOffset: 0px;
+
+  .layout-region-node-secondary {
+    transform: translateX(var(--ginSidebarWidth));
+  }
+}
+
+// RTL handling.
+[dir=rtl] body[data-meta-sidebar=closed] .layout-region-node-secondary {
+  /*rtl:ignore*/
+  transform: translateX(calc(var(--ginSidebarWidth) * -1));
+}
+
+body[data-meta-sidebar=open] {
+  .layout-region-node-secondary {
+    @include mq(max-width $breakpointLarge) {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.meta-sidebar {
+  &__trigger,
+  &__close {
+    cursor: pointer;
+    background: transparent;
+    height: 32px;
+    width: 32px;
+    border-radius: var(--ginBorderDefault);
+    transition: background var(--ginTransitionFast);
+
+    &::before {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      content: "";
+      mask-repeat: no-repeat;
+      mask-position: center center;
+      background-color: var(--colorGinIcons);
+    }
+
+    &:hover, &:focus {
+      background-color: var(--colorGinPrimaryLight);
+
+      &::before {
+        background-color: var(--colorGinPrimary);
+      }
+    }
+
+    &.is-active {
+      background-color: var(--colorGinPrimaryLightHover);
+
+      &::before {
+        background-color: var(--colorGinPrimaryActive);
+      }
+    }
+  }
+
+  &__trigger {
+    &::before {
+      mask-image: icon('sidebar');
+      mask-size: 20px 20px;
+      border-radius: 50%;
+    }
+  }
+
+  &__close {
+    z-index: 104;
+    position: absolute;
+    top: 18px;
+    right: 16px;
+
+    @include mq($breakpointLarge) {
+      display: none;
+    }
+
+    &::before {
+      mask-image: icon('close');
+      mask-size: 16px 16px;
+    }
+  }
+
+  &__overlay {
+    z-index: 102;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    background: var(--colorGinLayer2Background);
+
+    body[data-meta-sidebar=open] & {
+      opacity: .9;
+      visibility: visible;
+    }
+
+    @include mq($breakpointLarge) {
+      display: none;
+    }
+  }
+}

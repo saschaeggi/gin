@@ -40,13 +40,12 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Sidebar Check.
+// Toolbar Check.
 if (localStorage.getItem('Drupal.gin.toolbarExpanded')) {
   const style = document.createElement('style');
   const className = 'gin-toolbar-inline-styles';
   style.className = className;
 
-  // Sidebar Check.
   if (localStorage.getItem('Drupal.gin.toolbarExpanded') === 'true') {
     style.innerHTML = `
     @media (min-width: 976px) {
@@ -59,6 +58,37 @@ if (localStorage.getItem('Drupal.gin.toolbarExpanded')) {
         min-width: var(--ginToolbarWidth, 240px);
         transition: none;
       }
+    }
+    `;
+
+    const scriptTag = document.querySelector('script');
+    scriptTag.parentNode.insertBefore(style, scriptTag);
+  } else if (document.getElementsByClassName(className).length > 0) {
+    document.getElementsByClassName(className)[0].remove();
+  }
+}
+
+// Sidebar check.
+if (localStorage.getItem('Drupal.gin.sidebarExpanded.desktop')) {
+  const style = document.createElement('style');
+  const className = 'gin-sidebar-inline-styles';
+  style.className = className;
+
+  if (window.innerWidth < 1024 || localStorage.getItem('Drupal.gin.sidebarExpanded.desktop') === 'false') {
+    style.innerHTML = `
+    body {
+      --ginSidebarOffset: 0px;
+      padding-inline-end: 0;
+      transition: none;
+    }
+
+    .layout-region-node-secondary {
+      transform: translateX(var(--ginSidebarWidth, 360px));
+      transition: none;
+    }
+
+    .meta-sidebar__overlay {
+      display: none;
     }
     `;
 

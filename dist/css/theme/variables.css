@@ -44,7 +44,7 @@
   --colorGinText: #222330;
   --colorGinTextLight: #545560;
   --colorGinTableHeader: #eeeff3;
-  --colorGinSwitch: #0e9888;
+  --colorGinSwitch: #26a769;
   --colorGinSwitchShadow: rgba(38, 167, 105, .3);
   --colorGinIcons: #414247;
   --colorGinPatternFallback: var(--colorGinLayer2Background);
@@ -55,6 +55,7 @@
   --ginToolbarWidthCollapsed: 66px;
   --ginToolbarWidth: 240px;
   --ginSidebarWidth: 300px;
+  --ginSidebarOffset: var(--ginSidebarWidth);
   --ginShadowLevel1: 0 1px 2px rgb(20 45 82 / 2%), 0 3px 4px rgb(20 45 82 / 3%), 0 5px 8px rgb(20 45 82 / 4%);
   --ginShadowLevel2: 0 1px 2px rgb(20 45 82 / 2%), 0 3px 4px rgb(20 45 82 / 3%), 0 5px 8px rgb(20 45 82 / 4%), 0 20px 24px rgb(20 45 82 / 12%);
   --ginEasing: cubic-bezier(.19, 1, .22, 1);

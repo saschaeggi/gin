@@ -17,11 +17,12 @@
 #}
 <div class="layout-node-form clearfix">
   <div class="layout-region layout-region-node-main">
-    {{ form|without('advanced', 'footer', 'actions', 'gin_actions', 'gin_sidebar') }}
+    {{ form|without('advanced', 'footer', 'actions', 'gin_actions', 'gin_sidebar', 'gin_sidebar_toggle') }}
   </div>
-  <div class="layout-region layout-region-node-secondary">
+  <div class="layout-region layout-region-node-secondary" id="gin_sidebar">
     <div class="layout-region__content">
       {{ form.advanced }}
+      {{ form.gin_sidebar_toggle }}
     </div>
   </div>
   <div class="layout-node-form__actions">

@@ -69,7 +69,7 @@
   --colorGinTableHeader: #eeeff3; //#e6e8ef;
 
   // Toggle
-  --colorGinSwitch: #0e9888; //#26a769;
+  --colorGinSwitch: #26a769; //#0e9888;
   --colorGinSwitchShadow: rgba(38, 167, 105, .3);
 
   // Icons
@@ -90,6 +90,7 @@
 
   // Sidebar
   --ginSidebarWidth: 300px;
+  --ginSidebarOffset: var(--ginSidebarWidth);
   @include mq($breakpointWide) {
     --ginSidebarWidth: 360px;
   }
