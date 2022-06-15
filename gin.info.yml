@@ -35,13 +35,6 @@ libraries-override:
       component:
         /core/themes/stable/css/core/dropbutton/dropbutton.css: /core/themes/claro/css/components/dropbutton.css
 
-  core/drupal.vertical-tabs:
-    css:
-      component:
-        /core/themes/stable/css/core/vertical-tabs.css: false
-    js:
-      misc/vertical-tabs.js: /core/themes/claro/js/vertical-tabs.js
-
   classy/dialog: claro/claro.drupal.dialog
 
   # needed override to overcome dialog styling issues
