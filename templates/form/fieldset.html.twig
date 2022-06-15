@@ -101,7 +101,7 @@
           {{ errors }}
         </div>
       {% endif %}
-      {% if description_display in ['after', 'invisible'] and show_description_toggle %}
+      {% if description_display in ['after', 'invisible'] and description.content %}
         <div{{ description.attributes.addClass(description_classes) }}>{{ description.content }}</div>
       {% endif %}
 
