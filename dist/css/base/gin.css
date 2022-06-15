@@ -491,6 +491,26 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
   }
 }
 
+.layer-wrapper .form-wrapper:first-of-type .form-item,
+.block-system > form .form-wrapper:first-of-type .form-item,
+.view-content .views-form .form-wrapper:first-of-type .form-item,
+.views-exposed-form.views-exposed-form .form-wrapper:first-of-type .form-item,
+.panel .form-wrapper:first-of-type .form-item,
+.admin-list .form-wrapper:first-of-type .form-item,
+.update .form-wrapper:first-of-type .form-item,
+.view-files .view-content .form-wrapper:first-of-type .form-item,
+.view-watchdog .view-content .form-wrapper:first-of-type .form-item,
+.system-status-general-info .form-wrapper:first-of-type .form-item,
+.system-status-report .form-wrapper:first-of-type .form-item,
+.views-edit-view .form-wrapper:first-of-type .form-item,
+.views-preview-wrapper .form-wrapper:first-of-type .form-item,
+.view-block-content .view-content .form-wrapper:first-of-type .form-item,
+.system-themes-list .form-wrapper:first-of-type .form-item,
+#views-entity-list .form-wrapper:first-of-type .form-item,
+.admin.my-workbench .form-wrapper:first-of-type .form-item {
+  margin-top: 0;
+}
+
 .block-page-title-block:last-child {
   margin-bottom: 0;
 }
@@ -1212,6 +1232,29 @@ details summary {
 
 .vertical-tabs__items .vertical-tabs__item {
   border-radius: 0;
+}
+
+@media (min-width: 1360px) {
+  .vertical-tabs__items .vertical-tabs__item {
+    border-bottom-right-radius: var(--ginBorderDefault);
+    border-bottom-left-radius: var(--ginBorderDefault);
+  }
+
+  [dir="ltr"] .vertical-tabs__items .vertical-tabs__item {
+    border-top-right-radius: var(--ginBorderDefault);
+  }
+
+  [dir="rtl"] .vertical-tabs__items .vertical-tabs__item {
+    border-top-left-radius: var(--ginBorderDefault);
+  }
+
+  [dir="ltr"] .vertical-tabs__items .vertical-tabs__item ~ .vertical-tabs__item {
+    border-top-left-radius: var(--ginBorderDefault);
+  }
+
+  [dir="rtl"] .vertical-tabs__items .vertical-tabs__item ~ .vertical-tabs__item {
+    border-top-right-radius: var(--ginBorderDefault);
+  }
 }
 
 @media (min-width: 1024px) {
@@ -2511,6 +2554,10 @@ td.webform-has-field-suffix > .form-item > .form-element {
 .form-checkboxes .form-type--boolean {
   margin-top: .5rem;
   margin-bottom: .5rem;
+}
+
+.form-actions {
+  margin-bottom: 0;
 }
 
 .form-edit .form-actions {

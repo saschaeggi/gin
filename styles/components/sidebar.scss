@@ -71,7 +71,7 @@ body[data-meta-sidebar=open] {
   &__trigger {
     &::before {
       mask-image: icon('sidebar');
-      mask-size: 20px 20px;
+      mask-size: var(--iconGinSidebarToggle) var(--iconGinSidebarToggle);
       border-radius: 50%;
     }
   }

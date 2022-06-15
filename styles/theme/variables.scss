@@ -120,6 +120,7 @@
   // Icons
   --iconGinSecondaryToolbar: 17px;
   --iconGinToolbar: 17px;
+  --iconGinSidebarToggle: 21px;
 
   @include mq($breakpointMedium) {
     --iconGinToolbar: 20px;

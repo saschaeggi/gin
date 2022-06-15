@@ -69,6 +69,7 @@
   --ginBorderBig: 16px;
   --iconGinSecondaryToolbar: 17px;
   --iconGinToolbar: 17px;
+  --iconGinSidebarToggle: 21px;
 }
 
 @media (min-width: 1280px) {

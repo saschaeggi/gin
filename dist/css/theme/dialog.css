@@ -619,6 +619,10 @@
   margin-bottom: .5rem;
 }
 
+.ui-dialog .form-actions {
+  margin-bottom: 0;
+}
+
 .ui-dialog .form-edit .form-actions {
   padding: 0;
   margin-bottom: 0;

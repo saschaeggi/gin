@@ -68,8 +68,8 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
 .meta-sidebar__trigger::before {
   -webkit-mask-image: url("../../media/sprite.svg#sidebar-view");
           mask-image: url("../../media/sprite.svg#sidebar-view");
-  -webkit-mask-size: 20px 20px;
-          mask-size: 20px 20px;
+  -webkit-mask-size: var(--iconGinSidebarToggle) var(--iconGinSidebarToggle);
+          mask-size: var(--iconGinSidebarToggle) var(--iconGinSidebarToggle);
   border-radius: 50%;
 }
 

@@ -409,6 +409,16 @@
     .vertical-tabs__item {
       border-radius: 0;
 
+      @include mq(1360px) {
+        border-top-right-radius: var(--ginBorderDefault);
+        border-bottom-right-radius: var(--ginBorderDefault);
+        border-bottom-left-radius: var(--ginBorderDefault);
+
+        ~ .vertical-tabs__item {
+          border-top-left-radius: var(--ginBorderDefault);
+        }
+      }
+
       .claro-details__summary {
         @include mq($breakpointLarge) {
           padding-left: 3rem;
