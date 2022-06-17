@@ -2,6 +2,7 @@
   const storageDesktop = "Drupal.gin.sidebarExpanded.desktop";
   Drupal.behaviors.ginSidebar = {
     attach: function(context) {
+      localStorage.getItem(storageDesktop) || localStorage.setItem(storageDesktop, "true"), 
       window.innerWidth >= 1024 && ("true" === localStorage.getItem(storageDesktop) ? Drupal.behaviors.ginSidebar.showSidebar() : Drupal.behaviors.ginSidebar.collapseSidebar()), 
       $(document).once("ginMetaSidebarShortcut").on("keydown", (function(e) {
         !0 === e.altKey && 83 === e.keyCode && Drupal.behaviors.ginSidebar.toggleSidebar();

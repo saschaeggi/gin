@@ -9,6 +9,10 @@
 
   Drupal.behaviors.ginSidebar = {
     attach: function attach(context) {
+      // If variable does not exist, create it, default being to show sidebar.
+      if (!localStorage.getItem(storageDesktop)) {
+        localStorage.setItem(storageDesktop, 'true');
+      }
 
       // Set mobile initial to false.
       if (window.innerWidth >= breakpoint) {
