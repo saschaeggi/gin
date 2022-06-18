@@ -1,4 +1,4 @@
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   [dir="ltr"] .gin--edit-form {
     padding-right: var(--ginSidebarOffset);
   }
@@ -61,7 +61,7 @@
   padding-left: 0;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   .gin--edit-form .layout-region-node-main,
 .gin--edit-form .layout-region-node-footer {
     flex-basis: 40%;
@@ -71,13 +71,13 @@
   }
 }
 
-@media (min-width: 1730px) {
+@media (min-width: 108.125em) {
   .gin--edit-form .page-wrapper__node-edit-form .block-page-title-block {
     width: 100%;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   .gin--edit-form .page-wrapper__node-edit-form .block-page-title-block .page-title {
     width: auto;
     max-width: 800px;
@@ -86,7 +86,7 @@
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 90em) {
   .gin--edit-form .page-wrapper__node-edit-form .node-form {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
@@ -160,6 +160,20 @@
   padding-right: 1.5rem;
   background-color: var(--colorGinLayerBackground);
   border: 0 none;
+}
+
+@media (max-width: 60.99em) {
+  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__header {
+    padding-top: 1.25rem;
+  }
+
+  [dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__header {
+    padding-right: 1.5rem;
+  }
+
+  [dir="rtl"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__header {
+    padding-left: 1.5rem;
+  }
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__title {
@@ -243,13 +257,13 @@
   flex-wrap: wrap;
 }
 
-@media (min-width: 420px) {
+@media (min-width: 26.25em) {
   .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-items-inline {
     flex-wrap: nowrap;
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1280px) {
+@media (min-width: 64em) and (max-width: 79.99em) {
   .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-items-inline {
     flex-wrap: wrap;
   }
@@ -261,19 +275,19 @@
   flex-grow: 1;
 }
 
-@media (min-width: 420px) {
+@media (min-width: 26.25em) {
   .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date {
     flex-basis: 50%;
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1280px) {
+@media (min-width: 64em) and (max-width: 79.99em) {
   .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date {
     flex-basis: 100%;
   }
 }
 
-@media (min-width: 420px) {
+@media (min-width: 26.25em) {
   [dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
     margin-right: .5rem;
   }
@@ -283,7 +297,7 @@
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1280px) {
+@media (min-width: 64em) and (max-width: 79.99em) {
   [dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
     margin-right: 0;
   }

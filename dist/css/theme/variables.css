@@ -54,7 +54,7 @@
   --colorGinStickyBg: #c8cdd8;
   --ginToolbarWidthCollapsed: 66px;
   --ginToolbarWidth: 240px;
-  --ginSidebarWidth: 300px;
+  --ginSidebarWidth: 320px;
   --ginSidebarOffset: var(--ginSidebarWidth);
   --ginShadowLevel1: 0 1px 2px rgb(20 45 82 / 2%), 0 3px 4px rgb(20 45 82 / 3%), 0 5px 8px rgb(20 45 82 / 4%);
   --ginShadowLevel2: 0 1px 2px rgb(20 45 82 / 2%), 0 3px 4px rgb(20 45 82 / 3%), 0 5px 8px rgb(20 45 82 / 4%), 0 20px 24px rgb(20 45 82 / 12%);
@@ -72,13 +72,13 @@
   --iconGinSidebarToggle: 21px;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 80em) {
   :root {
     --ginSidebarWidth: 360px;
   }
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   :root {
     --iconGinToolbar: 20px;
   }

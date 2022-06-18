@@ -7,14 +7,14 @@
   --ginVerticalToolbarOffset: 0px; // Needs px to work in calc() functions.
   --ginStickyOffset: 0px; // Needs px to work in calc() functions.
 
-  @include mq($breakpointLarge) {
+  @include mq(large) {
     --iconGinToolbar: 16px;
     --ginScrollOffset: 200px;
   }
 }
 
 .toolbar-fixed.toolbar-tray-open:not(.toolbar-vertical) {
-  @include mq($breakpointMedium) {
+  @include mq(medium) {
     --ginHorizontalToolbarOffset: 78px;
   }
 }
@@ -138,7 +138,7 @@
   }
 
   table.sticky-header {
-    @include mq($breakpointLarge) {
+    @include mq(large) {
       margin-top: 0;
     }
   }
@@ -158,7 +158,7 @@
     mask-size: 20px 20px;
   }
 
-  @include mq($breakpointMedium) {
+  @include mq(medium) {
     &:before {
       left: 1rem;
     }
@@ -170,7 +170,7 @@
 
   .toolbar-logo {
     img {
-      @include mq($breakpointLarge) {
+      @include mq(large) {
         max-height: 21px;
       }
     }

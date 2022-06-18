@@ -1,7 +1,7 @@
 // Node layout
 .gin--edit-form {
   // Has sidebar, save the space
-  @include mq($breakpointLarge) {
+  @include mq(large) {
     padding-right: var(--ginSidebarOffset);
 
     .dialog-off-canvas-main-canvas {
@@ -45,7 +45,7 @@
     width: 100%;
     padding-right: 0;
 
-    @include mq($breakpointLarge) {
+    @include mq(large) {
       flex-basis: 40%;
       flex-shrink: 1;
       flex-grow: 1;
@@ -57,12 +57,10 @@
     .block-page-title-block {
       @include mq(1730px) {
         width: 100%;
-        // max-width: $breakpointWide;
-        // margin: 0 auto;
       }
 
       .page-title {
-        @include mq($breakpointLarge) {
+        @include mq(large) {
           width: auto;
           max-width: 800px;
           margin: 0;
@@ -73,7 +71,7 @@
 
     // More room for content to breathe
     .node-form {
-      @include mq($breakpointBig) {
+      @include mq(ultra) {
         padding-left: 2.5rem;
         padding-right: 2.5rem;
       }
@@ -142,6 +140,11 @@
           padding-right: $sidebarSpacer;
           background-color: var(--colorGinLayerBackground);
           border: 0 none;
+
+          @include mq($to: medium) {
+            padding-top: 1.25rem;
+            padding-right: 1.5rem;
+          }
         }
 
         &__title {
@@ -203,11 +206,11 @@
               display: flex;
               flex-wrap: wrap;
 
-              @include mq($breakpointTiny) {
+              @include mq(tiny) {
                 flex-wrap: nowrap;
               }
 
-              @include mq($breakpointLarge $breakpointWide) {
+              @include mq(large, wide) {
                 flex-wrap: wrap;
               }
             }
@@ -217,20 +220,20 @@
               flex-basis: 100%;
               flex-grow: 1;
 
-              @include mq($breakpointTiny) {
+              @include mq(tiny) {
                 flex-basis: 50%;
               }
 
-              @include mq($breakpointLarge $breakpointWide) {
+              @include mq(large, wide) {
                 flex-basis: 100%;
               }
 
               &:first-of-type {
-                @include mq($breakpointTiny) {
+                @include mq(tiny) {
                   margin-right: .5rem;
                 }
 
-                @include mq($breakpointLarge $breakpointWide) {
+                @include mq(large, wide) {
                   margin-right: 0;
                 }
               }

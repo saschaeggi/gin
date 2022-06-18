@@ -162,9 +162,9 @@ module.exports = {
               // Global SCSS imports:
               additionalData: `
                 @use "sass:color";
-                @import "node_modules/breakpoint-sass/stylesheets/breakpoint";
-                @import "styles/helpers/_tools.scss";
+                @import "styles/helpers/_mq.scss";
                 @import "styles/helpers/_vars.scss";
+                @import "styles/helpers/_tools.scss";
               `,
             },
           },

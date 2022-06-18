@@ -98,7 +98,7 @@ fieldset.media-library-widget .help-icon > .help-icon__description-toggle,
   padding-right: 1rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   [dir="ltr"] .field-group-fieldset > .fieldset__description,
 [dir="ltr"] fieldset.media-library-widget .fieldset__description,
 [dir="ltr"] .field--type-datetime fieldset .fieldset__description {

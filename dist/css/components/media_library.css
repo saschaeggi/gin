@@ -374,7 +374,7 @@ fieldset.media-library-widget .fieldset__wrapper {
   background: var(--colorGinLayer2Background);
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 90em) {
   .media-library-widget-modal .media-library-item--grid {
     width: 20%;
   }
@@ -389,7 +389,7 @@ fieldset.media-library-widget .fieldset__wrapper {
   flex-grow: 1;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 80em) {
   .media-library-selection .media-library-item--grid {
     width: 20%;
   }

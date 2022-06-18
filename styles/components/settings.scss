@@ -113,9 +113,11 @@
 
     .form-type--radio {
       margin-left: 0;
+      margin-bottom: 0;
     }
 
     .form-item__label {
+      display: inline-block;
       padding: .375rem 1rem;
       border: 2px solid transparent;
       border-radius: var(--ginBorderBig);

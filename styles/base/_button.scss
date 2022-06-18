@@ -7,7 +7,7 @@
   box-shadow: none;
   transition: var(--ginTransition);
 
-  @include mq($breakpointWide) {
+  @include mq(wide) {
     font-size: 1rem;
   }
 

@@ -124,7 +124,7 @@
   width: calc(100% - 2rem) !important;
   transform: translate(-50%, -50%);
 
-  @include mq($breakpointLarge) {
+  @include mq(large) {
     width: calc(100% - 4rem) !important;
   }
 }

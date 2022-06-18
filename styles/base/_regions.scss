@@ -8,7 +8,7 @@
   box-sizing: border-box;
   transition: var(--ginTransition);
 
-  @include mq($breakpointLarge) {
+  @include mq(large) {
     top: -1px;
     width: 100%;
     height: var(--ginStickyHeight);
@@ -53,7 +53,7 @@
     align-items: center;
     margin-bottom: 1rem;
 
-    @include mq($breakpointSmall) {
+    @include mq(small) {
       height: 100%;
 
       .settings-tray-editable {
@@ -66,7 +66,7 @@
       flex-wrap: wrap;
       width: 100%;
 
-      @include mq($breakpointLarge) {
+      @include mq(large) {
         flex-wrap: nowrap;
         align-items: center;
         margin-bottom: 0;
@@ -93,7 +93,7 @@
     .gin-sticky {
       display: flex;
 
-      @include mq($breakpointLarge) {
+      @include mq(large) {
         padding-left: 1.5rem;
       }
     }
@@ -108,7 +108,7 @@
 }
 
 .sticky-shadow {
-  @include mq($breakpointLarge) {
+  @include mq(large) {
     z-index: 98;
     position: relative;
     pointer-events: none;
@@ -121,7 +121,7 @@
     }
   }
 
-  @include mq($breakpointLarge) {
+  @include mq(large) {
     position: sticky;
     top: calc(var(--ginHorizontalToolbarOffset) + 32px);
     width: calc(100% - min(10vw, 96px) + 24px);
@@ -138,7 +138,7 @@
 }
 
 .page-wrapper {
-  @include mq($breakpointLarge) {
+  @include mq(large) {
     margin-top: 1px; // fix for top: auto;
   }
 }
@@ -148,12 +148,12 @@ body:not(.toolbar-tray-open) .layout-container {
   margin-left: 1rem;
   margin-right: 1rem;
 
-  @include mq($breakpointSmall) {
+  @include mq(small) {
     margin-left: 2rem;
     margin-right: 2rem;
   }
 
-  @include mq($breakpointMedium) {
+  @include mq(medium) {
     margin-left: m#{i}n(5vw, 48px);
     margin-right: m#{i}n(5vw, 48px);
 
@@ -177,7 +177,7 @@ body:not(.toolbar-tray-open) .layout-container {
   justify-content: space-between;
   width: 100%;
 
-  @include mq($breakpointLarge) {
+  @include mq(large) {
     flex-wrap: nowrap;
     width: max-content;
   }

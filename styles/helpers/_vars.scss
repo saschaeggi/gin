@@ -6,4 +6,17 @@ $breakpointLarge: 1024px;
 $breakpointWide: 1280px;
 $breakpointBig: 1440px;
 
+$breakpoints: (
+  tiny: $breakpointTiny,
+  xsmall: $breakpointXSmall,
+  small: $breakpointSmall,
+  medium: $breakpointMedium,
+  large: $breakpointLarge,
+  wide: $breakpointWide,
+  ultra: $breakpointBig,
+);
+
+$colorDarkAppBackground: #1B1B1D;
+
+
 $colorDarkAppBackground: #1B1B1D;

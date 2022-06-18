@@ -26,7 +26,7 @@ body.gin--classic-toolbar {
   box-shadow: none;
 }
 
-@media (min-width: 588px) {
+@media (min-width: 36.75em) {
   .toolbar .toolbar-bar .user-menu {
     flex-grow: 1;
     flex-shrink: 0;
@@ -158,7 +158,7 @@ body.gin--classic-toolbar {
           mask-size: 26px 26px;
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .toolbar .toolbar-bar #toolbar-item-administration-search:hover::before,
 .toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon:hover::before,
 .toolbar .toolbar-bar .toolbar-menu-administration .responsive-preview-icon:hover::before,
@@ -169,7 +169,7 @@ body.gin--classic-toolbar {
   }
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .toolbar .toolbar-bar #toolbar-item-administration-search.is-active:hover::before,
 .toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon.is-active:hover::before,
 .toolbar .toolbar-bar .toolbar-menu-administration .is-active.responsive-preview-icon:hover::before,
@@ -616,13 +616,13 @@ body.gin--classic-toolbar {
           mask-size: var(--iconGinSecondaryToolbar) var(--iconGinSecondaryToolbar);
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active:before, .toolbar .toolbar-bar .toolbar-tab > .is-active.responsive-preview-icon:before, .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active:hover:before {
     background-color: var(--colorGinButtonText);
   }
 }
 
-@media (: ) {
+@media (max-width: 60.99em) {
   .toolbar-secondary .toolbar-bar .toolbar-icon:hover:before, .toolbar-secondary .toolbar-bar .responsive-preview-icon:hover:before, .toolbar-secondary .toolbar-bar .toolbar-icon.is-active:before, .toolbar-secondary .toolbar-bar .is-active.responsive-preview-icon:before,
 .toolbar-icon-edit:hover:before,
 .toolbar-icon-edit.is-active:before,

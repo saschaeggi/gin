@@ -152,7 +152,7 @@
   transform: translate(50%, -50%);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   .erl-overlay,
 .layout-paragraphs-dialog {
     width: calc(100% - 4rem) !important;

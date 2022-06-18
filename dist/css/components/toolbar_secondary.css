@@ -16,7 +16,7 @@
   box-sizing: border-box;
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .gin-secondary-toolbar {
     padding: 10px 0;
   }
@@ -60,7 +60,7 @@
           backdrop-filter: none;
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 90em) {
   .gin--edit-form .gin-secondary-toolbar {
     position: relative;
   }
@@ -83,13 +83,13 @@
   margin: 0 1rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .gin-secondary-toolbar__layout-container {
     margin: 0 2rem;
   }
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .gin-secondary-toolbar__layout-container {
     margin: 0 min(5vw, 48px);
   }
@@ -165,7 +165,7 @@
   background-color: var(--colorGinPrimaryHover);
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .toolbar .toolbar-bar {
     background: transparent;
   }
@@ -189,7 +189,7 @@
   }
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   #toolbar-administration-secondary .toolbar-bar {
     position: relative;
     display: flex;
@@ -202,7 +202,7 @@
   display: none;
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .gin-secondary-toolbar .toolbar-secondary {
     display: block;
   }
@@ -356,7 +356,7 @@
   }
 }
 
-@media (min-width: 976px) and (min-width: 1280px) {
+@media (min-width: 61em) and (min-width: 80em) {
   [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user {
     margin-right: -1.333em;
   }
@@ -366,13 +366,13 @@
   }
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user:hover .icon-user {
     box-shadow: 0 0 0 2px var(--colorGinAppBackground), 0 0 0 5px var(--colorGinLayer3Background);
   }
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user {
     border: 1px solid var(--colorGinBorder);
     overflow: hidden;
@@ -399,7 +399,7 @@
   }
 }
 
-@media (min-width: 976px) and (min-width: 1280px) {
+@media (min-width: 61em) and (min-width: 80em) {
   [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user,
 [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user ~ .toolbar-tray {
     margin-right: 1.333em;
@@ -411,13 +411,13 @@
   }
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-menu {
     background-color: transparent;
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 80em) {
   [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab {
     margin-left: -0.25em;
   }

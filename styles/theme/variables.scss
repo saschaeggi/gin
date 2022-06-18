@@ -89,9 +89,9 @@
   --ginToolbarWidth: 240px;
 
   // Sidebar
-  --ginSidebarWidth: 300px;
+  --ginSidebarWidth: 320px;
   --ginSidebarOffset: var(--ginSidebarWidth);
-  @include mq($breakpointWide) {
+  @include mq(wide) {
     --ginSidebarWidth: 360px;
   }
 
@@ -122,7 +122,7 @@
   --iconGinToolbar: 17px;
   --iconGinSidebarToggle: 21px;
 
-  @include mq($breakpointMedium) {
+  @include mq(medium) {
     --iconGinToolbar: 20px;
   }
 }

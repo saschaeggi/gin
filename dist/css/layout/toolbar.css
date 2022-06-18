@@ -7,7 +7,7 @@
   --ginStickyOffset: 0px;
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   :root {
     --ginToolbarSecondaryHeight: 60px;
     --iconGinToolbar: 22px;
@@ -18,13 +18,13 @@
   }
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .toolbar-fixed[data-toolbar-menu=open] {
     --ginVerticalToolbarOffset: var(--ginToolbarWidth, 240px);
   }
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   #toolbar-item-administration-tray {
     border: 0 none;
   }
@@ -38,13 +38,13 @@
   box-shadow: none;
 }
 
-@media (min-width: 588px) {
+@media (min-width: 36.75em) {
   .toolbar .toolbar-bar {
     display: flex;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   .toolbar .toolbar-bar {
     height: 0;
   }
@@ -54,17 +54,7 @@
   font-weight: normal;
 }
 
-[dir="ltr"] .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-icon::before,
-[dir="ltr"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
-  left: 1em;
-}
-
-[dir="rtl"] .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-icon::before,
-[dir="rtl"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
-  right: 1em;
-}
-
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-icon::before,
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
     width: var(--iconGinToolbar);
@@ -84,7 +74,7 @@
   }
 }
 
-@media (: ) {
+@media (max-width: 36.74em) {
   [dir="ltr"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
     left: 0;
   }
@@ -94,7 +84,7 @@
   }
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .toolbar .toolbar-bar .toolbar-logo {
     height: var(--ginStickyHeight);
   }
@@ -128,7 +118,7 @@
   max-height: 40px;
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .toolbar .toolbar-bar #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
     font-size: 0;
     height: 74px;
@@ -137,7 +127,7 @@
   }
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .toolbar .toolbar-bar #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default::before {
     width: 32px;
     height: 32px;
@@ -181,7 +171,7 @@
   justify-content: flex-end;
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   #toolbar-item-administration-tray a.toolbar-icon.override-icon:before {
     width: 0;
     content: none;
@@ -229,7 +219,7 @@
   text-decoration: none;
 }
 
-@media (: ) {
+@media (max-width: 60.99em) {
   .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
 .toolbar .toolbar-tray a.is-active {
     background: var(--colorGinPrimaryLight);
@@ -243,7 +233,7 @@ a.toolbar-menu__trigger,
   display: none;
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   #toolbar-item-administration-tray {
     display: block;
   }
@@ -679,7 +669,7 @@ a.toolbar-menu__trigger,
   background: transparent;
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon,
 .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.hover-intent > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon {
     box-shadow: none;

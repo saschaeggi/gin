@@ -177,7 +177,7 @@
   .draggable .tabledrag-handle {
     min-width: 20px;
 
-    @include mq($breakpointMedium) {
+    @include mq(medium) {
       min-width: 24px;
     }
 
@@ -201,7 +201,7 @@
   .draggable .tabledrag-handle {
     min-width: 32px;
 
-    @include mq($breakpointMedium) {
+    @include mq(medium) {
       min-width: 40px;
     }
   }

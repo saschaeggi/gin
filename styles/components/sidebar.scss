@@ -2,7 +2,7 @@
   transition: transform var(--ginTransitionFast);
 
   // Fixes the flickering happinging on smaller devices.
-  @include mq(max-width $breakpointLarge) {
+  @include mq($to: large) {
     opacity: 0;
     visibility: hidden;
   }
@@ -24,7 +24,7 @@ body[data-meta-sidebar=closed] {
 
 body[data-meta-sidebar=open] {
   .layout-region-node-secondary {
-    @include mq(max-width $breakpointLarge) {
+    @include mq($to: large) {
       opacity: 1;
       visibility: visible;
     }
@@ -82,7 +82,7 @@ body[data-meta-sidebar=open] {
     top: 18px;
     right: 16px;
 
-    @include mq($breakpointLarge) {
+    @include mq(large) {
       display: none;
     }
 
@@ -108,7 +108,7 @@ body[data-meta-sidebar=open] {
       visibility: visible;
     }
 
-    @include mq($breakpointLarge) {
+    @include mq(large) {
       display: none;
     }
   }

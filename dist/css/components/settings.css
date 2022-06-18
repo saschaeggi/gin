@@ -135,6 +135,10 @@
   background: var(--colorGinLayer2Background);
 }
 
+[data-drupal-selector=edit-enable-darkmode] .form-radios .form-type--radio {
+  margin-bottom: 0;
+}
+
 [dir="ltr"] [data-drupal-selector=edit-enable-darkmode] .form-radios .form-type--radio {
   margin-left: 0;
 }
@@ -144,6 +148,7 @@
 }
 
 [data-drupal-selector=edit-enable-darkmode] .form-radios .form-item__label {
+  display: inline-block;
   padding: .375rem 1rem;
   border: 2px solid transparent;
   border-radius: var(--ginBorderBig);

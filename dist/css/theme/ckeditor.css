@@ -71,7 +71,7 @@ body.cke_editable_themed blockquote {
   padding-right: 1.5rem;
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   body.cke_editable_themed blockquote {
     font-size: 1.2em;
   }

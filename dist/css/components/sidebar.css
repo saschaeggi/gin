@@ -2,7 +2,7 @@
   transition: transform var(--ginTransitionFast);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 63.99em) {
   .layout-region-node-secondary {
     opacity: 0;
     visibility: hidden;
@@ -21,7 +21,7 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
   transform: translateX(calc(var(--ginSidebarWidth) * -1));
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 63.99em) {
   body[data-meta-sidebar=open] .layout-region-node-secondary {
     opacity: 1;
     visibility: visible;
@@ -87,7 +87,7 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
   left: 16px;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   .meta-sidebar__close {
     display: none;
   }
@@ -124,7 +124,7 @@ body[data-meta-sidebar=open] .meta-sidebar__overlay {
   visibility: visible;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   .meta-sidebar__overlay {
     display: none;
   }

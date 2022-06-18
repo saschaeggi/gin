@@ -87,7 +87,7 @@
   padding: 1rem 0;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   .node-preview-container .node-preview-form-select {
     padding: 1.25rem 0;
   }

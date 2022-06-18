@@ -100,7 +100,7 @@
   transition: var(--ginTransition);
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 80em) {
   .ui-dialog .button,
 .ui-dialog .dropbutton__item:first-of-type > *,
 .ui-dialog .dropbutton__toggle {

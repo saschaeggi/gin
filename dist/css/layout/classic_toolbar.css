@@ -7,14 +7,14 @@
   --ginStickyOffset: 0px;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   :root {
     --iconGinToolbar: 16px;
     --ginScrollOffset: 200px;
   }
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .toolbar-fixed.toolbar-tray-open:not(.toolbar-vertical) {
     --ginHorizontalToolbarOffset: 78px;
   }
@@ -130,7 +130,7 @@
   padding-top: var(--ginHorizontalToolbarOffset);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   .gin--classic-toolbar table.sticky-header {
     margin-top: 0;
   }
@@ -155,7 +155,7 @@
           mask-size: 20px 20px;
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   [dir="ltr"] .toolbar .toolbar-bar .toolbar-icon-admin-toolbar-tools-help:before {
     left: 1rem;
   }
@@ -169,7 +169,7 @@
   box-shadow: 0 0 4px rgba(0, 0, 0, .1);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   #toolbar-item-administration-tray .toolbar-logo img {
     max-height: 21px;
   }

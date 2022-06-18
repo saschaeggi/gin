@@ -60,7 +60,7 @@
     width: auto;
     padding: 1rem 0;
 
-    @include mq($breakpointLarge) {
+    @include mq(large) {
       padding: 1.25rem 0;
     }
 

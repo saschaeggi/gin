@@ -17,7 +17,7 @@
   max-width: 90%;
   transition: font-size 0.25s ease;
 
-  @include mq($breakpointBig) {
+  @include mq(ultra) {
     font-size: 2.125em;
 
     .region-sticky--is-sticky & {
@@ -52,7 +52,7 @@
     mask-position: center center;
     mask-repeat: no-repeat;
 
-    @include mq($breakpointLarge) {
+    @include mq(large) {
       top: 4px;
       mask-size: 85% 85%;
     }

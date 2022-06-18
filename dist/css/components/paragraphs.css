@@ -210,7 +210,7 @@
   min-width: 20px;
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle,
 .js .field--widget-paragraphs .draggable .tabledrag-handle {
     min-width: 24px;
@@ -255,7 +255,7 @@
   min-width: 32px;
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
     min-width: 40px;
   }

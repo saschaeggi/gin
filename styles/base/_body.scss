@@ -8,7 +8,7 @@ body {
   background: var(--colorGinAppBackground);
   overflow-x: hidden;
 
-  @include mq($breakpointLarge) {
+  @include mq(large) {
     overflow-x: auto;
   }
 }

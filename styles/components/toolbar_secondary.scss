@@ -15,7 +15,7 @@
   border-bottom: 1px solid var(--colorGinSecondaryBorder);
   box-sizing: border-box;
 
-  @include mq($breakpointMedium) {
+  @include mq(medium) {
     padding: 10px 0;
   }
 
@@ -50,7 +50,7 @@
   }
 
   .gin--edit-form & {
-    @include mq($breakpointBig) {
+    @include mq(ultra) {
       position: relative;
       left: calc(50% - 3rem);
       transform: translateX(-50%);
@@ -63,11 +63,11 @@
     width: 100%;
     margin: 0 1rem;
 
-    @include mq($breakpointSmall) {
+    @include mq(small) {
       margin: 0 2rem;
     }
 
-    @include mq($breakpointMedium) {
+    @include mq(medium) {
       margin: 0 m#{i}n(5vw, 48px);
     }
   }
@@ -119,7 +119,7 @@
   }
 }
 
-@include mq($breakpointMedium) {
+@include mq(medium) {
   // Hide unused tabs
   .toolbar .toolbar-bar {
     background: transparent;
@@ -149,7 +149,7 @@
 }
 
 #toolbar-administration-secondary {
-  @include mq($breakpointMedium) {
+  @include mq(medium) {
     .toolbar-bar {
       position: relative;
       display: flex;
@@ -162,7 +162,7 @@
 .gin-secondary-toolbar .toolbar-secondary {
   display: none;
 
-  @include mq($breakpointMedium) {
+  @include mq(medium) {
     display: block;
 
     .toolbar-bar {
@@ -312,7 +312,7 @@
       }
 
       .toolbar-id--toolbar-icon-user {
-        @include mq($breakpointWide) {
+        @include mq(wide) {
           margin-right: -1.333em;
         }
 
@@ -343,7 +343,7 @@
 
           &,
           ~ .toolbar-tray {
-            @include mq($breakpointWide) {
+            @include mq(wide) {
               margin-right: 1.333em;
             }
           }
@@ -359,7 +359,7 @@
 
 // Show expanded
 .gin-secondary-toolbar .toolbar-secondary {
-  @include mq($breakpointWide) {
+  @include mq(wide) {
     .toolbar-bar {
       .toolbar-tab {
         margin-left: -.25em;

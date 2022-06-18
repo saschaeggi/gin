@@ -7,7 +7,7 @@
   --ginVerticalToolbarOffset: 0px; // Needs px to work in calc() functions.
   --ginStickyOffset: 0px; // Needs px to work in calc() functions.
 
-  @include mq($breakpointMedium) {
+  @include mq(medium) {
     --ginToolbarSecondaryHeight: 60px;
     --iconGinToolbar: 22px;
     --ginScrollOffset: 130px;
@@ -18,14 +18,14 @@
 }
 
 .toolbar-fixed[data-toolbar-menu=open] {
-  @include mq($breakpointMedium) {
+  @include mq(medium) {
     --ginVerticalToolbarOffset: var(--ginToolbarWidth, 240px);
   }
 }
 
 // Toolbar
 #toolbar-item-administration-tray {
-  @include mq($breakpointMedium) {
+  @include mq(medium) {
     border: 0 none;
   }
 }
@@ -38,11 +38,11 @@
       box-shadow: none;
     }
 
-    @include mq($breakpointXSmall) {
+    @include mq(xsmall) {
       display: flex;
     }
 
-    @include mq($breakpointLarge) {
+    @include mq(large) {
       height: 0;
     }
 
@@ -53,9 +53,7 @@
     #toolbar-item-administration-tray .toolbar-icon,
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &::before {
-        left: 1em;
-
-        @include mq($breakpointMedium) {
+        @include mq(medium) {
           left: calc((var(--ginToolbarWidthCollapsed) - var(--iconGinToolbar)) / 2 - 9px);
           width: var(--iconGinToolbar);
           height: var(--iconGinToolbar);
@@ -66,12 +64,12 @@
     }
 
     .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
-      @include mq(max-width #{$breakpointXSmall - 1}) {
+      @include mq($to: xsmall) {
         left: 0;
       }
     }
 
-    @include mq($breakpointMedium) {
+    @include mq(medium) {
       // Toolbar logo
       .toolbar-logo {
         height: var(--ginStickyHeight);
@@ -104,7 +102,7 @@
     }
 
     #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
-      @include mq($breakpointMedium) {
+      @include mq(medium) {
         font-size: 0;
         height: 74px;
         margin-bottom: 6px;
@@ -114,7 +112,7 @@
       &::before {
         $logoSize: 32px;
 
-        @include mq($breakpointMedium) {
+        @include mq(medium) {
           width: $logoSize;
           height: $logoSize;
           left: calc((var(--ginToolbarWidthCollapsed) - #{$logoSize}) / 2 - 9px);
@@ -154,7 +152,7 @@
 
 #toolbar-item-administration-tray a.toolbar-icon.override-icon {
   &:before {
-    @include mq($breakpointMedium) {
+    @include mq(medium) {
       left: 0;
       width: 0;
       content: none;
@@ -187,7 +185,7 @@
   font-weight: 500;
   text-decoration: none;
 
-  @include mq(max-width #{$breakpointMedium - 1}) {
+  @include mq($to: medium) {
     background: var(--colorGinPrimaryLight);
   }
 }
@@ -201,7 +199,7 @@ a.toolbar-menu__trigger,
 }
 
 // New Desktop Toolbar
-@include mq($breakpointMedium) {
+@include mq(medium) {
   #toolbar-item-administration-tray {
     display: block;
   }
@@ -546,7 +544,7 @@ a.toolbar-menu__trigger,
   &.hover-intent > .toolbar-icon,
   &.menu-item--active-trail > .toolbar-icon,
   &.menu-item--active-trail > .toolbar-box > a.toolbar-icon {
-    @include mq($breakpointMedium) {
+    @include mq(medium) {
       box-shadow: none;
 
       &::before {
@@ -578,7 +576,7 @@ a.toolbar-menu__trigger,
 
 // New navigation approach.
 // .toolbar-fixed[data-toolbar-menu=open] {
-//   @include mq($breakpointMedium) {
+//   @include mq(medium) {
 //     padding-left: calc(var(--ginToolbarWidthCollapsed) + var(--ginToolbarWidth));
 
 //     .toolbar-menu-administration > .toolbar-menu > .menu-item--active-trail > .toolbar-menu {

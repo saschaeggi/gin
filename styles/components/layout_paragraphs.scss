@@ -433,7 +433,7 @@
       flex-basis: 33.333%;
       margin-bottom: 16px;
 
-      @include mq($breakpointLarge) {
+      @include mq(large) {
         flex-basis: 25%;
       }
 
@@ -444,7 +444,7 @@
         display: block;
         margin: 8px auto;
 
-        @include mq($breakpointLarge) {
+        @include mq(large) {
           width: 30px;
           height: 40px;
         }
@@ -474,7 +474,7 @@
               0 10px 40px rgba(0, 0, 0, .15);
   overflow: hidden;
 
-  @include mq($breakpointLarge) {
+  @include mq(large) {
     width: 400px;
   }
 
@@ -521,7 +521,7 @@
       height: 24px;
       margin-bottom: .5rem;
 
-      @include mq($breakpointLarge) {
+      @include mq(large) {
         width: 32px;
         height: 32px;
       }

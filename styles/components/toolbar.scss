@@ -13,7 +13,7 @@ body.gin--classic-toolbar {
   .toolbar-bar {
     box-shadow: none;
 
-    @include mq($breakpointXSmall) {
+    @include mq(xsmall) {
       .user-menu {
         flex-grow: 1;
         flex-shrink: 0;
@@ -116,13 +116,13 @@ body.gin--classic-toolbar {
       }
 
       &:hover::before {
-        @include mq($breakpointMedium) {
+        @include mq(medium) {
           background: var(--colorGinPrimary);
         }
       }
 
       &.is-active:hover::before {
-        @include mq($breakpointMedium) {
+        @include mq(medium) {
           background: var(--colorGinPrimary);
         }
       }
@@ -588,7 +588,7 @@ body.gin--classic-toolbar {
 
   &.is-active:before,
   &.is-active:hover:before {
-    @include mq($breakpointMedium) {
+    @include mq(medium) {
       background-color: var(--colorGinButtonText);
     }
   }
@@ -602,7 +602,7 @@ body.gin--classic-toolbar {
 .toolbar-tab > .toolbar-icon-edit.toolbar-item {
   &:hover:before,
   &.is-active:before {
-    @include mq(max-width #{$breakpointMedium - 1}) {
+    @include mq($to: medium) {
       background: #fff;
     }
   }

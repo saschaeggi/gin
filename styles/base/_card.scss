@@ -18,7 +18,7 @@
     img {
       border-radius: var(--ginBorderDefault) var(--ginBorderDefault) 0 0;
 
-      @include mq($breakpointXSmall) {
+      @include mq(xsmall) {
         border-radius: var(--ginBorderDefault) 0 0 var(--ginBorderDefault);
       }
     }
@@ -28,7 +28,7 @@
     background-color: var(--colorGinLayerBackground);
     border-radius: 0 0 var(--ginBorderXSmall) var(--ginBorderXSmall);
 
-    @include mq($breakpointXSmall) {
+    @include mq(xsmall) {
       border-radius: 0 var(--ginBorderXSmall) var(--ginBorderXSmall) 0;
     }
 

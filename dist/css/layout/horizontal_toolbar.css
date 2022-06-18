@@ -7,7 +7,7 @@
   --ginStickyOffset: 0px;
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   :root {
     --ginToolbarSecondaryHeight: 60px;
     --ginToolbarHeight: 53px;
@@ -26,14 +26,14 @@
   box-shadow: none;
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .toolbar .toolbar-bar {
     display: flex;
     background: none;
   }
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .toolbar .toolbar-bar {
     height: 0;
   }
@@ -162,7 +162,7 @@
   background-color: var(--colorGinAppBackground);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   .gin--classic-toolbar table.sticky-header {
     margin-top: 0;
   }
@@ -205,14 +205,14 @@
   background-color: transparent;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   .gin--horizontal-toolbar.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
     top: var(--ginToolbarHeight);
     height: calc(100% - var(--ginToolbarHeight));
   }
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .gin--horizontal-toolbar #toolbar-administration {
     z-index: 502;
     position: fixed;
@@ -227,7 +227,7 @@
   }
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .gin--horizontal-toolbar #toolbar-administration .toolbar-lining {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -242,7 +242,7 @@
   }
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   [dir="ltr"] .gin--horizontal-toolbar #toolbar-administration .menu-item__tools,
 [dir="ltr"] .gin--horizontal-toolbar #toolbar-administration .menu-item__admin_toolbar_tools-help {
     margin-left: -16px;
@@ -265,7 +265,7 @@
           mask-size: 20px 20px;
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   [dir="ltr"] .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help {
     padding-left: 2.875em;
   }
@@ -298,7 +298,7 @@
   }
 }
 
-@media (min-width: 976px) {
+@media (min-width: 61em) {
   .gin--horizontal-toolbar #toolbar-administration .toolbar-menu-administration {
     margin-left: min(5vw, 48px);
     margin-right: min(5vw, 48px);
