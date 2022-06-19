@@ -122,10 +122,6 @@ libraries-override:
     js:
       js/media_library.view.js: js/overrides/media_library.view.js
 
-  core/drupal.tabledrag:
-    js:
-      /core/themes/claro/js/tabledrag.js: false
-
   # Gin overrides
   core/drupal.dialog.off_canvas:
     css:
@@ -162,8 +158,6 @@ libraries-extend:
     - gin/media_library
   media_library/widget:
     - gin/media_library
-  core/drupal.tabledrag:
-    - gin/gin_tabledrag
   contextual/drupal.contextual-links:
     - gin/contextual_links
   autosave_form/drupal.autosave_form:
