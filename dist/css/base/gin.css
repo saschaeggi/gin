@@ -2134,6 +2134,7 @@ td.webform-has-field-suffix > .form-item > .form-element {
 
 .draggable a.tabledrag-handle {
   float: none;
+  vertical-align: middle;
 }
 
 .draggable a.tabledrag-handle:focus::before {

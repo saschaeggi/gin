@@ -103,14 +103,22 @@ gin_messages:
   dependencies:
     - core/jquery.once
 
+# Custom CSS
+
 gin_custom_css:
   css:
     theme:
       public://gin-custom.css: { preprocess: false, minified: false, weight: 100 }
 
-gin_tabledrag:
+# Overrides
+
+once:
   js:
-    js/overrides/tabledrag.js: { minified: false, weight: -1 }
+    js/overrides/once.js: { minified: false, weight: -1 }
+
+gin_tabledrag_legacy:
+  js:
+    js/overrides/tabledrag.legacy.js: { minified: false, weight: -1 }
 
 gin_media_embed_ckeditor_theme:
   js:
