@@ -19,10 +19,12 @@ function gin_preprocess_breadcrumb(&$variables) {
       $entity_id = $entity ? $entity->getEntityTypeId() : NULL;
       $url = $entity ? $entity->toUrl()->toString() : NULL;
 
-      if ($item['url'] === '/') {
+      // Back to site item.
+      if ($key === 0) {
         $variables['breadcrumb'][$key]['text'] = t('Back to site');
         $variables['breadcrumb'][$key]['attributes']['title'] = t('Return to site content');
 
+        // Media handling.
         if ($entity_id === 'media') {
           $config = \Drupal::config('media.settings');
 
@@ -34,6 +36,7 @@ function gin_preprocess_breadcrumb(&$variables) {
           }
         }
 
+        // Check for entity $url.
         if ($url) {
           $variables['breadcrumb'][$key]['url'] = $url;
         }
@@ -46,14 +49,32 @@ function gin_preprocess_breadcrumb(&$variables) {
         // Remove as we already have the back to site link set.
         unset($variables['breadcrumb'][$key]);
       }
-      elseif ($item['url'] === '/node') {
-        if ($node = \Drupal::routeMatch()->getParameter('node')) {
-          if ($node instanceof NodeInterface) {
-            $variables['breadcrumb'][$key]['text'] = t('Edit') . ' ' . $node->type->entity->label();
-            $variables['breadcrumb'][$key]['url'] = '';
+    }
+
+    // Adjust breadcrumb for nodes.
+    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+      if ($node instanceof NodeInterface) {
+        // Unset items, except home link.
+        foreach ($variables['breadcrumb'] as $key => $item) {
+          if ($key > 0) {
+            unset($variables['breadcrumb'][$key]);
           }
         }
+
+        // Add bundle info.
+        $variables['breadcrumb'][] = [
+          'text' => t('Edit') . ' ' . $node->type->entity->label(),
+          'url' => '',
+        ];
       }
+    }
+    // Adjust breadcrumb for other entities.
+    elseif ($entity) {
+      // Add bundle info.
+      $variables['breadcrumb'][] = [
+        'text' => t('Edit') . ' ' . $entity->getEntityType()->getLabel(),
+        'url' => '',
+      ];
     }
   }
 
