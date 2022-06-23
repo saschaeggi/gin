@@ -528,6 +528,12 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
   margin-top: 0;
 }
 
+@media (max-width: 60.99em) {
+  .region-sticky--is-sticky .block-page-title-block {
+    visibility: hidden;
+  }
+}
+
 .block-page-title-block:last-child {
   margin-bottom: 0;
 }
@@ -2042,6 +2048,11 @@ table tbody tr {
   border-bottom: 1px solid var(--colorGinTableBorder);
 }
 
+table tbody td {
+  height: auto;
+  padding: var(--ginSpacingDensityXsmall) var(--ginSpacingDefault);
+}
+
 table tr,
 table .draggable-table.tabledrag-disabled tr {
   color: var(--colorGinText);
@@ -2736,6 +2747,12 @@ fieldset:not(.fieldgroup) > .fieldset-wrapper {
 
 [dir="rtl"] .image-style-new .form-item {
   margin-left: .25rem;
+}
+
+tr .form-item,
+.container-inline .form-item {
+  margin-top: var(--ginSpacingDensitySmall);
+  margin-bottom: var(--ginSpacingDensitySmall);
 }
 
 .button,

@@ -61,12 +61,20 @@
   --ginEasing: cubic-bezier(.19, 1, .22, 1);
   --ginTransition: .15s var(--ginEasing);
   --ginTransitionFast: .3s var(--ginEasing);
-  --ginBorderTiny: 2px;
-  --ginBorderXSmall: 4px;
-  --ginBorderSmall: 6px;
-  --ginBorderDefault: 8px;
-  --ginBorderMedium: 12px;
-  --ginBorderBig: 16px;
+  --ginSpacingTiny: .25rem;
+  --ginSpacingXsmall: .5rem;
+  --ginSpacingSmall: .75rem;
+  --ginSpacingDefault: 1rem;
+  --ginSpacingMedium: 1.5rem;
+  --ginSpacingLarge: 2rem;
+  --ginSpacingXlarge: 3rem;
+  --ginSpacingXxlarge: 4rem;
+  --ginBorderTiny: .125rem;
+  --ginBorderXSmall: .25rem;
+  --ginBorderSmall: .375rem;
+  --ginBorderDefault: .5rem;
+  --ginBorderMedium: .75rem;
+  --ginBorderLarge: 1rem;
   --iconGinSecondaryToolbar: 17px;
   --iconGinToolbar: 17px;
   --iconGinSidebarToggle: 21px;
@@ -82,6 +90,39 @@
   :root {
     --iconGinToolbar: 20px;
   }
+}
+
+[data-gin-layout-density=small] {
+  --ginSpacingDensityTiny: .15625rem;
+  --ginSpacingDensityXsmall: .3125rem;
+  --ginSpacingDensitySmall: .46875rem;
+  --ginSpacingDensityDefault: .625rem;
+  --ginSpacingDensityMedium: .9375rem;
+  --ginSpacingDensityLarge: 1.25rem;
+  --ginSpacingDensityXlarge: 1.875rem;
+  --ginSpacingDensityXxlarge: 2.5rem;
+}
+
+[data-gin-layout-density=medium] {
+  --ginSpacingDensityTiny: .1875rem;
+  --ginSpacingDensityXsmall: .375rem;
+  --ginSpacingDensitySmall: .5625rem;
+  --ginSpacingDensityDefault: .75rem;
+  --ginSpacingDensityMedium: 1.125rem;
+  --ginSpacingDensityLarge: 1.5rem;
+  --ginSpacingDensityXlarge: 2.25rem;
+  --ginSpacingDensityXxlarge: 3rem;
+}
+
+:root {
+  --ginSpacingDensityTiny: .25rem;
+  --ginSpacingDensityXsmall: .5rem;
+  --ginSpacingDensitySmall: .75rem;
+  --ginSpacingDensityDefault: 1rem;
+  --ginSpacingDensityMedium: 1.5rem;
+  --ginSpacingDensityLarge: 2rem;
+  --ginSpacingDensityXlarge: 3rem;
+  --ginSpacingDensityXxlarge: 4rem;
 }
 
 .gin--dark-mode {

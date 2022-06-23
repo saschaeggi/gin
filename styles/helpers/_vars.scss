@@ -16,7 +16,21 @@ $breakpoints: (
   ultra: $breakpointBig,
 );
 
-$colorDarkAppBackground: #1B1B1D;
+$ginLayoutDensity: (
+  small: .625,
+  medium: .75,
+  default: 1,
+);
 
+$ginSpacings: (
+  tiny: 4px,
+  xsmall: 8px,
+  small: 12px,
+  default: 16px,
+  medium: 24px,
+  large: 32px,
+  xlarge: 48px,
+  xxlarge: 64px,
+);
 
 $colorDarkAppBackground: #1B1B1D;

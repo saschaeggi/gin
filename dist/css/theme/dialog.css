@@ -768,3 +768,9 @@
   margin-left: .25rem;
 }
 
+.ui-dialog tr .form-item,
+.ui-dialog .container-inline .form-item {
+  margin-top: var(--ginSpacingDensitySmall);
+  margin-bottom: var(--ginSpacingDensitySmall);
+}
+

@@ -2,13 +2,13 @@
   max-width: $breakpointWide;
   margin: 1rem;
   border: 0 none !important;
-  border-radius: var(--ginBorderBig);
+  border-radius: var(--ginBorderLarge);
   background: var(--colorGinLayerBackground);
 
   // Dialog without title
   .ui-dialog-content:first-of-type {
-    border-top-left-radius: var(--ginBorderBig);
-    border-top-right-radius: var(--ginBorderBig);
+    border-top-left-radius: var(--ginBorderLarge);
+    border-top-right-radius: var(--ginBorderLarge);
   }
 
   // Node actions placement
@@ -48,8 +48,8 @@
     padding: 24px;
     background: $colorDarkAppBackground;
     border: 0 none;
-    border-top-left-radius: var(--ginBorderBig);
-    border-top-right-radius: var(--ginBorderBig);
+    border-top-left-radius: var(--ginBorderLarge);
+    border-top-right-radius: var(--ginBorderLarge);
   }
 
   .ui-dialog-title {
@@ -63,8 +63,8 @@
   .ui-widget-content.ui-dialog-buttonpane {
     padding: 16px 24px;
     border-top: 1px solid var(--colorGinLayerBorder);
-    border-bottom-left-radius: var(--ginBorderBig);
-    border-bottom-right-radius: var(--ginBorderBig);
+    border-bottom-left-radius: var(--ginBorderLarge);
+    border-bottom-right-radius: var(--ginBorderLarge);
     background: var(--colorGinAppBackground);
 
     .button {

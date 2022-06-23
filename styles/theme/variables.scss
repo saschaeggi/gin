@@ -110,12 +110,17 @@
   --ginTransitionFast: .3s var(--ginEasing);
 
   // Spacings
-  --ginBorderTiny: 2px;
-  --ginBorderXSmall: 4px;
-  --ginBorderSmall: 6px;
-  --ginBorderDefault: 8px;
-  --ginBorderMedium: 12px;
-  --ginBorderBig: 16px;
+  @each $name, $size in $ginSpacings {
+    --ginSpacing#{'' + capitalize($name)}: #{rem($size)};
+  }
+
+  // Border
+  --ginBorderTiny: #{rem(2px)};
+  --ginBorderXSmall: #{rem(4px)};
+  --ginBorderSmall: #{rem(6px)};
+  --ginBorderDefault: #{rem(8px)};
+  --ginBorderMedium: #{rem(12px)};
+  --ginBorderLarge: #{rem(16px)};
 
   // Icons
   --iconGinSecondaryToolbar: 17px;
@@ -124,6 +129,22 @@
 
   @include mq(medium) {
     --iconGinToolbar: 20px;
+  }
+}
+
+@each $name, $density in $ginLayoutDensity {
+  @if $name == 'default' {
+    :root {
+      @each $name, $size in $ginSpacings {
+        --ginSpacingDensity#{'' + capitalize($name)}: #{rem($size * $density)};
+      }
+    }
+  } @else {
+    [data-gin-layout-density=#{'' + $name}] {
+      @each $name, $size in $ginSpacings {
+        --ginSpacingDensity#{'' + capitalize($name)}: #{rem($size * $density)};
+      }
+    }
   }
 }
 

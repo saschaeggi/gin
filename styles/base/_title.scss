@@ -1,4 +1,10 @@
 .block-page-title-block {
+  @include mq($to: medium) {
+    .region-sticky--is-sticky & {
+      visibility:hidden;
+    }
+  }
+
   &:last-child {
     margin-bottom: 0;
   }

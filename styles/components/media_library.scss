@@ -55,7 +55,7 @@
   }
 
   &--grid {
-    border-radius: var(--ginBorderBig);
+    border-radius: var(--ginBorderLarge);
 
     &::before,
     &.is-hover::before,
@@ -119,7 +119,7 @@
     position: relative;
     padding-bottom: 100%;
     border: 1px solid var(--colorGinBorder);
-    border-radius: var(--ginBorderBig);
+    border-radius: var(--ginBorderLarge);
     overflow: hidden;
 
     .field {

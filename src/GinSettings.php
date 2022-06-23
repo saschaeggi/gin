@@ -223,6 +223,11 @@ class GinSettings implements ContainerInjectionInterface {
       $value = $value === TRUE || $value === 'true' ||  $value === '1' || $value === 1 ? 'classic' : $value;
     }
 
+    // Layout density check.
+    if ($name === 'layout_density') {
+      $value = $value === '0' ?  'default' : $value;
+    }
+
     // Logo legacy settings check.
     if ($name === 'icon_default' && is_null($value)) {
       $value = $this->get('logo.use_default');
@@ -271,9 +276,10 @@ class GinSettings implements ContainerInjectionInterface {
    */
   public function getSettingsForm(AccountInterface $account = NULL): array {
     $beta_label = ' (BETA)';
+
     $form['enable_darkmode'] = [
       '#type' => 'radios',
-      '#title' => $this->t('Appearance') . $beta_label,
+      '#title' => $this->t('Appearance'),
       '#description' => $this->t('Enables Darkmode for the admin interface.'),
       '#default_value' => (string) ($account ? $this->get('enable_darkmode', $account) : $this->getDefault('enable_darkmode')),
       '#options' => [
@@ -432,6 +438,20 @@ class GinSettings implements ContainerInjectionInterface {
       ];
     }
 
+    // Layout density setting.
+    $form['layout_density'] = [
+      '#type' => 'radios',
+      '#title' => $this->t('Layout density') . $beta_label,
+      '#description' => $this->t('Changes the layout density for tables in the admin interface.'),
+      '#default_value' => (string) ($account ? $this->get('layout_density', $account) : $this->getDefault('layout_density')),
+      '#options' => [
+        'default' => $this->t('Default'),
+        'medium' => $this->t('Compact'),
+        'small' => $this->t('Narrow'),
+      ],
+    ];
+
+    // Description toggle.
     $form['show_description_toggle'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Enable form description toggle'),

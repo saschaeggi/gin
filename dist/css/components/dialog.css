@@ -2,13 +2,13 @@
   max-width: 1280px;
   margin: 1rem;
   border: 0 none !important;
-  border-radius: var(--ginBorderBig);
+  border-radius: var(--ginBorderLarge);
   background: var(--colorGinLayerBackground);
 }
 
 .ui-dialog:not(.ui-dialog-off-canvas) .ui-dialog-content:first-of-type {
-  border-top-left-radius: var(--ginBorderBig);
-  border-top-right-radius: var(--ginBorderBig);
+  border-top-left-radius: var(--ginBorderLarge);
+  border-top-right-radius: var(--ginBorderLarge);
 }
 
 .ui-dialog:not(.ui-dialog-off-canvas) .layout-region-node-actions {
@@ -50,8 +50,8 @@
   padding: 24px;
   background: #1b1b1d;
   border: 0 none;
-  border-top-left-radius: var(--ginBorderBig);
-  border-top-right-radius: var(--ginBorderBig);
+  border-top-left-radius: var(--ginBorderLarge);
+  border-top-right-radius: var(--ginBorderLarge);
 }
 
 .ui-dialog .ui-dialog-title {
@@ -65,8 +65,8 @@
 .ui-dialog .ui-widget-content.ui-dialog-buttonpane {
   padding: 16px 24px;
   border-top: 1px solid var(--colorGinLayerBorder);
-  border-bottom-left-radius: var(--ginBorderBig);
-  border-bottom-right-radius: var(--ginBorderBig);
+  border-bottom-left-radius: var(--ginBorderLarge);
+  border-bottom-right-radius: var(--ginBorderLarge);
   background: var(--colorGinAppBackground);
 }
 

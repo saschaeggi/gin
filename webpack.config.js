@@ -162,6 +162,7 @@ module.exports = {
               // Global SCSS imports:
               additionalData: `
                 @use "sass:color";
+                @use "sass:math";
                 @import "styles/helpers/_mq.scss";
                 @import "styles/helpers/_vars.scss";
                 @import "styles/helpers/_tools.scss";

@@ -77,6 +77,11 @@ table {
     tr {
       border-bottom: 1px solid var(--colorGinTableBorder);
     }
+
+    td {
+      height: auto;
+      padding: var(--ginSpacingDensityXsmall) var(--ginSpacingDefault);
+    }
   }
 
   tr,

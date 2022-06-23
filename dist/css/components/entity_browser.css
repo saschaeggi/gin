@@ -20,7 +20,7 @@
 
 .entities-list .item-container .field__item {
   border: 3px solid transparent;
-  border-radius: var(--ginBorderBig);
+  border-radius: var(--ginBorderLarge);
   overflow: hidden;
 }
 
@@ -145,7 +145,7 @@ table.entities-list td {
 
 .gin-entity-browser .entity-browser-form .views-row {
   border: 1px solid var(--colorGinBorder);
-  border-radius: calc(var(--ginBorderBig) + 2px);
+  border-radius: calc(var(--ginBorderLarge) + 2px);
   position: relative;
 }
 
@@ -183,7 +183,7 @@ table.entities-list td {
 
 .gin-entity-browser .entity-browser-form .views-field-thumbnail__target-id {
   border: 3px solid transparent;
-  border-radius: var(--ginBorderBig);
+  border-radius: var(--ginBorderLarge);
   overflow: hidden;
 }
 

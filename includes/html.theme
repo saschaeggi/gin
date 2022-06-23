@@ -32,6 +32,9 @@ function gin_preprocess_html(&$variables) {
       $variables['attributes']['class'][] = 'gin--high-contrast-mode';
     }
 
+    // Set layout density.
+    $variables['attributes']['data-gin-layout-density'] = $settings->get('layout_density');
+
     // Edit form? Use the new Gin Edit form layout.
     if (\Drupal::classResolver(GinContentFormHelper::class)->isContentForm()) {
       $variables['attributes']['class'][] = 'gin--edit-form';

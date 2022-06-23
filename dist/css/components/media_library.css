@@ -64,7 +64,7 @@
 }
 
 .media-library-item--grid {
-  border-radius: var(--ginBorderBig);
+  border-radius: var(--ginBorderLarge);
 }
 
 .media-library-item--grid::before, .media-library-item--grid.is-hover::before, .media-library-item--grid.checked::before, .media-library-item--grid.is-focus::before {
@@ -121,7 +121,7 @@
   position: relative;
   padding-bottom: 100%;
   border: 1px solid var(--colorGinBorder);
-  border-radius: var(--ginBorderBig);
+  border-radius: var(--ginBorderLarge);
   overflow: hidden;
 }
 

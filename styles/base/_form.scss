@@ -473,3 +473,9 @@ fieldset:not(.fieldgroup) {
     margin-right: .25rem;
   }
 }
+
+tr .form-item,
+.container-inline .form-item {
+  margin-top: var(--ginSpacingDensitySmall);
+  margin-bottom: var(--ginSpacingDensitySmall);
+}
