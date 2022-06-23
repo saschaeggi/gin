@@ -1,7 +1,7 @@
 (($, Drupal, drupalSettings) => {
   Drupal.behaviors.ginEditForm = {
     attach: function() {
-      const form = document.querySelector(".region-content form"), sticky = $(".gin-sticky").clone(!0, !0), newParent = document.querySelector(".region-sticky__items__inner");
+      const form = document.querySelector(".region-content .block-system-main-block form"), sticky = $(".gin-sticky").clone(!0, !0), newParent = document.querySelector(".region-sticky__items__inner");
       if (newParent && 0 === newParent.querySelectorAll(".gin-sticky").length) {
         sticky.appendTo($(newParent));
         const actionButtons = newParent.querySelectorAll('button[type="submit"], input[type="submit"]');

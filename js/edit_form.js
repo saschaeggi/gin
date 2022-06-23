@@ -5,7 +5,7 @@
 (($, Drupal, drupalSettings) => {
   Drupal.behaviors.ginEditForm = {
     attach: function attach() {
-      const form = document.querySelector('.region-content form');
+      const form = document.querySelector('.region-content .block-system-main-block form');
       const sticky = $('.gin-sticky').clone(true, true);
       const newParent = document.querySelector('.region-sticky__items__inner');
 

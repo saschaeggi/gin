@@ -4,8 +4,9 @@
   /* on top of the Drupal world */
   position: sticky;
   top: 0;
-  width: 100%;
   padding: 0;
+  width: 100%;
+  height: var(--ginToolbarSecondaryHeight);
   background: rgba(255, 255, 255, .98);
   border-bottom: 1px solid var(--colorGinLayerBorder);
 }
@@ -85,11 +86,19 @@
   justify-content: space-between;
   width: auto;
   padding: 1rem 0;
+  margin: 0 1rem;
+  height: 100%;
 }
 
-@media (min-width: 64em) {
+@media (min-width: 48em) {
   .node-preview-container .node-preview-form-select {
-    padding: 1.25rem 0;
+    margin: 0 2rem;
+  }
+}
+
+@media (min-width: 61em) {
+  .node-preview-container .node-preview-form-select {
+    margin: 0 min(5vw, 48px);
   }
 }
 
