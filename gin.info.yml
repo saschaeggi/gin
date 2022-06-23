@@ -141,6 +141,8 @@ libraries-override:
     css:
       layout:
         css/layout/local-actions.css: false
+      theme:
+        css/theme/colors.css: false
 
 libraries-extend:
   core/drupal.autocomplete:
