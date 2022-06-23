@@ -11,6 +11,7 @@ gin_base:
       dist/css/theme/font.css: { minified: false }
       dist/css/theme/variables.css: { minified: false }
   dependencies:
+    - gin/tabs
     - gin/dialog
 
 # Legacy
@@ -139,6 +140,11 @@ settings:
   css:
     component:
       dist/css/components/settings.css: { minified: false }
+
+tabs:
+  css:
+    component:
+      dist/css/components/tabs.css: { minified: false, weight: 99 }
 
 edit_form:
   js:
