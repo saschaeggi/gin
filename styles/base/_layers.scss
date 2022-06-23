@@ -43,7 +43,7 @@
 }
 
 .layer-wrapper,
-.block-system > form,
+.block-system-main-block > form,
 .view-content .views-form,
 .views-exposed-form.views-exposed-form,
 .panel,
@@ -71,7 +71,8 @@
   }
 
   // Remove extra spacing on top of form.
-  .form-wrapper:first-of-type .form-item {
+  > .form-wrapper:first-of-type .form-item,
+  .layout-region-node-main > .form-wrapper:first-of-type .form-item {
     margin-top: 0;
   }
 }

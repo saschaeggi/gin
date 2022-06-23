@@ -446,7 +446,7 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 }
 
 .layer-wrapper,
-.block-system > form,
+.block-system-main-block > form,
 .view-content .views-form,
 .views-exposed-form.views-exposed-form,
 .panel,
@@ -471,7 +471,7 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 
 @media (min-width: 48em) {
   .layer-wrapper,
-.block-system > form,
+.block-system-main-block > form,
 .view-content .views-form,
 .views-exposed-form.views-exposed-form,
 .panel,
@@ -491,23 +491,40 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
   }
 }
 
-.layer-wrapper .form-wrapper:first-of-type .form-item,
-.block-system > form .form-wrapper:first-of-type .form-item,
-.view-content .views-form .form-wrapper:first-of-type .form-item,
-.views-exposed-form.views-exposed-form .form-wrapper:first-of-type .form-item,
-.panel .form-wrapper:first-of-type .form-item,
-.admin-list .form-wrapper:first-of-type .form-item,
-.update .form-wrapper:first-of-type .form-item,
-.view-files .view-content .form-wrapper:first-of-type .form-item,
-.view-watchdog .view-content .form-wrapper:first-of-type .form-item,
-.system-status-general-info .form-wrapper:first-of-type .form-item,
-.system-status-report .form-wrapper:first-of-type .form-item,
-.views-edit-view .form-wrapper:first-of-type .form-item,
-.views-preview-wrapper .form-wrapper:first-of-type .form-item,
-.view-block-content .view-content .form-wrapper:first-of-type .form-item,
-.system-themes-list .form-wrapper:first-of-type .form-item,
-#views-entity-list .form-wrapper:first-of-type .form-item,
-.admin.my-workbench .form-wrapper:first-of-type .form-item {
+.layer-wrapper > .form-wrapper:first-of-type .form-item,
+.layer-wrapper .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.block-system-main-block > form > .form-wrapper:first-of-type .form-item,
+.block-system-main-block > form .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.view-content .views-form > .form-wrapper:first-of-type .form-item,
+.view-content .views-form .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.views-exposed-form.views-exposed-form > .form-wrapper:first-of-type .form-item,
+.views-exposed-form.views-exposed-form .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.panel > .form-wrapper:first-of-type .form-item,
+.panel .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.admin-list > .form-wrapper:first-of-type .form-item,
+.admin-list .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.update > .form-wrapper:first-of-type .form-item,
+.update .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.view-files .view-content > .form-wrapper:first-of-type .form-item,
+.view-files .view-content .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.view-watchdog .view-content > .form-wrapper:first-of-type .form-item,
+.view-watchdog .view-content .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.system-status-general-info > .form-wrapper:first-of-type .form-item,
+.system-status-general-info .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.system-status-report > .form-wrapper:first-of-type .form-item,
+.system-status-report .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.views-edit-view > .form-wrapper:first-of-type .form-item,
+.views-edit-view .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.views-preview-wrapper > .form-wrapper:first-of-type .form-item,
+.views-preview-wrapper .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.view-block-content .view-content > .form-wrapper:first-of-type .form-item,
+.view-block-content .view-content .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.system-themes-list > .form-wrapper:first-of-type .form-item,
+.system-themes-list .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+#views-entity-list > .form-wrapper:first-of-type .form-item,
+#views-entity-list .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.admin.my-workbench > .form-wrapper:first-of-type .form-item,
+.admin.my-workbench .layout-region-node-main > .form-wrapper:first-of-type .form-item {
   margin-top: 0;
 }
 
