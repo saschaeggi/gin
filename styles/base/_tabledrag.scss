@@ -1,6 +1,7 @@
 .draggable {
   a.tabledrag-handle {
     float: none;
+    vertical-align: middle;
 
     &:focus::before {
       box-shadow: 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus);

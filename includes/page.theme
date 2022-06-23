@@ -64,6 +64,8 @@ function gin_page_attachments_alter(&$page) {
   $gin_activated = _gin_is_active();
 
   if ($gin_activated) {
+    $drupal_version = (float) Drupal::VERSION;
+
     // Get theme settings.
     $settings = \Drupal::classResolver(GinSettings::class);
     $toolbar = $settings->get('classic_toolbar');
@@ -86,6 +88,16 @@ function gin_page_attachments_alter(&$page) {
 
     // Attach accent overrides CSS.
     $page['#attached']['library'][] = 'gin/gin_accent';
+
+    // Attach Drupal.once for older Drupal versions.
+    if ($drupal_version < 9.3) {
+      $page['#attached']['library'][] = 'gin/once';
+    }
+
+    // Use legacy tabledrag for Drupal versions below 9.0.
+    if ($drupal_version < 9.0) {
+      $page['#attached']['library'][] = 'gin/gin_tabledrag_legacy';
+    }
 
     // Custom CSS file.
     if (file_exists('public://gin-custom.css')) {
