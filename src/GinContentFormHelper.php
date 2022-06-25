@@ -135,14 +135,6 @@ class GinContentFormHelper implements ContainerInjectionInterface {
         $form['actions']['preview']['#weight'] = $save_weight - 1;
       }
 
-      // Add sidebar toggle.
-      $hide_sidebar_translation = t('Hide sidebar panel');
-      $form['actions']['gin_sidebar_toggle'] = [
-        '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger" role="button" title="' . $hide_sidebar_translation . '" aria-controls="gin_sidebar"><span class="visually-hidden">' . $hide_sidebar_translation . '</span></a>',
-        '#weight' => '999',
-      ];
-      $form['#attached']['library'][] = 'gin/sidebar';
-
       // Create gin_actions group.
       $form['gin_actions'] = [
         '#type' => 'container',
@@ -164,6 +156,13 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       // Now let's just remove delete, as we'll move that over to gin_sidebar.
       unset($form['gin_actions']['actions']['delete']);
       unset($form['gin_actions']['actions']['delete_translation']);
+
+      // Add sidebar toggle.
+      $form['gin_actions']['gin_sidebar_toggle'] = [
+        '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger" role="button" title="' . t('Hide sidebar panel') . '" aria-controls="gin_sidebar"><span class="visually-hidden">' . t('Hide sidebar panel') . '</span></a>',
+        '#weight' => '999',
+      ];
+      $form['#attached']['library'][] = 'gin/sidebar';
 
       // Create gin_sidebar group.
       $form['gin_sidebar'] = [
