@@ -53,8 +53,8 @@
           );
         }
 
-        $(CKEDITOR.instances, context).once('gin_ckeditor').each(function(index, value) {
-          CKEDITOR.on('instanceReady', function() {
+        $(CKEDITOR.instances, context).each(function(index, value) {
+          const $ckeditorInstance = CKEDITOR.on('instanceReady', function() {
             Object.entries(value).forEach(([key, editor]) => {
               // Initial accent color.
               $(editor.document.$)
@@ -135,6 +135,7 @@
               });
             });
           });
+          once('ginCKEditor', $ckeditorInstance);
         });
       }
     }

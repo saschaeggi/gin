@@ -101,8 +101,6 @@ gin_description_toggle:
 gin_messages:
   js:
     dist/js/messages.js: { minified: false }
-  dependencies:
-    - core/jquery.once
 
 # Custom CSS
 

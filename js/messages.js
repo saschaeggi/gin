@@ -10,7 +10,7 @@
 (($, Drupal, drupalSettings) => {
   Drupal.behaviors.ginMessagesDismiss = {
     attach: function(context) {
-      $('.messages .button--dismiss', context).once('messages-dismiss').click(function(event) {
+      const $messagesClick = $('.messages .button--dismiss', context).click(function(event) {
         event.preventDefault();
         const $elem = $(this).parents('.messages-list__item');
 
@@ -20,6 +20,7 @@
           $(this).css('opacity', 1);
         })
       });
+      once('messages-dismiss', $messagesClick);
     }
   }
 })(jQuery, Drupal, drupalSettings);

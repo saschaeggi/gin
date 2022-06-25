@@ -4,9 +4,11 @@
       "classic" != drupalSettings.gin.toolbar_variant && localStorage.getItem("Drupal.toolbar.trayVerticalLocked") && localStorage.removeItem("Drupal.toolbar.trayVerticalLocked"), 
       "true" === localStorage.getItem("Drupal.gin.toolbarExpanded") ? ($("body").attr("data-toolbar-menu", "open"), 
       $(".toolbar-menu__trigger").addClass("is-active")) : ($("body").attr("data-toolbar-menu", ""), 
-      $(".toolbar-menu__trigger").removeClass("is-active")), $(document).once("ginToolbarShortcut").on("keydown", (function(e) {
+      $(".toolbar-menu__trigger").removeClass("is-active"));
+      const $toolbarShortcutTrigger = $("html").on("keydown", (function(e) {
         !0 === e.altKey && 84 === e.keyCode && Drupal.behaviors.ginToolbarToggle.toggleToolbar();
-      })), $(".toolbar-menu__trigger", context).on("click", (function(e) {
+      }));
+      once("ginToolbarShortcut", $toolbarShortcutTrigger), $(".toolbar-menu__trigger", context).on("click", (function(e) {
         e.preventDefault(), Drupal.behaviors.ginToolbarToggle.toggleToolbar();
       })), $("#gin-toolbar-bar .toolbar-item", context).on("click", (function() {
         $("body").attr("data-toolbar-tray", $(this).data("toolbar-tray")), $(document).ready((() => {
@@ -17,7 +19,8 @@
       }));
     },
     toggleToolbar: function(context) {
-      $this = $(".toolbar-menu__trigger", context), $this.toggleClass("is-active");
+      const $this = $(".toolbar-menu__trigger", context);
+      $this.toggleClass("is-active");
       let active = "true";
       $this.hasClass("is-active") ? $("body").attr("data-toolbar-menu", "open") : ($("body").attr("data-toolbar-menu", ""), 
       active = "false", $(".gin-toolbar-inline-styles").remove()), localStorage.setItem("Drupal.gin.toolbarExpanded", active);

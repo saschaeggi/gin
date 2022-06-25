@@ -1,11 +1,11 @@
 (($, Drupal) => {
   Drupal.behaviors.tableSelect = {
     attach: function attach(context) {
-      $(context)
+      const $tableSelect = $(context)
         .find('th.select-all')
         .closest('table')
-        .once('table-select')
         .each(Drupal.tableSelect);
+      once('table-select', $tableSelect);
     }
   };
 
@@ -121,10 +121,11 @@
   Drupal.behaviors.ginTableCheckbox = {
     attach: function (context) {
       if ( $("table td .checkbox-toggle", context).length > 0 ) {
-        $("table td .checkbox-toggle", context).once().bind('click', function () {
+        const $checkboxToggle = $("table td .checkbox-toggle", context).bind('click', function () {
           var checkBoxes = $(this).siblings("input");
           checkBoxes.prop("checked", !checkBoxes.prop("checked"));
         });
+        once('ginTableCheckbox', $checkboxToggle);
       }
     }
   };
