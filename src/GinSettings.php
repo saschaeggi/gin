@@ -225,7 +225,7 @@ class GinSettings implements ContainerInjectionInterface {
 
     // Layout density check.
     if ($name === 'layout_density') {
-      $value = $value === '0' ?  'default' : $value;
+      $value = $value === '0' ? 'default' : $value;
     }
 
     // Logo legacy settings check.

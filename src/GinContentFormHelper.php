@@ -136,8 +136,9 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       }
 
       // Add sidebar toggle.
+      $hide_sidebar_translation = t('Hide sidebar panel');
       $form['actions']['gin_sidebar_toggle'] = [
-        '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger" role="button" title="' . t('Hide sidebar panel') . '" aria-controls="gin_sidebar"><span class="visually-hidden">' . t('Hide sidebar panel') . '</span></a>',
+        '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger" role="button" title="' . $hide_sidebar_translation . '" aria-controls="gin_sidebar"><span class="visually-hidden">' . $hide_sidebar_translation . '</span></a>',
         '#weight' => '999',
       ];
       $form['#attached']['library'][] = 'gin/sidebar';
@@ -190,9 +191,10 @@ class GinContentFormHelper implements ContainerInjectionInterface {
         $form['gin_sidebar']['actions']['delete_translation']['#attributes']['class'][] = 'action-link';
       }
 
-      // Add sidebar toggle.
+      // Sidebar close button.
+      $close_sidebar_translation = t('Close sidebar panel');
       $form['gin_sidebar']['gin_sidebar_close'] = [
-        '#markup' => '<a href="#close-sidebar" class="meta-sidebar__close trigger" role="button" title="' . t('Close sidebar panel') . '"><span class="visually-hidden">' . t('Close sidebar panel') . '</span></a>',
+        '#markup' => '<a href="#close-sidebar" class="meta-sidebar__close trigger" role="button" title="' . $close_sidebar_translation . '"><span class="visually-hidden">' . $close_sidebar_translation . '</span></a>',
       ];
 
       $form['gin_sidebar_overlay'] = [

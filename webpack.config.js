@@ -50,6 +50,7 @@ module.exports = {
     'components/settings_tray_edit': ['./styles/components/settings_tray_edit.scss'],
     'components/settings': ['./styles/components/settings.scss'],
     'components/sidebar': ['./styles/components/sidebar.scss'],
+    'components/tabs': ['./styles/components/tabs.scss'],
     'components/toolbar': ['./styles/components/toolbar.scss'],
     'components/toolbar_secondary': ['./styles/components/toolbar_secondary.scss'],
     'components/upgrade_status': ['./styles/components/upgrade_status.scss'],
