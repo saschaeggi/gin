@@ -339,7 +339,9 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 
 .gin-sticky .form-actions {
   margin: 0;
+  flex-grow: 1;
   align-items: center;
+  justify-content: flex-end;
 }
 
 [dir="ltr"] .gin-sticky .form-actions :last-child {

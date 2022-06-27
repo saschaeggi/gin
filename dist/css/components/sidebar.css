@@ -65,6 +65,14 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
   background-color: var(--colorGinPrimaryActive);
 }
 
+[dir="ltr"] .meta-sidebar__trigger {
+  margin-left: .5rem;
+}
+
+[dir="rtl"] .meta-sidebar__trigger {
+  margin-right: .5rem;
+}
+
 .meta-sidebar__trigger::before {
   -webkit-mask-image: url("../../media/sprite.svg#sidebar-view");
           mask-image: url("../../media/sprite.svg#sidebar-view");
