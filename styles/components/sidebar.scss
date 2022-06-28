@@ -69,6 +69,8 @@ body[data-meta-sidebar=open] {
   }
 
   &__trigger {
+    margin-left: .5rem;
+
     &::before {
       mask-image: icon('sidebar');
       mask-size: var(--iconGinSidebarToggle) var(--iconGinSidebarToggle);

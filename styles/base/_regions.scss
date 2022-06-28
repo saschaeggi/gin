@@ -184,7 +184,9 @@ body:not(.toolbar-tray-open) .layout-container {
 
   .form-actions {
     margin: 0;
+    flex-grow: 1;
     align-items: center;
+    justify-content: flex-end;
 
     :last-child {
       margin-right: 0;
