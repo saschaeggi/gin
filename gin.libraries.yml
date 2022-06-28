@@ -41,6 +41,7 @@ gin_toolbar:
     - gin/breadcrumb
     - gin/settings_tray
     - gin/settings_tray_edit
+    - core/once
 
 gin_horizontal_toolbar:
   css:
@@ -59,6 +60,7 @@ gin_horizontal_toolbar:
     - gin/breadcrumb
     - gin/settings_tray
     - gin/settings_tray_edit
+    - core/once
 
 gin_classic_toolbar:
   css:
@@ -74,6 +76,7 @@ gin_classic_toolbar:
     - gin/contextual_links
     - gin/breadcrumb
     - gin/settings_tray_edit
+    - core/once
 
 gin_accent:
   css:
