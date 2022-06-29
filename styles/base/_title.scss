@@ -43,6 +43,7 @@
 }
 
 .shortcut-action {
+  position: relative;
   align-self: center;
   margin-left: 0;
   border-radius: var(--gin-border-m);
@@ -88,6 +89,8 @@
 
   &__message {
     position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
     pointer-events: none;
     padding: var(--gin-spacing-xs);
     margin-top: calc(var(--gin-spacing-xxs) * -1);
