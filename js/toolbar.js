@@ -22,11 +22,12 @@
 
       // Show toolbar navigation with shortcut:
       // OPTION + T (Mac) / ALT + T (Windows)
-      $(document).once('ginToolbarShortcut').on('keydown', function (e) {
+      const $toolbarShortcutTrigger = $('html').on('keydown', function (e) {
         if (e.altKey === true && e.keyCode === 84) {
           Drupal.behaviors.ginToolbarToggle.toggleToolbar();
         }
       });
+      once('ginToolbarShortcut', $toolbarShortcutTrigger);
 
       // Toolbar toggle
       $('.toolbar-menu__trigger', context).on('click', function (e) {
@@ -47,7 +48,7 @@
       });
     },
     toggleToolbar: function toggleToolbar(context) {
-      $this = $('.toolbar-menu__trigger', context);
+      const $this = $('.toolbar-menu__trigger', context);
 
       // Toggle active class.
       $this.toggleClass('is-active');

@@ -26,28 +26,30 @@
 
       // Show navigation with shortcut:
       // OPTION + S (Mac) / ALT + S (Windows)
-      $(document).once('ginMetaSidebarShortcut').on('keydown', function (e) {
+      const $toggleSidebarShortcut = $('html').on('keydown', function (e) {
         if (e.altKey === true && e.keyCode === 83) {
           Drupal.behaviors.ginSidebar.toggleSidebar();
         }
       });
+      once('ginMetaSidebarShortcut', $toggleSidebarShortcut);
 
       // Toolbar toggle
-      $('.meta-sidebar__trigger', context).once('ginMetaSidebarToggle').on('click', function (e) {
+      const $toggleSidebarTrigger = $('.meta-sidebar__trigger', context).on('click', function (e) {
         e.preventDefault();
         Drupal.behaviors.ginSidebar.removeInlineStyles();
         Drupal.behaviors.ginSidebar.toggleSidebar();
       });
+      once('ginMetaSidebarToggle', $toggleSidebarTrigger);
 
       // Toolbar close
-      $('.meta-sidebar__close, .meta-sidebar__overlay', context).once('ginMetaSidebarClose').on('click', function (e) {
+      const $closeSidebarTrigger = $('.meta-sidebar__close, .meta-sidebar__overlay', context).on('click', function (e) {
         e.preventDefault();
         Drupal.behaviors.ginSidebar.removeInlineStyles();
         Drupal.behaviors.ginSidebar.collapseSidebar();
       });
+      once('ginMetaSidebarClose', $closeSidebarTrigger);
 
       $(window)
-        .once('ginMetaSidebarResize')
         .on('resize', Drupal.debounce(Drupal.behaviors.ginSidebar.handleResize, 150))
         .trigger('resize');
     },

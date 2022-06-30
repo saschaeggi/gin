@@ -3,14 +3,19 @@
   Drupal.behaviors.ginSidebar = {
     attach: function(context) {
       localStorage.getItem(storageDesktop) || localStorage.setItem(storageDesktop, "true"), 
-      window.innerWidth >= 1024 && ("true" === localStorage.getItem(storageDesktop) ? Drupal.behaviors.ginSidebar.showSidebar() : Drupal.behaviors.ginSidebar.collapseSidebar()), 
-      $(document).once("ginMetaSidebarShortcut").on("keydown", (function(e) {
+      window.innerWidth >= 1024 && ("true" === localStorage.getItem(storageDesktop) ? Drupal.behaviors.ginSidebar.showSidebar() : Drupal.behaviors.ginSidebar.collapseSidebar());
+      const $toggleSidebarShortcut = $("html").on("keydown", (function(e) {
         !0 === e.altKey && 83 === e.keyCode && Drupal.behaviors.ginSidebar.toggleSidebar();
-      })), $(".meta-sidebar__trigger", context).once("ginMetaSidebarToggle").on("click", (function(e) {
+      }));
+      once("ginMetaSidebarShortcut", $toggleSidebarShortcut);
+      const $toggleSidebarTrigger = $(".meta-sidebar__trigger", context).on("click", (function(e) {
         e.preventDefault(), Drupal.behaviors.ginSidebar.removeInlineStyles(), Drupal.behaviors.ginSidebar.toggleSidebar();
-      })), $(".meta-sidebar__close, .meta-sidebar__overlay", context).once("ginMetaSidebarClose").on("click", (function(e) {
+      }));
+      once("ginMetaSidebarToggle", $toggleSidebarTrigger);
+      const $closeSidebarTrigger = $(".meta-sidebar__close, .meta-sidebar__overlay", context).on("click", (function(e) {
         e.preventDefault(), Drupal.behaviors.ginSidebar.removeInlineStyles(), Drupal.behaviors.ginSidebar.collapseSidebar();
-      })), $(window).once("ginMetaSidebarResize").on("resize", Drupal.debounce(Drupal.behaviors.ginSidebar.handleResize, 150)).trigger("resize");
+      }));
+      once("ginMetaSidebarClose", $closeSidebarTrigger), $(window).on("resize", Drupal.debounce(Drupal.behaviors.ginSidebar.handleResize, 150)).trigger("resize");
     },
     toggleSidebar: function() {
       $(".meta-sidebar__trigger").hasClass("is-active") ? Drupal.behaviors.ginSidebar.collapseSidebar() : Drupal.behaviors.ginSidebar.showSidebar();

@@ -41,6 +41,7 @@ gin_toolbar:
     - gin/breadcrumb
     - gin/settings_tray
     - gin/settings_tray_edit
+    - core/once
 
 gin_horizontal_toolbar:
   css:
@@ -59,6 +60,7 @@ gin_horizontal_toolbar:
     - gin/breadcrumb
     - gin/settings_tray
     - gin/settings_tray_edit
+    - core/once
 
 gin_classic_toolbar:
   css:
@@ -74,6 +76,7 @@ gin_classic_toolbar:
     - gin/contextual_links
     - gin/breadcrumb
     - gin/settings_tray_edit
+    - core/once
 
 gin_accent:
   css:
@@ -102,7 +105,7 @@ gin_messages:
   js:
     dist/js/messages.js: { minified: false }
   dependencies:
-    - core/jquery.once
+    - core/once
 
 # Custom CSS
 
@@ -133,6 +136,8 @@ sidebar:
       dist/css/components/sidebar.css: { minified: true }
   js:
     dist/js/sidebar.js: { minified: true }
+  dependencies:
+    - core/once
 
 settings:
   js:
@@ -174,6 +179,8 @@ ckeditor:
   css:
     theme:
       dist/css/components/ckeditor.css: { minified: false }
+  dependencies:
+    - core/once
 
 ajax:
   css:

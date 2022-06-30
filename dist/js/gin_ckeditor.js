@@ -8,8 +8,8 @@
         void 0 === CKEDITOR.config.contentsCss && CKEDITOR.config.contentsCss.push(variablesCss, accentCss, contentsCss), 
         void 0 === CKEDITOR.config.contextmenu_contentsCss && (CKEDITOR.config.contextmenu_contentsCss = new Array, 
         void 0 === CKEDITOR.skinName && (CKEDITOR.skinName = CKEDITOR.skin.name), CKEDITOR.config.contextmenu_contentsCss.push(CKEDITOR.skin.getPath("editor"), variablesCss, accentCss, contentsCss)), 
-        $(CKEDITOR.instances, context).once("gin_ckeditor").each((function(index, value) {
-          CKEDITOR.on("instanceReady", (function() {
+        $(CKEDITOR.instances, context).each((function(index, value) {
+          const $ckeditorInstance = CKEDITOR.on("instanceReady", (function() {
             Object.entries(value).forEach((_ref => {
               let [key, editor] = _ref;
               $(editor.document.$).find("body").attr("data-gin-accent", accentColorPreset), "custom" === accentColorPreset && accentColor && Drupal.behaviors.ginAccent.setCustomAccentColor(accentColor, $(editor.document.$).find("head")), 
@@ -30,6 +30,7 @@
               }));
             }));
           }));
+          once("ginCKEditor", $ckeditorInstance);
         }));
       }
     }
