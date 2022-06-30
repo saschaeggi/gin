@@ -104,6 +104,8 @@ gin_description_toggle:
 gin_messages:
   js:
     dist/js/messages.js: { minified: false }
+  dependencies:
+    - core/once
 
 # Custom CSS
 
@@ -134,6 +136,8 @@ sidebar:
       dist/css/components/sidebar.css: { minified: true }
   js:
     dist/js/sidebar.js: { minified: true }
+  dependencies:
+    - core/once
 
 settings:
   js:
@@ -175,6 +179,8 @@ ckeditor:
   css:
     theme:
       dist/css/components/ckeditor.css: { minified: false }
+  dependencies:
+    - core/once
 
 ajax:
   css:
