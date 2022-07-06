@@ -6,18 +6,26 @@
 }
 
 table.sticky-header {
+  visibility: hidden;
   z-index: 98;
+  position: fixed;
   left: auto !important;
+  top: calc(var(--ginHorizontalToolbarOffset) + var(--ginStickyOffset)) !important;
   background: transparent;
-  transition: var(--ginTransition);
+
+  .--is-sticky & {
+    @include mq(medium) {
+      visibility: visible !important;
+    }
+  }
 
   @include mq(medium) {
     .gin--vertical-toolbar & {
-      width: calc(100% - min(10vw, 96px) - 3rem - var(--ginToolbarWidthCollapsed)) !important;
+      width: calc(100% - min(10vw, 96px) - 3rem - 2px - var(--ginToolbarWidthCollapsed)) !important;
     }
 
     .gin--vertical-toolbar[data-toolbar-menu='open'] & {
-      width: calc(100% - min(10vw, 96px) - 3rem - var(--ginToolbarWidth)) !important;
+      width: calc(100% - min(10vw, 96px) - 3rem - 2px - var(--ginToolbarWidth)) !important;
     }
   }
 
