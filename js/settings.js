@@ -2,78 +2,82 @@
 
 'use strict';
 
-(($, Drupal, drupalSettings) => {
+((Drupal, drupalSettings) => {
   Drupal.behaviors.ginSettings = {
-    attach: function attach(context) {
+    attach: (context) => {
       // Watch Darkmode setting has changed.
-      $('input[name="enable_darkmode"]', context).change(function () {
-        const darkmode = $(this).val();
-        const accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val();
-        const focusColorPreset = $('select[name="preset_focus_color"]').val();
+      context.querySelectorAll('input[name="enable_darkmode"]')
+        .forEach(el => el.addEventListener('click', e => {
+          const darkmode = e.currentTarget.value;
+          const accentColorPreset = document.querySelector('[data-drupal-selector="edit-preset-accent-color"] input:checked').value;
+          const focusColorPreset = document.querySelector('select[name="preset_focus_color"]').value;
 
-        // Toggle Darkmode.
-        Drupal.behaviors.ginSettings.darkmode(darkmode);
+          // Toggle Darkmode.
+          Drupal.behaviors.ginSettings.darkmode(darkmode);
 
-        // Set custom color if 'custom' is set.
-        if (accentColorPreset === 'custom') {
-          const accentColorSetting = $('input[name="accent_color"]', context).val();
+          // Set custom color if 'custom' is set.
+          if (accentColorPreset === 'custom') {
+            const accentColorSetting = document.querySelector('input[name="accent_color"]').value;
 
-          Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
-        } else {
-          Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset);
-        }
+            Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
+          } else {
+            Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset);
+          }
 
-        // Toggle Focus color.
-        if (focusColorPreset === 'custom') {
-          const focusColorSetting = $('input[name="focus_color"]', context).val();
+          // Toggle Focus color.
+          if (focusColorPreset === 'custom') {
+            const focusColorSetting = document.querySelector('input[name="focus_color"]').value;
 
-          Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
-        } else {
-          Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset);
-        }
-      });
+            Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
+          } else {
+            Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset);
+          }
+        }));
 
       // Watch Accent color setting has changed.
-      $('[data-drupal-selector="edit-preset-accent-color"] input', context).change(function () {
-        const accentColorPreset = $(this).val();
+      context.querySelectorAll('[data-drupal-selector="edit-preset-accent-color"] input')
+        .forEach(el => el.addEventListener('change', e => {
+          const accentColorPreset = e.currentTarget.value;
 
-        // Update.
-        Drupal.behaviors.ginAccent.clearAccentColor();
-        Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset);
+          // Update.
+          Drupal.behaviors.ginAccent.clearAccentColor();
+          Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset);
 
-        // Set custom color if 'custom' is set.
-        if (accentColorPreset === 'custom') {
-          const accentColorSetting = $('input[name="accent_color"]').val();
+          // Set custom color if 'custom' is set.
+          if (accentColorPreset === 'custom') {
+            const accentColorSetting = document.querySelector('input[name="accent_color"]').value;
 
-          Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
-        }
-      });
+            Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
+          }
+        }));
 
       // Watch Accent color picker has changed.
-      $('input[name="accent_picker"]', context).change(function () {
-        const accentColorSetting = $(this).val();
+      context.querySelectorAll('input[name="accent_picker"]')
+        .forEach(el => el.addEventListener('change', e => {
+          const accentColorSetting = e.currentTarget.value;
 
-        // Sync fields.
-        $('input[name="accent_color"]', context).val(accentColorSetting);
+          // Sync fields.
+          document.querySelector('input[name="accent_color"]').value = accentColorSetting;
 
-        // Update.
-        Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
-      });
+          // Update.
+          Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
+        }));
 
       // Watch Accent color setting has changed.
-      $('input[name="accent_color"]', context).change(function () {
-        const accentColorSetting = $(this).val();
+      context.querySelectorAll('input[name="accent_color"]')
+        .forEach(el => el.addEventListener('change', e => {
+          const accentColorSetting = e.currentTarget.value;
 
-        // Sync fields.
-        $('input[name="accent_picker"]', context).val(accentColorSetting);
+          // Sync fields.
+          document.querySelector('input[name="accent_picker"]').value = accentColorSetting;
 
-        // Update.
-        Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
-      });
+          // Update.
+          Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
+        }));
 
       // Watch Focus color setting has changed.
-      $('select[name="preset_focus_color"]', context).change(function () {
-        const focusColorPreset = $(this).val();
+      document.querySelector('select[name="preset_focus_color"]').addEventListener('change', e => {
+        const focusColorPreset = e.currentTarget.value;
 
         // Update.
         Drupal.behaviors.ginAccent.clearFocusColor();
@@ -81,67 +85,67 @@
 
         // Set custom color if 'custom' is set.
         if (focusColorPreset === 'custom') {
-          const focusColorSetting = $('input[name="focus_color"]').val();
+          const focusColorSetting = document.querySelector('input[name="focus_color"]').value;
 
           Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
         }
       });
 
       // Watch Focus color picker has changed.
-      $('input[name="focus_picker"]', context).change(function () {
-        const focusColorSetting = $(this).val();
+      document.querySelector('input[name="focus_picker"]').addEventListener('change', e => {
+        const focusColorSetting = e.currentTarget.value;
 
         // Sync fields.
-        $('input[name="focus_color"]', context).val(focusColorSetting);
+        document.querySelector('input[name="focus_color"]').value = focusColorSetting;
 
         // Update.
         Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
       });
 
       // Watch Accent color setting has changed.
-      $('input[name="focus_color"]', context).change(function () {
-        const focusColorSetting = $(this).val();
+      document.querySelector('input[name="focus_color"]').addEventListener('change', e => {
+        const focusColorSetting = e.currentTarget.value;
 
         // Sync fields.
-        $('input[name="focus_picker"]', context).val(focusColorSetting);
+        document.querySelector('input[name="focus_picker"]').value = focusColorSetting;
 
         // Update.
         Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
       });
 
       // Watch Hight contrast mode setting has changed.
-      $('input[name="high_contrast_mode"]', context).change(function () {
-        const highContrastMode = $(this).is(':checked');
+      document.querySelector('input[name="high_contrast_mode"]').addEventListener('change', e => {
+        const highContrastMode = e.currentTarget.matches(':checked');
 
         // Update.
         Drupal.behaviors.ginSettings.setHighContrastMode(highContrastMode);
       });
 
       // Watch user settings has changed.
-      $('input[name="enable_user_settings"]', context).change(function () {
-        const active = $(this).is(':checked');
+      // document.querySelector('input[name="show_user_theme_settings"]').addEventListener('change', e => {
+      //   const active = e.currentTarget.matches(':checked');
 
-        let darkmodeSetting = $('input[name="enable_darkmode"]:checked').val();
-        let accentColorSetting = $('input[name="accent_color"]', context).val();
-        let accentColorPreset = $('[data-drupal-selector="edit-preset-accent-color"] input:checked').val();
-        let highContrastMode = $('input[name="high_contrast_mode"]').is(':checked');
+      //   let darkmodeSetting = document.querySelector('input[name="enable_darkmode"]:checked').value;
+      //   let accentColorSetting = document.querySelector('input[name="accent_color"]').value;
+      //   let accentColorPreset = document.querySelector('[data-drupal-selector="edit-preset-accent-color"] input:checked').value;
+      //   let highContrastMode = document.querySelector('input[name="high_contrast_mode"]').matches(':checked');
 
-        // User setting disabled, use default settings instead.
-        if (!active) {
-          darkmodeSetting = drupalSettings.gin.default_darkmode;
-          accentColorSetting = drupalSettings.gin.default_accent_color;
-          accentColorPreset = drupalSettings.gin.default_preset_accent_color;
-          highContrastMode = drupalSettings.gin.default_high_contrast_mode;
-        }
+      //   // User setting disabled, use default settings instead.
+      //   if (!active) {
+      //     darkmodeSetting = drupalSettings.gin.default_darkmode;
+      //     accentColorSetting = drupalSettings.gin.default_accent_color;
+      //     accentColorPreset = drupalSettings.gin.default_preset_accent_color;
+      //     highContrastMode = drupalSettings.gin.default_high_contrast_mode;
+      //   }
 
-        // Update.
-        Drupal.behaviors.ginSettings.darkmode(darkmodeSetting);
-        Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset, accentColorSetting);
-        Drupal.behaviors.ginSettings.setHighContrastMode(highContrastMode);
-      });
+      //   // Update.
+      //   Drupal.behaviors.ginSettings.darkmode(darkmodeSetting);
+      //   Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset, accentColorSetting);
+      //   Drupal.behaviors.ginSettings.setHighContrastMode(highContrastMode);
+      // });
 
       // Watch save
-      $('[data-drupal-selector="edit-submit"]', context).click(function () {
+      document.querySelector('[data-drupal-selector="edit-submit"]').addEventListener('click', () => {
         // Reset darkmode localStorage.
         localStorage.setItem('Drupal.gin.darkmode', '');
       });
@@ -155,26 +159,26 @@
         darkmodeEnabled == 1 ||
         (darkmodeEnabled === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)
       ) {
-        $('html').addClass(darkmodeClass);
+        document.querySelector('html').classList.add(darkmodeClass);
       }
       else {
-        $('html').removeClass(darkmodeClass);
+        document.querySelector('html').classList.remove(darkmodeClass);
       }
 
       // Reset localStorage.
       localStorage.setItem('Drupal.gin.darkmode', '');
 
       // Change to Darkmode.
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (e.matches && $('input[name="enable_darkmode"]:checked').val() === 'auto') {
-          $('html').addClass(darkmodeClass);
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (e.matches && document.querySelector('input[name="enable_darkmode"]:checked').value === 'auto') {
+          document.querySelector('html').classList.add(darkmodeClass);
         }
       });
 
       // Change to Lightmode.
-      window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
-        if (e.matches && $('input[name="enable_darkmode"]:checked').val() === 'auto') {
-          $('html').removeClass(darkmodeClass);
+      window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+        if (e.matches && document.querySelector('input[name="enable_darkmode"]:checked').value === 'auto') {
+          document.querySelector('html').classList.remove(darkmodeClass);
         }
       });
     },
@@ -185,11 +189,11 @@
 
       // Needs to check for both: backwards compatibility.
       if (enabled === true || enabled === 1) {
-        $('body').addClass(className);
+        document.body.classList.add(className);
       }
       else {
-        $('body').removeClass(className);
+        document.body.classList.remove(className);
       }
     },
   };
-})(jQuery, Drupal, drupalSettings);
+})(Drupal, drupalSettings);
