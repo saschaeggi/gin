@@ -1,6 +1,6 @@
 ((Drupal) => {
   Drupal.behaviors.formDescriptionToggle = {
-    attach: function attach(context) {
+    attach: (context) => {
       context
         .querySelectorAll('.help-icon__description-toggle')
         .forEach((elem) => {
@@ -45,6 +45,6 @@
               });
           });
         });
-    },
+    }
   };
 })(Drupal);

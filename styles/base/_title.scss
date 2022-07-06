@@ -1,7 +1,7 @@
 .block-page-title-block {
   @include mq($to: medium) {
-    .region-sticky--is-sticky & {
-      visibility:hidden;
+    .gin--edit-form .region-sticky--is-sticky & {
+      visibility: hidden;
     }
   }
 

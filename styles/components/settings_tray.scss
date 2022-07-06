@@ -11,6 +11,8 @@
 }
 
 #gin-toolbar-bar {
+  position: fixed;
+
   .contextual-toolbar-tab {
     order: 100;
   }

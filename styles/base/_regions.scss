@@ -1,19 +1,27 @@
 .region-sticky {
   position: sticky;
-  top: calc(var(--ginHorizontalToolbarOffset) - 48px);
+  top: var(--ginHorizontalToolbarOffset);
   z-index: 101;
-  padding: 1rem 0 0;
+  padding: 0;
   width: 100%;
   background: var(--colorGinAppBackground);
   box-sizing: border-box;
   transition: var(--ginTransition);
+
+  .gin--edit-form & {
+    top: calc(var(--ginHorizontalToolbarOffset) - 48px - 1rem);
+    padding-top: 1rem;
+
+    @include mq(large) {
+      padding-top: .75rem;
+    }
+  }
 
   @include mq(large) {
     top: -1px;
     width: 100%;
     height: var(--ginStickyHeight);
     padding: .75rem 0;
-    margin-top: .25rem;
 
     &-watcher {
       position: sticky;

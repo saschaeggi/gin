@@ -10,6 +10,10 @@
   background: var(--colorGinPrimaryHover);
 }
 
+#gin-toolbar-bar {
+  position: fixed;
+}
+
 #gin-toolbar-bar .contextual-toolbar-tab {
   order: 100;
 }

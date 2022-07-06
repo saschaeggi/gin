@@ -86,8 +86,11 @@ function gin_page_attachments_alter(&$page) {
       $page['#attached']['library'][] = 'gin/gin_toolbar';
     }
 
-    // Attach accent overrides CSS.
+    // Attach accent library.
     $page['#attached']['library'][] = 'gin/gin_accent';
+
+    // Attach sticky library.
+    $page['#attached']['library'][] = 'gin/sticky';
 
     // Attach Drupal.once for older Drupal versions.
     if ($drupal_version < 9.3) {
@@ -115,13 +118,13 @@ function gin_page_attachments_alter(&$page) {
     $page['#attached']['drupalSettings']['gin']['highcontrastmode_class'] = 'gin--high-contrast-mode';
     $page['#attached']['drupalSettings']['gin']['toolbar_variant'] = $settings->get('classic_toolbar');
 
-    // Add stylesheets for JS use.
-    $basethemeurl_with_prefix = \Drupal::urlGenerator()->generateFromRoute('<front>', [], ['absolute' => TRUE]) . \Drupal::service('extension.list.theme')->getPath('gin');
-    $page['#attached']['drupalSettings']['gin']['variables_css_path'] = $basethemeurl_with_prefix . '/dist/css/theme/variables.css';
-    $page['#attached']['drupalSettings']['gin']['accent_css_path'] = $basethemeurl_with_prefix . '/dist/css/theme/accent.css';
-    $page['#attached']['drupalSettings']['gin']['ckeditor_css_path'] = $basethemeurl_with_prefix . '/dist/css/theme/ckeditor.css';
+    // Expose stylesheets to JS.
+    $basethemeurl = '/' . \Drupal::service('extension.list.theme')->getPath('gin');
+    $page['#attached']['drupalSettings']['gin']['variables_css_path'] = $basethemeurl . '/dist/css/theme/variables.css';
+    $page['#attached']['drupalSettings']['gin']['accent_css_path'] = $basethemeurl . '/dist/css/theme/accent.css';
+    $page['#attached']['drupalSettings']['gin']['ckeditor_css_path'] = $basethemeurl . '/dist/css/theme/ckeditor.css';
 
-    // Expose default settings.
+    // Expose default settings to JS.
     $page['#attached']['drupalSettings']['gin']['default_darkmode'] = $settings->getDefault('enable_darkmode');
     $page['#attached']['drupalSettings']['gin']['default_accent_color'] = $settings->getDefault('accent_color');
     $page['#attached']['drupalSettings']['gin']['default_preset_accent_color'] = $settings->getDefault('preset_accent_color');

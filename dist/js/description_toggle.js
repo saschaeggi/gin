@@ -1,6 +1,6 @@
 (Drupal => {
   Drupal.behaviors.formDescriptionToggle = {
-    attach: function(context) {
+    attach: context => {
       context.querySelectorAll(".help-icon__description-toggle").forEach((elem => {
         if (elem.dataset.formDescriptionToggleAttached) return;
         elem.dataset.formDescriptionToggleAttached = !0;

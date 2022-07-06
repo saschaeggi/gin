@@ -1,6 +1,6 @@
 html {
   font-family: var(--ginFont);
-  scroll-padding-top: var(--ginScrollOffset);
+  scroll-padding-top: var(--ginScrollOffset) !important;
 }
 
 body {

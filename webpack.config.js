@@ -9,7 +9,9 @@ const postcssRTLCSS = require('postcss-rtlcss');
 
 module.exports = {
   entry: {
+    // ################################################
     // Javascript
+    // ################################################
     'accent': ['./js/accent.js'],
     'description_toggle': ['./js/description_toggle.js'],
     'edit_form': ['./js/edit_form.js'],
@@ -18,7 +20,11 @@ module.exports = {
     'messages': ['./js/messages.js'],
     'settings': ['./js/settings.js'],
     'sidebar': ['./js/sidebar.js'],
+    'sticky': ['./js/sticky.js'],
     'toolbar': ['./js/toolbar.js'],
+    // ################################################
+    // CSS
+    // ################################################
     // Base
     'base/gin': ['./styles/gin.scss'],
     // Components
