@@ -1,42 +1,42 @@
-(($, Drupal) => {
+(Drupal => {
   const storageDesktop = "Drupal.gin.sidebarExpanded.desktop";
   Drupal.behaviors.ginSidebar = {
-    attach: function(context) {
+    attach: () => {
       localStorage.getItem(storageDesktop) || localStorage.setItem(storageDesktop, "true"), 
-      window.innerWidth >= 1024 && ("true" === localStorage.getItem(storageDesktop) ? Drupal.behaviors.ginSidebar.showSidebar() : Drupal.behaviors.ginSidebar.collapseSidebar());
-      const $toggleSidebarShortcut = $("html").on("keydown", (function(e) {
-        !0 === e.altKey && 83 === e.keyCode && Drupal.behaviors.ginSidebar.toggleSidebar();
-      }));
-      once("ginMetaSidebarShortcut", $toggleSidebarShortcut);
-      const $toggleSidebarTrigger = $(".meta-sidebar__trigger", context).on("click", (function(e) {
+      window.innerWidth >= 1024 && ("true" === localStorage.getItem(storageDesktop) ? Drupal.behaviors.ginSidebar.showSidebar() : Drupal.behaviors.ginSidebar.collapseSidebar()), 
+      once("ginSidebarShortcut", document.querySelector("#gin_sidebar")).forEach((() => document.addEventListener("keydown", (e => {
+        !0 === e.altKey && "KeyS" === e.code && Drupal.behaviors.ginSidebar.toggleSidebar();
+      })))), once("ginSidebarToggle", document.querySelector(".meta-sidebar__trigger")).forEach((el => el.addEventListener("click", (e => {
         e.preventDefault(), Drupal.behaviors.ginSidebar.removeInlineStyles(), Drupal.behaviors.ginSidebar.toggleSidebar();
-      }));
-      once("ginMetaSidebarToggle", $toggleSidebarTrigger);
-      const $closeSidebarTrigger = $(".meta-sidebar__close, .meta-sidebar__overlay", context).on("click", (function(e) {
+      })))), once("ginSidebarClose", document.querySelectorAll(".meta-sidebar__close, .meta-sidebar__overlay")).forEach((el => el.addEventListener("click", (e => {
         e.preventDefault(), Drupal.behaviors.ginSidebar.removeInlineStyles(), Drupal.behaviors.ginSidebar.collapseSidebar();
-      }));
-      once("ginMetaSidebarClose", $closeSidebarTrigger), $(window).on("resize", Drupal.debounce(Drupal.behaviors.ginSidebar.handleResize, 150)).trigger("resize");
+      })))), window.onresize = Drupal.debounce(Drupal.behaviors.ginSidebar.handleResize, 150);
     },
-    toggleSidebar: function() {
-      $(".meta-sidebar__trigger").hasClass("is-active") ? Drupal.behaviors.ginSidebar.collapseSidebar() : Drupal.behaviors.ginSidebar.showSidebar();
+    toggleSidebar: () => {
+      document.querySelector(".meta-sidebar__trigger").classList.contains("is-active") ? Drupal.behaviors.ginSidebar.collapseSidebar() : Drupal.behaviors.ginSidebar.showSidebar();
     },
-    showSidebar: function() {
+    showSidebar: () => {
       const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, showLabel = Drupal.t("Hide sidebar panel");
-      $(".meta-sidebar__trigger").attr("title", showLabel), $(".meta-sidebar__trigger span").html(showLabel), 
-      localStorage.setItem(chooseStorage, "true"), $(".meta-sidebar__trigger").attr("aria-expanded", "true"), 
-      $(".meta-sidebar__trigger").addClass("is-active"), $("body").attr("data-meta-sidebar", "open");
+      document.querySelector(".meta-sidebar__trigger").setAttribute("title", showLabel), 
+      document.querySelector(".meta-sidebar__trigger span").innerHTML = showLabel, localStorage.setItem(chooseStorage, "true"), 
+      document.querySelector(".meta-sidebar__trigger").setAttribute("aria-expanded", "true"), 
+      document.querySelector(".meta-sidebar__trigger").classList.add("is-active"), document.body.setAttribute("data-meta-sidebar", "open");
     },
-    collapseSidebar: function() {
+    collapseSidebar: () => {
       const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, hideLabel = Drupal.t("Show sidebar panel");
-      $(".meta-sidebar__trigger").attr("title", hideLabel), $(".meta-sidebar__trigger span").html(hideLabel), 
-      localStorage.setItem(chooseStorage, "false"), $(".meta-sidebar__trigger").removeClass("is-active"), 
-      $("body").attr("data-meta-sidebar", "closed"), $(".meta-sidebar__trigger").attr("aria-expanded", "false");
+      document.querySelector(".meta-sidebar__trigger").setAttribute("title", hideLabel), 
+      document.querySelector(".meta-sidebar__trigger span").innerHTML = hideLabel, localStorage.setItem(chooseStorage, "false"), 
+      document.querySelector(".meta-sidebar__trigger").classList.remove("is-active"), 
+      document.body.setAttribute("data-meta-sidebar", "closed"), document.querySelector(".meta-sidebar__trigger").setAttribute("aria-expanded", "false");
     },
-    handleResize: function() {
+    handleResize: () => {
       Drupal.behaviors.ginSidebar.removeInlineStyles(), window.innerWidth < 1024 ? Drupal.behaviors.ginSidebar.collapseSidebar() : "true" === localStorage.getItem(storageDesktop) ? Drupal.behaviors.ginSidebar.showSidebar() : Drupal.behaviors.ginSidebar.collapseSidebar();
     },
-    removeInlineStyles: function() {
-      $(".gin-sidebar-inline-styles").remove();
+    removeInlineStyles: () => {
+      if (document.querySelectorAll(".gin-sidebar-inline-styles").length > 0) {
+        const removeElement = document.querySelector(".gin-sidebar-inline-styles");
+        removeElement.parentNode.removeChild(removeElement);
+      }
     }
   };
-})(jQuery, Drupal);
+})(Drupal);

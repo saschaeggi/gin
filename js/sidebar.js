@@ -2,13 +2,13 @@
 
 'use strict';
 
-(($, Drupal) => {
+((Drupal) => {
   const breakpoint = 1024;
   const storageMobile = 'Drupal.gin.sidebarExpanded.mobile';
   const storageDesktop = 'Drupal.gin.sidebarExpanded.desktop';
 
   Drupal.behaviors.ginSidebar = {
-    attach: function attach(context) {
+    attach: () => {
       // If variable does not exist, create it, default being to show sidebar.
       if (!localStorage.getItem(storageDesktop)) {
         localStorage.setItem(storageDesktop, 'true');
@@ -26,73 +26,71 @@
 
       // Show navigation with shortcut:
       // OPTION + S (Mac) / ALT + S (Windows)
-      const $toggleSidebarShortcut = $('html').on('keydown', function (e) {
-        if (e.altKey === true && e.keyCode === 83) {
+      const ginSidebarShortcut = once('ginSidebarShortcut', document.querySelector('#gin_sidebar'));
+      ginSidebarShortcut.forEach(() => document.addEventListener('keydown', e => {
+        if (e.altKey === true && e.code === 'KeyS') {
           Drupal.behaviors.ginSidebar.toggleSidebar();
         }
-      });
-      once('ginMetaSidebarShortcut', $toggleSidebarShortcut);
+      }));
 
       // Toolbar toggle
-      const $toggleSidebarTrigger = $('.meta-sidebar__trigger', context).on('click', function (e) {
+      const ginSidebarToggle = once('ginSidebarToggle', document.querySelector('.meta-sidebar__trigger'));
+      ginSidebarToggle.forEach(el => el.addEventListener('click', e => {
         e.preventDefault();
         Drupal.behaviors.ginSidebar.removeInlineStyles();
         Drupal.behaviors.ginSidebar.toggleSidebar();
-      });
-      once('ginMetaSidebarToggle', $toggleSidebarTrigger);
+      }));
 
       // Toolbar close
-      const $closeSidebarTrigger = $('.meta-sidebar__close, .meta-sidebar__overlay', context).on('click', function (e) {
+      const ginSidebarClose = once('ginSidebarClose', document.querySelectorAll('.meta-sidebar__close, .meta-sidebar__overlay'));
+      ginSidebarClose.forEach(el => el.addEventListener('click', e => {
         e.preventDefault();
         Drupal.behaviors.ginSidebar.removeInlineStyles();
         Drupal.behaviors.ginSidebar.collapseSidebar();
-      });
-      once('ginMetaSidebarClose', $closeSidebarTrigger);
+      }));
 
-      $(window)
-        .on('resize', Drupal.debounce(Drupal.behaviors.ginSidebar.handleResize, 150))
-        .trigger('resize');
+      window.onresize = Drupal.debounce(Drupal.behaviors.ginSidebar.handleResize, 150);
     },
-    toggleSidebar: function toggleSidebar() {
+    toggleSidebar: () => {
       // Set active state.
-      if ($('.meta-sidebar__trigger').hasClass('is-active')) {
+      if (document.querySelector('.meta-sidebar__trigger').classList.contains('is-active')) {
         Drupal.behaviors.ginSidebar.collapseSidebar();
       }
       else {
         Drupal.behaviors.ginSidebar.showSidebar();
       }
     },
-    showSidebar: function showSidebar() {
+    showSidebar: () => {
       const chooseStorage = window.innerWidth < breakpoint ? storageMobile : storageDesktop;
       const showLabel = Drupal.t('Hide sidebar panel');
       // Change labels.
-      $('.meta-sidebar__trigger').attr('title', showLabel);
-      $('.meta-sidebar__trigger span').html(showLabel);
+      document.querySelector('.meta-sidebar__trigger').setAttribute('title', showLabel);
+      document.querySelector('.meta-sidebar__trigger span').innerHTML = showLabel;
 
       // Expose to localStorage.
       localStorage.setItem(chooseStorage, 'true');
 
       // Attributes.
-      $('.meta-sidebar__trigger').attr('aria-expanded', 'true');
-      $('.meta-sidebar__trigger').addClass('is-active');
-      $('body').attr('data-meta-sidebar', 'open');
+      document.querySelector('.meta-sidebar__trigger').setAttribute('aria-expanded', 'true');
+      document.querySelector('.meta-sidebar__trigger').classList.add('is-active');
+      document.body.setAttribute('data-meta-sidebar', 'open');
     },
-    collapseSidebar: function collapseSidebar() {
+    collapseSidebar: () => {
       const chooseStorage = window.innerWidth < breakpoint ? storageMobile : storageDesktop;
       const hideLabel = Drupal.t('Show sidebar panel');
       // Change labels.
-      $('.meta-sidebar__trigger').attr('title', hideLabel);
-      $('.meta-sidebar__trigger span').html(hideLabel);
+      document.querySelector('.meta-sidebar__trigger').setAttribute('title', hideLabel);
+      document.querySelector('.meta-sidebar__trigger span').innerHTML = hideLabel;
 
       // Expose to localStorage.
       localStorage.setItem(chooseStorage, 'false');
 
       // Attributes.
-      $('.meta-sidebar__trigger').removeClass('is-active');
-      $('body').attr('data-meta-sidebar', 'closed');
-      $('.meta-sidebar__trigger').attr('aria-expanded', 'false');
+      document.querySelector('.meta-sidebar__trigger').classList.remove('is-active');
+      document.body.setAttribute('data-meta-sidebar', 'closed');
+      document.querySelector('.meta-sidebar__trigger').setAttribute('aria-expanded', 'false');
     },
-    handleResize: function handleResize() {
+    handleResize: () => {
       Drupal.behaviors.ginSidebar.removeInlineStyles();
 
       // If small viewport, always collapse sidebar.
@@ -107,9 +105,12 @@
         }
       }
     },
-    removeInlineStyles: function removeInlineStyles() {
+    removeInlineStyles: () => {
       // Remove init styles.
-      $('.gin-sidebar-inline-styles').remove();
+      if (document.querySelectorAll('.gin-sidebar-inline-styles').length > 0) {
+        const removeElement = document.querySelector('.gin-sidebar-inline-styles');
+        removeElement.parentNode.removeChild(removeElement);
+      }
     }
   };
-})(jQuery, Drupal);
+})(Drupal);
