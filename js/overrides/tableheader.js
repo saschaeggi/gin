@@ -1,6 +1,6 @@
-((Drupal) => {
+((Drupal, once) => {
   Drupal.behaviors.ginStickyTable = {
-    attach: (context) => {
+    attach: function attach(context) {
       const ginStickyTable = once('ginStickyTable', context.querySelectorAll('.sticky-enabled'));
       ginStickyTable.forEach(el => {
         // Watch sticky table header
@@ -8,11 +8,11 @@
           ([e]) => {
             context.querySelector('.gin-table-scroll-wrapper').classList.toggle('--is-sticky', e.intersectionRatio < 1);
             if (document.querySelectorAll('table.sticky-header').length === 0) {
-              Drupal.behaviors.ginStickyTable.createStickyHeader(el);
-              Drupal.behaviors.ginStickyTable.syncSelectAll();
+              this.createStickyHeader(el);
+              this.syncSelectAll();
             }
           },
-          { threshold: [1], rootMargin: `-${Drupal.behaviors.ginStickyTable.stickyPosition()}px 0px 0px 0px` }
+          { threshold: [1], rootMargin: `-${this.stickyPosition()}px 0px 0px 0px` }
         );
         observer.observe(el.querySelector('thead'));
       });
@@ -59,4 +59,4 @@
       });
     },
   };
-})(Drupal);
+})(Drupal, once);

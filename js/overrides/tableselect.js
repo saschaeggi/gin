@@ -2,7 +2,7 @@
 
 'use strict';
 
-((Drupal) => {
+((Drupal, once) => {
   Drupal.behaviors.tableSelect = {
     attach: (context) => {
       const tableSelect = once('tableSelect', context.querySelectorAll('th.select-all'));
@@ -127,4 +127,4 @@
       }
     }
   };
-})(Drupal);
+})(Drupal, once);
