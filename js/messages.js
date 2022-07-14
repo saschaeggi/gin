@@ -7,7 +7,7 @@
 
 'use strict';
 
-((Drupal) => {
+((Drupal, once) => {
   Drupal.behaviors.ginMessagesDismiss = {
     attach: (context) => {
       const ginMessagesDismiss = once('ginMessagesDismiss', context.querySelectorAll('.messages .button--dismiss'));
@@ -19,4 +19,4 @@
       }));
     }
   }
-})(Drupal);
+})(Drupal, once);

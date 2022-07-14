@@ -1,4 +1,4 @@
-(Drupal => {
+((Drupal, once) => {
   Drupal.behaviors.ginMessagesDismiss = {
     attach: context => {
       once("ginMessagesDismiss", context.querySelectorAll(".messages .button--dismiss")).forEach((el => el.addEventListener("click", (e => {
@@ -8,4 +8,4 @@
       }))));
     }
   };
-})(Drupal);
+})(Drupal, once);
