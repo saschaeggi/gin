@@ -2,7 +2,7 @@
 
 'use strict';
 
-((Drupal, drupalSettings) => {
+((Drupal, drupalSettings, once) => {
   Drupal.behaviors.ginAccent = {
     attach: (context) => {
       const ginAccent = once('ginAccent', context.querySelectorAll('body'));
@@ -27,11 +27,11 @@
       }
     },
 
-    setCustomAccentColor: (color = null) => {
+    setCustomAccentColor: (color = null, element = document.body) => {
       // If custom color is set, generate colors through JS.
       const accentColor = color != null ? color : drupalSettings.gin.accent_color;
       if (accentColor) {
-        Drupal.behaviors.ginAccent.clearAccentColor();
+        Drupal.behaviors.ginAccent.clearAccentColor(element);
 
         const strippedAccentColor = accentColor.replace('#', '');
         const darkAccentColor = Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 65).replace('#', '');
@@ -55,13 +55,13 @@
           }\n\
         `;
 
-        document.querySelector('body > :last-child').parentNode.append(style);
+        element.parentNode.querySelector(':scope > :last-child').append(style);
       }
     },
 
-    clearAccentColor: () => {
-      if (document.querySelectorAll('.gin-custom-colors').length > 0) {
-        const removeElement = document.querySelector('.gin-custom-colors');
+    clearAccentColor: (element = document.body) => {
+      if (element.querySelectorAll('.gin-custom-colors').length > 0) {
+        const removeElement = element.querySelector('.gin-custom-colors');
         removeElement.parentNode.removeChild(removeElement);
       }
     },
@@ -86,12 +86,12 @@
       }
     },
 
-    setCustomFocusColor: (color = null) => {
+    setCustomFocusColor: (color = null, element = document.body) => {
       const accentColor = color != null ? color : drupalSettings.gin.focus_color;
 
       // Set preset color.
       if (accentColor) {
-        Drupal.behaviors.ginAccent.clearFocusColor();
+        Drupal.behaviors.ginAccent.clearFocusColor(element);
 
         const strippedAccentColor = accentColor.replace('#', '');
         const darkAccentColor = Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 65);
@@ -108,13 +108,13 @@
           }
         `;
 
-        document.querySelector('body > :last-child').parentNode.append(style);
+        element.parentNode.querySelector(':scope > :last-child').append(style);
       }
     },
 
-    clearFocusColor: () => {
-      if (document.querySelectorAll('.gin-custom-focus').length > 0) {
-        const removeElement = document.querySelector('.gin-custom-focus');
+    clearFocusColor: (element = document.body) => {
+      if (element.querySelectorAll('.gin-custom-focus').length > 0) {
+        const removeElement = element.querySelector('.gin-custom-focus');
         removeElement.parentNode.removeChild(removeElement);
       }
     },
@@ -175,4 +175,4 @@
         .slice(1)}`;
     },
   };
-})(Drupal, drupalSettings);
+})(Drupal, drupalSettings, once);
