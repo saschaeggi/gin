@@ -57,29 +57,28 @@
 
           CKEDITOR.on('instanceReady', (element) => {
             const editor = element.editor;
-            const editorBody = editor.document.$.body;
 
             // Initial accent color.
-            editorBody.setAttribute('data-gin-accent', accentColorPreset);
+            editor.document.$.body.setAttribute('data-gin-accent', accentColorPreset);
 
             if (accentColorPreset === 'custom' && accentColor) {
-              Drupal.behaviors.ginAccent.setCustomAccentColor(accentColor, document.querySelector(editor.document.$).querySelectorAll('head'));
+              Drupal.behaviors.ginAccent.setCustomAccentColor(accentColor, editor.document.$.head);
             }
 
             // Change from Code to Editor.
             editor.on('mode', function() {
               if (this.mode == 'wysiwyg') {
-                editorBody.setAttribute('data-gin-accent', accentColorPreset);
+                editor.document.$.body.setAttribute('data-gin-accent', accentColorPreset);
 
                 if (accentColorPreset === 'custom' && accentColor) {
-                  Drupal.behaviors.ginAccent.setCustomAccentColor(accentColor, document.querySelector(editor.document.$).querySelectorAll('head'));
+                  Drupal.behaviors.ginAccent.setCustomAccentColor(accentColor, editor.document.$.head);
                 }
 
                 if (localStorage.getItem('Drupal.gin.darkmode') === 'auto') {
                   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    editorBody.classList.add(darkmodeClass);
+                    editor.document.$.body.classList.add(darkmodeClass);
                   } else {
-                    editorBody.classList.remove(darkmodeClass);
+                    editor.document.$.body.classList.remove(darkmodeClass);
                   }
                 }
               }
@@ -106,7 +105,7 @@
             // Toggle Darkmode.
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
               if (e.matches && localStorage.getItem('Drupal.gin.darkmode') === 'auto') {
-                editorBody.classList.add(darkmodeClass);
+                editor.document.$.body.classList.add(darkmodeClass);
 
                 if (document.querySelectorAll(`.${editor.id}.cke_panel`).length > 0) {
                   const iframeElement = document.querySelector(`.${editor.id}.cke_panel`).childNodes[0].contentWindow.document;
@@ -118,7 +117,7 @@
             // Change to Lightmode.
             window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
               if (e.matches && localStorage.getItem('Drupal.gin.darkmode') === 'auto') {
-                editorBody.classList.remove(darkmodeClass);
+                editor.document.$.body.classList.remove(darkmodeClass);
 
                 if (document.querySelectorAll(`.${editor.id}.cke_panel`).length > 0) {
                   const iframeElement = document.querySelector(`.${editor.id}.cke_panel`).childNodes[0].contentWindow.document;
