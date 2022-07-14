@@ -1,14 +1,14 @@
-((Drupal, drupalSettings) => {
+((Drupal, drupalSettings, once) => {
   Drupal.behaviors.ginToolbarToggle = {
-    attach: () => {
+    attach: function() {
       "classic" != drupalSettings.gin.toolbar_variant && localStorage.getItem("Drupal.toolbar.trayVerticalLocked") && localStorage.removeItem("Drupal.toolbar.trayVerticalLocked"), 
       "true" === localStorage.getItem("Drupal.gin.toolbarExpanded") ? (document.body.setAttribute("data-toolbar-menu", "open"), 
       document.querySelector(".toolbar-menu__trigger").classList.add("is-active")) : (document.body.setAttribute("data-toolbar-menu", ""), 
       document.querySelector(".toolbar-menu__trigger").classList.remove("is-active")), 
       once("ginToolbarShortcut", document.querySelector("#gin-toolbar-bar")).forEach((() => document.addEventListener("keydown", (e => {
-        !0 === e.altKey && "KeyT" === e.code && Drupal.behaviors.ginToolbarToggle.toggleToolbar();
+        !0 === e.altKey && "KeyT" === e.code && this.toggleToolbar();
       })))), once("ginToolbarToggle", document.querySelector(".toolbar-menu__trigger")).forEach((el => el.addEventListener("click", (e => {
-        e.preventDefault(), Drupal.behaviors.ginToolbarToggle.toggleToolbar();
+        e.preventDefault(), this.toggleToolbar();
       }))));
     },
     toggleToolbar: () => {
@@ -34,4 +34,4 @@
       }));
     }
   };
-})(Drupal, drupalSettings);
+})(Drupal, drupalSettings, once);

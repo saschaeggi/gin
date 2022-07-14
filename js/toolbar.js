@@ -2,9 +2,9 @@
 
 'use strict';
 
-((Drupal, drupalSettings) => {
+((Drupal, drupalSettings, once) => {
   Drupal.behaviors.ginToolbarToggle = {
-    attach: () => {
+    attach: function attach() {
       // Check for Drupal trayVerticalLocked and remove it.
       if (drupalSettings.gin.toolbar_variant != 'classic' && localStorage.getItem('Drupal.toolbar.trayVerticalLocked')) {
         localStorage.removeItem('Drupal.toolbar.trayVerticalLocked');
@@ -25,7 +25,7 @@
       const ginToolbarShortcut = once('ginToolbarShortcut', document.querySelector('#gin-toolbar-bar'));
       ginToolbarShortcut.forEach(() => document.addEventListener('keydown', e => {
         if (e.altKey === true && e.code === 'KeyT') {
-          Drupal.behaviors.ginToolbarToggle.toggleToolbar();
+          this.toggleToolbar();
         }
       }));
 
@@ -33,7 +33,7 @@
       const ginToolbarToggle = once('ginToolbarToggle', document.querySelector('.toolbar-menu__trigger'));
       ginToolbarToggle.forEach(el => el.addEventListener('click', e => {
         e.preventDefault();
-        Drupal.behaviors.ginToolbarToggle.toggleToolbar();
+        this.toggleToolbar();
       }));
     },
     toggleToolbar: () => {
@@ -83,4 +83,4 @@
       });
     },
   };
-})(Drupal, drupalSettings);
+})(Drupal, drupalSettings, once);
