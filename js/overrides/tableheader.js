@@ -1,20 +1,27 @@
 ((Drupal, once) => {
-  Drupal.behaviors.ginStickyTable = {
+  Drupal.behaviors.ginTableHeader = {
     attach: function attach(context) {
-      const ginStickyTable = once('ginStickyTable', context.querySelectorAll('.sticky-enabled'));
-      ginStickyTable.forEach(el => {
-        // Watch sticky table header
+      const ginTableHeader = once('ginTableHeader', context.querySelectorAll('.sticky-enabled'));
+      ginTableHeader.forEach(el => {
+        // Watch sticky table header.
         const observer = new IntersectionObserver(
           ([e]) => {
-            context.querySelector('.gin-table-scroll-wrapper').classList.toggle('--is-sticky', e.intersectionRatio < 1);
-            if (document.querySelectorAll('table.sticky-header').length === 0) {
-              this.createStickyHeader(el);
-              this.syncSelectAll();
-            }
+            context.querySelector('.gin-table-scroll-wrapper').classList.toggle('--is-sticky', e.intersectionRatio < 1 || window.scrollY > context.querySelector('.gin-table-scroll-wrapper').offsetTop);
           },
           { threshold: [1], rootMargin: `-${this.stickyPosition()}px 0px 0px 0px` }
         );
         observer.observe(el.querySelector('thead'));
+
+        // Create sticky element.
+        this.createStickyHeader(el);
+
+        // SelectAll handling.
+        this.syncSelectAll();
+
+        // Watch resize event.
+        window.onresize = () => {
+          Drupal.debounce(this.handleResize(el), 150);
+        };
       });
     },
     stickyPosition: () => {
@@ -27,16 +34,13 @@
 
       return offsetTop;
     },
-    createStickyHeader: (table) => {
+    createStickyHeader: function createStickyHeader(table) {
       const header = table.querySelectorAll(':scope > thead')[0];
       const stickyTable = document.createElement('table');
       stickyTable.className = 'sticky-header';
       stickyTable.append(header.cloneNode(true));
       table.insertBefore(stickyTable, header);
-
-      header.querySelectorAll('th').forEach((el, i) => {
-        document.querySelectorAll('table.sticky-header > thead th')[i].style.width = `${el.offsetWidth}px`;
-      });
+      this.handleResize(table);
     },
     syncSelectAll: () => {
       const tableStickySelectAll = once('tableStickySelectAll', document.querySelector('table.sticky-header').querySelectorAll('th.select-all'));
@@ -56,6 +60,12 @@
               }
             });
           });
+      });
+    },
+    handleResize: (table) => {
+      const header = table.querySelectorAll(':scope > thead')[0];
+      header.querySelectorAll('th').forEach((el, i) => {
+        document.querySelectorAll('table.sticky-header > thead th')[i].style.width = `${el.offsetWidth}px`;
       });
     },
   };
