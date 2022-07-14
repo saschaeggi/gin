@@ -16,10 +16,9 @@
       const accentColor = null != color ? color : drupalSettings.gin.accent_color;
       if (accentColor) {
         Drupal.behaviors.ginAccent.clearAccentColor();
-        const strippedAccentColor = accentColor.replace("#", ""), darkAccentColor = Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 65).replace("#", ""), style = document.createElement("style"), className = "gin-custom-focus";
-        style.className = className, style.innerHTML = `\n          [data-gin-accent="custom"] {\n            --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(accentColor)};\n            --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -10)};\n            --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -15)};\n            --colorGinAppBackgroundRGB: ${Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 97))};\n            --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 85)};\n          }\n          .gin--dark-mode[data-gin-accent="custom"],\n          .gin--dark-mode [data-gin-accent="custom"] {\n            --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(darkAccentColor)};\n            --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 55)};\n            --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 50)};\n            --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor("2A2A2D", darkAccentColor, 88)};\n          }\n        `;
-        const scriptTag = document.querySelector("script");
-        scriptTag.parentNode.insertBefore(style, scriptTag);
+        const strippedAccentColor = accentColor.replace("#", ""), darkAccentColor = Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 65).replace("#", ""), style = document.createElement("style"), className = "gin-custom-colors";
+        style.className = className, style.innerHTML = `\n          [data-gin-accent="custom"] {\n            --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(accentColor)};\n            --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -10)};\n            --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -15)};\n            --colorGinAppBackgroundRGB: ${Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 97))};\n            --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 85)};\n          }\n          .gin--dark-mode[data-gin-accent="custom"],\n          .gin--dark-mode [data-gin-accent="custom"] {\n            --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(darkAccentColor)};\n            --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 55)};\n            --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 50)};\n            --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor("2A2A2D", darkAccentColor, 88)};\n          }\n        `, 
+        document.querySelector("body > :last-child").parentNode.append(style);
       }
     },
     clearAccentColor: () => {
@@ -46,9 +45,8 @@
       if (accentColor) {
         Drupal.behaviors.ginAccent.clearFocusColor();
         const strippedAccentColor = accentColor.replace("#", ""), darkAccentColor = Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 65), style = document.createElement("style"), className = "gin-custom-focus";
-        style.className = className, style.innerHTML = `\n          [data-gin-focus="custom"] {\n            --colorGinFocus: ${accentColor};\n          }\n          .gin--dark-mode[data-gin-focus="custom"],\n          .gin--dark-mode [data-gin-focus="custom"] {\n            --colorGinFocus: ${darkAccentColor};\n          }\n        `;
-        const scriptTag = document.querySelector("script");
-        scriptTag.parentNode.insertBefore(style, scriptTag);
+        style.className = className, style.innerHTML = `\n          [data-gin-focus="custom"] {\n            --colorGinFocus: ${accentColor};\n          }\n          .gin--dark-mode[data-gin-focus="custom"],\n          .gin--dark-mode [data-gin-focus="custom"] {\n            --colorGinFocus: ${darkAccentColor};\n          }\n        `, 
+        document.querySelector("body > :last-child").parentNode.append(style);
       }
     },
     clearFocusColor: () => {

@@ -36,7 +36,7 @@
         const strippedAccentColor = accentColor.replace('#', '');
         const darkAccentColor = Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 65).replace('#', '');
         const style = document.createElement('style');
-        const className = 'gin-custom-focus';
+        const className = 'gin-custom-colors';
         style.className = className;
         style.innerHTML = `
           [data-gin-accent="custom"] {\n\
@@ -55,8 +55,7 @@
           }\n\
         `;
 
-        const scriptTag = document.querySelector('script');
-        scriptTag.parentNode.insertBefore(style, scriptTag);
+        document.querySelector('body > :last-child').parentNode.append(style);
       }
     },
 
@@ -109,8 +108,7 @@
           }
         `;
 
-        const scriptTag = document.querySelector('script');
-        scriptTag.parentNode.insertBefore(style, scriptTag);
+        document.querySelector('body > :last-child').parentNode.append(style);
       }
     },
 
