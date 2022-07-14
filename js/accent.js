@@ -2,99 +2,88 @@
 
 'use strict';
 
-((Drupal, drupalSettings) => {
+((Drupal, drupalSettings, once) => {
   Drupal.behaviors.ginAccent = {
-    attach: (context) => {
+    attach: function attach(context) {
       const ginAccent = once('ginAccent', context.querySelectorAll('body'));
       ginAccent.forEach(() => {
         // Check Darkmode.
-        Drupal.behaviors.ginAccent.checkDarkmode();
+        this.checkDarkmode();
 
         // Set accent color.
-        Drupal.behaviors.ginAccent.setAccentColor();
+        this.setAccentColor();
 
         // Set focus color.
-        Drupal.behaviors.ginAccent.setFocusColor();
+        this.setFocusColor();
       });
     },
 
-    setAccentColor: (preset = null, color = null) => {
+    setAccentColor: function setAccentColor(preset = null, color = null) {
       const accentColorPreset = preset != null ? preset : drupalSettings.gin.preset_accent_color;
       document.body.setAttribute('data-gin-accent', accentColorPreset);
 
       if (accentColorPreset === 'custom') {
-        Drupal.behaviors.ginAccent.setCustomAccentColor(color);
+        this.setCustomAccentColor(color);
       }
     },
 
-    setCustomAccentColor: (color = null) => {
+    setCustomAccentColor: function setCustomAccentColor(color = null, element = document.body) {
       // If custom color is set, generate colors through JS.
       const accentColor = color != null ? color : drupalSettings.gin.accent_color;
       if (accentColor) {
-        Drupal.behaviors.ginAccent.clearAccentColor();
+        this.clearAccentColor(element);
 
         const strippedAccentColor = accentColor.replace('#', '');
-        const darkAccentColor = Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 65).replace('#', '');
+        const darkAccentColor = this.mixColor('ffffff', strippedAccentColor, 65).replace('#', '');
         const style = document.createElement('style');
         const className = 'gin-custom-colors';
         style.className = className;
         style.innerHTML = `
           [data-gin-accent="custom"] {\n\
-            --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(accentColor)};\n\
-            --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -10)};\n\
-            --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -15)};\n\
-            --colorGinAppBackgroundRGB: ${Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 97))};\n\
-            --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 85)};\n\
+            --colorGinPrimaryRGB: ${this.hexToRgb(accentColor)};\n\
+            --colorGinPrimaryHover: ${this.shadeColor(accentColor, -10)};\n\
+            --colorGinPrimaryActive: ${this.shadeColor(accentColor, -15)};\n\
+            --colorGinAppBackgroundRGB: ${this.hexToRgb(this.mixColor('ffffff', strippedAccentColor, 97))};\n\
+            --colorGinTableHeader: ${this.mixColor('ffffff', strippedAccentColor, 85)};\n\
           }\n\
           .gin--dark-mode[data-gin-accent="custom"],\n\
           .gin--dark-mode [data-gin-accent="custom"] {\n\
-            --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(darkAccentColor)};\n\
-            --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 55)};\n\
-            --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 50)};\n\
-            --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor('2A2A2D', darkAccentColor, 88)};\n\
+            --colorGinPrimaryRGB: ${this.hexToRgb(darkAccentColor)};\n\
+            --colorGinPrimaryHover: ${this.mixColor('ffffff', strippedAccentColor, 55)};\n\
+            --colorGinPrimaryActive: ${this.mixColor('ffffff', strippedAccentColor, 50)};\n\
+            --colorGinTableHeader: ${this.mixColor('2A2A2D', darkAccentColor, 88)};\n\
           }\n\
         `;
 
-        document.querySelector('body > :last-child').parentNode.append(style);
+        element.parentNode.querySelector(':scope > :last-child').append(style);
       }
     },
 
-    clearAccentColor: () => {
-      if (document.querySelectorAll('.gin-custom-colors').length > 0) {
-        const removeElement = document.querySelector('.gin-custom-colors');
+    clearAccentColor: (element = document.body) => {
+      if (element.querySelectorAll('.gin-custom-colors').length > 0) {
+        const removeElement = element.querySelector('.gin-custom-colors');
         removeElement.parentNode.removeChild(removeElement);
       }
     },
 
-    // https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
-    hexToRgb: (hex) => {
-      var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-      hex = hex.replace(shorthandRegex, function(m, r, g, b) {
-        return r + r + g + g + b + b;
-      });
-
-      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-      return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : null;
-    },
-
-    setFocusColor: (preset = null, color = null) => {
+    setFocusColor: function setFocusColor(preset = null, color = null) {
       const focusColorPreset = preset != null ? preset : drupalSettings.gin.preset_focus_color;
       document.body.setAttribute('data-gin-focus', focusColorPreset);
 
       if (focusColorPreset === 'custom') {
-       Drupal.behaviors.ginAccent.setCustomFocusColor(color);
+       this.setCustomFocusColor(color);
       }
     },
 
-    setCustomFocusColor: (color = null) => {
+    setCustomFocusColor: function setCustomFocusColor(color = null, element = document.body) {
       const accentColor = color != null ? color : drupalSettings.gin.focus_color;
 
       // Set preset color.
       if (accentColor) {
-        Drupal.behaviors.ginAccent.clearFocusColor();
+        this.clearFocusColor(element);
 
         const strippedAccentColor = accentColor.replace('#', '');
-        const darkAccentColor = Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 65);
+        const darkAccentColor = this.mixColor('ffffff', strippedAccentColor, 65);
         const style = document.createElement('style');
         const className = 'gin-custom-focus';
         style.className = className;
@@ -108,13 +97,13 @@
           }
         `;
 
-        document.querySelector('body > :last-child').parentNode.append(style);
+        element.parentNode.querySelector(':scope > :last-child').append(style);
       }
     },
 
-    clearFocusColor: () => {
-      if (document.querySelectorAll('.gin-custom-focus').length > 0) {
-        const removeElement = document.querySelector('.gin-custom-focus');
+    clearFocusColor: (element = document.body) => {
+      if (element.querySelectorAll('.gin-custom-focus').length > 0) {
+        const removeElement = element.querySelector('.gin-custom-focus');
         removeElement.parentNode.removeChild(removeElement);
       }
     },
@@ -135,6 +124,17 @@
           document.querySelector('html').classList.remove(darkmodeClass);
         }
       });
+    },
+
+    // https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
+    hexToRgb: (hex) => {
+      var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+      hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+        return r + r + g + g + b + b;
+      });
+
+      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : null;
     },
 
     // https://gist.github.com/jedfoster/7939513
@@ -175,4 +175,4 @@
         .slice(1)}`;
     },
   };
-})(Drupal, drupalSettings);
+})(Drupal, drupalSettings, once);
