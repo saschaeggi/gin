@@ -1,4 +1,4 @@
-((Drupal, drupalSettings) => {
+((Drupal, drupalSettings, once) => {
   Drupal.behaviors.ginCKEditor = {
     attach: context => {
       once("ginCKEditor", context.querySelectorAll("body")).forEach((() => {
@@ -32,4 +32,4 @@
       }));
     }
   };
-})(Drupal, drupalSettings);
+})(Drupal, drupalSettings, once);

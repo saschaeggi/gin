@@ -2,7 +2,7 @@
 
 'use strict';
 
-((Drupal, drupalSettings) => {
+((Drupal, drupalSettings, once) => {
   Drupal.behaviors.ginCKEditor = {
     attach: (context) => {
       const ginCKEditor = once('ginCKEditor', context.querySelectorAll('body'));
@@ -130,4 +130,4 @@
       });
     }
   };
-})(Drupal, drupalSettings);
+})(Drupal, drupalSettings, once);
