@@ -2,13 +2,13 @@
 
 'use strict';
 
-((Drupal) => {
+((Drupal, once) => {
   const breakpoint = 1024;
   const storageMobile = 'Drupal.gin.sidebarExpanded.mobile';
   const storageDesktop = 'Drupal.gin.sidebarExpanded.desktop';
 
   Drupal.behaviors.ginSidebar = {
-    attach: () => {
+    attach: function attach() {
       // If variable does not exist, create it, default being to show sidebar.
       if (!localStorage.getItem(storageDesktop)) {
         localStorage.setItem(storageDesktop, 'true');
@@ -17,10 +17,10 @@
       // Set mobile initial to false.
       if (window.innerWidth >= breakpoint) {
         if (localStorage.getItem(storageDesktop) === 'true') {
-          Drupal.behaviors.ginSidebar.showSidebar();
+          this.showSidebar();
         }
         else {
-          Drupal.behaviors.ginSidebar.collapseSidebar();
+          this.collapseSidebar();
         }
       }
 
@@ -29,7 +29,7 @@
       const ginSidebarShortcut = once('ginSidebarShortcut', document.querySelector('#gin_sidebar'));
       ginSidebarShortcut.forEach(() => document.addEventListener('keydown', e => {
         if (e.altKey === true && e.code === 'KeyS') {
-          Drupal.behaviors.ginSidebar.toggleSidebar();
+          this.toggleSidebar();
         }
       }));
 
@@ -37,27 +37,27 @@
       const ginSidebarToggle = once('ginSidebarToggle', document.querySelector('.meta-sidebar__trigger'));
       ginSidebarToggle.forEach(el => el.addEventListener('click', e => {
         e.preventDefault();
-        Drupal.behaviors.ginSidebar.removeInlineStyles();
-        Drupal.behaviors.ginSidebar.toggleSidebar();
+        this.removeInlineStyles();
+        this.toggleSidebar();
       }));
 
       // Toolbar close
       const ginSidebarClose = once('ginSidebarClose', document.querySelectorAll('.meta-sidebar__close, .meta-sidebar__overlay'));
       ginSidebarClose.forEach(el => el.addEventListener('click', e => {
         e.preventDefault();
-        Drupal.behaviors.ginSidebar.removeInlineStyles();
-        Drupal.behaviors.ginSidebar.collapseSidebar();
+        this.removeInlineStyles();
+        this.collapseSidebar();
       }));
 
-      window.onresize = Drupal.debounce(Drupal.behaviors.ginSidebar.handleResize, 150);
+      window.onresize = Drupal.debounce(this.handleResize, 150);
     },
-    toggleSidebar: () => {
+    toggleSidebar: function toggleSidebar() {
       // Set active state.
       if (document.querySelector('.meta-sidebar__trigger').classList.contains('is-active')) {
-        Drupal.behaviors.ginSidebar.collapseSidebar();
+        this.collapseSidebar();
       }
       else {
-        Drupal.behaviors.ginSidebar.showSidebar();
+        this.showSidebar();
       }
     },
     showSidebar: () => {
@@ -90,18 +90,18 @@
       document.body.setAttribute('data-meta-sidebar', 'closed');
       document.querySelector('.meta-sidebar__trigger').setAttribute('aria-expanded', 'false');
     },
-    handleResize: () => {
-      Drupal.behaviors.ginSidebar.removeInlineStyles();
+    handleResize: function handleResize() {
+      this.removeInlineStyles();
 
       // If small viewport, always collapse sidebar.
       if (window.innerWidth < breakpoint) {
-        Drupal.behaviors.ginSidebar.collapseSidebar();
+        this.collapseSidebar();
       } else {
         // If large viewport, show sidebar if it was open before.
         if (localStorage.getItem(storageDesktop) === 'true') {
-          Drupal.behaviors.ginSidebar.showSidebar();
+          this.showSidebar();
         } else {
-          Drupal.behaviors.ginSidebar.collapseSidebar();
+          this.collapseSidebar();
         }
       }
     },
@@ -113,4 +113,4 @@
       }
     }
   };
-})(Drupal);
+})(Drupal, once);
