@@ -1,9 +1,9 @@
 ((Drupal, drupalSettings) => {
   Drupal.behaviors.ginSettings = {
-    attach: context => {
-      context.querySelectorAll('input[name="enable_darkmode"]').forEach((el => el.addEventListener("click", (e => {
+    attach: function(context) {
+      context.querySelectorAll('input[name="enable_darkmode"]').forEach((el => el.addEventListener("change", (e => {
         const darkmode = e.currentTarget.value, accentColorPreset = document.querySelector('[data-drupal-selector="edit-preset-accent-color"] input:checked').value, focusColorPreset = document.querySelector('select[name="preset_focus_color"]').value;
-        if (Drupal.behaviors.ginSettings.darkmode(darkmode), "custom" === accentColorPreset) {
+        if (this.darkmode(darkmode), "custom" === accentColorPreset) {
           const accentColorSetting = document.querySelector('input[name="accent_color"]').value;
           Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
         } else Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset);
@@ -42,7 +42,7 @@
         Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
       })), document.querySelector('input[name="high_contrast_mode"]').addEventListener("change", (e => {
         const highContrastMode = e.currentTarget.matches(":checked");
-        Drupal.behaviors.ginSettings.setHighContrastMode(highContrastMode);
+        this.setHighContrastMode(highContrastMode);
       })), document.querySelector('[data-drupal-selector="edit-submit"]').addEventListener("click", (() => {
         localStorage.setItem("Drupal.gin.darkmode", "");
       }));

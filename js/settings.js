@@ -4,16 +4,16 @@
 
 ((Drupal, drupalSettings) => {
   Drupal.behaviors.ginSettings = {
-    attach: (context) => {
+    attach: function attach(context) {
       // Watch Darkmode setting has changed.
       context.querySelectorAll('input[name="enable_darkmode"]')
-        .forEach(el => el.addEventListener('click', e => {
+        .forEach(el => el.addEventListener('change', e => {
           const darkmode = e.currentTarget.value;
           const accentColorPreset = document.querySelector('[data-drupal-selector="edit-preset-accent-color"] input:checked').value;
           const focusColorPreset = document.querySelector('select[name="preset_focus_color"]').value;
 
           // Toggle Darkmode.
-          Drupal.behaviors.ginSettings.darkmode(darkmode);
+          this.darkmode(darkmode);
 
           // Set custom color if 'custom' is set.
           if (accentColorPreset === 'custom') {
@@ -118,31 +118,8 @@
         const highContrastMode = e.currentTarget.matches(':checked');
 
         // Update.
-        Drupal.behaviors.ginSettings.setHighContrastMode(highContrastMode);
+        this.setHighContrastMode(highContrastMode);
       });
-
-      // Watch user settings has changed.
-      // document.querySelector('input[name="show_user_theme_settings"]').addEventListener('change', e => {
-      //   const active = e.currentTarget.matches(':checked');
-
-      //   let darkmodeSetting = document.querySelector('input[name="enable_darkmode"]:checked').value;
-      //   let accentColorSetting = document.querySelector('input[name="accent_color"]').value;
-      //   let accentColorPreset = document.querySelector('[data-drupal-selector="edit-preset-accent-color"] input:checked').value;
-      //   let highContrastMode = document.querySelector('input[name="high_contrast_mode"]').matches(':checked');
-
-      //   // User setting disabled, use default settings instead.
-      //   if (!active) {
-      //     darkmodeSetting = drupalSettings.gin.default_darkmode;
-      //     accentColorSetting = drupalSettings.gin.default_accent_color;
-      //     accentColorPreset = drupalSettings.gin.default_preset_accent_color;
-      //     highContrastMode = drupalSettings.gin.default_high_contrast_mode;
-      //   }
-
-      //   // Update.
-      //   Drupal.behaviors.ginSettings.darkmode(darkmodeSetting);
-      //   Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset, accentColorSetting);
-      //   Drupal.behaviors.ginSettings.setHighContrastMode(highContrastMode);
-      // });
 
       // Watch save
       document.querySelector('[data-drupal-selector="edit-submit"]').addEventListener('click', () => {
@@ -151,7 +128,7 @@
       });
     },
 
-    darkmode: function darkmode(darkmodeParam = null) {
+    darkmode: (darkmodeParam = null) => {
       const darkmodeEnabled = darkmodeParam != null ? darkmodeParam : drupalSettings.gin.darkmode;
       const darkmodeClass = drupalSettings.gin.darkmode_class;
 
@@ -183,7 +160,7 @@
       });
     },
 
-    setHighContrastMode: function setHighContrastMode(param = null) {
+    setHighContrastMode: (param = null) => {
       const enabled = param != null ? param : drupalSettings.gin.highcontrastmode;
       const className = drupalSettings.gin.highcontrastmode_class;
 
