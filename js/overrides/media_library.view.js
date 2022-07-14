@@ -1,6 +1,6 @@
-((Drupal) => {
+((Drupal, once) => {
   Drupal.behaviors.MediaLibrarySelectAll = {
-    attach: function attach(context) {
+    attach: function attach() {
       const views = once('media-library-select-all', document.querySelectorAll('.js-media-library-view[data-view-display-id="page"]'));
       views.forEach(el => {
         if (el.querySelectorAll('.js-media-library-item').length) {
@@ -32,24 +32,16 @@
           });
         }
 
-        // Media Library select
-        context.querySelectorAll('.media-library-view .form-checkbox')
-          .forEach(el => {
-            el.addEventListener('click', () => {
-              Drupal.behaviors.MediaLibrarySelectAll.bulkOperations();
-            });
-          });
+        el.querySelectorAll('.media-library-view .media-library-item__click-to-select-trigger')
+          .forEach(trigger => {
+            trigger.addEventListener('click', () => {
+              this.bulkOperations();
 
-        // Media Library select
-        context.querySelectorAll('.media-library-view .media-library-item__click-to-select-trigger')
-          .forEach(el => {
-            el.addEventListener('click', () => {
-              Drupal.behaviors.MediaLibrarySelectAll.bulkOperations();
+              const selectAll = el.querySelector('.media-library-select-all .form-boolean');
+              const checkboxes = el.querySelectorAll('.media-library-view .media-library-item .form-boolean');
+              const checkboxesChecked = el.querySelectorAll('.media-library-view .media-library-item .form-boolean:checked');
 
-              const selectAll = document.querySelector('.media-library-select-all .form-boolean');
-              const checkboxes = document.querySelectorAll('.media-library-view .media-library-item .form-boolean');
-
-              if (selectAll.checked === true && checkboxes.length !== Array.from(checkboxes).filter(el => el.checked === true).length) {
+              if (selectAll.checked === true && checkboxes.length !== checkboxesChecked.length) {
                 selectAll.checked = false;
                 selectAll.dispatchEvent(new Event('change'));
               } else if (checkboxes.length === Array.from(checkboxes).filter(el => el.checked === true).length) {
@@ -70,4 +62,4 @@
       }
     },
   };
-})(Drupal);
+})(Drupal, once);
