@@ -5,7 +5,7 @@
 ((Drupal, drupalSettings, once) => {
   Drupal.behaviors.ginAccent = {
     attach: function attach(context) {
-      const ginAccent = once('ginAccent', context.querySelectorAll('body'));
+      const ginAccent = once('ginAccent', context.querySelector('body'));
       ginAccent.forEach(() => {
         // Check Darkmode.
         this.checkDarkmode();

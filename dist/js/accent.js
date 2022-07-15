@@ -1,7 +1,7 @@
 ((Drupal, drupalSettings, once) => {
   Drupal.behaviors.ginAccent = {
     attach: function(context) {
-      once("ginAccent", context.querySelectorAll("body")).forEach((() => {
+      once("ginAccent", context.querySelector("body")).forEach((() => {
         this.checkDarkmode(), this.setAccentColor(), this.setFocusColor();
       }));
     },
