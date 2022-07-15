@@ -107,9 +107,9 @@
     },
     removeInlineStyles: () => {
       // Remove init styles.
-      if (document.querySelectorAll('.gin-sidebar-inline-styles').length > 0) {
-        const removeElement = document.querySelector('.gin-sidebar-inline-styles');
-        removeElement.parentNode.removeChild(removeElement);
+      const elementToRemove = document.querySelector('.gin-sidebar-inline-styles');
+      if (elementToRemove) {
+        elementToRemove.parentNode.removeChild(elementToRemove);
       }
     }
   };

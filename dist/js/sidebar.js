@@ -33,10 +33,8 @@
       this.removeInlineStyles(), window.innerWidth < 1024 ? this.collapseSidebar() : "true" === localStorage.getItem(storageDesktop) ? this.showSidebar() : this.collapseSidebar();
     },
     removeInlineStyles: () => {
-      if (document.querySelectorAll(".gin-sidebar-inline-styles").length > 0) {
-        const removeElement = document.querySelector(".gin-sidebar-inline-styles");
-        removeElement.parentNode.removeChild(removeElement);
-      }
+      const elementToRemove = document.querySelector(".gin-sidebar-inline-styles");
+      elementToRemove && elementToRemove.parentNode.removeChild(elementToRemove);
     }
   };
 })(Drupal, once);
