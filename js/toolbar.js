@@ -50,9 +50,9 @@
       else {
         document.body.setAttribute('data-toolbar-menu', '');
         active = 'false';
-        if (document.querySelectorAll('.gin-toolbar-inline-styles').length > 0) {
-          const removeElement = document.querySelector('.gin-toolbar-inline-styles');
-          removeElement.parentNode.removeChild(removeElement);
+        const elementToRemove = document.querySelectorAll('.gin-toolbar-inline-styles');
+        if (elementToRemove) {
+          elementToRemove.parentNode.removeChild(elementToRemove);
         }
       }
 

@@ -15,10 +15,10 @@
       const $this = document.querySelector(".toolbar-menu__trigger");
       $this.classList.toggle("is-active");
       let active = "true";
-      if ($this.classList.contains("is-active")) document.body.setAttribute("data-toolbar-menu", "open"); else if (document.body.setAttribute("data-toolbar-menu", ""), 
-      active = "false", document.querySelectorAll(".gin-toolbar-inline-styles").length > 0) {
-        const removeElement = document.querySelector(".gin-toolbar-inline-styles");
-        removeElement.parentNode.removeChild(removeElement);
+      if ($this.classList.contains("is-active")) document.body.setAttribute("data-toolbar-menu", "open"); else {
+        document.body.setAttribute("data-toolbar-menu", ""), active = "false";
+        const elementToRemove = document.querySelectorAll(".gin-toolbar-inline-styles");
+        elementToRemove && elementToRemove.parentNode.removeChild(elementToRemove);
       }
       localStorage.setItem("Drupal.gin.toolbarExpanded", active);
       const event = new CustomEvent("toolbar-toggle", {
