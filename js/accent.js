@@ -1,23 +1,48 @@
 /* eslint-disable no-bitwise, no-nested-ternary, no-mutable-exports, comma-dangle, strict */
 
-'use strict';
-
 ((Drupal, drupalSettings, once) => {
   Drupal.behaviors.ginAccent = {
     attach: function attach(context) {
       const ginAccent = once('ginAccent', context.querySelector('body'));
       ginAccent.forEach(() => {
         // Check Darkmode.
-        this.checkDarkmode();
+        Drupal.ginAccent.checkDarkmode();
 
         // Set accent color.
-        this.setAccentColor();
+        Drupal.ginAccent.setAccentColor();
 
         // Set focus color.
-        this.setFocusColor();
+        Drupal.ginAccent.setFocusColor();
       });
     },
 
+    // TEMP Backwards compatibility
+    // After we merged all JS refactors
+    // we can refactor the use of the
+    // behavior includes and remove these
+    setAccentColor: function setAccentColor(preset, color) {
+      Drupal.ginAccent.setAccentColor(preset, color);
+    },
+
+    setCustomAccentColor: function setCustomAccentColor(color, element) {
+      Drupal.ginAccent.setCustomAccentColor(color, element);
+    },
+
+    clearAccentColor: function clearAccentColor(element) {
+      Drupal.ginAccent.clearAccentColor(element);
+    },
+
+    setFocusColor: function setFocusColor(preset, color) {
+      Drupal.ginAccent.setFocusColor(preset, color);
+    },
+
+    checkDarkmode: function checkDarkmode() {
+      Drupal.ginAccent.checkDarkmode();
+    },
+
+  };
+
+  Drupal.ginAccent = {
     setAccentColor: function setAccentColor(preset = null, color = null) {
       const accentColorPreset = preset != null ? preset : drupalSettings.gin.preset_accent_color;
       document.body.setAttribute('data-gin-accent', accentColorPreset);
@@ -172,5 +197,6 @@
         .toString(16)
         .slice(1)}`;
     },
+
   };
 })(Drupal, drupalSettings, once);
