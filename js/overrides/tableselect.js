@@ -1,7 +1,5 @@
 /* eslint-disable no-bitwise, no-nested-ternary, no-mutable-exports, comma-dangle, strict */
 
-'use strict';
-
 ((Drupal, once) => {
   Drupal.behaviors.tableSelect = {
     attach: (context) => {
@@ -127,4 +125,5 @@
       }
     }
   };
+
 })(Drupal, once);
