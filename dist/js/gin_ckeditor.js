@@ -1,6 +1,10 @@
 ((Drupal, drupalSettings, once) => {
   Drupal.behaviors.ginCKEditor = {
     attach: context => {
+      Drupal.ginCKEditor.init(context);
+    }
+  }, Drupal.ginCKEditor = {
+    init: context => {
       once("ginCKEditor", context.querySelectorAll("body")).forEach((() => {
         if (window.CKEDITOR && void 0 !== CKEDITOR) {
           if (drupalSettings.path.currentPath.indexOf("admin/config/content/formats/manage") > -1) return;
@@ -11,15 +15,15 @@
           void 0 === CKEDITOR.skinName && (CKEDITOR.skinName = CKEDITOR.skin.name), CKEDITOR.config.contextmenu_contentsCss.push(CKEDITOR.skin.getPath("editor"), variablesCss, accentCss, contentsCss)), 
           CKEDITOR.on("instanceReady", (element => {
             const editor = element.editor;
-            editor.document.$.body.setAttribute("data-gin-accent", accentColorPreset), "custom" === accentColorPreset && accentColor && Drupal.behaviors.ginAccent.setCustomAccentColor(accentColor, editor.document.$.head), 
+            editor.document.$.body.setAttribute("data-gin-accent", accentColorPreset), "custom" === accentColorPreset && accentColor && Drupal.ginAccent.setCustomAccentColor(accentColor, editor.document.$.head), 
             editor.on("mode", (function() {
               "wysiwyg" == this.mode && (editor.document.$.body.setAttribute("data-gin-accent", accentColorPreset), 
-              "custom" === accentColorPreset && accentColor && Drupal.behaviors.ginAccent.setCustomAccentColor(accentColor, editor.document.$.head), 
+              "custom" === accentColorPreset && accentColor && Drupal.ginAccent.setCustomAccentColor(accentColor, editor.document.$.head), 
               "auto" === localStorage.getItem("Drupal.gin.darkmode") && (window.matchMedia("(prefers-color-scheme: dark)").matches ? editor.document.$.body.classList.add(darkmodeClass) : editor.document.$.body.classList.remove(darkmodeClass)));
             })), editor.on("menuShow", (function(element) {
               const darkModeClass = 1 == localStorage.getItem("Drupal.gin.darkmode") || "auto" === localStorage.getItem("Drupal.gin.darkmode") && window.matchMedia("(prefers-color-scheme: dark)").matches ? darkmodeClass : "", iframeElement = element.data[0].element.$.childNodes[0].contentWindow.document;
               darkModeClass && iframeElement.body.classList.add(darkModeClass), iframeElement.body.setAttribute("data-gin-accent", accentColorPreset), 
-              "custom" === accentColorPreset && accentColor && Drupal.behaviors.ginAccent.setCustomAccentColor(accentColor, elementBody.head);
+              "custom" === accentColorPreset && accentColor && Drupal.ginAccent.setCustomAccentColor(accentColor, iframeElement.head);
             })), window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e => {
               e.matches && "auto" === localStorage.getItem("Drupal.gin.darkmode") && (editor.document.$.body.classList.add(darkmodeClass), 
               document.querySelectorAll(`.${editor.id}.cke_panel`).length > 0) && document.querySelector(`.${editor.id}.cke_panel`).childNodes[0].contentWindow.document.body.classList.add(darkmodeClass);

@@ -1,10 +1,14 @@
 /* eslint-disable func-names, no-mutable-exports, comma-dangle, strict */
 
-'use strict';
-
 ((Drupal, drupalSettings, once) => {
   Drupal.behaviors.ginCKEditor = {
     attach: (context) => {
+      Drupal.ginCKEditor.init(context);
+    }
+  };
+
+  Drupal.ginCKEditor = {
+    init: (context) => {
       const ginCKEditor = once('ginCKEditor', context.querySelectorAll('body'));
       ginCKEditor.forEach(() => {
         if (window.CKEDITOR && CKEDITOR !== undefined) {
@@ -62,7 +66,7 @@
             editor.document.$.body.setAttribute('data-gin-accent', accentColorPreset);
 
             if (accentColorPreset === 'custom' && accentColor) {
-              Drupal.behaviors.ginAccent.setCustomAccentColor(accentColor, editor.document.$.head);
+              Drupal.ginAccent.setCustomAccentColor(accentColor, editor.document.$.head);
             }
 
             // Change from Code to Editor.
@@ -71,7 +75,7 @@
                 editor.document.$.body.setAttribute('data-gin-accent', accentColorPreset);
 
                 if (accentColorPreset === 'custom' && accentColor) {
-                  Drupal.behaviors.ginAccent.setCustomAccentColor(accentColor, editor.document.$.head);
+                  Drupal.ginAccent.setCustomAccentColor(accentColor, editor.document.$.head);
                 }
 
                 if (localStorage.getItem('Drupal.gin.darkmode') === 'auto') {
@@ -98,7 +102,7 @@
               iframeElement.body.setAttribute('data-gin-accent', accentColorPreset);
 
               if (accentColorPreset === 'custom' && accentColor) {
-                Drupal.behaviors.ginAccent.setCustomAccentColor(accentColor, elementBody.head);
+                Drupal.ginAccent.setCustomAccentColor(accentColor, iframeElement.head);
               }
             });
 
@@ -128,6 +132,7 @@
           });
         }
       });
-    }
+    },
+
   };
 })(Drupal, drupalSettings, once);
