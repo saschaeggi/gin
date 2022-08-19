@@ -15,31 +15,6 @@
         Drupal.ginAccent.setFocusColor();
       });
     },
-
-    // TEMP Backwards compatibility
-    // After we merged all JS refactors
-    // we can refactor the use of the
-    // behavior includes and remove these
-    setAccentColor: function setAccentColor(preset, color) {
-      Drupal.ginAccent.setAccentColor(preset, color);
-    },
-
-    setCustomAccentColor: function setCustomAccentColor(color, element) {
-      Drupal.ginAccent.setCustomAccentColor(color, element);
-    },
-
-    clearAccentColor: function clearAccentColor(element) {
-      Drupal.ginAccent.clearAccentColor(element);
-    },
-
-    setFocusColor: function setFocusColor(preset, color) {
-      Drupal.ginAccent.setFocusColor(preset, color);
-    },
-
-    checkDarkmode: function checkDarkmode() {
-      Drupal.ginAccent.checkDarkmode();
-    },
-
   };
 
   Drupal.ginAccent = {
