@@ -2,9 +2,25 @@
   Drupal.behaviors.ginAccent = {
     attach: function(context) {
       once("ginAccent", context.querySelector("body")).forEach((() => {
-        this.checkDarkmode(), this.setAccentColor(), this.setFocusColor();
+        Drupal.ginAccent.checkDarkmode(), Drupal.ginAccent.setAccentColor(), Drupal.ginAccent.setFocusColor();
       }));
     },
+    setAccentColor: function(preset, color) {
+      Drupal.ginAccent.setAccentColor(preset, color);
+    },
+    setCustomAccentColor: function(color, element) {
+      Drupal.ginAccent.setCustomAccentColor(color, element);
+    },
+    clearAccentColor: function(element) {
+      Drupal.ginAccent.clearAccentColor(element);
+    },
+    setFocusColor: function(preset, color) {
+      Drupal.ginAccent.setFocusColor(preset, color);
+    },
+    checkDarkmode: function() {
+      Drupal.ginAccent.checkDarkmode();
+    }
+  }, Drupal.ginAccent = {
     setAccentColor: function() {
       let preset = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null, color = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null;
       const accentColorPreset = null != preset ? preset : drupalSettings.gin.preset_accent_color;
