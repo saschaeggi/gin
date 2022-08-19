@@ -1,6 +1,12 @@
 ((Drupal, once) => {
-  Drupal.behaviors.MediaLibrarySelectAll = {
+  Drupal.behaviors.ginMediaLibrary = {
     attach: function attach() {
+      Drupal.ginMediaLibrary.init();
+    },
+  };
+
+  Drupal.ginMediaLibrary = {
+    init: function () {
       const views = once('media-library-select-all', document.querySelectorAll('.js-media-library-view[data-view-display-id="page"]'));
       views.forEach(el => {
         if (el.querySelectorAll('.js-media-library-item').length) {
@@ -8,8 +14,6 @@
           const selectAll = document.createElement('label');
           selectAll.className = 'media-library-select-all';
           selectAll.innerHTML = Drupal.theme('checkbox') + Drupal.t('Select all media');
-          header.prepend(selectAll);
-
           selectAll.children[0].addEventListener('click', e => {
             const currentTarget = e.currentTarget;
             const checkboxes = currentTarget
@@ -29,29 +33,37 @@
               '@count': checkboxes.length
             }) : Drupal.t('Zero items selected');
             Drupal.announce(announcement);
+
+            this.bulkOperations();
           });
+          header.prepend(selectAll);
         }
-
-        el.querySelectorAll('.media-library-view .media-library-item__click-to-select-trigger')
-          .forEach(trigger => {
-            trigger.addEventListener('click', () => {
-              this.bulkOperations();
-
-              const selectAll = el.querySelector('.media-library-select-all .form-boolean');
-              const checkboxes = el.querySelectorAll('.media-library-view .media-library-item .form-boolean');
-              const checkboxesChecked = el.querySelectorAll('.media-library-view .media-library-item .form-boolean:checked');
-
-              if (selectAll.checked === true && checkboxes.length !== checkboxesChecked.length) {
-                selectAll.checked = false;
-                selectAll.dispatchEvent(new Event('change'));
-              } else if (checkboxes.length === Array.from(checkboxes).filter(el => el.checked === true).length) {
-                selectAll.checked = true;
-                selectAll.dispatchEvent(new Event('change'));
-              }
-            });
-          });
       });
+
+      this.itemSelect();
     },
+
+    itemSelect: () => {
+      document.querySelectorAll('.media-library-view .js-click-to-select-trigger, .media-library-view .media-library-item .form-checkbox')
+        .forEach(trigger => {
+          trigger.addEventListener('click', () => {
+            const selectAll = document.querySelector('.media-library-select-all .form-boolean');
+            const checkboxes = document.querySelectorAll('.media-library-view .media-library-item .form-boolean');
+            const checkboxesChecked = document.querySelectorAll('.media-library-view .media-library-item .form-boolean:checked');
+
+            if (selectAll.checked === true && checkboxes.length !== checkboxesChecked.length) {
+              selectAll.checked = false;
+              selectAll.dispatchEvent(new Event('change'));
+            } else if (checkboxes.length === Array.from(checkboxes).filter(el => el.checked === true).length) {
+              selectAll.checked = true;
+              selectAll.dispatchEvent(new Event('change'));
+            }
+
+            Drupal.ginMediaLibrary.bulkOperations();
+          });
+        });
+    },
+
     bulkOperations: () => {
       const bulkOperations = document.querySelector('.media-library-view [data-drupal-selector*="edit-header"]');
 
@@ -61,5 +73,6 @@
         bulkOperations.classList.remove('is-sticky');
       }
     },
+
   };
 })(Drupal, once);
