@@ -1,6 +1,10 @@
 ((Drupal, drupalSettings) => {
   Drupal.behaviors.ginSettings = {
     attach: function(context) {
+      Drupal.ginSettings.init(context);
+    }
+  }, Drupal.ginSettings = {
+    init: function(context) {
       context.querySelectorAll('input[name="enable_darkmode"]').forEach((el => el.addEventListener("change", (e => {
         const darkmode = e.currentTarget.value, accentColorPreset = document.querySelector('[data-drupal-selector="edit-preset-accent-color"] input:checked').value, focusColorPreset = document.querySelector('select[name="preset_focus_color"]').value;
         if (this.darkmode(darkmode), "custom" === accentColorPreset) {

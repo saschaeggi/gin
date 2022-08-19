@@ -1,10 +1,14 @@
 /* eslint-disable func-names, no-mutable-exports, comma-dangle, strict */
 
-'use strict';
-
 ((Drupal, drupalSettings) => {
   Drupal.behaviors.ginSettings = {
     attach: function attach(context) {
+      Drupal.ginSettings.init(context);
+    },
+  };
+
+  Drupal.ginSettings = {
+    init: function (context) {
       // Watch Darkmode setting has changed.
       context.querySelectorAll('input[name="enable_darkmode"]')
         .forEach(el => el.addEventListener('change', e => {
@@ -128,7 +132,7 @@
       });
     },
 
-    darkmode: (darkmodeParam = null) => {
+    darkmode: function (darkmodeParam = null) {
       const darkmodeEnabled = darkmodeParam != null ? darkmodeParam : drupalSettings.gin.darkmode;
       const darkmodeClass = drupalSettings.gin.darkmode_class;
 
@@ -160,7 +164,7 @@
       });
     },
 
-    setHighContrastMode: (param = null) => {
+    setHighContrastMode: function (param = null) {
       const enabled = param != null ? param : drupalSettings.gin.highcontrastmode;
       const className = drupalSettings.gin.highcontrastmode_class;
 
@@ -172,5 +176,6 @@
         document.body.classList.remove(className);
       }
     },
+
   };
 })(Drupal, drupalSettings);
