@@ -4,21 +4,6 @@
       once("ginAccent", context.querySelector("body")).forEach((() => {
         Drupal.ginAccent.checkDarkmode(), Drupal.ginAccent.setAccentColor(), Drupal.ginAccent.setFocusColor();
       }));
-    },
-    setAccentColor: function(preset, color) {
-      Drupal.ginAccent.setAccentColor(preset, color);
-    },
-    setCustomAccentColor: function(color, element) {
-      Drupal.ginAccent.setCustomAccentColor(color, element);
-    },
-    clearAccentColor: function(element) {
-      Drupal.ginAccent.clearAccentColor(element);
-    },
-    setFocusColor: function(preset, color) {
-      Drupal.ginAccent.setFocusColor(preset, color);
-    },
-    checkDarkmode: function() {
-      Drupal.ginAccent.checkDarkmode();
     }
   }, Drupal.ginAccent = {
     setAccentColor: function() {
