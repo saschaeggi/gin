@@ -1,11 +1,21 @@
 ((Drupal, once) => {
-  Drupal.behaviors.ginMessagesDismiss = {
+  Drupal.behaviors.ginMessages = {
     attach: context => {
-      once("ginMessagesDismiss", context.querySelectorAll(".messages .button--dismiss")).forEach((el => el.addEventListener("click", (e => {
-        e.preventDefault();
-        const listItem = e.currentTarget.closest(".messages-list__item");
-        listItem.style.opacity = 0, listItem.classList.add("visually-hidden");
-      }))));
+      Drupal.ginMessages.dismissMessages(context);
+    }
+  }, Drupal.ginMessages = {
+    dismissMessages: function() {
+      let context = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : document;
+      once("gin-messages-dismiss", ".messages .button--dismiss", context).forEach((dismissButton => {
+        dismissButton.addEventListener("click", (e => {
+          e.preventDefault();
+          const message = e.currentTarget.closest(".messages-list__item");
+          Drupal.ginMessages.hideMessage(message);
+        }));
+      }));
+    },
+    hideMessage: message => {
+      message.style.opacity = 0, message.classList.add("visually-hidden");
     }
   };
 })(Drupal, once);

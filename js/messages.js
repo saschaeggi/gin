@@ -5,18 +5,27 @@
 
 /* eslint-disable func-names, no-mutable-exports, comma-dangle, strict */
 
-'use strict';
-
 ((Drupal, once) => {
-  Drupal.behaviors.ginMessagesDismiss = {
+  Drupal.behaviors.ginMessages = {
     attach: (context) => {
-      const ginMessagesDismiss = once('ginMessagesDismiss', context.querySelectorAll('.messages .button--dismiss'));
-      ginMessagesDismiss.forEach(el => el.addEventListener('click', e => {
-        e.preventDefault();
-        const listItem = e.currentTarget.closest('.messages-list__item');
-        listItem.style.opacity = 0;
-        listItem.classList.add('visually-hidden');
-      }));
+      Drupal.ginMessages.dismissMessages(context);
     }
-  }
+  };
+
+  Drupal.ginMessages = {
+    dismissMessages: (context = document) => {
+      once('gin-messages-dismiss', '.messages .button--dismiss', context).forEach(dismissButton => {
+        dismissButton.addEventListener('click', e => {
+          e.preventDefault();
+          const message = e.currentTarget.closest('.messages-list__item');
+          Drupal.ginMessages.hideMessage(message);
+        });
+      });
+    },
+
+    hideMessage: (message) => {
+      message.style.opacity = 0;
+      message.classList.add('visually-hidden');
+    },
+  };
 })(Drupal, once);
