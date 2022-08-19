@@ -1,10 +1,34 @@
 /* eslint-disable func-names, no-mutable-exports, comma-dangle, strict */
 
-'use strict';
-
 ((Drupal, drupalSettings, once) => {
-  Drupal.behaviors.ginToolbarToggle = {
+  Drupal.behaviors.ginToolbar = {
     attach: function attach() {
+      Drupal.ginToolbar.init();
+    },
+
+  };
+
+  /**
+   * Replaces the "Home" link with "Back to site" link.
+   *
+   * Back to site link points to the last non-administrative page the user
+   * visited within the same browser tab.
+   */
+  Drupal.behaviors.ginEscapeAdmin = {
+    attach: () => {
+      const ginEscapeAdmin = once('ginEscapeAdmin', document.querySelector('[data-gin-toolbar-escape-admin]'));
+      ginEscapeAdmin.forEach(el => {
+        const escapeAdminPath = sessionStorage.getItem('escapeAdminPath');
+
+        if (drupalSettings.path.currentPathIsAdmin && escapeAdminPath !== null) {
+          el.setAttribute('href', escapeAdminPath);
+        }
+      });
+    },
+  };
+
+  Drupal.ginToolbar = {
+    init: function () {
       // Check for Drupal trayVerticalLocked and remove it.
       if (drupalSettings.gin.toolbar_variant != 'classic' && localStorage.getItem('Drupal.toolbar.trayVerticalLocked')) {
         localStorage.removeItem('Drupal.toolbar.trayVerticalLocked');
@@ -36,6 +60,7 @@
         this.toggleToolbar();
       }));
     },
+
     toggleToolbar: () => {
       const $this = document.querySelector('.toolbar-menu__trigger');
 
@@ -50,7 +75,7 @@
       else {
         document.body.setAttribute('data-toolbar-menu', '');
         active = 'false';
-        const elementToRemove = document.querySelectorAll('.gin-toolbar-inline-styles');
+        const elementToRemove = document.querySelector('.gin-toolbar-inline-styles');
         if (elementToRemove) {
           elementToRemove.parentNode.removeChild(elementToRemove);
         }
@@ -62,25 +87,8 @@
       // Dispatch event.
       const event = new CustomEvent('toolbar-toggle', { detail: active === 'true'})
       document.dispatchEvent(event);
-    }
-  };
-
-  /**
-   * Replaces the "Home" link with "Back to site" link.
-   *
-   * Back to site link points to the last non-administrative page the user
-   * visited within the same browser tab.
-   */
-  Drupal.behaviors.ginEscapeAdmin = {
-    attach: () => {
-      const ginEscapeAdmin = once('ginEscapeAdmin', document.querySelector('[data-gin-toolbar-escape-admin]'));
-      ginEscapeAdmin.forEach(el => {
-        const escapeAdminPath = sessionStorage.getItem('escapeAdminPath');
-
-        if (drupalSettings.path.currentPathIsAdmin && escapeAdminPath !== null) {
-          el.setAttribute('href', escapeAdminPath);
-        }
-      });
     },
+
   };
+
 })(Drupal, drupalSettings, once);
