@@ -1,7 +1,5 @@
 /* eslint-disable func-names, no-mutable-exports, comma-dangle, strict */
 
-'use strict';
-
 ((Drupal, once) => {
   const breakpoint = 1024;
   const storageMobile = 'Drupal.gin.sidebarExpanded.mobile';
@@ -9,6 +7,12 @@
 
   Drupal.behaviors.ginSidebar = {
     attach: function attach() {
+      Drupal.ginSidebar.init();
+    },
+  };
+
+  Drupal.ginSidebar = {
+    init: function () {
       // If variable does not exist, create it, default being to show sidebar.
       if (!localStorage.getItem(storageDesktop)) {
         localStorage.setItem(storageDesktop, 'true');
@@ -51,15 +55,17 @@
 
       window.onresize = Drupal.debounce(this.handleResize, 150);
     },
-    toggleSidebar: function toggleSidebar() {
+
+    toggleSidebar: () => {
       // Set active state.
       if (document.querySelector('.meta-sidebar__trigger').classList.contains('is-active')) {
-        this.collapseSidebar();
+        Drupal.ginSidebar.collapseSidebar();
       }
       else {
-        this.showSidebar();
+        Drupal.ginSidebar.showSidebar();
       }
     },
+
     showSidebar: () => {
       const chooseStorage = window.innerWidth < breakpoint ? storageMobile : storageDesktop;
       const showLabel = Drupal.t('Hide sidebar panel');
@@ -75,6 +81,7 @@
       document.querySelector('.meta-sidebar__trigger').classList.add('is-active');
       document.body.setAttribute('data-meta-sidebar', 'open');
     },
+
     collapseSidebar: () => {
       const chooseStorage = window.innerWidth < breakpoint ? storageMobile : storageDesktop;
       const hideLabel = Drupal.t('Show sidebar panel');
@@ -90,27 +97,30 @@
       document.body.setAttribute('data-meta-sidebar', 'closed');
       document.querySelector('.meta-sidebar__trigger').setAttribute('aria-expanded', 'false');
     },
-    handleResize: function handleResize() {
-      this.removeInlineStyles();
+
+    handleResize: () => {
+      Drupal.ginSidebar.removeInlineStyles();
 
       // If small viewport, always collapse sidebar.
       if (window.innerWidth < breakpoint) {
-        this.collapseSidebar();
+        Drupal.ginSidebar.collapseSidebar();
       } else {
         // If large viewport, show sidebar if it was open before.
         if (localStorage.getItem(storageDesktop) === 'true') {
-          this.showSidebar();
+          Drupal.ginSidebar.showSidebar();
         } else {
-          this.collapseSidebar();
+          Drupal.ginSidebar.collapseSidebar();
         }
       }
     },
+
     removeInlineStyles: () => {
       // Remove init styles.
       const elementToRemove = document.querySelector('.gin-sidebar-inline-styles');
       if (elementToRemove) {
         elementToRemove.parentNode.removeChild(elementToRemove);
       }
-    }
+    },
+
   };
 })(Drupal, once);

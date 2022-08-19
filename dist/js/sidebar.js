@@ -2,6 +2,10 @@
   const storageDesktop = "Drupal.gin.sidebarExpanded.desktop";
   Drupal.behaviors.ginSidebar = {
     attach: function() {
+      Drupal.ginSidebar.init();
+    }
+  }, Drupal.ginSidebar = {
+    init: function() {
       localStorage.getItem(storageDesktop) || localStorage.setItem(storageDesktop, "true"), 
       window.innerWidth >= 1024 && ("true" === localStorage.getItem(storageDesktop) ? this.showSidebar() : this.collapseSidebar()), 
       once("ginSidebarShortcut", document.querySelector("#gin_sidebar")).forEach((() => document.addEventListener("keydown", (e => {
@@ -12,8 +16,8 @@
         e.preventDefault(), this.removeInlineStyles(), this.collapseSidebar();
       })))), window.onresize = Drupal.debounce(this.handleResize, 150);
     },
-    toggleSidebar: function() {
-      document.querySelector(".meta-sidebar__trigger").classList.contains("is-active") ? this.collapseSidebar() : this.showSidebar();
+    toggleSidebar: () => {
+      document.querySelector(".meta-sidebar__trigger").classList.contains("is-active") ? Drupal.ginSidebar.collapseSidebar() : Drupal.ginSidebar.showSidebar();
     },
     showSidebar: () => {
       const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, showLabel = Drupal.t("Hide sidebar panel");
@@ -29,8 +33,8 @@
       document.querySelector(".meta-sidebar__trigger").classList.remove("is-active"), 
       document.body.setAttribute("data-meta-sidebar", "closed"), document.querySelector(".meta-sidebar__trigger").setAttribute("aria-expanded", "false");
     },
-    handleResize: function() {
-      this.removeInlineStyles(), window.innerWidth < 1024 ? this.collapseSidebar() : "true" === localStorage.getItem(storageDesktop) ? this.showSidebar() : this.collapseSidebar();
+    handleResize: () => {
+      Drupal.ginSidebar.removeInlineStyles(), window.innerWidth < 1024 ? Drupal.ginSidebar.collapseSidebar() : "true" === localStorage.getItem(storageDesktop) ? Drupal.ginSidebar.showSidebar() : Drupal.ginSidebar.collapseSidebar();
     },
     removeInlineStyles: () => {
       const elementToRemove = document.querySelector(".gin-sidebar-inline-styles");
