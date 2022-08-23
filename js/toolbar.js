@@ -2,8 +2,8 @@
 
 ((Drupal, drupalSettings, once) => {
   Drupal.behaviors.ginToolbar = {
-    attach: function attach() {
-      Drupal.ginToolbar.init();
+    attach: (context) => {
+      Drupal.ginToolbar.init(context);
     },
 
   };
@@ -15,9 +15,8 @@
    * visited within the same browser tab.
    */
   Drupal.behaviors.ginEscapeAdmin = {
-    attach: () => {
-      const ginEscapeAdmin = once('ginEscapeAdmin', document.querySelector('[data-gin-toolbar-escape-admin]'));
-      ginEscapeAdmin.forEach(el => {
+    attach: (context) => {
+      once('ginEscapeAdmin', '[data-gin-toolbar-escape-admin]', context).forEach(el => {
         const escapeAdminPath = sessionStorage.getItem('escapeAdminPath');
 
         if (drupalSettings.path.currentPathIsAdmin && escapeAdminPath !== null) {
@@ -28,7 +27,7 @@
   };
 
   Drupal.ginToolbar = {
-    init: function () {
+    init: function (context) {
       // Check for Drupal trayVerticalLocked and remove it.
       if (drupalSettings.gin.toolbar_variant != 'classic' && localStorage.getItem('Drupal.toolbar.trayVerticalLocked')) {
         localStorage.removeItem('Drupal.toolbar.trayVerticalLocked');
@@ -46,16 +45,14 @@
 
       // Show toolbar navigation with shortcut:
       // OPTION + T (Mac) / ALT + T (Windows)
-      const ginToolbarShortcut = once('ginToolbarShortcut', document.querySelector('#gin-toolbar-bar'));
-      ginToolbarShortcut.forEach(() => document.addEventListener('keydown', e => {
+      once('ginToolbarShortcut', '#gin-toolbar-bar', context).forEach(() => document.addEventListener('keydown', e => {
         if (e.altKey === true && e.code === 'KeyT') {
           this.toggleToolbar();
         }
       }));
 
       // Toolbar toggle
-      const ginToolbarToggle = once('ginToolbarToggle', document.querySelector('.toolbar-menu__trigger'));
-      ginToolbarToggle.forEach(el => el.addEventListener('click', e => {
+      once('ginToolbarToggle', '.toolbar-menu__trigger', context).forEach(el => el.addEventListener('click', e => {
         e.preventDefault();
         this.toggleToolbar();
       }));

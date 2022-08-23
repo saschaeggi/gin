@@ -1,24 +1,24 @@
 ((Drupal, drupalSettings, once) => {
   Drupal.behaviors.ginToolbar = {
-    attach: function() {
-      Drupal.ginToolbar.init();
+    attach: context => {
+      Drupal.ginToolbar.init(context);
     }
   }, Drupal.behaviors.ginEscapeAdmin = {
-    attach: () => {
-      once("ginEscapeAdmin", document.querySelector("[data-gin-toolbar-escape-admin]")).forEach((el => {
+    attach: context => {
+      once("ginEscapeAdmin", "[data-gin-toolbar-escape-admin]", context).forEach((el => {
         const escapeAdminPath = sessionStorage.getItem("escapeAdminPath");
         drupalSettings.path.currentPathIsAdmin && null !== escapeAdminPath && el.setAttribute("href", escapeAdminPath);
       }));
     }
   }, Drupal.ginToolbar = {
-    init: function() {
+    init: function(context) {
       "classic" != drupalSettings.gin.toolbar_variant && localStorage.getItem("Drupal.toolbar.trayVerticalLocked") && localStorage.removeItem("Drupal.toolbar.trayVerticalLocked"), 
       "true" === localStorage.getItem("Drupal.gin.toolbarExpanded") ? (document.body.setAttribute("data-toolbar-menu", "open"), 
       document.querySelector(".toolbar-menu__trigger").classList.add("is-active")) : (document.body.setAttribute("data-toolbar-menu", ""), 
       document.querySelector(".toolbar-menu__trigger").classList.remove("is-active")), 
-      once("ginToolbarShortcut", document.querySelector("#gin-toolbar-bar")).forEach((() => document.addEventListener("keydown", (e => {
+      once("ginToolbarShortcut", "#gin-toolbar-bar", context).forEach((() => document.addEventListener("keydown", (e => {
         !0 === e.altKey && "KeyT" === e.code && this.toggleToolbar();
-      })))), once("ginToolbarToggle", document.querySelector(".toolbar-menu__trigger")).forEach((el => el.addEventListener("click", (e => {
+      })))), once("ginToolbarToggle", ".toolbar-menu__trigger", context).forEach((el => el.addEventListener("click", (e => {
         e.preventDefault(), this.toggleToolbar();
       }))));
     },
