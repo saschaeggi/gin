@@ -459,6 +459,14 @@ class GinSettings implements ContainerInjectionInterface {
       '#default_value' => $account ? $this->get('show_description_toggle', $account) : $this->getDefault('show_description_toggle'),
     ];
 
+    // Breadcrumb override.
+    $form['skip_breadcrumb_override'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Skip breadcrumb override'),
+      '#description' => $this->t('Gin overrides the breadcrumb on some routes to improve the user experience. If you are implementing your custom breadcrumb_builder you may want to disable this feature.'),
+      '#default_value' => $account ? $this->get('skip_breadcrumb_override', $account) : $this->getDefault('skip_breadcrumb_override'),
+    ];
+
     if (!$account) {
       foreach ($form as $key => $element) {
         $form[$key]['#after_build'][] = [

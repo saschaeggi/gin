@@ -9,6 +9,7 @@ high_contrast_mode: false
 layout_density: 'default'
 show_description_toggle: false
 show_user_theme_settings: false
+skip_breadcrumb_override: false
 third_party_settings:
   shortcut:
     module_link: true

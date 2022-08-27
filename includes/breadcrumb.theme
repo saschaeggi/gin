@@ -5,6 +5,7 @@
  * breadcrumb.theme
  */
 
+use Drupal\gin\GinSettings;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
 
@@ -49,6 +50,13 @@ function gin_preprocess_breadcrumb(&$variables) {
         // Remove as we already have the back to site link set.
         unset($variables['breadcrumb'][$key]);
       }
+    }
+
+    // Skip breadcrumb overrides.
+    /** @var \Drupal\gin\GinSettings $settings */
+    $settings = \Drupal::classResolver(GinSettings::class);
+    if ($settings->get('skip_breadcrumb_override')) {
+      return;
     }
 
     // Adjust breadcrumb for nodes.

@@ -35,6 +35,7 @@ function gin_preprocess_page(&$variables) {
       $variables['entity_edit_url'] = $entity->toUrl('edit-form');
     }
   }
+  $variables['skip_breadcrumb_override'] = $settings->get('skip_breadcrumb_override');
 }
 
 /**
