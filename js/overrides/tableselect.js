@@ -1,19 +1,16 @@
-/* eslint-disable no-bitwise, no-nested-ternary, no-mutable-exports, comma-dangle, strict */
-
 ((Drupal, once) => {
   Drupal.behaviors.tableSelect = {
     attach: (context) => {
-      const tableSelect = once('tableSelect', context.querySelectorAll('th.select-all'));
-      tableSelect.forEach(el => {
+      once('tableSelect', 'th.select-all', context).forEach((el) => {
         if (el.closest('table')) {
           Drupal.tableSelect(el.closest('table'));
         }
       });
-    }
+    },
   };
 
   Drupal.tableSelect = (table) => {
-    if (table.querySelectorAll('td input[type="checkbox"]').length === 0) {
+    if (table.querySelector('td input[type="checkbox"]') === null) {
       return;
     }
 
@@ -27,8 +24,11 @@
       table
         .querySelectorAll('th.select-all input[type="checkbox"]')
         .forEach(checkbox => {
-          var stateChanged = checkbox.checked !== state;
-          checkbox.setAttribute('title', state ? strings.selectNone : strings.selectAll);
+          const stateChanged = checkbox.checked !== state;
+          checkbox.setAttribute(
+            'title',
+            state ? strings.selectNone : strings.selectAll
+          );
 
           if (stateChanged) {
             checkbox.checked = state;
@@ -51,76 +51,73 @@
       }
     };
 
-    table
-      .querySelectorAll('th.select-all')
-      .forEach(el => {
-        el.innerHTML = Drupal.theme('checkbox') + el.innerHTML;
-        el.querySelector('.form-checkbox').setAttribute('title', strings.selectAll);
-        el.addEventListener('click', event => {
-          if (event.target.matches('input[type="checkbox"]')) {
-            checkboxes.forEach(checkbox => {
-              const stateChanged = checkbox.checked !== event.target.checked;
+    const checkedCheckboxes = (checkboxes) => {
+      const checkedCheckboxes = Array.from(checkboxes).filter(checkbox => checkbox.matches(':checked'));
+      updateSelectAll(checkboxes.length === checkedCheckboxes.length);
+      updateSticky(Boolean(checkedCheckboxes.length));
+    };
 
-              if (stateChanged) {
-                checkbox.checked = event.target.checked;
-                checkbox.dispatchEvent(new Event('change'));
-              }
+    table.querySelectorAll('th.select-all').forEach(el => {
+      el.innerHTML = Drupal.theme('checkbox') + el.innerHTML;
+      el.querySelector('.form-checkbox').setAttribute('title', strings.selectAll);
+      el.addEventListener('click', event => {
+        if (event.target.matches('input[type="checkbox"]')) {
+          checkboxes.forEach(checkbox => {
+            const stateChanged = checkbox.checked !== event.target.checked;
 
-              checkbox.closest('tr').classList.toggle('selected', checkbox.checked);
-            });
+            if (stateChanged) {
+              checkbox.checked = event.target.checked;
+              checkbox.dispatchEvent(new Event('change'));
+            }
 
-            updateSelectAll(event.target.checked);
-            updateSticky(event.target.checked);
-          }
-        });
+            checkbox.closest('tr').classList.toggle('selected', checkbox.checked);
+          });
+
+          updateSelectAll(event.target.checked);
+          updateSticky(event.target.checked);
+        }
       });
+    });
 
     checkboxes = table.querySelectorAll('td input[type="checkbox"]:enabled');
     checkboxes.forEach(el => {
-        el.addEventListener('click', e => {
-          e.target
-            .closest('tr')
-            .classList.toggle('selected', this.checked);
+      el.addEventListener('click', e => {
+        e.target
+          .closest('tr')
+          .classList.toggle('selected', this.checked);
 
-          if (e.shiftKey && lastChecked && lastChecked !== e.target) {
-            Drupal.tableSelectRange(
-              document.querySelector(e.target).closest('tr')[0],
-              document.querySelector(lastChecked).closest('tr')[0], e.target.checked
-            );
-          }
+        if (e.shiftKey && lastChecked && lastChecked !== e.target) {
+          Drupal.tableSelectRange(
+            e.target.closest('tr'),
+            lastChecked.closest('tr'),
+            e.target.checked
+          );
+        }
 
-          const checkedCheckboxes = Array.from(checkboxes).filter(el => el.matches(':checked'));
-          updateSelectAll(checkboxes.length === checkedCheckboxes.length);
-          updateSticky(Boolean(checkedCheckboxes.length));
-
-          lastChecked = e.target;
-        });
+        checkedCheckboxes(checkboxes);
+        lastChecked = e.target;
       });
+    });
 
-    const checkedCheckboxes = Array.from(checkboxes).filter(el => el.matches(':checked'));
-    updateSelectAll(checkboxes.length === checkedCheckboxes.length);
-    updateSticky(checkedCheckboxes.length);
+    checkedCheckboxes(checkboxes);
   };
 
-  Drupal.tableSelectRange = (from, to, state) => {
-    var mode = from.rowIndex > to.rowIndex ? 'previousSibling' : 'nextSibling';
+  Drupal.tableSelectRange = function (from, to, state) {
+    const mode = from.rowIndex > to.rowIndex ? 'previousSibling' : 'nextSibling';
 
-    for (var i = from[mode]; i; i = i[mode]) {
-      var $i = $(i);
-
+    for (let i = from[mode]; i; i = i[mode]) {
       if (i.nodeType !== 1) {
         continue;
       }
 
-      $i.classList.toggle('selected', state);
-      $i.querySelectorAll('input[type="checkbox"]').checked = state;
+      i.classList.toggle('selected', state);
+      i.querySelector('input[type="checkbox"]').checked = state;
 
       if (to.nodeType) {
         if (i === to) {
           break;
         }
-      }
-      else if ($.filter(to, [i]).r.length) {
+      } else if ([i].filter(y => y === to).length) {
         break;
       }
     }
