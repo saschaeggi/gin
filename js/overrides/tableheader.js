@@ -1,8 +1,7 @@
 ((Drupal, once) => {
   Drupal.behaviors.ginTableHeader = {
     attach: function attach(context) {
-      const ginTableHeader = once('ginTableHeader', context.querySelectorAll('.sticky-enabled'));
-      ginTableHeader.forEach(el => {
+      once('ginTableHeader', '.sticky-enabled', context).forEach(el => {
         // Watch sticky table header.
         const observer = new IntersectionObserver(
           ([e]) => {
@@ -43,8 +42,7 @@
       this.handleResize(table);
     },
     syncSelectAll: () => {
-      const tableStickySelectAll = once('tableStickySelectAll', document.querySelector('table.sticky-header').querySelectorAll('th.select-all'));
-      tableStickySelectAll.forEach(el => {
+      document.querySelectorAll('table.sticky-header th.select-all').forEach(el => {
         const table = el.closest('table');
         table
           .querySelectorAll('th.select-all')
