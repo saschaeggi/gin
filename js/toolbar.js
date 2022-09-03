@@ -28,28 +28,32 @@
 
   Drupal.ginToolbar = {
     init: function (context) {
-      // Check for Drupal trayVerticalLocked and remove it.
-      if (drupalSettings.gin.toolbar_variant != 'classic' && localStorage.getItem('Drupal.toolbar.trayVerticalLocked')) {
-        localStorage.removeItem('Drupal.toolbar.trayVerticalLocked');
-      }
+      once('ginToolbarInit', '#gin-toolbar-bar', context).forEach(() => {
+        const toolbarTrigger = document.querySelector('.toolbar-menu__trigger');
 
-      // Set sidebarState.
-      if (localStorage.getItem('Drupal.gin.toolbarExpanded') === 'true') {
-        document.body.setAttribute('data-toolbar-menu', 'open');
-        document.querySelector('.toolbar-menu__trigger').classList.add('is-active');
-      }
-      else {
-        document.body.setAttribute('data-toolbar-menu', '');
-        document.querySelector('.toolbar-menu__trigger').classList.remove('is-active');
-      }
-
-      // Show toolbar navigation with shortcut:
-      // OPTION + T (Mac) / ALT + T (Windows)
-      once('ginToolbarShortcut', '#gin-toolbar-bar', context).forEach(() => document.addEventListener('keydown', e => {
-        if (e.altKey === true && e.code === 'KeyT') {
-          this.toggleToolbar();
+        // Check for Drupal trayVerticalLocked and remove it.
+        if (drupalSettings.gin.toolbar_variant != 'classic' && localStorage.getItem('Drupal.toolbar.trayVerticalLocked')) {
+          localStorage.removeItem('Drupal.toolbar.trayVerticalLocked');
         }
-      }));
+
+        // Set sidebarState.
+        if (localStorage.getItem('Drupal.gin.toolbarExpanded') === 'true') {
+          document.body.setAttribute('data-toolbar-menu', 'open');
+          toolbarTrigger.classList.add('is-active');
+        }
+        else {
+          document.body.setAttribute('data-toolbar-menu', '');
+          toolbarTrigger.classList.remove('is-active');
+        }
+
+        // Show toolbar navigation with shortcut:
+        // OPTION + T (Mac) / ALT + T (Windows)
+        document.addEventListener('keydown', e => {
+          if (e.altKey === true && e.code === 'KeyT') {
+            this.toggleToolbar();
+          }
+        });
+      });
 
       // Toolbar toggle
       once('ginToolbarToggle', '.toolbar-menu__trigger', context).forEach(el => el.addEventListener('click', e => {
@@ -59,14 +63,14 @@
     },
 
     toggleToolbar: () => {
-      const $this = document.querySelector('.toolbar-menu__trigger');
+      const toolbarTrigger = document.querySelector('.toolbar-menu__trigger');
 
       // Toggle active class.
-      $this.classList.toggle('is-active');
+      toolbarTrigger.classList.toggle('is-active');
 
       // Set active state.
       let active = 'true';
-      if ($this.classList.contains('is-active')) {
+      if (toolbarTrigger.classList.contains('is-active')) {
         document.body.setAttribute('data-toolbar-menu', 'open');
       }
       else {
