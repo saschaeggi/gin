@@ -54,7 +54,7 @@
     const checkedCheckboxes = (checkboxes) => {
       const checkedCheckboxes = Array.from(checkboxes).filter(checkbox => checkbox.matches(':checked'));
       updateSelectAll(checkboxes.length === checkedCheckboxes.length);
-      updateSticky(Boolean(checkedCheckboxes.length));
+      updateSticky(!!checkedCheckboxes.length);
     };
 
     table.querySelectorAll('th.select-all').forEach(el => {
