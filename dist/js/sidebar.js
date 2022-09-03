@@ -8,11 +8,11 @@
     init: function() {
       localStorage.getItem(storageDesktop) || localStorage.setItem(storageDesktop, "true"), 
       window.innerWidth >= 1024 && ("true" === localStorage.getItem(storageDesktop) ? this.showSidebar() : this.collapseSidebar()), 
-      once("ginSidebarShortcut", document.querySelector("#gin_sidebar")).forEach((() => document.addEventListener("keydown", (e => {
+      once("ginSidebarShortcut", "#gin_sidebar").forEach((() => document.addEventListener("keydown", (e => {
         !0 === e.altKey && "KeyS" === e.code && this.toggleSidebar();
-      })))), once("ginSidebarToggle", document.querySelector(".meta-sidebar__trigger")).forEach((el => el.addEventListener("click", (e => {
+      })))), once("ginSidebarToggle", ".meta-sidebar__trigger").forEach((el => el.addEventListener("click", (e => {
         e.preventDefault(), this.removeInlineStyles(), this.toggleSidebar();
-      })))), once("ginSidebarClose", document.querySelectorAll(".meta-sidebar__close, .meta-sidebar__overlay")).forEach((el => el.addEventListener("click", (e => {
+      })))), once("ginSidebarClose", ".meta-sidebar__close, .meta-sidebar__overlay").forEach((el => el.addEventListener("click", (e => {
         e.preventDefault(), this.removeInlineStyles(), this.collapseSidebar();
       })))), window.onresize = Drupal.debounce(this.handleResize, 150);
     },
@@ -20,18 +20,16 @@
       document.querySelector(".meta-sidebar__trigger").classList.contains("is-active") ? Drupal.ginSidebar.collapseSidebar() : Drupal.ginSidebar.showSidebar();
     },
     showSidebar: () => {
-      const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, showLabel = Drupal.t("Hide sidebar panel");
-      document.querySelector(".meta-sidebar__trigger").setAttribute("title", showLabel), 
-      document.querySelector(".meta-sidebar__trigger span").innerHTML = showLabel, localStorage.setItem(chooseStorage, "true"), 
-      document.querySelector(".meta-sidebar__trigger").setAttribute("aria-expanded", "true"), 
-      document.querySelector(".meta-sidebar__trigger").classList.add("is-active"), document.body.setAttribute("data-meta-sidebar", "open");
+      const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, showLabel = Drupal.t("Hide sidebar panel"), sidebarTrigger = document.querySelector(".meta-sidebar__trigger");
+      sidebarTrigger.setAttribute("title", showLabel), sidebarTrigger.querySelector("span").innerHTML = hideLabel, 
+      sidebarTrigger.setAttribute("aria-expanded", "true"), sidebarTrigger.classList.add("is-active"), 
+      document.body.setAttribute("data-meta-sidebar", "open"), localStorage.setItem(chooseStorage, "true");
     },
     collapseSidebar: () => {
-      const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, hideLabel = Drupal.t("Show sidebar panel");
-      document.querySelector(".meta-sidebar__trigger").setAttribute("title", hideLabel), 
-      document.querySelector(".meta-sidebar__trigger span").innerHTML = hideLabel, localStorage.setItem(chooseStorage, "false"), 
-      document.querySelector(".meta-sidebar__trigger").classList.remove("is-active"), 
-      document.body.setAttribute("data-meta-sidebar", "closed"), document.querySelector(".meta-sidebar__trigger").setAttribute("aria-expanded", "false");
+      const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, hideLabel = Drupal.t("Show sidebar panel"), sidebarTrigger = document.querySelector(".meta-sidebar__trigger");
+      sidebarTrigger.setAttribute("title", hideLabel), sidebarTrigger.querySelector("span").innerHTML = hideLabel, 
+      localStorage.setItem(chooseStorage, "false"), sidebarTrigger.setAttribute("aria-expanded", "false"), 
+      sidebarTrigger.classList.remove("is-active"), document.body.setAttribute("data-meta-sidebar", "closed");
     },
     handleResize: () => {
       Drupal.ginSidebar.removeInlineStyles(), window.innerWidth < 1024 ? Drupal.ginSidebar.collapseSidebar() : "true" === localStorage.getItem(storageDesktop) ? Drupal.ginSidebar.showSidebar() : Drupal.ginSidebar.collapseSidebar();
