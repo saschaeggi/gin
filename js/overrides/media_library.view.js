@@ -7,8 +7,7 @@
 
   Drupal.ginMediaLibrary = {
     init: function () {
-      const views = once('media-library-select-all', document.querySelectorAll('.js-media-library-view[data-view-display-id="page"]'));
-      views.forEach(el => {
+      once('media-library-select-all', '.js-media-library-view[data-view-display-id="page"]').forEach(el => {
         if (el.querySelectorAll('.js-media-library-item').length) {
           const header = document.querySelector('.media-library-views-form');
           const selectAll = document.createElement('label');
