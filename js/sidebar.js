@@ -6,51 +6,53 @@
   const storageDesktop = 'Drupal.gin.sidebarExpanded.desktop';
 
   Drupal.behaviors.ginSidebar = {
-    attach: function attach() {
-      Drupal.ginSidebar.init();
+    attach: function attach(context) {
+      Drupal.ginSidebar.init(context);
     },
   };
 
   Drupal.ginSidebar = {
-    init: function () {
-      // If variable does not exist, create it, default being to show sidebar.
-      if (!localStorage.getItem(storageDesktop)) {
-        localStorage.setItem(storageDesktop, 'true');
-      }
+    init: function (context) {
+      once('ginSidebarInit', '#gin_sidebar', context).forEach(() => {
+        // If variable does not exist, create it, default being to show sidebar.
+        if (!localStorage.getItem(storageDesktop)) {
+          localStorage.setItem(storageDesktop, 'true');
+        }
 
-      // Set mobile initial to false.
-      if (window.innerWidth >= breakpoint) {
-        if (localStorage.getItem(storageDesktop) === 'true') {
-          this.showSidebar();
+        // Set mobile initial to false.
+        if (window.innerWidth >= breakpoint) {
+          if (localStorage.getItem(storageDesktop) === 'true') {
+            this.showSidebar();
+          }
+          else {
+            this.collapseSidebar();
+          }
         }
-        else {
-          this.collapseSidebar();
-        }
-      }
 
-      // Show navigation with shortcut:
-      // OPTION + S (Mac) / ALT + S (Windows)
-      once('ginSidebarShortcut', '#gin_sidebar').forEach(() => document.addEventListener('keydown', e => {
-        if (e.altKey === true && e.code === 'KeyS') {
-          this.toggleSidebar();
-        }
-      }));
+        // Show navigation with shortcut:
+        // OPTION + S (Mac) / ALT + S (Windows)
+        document.addEventListener('keydown', e => {
+          if (e.altKey === true && e.code === 'KeyS') {
+            this.toggleSidebar();
+          }
+        });
+
+        window.onresize = Drupal.debounce(this.handleResize, 150);
+      });
 
       // Toolbar toggle
-      once('ginSidebarToggle', '.meta-sidebar__trigger').forEach(el => el.addEventListener('click', e => {
+      once('ginSidebarToggle', '.meta-sidebar__trigger', context).forEach(el => el.addEventListener('click', e => {
         e.preventDefault();
         this.removeInlineStyles();
         this.toggleSidebar();
       }));
 
       // Toolbar close
-      once('ginSidebarClose', '.meta-sidebar__close, .meta-sidebar__overlay').forEach(el => el.addEventListener('click', e => {
+      once('ginSidebarClose', '.meta-sidebar__close, .meta-sidebar__overlay', context).forEach(el => el.addEventListener('click', e => {
         e.preventDefault();
         this.removeInlineStyles();
         this.collapseSidebar();
-      }))
-
-      window.onresize = Drupal.debounce(this.handleResize, 150);
+      }));
     },
 
     toggleSidebar: () => {
@@ -68,13 +70,11 @@
       const showLabel = Drupal.t('Hide sidebar panel');
       const sidebarTrigger = document.querySelector('.meta-sidebar__trigger');
 
-      // Change labels.
       sidebarTrigger.setAttribute('title', showLabel);
-      sidebarTrigger.querySelector('span').innerHTML = hideLabel;
-
-      // Attributes.
+      sidebarTrigger.querySelector('span').innerHTML = showLabel;
       sidebarTrigger.setAttribute('aria-expanded', 'true');
       sidebarTrigger.classList.add('is-active');
+
       document.body.setAttribute('data-meta-sidebar', 'open');
 
       // Expose to localStorage.
@@ -86,17 +86,15 @@
       const hideLabel = Drupal.t('Show sidebar panel');
       const sidebarTrigger = document.querySelector('.meta-sidebar__trigger');
 
-      // Change labels.
       sidebarTrigger.setAttribute('title', hideLabel);
       sidebarTrigger.querySelector('span').innerHTML = hideLabel;
+      sidebarTrigger.setAttribute('aria-expanded', 'false');
+      sidebarTrigger.classList.remove('is-active');
+
+      document.body.setAttribute('data-meta-sidebar', 'closed');
 
       // Expose to localStorage.
       localStorage.setItem(chooseStorage, 'false');
-
-      // Attributes.
-      sidebarTrigger.setAttribute('aria-expanded', 'false');
-      sidebarTrigger.classList.remove('is-active');
-      document.body.setAttribute('data-meta-sidebar', 'closed');
     },
 
     handleResize: () => {
