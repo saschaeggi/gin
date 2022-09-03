@@ -5,7 +5,7 @@
     }
   }, Drupal.ginCKEditor = {
     init: context => {
-      once("ginCKEditor", context.querySelectorAll("body")).forEach((() => {
+      once("ginCKEditors", "body", context).forEach((() => {
         if (window.CKEDITOR && void 0 !== CKEDITOR) {
           if (drupalSettings.path.currentPath.indexOf("admin/config/content/formats/manage") > -1) return;
           const variablesCss = drupalSettings.gin.variables_css_path, accentCss = drupalSettings.gin.accent_css_path, contentsCss = drupalSettings.gin.ckeditor_css_path, accentColorPreset = drupalSettings.gin.preset_accent_color, accentColor = drupalSettings.gin.accent_color, darkmodeClass = drupalSettings.gin.darkmode_class;
