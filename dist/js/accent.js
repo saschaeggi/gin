@@ -1,7 +1,7 @@
 ((Drupal, drupalSettings, once) => {
   Drupal.behaviors.ginAccent = {
     attach: function(context) {
-      once("ginAccent", context.querySelector("body")).forEach((() => {
+      once("ginAccent", "body", context).forEach((() => {
         Drupal.ginAccent.checkDarkmode(), Drupal.ginAccent.setAccentColor(), Drupal.ginAccent.setFocusColor();
       }));
     }
@@ -17,7 +17,7 @@
       if (accentColor) {
         this.clearAccentColor(element);
         const strippedAccentColor = accentColor.replace("#", ""), darkAccentColor = this.mixColor("ffffff", strippedAccentColor, 65).replace("#", ""), style = document.createElement("style"), className = "gin-custom-colors";
-        style.className = className, style.innerHTML = `\n          [data-gin-accent="custom"] {\n            --gin-color-primary-rgb: ${Drupal.behaviors.ginAccent.hexToRgb(accentColor)};\n            --gin-color-primary-hover: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -10)};\n            --gin-color-primary-active: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -15)};\n            --gin-bg-app-rgb: ${Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 97))};\n            --gin-bg-header: ${Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 85)};\n            --gin-color-sticky-rgb: ${Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 92))};\n          }\n          .gin--dark-mode[data-gin-accent="custom"],\n          .gin--dark-mode [data-gin-accent="custom"] {\n            --gin-color-primary-rgb: ${Drupal.behaviors.ginAccent.hexToRgb(darkAccentColor)};\n            --gin-color-primary-hover: ${Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 55)};\n            --gin-color-primary-active: ${Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 50)};\n            --gin-bg-header: ${Drupal.behaviors.ginAccent.mixColor("2A2A2D", darkAccentColor, 88)};\n          }\n        `, 
+        style.className = className, style.innerHTML = `\n          [data-gin-accent="custom"] {\n            --gin-color-primary-rgb: ${this.hexToRgb(accentColor)};\n            --gin-color-primary-hover: ${this.shadeColor(accentColor, -10)};\n            --gin-color-primary-active: ${this.shadeColor(accentColor, -15)};\n            --gin-bg-app-rgb: ${this.hexToRgb(this.mixColor("ffffff", strippedAccentColor, 97))};\n            --gin-bg-header: ${this.mixColor("ffffff", strippedAccentColor, 85)};\n            --gin-color-sticky-rgb: ${this.hexToRgb(this.mixColor("ffffff", strippedAccentColor, 92))};\n          }\n          .gin--dark-mode[data-gin-accent="custom"],\n          .gin--dark-mode [data-gin-accent="custom"] {\n            --gin-color-primary-rgb: ${this.hexToRgb(darkAccentColor)};\n            --gin-color-primary-hover: ${this.mixColor("ffffff", strippedAccentColor, 55)};\n            --gin-color-primary-active: ${this.mixColor("ffffff", strippedAccentColor, 50)};\n            --gin-bg-header: ${this.mixColor("2A2A2D", darkAccentColor, 88)};\n          }\n        `, 
         element.parentNode.querySelector(":scope > :last-child").append(style);
       }
     },
@@ -39,7 +39,7 @@
       if (accentColor) {
         this.clearFocusColor(element);
         const strippedAccentColor = accentColor.replace("#", "");
-        Drupal.behaviors.ginAccent.mixColor("ffffff", strippedAccentColor, 65), element.parentNode.querySelector(":scope > :last-child").append(style);
+        this.mixColor("ffffff", strippedAccentColor, 65), element.parentNode.querySelector(":scope > :last-child").append(style);
       }
     },
     clearFocusColor: function() {
