@@ -34,7 +34,7 @@
       return offsetTop;
     },
     createStickyHeader: function createStickyHeader(table) {
-      const header = table.querySelectorAll(':scope > thead')[0];
+      const header = table.querySelector(':scope > thead');
       const stickyTable = document.createElement('table');
       stickyTable.className = 'sticky-header';
       stickyTable.append(header.cloneNode(true));
@@ -42,28 +42,23 @@
       this.handleResize(table);
     },
     syncSelectAll: () => {
-      document.querySelectorAll('table.sticky-header th.select-all').forEach(el => {
-        const table = el.closest('table');
-        table
-          .querySelectorAll('th.select-all')
-          .forEach(el => {
-            el.addEventListener('click', event => {
-              if (event.target.matches('input[type="checkbox"]')) {
-                table
-                  .nextSibling
-                  .querySelectorAll('th.select-all')
-                  .forEach(el => {
-                    el.childNodes[0].click();
-                  });
-              }
-            });
+      document.querySelectorAll('table.sticky-header th.select-all').forEach(tableHeaderSticky => {
+        const table = tableHeaderSticky.closest('table');
+        table.querySelectorAll(':scope th.select-all').forEach(tableHeader => {
+          tableHeader.addEventListener('click', event => {
+            if (event.target.matches('input[type="checkbox"]')) {
+              table.nextSibling.querySelectorAll('th.select-all').forEach(siblingTableHeader => {
+                siblingTableHeader.childNodes[0].click();
+              });
+            }
           });
+        });
       });
     },
     handleResize: (table) => {
-      const header = table.querySelectorAll(':scope > thead')[0];
+      const header = table.querySelector(':scope > thead');
       header.querySelectorAll('th').forEach((el, i) => {
-        document.querySelectorAll('table.sticky-header > thead th')[i].style.width = `${el.offsetWidth}px`;
+        table.querySelectorAll('table.sticky-header > thead th')[i].style.width = `${el.offsetWidth}px`;
       });
     },
   };
