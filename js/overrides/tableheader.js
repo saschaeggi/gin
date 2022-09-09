@@ -1,6 +1,12 @@
 ((Drupal, once) => {
   Drupal.behaviors.ginTableHeader = {
-    attach: function attach(context) {
+    attach: (context) => {
+      Drupal.ginTableHeader.init(context);
+    },
+  };
+
+  Drupal.ginTableHeader = {
+    init: function (context) {
       once('ginTableHeader', '.sticky-enabled', context).forEach(el => {
         // Watch sticky table header.
         const observer = new IntersectionObserver(
@@ -62,4 +68,5 @@
       });
     },
   };
+
 })(Drupal, once);
