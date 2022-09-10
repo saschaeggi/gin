@@ -27,10 +27,6 @@
   background-color: transparent;
 }
 
-.webform-element-help--title {
-  color: var(--colorGinTitle);
-}
-
 .ui-tooltip.ui-widget {
   font-size: var(--ginFontSizeSmall);
   color: var(--colorGinText);
