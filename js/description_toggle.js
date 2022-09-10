@@ -3,7 +3,7 @@
     attach: (context) => {
       context
         .querySelectorAll('.help-icon__description-toggle')
-        .forEach((elem) => {
+        .forEach((elem, index) => {
           if (elem.dataset.formDescriptionToggleAttached) {
             return;
           }
@@ -37,7 +37,10 @@
               .querySelectorAll(
                 '.claro-details__description, .fieldset__description, .form-item__description',
               )
-              .forEach((description) => {
+              .forEach((description, index) => {
+                if (index > 1) {
+                  return;
+                }
                 const setStatus = description.classList.contains('visually-hidden');
                 event.currentTarget.setAttribute('aria-expanded', setStatus);
                 description.classList.toggle('visually-hidden');
