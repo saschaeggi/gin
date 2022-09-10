@@ -55,7 +55,9 @@
 }
 
 .ui-dialog .ui-dialog-title {
+  font-size: var(--ginFontSizeLarge);
   font-weight: var(--ginFontWeightSemiBold);
+  color: #fff;
 }
 
 .ui-dialog .ui-dialog-content {
@@ -82,7 +84,7 @@
 }
 
 .ui-dialog .ui-dialog-titlebar-close {
-  top: 20px;
+  top: 26px;
   opacity: .8;
   margin: 0;
   transform: none;
@@ -91,11 +93,11 @@
 }
 
 [dir="ltr"] .ui-dialog .ui-dialog-titlebar-close {
-  right: 18px;
+  right: 24px;
 }
 
 [dir="rtl"] .ui-dialog .ui-dialog-titlebar-close {
-  left: 18px;
+  left: 24px;
 }
 
 .ui-dialog .ui-dialog-titlebar-close .ui-icon-closethick {

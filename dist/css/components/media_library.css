@@ -381,6 +381,7 @@ fieldset.media-library-widget .media-library-edit__link, fieldset.media-library-
 .media-library-widget-modal .ui-dialog-buttonpane .form-actions {
   flex-grow: 0;
   white-space: nowrap;
+  margin-top: 0;
 }
 
 .media-library-widget-modal .ui-dialog-buttonpane .media-library-selected-count {

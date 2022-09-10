@@ -150,7 +150,6 @@ libraries-extend:
   core/ckeditor:
     - gin/ckeditor
   core/drupal.dialog:
-    - seven/seven.drupal.dialog
     - gin/dialog
   core/drupal.ajax:
     - gin/ajax

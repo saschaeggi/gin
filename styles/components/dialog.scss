@@ -53,7 +53,9 @@
   }
 
   .ui-dialog-title {
+    font-size: var(--ginFontSizeLarge);
     font-weight: var(--ginFontWeightSemiBold);
+    color: #fff;
   }
 
   .ui-dialog-content {
@@ -82,8 +84,8 @@
   }
 
   .ui-dialog-titlebar-close {
-    top: 20px;
-    right: 18px;
+    top: 26px;
+    right: 24px;
     opacity: .8;
     margin: 0;
     transform: none;
