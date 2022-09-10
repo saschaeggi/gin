@@ -5,9 +5,9 @@
 // Tabs
 .tabs-wrapper,
 .horizontal-tabs ul.horizontal-tabs-list {
-  padding: 0 .5rem;
-  margin-left: -.5rem;
-  margin-right: -.5rem;
+  padding: 0 var(--ginSpacingXsmall);
+  margin-left: calc(var(--ginSpacingXsmall) * -1);
+  margin-right: calc(var(--ginSpacingXsmall) * -1);
 
   @include mq(small) {
     padding: 0;
@@ -47,10 +47,10 @@
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a
 {
   color: var(--colorGinText);
-  font-size: .9375rem;
-  font-weight: 600;
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+  font-size: var(--ginFontSize);
+  font-weight: var(--ginFontWeightBold);
+  padding-top: calc(var(--ginSpacingMedium) - var(--ginSpacingTiny));
+  padding-bottom: calc(var(--ginSpacingMedium) - var(--ginSpacingTiny));
 
   strong {
     font-weight: inherit;
@@ -60,7 +60,7 @@
 .tabs__link.is-active,
 .claro-details__summary[aria-expanded=true],
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.selected a {
-  font-weight: 700;
+  font-weight: var(--ginFontWeightBold);
 }
 
 .is-horizontal .tabs__link,
@@ -97,8 +97,8 @@
 
   @include mq(small) {
     width: 100%;
-    padding: .3125rem .5rem 1.5rem;
-    margin-bottom: -1.5rem;
+    padding: .3125rem var(--ginSpacingXsmall) var(--ginSpacingMedium);
+    margin-bottom: calc(var(--ginSpacingMedium) * -1);
     overflow-x: auto;
 
     .gin--edit-form & {
@@ -114,14 +114,14 @@
     left: 0;
     display: block;
     width: 100%;
-    max-width: calc(100% + .5rem);
+    max-width: calc(100% + var(--ginSpacingXsmall));
     border-bottom: 1px solid var(--colorGinBorder);
     transition: var(--ginTransition);
 
     @include mq(small) {
-      left: .5rem;
-      bottom: 1.5rem;
-      max-width: calc(100% - 1rem);
+      left: var(--ginSpacingXsmall);
+      bottom: var(--ginSpacingMedium);
+      max-width: calc(100% - var(--ginSpacingDefault));
     }
   }
 
@@ -132,13 +132,13 @@
     &:focus-within {
       &::after {
         content: "";
-        width: calc(100% + 8px);
+        width: calc(100% + var(--ginSpacingXsmall));
         height: 4px;
         background: var(--colorGinAppBackground);
         display: block;
         position: absolute;
-        bottom: -4px;
-        left: -4px;
+        bottom: calc(var(--ginSpacingTiny) * -1);
+        left: calc(var(--ginSpacingTiny) * -1);
         z-index: 3;
       }
     }
@@ -160,8 +160,8 @@
   }
 
   &::after {
-    left: .5rem;
-    max-width: calc(100% - 1rem);
+    left: var(--ginSpacingXsmall);
+    max-width: calc(100% - var(--ginSpacingDefault));
   }
 }
 
@@ -208,11 +208,11 @@
   }
 
   .tabs__link {
-    min-height: 3rem;
+    min-height: var(--ginSpacingXlarge);
     height: 100%;
 
     @include mq(small) {
-      padding: .75rem 1rem;
+      padding: var(--ginSpacingSmall) var(--ginSpacingDefault);
       margin-right: 0.25em;
       min-height: 0;
       border-radius: 48px;
@@ -239,7 +239,7 @@
 
 .is-horizontal .tabs--secondary {
   @include mq(small) {
-    margin-top: 1rem;
+    margin-top: var(--ginSpacingDefault);
 
     &::before {
       width: 100%;
@@ -248,8 +248,8 @@
 
   .tabs__link {
     min-height: 2.5rem;
-    padding: .5rem 1rem 1rem;
-    font-size: .875rem;
+    padding: var(--ginSpacingXsmall) var(--ginSpacingDefault) var(--ginSpacingDefault);
+    font-size: var(--ginFontSizeSmall);
     border-radius: var(--ginBorderDefault) var(--ginBorderDefault) 0 0;
   }
 }
@@ -261,7 +261,7 @@
   flex-wrap: wrap;
   width: 100%;
   border: 0 none;
-  margin-top: -1rem;
+  margin-top: calc(var(--ginSpacingDefault) * -1);
 
   ul.horizontal-tabs-list {
     background: none;
@@ -271,8 +271,8 @@
 
     &:after {
       @include mq(small) {
-        left: .5rem;
-        max-width: calc(100% - 1rem);
+        left: var(--ginSpacingXsmall);
+        max-width: calc(100% - var(--ginSpacingDefault));
       }
     }
 
@@ -282,8 +282,8 @@
       border-bottom: 0 none;
 
       a {
-        padding: .5rem 1rem 1rem;
-        font-size: .875rem;
+        padding: var(--ginSpacingXsmall) var(--ginSpacingDefault) var(--ginSpacingDefault);
+        font-size: var(--ginFontSizeSmall);
         border-radius: var(--ginBorderDefault) var(--ginBorderDefault) 0 0;
 
         &::before {
@@ -326,7 +326,7 @@
       margin: 0;
 
       > .claro-details__description {
-        margin-top: 1rem;
+        margin-top: var(--ginSpacingDefault);
       }
     }
   }
@@ -426,10 +426,10 @@
 
       .claro-details__summary {
         @include mq(large) {
-          padding-left: 3rem;
+          padding-left: var(--ginSpacingXlarge);
 
           &::before {
-            left: 1rem;
+            left: var(--ginSpacingDefault);
           }
         }
       }

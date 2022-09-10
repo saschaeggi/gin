@@ -19,8 +19,8 @@
   height: .75rem;
   -webkit-mask-image: url("../../media/sprite.svg#media-edit-view");
           mask-image: url("../../media/sprite.svg#media-edit-view");
-  -webkit-mask-size: .75rem .75rem;
-          mask-size: .75rem .75rem;
+  -webkit-mask-size: var(--ginSpacingSmall) var(--ginSpacingSmall);
+          mask-size: var(--ginSpacingSmall) var(--ginSpacingSmall);
   -webkit-mask-position: 100% 100%;
           mask-position: 100% 100%;
   background: var(--colorGinPrimary);
@@ -51,7 +51,7 @@
 }
 
 .contextual-region .contextual .contextual-links {
-  top: 4px;
+  top: var(--ginSpacingTiny);
   padding: .5em;
   margin: 0;
   min-width: 120px;
@@ -70,7 +70,7 @@
   color: var(--colorGinPrimary);
   line-height: 1;
   white-space: nowrap;
-  padding: .5rem 1rem;
+  padding: var(--ginSpacingXsmall) var(--ginSpacingDefault);
   margin: 0;
   background: transparent;
   border-radius: var(--ginBorderSmall);
@@ -93,19 +93,19 @@
 }
 
 .contextual-region .contextual .contextual-links .ajax-progress-throbber::before {
-  top: .25rem;
+  top: var(--ginSpacingTiny);
   width: 1rem;
   height: 1rem;
   border: 2px solid var(--colorGinButtonText);
 }
 
 [dir="ltr"] .contextual-region .contextual .contextual-links .ajax-progress-throbber::before {
-  left: .25rem;
+  left: var(--ginSpacingTiny);
   border-right: 2px dotted transparent;
 }
 
 [dir="rtl"] .contextual-region .contextual .contextual-links .ajax-progress-throbber::before {
-  right: .25rem;
+  right: var(--ginSpacingTiny);
   border-left: 2px dotted transparent;
 }
 

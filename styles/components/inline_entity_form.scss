@@ -15,8 +15,8 @@
 .ief-form {
   > .form-wrapper > .form-wrapper:last-of-type {
     background: var(--colorGinLayer2Background);
-    padding: 0 1rem;
-    margin: 0 -1rem;
+    padding: 0 var(--ginSpacingDefault);
+    margin: 0 calc(var(--ginSpacingDefault) * -1);
   }
 }
 
@@ -35,11 +35,11 @@
 
     /* The .draggable padding is not applied because of display: table-row */
     &.drag-previous > .tabledrag-cell::before {
-      left: .5rem;
+      left: var(--ginSpacingXsmall);
     }
 
     .tabledrag-cell-content__item {
-      padding-left: 0.75rem;
+      padding-left: var(--ginSpacingSmall);
     }
   }
 

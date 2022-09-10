@@ -28,7 +28,7 @@
     height: 20px;
     display: inline-block;
     position: absolute;
-    left: 8px;
+    left: var(--ginSpacingXsmall);
     margin-top: 2px;
   }
 }
@@ -39,7 +39,7 @@
 
 .upgrade-status-summary .select-all,
 .upgrade-status-summary th.project-label, .upgrade-status-summary th.requirement-label {
-  border-left: 8px solid var(--colorGinTableHeader);
+  border-left: var(--ginBorderDefault) solid var(--colorGinTableHeader);
 }
 
 .upgrade-status-error-list tr.rector-covered,

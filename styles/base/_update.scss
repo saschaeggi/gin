@@ -59,7 +59,7 @@ tr.color-success,
 .color-checked,
 .drupal-upgrade-status-summary-form tr.no-known-error
 {
-  border-left: 8px solid var(--colorGinGreen);
+  border-left: var(--ginBorderDefault) solid var(--colorGinGreen);
   background-color: transparent;
 
   &:hover, &:active, &:focus {
@@ -71,7 +71,7 @@ tr.color-success,
 tr.color-warning,
 .upgrade-status-next-step-remove tr,
 .drupal-upgrade-status-summary-form tr.known-warnings {
-  border-left: 8px solid var(--colorGinWarning);
+  border-left: var(--ginBorderDefault) solid var(--colorGinWarning);
   background-color: transparent;
 
   &:hover, &:active, &:focus {
@@ -86,7 +86,7 @@ tr.color-warning,
 .color-error,
 tr.color-error,
 .drupal-upgrade-status-summary-form tr.known-errors {
-  border-left: 8px solid var(--colorGinDanger);
+  border-left: var(--ginBorderDefault) solid var(--colorGinDanger);
   background-color: transparent;
 
   &:hover, &:active, &:focus {
@@ -132,7 +132,7 @@ tr.color-error,
 }
 
 .compact-link {
-  font-size: 0.875rem;
+  font-size: var(--ginFontSizeSmall);
   text-align: right;
 }
 
@@ -147,12 +147,12 @@ tr.color-error,
 
   .table-filter-text {
     width: 100%;
-    padding: 1rem;
+    padding: var(--ginSpacingDefault);
   }
 }
 
 #update-status {
   > p {
-    margin-bottom: 2rem;
+    margin-bottom: var(--ginSpacingLarge);
   }
 }

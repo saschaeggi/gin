@@ -7,7 +7,7 @@
   // Custom icons
   .toolbar-icon {
     &:before {
-      left: .75rem;
+      left: var(--ginSpacingSmall);
       background: var(--colorGinIcons);
       background-image: none;
       mask-size: var(--iconGinToolbar) var(--iconGinToolbar);

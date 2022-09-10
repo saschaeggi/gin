@@ -52,13 +52,38 @@
   --colorGinSecondaryBorder: rgba(0, 0, 0, .08);
   --colorGinLayerBorder: rgba(0, 0, 0, .08);
   --colorGinLayer2Border: #d4d4d8;
-  --colorGinTableBorder: rgba(0, 0, 0, .15);
-  --colorGinTabsBorder: rgba(0, 0, 0, .2);
+  --colorGinTableBorder: rgba(0, 0, 0, .1);
+  --colorGinTableHeaderBorder: rgba(0, 0, 0, .2);
   --colorGinFormElementBorder: #8E929C;
 
   // Font
   --ginFont: Ginter, Inter, 'Helvetica Neue', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
-  --ginFontSizeSmall: small;
+
+  // Font sizes
+  --ginFontSizeSmallerest: .75rem;
+  --ginFontSizeSmaller: small;
+  --ginFontSizeSmall: .875rem;
+  --ginFontSize: 1rem;
+  --ginFontSizeLarge: 1.125rem;
+  --ginFontSizeXLarge: 1.25rem;
+  --ginFontSizeH3: 1.5rem;
+  --ginFontSizeH2: 1.75rem;
+  --ginFontSizeH1: 1.6rem;
+  --ginFontSizeQuote: 1.1em;
+
+  // Font weights
+  --ginFontWeightNormal: 400;
+  --ginFontWeightSemiBold: 525;
+  --ginFontWeightBold: 575;
+  --ginFontWeightUltra: 625;
+
+  @include mq(medium) {
+    --ginFontSizeQuote: 1.2em;
+  }
+
+  @include mq(ultra) {
+    --ginFontSizeH1: 2.125rem;
+  }
 
   // Text
   --colorGinTitle:#222330;
@@ -86,7 +111,7 @@
 
   // Toolbar
   --ginToolbarWidthCollapsed: 66px;
-  --ginToolbarWidth: 240px;
+  --ginToolbarWidth: 256px;
 
   // Sidebar
   --ginSidebarWidth: 320px;
@@ -192,7 +217,7 @@
   --colorGinTableBorder: #43454a;
 
   // Tabs
-  --colorGinTabsBorder: rgba(255, 255, 255, .12);
+  --colorGinTableHeaderBorder: rgba(255, 255, 255, .12);
 
   // Form element
   --colorGinFormElementBorder: var(--colorGinLayer2Border);

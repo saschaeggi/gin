@@ -47,7 +47,7 @@
     }
 
     .toolbar-tab > .toolbar-item {
-      font-weight: normal;
+      font-weight: var(--ginFontWeightNormal);;
     }
 
     #toolbar-item-administration-tray .toolbar-icon,
@@ -79,7 +79,7 @@
       .toolbar-icon-home {
         display: block;
         width: 100%;
-        margin: 8px 0;
+        margin: var(--ginSpacingXsmall) 0;
       }
 
       #toolbar-item-administration-tray a.toolbar-icon.override-icon {
@@ -93,7 +93,7 @@
 
     // Custom logo
     #toolbar-item-administration-tray .toolbar-logo {
-      padding: 8px 0;
+      padding: var(--ginSpacingXsmall) 0;
 
       img {
         max-width: calc(var(--ginToolbarWidthCollapsed) - 1px);
@@ -103,7 +103,9 @@
 
     #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
       @include mq(medium) {
-        font-size: 0;
+        font-size: var(--ginFontSizeXLarge);
+        letter-spacing: -0.01em;
+        text-indent: 0;
         height: 74px;
         margin-bottom: 6px;
         transition: top var(--ginTransition);
@@ -182,7 +184,7 @@
 .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
 .toolbar .toolbar-tray a.is-active {
   color: var(--colorGinPrimary);
-  font-weight: 500;
+  font-weight: var(--ginFontWeightSemiBold);
   text-decoration: none;
 
   @include mq($to: medium) {
@@ -222,14 +224,14 @@ a.toolbar-menu__trigger,
     position: fixed;
     left: 0;
     bottom: 0;
-    font-size: .875rem;
+    font-size: var(--ginFontSizeSmall);
     color: var(--colorGinTextLight);
     text-decoration: none;
     display: flex;
     align-items: center;
     width: var(--ginToolbarWidthCollapsed);
     height: 64px;
-    padding: 16px 0 16px var(--ginToolbarWidthCollapsed);
+    padding: var(--ginSpacingDefault) 0 var(--ginSpacingDefault) var(--ginToolbarWidthCollapsed);
     margin: 0;
     transition: width var(--ginTransition);
     overflow: hidden;
@@ -260,7 +262,7 @@ a.toolbar-menu__trigger,
 
     &.is-active {
       display: flex;
-      font-weight: normal;
+      font-weight: var(--ginFontWeightNormal);
       color: var(--colorGinTextLight);
       width: var(--ginToolbarWidth);
 
@@ -325,7 +327,7 @@ a.toolbar-menu__trigger,
           > .toolbar-icon,
           > .toolbar-box > .toolbar-icon {
             width: auto;
-            padding-left: 3.5rem;
+            padding-left: calc(var(--ginSpacingXlarge) + var(--ginSpacingXsmall))
           }
 
           .toolbar-menu {
@@ -346,24 +348,23 @@ a.toolbar-menu__trigger,
       flex-direction: column;
       overflow-x: hidden;
 
-      .menu-item__spacer {
-        flex-grow: 1;
-      }
-
       > .menu-item {
         > .toolbar-icon,
         > .toolbar-box > .toolbar-icon {
-          font-size: 1rem;
-          color: var(--colorGinTextLight);
+          font-size: var(--ginFontSize);
+          font-weight: 475;
+          letter-spacing: -.0125rem;
+          color: var(--colorGinText);
           display: flex;
           align-items: center;
-          width: calc(var(--ginToolbarWidth) - 16px);
+          width: calc(var(--ginVerticalToolbarOffset) - var(--ginSpacingDefault));
           height: 48px;
-          padding-left: calc(var(--ginToolbarWidthCollapsed) - 9px);
+          padding-left: calc(var(--ginToolbarWidthCollapsed) - var(--ginSpacingDefault));
           padding-right: 0;
-          margin: 0 8px 1px;
+          margin: 0 var(--ginSpacingXsmall) 1px;
           border-radius: var(--ginBorderDefault);
           overflow: hidden;
+          transition: width var(--ginTransition);
 
           &:hover {
             color: var(--colorGinPrimary);
@@ -371,8 +372,8 @@ a.toolbar-menu__trigger,
           }
 
           &.is-active {
-            color: var(--colorGinPrimary);
-            font-weight: 500;
+            color: var(--colorGinPrimaryActive);
+            font-weight: var(--ginFontWeightBold);
 
             &:before {
               background: var(--colorGinPrimary);
@@ -391,11 +392,12 @@ a.toolbar-menu__trigger,
         .toolbar-menu {
           display: none;
           top: 0;
-          margin-left: calc(var(--ginToolbarWidthCollapsed) - 1px);
+          margin-left: calc(var(--ginVerticalToolbarOffset) - 1px);
           height: 100vh;
           max-width: calc(100% - var(--ginToolbarHeight));
           box-shadow: none;
           border-left: 1px solid var(--colorGinLayerBorder);
+          transition: margin-left var(--ginTransition);
           overflow-y: auto;
           overflow-x: hidden;
 
@@ -417,7 +419,7 @@ a.toolbar-menu__trigger,
 
             &.is-active {
               color: var(--colorGinPrimary);
-              font-weight: 500;
+              font-weight: var(--ginFontWeightSemiBold);
               background: var(--colorGinPrimaryLight);
 
               &:hover {
@@ -432,26 +434,26 @@ a.toolbar-menu__trigger,
             position: relative;
             display: block;
             min-height: 36px;
-            font-size: 1.75em;
+            font-size: var(--ginFontSizeH3);
             letter-spacing: -.025em;
             padding: 0;
-            margin: 1rem .75rem 1.25rem .75rem;
+            margin: var(--ginSpacingDefault) var(--ginSpacingSmall) calc(var(--ginSpacingMedium) - var(--ginSpacingTiny)) var(--ginSpacingSmall);
 
             a {
-              font-weight: 500;
+              font-weight: var(--ginFontWeightSemiBold);
               color: var(--colorGinTitle);
-              padding: .75rem;
+              padding: var(--ginSpacingSmall);
               border-radius: var(--ginBorderDefault);
             }
           }
 
           &__sub-title {
-            font-size: 1.375em;
+            font-size: var(--ginFontSizeXLarge);
             letter-spacing: -.01em;
             margin-bottom: 1.275rem;
 
             a {
-              padding: .9rem .75rem;
+              padding: .9rem var(--ginSpacingSmall);
             }
           }
 
@@ -461,9 +463,9 @@ a.toolbar-menu__trigger,
             border-bottom: 0 none;
 
             .toolbar-icon {
-              font-size: .9375rem;
-              padding: 1em 2rem 1em .75rem;
-              margin: .25em .75rem;
+              font-size:var(--ginFontSize);
+              padding: var(--ginSpacingSmall) var(--ginSpacingLarge) var(--ginSpacingSmall) var(--ginSpacingSmall);
+              margin: .25em var(--ginSpacingSmall);
               border-radius: var(--ginBorderDefault);
               overflow: hidden;
             }
@@ -492,7 +494,8 @@ a.toolbar-menu__trigger,
       z-index: 2;
       display: block;
       border-right: 1px solid rgba(0,0,0,.075);
-      box-shadow: 7px 0 16px rgba(0,0,0,.075);
+      box-shadow: 7px 0 16px rgba(0,0,0,.075),
+        -12px 0 0 0 var(--colorGinLayerBackground);
     }
 
     .menu-item .menu-item:hover > .toolbar-icon {
@@ -517,7 +520,7 @@ a.toolbar-menu__trigger,
 
 #toolbar-item-administration-search-tray input {
   width: 100%;
-  max-width: calc(100% - 16px);
+  max-width: calc(100% - var(--ginSpacingDefault));
   outline: none;
 }
 
@@ -527,7 +530,7 @@ a.toolbar-menu__trigger,
 
   &::before {
     z-index: 1;
-    top: 14px;
+    top: 1em;
     right: 20px;
   }
 }
@@ -541,7 +544,6 @@ a.toolbar-menu__trigger,
   &:hover > .toolbar-icon,
   &:hover > .toolbar-box > a.toolbar-icon,
   > .toolbar-icon:focus,
-  &.hover-intent > .toolbar-icon,
   &.menu-item--active-trail > .toolbar-icon,
   &.menu-item--active-trail > .toolbar-box > a.toolbar-icon {
     @include mq(medium) {
@@ -555,10 +557,10 @@ a.toolbar-menu__trigger,
         content: "";
         display: block;
         position: absolute;
-        top: 4px;
-        left: calc((var(--ginToolbarWidthCollapsed) - 40px) / 2 - 9px);
-        width: 40px;
-        height: 40px;
+        top: 3px;
+        left: calc((var(--ginToolbarWidthCollapsed) - var(--ginSpacingLarge) - var(--ginSpacingXsmall)) / 2 - 9px);
+        width: calc(100% - 10px);
+        height: 42px;
         background: var(--colorGinPrimaryLight);
         border-radius: var(--ginBorderDefault);
       }
@@ -600,7 +602,7 @@ a.toolbar-menu__trigger,
 //       position: relative;
 //       opacity: 1;
 //       display: block;
-//       margin-left: 1.5rem;
+//       margin-left: var(--ginSpacingMedium);
 //       border-left-color: var(--colorGinTextLight);
 //       height: auto;
 

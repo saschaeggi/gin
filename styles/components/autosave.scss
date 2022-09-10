@@ -1,6 +1,6 @@
 #autosave-notification {
-  font-size: 0.975rem;
-  bottom: 8px;
-  right: 8px;
+  font-size: var(--ginFontSizeSmall);
+  bottom: var(--ginSpacingXsmall);
+  right: var(--ginSpacingXsmall);
   border-radius: var(--ginBorderXSmall);
 }

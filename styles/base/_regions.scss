@@ -9,11 +9,11 @@
   transition: var(--ginTransition);
 
   .gin--edit-form & {
-    top: calc(var(--ginHorizontalToolbarOffset) - 48px - 1rem);
-    padding-top: 1rem;
+    top: calc(var(--ginHorizontalToolbarOffset) - var(--ginSpacingXxlarge));
+    padding-top: var(--ginSpacingDefault);
 
     @include mq(large) {
-      padding-top: .75rem;
+      padding-top: var(--ginSpacingSmall);
     }
   }
 
@@ -21,7 +21,7 @@
     top: -1px;
     width: 100%;
     height: var(--ginStickyHeight);
-    padding: .75rem 0;
+    padding: var(--ginSpacingSmall) 0;
 
     &-watcher {
       position: sticky;
@@ -59,7 +59,7 @@
   &__items {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: var(--ginSpacingDefault);
 
     @include mq(small) {
       height: 100%;
@@ -102,7 +102,7 @@
       display: flex;
 
       @include mq(large) {
-        padding-left: 1.5rem;
+        padding-left: var(--ginSpacingMedium);
       }
     }
   }
@@ -121,7 +121,7 @@
     position: relative;
     pointer-events: none;
     height: 40px;
-    margin: -64px auto 1.5rem;
+    margin: calc(var(--ginSpacingXxlarge) * -1) auto var(--ginSpacingMedium);
     box-shadow: 0 10px 20px -16px rgba(0, 0, 0, .4);
 
     .gin--dark-mode & {
@@ -131,8 +131,8 @@
 
   @include mq(large) {
     position: sticky;
-    top: calc(var(--ginHorizontalToolbarOffset) + 32px);
-    width: calc(100% - min(10vw, 96px) + 24px);
+    top: calc(var(--ginHorizontalToolbarOffset) + var(--ginSpacingLarge));
+    width: calc(100% - min(10vw, 96px) + var(--ginSpacingMedium));
 
     // Classic, legacy toolbar
     .gin--classic-toolbar:not(.gin--edit-form) & {
@@ -153,17 +153,17 @@
 
 .toolbar-tray-open:not(.toolbar-vertical) .layout-container,
 body:not(.toolbar-tray-open) .layout-container {
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: var(--ginSpacingDefault);
+  margin-right: var(--ginSpacingDefault);
 
   @include mq(small) {
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-left: var(--ginSpacingLarge);
+    margin-right: var(--ginSpacingLarge);
   }
 
   @include mq(medium) {
-    margin-left: m#{i}n(5vw, 48px);
-    margin-right: m#{i}n(5vw, 48px);
+    margin-left: m#{i}n(5vw, var(--ginSpacingXlarge));
+    margin-right: m#{i}n(5vw, var(--ginSpacingXlarge));
 
     .layout-container {
       margin-left: 0;
@@ -204,11 +204,11 @@ body:not(.toolbar-tray-open) .layout-container {
   .field--name-status {
     display: flex;
     align-items: center;
-    margin-right: 1.5rem;
+    margin-right: var(--ginSpacingMedium);
 
     .form-type--checkbox {
-      margin-top: .5rem;
-      margin-bottom: .5rem;
+      margin-top: var(--ginSpacingXsmall);
+      margin-bottom: var(--ginSpacingXsmall);
     }
   }
 }

@@ -54,7 +54,7 @@ div.autocomplete-deluxe-multiple {
 
 .autocomplete-deluxe-item {
   color: var(--colorGinPrimaryHover);
-  padding: 6px 24px 6px 12px;
+  padding: 6px var(--ginSpacingMedium) 6px 12px;
   background-color: var(--colorGinPrimaryLightHover);
   border-radius: var(--ginBorderMedium);
   border: 0 none;

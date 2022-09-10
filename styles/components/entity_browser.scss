@@ -3,8 +3,8 @@
   &:not(.entities-list--single-item) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    grid-gap: 1rem;
-    margin-bottom: 1rem;
+    grid-gap: var(--ginSpacingDefault);
+    margin-bottom: var(--ginSpacingDefault);
   }
 
   &.entities-list--single-item .item-container {
@@ -32,7 +32,7 @@
     }
 
     &.label {
-      padding: .75rem 3rem .75rem .75rem;
+      padding: var(--ginSpacingSmall) var(--ginSpacingXlarge) var(--ginSpacingSmall) var(--ginSpacingSmall);
     }
 
     img {
@@ -89,8 +89,8 @@ table.entities-list {
     .view-content {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      grid-gap: 1rem;
-      margin-bottom: 1rem;
+      grid-gap: var(--ginSpacingDefault);
+      margin-bottom: var(--ginSpacingDefault);
     }
 
     .views-row {
@@ -106,14 +106,14 @@ table.entities-list {
       }
 
       .views-field-name {
-        padding: .5rem;
+        padding: var(--ginSpacingXsmall);
       }
 
       .views-field-entity-browser-select {
         position: absolute;
         top: 0;
         left: 0;
-        margin: .75rem;
+        margin: var(--ginSpacingSmall);
 
         .form-item {
           margin: 0;
@@ -123,7 +123,7 @@ table.entities-list {
 
     .media-info {
       word-wrap: break-word;
-      font-size: 14px;
+      font-size: var(--ginFontSizeSmall);
     }
 
     .views-field-thumbnail__target-id {
@@ -139,7 +139,7 @@ table.entities-list {
 
     .entities-list {
       border-top: var(--ginBorderXSmall) solid var(--colorGinFormElementBorder);
-      padding-top: 1rem;
+      padding-top: var(--ginSpacingDefault);
     }
   }
 
@@ -164,7 +164,7 @@ table.entities-list {
 }
 
 .eb-tabs {
-  margin-left: 4px; // Fix for outline
+  margin-left: var(--ginSpacingTiny); // Fix for outline
   margin-bottom: 0.75em;
 
   ul {

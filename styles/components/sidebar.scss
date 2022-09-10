@@ -69,7 +69,7 @@ body[data-meta-sidebar=open] {
   }
 
   &__trigger {
-    margin-left: .5rem;
+    margin-left: var(--ginSpacingXsmall);
 
     &::before {
       mask-image: icon('sidebar');
@@ -82,7 +82,7 @@ body[data-meta-sidebar=open] {
     z-index: 104;
     position: absolute;
     top: 18px;
-    right: 16px;
+    right: var(--ginSpacingDefault);
 
     @include mq(large) {
       display: none;

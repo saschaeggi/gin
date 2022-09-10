@@ -6,7 +6,6 @@ $maxWidth: 520px;
   border: 1px solid var(--colorGinFormElementBorder);
   border-radius: var(--ginBorderDefault);
   box-sizing: border-box;
-  // box-shadow: 0 1px 2px rgba(0, 0, 0, .25);
   transition: var(--ginTransition);
 
   &:hover {
@@ -16,6 +15,8 @@ $maxWidth: 520px;
 
   &--small,
   &--extrasmall {
+    font-size: var(--ginFontSizeSmall);
+    line-height: 1.5;
     border-radius: var(--ginBorderSmall);
   }
 
@@ -74,7 +75,7 @@ $maxWidth: 520px;
 
 // Select
 .form-element--type-select {
-  padding-right: calc(2.5rem - 1px);
+  padding-right: calc(var(--ginSpacingXsmall) + var(--ginSpacingLarge) - 1px);
 
   .gin--dark-mode & {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath fill='none' stroke-width='1.5' d='M1 1L7 7L13 1' stroke='%23ffffff'/%3E%3C/svg%3E%0A");
@@ -82,9 +83,9 @@ $maxWidth: 520px;
 }
 
 .form-element--type-select--small {
-  font-size: 0.79rem;
+  font-size: var(--ginFontSizeSmaller);
   min-height: 2.25rem;
-  line-height: 1.2;
+  line-height: 1.4;
   padding-top: .474rem; // 0.79rem * 1.2 / 2
   padding-bottom: .474rem; // 0.79rem * 1.2 / 2
   background-position: 100% 52%;
@@ -131,9 +132,9 @@ $maxWidth: 520px;
     z-index: 0;
     display: inline-block;
     vertical-align: top;
-    width: 40px;
-    height: 24px;
-    border-radius: 12px;
+    width: 2.5rem;
+    height: 1.5rem;
+    border-radius: var(--ginBorderMedium);
     box-sizing: border-box;
 
     &__inner {
@@ -142,10 +143,10 @@ $maxWidth: 520px;
       width: 100%;
       height: 100%;
       overflow: hidden;
-      clip-path: circle(24px at 50% 50%); // Fix Safari bug
+      clip-path: circle(var(--ginSpacingMedium) at 50% 50%); // Fix Safari bug
       background-color: var(--colorGinDisabled);
       border: 3px solid transparent;
-      border-radius: 12px;
+      border-radius: var(--ginBorderMedium);
       box-sizing: border-box;
 
       .gin--dark-mode & {
@@ -250,7 +251,7 @@ $maxWidth: 520px;
   label {
     z-index: 1;
     position: relative;
-    padding-left: 4px;
+    padding-left: var(--ginSpacingTiny);
     padding-bottom: 0;
     color: var(--colorGinText);
   }
@@ -320,8 +321,8 @@ $maxWidth: 520px;
 .form-radios,
 .form-checkboxes {
   .form-type--boolean {
-    margin-top: .5rem;
-    margin-bottom: .5rem;
+    margin-top: var(--ginSpacingXsmall);
+    margin-bottom: var(--ginSpacingXsmall);
   }
 }
 
@@ -339,7 +340,7 @@ $maxWidth: 520px;
 // Fieldgroup
 fieldset:not(.fieldgroup) {
   color: var(--colorGinTextLight);
-  padding-top: 8px;
+  padding-top: var(--ginSpacingXsmall);
   padding-left: 0;
   padding-right: 0;
   background: transparent;
@@ -356,15 +357,14 @@ fieldset:not(.fieldgroup) {
   }
 }
 
-/* Align fieldset label positioning to regular form item label, see claro form.css. */
-.fieldset__label {
-  margin-top: 0.25rem;
-}
-
 .fieldset__label,
 .fieldset__label--group,
 .form-item__label {
-  color: var(--colorGinText);
+  font-size: var(--ginFontSizeSmall);
+  font-weight: var(--ginFontWeightSemiBold);
+  color: var(--colorGinTitle);
+  margin-top: 0;
+  margin-bottom: var(--ginSpacingXsmall);
 }
 
 .form-item__label.has-error,
@@ -400,7 +400,7 @@ fieldset:not(.fieldgroup) {
 
 .form-item__warning {
   display: inline-block;
-  margin-top: .5rem;
+  margin-top: var(--ginSpacingXsmall);
 }
 
 .js .form-autocomplete {
@@ -426,9 +426,7 @@ fieldset:not(.fieldgroup) {
 .form-wrapper,
 .form-composite {
   .form-item__label {
-    // color: var(--colorGinPrimaryActive);
     position: relative;
-    padding-bottom: 4px;
   }
 }
 
@@ -447,12 +445,12 @@ fieldset:not(.fieldgroup) {
 
 // Autocomplete field
 .js input.form-linkit-autocomplete {
-  padding-right: 2rem;
+  padding-right: var(--ginSpacingLarge);
   background-position: right 8px center;
 }
 
 .claro-autocomplete {
-  width: calc(100% - 1rem);
+  width: calc(100% - var(--ginSpacingDefault));
 
   .form-autocomplete {
     width: 100%;
@@ -460,6 +458,8 @@ fieldset:not(.fieldgroup) {
 }
 
 .no-touchevents .form-element--type-select.form-element--extrasmall {
+  font-size: var(--ginFontSizeSmall);
+  line-height: 1.5;
   min-height: 1.75rem;
 }
 
@@ -470,11 +470,15 @@ fieldset:not(.fieldgroup) {
 
 .image-style-new {
   .form-item {
-    margin-right: .25rem;
+    margin-right: var(--ginSpacingTiny);
   }
 }
 
-tr .form-item,
+tr .form-item {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .container-inline .form-item {
   margin-top: var(--ginSpacingDensitySmall);
   margin-bottom: var(--ginSpacingDensitySmall);

@@ -8,8 +8,8 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  padding-top: var(--ginSpacingXsmall);
+  padding-bottom: var(--ginSpacingXsmall);
   margin-top: -1px;
   height: var(--ginToolbarSecondaryHeight);
   border-bottom: 1px solid var(--colorGinSecondaryBorder);
@@ -66,12 +66,12 @@
   }
 
   [dir="ltr"] .gin--edit-form .gin-secondary-toolbar {
-    left: calc(50% - 3rem);
+    left: calc(50% - var(--ginSpacingXlarge));
     transform: translateX(-50%);
   }
 
   [dir="rtl"] .gin--edit-form .gin-secondary-toolbar {
-    right: calc(50% - 3rem);
+    right: calc(50% - var(--ginSpacingXlarge));
     transform: translateX(50%);
   }
 }
@@ -80,18 +80,18 @@
   display: flex;
   align-items: center;
   width: 100%;
-  margin: 0 1rem;
+  margin: 0 var(--ginSpacingDefault);
 }
 
 @media (min-width: 48em) {
   .gin-secondary-toolbar__layout-container {
-    margin: 0 2rem;
+    margin: 0 var(--ginSpacingLarge);
   }
 }
 
 @media (min-width: 61em) {
   .gin-secondary-toolbar__layout-container {
-    margin: 0 min(5vw, 48px);
+    margin: 0 min(5vw, var(--ginSpacingXlarge));
   }
 }
 
@@ -105,17 +105,17 @@
 }
 
 [dir="ltr"] .gin-breadcrumb-wrapper {
-  margin-right: 2rem;
+  margin-right: var(--ginSpacingLarge);
 }
 
 [dir="rtl"] .gin-breadcrumb-wrapper {
-  margin-left: 2rem;
+  margin-left: var(--ginSpacingLarge);
 }
 
 .gin-back-to-admin {
   font-family: var(--ginFont);
-  font-size: var(--ginFontSizeSmall);
-  font-weight: normal;
+  font-size: var(--ginFontSizeSmaller);
+  font-weight: var(--ginFontWeightNormal);
   line-height: 2;
   color: var(--colorGinTextLight);
   text-decoration: none;
@@ -300,9 +300,9 @@
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray a {
     color: var(--colorGinPrimary);
-    padding: .75rem 1rem;
+    padding: var(--ginSpacingSmall) var(--ginSpacingDefault);
     border-radius: var(--ginBorderSmall);
-    font-size: var(--ginFontSizeSmall);
+    font-size: var(--ginFontSizeSmaller);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray a:hover, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray a:active {
@@ -319,7 +319,7 @@
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray .toolbar-lining:not(:empty) {
-    padding: .5rem;
+    padding: var(--ginSpacingXsmall);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray .toolbar-icon:before {
@@ -345,7 +345,7 @@
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:hover, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:active, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:focus, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.is-active, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.is-active:hover {
-    font-weight: normal;
+    font-weight: var(--ginFontWeightNormal);
     color: var(--colorGinTextLight);
     background-color: transparent;
   }
@@ -381,11 +381,11 @@
   }
 
   [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user {
-    margin-left: 16px;
+    margin-left: var(--ginSpacingDefault);
   }
 
   [dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user {
-    margin-right: 16px;
+    margin-right: var(--ginSpacingDefault);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user:focus {
@@ -427,7 +427,7 @@
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-item {
-    font-size: var(--ginFontSizeSmall);
+    font-size: var(--ginFontSizeSmaller);
     width: auto;
     height: auto;
   }
@@ -465,7 +465,7 @@
   line-height: 1;
   padding-top: 10px;
   padding-bottom: 10px;
-  font-size: var(--ginFontSizeSmall);
+  font-size: var(--ginFontSizeSmaller);
 }
 
 [dir="ltr"] #admin-toolbar-search-input {
@@ -496,6 +496,6 @@
 }
 
 .ui-autocomplete.admin-toolbar-search-autocomplete-list .ui-menu-item-wrapper {
-  font-size: var(--ginFontSizeSmall);
+  font-size: var(--ginFontSizeSmaller);
 }
 

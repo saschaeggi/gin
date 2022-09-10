@@ -7,11 +7,11 @@
 }
 
 [dir="ltr"] .paragraphs-tabs-wrapper .paragraphs-subform {
-  margin-right: 1rem;
+  margin-right: var(--ginSpacingDefault);
 }
 
 [dir="rtl"] .paragraphs-tabs-wrapper .paragraphs-subform {
-  margin-left: 1rem;
+  margin-left: var(--ginSpacingDefault);
 }
 
 .paragraphs-tabs-wrapper .tabledrag-toggle-weight-wrapper {
@@ -19,11 +19,11 @@
 }
 
 [dir="ltr"] .paragraphs-tabs-wrapper .field-multiple-table thead th {
-  padding: .5rem 1.5rem .5rem .5rem;
+  padding: var(--ginSpacingXsmall) var(--ginSpacingMedium) var(--ginSpacingXsmall) var(--ginSpacingXsmall);
 }
 
 [dir="rtl"] .paragraphs-tabs-wrapper .field-multiple-table thead th {
-  padding: .5rem .5rem .5rem 1.5rem;
+  padding: var(--ginSpacingXsmall) var(--ginSpacingXsmall) var(--ginSpacingXsmall) var(--ginSpacingMedium);
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table thead th.th__order {
@@ -32,7 +32,7 @@
 
 .paragraphs-tabs-wrapper .field-multiple-table thead .label {
   display: inline-block;
-  font-size: 18px;
+  font-size: var(--ginFontSize);
   color: var(--colorGinPrimaryActive);
   padding: 0;
   margin: 10px;
@@ -44,8 +44,8 @@
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable {
   display: block;
-  padding: 1rem .5rem;
-  margin-top: 1rem;
+  padding: var(--ginSpacingDefault) var(--ginSpacingXsmall);
+  margin-top: var(--ginSpacingDefault);
   border: 1px solid var(--colorGinTableBorder);
   border-radius: var(--ginBorderDefault);
 }
@@ -70,9 +70,9 @@
   content: "";
   display: block;
   position: absolute;
-  top: .5rem;
+  top: var(--ginSpacingXsmall);
   width: 4px;
-  height: calc(100% - 1rem);
+  height: calc(100% - var(--ginSpacingDefault));
   background: var(--colorGinWarning);
   border-radius: var(--ginBorderTiny);
 }
@@ -86,7 +86,7 @@
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable td {
-  padding: .25rem;
+  padding: var(--ginSpacingTiny);
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable .has-multiple-fields-remove-button {
@@ -123,8 +123,8 @@
 }
 
 .paragraphs-tabs-wrapper .paragraph-type-label {
-  font-size: 16px;
-  font-weight: bold !important;
+  font-size: var(--ginFontSize);
+  font-weight: var(--ginFontWeightUltra) !important;
   font-style: normal;
   color: var(--colorGinTitle);
   position: static;
@@ -140,17 +140,17 @@
 }
 
 .paragraphs-tabs-wrapper .paragraphs-subform .paragraph-type-label {
-  font-size: 14px;
+  font-size: var(--ginFontSizeSmall);
 }
 
 [dir="ltr"] .paragraphs-tabs-wrapper .paragraph-type-add-modal,
 [dir="ltr"] .paragraphs-tabs-wrapper .field--widget-paragraphs .paragraphs-dropbutton-wrapper {
-  margin-right: .5rem;
+  margin-right: var(--ginSpacingXsmall);
 }
 
 [dir="rtl"] .paragraphs-tabs-wrapper .paragraph-type-add-modal,
 [dir="rtl"] .paragraphs-tabs-wrapper .field--widget-paragraphs .paragraphs-dropbutton-wrapper {
-  margin-left: .5rem;
+  margin-left: var(--ginSpacingXsmall);
 }
 
 .paragraph .contextual {
@@ -159,13 +159,13 @@
 
 .paragraphs-add-wrapper .button--small,
 .paragraphs-dropbutton-wrapper .button--small {
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+  margin-top: var(--ginSpacingXsmall);
+  margin-bottom: var(--ginSpacingXsmall);
 }
 
 .paragraphs-dropdown-toggle {
   position: relative;
-  margin: .5rem 0;
+  margin: var(--ginSpacingXsmall) 0;
   background: none;
 }
 
@@ -241,16 +241,6 @@
   background: var(--colorGinLayer2Background);
 }
 
-[dir="ltr"] .js .paragraphs-collapsed-description::after,
-[dir="ltr"] .js .draggable:hover .paragraphs-collapsed-description::after {
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayer2Background) 100%);
-}
-
-[dir="rtl"] .js .paragraphs-collapsed-description::after,
-[dir="rtl"] .js .draggable:hover .paragraphs-collapsed-description::after {
-  background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, var(--colorGinLayer2Background) 100%);
-}
-
 .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
   min-width: 32px;
 }
@@ -261,31 +251,26 @@
   }
 }
 
-.js .field--widget-entity-reference-paragraphs .paragraphs-collapsed-description::after,
-.js .field--widget-entity-reference-paragraphs .draggable:hover .paragraphs-collapsed-description::after {
-  background: var(--colorGinLayerBackground);
+[dir="ltr"] .paragraphs-collapsed-description::after,
+[dir="ltr"] .draggable:hover .paragraphs-collapsed-description::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, var(--colorGinLayerBackground) 100%);
 }
 
-[dir="ltr"] .js .field--widget-entity-reference-paragraphs .paragraphs-collapsed-description::after,
-[dir="ltr"] .js .field--widget-entity-reference-paragraphs .draggable:hover .paragraphs-collapsed-description::after {
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayerBackground) 100%);
-}
-
-[dir="rtl"] .js .field--widget-entity-reference-paragraphs .paragraphs-collapsed-description::after,
-[dir="rtl"] .js .field--widget-entity-reference-paragraphs .draggable:hover .paragraphs-collapsed-description::after {
-  background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, var(--colorGinLayerBackground) 100%);
+[dir="rtl"] .paragraphs-collapsed-description::after,
+[dir="rtl"] .draggable:hover .paragraphs-collapsed-description::after {
+  background: linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, var(--colorGinLayerBackground) 100%);
 }
 
 .js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple {
-  padding: .5rem;
+  padding: var(--ginSpacingXsmall);
 }
 
 [dir="ltr"] .js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple .dropbutton-widget {
-  margin-right: .5rem;
+  margin-right: var(--ginSpacingXsmall);
 }
 
 [dir="rtl"] .js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple .dropbutton-widget {
-  margin-left: .5rem;
+  margin-left: var(--ginSpacingXsmall);
 }
 
 .js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
@@ -293,11 +278,11 @@
 }
 
 [dir="ltr"] .js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
-  right: -4px;
+  right: calc(var(--ginSpacingTiny) * -1);
 }
 
 [dir="rtl"] .js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
-  left: -4px;
+  left: calc(var(--ginSpacingTiny) * -1);
 }
 
 .paragraphs-dropdown-actions {
@@ -309,8 +294,8 @@
 }
 
 .paragraphs-dropdown-actions .paragraphs-dropdown-action.button {
-  font-size: .8125rem;
-  padding: .5rem 1rem;
+  font-size: var(--ginFontSizeSmaller);
+  padding: var(--ginSpacingXsmall) var(--ginSpacingDefault);
   margin: 0;
   border: 0 none !important;
 }
@@ -320,15 +305,15 @@
 }
 
 .js .paragraph-type-icon {
-  padding: .25rem;
+  padding: var(--ginSpacingTiny);
 }
 
 [dir="ltr"] .js .paragraph-type-icon {
-  margin-right: .5rem;
+  margin-right: var(--ginSpacingXsmall);
 }
 
 [dir="rtl"] .js .paragraph-type-icon {
-  margin-left: .5rem;
+  margin-left: var(--ginSpacingXsmall);
 }
 
 .js .paragraph-top {
@@ -365,14 +350,14 @@
 }
 
 .paragraphs-dragdrop__item {
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  padding-top: var(--ginSpacingXsmall);
+  padding-bottom: var(--ginSpacingXsmall);
   background-color: var(--colorGinLayer3Background);
   border-radius: var(--ginBorderDefault);
 }
 
 .paragraphs-dragdrop__icon {
-  top: .5rem;
+  top: var(--ginSpacingXsmall);
 }
 
 .js .paragraph-type-add-modal-button:hover {
@@ -385,12 +370,12 @@
 
 .field--widget-entity-reference-paragraphs > div > .form-wrapper > strong {
   display: block;
-  margin-top: 2rem;
+  margin-top: var(--ginSpacingLarge);
 }
 
 .field--widget-entity-reference-paragraphs .form-wrapper .form-wrapper > em {
   display: block;
-  padding: 1rem 0;
+  padding: var(--ginSpacingDefault) 0;
 }
 
 .field--widget-entity-reference-paragraphs .form-actions {
@@ -398,25 +383,25 @@
 }
 
 [dir="ltr"] .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple {
-  margin-right: .5rem;
+  margin-right: var(--ginSpacingXsmall);
 }
 
 [dir="rtl"] .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple {
-  margin-left: .5rem;
+  margin-left: var(--ginSpacingXsmall);
 }
 
 [dir="ltr"] .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple .placeholder,
 [dir="ltr"] .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple ~ .placeholder {
-  margin-left: .25rem;
+  margin-left: var(--ginSpacingTiny);
 }
 
 [dir="rtl"] .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple .placeholder,
 [dir="rtl"] .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple ~ .placeholder {
-  margin-right: .25rem;
+  margin-right: var(--ginSpacingTiny);
 }
 
 .toolbar-fixed .is-horizontal .paragraphs-tabs {
-  padding: .5rem 1rem !important;
+  padding: var(--ginSpacingXsmall) var(--ginSpacingDefault) !important;
   background-color: var(--colorGinLayer3Background);
   border-radius: var(--ginBorderSmall);
 }
@@ -428,17 +413,17 @@
 
 [dir="ltr"] .toolbar-fixed .is-horizontal .paragraphs-tabs .tabs__tab {
   float: left;
-  margin-right: 1rem;
+  margin-right: var(--ginSpacingDefault);
 }
 
 [dir="rtl"] .toolbar-fixed .is-horizontal .paragraphs-tabs .tabs__tab {
   float: right;
-  margin-left: 1rem;
+  margin-left: var(--ginSpacingDefault);
 }
 
 .toolbar-fixed .is-horizontal .paragraphs-tabs .tabs__tab a {
   display: block;
-  padding: .5rem 0;
+  padding: var(--ginSpacingXsmall) 0;
   color: var(--colorGinText);
 }
 

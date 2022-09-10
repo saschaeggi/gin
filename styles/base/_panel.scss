@@ -1,16 +1,16 @@
 .block-system > .node-confirm-form,
 .block-system > .confirmation {
-  padding-top: 24px;
+  padding-top: var(--ginSpacingMedium);
 }
 
 .panel__title,
 .system-status-general-info__header,
 .system-status-report__requirements-group > h3,
 .system-themes-list__header {
-  font-size: 1.125em;
-  font-weight: 600;
+  font-size: var(--ginFontSizeLarge);
+  font-weight: var(--ginFontWeightBold);
   color: var(--colorGinPrimaryActive);
-  padding: 24px;
+  padding: var(--ginSpacingDefault) var(--ginSpacingMedium);
   margin-top: 0;
   background: var(--colorGinTableHeader);
   border: 0 none;
@@ -21,7 +21,7 @@
   padding: 0;
 
   &__title {
-    margin: .75rem;
+    margin: var(--ginSpacingSmall);
   }
 
   &__content {
@@ -29,6 +29,6 @@
   }
 
   .admin-list {
-    margin: .75rem 0;
+    margin: var(--ginSpacingSmall) 0;
   }
 }

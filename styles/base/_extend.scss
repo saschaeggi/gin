@@ -5,7 +5,7 @@
 }
 
 .package-listing {
-  margin-top: 1rem;
+  margin-top: var(--ginSpacingDefault);
 }
 
 .claro-details__summary {
@@ -29,7 +29,7 @@
 .claro-details__wrapper,
 .claro-details__wrapper.claro-details__wrapper--package-listing,
 .claro-details__wrapper.claro-details__wrapper--system-status-report {
-  margin: 1rem 1.25rem;
+  margin: var(--ginSpacingDefault) calc(var(--ginSpacingMedium) - var(--ginSpacingTiny));
 }
 
 .claro-details__wrapper--accordion,

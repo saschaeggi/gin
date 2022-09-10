@@ -8,7 +8,7 @@
 // Disabled
 .erl-field .erl-disabled-items,
 .erl-field .erl-disabled-items.form-item.form-wrapper {
-  padding: 1rem;
+  padding: var(--ginSpacingDefault);
   margin-bottom: -6rem;
   background: #f1f1f3;
   border-radius: var(--ginBorderDefault);
@@ -22,11 +22,11 @@
   }
 
   .fieldset__label {
-    padding: 16px 0 24px;
+    padding: var(--ginSpacingDefault) 0 var(--ginSpacingMedium);
   }
 
   &__description {
-    font-size: 0.875rem;
+    font-size: var(--ginFontSizeSmall);
     color: #999;
   }
 }
@@ -63,7 +63,7 @@
   color: var(--colorGinPrimary);
   line-height: 1.3;
   background: var(--colorGinItemHover);
-  padding: 16px 16px 34px 16px;
+  padding: var(--ginSpacingDefault) var(--ginSpacingDefault) 34px var(--ginSpacingDefault);
   border: 1px dashed var(--colorGinPrimary);
   border-radius: var(--ginBorderDefault);
   transform: none;
@@ -89,7 +89,7 @@
   .erl-add-content--single {
     button {
       .icon {
-        margin-right: .5rem;
+        margin-right: var(--ginSpacingXsmall);
       }
     }
   }
@@ -101,11 +101,11 @@
     }
 
     .form-item {
-      margin-left: 8px;
+      margin-left: var(--ginSpacingXsmall);
     }
 
     &.active {
-      outline: 4px solid var(--colorGinFocus);
+      outline: var(--ginBorderXSmall) solid var(--colorGinFocus);
     }
   }
 }
@@ -137,13 +137,13 @@
   border-color: #fff;
 
   &:not(:last-of-type) {
-    margin-bottom: 1rem;
+    margin-bottom: var(--ginSpacingDefault);
   }
 }
 
 // Disabled description position
 .erl-disabled-wrapper .erl-disabled-items__description {
-  top: 16px;
+  top: var(--ginSpacingDefault);
 }
 
 // Basic item styles
@@ -164,8 +164,8 @@
   .layout-controls {
     opacity: 1;
     position: absolute;
-    left: 4px;
-    top: 8px;
+    left: var(--ginSpacingTiny);
+    top: var(--ginSpacingXsmall);
   }
 
   .paragraph {
@@ -175,7 +175,7 @@
     }
 
     .field--name-field-title {
-      font-weight: bold;
+      font-weight: var(--ginFontWeightUltra);
     }
 
     .field--type-image {
@@ -189,7 +189,7 @@
 
       .field__item {
         flex-basis: 100%;
-        margin-right: .5rem;
+        margin-right: var(--ginSpacingXsmall);
       }
     }
   }
@@ -199,8 +199,8 @@
 .erl-item .erl-actions {
   visibility: visible;
   position: absolute;
-  right: 4px;
-  top: 8px;
+  right: var(--ginSpacingTiny);
+  top: var(--ginSpacingXsmall);
 }
 
 // Form wrapper

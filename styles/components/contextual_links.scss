@@ -19,7 +19,7 @@
       width: .75rem;
       height: .75rem;
       mask-image: icon('media-edit');
-      mask-size: 0.75rem 0.75rem;
+      mask-size: var(--ginSpacingSmall) var(--ginSpacingSmall);
       mask-position: 100% 100%;
       background: var(--colorGinPrimary);
     }
@@ -48,7 +48,7 @@
 .contextual-region .contextual {
   // Contextual Link list
   .contextual-links {
-    top: 4px;
+    top: var(--ginSpacingTiny);
     padding: .5em;
     margin: 0;
     min-width: 120px;
@@ -65,7 +65,7 @@
         color: var(--colorGinPrimary);
         line-height: 1;
         white-space: nowrap;
-        padding: .5rem 1rem;
+        padding: var(--ginSpacingXsmall) var(--ginSpacingDefault);
         margin: 0;
         background: transparent;
         border-radius: var(--ginBorderSmall);
@@ -90,8 +90,8 @@
       border-radius: 50%;
 
       &::before {
-        top: .25rem;
-        left: .25rem;
+        top: var(--ginSpacingTiny);
+        left: var(--ginSpacingTiny);
         width: 1rem;
         height: 1rem;
         border: 2px solid var(--colorGinButtonText);

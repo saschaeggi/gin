@@ -8,8 +8,8 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  padding-top: var(--ginSpacingXsmall);
+  padding-bottom: var(--ginSpacingXsmall);
   margin-top: -1px;
   height: var(--ginToolbarSecondaryHeight);
   border-bottom: 1px solid var(--colorGinSecondaryBorder);
@@ -52,7 +52,7 @@
   .gin--edit-form & {
     @include mq(ultra) {
       position: relative;
-      left: calc(50% - 3rem);
+      left: calc(50% - var(--ginSpacingXlarge));
       transform: translateX(-50%);
     }
   }
@@ -61,14 +61,14 @@
     display: flex;
     align-items: center;
     width: 100%;
-    margin: 0 1rem;
+    margin: 0 var(--ginSpacingDefault);
 
     @include mq(small) {
-      margin: 0 2rem;
+      margin: 0 var(--ginSpacingLarge);
     }
 
     @include mq(medium) {
-      margin: 0 m#{i}n(5vw, 48px);
+      margin: 0 m#{i}n(5vw, var(--ginSpacingXlarge));
     }
   }
 
@@ -80,13 +80,13 @@
 .gin-breadcrumb-wrapper {
   flex-grow: 1;
   white-space: nowrap;
-  margin-right: 2rem;
+  margin-right: var(--ginSpacingLarge);
 }
 
 .gin-back-to-admin {
   font-family: var(--ginFont);
-  font-size: var(--ginFontSizeSmall);
-  font-weight: normal;
+  font-size: var(--ginFontSizeSmaller);
+  font-weight: var(--ginFontWeightNormal);;
   line-height: 2;
   color: var(--colorGinTextLight);
   text-decoration: none;
@@ -245,9 +245,9 @@
 
           a {
             color: var(--colorGinPrimary);
-            padding: .75rem 1rem;
+            padding: var(--ginSpacingSmall) var(--ginSpacingDefault);
             border-radius: var(--ginBorderSmall);
-            font-size: var(--ginFontSizeSmall);
+            font-size: var(--ginFontSizeSmaller);
 
             &:hover, &:active {
               color: var(--colorGinButtonText);
@@ -267,7 +267,7 @@
           }
 
           .toolbar-lining:not(:empty) {
-            padding: .5rem;
+            padding: var(--ginSpacingXsmall);
           }
 
           // Hide icons for custom modules
@@ -300,7 +300,7 @@
         &:focus,
         &.is-active,
         &.is-active:hover {
-          font-weight: normal;
+          font-weight: var(--ginFontWeightNormal);;
           color: var(--colorGinTextLight);
           background-color: transparent;
 
@@ -326,7 +326,7 @@
         .icon-user {
           border: 1px solid var(--colorGinBorder);
           overflow: hidden;
-          margin-left: 16px;
+          margin-left: var(--ginSpacingDefault);
           padding: 0;
           line-height: 0;
 
@@ -365,7 +365,7 @@
         margin-left: -.25em;
 
         .toolbar-item {
-          font-size: var(--ginFontSizeSmall);
+          font-size: var(--ginFontSizeSmaller);
           width: auto;
           height: auto;
           padding-left: 2.875em;
@@ -395,7 +395,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   margin-right: 12px;
-  font-size: var(--ginFontSizeSmall);
+  font-size: var(--ginFontSizeSmaller);
 
   &::placeholder {
     color: var(--colorGinDisabled);
@@ -417,6 +417,6 @@
   border-radius: var(--ginBorderDefault);
 
   .ui-menu-item-wrapper {
-    font-size: var(--ginFontSizeSmall);
+    font-size: var(--ginFontSizeSmaller);
   }
 }

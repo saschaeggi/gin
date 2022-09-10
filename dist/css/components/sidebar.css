@@ -66,11 +66,11 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
 }
 
 [dir="ltr"] .meta-sidebar__trigger {
-  margin-left: .5rem;
+  margin-left: var(--ginSpacingXsmall);
 }
 
 [dir="rtl"] .meta-sidebar__trigger {
-  margin-right: .5rem;
+  margin-right: var(--ginSpacingXsmall);
 }
 
 .meta-sidebar__trigger::before {
@@ -88,11 +88,11 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
 }
 
 [dir="ltr"] .meta-sidebar__close {
-  right: 16px;
+  right: var(--ginSpacingDefault);
 }
 
 [dir="rtl"] .meta-sidebar__close {
-  left: 16px;
+  left: var(--ginSpacingDefault);
 }
 
 @media (min-width: 64em) {

@@ -33,7 +33,7 @@
 
 // UI Dialog Throbber
 .ui-dialog .ajax-progress-throbber {
-  padding: .5rem;
+  padding: var(--ginSpacingXsmall);
   background: var(--colorGinAppBackground);
   border-radius: 50%;
   box-shadow: 0 2px 6px 0 rgba(34, 35, 48, 0.1);
@@ -52,8 +52,8 @@
     content: "";
     display: block;
     position: absolute;
-    top: .5rem;
-    left: .5rem;
+    top: var(--ginSpacingXsmall);
+    left: var(--ginSpacingXsmall);
     width: 1.125rem;
     height: 1.125rem;
     border: 2px solid var(--colorGinPrimary);
@@ -86,7 +86,7 @@
   .ajax-progress-throbber {
     position: absolute;
     top: 0;
-    right: 4px;
+    right: var(--ginSpacingTiny);
     width: 24px;
     height: 24px;
 

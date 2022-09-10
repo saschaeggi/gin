@@ -3,7 +3,7 @@ body.gin--vertical-toolbar,
 body.gin--horizontal-toolbar,
 body.gin--classic-toolbar {
   padding-top: var(--ginHorizontalToolbarOffset) !important;
-  padding-left: var(--ginVerticalToolbarOffset, 240px);
+  padding-left: var(--ginVerticalToolbarOffset, 256px);
   margin-left: 0; // Fix for Drupal 9.3+
 }
 
@@ -34,7 +34,7 @@ body.gin--classic-toolbar {
     }
 
     .toolbar-tab > .toolbar-item {
-      font-weight: normal;
+      font-weight: var(--ginFontWeightNormal);;
     }
 
     .toolbar-tab > .toolbar-icon {
@@ -369,7 +369,7 @@ body.gin--classic-toolbar {
   a,
   span {
     color: var(--colorGinText);
-    font-weight: normal;
+    font-weight: var(--ginFontWeightNormal);;
 
     &:hover, &:active, &:focus, &.is-active {
       text-decoration: none;
@@ -451,7 +451,7 @@ body.gin--classic-toolbar {
 
   // Custom logo
   .menu-item .toolbar-logo {
-    padding-left: 16px;
+    padding-left: var(--ginSpacingDefault);
   }
 
   .level-1.menu-item:last-child {
@@ -504,7 +504,7 @@ body.gin--classic-toolbar {
 }
 
 #toolbar-administration .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item {
-  font-weight: 600;
+  font-weight: var(--ginFontWeightBold);
 
   &:hover::before {
     background: #fff;
@@ -618,8 +618,8 @@ body.gin--classic-toolbar {
 
 // Custom logo
 #toolbar-item-administration-tray .toolbar-logo {
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: var(--ginSpacingXsmall);
+  padding-bottom: var(--ginSpacingXsmall);
 
   img {
     max-width: 100px;
@@ -635,7 +635,7 @@ body.gin--classic-toolbar {
 
   &.icon-user {
     padding-left: 0;
-    margin-left: 8px;
+    margin-left: var(--ginSpacingXsmall);
     margin-top: 2px;
   }
 }
@@ -661,7 +661,7 @@ body.gin--classic-toolbar {
 #admin-toolbar-search-input {
   color: var(--colorGinText);
   width: 245px;
-  padding-left: 40px;
+  padding-left: calc(var(--ginSpacingLarge) + var(--ginSpacingXsmall));
   background-color: #fff;
   border: 1px solid var(--colorGinBorder);
   border-radius: 25px;
@@ -693,7 +693,7 @@ body.gin--classic-toolbar {
     height: var(--iconGinSecondaryToolbar);
     position: absolute;
     top: 11px;
-    left: 16px;
+    left: var(--ginSpacingDefault);
     background-color: var(--colorGinIcons);
     mask-image: icon('search');
     mask-size: 100% 100%;
@@ -709,14 +709,14 @@ body.gin--classic-toolbar {
   box-shadow: var(--ginShadowLevel2);
 
   &.ui-widget-content {
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+    padding-top: var(--ginSpacingXsmall);
+    padding-bottom: var(--ginSpacingXsmall);
     border: 0 none;
     overflow-y: auto;
   }
 
   .ui-menu-item {
-    padding: 0 .5rem;
+    padding: 0 var(--ginSpacingXsmall);
 
     // Hide url
     span.admin-toolbar-search-url {
@@ -725,9 +725,9 @@ body.gin--classic-toolbar {
   }
 
   .ui-menu-item-wrapper {
-    font-size: .875rem;
+    font-size: var(--ginFontSizeSmall);
     line-height: 1.3;
-    padding: .5rem 1rem;
+    padding: var(--ginSpacingXsmall) var(--ginSpacingDefault);
     border-radius: var(--ginBorderSmall);
 
     &.ui-state-active {

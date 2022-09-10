@@ -13,7 +13,7 @@
 .media-library-edit__link, .media-library-edit__link:hover, .media-library-edit__link:focus, .media-library-edit__link:active, .media-library-item .media-library-item__edit, .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__edit:active, .media-library-item .media-library-item__remove, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove:active, .media-library-item .media-library-item__remove.button, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus, .media-library-item .media-library-item__remove.button:active {
   width: 32px;
   height: 32px;
-  margin: .75rem;
+  margin: var(--ginSpacingSmall);
   background-color: white;
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
@@ -34,7 +34,7 @@
   left: 3.125rem;
 }
 
-.media-library-item .media-library-item__remove {
+.media-library-item .media-library-item__remove, .media-library-item .media-library-item__remove.button {
   background-image: url("../../media/sprite.svg#media-remove-view");
 }
 
@@ -109,7 +109,7 @@
 
 .media-library-item__attributes {
   position: static;
-  padding: .5rem;
+  padding: var(--ginSpacingXsmall);
   background: none;
 }
 
@@ -181,7 +181,7 @@
 }
 
 .media-library-item .form-item {
-  margin: .5rem;
+  margin: var(--ginSpacingXsmall);
 }
 
 .media-library-item .ajax-progress {
@@ -192,24 +192,22 @@
   flex-wrap: initial;
 }
 
-fieldset.media-library-widget {
-  padding: 1.5rem;
-  border: 1px solid var(--colorGinBorder);
-  border-radius: 6px;
-}
-
 fieldset.media-library-widget .media-library-widget__toggle-weight {
-  font-size: .75em;
-  padding: 8px;
+  font-size: var(--ginFontSizeSmallerest);
+  padding: var(--ginSpacingXsmall);
 }
 
 fieldset.media-library-widget .fieldset__wrapper {
   margin-bottom: 0;
 }
 
+fieldset.media-library-widget .media-library-edit__link, fieldset.media-library-widget .media-library-item .media-library-item__edit, fieldset.media-library-widget .media-library-item .media-library-item__remove, fieldset.media-library-widget .media-library-item .media-library-item__remove.button {
+  margin: var(--ginSpacingXsmall);
+}
+
 .media-library-widget-empty-text {
   color: var(--colorGinTextLight);
-  margin: 0 0 -0.5rem 0;
+  margin: 0 0 calc(var(--ginSpacingXsmall) * -1) 0;
 }
 
 .media-library-open-button {
@@ -280,7 +278,7 @@ fieldset.media-library-widget .fieldset__wrapper {
 }
 
 .media-library-menu__link:focus::after {
-  border: 4px solid var(--colorGinFocus);
+  border: var(--ginBorderXSmall) solid var(--colorGinFocus);
 }
 
 [dir="ltr"] + .media-library-content {
@@ -292,7 +290,7 @@ fieldset.media-library-widget .fieldset__wrapper {
 }
 
 .media-library-view .view-header {
-  padding: 1rem;
+  padding: var(--ginSpacingDefault);
   color: var(--colorGinText);
   text-decoration: none;
   background: var(--colorGinLayer3Background);
@@ -358,7 +356,7 @@ fieldset.media-library-widget .fieldset__wrapper {
 
 .media-library-select-all {
   margin-top: 0;
-  padding: 1rem;
+  padding: var(--ginSpacingDefault);
   color: var(--colorGinTitle);
   background: var(--colorGinTableHeader);
   box-shadow: 0 2px 6px 2px rgba(0, 0, 0, .03);
@@ -396,14 +394,14 @@ fieldset.media-library-widget .fieldset__wrapper {
 }
 
 .field--name-field-media.field--widget-entity-reference-autocomplete fieldset.form-item {
-  padding: 2rem 1.25rem 1rem 1.25rem;
+  padding: var(--ginSpacingLarge) calc(var(--ginSpacingMedium) - var(--ginSpacingTiny)) var(--ginSpacingDefault) calc(var(--ginSpacingMedium) - var(--ginSpacingTiny));
   border: 1px solid var(--colorGinBorder);
 }
 
 .field--name-field-media.field--widget-entity-reference-autocomplete fieldset.form-item > legend {
-  font-weight: bold;
+  font-weight: var(--ginFontWeightUltra);
   position: relative;
-  top: 1.25rem;
+  top: calc(var(--ginSpacingMedium) - var(--ginSpacingTiny));
   transform: translateY(50%);
 }
 
@@ -413,7 +411,7 @@ fieldset.media-library-widget .fieldset__wrapper {
   width: 100%;
   height: 1px;
   position: absolute;
-  top: -1.25rem;
+  top: calc((var(--ginSpacingMedium) - var(--ginSpacingTiny)) * -1);
   background: var(--colorGinBorder);
 }
 

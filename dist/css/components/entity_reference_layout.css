@@ -4,7 +4,7 @@
 
 .erl-field .erl-disabled-items,
 .erl-field .erl-disabled-items.form-item.form-wrapper {
-  padding: 1rem;
+  padding: var(--ginSpacingDefault);
   margin-bottom: -6rem;
   background: #f1f1f3;
   border-radius: var(--ginBorderDefault);
@@ -24,12 +24,12 @@
 
 .erl-field .erl-disabled-items .fieldset__label,
 .erl-field .erl-disabled-items.form-item.form-wrapper .fieldset__label {
-  padding: 16px 0 24px;
+  padding: var(--ginSpacingDefault) 0 var(--ginSpacingMedium);
 }
 
 .erl-field .erl-disabled-items__description,
 .erl-field .erl-disabled-items.form-item.form-wrapper__description {
-  font-size: .875rem;
+  font-size: var(--ginFontSizeSmall);
   color: #999;
 }
 
@@ -58,7 +58,7 @@
   color: var(--colorGinPrimary);
   line-height: 1.3;
   background: var(--colorGinItemHover);
-  padding: 16px 16px 34px 16px;
+  padding: var(--ginSpacingDefault) var(--ginSpacingDefault) 34px var(--ginSpacingDefault);
   border: 1px dashed var(--colorGinPrimary);
   border-radius: var(--ginBorderDefault);
   transform: none;
@@ -83,11 +83,11 @@
 }
 
 [dir="ltr"] .erl-field .erl-add-content--single button .icon {
-  margin-right: .5rem;
+  margin-right: var(--ginSpacingXsmall);
 }
 
 [dir="rtl"] .erl-field .erl-add-content--single button .icon {
-  margin-left: .5rem;
+  margin-left: var(--ginSpacingXsmall);
 }
 
 .erl-field .layout-radio-item > div {
@@ -96,15 +96,15 @@
 }
 
 [dir="ltr"] .erl-field .layout-radio-item .form-item {
-  margin-left: 8px;
+  margin-left: var(--ginSpacingXsmall);
 }
 
 [dir="rtl"] .erl-field .layout-radio-item .form-item {
-  margin-right: 8px;
+  margin-right: var(--ginSpacingXsmall);
 }
 
 .erl-field .layout-radio-item.active {
-  outline: 4px solid var(--colorGinFocus);
+  outline: var(--ginBorderXSmall) solid var(--colorGinFocus);
 }
 
 .erl-layout-region:hover button.erl-add-content__toggle {
@@ -130,11 +130,11 @@
 }
 
 .erl-disabled-wrapper .erl-item:not(:last-of-type) {
-  margin-bottom: 1rem;
+  margin-bottom: var(--ginSpacingDefault);
 }
 
 .erl-disabled-wrapper .erl-disabled-items__description {
-  top: 16px;
+  top: var(--ginSpacingDefault);
 }
 
 .erl-item label.paragraph-type-label,
@@ -163,15 +163,15 @@
 .erl-item .layout-controls {
   opacity: 1;
   position: absolute;
-  top: 8px;
+  top: var(--ginSpacingXsmall);
 }
 
 [dir="ltr"] .erl-item .layout-controls {
-  left: 4px;
+  left: var(--ginSpacingTiny);
 }
 
 [dir="rtl"] .erl-item .layout-controls {
-  right: 4px;
+  right: var(--ginSpacingTiny);
 }
 
 .erl-item .paragraph .field {
@@ -180,7 +180,7 @@
 }
 
 .erl-item .paragraph .field--name-field-title {
-  font-weight: bold;
+  font-weight: var(--ginFontWeightUltra);
 }
 
 .erl-item .paragraph .field--type-image {
@@ -198,25 +198,25 @@
 }
 
 [dir="ltr"] .erl-item .paragraph .field--name-field-paragraphs .field__item {
-  margin-right: .5rem;
+  margin-right: var(--ginSpacingXsmall);
 }
 
 [dir="rtl"] .erl-item .paragraph .field--name-field-paragraphs .field__item {
-  margin-left: .5rem;
+  margin-left: var(--ginSpacingXsmall);
 }
 
 .erl-item .erl-actions {
   visibility: visible;
   position: absolute;
-  top: 8px;
+  top: var(--ginSpacingXsmall);
 }
 
 [dir="ltr"] .erl-item .erl-actions {
-  right: 4px;
+  right: var(--ginSpacingTiny);
 }
 
 [dir="rtl"] .erl-item .erl-actions {
-  left: 4px;
+  left: var(--ginSpacingTiny);
 }
 
 .erl-layout.erl-item.form-wrapper:hover > button.erl-add-content__toggle, .erl-layout.erl-item.form-wrapper:hover > button.layout-paragraphs-add-content__toggle {

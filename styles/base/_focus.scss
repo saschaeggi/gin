@@ -47,7 +47,7 @@
 .vertical-tabs__menu-link:focus:after,
 .tabs__trigger:focus {
   box-shadow: none;
-  border: 4px solid var(--colorGinFocus);
+  border: var(--ginBorderXSmall) solid var(--colorGinFocus);
 }
 
 @include mq(small) {

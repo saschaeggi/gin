@@ -47,7 +47,7 @@
 }
 
 .ui-dialog .ajax-progress-throbber {
-  padding: .5rem;
+  padding: var(--ginSpacingXsmall);
   background: var(--colorGinAppBackground);
   border-radius: 50%;
   box-shadow: 0 2px 6px 0 rgba(34, 35, 48, .1);
@@ -65,7 +65,7 @@
   content: "";
   display: block;
   position: absolute;
-  top: .5rem;
+  top: var(--ginSpacingXsmall);
   width: 1.125rem;
   height: 1.125rem;
   border: 2px solid var(--colorGinPrimary);
@@ -75,13 +75,13 @@
 
 [dir="ltr"] .ui-dialog .ajax-progress-throbber::before,
 [dir="ltr"] .contextual-links .ajax-progress-throbber::before {
-  left: .5rem;
+  left: var(--ginSpacingXsmall);
   border-right: 2px dotted transparent;
 }
 
 [dir="rtl"] .ui-dialog .ajax-progress-throbber::before,
 [dir="rtl"] .contextual-links .ajax-progress-throbber::before {
-  right: .5rem;
+  right: var(--ginSpacingXsmall);
   border-left: 2px dotted transparent;
 }
 
@@ -103,11 +103,11 @@
 }
 
 [dir="ltr"] .contextual-links .ajax-progress-throbber {
-  right: 4px;
+  right: var(--ginSpacingTiny);
 }
 
 [dir="rtl"] .contextual-links .ajax-progress-throbber {
-  left: 4px;
+  left: var(--ginSpacingTiny);
 }
 
 .contextual-links .ajax-progress-throbber::before {

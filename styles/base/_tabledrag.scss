@@ -21,11 +21,24 @@
   margin-top: 0;
 
   .action-link {
-    margin-bottom: .5rem;
+    margin-bottom: var(--ginSpacingXsmall);
 
     .action-link {
       margin-bottom: 0;
     }
+  }
+}
+
+.layer-wrapper > .tabledrag-toggle-weight-wrapper {
+  @include mq(small) {
+    position: relative;
+    z-index: 1;
+    margin-bottom: calc(var(--ginSpacingXlarge) * -1);
+    pointer-events: none;
+  }
+
+  .action-link {
+    pointer-events: all;
   }
 }
 
@@ -63,31 +76,5 @@
 .tabledrag-cell-content__item {
   .checkbox-toggle:hover {
     cursor: pointer;
-  }
-}
-
-// Hack to fix border-radius
-.draggable-table thead th {
-  border-radius: var(--ginBorderDefault);
-
-  &:not(:first-of-type) {
-    &::before,
-    &::after {
-      content: "";
-      display: block;
-      width: calc(var(--ginBorderDefault) * 2);
-      height: var(--ginBorderDefault);
-      background: var(--colorGinTableHeader);
-      position: absolute;
-      left: calc(var(--ginBorderDefault) * -1);
-    }
-
-    &::before {
-      top: 0;
-    }
-
-    &::after {
-      bottom: 0;
-    }
   }
 }

@@ -1,8 +1,8 @@
 .entities-list:not(.entities-list--single-item) {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  grid-gap: 1rem;
-  margin-bottom: 1rem;
+  grid-gap: var(--ginSpacingDefault);
+  margin-bottom: var(--ginSpacingDefault);
 }
 
 .entities-list.entities-list--single-item .item-container {
@@ -30,11 +30,11 @@
 }
 
 [dir="ltr"] .entities-list .item-container.label {
-  padding: .75rem 3rem .75rem .75rem;
+  padding: var(--ginSpacingSmall) var(--ginSpacingXlarge) var(--ginSpacingSmall) var(--ginSpacingSmall);
 }
 
 [dir="rtl"] .entities-list .item-container.label {
-  padding: .75rem .75rem .75rem 3rem;
+  padding: var(--ginSpacingSmall) var(--ginSpacingSmall) var(--ginSpacingSmall) var(--ginSpacingXlarge);
 }
 
 .entities-list .item-container img {
@@ -55,7 +55,7 @@
   color: transparent;
   width: 29px;
   height: 29px;
-  margin: .75rem;
+  margin: var(--ginSpacingSmall);
   position: absolute;
   top: 0;
 }
@@ -91,7 +91,7 @@
   color: transparent;
   width: 29px;
   height: 29px;
-  margin: .75rem;
+  margin: var(--ginSpacingSmall);
   position: absolute;
   bottom: 0;
 }
@@ -139,8 +139,8 @@ table.entities-list td {
 .gin-entity-browser .entity-browser-form .view-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  grid-gap: 1rem;
-  margin-bottom: 1rem;
+  grid-gap: var(--ginSpacingDefault);
+  margin-bottom: var(--ginSpacingDefault);
 }
 
 .gin-entity-browser .entity-browser-form .views-row {
@@ -155,13 +155,13 @@ table.entities-list td {
 }
 
 .gin-entity-browser .entity-browser-form .views-row .views-field-name {
-  padding: .5rem;
+  padding: var(--ginSpacingXsmall);
 }
 
 .gin-entity-browser .entity-browser-form .views-row .views-field-entity-browser-select {
   position: absolute;
   top: 0;
-  margin: .75rem;
+  margin: var(--ginSpacingSmall);
 }
 
 [dir="ltr"] .gin-entity-browser .entity-browser-form .views-row .views-field-entity-browser-select {
@@ -178,7 +178,7 @@ table.entities-list td {
 
 .gin-entity-browser .entity-browser-form .media-info {
   word-wrap: break-word;
-  font-size: 14px;
+  font-size: var(--ginFontSizeSmall);
 }
 
 .gin-entity-browser .entity-browser-form .views-field-thumbnail__target-id {
@@ -193,7 +193,7 @@ table.entities-list td {
 
 .gin-entity-browser .entity-browser-form .entities-list {
   border-top: var(--ginBorderXSmall) solid var(--colorGinFormElementBorder);
-  padding-top: 1rem;
+  padding-top: var(--ginSpacingDefault);
 }
 
 .gin-entity-browser .views-exposed-form {
@@ -212,11 +212,11 @@ table.entities-list td {
 }
 
 [dir="ltr"] .eb-tabs {
-  margin-left: 4px;
+  margin-left: var(--ginSpacingTiny);
 }
 
 [dir="rtl"] .eb-tabs {
-  margin-right: 4px;
+  margin-right: var(--ginSpacingTiny);
 }
 
 .eb-tabs ul {

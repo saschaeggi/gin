@@ -34,6 +34,7 @@ $ginColors: (
   [data-gin-accent=#{'' + $name}] {
     $bgColor: mix(white, $color, 97%);
     $lightColor: mix(white, $color, 80%);
+    $stickyColor: mix(white, $color, 92%);
 
     --colorGinPrimaryRGB: #{color.red($color)}, #{color.green($color)}, #{color.blue($color)};
     --colorGinPrimaryLightRGB: #{color.red($lightColor)}, #{color.green($lightColor)}, #{color.blue($lightColor)};
@@ -41,6 +42,7 @@ $ginColors: (
     --colorGinPrimaryActive: #{mix(black, $color, 25%)};
     --colorGinAppBackgroundRGB: #{color.red($bgColor)}, #{color.green($bgColor)}, #{color.blue($bgColor)};
     --colorGinTableHeader: #{mix(white, $color, 88%)};
+    --colorGinStickyRGB: #{color.red($stickyColor)}, #{color.green($stickyColor)}, #{color.blue($stickyColor)};
 
     @if $name == dark_purple or $name == purple {
       --colorGinPrimaryLightHover: rgba(var(--colorGinPrimaryRGB), .2);
@@ -95,7 +97,7 @@ $ginDarkmodeColors: (
   --colorGinLayerBorder: rgba(0, 0, 0, .6);
   --colorGinLayer2Border: #{$highContrastMode};
   --colorGinTableBorder: #{$highContrastMode};
-  --colorGinTabsBorder: #{$highContrastMode};
+  --colorGinTableHeaderBorder: #{$highContrastMode};
   --colorGinFormElementBorder: #{$highContrastMode};
 
   .gin--dark-mode & {
@@ -111,7 +113,7 @@ $ginDarkmodeColors: (
     --colorGinLayerBorder: rgba(255, 255, 255, .6);
     --colorGinLayer2Border: #{$highContrastMode};
     --colorGinTableBorder: #{$highContrastMode};
-    --colorGinTabsBorder: #{$highContrastMode};
+    --colorGinTableHeaderBorder: #{$highContrastMode};
     --colorGinFormElementBorder: #{$highContrastMode};
   }
 }

@@ -86,13 +86,6 @@
   }
 }
 
-@media (min-width: 90em) {
-  .gin--edit-form .page-wrapper__node-edit-form .node-form {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
-}
-
 .gin--edit-form .page-wrapper__node-edit-form .block-local-tasks-block,
 .gin--edit-form .page-wrapper__node-edit-form .block-system-main-block,
 .gin--edit-form .page-wrapper__node-edit-form .messages-list,
@@ -140,12 +133,12 @@
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .gin-sidebar .form-actions .action-link {
-  margin-top: .5rem;
+  margin-top: var(--ginSpacingXsmall);
   margin-bottom: 0;
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .field--name-revision-log {
-  margin-top: 1.5rem;
+  margin-top: var(--ginSpacingMedium);
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .accordion {
@@ -164,23 +157,23 @@
 
 @media (max-width: 60.99em) {
   .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__header {
-    padding-top: 1.25rem;
+    padding-top: calc(var(--ginSpacingMedium) - var(--ginSpacingTiny));
   }
 
   [dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__header {
-    padding-right: 1.5rem;
+    padding-right: var(--ginSpacingMedium);
   }
 
   [dir="rtl"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__header {
-    padding-left: 1.5rem;
+    padding-left: var(--ginSpacingMedium);
   }
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__title {
   color: var(--colorGinTitle);
-  font-weight: 500;
-  margin-top: .25rem;
-  margin-bottom: 1rem;
+  font-weight: var(--ginFontWeightSemiBold);
+  margin-top: var(--ginSpacingTiny);
+  margin-bottom: var(--ginSpacingDefault);
   text-shadow: none;
 }
 
@@ -220,7 +213,7 @@
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary::before {
-  top: 2rem;
+  top: var(--ginSpacingLarge);
 }
 
 [dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary::before {
@@ -241,7 +234,7 @@
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .claro-details__content .claro-details__wrapper {
-  margin: 1.5rem;
+  margin: var(--ginSpacingMedium);
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .redirect-table__path {
@@ -289,11 +282,11 @@
 
 @media (min-width: 26.25em) {
   [dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
-    margin-right: .5rem;
+    margin-right: var(--ginSpacingXsmall);
   }
 
   [dir="rtl"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
-    margin-left: .5rem;
+    margin-left: var(--ginSpacingXsmall);
   }
 }
 
@@ -321,8 +314,8 @@
 }
 
 .gin--edit-form .field--name-title .form-element {
-  font-size: 1.6em;
-  font-weight: 500;
+  font-size: var(--ginFontSizeH3);
+  font-weight: var(--ginFontWeightSemiBold);
   line-height: normal;
   letter-spacing: -0.025em;
   width: 100%;

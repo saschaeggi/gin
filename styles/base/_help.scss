@@ -1,6 +1,6 @@
 .block-help-block {
-  font-size: .875rem;
-  margin: 0 0 1rem 0;
+  font-size: var(--ginFontSizeSmall);
+  margin: 0 0 var(--ginSpacingDefault) 0;
   max-width: 1024px;
 
   p {

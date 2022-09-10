@@ -6,7 +6,7 @@
   // Offset for select button on first item
   &--multiple > .dropbutton__item:first-of-type {
     height: 100%;
-    margin-right: 3rem;
+    margin-right: var(--ginSpacingXlarge);
     border-right: 1px solid var(--colorGinPrimaryLightActive);
 
     input {
@@ -41,13 +41,13 @@
   }
 
   &__item:first-of-type > * {
-    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    padding: calc(.875rem - 1px) calc(var(--ginSpacingMedium) - 1px);
   }
 
   &__toggle {
     top: 2px;
     right: 2px;
-    width: calc(3rem + 1px);
+    width: calc(var(--ginSpacingXlarge) + 1px);
     height: 2.75rem;
 
     &:hover {
@@ -117,7 +117,7 @@
     > a,
     > input,
     > .button {
-      font-weight: bold;
+      font-weight: var(--ginFontWeightUltra);
       text-align: left;
       white-space: nowrap;
       color: var(--colorGinPrimary);
@@ -159,7 +159,7 @@
     > a,
     > input,
     > .button {
-      font-size: .875rem;
+      font-size: var(--ginFontSizeSmall);
       padding: .75em 1em !important;
     }
   }
@@ -201,11 +201,11 @@
   }
 
   .dropbutton--multiple.dropbutton--small > .dropbutton__item:first-of-type {
-    margin-right: 2rem;
+    margin-right: var(--ginSpacingLarge);
   }
 
   .dropbutton--multiple.dropbutton--extrasmall > .dropbutton__item:first-of-type {
-    margin-right: 1.5rem;
+    margin-right: var(--ginSpacingMedium);
   }
 
   .dropbutton--small {

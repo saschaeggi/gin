@@ -132,7 +132,7 @@
 .js .paragraphs-add-dialog--categorized .item-filter,
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .item-filter {
   font-family: inherit;
-  font-size: 16px;
+  font-size: var(--ginFontSize);
   padding: 12px;
   background: white;
   border: 1px solid #8e929c;
@@ -141,7 +141,7 @@
 
 .js .paragraphs-add-dialog--categorized .search-description label,
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .search-description label {
-  font-size: .75rem;
+  font-size: var(--ginFontSizeSmallerest);
 }
 
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .search-description label {
@@ -149,7 +149,7 @@
 }
 
 .js .paragraphs-add-dialog--categorized .paragraphs-add-dialog-row button {
-  padding: 8px;
+  padding: var(--ginSpacingXsmall);
   max-width: 215px;
 }
 
@@ -160,14 +160,14 @@
 
 .js .paragraphs-add-dialog--categorized .dialog-header,
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .dialog-header {
-  margin: 1rem 0;
+  margin: var(--ginSpacingDefault) 0;
 }
 
 .js .paragraphs-add-dialog--categorized .paragraphs-add-dialog-list,
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-add-dialog-list {
   max-width: unset;
-  margin: 0 -.5rem;
-  width: calc(100% + 1rem);
+  margin: 0 calc(var(--ginSpacingXsmall) * -1);
+  width: calc(100% + var(--ginSpacingDefault));
 }
 
 .js .paragraphs-add-dialog--categorized .paragraphs-add-dialog-row,
@@ -177,7 +177,7 @@
 
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-add-dialog-row {
   padding: 0;
-  margin: .5rem;
+  margin: var(--ginSpacingXsmall);
 }
 
 .js .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-add-dialog-row, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-add-dialog-row {

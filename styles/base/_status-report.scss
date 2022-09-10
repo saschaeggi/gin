@@ -66,7 +66,7 @@
 .system-status-counter,
 .upgrade-status-counter {
   height: auto;
-  padding: 16px 0;
+  padding: var(--ginSpacingDefault) 0;
   background: var(--colorGinLayerBackground);
   border-radius: var(--ginBorderDefault);
 
@@ -88,7 +88,7 @@
   }
 
   &__title-count {
-    font-weight: 500;
+    font-weight: var(--ginFontWeightSemiBold);
     color: var(--colorGinTitle);
     text-transform: none;
   }
@@ -96,7 +96,7 @@
 
 .system-status-general-info {
   &__header {
-    margin-bottom: .5rem;
+    margin-bottom: var(--ginSpacingXsmall);
   }
 
   &__items {
@@ -104,19 +104,19 @@
   }
 
   &__item {
-    padding: 1rem;
+    padding: var(--ginSpacingDefault);
     background: transparent;
     box-shadow: none;
   }
 
   &__item-title {
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: var(--ginFontSize);
+    font-weight: var(--ginFontWeightSemiBold);
     color: var(--colorGinTitle);
   }
 
   &__sub-item-title {
-    font-weight: 600;
+    font-weight: var(--ginFontWeightBold);
 
     &:after {
       content: ":\00a0";
@@ -162,11 +162,11 @@
 }
 
 .cron-description__run-cron {
-  margin-top: 1rem;
+  margin-top: var(--ginSpacingDefault);
 }
 
 .system-status-report {
-  margin-top: 1.5rem;
+  margin-top: var(--ginSpacingMedium);
 
   &-counters &-counters__item {
     border: 1px solid var(--colorGinLayerBorder);
@@ -174,7 +174,7 @@
   }
 
   &__status-title {
-    font-weight: 500;
+    font-weight: var(--ginFontWeightSemiBold);
     color: var(--colorGinTitle) !important;
   }
 }

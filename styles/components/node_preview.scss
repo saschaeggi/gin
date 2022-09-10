@@ -1,5 +1,5 @@
 .node-preview-container {
-  font-size: 0.79rem;
+  font-size: var(--ginFontSizeSmaller);
   z-index: 501; /* on top of the Drupal world */
   position: sticky;
   top: 0;
@@ -59,16 +59,16 @@
     align-items: center;
     justify-content: space-between;
     width: auto;
-    padding: 1rem 0;
-    margin: 0 1rem;
+    padding: var(--ginSpacingDefault) 0;
+    margin: 0 var(--ginSpacingDefault);
     height: 100%;
 
     @include mq(small) {
-      margin: 0 2rem;
+      margin: 0 var(--ginSpacingLarge);
     }
 
     @include mq(medium) {
-      margin: 0 m#{i}n(5vw, 48px);
+      margin: 0 m#{i}n(5vw, var(--ginSpacingXlarge));
     }
 
     label {

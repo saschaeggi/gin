@@ -1,6 +1,6 @@
 .messages {
   position: relative;
-  padding: 1rem;
+  padding: var(--ginSpacingDefault);
   border: 2px solid transparent;
   border-radius: var(--ginBorderMedium);
   transition: opacity var(--ginTransitionFast);
@@ -27,7 +27,7 @@
   }
 
   &__title {
-    font-weight: 600;
+    font-weight: var(--ginFontWeightBold);
   }
 
   &__title,
@@ -38,7 +38,7 @@
   .messages__header {
     position: relative;
     background-image: none;
-    margin-bottom: .5rem;
+    margin-bottom: var(--ginSpacingXsmall);
     margin-right: 1.5em;
 
     &:before {
@@ -47,8 +47,8 @@
       position: absolute;
       top: 2px;
       left: 0;
-      width: 24px;
-      height: 24px;
+      width: 1.5rem;
+      height: 1.5rem;
     }
   }
 
@@ -56,7 +56,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    margin: .75rem;
+    margin: var(--ginSpacingSmall);
     padding: 0;
     height: 29px;
     width: 29px;

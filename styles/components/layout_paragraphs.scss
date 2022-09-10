@@ -48,14 +48,14 @@
   .layout-paragraphs-add-content--single {
     button {
       .icon {
-        margin-right: .5rem;
+        margin-right: var(--ginSpacingXsmall);
       }
     }
   }
 
   // Spacer
   .active-items {
-    padding-bottom: 2rem;
+    padding-bottom: var(--ginSpacingLarge);
   }
 
   .layout-handle,
@@ -89,11 +89,11 @@
     }
 
     .form-item {
-      margin-left: 8px;
+      margin-left: var(--ginSpacingXsmall);
     }
 
     &.active {
-      outline: 4px solid var(--colorGinFocus);
+      outline: var(--ginBorderXSmall) solid var(--colorGinFocus);
     }
   }
 
@@ -101,10 +101,10 @@
   .layout-paragraphs-layout.layout-paragraphs-item {
     // Item in layout
     .layout-paragraphs-item {
-      margin-bottom: 1rem;
+      margin-bottom: var(--ginSpacingDefault);
 
       &:last-of-type {
-        margin-bottom: .75rem;
+        margin-bottom: var(--ginSpacingSmall);
       }
     }
 
@@ -136,10 +136,10 @@
   // Disabled wrapper
   .layout-paragraphs-disabled-items > .fieldset__wrapper {
     .layout-paragraphs-item {
-      border: 4px solid #fff;
+      border: var(--ginBorderXSmall) solid #fff;
 
       &:not(:last-of-type) {
-        margin-bottom: 1rem;
+        margin-bottom: var(--ginSpacingDefault);
       }
 
       .layout-paragraphs-add-content__toggle {
@@ -151,7 +151,7 @@
   // Disabled items
   .layout-paragraphs-disabled-items {
     &__description {
-      margin-bottom: -2.5rem;
+      margin-bottom: calc((var(--ginSpacingXsmall) + var(--ginSpacingLarge)) * -1);
       pointer-events: none;
     }
 
@@ -162,7 +162,7 @@
 
   .layout-paragraphs-disabled-items,
   .layout-paragraphs-disabled-items.form-item.form-wrapper {
-    padding: 1rem;
+    padding: var(--ginSpacingDefault);
     margin-top: 0;
     margin-bottom: -6rem;
     background: #f1f1f3;
@@ -182,11 +182,11 @@
     }
 
     .fieldset__label {
-      padding: 16px 0 24px;
+      padding: var(--ginSpacingDefault) 0 var(--ginSpacingMedium);
     }
 
     &__description {
-      font-size: 0.875rem;
+      font-size: var(--ginFontSizeSmall);
       color: #999;
     }
   }
@@ -195,7 +195,7 @@
 // Disabled wrapper
 .layout-paragraphs-field .layout-paragraphs-disabled-items > .fieldset__wrapper,
 .erl-field .erl-disabled-wrapper {
-  padding: .5rem;
+  padding: var(--ginSpacingXsmall);
   background-color: transparent;
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='8' ry='8' stroke='%2300000045' stroke-width='5' stroke-dasharray='8%2c8' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
   border: 0 none;
@@ -209,7 +209,7 @@
 .erl-layout-region,
 .erl-field .erl-layout-region,
 .erl-disabled-items {
-  padding: .5rem;
+  padding: var(--ginSpacingXsmall);
   background: #fff;
   box-shadow: none;
   box-sizing: border-box;
@@ -240,14 +240,14 @@
 .erl-field .erl-layout .erl-item,
 .erl-field .erl-disabled-items .erl-item {
   position: relative;
-  padding: 40px 24px 0 24px;
+  padding: calc(var(--ginSpacingLarge) + var(--ginSpacingXsmall)) var(--ginSpacingMedium) 0 var(--ginSpacingMedium);
   background: #fff;
-  border: 4px solid #fff;
+  border: var(--ginBorderXSmall) solid #fff;
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='8' ry='8' stroke='%2300000045' stroke-width='4' stroke-dasharray='8%2c8' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
   border-radius: var(--ginBorderMedium);
 
   &:not(:last-of-type) {
-    margin-bottom: 2rem;
+    margin-bottom: var(--ginSpacingLarge);
   }
 
   &:hover,
@@ -289,16 +289,16 @@
   .layout-controls {
     opacity: 1;
     position: absolute;
-    left: 4px;
-    top: 8px;
+    left: var(--ginSpacingTiny);
+    top: var(--ginSpacingXsmall);
   }
 
   // Actions
   .layout-paragraphs-actions {
     visibility: visible;
     position: absolute;
-    right: 4px;
-    top: 8px;
+    right: var(--ginSpacingTiny);
+    top: var(--ginSpacingXsmall);
   }
 
   // Basic Paragraph style adjustments
@@ -310,7 +310,7 @@
     }
 
     .field--name-field-title {
-      font-weight: bold;
+      font-weight: var(--ginFontWeightUltra);
     }
 
     .field--type-image {
@@ -324,7 +324,7 @@
 
       .field__item {
         flex-basis: 100%;
-        margin-right: .5rem;
+        margin-right: var(--ginSpacingXsmall);
       }
     }
   }
@@ -337,7 +337,7 @@
 .erl-layout.erl-item.form-wrapper {
   position: relative;
   padding: 47px 0 0;
-  margin-bottom: 1rem;
+  margin-bottom: var(--ginSpacingDefault);
   background: none;
   border: 0 none;
   border-radius: var(--ginBorderDefault);
@@ -367,7 +367,7 @@
     top: 12px;
     transform: translateX(-50%);
     font-style: normal;
-    font-weight: bold !important;
+    font-weight: var(--ginFontWeightUltra) !important;
     color: var(--colorGinText);
     padding: 0;
   }
@@ -431,7 +431,7 @@
       color: #000;
       text-align: center;
       flex-basis: 33.333%;
-      margin-bottom: 16px;
+      margin-bottom: var(--ginSpacingDefault);
 
       @include mq(large) {
         flex-basis: 25%;
@@ -442,7 +442,7 @@
         height: 24px;
         float: none;
         display: block;
-        margin: 8px auto;
+        margin: var(--ginSpacingXsmall) auto;
 
         @include mq(large) {
           width: 30px;
@@ -461,7 +461,7 @@
   position: static;
   width: 100%;
   left: 0;
-  margin: 1rem 0 0 0;
+  margin: var(--ginSpacingDefault) 0 0 0;
   box-sizing: border-box;
 }
 
@@ -497,7 +497,7 @@
     align-self: stretch;
 
     &:last-of-type {
-      margin-bottom: 2.5rem;
+      margin-bottom: calc(var(--ginSpacingXsmall) + var(--ginSpacingLarge));
     }
 
     &.hidden {
@@ -508,7 +508,7 @@
       align-self: stretch;
       width: 100%;
       color: var(--colorGinText);
-      padding: .5rem;
+      padding: var(--ginSpacingXsmall);
       border-radius: var(--ginBorderDefault);
 
       &:hover {
@@ -519,7 +519,7 @@
     img {
       width: 24px;
       height: 24px;
-      margin-bottom: .5rem;
+      margin-bottom: var(--ginSpacingXsmall);
 
       @include mq(large) {
         width: 32px;
@@ -538,7 +538,7 @@
     &--content {
       justify-content: flex-start;
       overflow-x: hidden;
-      padding-bottom: .25rem;
+      padding-bottom: var(--ginSpacingTiny);
     }
 
     &--layout:not(:empty),
@@ -546,8 +546,8 @@
       &::before {
         color: var(--colorGinTitle);
         flex-basis: 100%;
-        padding: 1rem 1rem 0;
-        font-size: 14px;
+        padding: var(--ginSpacingDefault) var(--ginSpacingDefault) 0;
+        font-size: var(--ginFontSizeSmall);
         opacity: .4;
       }
     }
@@ -559,7 +559,7 @@
         display: block;
         width: 100%;
         padding-left: 0;
-        margin-left: 1rem;
+        margin-left: var(--ginSpacingDefault);
       }
     }
 
@@ -615,10 +615,10 @@ fieldset.fieldset.erl-field {
 // Move message
 .layout-paragraphs-field .layout-paragraphs-moving-message {
   z-index: 2;
-  top: -.5rem;
-  width: calc(100% - 3rem);
-  padding: .5rem;
-  margin: 1rem;
+  top: calc(var(--ginSpacingXsmall) * -1);
+  width: calc(100% - var(--ginSpacingXlarge));
+  padding: var(--ginSpacingXsmall);
+  margin: var(--ginSpacingDefault);
   border-radius: var(--ginBorderSmall);
 }
 
@@ -627,13 +627,13 @@ fieldset.fieldset.erl-field {
 .layout-paragraphs-field .layout-paragraphs-item.gu-transit,
 .erl-field .erl-item.gu-transit {
   background: var(--colorGinPrimaryLightActive);
-  border: 4px solid var(--colorGinPrimary);
+  border: var(--ginBorderXSmall) solid var(--colorGinPrimary);
 }
 
 .gu-mirror,
 .layout-paragraphs-layout.layout-paragraphs-item.gu-mirror,
 .erl-layout.erl-item.gu-mirror {
-  border: 4px solid var(--colorGinFocus);
+  border: var(--ginBorderXSmall) solid var(--colorGinFocus);
   border-radius: var(--ginBorderDefault);
 
   &::before,

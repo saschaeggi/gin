@@ -11,8 +11,8 @@
 }
 
 .page-title {
-  font-size: 1.6em;
-  font-weight: 600;
+  font-size: var(--ginFontSizeH1);
+  font-weight: var(--ginFontWeightSemiBold);
   line-height: normal;
   letter-spacing: -.05em;
   color: var(--colorGinTitle);
@@ -24,17 +24,15 @@
   transition: font-size 0.25s ease;
 
   @include mq(ultra) {
-    font-size: 2.125em;
-
     .region-sticky--is-sticky & {
-      font-size: 1.6em;
+      font-size: var(--ginFontSizeH3);
     }
   }
 
   &__language {
     display: block;
-    font-size: var(--ginFontSizeSmall);
-    font-weight: normal;
+    font-size: var(--ginFontSizeSmaller);
+    font-weight: var(--ginFontWeightNormal);;
     letter-spacing: normal;
     color: var(--colorGinText);
   }
@@ -59,7 +57,7 @@
     mask-repeat: no-repeat;
 
     @include mq(large) {
-      top: 4px;
+      top: var(--ginSpacingTiny);
       mask-size: 85% 85%;
     }
 
@@ -91,8 +89,8 @@
   &__message {
     position: absolute;
     pointer-events: none;
-    padding: .5rem;
-    margin-top: -0.25rem;
+    padding: var(--ginSpacingXsmall);
+    margin-top: calc(var(--ginSpacingTiny) * -1);
     color: var(--colorGinContextualText);
     background: var(--colorGinContextual);
     border-radius: var(--ginBorderXSmall);

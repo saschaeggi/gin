@@ -7,7 +7,7 @@
   }
 
   &__track {
-    padding: 8px;
+    padding: var(--ginSpacingXsmall);
     border-color: var(--colorGinBorder);
     background-color: var(--colorGinLayer3Background);
   }

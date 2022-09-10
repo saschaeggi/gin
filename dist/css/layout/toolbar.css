@@ -51,7 +51,7 @@
 }
 
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-item {
-  font-weight: normal;
+  font-weight: var(--ginFontWeightNormal);
 }
 
 @media (min-width: 61em) {
@@ -92,7 +92,7 @@
   .toolbar .toolbar-bar .toolbar-icon-home {
     display: block;
     width: 100%;
-    margin: 8px 0;
+    margin: var(--ginSpacingXsmall) 0;
   }
 
   .toolbar .toolbar-bar #toolbar-item-administration-tray a.toolbar-icon.override-icon:before {
@@ -110,7 +110,7 @@
 }
 
 .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-logo {
-  padding: 8px 0;
+  padding: var(--ginSpacingXsmall) 0;
 }
 
 .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-logo img {
@@ -120,7 +120,9 @@
 
 @media (min-width: 61em) {
   .toolbar .toolbar-bar #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
-    font-size: 0;
+    font-size: var(--ginFontSizeXLarge);
+    letter-spacing: -0.01em;
+    text-indent: 0;
     height: 74px;
     margin-bottom: 6px;
     transition: top var(--ginTransition);
@@ -215,7 +217,7 @@
 .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
 .toolbar .toolbar-tray a.is-active {
   color: var(--colorGinPrimary);
-  font-weight: 500;
+  font-weight: var(--ginFontWeightSemiBold);
   text-decoration: none;
 }
 
@@ -253,7 +255,7 @@ a.toolbar-menu__trigger,
   .toolbar-menu-administration a.toolbar-menu__trigger {
     position: fixed;
     bottom: 0;
-    font-size: .875rem;
+    font-size: var(--ginFontSizeSmall);
     color: var(--colorGinTextLight);
     text-decoration: none;
     display: flex;
@@ -267,12 +269,12 @@ a.toolbar-menu__trigger,
 
   [dir="ltr"] .toolbar-menu-administration a.toolbar-menu__trigger {
     left: 0;
-    padding: 16px 0 16px var(--ginToolbarWidthCollapsed);
+    padding: var(--ginSpacingDefault) 0 var(--ginSpacingDefault) var(--ginToolbarWidthCollapsed);
   }
 
   [dir="rtl"] .toolbar-menu-administration a.toolbar-menu__trigger {
     right: 0;
-    padding: 16px var(--ginToolbarWidthCollapsed) 16px 0;
+    padding: var(--ginSpacingDefault) var(--ginToolbarWidthCollapsed) var(--ginSpacingDefault) 0;
   }
 
   .toolbar-menu-administration a.toolbar-menu__trigger, .toolbar-menu-administration a.toolbar-menu__trigger:active, .toolbar-menu-administration a.toolbar-menu__trigger:focus {
@@ -306,7 +308,7 @@ a.toolbar-menu__trigger,
 
   .toolbar-menu-administration a.toolbar-menu__trigger.is-active {
     display: flex;
-    font-weight: normal;
+    font-weight: var(--ginFontWeightNormal);
     color: var(--colorGinTextLight);
     width: var(--ginToolbarWidth);
   }
@@ -392,12 +394,12 @@ a.toolbar-menu__trigger,
 
   [dir="ltr"] .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
 [dir="ltr"] .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
-    padding-left: 3.5rem;
+    padding-left: calc(var(--ginSpacingXlarge) + var(--ginSpacingXsmall));
   }
 
   [dir="rtl"] .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
 [dir="rtl"] .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
-    padding-right: 3.5rem;
+    padding-right: calc(var(--ginSpacingXlarge) + var(--ginSpacingXsmall));
   }
 
   [dir="ltr"] .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
@@ -420,32 +422,31 @@ a.toolbar-menu__trigger,
     overflow-x: hidden;
   }
 
-  .toolbar-menu-administration > .toolbar-menu .menu-item__spacer {
-    flex-grow: 1;
-  }
-
   .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
 .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
-    font-size: 1rem;
-    color: var(--colorGinTextLight);
+    font-size: var(--ginFontSize);
+    font-weight: 475;
+    letter-spacing: -0.0125rem;
+    color: var(--colorGinText);
     display: flex;
     align-items: center;
-    width: calc(var(--ginToolbarWidth) - 16px);
+    width: calc(var(--ginVerticalToolbarOffset) - var(--ginSpacingDefault));
     height: 48px;
-    margin: 0 8px 1px;
+    margin: 0 var(--ginSpacingXsmall) 1px;
     border-radius: var(--ginBorderDefault);
     overflow: hidden;
+    transition: width var(--ginTransition);
   }
 
   [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
 [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
-    padding-left: calc(var(--ginToolbarWidthCollapsed) - 9px);
+    padding-left: calc(var(--ginToolbarWidthCollapsed) - var(--ginSpacingDefault));
     padding-right: 0;
   }
 
   [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
 [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
-    padding-right: calc(var(--ginToolbarWidthCollapsed) - 9px);
+    padding-right: calc(var(--ginToolbarWidthCollapsed) - var(--ginSpacingDefault));
     padding-left: 0;
   }
 
@@ -457,8 +458,8 @@ a.toolbar-menu__trigger,
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.is-active,
 .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.is-active {
-    color: var(--colorGinPrimary);
-    font-weight: 500;
+    color: var(--colorGinPrimaryActive);
+    font-weight: var(--ginFontWeightBold);
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.is-active:before,
@@ -487,13 +488,15 @@ a.toolbar-menu__trigger,
   }
 
   [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
-    margin-left: calc(var(--ginToolbarWidthCollapsed) - 1px);
+    margin-left: calc(var(--ginVerticalToolbarOffset) - 1px);
     border-left: 1px solid var(--colorGinLayerBorder);
+    transition: margin-left var(--ginTransition);
   }
 
   [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
-    margin-right: calc(var(--ginToolbarWidthCollapsed) - 1px);
+    margin-right: calc(var(--ginVerticalToolbarOffset) - 1px);
     border-right: 1px solid var(--colorGinLayerBorder);
+    transition: margin-right var(--ginTransition);
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu, [dir=rtl] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu, [dir=ltr] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
@@ -517,7 +520,7 @@ a.toolbar-menu__trigger,
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu a.is-active,
 .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu span.is-active {
     color: var(--colorGinPrimary);
-    font-weight: 500;
+    font-weight: var(--ginFontWeightSemiBold);
     background: var(--colorGinPrimaryLight);
   }
 
@@ -531,27 +534,27 @@ a.toolbar-menu__trigger,
     position: relative;
     display: block;
     min-height: 36px;
-    font-size: 1.75em;
+    font-size: var(--ginFontSizeH3);
     letter-spacing: -0.025em;
     padding: 0;
-    margin: 1rem .75rem 1.25rem .75rem;
+    margin: var(--ginSpacingDefault) var(--ginSpacingSmall) calc(var(--ginSpacingMedium) - var(--ginSpacingTiny)) var(--ginSpacingSmall);
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__title a, .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__sub-title a {
-    font-weight: 500;
+    font-weight: var(--ginFontWeightSemiBold);
     color: var(--colorGinTitle);
-    padding: .75rem;
+    padding: var(--ginSpacingSmall);
     border-radius: var(--ginBorderDefault);
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__sub-title {
-    font-size: 1.375em;
+    font-size: var(--ginFontSizeXLarge);
     letter-spacing: -0.01em;
     margin-bottom: 1.275rem;
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__sub-title a {
-    padding: .9rem .75rem;
+    padding: .9rem var(--ginSpacingSmall);
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item {
@@ -568,18 +571,18 @@ a.toolbar-menu__trigger,
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item .toolbar-icon {
-    font-size: .9375rem;
-    margin: .25em .75rem;
+    font-size: var(--ginFontSize);
+    margin: .25em var(--ginSpacingSmall);
     border-radius: var(--ginBorderDefault);
     overflow: hidden;
   }
 
   [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item .toolbar-icon {
-    padding: 1em 2rem 1em .75rem;
+    padding: var(--ginSpacingSmall) var(--ginSpacingLarge) var(--ginSpacingSmall) var(--ginSpacingSmall);
   }
 
   [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item .toolbar-icon {
-    padding: 1em .75rem 1em 2rem;
+    padding: var(--ginSpacingSmall) var(--ginSpacingSmall) var(--ginSpacingSmall) var(--ginSpacingLarge);
   }
 
   [dir="ltr"] .toolbar-menu-administration > .toolbar-menu, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu .toolbar-menu {
@@ -608,12 +611,12 @@ a.toolbar-menu__trigger,
 
   [dir="ltr"] .toolbar-menu-administration .menu-item.hover-intent > .toolbar-menu {
     border-right: 1px solid rgba(0, 0, 0, .075);
-    box-shadow: 7px 0 16px rgba(0, 0, 0, .075);
+    box-shadow: 7px 0 16px rgba(0, 0, 0, .075), -12px 0 0 0 var(--colorGinLayerBackground);
   }
 
   [dir="rtl"] .toolbar-menu-administration .menu-item.hover-intent > .toolbar-menu {
     border-left: 1px solid rgba(0, 0, 0, .075);
-    box-shadow: -7px 0 16px rgba(0, 0, 0, .075);
+    box-shadow: -7px 0 16px rgba(0, 0, 0, .075), 12px 0 0 0 var(--colorGinLayerBackground);
   }
 
   .toolbar-menu-administration .menu-item .menu-item:hover > .toolbar-icon {
@@ -640,7 +643,7 @@ a.toolbar-menu__trigger,
 
 #toolbar-item-administration-search-tray input {
   width: 100%;
-  max-width: calc(100% - 16px);
+  max-width: calc(100% - var(--ginSpacingDefault));
   outline: none;
 }
 
@@ -652,7 +655,7 @@ a.toolbar-menu__trigger,
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded::before,
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus::before {
   z-index: 1;
-  top: 14px;
+  top: 1em;
 }
 
 [dir="ltr"] .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded::before,
@@ -671,42 +674,42 @@ a.toolbar-menu__trigger,
 
 @media (min-width: 61em) {
   .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.hover-intent > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon {
+.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon {
     box-shadow: none;
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::before,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.hover-intent > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::before {
+.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::before {
     background: var(--colorGinPrimaryActive);
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::after,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.hover-intent > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
+.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
     content: "";
     display: block;
     position: absolute;
-    top: 4px;
-    width: 40px;
-    height: 40px;
+    top: 3px;
+    width: calc(100% - 10px);
+    height: 42px;
     background: var(--colorGinPrimaryLight);
     border-radius: var(--ginBorderDefault);
   }
 
-  [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item.hover-intent > .toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
-    left: calc((var(--ginToolbarWidthCollapsed) - 40px) / 2 - 9px);
+  [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
+    left: calc((var(--ginToolbarWidthCollapsed) - var(--ginSpacingLarge) - var(--ginSpacingXsmall)) / 2 - 9px);
   }
 
-  [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item.hover-intent > .toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
-    right: calc((var(--ginToolbarWidthCollapsed) - 40px) / 2 - 9px);
+  [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
+    right: calc((var(--ginToolbarWidthCollapsed) - var(--ginSpacingLarge) - var(--ginSpacingXsmall)) / 2 - 9px);
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon:focus,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.hover-intent > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon:focus {
+.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon:focus {
     background: transparent;
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon:focus::after,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.hover-intent > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon:focus::after {
+.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon:focus::after {
     box-shadow: inset 0 0 0 1px var(--colorGinFocusBorder), inset 0 0 0 4px var(--colorGinFocus);
   }
 }

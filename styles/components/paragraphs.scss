@@ -9,7 +9,7 @@
 
   .paragraphs-subform {
     margin-top: 0;
-    margin-right: 1rem;
+    margin-right: var(--ginSpacingDefault);
   }
 
   .tabledrag-toggle-weight-wrapper {
@@ -19,7 +19,7 @@
   .field-multiple-table {
     thead {
       th {
-        padding: .5rem 1.5rem .5rem .5rem;
+        padding: var(--ginSpacingXsmall) var(--ginSpacingMedium) var(--ginSpacingXsmall) var(--ginSpacingXsmall);
 
         &.th__order {
           display: none;
@@ -28,7 +28,7 @@
 
       .label {
         display: inline-block;
-        font-size: 18px;
+        font-size: var(--ginFontSize);
         color: var(--colorGinPrimaryActive);
         padding: 0;
         margin: 10px;
@@ -45,8 +45,8 @@
 
     .draggable {
       display: block;
-      padding: 1rem .5rem;
-      margin-top: 1rem;
+      padding: var(--ginSpacingDefault) var(--ginSpacingXsmall);
+      margin-top: var(--ginSpacingDefault);
       border: 1px solid var(--colorGinTableBorder);
       border-radius: var(--ginBorderDefault);
       box-shadow: 4px 4px 10px var(--colorGinLayer2Background);
@@ -64,17 +64,17 @@
           content: "";
           display: block;
           position: absolute;
-          top: .5rem;
+          top: var(--ginSpacingXsmall);
           left: 0;
           width: 4px;
-          height: calc(100% - 1rem);
+          height: calc(100% - var(--ginSpacingDefault));
           background: var(--colorGinWarning);
           border-radius: var(--ginBorderTiny);
         }
       }
 
       td {
-        padding: .25rem;
+        padding: var(--ginSpacingTiny);
       }
 
       .has-multiple-fields-remove-button {
@@ -104,8 +104,8 @@
   }
 
   .paragraph-type-label {
-    font-size: 16px;
-    font-weight: bold !important;
+    font-size: var(--ginFontSize);
+    font-weight: var(--ginFontWeightUltra) !important;
     font-style: normal;
     color: var(--colorGinTitle);
     position: static;
@@ -115,13 +115,13 @@
 
   .paragraphs-subform {
     .paragraph-type-label {
-      font-size: 14px;
+      font-size: var(--ginFontSizeSmall);
     }
   }
 
   .paragraph-type-add-modal,
   .field--widget-paragraphs .paragraphs-dropbutton-wrapper {
-    margin-right: .5rem;
+    margin-right: var(--ginSpacingXsmall);
   }
 }
 
@@ -134,14 +134,14 @@
 .paragraphs-add-wrapper,
 .paragraphs-dropbutton-wrapper {
   .button--small {
-    margin-top: .5rem;
-    margin-bottom: .5rem;
+    margin-top: var(--ginSpacingXsmall);
+    margin-bottom: var(--ginSpacingXsmall);
   }
 }
 
 .paragraphs-dropdown-toggle {
   position: relative;
-  margin: .5rem 0;
+  margin: var(--ginSpacingXsmall) 0;
   background: none;
 
   &::after {
@@ -194,7 +194,6 @@
 .js .draggable:hover .paragraphs-collapsed-description::after {
   top: 2px;
   background: var(--colorGinLayer2Background);
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayer2Background) 100%);
 }
 
 .js .field--widget-entity-reference-paragraphs {
@@ -205,25 +204,24 @@
       min-width: 40px;
     }
   }
+}
 
-  .paragraphs-collapsed-description::after,
-  .draggable:hover .paragraphs-collapsed-description::after {
-    background: var(--colorGinLayerBackground);
-    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--colorGinLayerBackground) 100%);
-  }
+.paragraphs-collapsed-description::after,
+.draggable:hover .paragraphs-collapsed-description::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, var(--colorGinLayerBackground) 100%);
 }
 
 .js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple {
-  padding: .5rem;
+  padding: var(--ginSpacingXsmall);
 
   .dropbutton-widget {
-    margin-right: .5rem;
+    margin-right: var(--ginSpacingXsmall);
   }
 }
 
 .js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
   top: 0;
-  right: -4px;
+  right: calc(var(--ginSpacingTiny) * -1);
 }
 
 .paragraphs-dropdown-actions {
@@ -234,8 +232,8 @@
   box-shadow: var(--ginShadowLevel2);
 
   .paragraphs-dropdown-action.button {
-    font-size: 0.8125rem;
-    padding: .5rem 1rem;
+    font-size: var(--ginFontSizeSmaller);
+    padding: var(--ginSpacingXsmall) var(--ginSpacingDefault);
     margin: 0;
     border: 0 none !important;
   }
@@ -246,8 +244,8 @@
 }
 
 .js .paragraph-type-icon {
-  padding: .25rem;
-  margin-right: .5rem;
+  padding: var(--ginSpacingTiny);
+  margin-right: var(--ginSpacingXsmall);
 }
 
 .js .paragraph-top {
@@ -289,14 +287,14 @@
   }
 
   &__item {
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+    padding-top: var(--ginSpacingXsmall);
+    padding-bottom: var(--ginSpacingXsmall);
     background-color: var(--colorGinLayer3Background);
     border-radius: var(--ginBorderDefault);
   }
 
   &__icon {
-    top: .5rem;
+    top: var(--ginSpacingXsmall);
   }
 }
 
@@ -313,14 +311,14 @@
   // Ugly addressing the title, but let's go
   > div > .form-wrapper > strong {
     display: block;
-    margin-top: 2rem;
+    margin-top: var(--ginSpacingLarge);
   }
 
   // No Paragraph added yet text
   // No dedicated classes so targeting the element as good as possible
   .form-wrapper .form-wrapper > em {
     display: block;
-    padding: 1rem 0;
+    padding: var(--ginSpacingDefault) 0;
   }
 
   // Add buttons
@@ -328,19 +326,19 @@
     align-items: center;
 
     .dropbutton-multiple {
-      margin-right: .5rem;
+      margin-right: var(--ginSpacingXsmall);
 
       // Support different paragraphs versions
       .placeholder,
       ~ .placeholder {
-        margin-left: .25rem;
+        margin-left: var(--ginSpacingTiny);
       }
     }
   }
 }
 
 .toolbar-fixed .is-horizontal .paragraphs-tabs {
-  padding: .5rem 1rem !important;
+  padding: var(--ginSpacingXsmall) var(--ginSpacingDefault) !important;
   background-color: var(--colorGinLayer3Background);
   border-radius: var(--ginBorderSmall);
 
@@ -351,11 +349,11 @@
 
   .tabs__tab {
     float: left;
-    margin-right: 1rem;
+    margin-right: var(--ginSpacingDefault);
 
     a {
       display: block;
-      padding: .5rem 0;
+      padding: var(--ginSpacingXsmall) 0;
       color: var(--colorGinText);
     }
 

@@ -1,14 +1,15 @@
 .button,
 .dropbutton__item:first-of-type > *,
 .dropbutton__toggle {
-  font-size: .875rem;
+  font-size: var(--ginFontSizeSmall);
+  font-weight: var(--ginFontWeightSemiBold);
   color: var(--colorGinPrimary);
   background-color: transparent;
   box-shadow: none;
   transition: var(--ginTransition);
 
   @include mq(wide) {
-    font-size: 1rem;
+    font-size: var(--ginFontSize);
   }
 
   &:hover {
@@ -26,9 +27,9 @@
 
 .button,
 .button:not(:focus),
-.form-actions .button,
+.form-actions .button,
 .action-link--icon-trash.action-link {
-  padding: calc(1rem - 2px) calc(1.5rem - 2px);
+  padding: calc(var(--ginSpacingDefault) - 2px) calc(var(--ginSpacingMedium) - 2px);
   border: 2px solid var(--colorGinPrimary) !important;
   border-radius: var(--ginBorderDefault);
   box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
@@ -53,12 +54,12 @@
 }
 
 .button.button--small {
-  padding: .5rem 1rem;
+  padding: var(--ginSpacingXsmall) var(--ginSpacingDefault);
   border-radius: var(--ginBorderSmall);
 }
 
 .button.button--extrasmall {
-  padding: .25rem .75rem;
+  padding: var(--ginSpacingTiny) var(--ginSpacingSmall);
   border-radius: var(--ginBorderSmall);
 }
 
@@ -108,7 +109,7 @@ a.button--primary:focus:hover {
 
 .action-link.action-link--icon-trash {
   min-height: 48px;
-  padding: calc(.75rem - 1px) calc(1.5rem - 2px);
+  padding: calc(var(--ginSpacingSmall) - 1px) calc(var(--ginSpacingMedium) - 2px);
   box-sizing: border-box;
 
   &, &:hover, &:active, &:focus, &:focus:hover {

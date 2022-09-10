@@ -7,14 +7,14 @@ body.gin--classic-toolbar {
 [dir="ltr"] body.gin--vertical-toolbar,
 [dir="ltr"] body.gin--horizontal-toolbar,
 [dir="ltr"] body.gin--classic-toolbar {
-  padding-left: var(--ginVerticalToolbarOffset, 240px);
+  padding-left: var(--ginVerticalToolbarOffset, 256px);
   margin-left: 0;
 }
 
 [dir="rtl"] body.gin--vertical-toolbar,
 [dir="rtl"] body.gin--horizontal-toolbar,
 [dir="rtl"] body.gin--classic-toolbar {
-  padding-right: var(--ginVerticalToolbarOffset, 240px);
+  padding-right: var(--ginVerticalToolbarOffset, 256px);
   margin-right: 0;
 }
 
@@ -62,7 +62,7 @@ body.gin--classic-toolbar {
 }
 
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-item {
-  font-weight: normal;
+  font-weight: var(--ginFontWeightNormal);
 }
 
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon:hover, .toolbar .toolbar-bar .toolbar-tab > .responsive-preview-icon:hover {
@@ -361,7 +361,7 @@ body.gin--classic-toolbar {
 .toolbar-horizontal .toolbar-tray a,
 .toolbar-horizontal .toolbar-tray span {
   color: var(--colorGinText);
-  font-weight: normal;
+  font-weight: var(--ginFontWeightNormal);
 }
 
 .toolbar-horizontal .toolbar-tray a:hover, .toolbar-horizontal .toolbar-tray a:active, .toolbar-horizontal .toolbar-tray a:focus, .toolbar-horizontal .toolbar-tray a.is-active,
@@ -453,11 +453,11 @@ body.gin--classic-toolbar {
 }
 
 [dir="ltr"] .toolbar .toolbar-tray-vertical .menu-item .toolbar-logo {
-  padding-left: 16px;
+  padding-left: var(--ginSpacingDefault);
 }
 
 [dir="rtl"] .toolbar .toolbar-tray-vertical .menu-item .toolbar-logo {
-  padding-right: 16px;
+  padding-right: var(--ginSpacingDefault);
 }
 
 .toolbar .toolbar-tray-vertical .level-1.menu-item:last-child {
@@ -500,7 +500,7 @@ body.gin--classic-toolbar {
 }
 
 #toolbar-administration .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item {
-  font-weight: 600;
+  font-weight: var(--ginFontWeightBold);
 }
 
 #toolbar-administration .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:hover::before {
@@ -651,8 +651,8 @@ body.gin--classic-toolbar {
 }
 
 #toolbar-item-administration-tray .toolbar-logo {
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: var(--ginSpacingXsmall);
+  padding-bottom: var(--ginSpacingXsmall);
 }
 
 #toolbar-item-administration-tray .toolbar-logo img {
@@ -673,12 +673,12 @@ body.gin--classic-toolbar {
 
 [dir="ltr"] #toolbar-item-user.icon-user {
   padding-left: 0;
-  margin-left: 8px;
+  margin-left: var(--ginSpacingXsmall);
 }
 
 [dir="rtl"] #toolbar-item-user.icon-user {
   padding-right: 0;
-  margin-right: 8px;
+  margin-right: var(--ginSpacingXsmall);
 }
 
 [data-toolbar-tray=toolbar-item-devel-tray] .toolbar-icon-admin-toolbar-tools-help,
@@ -702,11 +702,11 @@ body.gin--classic-toolbar {
 }
 
 [dir="ltr"] #admin-toolbar-search-input {
-  padding-left: 40px;
+  padding-left: calc(var(--ginSpacingLarge) + var(--ginSpacingXsmall));
 }
 
 [dir="rtl"] #admin-toolbar-search-input {
-  padding-right: 40px;
+  padding-right: calc(var(--ginSpacingLarge) + var(--ginSpacingXsmall));
 }
 
 #admin-toolbar-search-input:not(:hover):not(:focus) {
@@ -745,11 +745,11 @@ body.gin--classic-toolbar {
 }
 
 [dir="ltr"] #admin-toolbar-search-tab .js-form-type-search::before {
-  left: 16px;
+  left: var(--ginSpacingDefault);
 }
 
 [dir="rtl"] #admin-toolbar-search-tab .js-form-type-search::before {
-  right: 16px;
+  right: var(--ginSpacingDefault);
 }
 
 .ui-autocomplete.admin-toolbar-search-autocomplete-list {
@@ -760,14 +760,14 @@ body.gin--classic-toolbar {
 }
 
 .ui-autocomplete.admin-toolbar-search-autocomplete-list.ui-widget-content {
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  padding-top: var(--ginSpacingXsmall);
+  padding-bottom: var(--ginSpacingXsmall);
   border: 0 none;
   overflow-y: auto;
 }
 
 .ui-autocomplete.admin-toolbar-search-autocomplete-list .ui-menu-item {
-  padding: 0 .5rem;
+  padding: 0 var(--ginSpacingXsmall);
 }
 
 .ui-autocomplete.admin-toolbar-search-autocomplete-list .ui-menu-item span.admin-toolbar-search-url {
@@ -775,9 +775,9 @@ body.gin--classic-toolbar {
 }
 
 .ui-autocomplete.admin-toolbar-search-autocomplete-list .ui-menu-item-wrapper {
-  font-size: .875rem;
+  font-size: var(--ginFontSizeSmall);
   line-height: 1.3;
-  padding: .5rem 1rem;
+  padding: var(--ginSpacingXsmall) var(--ginSpacingDefault);
   border-radius: var(--ginBorderSmall);
 }
 

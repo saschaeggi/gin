@@ -20,7 +20,7 @@
 }
 
 .region-breadcrumb {
-  margin-top: 1rem;
+  margin-top: var(--ginSpacingDefault);
 }
 
 // Toolbar
@@ -69,7 +69,7 @@
 .toolbar .toolbar-tray .menu-item > .toolbar-box > .toolbar-icon.is-active,
 .toolbar .toolbar-tray a.is-active {
   color: var(--colorGinPrimary);
-  font-weight: 500;
+  font-weight: var(--ginFontWeightSemiBold);
 
   &::before {
     background: var(--colorGinPrimary);
@@ -160,7 +160,7 @@
 
   @include mq(medium) {
     &:before {
-      left: 1rem;
+      left: var(--ginSpacingDefault);
     }
   }
 }
@@ -182,8 +182,8 @@
   position: relative;
 
   &:before {
-    top: .75rem;
-    right: .75rem;
+    top: var(--ginSpacingSmall);
+    right: var(--ginSpacingSmall);
   }
 }
 
@@ -195,5 +195,5 @@
 }
 
 #admin-toolbar-search-input {
-  padding-left: 2rem;
+  padding-left: var(--ginSpacingLarge);
 }

@@ -14,11 +14,11 @@
 }
 
 [dir="ltr"] #toolbar-item-workbench-tray .toolbar-icon:before {
-  left: .75rem;
+  left: var(--ginSpacingSmall);
 }
 
 [dir="rtl"] #toolbar-item-workbench-tray .toolbar-icon:before {
-  right: .75rem;
+  right: var(--ginSpacingSmall);
 }
 
 #toolbar-item-workbench-tray .toolbar-icon:hover:before, #toolbar-item-workbench-tray .toolbar-icon.is-active:before {

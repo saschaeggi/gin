@@ -69,14 +69,6 @@
       }
     }
 
-    // More room for content to breathe
-    .node-form {
-      @include mq(ultra) {
-        padding-left: 2.5rem;
-        padding-right: 2.5rem;
-      }
-    }
-
     .block-local-tasks-block,
     .block-system-main-block,
     .messages-list,
@@ -115,14 +107,14 @@
           margin: 0;
 
           .action-link {
-            margin-top: .5rem;
+            margin-top: var(--ginSpacingXsmall);
             margin-bottom: 0;
           }
         }
       }
 
       .field--name-revision-log {
-        margin-top: 1.5rem;
+        margin-top: var(--ginSpacingMedium);
       }
 
       .accordion {
@@ -142,16 +134,16 @@
           border: 0 none;
 
           @include mq($to: medium) {
-            padding-top: 1.25rem;
-            padding-right: 1.5rem;
+            padding-top: calc(var(--ginSpacingMedium) - var(--ginSpacingTiny));
+            padding-right: var(--ginSpacingMedium);
           }
         }
 
         &__title {
           color: var(--colorGinTitle);
-          font-weight: 500;
-          margin-top: .25rem;
-          margin-bottom: 1rem;
+          font-weight: var(--ginFontWeightSemiBold);
+          margin-top: var(--ginSpacingTiny);
+          margin-bottom: var(--ginSpacingDefault);
           text-shadow: none;
         }
 
@@ -175,7 +167,7 @@
             }
 
             &::before {
-              top: 2rem;
+              top: var(--ginSpacingLarge);
               left: $sidebarSpacer;
             }
 
@@ -189,7 +181,7 @@
             margin-right: $sidebarSpacer;
 
             .claro-details__wrapper {
-              margin: 1.5rem;
+              margin: var(--ginSpacingMedium);
             }
           }
 
@@ -230,7 +222,7 @@
 
               &:first-of-type {
                 @include mq(tiny) {
-                  margin-right: .5rem;
+                  margin-right: var(--ginSpacingXsmall);
                 }
 
                 @include mq(large, wide) {
@@ -258,8 +250,8 @@
   }
 
   .field--name-title .form-element {
-    font-size: 1.6em;
-    font-weight: 500;
+    font-size: var(--ginFontSizeH3);
+    font-weight: var(--ginFontWeightSemiBold);
     line-height: normal;
     letter-spacing: -0.025em;
     width: 100%;

@@ -1,14 +1,14 @@
 .webform-filter-form {
-  margin-bottom: 2rem;
+  margin-bottom: var(--ginSpacingLarge);
 }
 
 .webform-filter-form .details-wrapper {
   margin-top: 0;
-  margin-bottom: .5rem;
+  margin-bottom: var(--ginSpacingXsmall);
 }
 
 .webform-filter-form + div:not(.layer-wrapper) {
-  margin-bottom: .75rem;
+  margin-bottom: var(--ginSpacingSmall);
 }
 
 .webform-ui-element-type-change-form .layer-wrapper {
@@ -32,9 +32,9 @@
 }
 
 .ui-tooltip.ui-widget {
-  font-size: .875rem;
+  font-size: var(--ginFontSizeSmall);
   color: var(--colorGinText);
-  padding: 1rem;
+  padding: var(--ginSpacingDefault);
   background: var(--colorGinLayer3Background);
   border: 0 none;
   border-radius: 6px;
@@ -49,7 +49,7 @@
 }
 
 .ui-tooltip.ui-widget hr {
-  margin: .5rem 0;
+  margin: var(--ginSpacingXsmall) 0;
 }
 
 .webform-details-toggle-state {

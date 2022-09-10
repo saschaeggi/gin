@@ -7,7 +7,7 @@
 .help-icon__description-toggle {
   all: unset;
   flex-shrink: 0;
-  margin: .3rem 1rem 0 .3rem;
+  margin: .3rem var(--ginSpacingDefault) 0 .3rem;
   height: 16px;
   width: 16px;
   border-radius: 50%;
@@ -41,7 +41,7 @@
   }
 
   .checkbox-toggle + .help-icon {
-    padding-left: 4px;
+    padding-left: var(--ginSpacingTiny);
   }
 }
 
@@ -77,10 +77,10 @@ fieldset.media-library-widget,
   }
 
   .fieldset__description {
-    padding-left: 1rem;
+    padding-left: var(--ginSpacingDefault);
 
     @include mq(small) {
-      padding-left: 1.5rem;
+      padding-left: var(--ginSpacingMedium);
     }
   }
 }
@@ -92,7 +92,7 @@ fieldset.media-library-widget,
 
   .help-icon__description-toggle {
     position: absolute;
-    right: -8px;
-    top: 16px;
+    right: calc(var(--ginSpacingXsmall) * -1);
+    top: var(--ginSpacingDefault);
   }
 }

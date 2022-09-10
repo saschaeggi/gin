@@ -1,5 +1,5 @@
 .node-preview-container {
-  font-size: .79rem;
+  font-size: var(--ginFontSizeSmaller);
   z-index: 501;
   /* on top of the Drupal world */
   position: sticky;
@@ -85,20 +85,20 @@
   align-items: center;
   justify-content: space-between;
   width: auto;
-  padding: 1rem 0;
-  margin: 0 1rem;
+  padding: var(--ginSpacingDefault) 0;
+  margin: 0 var(--ginSpacingDefault);
   height: 100%;
 }
 
 @media (min-width: 48em) {
   .node-preview-container .node-preview-form-select {
-    margin: 0 2rem;
+    margin: 0 var(--ginSpacingLarge);
   }
 }
 
 @media (min-width: 61em) {
   .node-preview-container .node-preview-form-select {
-    margin: 0 min(5vw, 48px);
+    margin: 0 min(5vw, var(--ginSpacingXlarge));
   }
 }
 

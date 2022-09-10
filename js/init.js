@@ -50,13 +50,18 @@ if (localStorage.getItem('Drupal.gin.toolbarExpanded')) {
     style.innerHTML = `
     @media (min-width: 976px) {
       body.gin--vertical-toolbar:not([data-toolbar-menu=open]) {
-        padding-inline-start: 240px;
+        padding-inline-start: 256px;
         transition: none;
       }
 
       .gin--vertical-toolbar .toolbar-menu-administration {
-        min-width: var(--ginToolbarWidth, 240px);
+        min-width: var(--ginToolbarWidth, 256px);
         transition: none;
+      }
+
+      .gin--vertical-toolbar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
+      .gin--vertical-toolbar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
+        min-width: calc(var(--ginToolbarWidth, 256px) - 16px);
       }
     }
     `;

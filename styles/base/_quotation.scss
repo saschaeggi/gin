@@ -1,12 +1,8 @@
 blockquote {
-  font-size: 1.1em;
+  font-size: var(--ginFontSizeQuote);
   position: relative;
-  padding-left: 1.5rem;
-  margin: 1rem;
-
-  @include mq(medium) {
-    font-size: 1.2em;
-  }
+  padding-left: var(--ginSpacingMedium);
+  margin: var(--ginSpacingDefault);
 
   &::before {
     content: "";

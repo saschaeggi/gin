@@ -58,23 +58,17 @@ a {
 }
 
 body.cke_editable_themed blockquote {
-  font-size: 1.1em;
+  font-size: var(--ginFontSizeQuote);
   position: relative;
-  margin: 1rem;
+  margin: var(--ginSpacingDefault);
 }
 
 [dir="ltr"] body.cke_editable_themed blockquote {
-  padding-left: 1.5rem;
+  padding-left: var(--ginSpacingMedium);
 }
 
 [dir="rtl"] body.cke_editable_themed blockquote {
-  padding-right: 1.5rem;
-}
-
-@media (min-width: 61em) {
-  body.cke_editable_themed blockquote {
-    font-size: 1.2em;
-  }
+  padding-right: var(--ginSpacingMedium);
 }
 
 body.cke_editable_themed blockquote::before {

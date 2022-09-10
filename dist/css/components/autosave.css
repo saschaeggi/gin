@@ -1,14 +1,14 @@
 #autosave-notification {
-  font-size: .975rem;
-  bottom: 8px;
+  font-size: var(--ginFontSizeSmall);
+  bottom: var(--ginSpacingXsmall);
   border-radius: var(--ginBorderXSmall);
 }
 
 [dir="ltr"] #autosave-notification {
-  right: 8px;
+  right: var(--ginSpacingXsmall);
 }
 
 [dir="rtl"] #autosave-notification {
-  left: 8px;
+  left: var(--ginSpacingXsmall);
 }
 

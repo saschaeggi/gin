@@ -12,8 +12,8 @@
 
 .ief-form > .form-wrapper > .form-wrapper:last-of-type {
   background: var(--colorGinLayer2Background);
-  padding: 0 1rem;
-  margin: 0 -1rem;
+  padding: 0 var(--ginSpacingDefault);
+  margin: 0 calc(var(--ginSpacingDefault) * -1);
 }
 
 .ief-form.ief-form-bottom {
@@ -32,19 +32,19 @@
 }
 
 [dir="ltr"] .paragraphs-tabs-wrapper .field-multiple-table .ief-entity-table .draggable.drag-previous > .tabledrag-cell::before {
-  left: .5rem;
+  left: var(--ginSpacingXsmall);
 }
 
 [dir="rtl"] .paragraphs-tabs-wrapper .field-multiple-table .ief-entity-table .draggable.drag-previous > .tabledrag-cell::before {
-  right: .5rem;
+  right: var(--ginSpacingXsmall);
 }
 
 [dir="ltr"] .paragraphs-tabs-wrapper .field-multiple-table .ief-entity-table .draggable .tabledrag-cell-content__item {
-  padding-left: .75rem;
+  padding-left: var(--ginSpacingSmall);
 }
 
 [dir="rtl"] .paragraphs-tabs-wrapper .field-multiple-table .ief-entity-table .draggable .tabledrag-cell-content__item {
-  padding-right: .75rem;
+  padding-right: var(--ginSpacingSmall);
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table .ief-entity-operations {

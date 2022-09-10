@@ -8,7 +8,7 @@
 }
 
 .modules-tabs__pane {
-  padding: 1.5rem 1.5rem 0 1.5rem;
+  padding: var(--ginSpacingMedium) var(--ginSpacingMedium) 0 var(--ginSpacingMedium);
 }
 
 [dir="ltr"] .modules-tabs__pane {
@@ -80,20 +80,20 @@
 }
 
 [dir="ltr"] #module-filter-update-status-form .table-filter .winnow-clear:after {
-  right: 8px;
+  right: var(--ginSpacingXsmall);
 }
 
 [dir="rtl"] #module-filter-update-status-form .table-filter .winnow-clear:after {
-  left: 8px;
+  left: var(--ginSpacingXsmall);
 }
 
 #module-filter-update-status-form .table-filter input.form-search {
   width: 100%;
-  padding: 1rem;
+  padding: var(--ginSpacingDefault);
 }
 
 #module-filter-update-status-form .table-filter .form-type--search {
-  margin-bottom: .5rem;
+  margin-bottom: var(--ginSpacingXsmall);
 }
 
 .system-modules-uninstall .winnow-input {

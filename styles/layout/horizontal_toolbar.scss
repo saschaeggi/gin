@@ -51,7 +51,7 @@
           }
 
           > .toolbar-box > .toolbar-icon:not(.toolbar-handle)::before {
-            left: .75rem;
+            left: var(--ginSpacingSmall);
           }
         }
 
@@ -59,7 +59,7 @@
           width: 48px;
 
           &:before {
-            left: 1rem;
+            left: var(--ginSpacingDefault);
           }
         }
       }
@@ -101,7 +101,7 @@
 .toolbar .toolbar-tray .menu-item > .toolbar-box > .toolbar-icon.is-active,
 .toolbar .toolbar-tray a.is-active {
   color: var(--colorGinPrimary);
-  font-weight: 500;
+  font-weight: var(--ginFontWeightSemiBold);
 
   &::before {
     background: var(--colorGinPrimary);
@@ -209,7 +209,7 @@
   .menu-item__tools,
   .menu-item__admin_toolbar_tools-help {
     @include mq(medium) {
-      margin-left: -16px;
+      margin-left: calc(var(--ginSpacingDefault) * -1);
     }
   }
 
@@ -235,7 +235,7 @@
 
       // Default
       &.toolbar-icon-default {
-        margin-right: .5rem;
+        margin-right: var(--ginSpacingXsmall);
       }
     }
   }
@@ -243,8 +243,8 @@
   // target fist level only
   .toolbar-menu-administration {
     @include mq(medium) {
-      margin-left: m#{i}n(5vw, 48px);
-      margin-right: m#{i}n(5vw, 48px);
+      margin-left: m#{i}n(5vw, var(--ginSpacingXlarge));
+      margin-right: m#{i}n(5vw, var(--ginSpacingXlarge));
 
       > .toolbar-menu {
         display: flex;

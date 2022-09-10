@@ -62,11 +62,11 @@
 }
 
 [dir="ltr"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:not(.toolbar-handle)::before {
-  left: .75rem;
+  left: var(--ginSpacingSmall);
 }
 
 [dir="rtl"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:not(.toolbar-handle)::before {
-  right: .75rem;
+  right: var(--ginSpacingSmall);
 }
 
 .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu .toolbar-icon.toolbar-handle {
@@ -74,11 +74,11 @@
 }
 
 [dir="ltr"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu .toolbar-icon.toolbar-handle:before {
-  left: 1rem;
+  left: var(--ginSpacingDefault);
 }
 
 [dir="rtl"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu .toolbar-icon.toolbar-handle:before {
-  right: 1rem;
+  right: var(--ginSpacingDefault);
 }
 
 .toolbar .toolbar-bar .toolbar-toggle-orientation {
@@ -122,7 +122,7 @@
 .toolbar .toolbar-tray .menu-item > .toolbar-box > .toolbar-icon.is-active,
 .toolbar .toolbar-tray a.is-active {
   color: var(--colorGinPrimary);
-  font-weight: 500;
+  font-weight: var(--ginFontWeightSemiBold);
 }
 
 .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a::before,
@@ -245,12 +245,12 @@
 @media (min-width: 61em) {
   [dir="ltr"] .gin--horizontal-toolbar #toolbar-administration .menu-item__tools,
 [dir="ltr"] .gin--horizontal-toolbar #toolbar-administration .menu-item__admin_toolbar_tools-help {
-    margin-left: -16px;
+    margin-left: calc(var(--ginSpacingDefault) * -1);
   }
 
   [dir="rtl"] .gin--horizontal-toolbar #toolbar-administration .menu-item__tools,
 [dir="rtl"] .gin--horizontal-toolbar #toolbar-administration .menu-item__admin_toolbar_tools-help {
-    margin-right: -16px;
+    margin-right: calc(var(--ginSpacingDefault) * -1);
   }
 }
 
@@ -290,18 +290,18 @@
   }
 
   [dir="ltr"] .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
-    margin-right: .5rem;
+    margin-right: var(--ginSpacingXsmall);
   }
 
   [dir="rtl"] .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
-    margin-left: .5rem;
+    margin-left: var(--ginSpacingXsmall);
   }
 }
 
 @media (min-width: 61em) {
   .gin--horizontal-toolbar #toolbar-administration .toolbar-menu-administration {
-    margin-left: min(5vw, 48px);
-    margin-right: min(5vw, 48px);
+    margin-left: min(5vw, var(--ginSpacingXlarge));
+    margin-right: min(5vw, var(--ginSpacingXlarge));
   }
 
   .gin--horizontal-toolbar #toolbar-administration .toolbar-menu-administration > .toolbar-menu {

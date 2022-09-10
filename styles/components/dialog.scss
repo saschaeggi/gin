@@ -1,6 +1,6 @@
 .ui-dialog:not(.ui-dialog-off-canvas) {
   max-width: $breakpointWide;
-  margin: 1rem;
+  margin: var(--ginSpacingDefault);
   border: 0 none !important;
   border-radius: var(--ginBorderLarge);
   background: var(--colorGinLayerBackground);
@@ -15,7 +15,7 @@
   .layout-region-node-actions {
     position: absolute;
     bottom: 0;
-    left: 1rem;
+    left: var(--ginSpacingDefault);
     top: auto;
     right: auto;
   }
@@ -45,7 +45,7 @@
 
   .ui-dialog-titlebar {
     line-height: 1.2;
-    padding: 24px;
+    padding: var(--ginSpacingMedium);
     background: $colorDarkAppBackground;
     border: 0 none;
     border-top-left-radius: var(--ginBorderLarge);
@@ -53,7 +53,7 @@
   }
 
   .ui-dialog-title {
-    font-weight: 500;
+    font-weight: var(--ginFontWeightSemiBold);
   }
 
   .ui-dialog-content {
@@ -61,14 +61,14 @@
   }
 
   .ui-widget-content.ui-dialog-buttonpane {
-    padding: 16px 24px;
+    padding: var(--ginSpacingDefault) var(--ginSpacingMedium);
     border-top: 1px solid var(--colorGinLayerBorder);
     border-bottom-left-radius: var(--ginBorderLarge);
     border-bottom-right-radius: var(--ginBorderLarge);
     background: var(--colorGinAppBackground);
 
     .button {
-      font-weight: bold;
+      font-weight: var(--ginFontWeightUltra);
       margin-top: 0;
       margin-bottom: 0;
     }
@@ -110,8 +110,8 @@
   }
 
   .ui-widget-content.ui-dialog-content {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: var(--ginSpacingMedium);
+    padding-right: var(--ginSpacingMedium);
     background: var(--colorGinLayerBackground);
   }
 }
@@ -121,11 +121,11 @@
   position: fixed !important;
   top: 50% !important;
   left: 50% !important;
-  width: calc(100% - 2rem) !important;
+  width: calc(100% - var(--ginSpacingLarge)) !important;
   transform: translate(-50%, -50%);
 
   @include mq(large) {
-    width: calc(100% - 4rem) !important;
+    width: calc(100% - var(--ginSpacingXxlarge)) !important;
   }
 }
 

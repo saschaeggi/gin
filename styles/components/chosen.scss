@@ -11,7 +11,7 @@
         height: 100%;
         display: block;
         line-height: 1.5rem;
-        padding: calc(0.75rem - 1px) calc(1rem - 1px);
+        padding: calc(var(--ginSpacingSmall) - 1px) calc(var(--ginSpacingDefault) - 1px);
 
         b {
             background: none !important;

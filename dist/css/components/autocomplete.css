@@ -62,11 +62,11 @@ div.autocomplete-deluxe-multiple {
 }
 
 [dir="ltr"] .autocomplete-deluxe-item {
-  padding: 6px 24px 6px 12px;
+  padding: 6px var(--ginSpacingMedium) 6px 12px;
 }
 
 [dir="rtl"] .autocomplete-deluxe-item {
-  padding: 6px 12px 6px 24px;
+  padding: 6px 12px 6px var(--ginSpacingMedium);
 }
 
 .autocomplete-deluxe-item:hover, .autocomplete-deluxe-item:active {

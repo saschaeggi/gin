@@ -1,5 +1,5 @@
 #coffee-form {
-  padding: 4px;
+  padding: var(--ginSpacingTiny);
   background: #000;
   border-radius: var(--ginBorderMedium);
 
@@ -17,7 +17,7 @@
 
       .description {
         color: var(--colorGinTextLight);
-        padding-top: .25rem;
+        padding-top: var(--ginSpacingTiny);
       }
 
       &:hover,
@@ -40,7 +40,7 @@
     box-shadow: none;
 
     .ui-menu-item-wrapper {
-      padding: 16px;
+      padding: var(--ginSpacingDefault);
     }
   }
 }
