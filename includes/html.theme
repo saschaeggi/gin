@@ -72,8 +72,10 @@ function gin_preprocess_html__entity_browser__modal(&$variables) {
   gin_preprocess_html($variables);
 
   // Remove toolbar class in entity browser modal.
-  $toolbar_class = preg_grep('/gin--(.*)-toolbar/', $variables['attributes']['class']);
-  foreach ($toolbar_class as $key => $class) {
-    unset($variables['attributes']['class'][$key]);
+  if (isset($variables['attributes']['class'])) {
+    $toolbar_class = preg_grep('/gin--(.*)-toolbar/', $variables['attributes']['class']);
+    foreach ($toolbar_class as $key => $class) {
+      unset($variables['attributes']['class'][$key]);
+    }
   }
 }
