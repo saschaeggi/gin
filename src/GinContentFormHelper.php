@@ -208,6 +208,9 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     $form['#attached']['library'][] = 'claro/node-form';
     $form['#attached']['library'][] = 'gin/edit_form';
 
+    // Add a class that allows the logic in edit_form.js to identify the form.
+    $form['#attributes']['class'][] = 'gin-node-edit-form';
+
     // If not logged in hide changed and author node info on add forms.
     $not_logged_in = $this->currentUser->isAnonymous();
     $route = $this->routeMatch->getRouteName();

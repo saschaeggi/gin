@@ -5,7 +5,7 @@
 ((Drupal) => {
   Drupal.behaviors.ginEditForm = {
     attach: (context) => {
-      const ginEditForm = once('ginEditForm', context.querySelector('.region-content .block-system-main-block form'));
+      const ginEditForm = once('ginEditForm', context.querySelector('.region-content form.gin-node-edit-form'));
       ginEditForm.forEach(form => {
         const sticky = context.querySelector('.gin-sticky');
         const newParent = context.querySelector('.region-sticky__items__inner');
