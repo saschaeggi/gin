@@ -2,13 +2,13 @@
 body.gin--vertical-toolbar,
 body.gin--horizontal-toolbar,
 body.gin--classic-toolbar {
-  padding-top: var(--ginHorizontalToolbarOffset) !important;
-  padding-left: var(--ginVerticalToolbarOffset, 256px);
+  padding-top: var(--gin-toolbar-y-offset) !important;
+  padding-left: var(--gin-toolbar-x-offset, 256px);
   margin-left: 0; // Fix for Drupal 9.3+
 }
 
 .toolbar {
-  font-family: var(--ginFont);
+  font-family: var(--gin-font);
 
   .toolbar-bar {
     box-shadow: none;
@@ -34,7 +34,7 @@ body.gin--classic-toolbar {
     }
 
     .toolbar-tab > .toolbar-item {
-      font-weight: var(--ginFontWeightNormal);;
+      font-weight: var(--gin-font-weight-normal);;
     }
 
     .toolbar-tab > .toolbar-icon {
@@ -47,20 +47,20 @@ body.gin--classic-toolbar {
       }
 
       &.is-active {
-        color: var(--colorGinButtonText);
+        color: var(--gin-button-text);
         background-image: none;
-        background-color: var(--colorGinPrimary);
+        background-color: var(--gin-color-primary);
 
         .gin--dark-mode & {
-          color: var(--colorGinPrimaryActive);
-          background-color: var(--colorGinPrimaryLightActive);
+          color: var(--gin-color-primary-active);
+          background-color: var(--gin-color-primary-light-active);
         }
 
         &::before {
-          background-color: var(--colorGinButtonText);
+          background-color: var(--gin-button-text);
 
           .gin--dark-mode & {
-            background-color: var(--colorGinPrimaryActive);
+            background-color: var(--gin-color-primary-active);
           }
         }
       }
@@ -90,11 +90,11 @@ body.gin--classic-toolbar {
     .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item,
     .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active,
     .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item:focus {
-      color: var(--colorGinAppBackground);
-      background: var(--colorGinPrimary);
+      color: var(--gin-bg-app);
+      background: var(--gin-color-primary);
 
       &::before {
-        background: var(--colorGinAppBackground);
+        background: var(--gin-bg-app);
       }
     }
 
@@ -105,10 +105,10 @@ body.gin--classic-toolbar {
     .toolbar-icon-toggle-vertical,
     .toolbar-icon-toggle-horizontal {
       &::before {
-        background: var(--colorGinIcons);
+        background: var(--gin-icon-color);
         mask-repeat: no-repeat;
         mask-position: center center;
-        mask-size: var(--iconGinToolbar) var(--iconGinToolbar);
+        mask-size: var(--gin-icon-size-toolbar) var(--gin-icon-size-toolbar);
       }
 
       &.toolbar-icon-default::before {
@@ -117,13 +117,13 @@ body.gin--classic-toolbar {
 
       &:hover::before {
         @include mq(medium) {
-          background: var(--colorGinPrimary);
+          background: var(--gin-color-primary);
         }
       }
 
       &.is-active:hover::before {
         @include mq(medium) {
-          background: var(--colorGinPrimary);
+          background: var(--gin-color-primary);
         }
       }
     }
@@ -131,7 +131,7 @@ body.gin--classic-toolbar {
     // .menu-item--active-trail {
     //   .toolbar-icon {
     //     &::before {
-    //       background: var(--colorGinPrimaryActive) !important;
+    //       background: var(--gin-color-primary-active) !important;
     //     }
     //   }
     // }
@@ -144,7 +144,7 @@ body.gin--classic-toolbar {
         padding-left: 0;
         padding-right: 0;
         margin-left: 0;
-        background-color: var(--colorGinText);
+        background-color: var(--gin-color-text);
         mask-image: icon('gin');
         mask-position: center center;
       }
@@ -281,7 +281,7 @@ body.gin--classic-toolbar {
     .toolbar-tab > .toolbar-icon-edit.toolbar-item {
       &:before {
         mask-image: icon('edit');
-        mask-size: var(--iconGinSecondaryToolbar) var(--iconGinSecondaryToolbar);
+        mask-size: var(--gin-icon-size-toolbar-secondary) var(--gin-icon-size-toolbar-secondary);
       }
     }
 
@@ -359,7 +359,7 @@ body.gin--classic-toolbar {
 }
 
 .toolbar-horizontal .toolbar-tray {
-  border-bottom: 1px solid var(--colorGinBorder);
+  border-bottom: 1px solid var(--gin-border-color);
 
   &,
   [dir=rtl] & {
@@ -368,8 +368,8 @@ body.gin--classic-toolbar {
 
   a,
   span {
-    color: var(--colorGinText);
-    font-weight: var(--ginFontWeightNormal);;
+    color: var(--gin-color-text);
+    font-weight: var(--gin-font-weight-normal);;
 
     &:hover, &:active, &:focus, &.is-active {
       text-decoration: none;
@@ -378,15 +378,15 @@ body.gin--classic-toolbar {
 
   .menu-item {
     a:hover, a:focus {
-      color: var(--colorGinPrimaryHover);
-      background-color: var(--colorGinItemHover);
+      color: var(--gin-color-primary-hover);
+      background-color: var(--gin-bg-item-hover);
 
       .toolbar-icon::before {
-        background-color: var(--colorGinTitle);
+        background-color: var(--gin-color-title);
       }
 
       .toolbar-icon.is-active::before {
-        background-color: var(--colorGinPrimary);
+        background-color: var(--gin-color-primary);
       }
     }
 
@@ -402,7 +402,7 @@ body.gin--classic-toolbar {
     }
 
     a:focus {
-      box-shadow: inset 0 0 0 1px var(--colorGinFocusBorder), inset 0 0 0 4px var(--colorGinFocus);
+      box-shadow: inset 0 0 0 1px var(--gin-color-focus-border), inset 0 0 0 4px var(--gin-color-focus);
     }
   }
 
@@ -416,7 +416,7 @@ body.gin--classic-toolbar {
 }
 
 .gin--dark-mode.toolbar-horizontal .toolbar-tray {
-  border-bottom: 1px solid var(--colorGinLayerBorder);
+  border-bottom: 1px solid var(--gin-border-color-layer);
 }
 
 // Fix for Admin_toolbar 2.4+: Remove white borders added by the admin_toolbar module
@@ -433,11 +433,11 @@ body.gin--classic-toolbar {
 
 .toolbar .toolbar-tray-vertical {
   box-shadow: none;
-  border-right: 1px solid var(--colorGinBorder);
-  background: var(--colorGinLayerBackground);
+  border-right: 1px solid var(--gin-border-color);
+  background: var(--gin-bg-layer);
 
   .menu-item + .menu-item {
-    border-top: 1px solid var(--colorGinLayerBorder);
+    border-top: 1px solid var(--gin-border-color-layer);
   }
 
   .menu-item + .menu-item__spacer {
@@ -451,11 +451,11 @@ body.gin--classic-toolbar {
 
   // Custom logo
   .menu-item .toolbar-logo {
-    padding-left: var(--ginSpacingDefault);
+    padding-left: var(--gin-spacing-m);
   }
 
   .level-1.menu-item:last-child {
-    border-bottom: 1px solid var(--colorGinLayerBorder);
+    border-bottom: 1px solid var(--gin-border-color-layer);
   }
 
   .gin--dark-mode & {
@@ -464,11 +464,11 @@ body.gin--classic-toolbar {
     }
 
     .level-1 .toolbar-menu {
-      background: var(--colorGinLayer2Background);
+      background: var(--gin-bg-layer2);
     }
 
     .level-2 .toolbar-menu {
-      background: var(--colorGinLayer3Background);
+      background: var(--gin-bg-layer3);
     }
 
     .level-3 .toolbar-menu {
@@ -504,7 +504,7 @@ body.gin--classic-toolbar {
 }
 
 #toolbar-administration .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item {
-  font-weight: var(--ginFontWeightBold);
+  font-weight: var(--gin-font-weight-bold);
 
   &:hover::before {
     background: #fff;
@@ -536,7 +536,7 @@ body.gin--classic-toolbar {
     top: 18px;
     width: 16px;
     height: 16px;
-    background-color: var(--colorGinDisabled);
+    background-color: var(--gin-color-disabled);
     mask-image: icon('handle');
     mask-repeat: no-repeat;
     mask-position: center center;
@@ -548,7 +548,7 @@ body.gin--classic-toolbar {
   &:hover,
   &:focus {
     &::before {
-      background-color: var(--colorGinPrimary);
+      background-color: var(--gin-color-primary);
     }
   }
 }
@@ -563,16 +563,16 @@ body.gin--classic-toolbar {
 
   &:hover,
   &:focus {
-    color: var(--colorGinText);
+    color: var(--gin-color-text);
   }
 
   &:focus {
-    background: var(--colorGinPrimaryLight);
+    background: var(--gin-color-primary-light);
   }
 
   &.is-active {
     &::before {
-      background-color: var(--colorGinPrimary);
+      background-color: var(--gin-color-primary);
     }
   }
 }
@@ -583,13 +583,13 @@ body.gin--classic-toolbar {
     background-color: rgba(255, 255, 255, .75);
     mask-repeat: no-repeat;
     mask-position: center center;
-    mask-size: var(--iconGinSecondaryToolbar) var(--iconGinSecondaryToolbar);
+    mask-size: var(--gin-icon-size-toolbar-secondary) var(--gin-icon-size-toolbar-secondary);
   }
 
   &.is-active:before,
   &.is-active:hover:before {
     @include mq(medium) {
-      background-color: var(--colorGinButtonText);
+      background-color: var(--gin-button-text);
     }
   }
 }
@@ -609,7 +609,7 @@ body.gin--classic-toolbar {
 }
 
 .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon::before {
-  background-color: var(--colorGinIcons);
+  background-color: var(--gin-icon-color);
 }
 
 .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item::before {
@@ -618,8 +618,8 @@ body.gin--classic-toolbar {
 
 // Custom logo
 #toolbar-item-administration-tray .toolbar-logo {
-  padding-top: var(--ginSpacingXsmall);
-  padding-bottom: var(--ginSpacingXsmall);
+  padding-top: var(--gin-spacing-xs);
+  padding-bottom: var(--gin-spacing-xs);
 
   img {
     max-width: 100px;
@@ -635,7 +635,7 @@ body.gin--classic-toolbar {
 
   &.icon-user {
     padding-left: 0;
-    margin-left: var(--ginSpacingXsmall);
+    margin-left: var(--gin-spacing-xs);
     margin-top: 2px;
   }
 }
@@ -653,17 +653,17 @@ body.gin--classic-toolbar {
   @extend .toolbar-icon;
 
   &::before {
-    mask-size: var(--iconGinSecondaryToolbar) var(--iconGinSecondaryToolbar);
+    mask-size: var(--gin-icon-size-toolbar-secondary) var(--gin-icon-size-toolbar-secondary);
   }
 }
 
 // Admin Toolbar QuickSearch
 #admin-toolbar-search-input {
-  color: var(--colorGinText);
+  color: var(--gin-color-text);
   width: 245px;
-  padding-left: calc(var(--ginSpacingLarge) + var(--ginSpacingXsmall));
+  padding-left: calc(var(--gin-spacing-xl) + var(--gin-spacing-xs));
   background-color: #fff;
-  border: 1px solid var(--colorGinBorder);
+  border: 1px solid var(--gin-border-color);
   border-radius: 25px;
   box-sizing: border-box;
 
@@ -676,7 +676,7 @@ body.gin--classic-toolbar {
     border: 1px solid transparent;
 
     &:hover {
-      border-color: var(--colorGinFormElementBorder);
+      border-color: var(--gin-border-color-form-element);
     }
   }
 }
@@ -689,12 +689,12 @@ body.gin--classic-toolbar {
     content: "";
     opacity: .75;
     display: block;
-    width: var(--iconGinSecondaryToolbar);
-    height: var(--iconGinSecondaryToolbar);
+    width: var(--gin-icon-size-toolbar-secondary);
+    height: var(--gin-icon-size-toolbar-secondary);
     position: absolute;
     top: 11px;
-    left: var(--ginSpacingDefault);
-    background-color: var(--colorGinIcons);
+    left: var(--gin-spacing-m);
+    background-color: var(--gin-icon-color);
     mask-image: icon('search');
     mask-size: 100% 100%;
     mask-position: center center;
@@ -703,20 +703,20 @@ body.gin--classic-toolbar {
 
 // Admin Toolbar QuickSearch Results
 .ui-autocomplete.admin-toolbar-search-autocomplete-list {
-  color: var(--colorGinText);
-  background-color: var(--colorGinLayer3Background);
-  border-radius: var(--ginBorderMedium);
-  box-shadow: var(--ginShadowLevel2);
+  color: var(--gin-color-text);
+  background-color: var(--gin-bg-layer3);
+  border-radius: var(--gin-border-l);
+  box-shadow: var(--gin-shadow-l2);
 
   &.ui-widget-content {
-    padding-top: var(--ginSpacingXsmall);
-    padding-bottom: var(--ginSpacingXsmall);
+    padding-top: var(--gin-spacing-xs);
+    padding-bottom: var(--gin-spacing-xs);
     border: 0 none;
     overflow-y: auto;
   }
 
   .ui-menu-item {
-    padding: 0 var(--ginSpacingXsmall);
+    padding: 0 var(--gin-spacing-xs);
 
     // Hide url
     span.admin-toolbar-search-url {
@@ -725,14 +725,14 @@ body.gin--classic-toolbar {
   }
 
   .ui-menu-item-wrapper {
-    font-size: var(--ginFontSizeSmall);
+    font-size: var(--gin-font-size-s);
     line-height: 1.3;
-    padding: var(--ginSpacingXsmall) var(--ginSpacingDefault);
-    border-radius: var(--ginBorderSmall);
+    padding: var(--gin-spacing-xs) var(--gin-spacing-m);
+    border-radius: var(--gin-border-s);
 
     &.ui-state-active {
-      color: var(--colorGinButtonText);
-      background-color: var(--colorGinPrimary);
+      color: var(--gin-button-text);
+      background-color: var(--gin-color-primary);
       border: 0 none;
     }
   }

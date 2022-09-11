@@ -28,18 +28,18 @@ $html-font-size: 16px;
 }
 
 @mixin color-pattern {
-  background-color: var(--colorGinPatternFallback);
+  background-color: var(--gin-pattern-fallback);
   background-image:
-    linear-gradient(-45deg, var(--colorGinPattern) 25%, transparent 26%),
-    linear-gradient(-45deg, var(--colorGinPattern) 25%, transparent 26%),
-    linear-gradient(135deg, var(--colorGinPattern) 25%, transparent 26%),
-    linear-gradient(135deg, var(--colorGinPattern) 25%, transparent 26%);
+    linear-gradient(-45deg, var(--gin-pattern) 25%, transparent 26%),
+    linear-gradient(-45deg, var(--gin-pattern) 25%, transparent 26%),
+    linear-gradient(135deg, var(--gin-pattern) 25%, transparent 26%),
+    linear-gradient(135deg, var(--gin-pattern) 25%, transparent 26%);
   background-position:
     0 0,
-    var(--ginSizePatternSquare) var(--ginSizePatternSquare),
-    var(--ginSizePatternSquare) var(--ginSizePatternSquare),
+    var(--gin-pattern-square) var(--gin-pattern-square),
+    var(--gin-pattern-square) var(--gin-pattern-square),
     0 0;
-  background-size: calc(var(--ginSizePatternSquare) * 2) calc(var(--ginSizePatternSquare) * 2);
+  background-size: calc(var(--gin-pattern-square) * 2) calc(var(--gin-pattern-square) * 2);
 
   @media screen and (-ms-high-contrast: active) {
     background: none;
@@ -62,12 +62,12 @@ $html-font-size: 16px;
   color: transparent;
   width: 29px;
   height: 29px;
-  margin: var(--ginSpacingSmall);
+  margin: var(--gin-spacing-s);
 
   &:hover,
   &:focus {
     background-color: white;
-    border-color: var(--colorGinPrimary) !important;
+    border-color: var(--gin-color-primary) !important;
     color: transparent;
     cursor: pointer;
   }

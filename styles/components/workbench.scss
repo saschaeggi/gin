@@ -7,17 +7,17 @@
   // Custom icons
   .toolbar-icon {
     &:before {
-      left: var(--ginSpacingSmall);
-      background: var(--colorGinIcons);
+      left: var(--gin-spacing-s);
+      background: var(--gin-icon-color);
       background-image: none;
-      mask-size: var(--iconGinToolbar) var(--iconGinToolbar);
+      mask-size: var(--gin-icon-size-toolbar) var(--gin-icon-size-toolbar);
       mask-repeat: no-repeat;
       mask-position: center center;
     }
 
     &:hover:before,
     &.is-active:before {
-      background: var(--colorGinPrimary);
+      background: var(--gin-color-primary);
     }
   }
 

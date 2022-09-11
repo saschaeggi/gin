@@ -1,5 +1,5 @@
 .layout-region-node-secondary {
-  transition: transform var(--ginTransitionFast);
+  transition: transform var(--gin-transition-fast);
 
   // Fixes the flickering happinging on smaller devices.
   @include mq($to: large) {
@@ -9,17 +9,17 @@
 }
 
 body[data-meta-sidebar=closed] {
-  --ginSidebarOffset: 0px;
+  --gin-sidebar-offset: 0px;
 
   .layout-region-node-secondary {
-    transform: translateX(var(--ginSidebarWidth));
+    transform: translateX(var(--gin-sidebar-width));
   }
 }
 
 // RTL handling.
 [dir=rtl] body[data-meta-sidebar=closed] .layout-region-node-secondary {
   /*rtl:ignore*/
-  transform: translateX(calc(var(--ginSidebarWidth) * -1));
+  transform: translateX(calc(var(--gin-sidebar-width) * -1));
 }
 
 body[data-meta-sidebar=open] {
@@ -38,8 +38,8 @@ body[data-meta-sidebar=open] {
     background: transparent;
     height: 32px;
     width: 32px;
-    border-radius: var(--ginBorderDefault);
-    transition: background var(--ginTransitionFast);
+    border-radius: var(--gin-border-m);
+    transition: background var(--gin-transition-fast);
 
     &::before {
       display: inline-block;
@@ -48,32 +48,32 @@ body[data-meta-sidebar=open] {
       content: "";
       mask-repeat: no-repeat;
       mask-position: center center;
-      background-color: var(--colorGinIcons);
+      background-color: var(--gin-icon-color);
     }
 
     &:hover, &:focus {
-      background-color: var(--colorGinPrimaryLight);
+      background-color: var(--gin-color-primary-light);
 
       &::before {
-        background-color: var(--colorGinPrimary);
+        background-color: var(--gin-color-primary);
       }
     }
 
     &.is-active {
-      background-color: var(--colorGinPrimaryLightHover);
+      background-color: var(--gin-color-primary-light-hover);
 
       &::before {
-        background-color: var(--colorGinPrimaryActive);
+        background-color: var(--gin-color-primary-active);
       }
     }
   }
 
   &__trigger {
-    margin-left: var(--ginSpacingXsmall);
+    margin-left: var(--gin-spacing-xs);
 
     &::before {
       mask-image: icon('sidebar');
-      mask-size: var(--iconGinSidebarToggle) var(--iconGinSidebarToggle);
+      mask-size: var(--gin-icon-size-sidebar-toggle) var(--gin-icon-size-sidebar-toggle);
       border-radius: 50%;
     }
   }
@@ -82,7 +82,7 @@ body[data-meta-sidebar=open] {
     z-index: 104;
     position: absolute;
     top: 18px;
-    right: var(--ginSpacingDefault);
+    right: var(--gin-spacing-m);
 
     @include mq(large) {
       display: none;
@@ -103,7 +103,7 @@ body[data-meta-sidebar=open] {
     height: 100%;
     opacity: 0;
     visibility: hidden;
-    background: var(--colorGinLayer2Background);
+    background: var(--gin-bg-layer2);
 
     body[data-meta-sidebar=open] & {
       opacity: .9;

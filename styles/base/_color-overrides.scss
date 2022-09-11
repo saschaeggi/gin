@@ -8,15 +8,15 @@ button.link,
 [open] .claro-details__summary--vertical-tabs-item,
 .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link
 {
-  color: var(--colorGinPrimary);
+  color: var(--gin-color-primary);
   text-decoration: none;
 
   &:hover {
-    color: var(--colorGinPrimaryHover);
+    color: var(--gin-color-primary-hover);
   }
 
   &:active {
-    color: var(--colorGinPrimaryActive);
+    color: var(--gin-color-primary-active);
   }
 }
 
@@ -26,7 +26,7 @@ button.link,
 .action-link
 {
   &:hover {
-    color: var(--colorGinPrimaryHover);
+    color: var(--gin-color-primary-hover);
   }
 }
 
@@ -34,7 +34,7 @@ button.link,
 .claro-details[open] > .claro-details__summary
 {
   &:focus {
-    color: var(--colorGinPrimaryActive);
+    color: var(--gin-color-primary-active);
   }
 }
 
@@ -51,13 +51,13 @@ button.link,
 .collapse-processed[open] > .claro-details__summary--vertical-tabs-item .details-title:not(:focus)::after,
 .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link::before
 {
-  border-color: var(--colorGinPrimary);
+  border-color: var(--gin-color-primary);
 
   &:hover {
-    border-color: var(--colorGinPrimaryHover);
+    border-color: var(--gin-color-primary-hover);
   }
 
   &:active {
-    border-color: var(--colorGinPrimaryActive);
+    border-color: var(--gin-color-primary-active);
   }
 }

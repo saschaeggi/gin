@@ -1,36 +1,36 @@
 $maxWidth: 520px;
 
 .form-element {
-  color: var(--colorGinText);
-  background-color: var(--colorGinInputBackground);
-  border: 1px solid var(--colorGinFormElementBorder);
-  border-radius: var(--ginBorderDefault);
+  color: var(--gin-color-text);
+  background-color: var(--gin-bg-input);
+  border: 1px solid var(--gin-border-color-form-element);
+  border-radius: var(--gin-border-m);
   box-sizing: border-box;
-  transition: var(--ginTransition);
+  transition: var(--gin-transition);
 
   &:hover {
-    border-color: var(--colorGinText);
-    box-shadow: inset 0 0 0 1px var(--colorGinText);
+    border-color: var(--gin-color-text);
+    box-shadow: inset 0 0 0 1px var(--gin-color-text);
   }
 
   &--small,
   &--extrasmall {
-    font-size: var(--ginFontSizeSmall);
+    font-size: var(--gin-font-size-s);
     line-height: 1.5;
-    border-radius: var(--ginBorderSmall);
+    border-radius: var(--gin-border-s);
   }
 
   &[disabled],
   &[disabled]:hover {
-    color: var(--colorGinDisabled);
-    border-color: var(--colorGinDisabled);
+    color: var(--gin-color-disabled);
+    border-color: var(--gin-color-disabled);
     box-shadow: none;
   }
 }
 
 .form-textarea-wrapper {
   // box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
-  border-radius: var(--ginBorderDefault);
+  border-radius: var(--gin-border-m);
 
   textarea {
     max-width: 100%;
@@ -59,23 +59,23 @@ $maxWidth: 520px;
 
 .password-strength {
   &__title {
-    color: var(--colorGinTextLight);
+    color: var(--gin-color-text-light);
   }
 
   &__text {
-    color: var(--colorGinTitle);
+    color: var(--gin-color-title);
   }
 }
 
 .password-suggestions {
-  color: var(--colorGinTextLight);
-  border: 1px solid var(--colorGinLayer2Border);
+  color: var(--gin-color-text-light);
+  border: 1px solid var(--gin-border-color-layer2);
   background-color: transparent;
 }
 
 // Select
 .form-element--type-select {
-  padding-right: calc(var(--ginSpacingXsmall) + var(--ginSpacingLarge) - 1px);
+  padding-right: calc(var(--gin-spacing-xs) + var(--gin-spacing-xl) - 1px);
 
   .gin--dark-mode & {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath fill='none' stroke-width='1.5' d='M1 1L7 7L13 1' stroke='%23ffffff'/%3E%3C/svg%3E%0A");
@@ -83,7 +83,7 @@ $maxWidth: 520px;
 }
 
 .form-element--type-select--small {
-  font-size: var(--ginFontSizeSmaller);
+  font-size: var(--gin-font-size-xs);
   min-height: 2.25rem;
   line-height: 1.4;
   padding-top: .474rem; // 0.79rem * 1.2 / 2
@@ -94,27 +94,27 @@ $maxWidth: 520px;
 .form-boolean {
   width: 21px;
   height: 21px;
-  border-color: var(--colorGinFormElementBorder);
-  border-radius: var(--ginBorderXSmall);
+  border-color: var(--gin-border-color-form-element);
+  border-radius: var(--gin-border-xs);
 }
 
 // Darkmode Checkbox
 .form-boolean--type-checkbox {
   &:not(:checked) {
     .gin--dark-mode & {
-      background: var(--colorGinInputBackground);
+      background: var(--gin-bg-input);
     }
   }
 
   &:checked {
-    background-color: var(--colorGinPrimary);
+    background-color: var(--gin-color-primary);
 
     &:hover {
-      background-color: var(--colorGinPrimaryHover);
+      background-color: var(--gin-color-primary-hover);
     }
 
     &:active {
-      background-color: var(--colorGinPrimaryActive);
+      background-color: var(--gin-color-primary-active);
     }
 
     .gin--dark-mode & {
@@ -134,7 +134,7 @@ $maxWidth: 520px;
     vertical-align: top;
     width: 2.5rem;
     height: 1.5rem;
-    border-radius: var(--ginBorderMedium);
+    border-radius: var(--gin-border-l);
     box-sizing: border-box;
 
     &__inner {
@@ -143,14 +143,14 @@ $maxWidth: 520px;
       width: 100%;
       height: 100%;
       overflow: hidden;
-      clip-path: circle(var(--ginSpacingMedium) at 50% 50%); // Fix Safari bug
-      background-color: var(--colorGinDisabled);
+      clip-path: circle(var(--gin-spacing-l) at 50% 50%); // Fix Safari bug
+      background-color: var(--gin-color-disabled);
       border: 3px solid transparent;
-      border-radius: var(--ginBorderMedium);
+      border-radius: var(--gin-border-l);
       box-sizing: border-box;
 
       .gin--dark-mode & {
-        background-color: var(--colorGinInputBackground);
+        background-color: var(--gin-bg-input);
       }
 
       &:before {
@@ -164,7 +164,7 @@ $maxWidth: 520px;
         transition: transform .3s;
 
         .gin--dark-mode & {
-          background-color: var(--colorGinFormElementBorder);
+          background-color: var(--gin-border-color-form-element);
         }
       }
     }
@@ -196,17 +196,17 @@ $maxWidth: 520px;
     }
 
     &:checked ~ .checkbox-toggle {
-      border-color: var(--colorGinPrimaryLightActive);
+      border-color: var(--gin-color-primary-light-active);
 
       .gin--high-contrast-mode & {
-        border-color: var(--colorGinBorder);
+        border-color: var(--gin-border-color);
       }
 
       .checkbox-toggle__inner {
-        background-color: var(--colorGinSwitch);
+        background-color: var(--gin-switch);
 
         .gin--dark-mode & {
-          background-color: var(--colorGinPrimaryLightActive);
+          background-color: var(--gin-color-primary-light-active);
         }
 
         &:before {
@@ -214,11 +214,11 @@ $maxWidth: 520px;
           background-color: #fff;
 
           .gin--dark-mode & {
-            background-color: var(--colorGinPrimaryHover);
+            background-color: var(--gin-color-primary-hover);
           }
 
           .gin--high-contrast-mode & {
-            background-color: var(--colorGinBorder);
+            background-color: var(--gin-border-color);
           }
         }
       }
@@ -226,7 +226,7 @@ $maxWidth: 520px;
 
     &:active ~ .checkbox-toggle .checkbox-toggle__inner,
     &:focus ~ .checkbox-toggle .checkbox-toggle__inner {
-      box-shadow: 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus);
+      box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
     }
 
     // Disabled state: set cursor to not-allowed
@@ -239,7 +239,7 @@ $maxWidth: 520px;
     &:disabled ~ .checkbox-toggle:hover,
     &:disabled:checked ~ .checkbox-toggle .checkbox-toggle__inner,
     &:disabled:checked ~ .checkbox-toggle:hover .checkbox-toggle__inner {
-      background-color: var(--colorGinDisabled);
+      background-color: var(--gin-color-disabled);
 
       &::before {
         background-color: #fff;
@@ -251,9 +251,9 @@ $maxWidth: 520px;
   label {
     z-index: 1;
     position: relative;
-    padding-left: var(--ginSpacingTiny);
+    padding-left: var(--gin-spacing-xxs);
     padding-bottom: 0;
-    color: var(--colorGinText);
+    color: var(--gin-color-text);
   }
 }
 
@@ -261,7 +261,7 @@ $maxWidth: 520px;
   &:hover, &:active {
     .gin--dark-mode & {
       box-shadow: none;
-      border-color: var(--colorGinText);
+      border-color: var(--gin-color-text);
     }
   }
 }
@@ -269,60 +269,60 @@ $maxWidth: 520px;
 .form-boolean--type-radio {
   &, &:hover, &:active, &:focus, &:hover:focus {
     background-image: none;
-    background-color: var(--colorGinInputBackground);
-    border-color: var(--colorGinFormElementBorder);
+    background-color: var(--gin-bg-input);
+    border-color: var(--gin-border-color-form-element);
     border-radius: 50%;
   }
 
   &:hover {
-    box-shadow: inset 0 0 0 1px var(--colorGinLayer2Border);
+    box-shadow: inset 0 0 0 1px var(--gin-border-color-layer2);
 
     &, .gin--dark-mode & {
-      border-color: var(--colorGinText);
+      border-color: var(--gin-color-text);
     }
   }
 
   &:active, &:focus {
-    box-shadow: inset 0 0 0 1px var(--colorGinLayer2Border),
-                0 0 0 1px var(--colorGinFocusBorder),
-                0 0 0 4px var(--colorGinFocus);
+    box-shadow: inset 0 0 0 1px var(--gin-border-color-layer2),
+                0 0 0 1px var(--gin-color-focus-border),
+                0 0 0 4px var(--gin-color-focus);
   }
 
   &:checked:not(:disabled) {
     &, &:hover {
       background-image: none;
-      background-color: var(--colorGinLayerBackground);
-      box-shadow: inset 0 0 0 5px var(--colorGinPrimary);
+      background-color: var(--gin-bg-layer);
+      box-shadow: inset 0 0 0 5px var(--gin-color-primary);
     }
 
     &:active, &:focus, &:hover:focus {
-      box-shadow: inset 0 0 0 5px var(--colorGinPrimary),
-                  0 0 0 1px var(--colorGinFocusBorder),
-                  0 0 0 4px var(--colorGinFocus);
+      box-shadow: inset 0 0 0 5px var(--gin-color-primary),
+                  0 0 0 1px var(--gin-color-focus-border),
+                  0 0 0 4px var(--gin-color-focus);
     }
   }
 
   &:checked:disabled {
     &, &:hover {
       background-image: none;
-      background-color: var(--colorGinDisabledText);
-      border-color: var(--colorGinDisabled);
-      box-shadow: inset 0 0 0 5px var(--colorGinDisabled);
+      background-color: var(--gin-color-disabled-text);
+      border-color: var(--gin-color-disabled);
+      box-shadow: inset 0 0 0 5px var(--gin-color-disabled);
     }
   }
 }
 
 .form-boolean--type-checkbox[disabled]:checked {
-  border-color: var(--colorGinDisabled);
-  background-color: var(--colorGinDisabled);
+  border-color: var(--gin-color-disabled);
+  background-color: var(--gin-color-disabled);
   box-shadow: none;
 }
 
 .form-radios,
 .form-checkboxes {
   .form-type--boolean {
-    margin-top: var(--ginSpacingXsmall);
-    margin-bottom: var(--ginSpacingXsmall);
+    margin-top: var(--gin-spacing-xs);
+    margin-bottom: var(--gin-spacing-xs);
   }
 }
 
@@ -339,13 +339,13 @@ $maxWidth: 520px;
 
 // Fieldgroup
 fieldset:not(.fieldgroup) {
-  color: var(--colorGinTextLight);
-  padding-top: var(--ginSpacingXsmall);
+  color: var(--gin-color-text-light);
+  padding-top: var(--gin-spacing-xs);
   padding-left: 0;
   padding-right: 0;
   background: transparent;
-  border-color: var(--colorGinBorder);
-  border-radius: var(--ginBorderDefault);
+  border-color: var(--gin-border-color);
+  border-radius: var(--gin-border-m);
   box-shadow: none;
 
   > legend {
@@ -360,22 +360,22 @@ fieldset:not(.fieldgroup) {
 .fieldset__label,
 .fieldset__label--group,
 .form-item__label {
-  font-size: var(--ginFontSizeSmall);
-  font-weight: var(--ginFontWeightSemiBold);
-  color: var(--colorGinTitle);
+  font-size: var(--gin-font-size-s);
+  font-weight: var(--gin-font-weight-semibold);
+  color: var(--gin-color-title);
   margin-top: 0;
-  margin-bottom: var(--ginSpacingXsmall);
+  margin-bottom: var(--gin-spacing-xs);
 }
 
 .form-item__label.has-error,
 .form-item__error-message {
-  color: var(--colorGinDanger);
+  color: var(--gin-color-danger);
 }
 
 .form-item__description,
 .fieldset__description {
   max-width: $maxWidth;
-  color: var(--colorGinTextLight);
+  color: var(--gin-color-text-light);
 }
 
 .form-item__label.form-required::after,
@@ -384,7 +384,7 @@ fieldset:not(.fieldgroup) {
 .horizontal-tab-button .form-required::after,
 .vertical-tabs__menu-link .form-required::after {
   content: "*";
-  color: var(--colorGinDanger);
+  color: var(--gin-color-danger);
   line-height: 1;
   margin-right: .15em;
   margin-left: .15em;
@@ -400,7 +400,7 @@ fieldset:not(.fieldgroup) {
 
 .form-item__warning {
   display: inline-block;
-  margin-top: var(--ginSpacingXsmall);
+  margin-top: var(--gin-spacing-xs);
 }
 
 .js .form-autocomplete {
@@ -416,7 +416,7 @@ fieldset:not(.fieldgroup) {
 
 .required-mark {
   &::after {
-    background: var(--colorGinDanger);
+    background: var(--gin-color-danger);
     mask-image: icon('asterisk');
     mask-position: center center;
     mask-size: 100% 100%;
@@ -445,12 +445,12 @@ fieldset:not(.fieldgroup) {
 
 // Autocomplete field
 .js input.form-linkit-autocomplete {
-  padding-right: var(--ginSpacingLarge);
+  padding-right: var(--gin-spacing-xl);
   background-position: right 8px center;
 }
 
 .claro-autocomplete {
-  width: calc(100% - var(--ginSpacingDefault));
+  width: calc(100% - var(--gin-spacing-m));
 
   .form-autocomplete {
     width: 100%;
@@ -458,7 +458,7 @@ fieldset:not(.fieldgroup) {
 }
 
 .no-touchevents .form-element--type-select.form-element--extrasmall {
-  font-size: var(--ginFontSizeSmall);
+  font-size: var(--gin-font-size-s);
   line-height: 1.5;
   min-height: 1.75rem;
 }
@@ -470,7 +470,7 @@ fieldset:not(.fieldgroup) {
 
 .image-style-new {
   .form-item {
-    margin-right: var(--ginSpacingTiny);
+    margin-right: var(--gin-spacing-xxs);
   }
 }
 
@@ -480,6 +480,6 @@ tr .form-item {
 }
 
 .container-inline .form-item {
-  margin-top: var(--ginSpacingDensitySmall);
-  margin-bottom: var(--ginSpacingDensitySmall);
+  margin-top: var(--gin-spacing-density-s);
+  margin-bottom: var(--gin-spacing-density-s);
 }

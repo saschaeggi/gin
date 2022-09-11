@@ -1,27 +1,27 @@
 .region-sticky {
   position: sticky;
-  top: var(--ginHorizontalToolbarOffset);
+  top: var(--gin-toolbar-y-offset);
   z-index: 101;
   padding: 0;
   width: 100%;
-  background: var(--colorGinAppBackground);
+  background: var(--gin-bg-app);
   box-sizing: border-box;
-  transition: var(--ginTransition);
+  transition: var(--gin-transition);
 
   .gin--edit-form & {
-    top: calc(var(--ginHorizontalToolbarOffset) - var(--ginSpacingXxlarge));
-    padding-top: var(--ginSpacingDefault);
+    top: calc(var(--gin-toolbar-y-offset) - var(--gin-spacing-xxxl));
+    padding-top: var(--gin-spacing-m);
 
     @include mq(large) {
-      padding-top: var(--ginSpacingSmall);
+      padding-top: var(--gin-spacing-s);
     }
   }
 
   @include mq(large) {
     top: -1px;
     width: 100%;
-    height: var(--ginStickyHeight);
-    padding: var(--ginSpacingSmall) 0;
+    height: var(--gin-height-sticky);
+    padding: var(--gin-spacing-s) 0;
 
     &-watcher {
       position: sticky;
@@ -31,16 +31,16 @@
 
     &--is-sticky {
       opacity: .95;
-      background: var(--colorGinAppBackground);
+      background: var(--gin-bg-app);
 
       @supports (backdrop-filter: blur()) {
         opacity: .999;
-        background: rgba(var(--colorGinAppBackgroundRGB), .8);
+        background: rgba(var(--gin-bg-app-rgb), .8);
         backdrop-filter: blur(12px);
       }
 
       .gin--high-contrast-mode & {
-        background: var(--colorGinAppBackground);
+        background: var(--gin-bg-app);
         backdrop-filter: none;
       }
     }
@@ -48,7 +48,7 @@
     .gin--vertical-toolbar &,
     .gin--horizontal-toolbar &,
     .gin--classic-toolbar & {
-      top: var(--ginHorizontalToolbarOffset);
+      top: var(--gin-toolbar-y-offset);
     }
 
     .gin--classic-toolbar:not(.gin--edit-form) & {
@@ -59,7 +59,7 @@
   &__items {
     display: flex;
     align-items: center;
-    margin-bottom: var(--ginSpacingDefault);
+    margin-bottom: var(--gin-spacing-m);
 
     @include mq(small) {
       height: 100%;
@@ -102,7 +102,7 @@
       display: flex;
 
       @include mq(large) {
-        padding-left: var(--ginSpacingMedium);
+        padding-left: var(--gin-spacing-l);
       }
     }
   }
@@ -121,7 +121,7 @@
     position: relative;
     pointer-events: none;
     height: 40px;
-    margin: calc(var(--ginSpacingXxlarge) * -1) auto var(--ginSpacingMedium);
+    margin: calc(var(--gin-spacing-xxxl) * -1) auto var(--gin-spacing-l);
     box-shadow: 0 10px 20px -16px rgba(0, 0, 0, .4);
 
     .gin--dark-mode & {
@@ -131,8 +131,8 @@
 
   @include mq(large) {
     position: sticky;
-    top: calc(var(--ginHorizontalToolbarOffset) + var(--ginSpacingLarge));
-    width: calc(100% - min(10vw, 96px) + var(--ginSpacingMedium));
+    top: calc(var(--gin-toolbar-y-offset) + var(--gin-spacing-xl));
+    width: calc(100% - min(10vw, 96px) + var(--gin-spacing-l));
 
     // Classic, legacy toolbar
     .gin--classic-toolbar:not(.gin--edit-form) & {
@@ -153,17 +153,17 @@
 
 .toolbar-tray-open:not(.toolbar-vertical) .layout-container,
 body:not(.toolbar-tray-open) .layout-container {
-  margin-left: var(--ginSpacingDefault);
-  margin-right: var(--ginSpacingDefault);
+  margin-left: var(--gin-spacing-m);
+  margin-right: var(--gin-spacing-m);
 
   @include mq(small) {
-    margin-left: var(--ginSpacingLarge);
-    margin-right: var(--ginSpacingLarge);
+    margin-left: var(--gin-spacing-xl);
+    margin-right: var(--gin-spacing-xl);
   }
 
   @include mq(medium) {
-    margin-left: m#{i}n(5vw, var(--ginSpacingXlarge));
-    margin-right: m#{i}n(5vw, var(--ginSpacingXlarge));
+    margin-left: m#{i}n(5vw, var(--gin-spacing-xxl));
+    margin-right: m#{i}n(5vw, var(--gin-spacing-xxl));
 
     .layout-container {
       margin-left: 0;
@@ -204,11 +204,11 @@ body:not(.toolbar-tray-open) .layout-container {
   .field--name-status {
     display: flex;
     align-items: center;
-    margin-right: var(--ginSpacingMedium);
+    margin-right: var(--gin-spacing-l);
 
     .form-type--checkbox {
-      margin-top: var(--ginSpacingXsmall);
-      margin-bottom: var(--ginSpacingXsmall);
+      margin-top: var(--gin-spacing-xs);
+      margin-bottom: var(--gin-spacing-xs);
     }
   }
 }

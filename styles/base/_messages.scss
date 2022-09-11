@@ -1,13 +1,13 @@
 .messages {
   position: relative;
-  padding: var(--ginSpacingDefault);
+  padding: var(--gin-spacing-m);
   border: 2px solid transparent;
-  border-radius: var(--ginBorderMedium);
-  transition: opacity var(--ginTransitionFast);
+  border-radius: var(--gin-border-l);
+  transition: opacity var(--gin-transition-fast);
   opacity: 1;
 
   .gin--dark-mode & {
-    box-shadow: 0 6px 16px var(--colorGinLayerBorder);
+    box-shadow: 0 6px 16px var(--gin-border-color-layer);
   }
 
   &, &-list {
@@ -27,7 +27,7 @@
   }
 
   &__title {
-    font-weight: var(--ginFontWeightBold);
+    font-weight: var(--gin-font-weight-bold);
   }
 
   &__title,
@@ -38,7 +38,7 @@
   .messages__header {
     position: relative;
     background-image: none;
-    margin-bottom: var(--ginSpacingXsmall);
+    margin-bottom: var(--gin-spacing-xs);
     margin-right: 1.5em;
 
     &:before {
@@ -56,15 +56,15 @@
     position: absolute;
     top: 0;
     right: 0;
-    margin: var(--ginSpacingSmall);
+    margin: var(--gin-spacing-s);
     padding: 0;
     height: 29px;
     width: 29px;
     color: transparent;
     text-indent: -99999px;
-    border-radius: var(--ginBorderDefault);
+    border-radius: var(--gin-border-m);
     border-color: transparent !important;
-    transition: var(--ginTransition);
+    transition: var(--gin-transition);
 
     &:hover:not(:focus) {
       color: transparent;
@@ -75,7 +75,7 @@
     &:focus,
     &:hover:focus {
       .icon-close {
-        background-color: var(--colorGinAppBackground);
+        background-color: var(--gin-bg-app);
       }
     }
 
@@ -99,15 +99,15 @@
   }
 
   &.messages--info {
-    color: var(--colorGinInfoLight);
-    background-color: var(--colorGinInfoBackground);
-    border-color: var(--colorGinInfoBackground);
+    color: var(--gin-color-info-light);
+    background-color: var(--gin-bg-info);
+    border-color: var(--gin-bg-info);
 
     .messages__header {
       background: none;
 
       &:before {
-        background-color: var(--colorGinInfoLight);
+        background-color: var(--gin-color-info-light);
         mask-image: icon('info');
         mask-repeat: no-repeat;
         mask-position: center left;
@@ -116,18 +116,18 @@
 
     .button--dismiss {
       .icon-close:link {
-        background-color: var(--colorGinInfoLight);
+        background-color: var(--gin-color-info-light);
       }
     }
   }
 
   &.messages--status {
-    color: var(--colorGinGreenLight);
-    background-color: var(--colorGinGreenBackground);
+    color: var(--gin-color-green-light);
+    background-color: var(--gin-bg-green);
 
     .messages__header {
       &:before {
-        background-color: var(--colorGinGreenLight);
+        background-color: var(--gin-color-green-light);
         mask-image: icon('status');
         mask-repeat: no-repeat;
         mask-position: center left;
@@ -136,19 +136,19 @@
 
     .button--dismiss {
       .icon-close:link {
-        background-color: var(--colorGinGreenLight);
+        background-color: var(--gin-color-green-light);
       }
     }
 
   }
 
   &.messages--warning {
-    color: var(--colorGinWarningLight);
-    background-color: var(--colorGinWarningBackground);
+    color: var(--gin-color-warning-light);
+    background-color: var(--gin-bg-warning);
 
     .messages__header {
       &:before {
-        background-color: var(--colorGinWarningLight);
+        background-color: var(--gin-color-warning-light);
         mask-image: icon('warning');
         mask-repeat: no-repeat;
         mask-position: center left;
@@ -157,18 +157,18 @@
 
     .button--dismiss {
       .icon-close:link {
-        background-color: var(--colorGinWarningLight);
+        background-color: var(--gin-color-warning-light);
       }
     }
   }
 
   &--error {
-    color: var(--colorGinDangerLight);
-    background-color: var(--colorGinDangerBackground);
+    color: var(--gin-color-danger-light);
+    background-color: var(--gin-bg-danger);
 
     .messages__header {
       &:before {
-        background-color: var(--colorGinDangerLight);
+        background-color: var(--gin-color-danger-light);
         mask-image: icon('error');
         mask-repeat: no-repeat;
         mask-position: center left;
@@ -177,7 +177,7 @@
 
     .button--dismiss {
       .icon-close:link {
-        background-color: var(--colorGinDangerLight);
+        background-color: var(--gin-color-danger-light);
       }
     }
   }

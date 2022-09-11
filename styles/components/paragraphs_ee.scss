@@ -2,11 +2,11 @@
 .js .paragraphs-add-dialog--categorized .category-title,
 .js .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-label,
 .js .paragraphs-add-dialog--categorized .paragraphs-label {
-  color: var(--colorGinText);
+  color: var(--gin-color-text);
 }
 
 .js .paragraphs-add-dialog--categorized .paragraphs-button--add-more:hover .paragraphs-label {
-  color: var(--colorGinButtonText);
+  color: var(--gin-button-text);
 }
 
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .category-title,
@@ -17,7 +17,7 @@
 }
 
 .js .paragraphs-add-dialog--categorized .paragraphs-description {
-  color: var(--colorGinTextLight);
+  color: var(--gin-color-text-light);
 }
 
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-description {
@@ -55,7 +55,7 @@
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized.paragraphs-style-list .style-list
 {
   margin-top: 10px;
-  background: var(--colorGinPrimary);
+  background: var(--gin-color-primary);
   border: 0 none;
   box-shadow: none;
 }
@@ -93,12 +93,12 @@
 
     &::after {
       z-index: 1;
-      background: var(--colorGinPrimary);
+      background: var(--gin-color-primary);
     }
 
     &::before {
       z-index: 2;
-      background: var(--colorGinButtonText);
+      background: var(--gin-button-text);
       mask-image: icon('add');
       mask-repeat: no-repeat;
       mask-position: center center;
@@ -132,24 +132,24 @@
 .js .paragraphs-add-dialog--categorized .item-filter,
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .item-filter {
   font-family: inherit;
-  font-size: var(--ginFontSize);
+  font-size: var(--gin-font-size);
   padding: 12px;
   background: white;
   border: 1px solid #8e929c;
-  border-radius: var(--ginBorderDefault);
+  border-radius: var(--gin-border-m);
 }
 
 .js .paragraphs-add-dialog--categorized .search-description label,
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .search-description label {
-  font-size: var(--ginFontSizeSmallerest);
+  font-size: var(--gin-font-size-xxs);
 }
 
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .search-description label {
-  color: var(--colorGinButtonText);
+  color: var(--gin-button-text);
 }
 
 .js .paragraphs-add-dialog--categorized .paragraphs-add-dialog-row button {
-  padding: var(--ginSpacingXsmall);
+  padding: var(--gin-spacing-xs);
   max-width: 215px;
 }
 
@@ -160,14 +160,14 @@
 
 .js .paragraphs-add-dialog--categorized .dialog-header,
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .dialog-header {
-  margin: var(--ginSpacingDefault) 0;
+  margin: var(--gin-spacing-m) 0;
 }
 
 .js .paragraphs-add-dialog--categorized .paragraphs-add-dialog-list,
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-add-dialog-list {
   max-width: unset;
-  margin: 0 calc(var(--ginSpacingXsmall) * -1);
-  width: calc(100% + var(--ginSpacingDefault));
+  margin: 0 calc(var(--gin-spacing-xs) * -1);
+  width: calc(100% + var(--gin-spacing-m));
 }
 
 .js .paragraphs-add-dialog--categorized .paragraphs-add-dialog-row,
@@ -177,7 +177,7 @@
 
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-add-dialog-row {
   padding: 0;
-  margin: var(--ginSpacingXsmall);
+  margin: var(--gin-spacing-xs);
 }
 
 .js .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-add-dialog-row, .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized.paragraphs-style-list .paragraphs-add-dialog-row {
@@ -190,22 +190,22 @@
 
 // In between add buttons
 .paragraphs_ee__add-in-between__row:last-of-type .paragraphs_ee__add-in-between__wrapper {
-  box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
+  box-shadow: 0 1px 2px var(--gin-color-primary-light);
 }
 
 .js .paragraphs_ee__add-in-between__wrapper .paragraphs_ee__add-in-between__button {
-  color: var(--colorText);
+  color: var(--gin-color-text);
 }
 
 .js .paragraphs_ee__add-in-between__wrapper .paragraphs_ee__add-in-between__button,
 .js .paragraphs_ee__add-in-between__wrapper .paragraphs_ee__add-in-between__button.last {
   &::before {
-    border: 1px solid var(--colorGinPrimary) !important;
-    box-shadow: 0 0 1px var(--colorGinPrimary);
+    border: 1px solid var(--gin-color-primary) !important;
+    box-shadow: 0 0 1px var(--gin-color-primary);
   }
 
   &:focus::before {
-    box-shadow: 0 0 0 1px var(--colorGinFocusBorder),
-                0 0 0 4px var(--colorGinFocus);
+    box-shadow: 0 0 0 1px var(--gin-color-focus-border),
+                0 0 0 4px var(--gin-color-focus);
   }
 }

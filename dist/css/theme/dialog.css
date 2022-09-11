@@ -6,7 +6,7 @@
 .ui-dialog [open] .claro-details__summary--accordion-item,
 .ui-dialog [open] .claro-details__summary--vertical-tabs-item,
 .ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link {
-  color: var(--colorGinPrimary);
+  color: var(--gin-color-primary);
   text-decoration: none;
 }
 
@@ -18,7 +18,7 @@
 .ui-dialog [open] .claro-details__summary--accordion-item:hover,
 .ui-dialog [open] .claro-details__summary--vertical-tabs-item:hover,
 .ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link:hover {
-  color: var(--colorGinPrimaryHover);
+  color: var(--gin-color-primary-hover);
 }
 
 .ui-dialog a:active,
@@ -29,17 +29,17 @@
 .ui-dialog [open] .claro-details__summary--accordion-item:active,
 .ui-dialog [open] .claro-details__summary--vertical-tabs-item:active,
 .ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link:active {
-  color: var(--colorGinPrimaryActive);
+  color: var(--gin-color-primary-active);
 }
 
 .ui-dialog .is-horizontal .tabs__link:hover,
 .ui-dialog .claro-details__summary:hover,
 .ui-dialog .action-link:hover {
-  color: var(--colorGinPrimaryHover);
+  color: var(--gin-color-primary-hover);
 }
 
 .ui-dialog .claro-details[open] > .claro-details__summary:focus {
-  color: var(--colorGinPrimaryActive);
+  color: var(--gin-color-primary-active);
 }
 
 .ui-dialog .form-boolean--type-checkbox:checked,
@@ -53,7 +53,7 @@
 .ui-dialog [open] > .claro-details__summary--vertical-tabs-item:not(:focus):not(:active)::after,
 .ui-dialog .collapse-processed[open] > .claro-details__summary--vertical-tabs-item .details-title:not(:focus)::after,
 .ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link::before {
-  border-color: var(--colorGinPrimary);
+  border-color: var(--gin-color-primary);
 }
 
 .ui-dialog .form-boolean--type-checkbox:checked:hover,
@@ -67,7 +67,7 @@
 .ui-dialog [open] > .claro-details__summary--vertical-tabs-item:not(:focus):not(:active)::after:hover,
 .ui-dialog .collapse-processed[open] > .claro-details__summary--vertical-tabs-item .details-title:not(:focus)::after:hover,
 .ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link::before:hover {
-  border-color: var(--colorGinPrimaryHover);
+  border-color: var(--gin-color-primary-hover);
 }
 
 .ui-dialog .form-boolean--type-checkbox:checked:active,
@@ -81,32 +81,32 @@
 .ui-dialog [open] > .claro-details__summary--vertical-tabs-item:not(:focus):not(:active)::after:active,
 .ui-dialog .collapse-processed[open] > .claro-details__summary--vertical-tabs-item .details-title:not(:focus)::after:active,
 .ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link::before:active {
-  border-color: var(--colorGinPrimaryActive);
+  border-color: var(--gin-color-primary-active);
 }
 
 .ui-dialog .button,
 .ui-dialog .dropbutton__item:first-of-type > *,
 .ui-dialog .dropbutton__toggle {
-  font-size: var(--ginFontSizeSmall);
-  font-weight: var(--ginFontWeightBold);
-  color: var(--colorGinPrimary);
+  font-size: var(--gin-font-size-s);
+  font-weight: var(--gin-font-weight-semibold);
+  color: var(--gin-color-primary);
   background-color: transparent;
   box-shadow: none;
-  transition: var(--ginTransition);
+  transition: var(--gin-transition);
 }
 
 @media (min-width: 80em) {
   .ui-dialog .button,
 .ui-dialog .dropbutton__item:first-of-type > *,
 .ui-dialog .dropbutton__toggle {
-    font-size: var(--ginFontSize);
+    font-size: var(--gin-font-size);
   }
 }
 
 .ui-dialog .button:hover,
 .ui-dialog .dropbutton__item:first-of-type > *:hover,
 .ui-dialog .dropbutton__toggle:hover {
-  background-color: var(--colorGinPrimaryHover);
+  background-color: var(--gin-color-primary-hover);
 }
 
 .ui-dialog .button:active, .ui-dialog .button:focus,
@@ -114,7 +114,7 @@
 .ui-dialog .dropbutton__item:first-of-type > *:focus,
 .ui-dialog .dropbutton__toggle:active,
 .ui-dialog .dropbutton__toggle:focus {
-  background-color: var(--colorGinPrimaryActive);
+  background-color: var(--gin-color-primary-active);
 }
 
 .ui-dialog .button:hover, .ui-dialog .button:active, .ui-dialog .button:focus,
@@ -124,33 +124,33 @@
 .ui-dialog .dropbutton__toggle:hover,
 .ui-dialog .dropbutton__toggle:active,
 .ui-dialog .dropbutton__toggle:focus {
-  color: var(--colorGinButtonText);
+  color: var(--gin-button-text);
 }
 
 .ui-dialog .button,
 .ui-dialog .button:not(:focus),
 .ui-dialog .form-actions .button,
 .ui-dialog .action-link--icon-trash.action-link {
-  padding: calc(var(--ginSpacingDefault) - 2px) calc(var(--ginSpacingMedium) - 2px);
-  border: 2px solid var(--colorGinPrimary) !important;
-  border-radius: var(--ginBorderDefault);
-  box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
-  transition: var(--ginTransition);
+  padding: calc(var(--gin-spacing-m) - 2px) calc(var(--gin-spacing-l) - 2px);
+  border: 2px solid var(--gin-color-primary) !important;
+  border-radius: var(--gin-border-m);
+  box-shadow: 0 1px 2px var(--gin-color-primary-light);
+  transition: var(--gin-transition);
 }
 
 .gin--dark-mode .ui-dialog .button,
 .gin--dark-mode .ui-dialog .button:not(:focus),
 .gin--dark-mode .ui-dialog .form-actions .button,
 .gin--dark-mode .ui-dialog .action-link--icon-trash.action-link {
-  box-shadow: 0 2px 18px var(--colorGinButtonShadow);
+  box-shadow: 0 2px 18px var(--gin-button-shadow);
 }
 
 .ui-dialog .button:hover,
 .ui-dialog .button:not(:focus):hover,
 .ui-dialog .form-actions .button:hover,
 .ui-dialog .action-link--icon-trash.action-link:hover {
-  background-color: var(--colorGinPrimaryHover);
-  border-color: var(--colorGinPrimaryHover) !important;
+  background-color: var(--gin-color-primary-hover);
+  border-color: var(--gin-color-primary-hover) !important;
 }
 
 .ui-dialog .button:active, .ui-dialog .button:focus,
@@ -160,7 +160,7 @@
 .ui-dialog .form-actions .button:focus,
 .ui-dialog .action-link--icon-trash.action-link:active,
 .ui-dialog .action-link--icon-trash.action-link:focus {
-  border-color: var(--colorGinPrimaryActive) !important;
+  border-color: var(--gin-color-primary-active) !important;
 }
 
 .ui-dialog .button:hover, .ui-dialog .button:active, .ui-dialog .button:focus, .ui-dialog .button:hover:focus,
@@ -176,7 +176,7 @@
 .ui-dialog .action-link--icon-trash.action-link:active,
 .ui-dialog .action-link--icon-trash.action-link:focus,
 .ui-dialog .action-link--icon-trash.action-link:hover:focus {
-  color: var(--colorGinButtonText);
+  color: var(--gin-button-text);
 }
 
 [dir="ltr"] .ui-dialog .form-actions .button {
@@ -188,37 +188,37 @@
 }
 
 .ui-dialog .button.button--small {
-  padding: var(--ginSpacingXsmall) var(--ginSpacingDefault);
-  border-radius: var(--ginBorderSmall);
+  padding: var(--gin-spacing-xs) var(--gin-spacing-m);
+  border-radius: var(--gin-border-s);
 }
 
 .ui-dialog .button.button--extrasmall {
-  padding: var(--ginSpacingTiny) var(--ginSpacingSmall);
-  border-radius: var(--ginBorderSmall);
+  padding: var(--gin-spacing-xxs) var(--gin-spacing-s);
+  border-radius: var(--gin-border-s);
 }
 
 .ui-dialog .button--primary,
 .ui-dialog .button--primary:not(:focus),
 .ui-dialog .ief-entity-submit {
-  background: var(--colorGinPrimary);
+  background: var(--gin-color-primary);
 }
 
 [dir="ltr"] .ui-dialog .button--primary,
 [dir="ltr"] .ui-dialog .button--primary:not(:focus),
 [dir="ltr"] .ui-dialog .ief-entity-submit {
-  box-shadow: .1em .25em .5em var(--colorGinPrimaryLight);
+  box-shadow: .1em .25em .5em var(--gin-color-primary-light);
 }
 
 [dir="rtl"] .ui-dialog .button--primary,
 [dir="rtl"] .ui-dialog .button--primary:not(:focus),
 [dir="rtl"] .ui-dialog .ief-entity-submit {
-  box-shadow: -0.1em .25em .5em var(--colorGinPrimaryLight);
+  box-shadow: -0.1em .25em .5em var(--gin-color-primary-light);
 }
 
 .ui-dialog .button--primary:hover,
 .ui-dialog .button--primary:not(:focus):hover,
 .ui-dialog .ief-entity-submit:hover {
-  background-color: var(--colorGinPrimaryHover);
+  background-color: var(--gin-color-primary-hover);
 }
 
 .ui-dialog .button--primary:active, .ui-dialog .button--primary:focus,
@@ -226,7 +226,7 @@
 .ui-dialog .button--primary:not(:focus):focus,
 .ui-dialog .ief-entity-submit:active,
 .ui-dialog .ief-entity-submit:focus {
-  background-color: var(--colorGinPrimaryActive);
+  background-color: var(--gin-color-primary-active);
 }
 
 .ui-dialog .button--primary, .ui-dialog .button--primary:hover, .ui-dialog .button--primary:active, .ui-dialog .button--primary:focus,
@@ -238,38 +238,38 @@
 .ui-dialog .ief-entity-submit:hover,
 .ui-dialog .ief-entity-submit:active,
 .ui-dialog .ief-entity-submit:focus {
-  color: var(--colorGinButtonText);
+  color: var(--gin-button-text);
 }
 
 .ui-dialog a.button:hover,
 .ui-dialog a.button:active {
-  color: var(--colorGinButtonText);
+  color: var(--gin-button-text);
 }
 
 .gin--dark-mode .ui-dialog a.button--primary:hover,
 .gin--dark-mode .ui-dialog a.button--primary:active,
 .gin--dark-mode .ui-dialog a.button--primary:focus,
 .gin--dark-mode .ui-dialog a.button--primary:focus:hover {
-  color: var(--colorGinAppBackground);
+  color: var(--gin-bg-app);
 }
 
 .ui-dialog .button.button:disabled, .ui-dialog .button.button:disabled:hover, .ui-dialog .button.button:disabled:active, .ui-dialog .button.button:disabled:focus, .ui-dialog .button.button.is-disabled, .ui-dialog .button.button.is-disabled:hover, .ui-dialog .button.button.is-disabled:active, .ui-dialog .button.button.is-disabled:focus {
-  border: 2px solid var(--colorGinDisabled) !important;
+  border: 2px solid var(--gin-color-disabled) !important;
 }
 
 .gin--dark-mode .ui-dialog .button.button:disabled, .gin--dark-mode .ui-dialog .button.button.is-disabled {
-  color: var(--colorGinDisabled);
-  background-color: var(--colorGinInputBackground);
+  color: var(--gin-color-disabled);
+  background-color: var(--gin-bg-input);
 }
 
 .ui-dialog .action-link.action-link--icon-trash {
   min-height: 48px;
-  padding: calc(var(--ginSpacingSmall) - 1px) calc(var(--ginSpacingMedium) - 2px);
+  padding: calc(var(--gin-spacing-s) - 1px) calc(var(--gin-spacing-l) - 2px);
   box-sizing: border-box;
 }
 
 .ui-dialog .action-link.action-link--icon-trash, .ui-dialog .action-link.action-link--icon-trash:hover, .ui-dialog .action-link.action-link--icon-trash:active, .ui-dialog .action-link.action-link--icon-trash:focus, .ui-dialog .action-link.action-link--icon-trash:focus:hover {
-  border: 2px solid var(--colorGinDanger) !important;
+  border: 2px solid var(--gin-color-danger) !important;
 }
 
 .ui-dialog .multiple-fields-remove-button.button {
@@ -285,33 +285,33 @@
 }
 
 .ui-dialog .form-element {
-  color: var(--colorGinText);
-  background-color: var(--colorGinInputBackground);
-  border: 1px solid var(--colorGinFormElementBorder);
-  border-radius: var(--ginBorderDefault);
+  color: var(--gin-color-text);
+  background-color: var(--gin-bg-input);
+  border: 1px solid var(--gin-border-color-form-element);
+  border-radius: var(--gin-border-m);
   box-sizing: border-box;
-  transition: var(--ginTransition);
+  transition: var(--gin-transition);
 }
 
 .ui-dialog .form-element:hover {
-  border-color: var(--colorGinText);
-  box-shadow: inset 0 0 0 1px var(--colorGinText);
+  border-color: var(--gin-color-text);
+  box-shadow: inset 0 0 0 1px var(--gin-color-text);
 }
 
 .ui-dialog .form-element--small, .ui-dialog .form-element--extrasmall {
-  font-size: var(--ginFontSizeSmall);
+  font-size: var(--gin-font-size-s);
   line-height: 1.5;
-  border-radius: var(--ginBorderSmall);
+  border-radius: var(--gin-border-s);
 }
 
 .ui-dialog .form-element[disabled], .ui-dialog .form-element[disabled]:hover {
-  color: var(--colorGinDisabled);
-  border-color: var(--colorGinDisabled);
+  color: var(--gin-color-disabled);
+  border-color: var(--gin-color-disabled);
   box-shadow: none;
 }
 
 .ui-dialog .form-textarea-wrapper {
-  border-radius: var(--ginBorderDefault);
+  border-radius: var(--gin-border-m);
 }
 
 .ui-dialog .form-textarea-wrapper textarea {
@@ -339,25 +339,25 @@
 }
 
 .ui-dialog .password-strength__title {
-  color: var(--colorGinTextLight);
+  color: var(--gin-color-text-light);
 }
 
 .ui-dialog .password-strength__text {
-  color: var(--colorGinTitle);
+  color: var(--gin-color-title);
 }
 
 .ui-dialog .password-suggestions {
-  color: var(--colorGinTextLight);
-  border: 1px solid var(--colorGinLayer2Border);
+  color: var(--gin-color-text-light);
+  border: 1px solid var(--gin-border-color-layer2);
   background-color: transparent;
 }
 
 [dir="ltr"] .ui-dialog .form-element--type-select {
-  padding-right: calc(var(--ginSpacingXsmall) + var(--ginSpacingLarge) - 1px);
+  padding-right: calc(var(--gin-spacing-xs) + var(--gin-spacing-xl) - 1px);
 }
 
 [dir="rtl"] .ui-dialog .form-element--type-select {
-  padding-left: calc(var(--ginSpacingXsmall) + var(--ginSpacingLarge) - 1px);
+  padding-left: calc(var(--gin-spacing-xs) + var(--gin-spacing-xl) - 1px);
 }
 
 .gin--dark-mode .ui-dialog .form-element--type-select {
@@ -365,7 +365,7 @@
 }
 
 .ui-dialog .form-element--type-select--small {
-  font-size: var(--ginFontSizeSmaller);
+  font-size: var(--gin-font-size-xs);
   min-height: 2.25rem;
   line-height: 1.4;
   padding-top: .474rem;
@@ -383,24 +383,24 @@
 .ui-dialog .form-boolean {
   width: 21px;
   height: 21px;
-  border-color: var(--colorGinFormElementBorder);
-  border-radius: var(--ginBorderXSmall);
+  border-color: var(--gin-border-color-form-element);
+  border-radius: var(--gin-border-xs);
 }
 
 .gin--dark-mode .ui-dialog .form-boolean--type-checkbox:not(:checked) {
-  background: var(--colorGinInputBackground);
+  background: var(--gin-bg-input);
 }
 
 .ui-dialog .form-boolean--type-checkbox:checked {
-  background-color: var(--colorGinPrimary);
+  background-color: var(--gin-color-primary);
 }
 
 .ui-dialog .form-boolean--type-checkbox:checked:hover {
-  background-color: var(--colorGinPrimaryHover);
+  background-color: var(--gin-color-primary-hover);
 }
 
 .ui-dialog .form-boolean--type-checkbox:checked:active {
-  background-color: var(--colorGinPrimaryActive);
+  background-color: var(--gin-color-primary-active);
 }
 
 .gin--dark-mode .ui-dialog .form-boolean--type-checkbox:checked {
@@ -425,7 +425,7 @@
   vertical-align: top;
   width: 2.5rem;
   height: 1.5rem;
-  border-radius: var(--ginBorderMedium);
+  border-radius: var(--gin-border-l);
   box-sizing: border-box;
 }
 
@@ -435,16 +435,16 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  -webkit-clip-path: circle(var(--ginSpacingMedium) at 50% 50%);
-          clip-path: circle(var(--ginSpacingMedium) at 50% 50%);
-  background-color: var(--colorGinDisabled);
+  -webkit-clip-path: circle(var(--gin-spacing-l) at 50% 50%);
+          clip-path: circle(var(--gin-spacing-l) at 50% 50%);
+  background-color: var(--gin-color-disabled);
   border: 3px solid transparent;
-  border-radius: var(--ginBorderMedium);
+  border-radius: var(--gin-border-l);
   box-sizing: border-box;
 }
 
 .gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner {
-  background-color: var(--colorGinInputBackground);
+  background-color: var(--gin-bg-input);
 }
 
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner:before {
@@ -466,7 +466,7 @@
 }
 
 .gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox .checkbox-toggle__inner:before {
-  background-color: var(--colorGinFormElementBorder);
+  background-color: var(--gin-border-color-form-element);
 }
 
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input {
@@ -504,19 +504,19 @@
 }
 
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle {
-  border-color: var(--colorGinPrimaryLightActive);
+  border-color: var(--gin-color-primary-light-active);
 }
 
 .gin--high-contrast-mode .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle {
-  border-color: var(--colorGinBorder);
+  border-color: var(--gin-border-color);
 }
 
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner {
-  background-color: var(--colorGinSwitch);
+  background-color: var(--gin-switch);
 }
 
 .gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner {
-  background-color: var(--colorGinPrimaryLightActive);
+  background-color: var(--gin-color-primary-light-active);
 }
 
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner:before {
@@ -532,15 +532,15 @@
 }
 
 .gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner:before {
-  background-color: var(--colorGinPrimaryHover);
+  background-color: var(--gin-color-primary-hover);
 }
 
 .gin--high-contrast-mode .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:checked ~ .checkbox-toggle .checkbox-toggle__inner:before {
-  background-color: var(--colorGinBorder);
+  background-color: var(--gin-border-color);
 }
 
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:active ~ .checkbox-toggle .checkbox-toggle__inner, .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:focus ~ .checkbox-toggle .checkbox-toggle__inner {
-  box-shadow: 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus);
+  box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }
 
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:disabled {
@@ -548,7 +548,7 @@
 }
 
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:disabled ~ .checkbox-toggle, .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:disabled ~ .checkbox-toggle:hover, .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:disabled:checked ~ .checkbox-toggle .checkbox-toggle__inner, .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:disabled:checked ~ .checkbox-toggle:hover .checkbox-toggle__inner {
-  background-color: var(--colorGinDisabled);
+  background-color: var(--gin-color-disabled);
 }
 
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:disabled ~ .checkbox-toggle::before, .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:disabled ~ .checkbox-toggle:hover::before, .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:disabled:checked ~ .checkbox-toggle .checkbox-toggle__inner::before, .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox input:disabled:checked ~ .checkbox-toggle:hover .checkbox-toggle__inner::before {
@@ -560,68 +560,68 @@
   z-index: 1;
   position: relative;
   padding-bottom: 0;
-  color: var(--colorGinText);
+  color: var(--gin-color-text);
 }
 
 [dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox label {
-  padding-left: var(--ginSpacingTiny);
+  padding-left: var(--gin-spacing-xxs);
 }
 
 [dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox label {
-  padding-right: var(--ginSpacingTiny);
+  padding-right: var(--gin-spacing-xxs);
 }
 
 .gin--dark-mode .ui-dialog .form-boolean:hover, .gin--dark-mode .ui-dialog .form-boolean:active {
   box-shadow: none;
-  border-color: var(--colorGinText);
+  border-color: var(--gin-color-text);
 }
 
 .ui-dialog .form-boolean--type-radio, .ui-dialog .form-boolean--type-radio:hover, .ui-dialog .form-boolean--type-radio:active, .ui-dialog .form-boolean--type-radio:focus, .ui-dialog .form-boolean--type-radio:hover:focus {
   background-image: none;
-  background-color: var(--colorGinInputBackground);
-  border-color: var(--colorGinFormElementBorder);
+  background-color: var(--gin-bg-input);
+  border-color: var(--gin-border-color-form-element);
   border-radius: 50%;
 }
 
 .ui-dialog .form-boolean--type-radio:hover {
-  box-shadow: inset 0 0 0 1px var(--colorGinLayer2Border);
+  box-shadow: inset 0 0 0 1px var(--gin-border-color-layer2);
 }
 
 .ui-dialog .form-boolean--type-radio:hover, .gin--dark-mode .ui-dialog .form-boolean--type-radio:hover {
-  border-color: var(--colorGinText);
+  border-color: var(--gin-color-text);
 }
 
 .ui-dialog .form-boolean--type-radio:active, .ui-dialog .form-boolean--type-radio:focus {
-  box-shadow: inset 0 0 0 1px var(--colorGinLayer2Border), 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus);
+  box-shadow: inset 0 0 0 1px var(--gin-border-color-layer2), 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }
 
 .ui-dialog .form-boolean--type-radio:checked:not(:disabled), .ui-dialog .form-boolean--type-radio:checked:not(:disabled):hover {
   background-image: none;
-  background-color: var(--colorGinLayerBackground);
-  box-shadow: inset 0 0 0 5px var(--colorGinPrimary);
+  background-color: var(--gin-bg-layer);
+  box-shadow: inset 0 0 0 5px var(--gin-color-primary);
 }
 
 .ui-dialog .form-boolean--type-radio:checked:not(:disabled):active, .ui-dialog .form-boolean--type-radio:checked:not(:disabled):focus, .ui-dialog .form-boolean--type-radio:checked:not(:disabled):hover:focus {
-  box-shadow: inset 0 0 0 5px var(--colorGinPrimary), 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus);
+  box-shadow: inset 0 0 0 5px var(--gin-color-primary), 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }
 
 .ui-dialog .form-boolean--type-radio:checked:disabled, .ui-dialog .form-boolean--type-radio:checked:disabled:hover {
   background-image: none;
-  background-color: var(--colorGinDisabledText);
-  border-color: var(--colorGinDisabled);
-  box-shadow: inset 0 0 0 5px var(--colorGinDisabled);
+  background-color: var(--gin-color-disabled-text);
+  border-color: var(--gin-color-disabled);
+  box-shadow: inset 0 0 0 5px var(--gin-color-disabled);
 }
 
 .ui-dialog .form-boolean--type-checkbox[disabled]:checked {
-  border-color: var(--colorGinDisabled);
-  background-color: var(--colorGinDisabled);
+  border-color: var(--gin-color-disabled);
+  background-color: var(--gin-color-disabled);
   box-shadow: none;
 }
 
 .ui-dialog .form-radios .form-type--boolean,
 .ui-dialog .form-checkboxes .form-type--boolean {
-  margin-top: var(--ginSpacingXsmall);
-  margin-bottom: var(--ginSpacingXsmall);
+  margin-top: var(--gin-spacing-xs);
+  margin-bottom: var(--gin-spacing-xs);
 }
 
 .ui-dialog .form-actions {
@@ -636,13 +636,13 @@
 }
 
 .ui-dialog fieldset:not(.fieldgroup) {
-  color: var(--colorGinTextLight);
-  padding-top: var(--ginSpacingXsmall);
+  color: var(--gin-color-text-light);
+  padding-top: var(--gin-spacing-xs);
   padding-left: 0;
   padding-right: 0;
   background: transparent;
-  border-color: var(--colorGinBorder);
-  border-radius: var(--ginBorderDefault);
+  border-color: var(--gin-border-color);
+  border-radius: var(--gin-border-m);
   box-shadow: none;
 }
 
@@ -657,22 +657,22 @@
 .ui-dialog .fieldset__label,
 .ui-dialog .fieldset__label--group,
 .ui-dialog .form-item__label {
-  font-size: var(--ginFontSizeSmall);
-  font-weight: var(--ginFontWeightSemiBold);
-  color: var(--colorGinTitle);
+  font-size: var(--gin-font-size-s);
+  font-weight: var(--gin-font-weight-semibold);
+  color: var(--gin-color-title);
   margin-top: 0;
-  margin-bottom: var(--ginSpacingXsmall);
+  margin-bottom: var(--gin-spacing-xs);
 }
 
 .ui-dialog .form-item__label.has-error,
 .ui-dialog .form-item__error-message {
-  color: var(--colorGinDanger);
+  color: var(--gin-color-danger);
 }
 
 .ui-dialog .form-item__description,
 .ui-dialog .fieldset__description {
   max-width: 520px;
-  color: var(--colorGinTextLight);
+  color: var(--gin-color-text-light);
 }
 
 .ui-dialog .form-item__label.form-required::after,
@@ -681,7 +681,7 @@
 .ui-dialog .horizontal-tab-button .form-required::after,
 .ui-dialog .vertical-tabs__menu-link .form-required::after {
   content: "*";
-  color: var(--colorGinDanger);
+  color: var(--gin-color-danger);
   line-height: 1;
   margin-right: .15em;
   margin-left: .15em;
@@ -695,7 +695,7 @@
 
 .ui-dialog .form-item__warning {
   display: inline-block;
-  margin-top: var(--ginSpacingXsmall);
+  margin-top: var(--gin-spacing-xs);
 }
 
 [dir="ltr"] .ui-dialog .js .form-autocomplete {
@@ -712,7 +712,7 @@
 }
 
 .ui-dialog .required-mark::after {
-  background: var(--colorGinDanger);
+  background: var(--gin-color-danger);
   -webkit-mask-image: url("../../media/sprite.svg#asterisk-view");
           mask-image: url("../../media/sprite.svg#asterisk-view");
   -webkit-mask-position: center center;
@@ -739,17 +739,17 @@
 }
 
 [dir="ltr"] .ui-dialog .js input.form-linkit-autocomplete {
-  padding-right: var(--ginSpacingLarge);
+  padding-right: var(--gin-spacing-xl);
   background-position: right 8px center;
 }
 
 [dir="rtl"] .ui-dialog .js input.form-linkit-autocomplete {
-  padding-left: var(--ginSpacingLarge);
+  padding-left: var(--gin-spacing-xl);
   background-position: left 8px center;
 }
 
 .ui-dialog .claro-autocomplete {
-  width: calc(100% - var(--ginSpacingDefault));
+  width: calc(100% - var(--gin-spacing-m));
 }
 
 .ui-dialog .claro-autocomplete .form-autocomplete {
@@ -757,7 +757,7 @@
 }
 
 .ui-dialog .no-touchevents .form-element--type-select.form-element--extrasmall {
-  font-size: var(--ginFontSizeSmall);
+  font-size: var(--gin-font-size-s);
   line-height: 1.5;
   min-height: 1.75rem;
 }
@@ -767,11 +767,11 @@
 }
 
 [dir="ltr"] .ui-dialog .image-style-new .form-item {
-  margin-right: var(--ginSpacingTiny);
+  margin-right: var(--gin-spacing-xxs);
 }
 
 [dir="rtl"] .ui-dialog .image-style-new .form-item {
-  margin-left: var(--ginSpacingTiny);
+  margin-left: var(--gin-spacing-xxs);
 }
 
 .ui-dialog tr .form-item {
@@ -780,7 +780,7 @@
 }
 
 .ui-dialog .container-inline .form-item {
-  margin-top: var(--ginSpacingDensitySmall);
-  margin-bottom: var(--ginSpacingDensitySmall);
+  margin-top: var(--gin-spacing-density-s);
+  margin-bottom: var(--gin-spacing-density-s);
 }
 

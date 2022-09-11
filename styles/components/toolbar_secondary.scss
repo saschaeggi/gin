@@ -1,6 +1,6 @@
 .gin-secondary-toolbar__layout-container *:focus {
   outline: none;
-  box-shadow: 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus);
+  box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }
 
 .gin-secondary-toolbar {
@@ -8,11 +8,11 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding-top: var(--ginSpacingXsmall);
-  padding-bottom: var(--ginSpacingXsmall);
+  padding-top: var(--gin-spacing-xs);
+  padding-bottom: var(--gin-spacing-xs);
   margin-top: -1px;
-  height: var(--ginToolbarSecondaryHeight);
-  border-bottom: 1px solid var(--colorGinSecondaryBorder);
+  height: var(--gin-toolbar-secondary-height);
+  border-bottom: 1px solid var(--gin-border-color-secondary);
   box-sizing: border-box;
 
   @include mq(medium) {
@@ -24,9 +24,9 @@
     position: sticky;
     top: 0;
     margin-top: 0;
-    height: var(--ginToolbarSecondaryHeight);
+    height: var(--gin-toolbar-secondary-height);
     background: rgba(#fff, .98);
-    border-bottom: 1px solid var(--colorGinLayerBorder);
+    border-bottom: 1px solid var(--gin-border-color-layer);
     box-sizing: border-box;
 
     @supports (backdrop-filter: blur()) {
@@ -44,7 +44,7 @@
     }
 
     .gin--high-contrast-mode & {
-      background: var(--colorGinAppBackground);
+      background: var(--gin-bg-app);
       backdrop-filter: none;
     }
   }
@@ -52,7 +52,7 @@
   .gin--edit-form & {
     @include mq(ultra) {
       position: relative;
-      left: calc(50% - var(--ginSpacingXlarge));
+      left: calc(50% - var(--gin-spacing-xxl));
       transform: translateX(-50%);
     }
   }
@@ -61,14 +61,14 @@
     display: flex;
     align-items: center;
     width: 100%;
-    margin: 0 var(--ginSpacingDefault);
+    margin: 0 var(--gin-spacing-m);
 
     @include mq(small) {
-      margin: 0 var(--ginSpacingLarge);
+      margin: 0 var(--gin-spacing-xl);
     }
 
     @include mq(medium) {
-      margin: 0 m#{i}n(5vw, var(--ginSpacingXlarge));
+      margin: 0 m#{i}n(5vw, var(--gin-spacing-xxl));
     }
   }
 
@@ -80,20 +80,20 @@
 .gin-breadcrumb-wrapper {
   flex-grow: 1;
   white-space: nowrap;
-  margin-right: var(--ginSpacingLarge);
+  margin-right: var(--gin-spacing-xl);
 }
 
 .gin-back-to-admin {
-  font-family: var(--ginFont);
-  font-size: var(--ginFontSizeSmaller);
-  font-weight: var(--ginFontWeightNormal);;
+  font-family: var(--gin-font);
+  font-size: var(--gin-font-size-xs);
+  font-weight: var(--gin-font-weight-normal);;
   line-height: 2;
-  color: var(--colorGinTextLight);
+  color: var(--gin-color-text-light);
   text-decoration: none;
   position: relative;
   padding-left: 2em;
   border-bottom: 0 none;
-  border-radius: var(--ginBorderTiny);
+  border-radius: var(--gin-border-xxs);
 
   &::before {
     content: "";
@@ -101,20 +101,20 @@
     position: absolute;
     top: 50%;
     left: 0;
-    width: var(--iconGinSecondaryToolbar);
-    height: var(--iconGinSecondaryToolbar);
+    width: var(--gin-icon-size-toolbar-secondary);
+    height: var(--gin-icon-size-toolbar-secondary);
     transform: translateY(-50%);
-    background-color: var(--colorGinIcons);
+    background-color: var(--gin-icon-color);
     mask-image: icon('backtosite');
     mask-size: 100% 100%;
     mask-position: center center;
   }
 
   &:hover {
-    color: var(--colorGinPrimaryHover);
+    color: var(--gin-color-primary-hover);
 
     &::before {
-      background-color: var(--colorGinPrimaryHover);
+      background-color: var(--gin-color-primary-hover);
     }
   }
 }
@@ -166,7 +166,7 @@
     display: block;
 
     .toolbar-bar {
-      height: var(--ginToolbarHeight);
+      height: var(--gin-toolbar-height);
       z-index: 102;
 
       .toolbar-tab {
@@ -174,13 +174,13 @@
         position: relative;
 
         &:hover, &:focus-within {
-          border-radius: var(--ginBorderSmall) var(--ginBorderSmall) 0 0;
+          border-radius: var(--gin-border-s) var(--gin-border-s) 0 0;
 
           > .toolbar-item {
-            color: var(--colorGinTitle);
+            color: var(--gin-color-title);
 
             &:before {
-              background: var(--colorGinTitle);
+              background: var(--gin-color-title);
             }
           }
 
@@ -191,11 +191,11 @@
 
         .toolbar-item {
           font-size: 0;
-          color: var(--colorGinTextLight);
+          color: var(--gin-color-text-light);
           width: 32px;
           height: 32px;
           margin: 0;
-          border-radius: var(--ginBorderSmall) var(--ginBorderSmall) 0 0;
+          border-radius: var(--gin-border-s) var(--gin-border-s) 0 0;
 
           &:before {
             top: 0;
@@ -203,7 +203,7 @@
           }
 
           &:focus {
-            border-radius: var(--ginBorderSmall);
+            border-radius: var(--gin-border-s);
           }
 
           &:focus ~ .toolbar-tray {
@@ -212,17 +212,17 @@
 
           &:hover,
           &:focus {
-            color: var(--colorGinTitle);
+            color: var(--gin-color-title);
             background: none;
 
             &::before {
-              background-color: var(--colorGinTitle);
+              background-color: var(--gin-color-title);
             }
           }
 
           &:focus,
           &:hover:focus {
-            box-shadow: 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus);
+            box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
           }
         }
 
@@ -230,7 +230,7 @@
         &:focus {
           .trigger {
             text-decoration: none;
-            background: var(--colorGinLayer3Background);
+            background: var(--gin-bg-layer3);
           }
         }
 
@@ -238,36 +238,36 @@
           position: absolute;
           left: 0;
           width: 170px;
-          background-color: var(--colorGinLayer3Background);
+          background-color: var(--gin-bg-layer3);
           border-bottom: 0 none;
-          border-radius: 0 var(--ginBorderMedium) var(--ginBorderMedium) var(--ginBorderMedium);
-          box-shadow: var(--ginShadowLevel2);
+          border-radius: 0 var(--gin-border-l) var(--gin-border-l) var(--gin-border-l);
+          box-shadow: var(--gin-shadow-l2);
 
           a {
-            color: var(--colorGinPrimary);
-            padding: var(--ginSpacingSmall) var(--ginSpacingDefault);
-            border-radius: var(--ginBorderSmall);
-            font-size: var(--ginFontSizeSmaller);
+            color: var(--gin-color-primary);
+            padding: var(--gin-spacing-s) var(--gin-spacing-m);
+            border-radius: var(--gin-border-s);
+            font-size: var(--gin-font-size-xs);
 
             &:hover, &:active {
-              color: var(--colorGinButtonText);
-              background-color: var(--colorGinPrimary);
+              color: var(--gin-button-text);
+              background-color: var(--gin-color-primary);
             }
 
             // Has icon
             &.action-link {
               &::before {
-                background-color: var(--colorGinPrimary);
+                background-color: var(--gin-color-primary);
               }
 
               &:hover::before {
-                background-color: var(--colorGinButtonText);
+                background-color: var(--gin-button-text);
               }
             }
           }
 
           .toolbar-lining:not(:empty) {
-            padding: var(--ginSpacingXsmall);
+            padding: var(--gin-spacing-xs);
           }
 
           // Hide icons for custom modules
@@ -288,7 +288,7 @@
         .toolbar-tray {
           left: auto;
           right: 0;
-          border-radius: var(--ginBorderMedium) 0 var(--ginBorderMedium) var(--ginBorderMedium);
+          border-radius: var(--gin-border-l) 0 var(--gin-border-l) var(--gin-border-l);
         }
       }
 
@@ -300,13 +300,13 @@
         &:focus,
         &.is-active,
         &.is-active:hover {
-          font-weight: var(--ginFontWeightNormal);;
-          color: var(--colorGinTextLight);
+          font-weight: var(--gin-font-weight-normal);;
+          color: var(--gin-color-text-light);
           background-color: transparent;
 
           &::before {
             background-image: none;
-            background-color: var(--colorGinIcons);
+            background-color: var(--gin-icon-color);
           }
         }
       }
@@ -318,15 +318,15 @@
 
         &:hover {
           .icon-user {
-            box-shadow: 0 0 0 2px var(--colorGinAppBackground),
-                        0 0 0 5px var(--colorGinLayer3Background);
+            box-shadow: 0 0 0 2px var(--gin-bg-app),
+                        0 0 0 5px var(--gin-bg-layer3);
           }
         }
 
         .icon-user {
-          border: 1px solid var(--colorGinBorder);
+          border: 1px solid var(--gin-border-color);
           overflow: hidden;
-          margin-left: var(--ginSpacingDefault);
+          margin-left: var(--gin-spacing-m);
           padding: 0;
           line-height: 0;
 
@@ -365,14 +365,14 @@
         margin-left: -.25em;
 
         .toolbar-item {
-          font-size: var(--ginFontSizeSmaller);
+          font-size: var(--gin-font-size-xs);
           width: auto;
           height: auto;
           padding-left: 2.875em;
 
           &::before {
-            width: var(--iconGinSecondaryToolbar);
-            height: var(--iconGinSecondaryToolbar);
+            width: var(--gin-icon-size-toolbar-secondary);
+            height: var(--gin-icon-size-toolbar-secondary);
             top: 50%;
             left: 12px;
             transform: translateY(-50%);
@@ -395,14 +395,14 @@
   padding-top: 10px;
   padding-bottom: 10px;
   margin-right: 12px;
-  font-size: var(--ginFontSizeSmaller);
+  font-size: var(--gin-font-size-xs);
 
   &::placeholder {
-    color: var(--colorGinDisabled);
+    color: var(--gin-color-disabled);
     opacity: 1;
 
     .gin--dark-mode & {
-      color: var(--colorGinTextLight);
+      color: var(--gin-color-text-light);
       opacity: .75;
     }
   }
@@ -414,9 +414,9 @@
 
 .ui-autocomplete.admin-toolbar-search-autocomplete-list {
   max-width: 320px;
-  border-radius: var(--ginBorderDefault);
+  border-radius: var(--gin-border-m);
 
   .ui-menu-item-wrapper {
-    font-size: var(--ginFontSizeSmaller);
+    font-size: var(--gin-font-size-xs);
   }
 }

@@ -3,8 +3,8 @@
   &:not(.entities-list--single-item) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    grid-gap: var(--ginSpacingDefault);
-    margin-bottom: var(--ginSpacingDefault);
+    grid-gap: var(--gin-spacing-m);
+    margin-bottom: var(--gin-spacing-m);
   }
 
   &.entities-list--single-item .item-container {
@@ -16,23 +16,23 @@
     position: relative;
     margin: 0;
     min-height: 80px;
-    border: 1px solid var(--colorGinBorder);
-    border-radius: var(--ginBorderMedium);
+    border: 1px solid var(--gin-border-color);
+    border-radius: var(--gin-border-l);
 
     .field__item {
       border: 3px solid transparent;
-      border-radius: var(--ginBorderLarge);
+      border-radius: var(--gin-border-xl);
       overflow: hidden;
 
       &:hover,
       &:focus {
-        border-color: var(--colorGinPrimary) !important;
+        border-color: var(--gin-color-primary) !important;
         cursor: pointer;
       }
     }
 
     &.label {
-      padding: var(--ginSpacingSmall) var(--ginSpacingXlarge) var(--ginSpacingSmall) var(--ginSpacingSmall);
+      padding: var(--gin-spacing-s) var(--gin-spacing-xxl) var(--gin-spacing-s) var(--gin-spacing-s);
     }
 
     img {
@@ -89,31 +89,31 @@ table.entities-list {
     .view-content {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      grid-gap: var(--ginSpacingDefault);
-      margin-bottom: var(--ginSpacingDefault);
+      grid-gap: var(--gin-spacing-m);
+      margin-bottom: var(--gin-spacing-m);
     }
 
     .views-row {
-      border: 1px solid var(--colorGinBorder);
-      border-radius: calc(var(--ginBorderLarge) + 2px);
+      border: 1px solid var(--gin-border-color);
+      border-radius: calc(var(--gin-border-xl) + 2px);
       position: relative;
       .views-field-thumbnail__target-id {
         &:hover,
         &:focus {
           cursor: pointer;
-          border-color: var(--colorGinPrimary);
+          border-color: var(--gin-color-primary);
         }
       }
 
       .views-field-name {
-        padding: var(--ginSpacingXsmall);
+        padding: var(--gin-spacing-xs);
       }
 
       .views-field-entity-browser-select {
         position: absolute;
         top: 0;
         left: 0;
-        margin: var(--ginSpacingSmall);
+        margin: var(--gin-spacing-s);
 
         .form-item {
           margin: 0;
@@ -123,23 +123,23 @@ table.entities-list {
 
     .media-info {
       word-wrap: break-word;
-      font-size: var(--ginFontSizeSmall);
+      font-size: var(--gin-font-size-s);
     }
 
     .views-field-thumbnail__target-id {
       border: 3px solid transparent;
-      border-radius: var(--ginBorderLarge);
+      border-radius: var(--gin-border-xl);
       overflow: hidden;
 
       &:hover,
       &:focus {
-        border-color: var(--colorGinPrimary);
+        border-color: var(--gin-color-primary);
       }
     }
 
     .entities-list {
-      border-top: var(--ginBorderXSmall) solid var(--colorGinFormElementBorder);
-      padding-top: var(--ginSpacingDefault);
+      border-top: var(--gin-border-xs) solid var(--gin-border-color-form-element);
+      padding-top: var(--gin-spacing-m);
     }
   }
 
@@ -164,7 +164,7 @@ table.entities-list {
 }
 
 .eb-tabs {
-  margin-left: var(--ginSpacingTiny); // Fix for outline
+  margin-left: var(--gin-spacing-xxs); // Fix for outline
   margin-bottom: 0.75em;
 
   ul {

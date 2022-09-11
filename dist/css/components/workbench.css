@@ -3,10 +3,10 @@
 }
 
 #toolbar-item-workbench-tray .toolbar-icon:before {
-  background: var(--colorGinIcons);
+  background: var(--gin-icon-color);
   background-image: none;
-  -webkit-mask-size: var(--iconGinToolbar) var(--iconGinToolbar);
-          mask-size: var(--iconGinToolbar) var(--iconGinToolbar);
+  -webkit-mask-size: var(--gin-icon-size-toolbar) var(--gin-icon-size-toolbar);
+          mask-size: var(--gin-icon-size-toolbar) var(--gin-icon-size-toolbar);
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
   -webkit-mask-position: center center;
@@ -14,15 +14,15 @@
 }
 
 [dir="ltr"] #toolbar-item-workbench-tray .toolbar-icon:before {
-  left: var(--ginSpacingSmall);
+  left: var(--gin-spacing-s);
 }
 
 [dir="rtl"] #toolbar-item-workbench-tray .toolbar-icon:before {
-  right: var(--ginSpacingSmall);
+  right: var(--gin-spacing-s);
 }
 
 #toolbar-item-workbench-tray .toolbar-icon:hover:before, #toolbar-item-workbench-tray .toolbar-icon.is-active:before {
-  background: var(--colorGinPrimary);
+  background: var(--gin-color-primary);
 }
 
 #toolbar-item-workbench-tray .toolbar-icon-workbench-content:before {

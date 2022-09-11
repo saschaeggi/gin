@@ -11,11 +11,11 @@
 }
 
 .page-title {
-  font-size: var(--ginFontSizeH1);
-  font-weight: var(--ginFontWeightSemiBold);
+  font-size: var(--gin-font-size-h1);
+  font-weight: var(--gin-font-weight-semibold);
   line-height: normal;
   letter-spacing: -.05em;
-  color: var(--colorGinTitle);
+  color: var(--gin-color-title);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -25,16 +25,16 @@
 
   @include mq(ultra) {
     .region-sticky--is-sticky & {
-      font-size: var(--ginFontSizeH3);
+      font-size: var(--gin-font-size-h3);
     }
   }
 
   &__language {
     display: block;
-    font-size: var(--ginFontSizeSmaller);
-    font-weight: var(--ginFontWeightNormal);;
+    font-size: var(--gin-font-size-xs);
+    font-weight: var(--gin-font-weight-normal);;
     letter-spacing: normal;
-    color: var(--colorGinText);
+    color: var(--gin-color-text);
   }
 
   &--is-translation + .shortcut-action .shortcut-action__icon {
@@ -45,19 +45,19 @@
 .shortcut-action {
   align-self: center;
   margin-left: 0;
-  border-radius: var(--ginBorderDefault);
+  border-radius: var(--gin-border-m);
 
   &__icon {
     position: relative;
     top: 3px;
-    background: var(--colorGinIcons);
+    background: var(--gin-icon-color);
     mask-image: icon('shortcut');
     mask-size: 75% 75%;
     mask-position: center center;
     mask-repeat: no-repeat;
 
     @include mq(large) {
-      top: var(--ginSpacingTiny);
+      top: var(--gin-spacing-xxs);
       mask-size: 85% 85%;
     }
 
@@ -68,12 +68,12 @@
 
   &:hover &__icon {
     opacity: 1;
-    background: var(--colorGinPrimary);
+    background: var(--gin-color-primary);
   }
 
   &--remove {
     .shortcut-action__icon {
-      background: var(--colorGinPrimary);
+      background: var(--gin-color-primary);
 
       .gin--high-contrast-mode & {
         mask-image: icon('shortcut-filled');
@@ -82,17 +82,17 @@
 
     &:hover .shortcut-action__icon {
       opacity: 1;
-      background: var(--colorGinDisabled);
+      background: var(--gin-color-disabled);
     }
   }
 
   &__message {
     position: absolute;
     pointer-events: none;
-    padding: var(--ginSpacingXsmall);
-    margin-top: calc(var(--ginSpacingTiny) * -1);
-    color: var(--colorGinContextualText);
-    background: var(--colorGinContextual);
-    border-radius: var(--ginBorderXSmall);
+    padding: var(--gin-spacing-xs);
+    margin-top: calc(var(--gin-spacing-xxs) * -1);
+    color: var(--gin-color-contextual-text);
+    background: var(--gin-color-contextual);
+    border-radius: var(--gin-border-xs);
   }
 }

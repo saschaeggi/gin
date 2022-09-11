@@ -4,7 +4,7 @@
     vertical-align: middle;
 
     &:focus::before {
-      box-shadow: 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus);
+      box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
     }
   }
 
@@ -21,7 +21,7 @@
   margin-top: 0;
 
   .action-link {
-    margin-bottom: var(--ginSpacingXsmall);
+    margin-bottom: var(--gin-spacing-xs);
 
     .action-link {
       margin-bottom: 0;
@@ -33,7 +33,7 @@
   @include mq(small) {
     position: relative;
     z-index: 1;
-    margin-bottom: calc(var(--ginSpacingXlarge) * -1);
+    margin-bottom: calc(var(--gin-spacing-xxl) * -1);
     pointer-events: none;
   }
 
@@ -45,7 +45,7 @@
 .tabledrag-handle {
   &::after {
     background-image: none;
-    background-color: var(--colorGinTextLight);
+    background-color: var(--gin-color-text-light);
     mask-image: icon('drag');
     mask-repeat: no-repeat;
     mask-position: center center;
@@ -55,22 +55,22 @@
   &:hover {
     &::after {
       transform: scale(1);
-      background-color: var(--colorGinPrimary);
+      background-color: var(--gin-color-primary);
     }
   }
 }
 
 .draggable.drag, .draggable.drag:focus {
-  background-color: var(--colorGinLayer2Background);
+  background-color: var(--gin-bg-layer2);
 
   .gin--dark-mode & {
-    background-color: var(--colorGinPrimaryLightHover);
+    background-color: var(--gin-color-primary-light-hover);
   }
 }
 
 .draggable.drag-previous {
-  background-color: var(--colorGinLayer2Background);
-  box-shadow: inset 6px 0 0 0 var(--colorGinWarning);
+  background-color: var(--gin-bg-layer2);
+  box-shadow: inset 6px 0 0 0 var(--gin-color-warning);
 }
 
 .tabledrag-cell-content__item {

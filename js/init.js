@@ -55,13 +55,13 @@ if (localStorage.getItem('Drupal.gin.toolbarExpanded')) {
       }
 
       .gin--vertical-toolbar .toolbar-menu-administration {
-        min-width: var(--ginToolbarWidth, 256px);
+        min-width: var(--gin-toolbar-width, 256px);
         transition: none;
       }
 
       .gin--vertical-toolbar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
       .gin--vertical-toolbar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
-        min-width: calc(var(--ginToolbarWidth, 256px) - 16px);
+        min-width: calc(var(--gin-toolbar-width, 256px) - 16px);
       }
     }
     `;
@@ -82,13 +82,13 @@ if (localStorage.getItem('Drupal.gin.sidebarExpanded.desktop')) {
   if (window.innerWidth < 1024 || localStorage.getItem('Drupal.gin.sidebarExpanded.desktop') === 'false') {
     style.innerHTML = `
     body {
-      --ginSidebarOffset: 0px;
+      --gin-sidebar-offset: 0px;
       padding-inline-end: 0;
       transition: none;
     }
 
     .layout-region-node-secondary {
-      transform: translateX(var(--ginSidebarWidth, 360px));
+      transform: translateX(var(--gin-sidebar-width, 360px));
       transition: none;
     }
 

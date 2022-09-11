@@ -1,7 +1,7 @@
 .ajax-progress__throbber, .ajax-progress__throbber--fullscreen,
 .ui-dialog .ajax-progress__throbber,
 .media-library-item .ajax-progress__throbber {
-  border: 3px solid var(--colorGinPrimary);
+  border: 3px solid var(--gin-color-primary);
 }
 
 [dir="ltr"] .ajax-progress__throbber, [dir="ltr"] .ajax-progress__throbber--fullscreen, [dir="ltr"] .ui-dialog .ajax-progress__throbber, [dir="ltr"] .media-library-item .ajax-progress__throbber {
@@ -13,17 +13,17 @@
 }
 
 .ajax-progress .ajax-progress__message {
-  color: var(--colorGinText);
+  color: var(--gin-color-text);
 }
 
 .gin--dark-mode .ajax-progress--fullscreen {
-  background-color: var(--colorGinPrimary);
+  background-color: var(--gin-color-primary);
   border-color: transparent;
-  box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
+  box-shadow: 0 2px 6px 0 var(--gin-bg-app);
 }
 
 .gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber, .gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber--fullscreen {
-  border: 3px solid var(--colorGinAppBackground);
+  border: 3px solid var(--gin-bg-app);
 }
 
 [dir="ltr"] .gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber, [dir="ltr"] .gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber--fullscreen {
@@ -35,7 +35,7 @@
 }
 
 .media-library-widget .ajax-progress__throbber, .media-library-widget .ajax-progress__throbber--fullscreen {
-  border: 2px solid var(--colorGinPrimary);
+  border: 2px solid var(--gin-color-primary);
 }
 
 [dir="ltr"] .media-library-widget .ajax-progress__throbber, [dir="ltr"] .media-library-widget .ajax-progress__throbber--fullscreen {
@@ -47,17 +47,17 @@
 }
 
 .ui-dialog .ajax-progress-throbber {
-  padding: var(--ginSpacingXsmall);
-  background: var(--colorGinAppBackground);
+  padding: var(--gin-spacing-xs);
+  background: var(--gin-bg-app);
   border-radius: 50%;
   box-shadow: 0 2px 6px 0 rgba(34, 35, 48, .1);
   border: 1px solid rgba(216, 217, 224, .8);
 }
 
 .gin--dark-mode .ui-dialog .ajax-progress-throbber {
-  background-color: var(--colorGinPrimary);
+  background-color: var(--gin-color-primary);
   border-color: transparent;
-  box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
+  box-shadow: 0 2px 6px 0 var(--gin-bg-app);
 }
 
 .ui-dialog .ajax-progress-throbber::before,
@@ -65,30 +65,30 @@
   content: "";
   display: block;
   position: absolute;
-  top: var(--ginSpacingXsmall);
+  top: var(--gin-spacing-xs);
   width: 1.125rem;
   height: 1.125rem;
-  border: 2px solid var(--colorGinPrimary);
+  border: 2px solid var(--gin-color-primary);
   border-radius: 50%;
   animation: gin-throbber .75s linear infinite;
 }
 
 [dir="ltr"] .ui-dialog .ajax-progress-throbber::before,
 [dir="ltr"] .contextual-links .ajax-progress-throbber::before {
-  left: var(--ginSpacingXsmall);
+  left: var(--gin-spacing-xs);
   border-right: 2px dotted transparent;
 }
 
 [dir="rtl"] .ui-dialog .ajax-progress-throbber::before,
 [dir="rtl"] .contextual-links .ajax-progress-throbber::before {
-  right: var(--ginSpacingXsmall);
+  right: var(--gin-spacing-xs);
   border-left: 2px dotted transparent;
 }
 
 .gin--dark-mode .ui-dialog .ajax-progress,
 .gin--dark-mode .media-library-item .ajax-progress.ajax-progress.ajax-progress {
-  background-color: var(--colorGinAppBackground);
-  border-color: var(--colorGinAppBackground);
+  background-color: var(--gin-bg-app);
+  border-color: var(--gin-bg-app);
 }
 
 .contextual-links li {
@@ -103,11 +103,11 @@
 }
 
 [dir="ltr"] .contextual-links .ajax-progress-throbber {
-  right: var(--ginSpacingTiny);
+  right: var(--gin-spacing-xxs);
 }
 
 [dir="rtl"] .contextual-links .ajax-progress-throbber {
-  left: var(--ginSpacingTiny);
+  left: var(--gin-spacing-xxs);
 }
 
 .contextual-links .ajax-progress-throbber::before {
@@ -133,6 +133,6 @@
 }
 
 .claro-autocomplete__message {
-  color: var(--colorGinPrimary);
+  color: var(--gin-color-primary);
 }
 

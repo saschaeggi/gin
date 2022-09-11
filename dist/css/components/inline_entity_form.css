@@ -1,5 +1,5 @@
 .ief-entity-table .ief-row-form {
-  border: 1px solid var(--colorGinBorder);
+  border: 1px solid var(--gin-border-color);
 }
 
 .ief-entity-table .ief-row-form:hover {
@@ -11,13 +11,13 @@
 }
 
 .ief-form > .form-wrapper > .form-wrapper:last-of-type {
-  background: var(--colorGinLayer2Background);
-  padding: 0 var(--ginSpacingDefault);
-  margin: 0 calc(var(--ginSpacingDefault) * -1);
+  background: var(--gin-bg-layer2);
+  padding: 0 var(--gin-spacing-m);
+  margin: 0 calc(var(--gin-spacing-m) * -1);
 }
 
 .ief-form.ief-form-bottom {
-  border: 1px solid var(--colorGinBorder);
+  border: 1px solid var(--gin-border-color);
 }
 
 .ief-form.ief-form-bottom .fieldset__wrapper {
@@ -32,19 +32,19 @@
 }
 
 [dir="ltr"] .paragraphs-tabs-wrapper .field-multiple-table .ief-entity-table .draggable.drag-previous > .tabledrag-cell::before {
-  left: var(--ginSpacingXsmall);
+  left: var(--gin-spacing-xs);
 }
 
 [dir="rtl"] .paragraphs-tabs-wrapper .field-multiple-table .ief-entity-table .draggable.drag-previous > .tabledrag-cell::before {
-  right: var(--ginSpacingXsmall);
+  right: var(--gin-spacing-xs);
 }
 
 [dir="ltr"] .paragraphs-tabs-wrapper .field-multiple-table .ief-entity-table .draggable .tabledrag-cell-content__item {
-  padding-left: var(--ginSpacingSmall);
+  padding-left: var(--gin-spacing-s);
 }
 
 [dir="rtl"] .paragraphs-tabs-wrapper .field-multiple-table .ief-entity-table .draggable .tabledrag-cell-content__item {
-  padding-right: var(--ginSpacingSmall);
+  padding-right: var(--gin-spacing-s);
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table .ief-entity-operations {

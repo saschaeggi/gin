@@ -3,12 +3,12 @@
  */
 .local-actions {
   font-size: 0; // Chrome fix.
-  margin: var(--ginSpacingSmall) calc(var(--ginSpacingTiny) * -1) var(--ginSpacingTiny);
+  margin: var(--gin-spacing-s) calc(var(--gin-spacing-xxs) * -1) var(--gin-spacing-xxs);
   padding: 0;
   list-style: none;
 
   &__item {
     display: inline-block;
-    margin: 0 var(--ginSpacingTiny) var(--ginSpacingXsmall);
+    margin: 0 var(--gin-spacing-xxs) var(--gin-spacing-xs);
   }
 }

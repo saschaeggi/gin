@@ -1,14 +1,14 @@
 .node-preview-container {
-  font-size: var(--ginFontSizeSmaller);
+  font-size: var(--gin-font-size-xs);
   z-index: 501;
   /* on top of the Drupal world */
   position: sticky;
   top: 0;
   padding: 0;
   width: 100%;
-  height: var(--ginToolbarSecondaryHeight);
+  height: var(--gin-toolbar-secondary-height);
   background: rgba(255, 255, 255, .98);
-  border-bottom: 1px solid var(--colorGinLayerBorder);
+  border-bottom: 1px solid var(--gin-border-color-layer);
 }
 
 @supports ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) {
@@ -32,14 +32,14 @@
 }
 
 .gin--high-contrast-mode .node-preview-container {
-  background: var(--colorGinAppBackground);
+  background: var(--gin-bg-app);
   -webkit-backdrop-filter: none;
           backdrop-filter: none;
 }
 
 .node-preview-container .node-preview-backlink,
 .node-preview-container .node-preview-form-select label {
-  color: var(--colorGinTextLight);
+  color: var(--gin-color-text-light);
 }
 
 .node-preview-container .node-preview-backlink {
@@ -60,10 +60,10 @@
   display: inline-block;
   position: absolute;
   top: 50%;
-  width: var(--iconGinSecondaryToolbar);
-  height: var(--iconGinSecondaryToolbar);
+  width: var(--gin-icon-size-toolbar-secondary);
+  height: var(--gin-icon-size-toolbar-secondary);
   transform: translateY(-50%);
-  background-color: var(--colorGinIcons);
+  background-color: var(--gin-icon-color);
   -webkit-mask-image: url("../../media/sprite.svg#backtosite-view");
           mask-image: url("../../media/sprite.svg#backtosite-view");
   -webkit-mask-size: 100% 100%;
@@ -85,20 +85,20 @@
   align-items: center;
   justify-content: space-between;
   width: auto;
-  padding: var(--ginSpacingDefault) 0;
-  margin: 0 var(--ginSpacingDefault);
+  padding: var(--gin-spacing-m) 0;
+  margin: 0 var(--gin-spacing-m);
   height: 100%;
 }
 
 @media (min-width: 48em) {
   .node-preview-container .node-preview-form-select {
-    margin: 0 var(--ginSpacingLarge);
+    margin: 0 var(--gin-spacing-xl);
   }
 }
 
 @media (min-width: 61em) {
   .node-preview-container .node-preview-form-select {
-    margin: 0 min(5vw, var(--ginSpacingXlarge));
+    margin: 0 min(5vw, var(--gin-spacing-xxl));
   }
 }
 

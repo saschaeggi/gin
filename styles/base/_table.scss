@@ -2,7 +2,7 @@
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 240px;
-  margin-top: calc(var(--ginSpacingXsmall) * -1);
+  margin-top: calc(var(--gin-spacing-xs) * -1);
   margin-bottom: -240px;
 }
 
@@ -21,13 +21,13 @@ table.sticky-header {
   }
 
   &::before {
-    left: calc(var(--ginSpacingMedium) * -1);
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--colorGinLayerBackground));
+    left: calc(var(--gin-spacing-l) * -1);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--gin-bg-layer));
   }
 
   &::after {
-    right: calc(var(--ginSpacingMedium) * -1);
-    background: linear-gradient(90deg, var(--colorGinLayerBackground), rgba(255, 255, 255, 0));
+    right: calc(var(--gin-spacing-l) * -1);
+    background: linear-gradient(90deg, var(--gin-bg-layer), rgba(255, 255, 255, 0));
   }
 
   .--is-sticky & {
@@ -42,17 +42,17 @@ table.sticky-header {
     }
 
     th {
-      background: var(--colorGinLayerBackground);
+      background: var(--gin-bg-layer);
     }
   }
 
   @include mq(medium) {
     .gin--vertical-toolbar & {
-      width: calc(100% - min(10vw, 96px) - var(--ginSpacingXlarge) - 2px - var(--ginToolbarWidthCollapsed)) !important;
+      width: calc(100% - min(10vw, 96px) - var(--gin-spacing-xxl) - 2px - var(--gin-toolbar-width-collapsed)) !important;
     }
 
     .gin--vertical-toolbar[data-toolbar-menu='open'] & {
-      width: calc(100% - min(10vw, 96px) - var(--ginSpacingXlarge) - 2px - var(--ginToolbarWidth)) !important;
+      width: calc(100% - min(10vw, 96px) - var(--gin-spacing-xxl) - 2px - var(--gin-toolbar-width)) !important;
     }
   }
 }
@@ -60,10 +60,10 @@ table.sticky-header {
 table {
   thead {
     background: transparent;
-    border-radius: var(--ginBorderDefault);
+    border-radius: var(--gin-border-m);
 
     tr {
-      border-bottom: 1px solid var(--colorGinTableHeaderBorder);
+      border-bottom: 1px solid var(--gin-border-color-table-header);
 
       &:hover {
         background: transparent;
@@ -72,39 +72,39 @@ table {
   }
 
   th {
-    font-size: var(--ginFontSizeSmall);
-    font-weight: var(--ginFontWeightBold);
-    background: var(--colorGinLayerBackground);
+    font-size: var(--gin-font-size-s);
+    font-weight: var(--gin-font-weight-bold);
+    background: var(--gin-bg-layer);
 
     &, .form-item__label {
-      color: var(--colorGinTitle);
+      color: var(--gin-color-title);
     }
 
     @include mq(medium) {
       height: auto;
-      padding: var(--ginSpacingDefault);
+      padding: var(--gin-spacing-m);
     }
   }
 
   tbody {
     tr {
-      border-bottom: 1px solid var(--colorGinTableBorder);
+      border-bottom: 1px solid var(--gin-border-color-table);
     }
 
     td {
       height: auto;
-      padding: var(--ginSpacingDensityDefault) var(--ginSpacingDefault);
+      padding: var(--gin-spacing-density-m) var(--gin-spacing-m);
     }
   }
 
   tr,
   .draggable-table.tabledrag-disabled tr {
-    color: var(--colorGinText);
+    color: var(--gin-color-text);
     background-color: transparent;
 
     &:hover {
-      color: var(--colorGinText);
-      background: var(--colorGinItemHover);
+      color: var(--gin-color-text);
+      background: var(--gin-bg-item-hover);
     }
 
     &.selected:hover {
@@ -118,7 +118,7 @@ table {
     }
 
     td {
-      background-color: var(--colorGinPrimaryLight);
+      background-color: var(--gin-color-primary-light);
     }
   }
 
@@ -132,20 +132,20 @@ table {
     }
 
     .group-label {
-      color: var(--colorGinTitle);
+      color: var(--gin-color-title);
     }
   }
 }
 
 .sortable-heading {
-  padding: var(--ginSpacingXsmall) var(--ginSpacingDefault);
+  padding: var(--gin-spacing-xs) var(--gin-spacing-m);
 
   > a::before {
     bottom: -1px;
   }
 
   > a::after {
-    background: var(--colorGinTextLight);
+    background: var(--gin-color-text-light);
     mask-image: icon('sort');
     mask-repeat: no-repeat;
     mask-position: center center;
@@ -153,17 +153,17 @@ table {
 
   &.is-active > a {
     &, &:hover, &:active {
-      color: var(--colorGinPrimaryActive);
+      color: var(--gin-color-primary-active);
     }
 
     &::before {
-      border-bottom: .1875rem solid var(--colorGinPrimaryActive);
+      border-bottom: .1875rem solid var(--gin-color-primary-active);
     }
   }
 }
 
 .tablesort {
-  background-color: var(--colorGinPrimaryActive);
+  background-color: var(--gin-color-primary-active);
   background-image: none;
   mask-image: icon('sort');
   mask-repeat: no-repeat;
@@ -189,7 +189,7 @@ table {
 }
 
 .region-title {
-  border-bottom: 2px solid var(--colorGinText);
+  border-bottom: 2px solid var(--gin-color-text);
 }
 
 td.webform-has-field-suffix > .form-item > .form-element {
