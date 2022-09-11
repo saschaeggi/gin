@@ -1313,6 +1313,10 @@ details summary {
   margin-left: var(--ginSpacingTiny);
 }
 
+a.views-field-excluded {
+  color: var(--colorGinDisabledText);
+}
+
 .views-filterable-options {
   border-top: none;
 }
