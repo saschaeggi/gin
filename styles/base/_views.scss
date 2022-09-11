@@ -310,7 +310,7 @@
   .action-list {
     top: 36px;
     background: var(--gin-bg-layer3);
-    box-shadow: 0 1px 2px var(--gin-button-shadow);
+    box-shadow: 0 1px 2px var(--gin-shadow-button);
 
     li {
       background-color: transparent;
@@ -327,7 +327,7 @@
       &:hover, &:focus, &:active {
         &,
         input.button {
-          color: var(--gin-button-text);
+          color: var(--gin-color-button-text);
           background: var(--gin-color-primary);
         }
       }

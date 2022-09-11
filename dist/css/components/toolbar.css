@@ -74,7 +74,7 @@ body.gin--classic-toolbar {
 }
 
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active, .toolbar .toolbar-bar .toolbar-tab > .is-active.responsive-preview-icon {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
   background-image: none;
   background-color: var(--gin-color-primary);
 }
@@ -85,7 +85,7 @@ body.gin--classic-toolbar {
 }
 
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active::before, .toolbar .toolbar-bar .toolbar-tab > .is-active.responsive-preview-icon::before {
-  background-color: var(--gin-button-text);
+  background-color: var(--gin-color-button-text);
 }
 
 .gin--dark-mode .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active::before, .gin--dark-mode .toolbar .toolbar-bar .toolbar-tab > .is-active.responsive-preview-icon::before {
@@ -618,7 +618,7 @@ body.gin--classic-toolbar {
 
 @media (min-width: 61em) {
   .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active:before, .toolbar .toolbar-bar .toolbar-tab > .is-active.responsive-preview-icon:before, .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon.is-active:hover:before {
-    background-color: var(--gin-button-text);
+    background-color: var(--gin-color-button-text);
   }
 }
 
@@ -782,7 +782,7 @@ body.gin--classic-toolbar {
 }
 
 .ui-autocomplete.admin-toolbar-search-autocomplete-list .ui-menu-item-wrapper.ui-state-active {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
   background-color: var(--gin-color-primary);
   border: 0 none;
 }

@@ -1161,7 +1161,7 @@ details summary {
 .views-tabs .action-list {
   top: 36px;
   background: var(--gin-bg-layer3);
-  box-shadow: 0 1px 2px var(--gin-button-shadow);
+  box-shadow: 0 1px 2px var(--gin-shadow-button);
 }
 
 .views-tabs .action-list li {
@@ -1188,7 +1188,7 @@ details summary {
 .views-tabs .action-list li:hover input.button, .views-tabs .action-list li:focus,
 .views-tabs .action-list li:focus input.button, .views-tabs .action-list li:active,
 .views-tabs .action-list li:active input.button {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
   background: var(--gin-color-primary);
 }
 
@@ -2200,7 +2200,7 @@ tr .form-item {
 .dropbutton__toggle:hover,
 .dropbutton__toggle:active,
 .dropbutton__toggle:focus {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
 }
 
 .button,
@@ -2218,7 +2218,7 @@ tr .form-item {
 .gin--dark-mode .button:not(:focus),
 .gin--dark-mode .form-actions .button,
 .gin--dark-mode .action-link--icon-trash.action-link {
-  box-shadow: 0 2px 18px var(--gin-button-shadow);
+  box-shadow: 0 2px 18px var(--gin-shadow-button);
 }
 
 .button:hover,
@@ -2252,7 +2252,7 @@ tr .form-item {
 .action-link--icon-trash.action-link:active,
 .action-link--icon-trash.action-link:focus,
 .action-link--icon-trash.action-link:hover:focus {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
 }
 
 [dir="ltr"] .form-actions .button {
@@ -2314,12 +2314,12 @@ tr .form-item {
 .ief-entity-submit:hover,
 .ief-entity-submit:active,
 .ief-entity-submit:focus {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
 }
 
 a.button:hover,
 a.button:active {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
 }
 
 .gin--dark-mode a.button--primary:hover,
@@ -2389,7 +2389,7 @@ a.button:active {
 }
 
 .gin--dark-mode .dropbutton {
-  box-shadow: 0 4px 18px var(--gin-button-shadow);
+  box-shadow: 0 4px 18px var(--gin-shadow-button);
 }
 
 .dropbutton:hover {
@@ -2445,7 +2445,7 @@ a.button:active {
 }
 
 .dropbutton__toggle:hover::before, .dropbutton__toggle:active::before, .dropbutton__toggle:focus::before {
-  background-color: var(--gin-button-text);
+  background-color: var(--gin-color-button-text);
 }
 
 .dropbutton .dropbutton__items {
@@ -2564,7 +2564,7 @@ a.button:active {
 .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > .button:hover,
 .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > .button:active,
 .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > .button:focus {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
   background: var(--gin-color-primary);
   border-radius: var(--gin-border-s);
 }
@@ -2576,7 +2576,7 @@ a.button:active {
 .dropbutton > .dropbutton__item:first-of-type > .button:hover,
 .dropbutton > .dropbutton__item:first-of-type > .button:active,
 .dropbutton > .dropbutton__item:first-of-type > .button:focus {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
   background: var(--gin-color-primary);
 }
 
@@ -2813,7 +2813,7 @@ a.button.button--danger:active:before {
 
 .pager__link:hover,
 .pager__link.is-active:hover {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
   background: var(--gin-color-primary-hover);
 }
 

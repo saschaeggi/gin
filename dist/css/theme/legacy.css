@@ -1,4 +1,4 @@
-:root {
+body {
   --colorGinTitle: var(--gin-color-title);
   --colorGinText: var(--gin-color-text);
   --colorGinTextLight: var(--gin-color-text-light);
@@ -101,8 +101,8 @@
   --ginSidebarOffset: var(--gin-sidebar-offset);
   --ginStickyOffset: var(--gin-sticky-offset);
   --colorGinSwitch: var(--gin-switch);
-  --colorGinButtonShadow: var(--gin-button-shadow);
-  --colorGinButtonText: var(--gin-button-text);
+  --colorGinButtonShadow: var(--gin-shadow-button);
+  --colorGinButtonText: var(--gin-color-button-text);
   --colorGinAppBackground: var(--gin-bg-app);
   --colorGinAppBackgroundRGB: var(--gin-bg-app-rgb);
   --colorGinPrimary: var(--gin-color-primary);

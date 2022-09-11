@@ -5,7 +5,7 @@
 }
 
 .js .paragraphs-add-dialog--categorized .paragraphs-button--add-more:hover .paragraphs-label {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
 }
 
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .category-title,
@@ -101,7 +101,7 @@
 .paragraphs-add-dialog--categorized:not(.paragraphs-style-list) .paragraphs-button--add-more .paragraphs-button--icon::before,
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized:not(.paragraphs-style-list) .paragraphs-button--add-more .paragraphs-button--icon::before {
   z-index: 2;
-  background: var(--gin-button-text);
+  background: var(--gin-color-button-text);
   -webkit-mask-image: url("../../media/sprite.svg#add-view");
           mask-image: url("../../media/sprite.svg#add-view");
   -webkit-mask-repeat: no-repeat;
@@ -151,7 +151,7 @@
 }
 
 .ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .search-description label {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
 }
 
 .js .paragraphs-add-dialog--categorized .paragraphs-add-dialog-row button {

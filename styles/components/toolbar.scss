@@ -47,7 +47,7 @@ body.gin--classic-toolbar {
       }
 
       &.is-active {
-        color: var(--gin-button-text);
+        color: var(--gin-color-button-text);
         background-image: none;
         background-color: var(--gin-color-primary);
 
@@ -57,7 +57,7 @@ body.gin--classic-toolbar {
         }
 
         &::before {
-          background-color: var(--gin-button-text);
+          background-color: var(--gin-color-button-text);
 
           .gin--dark-mode & {
             background-color: var(--gin-color-primary-active);
@@ -589,7 +589,7 @@ body.gin--classic-toolbar {
   &.is-active:before,
   &.is-active:hover:before {
     @include mq(medium) {
-      background-color: var(--gin-button-text);
+      background-color: var(--gin-color-button-text);
     }
   }
 }
@@ -731,7 +731,7 @@ body.gin--classic-toolbar {
     border-radius: var(--gin-border-s);
 
     &.ui-state-active {
-      color: var(--gin-button-text);
+      color: var(--gin-color-button-text);
       background-color: var(--gin-color-primary);
       border: 0 none;
     }

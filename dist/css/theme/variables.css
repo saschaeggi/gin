@@ -88,8 +88,8 @@
   --gin-sidebar-width: 320px;
   --gin-sidebar-offset: var(--gin-sidebar-width);
   --gin-switch: #26a769;
-  --gin-button-shadow: #00000033;
-  --gin-button-text: #fff;
+  --gin-shadow-button: #00000033;
+  --gin-color-button-text: #fff;
 }
 
 @media (min-width: 61em) {
@@ -153,8 +153,8 @@
   --gin-color-title: #fff;
   --gin-color-text: #d2d3d3;
   --gin-color-text-light: #9e9fa0;
-  --gin-button-shadow: rgba(#111, .9);
-  --gin-button-text: #111;
+  --gin-shadow-button: rgba(#111, .9);
+  --gin-color-button-text: #111;
   --gin-color-focus: rgb(81, 168, 255);
   --gin-color-focus-border: rgba(0, 0, 0, .8);
   --gin-color-focus-neutral-rgb: rgba(255, 255, 255, .8);

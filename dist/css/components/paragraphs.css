@@ -286,7 +286,7 @@
 }
 
 .paragraphs-dropdown-actions {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
   background: var(--gin-bg-layer3);
   border: 0 none;
   border-radius: var(--gin-border-xs);

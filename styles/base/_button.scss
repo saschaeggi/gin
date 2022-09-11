@@ -21,7 +21,7 @@
   }
 
   &:hover, &:active, &:focus {
-    color: var(--gin-button-text);
+    color: var(--gin-color-button-text);
   }
 }
 
@@ -36,7 +36,7 @@
   transition: var(--gin-transition);
 
   .gin--dark-mode & {
-    box-shadow: 0 2px 18px var(--gin-button-shadow);
+    box-shadow: 0 2px 18px var(--gin-shadow-button);
   }
 
   &:hover {
@@ -49,7 +49,7 @@
   }
 
   &:hover, &:active, &:focus, &:hover:focus {
-    color: var(--gin-button-text);
+    color: var(--gin-color-button-text);
   }
 }
 
@@ -82,13 +82,13 @@
   }
 
   &, &:hover, &:active, &:focus {
-    color: var(--gin-button-text);
+    color: var(--gin-color-button-text);
   }
 }
 
 a.button:hover,
 a.button:active {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
 }
 
 a.button--primary:hover,

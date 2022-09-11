@@ -77,7 +77,7 @@
 }
 
 .contextual-region .contextual .contextual-links li a:hover, .contextual-region .contextual .contextual-links li a:active {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
   background: var(--gin-color-primary);
 }
 
@@ -96,7 +96,7 @@
   top: var(--gin-spacing-xxs);
   width: 1rem;
   height: 1rem;
-  border: 2px solid var(--gin-button-text);
+  border: 2px solid var(--gin-color-button-text);
 }
 
 [dir="ltr"] .contextual-region .contextual .contextual-links .ajax-progress-throbber::before {
@@ -110,7 +110,7 @@
 }
 
 .no-touchevents .contextual-region .contextual .contextual-links li a:hover, .no-touchevents .contextual-region .contextual .contextual-links li a:active {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
   background: var(--gin-color-primary);
 }
 

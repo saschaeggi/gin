@@ -139,8 +139,8 @@
   --gin-switch: #26a769; //#0e9888;
 
   // Buttons
-  --gin-button-shadow: #00000033;
-  --gin-button-text: #fff;
+  --gin-shadow-button: #00000033;
+  --gin-color-button-text: #fff;
 }
 
 // Density spacings
@@ -167,8 +167,8 @@
    --gin-color-text-light: #9e9fa0;
 
   // Buttons
-  --gin-button-shadow: rgba(#111, .9);
-  --gin-button-text: #111;
+  --gin-shadow-button: rgba(#111, .9);
+  --gin-color-button-text: #111;
 
   // Focus
   --gin-color-focus: rgb(81, 168, 255);

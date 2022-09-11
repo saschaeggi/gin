@@ -124,7 +124,7 @@
 .ui-dialog .dropbutton__toggle:hover,
 .ui-dialog .dropbutton__toggle:active,
 .ui-dialog .dropbutton__toggle:focus {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
 }
 
 .ui-dialog .button,
@@ -142,7 +142,7 @@
 .gin--dark-mode .ui-dialog .button:not(:focus),
 .gin--dark-mode .ui-dialog .form-actions .button,
 .gin--dark-mode .ui-dialog .action-link--icon-trash.action-link {
-  box-shadow: 0 2px 18px var(--gin-button-shadow);
+  box-shadow: 0 2px 18px var(--gin-shadow-button);
 }
 
 .ui-dialog .button:hover,
@@ -176,7 +176,7 @@
 .ui-dialog .action-link--icon-trash.action-link:active,
 .ui-dialog .action-link--icon-trash.action-link:focus,
 .ui-dialog .action-link--icon-trash.action-link:hover:focus {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
 }
 
 [dir="ltr"] .ui-dialog .form-actions .button {
@@ -238,12 +238,12 @@
 .ui-dialog .ief-entity-submit:hover,
 .ui-dialog .ief-entity-submit:active,
 .ui-dialog .ief-entity-submit:focus {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
 }
 
 .ui-dialog a.button:hover,
 .ui-dialog a.button:active {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
 }
 
 .gin--dark-mode .ui-dialog a.button--primary:hover,

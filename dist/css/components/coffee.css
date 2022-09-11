@@ -26,7 +26,7 @@
 }
 
 #coffee-form #coffee-results a:hover, #coffee-form #coffee-results a:hover .description, #coffee-form #coffee-results a.ui-state-active, #coffee-form #coffee-results a.ui-state-active .description {
-  color: var(--gin-button-text);
+  color: var(--gin-color-button-text);
 }
 
 #coffee-form #coffee-results a:hover .description, #coffee-form #coffee-results a.ui-state-active .description {

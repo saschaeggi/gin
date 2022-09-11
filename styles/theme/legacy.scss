@@ -1,4 +1,4 @@
-:root {
+body {
   // Colors
   --colorGinTitle: var(--gin-color-title);
   --colorGinText: var(--gin-color-text);
@@ -141,8 +141,8 @@
   --colorGinSwitch: var(--gin-switch);
 
   // Buttons
-  --colorGinButtonShadow: var(--gin-button-shadow);
-  --colorGinButtonText: var(--gin-button-text);
+  --colorGinButtonShadow: var(--gin-shadow-button);
+  --colorGinButtonText: var(--gin-color-button-text);
 
   // Accent
   --colorGinAppBackground: var(--gin-bg-app);
