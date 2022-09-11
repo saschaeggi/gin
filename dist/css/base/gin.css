@@ -2256,11 +2256,11 @@ tr .form-item {
 }
 
 [dir="ltr"] .form-actions .button {
-  margin-right: var(--ginSpacingXsmall);
+  margin-right: var(--gin-spacing-xs);
 }
 
 [dir="rtl"] .form-actions .button {
-  margin-left: var(--ginSpacingXsmall);
+  margin-left: var(--gin-spacing-xs);
 }
 
 .button.button--small {

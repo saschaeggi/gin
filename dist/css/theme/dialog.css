@@ -180,11 +180,11 @@
 }
 
 [dir="ltr"] .ui-dialog .form-actions .button {
-  margin-right: var(--ginSpacingXsmall);
+  margin-right: var(--gin-spacing-xs);
 }
 
 [dir="rtl"] .ui-dialog .form-actions .button {
-  margin-left: var(--ginSpacingXsmall);
+  margin-left: var(--gin-spacing-xs);
 }
 
 .ui-dialog .button.button--small {
