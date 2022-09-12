@@ -73,7 +73,9 @@
 .entities-list .item-container > .entity-browser-remove-selected-entity:hover, .entities-list .item-container > .entity-browser-remove-selected-entity:focus,
 .entities-list .item-container > .remove-button:hover,
 .entities-list .item-container > .remove-button:focus {
+  background-color: white;
   border-color: var(--colorGinPrimary) !important;
+  color: transparent;
   cursor: pointer;
 }
 
@@ -93,23 +95,25 @@
   height: 29px;
   margin: var(--ginSpacingSmall);
   position: absolute;
-  bottom: 0;
+  top: 0;
 }
 
 [dir="ltr"] .entities-list .item-container > .replace-button,
 [dir="ltr"] .entities-list .item-container > .edit-button {
-  right: 0;
+  right: 2.6rem;
 }
 
 [dir="rtl"] .entities-list .item-container > .replace-button,
 [dir="rtl"] .entities-list .item-container > .edit-button {
-  left: 0;
+  left: 2.6rem;
 }
 
 .entities-list .item-container > .replace-button:hover, .entities-list .item-container > .replace-button:focus,
 .entities-list .item-container > .edit-button:hover,
 .entities-list .item-container > .edit-button:focus {
+  background-color: white;
   border-color: var(--colorGinPrimary) !important;
+  color: transparent;
   cursor: pointer;
 }
 

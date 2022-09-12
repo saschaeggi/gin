@@ -51,8 +51,8 @@
     > .edit-button {
       @include custom-icon-button('edit');
       position: absolute;
-      bottom: 0;
-      right: 0;
+      top: 0;
+      right: 2.6rem;
     }
   }
 }
