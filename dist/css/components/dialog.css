@@ -84,7 +84,7 @@
 }
 
 .ui-dialog .ui-dialog-titlebar-close {
-  top: 26px;
+  top: 20px;
   opacity: .8;
   margin: 0;
   transform: none;
@@ -201,6 +201,10 @@
 
 .ui-widget.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .button--primary[type=submit] {
   background: var(--gin-offcanvas-active);
+}
+
+.ui-dialog .ui-widget-content.ui-dialog-content {
+  overflow: auto;
 }
 
 .ui-dialog.webform-off-canvas .ui-widget-content.ui-dialog-content {

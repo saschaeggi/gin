@@ -84,7 +84,7 @@
   }
 
   .ui-dialog-titlebar-close {
-    top: 26px;
+    top: 20px;
     right: 24px;
     opacity: .8;
     margin: 0;
@@ -176,6 +176,11 @@
       background: var(--gin-offcanvas-active);
     }
   }
+}
+
+// Scroll
+.ui-dialog .ui-widget-content.ui-dialog-content {
+  overflow: auto;
 }
 
 // Webform Off canvas
