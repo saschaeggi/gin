@@ -2,7 +2,7 @@
 .dropbutton__item:first-of-type > *,
 .dropbutton__toggle {
   font-size: var(--ginFontSizeSmall);
-  font-weight: var(--ginFontWeightSemiBold);
+  font-weight: var(--ginFontWeightBold);
   color: var(--colorGinPrimary);
   background-color: transparent;
   box-shadow: none;
@@ -51,6 +51,10 @@
   &:hover, &:active, &:focus, &:hover:focus {
     color: var(--colorGinButtonText);
   }
+}
+
+.form-actions .button {
+  margin-right: var(--ginSpacingXsmall);
 }
 
 .button.button--small {

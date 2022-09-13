@@ -2164,7 +2164,7 @@ tr .form-item {
 .dropbutton__item:first-of-type > *,
 .dropbutton__toggle {
   font-size: var(--ginFontSizeSmall);
-  font-weight: var(--ginFontWeightSemiBold);
+  font-weight: var(--ginFontWeightBold);
   color: var(--colorGinPrimary);
   background-color: transparent;
   box-shadow: none;
@@ -2253,6 +2253,14 @@ tr .form-item {
 .action-link--icon-trash.action-link:focus,
 .action-link--icon-trash.action-link:hover:focus {
   color: var(--colorGinButtonText);
+}
+
+[dir="ltr"] .form-actions .button {
+  margin-right: var(--ginSpacingXsmall);
+}
+
+[dir="rtl"] .form-actions .button {
+  margin-left: var(--ginSpacingXsmall);
 }
 
 .button.button--small {

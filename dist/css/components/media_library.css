@@ -388,6 +388,14 @@ fieldset.media-library-widget .media-library-edit__link, fieldset.media-library-
   flex-grow: 1;
 }
 
+[dir="ltr"] .media-library-widget-modal .ui-dialog-buttonpane .media-library-selected-count {
+  margin-left: 0;
+}
+
+[dir="rtl"] .media-library-widget-modal .ui-dialog-buttonpane .media-library-selected-count {
+  margin-right: 0;
+}
+
 @media (min-width: 80em) {
   .media-library-selection .media-library-item--grid {
     width: 20%;

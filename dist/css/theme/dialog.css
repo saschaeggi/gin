@@ -88,7 +88,7 @@
 .ui-dialog .dropbutton__item:first-of-type > *,
 .ui-dialog .dropbutton__toggle {
   font-size: var(--ginFontSizeSmall);
-  font-weight: var(--ginFontWeightSemiBold);
+  font-weight: var(--ginFontWeightBold);
   color: var(--colorGinPrimary);
   background-color: transparent;
   box-shadow: none;
@@ -177,6 +177,14 @@
 .ui-dialog .action-link--icon-trash.action-link:focus,
 .ui-dialog .action-link--icon-trash.action-link:hover:focus {
   color: var(--colorGinButtonText);
+}
+
+[dir="ltr"] .ui-dialog .form-actions .button {
+  margin-right: var(--ginSpacingXsmall);
+}
+
+[dir="rtl"] .ui-dialog .form-actions .button {
+  margin-left: var(--ginSpacingXsmall);
 }
 
 .ui-dialog .button.button--small {
