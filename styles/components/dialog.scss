@@ -2,13 +2,13 @@
   max-width: $breakpointWide;
   margin: var(--gin-spacing-m);
   border: 0 none !important;
-  border-radius: var(--gin-border-xl);
+  border-radius: var(--gin-border-m);
   background: var(--gin-bg-layer);
 
   // Dialog without title
   .ui-dialog-content:first-of-type {
-    border-top-left-radius: var(--gin-border-xl);
-    border-top-right-radius: var(--gin-border-xl);
+    border-top-left-radius: var(--gin-border-m);
+    border-top-right-radius: var(--gin-border-m);
   }
 
   // Node actions placement
@@ -45,16 +45,15 @@
 
   .ui-dialog-titlebar {
     line-height: 1.2;
-    padding: var(--gin-spacing-l);
+    padding: var(--gin-spacing-m) var(--gin-spacing-l);
     background: $colorDarkAppBackground;
     border: 0 none;
-    border-top-left-radius: var(--gin-border-xl);
-    border-top-right-radius: var(--gin-border-xl);
+    border-radius: var(--gin-border-m) var(--gin-border-m) 0 0;
   }
 
   .ui-dialog-title {
     font-size: var(--gin-font-size-l);
-    font-weight: var(--gin-font-weight-semibold);
+    font-weight: var(--gin-font-weight-normal);
     color: #fff;
   }
 
@@ -63,16 +62,20 @@
   }
 
   .ui-widget-content.ui-dialog-buttonpane {
-    padding: var(--gin-spacing-m) var(--gin-spacing-l);
+    padding: var(--gin-spacing-s) var(--gin-spacing-l);
     border-top: 1px solid var(--gin-border-color-layer);
-    border-bottom-left-radius: var(--gin-border-xl);
-    border-bottom-right-radius: var(--gin-border-xl);
+    border-bottom-left-radius: var(--gin-border-m);
+    border-bottom-right-radius: var(--gin-border-m);
     background: var(--gin-bg-app);
 
     .button {
       font-weight: var(--gin-font-weight-heavy);
       margin-top: 0;
       margin-bottom: 0;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
     }
   }
 
@@ -83,8 +86,13 @@
     }
   }
 
+  .ui-dialog-buttonset {
+    margin-top: 0;
+  }
+
   .ui-dialog-titlebar-close {
-    top: 20px;
+    position: absolute;
+    top: 18px;
     right: 24px;
     opacity: .8;
     margin: 0;
@@ -156,10 +164,6 @@
   .ui-dialog-titlebar {
     background: $colorDarkAppBackground;
     border-radius: 0;
-  }
-
-  .ui-dialog-titlebar-close {
-    top: 20px;
   }
 
   .ui-resizable-w {

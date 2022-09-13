@@ -2,13 +2,13 @@
   max-width: 1280px;
   margin: var(--gin-spacing-m);
   border: 0 none !important;
-  border-radius: var(--gin-border-xl);
+  border-radius: var(--gin-border-m);
   background: var(--gin-bg-layer);
 }
 
 .ui-dialog:not(.ui-dialog-off-canvas) .ui-dialog-content:first-of-type {
-  border-top-left-radius: var(--gin-border-xl);
-  border-top-right-radius: var(--gin-border-xl);
+  border-top-left-radius: var(--gin-border-m);
+  border-top-right-radius: var(--gin-border-m);
 }
 
 .ui-dialog:not(.ui-dialog-off-canvas) .layout-region-node-actions {
@@ -47,16 +47,15 @@
 
 .ui-dialog .ui-dialog-titlebar {
   line-height: 1.2;
-  padding: var(--gin-spacing-l);
+  padding: var(--gin-spacing-m) var(--gin-spacing-l);
   background: #1b1b1d;
   border: 0 none;
-  border-top-left-radius: var(--gin-border-xl);
-  border-top-right-radius: var(--gin-border-xl);
+  border-radius: var(--gin-border-m) var(--gin-border-m) 0 0;
 }
 
 .ui-dialog .ui-dialog-title {
   font-size: var(--gin-font-size-l);
-  font-weight: var(--gin-font-weight-semibold);
+  font-weight: var(--gin-font-weight-normal);
   color: #fff;
 }
 
@@ -65,10 +64,10 @@
 }
 
 .ui-dialog .ui-widget-content.ui-dialog-buttonpane {
-  padding: var(--gin-spacing-m) var(--gin-spacing-l);
+  padding: var(--gin-spacing-s) var(--gin-spacing-l);
   border-top: 1px solid var(--gin-border-color-layer);
-  border-bottom-left-radius: var(--gin-border-xl);
-  border-bottom-right-radius: var(--gin-border-xl);
+  border-bottom-left-radius: var(--gin-border-m);
+  border-bottom-right-radius: var(--gin-border-m);
   background: var(--gin-bg-app);
 }
 
@@ -78,13 +77,26 @@
   margin-bottom: 0;
 }
 
+[dir="ltr"] .ui-dialog .ui-widget-content.ui-dialog-buttonpane .button:last-of-type {
+  margin-right: 0;
+}
+
+[dir="rtl"] .ui-dialog .ui-widget-content.ui-dialog-buttonpane .button:last-of-type {
+  margin-left: 0;
+}
+
 .ui-dialog .ui-widget-content.ui-dialog-buttonpane .button.button--danger,
 .ui-dialog [data-drupal-selector*=-remove-form] .button.button--danger {
   border-color: var(--gin-color-danger) !important;
 }
 
+.ui-dialog .ui-dialog-buttonset {
+  margin-top: 0;
+}
+
 .ui-dialog .ui-dialog-titlebar-close {
-  top: 20px;
+  position: absolute;
+  top: 18px;
   opacity: .8;
   margin: 0;
   transform: none;
@@ -184,10 +196,6 @@
 .ui-widget.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar {
   background: #1b1b1d;
   border-radius: 0;
-}
-
-.ui-widget.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar-close {
-  top: 20px;
 }
 
 .ui-widget.ui-dialog.ui-dialog-off-canvas .ui-resizable-w {
