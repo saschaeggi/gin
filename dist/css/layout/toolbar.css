@@ -120,9 +120,6 @@
 
 @media (min-width: 61em) {
   .toolbar .toolbar-bar #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
-    font-size: var(--gin-font-size-xl);
-    letter-spacing: -0.01em;
-    text-indent: 0;
     height: 74px;
     margin-bottom: 6px;
     transition: top var(--gin-transition);

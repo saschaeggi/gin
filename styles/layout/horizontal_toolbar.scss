@@ -101,7 +101,7 @@
 .toolbar .toolbar-tray .menu-item > .toolbar-box > .toolbar-icon.is-active,
 .toolbar .toolbar-tray a.is-active {
   color: var(--gin-color-primary);
-  font-weight: var(--gin-font-weight-semibold);
+  font-weight: var(--gin-font-weight-bold);
 
   &::before {
     background: var(--gin-color-primary);
