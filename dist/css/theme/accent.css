@@ -42,8 +42,8 @@
   --gin-bg-app-rgb: 249, 247, 253;
   --gin-bg-header: #e8e0f7;
   --gin-color-sticky-rgb: 240, 235, 250;
-  --gin-color-primary-light-hover: rgba(var(--gin-bg-app-rgb), .2);
-  --gin-color-primary-light-active: rgba(var(--gin-bg-app-rgb), .25);
+  --gin-color-primary-light-hover: rgba(var(--gin-color-primary-rgb), .2);
+  --gin-color-primary-light-active: rgba(var(--gin-color-primary-rgb), .25);
   --gin-shadow-primary-light: rgba(var(--gin-bg-app-rgb), .4);
   --gin-bg-item-hover: rgba(var(--gin-bg-app-rgb), .08);
 }
@@ -56,8 +56,8 @@
   --gin-bg-app-rgb: 250, 247, 255;
   --gin-bg-header: #ebe0ff;
   --gin-color-sticky-rgb: 242, 235, 255;
-  --gin-color-primary-light-hover: rgba(var(--gin-bg-app-rgb), .2);
-  --gin-color-primary-light-active: rgba(var(--gin-bg-app-rgb), .25);
+  --gin-color-primary-light-hover: rgba(var(--gin-color-primary-rgb), .2);
+  --gin-color-primary-light-active: rgba(var(--gin-color-primary-rgb), .25);
   --gin-shadow-primary-light: rgba(var(--gin-bg-app-rgb), .4);
   --gin-bg-item-hover: rgba(var(--gin-bg-app-rgb), .08);
 }

@@ -69,6 +69,7 @@
   --gin-font-weight-heavy: 625;
 
   @include mq(medium) {
+    --gin-font-size-h1: 1.8125rem;
     --gin-font-size-quote: 1.2em;
   }
 
