@@ -44,8 +44,8 @@
   --gin-color-sticky-rgb: 240, 235, 250;
   --gin-color-primary-light-hover: rgba(var(--gin-color-primary-rgb), .2);
   --gin-color-primary-light-active: rgba(var(--gin-color-primary-rgb), .25);
-  --gin-shadow-primary-light: rgba(var(--gin-bg-app-rgb), .4);
-  --gin-bg-item-hover: rgba(var(--gin-bg-app-rgb), .08);
+  --gin-shadow-primary-light: rgba(var(--gin-color-primary-rgb), .4);
+  --gin-bg-item-hover: rgba(var(--gin-color-primary-rgb), .08);
 }
 
 [data-gin-accent=purple] {
@@ -58,8 +58,8 @@
   --gin-color-sticky-rgb: 242, 235, 255;
   --gin-color-primary-light-hover: rgba(var(--gin-color-primary-rgb), .2);
   --gin-color-primary-light-active: rgba(var(--gin-color-primary-rgb), .25);
-  --gin-shadow-primary-light: rgba(var(--gin-bg-app-rgb), .4);
-  --gin-bg-item-hover: rgba(var(--gin-bg-app-rgb), .08);
+  --gin-shadow-primary-light: rgba(var(--gin-color-primary-rgb), .4);
+  --gin-bg-item-hover: rgba(var(--gin-color-primary-rgb), .08);
 }
 
 [data-gin-accent=teal] {

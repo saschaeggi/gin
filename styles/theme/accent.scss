@@ -47,8 +47,8 @@ $ginColors: (
     @if $name == dark_purple or $name == purple {
       --gin-color-primary-light-hover: rgba(var(--gin-color-primary-rgb), .2);
       --gin-color-primary-light-active: rgba(var(--gin-color-primary-rgb), .25);
-      --gin-shadow-primary-light: rgba(var(--gin-bg-app-rgb), .4);
-      --gin-bg-item-hover: rgba(var(--gin-bg-app-rgb), .08);
+      --gin-shadow-primary-light: rgba(var(--gin-color-primary-rgb), .4);
+      --gin-bg-item-hover: rgba(var(--gin-color-primary-rgb), .08);
     }
   }
 }

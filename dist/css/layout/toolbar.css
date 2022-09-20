@@ -456,7 +456,7 @@ a.toolbar-menu__trigger,
   .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.is-active,
 .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.is-active {
     color: var(--gin-color-primary-active);
-    font-weight: var(--gin-font-weight-bold);
+    font-weight: var(--gin-font-weight-semibold);
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.is-active:before,
@@ -671,17 +671,18 @@ a.toolbar-menu__trigger,
 
 @media (min-width: 61em) {
   .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon {
+.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon {
+    color: var(--gin-color-primary-hover);
     box-shadow: none;
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::before,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::before {
+.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::before {
     background: var(--gin-color-primary-active);
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::after,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
+.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
     content: "";
     display: block;
     position: absolute;
@@ -692,22 +693,29 @@ a.toolbar-menu__trigger,
     border-radius: var(--gin-border-m);
   }
 
-  [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
+  [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
     left: calc((var(--gin-toolbar-width-collapsed) - var(--gin-spacing-xl) - var(--gin-spacing-xs)) / 2 - 9px);
   }
 
-  [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
+  [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
     right: calc((var(--gin-toolbar-width-collapsed) - var(--gin-spacing-xl) - var(--gin-spacing-xs)) / 2 - 9px);
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon:focus,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon:focus {
+.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon:focus {
     background: transparent;
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon:focus::after,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon:focus::after {
+.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon:focus::after {
     box-shadow: inset 0 0 0 1px var(--gin-color-focus-border), inset 0 0 0 4px var(--gin-color-focus);
+  }
+}
+
+@media (min-width: 61em) {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after,
+.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.is-active::after {
+    background: var(--gin-bg-item-hover);
   }
 }
 
