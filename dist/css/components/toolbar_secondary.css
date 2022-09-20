@@ -1,6 +1,6 @@
 .gin-secondary-toolbar__layout-container *:focus {
   outline: none;
-  box-shadow: 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus);
+  box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }
 
 .gin-secondary-toolbar {
@@ -8,11 +8,11 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding-top: var(--ginSpacingXsmall);
-  padding-bottom: var(--ginSpacingXsmall);
+  padding-top: var(--gin-spacing-xs);
+  padding-bottom: var(--gin-spacing-xs);
   margin-top: -1px;
-  height: var(--ginToolbarSecondaryHeight);
-  border-bottom: 1px solid var(--colorGinSecondaryBorder);
+  height: var(--gin-toolbar-secondary-height);
+  border-bottom: 1px solid var(--gin-border-color-secondary);
   box-sizing: border-box;
 }
 
@@ -28,9 +28,9 @@
   position: sticky;
   top: 0;
   margin-top: 0;
-  height: var(--ginToolbarSecondaryHeight);
+  height: var(--gin-toolbar-secondary-height);
   background: rgba(255, 255, 255, .98);
-  border-bottom: 1px solid var(--colorGinLayerBorder);
+  border-bottom: 1px solid var(--gin-border-color-layer);
   box-sizing: border-box;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .gin--high-contrast-mode .gin-secondary-toolbar--frontend {
-  background: var(--colorGinAppBackground);
+  background: var(--gin-bg-app);
   -webkit-backdrop-filter: none;
           backdrop-filter: none;
 }
@@ -66,12 +66,12 @@
   }
 
   [dir="ltr"] .gin--edit-form .gin-secondary-toolbar {
-    left: calc(50% - var(--ginSpacingXlarge));
+    left: calc(50% - var(--gin-spacing-xxl));
     transform: translateX(-50%);
   }
 
   [dir="rtl"] .gin--edit-form .gin-secondary-toolbar {
-    right: calc(50% - var(--ginSpacingXlarge));
+    right: calc(50% - var(--gin-spacing-xxl));
     transform: translateX(50%);
   }
 }
@@ -80,18 +80,18 @@
   display: flex;
   align-items: center;
   width: 100%;
-  margin: 0 var(--ginSpacingDefault);
+  margin: 0 var(--gin-spacing-m);
 }
 
 @media (min-width: 48em) {
   .gin-secondary-toolbar__layout-container {
-    margin: 0 var(--ginSpacingLarge);
+    margin: 0 var(--gin-spacing-xl);
   }
 }
 
 @media (min-width: 61em) {
   .gin-secondary-toolbar__layout-container {
-    margin: 0 min(5vw, var(--ginSpacingXlarge));
+    margin: 0 min(5vw, var(--gin-spacing-xxl));
   }
 }
 
@@ -105,23 +105,23 @@
 }
 
 [dir="ltr"] .gin-breadcrumb-wrapper {
-  margin-right: var(--ginSpacingLarge);
+  margin-right: var(--gin-spacing-xl);
 }
 
 [dir="rtl"] .gin-breadcrumb-wrapper {
-  margin-left: var(--ginSpacingLarge);
+  margin-left: var(--gin-spacing-xl);
 }
 
 .gin-back-to-admin {
-  font-family: var(--ginFont);
-  font-size: var(--ginFontSizeSmaller);
-  font-weight: var(--ginFontWeightNormal);
+  font-family: var(--gin-font);
+  font-size: var(--gin-font-size-xs);
+  font-weight: var(--gin-font-weight-normal);
   line-height: 2;
-  color: var(--colorGinTextLight);
+  color: var(--gin-color-text-light);
   text-decoration: none;
   position: relative;
   border-bottom: 0 none;
-  border-radius: var(--ginBorderTiny);
+  border-radius: var(--gin-border-xxs);
 }
 
 [dir="ltr"] .gin-back-to-admin {
@@ -137,10 +137,10 @@
   display: inline-block;
   position: absolute;
   top: 50%;
-  width: var(--iconGinSecondaryToolbar);
-  height: var(--iconGinSecondaryToolbar);
+  width: var(--gin-icon-size-toolbar-secondary);
+  height: var(--gin-icon-size-toolbar-secondary);
   transform: translateY(-50%);
-  background-color: var(--colorGinIcons);
+  background-color: var(--gin-icon-color);
   -webkit-mask-image: url("../../media/sprite.svg#backtosite-view");
           mask-image: url("../../media/sprite.svg#backtosite-view");
   -webkit-mask-size: 100% 100%;
@@ -158,11 +158,11 @@
 }
 
 .gin-back-to-admin:hover {
-  color: var(--colorGinPrimaryHover);
+  color: var(--gin-color-primary-hover);
 }
 
 .gin-back-to-admin:hover::before {
-  background-color: var(--colorGinPrimaryHover);
+  background-color: var(--gin-color-primary-hover);
 }
 
 @media (min-width: 61em) {
@@ -208,7 +208,7 @@
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar {
-    height: var(--ginToolbarHeight);
+    height: var(--gin-toolbar-height);
     z-index: 102;
   }
 
@@ -218,15 +218,15 @@
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab:hover, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab:focus-within {
-    border-radius: var(--ginBorderSmall) var(--ginBorderSmall) 0 0;
+    border-radius: var(--gin-border-s) var(--gin-border-s) 0 0;
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab:hover > .toolbar-item, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab:focus-within > .toolbar-item {
-    color: var(--colorGinTitle);
+    color: var(--gin-color-title);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab:hover > .toolbar-item:before, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab:focus-within > .toolbar-item:before {
-    background: var(--colorGinTitle);
+    background: var(--gin-color-title);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab:hover .toolbar-tray, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab:focus-within .toolbar-tray {
@@ -235,11 +235,11 @@
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-item {
     font-size: 0;
-    color: var(--colorGinTextLight);
+    color: var(--gin-color-text-light);
     width: 32px;
     height: 32px;
     margin: 0;
-    border-radius: var(--ginBorderSmall) var(--ginBorderSmall) 0 0;
+    border-radius: var(--gin-border-s) var(--gin-border-s) 0 0;
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-item:before {
@@ -255,7 +255,7 @@
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-item:focus {
-    border-radius: var(--ginBorderSmall);
+    border-radius: var(--gin-border-s);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-item:focus ~ .toolbar-tray {
@@ -263,63 +263,63 @@
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-item:hover, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-item:focus {
-    color: var(--colorGinTitle);
+    color: var(--gin-color-title);
     background: none;
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-item:hover::before, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-item:focus::before {
-    background-color: var(--colorGinTitle);
+    background-color: var(--gin-color-title);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-item:focus, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-item:hover:focus {
-    box-shadow: 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus);
+    box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab:hover .trigger, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab:focus .trigger {
     text-decoration: none;
-    background: var(--colorGinLayer3Background);
+    background: var(--gin-bg-layer3);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray {
     position: absolute;
     width: 170px;
-    background-color: var(--colorGinLayer3Background);
+    background-color: var(--gin-bg-layer3);
     border-bottom: 0 none;
-    box-shadow: var(--ginShadowLevel2);
+    box-shadow: var(--gin-shadow-l2);
   }
 
   [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray {
     left: 0;
-    border-radius: 0 var(--ginBorderMedium) var(--ginBorderMedium) var(--ginBorderMedium);
+    border-radius: 0 var(--gin-border-l) var(--gin-border-l) var(--gin-border-l);
   }
 
   [dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray {
     right: 0;
-    border-radius: var(--ginBorderMedium) 0 var(--ginBorderMedium) var(--ginBorderMedium);
+    border-radius: var(--gin-border-l) 0 var(--gin-border-l) var(--gin-border-l);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray a {
-    color: var(--colorGinPrimary);
-    padding: var(--ginSpacingSmall) var(--ginSpacingDefault);
-    border-radius: var(--ginBorderSmall);
-    font-size: var(--ginFontSizeSmaller);
+    color: var(--gin-color-primary);
+    padding: var(--gin-spacing-s) var(--gin-spacing-m);
+    border-radius: var(--gin-border-s);
+    font-size: var(--gin-font-size-xs);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray a:hover, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray a:active {
-    color: var(--colorGinButtonText);
-    background-color: var(--colorGinPrimary);
+    color: var(--gin-color-button-text);
+    background-color: var(--gin-color-primary);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray a.action-link::before {
-    background-color: var(--colorGinPrimary);
+    background-color: var(--gin-color-primary);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray a.action-link:hover::before {
-    background-color: var(--colorGinButtonText);
+    background-color: var(--gin-color-button-text);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray .toolbar-lining:not(:empty) {
-    padding: var(--ginSpacingXsmall);
+    padding: var(--gin-spacing-xs);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray .toolbar-icon:before {
@@ -334,25 +334,25 @@
 [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar div:last-child .toolbar-tray {
     left: auto;
     right: 0;
-    border-radius: var(--ginBorderMedium) 0 var(--ginBorderMedium) var(--ginBorderMedium);
+    border-radius: var(--gin-border-l) 0 var(--gin-border-l) var(--gin-border-l);
   }
 
   [dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar div:nth-last-child(2) .toolbar-tray,
 [dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar div:last-child .toolbar-tray {
     right: auto;
     left: 0;
-    border-radius: 0 var(--ginBorderMedium) var(--ginBorderMedium) var(--ginBorderMedium);
+    border-radius: 0 var(--gin-border-l) var(--gin-border-l) var(--gin-border-l);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:hover, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:active, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:focus, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.is-active, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.is-active:hover {
-    font-weight: var(--ginFontWeightNormal);
-    color: var(--colorGinTextLight);
+    font-weight: var(--gin-font-weight-normal);
+    color: var(--gin-color-text-light);
     background-color: transparent;
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:hover::before, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:active::before, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:focus::before, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.is-active::before, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.is-active:hover::before {
     background-image: none;
-    background-color: var(--colorGinIcons);
+    background-color: var(--gin-icon-color);
   }
 }
 
@@ -368,24 +368,24 @@
 
 @media (min-width: 61em) {
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user:hover .icon-user {
-    box-shadow: 0 0 0 2px var(--colorGinAppBackground), 0 0 0 5px var(--colorGinLayer3Background);
+    box-shadow: 0 0 0 2px var(--gin-bg-app), 0 0 0 5px var(--gin-bg-layer3);
   }
 }
 
 @media (min-width: 61em) {
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user {
-    border: 1px solid var(--colorGinBorder);
+    border: 1px solid var(--gin-border-color);
     overflow: hidden;
     padding: 0;
     line-height: 0;
   }
 
   [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user {
-    margin-left: var(--ginSpacingDefault);
+    margin-left: var(--gin-spacing-m);
   }
 
   [dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user {
-    margin-right: var(--ginSpacingDefault);
+    margin-right: var(--gin-spacing-m);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user:focus {
@@ -427,7 +427,7 @@
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-item {
-    font-size: var(--ginFontSizeSmaller);
+    font-size: var(--gin-font-size-xs);
     width: auto;
     height: auto;
   }
@@ -441,8 +441,8 @@
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-item::before {
-    width: var(--iconGinSecondaryToolbar);
-    height: var(--iconGinSecondaryToolbar);
+    width: var(--gin-icon-size-toolbar-secondary);
+    height: var(--gin-icon-size-toolbar-secondary);
     top: 50%;
     transform: translateY(-50%);
   }
@@ -465,7 +465,7 @@
   line-height: 1;
   padding-top: 10px;
   padding-bottom: 10px;
-  font-size: var(--ginFontSizeSmaller);
+  font-size: var(--gin-font-size-xs);
 }
 
 [dir="ltr"] #admin-toolbar-search-input {
@@ -477,12 +477,12 @@
 }
 
 #admin-toolbar-search-input::placeholder {
-  color: var(--colorGinDisabled);
+  color: var(--gin-color-disabled);
   opacity: 1;
 }
 
 .gin--dark-mode #admin-toolbar-search-input::placeholder {
-  color: var(--colorGinTextLight);
+  color: var(--gin-color-text-light);
   opacity: .75;
 }
 
@@ -492,10 +492,10 @@
 
 .ui-autocomplete.admin-toolbar-search-autocomplete-list {
   max-width: 320px;
-  border-radius: var(--ginBorderDefault);
+  border-radius: var(--gin-border-m);
 }
 
 .ui-autocomplete.admin-toolbar-search-autocomplete-list .ui-menu-item-wrapper {
-  font-size: var(--ginFontSizeSmaller);
+  font-size: var(--gin-font-size-xs);
 }
 

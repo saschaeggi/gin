@@ -4,15 +4,15 @@
 
 .erl-field .erl-disabled-items,
 .erl-field .erl-disabled-items.form-item.form-wrapper {
-  padding: var(--ginSpacingDefault);
+  padding: var(--gin-spacing-m);
   margin-bottom: -6rem;
   background: #f1f1f3;
-  border-radius: var(--ginBorderDefault);
+  border-radius: var(--gin-border-m);
 }
 
 .gin--dark-mode .erl-field .erl-disabled-items,
 .gin--dark-mode .erl-field .erl-disabled-items.form-item.form-wrapper {
-  background: var(--colorGinLayer2Background);
+  background: var(--gin-bg-layer2);
 }
 
 .erl-field .erl-disabled-items, .erl-field .erl-disabled-items:hover, .erl-field .erl-disabled-items:active,
@@ -24,12 +24,12 @@
 
 .erl-field .erl-disabled-items .fieldset__label,
 .erl-field .erl-disabled-items.form-item.form-wrapper .fieldset__label {
-  padding: var(--ginSpacingDefault) 0 var(--ginSpacingMedium);
+  padding: var(--gin-spacing-m) 0 var(--gin-spacing-l);
 }
 
 .erl-field .erl-disabled-items__description,
 .erl-field .erl-disabled-items.form-item.form-wrapper__description {
-  font-size: var(--ginFontSizeSmall);
+  font-size: var(--gin-font-size-s);
   color: #999;
 }
 
@@ -55,12 +55,12 @@
   position: static;
   display: block;
   width: 100%;
-  color: var(--colorGinPrimary);
+  color: var(--gin-color-primary);
   line-height: 1.3;
-  background: var(--colorGinItemHover);
-  padding: var(--ginSpacingDefault) var(--ginSpacingDefault) 34px var(--ginSpacingDefault);
-  border: 1px dashed var(--colorGinPrimary);
-  border-radius: var(--ginBorderDefault);
+  background: var(--gin-bg-item-hover);
+  padding: var(--gin-spacing-m) var(--gin-spacing-m) 34px var(--gin-spacing-m);
+  border: 1px dashed var(--gin-color-primary);
+  border-radius: var(--gin-border-m);
   transform: none;
 }
 
@@ -74,8 +74,8 @@
 .erl-field .erl-add-section:hover, .erl-field .erl-add-section:active,
 .erl-field .erl-add-content--single button:hover,
 .erl-field .erl-add-content--single button:active {
-  color: var(--colorGinPrimaryHover);
-  background: var(--colorGinPrimaryLight);
+  color: var(--gin-color-primary-hover);
+  background: var(--gin-color-primary-light);
 }
 
 .erl-field .erl-item:last-of-type > .erl-add-content--single {
@@ -83,11 +83,11 @@
 }
 
 [dir="ltr"] .erl-field .erl-add-content--single button .icon {
-  margin-right: var(--ginSpacingXsmall);
+  margin-right: var(--gin-spacing-xs);
 }
 
 [dir="rtl"] .erl-field .erl-add-content--single button .icon {
-  margin-left: var(--ginSpacingXsmall);
+  margin-left: var(--gin-spacing-xs);
 }
 
 .erl-field .layout-radio-item > div {
@@ -96,15 +96,15 @@
 }
 
 [dir="ltr"] .erl-field .layout-radio-item .form-item {
-  margin-left: var(--ginSpacingXsmall);
+  margin-left: var(--gin-spacing-xs);
 }
 
 [dir="rtl"] .erl-field .layout-radio-item .form-item {
-  margin-right: var(--ginSpacingXsmall);
+  margin-right: var(--gin-spacing-xs);
 }
 
 .erl-field .layout-radio-item.active {
-  outline: var(--ginBorderXSmall) solid var(--colorGinFocus);
+  outline: var(--gin-border-xs) solid var(--gin-color-focus);
 }
 
 .erl-layout-region:hover button.erl-add-content__toggle {
@@ -130,11 +130,11 @@
 }
 
 .erl-disabled-wrapper .erl-item:not(:last-of-type) {
-  margin-bottom: var(--ginSpacingDefault);
+  margin-bottom: var(--gin-spacing-m);
 }
 
 .erl-disabled-wrapper .erl-disabled-items__description {
-  top: var(--ginSpacingDefault);
+  top: var(--gin-spacing-m);
 }
 
 .erl-item label.paragraph-type-label,
@@ -144,7 +144,7 @@
   top: 12px;
   border: 0 none;
   font-style: normal;
-  color: var(--colorGinTextLight);
+  color: var(--gin-color-text-light);
   opacity: .75;
 }
 
@@ -163,15 +163,15 @@
 .erl-item .layout-controls {
   opacity: 1;
   position: absolute;
-  top: var(--ginSpacingXsmall);
+  top: var(--gin-spacing-xs);
 }
 
 [dir="ltr"] .erl-item .layout-controls {
-  left: var(--ginSpacingTiny);
+  left: var(--gin-spacing-xxs);
 }
 
 [dir="rtl"] .erl-item .layout-controls {
-  right: var(--ginSpacingTiny);
+  right: var(--gin-spacing-xxs);
 }
 
 .erl-item .paragraph .field {
@@ -180,7 +180,7 @@
 }
 
 .erl-item .paragraph .field--name-field-title {
-  font-weight: var(--ginFontWeightUltra);
+  font-weight: var(--gin-font-weight-heavy);
 }
 
 .erl-item .paragraph .field--type-image {
@@ -198,25 +198,25 @@
 }
 
 [dir="ltr"] .erl-item .paragraph .field--name-field-paragraphs .field__item {
-  margin-right: var(--ginSpacingXsmall);
+  margin-right: var(--gin-spacing-xs);
 }
 
 [dir="rtl"] .erl-item .paragraph .field--name-field-paragraphs .field__item {
-  margin-left: var(--ginSpacingXsmall);
+  margin-left: var(--gin-spacing-xs);
 }
 
 .erl-item .erl-actions {
   visibility: visible;
   position: absolute;
-  top: var(--ginSpacingXsmall);
+  top: var(--gin-spacing-xs);
 }
 
 [dir="ltr"] .erl-item .erl-actions {
-  right: var(--ginSpacingTiny);
+  right: var(--gin-spacing-xxs);
 }
 
 [dir="rtl"] .erl-item .erl-actions {
-  left: var(--ginSpacingTiny);
+  left: var(--gin-spacing-xxs);
 }
 
 .erl-layout.erl-item.form-wrapper:hover > button.erl-add-content__toggle, .erl-layout.erl-item.form-wrapper:hover > button.layout-paragraphs-add-content__toggle {

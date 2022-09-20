@@ -2,10 +2,10 @@
 .gin--edit-form {
   // Has sidebar, save the space
   @include mq(large) {
-    padding-right: var(--ginSidebarOffset);
+    padding-right: var(--gin-sidebar-offset);
 
     .dialog-off-canvas-main-canvas {
-      transition: padding-left var(--ginTransitionFast);
+      transition: padding-left var(--gin-transition-fast);
     }
 
     // If off-canvas dialog is shown
@@ -85,18 +85,18 @@
 
     .layout-region-node-secondary {
       z-index: 103;
-      width: var(--ginSidebarWidth);
-      height: calc(100% - var(--ginHorizontalToolbarOffset));
+      width: var(--gin-sidebar-width);
+      height: calc(100% - var(--gin-toolbar-y-offset));
       position: fixed;
-      top: var(--ginHorizontalToolbarOffset);
+      top: var(--gin-toolbar-y-offset);
       right: 0;
       margin: 0;
       overflow-x: hidden;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
-      background:var(--colorGinLayerBackground);
-      border-left: 1px solid var(--colorGinLayerBorder);
-      transition: all var(--ginTransitionFast);
+      background:var(--gin-bg-layer);
+      border-left: 1px solid var(--gin-border-color-layer);
+      transition: all var(--gin-transition-fast);
 
       .gin--dark-mode & {
         box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
@@ -107,14 +107,14 @@
           margin: 0;
 
           .action-link {
-            margin-top: var(--ginSpacingXsmall);
+            margin-top: var(--gin-spacing-xs);
             margin-bottom: 0;
           }
         }
       }
 
       .field--name-revision-log {
-        margin-top: var(--ginSpacingMedium);
+        margin-top: var(--gin-spacing-l);
       }
 
       .accordion {
@@ -127,34 +127,34 @@
         $sidebarSpacer: 1.5rem;
 
         &__header {
-          color: var(--colorGinText);
+          color: var(--gin-color-text);
           padding-left: $sidebarSpacer;
           padding-right: $sidebarSpacer;
-          background-color: var(--colorGinLayerBackground);
+          background-color: var(--gin-bg-layer);
           border: 0 none;
 
           @include mq($to: medium) {
-            padding-top: calc(var(--ginSpacingMedium) - var(--ginSpacingTiny));
-            padding-right: var(--ginSpacingMedium);
+            padding-top: calc(var(--gin-spacing-l) - var(--gin-spacing-xxs));
+            padding-right: var(--gin-spacing-l);
           }
         }
 
         &__title {
-          color: var(--colorGinTitle);
-          font-weight: var(--ginFontWeightSemiBold);
-          margin-top: var(--ginSpacingTiny);
-          margin-bottom: var(--ginSpacingDefault);
+          color: var(--gin-color-title);
+          font-weight: var(--gin-font-weight-semibold);
+          margin-top: var(--gin-spacing-xxs);
+          margin-bottom: var(--gin-spacing-m);
           text-shadow: none;
         }
 
         > .accordion__item {
           margin: 0;
           border: 0 none;
-          border-bottom: 1px solid var(--colorGinLayerBorder);
+          border-bottom: 1px solid var(--gin-border-color-layer);
           border-radius: 0;
 
           .gin--dark-mode & {
-            border-color: var(--colorGinBorder);
+            border-color: var(--gin-border-color);
           }
 
           > .claro-details__summary {
@@ -167,7 +167,7 @@
             }
 
             &::before {
-              top: var(--ginSpacingLarge);
+              top: var(--gin-spacing-xl);
               left: $sidebarSpacer;
             }
 
@@ -181,7 +181,7 @@
             margin-right: $sidebarSpacer;
 
             .claro-details__wrapper {
-              margin: var(--ginSpacingMedium);
+              margin: var(--gin-spacing-l);
             }
           }
 
@@ -222,7 +222,7 @@
 
               &:first-of-type {
                 @include mq(tiny) {
-                  margin-right: var(--ginSpacingXsmall);
+                  margin-right: var(--gin-spacing-xs);
                 }
 
                 @include mq(large, wide) {
@@ -246,12 +246,12 @@
   }
 
   .revision-current {
-    background-color: var(--colorGinPrimaryLightActive);
+    background-color: var(--gin-color-primary-light-active);
   }
 
   .field--name-title .form-element {
-    font-size: var(--ginFontSizeH3);
-    font-weight: var(--ginFontWeightSemiBold);
+    font-size: var(--gin-font-size-h3);
+    font-weight: var(--gin-font-weight-semibold);
     line-height: normal;
     letter-spacing: -0.025em;
     width: 100%;

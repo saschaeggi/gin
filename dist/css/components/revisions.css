@@ -17,11 +17,11 @@
 
 [dir="ltr"] .revision-current td:first-of-type::before {
   left: 0;
-  border-left: 6px solid var(--colorGinGreen);
+  border-left: 6px solid var(--gin-color-green);
 }
 
 [dir="rtl"] .revision-current td:first-of-type::before {
   right: 0;
-  border-right: 6px solid var(--colorGinGreen);
+  border-right: 6px solid var(--gin-color-green);
 }
 

@@ -1,26 +1,26 @@
 // Toolbar Variables
 :root {
-  --ginToolbarSecondaryHeight: 0px; // Needs px to work in calc() functions.
-  --ginToolbarHeight: 39px;
-  --ginScrollOffset: 72px;
-  --ginHorizontalToolbarOffset: var(--ginToolbarHeight);
-  --ginVerticalToolbarOffset: 0px; // Needs px to work in calc() functions.
-  --ginStickyOffset: 0px; // Needs px to work in calc() functions.
+  --gin-toolbar-secondary-height: 0px; // Needs px to work in calc() functions.
+  --gin-toolbar-height: 39px;
+  --gin-scroll-offset: 72px;
+  --gin-toolbar-y-offset: var(--gin-toolbar-height);
+  --gin-toolbar-x-offset: 0px; // Needs px to work in calc() functions.
+  --gin-sticky-offset: 0px; // Needs px to work in calc() functions.
 
   @include mq(large) {
-    --iconGinToolbar: 16px;
-    --ginScrollOffset: 200px;
+    --gin-icon-size-toolbar: 16px;
+    --gin-scroll-offset: 200px;
   }
 }
 
 .toolbar-fixed.toolbar-tray-open:not(.toolbar-vertical) {
   @include mq(medium) {
-    --ginHorizontalToolbarOffset: 78px;
+    --gin-toolbar-y-offset: 78px;
   }
 }
 
 .region-breadcrumb {
-  margin-top: var(--ginSpacingDefault);
+  margin-top: var(--gin-spacing-m);
 }
 
 // Toolbar
@@ -34,11 +34,11 @@
 .toolbar .toolbar-menu,
 .toolbar-horizontal .toolbar-tray .menu-item--expanded,
 .toolbar .toolbar-tray {
-  background-color: var(--colorGinLayerBackground);
+  background-color: var(--gin-bg-layer);
 }
 
 .toolbar-horizontal .toolbar-tray .toolbar-toggle-orientation {
-  border-left: 1px solid var(--colorGinBorder);
+  border-left: 1px solid var(--gin-border-color);
 }
 
 .toolbar-tray-horizontal {
@@ -46,7 +46,7 @@
     li {
       &.menu-item {
         .menu-item {
-          border-bottom: 1px solid var(--colorGinBorder);
+          border-bottom: 1px solid var(--gin-border-color);
         }
       }
     }
@@ -57,10 +57,10 @@
 .toolbar-tray span,
 .toolbar .toolbar-menu .toolbar-menu a,
 .toolbar .toolbar-menu .toolbar-menu span {
-  color: var(--colorGinText);
+  color: var(--gin-color-text);
 
   &:hover {
-    color: var(--colorGinTitle);
+    color: var(--gin-color-title);
   }
 }
 
@@ -68,20 +68,20 @@
 .toolbar .toolbar-tray .menu-item > .toolbar-icon.is-active,
 .toolbar .toolbar-tray .menu-item > .toolbar-box > .toolbar-icon.is-active,
 .toolbar .toolbar-tray a.is-active {
-  color: var(--colorGinPrimary);
-  font-weight: var(--ginFontWeightSemiBold);
+  color: var(--gin-color-primary);
+  font-weight: var(--gin-font-weight-bold);
 
   &::before {
-    background: var(--colorGinPrimary);
+    background: var(--gin-color-primary);
   }
 }
 
 .toolbar .toolbar-tray .menu-item:hover > .toolbar-icon {
-  color: var(--colorGinPrimaryHover);
-  background-color: var(--colorGinItemHover);
+  color: var(--gin-color-primary-hover);
+  background-color: var(--gin-bg-item-hover);
 
   &::before {
-    background: var(--colorGinPrimary);
+    background: var(--gin-color-primary);
   }
 }
 
@@ -93,12 +93,12 @@
     &,
     &.is-active,
     &:focus {
-      background: var(--colorGinPrimary);
+      background: var(--gin-color-primary);
     }
 
     &:hover,
     &.is-active:hover {
-      background: var(--colorGinPrimaryHover);
+      background: var(--gin-color-primary-hover);
 
       &::before {
         background: #fff;
@@ -110,7 +110,7 @@
 .toolbar-tray-horizontal a:focus,
 .toolbar-box a:focus,
 .toolbar .toolbar-icon.toolbar-handle:focus {
-  background-color: var(--colorGinLayer2Background);
+  background-color: var(--gin-bg-layer2);
 }
 
 .toolbar-tray-horizontal .menu-item:hover {
@@ -125,16 +125,16 @@
 
 .toolbar .level-2 > ul,
 .gin--dark-mode .toolbar .toolbar-toggle-orientation {
-  background-color: var(--colorGinLayer2Background);
+  background-color: var(--gin-bg-layer2);
 }
 
 .toolbar .level-3 > ul {
-  background-color: var(--colorGinAppBackground);
+  background-color: var(--gin-bg-app);
 }
 
 .gin--classic-toolbar {
   .page-wrapper__node-edit-form .layout-region-node-secondary {
-    padding-top: var(--ginHorizontalToolbarOffset); // 39px;
+    padding-top: var(--gin-toolbar-y-offset); // 39px;
   }
 
   table.sticky-header {
@@ -160,7 +160,7 @@
 
   @include mq(medium) {
     &:before {
-      left: var(--ginSpacingDefault);
+      left: var(--gin-spacing-m);
     }
   }
 }
@@ -182,8 +182,8 @@
   position: relative;
 
   &:before {
-    top: var(--ginSpacingSmall);
-    right: var(--ginSpacingSmall);
+    top: var(--gin-spacing-s);
+    right: var(--gin-spacing-s);
   }
 }
 
@@ -195,5 +195,5 @@
 }
 
 #admin-toolbar-search-input {
-  padding-left: var(--ginSpacingLarge);
+  padding-left: var(--gin-spacing-xl);
 }

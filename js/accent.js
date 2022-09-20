@@ -50,19 +50,19 @@
         const darkAccentColor = Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 65).replace('#', '');
         const styles = `<style class="gin-custom-colors">\
           [data-gin-accent="custom"] {\n\
-            --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(accentColor)};\n\
-            --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -10)};\n\
-            --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -15)};\n\
-            --colorGinAppBackgroundRGB: ${Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 97))};\n\
-            --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 85)};\n\
-            --colorGinStickyRGB: ${Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 92))};\n\
+            --gin-color-primary-rgb: ${Drupal.behaviors.ginAccent.hexToRgb(accentColor)};\n\
+            --gin-color-primary-hover: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -10)};\n\
+            --gin-color-primary-active: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -15)};\n\
+            --gin-bg-app-rgb: ${Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 97))};\n\
+            --gin-bg-header: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 85)};\n\
+            --gin-color-sticky-rgb: ${Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 92))};\n\
           }\n\
           .gin--dark-mode[data-gin-accent="custom"],\n\
           .gin--dark-mode [data-gin-accent="custom"] {\n\
-            --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(darkAccentColor)};\n\
-            --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 55)};\n\
-            --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 50)};\n\
-            --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor('2A2A2D', darkAccentColor, 88)};\n\
+            --gin-color-primary-rgb: ${Drupal.behaviors.ginAccent.hexToRgb(darkAccentColor)};\n\
+            --gin-color-primary-hover: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 55)};\n\
+            --gin-color-primary-active: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 50)};\n\
+            --gin-bg-header: ${Drupal.behaviors.ginAccent.mixColor('2A2A2D', darkAccentColor, 88)};\n\
           }\n\
           </style>`;
 
@@ -105,11 +105,11 @@
         const darkAccentColor = Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 65);
         const styles = `<style class="gin-custom-focus">\
             [data-gin-focus="custom"] {\n\
-              --colorGinFocus: ${accentColor};\n\
+              --gin-color-focus: ${accentColor};\n\
             }\n\
             .gin--dark-mode[data-gin-focus="custom"],\n\
             .gin--dark-mode [data-gin-focus="custom"] {\n\
-              --colorGinFocus: ${darkAccentColor};\n\
+              --gin-color-focus: ${darkAccentColor};\n\
             }\n\
             </style>`;
 

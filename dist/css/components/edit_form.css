@@ -1,18 +1,18 @@
 @media (min-width: 64em) {
   [dir="ltr"] .gin--edit-form {
-    padding-right: var(--ginSidebarOffset);
+    padding-right: var(--gin-sidebar-offset);
   }
 
   [dir="rtl"] .gin--edit-form {
-    padding-left: var(--ginSidebarOffset);
+    padding-left: var(--gin-sidebar-offset);
   }
 
   [dir="ltr"] .gin--edit-form .dialog-off-canvas-main-canvas {
-    transition: padding-left var(--ginTransitionFast);
+    transition: padding-left var(--gin-transition-fast);
   }
 
   [dir="rtl"] .gin--edit-form .dialog-off-canvas-main-canvas {
-    transition: padding-right var(--ginTransitionFast);
+    transition: padding-right var(--gin-transition-fast);
   }
 
   [dir="ltr"] .gin--edit-form.js-off-canvas-dialog-open {
@@ -102,26 +102,26 @@
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
   z-index: 103;
-  width: var(--ginSidebarWidth);
-  height: calc(100% - var(--ginHorizontalToolbarOffset));
+  width: var(--gin-sidebar-width);
+  height: calc(100% - var(--gin-toolbar-y-offset));
   position: fixed;
-  top: var(--ginHorizontalToolbarOffset);
+  top: var(--gin-toolbar-y-offset);
   margin: 0;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  background: var(--colorGinLayerBackground);
-  transition: all var(--ginTransitionFast);
+  background: var(--gin-bg-layer);
+  transition: all var(--gin-transition-fast);
 }
 
 [dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
   right: 0;
-  border-left: 1px solid var(--colorGinLayerBorder);
+  border-left: 1px solid var(--gin-border-color-layer);
 }
 
 [dir="rtl"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
   left: 0;
-  border-right: 1px solid var(--colorGinLayerBorder);
+  border-right: 1px solid var(--gin-border-color-layer);
 }
 
 .gin--dark-mode .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
@@ -133,12 +133,12 @@
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .gin-sidebar .form-actions .action-link {
-  margin-top: var(--ginSpacingXsmall);
+  margin-top: var(--gin-spacing-xs);
   margin-bottom: 0;
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .field--name-revision-log {
-  margin-top: var(--ginSpacingMedium);
+  margin-top: var(--gin-spacing-l);
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .accordion {
@@ -148,44 +148,44 @@
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__header {
-  color: var(--colorGinText);
+  color: var(--gin-color-text);
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  background-color: var(--colorGinLayerBackground);
+  background-color: var(--gin-bg-layer);
   border: 0 none;
 }
 
 @media (max-width: 60.99em) {
   .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__header {
-    padding-top: calc(var(--ginSpacingMedium) - var(--ginSpacingTiny));
+    padding-top: calc(var(--gin-spacing-l) - var(--gin-spacing-xxs));
   }
 
   [dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__header {
-    padding-right: var(--ginSpacingMedium);
+    padding-right: var(--gin-spacing-l);
   }
 
   [dir="rtl"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__header {
-    padding-left: var(--ginSpacingMedium);
+    padding-left: var(--gin-spacing-l);
   }
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__title {
-  color: var(--colorGinTitle);
-  font-weight: var(--ginFontWeightSemiBold);
-  margin-top: var(--ginSpacingTiny);
-  margin-bottom: var(--ginSpacingDefault);
+  color: var(--gin-color-title);
+  font-weight: var(--gin-font-weight-semibold);
+  margin-top: var(--gin-spacing-xxs);
+  margin-bottom: var(--gin-spacing-m);
   text-shadow: none;
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item {
   margin: 0;
   border: 0 none;
-  border-bottom: 1px solid var(--colorGinLayerBorder);
+  border-bottom: 1px solid var(--gin-border-color-layer);
   border-radius: 0;
 }
 
 .gin--dark-mode .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item {
-  border-color: var(--colorGinBorder);
+  border-color: var(--gin-border-color);
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary {
@@ -213,7 +213,7 @@
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary::before {
-  top: var(--ginSpacingLarge);
+  top: var(--gin-spacing-xl);
 }
 
 [dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary::before {
@@ -234,7 +234,7 @@
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .claro-details__content .claro-details__wrapper {
-  margin: var(--ginSpacingMedium);
+  margin: var(--gin-spacing-l);
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .redirect-table__path {
@@ -282,11 +282,11 @@
 
 @media (min-width: 26.25em) {
   [dir="ltr"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
-    margin-right: var(--ginSpacingXsmall);
+    margin-right: var(--gin-spacing-xs);
   }
 
   [dir="rtl"] .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-datetime-wrapper .form-type--date:first-of-type {
-    margin-left: var(--ginSpacingXsmall);
+    margin-left: var(--gin-spacing-xs);
   }
 }
 
@@ -310,12 +310,12 @@
 }
 
 .gin--edit-form .revision-current {
-  background-color: var(--colorGinPrimaryLightActive);
+  background-color: var(--gin-color-primary-light-active);
 }
 
 .gin--edit-form .field--name-title .form-element {
-  font-size: var(--ginFontSizeH3);
-  font-weight: var(--ginFontWeightSemiBold);
+  font-size: var(--gin-font-size-h3);
+  font-weight: var(--gin-font-weight-semibold);
   line-height: normal;
   letter-spacing: -0.025em;
   width: 100%;

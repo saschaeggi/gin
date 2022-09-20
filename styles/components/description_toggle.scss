@@ -7,13 +7,13 @@
 .help-icon__description-toggle {
   all: unset;
   flex-shrink: 0;
-  margin: .3rem var(--ginSpacingDefault) 0 .3rem;
+  margin: .3rem var(--gin-spacing-m) 0 .3rem;
   height: 16px;
   width: 16px;
   border-radius: 50%;
 
   &:before {
-    background-color: var(--colorGinIcons);
+    background-color: var(--gin-icon-color);
     content: "";
     display: block;
     width: 100%;
@@ -25,7 +25,7 @@
   }
 
   &:hover:before {
-    background-color: var(--colorGinPrimary);
+    background-color: var(--gin-color-primary);
   }
 }
 
@@ -41,7 +41,7 @@
   }
 
   .checkbox-toggle + .help-icon {
-    padding-left: var(--ginSpacingTiny);
+    padding-left: var(--gin-spacing-xxs);
   }
 }
 
@@ -77,10 +77,10 @@ fieldset.media-library-widget,
   }
 
   .fieldset__description {
-    padding-left: var(--ginSpacingDefault);
+    padding-left: var(--gin-spacing-m);
 
     @include mq(small) {
-      padding-left: var(--ginSpacingMedium);
+      padding-left: var(--gin-spacing-l);
     }
   }
 }
@@ -92,7 +92,7 @@ fieldset.media-library-widget,
 
   .help-icon__description-toggle {
     position: absolute;
-    right: calc(var(--ginSpacingXsmall) * -1);
-    top: var(--ginSpacingDefault);
+    right: calc(var(--gin-spacing-xs) * -1);
+    top: var(--gin-spacing-m);
   }
 }

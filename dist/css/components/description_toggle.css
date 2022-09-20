@@ -11,15 +11,15 @@
 }
 
 [dir="ltr"] .help-icon__description-toggle {
-  margin: .3rem var(--ginSpacingDefault) 0 .3rem;
+  margin: .3rem var(--gin-spacing-m) 0 .3rem;
 }
 
 [dir="rtl"] .help-icon__description-toggle {
-  margin: .3rem .3rem 0 var(--ginSpacingDefault);
+  margin: .3rem .3rem 0 var(--gin-spacing-m);
 }
 
 .help-icon__description-toggle:before {
-  background-color: var(--colorGinIcons);
+  background-color: var(--gin-icon-color);
   content: "";
   display: block;
   width: 100%;
@@ -35,7 +35,7 @@
 }
 
 .help-icon__description-toggle:hover:before {
-  background-color: var(--colorGinPrimary);
+  background-color: var(--gin-color-primary);
 }
 
 .form-type--checkbox > .help-icon__element-has-description,
@@ -56,12 +56,12 @@
 
 [dir="ltr"] .form-type--checkbox .checkbox-toggle + .help-icon,
 [dir="ltr"] .form-type--radio .checkbox-toggle + .help-icon {
-  padding-left: var(--ginSpacingTiny);
+  padding-left: var(--gin-spacing-xxs);
 }
 
 [dir="rtl"] .form-type--checkbox .checkbox-toggle + .help-icon,
 [dir="rtl"] .form-type--radio .checkbox-toggle + .help-icon {
-  padding-right: var(--ginSpacingTiny);
+  padding-right: var(--gin-spacing-xxs);
 }
 
 .form-type-checkbox .help-icon__element-has-description .checkbox-toggle {
@@ -89,26 +89,26 @@ fieldset.media-library-widget .help-icon > .help-icon__description-toggle,
 [dir="ltr"] .field-group-fieldset > .fieldset__description,
 [dir="ltr"] fieldset.media-library-widget .fieldset__description,
 [dir="ltr"] .field--type-datetime fieldset .fieldset__description {
-  padding-left: var(--ginSpacingDefault);
+  padding-left: var(--gin-spacing-m);
 }
 
 [dir="rtl"] .field-group-fieldset > .fieldset__description,
 [dir="rtl"] fieldset.media-library-widget .fieldset__description,
 [dir="rtl"] .field--type-datetime fieldset .fieldset__description {
-  padding-right: var(--ginSpacingDefault);
+  padding-right: var(--gin-spacing-m);
 }
 
 @media (min-width: 48em) {
   [dir="ltr"] .field-group-fieldset > .fieldset__description,
 [dir="ltr"] fieldset.media-library-widget .fieldset__description,
 [dir="ltr"] .field--type-datetime fieldset .fieldset__description {
-    padding-left: var(--ginSpacingMedium);
+    padding-left: var(--gin-spacing-l);
   }
 
   [dir="rtl"] .field-group-fieldset > .fieldset__description,
 [dir="rtl"] fieldset.media-library-widget .fieldset__description,
 [dir="rtl"] .field--type-datetime fieldset .fieldset__description {
-    padding-right: var(--ginSpacingMedium);
+    padding-right: var(--gin-spacing-l);
   }
 }
 
@@ -120,16 +120,16 @@ fieldset.media-library-widget .help-icon > .help-icon__description-toggle,
 .system-modules .table-filter .form-type--search .help-icon__description-toggle,
 .system-modules-uninstall .table-filter .form-type--search .help-icon__description-toggle {
   position: absolute;
-  top: var(--ginSpacingDefault);
+  top: var(--gin-spacing-m);
 }
 
 [dir="ltr"] .system-modules .table-filter .form-type--search .help-icon__description-toggle,
 [dir="ltr"] .system-modules-uninstall .table-filter .form-type--search .help-icon__description-toggle {
-  right: calc(var(--ginSpacingXsmall) * -1);
+  right: calc(var(--gin-spacing-xs) * -1);
 }
 
 [dir="rtl"] .system-modules .table-filter .form-type--search .help-icon__description-toggle,
 [dir="rtl"] .system-modules-uninstall .table-filter .form-type--search .help-icon__description-toggle {
-  left: calc(var(--ginSpacingXsmall) * -1);
+  left: calc(var(--gin-spacing-xs) * -1);
 }
 
