@@ -30,6 +30,12 @@
   }
 }
 
+.vertical-tabs {
+  &__items {
+    z-index: inherit;
+  }
+}
+
 .gin--dark-mode {
   .tabs {
     border-color: var(--gin-border-color-layer2);
