@@ -15,7 +15,10 @@
 .form-actions .action-link:focus,
 .paragraphs-tabs-wrapper .field-multiple-table .draggable.drag,
 .layout-paragraphs-field .layout-paragraphs-actions input.layout-paragraphs-edit:focus,
-.layout-paragraphs-field .layout-paragraphs-actions input.layout-paragraphs-remove:focus {
+.layout-paragraphs-field .layout-paragraphs-actions input.layout-paragraphs-remove:focus,
+.ck .ck.ck-button:active,
+.ck .ck.ck-button:focus,
+.ck .ck.ck-button:active:focus {
   outline: none;
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }

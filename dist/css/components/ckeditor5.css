@@ -1,0 +1,51 @@
+.ck {
+  --ck-spacing-small: var(--gin-spacing-xs);
+  --ck-color-text: var(--gin-color-text);
+  --ck-color-toolbar-background: transparent;
+  --ck-color-toolbar-border: var(--gin-border-color-form-element);
+  --ck-color-base-background: var(--gin-bg-input);
+  --ck-color-base-border: var(--ck-color-toolbar-border);
+  --ck-color-list-button-on-text: var(--gin-color-button-text);
+  --ck-color-list-button-on-background: var(--gin-color-primary);
+  --ck-color-list-button-on-background-focus: var(--gin-color-primary-hover);
+  --ck-color-list-button-hover-background: var(--gin-color-primary-light-hover);
+  --ck-color-button-default-background: transparent;
+  --ck-color-button-default-hover-background: var(--gin-color-primary-light);
+  --ck-color-button-default-active-background: var(--gin-color-primary-light-active);
+  --ck-color-button-on-hover-background: var(--gin-color-primary-light-active);
+  --ck-color-button-default-disabled-background: transparent;
+  --ck-color-button-on-background: var(--gin-color-primary-light-active);
+  --ck-color-button-on-active-background: var(--gin-color-primary-active);
+  --ck-color-split-button-hover-background: var(--gin-bg-layer2);
+  --ck-color-split-button-hover-border: var(--gin-border-color-layer);
+  --ck-color-list-background: var(--gin-bg-layer3);
+  --ck-focus-ring: 1px solid var(--gin-border-color-form-element);
+  --ck-focus-outer-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
+  --ck-inner-shadow: var(--ck-focus-outer-shadow);
+  --ck-drop-shadow: var(--gin-shadow-l2);
+  --ck-border-radius: var(--gin-border-m);
+}
+
+.ck .ck-content blockquote,
+.ck .ck.ck-dropdown__panel {
+  border: none;
+}
+
+.ck .ck-toolbar__separator {
+  opacity: .3;
+}
+
+.ck .ck-source-editing-area {
+  overflow: inherit;
+}
+
+.ck textarea {
+  color: var(--ck-color-text);
+  background: var(--ck-color-base-background);
+}
+
+.ck textarea:focus {
+  outline: none;
+  box-shadow: var(--ck-focus-outer-shadow);
+}
+

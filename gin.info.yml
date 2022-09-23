@@ -149,6 +149,8 @@ libraries-extend:
     - gin/autocomplete
   core/ckeditor:
     - gin/ckeditor
+  core/ckeditor5:
+    - gin/ckeditor5
   core/drupal.dialog:
     - gin/dialog
   core/drupal.ajax:
