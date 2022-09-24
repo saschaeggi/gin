@@ -42,18 +42,19 @@
 
   --ck-color-list-background: var(--gin-bg-layer3);
 
-  --ck-focus-ring: 1px solid var(--gin-border-color-form-element);
+  --ck-focus-ring: 1px solid var(--gin-color-focus);
   --ck-focus-outer-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
   --ck-inner-shadow: var(--ck-focus-outer-shadow);
   --ck-drop-shadow: var(--gin-shadow-l2);
 
-  --ck-color-focus-border: var(--gin-color-focus);
+  --ck-color-focus-border: var(--gin-color-primary);
+  --ck-color-widget-type-around-button-active: var(--gin-color-primary);
   --ck-color-widget-blurred-border: var(--gin-color-primary-hover);
-  --ck-color-widget-hover-border: var(--gin-color-warning);
-  --ck-color-widget-type-around-button-hover: var(--gin-color-warning);
+  --ck-color-widget-hover-border: var(--gin-color-text);
+  --ck-color-widget-type-around-button-hover: var(--gin-color-text);
 
   --ck-color-image-caption-text: var(--gin-color-text-light);
-  --ck-color-image-caption-background: var(--gin-bg-item-hover);
+  --ck-color-image-caption-background: transparent;
 
   --ck-border-radius: var(--gin-border-m);
 
