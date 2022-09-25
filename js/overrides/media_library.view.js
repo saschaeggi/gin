@@ -50,7 +50,7 @@
             const checkboxes = document.querySelectorAll('.media-library-view .media-library-item .form-boolean');
             const checkboxesChecked = document.querySelectorAll('.media-library-view .media-library-item .form-boolean:checked');
 
-            if (selectAll.checked === true && checkboxes.length !== checkboxesChecked.length) {
+            if (selectAll && selectAll.checked === true && checkboxes.length !== checkboxesChecked.length) {
               selectAll.checked = false;
               selectAll.dispatchEvent(new Event('change'));
             } else if (checkboxes.length === Array.from(checkboxes).filter(el => el.checked === true).length) {
