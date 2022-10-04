@@ -131,6 +131,12 @@
   }
 }
 
+.paragraphs-subform {
+  .form-item {
+    margin-bottom: var(--gin-spacing-l);
+  }
+}
+
 .paragraphs-add-wrapper,
 .paragraphs-dropbutton-wrapper {
   .button--small {
@@ -202,6 +208,11 @@
 
     @include mq(medium) {
       min-width: 40px;
+
+      &::after {
+        top: 4px;
+        left: 8px;
+      }
     }
   }
 }
@@ -333,6 +344,19 @@
       ~ .placeholder {
         margin-left: var(--gin-spacing-xxs);
       }
+    }
+  }
+
+  tr.draggable .tabledrag-handle::after {
+    left: 8px;
+  }
+}
+
+.field--widget-paragraphs,
+.field--widget-entity-reference-paragraphs {
+  .layer-wrapper {
+    &, th {
+      background: transparent;
     }
   }
 }

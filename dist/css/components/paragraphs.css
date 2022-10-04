@@ -157,6 +157,10 @@
   display: none;
 }
 
+.paragraphs-subform .form-item {
+  margin-bottom: var(--gin-spacing-l);
+}
+
 .paragraphs-add-wrapper .button--small,
 .paragraphs-dropbutton-wrapper .button--small {
   margin-top: var(--gin-spacing-xs);
@@ -248,6 +252,18 @@
 @media (min-width: 61em) {
   .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
     min-width: 40px;
+  }
+
+  .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after {
+    top: 4px;
+  }
+
+  [dir="ltr"] .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after {
+    left: 8px;
+  }
+
+  [dir="rtl"] .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after {
+    right: 8px;
   }
 }
 
@@ -398,6 +414,20 @@
 [dir="rtl"] .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple .placeholder,
 [dir="rtl"] .field--widget-entity-reference-paragraphs .form-actions .dropbutton-multiple ~ .placeholder {
   margin-right: var(--gin-spacing-xxs);
+}
+
+[dir="ltr"] .field--widget-entity-reference-paragraphs tr.draggable .tabledrag-handle::after {
+  left: 8px;
+}
+
+[dir="rtl"] .field--widget-entity-reference-paragraphs tr.draggable .tabledrag-handle::after {
+  right: 8px;
+}
+
+.field--widget-paragraphs .layer-wrapper, .field--widget-paragraphs .layer-wrapper th,
+.field--widget-entity-reference-paragraphs .layer-wrapper,
+.field--widget-entity-reference-paragraphs .layer-wrapper th {
+  background: transparent;
 }
 
 .toolbar-fixed .is-horizontal .paragraphs-tabs {
