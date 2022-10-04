@@ -37,9 +37,9 @@
           });
           header.prepend(selectAll);
         }
-      });
 
-      this.itemSelect();
+        this.itemSelect();
+      });
     },
 
     itemSelect: () => {
@@ -66,7 +66,7 @@
     bulkOperations: () => {
       const bulkOperations = document.querySelector('.media-library-view [data-drupal-selector*="edit-header"]');
 
-      if (document.querySelectorAll('.media-library-view .form-checkbox:checked').length > 0) {
+      if (bulkOperations && document.querySelectorAll('.media-library-view .form-checkbox:checked').length > 0) {
         bulkOperations.classList.add('is-sticky');
       } else {
         bulkOperations.classList.remove('is-sticky');
