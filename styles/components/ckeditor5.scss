@@ -23,8 +23,9 @@
   --ck-color-button-default-active-background: var(--gin-color-primary-light-active);
   --ck-color-button-default-disabled-background: transparent;
 
-  --ck-color-button-on-background: var(--gin-color-primary-light-active);
-  --ck-color-button-on-hover-background: var(--gin-color-primary-light-active);
+  --ck-color-button-on-color: var(--gin-color-primary);
+  --ck-color-button-on-background: var(--gin-color-primary-light);
+  --ck-color-button-on-hover-background: var(--gin-color-primary-light-hover);
   --ck-color-button-on-active-background: var(--gin-color-primary-active);
 
   --ck-color-split-button-hover-background: var(--gin-bg-layer2);
@@ -34,6 +35,7 @@
   --ck-color-button-cancel: var(--gin-color-danger);
 
   --ck-color-link-default: var(--gin-color-primary);
+  --ck-color-link-selected-background: var(--gin-bg-item-hover);
 
   --ck-color-input-background: var(--gin-bg-input);
   --ck-color-input-border: var(--gin-border-color-form-element);
@@ -83,6 +85,10 @@
     padding-left: var(--gin-spacing-m);
   }
 
+  &.ck-button:not(.ck-disabled):hover {
+    color: var(--gin-color-primary-active);
+  }
+
   .ck-source-editing-area {
     overflow: inherit;
   }
@@ -105,5 +111,4 @@
     color: var(--ck-color-image-caption-text);
     background: var(--ck-color-image-caption-background);
   }
-
 }

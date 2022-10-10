@@ -16,14 +16,16 @@
   --ck-color-button-default-hover-background: var(--gin-color-primary-light);
   --ck-color-button-default-active-background: var(--gin-color-primary-light-active);
   --ck-color-button-default-disabled-background: transparent;
-  --ck-color-button-on-background: var(--gin-color-primary-light-active);
-  --ck-color-button-on-hover-background: var(--gin-color-primary-light-active);
+  --ck-color-button-on-color: var(--gin-color-primary);
+  --ck-color-button-on-background: var(--gin-color-primary-light);
+  --ck-color-button-on-hover-background: var(--gin-color-primary-light-hover);
   --ck-color-button-on-active-background: var(--gin-color-primary-active);
   --ck-color-split-button-hover-background: var(--gin-bg-layer2);
   --ck-color-split-button-hover-border: var(--gin-border-color-layer);
   --ck-color-button-save: var(--gin-color-green);
   --ck-color-button-cancel: var(--gin-color-danger);
   --ck-color-link-default: var(--gin-color-primary);
+  --ck-color-link-selected-background: var(--gin-bg-item-hover);
   --ck-color-input-background: var(--gin-bg-input);
   --ck-color-input-border: var(--gin-border-color-form-element);
   --ck-color-labeled-field-label-background: var(--gin-bg-layer3);
@@ -67,6 +69,10 @@
 
 [dir="rtl"] .ck .ck-button.ck-source-editing-button {
   padding-right: var(--gin-spacing-m);
+}
+
+.ck.ck-button:not(.ck-disabled):hover {
+  color: var(--gin-color-primary-active);
 }
 
 .ck .ck-source-editing-area {
