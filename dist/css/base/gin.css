@@ -1606,7 +1606,9 @@ td.webform-has-field-suffix > .form-item > .form-element {
 }
 
 @media (min-width: 48em) {
-  .layer-wrapper > .tabledrag-toggle-weight-wrapper {
+  #field-display-overview .layer-wrapper > .tabledrag-toggle-weight-wrapper,
+#field-display-overview-wrapper .layer-wrapper > .tabledrag-toggle-weight-wrapper,
+.field--widget-entity-reference-paragraphs .layer-wrapper > .tabledrag-toggle-weight-wrapper {
     position: relative;
     z-index: 1;
     margin-bottom: calc(var(--gin-spacing-xxl) * -1);
@@ -1614,7 +1616,9 @@ td.webform-has-field-suffix > .form-item > .form-element {
   }
 }
 
-.layer-wrapper > .tabledrag-toggle-weight-wrapper .action-link {
+#field-display-overview .layer-wrapper > .tabledrag-toggle-weight-wrapper .action-link,
+#field-display-overview-wrapper .layer-wrapper > .tabledrag-toggle-weight-wrapper .action-link,
+.field--widget-entity-reference-paragraphs .layer-wrapper > .tabledrag-toggle-weight-wrapper .action-link {
   pointer-events: all;
 }
 
