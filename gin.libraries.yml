@@ -187,6 +187,11 @@ ckeditor:
   dependencies:
     - core/once
 
+ckeditor5:
+  css:
+    theme:
+      dist/css/components/ckeditor5.css: { minified: false }
+
 ajax:
   css:
     theme:
