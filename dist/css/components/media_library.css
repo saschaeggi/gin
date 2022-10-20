@@ -375,9 +375,19 @@ fieldset.media-library-widget .media-library-edit__link, fieldset.media-library-
 }
 
 .media-library-widget-modal .ui-dialog-buttonpane .form-actions {
-  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
   white-space: nowrap;
   margin-top: 0;
+}
+
+[dir="ltr"] .media-library-widget-modal .ui-dialog-buttonpane .form-actions .button:not(:last-child) {
+  margin-right: var(--gin-spacing-xs);
+}
+
+[dir="rtl"] .media-library-widget-modal .ui-dialog-buttonpane .form-actions .button:not(:last-child) {
+  margin-left: var(--gin-spacing-xs);
 }
 
 .media-library-widget-modal .ui-dialog-buttonpane .media-library-selected-count {

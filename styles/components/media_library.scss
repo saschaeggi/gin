@@ -370,9 +370,15 @@ fieldset.media-library-widget {
 
 .media-library-widget-modal .ui-dialog-buttonpane {
   .form-actions {
-    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     white-space: nowrap;
     margin-top: 0;
+
+    .button:not(:last-child) {
+      margin-right: var(--gin-spacing-xs);
+    }
   }
 
   .media-library-selected-count {
