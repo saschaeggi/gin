@@ -197,10 +197,6 @@ fieldset.media-library-widget .media-library-widget__toggle-weight {
   padding: var(--gin-spacing-xs);
 }
 
-fieldset.media-library-widget .fieldset__wrapper {
-  margin-bottom: 0;
-}
-
 fieldset.media-library-widget .media-library-edit__link, fieldset.media-library-widget .media-library-item .media-library-item__edit, fieldset.media-library-widget .media-library-item .media-library-item__remove, fieldset.media-library-widget .media-library-item .media-library-item__remove.button {
   margin: var(--gin-spacing-xs);
 }
