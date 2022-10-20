@@ -31,11 +31,13 @@
 
 #field-display-overview,
 #field-display-overview-wrapper,
-.field--widget-entity-reference-paragraphs {
+.field--widget-entity-reference-paragraphs,
+.field--type-link {
   .layer-wrapper > .tabledrag-toggle-weight-wrapper {
     @include mq(small) {
       position: relative;
       z-index: 1;
+      margin-right: var(--gin-spacing-m);
       margin-bottom: calc(var(--gin-spacing-xxl) * -1);
       pointer-events: none;
     }

@@ -14,30 +14,6 @@
   margin-left: var(--gin-spacing-m);
 }
 
-.paragraphs-tabs-wrapper .tabledrag-toggle-weight-wrapper {
-  padding-bottom: 12px;
-}
-
-[dir="ltr"] .paragraphs-tabs-wrapper .field-multiple-table thead th {
-  padding: var(--gin-spacing-xs) var(--gin-spacing-l) var(--gin-spacing-xs) var(--gin-spacing-xs);
-}
-
-[dir="rtl"] .paragraphs-tabs-wrapper .field-multiple-table thead th {
-  padding: var(--gin-spacing-xs) var(--gin-spacing-xs) var(--gin-spacing-xs) var(--gin-spacing-l);
-}
-
-.paragraphs-tabs-wrapper .field-multiple-table thead th.th__order {
-  display: none;
-}
-
-.paragraphs-tabs-wrapper .field-multiple-table thead .label {
-  display: inline-block;
-  font-size: var(--gin-font-size);
-  color: var(--gin-color-primary-active);
-  padding: 0;
-  margin: 10px;
-}
-
 .paragraphs-tabs-wrapper .field-multiple-table > tbody > .draggable > td + td {
   width: 100%;
 }
@@ -422,12 +398,6 @@
 
 [dir="rtl"] .field--widget-entity-reference-paragraphs tr.draggable .tabledrag-handle::after {
   right: 8px;
-}
-
-.field--widget-paragraphs .layer-wrapper, .field--widget-paragraphs .layer-wrapper th,
-.field--widget-entity-reference-paragraphs .layer-wrapper,
-.field--widget-entity-reference-paragraphs .layer-wrapper th {
-  background: transparent;
 }
 
 .toolbar-fixed .is-horizontal .paragraphs-tabs {
