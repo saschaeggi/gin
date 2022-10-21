@@ -9,41 +9,41 @@
         const darkmode = e.currentTarget.value, accentColorPreset = document.querySelector('[data-drupal-selector="edit-preset-accent-color"] input:checked').value, focusColorPreset = document.querySelector('select[name="preset_focus_color"]').value;
         if (this.darkmode(darkmode), "custom" === accentColorPreset) {
           const accentColorSetting = document.querySelector('input[name="accent_color"]').value;
-          Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
-        } else Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset);
+          Drupal.ginAccent.setCustomAccentColor(accentColorSetting);
+        } else Drupal.ginAccent.setAccentColor(accentColorPreset);
         if ("custom" === focusColorPreset) {
           const focusColorSetting = document.querySelector('input[name="focus_color"]').value;
-          Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
-        } else Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset);
+          Drupal.ginAccent.setCustomFocusColor(focusColorSetting);
+        } else Drupal.ginAccent.setFocusColor(focusColorPreset);
       })))), context.querySelectorAll('[data-drupal-selector="edit-preset-accent-color"] input').forEach((el => el.addEventListener("change", (e => {
         const accentColorPreset = e.currentTarget.value;
-        if (Drupal.behaviors.ginAccent.clearAccentColor(), Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset), 
+        if (Drupal.ginAccent.clearAccentColor(), Drupal.ginAccent.setAccentColor(accentColorPreset), 
         "custom" === accentColorPreset) {
           const accentColorSetting = document.querySelector('input[name="accent_color"]').value;
-          Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
+          Drupal.ginAccent.setCustomAccentColor(accentColorSetting);
         }
       })))), context.querySelectorAll('input[name="accent_picker"]').forEach((el => el.addEventListener("change", (e => {
         const accentColorSetting = e.currentTarget.value;
         document.querySelector('input[name="accent_color"]').value = accentColorSetting, 
-        Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
+        Drupal.ginAccent.setCustomAccentColor(accentColorSetting);
       })))), context.querySelectorAll('input[name="accent_color"]').forEach((el => el.addEventListener("change", (e => {
         const accentColorSetting = e.currentTarget.value;
         document.querySelector('input[name="accent_picker"]').value = accentColorSetting, 
-        Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
+        Drupal.ginAccent.setCustomAccentColor(accentColorSetting);
       })))), document.querySelector('select[name="preset_focus_color"]').addEventListener("change", (e => {
         const focusColorPreset = e.currentTarget.value;
-        if (Drupal.behaviors.ginAccent.clearFocusColor(), Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset), 
+        if (Drupal.ginAccent.clearFocusColor(), Drupal.ginAccent.setFocusColor(focusColorPreset), 
         "custom" === focusColorPreset) {
           const focusColorSetting = document.querySelector('input[name="focus_color"]').value;
-          Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
+          Drupal.ginAccent.setCustomFocusColor(focusColorSetting);
         }
       })), document.querySelector('input[name="focus_picker"]').addEventListener("change", (e => {
         const focusColorSetting = e.currentTarget.value;
-        document.querySelector('input[name="focus_color"]').value = focusColorSetting, Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
+        document.querySelector('input[name="focus_color"]').value = focusColorSetting, Drupal.ginAccent.setCustomFocusColor(focusColorSetting);
       })), document.querySelector('input[name="focus_color"]').addEventListener("change", (e => {
         const focusColorSetting = e.currentTarget.value;
         document.querySelector('input[name="focus_picker"]').value = focusColorSetting, 
-        Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
+        Drupal.ginAccent.setCustomFocusColor(focusColorSetting);
       })), document.querySelector('input[name="high_contrast_mode"]').addEventListener("change", (e => {
         const highContrastMode = e.currentTarget.matches(":checked");
         this.setHighContrastMode(highContrastMode);

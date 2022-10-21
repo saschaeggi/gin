@@ -23,18 +23,18 @@
           if (accentColorPreset === 'custom') {
             const accentColorSetting = document.querySelector('input[name="accent_color"]').value;
 
-            Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
+            Drupal.ginAccent.setCustomAccentColor(accentColorSetting);
           } else {
-            Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset);
+            Drupal.ginAccent.setAccentColor(accentColorPreset);
           }
 
           // Toggle Focus color.
           if (focusColorPreset === 'custom') {
             const focusColorSetting = document.querySelector('input[name="focus_color"]').value;
 
-            Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
+            Drupal.ginAccent.setCustomFocusColor(focusColorSetting);
           } else {
-            Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset);
+            Drupal.ginAccent.setFocusColor(focusColorPreset);
           }
         }));
 
@@ -44,14 +44,14 @@
           const accentColorPreset = e.currentTarget.value;
 
           // Update.
-          Drupal.behaviors.ginAccent.clearAccentColor();
-          Drupal.behaviors.ginAccent.setAccentColor(accentColorPreset);
+          Drupal.ginAccent.clearAccentColor();
+          Drupal.ginAccent.setAccentColor(accentColorPreset);
 
           // Set custom color if 'custom' is set.
           if (accentColorPreset === 'custom') {
             const accentColorSetting = document.querySelector('input[name="accent_color"]').value;
 
-            Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
+            Drupal.ginAccent.setCustomAccentColor(accentColorSetting);
           }
         }));
 
@@ -64,7 +64,7 @@
           document.querySelector('input[name="accent_color"]').value = accentColorSetting;
 
           // Update.
-          Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
+          Drupal.ginAccent.setCustomAccentColor(accentColorSetting);
         }));
 
       // Watch Accent color setting has changed.
@@ -76,7 +76,7 @@
           document.querySelector('input[name="accent_picker"]').value = accentColorSetting;
 
           // Update.
-          Drupal.behaviors.ginAccent.setCustomAccentColor(accentColorSetting);
+          Drupal.ginAccent.setCustomAccentColor(accentColorSetting);
         }));
 
       // Watch Focus color setting has changed.
@@ -84,14 +84,14 @@
         const focusColorPreset = e.currentTarget.value;
 
         // Update.
-        Drupal.behaviors.ginAccent.clearFocusColor();
-        Drupal.behaviors.ginAccent.setFocusColor(focusColorPreset);
+        Drupal.ginAccent.clearFocusColor();
+        Drupal.ginAccent.setFocusColor(focusColorPreset);
 
         // Set custom color if 'custom' is set.
         if (focusColorPreset === 'custom') {
           const focusColorSetting = document.querySelector('input[name="focus_color"]').value;
 
-          Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
+          Drupal.ginAccent.setCustomFocusColor(focusColorSetting);
         }
       });
 
@@ -103,7 +103,7 @@
         document.querySelector('input[name="focus_color"]').value = focusColorSetting;
 
         // Update.
-        Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
+        Drupal.ginAccent.setCustomFocusColor(focusColorSetting);
       });
 
       // Watch Accent color setting has changed.
@@ -114,7 +114,7 @@
         document.querySelector('input[name="focus_picker"]').value = focusColorSetting;
 
         // Update.
-        Drupal.behaviors.ginAccent.setCustomFocusColor(focusColorSetting);
+        Drupal.ginAccent.setCustomFocusColor(focusColorSetting);
       });
 
       // Watch Hight contrast mode setting has changed.
