@@ -32,7 +32,7 @@
   box-shadow: none;
 }
 
-[data-drupal-selector=edit-preset-accent-color] .form-radios .form-item--preset-accent-color input:hover, [data-drupal-selector=edit-preset-accent-color] .form-radios .form-item--preset-accent-color input:focus, [data-drupal-selector=edit-preset-accent-color] .form-radios .form-item--preset-accent-color input:checked {
+[data-drupal-selector=edit-preset-accent-color] .form-radios .form-item--preset-accent-color input:hover, [data-drupal-selector=edit-preset-accent-color] .form-radios .form-item--preset-accent-color input:focus, [data-drupal-selector=edit-preset-accent-color] .form-radios .form-item--preset-accent-color input:focus:hover, [data-drupal-selector=edit-preset-accent-color] .form-radios .form-item--preset-accent-color input:checked {
   border-color: var(--gin-color-primary);
 }
 

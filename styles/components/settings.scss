@@ -27,6 +27,7 @@
 
         &:hover,
         &:focus,
+        &:focus:hover,
         &:checked {
           border-color: var(--gin-color-primary);
         }
