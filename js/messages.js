@@ -5,22 +5,27 @@
 
 /* eslint-disable func-names, no-mutable-exports, comma-dangle, strict */
 
-'use strict';
-
-(($, Drupal, drupalSettings) => {
-  Drupal.behaviors.ginMessagesDismiss = {
-    attach: function(context) {
-      const $messagesClick = $('.messages .button--dismiss', context).click(function(event) {
-        event.preventDefault();
-        const $elem = $(this).parents('.messages-list__item');
-
-        $elem.css('opacity', 0);
-        $elem.bind('transitionend', function() {
-          $(this).addClass('visually-hidden');
-          $(this).css('opacity', 1);
-        })
-      });
-      once('messages-dismiss', $messagesClick);
+((Drupal, once) => {
+  Drupal.behaviors.ginMessages = {
+    attach: (context) => {
+      Drupal.ginMessages.dismissMessages(context);
     }
-  }
-})(jQuery, Drupal, drupalSettings);
+  };
+
+  Drupal.ginMessages = {
+    dismissMessages: (context = document) => {
+      once('gin-messages-dismiss', '.messages .button--dismiss', context).forEach(dismissButton => {
+        dismissButton.addEventListener('click', e => {
+          e.preventDefault();
+          const message = e.currentTarget.closest('.messages-list__item');
+          Drupal.ginMessages.hideMessage(message);
+        });
+      });
+    },
+
+    hideMessage: (message) => {
+      message.style.opacity = 0;
+      message.classList.add('visually-hidden');
+    },
+  };
+})(Drupal, once);
