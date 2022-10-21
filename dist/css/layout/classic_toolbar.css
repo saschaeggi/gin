@@ -20,6 +20,10 @@
   }
 }
 
+.gin--edit-form {
+  --ginStickyOffset: var(--ginStickyHeight);
+}
+
 .region-breadcrumb {
   margin-top: var(--gin-spacing-m);
 }
