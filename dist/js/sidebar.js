@@ -1,42 +1,44 @@
-(($, Drupal) => {
+((Drupal, once) => {
   const storageDesktop = "Drupal.gin.sidebarExpanded.desktop";
   Drupal.behaviors.ginSidebar = {
     attach: function(context) {
-      localStorage.getItem(storageDesktop) || localStorage.setItem(storageDesktop, "true"), 
-      window.innerWidth >= 1024 && ("true" === localStorage.getItem(storageDesktop) ? Drupal.behaviors.ginSidebar.showSidebar() : Drupal.behaviors.ginSidebar.collapseSidebar());
-      const $toggleSidebarShortcut = $("html").on("keydown", (function(e) {
-        !0 === e.altKey && 83 === e.keyCode && Drupal.behaviors.ginSidebar.toggleSidebar();
-      }));
-      once("ginMetaSidebarShortcut", $toggleSidebarShortcut);
-      const $toggleSidebarTrigger = $(".meta-sidebar__trigger", context).on("click", (function(e) {
-        e.preventDefault(), Drupal.behaviors.ginSidebar.removeInlineStyles(), Drupal.behaviors.ginSidebar.toggleSidebar();
-      }));
-      once("ginMetaSidebarToggle", $toggleSidebarTrigger);
-      const $closeSidebarTrigger = $(".meta-sidebar__close, .meta-sidebar__overlay", context).on("click", (function(e) {
-        e.preventDefault(), Drupal.behaviors.ginSidebar.removeInlineStyles(), Drupal.behaviors.ginSidebar.collapseSidebar();
-      }));
-      once("ginMetaSidebarClose", $closeSidebarTrigger), $(window).on("resize", Drupal.debounce(Drupal.behaviors.ginSidebar.handleResize, 150)).trigger("resize");
+      Drupal.ginSidebar.init(context);
+    }
+  }, Drupal.ginSidebar = {
+    init: function(context) {
+      once("ginSidebarInit", "#gin_sidebar", context).forEach((() => {
+        localStorage.getItem(storageDesktop) || localStorage.setItem(storageDesktop, "true"), 
+        window.innerWidth >= 1024 && ("true" === localStorage.getItem(storageDesktop) ? this.showSidebar() : this.collapseSidebar()), 
+        document.addEventListener("keydown", (e => {
+          !0 === e.altKey && "KeyS" === e.code && this.toggleSidebar();
+        })), window.onresize = Drupal.debounce(this.handleResize, 150);
+      })), once("ginSidebarToggle", ".meta-sidebar__trigger", context).forEach((el => el.addEventListener("click", (e => {
+        e.preventDefault(), this.removeInlineStyles(), this.toggleSidebar();
+      })))), once("ginSidebarClose", ".meta-sidebar__close, .meta-sidebar__overlay", context).forEach((el => el.addEventListener("click", (e => {
+        e.preventDefault(), this.removeInlineStyles(), this.collapseSidebar();
+      }))));
     },
-    toggleSidebar: function() {
-      $(".meta-sidebar__trigger").hasClass("is-active") ? Drupal.behaviors.ginSidebar.collapseSidebar() : Drupal.behaviors.ginSidebar.showSidebar();
+    toggleSidebar: () => {
+      document.querySelector(".meta-sidebar__trigger").classList.contains("is-active") ? Drupal.ginSidebar.collapseSidebar() : Drupal.ginSidebar.showSidebar();
     },
-    showSidebar: function() {
-      const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, showLabel = Drupal.t("Hide sidebar panel");
-      $(".meta-sidebar__trigger").attr("title", showLabel), $(".meta-sidebar__trigger span").html(showLabel), 
-      localStorage.setItem(chooseStorage, "true"), $(".meta-sidebar__trigger").attr("aria-expanded", "true"), 
-      $(".meta-sidebar__trigger").addClass("is-active"), $("body").attr("data-meta-sidebar", "open");
+    showSidebar: () => {
+      const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, showLabel = Drupal.t("Hide sidebar panel"), sidebarTrigger = document.querySelector(".meta-sidebar__trigger");
+      sidebarTrigger.setAttribute("title", showLabel), sidebarTrigger.querySelector("span").innerHTML = showLabel, 
+      sidebarTrigger.setAttribute("aria-expanded", "true"), sidebarTrigger.classList.add("is-active"), 
+      document.body.setAttribute("data-meta-sidebar", "open"), localStorage.setItem(chooseStorage, "true");
     },
-    collapseSidebar: function() {
-      const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, hideLabel = Drupal.t("Show sidebar panel");
-      $(".meta-sidebar__trigger").attr("title", hideLabel), $(".meta-sidebar__trigger span").html(hideLabel), 
-      localStorage.setItem(chooseStorage, "false"), $(".meta-sidebar__trigger").removeClass("is-active"), 
-      $("body").attr("data-meta-sidebar", "closed"), $(".meta-sidebar__trigger").attr("aria-expanded", "false");
+    collapseSidebar: () => {
+      const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, hideLabel = Drupal.t("Show sidebar panel"), sidebarTrigger = document.querySelector(".meta-sidebar__trigger");
+      sidebarTrigger.setAttribute("title", hideLabel), sidebarTrigger.querySelector("span").innerHTML = hideLabel, 
+      sidebarTrigger.setAttribute("aria-expanded", "false"), sidebarTrigger.classList.remove("is-active"), 
+      document.body.setAttribute("data-meta-sidebar", "closed"), localStorage.setItem(chooseStorage, "false");
     },
-    handleResize: function() {
-      Drupal.behaviors.ginSidebar.removeInlineStyles(), window.innerWidth < 1024 ? Drupal.behaviors.ginSidebar.collapseSidebar() : "true" === localStorage.getItem(storageDesktop) ? Drupal.behaviors.ginSidebar.showSidebar() : Drupal.behaviors.ginSidebar.collapseSidebar();
+    handleResize: () => {
+      Drupal.ginSidebar.removeInlineStyles(), window.innerWidth < 1024 ? Drupal.ginSidebar.collapseSidebar() : "true" === localStorage.getItem(storageDesktop) ? Drupal.ginSidebar.showSidebar() : Drupal.ginSidebar.collapseSidebar();
     },
-    removeInlineStyles: function() {
-      $(".gin-sidebar-inline-styles").remove();
+    removeInlineStyles: () => {
+      const elementToRemove = document.querySelector(".gin-sidebar-inline-styles");
+      elementToRemove && elementToRemove.parentNode.removeChild(elementToRemove);
     }
   };
-})(jQuery, Drupal);
+})(Drupal, once);
