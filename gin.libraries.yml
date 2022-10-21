@@ -123,7 +123,7 @@ once:
 
 gin_tabledrag_legacy:
   js:
-    js/overrides/tabledrag.legacy.js: { minified: false, weight: -1 }
+    js/legacy/tabledrag.legacy.js: { minified: false, weight: -1 }
 
 gin_media_embed_ckeditor_theme:
   js:

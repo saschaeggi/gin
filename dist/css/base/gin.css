@@ -1358,7 +1358,10 @@ a.views-field-excluded {
 }
 
 table.sticky-header {
+  visibility: hidden;
   z-index: 98;
+  position: fixed;
+  top: calc(var(--ginHorizontalToolbarOffset) + var(--ginStickyOffset)) !important;
   background: transparent;
 }
 
