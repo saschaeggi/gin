@@ -1663,8 +1663,33 @@ td.webform-has-field-suffix > .form-item > .form-element {
   box-shadow: inset -6px 0 0 0 var(--gin-color-warning);
 }
 
+.tabledrag-leaf td,
+.tabledrag-cell {
+  vertical-align: top;
+}
+
+.tabledrag-cell {
+  padding-top: var(--gin-spacing-density-m);
+  padding-bottom: var(--gin-spacing-density-m);
+}
+
+.tabledrag-cell-content {
+  margin-top: var(--gin-spacing-xs);
+  margin-bottom: var(--gin-spacing-xs);
+}
+
 .tabledrag-cell-content__item .checkbox-toggle:hover {
   cursor: pointer;
+}
+
+.field-plugin-settings-edit-wrapper,
+.field-plugin-settings-edit-wrapper + a {
+  margin-top: var(--gin-spacing-m);
+  margin-bottom: var(--gin-spacing-m);
+}
+
+.field-plugin-settings-edit-wrapper + a {
+  margin-top: var(--gin-spacing-s);
 }
 
 .form-element {
@@ -2165,6 +2190,20 @@ tr .form-item {
 .container-inline .form-item {
   margin-top: var(--gin-spacing-density-s);
   margin-bottom: var(--gin-spacing-density-s);
+}
+
+.field-plugin-settings-edit-form {
+  margin-top: var(--gin-spacing-s);
+}
+
+.field-plugin-settings-edit-form .form-item {
+  margin-top: var(--gin-spacing-m);
+  margin-bottom: var(--gin-spacing-m);
+}
+
+.field-plugin-settings-edit-form .form-boolean-group .form-item {
+  margin-top: var(--gin-spacing-xs);
+  margin-bottom: var(--gin-spacing-xs);
 }
 
 .button,
