@@ -255,7 +255,7 @@
   }
 
   .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after {
-    top: 4px;
+    top: -2px;
   }
 
   [dir="ltr"] .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after {

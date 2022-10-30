@@ -784,3 +784,17 @@
   margin-bottom: var(--gin-spacing-density-s);
 }
 
+.ui-dialog .field-plugin-settings-edit-form {
+  margin-top: var(--gin-spacing-s);
+}
+
+.ui-dialog .field-plugin-settings-edit-form .form-item {
+  margin-top: var(--gin-spacing-m);
+  margin-bottom: var(--gin-spacing-m);
+}
+
+.ui-dialog .field-plugin-settings-edit-form .form-boolean-group .form-item {
+  margin-top: var(--gin-spacing-xs);
+  margin-bottom: var(--gin-spacing-xs);
+}
+
