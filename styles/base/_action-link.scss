@@ -5,12 +5,16 @@
 
   &:hover {
     color: var(--gin-color-primary-hover);
-    background-color: var(--gin-color-primary-light);
+    background-color: var(--gin-bg-item-hover);
   }
 
   &:focus {
     color: var(--gin-color-primary-active);
     background-color: var(--gin-color-primary-light-hover);
+  }
+
+  &.action-link--extrasmall {
+    font-size: var(--gin-font-size-xxs);
   }
 
   &:before {

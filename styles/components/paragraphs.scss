@@ -12,29 +12,7 @@
     margin-right: var(--gin-spacing-m);
   }
 
-  .tabledrag-toggle-weight-wrapper {
-    padding-bottom: 12px;
-  }
-
   .field-multiple-table {
-    thead {
-      th {
-        padding: var(--gin-spacing-xs) var(--gin-spacing-l) var(--gin-spacing-xs) var(--gin-spacing-xs);
-
-        &.th__order {
-          display: none;
-        }
-      }
-
-      .label {
-        display: inline-block;
-        font-size: var(--gin-font-size);
-        color: var(--gin-color-primary-active);
-        padding: 0;
-        margin: 10px;
-      }
-    }
-
     > tbody {
       > .draggable {
         > td + td {
@@ -349,15 +327,6 @@
 
   tr.draggable .tabledrag-handle::after {
     left: 8px;
-  }
-}
-
-.field--widget-paragraphs,
-.field--widget-entity-reference-paragraphs {
-  .layer-wrapper {
-    &, th {
-      background: transparent;
-    }
   }
 }
 

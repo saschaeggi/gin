@@ -199,3 +199,53 @@ td.webform-has-field-suffix > .form-item > .form-element {
   max-width: 100%;
   width: auto;
 }
+
+.field-multiple-table {
+  th {
+    padding: var(--gin-spacing-xs) var(--gin-spacing-m) var(--gin-spacing-xs) var(--gin-spacing-l);
+    border-bottom: 0;
+    background: transparent;
+
+    &.th__order {
+      font-size: 0;
+      padding: 0;
+    }
+  }
+
+  thead {
+    position: relative;
+    z-index: 0;
+
+    &::after {
+      content: "";
+      z-index: -1;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: var(--gin-bg-header);
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: var(--gin-border-m);
+    }
+
+    tr {
+      border-bottom: 0;
+    }
+
+    .label {
+      display: inline-block;
+      font-size: var(--gin-font-size-l);
+      font-weight: var(--gin-font-weight-bold);
+      letter-spacing: -0.025em;
+      line-height: 1.33333em;
+      color: var(--gin-color-primary-active);
+      padding: 0;
+      margin: var(--gin-spacing-xs) 0;
+    }
+  }
+
+  tr .form-item {
+    margin-bottom: var(--gin-spacing-m);
+  }
+}
