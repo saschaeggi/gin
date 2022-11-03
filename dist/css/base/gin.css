@@ -650,7 +650,8 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 
 .shortcut-action__message {
   position: absolute;
-  top: calc(100% + .5rem);
+  top: calc(100% + var(--gin-spacing-xs));
+  min-width: 120px;
   pointer-events: none;
   padding: var(--gin-spacing-xs);
   margin-top: calc(var(--gin-spacing-xxs) * -1);

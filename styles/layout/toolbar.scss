@@ -73,6 +73,12 @@
       // Toolbar logo
       .toolbar-logo {
         height: var(--gin-height-sticky);
+
+        &:hover,
+        &:focus {
+          z-index: 3;
+          position: relative;
+        }
       }
 
       // Admin tray: Home icon

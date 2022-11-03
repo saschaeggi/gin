@@ -89,8 +89,9 @@
 
   &__message {
     position: absolute;
-    top: calc(100% + 0.5rem);
+    top: calc(100% + var(--gin-spacing-xs));
     right: 0;
+    min-width: 120px;
     pointer-events: none;
     padding: var(--gin-spacing-xs);
     margin-top: calc(var(--gin-spacing-xxs) * -1);
