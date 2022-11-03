@@ -102,12 +102,17 @@ a.button--primary:focus:hover {
 
 .button.button:disabled, .button.button.is-disabled {
   &, &:hover, &:active, &:focus {
-    border: 2px solid var(--gin-color-disabled) !important;
-  }
-
-  .gin--dark-mode & {
     color: var(--gin-color-disabled);
-    background-color: var(--gin-bg-input);
+    background: transparent;
+    border: 2px solid var(--gin-color-disabled-border) !important;
+    box-shadow: none;
+  }
+}
+
+.button.button--primary:disabled, .button.button--primary.is-disabled {
+  &, &:hover, &:active, &:focus {
+    color: var(--gin-color-disabled);
+    background-color: var(--gin-color-disabled-bg);
   }
 }
 
