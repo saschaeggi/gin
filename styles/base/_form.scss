@@ -299,6 +299,7 @@ $maxWidth: 520px;
       box-shadow: inset 0 0 0 5px var(--gin-color-primary),
                   0 0 0 1px var(--gin-color-focus-border),
                   0 0 0 4px var(--gin-color-focus);
+      border-color: var(--gin-color-focus-border);
     }
   }
 

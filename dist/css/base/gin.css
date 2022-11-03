@@ -2104,6 +2104,7 @@ td.webform-has-field-suffix > .form-item > .form-element {
 
 .form-boolean--type-radio:checked:not(:disabled):active, .form-boolean--type-radio:checked:not(:disabled):focus, .form-boolean--type-radio:checked:not(:disabled):hover:focus {
   box-shadow: inset 0 0 0 5px var(--gin-color-primary), 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
+  border-color: var(--gin-color-focus-border);
 }
 
 .form-boolean--type-radio:checked:disabled, .form-boolean--type-radio:checked:disabled:hover {
