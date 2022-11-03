@@ -5,6 +5,7 @@
  * breadcrumb.theme
  */
 
+use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
 
@@ -17,7 +18,7 @@ function gin_preprocess_breadcrumb(&$variables) {
     foreach ($variables['breadcrumb'] as $key => $item) {
       $entity = _gin_get_route_entity();
       $entity_id = $entity ? $entity->getEntityTypeId() : NULL;
-      $url = $entity ? $entity->toUrl()->toString() : NULL;
+      $url = $entity ? $entity->toUrl() : NULL;
 
       // Back to site item.
       if ($key === 0) {
@@ -25,19 +26,12 @@ function gin_preprocess_breadcrumb(&$variables) {
         $variables['breadcrumb'][$key]['attributes']['title'] = t('Return to site content');
 
         // Media handling.
-        if ($entity_id === 'media') {
-          $config = \Drupal::config('media.settings');
-
-          if ($config->get('standalone_url') === TRUE) {
-            $url = '/' . $entity_id . '/' . $entity->id();
-          }
-          else {
-            $url = '/';
-          }
+        if ($entity_id === 'media' && !\Drupal::config('media.settings')->get('standalone_url')) {
+          $url = Url::fromRoute('<front>');
         }
 
         // Check for entity $url.
-        if ($url) {
+        if ($url && $url->access()) {
           $variables['breadcrumb'][$key]['url'] = $url;
         }
         else {
