@@ -8,8 +8,9 @@
   --gin-color-focus-border: rgba(0, 0, 0, .2); //rgb(0, 125, 250);
   --gin-color-focus-neutral-rgb: rgba(0, 0, 0, .4);
 
-  --gin-color-disabled: #bbb;
-  --gin-color-disabled-text: #8d8d8d;
+  --gin-color-disabled: #8d8d8d;
+  --gin-color-disabled-bg: #eaeaea;
+  --gin-color-disabled-border: #c2c2c2;
 
   --gin-color-warning: #d8b234;
   --gin-color-warning-light: #efcf64;
@@ -177,8 +178,9 @@
   --gin-color-focus-neutral-rgb: rgba(255, 255, 255, .8);
 
   // Disabled
-  --gin-color-disabled: #555;
-  --gin-color-disabled-text: #{$colorDarkAppBackground};
+  --gin-color-disabled: #646464;
+  --gin-color-disabled-border: #646464;
+  --gin-color-disabled-bg: #47474c;
 
   // Messages
   --gin-color-warning: #dec15f;

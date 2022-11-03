@@ -254,12 +254,15 @@
 }
 
 .ui-dialog .button.button:disabled, .ui-dialog .button.button:disabled:hover, .ui-dialog .button.button:disabled:active, .ui-dialog .button.button:disabled:focus, .ui-dialog .button.button.is-disabled, .ui-dialog .button.button.is-disabled:hover, .ui-dialog .button.button.is-disabled:active, .ui-dialog .button.button.is-disabled:focus {
-  border: 2px solid var(--gin-color-disabled) !important;
+  color: var(--gin-color-disabled);
+  background: transparent;
+  border: 2px solid var(--gin-color-disabled-border) !important;
+  box-shadow: none;
 }
 
-.gin--dark-mode .ui-dialog .button.button:disabled, .gin--dark-mode .ui-dialog .button.button.is-disabled {
+.ui-dialog .button.button--primary:disabled, .ui-dialog .button.button--primary:disabled:hover, .ui-dialog .button.button--primary:disabled:active, .ui-dialog .button.button--primary:disabled:focus, .ui-dialog .button.button--primary.is-disabled, .ui-dialog .button.button--primary.is-disabled:hover, .ui-dialog .button.button--primary.is-disabled:active, .ui-dialog .button.button--primary.is-disabled:focus {
   color: var(--gin-color-disabled);
-  background-color: var(--gin-bg-input);
+  background-color: var(--gin-color-disabled-bg);
 }
 
 .ui-dialog .action-link.action-link--icon-trash {
@@ -305,8 +308,10 @@
 }
 
 .ui-dialog .form-element[disabled], .ui-dialog .form-element[disabled]:hover {
+  cursor: not-allowed;
   color: var(--gin-color-disabled);
-  border-color: var(--gin-color-disabled);
+  background-color: var(--gin-color-disabled-bg) !important;
+  border-color: var(--gin-color-disabled-border);
   box-shadow: none;
 }
 
@@ -401,10 +406,6 @@
 
 .ui-dialog .form-boolean--type-checkbox:checked:active {
   background-color: var(--gin-color-primary-active);
-}
-
-.gin--dark-mode .ui-dialog .form-boolean--type-checkbox:checked {
-  background-image: url("../../media/sprite.svg#checked-view");
 }
 
 .ui-dialog :not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox {
@@ -606,16 +607,26 @@
   border-color: var(--gin-color-focus-border);
 }
 
-.ui-dialog .form-boolean--type-radio:checked:disabled, .ui-dialog .form-boolean--type-radio:checked:disabled:hover {
-  background-image: none;
-  background-color: var(--gin-color-disabled-text);
-  border-color: var(--gin-color-disabled);
-  box-shadow: inset 0 0 0 5px var(--gin-color-disabled);
+.ui-dialog .form-boolean--type-radio:disabled, .ui-dialog .form-boolean--type-radio:disabled:hover {
+  cursor: not-allowed;
+  background: var(--gin-color-disabled-bg);
+  border-color: var(--gin-color-disabled-border);
 }
 
-.ui-dialog .form-boolean--type-checkbox[disabled]:checked {
-  border-color: var(--gin-color-disabled);
-  background-color: var(--gin-color-disabled);
+.ui-dialog .form-boolean--type-radio:checked:disabled, .ui-dialog .form-boolean--type-radio:checked:disabled:hover {
+  background: var(--gin-color-disabled);
+  box-shadow: inset 0 0 0 5px var(--gin-color-disabled-bg);
+}
+
+.ui-dialog .form-boolean--type-checkbox[disabled], .ui-dialog .form-boolean--type-checkbox[disabled]:hover {
+  cursor: not-allowed;
+  background-color: var(--gin-color-disabled-bg);
+  border-color: var(--gin-color-disabled-border);
+}
+
+.ui-dialog .form-boolean--type-checkbox[disabled]:checked, .ui-dialog .form-boolean--type-checkbox[disabled]:hover:checked {
+  border-color: var(--gin-color-disabled-border);
+  background-color: var(--gin-color-disabled-bg);
   box-shadow: none;
 }
 

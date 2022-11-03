@@ -22,8 +22,10 @@ $maxWidth: 520px;
 
   &[disabled],
   &[disabled]:hover {
+    cursor: not-allowed;
     color: var(--gin-color-disabled);
-    border-color: var(--gin-color-disabled);
+    background-color: var(--gin-color-disabled-bg) !important;
+    border-color: var(--gin-color-disabled-border);
     box-shadow: none;
   }
 }
@@ -115,10 +117,6 @@ $maxWidth: 520px;
 
     &:active {
       background-color: var(--gin-color-primary-active);
-    }
-
-    .gin--dark-mode & {
-      background-image: icon('checked');
     }
   }
 }
@@ -303,20 +301,34 @@ $maxWidth: 520px;
     }
   }
 
+  &:disabled {
+    &, &:hover {
+      cursor: not-allowed;
+      background: var(--gin-color-disabled-bg);
+      border-color: var(--gin-color-disabled-border);
+    }
+  }
+
   &:checked:disabled {
     &, &:hover {
-      background-image: none;
-      background-color: var(--gin-color-disabled-text);
-      border-color: var(--gin-color-disabled);
-      box-shadow: inset 0 0 0 5px var(--gin-color-disabled);
+      background: var(--gin-color-disabled);
+      box-shadow: inset 0 0 0 5px var(--gin-color-disabled-bg);
     }
   }
 }
 
-.form-boolean--type-checkbox[disabled]:checked {
-  border-color: var(--gin-color-disabled);
-  background-color: var(--gin-color-disabled);
-  box-shadow: none;
+.form-boolean--type-checkbox[disabled] {
+  &, &:hover {
+    cursor: not-allowed;
+    background-color: var(--gin-color-disabled-bg);
+    border-color: var(--gin-color-disabled-border);
+
+    &:checked {
+      border-color: var(--gin-color-disabled-border);
+      background-color: var(--gin-color-disabled-bg);
+      box-shadow: none;
+    }
+  }
 }
 
 .form-radios,
