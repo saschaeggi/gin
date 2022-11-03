@@ -5,6 +5,7 @@
  * breadcrumb.theme
  */
 
+use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Url;
@@ -18,6 +19,9 @@ function gin_preprocess_breadcrumb(&$variables) {
     return;
   }
 
+  $cacheability = new CacheableMetadata();
+  $cacheability->addCacheContexts(['route']);
+
   $entity = _gin_get_route_entity();
   $route_name = \Drupal::routeMatch()->getRouteName();
 
@@ -26,9 +30,17 @@ function gin_preprocess_breadcrumb(&$variables) {
     $entity_type_id = $entity->getEntityTypeId();
     $operation_label = _gin_get_route_entity_operation_label($route_name, $entity);
 
+    $url_access = $url->access(NULL, TRUE);
+    $cacheability->addCacheableDependency($url_access);
+
     // Media handling.
-    if ($entity_type_id === 'media' && !\Drupal::config('media.settings')->get('standalone_url')) {
-      $url = Url::fromRoute('<front>');
+    if ($entity_type_id === 'media') {
+      $media_config = \Drupal::config('media.settings');
+      $cacheability->addCacheableDependency($media_config);
+
+      if (!$media_config->get('standalone_url')) {
+        $url = Url::fromRoute('<front>');
+      }
     }
   }
 
@@ -38,7 +50,7 @@ function gin_preprocess_breadcrumb(&$variables) {
       $variables['breadcrumb'][$key]['text'] = t('Back to site');
       $variables['breadcrumb'][$key]['attributes']['title'] = t('Return to site content');
 
-      if (isset($url) && $url->access()) {
+      if (isset($url, $url_access) && $url_access->isAllowed()) {
         // Link to the canonical route of the entity.
         $variables['breadcrumb'][$key]['url'] = $url;
       }
@@ -79,6 +91,8 @@ function gin_preprocess_breadcrumb(&$variables) {
       }
     }
   }
+
+  $cacheability->applyTo($variables);
 }
 
 /**
