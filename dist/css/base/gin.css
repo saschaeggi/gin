@@ -590,6 +590,7 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 }
 
 .shortcut-action {
+  position: relative;
   align-self: center;
   border-radius: var(--gin-border-m);
 }
@@ -649,12 +650,22 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 
 .shortcut-action__message {
   position: absolute;
+  top: calc(100% + var(--gin-spacing-xs));
+  min-width: 120px;
   pointer-events: none;
   padding: var(--gin-spacing-xs);
   margin-top: calc(var(--gin-spacing-xxs) * -1);
   color: var(--gin-color-contextual-text);
   background: var(--gin-color-contextual);
   border-radius: var(--gin-border-xs);
+}
+
+[dir="ltr"] .shortcut-action__message {
+  right: 0;
+}
+
+[dir="rtl"] .shortcut-action__message {
+  left: 0;
 }
 
 .modules-table-filter {

@@ -89,6 +89,11 @@
     height: var(--gin-height-sticky);
   }
 
+  .toolbar .toolbar-bar .toolbar-logo:hover, .toolbar .toolbar-bar .toolbar-logo:focus {
+    z-index: 3;
+    position: relative;
+  }
+
   .toolbar .toolbar-bar .toolbar-icon-home {
     display: block;
     width: 100%;
