@@ -129,9 +129,10 @@ function _gin_get_route_entity() {
 function _gin_get_route_entity_operation_label(string $route_name, EntityInterface $entity) {
   $entity_type = $entity->getEntityType();
   $type_label = $entity_type->getSingularLabel();
+  $bundle_key = $entity_type->getKey('bundle');
 
-  if ($bundle_key = $entity_type->getKey('bundle')) {
-    $type_label = $entity->get($bundle_key)->entity->label();
+  if ($bundle_key && $bundle_entity = $entity->get($bundle_key)->entity) {
+    $type_label = $bundle_entity->label();
   }
 
   if ($entity_type->id() === 'user') {
