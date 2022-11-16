@@ -401,6 +401,11 @@ fieldset.media-library-widget {
   }
 }
 
+// Sidebar override
+.layout-region-node-secondary .media-library-selection .media-library-item--grid {
+  width: auto;
+}
+
 .field--name-field-media {
   &.field--widget-entity-reference-autocomplete {
     fieldset.form-item {

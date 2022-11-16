@@ -425,6 +425,10 @@ fieldset.media-library-widget .media-library-edit__link, fieldset.media-library-
   }
 }
 
+.layout-region-node-secondary .media-library-selection .media-library-item--grid {
+  width: auto;
+}
+
 .field--name-field-media.field--widget-entity-reference-autocomplete fieldset.form-item {
   padding: var(--gin-spacing-xl) calc(var(--gin-spacing-l) - var(--gin-spacing-xxs)) var(--gin-spacing-m) calc(var(--gin-spacing-l) - var(--gin-spacing-xxs));
   border: 1px solid var(--gin-border-color);
