@@ -472,7 +472,7 @@
 }
 
 @media screen and (min-width: 85em) {
-  .js .vertical-tabs__item {
+  html.js .vertical-tabs__item {
     overflow: visible;
     float: left;
     width: 100%;

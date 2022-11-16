@@ -405,14 +405,9 @@ a.toolbar-menu__trigger,
           overflow-x: hidden;
 
           &,
-          [dir='rtl'] &,
-          [dir='ltr'] & {
+          [dir] & {
             position: fixed;
             width: var(--gin-toolbar-width);
-          }
-
-          .gin--dark-mode & {
-            border-left: 1px solid $colorDarkAppBackground;
           }
 
           // Link color
@@ -511,10 +506,6 @@ a.toolbar-menu__trigger,
   .toolbar .toolbar-toggle-orientation button {
     display: none;
   }
-}
-
-.gin--dark-mode.toolbar-horizontal .toolbar-tray > .toolbar-lining {
-  padding-right: 0;
 }
 
 .toolbar .toolbar-icon.toolbar-handle:focus {

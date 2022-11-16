@@ -2208,11 +2208,11 @@ fieldset:not(.fieldgroup) > .fieldset-wrapper {
   margin-top: var(--gin-spacing-xs);
 }
 
-[dir="ltr"] .js .form-autocomplete {
+html[dir="ltr"].js .form-autocomplete {
   padding-right: 36px;
 }
 
-[dir="rtl"] .js .form-autocomplete {
+html[dir="rtl"].js .form-autocomplete {
   padding-left: 36px;
 }
 
@@ -2248,12 +2248,12 @@ fieldset:not(.fieldgroup) > .fieldset-wrapper {
   padding-right: 0;
 }
 
-[dir="ltr"] .js input.form-linkit-autocomplete {
+html[dir="ltr"].js input.form-linkit-autocomplete {
   padding-right: var(--gin-spacing-xl);
   background-position: right 8px center;
 }
 
-[dir="rtl"] .js input.form-linkit-autocomplete {
+html[dir="rtl"].js input.form-linkit-autocomplete {
   padding-left: var(--gin-spacing-xl);
   background-position: left 8px center;
 }

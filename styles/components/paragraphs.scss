@@ -156,8 +156,8 @@
   }
 }
 
-.js .field--widget-entity-reference-paragraphs,
-.js .field--widget-paragraphs {
+html.js .field--widget-entity-reference-paragraphs,
+html.js .field--widget-paragraphs {
   .draggable .tabledrag-handle {
     min-width: 20px;
 
@@ -180,12 +180,12 @@
   background: var(--gin-bg-layer2);
 }
 
-.js .field--widget-entity-reference-paragraphs {
+html.js .field--widget-entity-reference-paragraphs {
   .draggable .tabledrag-handle {
     min-width: 32px;
 
     @include mq(medium) {
-      min-width: 40px;
+      min-width: 48px;
 
       &::after {
         top: -2px;
@@ -202,13 +202,15 @@
 
 .js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple {
   padding: var(--gin-spacing-xs);
+}
 
+html.js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple {
   .dropbutton-widget {
     margin-right: var(--gin-spacing-xs);
   }
 }
 
-.js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
+html.js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
   top: 0;
   right: calc(var(--gin-spacing-xxs) * -1);
 }
@@ -232,7 +234,7 @@
   align-self: center;
 }
 
-.js .paragraph-type-icon {
+html.js .paragraph-type-icon {
   padding: var(--gin-spacing-xxs);
   margin-right: var(--gin-spacing-xs);
 }

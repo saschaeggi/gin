@@ -710,11 +710,11 @@
   margin-top: var(--gin-spacing-xs);
 }
 
-[dir="ltr"] .ui-dialog .js .form-autocomplete {
+[dir="ltr"] .ui-dialog html.js .form-autocomplete {
   padding-right: 36px;
 }
 
-[dir="rtl"] .ui-dialog .js .form-autocomplete {
+[dir="rtl"] .ui-dialog html.js .form-autocomplete {
   padding-left: 36px;
 }
 
@@ -750,12 +750,12 @@
   padding-right: 0;
 }
 
-[dir="ltr"] .ui-dialog .js input.form-linkit-autocomplete {
+[dir="ltr"] .ui-dialog html.js input.form-linkit-autocomplete {
   padding-right: var(--gin-spacing-xl);
   background-position: right 8px center;
 }
 
-[dir="rtl"] .ui-dialog .js input.form-linkit-autocomplete {
+[dir="rtl"] .ui-dialog html.js input.form-linkit-autocomplete {
   padding-left: var(--gin-spacing-xl);
   background-position: left 8px center;
 }

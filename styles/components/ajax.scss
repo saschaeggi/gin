@@ -10,7 +10,7 @@
   }
 
   &--fullscreen {
-    .gin--dark-mode & {
+    [dir].gin--dark-mode & {
       background-color: var(--gin-color-primary);
       border-color: transparent;
       box-shadow: 0 2px 6px 0 var(--gin-bg-app);

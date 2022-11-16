@@ -576,16 +576,16 @@
 }
 
 @media screen and (min-width: 85em) {
-  .js .vertical-tabs__item {
+  html.js .vertical-tabs__item {
     overflow: visible;
     width: 100%;
   }
 
-  [dir="ltr"] .js .vertical-tabs__item {
+  html[dir="ltr"].js .vertical-tabs__item {
     float: left;
   }
 
-  [dir="rtl"] .js .vertical-tabs__item {
+  html[dir="rtl"].js .vertical-tabs__item {
     float: right;
   }
 }

@@ -416,7 +416,7 @@ fieldset:not(.fieldgroup) {
   margin-top: var(--gin-spacing-xs);
 }
 
-.js .form-autocomplete {
+html.js .form-autocomplete {
   padding-right: 36px;
 }
 
@@ -457,7 +457,7 @@ fieldset:not(.fieldgroup) {
 }
 
 // Autocomplete field
-.js input.form-linkit-autocomplete {
+html.js input.form-linkit-autocomplete {
   padding-right: var(--gin-spacing-xl);
   background-position: right 8px center;
 }

@@ -185,32 +185,32 @@
   background-color: var(--gin-color-primary);
 }
 
-.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle,
-.js .field--widget-paragraphs .draggable .tabledrag-handle {
+html.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle,
+html.js .field--widget-paragraphs .draggable .tabledrag-handle {
   min-width: 20px;
 }
 
 @media (min-width: 61em) {
-  .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle,
-.js .field--widget-paragraphs .draggable .tabledrag-handle {
+  html.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle,
+html.js .field--widget-paragraphs .draggable .tabledrag-handle {
     min-width: 24px;
   }
 }
 
-.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after,
-.js .field--widget-paragraphs .draggable .tabledrag-handle::after {
+html.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after,
+html.js .field--widget-paragraphs .draggable .tabledrag-handle::after {
   position: relative;
   padding: 0;
 }
 
-[dir="ltr"] .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after,
-[dir="ltr"] .js .field--widget-paragraphs .draggable .tabledrag-handle::after {
+html[dir="ltr"].js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after,
+html[dir="ltr"].js .field--widget-paragraphs .draggable .tabledrag-handle::after {
   left: 0;
   margin-left: 0;
 }
 
-[dir="rtl"] .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after,
-[dir="rtl"] .js .field--widget-paragraphs .draggable .tabledrag-handle::after {
+html[dir="rtl"].js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after,
+html[dir="rtl"].js .field--widget-paragraphs .draggable .tabledrag-handle::after {
   right: 0;
   margin-right: 0;
 }
@@ -221,24 +221,24 @@
   background: var(--gin-bg-layer2);
 }
 
-.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
+html.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
   min-width: 32px;
 }
 
 @media (min-width: 61em) {
-  .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
-    min-width: 40px;
+  html.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
+    min-width: 48px;
   }
 
-  .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after {
+  html.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after {
     top: -2px;
   }
 
-  [dir="ltr"] .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after {
+  html[dir="ltr"].js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after {
     left: 8px;
   }
 
-  [dir="rtl"] .js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after {
+  html[dir="rtl"].js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after {
     right: 8px;
   }
 }
@@ -257,23 +257,23 @@
   padding: var(--gin-spacing-xs);
 }
 
-[dir="ltr"] .js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple .dropbutton-widget {
+html[dir="ltr"].js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple .dropbutton-widget {
   margin-right: var(--gin-spacing-xs);
 }
 
-[dir="rtl"] .js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple .dropbutton-widget {
+html[dir="rtl"].js .field--widget-paragraphs .paragraphs-dropbutton-wrapper .dropbutton-multiple .dropbutton-widget {
   margin-left: var(--gin-spacing-xs);
 }
 
-.js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
+html.js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
   top: 0;
 }
 
-[dir="ltr"] .js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
+html[dir="ltr"].js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
   right: calc(var(--gin-spacing-xxs) * -1);
 }
 
-[dir="rtl"] .js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
+html[dir="rtl"].js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
   left: calc(var(--gin-spacing-xxs) * -1);
 }
 
@@ -296,15 +296,15 @@
   align-self: center;
 }
 
-.js .paragraph-type-icon {
+html.js .paragraph-type-icon {
   padding: var(--gin-spacing-xxs);
 }
 
-[dir="ltr"] .js .paragraph-type-icon {
+html[dir="ltr"].js .paragraph-type-icon {
   margin-right: var(--gin-spacing-xs);
 }
 
-[dir="rtl"] .js .paragraph-type-icon {
+html[dir="rtl"].js .paragraph-type-icon {
   margin-left: var(--gin-spacing-xs);
 }
 

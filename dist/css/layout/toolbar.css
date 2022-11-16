@@ -501,17 +501,9 @@ a.toolbar-menu__trigger,
     transition: margin-right var(--gin-transition);
   }
 
-  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu, [dir=rtl] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu, [dir=ltr] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu, [dir] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
     position: fixed;
     width: var(--gin-toolbar-width);
-  }
-
-  [dir="ltr"] .gin--dark-mode .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
-    border-left: 1px solid #1b1b1d;
-  }
-
-  [dir="rtl"] .gin--dark-mode .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
-    border-right: 1px solid #1b1b1d;
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu a,
@@ -629,14 +621,6 @@ a.toolbar-menu__trigger,
   .toolbar .toolbar-toggle-orientation button {
     display: none;
   }
-}
-
-[dir="ltr"] .gin--dark-mode.toolbar-horizontal .toolbar-tray > .toolbar-lining {
-  padding-right: 0;
-}
-
-[dir="rtl"] .gin--dark-mode.toolbar-horizontal .toolbar-tray > .toolbar-lining {
-  padding-left: 0;
 }
 
 .toolbar .toolbar-icon.toolbar-handle:focus {
