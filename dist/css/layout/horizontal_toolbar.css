@@ -221,7 +221,7 @@
   }
 
   .gin--horizontal-toolbar #toolbar-administration,
-.gin--horizontal-toolbar #toolbar-administration .toolbar-bar {
+  .gin--horizontal-toolbar #toolbar-administration .toolbar-bar {
     height: var(--gin-toolbar-height);
     background: var(--gin-bg-layer);
   }
@@ -244,12 +244,12 @@
 
 @media (min-width: 61em) {
   [dir="ltr"] .gin--horizontal-toolbar #toolbar-administration .menu-item__tools,
-[dir="ltr"] .gin--horizontal-toolbar #toolbar-administration .menu-item__admin_toolbar_tools-help {
+  [dir="ltr"] .gin--horizontal-toolbar #toolbar-administration .menu-item__admin_toolbar_tools-help {
     margin-left: calc(var(--gin-spacing-m) * -1);
   }
 
   [dir="rtl"] .gin--horizontal-toolbar #toolbar-administration .menu-item__tools,
-[dir="rtl"] .gin--horizontal-toolbar #toolbar-administration .menu-item__admin_toolbar_tools-help {
+  [dir="rtl"] .gin--horizontal-toolbar #toolbar-administration .menu-item__admin_toolbar_tools-help {
     margin-right: calc(var(--gin-spacing-m) * -1);
   }
 }

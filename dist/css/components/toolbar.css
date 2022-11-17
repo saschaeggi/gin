@@ -160,22 +160,22 @@ body.gin--classic-toolbar {
 
 @media (min-width: 61em) {
   .toolbar .toolbar-bar #toolbar-item-administration-search:hover::before,
-.toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon:hover::before,
-.toolbar .toolbar-bar .toolbar-menu-administration .responsive-preview-icon:hover::before,
-.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:hover::before,
-.toolbar .toolbar-bar .toolbar-icon-toggle-vertical:hover::before,
-.toolbar .toolbar-bar .toolbar-icon-toggle-horizontal:hover::before {
+  .toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon:hover::before,
+  .toolbar .toolbar-bar .toolbar-menu-administration .responsive-preview-icon:hover::before,
+  .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:hover::before,
+  .toolbar .toolbar-bar .toolbar-icon-toggle-vertical:hover::before,
+  .toolbar .toolbar-bar .toolbar-icon-toggle-horizontal:hover::before {
     background: var(--gin-color-primary);
   }
 }
 
 @media (min-width: 61em) {
   .toolbar .toolbar-bar #toolbar-item-administration-search.is-active:hover::before,
-.toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon.is-active:hover::before,
-.toolbar .toolbar-bar .toolbar-menu-administration .is-active.responsive-preview-icon:hover::before,
-.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.is-active:hover::before,
-.toolbar .toolbar-bar .toolbar-icon-toggle-vertical.is-active:hover::before,
-.toolbar .toolbar-bar .toolbar-icon-toggle-horizontal.is-active:hover::before {
+  .toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon.is-active:hover::before,
+  .toolbar .toolbar-bar .toolbar-menu-administration .is-active.responsive-preview-icon:hover::before,
+  .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.is-active:hover::before,
+  .toolbar .toolbar-bar .toolbar-icon-toggle-vertical.is-active:hover::before,
+  .toolbar .toolbar-bar .toolbar-icon-toggle-horizontal.is-active:hover::before {
     background: var(--gin-color-primary);
   }
 }
@@ -624,16 +624,16 @@ body.gin--classic-toolbar {
 
 @media (max-width: 60.99em) {
   .toolbar-secondary .toolbar-bar .toolbar-icon:hover:before, .toolbar-secondary .toolbar-bar .responsive-preview-icon:hover:before, .toolbar-secondary .toolbar-bar .toolbar-icon.is-active:before, .toolbar-secondary .toolbar-bar .is-active.responsive-preview-icon:before,
-.toolbar-icon-edit:hover:before,
-.toolbar-icon-edit.is-active:before,
-.toolbar-icon-menu:hover:before,
-.toolbar-icon-menu.is-active:before,
-.toolbar-icon-local-tasks:hover:before,
-.toolbar-icon-local-tasks.is-active:before,
-#toolbar-item-administration-search:hover:before,
-#toolbar-item-administration-search.is-active:before,
-.toolbar-tab > .toolbar-icon-edit.toolbar-item:hover:before,
-.toolbar-tab > .toolbar-icon-edit.toolbar-item.is-active:before {
+  .toolbar-icon-edit:hover:before,
+  .toolbar-icon-edit.is-active:before,
+  .toolbar-icon-menu:hover:before,
+  .toolbar-icon-menu.is-active:before,
+  .toolbar-icon-local-tasks:hover:before,
+  .toolbar-icon-local-tasks.is-active:before,
+  #toolbar-item-administration-search:hover:before,
+  #toolbar-item-administration-search.is-active:before,
+  .toolbar-tab > .toolbar-icon-edit.toolbar-item:hover:before,
+  .toolbar-tab > .toolbar-icon-edit.toolbar-item.is-active:before {
     background: #fff;
   }
 }

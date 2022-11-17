@@ -307,7 +307,7 @@ body:not(.toolbar-tray-open) .layout-container {
 
 @media (min-width: 48em) {
   .toolbar-tray-open:not(.toolbar-vertical) .layout-container,
-body:not(.toolbar-tray-open) .layout-container {
+  body:not(.toolbar-tray-open) .layout-container {
     margin-left: var(--gin-spacing-xl);
     margin-right: var(--gin-spacing-xl);
   }
@@ -315,13 +315,13 @@ body:not(.toolbar-tray-open) .layout-container {
 
 @media (min-width: 61em) {
   .toolbar-tray-open:not(.toolbar-vertical) .layout-container,
-body:not(.toolbar-tray-open) .layout-container {
+  body:not(.toolbar-tray-open) .layout-container {
     margin-left: min(5vw, var(--gin-spacing-xxl));
     margin-right: min(5vw, var(--gin-spacing-xxl));
   }
 
   .toolbar-tray-open:not(.toolbar-vertical) .layout-container .layout-container,
-body:not(.toolbar-tray-open) .layout-container .layout-container {
+  body:not(.toolbar-tray-open) .layout-container .layout-container {
     margin-left: 0;
     margin-right: 0;
   }
@@ -386,8 +386,8 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 
 @media (min-width: 48em) {
   .page-content > .help,
-.page-content > .region-content,
-.page-content > .region-highlighted {
+  .page-content > .region-content,
+  .page-content > .region-highlighted {
     margin-top: var(--gin-spacing-l);
   }
 }
@@ -483,22 +483,22 @@ body:not(.toolbar-tray-open) .layout-container .layout-container {
 
 @media (min-width: 48em) {
   .layer-wrapper,
-.block-system-main-block > form,
-.view-content .views-form,
-.views-exposed-form.views-exposed-form,
-.panel,
-.admin-list,
-.update,
-.view-files .view-content,
-.view-watchdog .view-content,
-.system-status-general-info,
-.system-status-report,
-.views-edit-view,
-.views-preview-wrapper,
-.view-block-content .view-content,
-.system-themes-list,
-#views-entity-list,
-.admin.my-workbench {
+  .block-system-main-block > form,
+  .view-content .views-form,
+  .views-exposed-form.views-exposed-form,
+  .panel,
+  .admin-list,
+  .update,
+  .view-files .view-content,
+  .view-watchdog .view-content,
+  .system-status-general-info,
+  .system-status-report,
+  .views-edit-view,
+  .views-preview-wrapper,
+  .view-block-content .view-content,
+  .system-themes-list,
+  #views-entity-list,
+  .admin.my-workbench {
     padding: var(--gin-spacing-l);
   }
 }
@@ -857,16 +857,15 @@ details summary {
 
 @supports ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) {
   .block-system > .views-form [data-drupal-selector*=edit-header],
-.view-content .views-form [data-drupal-selector*=edit-header] {
-    opacity: .999;
-    /* Fix Chrome issue with mask */
+  .view-content .views-form [data-drupal-selector*=edit-header] {
+    opacity: .999; /* Fix Chrome issue with mask */
     background: rgba(var(--gin-color-sticky-rgb), .9);
     -webkit-backdrop-filter: blur(12px);
             backdrop-filter: blur(12px);
   }
 
   .gin--dark-mode .block-system > .views-form [data-drupal-selector*=edit-header],
-.gin--dark-mode .view-content .views-form [data-drupal-selector*=edit-header] {
+  .gin--dark-mode .view-content .views-form [data-drupal-selector*=edit-header] {
     background: rgba(27, 27, 29, .8);
   }
 }
@@ -1683,10 +1682,10 @@ td.webform-has-field-suffix > .form-item > .form-element {
 
 @media (min-width: 48em) {
   #field-display-overview .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-#field-display-overview-wrapper .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-.field--widget-entity-reference-paragraphs .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-.field--type-link .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-.field--type-smartdate .layer-wrapper > .tabledrag-toggle-weight-wrapper {
+  #field-display-overview-wrapper .layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  .field--widget-entity-reference-paragraphs .layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  .field--type-link .layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  .field--type-smartdate .layer-wrapper > .tabledrag-toggle-weight-wrapper {
     position: relative;
     z-index: 1;
     margin-bottom: calc(var(--gin-spacing-xxl) * -1);
@@ -1694,18 +1693,18 @@ td.webform-has-field-suffix > .form-item > .form-element {
   }
 
   [dir="ltr"] #field-display-overview .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-[dir="ltr"] #field-display-overview-wrapper .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-[dir="ltr"] .field--widget-entity-reference-paragraphs .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-[dir="ltr"] .field--type-link .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-[dir="ltr"] .field--type-smartdate .layer-wrapper > .tabledrag-toggle-weight-wrapper {
+  [dir="ltr"] #field-display-overview-wrapper .layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  [dir="ltr"] .field--widget-entity-reference-paragraphs .layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  [dir="ltr"] .field--type-link .layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  [dir="ltr"] .field--type-smartdate .layer-wrapper > .tabledrag-toggle-weight-wrapper {
     margin-right: var(--gin-spacing-m);
   }
 
   [dir="rtl"] #field-display-overview .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-[dir="rtl"] #field-display-overview-wrapper .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-[dir="rtl"] .field--widget-entity-reference-paragraphs .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-[dir="rtl"] .field--type-link .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-[dir="rtl"] .field--type-smartdate .layer-wrapper > .tabledrag-toggle-weight-wrapper {
+  [dir="rtl"] #field-display-overview-wrapper .layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  [dir="rtl"] .field--widget-entity-reference-paragraphs .layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  [dir="rtl"] .field--type-link .layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  [dir="rtl"] .field--type-smartdate .layer-wrapper > .tabledrag-toggle-weight-wrapper {
     margin-left: var(--gin-spacing-m);
   }
 }
@@ -2321,8 +2320,8 @@ tr .form-item {
 
 @media (min-width: 80em) {
   .button,
-.dropbutton__item:first-of-type > *,
-.dropbutton__toggle {
+  .dropbutton__item:first-of-type > *,
+  .dropbutton__toggle {
     font-size: var(--gin-font-size);
   }
 }
@@ -3524,7 +3523,7 @@ hr {
 
 @media (min-width: 48em) {
   .is-horizontal .tabs__link:focus,
-.is-horizontal .tabs--primary .tabs__link:focus {
+  .is-horizontal .tabs--primary .tabs__link:focus {
     box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
   }
 }

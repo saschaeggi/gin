@@ -63,7 +63,7 @@
 
 @media (min-width: 64em) {
   .gin--edit-form .layout-region-node-main,
-.gin--edit-form .layout-region-node-footer {
+  .gin--edit-form .layout-region-node-footer {
     flex-basis: 40%;
     flex-shrink: 1;
     flex-grow: 1;

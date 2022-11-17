@@ -23,8 +23,7 @@
 }
 
 .gin-secondary-toolbar--frontend {
-  z-index: 501;
-  /* on top of the Drupal world */
+  z-index: 501; /* on top of the Drupal world */
   position: sticky;
   top: 0;
   margin-top: 0;
@@ -36,8 +35,7 @@
 
 @supports ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) {
   .gin-secondary-toolbar--frontend {
-    opacity: .999;
-    /* Fix Chrome issue with mask */
+    opacity: .999; /* Fix Chrome issue with mask */
     background: rgba(255, 255, 255, .8);
     -webkit-backdrop-filter: blur(12px);
             backdrop-filter: blur(12px);
@@ -331,14 +329,14 @@
   }
 
   [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar div:nth-last-child(2) .toolbar-tray,
-[dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar div:last-child .toolbar-tray {
+  [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar div:last-child .toolbar-tray {
     left: auto;
     right: 0;
     border-radius: var(--gin-border-l) 0 var(--gin-border-l) var(--gin-border-l);
   }
 
   [dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar div:nth-last-child(2) .toolbar-tray,
-[dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar div:last-child .toolbar-tray {
+  [dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar div:last-child .toolbar-tray {
     right: auto;
     left: 0;
     border-radius: 0 var(--gin-border-l) var(--gin-border-l) var(--gin-border-l);
@@ -401,12 +399,12 @@
 
 @media (min-width: 61em) and (min-width: 80em) {
   [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user,
-[dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user ~ .toolbar-tray {
+  [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user ~ .toolbar-tray {
     margin-right: 1.333em;
   }
 
   [dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user,
-[dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user ~ .toolbar-tray {
+  [dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user .icon-user ~ .toolbar-tray {
     margin-left: 1.333em;
   }
 }
