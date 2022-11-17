@@ -55,7 +55,11 @@
           }\n\
         `;
 
-        element.parentNode.querySelector(':scope > :last-child').append(style);
+        if (element == document.body) {
+          element.parentNode.querySelector(':scope > :last-child').append(style);
+        } else {
+          element.querySelector(':scope > :last-child').append(style);
+        }
       }
     },
 
