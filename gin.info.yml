@@ -218,6 +218,8 @@ ckeditor_stylesheets:
   - dist/css/theme/variables.css
   - dist/css/theme/ckeditor.css
 
+ckeditor5-stylesheets: false
+
 # Regions
 regions:
   header: 'Header'
