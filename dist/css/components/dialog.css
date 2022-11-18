@@ -168,7 +168,7 @@
 
 @media (min-width: 64em) {
   .erl-overlay,
-.layout-paragraphs-dialog {
+  .layout-paragraphs-dialog {
     width: calc(100% - var(--gin-spacing-xxxl)) !important;
   }
 }

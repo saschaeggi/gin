@@ -192,7 +192,7 @@ html.js .field--widget-paragraphs .draggable .tabledrag-handle {
 
 @media (min-width: 61em) {
   html.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle,
-html.js .field--widget-paragraphs .draggable .tabledrag-handle {
+  html.js .field--widget-paragraphs .draggable .tabledrag-handle {
     min-width: 24px;
   }
 }

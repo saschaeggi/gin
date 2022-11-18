@@ -56,7 +56,7 @@
 
 @media (min-width: 61em) {
   .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-icon::before,
-.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
+  .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
     width: var(--gin-icon-size-toolbar);
     height: var(--gin-icon-size-toolbar);
     top: 50%;
@@ -64,12 +64,12 @@
   }
 
   [dir="ltr"] .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-icon::before,
-[dir="ltr"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
+  [dir="ltr"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
     left: calc((var(--gin-toolbar-width-collapsed) - var(--gin-icon-size-toolbar)) / 2 - 9px);
   }
 
   [dir="rtl"] .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-icon::before,
-[dir="rtl"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
+  [dir="rtl"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
     right: calc((var(--gin-toolbar-width-collapsed) - var(--gin-icon-size-toolbar)) / 2 - 9px);
   }
 }
@@ -225,7 +225,7 @@
 
 @media (max-width: 60.99em) {
   .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
-.toolbar .toolbar-tray a.is-active {
+  .toolbar .toolbar-tray a.is-active {
     background: var(--gin-color-primary-light);
   }
 }
@@ -390,17 +390,17 @@ a.toolbar-menu__trigger,
   }
 
   .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
-.toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
+  .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
     width: auto;
   }
 
   [dir="ltr"] .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
-[dir="ltr"] .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
+  [dir="ltr"] .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
     padding-left: calc(var(--gin-spacing-xxl) + var(--gin-spacing-xs));
   }
 
   [dir="rtl"] .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
-[dir="rtl"] .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
+  [dir="rtl"] .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
     padding-right: calc(var(--gin-spacing-xxl) + var(--gin-spacing-xs));
   }
 
@@ -425,7 +425,7 @@ a.toolbar-menu__trigger,
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
     font-size: var(--gin-font-size);
     font-weight: 475;
     letter-spacing: -0.0125rem;
@@ -441,41 +441,41 @@ a.toolbar-menu__trigger,
   }
 
   [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
-[dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
+  [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
     padding-left: calc(var(--gin-toolbar-width-collapsed) - var(--gin-spacing-m));
     padding-right: 0;
   }
 
   [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
-[dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
+  [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
     padding-right: calc(var(--gin-toolbar-width-collapsed) - var(--gin-spacing-m));
     padding-left: 0;
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:hover,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:hover {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:hover {
     color: var(--gin-color-primary);
     background-color: transparent;
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.is-active,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.is-active {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.is-active {
     color: var(--gin-color-primary-active);
     font-weight: var(--gin-font-weight-semibold);
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.is-active:before,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.is-active:before {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.is-active:before {
     background: var(--gin-color-primary);
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.toolbar-handle,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.toolbar-handle {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.toolbar-handle {
     width: var(--gin-toolbar-width-collapsed);
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.toolbar-handle:before,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.toolbar-handle:before {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.toolbar-handle:before {
     display: none;
   }
 
@@ -507,19 +507,19 @@ a.toolbar-menu__trigger,
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu a,
-.toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu span {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu span {
     color: var(--gin-color-text);
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu a.is-active,
-.toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu span.is-active {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu span.is-active {
     color: var(--gin-color-primary);
     font-weight: var(--gin-font-weight-semibold);
     background: var(--gin-color-primary-light);
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu a.is-active:hover,
-.toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu span.is-active:hover {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu span.is-active:hover {
     color: var(--gin-color-primary-hover);
     background: var(--gin-color-primary-light-hover);
   }
@@ -660,18 +660,18 @@ a.toolbar-menu__trigger,
 
 @media (min-width: 61em) {
   .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon {
     color: var(--gin-color-primary-hover);
     box-shadow: none;
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::before,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::before {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::before {
     background: var(--gin-color-primary-active);
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::after,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
     content: "";
     display: block;
     position: absolute;
@@ -691,19 +691,19 @@ a.toolbar-menu__trigger,
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon:focus,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon:focus {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon:focus {
     background: transparent;
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon:focus::after,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon:focus::after {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon:focus::after {
     box-shadow: inset 0 0 0 1px var(--gin-color-focus-border), inset 0 0 0 4px var(--gin-color-focus);
   }
 }
 
 @media (min-width: 61em) {
   .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after,
-.toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.is-active::after {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.is-active::after {
     background: var(--gin-bg-item-hover);
   }
 }
