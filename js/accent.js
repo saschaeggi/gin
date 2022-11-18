@@ -55,11 +55,7 @@
           }\n\
         `;
 
-        if (element == document.body) {
-          element.parentNode.querySelector(':scope > :last-child').append(style);
-        } else {
-          element.querySelector(':scope > :last-child').append(style);
-        }
+        element.append(style);
       }
     },
 
