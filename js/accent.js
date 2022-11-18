@@ -35,8 +35,7 @@
         const strippedAccentColor = accentColor.replace('#', '');
         const darkAccentColor = this.mixColor('ffffff', strippedAccentColor, 65).replace('#', '');
         const style = document.createElement('style');
-        const className = 'gin-custom-colors';
-        style.className = className;
+        style.className = 'gin-custom-colors';
         style.innerHTML = `
           [data-gin-accent="custom"] {\n\
             --gin-color-primary-rgb: ${this.hexToRgb(accentColor)};\n\
@@ -84,17 +83,18 @@
 
         const strippedAccentColor = accentColor.replace('#', '');
         const darkAccentColor = this.mixColor('ffffff', strippedAccentColor, 65);
-        const styles = `<style class="gin-custom-focus">\
-            [data-gin-focus="custom"] {\n\
-              --gin-color-focus: ${accentColor};\n\
-            }\n\
-            .gin--dark-mode[data-gin-focus="custom"],\n\
-            .gin--dark-mode [data-gin-focus="custom"] {\n\
-              --gin-color-focus: ${darkAccentColor};\n\
-            }\n\
-            </style>`;
+        const style = document.createElement('style');
+        style.className = 'gin-custom-focus';
+        style.innerHTML = `
+          [data-gin-focus="custom"] {\n\
+            --gin-color-focus: ${accentColor};\n\
+          }\n\
+          .gin--dark-mode[data-gin-focus="custom"],\n\
+          .gin--dark-mode [data-gin-focus="custom"] {\n\
+            --gin-color-focus: ${darkAccentColor};\n\
+          }`;
 
-        element.parentNode.querySelector(':scope > :last-child').append(style);
+        element.append(style);
       }
     },
 
