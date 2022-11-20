@@ -249,6 +249,13 @@
   }
 }
 
+#edit-displays {
+  .views-display-top {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
 .edit-display-settings {
   padding: var(--gin-spacing-l);
   margin: 0;
@@ -429,6 +436,7 @@
   margin-bottom: var(--gin-spacing-m);
   border-color: var(--gin-border-color);
   border-radius: var(--gin-border-m);
+  box-shadow: none;
 }
 
 .views-ui-dialog {

@@ -209,12 +209,14 @@
   }
 
   .dropbutton--small {
+    min-width: 0;
     height: 2.25rem;
     min-height: 2.25rem;
     border-radius: var(--gin-border-s);
   }
 
   .dropbutton--extrasmall {
+    min-width: 0;
     height: 1.75rem;
     min-height: 1.75rem;
     border-radius: var(--gin-border-s);

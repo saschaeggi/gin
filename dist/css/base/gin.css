@@ -395,6 +395,7 @@ body:not(.toolbar-tray-open) .layout-container {
 .layer-wrapper,
 .block-system > form,
 .view-content .views-form,
+.view-without-bulk .view-content,
 .panel,
 .admin-list,
 .view-watchdog .view-content,
@@ -418,6 +419,7 @@ body:not(.toolbar-tray-open) .layout-container {
 .gin--dark-mode .layer-wrapper,
 .gin--dark-mode .block-system > form,
 .gin--dark-mode .view-content .views-form,
+.gin--dark-mode .view-without-bulk .view-content,
 .gin--dark-mode .panel,
 .gin--dark-mode .admin-list,
 .gin--dark-mode .view-watchdog .view-content,
@@ -439,6 +441,7 @@ body:not(.toolbar-tray-open) .layout-container {
 .gin--high-contrast-mode .layer-wrapper,
 .gin--high-contrast-mode .block-system > form,
 .gin--high-contrast-mode .view-content .views-form,
+.gin--high-contrast-mode .view-without-bulk .view-content,
 .gin--high-contrast-mode .panel,
 .gin--high-contrast-mode .admin-list,
 .gin--high-contrast-mode .view-watchdog .view-content,
@@ -460,6 +463,7 @@ body:not(.toolbar-tray-open) .layout-container {
 .layer-wrapper,
 .block-system-main-block > form,
 .view-content .views-form,
+.view-without-bulk .view-content,
 .views-exposed-form.views-exposed-form,
 .panel,
 .admin-list,
@@ -485,6 +489,7 @@ body:not(.toolbar-tray-open) .layout-container {
   .layer-wrapper,
   .block-system-main-block > form,
   .view-content .views-form,
+  .view-without-bulk .view-content,
   .views-exposed-form.views-exposed-form,
   .panel,
   .admin-list,
@@ -509,6 +514,8 @@ body:not(.toolbar-tray-open) .layout-container {
 .block-system-main-block > form .layout-region-node-main > .form-wrapper:first-of-type .form-item,
 .view-content .views-form > .form-wrapper:first-of-type .form-item,
 .view-content .views-form .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.view-without-bulk .view-content > .form-wrapper:first-of-type .form-item,
+.view-without-bulk .view-content .layout-region-node-main > .form-wrapper:first-of-type .form-item,
 .views-exposed-form.views-exposed-form > .form-wrapper:first-of-type .form-item,
 .views-exposed-form.views-exposed-form .layout-region-node-main > .form-wrapper:first-of-type .form-item,
 .panel > .form-wrapper:first-of-type .form-item,
@@ -1113,6 +1120,11 @@ details summary {
   left: 2var --gin-spacing-l;
 }
 
+#edit-displays .views-display-top {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .edit-display-settings {
   padding: var(--gin-spacing-l);
   margin: 0;
@@ -1300,6 +1312,7 @@ details summary {
   margin-bottom: var(--gin-spacing-m);
   border-color: var(--gin-border-color);
   border-radius: var(--gin-border-m);
+  box-shadow: none;
 }
 
 .views-ui-dialog .form--inline {
@@ -1649,6 +1662,10 @@ td.webform-has-field-suffix > .form-item > .form-element {
 
 .field-multiple-table tr .form-item {
   margin-bottom: var(--gin-spacing-m);
+}
+
+.view-without-bulk .view-content .views-table {
+  margin-top: 0;
 }
 
 .draggable a.tabledrag-handle {
@@ -2800,12 +2817,14 @@ a.button:active {
 }
 
 .js.no-touchevents .dropbutton--small {
+  min-width: 0;
   height: 2.25rem;
   min-height: 2.25rem;
   border-radius: var(--gin-border-s);
 }
 
 .js.no-touchevents .dropbutton--extrasmall {
+  min-width: 0;
   height: 1.75rem;
   min-height: 1.75rem;
   border-radius: var(--gin-border-s);

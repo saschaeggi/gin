@@ -249,3 +249,7 @@ td.webform-has-field-suffix > .form-item > .form-element {
     margin-bottom: var(--gin-spacing-m);
   }
 }
+
+.view-without-bulk .view-content .views-table {
+  margin-top: 0;
+}
