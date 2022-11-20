@@ -120,9 +120,12 @@
       font-weight: var(--gin-font-weight-heavy);
       text-align: left;
       white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
       color: var(--gin-color-primary);
       display: block;
       width: 100%;
+      max-width: 320px;
       margin: 0;
       border: 0 none !important;
       border-radius: 0;
@@ -164,16 +167,20 @@
     }
   }
 
-  &__item:first-of-type ~ .dropbutton__item > *:hover {
-    background-color: var(--gin-bg-layer3);
-  }
+  &__item:first-of-type ~ .dropbutton__item {
+    max-width: unset;
 
-  &__item ~ .dropbutton__item:last-child {
-    border-color: var(--gin-color-primary);
+    & > *:hover {
+      background-color: var(--gin-bg-layer3);
+    }
+
+    &__item ~ .dropbutton__item:last-child {
+      border-color: var(--gin-color-primary);
+    }
   }
 }
 
-.js {
+html.js {
   .dropbutton {
     height: 3rem;
     min-height: 3rem;
@@ -189,13 +196,7 @@
   }
 }
 
-.js {
-  .dropbutton--multiple .dropbutton__item:first-of-type > * {
-    border-radius: var(--gin-border-xs) 0 0 var(--gin-border-xs);
-  }
-}
-
-.js.no-touchevents {
+html.js.no-touchevents {
   .dropbutton--multiple.dropbutton--small .dropbutton__item:first-of-type {
     margin-right: 0;
   }
