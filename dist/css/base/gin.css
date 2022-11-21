@@ -2180,6 +2180,10 @@ fieldset:not(.fieldgroup) > .fieldset-wrapper {
   margin-top: 20px;
 }
 
+fieldset:not(.fieldgroup).error {
+  border: 2px solid var(--gin-color-danger);
+}
+
 .fieldset__label,
 .fieldset__label--group,
 .form-item__label {
@@ -2213,6 +2217,10 @@ fieldset:not(.fieldgroup) > .fieldset-wrapper {
   margin-left: .15em;
   vertical-align: text-top;
   background: none;
+}
+
+.claro-details.error {
+  border: 2px solid var(--gin-color-danger);
 }
 
 .claro-details__summary:not(.form-required) .required-mark {

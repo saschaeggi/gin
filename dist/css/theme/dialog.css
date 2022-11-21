@@ -666,6 +666,10 @@
   margin-top: 20px;
 }
 
+.ui-dialog fieldset:not(.fieldgroup).error {
+  border: 2px solid var(--gin-color-danger);
+}
+
 .ui-dialog .fieldset__label,
 .ui-dialog .fieldset__label--group,
 .ui-dialog .form-item__label {
@@ -699,6 +703,10 @@
   margin-left: .15em;
   vertical-align: text-top;
   background: none;
+}
+
+.ui-dialog .claro-details.error {
+  border: 2px solid var(--gin-color-danger);
 }
 
 .ui-dialog .claro-details__summary:not(.form-required) .required-mark {
