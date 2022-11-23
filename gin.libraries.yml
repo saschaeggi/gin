@@ -24,6 +24,8 @@ gin_init:
   header: true
   js:
     dist/js/init.js: { minified: false, preprocess: false, weight: -99 }
+  dependencies:
+    - core/drupalSettings
 
 gin_toolbar:
   css:
@@ -42,6 +44,7 @@ gin_toolbar:
     - gin/breadcrumb
     - gin/settings_tray
     - gin/settings_tray_edit
+    - core/drupalSettings
     - core/once
 
 gin_horizontal_toolbar:
@@ -85,6 +88,8 @@ gin_accent:
       dist/css/theme/accent.css: { minified: false }
   js:
     dist/js/accent.js: { minified: false }
+  dependencies:
+    - core/drupalSettings
 
 gin_dialog:
   css:
@@ -150,6 +155,8 @@ settings:
   css:
     component:
       dist/css/components/settings.css: { minified: false }
+  dependencies:
+    - core/drupalSettings
 
 tabs:
   css:
@@ -185,6 +192,7 @@ ckeditor:
     theme:
       dist/css/components/ckeditor.css: { minified: false }
   dependencies:
+    - core/drupalSettings
     - core/once
 
 ckeditor5:
