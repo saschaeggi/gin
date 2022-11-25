@@ -15,7 +15,7 @@ libraries:
   - gin/gin
 
 libraries-override:
-  # Custom Gin overrides
+  # Gin overrides: replace
   core/drupal.tableselect:
     js:
       misc/tableselect.js: js/overrides/tableselect.js
@@ -28,7 +28,13 @@ libraries-override:
     js:
       js/media_library.view.js: js/overrides/media_library.view.js
 
-  # Gin overrides
+  # Gin overrides: disable
+  # needed override to overcome dialog styling issues
+  claro/claro.drupal.dialog:
+    css:
+      theme:
+        css/components/dialog.css: false
+
   core/drupal.dialog.off_canvas:
     css:
       base:
