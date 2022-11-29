@@ -85,10 +85,7 @@
   border: 0 none;
 }
 
-.cke.cke_chrome.cke_focus {
-  border-color: transparent;
-}
-
+.cke.cke_chrome.cke_focus,
 .cke.cke_chrome:hover,
 .cke:hover .cke_contents,
 .cke:hover .cke_top,
@@ -96,6 +93,7 @@
   border-color: var(--gin-color-text);
 }
 
+.gin--dark-mode .cke.cke_chrome.cke_focus,
 .gin--dark-mode .cke.cke_chrome:hover,
 .gin--dark-mode .cke:hover .cke_contents,
 .gin--dark-mode .cke:hover .cke_top,
