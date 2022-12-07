@@ -12,7 +12,10 @@
           ([e]) => context.querySelector('.region-sticky').classList.toggle('region-sticky--is-sticky', e.intersectionRatio < 1),
           { threshold: [1] }
         );
-        observer.observe(context.querySelector('.region-sticky-watcher'));
+        const element = context.querySelector('.region-sticky-watcher');
+        if (element) {
+          observer.observe(element);
+        }
       });
     }
   };
