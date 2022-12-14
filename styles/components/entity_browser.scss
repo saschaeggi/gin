@@ -3,8 +3,8 @@
   &:not(.entities-list--single-item) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    grid-gap: 1rem;
-    margin-bottom: 1rem;
+    grid-gap: var(--gin-spacing-m);
+    margin-bottom: var(--gin-spacing-m);
   }
 
   &.entities-list--single-item .item-container {
@@ -16,23 +16,23 @@
     position: relative;
     margin: 0;
     min-height: 80px;
-    border: 1px solid var(--colorGinBorder);
-    border-radius: var(--ginBorderMedium);
+    border: 1px solid var(--gin-border-color);
+    border-radius: var(--gin-border-l);
 
     .field__item {
       border: 3px solid transparent;
-      border-radius: var(--ginBorderBig);
+      border-radius: var(--gin-border-xl);
       overflow: hidden;
 
       &:hover,
       &:focus {
-        border-color: var(--colorGinPrimary) !important;
+        border-color: var(--gin-color-primary) !important;
         cursor: pointer;
       }
     }
 
     &.label {
-      padding: .75rem 3rem .75rem .75rem;
+      padding: var(--gin-spacing-s) var(--gin-spacing-xxl) var(--gin-spacing-s) var(--gin-spacing-s);
     }
 
     img {
@@ -51,9 +51,21 @@
     > .edit-button {
       @include custom-icon-button('edit');
       position: absolute;
-      bottom: 0;
-      right: 0;
+      top: 0;
+      right: 2.6rem;
     }
+  }
+}
+
+// Entity list in table views.
+table.entities-list {
+  &:not(.entities-list--single-item) {
+    display: block;
+  }
+
+  td {
+    height: auto;
+    padding: 10px 12px;
   }
 }
 
@@ -77,31 +89,31 @@
     .view-content {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      grid-gap: 1rem;
-      margin-bottom: 1rem;
+      grid-gap: var(--gin-spacing-m);
+      margin-bottom: var(--gin-spacing-m);
     }
 
     .views-row {
-      border: 1px solid var(--colorGinBorder);
-      border-radius: calc(var(--ginBorderBig) + 2px);
+      border: 1px solid var(--gin-border-color);
+      border-radius: calc(var(--gin-border-xl) + 2px);
       position: relative;
       .views-field-thumbnail__target-id {
         &:hover,
         &:focus {
           cursor: pointer;
-          border-color: var(--colorGinPrimary);
+          border-color: var(--gin-color-primary);
         }
       }
 
       .views-field-name {
-        padding: .5rem;
+        padding: var(--gin-spacing-xs);
       }
 
       .views-field-entity-browser-select {
         position: absolute;
         top: 0;
         left: 0;
-        margin: .75rem;
+        margin: var(--gin-spacing-s);
 
         .form-item {
           margin: 0;
@@ -111,23 +123,23 @@
 
     .media-info {
       word-wrap: break-word;
-      font-size: 14px;
+      font-size: var(--gin-font-size-s);
     }
 
     .views-field-thumbnail__target-id {
       border: 3px solid transparent;
-      border-radius: var(--ginBorderBig);
+      border-radius: var(--gin-border-xl);
       overflow: hidden;
 
       &:hover,
       &:focus {
-        border-color: var(--colorGinPrimary);
+        border-color: var(--gin-color-primary);
       }
     }
 
     .entities-list {
-      border-top: var(--ginBorderXSmall) solid var(--colorGinFormElementBorder);
-      padding-top: 1rem;
+      border-top: var(--gin-border-xs) solid var(--gin-border-color-form-element);
+      padding-top: var(--gin-spacing-m);
     }
   }
 
@@ -152,7 +164,7 @@
 }
 
 .eb-tabs {
-  margin-left: 4px; // Fix for outline
+  margin-left: var(--gin-spacing-xxs); // Fix for outline
   margin-bottom: 0.75em;
 
   ul {

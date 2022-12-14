@@ -1,8 +1,8 @@
 .draggable.field-plugin-settings-editing, .draggable.drag-previous.field-plugin-settings-editing {
-  background: var(--colorGinAppBackground);
+  background: var(--gin-bg-app);
 }
 
 .field-plugin-summary {
-  font-size: .8rem;
-  color: var(--colorGinTextLight);
+  font-size: var(--gin-font-size-xs);
+  color: var(--gin-color-text-light);
 }

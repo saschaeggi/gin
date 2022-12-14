@@ -1,5 +1,5 @@
 .gin-breadcrumb {
-  color: var(--colorGinText);
+  color: var(--gin-color-text);
   padding: 0;
 
   &-wrapper {
@@ -13,16 +13,17 @@
     width: auto;
     text-overflow: ellipsis;
     overflow: hidden;
-    padding-left: .25rem;
+    padding-left: var(--gin-spacing-xxs);
     margin-top: 0;
-    margin-left: -.25rem;
+    margin-left: calc(var(--gin-spacing-xxs) * -1);
   }
 
   &__item,
-  &__link {
+  &__link,
+  &__text {
     display: inline;
-    font-weight: normal;
-    color: var(--colorGinTextLight);
+    font-weight: var(--gin-font-weight-normal);;
+    color: var(--gin-color-text-light);
     text-decoration: none;
     vertical-align: middle;
   }
@@ -34,7 +35,7 @@
   &__item + &__item::before {
     content: "/";
     opacity: .3;
-    font-size: var(--ginFontSizeSmall);
+    font-size: var(--gin-font-size-xs);
     vertical-align: middle;
     display: inline-block;
     padding: 0 .5em;
@@ -51,38 +52,54 @@
       position: absolute;
       top: 50%;
       left: 0;
-      width: var(--iconGinSecondaryToolbar);
-      height: var(--iconGinSecondaryToolbar);
+      width: var(--gin-icon-size-toolbar-secondary);
+      height: var(--gin-icon-size-toolbar-secondary);
       transform: translateY(-50%);
-      background-color: var(--colorGinIcons);
+      background-color: var(--gin-icon-color);
       mask-image: icon('backtosite');
       mask-size: 100% 100%;
       mask-position: center center;
     }
 
     &:hover::before {
-      background-color: var(--colorGinPrimary);
+      background-color: var(--gin-color-primary);
     }
   }
 
-  &__link {
-    font-size: var(--ginFontSizeSmall);
+  &__item:first-of-type + &__item::before {
+    content: "";
+    opacity: .3;
+    border-right: 1px solid var(--gin-color-text);
+    width: 1px;
+    height: 20px;
+    padding-left: .75em;
+    padding-right: 0;
+    margin-right: .75em;
+  }
+
+  &__link,
+  &__text {
+    font-size: var(--gin-font-size-xs);
     line-height: 2; // make sure we have enough room for focus ring
-    border-radius: var(--ginBorderTiny);
+    border-radius: var(--gin-border-xxs);
 
     &, em {
       &, &:link, &:visited {
-        font-weight: normal;
-        color: var(--colorGinTextLight);
-      }
-
-      &:hover {
-        color: var(--colorGinPrimaryHover);
+        font-weight: var(--gin-font-weight-normal);;
+        color: var(--gin-color-text-light);
       }
     }
 
     em {
       font-style: italic;
+    }
+  }
+
+  &__link {
+    &:hover {
+      &, em {
+        color: var(--gin-color-primary-hover);
+      }
     }
   }
 }

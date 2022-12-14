@@ -27,6 +27,9 @@ gin.settings:
     focus_color:
       type: string
       label: 'The focus color'
+    layout_density:
+      type: string
+      label: 'Layout density'
     show_description_toggle:
       type: boolean
       label: 'Display help icon to toggle form description'

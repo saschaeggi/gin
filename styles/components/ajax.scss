@@ -1,22 +1,22 @@
 // Normal Throbber
 .ajax-progress {
   &__throbber {
-    border: 3px solid var(--colorGinPrimary);
+    border: 3px solid var(--gin-color-primary);
     border-right: 3px dotted transparent;
   }
 
   .ajax-progress__message {
-    color: var(--colorGinText);
+    color: var(--gin-color-text);
   }
 
   &--fullscreen {
-    .gin--dark-mode & {
-      background-color: var(--colorGinPrimary);
+    [dir].gin--dark-mode & {
+      background-color: var(--gin-color-primary);
       border-color: transparent;
-      box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
+      box-shadow: 0 2px 6px 0 var(--gin-bg-app);
 
       .ajax-progress__throbber {
-        border: 3px solid var(--colorGinAppBackground);
+        border: 3px solid var(--gin-bg-app);
         border-right: 3px dotted transparent;
       }
     }
@@ -26,23 +26,23 @@
 // Media library Throbber
 .media-library-widget {
   .ajax-progress__throbber {
-    border: 2px solid var(--colorGinPrimary);
+    border: 2px solid var(--gin-color-primary);
     border-right: 2px dotted transparent;
   }
 }
 
 // UI Dialog Throbber
 .ui-dialog .ajax-progress-throbber {
-  padding: .5rem;
-  background: var(--colorGinAppBackground);
+  padding: var(--gin-spacing-xs);
+  background: var(--gin-bg-app);
   border-radius: 50%;
   box-shadow: 0 2px 6px 0 rgba(34, 35, 48, 0.1);
   border: 1px solid rgba(216, 217, 224, 0.8);
 
   .gin--dark-mode & {
-    background-color: var(--colorGinPrimary);
+    background-color: var(--gin-color-primary);
     border-color: transparent;
-    box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
+    box-shadow: 0 2px 6px 0 var(--gin-bg-app);
   }
 }
 
@@ -52,11 +52,11 @@
     content: "";
     display: block;
     position: absolute;
-    top: .5rem;
-    left: .5rem;
+    top: var(--gin-spacing-xs);
+    left: var(--gin-spacing-xs);
     width: 1.125rem;
     height: 1.125rem;
-    border: 2px solid var(--colorGinPrimary);
+    border: 2px solid var(--gin-color-primary);
     border-right: 2px dotted transparent;
     border-radius: 50%;
     animation: gin-throbber 0.75s linear infinite;
@@ -73,8 +73,8 @@
 .ui-dialog .ajax-progress,
 .media-library-item .ajax-progress.ajax-progress.ajax-progress {
   .gin--dark-mode & {
-    background-color: var(--colorGinAppBackground);
-    border-color: var(--colorGinAppBackground);
+    background-color: var(--gin-bg-app);
+    border-color: var(--gin-bg-app);
   }
 }
 
@@ -86,7 +86,7 @@
   .ajax-progress-throbber {
     position: absolute;
     top: 0;
-    right: 4px;
+    right: var(--gin-spacing-xxs);
     width: 24px;
     height: 24px;
 
@@ -107,5 +107,5 @@
 }
 
 .claro-autocomplete__message {
-  color: var(--colorGinPrimary);
+  color: var(--gin-color-primary);
 }

@@ -1,32 +1,32 @@
 #coffee-form {
-  padding: 4px;
+  padding: var(--gin-spacing-xxs);
   background: #000;
-  border-radius: var(--ginBorderMedium);
+  border-radius: var(--gin-border-l);
 }
 
 #coffee-form #coffee-form-inner,
 #coffee-form #coffee-q {
-  color: var(--colorGinTitle);
-  background: var(--colorGinLayerBackground);
-  border-radius: var(--ginBorderDefault);
+  color: var(--gin-color-title);
+  background: var(--gin-bg-layer);
+  border-radius: var(--gin-border-m);
 }
 
 #coffee-form #coffee-results a {
-  color: var(--colorGinTitle);
-  border-radius: var(--ginBorderDefault);
+  color: var(--gin-color-title);
+  border-radius: var(--gin-border-m);
 }
 
 #coffee-form #coffee-results a .description {
-  color: var(--colorGinTextLight);
-  padding-top: .25rem;
+  color: var(--gin-color-text-light);
+  padding-top: var(--gin-spacing-xxs);
 }
 
 #coffee-form #coffee-results a:hover, #coffee-form #coffee-results a.ui-state-active {
-  background: var(--colorGinPrimary);
+  background: var(--gin-color-primary);
 }
 
 #coffee-form #coffee-results a:hover, #coffee-form #coffee-results a:hover .description, #coffee-form #coffee-results a.ui-state-active, #coffee-form #coffee-results a.ui-state-active .description {
-  color: var(--colorGinButtonText);
+  color: var(--gin-color-button-text);
 }
 
 #coffee-form #coffee-results a:hover .description, #coffee-form #coffee-results a.ui-state-active .description {
@@ -39,6 +39,6 @@
 }
 
 #coffee-form .ui-autocomplete .ui-menu-item-wrapper {
-  padding: 16px;
+  padding: var(--gin-spacing-m);
 }
 

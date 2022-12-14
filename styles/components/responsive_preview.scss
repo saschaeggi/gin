@@ -12,11 +12,11 @@
     .responsive-preview-trigger {
       width: 4em;
       background: none;
-      border-radius: var(--ginBorderSmall);
+      border-radius: var(--gin-border-s);
 
       // Hover
       &:hover::before {
-        background-color: var(--colorGinTitle);
+        background-color: var(--gin-color-title);
 
         .gin--classic-toolbar & {
           background-color: #fff;
@@ -27,48 +27,48 @@
       &::after {
         width: 1rem;
         height: 1rem;
-        top: .75rem;
-        right: .5rem;
+        top: var(--gin-spacing-s);
+        right: var(--gin-spacing-xs);
         margin: 0;
-        background-color: var(--colorGinTextLight);
+        background-color: var(--gin-color-text-light);
         mask-image: icon('drop');
         mask-size: .75rem .75rem;
         mask-position: center center;
         mask-repeat: no-repeat;
         box-sizing: border-box;
-        transition: transform .2s var(--ginEasing);
+        transition: transform .2s var(--gin-easing);
       }
     }
 
     // Menu style
     .responsive-preview-options {
-      padding: .5rem;
+      padding: var(--gin-spacing-xs);
       margin: 0;
-      background-color: var(--colorGinLayer3Background);
+      background-color: var(--gin-bg-layer3);
       border-bottom: 0 none;
-      border-radius: var(--ginBorderMedium);
-      box-shadow: var(--ginShadowLevel2);
+      border-radius: var(--gin-border-l);
+      box-shadow: var(--gin-shadow-l2);
 
       // Device links
       .responsive-preview-device.responsive-preview-device {
-        color: var(--colorGinPrimary);
+        color: var(--gin-color-primary);
         width: 100%;
-        padding: .625rem 1rem;
-        border-radius: var(--ginBorderSmall);
+        padding: .625rem var(--gin-spacing-m);
+        border-radius: var(--gin-border-s);
 
         &:hover {
-          color: var(--colorGinButtonText);
-          background-color: var(--colorGinPrimary);
+          color: var(--gin-color-button-text);
+          background-color: var(--gin-color-primary);
         }
       }
 
       // Configuration link
       .responsive-preview-configure {
-        color: var(--colorGinTextLight);
+        color: var(--gin-color-text-light);
         text-decoration: none;
 
         &:hover {
-          color: var(--colorGinPrimary);
+          color: var(--gin-color-primary);
         }
       }
     }
@@ -76,7 +76,7 @@
     // Open menu item
     &.open {
       &, &::before {
-        background-color: var(--colorGinLayer3Background);
+        background-color: var(--gin-bg-layer3);
       }
 
       .responsive-preview-trigger::before {

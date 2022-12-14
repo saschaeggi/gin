@@ -19,22 +19,22 @@
       width: .75rem;
       height: .75rem;
       mask-image: icon('media-edit');
-      mask-size: 0.75rem 0.75rem;
+      mask-size: var(--gin-spacing-s) var(--gin-spacing-s);
       mask-position: 100% 100%;
-      background: var(--colorGinPrimary);
+      background: var(--gin-color-primary);
     }
 
     &,
     &:hover,
     &:focus {
-      background: var(--colorGinLayer3Background);
-      border: 1px solid var(--colorGinLayer2Border);
+      background: var(--gin-bg-layer3);
+      border: 1px solid var(--gin-border-color-layer2);
     }
 
     &:hover,
     &:focus {
-      box-shadow: 0 0 0 1px var(--colorGinFocusBorder),
-                  0 0 0 4px var(--colorGinFocus);
+      box-shadow: 0 0 0 1px var(--gin-color-focus-border),
+                  0 0 0 4px var(--gin-color-focus);
     }
   }
 
@@ -48,37 +48,37 @@
 .contextual-region .contextual {
   // Contextual Link list
   .contextual-links {
-    top: 4px;
+    top: var(--gin-spacing-xxs);
     padding: .5em;
     margin: 0;
     min-width: 120px;
-    background: var(--colorGinLayer3Background);
+    background: var(--gin-bg-layer3);
     border: 0 none;
-    border-radius: var(--ginBorderMedium);
-    box-shadow: var(--ginShadowLevel2);
+    border-radius: var(--gin-border-l);
+    box-shadow: var(--gin-shadow-l2);
 
     li {
       background: transparent;
 
       a {
-        font-family: var(--ginFont);
-        color: var(--colorGinPrimary);
+        font-family: var(--gin-font);
+        color: var(--gin-color-primary);
         line-height: 1;
         white-space: nowrap;
-        padding: .5rem 1rem;
+        padding: var(--gin-spacing-xs) var(--gin-spacing-m);
         margin: 0;
         background: transparent;
-        border-radius: var(--ginBorderSmall);
+        border-radius: var(--gin-border-s);
 
         &:hover, &:active {
-          color: var(--colorGinButtonText);
-          background: var(--colorGinPrimary);
+          color: var(--gin-color-button-text);
+          background: var(--gin-color-primary);
         }
 
         &:focus {
           outline: none;
-          box-shadow: 0 0 0 1px var(--colorGinFocusBorder),
-                      0 0 0 4px var(--colorGinFocus);
+          box-shadow: 0 0 0 1px var(--gin-color-focus-border),
+                      0 0 0 4px var(--gin-color-focus);
         }
       }
     }
@@ -86,15 +86,15 @@
     // Throbber
     .ajax-progress-throbber {
       top: .125rem;
-      background: var(--colorGinPrimary);
+      background: var(--gin-color-primary);
       border-radius: 50%;
 
       &::before {
-        top: .25rem;
-        left: .25rem;
+        top: var(--gin-spacing-xxs);
+        left: var(--gin-spacing-xxs);
         width: 1rem;
         height: 1rem;
-        border: 2px solid var(--colorGinButtonText);
+        border: 2px solid var(--gin-color-button-text);
         border-right: 2px dotted transparent;
       }
     }
@@ -104,8 +104,8 @@
 .no-touchevents .contextual-region .contextual {
   .contextual-links li a {
     &:hover, &:active {
-      color: var(--colorGinButtonText);
-      background: var(--colorGinPrimary);
+      color: var(--gin-color-button-text);
+      background: var(--gin-color-primary);
     }
   }
 }

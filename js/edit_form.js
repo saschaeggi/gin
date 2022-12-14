@@ -2,46 +2,27 @@
 
 'use strict';
 
-(($, Drupal, drupalSettings) => {
+((Drupal) => {
   Drupal.behaviors.ginEditForm = {
-    attach: function attach() {
-      const form = document.querySelector('.region-content form');
-      const sticky = $('.gin-sticky').clone(true, true);
-      const newParent = document.querySelector('.region-sticky__items__inner');
+    attach: (context) => {
+      once('ginEditForm', '.region-content form.gin-node-edit-form', context).forEach(form => {
+        const sticky = context.querySelector('.gin-sticky');
+        const newParent = context.querySelector('.region-sticky__items__inner');
 
-      if (newParent && newParent.querySelectorAll('.gin-sticky').length === 0) {
-        sticky.appendTo($(newParent));
+        if (newParent && newParent.querySelectorAll('.gin-sticky').length === 0) {
+          newParent.appendChild(sticky);
 
-        // Input Elements
-        const actionButtons = newParent.querySelectorAll('button[type="submit"], input[type="submit"]');
+          // Attach form elements to main form
+          const actionButtons = newParent.querySelectorAll('button, input, select, textarea');
 
-        if (actionButtons.length > 0) {
-          actionButtons
-            .forEach((el) => {
+          if (actionButtons.length > 0) {
+            actionButtons.forEach((el) => {
               el.setAttribute('form', form.getAttribute('id'));
               el.setAttribute('id', el.getAttribute('id') + '--gin-edit-form');
             });
+          }
         }
-
-        // Make Published Status reactive
-        const statusToggle = document.querySelectorAll('.field--name-status [name="status[value]"]');
-
-        if (statusToggle.length > 0) {
-          statusToggle.forEach((publishedState) => {
-            publishedState.addEventListener('click', (event) => {
-              const value = event.target.checked;
-              // Sync value
-              statusToggle.forEach((publishedState) => {
-                publishedState.checked = value;
-              });
-            });
-          });
-        }
-
-        setTimeout(() => {
-          sticky.addClass('gin-sticky--visible');
-        });
-      }
+      });
     }
   };
-})(jQuery, Drupal, drupalSettings);
+})(Drupal);

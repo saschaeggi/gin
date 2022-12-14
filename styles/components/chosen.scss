@@ -10,7 +10,7 @@
         height: 100%;
         display: block;
         line-height: 1.5rem;
-        padding: calc(0.75rem - 1px) calc(1rem - 1px);
+        padding: calc(var(--gin-spacing-s) - 1px) calc(var(--gin-spacing-m) - 1px);
 
         b {
             background: none !important;
@@ -26,7 +26,6 @@
         box-shadow: none;
     }
 }
-
 
 .chosen-container-multi input[type="text"] {
     width: auto !important;

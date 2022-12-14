@@ -4,15 +4,15 @@
 
 .erl-field .erl-disabled-items,
 .erl-field .erl-disabled-items.form-item.form-wrapper {
-  padding: 1rem;
+  padding: var(--gin-spacing-m);
   margin-bottom: -6rem;
   background: #f1f1f3;
-  border-radius: var(--ginBorderDefault);
+  border-radius: var(--gin-border-m);
 }
 
 .gin--dark-mode .erl-field .erl-disabled-items,
 .gin--dark-mode .erl-field .erl-disabled-items.form-item.form-wrapper {
-  background: var(--colorGinLayer2Background);
+  background: var(--gin-bg-layer2);
 }
 
 .erl-field .erl-disabled-items, .erl-field .erl-disabled-items:hover, .erl-field .erl-disabled-items:active,
@@ -24,12 +24,12 @@
 
 .erl-field .erl-disabled-items .fieldset__label,
 .erl-field .erl-disabled-items.form-item.form-wrapper .fieldset__label {
-  padding: 16px 0 24px;
+  padding: var(--gin-spacing-m) 0 var(--gin-spacing-l);
 }
 
 .erl-field .erl-disabled-items__description,
 .erl-field .erl-disabled-items.form-item.form-wrapper__description {
-  font-size: .875rem;
+  font-size: var(--gin-font-size-s);
   color: #999;
 }
 
@@ -55,12 +55,12 @@
   position: static;
   display: block;
   width: 100%;
-  color: var(--colorGinPrimary);
+  color: var(--gin-color-primary);
   line-height: 1.3;
-  background: var(--colorGinItemHover);
-  padding: 16px 16px 34px 16px;
-  border: 1px dashed var(--colorGinPrimary);
-  border-radius: var(--ginBorderDefault);
+  background: var(--gin-bg-item-hover);
+  padding: var(--gin-spacing-m) var(--gin-spacing-m) 34px var(--gin-spacing-m);
+  border: 1px dashed var(--gin-color-primary);
+  border-radius: var(--gin-border-m);
   transform: none;
 }
 
@@ -74,16 +74,20 @@
 .erl-field .erl-add-section:hover, .erl-field .erl-add-section:active,
 .erl-field .erl-add-content--single button:hover,
 .erl-field .erl-add-content--single button:active {
-  color: var(--colorGinPrimaryHover);
-  background: var(--colorGinPrimaryLight);
+  color: var(--gin-color-primary-hover);
+  background: var(--gin-color-primary-light);
 }
 
 .erl-field .erl-item:last-of-type > .erl-add-content--single {
   opacity: 1;
 }
 
-.erl-field .erl-add-content--single button .icon {
-  margin-right: .5rem;
+[dir="ltr"] .erl-field .erl-add-content--single button .icon {
+  margin-right: var(--gin-spacing-xs);
+}
+
+[dir="rtl"] .erl-field .erl-add-content--single button .icon {
+  margin-left: var(--gin-spacing-xs);
 }
 
 .erl-field .layout-radio-item > div {
@@ -91,12 +95,16 @@
   align-items: center;
 }
 
-.erl-field .layout-radio-item .form-item {
-  margin-left: 8px;
+[dir="ltr"] .erl-field .layout-radio-item .form-item {
+  margin-left: var(--gin-spacing-xs);
+}
+
+[dir="rtl"] .erl-field .layout-radio-item .form-item {
+  margin-right: var(--gin-spacing-xs);
 }
 
 .erl-field .layout-radio-item.active {
-  outline: 4px solid var(--colorGinFocus);
+  outline: var(--gin-border-xs) solid var(--gin-color-focus);
 }
 
 .erl-layout-region:hover button.erl-add-content__toggle {
@@ -122,11 +130,11 @@
 }
 
 .erl-disabled-wrapper .erl-item:not(:last-of-type) {
-  margin-bottom: 1rem;
+  margin-bottom: var(--gin-spacing-m);
 }
 
 .erl-disabled-wrapper .erl-disabled-items__description {
-  top: 16px;
+  top: var(--gin-spacing-m);
 }
 
 .erl-item label.paragraph-type-label,
@@ -134,19 +142,36 @@
   margin: -1px;
   position: absolute;
   top: 12px;
-  left: 50%;
-  transform: translate(-50%);
   border: 0 none;
   font-style: normal;
-  color: var(--colorGinTextLight);
+  color: var(--gin-color-text-light);
   opacity: .75;
+}
+
+[dir="ltr"] .erl-item label.paragraph-type-label,
+[dir="ltr"] .erl-item label.paragraph-type--label {
+  left: 50%;
+  transform: translate(-50%);
+}
+
+[dir="rtl"] .erl-item label.paragraph-type-label,
+[dir="rtl"] .erl-item label.paragraph-type--label {
+  right: 50%;
+  transform: translate(50%);
 }
 
 .erl-item .layout-controls {
   opacity: 1;
   position: absolute;
-  left: 4px;
-  top: 8px;
+  top: var(--gin-spacing-xs);
+}
+
+[dir="ltr"] .erl-item .layout-controls {
+  left: var(--gin-spacing-xxs);
+}
+
+[dir="rtl"] .erl-item .layout-controls {
+  right: var(--gin-spacing-xxs);
 }
 
 .erl-item .paragraph .field {
@@ -155,7 +180,7 @@
 }
 
 .erl-item .paragraph .field--name-field-title {
-  font-weight: bold;
+  font-weight: var(--gin-font-weight-heavy);
 }
 
 .erl-item .paragraph .field--type-image {
@@ -170,14 +195,28 @@
 
 .erl-item .paragraph .field--name-field-paragraphs .field__item {
   flex-basis: 100%;
-  margin-right: .5rem;
+}
+
+[dir="ltr"] .erl-item .paragraph .field--name-field-paragraphs .field__item {
+  margin-right: var(--gin-spacing-xs);
+}
+
+[dir="rtl"] .erl-item .paragraph .field--name-field-paragraphs .field__item {
+  margin-left: var(--gin-spacing-xs);
 }
 
 .erl-item .erl-actions {
   visibility: visible;
   position: absolute;
-  right: 4px;
-  top: 8px;
+  top: var(--gin-spacing-xs);
+}
+
+[dir="ltr"] .erl-item .erl-actions {
+  right: var(--gin-spacing-xxs);
+}
+
+[dir="rtl"] .erl-item .erl-actions {
+  left: var(--gin-spacing-xxs);
 }
 
 .erl-layout.erl-item.form-wrapper:hover > button.erl-add-content__toggle, .erl-layout.erl-item.form-wrapper:hover > button.layout-paragraphs-add-content__toggle {

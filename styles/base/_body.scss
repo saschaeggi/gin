@@ -1,37 +1,37 @@
 html {
-  font-family: var(--ginFont);
-  scroll-padding-top: var(--ginScrollOffset);
+  font-family: var(--gin-font);
+  scroll-padding-top: var(--gin-scroll-offset) !important;
 }
 
 body {
-  color: var(--colorGinText);
-  background: var(--colorGinAppBackground);
+  color: var(--gin-color-text);
+  background: var(--gin-bg-app);
   overflow-x: hidden;
 
-  @include mq($breakpointLarge) {
+  @include mq(large) {
     overflow-x: auto;
   }
 }
 
 h1, h2, h3 {
   letter-spacing: -.025em;
-  font-weight: normal;
+  font-weight: var(--gin-font-weight-normal);;
 }
 
 h2 {
-  font-size: 1.75rem;
+  font-size: var(--gin-font-size-h2);
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: var(--gin-font-size-h3);
 }
 
 ::selection {
-  background: var(--colorGinPrimaryLightHover);
+  background: var(--gin-color-primary-light-hover);
 }
 
 ::-moz-selection {
-  background: var(--colorGinPrimaryLightHover);
+  background: var(--gin-color-primary-light-hover);
 }
 
 a {

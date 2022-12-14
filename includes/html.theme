@@ -32,6 +32,9 @@ function gin_preprocess_html(&$variables) {
       $variables['attributes']['class'][] = 'gin--high-contrast-mode';
     }
 
+    // Set layout density.
+    $variables['attributes']['data-gin-layout-density'] = $settings->get('layout_density');
+
     // Edit form? Use the new Gin Edit form layout.
     if (\Drupal::classResolver(GinContentFormHelper::class)->isContentForm()) {
       $variables['attributes']['class'][] = 'gin--edit-form';
@@ -67,4 +70,12 @@ function gin_preprocess_html(&$variables) {
  */
 function gin_preprocess_html__entity_browser__modal(&$variables) {
   gin_preprocess_html($variables);
+
+  // Remove toolbar class in entity browser modal.
+  if (isset($variables['attributes']['class'])) {
+    $toolbar_class = preg_grep('/gin--(.*)-toolbar/', $variables['attributes']['class']);
+    foreach ($toolbar_class as $key => $class) {
+      unset($variables['attributes']['class'][$key]);
+    }
+  }
 }

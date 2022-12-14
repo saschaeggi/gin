@@ -5,30 +5,30 @@
   &__pane,
   &__menu,
   &__menu-item {
-    background: var(--colorGinLayerBackground);
+    background: var(--gin-bg-layer);
   }
 
   &__pane {
-    padding: 1.5rem 1.5rem 0 1.5rem;
-    border-left: 1px solid var(--colorGinBorder);
+    padding: var(--gin-spacing-l) var(--gin-spacing-l) 0 var(--gin-spacing-l);
+    border-left: 1px solid var(--gin-border-color);
 
     table {
       tr.enabling {
-        background: var(--colorGinGreenLightBackground);
+        background: var(--gin-bg-green-light);
       }
     }
   }
 
   &__menu-item {
-    border-top: 1px solid var(--colorGinBorder);
+    border-top: 1px solid var(--gin-border-color);
 
     &.tab__new {
-      border-bottom: 1px solid var(--colorGinBorder);
+      border-bottom: 1px solid var(--gin-border-color);
     }
 
     &.disabled {
       background-color: transparent;
-      border-top-color: var(--colorGinBorder);
+      border-top-color: var(--gin-border-color);
       border-bottom-color: transparent;
     }
 
@@ -36,7 +36,7 @@
     a:hover,
     a:focus,
     a:active {
-      background: var(--colorGinItemHover);
+      background: var(--gin-bg-item-hover);
     }
 
     &.is-selected {
@@ -44,12 +44,12 @@
       a:hover,
       a:focus,
       a:active {
-        background: var(--colorGinLayerBackground);
+        background: var(--gin-bg-layer);
       }
     }
 
     ul.enabling {
-      color: var(--colorGinGreen);
+      color: var(--gin-color-green);
     }
   }
 }
@@ -67,17 +67,17 @@
 
     &:after {
       top: 10px;
-      right: 8px;
+      right: var(--gin-spacing-xs);
     }
   }
 
   input.form-search {
     width: 100%;
-    padding: 1rem;
+    padding: var(--gin-spacing-m);
   }
 
   .form-type--search {
-    margin-bottom: .5rem;
+    margin-bottom: var(--gin-spacing-xs);
   }
 }
 
@@ -96,5 +96,5 @@
 }
 
 .system-modules td details a {
-  color: var(--colorGinPrimary);
+  color: var(--gin-color-primary);
 }

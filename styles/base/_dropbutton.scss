@@ -1,16 +1,16 @@
 .dropbutton {
-  border: 2px solid var(--colorGinPrimary);
-  border-radius: var(--ginBorderDefault);
-  box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
+  border: 2px solid var(--gin-color-primary);
+  border-radius: var(--gin-border-m);
+  box-shadow: 0 1px 2px var(--gin-color-primary-light);
 
   // Offset for select button on first item
   &--multiple > .dropbutton__item:first-of-type {
     height: 100%;
-    margin-right: 3rem;
-    border-right: 1px solid var(--colorGinPrimaryLightActive);
+    margin-right: var(--gin-spacing-xxl);
+    border-right: 1px solid var(--gin-color-primary-light-active);
 
     input {
-      color: var(--colorGinPrimary);
+      color: var(--gin-color-primary);
       height: 100%;
       background-color: transparent;
       border: 0 none !important;
@@ -19,15 +19,15 @@
   }
 
   .gin--dark-mode & {
-    box-shadow: 0 4px 18px var(--colorGinButtonShadow);
+    box-shadow: 0 4px 18px var(--gin-shadow-button);
   }
 
   &:hover {
-    border-color: var(--colorGinPrimary);
+    border-color: var(--gin-color-primary);
   }
 
   &:active, &:focus {
-    border-color: var(--colorGinPrimaryActive);
+    border-color: var(--gin-color-primary-active);
   }
 
   &-wrapper {
@@ -41,22 +41,22 @@
   }
 
   &__item:first-of-type > * {
-    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    padding: calc(.875rem - 1px) calc(var(--gin-spacing-l) - 1px);
   }
 
   &__toggle {
     top: 2px;
     right: 2px;
-    width: calc(3rem + 1px);
+    width: calc(var(--gin-spacing-xxl) + 1px);
     height: 2.75rem;
 
     &:hover {
-      background-color: var(--colorGinPrimary);
+      background-color: var(--gin-color-primary);
     }
 
     &::before {
       background-image: none;
-      background-color: var(--colorGinPrimary);
+      background-color: var(--gin-color-primary);
       mask-image: icon('drop');
       mask-repeat: no-repeat;
       mask-position: center center;
@@ -66,7 +66,7 @@
     &:hover::before,
     &:active::before,
     &:focus::before {
-      background-color: var(--colorGinButtonText);
+      background-color: var(--gin-color-button-text);
     }
   }
 
@@ -77,9 +77,9 @@
     padding: .5em;
     margin: 0;
     min-width: 120px;
-    background: var(--colorGinLayer3Background);
-    border-radius: var(--ginBorderMedium);
-    box-shadow: var(--ginShadowLevel2);
+    background: var(--gin-bg-layer3);
+    border-radius: var(--gin-border-l);
+    box-shadow: var(--gin-shadow-l2);
 
     .node-form & {
       left: 0;
@@ -91,7 +91,7 @@
     > a,
     > input,
     > .button {
-      border-radius: var(--ginBorderSmall) var(--ginBorderSmall) 0 0;
+      border-radius: var(--gin-border-s) var(--gin-border-s) 0 0;
     }
   }
 
@@ -99,7 +99,7 @@
   &:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item,
   & &__items > .dropbutton__item,
   & &__items > .dropbutton__item ~ .dropbutton__item {
-    background-color: var(--colorGinBackground);
+    background-color: var(--gin-bg-app);
     border: 0 none;
     box-shadow: none;
 
@@ -110,30 +110,33 @@
     // Mutiple Dropbutton only has one item
     &:first-of-type:last-of-type > * {
       .js .dropbutton--multiple & {
-        border-radius: var(--ginBorderSmall);
+        border-radius: var(--gin-border-s);
       }
     }
 
     > a,
     > input,
     > .button {
-      font-weight: bold;
+      font-weight: var(--gin-font-weight-heavy);
       text-align: left;
       white-space: nowrap;
-      color: var(--colorGinPrimary);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      color: var(--gin-color-primary);
       display: block;
       width: 100%;
+      max-width: 320px;
       margin: 0;
       border: 0 none !important;
       border-radius: 0;
-      background: var(--colorGinLayer3Background);
+      background: var(--gin-bg-layer3);
       box-shadow: none;
       box-sizing: border-box;
 
       &:hover, &:active, &:focus {
-        color: var(--colorGinButtonText);
-        background: var(--colorGinPrimary);
-        border-radius: var(--ginBorderSmall);
+        color: var(--gin-color-button-text);
+        background: var(--gin-color-primary);
+        border-radius: var(--gin-border-s);
       }
     }
   }
@@ -143,14 +146,14 @@
     > input,
     > .button {
       &:hover, &:active, &:focus {
-        color: var(--colorGinButtonText);
-        background: var(--colorGinPrimary);
+        color: var(--gin-color-button-text);
+        background: var(--gin-color-primary);
       }
     }
   }
 
   & &__items > .dropbutton__item {
-    border-radius: var(--ginBorderSmall);
+    border-radius: var(--gin-border-s);
   }
 
   &:not(.dropbutton--gin) > .dropbutton__item:not(:first-of-type),
@@ -159,21 +162,25 @@
     > a,
     > input,
     > .button {
-      font-size: .875rem;
+      font-size: var(--gin-font-size-s);
       padding: .75em 1em !important;
     }
   }
 
-  &__item:first-of-type ~ .dropbutton__item > *:hover {
-    background-color: var(--colorGinLayer3Background);
-  }
+  &__item:first-of-type ~ .dropbutton__item {
+    max-width: unset;
 
-  &__item ~ .dropbutton__item:last-child {
-    border-color: var(--colorGinPrimary);
+    & > *:hover {
+      background-color: var(--gin-bg-layer3);
+    }
+
+    &__item ~ .dropbutton__item:last-child {
+      border-color: var(--gin-color-primary);
+    }
   }
 }
 
-.js {
+html.js {
   .dropbutton {
     height: 3rem;
     min-height: 3rem;
@@ -189,35 +196,31 @@
   }
 }
 
-.js {
-  .dropbutton--multiple .dropbutton__item:first-of-type > * {
-    border-radius: var(--ginBorderXSmall) 0 0 var(--ginBorderXSmall);
-  }
-}
-
-.js.no-touchevents {
+html.js.no-touchevents {
   .dropbutton--multiple.dropbutton--small .dropbutton__item:first-of-type {
     margin-right: 0;
   }
 
   .dropbutton--multiple.dropbutton--small > .dropbutton__item:first-of-type {
-    margin-right: 2rem;
+    margin-right: var(--gin-spacing-xl);
   }
 
   .dropbutton--multiple.dropbutton--extrasmall > .dropbutton__item:first-of-type {
-    margin-right: 1.5rem;
+    margin-right: var(--gin-spacing-l);
   }
 
   .dropbutton--small {
+    min-width: 0;
     height: 2.25rem;
     min-height: 2.25rem;
-    border-radius: var(--ginBorderSmall);
+    border-radius: var(--gin-border-s);
   }
 
   .dropbutton--extrasmall {
+    min-width: 0;
     height: 1.75rem;
     min-height: 1.75rem;
-    border-radius: var(--ginBorderSmall);
+    border-radius: var(--gin-border-s);
   }
 
   .dropbutton--multiple.dropbutton--extrasmall .dropbutton__items .dropbutton__item {

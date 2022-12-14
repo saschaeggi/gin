@@ -11,7 +11,7 @@
   height: 100%;
   display: block;
   line-height: 1.5rem;
-  padding: calc(.75rem - 1px) calc(1rem - 1px);
+  padding: calc(var(--gin-spacing-s) - 1px) calc(var(--gin-spacing-m) - 1px);
 }
 
 .form-element.chosen-container-single .chosen-single b {

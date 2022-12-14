@@ -1,6 +1,6 @@
 // Summary
 details summary {
-  padding: 16px;
+  padding: var(--gin-spacing-m);
   background-color: rgba(#e6e4df, .2);
 }
 
@@ -11,11 +11,11 @@ details summary {
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding-top: 16px;
+  padding-top: var(--gin-spacing-m);
 
   .form-item,
   .form-actions {
-    margin: .5rem .5rem .5rem 0;
+    margin: var(--gin-spacing-xs) var(--gin-spacing-xs) var(--gin-spacing-xs) 0;
     align-self: flex-start;
   }
 
@@ -25,11 +25,7 @@ details summary {
     margin-bottom: 0;
   }
 
-  .form-actions {
-    align-self: flex-end;
-  }
-
   .field-add-more-submit {
-    margin-top: .75rem;
+    margin-top: var(--gin-spacing-s);
   }
 }

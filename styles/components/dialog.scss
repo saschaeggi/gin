@@ -1,21 +1,21 @@
 .ui-dialog:not(.ui-dialog-off-canvas) {
   max-width: $breakpointWide;
-  margin: 1rem;
+  margin: var(--gin-spacing-m);
   border: 0 none !important;
-  border-radius: var(--ginBorderBig);
-  background: var(--colorGinLayerBackground);
+  border-radius: var(--gin-border-m);
+  background: var(--gin-bg-layer);
 
   // Dialog without title
   .ui-dialog-content:first-of-type {
-    border-top-left-radius: var(--ginBorderBig);
-    border-top-right-radius: var(--ginBorderBig);
+    border-top-left-radius: var(--gin-border-m);
+    border-top-right-radius: var(--gin-border-m);
   }
 
   // Node actions placement
   .layout-region-node-actions {
     position: absolute;
     bottom: 0;
-    left: 1rem;
+    left: var(--gin-spacing-m);
     top: auto;
     right: auto;
   }
@@ -28,62 +28,72 @@
   // Views exposed form override for dialog
   .views-exposed-form.views-exposed-form,
   .views-displays {
-    border: 1px solid var(--colorGinLayerBorder);
+    border: 1px solid var(--gin-border-color-layer);
   }
 }
 
 .ui-dialog {
-  font-family: var(--ginFont);
+  font-family: var(--gin-font);
   outline: none;
 
   &,
   &:focus,
   &:focus:active,
   &:focus:hover {
-    box-shadow: var(--ginShadowLevel1);
+    box-shadow: var(--gin-shadow-l1);
   }
 
   .ui-dialog-titlebar {
     line-height: 1.2;
-    padding: 24px;
+    padding: var(--gin-spacing-m) var(--gin-spacing-l);
     background: $colorDarkAppBackground;
     border: 0 none;
-    border-top-left-radius: var(--ginBorderBig);
-    border-top-right-radius: var(--ginBorderBig);
+    border-radius: var(--gin-border-m) var(--gin-border-m) 0 0;
   }
 
   .ui-dialog-title {
-    font-weight: 500;
+    font-size: var(--gin-font-size-l);
+    font-weight: var(--gin-font-weight-normal);
+    color: #fff;
   }
 
   .ui-dialog-content {
-    color: var(--colorGinText);
+    color: var(--gin-color-text);
   }
 
   .ui-widget-content.ui-dialog-buttonpane {
-    padding: 16px 24px;
-    border-top: 1px solid var(--colorGinLayerBorder);
-    border-bottom-left-radius: var(--ginBorderBig);
-    border-bottom-right-radius: var(--ginBorderBig);
-    background: var(--colorGinAppBackground);
+    padding: var(--gin-spacing-s) var(--gin-spacing-l);
+    border-top: 1px solid var(--gin-border-color-layer);
+    border-bottom-left-radius: var(--gin-border-m);
+    border-bottom-right-radius: var(--gin-border-m);
+    background: var(--gin-bg-app);
 
     .button {
-      font-weight: bold;
+      font-weight: var(--gin-font-weight-heavy);
       margin-top: 0;
       margin-bottom: 0;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
     }
   }
 
   .ui-widget-content.ui-dialog-buttonpane,
   [data-drupal-selector*="-remove-form"] {
     .button.button--danger {
-      border-color: var(--colorGinDanger) !important;
+      border-color: var(--gin-color-danger) !important;
     }
   }
 
+  .ui-dialog-buttonset {
+    margin-top: 0;
+  }
+
   .ui-dialog-titlebar-close {
-    top: 20px;
-    right: 18px;
+    position: absolute;
+    top: 18px;
+    right: 24px;
     opacity: .8;
     margin: 0;
     transform: none;
@@ -110,9 +120,9 @@
   }
 
   .ui-widget-content.ui-dialog-content {
-    padding-left: 24px;
-    padding-right: 24px;
-    background: var(--colorGinLayerBackground);
+    padding-left: var(--gin-spacing-l);
+    padding-right: var(--gin-spacing-l);
+    background: var(--gin-bg-layer);
   }
 }
 
@@ -121,32 +131,32 @@
   position: fixed !important;
   top: 50% !important;
   left: 50% !important;
-  width: calc(100% - 2rem) !important;
+  width: calc(100% - var(--gin-spacing-xl)) !important;
   transform: translate(-50%, -50%);
 
-  @include mq($breakpointLarge) {
-    width: calc(100% - 4rem) !important;
+  @include mq(large) {
+    width: calc(100% - var(--gin-spacing-xxxl)) !important;
   }
 }
 
 .ui-widget-overlay {
   opacity: .9;
-  background: var(--colorGinLayer2Background);
+  background: var(--gin-bg-layer2);
 }
 
 .views-ui-dialog {
   .views-offset-bottom {
-    border-top: 1px solid var(--colorGinBorder);
+    border-top: 1px solid var(--gin-border-color);
   }
 }
 
 .ui-widget-content a {
-  color: var(--colorGinPrimary);
+  color: var(--gin-color-primary);
 }
 
 // Off canvas dialog.
 .ui-widget.ui-dialog.ui-dialog-off-canvas {
-  --colorGinOffCanvasActive: var(--colorGinPrimary);
+  --gin-offcanvas-active: var(--gin-color-primary);
   background: #444;
   border: 0 none;
   box-shadow: 0 0 48px rgba(0, 0, 0, .075);
@@ -156,29 +166,30 @@
     border-radius: 0;
   }
 
-  .ui-dialog-titlebar-close {
-    top: 20px;
-  }
-
   .ui-resizable-w {
     border: 0 none;
     background-color: transparent;
   }
 
   .fieldset {
-    color: var(--colorGinText);
+    color: var(--gin-color-text);
   }
 
   #drupal-off-canvas {
     .button--primary[type=submit] {
-      background: var(--colorGinOffCanvasActive);
+      background: var(--gin-offcanvas-active);
     }
   }
 }
 
+// Scroll
+.ui-dialog .ui-widget-content.ui-dialog-content {
+  overflow: auto;
+}
+
 // Webform Off canvas
 .ui-dialog.webform-off-canvas .ui-widget-content.ui-dialog-content {
-  background: var(--colorGinLayerBackground);
+  background: var(--gin-bg-layer);
 }
 
 // Token

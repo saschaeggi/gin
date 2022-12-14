@@ -62,9 +62,9 @@
         </li>
       {% endif %}
 
-      {% if menu_level == 0 and item.gin_id == 'help-main' %}
+      {# {% if menu_level == 0 and item.gin_id == 'help-main' %}
         <li class="menu-item menu-item__spacer menu-item--no-link"></li>
-      {% endif %}
+      {% endif %} #}
 
       {# Add Menu Titles #}
       {% if menu_level == 1 and loop.index == 1 %}
@@ -94,10 +94,10 @@
       <li{{ item.attributes.addClass(classes) }}>
         {% if item.gin_id == 'admin_toolbar_tools-help' and icon_default == false and icon_path != '' %}
           <a href="{{ path('<front>') }}" class="toolbar-logo" data-drupal-link-system-path="<front>">
-            <img src="{{ file_url(icon_path) }}" class="toolbar-icon-home" />
+            <img src="{{ file_url(icon_path) }}" class="toolbar-icon-home" alt="{{ 'Home'|t }}" />
           </a>
         {% elseif item.gin_id == 'admin_toolbar_tools-help' %}
-          {{ link(item.title, item.url, {'class': ['toolbar-icon-default']}) }}
+          {{ link('Drupal', item.url, {'class': ['toolbar-icon-default']}) }}
         {% else %}
           {{ link(item.title, item.url, {'class': [item.in_active_trail ? 'is-active']}) }}
         {% endif %}

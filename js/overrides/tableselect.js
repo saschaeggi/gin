@@ -1,131 +1,126 @@
-(($, Drupal) => {
+((Drupal, once) => {
   Drupal.behaviors.tableSelect = {
-    attach: function attach(context) {
-      $(context)
-        .find('th.select-all')
-        .closest('table')
-        .once('table-select')
-        .each(Drupal.tableSelect);
-    }
+    attach: (context) => {
+      once('tableSelect', 'th.select-all', context).forEach((el) => {
+        if (el.closest('table')) {
+          Drupal.tableSelect(el.closest('table'));
+        }
+      });
+    },
   };
 
-  Drupal.tableSelect = function () {
-    if ($(this).find('td input[type="checkbox"]').length === 0) {
+  Drupal.tableSelect = (table) => {
+    if (table.querySelector('td input[type="checkbox"]') === null) {
       return;
     }
 
-    var table = this;
-    var checkboxes = 0;
-    var lastChecked = 0;
-    var $table = $(table);
-    var strings = {
+    let checkboxes = 0;
+    let lastChecked = 0;
+    const strings = {
       selectAll: Drupal.t('Select all rows in this table'),
       selectNone: Drupal.t('Deselect all rows in this table')
     };
-    var setClass = 'is-sticky';
-    var $stickyHeader = $table
-      .parents('form')
-      .find('[data-drupal-selector*="edit-header"]');
-
-    var updateSelectAll = function updateSelectAll(state) {
-      $table
-        .prev('table.sticky-header')
-        .addBack()
-        .find('th.select-all input[type="checkbox"]')
-        .each(function () {
-          var $checkbox = $(this);
-          var stateChanged = $checkbox.prop('checked') !== state;
-
-          $checkbox.attr('title', state ? strings.selectNone : strings.selectAll);
+    const updateSelectAll = (state) => {
+      table
+        .querySelectorAll('th.select-all input[type="checkbox"]')
+        .forEach(checkbox => {
+          const stateChanged = checkbox.checked !== state;
+          checkbox.setAttribute(
+            'title',
+            state ? strings.selectNone : strings.selectAll
+          );
 
           if (stateChanged) {
-            $checkbox.prop('checked', state).trigger('change');
+            checkbox.checked = state;
+            checkbox.dispatchEvent(new Event('change'));
           }
         });
     };
-    var updateSticky = function updateSticky(state) {
+
+    const setClass = 'is-sticky';
+    const stickyHeader = table
+      .closest('form')
+      .querySelector('[data-drupal-selector*="edit-header"]');
+
+    const updateSticky = (state) => {
       if (state === true) {
-        $stickyHeader.addClass(setClass);
+        stickyHeader.classList.add(setClass);
       }
       else {
-        $stickyHeader.removeClass(setClass);
+        stickyHeader.classList.remove(setClass);
       }
     };
 
-    $table
-      .find('th.select-all')
-      .prepend($(Drupal.theme('checkbox')).attr('title', strings.selectAll))
-      .on('click', (event) => {
-        if ($(event.target).is('input[type="checkbox"]')) {
-          checkboxes.each(function () {
-            var $checkbox = $(this);
-            var stateChanged = $checkbox.prop('checked') !== event.target.checked;
+    const checkedCheckboxes = (checkboxes) => {
+      const checkedCheckboxes = Array.from(checkboxes).filter(checkbox => checkbox.matches(':checked'));
+      updateSelectAll(checkboxes.length === checkedCheckboxes.length);
+      updateSticky(!!checkedCheckboxes.length);
+    };
+
+    table.querySelectorAll('th.select-all').forEach(el => {
+      el.innerHTML = Drupal.theme('checkbox') + el.innerHTML;
+      el.querySelector('.form-checkbox').setAttribute('title', strings.selectAll);
+      el.addEventListener('click', event => {
+        if (event.target.matches('input[type="checkbox"]')) {
+          checkboxes.forEach(checkbox => {
+            const stateChanged = checkbox.checked !== event.target.checked;
 
             if (stateChanged) {
-              $checkbox.prop('checked', event.target.checked).trigger('change');
+              checkbox.checked = event.target.checked;
+              checkbox.dispatchEvent(new Event('change'));
             }
 
-            $checkbox.closest('tr').toggleClass('selected', this.checked);
+            checkbox.closest('tr').classList.toggle('selected', checkbox.checked);
           });
 
           updateSelectAll(event.target.checked);
           updateSticky(event.target.checked);
         }
       });
+    });
 
-    checkboxes = $table
-      .find('td input[type="checkbox"]:enabled')
-      .on('click', function (e) {
-        $(this)
+    checkboxes = table.querySelectorAll('td input[type="checkbox"]:enabled');
+    checkboxes.forEach(el => {
+      el.addEventListener('click', e => {
+        e.target
           .closest('tr')
-          .toggleClass('selected', this.checked);
+          .classList.toggle('selected', this.checked);
 
         if (e.shiftKey && lastChecked && lastChecked !== e.target) {
-          Drupal.tableSelectRange($(e.target).closest('tr')[0], $(lastChecked).closest('tr')[0], e.target.checked);
+          Drupal.tableSelectRange(
+            e.target.closest('tr'),
+            lastChecked.closest('tr'),
+            e.target.checked
+          );
         }
 
-        updateSelectAll(checkboxes.length === checkboxes.filter(':checked').length);
-        updateSticky(Boolean(Number(checkboxes.filter(':checked').length)));
-
+        checkedCheckboxes(checkboxes);
         lastChecked = e.target;
       });
+    });
 
-    updateSelectAll(checkboxes.length === checkboxes.filter(':checked').length);
-    updateSticky(Boolean(Number(checkboxes.filter(':checked').length)));
+    checkedCheckboxes(checkboxes);
   };
 
   Drupal.tableSelectRange = function (from, to, state) {
-    var mode = from.rowIndex > to.rowIndex ? 'previousSibling' : 'nextSibling';
+    const mode = from.rowIndex > to.rowIndex ? 'previousSibling' : 'nextSibling';
 
-    for (var i = from[mode]; i; i = i[mode]) {
-      var $i = $(i);
-
+    for (let i = from[mode]; i; i = i[mode]) {
       if (i.nodeType !== 1) {
         continue;
       }
 
-      $i.toggleClass('selected', state);
-      $i.find('input[type="checkbox"]').prop('checked', state);
+      i.classList.toggle('selected', state);
+      i.querySelector('input[type="checkbox"]').checked = state;
 
       if (to.nodeType) {
         if (i === to) {
           break;
         }
-      }
-      else if ($.filter(to, [i]).r.length) {
+      } else if ([i].filter(y => y === to).length) {
         break;
       }
     }
   };
 
-  Drupal.behaviors.ginTableCheckbox = {
-    attach: function (context) {
-      if ( $("table td .checkbox-toggle", context).length > 0 ) {
-        $("table td .checkbox-toggle", context).once().bind('click', function () {
-          var checkBoxes = $(this).siblings("input");
-          checkBoxes.prop("checked", !checkBoxes.prop("checked"));
-        });
-      }
-    }
-  };
-})(jQuery, Drupal);
+})(Drupal, once);

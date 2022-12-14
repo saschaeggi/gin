@@ -1,12 +1,12 @@
 .ui-autocomplete,
 .ui-dialog .ui-autocomplete {
-  color: var(--colorGinText);
-  background: var(--colorGinInputBackground);
-  border-radius: 0 0 var(--ginBorderDefault) var(--ginBorderDefault);
+  color: var(--gin-color-text);
+  background: var(--gin-bg-input);
+  border-radius: 0 0 var(--gin-border-m) var(--gin-border-m);
 
   .ui-menu-item-wrapper.ui-state-active {
-    color: var(--colorGinPrimaryHover);
-    background-color: var(--colorGinItemHover);
+    color: var(--gin-color-primary-hover);
+    background-color: var(--gin-bg-item-hover);
   }
 }
 
@@ -23,26 +23,26 @@ a.ui-button:active,
 }
 
 .ui-autocomplete .ui-menu-item a {
-  color: var(--colorGinText);
+  color: var(--gin-color-text);
 
   &:hover {
-    color: var(--colorGinPrimaryHover);
-    background-color: var(--colorGinItemHover);
+    color: var(--gin-color-primary-hover);
+    background-color: var(--gin-bg-item-hover);
   }
 }
 
 .ui-widget.ui-widget-content {
   padding: 0;
-  border: 1px solid var(--colorGinBorder);
+  border: 1px solid var(--gin-border-color);
 }
 
 div.autocomplete-deluxe-multiple {
-  color: var(--colorGinText);
-  background: var(--colorGinInputBackground);
-  border: 1px solid var(--colorGinFormElementBorder);
-  border-radius: var(--ginBorderDefault);
+  color: var(--gin-color-text);
+  background: var(--gin-bg-input);
+  border: 1px solid var(--gin-border-color-form-element);
+  border-radius: var(--gin-border-m);
   box-sizing: border-box;
-  transition: var(--ginTransition);
+  transition: var(--gin-transition);
 }
 
 .autocomplete-deluxe-container {
@@ -53,17 +53,17 @@ div.autocomplete-deluxe-multiple {
 }
 
 .autocomplete-deluxe-item {
-  color: var(--colorGinPrimaryHover);
-  padding: 6px 24px 6px 12px;
-  background-color: var(--colorGinPrimaryLightHover);
-  border-radius: var(--ginBorderMedium);
+  color: var(--gin-color-primary-hover);
+  padding: 6px var(--gin-spacing-l) 6px 12px;
+  background-color: var(--gin-color-primary-light-hover);
+  border-radius: var(--gin-border-l);
   border: 0 none;
   box-shadow: none;
 
   &:hover,
   &:active {
-    color: var(--colorGinButtonText);
-    background-color: var(--colorGinPrimary);
+    color: var(--gin-color-button-text);
+    background-color: var(--gin-color-primary);
   }
 
   .autocomplete-deluxe-item-delete {
@@ -73,11 +73,11 @@ div.autocomplete-deluxe-multiple {
     mask-size: 10px 10px;
     mask-repeat: no-repeat;
     mask-position: center;
-    background: var(--colorGinPrimary);
+    background: var(--gin-color-primary);
   }
 
   &:hover .autocomplete-deluxe-item-delete,
   .autocomplete-deluxe-item-delete:hover {
-    background: var(--colorGinButtonText);
+    background: var(--gin-color-button-text);
   }
 }

@@ -1,42 +1,56 @@
 .ajax-progress__throbber, .ajax-progress__throbber--fullscreen,
 .ui-dialog .ajax-progress__throbber,
 .media-library-item .ajax-progress__throbber {
-  border: 3px solid var(--colorGinPrimary);
+  border: 3px solid var(--gin-color-primary);
+}
+
+[dir="ltr"] .ajax-progress__throbber, [dir="ltr"] .ajax-progress__throbber--fullscreen, [dir="ltr"] .ui-dialog .ajax-progress__throbber, [dir="ltr"] .media-library-item .ajax-progress__throbber {
   border-right: 3px dotted transparent;
 }
 
+[dir="rtl"] .ajax-progress__throbber, [dir="rtl"] .ajax-progress__throbber--fullscreen, [dir="rtl"] .ui-dialog .ajax-progress__throbber, [dir="rtl"] .media-library-item .ajax-progress__throbber {
+  border-left: 3px dotted transparent;
+}
+
 .ajax-progress .ajax-progress__message {
-  color: var(--colorGinText);
+  color: var(--gin-color-text);
 }
 
-.gin--dark-mode .ajax-progress--fullscreen {
-  background-color: var(--colorGinPrimary);
+[dir].gin--dark-mode .ajax-progress--fullscreen {
+  background-color: var(--gin-color-primary);
   border-color: transparent;
-  box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
+  box-shadow: 0 2px 6px 0 var(--gin-bg-app);
 }
 
-.gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber, .gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber--fullscreen {
-  border: 3px solid var(--colorGinAppBackground);
+[dir].gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber, [dir].gin--dark-mode .ajax-progress--fullscreen .ajax-progress__throbber--fullscreen {
+  border: 3px solid var(--gin-bg-app);
   border-right: 3px dotted transparent;
 }
 
 .media-library-widget .ajax-progress__throbber, .media-library-widget .ajax-progress__throbber--fullscreen {
-  border: 2px solid var(--colorGinPrimary);
+  border: 2px solid var(--gin-color-primary);
+}
+
+[dir="ltr"] .media-library-widget .ajax-progress__throbber, [dir="ltr"] .media-library-widget .ajax-progress__throbber--fullscreen {
   border-right: 2px dotted transparent;
 }
 
+[dir="rtl"] .media-library-widget .ajax-progress__throbber, [dir="rtl"] .media-library-widget .ajax-progress__throbber--fullscreen {
+  border-left: 2px dotted transparent;
+}
+
 .ui-dialog .ajax-progress-throbber {
-  padding: .5rem;
-  background: var(--colorGinAppBackground);
+  padding: var(--gin-spacing-xs);
+  background: var(--gin-bg-app);
   border-radius: 50%;
   box-shadow: 0 2px 6px 0 rgba(34, 35, 48, .1);
   border: 1px solid rgba(216, 217, 224, .8);
 }
 
 .gin--dark-mode .ui-dialog .ajax-progress-throbber {
-  background-color: var(--colorGinPrimary);
+  background-color: var(--gin-color-primary);
   border-color: transparent;
-  box-shadow: 0 2px 6px 0 var(--colorGinAppBackground);
+  box-shadow: 0 2px 6px 0 var(--gin-bg-app);
 }
 
 .ui-dialog .ajax-progress-throbber::before,
@@ -44,20 +58,30 @@
   content: "";
   display: block;
   position: absolute;
-  top: .5rem;
-  left: .5rem;
+  top: var(--gin-spacing-xs);
   width: 1.125rem;
   height: 1.125rem;
-  border: 2px solid var(--colorGinPrimary);
-  border-right: 2px dotted transparent;
+  border: 2px solid var(--gin-color-primary);
   border-radius: 50%;
   animation: gin-throbber .75s linear infinite;
 }
 
+[dir="ltr"] .ui-dialog .ajax-progress-throbber::before,
+[dir="ltr"] .contextual-links .ajax-progress-throbber::before {
+  left: var(--gin-spacing-xs);
+  border-right: 2px dotted transparent;
+}
+
+[dir="rtl"] .ui-dialog .ajax-progress-throbber::before,
+[dir="rtl"] .contextual-links .ajax-progress-throbber::before {
+  right: var(--gin-spacing-xs);
+  border-left: 2px dotted transparent;
+}
+
 .gin--dark-mode .ui-dialog .ajax-progress,
 .gin--dark-mode .media-library-item .ajax-progress.ajax-progress.ajax-progress {
-  background-color: var(--colorGinAppBackground);
-  border-color: var(--colorGinAppBackground);
+  background-color: var(--gin-bg-app);
+  border-color: var(--gin-bg-app);
 }
 
 .contextual-links li {
@@ -67,14 +91,28 @@
 .contextual-links .ajax-progress-throbber {
   position: absolute;
   top: 0;
-  right: 4px;
   width: 24px;
   height: 24px;
 }
 
+[dir="ltr"] .contextual-links .ajax-progress-throbber {
+  right: var(--gin-spacing-xxs);
+}
+
+[dir="rtl"] .contextual-links .ajax-progress-throbber {
+  left: var(--gin-spacing-xxs);
+}
+
 .contextual-links .ajax-progress-throbber::before {
   top: 0;
+}
+
+[dir="ltr"] .contextual-links .ajax-progress-throbber::before {
   left: .25em;
+}
+
+[dir="rtl"] .contextual-links .ajax-progress-throbber::before {
+  right: .25em;
 }
 
 @keyframes gin-throbber {
@@ -88,6 +126,6 @@
 }
 
 .claro-autocomplete__message {
-  color: var(--colorGinPrimary);
+  color: var(--gin-color-primary);
 }
 

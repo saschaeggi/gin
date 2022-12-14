@@ -2,7 +2,7 @@
 .upgrade-status-counter__status-icon--not-scanned:before,
 .upgrade-status-summary tr.not-scanned > td.status-info:before {
   background-image: none;
-  background-color: var(--colorGinText);
+  background-color: var(--gin-color-text);
   mask-image: icon('info');
   mask-repeat: no-repeat;
   mask-position: center center;
@@ -21,7 +21,7 @@
 .upgrade-status-summary tr.no-known-error > td.status-info:before,
 #checked + .claro-details__wrapper--system-status-report .system-status-report__status-title:before {
   background-image: none;
-  background-color: var(--colorGinGreen);
+  background-color: var(--gin-color-green);
   mask-image: icon('status');
   mask-repeat: no-repeat;
   mask-position: center center;
@@ -37,7 +37,7 @@
 .upgrade-status-error-list tr.known-warnings > td.status-info:before,
 .upgrade-status-summary tr.known-warnings > td.status-info:before {
   background-image: none;
-  background-color: var(--colorGinWarning);
+  background-color: var(--gin-color-warning);
   mask-image: icon('warning');
   mask-repeat: no-repeat;
   mask-position: center center;
@@ -56,7 +56,7 @@
 .upgrade-status-error-list tr.known-errors > td.status-info:before,
 .upgrade-status-summary tr.known-errors > td.status-info:before {
   background-image: none;
-  background-color: var(--colorGinDanger);
+  background-color: var(--gin-color-danger);
   mask-image: icon('error');
   mask-repeat: no-repeat;
   mask-position: center center;
@@ -66,9 +66,9 @@
 .system-status-counter,
 .upgrade-status-counter {
   height: auto;
-  padding: 16px 0;
-  background: var(--colorGinLayerBackground);
-  border-radius: var(--ginBorderDefault);
+  padding: var(--gin-spacing-m) 0;
+  background: var(--gin-bg-layer);
+  border-radius: var(--gin-border-m);
 
   &__status-title {
     padding-left: 0;
@@ -88,15 +88,15 @@
   }
 
   &__title-count {
-    font-weight: 500;
-    color: var(--colorGinTitle);
+    font-weight: var(--gin-font-weight-semibold);
+    color: var(--gin-color-title);
     text-transform: none;
   }
 }
 
 .system-status-general-info {
   &__header {
-    margin-bottom: .5rem;
+    margin-bottom: var(--gin-spacing-xs);
   }
 
   &__items {
@@ -104,19 +104,19 @@
   }
 
   &__item {
-    padding: 1rem;
+    padding: var(--gin-spacing-m);
     background: transparent;
     box-shadow: none;
   }
 
   &__item-title {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--colorGinTitle);
+    font-size: var(--gin-font-size);
+    font-weight: var(--gin-font-weight-semibold);
+    color: var(--gin-color-title);
   }
 
   &__sub-item-title {
-    font-weight: 600;
+    font-weight: var(--gin-font-weight-bold);
 
     &:after {
       content: ":\00a0";
@@ -147,7 +147,7 @@
 
     &:before {
       background-image: none;
-      background-color: var(--colorGinPrimary);
+      background-color: var(--gin-color-primary);
       mask-repeat: no-repeat;
       mask-position: center center;
       mask-size: 32px 32px;
@@ -162,20 +162,20 @@
 }
 
 .cron-description__run-cron {
-  margin-top: 1rem;
+  margin-top: var(--gin-spacing-m);
 }
 
 .system-status-report {
-  margin-top: 1.5rem;
+  margin-top: var(--gin-spacing-l);
 
   &-counters &-counters__item {
-    border: 1px solid var(--colorGinLayerBorder);
-    box-shadow: var(--ginShadowLevel1);
+    border: 1px solid var(--gin-border-color-layer);
+    box-shadow: var(--gin-shadow-l1);
   }
 
   &__status-title {
-    font-weight: 500;
-    color: var(--colorGinTitle) !important;
+    font-weight: var(--gin-font-weight-semibold);
+    color: var(--gin-color-title) !important;
   }
 }
 

@@ -1,80 +1,130 @@
 /* eslint-disable no-bitwise, no-nested-ternary, no-mutable-exports, comma-dangle, strict */
 
-'use strict';
+((Drupal, drupalSettings, once) => {
+  Drupal.behaviors.ginAccent = {
+    attach: function attach(context) {
+      once('ginAccent', 'body', context).forEach(() => {
+        // Check Darkmode.
+        Drupal.ginAccent.checkDarkmode();
 
-(($, Drupal, drupalSettings) => {
-  Drupal.behaviors.ginSticky = {
-    attach: function attach() {
-      if (document.querySelectorAll('.region-sticky').length > 0) {
-        // Watch sticky header
-        const observer = new IntersectionObserver(
-          ([e]) => document.querySelector('.region-sticky').classList.toggle('region-sticky--is-sticky', e.intersectionRatio < 1),
-          { threshold: [1] }
-        );
+        // Set accent color.
+        Drupal.ginAccent.setAccentColor();
 
-        if (document.querySelectorAll('.region-sticky-watcher').length > 0) {
-          observer.observe(document.querySelector('.region-sticky-watcher'));
-        }
-      }
-    }
+        // Set focus color.
+        Drupal.ginAccent.setFocusColor();
+      });
+    },
   };
 
-  Drupal.behaviors.ginAccent = {
-    attach: function attach() {
-      // Check Darkmode.
-      Drupal.behaviors.ginAccent.checkDarkmode();
-
-      // Set accent color.
-      Drupal.behaviors.ginAccent.setAccentColor();
-
-      // Set focus color.
-      Drupal.behaviors.ginAccent.setFocusColor();
-    },
-
+  Drupal.ginAccent = {
     setAccentColor: function setAccentColor(preset = null, color = null) {
       const accentColorPreset = preset != null ? preset : drupalSettings.gin.preset_accent_color;
-      $('body').attr('data-gin-accent', accentColorPreset);
+      document.body.setAttribute('data-gin-accent', accentColorPreset);
 
       if (accentColorPreset === 'custom') {
-        Drupal.behaviors.ginAccent.setCustomAccentColor(color);
+        this.setCustomAccentColor(color);
       }
     },
 
-    setCustomAccentColor: function setCustomAccentColor(color = null, $element = $('body')) {
+    setCustomAccentColor: function setCustomAccentColor(color = null, element = document.body) {
       // If custom color is set, generate colors through JS.
       const accentColor = color != null ? color : drupalSettings.gin.accent_color;
       if (accentColor) {
-        Drupal.behaviors.ginAccent.clearAccentColor($element);
+        this.clearAccentColor(element);
 
         const strippedAccentColor = accentColor.replace('#', '');
-        const darkAccentColor = Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 65).replace('#', '');
-        const styles = `<style class="gin-custom-colors">\
+        const darkAccentColor = this.mixColor('ffffff', strippedAccentColor, 65).replace('#', '');
+        const style = document.createElement('style');
+        style.className = 'gin-custom-colors';
+        style.innerHTML = `
           [data-gin-accent="custom"] {\n\
-            --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(accentColor)};\n\
-            --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -10)};\n\
-            --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.shadeColor(accentColor, -15)};\n\
-            --colorGinAppBackgroundRGB: ${Drupal.behaviors.ginAccent.hexToRgb(Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 97))};\n\
-            --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 85)};\n\
+            --gin-color-primary-rgb: ${this.hexToRgb(accentColor)};\n\
+            --gin-color-primary-hover: ${this.shadeColor(accentColor, -10)};\n\
+            --gin-color-primary-active: ${this.shadeColor(accentColor, -15)};\n\
+            --gin-bg-app-rgb: ${this.hexToRgb(this.mixColor('ffffff', strippedAccentColor, 97))};\n\
+            --gin-bg-header: ${this.mixColor('ffffff', strippedAccentColor, 85)};\n\
+            --gin-color-sticky-rgb: ${this.hexToRgb(this.mixColor('ffffff', strippedAccentColor, 92))};\n\
           }\n\
           .gin--dark-mode[data-gin-accent="custom"],\n\
           .gin--dark-mode [data-gin-accent="custom"] {\n\
-            --colorGinPrimaryRGB: ${Drupal.behaviors.ginAccent.hexToRgb(darkAccentColor)};\n\
-            --colorGinPrimaryHover: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 55)};\n\
-            --colorGinPrimaryActive: ${Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 50)};\n\
-            --colorGinTableHeader: ${Drupal.behaviors.ginAccent.mixColor('2A2A2D', darkAccentColor, 88)};\n\
+            --gin-color-primary-rgb: ${this.hexToRgb(darkAccentColor)};\n\
+            --gin-color-primary-hover: ${this.mixColor('ffffff', strippedAccentColor, 55)};\n\
+            --gin-color-primary-active: ${this.mixColor('ffffff', strippedAccentColor, 50)};\n\
+            --gin-bg-header: ${this.mixColor('2A2A2D', darkAccentColor, 88)};\n\
           }\n\
-          </style>`;
+        `;
 
-        $element.append(styles);
+        element.append(style);
       }
     },
 
-    clearAccentColor: function clearAccentColor($element = $('body')) {
-      $element.find('.gin-custom-colors').remove();
+    clearAccentColor: (element = document.body) => {
+      if (element.querySelectorAll('.gin-custom-colors').length > 0) {
+        const removeElement = element.querySelector('.gin-custom-colors');
+        removeElement.parentNode.removeChild(removeElement);
+      }
+    },
+
+    setFocusColor: function setFocusColor(preset = null, color = null) {
+      const focusColorPreset = preset != null ? preset : drupalSettings.gin.preset_focus_color;
+      document.body.setAttribute('data-gin-focus', focusColorPreset);
+
+      if (focusColorPreset === 'custom') {
+       this.setCustomFocusColor(color);
+      }
+    },
+
+    setCustomFocusColor: function setCustomFocusColor(color = null, element = document.body) {
+      const accentColor = color != null ? color : drupalSettings.gin.focus_color;
+
+      // Set preset color.
+      if (accentColor) {
+        this.clearFocusColor(element);
+
+        const strippedAccentColor = accentColor.replace('#', '');
+        const darkAccentColor = this.mixColor('ffffff', strippedAccentColor, 65);
+        const style = document.createElement('style');
+        style.className = 'gin-custom-focus';
+        style.innerHTML = `
+          [data-gin-focus="custom"] {\n\
+            --gin-color-focus: ${accentColor};\n\
+          }\n\
+          .gin--dark-mode[data-gin-focus="custom"],\n\
+          .gin--dark-mode [data-gin-focus="custom"] {\n\
+            --gin-color-focus: ${darkAccentColor};\n\
+          }`;
+
+        element.append(style);
+      }
+    },
+
+    clearFocusColor: (element = document.body) => {
+      if (element.querySelectorAll('.gin-custom-focus').length > 0) {
+        const removeElement = element.querySelector('.gin-custom-focus');
+        removeElement.parentNode.removeChild(removeElement);
+      }
+    },
+
+    checkDarkmode: () => {
+      const darkmodeClass = drupalSettings.gin.darkmode_class;
+
+      // Change to Darkmode.
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (e.matches && localStorage.getItem('Drupal.gin.darkmode') === 'auto') {
+          document.querySelector('html').classList.add(darkmodeClass);
+        }
+      });
+
+      // Change to Lightmode.
+      window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+        if (e.matches && localStorage.getItem('Drupal.gin.darkmode') === 'auto') {
+          document.querySelector('html').classList.remove(darkmodeClass);
+        }
+      });
     },
 
     // https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
-    hexToRgb: function hexToRgb(hex) {
+    hexToRgb: (hex) => {
       var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
       hex = hex.replace(shorthandRegex, function(m, r, g, b) {
         return r + r + g + g + b + b;
@@ -84,62 +134,8 @@
       return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : null;
     },
 
-    setFocusColor: function setFocusColor(preset = null, color = null) {
-      const focusColorPreset = preset != null ? preset : drupalSettings.gin.preset_focus_color;
-      $('body').attr('data-gin-focus', focusColorPreset);
-
-      if (focusColorPreset === 'custom') {
-       Drupal.behaviors.ginAccent.setCustomFocusColor(color);
-      }
-    },
-
-    setCustomFocusColor: function setCustomFocusColor(color = null) {
-      const accentColor = color != null ? color : drupalSettings.gin.focus_color;
-
-      // Set preset color.
-      if (accentColor) {
-        Drupal.behaviors.ginAccent.clearFocusColor();
-
-        const strippedAccentColor = accentColor.replace('#', '');
-        const darkAccentColor = Drupal.behaviors.ginAccent.mixColor('ffffff', strippedAccentColor, 65);
-        const styles = `<style class="gin-custom-focus">\
-            [data-gin-focus="custom"] {\n\
-              --colorGinFocus: ${accentColor};\n\
-            }\n\
-            .gin--dark-mode[data-gin-focus="custom"],\n\
-            .gin--dark-mode [data-gin-focus="custom"] {\n\
-              --colorGinFocus: ${darkAccentColor};\n\
-            }\n\
-            </style>`;
-
-        $('body').append(styles);
-      }
-    },
-
-    clearFocusColor: function clearFocusColor() {
-      $('.gin-custom-focus').remove();
-    },
-
-    checkDarkmode: function checkDarkmode() {
-      const darkmodeClass = drupalSettings.gin.darkmode_class;
-
-      // Change to Darkmode.
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (e.matches && localStorage.getItem('Drupal.gin.darkmode') === 'auto') {
-          $('html').addClass(darkmodeClass);
-        }
-      });
-
-      // Change to Lightmode.
-      window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
-        if (e.matches && localStorage.getItem('Drupal.gin.darkmode') === 'auto') {
-          $('html').removeClass(darkmodeClass);
-        }
-      });
-    },
-
     // https://gist.github.com/jedfoster/7939513
-    mixColor: function mixColor(color_1, color_2, weight) {
+    mixColor: (color_1, color_2, weight) => {
       function d2h(d) { return d.toString(16); }
       function h2d(h) { return parseInt(h, 16); }
 
@@ -159,7 +155,7 @@
       return color;
     },
 
-    shadeColor: function shadeColor(color, percent) {
+    shadeColor: (color, percent) => {
       const num = parseInt(color.replace('#', ''), 16);
       const amt = Math.round(2.55 * percent);
       const R = (num >> 16) + amt;
@@ -175,5 +171,6 @@
         .toString(16)
         .slice(1)}`;
     },
+
   };
-})(jQuery, Drupal, drupalSettings);
+})(Drupal, drupalSettings, once);

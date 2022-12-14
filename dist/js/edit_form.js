@@ -1,25 +1,16 @@
-(($, Drupal, drupalSettings) => {
+(Drupal => {
   Drupal.behaviors.ginEditForm = {
-    attach: function() {
-      const form = document.querySelector(".region-content form"), sticky = $(".gin-sticky").clone(!0, !0), newParent = document.querySelector(".region-sticky__items__inner");
-      if (newParent && 0 === newParent.querySelectorAll(".gin-sticky").length) {
-        sticky.appendTo($(newParent));
-        const actionButtons = newParent.querySelectorAll('button[type="submit"], input[type="submit"]');
-        actionButtons.length > 0 && actionButtons.forEach((el => {
-          el.setAttribute("form", form.getAttribute("id")), el.setAttribute("id", el.getAttribute("id") + "--gin-edit-form");
-        }));
-        const statusToggle = document.querySelectorAll('.field--name-status [name="status[value]"]');
-        statusToggle.length > 0 && statusToggle.forEach((publishedState => {
-          publishedState.addEventListener("click", (event => {
-            const value = event.target.checked;
-            statusToggle.forEach((publishedState => {
-              publishedState.checked = value;
-            }));
+    attach: context => {
+      once("ginEditForm", ".region-content form.gin-node-edit-form", context).forEach((form => {
+        const sticky = context.querySelector(".gin-sticky"), newParent = context.querySelector(".region-sticky__items__inner");
+        if (newParent && 0 === newParent.querySelectorAll(".gin-sticky").length) {
+          newParent.appendChild(sticky);
+          const actionButtons = newParent.querySelectorAll("button, input, select, textarea");
+          actionButtons.length > 0 && actionButtons.forEach((el => {
+            el.setAttribute("form", form.getAttribute("id")), el.setAttribute("id", el.getAttribute("id") + "--gin-edit-form");
           }));
-        })), setTimeout((() => {
-          sticky.addClass("gin-sticky--visible");
-        }));
-      }
+        }
+      }));
     }
   };
-})(jQuery, Drupal, drupalSettings);
+})(Drupal);

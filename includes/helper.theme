@@ -56,6 +56,7 @@ function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
       'preset_focus_color' => $form_state->getValue('preset_focus_color'),
       'focus_color' => $form_state->getValue('focus_color'),
       'high_contrast_mode' => (bool) $form_state->getValue('high_contrast_mode'),
+      'layout_density' => $form_state->getValue('layout_density'),
       'show_description_toggle' => $form_state->getValue('show_description_toggle'),
     ];
     $settings->setAll($user_settings, $account);

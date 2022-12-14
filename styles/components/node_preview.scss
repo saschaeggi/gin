@@ -1,12 +1,13 @@
 .node-preview-container {
-  font-size: 0.79rem;
+  font-size: var(--gin-font-size-xs);
   z-index: 501; /* on top of the Drupal world */
   position: sticky;
   top: 0;
-  width: 100%;
   padding: 0;
+  width: 100%;
+  height: var(--gin-toolbar-secondary-height);
   background: rgba(#fff, .98);
-  border-bottom: 1px solid var(--colorGinLayerBorder);
+  border-bottom: 1px solid var(--gin-border-color-layer);
 
   @supports (backdrop-filter: blur()) {
     opacity: .999; /* Fix Chrome issue with mask */
@@ -23,13 +24,13 @@
   }
 
   .gin--high-contrast-mode & {
-    background: var(--colorGinAppBackground);
+    background: var(--gin-bg-app);
     backdrop-filter: none;
   }
 
   .node-preview-backlink,
   .node-preview-form-select label {
-    color: var(--colorGinTextLight);
+    color: var(--gin-color-text-light);
   }
 
   .node-preview-backlink {
@@ -43,10 +44,10 @@
       position: absolute;
       top: 50%;
       left: 0;
-      width: var(--iconGinSecondaryToolbar);
-      height: var(--iconGinSecondaryToolbar);
+      width: var(--gin-icon-size-toolbar-secondary);
+      height: var(--gin-icon-size-toolbar-secondary);
       transform: translateY(-50%);
-      background-color: var(--colorGinIcons);
+      background-color: var(--gin-icon-color);
       mask-image: icon('backtosite');
       mask-size: 100% 100%;
       mask-position: center center;
@@ -58,10 +59,16 @@
     align-items: center;
     justify-content: space-between;
     width: auto;
-    padding: 1rem 0;
+    padding: var(--gin-spacing-m) 0;
+    margin: 0 var(--gin-spacing-m);
+    height: 100%;
 
-    @include mq($breakpointLarge) {
-      padding: 1.25rem 0;
+    @include mq(small) {
+      margin: 0 var(--gin-spacing-xl);
+    }
+
+    @include mq(medium) {
+      margin: 0 m#{i}n(5vw, var(--gin-spacing-xxl));
     }
 
     label {

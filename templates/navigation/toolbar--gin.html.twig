@@ -35,7 +35,7 @@
       %}
         {# render nothing #}
       {% else %}
-        {% if tab.attributes.id == 'toolbar-tab-tour' %}
+        {% if tab.attributes.id == 'toolbar-tab-tour' and toolbar_variant != 'classic' %}
         <div{{ tab.attributes.addClass('toolbar-tab', user_menu, tab.link['#id'] ? 'toolbar-tab--' ~ tab.link['#id'] : null).removeAttribute('id') }}>
         {% else %}
         <div{{ tab.attributes.addClass('toolbar-tab', user_menu, tab.link['#id'] ? 'toolbar-tab--' ~ tab.link['#id'] : null) }}>

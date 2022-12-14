@@ -1,12 +1,8 @@
 blockquote {
-  font-size: 1.1em;
+  font-size: var(--gin-font-size-quote);
   position: relative;
-  padding-left: 1.5rem;
-  margin: 1rem;
-
-  @include mq($breakpointMedium) {
-    font-size: 1.2em;
-  }
+  padding-left: var(--gin-spacing-l);
+  margin: var(--gin-spacing-m);
 
   &::before {
     content: "";
@@ -16,7 +12,7 @@ blockquote {
     left: 0;
     width: 4px;
     height: 100%;
-    background-color: var(--colorGinPrimary);
+    background-color: var(--gin-color-primary);
     border-radius: 2px;
   }
 }

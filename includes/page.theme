@@ -64,6 +64,8 @@ function gin_page_attachments_alter(&$page) {
   $gin_activated = _gin_is_active();
 
   if ($gin_activated) {
+    $drupal_version = (float) Drupal::VERSION;
+
     // Get theme settings.
     $settings = \Drupal::classResolver(GinSettings::class);
     $toolbar = $settings->get('classic_toolbar');
@@ -84,8 +86,21 @@ function gin_page_attachments_alter(&$page) {
       $page['#attached']['library'][] = 'gin/gin_toolbar';
     }
 
-    // Attach accent overrides CSS.
+    // Attach accent library.
     $page['#attached']['library'][] = 'gin/gin_accent';
+
+    // Attach sticky library.
+    $page['#attached']['library'][] = 'gin/sticky';
+
+    // Attach Drupal.once for older Drupal versions.
+    if ($drupal_version < 9.3) {
+      $page['#attached']['library'][] = 'gin/once';
+    }
+
+    // Use legacy tabledrag for Drupal versions below 9.0.
+    if ($drupal_version < 9.0) {
+      $page['#attached']['library'][] = 'gin/gin_tabledrag_legacy';
+    }
 
     // Custom CSS file.
     if (file_exists('public://gin-custom.css')) {
@@ -101,14 +116,15 @@ function gin_page_attachments_alter(&$page) {
     $page['#attached']['drupalSettings']['gin']['focus_color'] = $settings->get('focus_color');
     $page['#attached']['drupalSettings']['gin']['highcontrastmode'] = $settings->get('high_contrast_mode');
     $page['#attached']['drupalSettings']['gin']['highcontrastmode_class'] = 'gin--high-contrast-mode';
+    $page['#attached']['drupalSettings']['gin']['toolbar_variant'] = $settings->get('classic_toolbar');
 
-    // Add stylesheets for JS use.
-    $basethemeurl_with_prefix = \Drupal::urlGenerator()->generateFromRoute('<front>', [], ['absolute' => TRUE]) . \Drupal::service('extension.list.theme')->getPath('gin');
-    $page['#attached']['drupalSettings']['gin']['variables_css_path'] = $basethemeurl_with_prefix . '/dist/css/theme/variables.css';
-    $page['#attached']['drupalSettings']['gin']['accent_css_path'] = $basethemeurl_with_prefix . '/dist/css/theme/accent.css';
-    $page['#attached']['drupalSettings']['gin']['ckeditor_css_path'] = $basethemeurl_with_prefix . '/dist/css/theme/ckeditor.css';
+    // Expose stylesheets to JS.
+    $basethemeurl = '/' . \Drupal::service('extension.list.theme')->getPath('gin');
+    $page['#attached']['drupalSettings']['gin']['variables_css_path'] = $basethemeurl . '/dist/css/theme/variables.css';
+    $page['#attached']['drupalSettings']['gin']['accent_css_path'] = $basethemeurl . '/dist/css/theme/accent.css';
+    $page['#attached']['drupalSettings']['gin']['ckeditor_css_path'] = $basethemeurl . '/dist/css/theme/ckeditor.css';
 
-    // Expose default settings.
+    // Expose default settings to JS.
     $page['#attached']['drupalSettings']['gin']['default_darkmode'] = $settings->getDefault('enable_darkmode');
     $page['#attached']['drupalSettings']['gin']['default_accent_color'] = $settings->getDefault('accent_color');
     $page['#attached']['drupalSettings']['gin']['default_preset_accent_color'] = $settings->getDefault('preset_accent_color');
@@ -123,7 +139,17 @@ function gin_preprocess_page_title(&$variables) {
   if (preg_match('/entity\.node\..*/', \Drupal::routeMatch()->getRouteName(), $matches)) {
     $node = \Drupal::routeMatch()->getParameter('node');
     if ($node instanceof Node) {
-      $variables['title'] = $node->getTitle();
+      if ($node->isDefaultTranslation() && $matches[0] !== 'entity.node.content_translation_add') {
+        $variables['title'] = $node->getTitle();
+      }
+      elseif ($matches[0] === 'entity.node.edit_form') {
+        $variables['title_attributes']['class'][] = 'page-title--is-translation';
+        $args = [
+          '@title' => $node->getTitle(),
+          '@language' => $node->language()->getName(),
+        ];
+        $variables['title'] = t('@title <span class="page-title__language">(@language translation)</span>', $args);
+      }
     }
   }
 }

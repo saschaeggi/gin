@@ -24,12 +24,13 @@
 
   @todo Remove prefix after https://www.drupal.org/node/2981732 has been solved.
 #}
+{% set show_description_toggle = description_toggle and description %}
 {%
   set classes = [
     'claro-details',
     accordion ? 'claro-details--accordion',
     accordion_item ? 'claro-details--accordion-item',
-    description_toggle ? 'help-icon__description-container',
+    show_description_toggle ? 'help-icon__description-container',
   ]
 %}
 {%
@@ -68,7 +69,7 @@
     <summary{{ summary_attributes.addClass(summary_classes) }}>
       {{- title -}}
       <span class="required-mark"></span>
-      {% if description and description_toggle %}
+      {% if show_description_toggle %}
         {{ attach_library('gin/gin_description_toggle') }}
         <button class="help-icon__description-toggle"></button>
       {% endif %}

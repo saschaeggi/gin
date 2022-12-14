@@ -18,7 +18,7 @@
     // Error
     & &-icon {
       padding-left: 0;
-      background-color: var(--colorGinDanger);
+      background-color: var(--gin-color-danger);
       mask-image: icon('error');
       mask-position: center right;
       mask-repeat: no-repeat;
@@ -26,7 +26,7 @@
     }
 
     &--security-error {
-      color: var(--colorGinDanger);
+      color: var(--gin-color-danger);
 
       span {
         position: relative;
@@ -36,7 +36,7 @@
 
     // Outdated
     &--not-current &-icon {
-      background-color: var(--colorGinWarning);
+      background-color: var(--gin-color-warning);
       mask-image: icon('warning');
       mask-position: center right;
       mask-repeat: no-repeat;
@@ -45,7 +45,7 @@
 
     // Current
     &--current &-icon {
-      background-color: var(--colorGinGreen);
+      background-color: var(--gin-color-green);
       mask-image: icon('status');
       mask-position: center right;
       mask-repeat: no-repeat;
@@ -59,11 +59,11 @@ tr.color-success,
 .color-checked,
 .drupal-upgrade-status-summary-form tr.no-known-error
 {
-  border-left: 8px solid var(--colorGinGreen);
+  border-left: var(--gin-border-m) solid var(--gin-color-green);
   background-color: transparent;
 
   &:hover, &:active, &:focus {
-    background-color: var(--colorGinGreenLightBackground);
+    background-color: var(--gin-bg-green-light);
   }
 }
 
@@ -71,14 +71,14 @@ tr.color-success,
 tr.color-warning,
 .upgrade-status-next-step-remove tr,
 .drupal-upgrade-status-summary-form tr.known-warnings {
-  border-left: 8px solid var(--colorGinWarning);
+  border-left: var(--gin-border-m) solid var(--gin-color-warning);
   background-color: transparent;
 
   &:hover, &:active, &:focus {
-    background-color: var(--colorGinWarningLightBackground);
+    background-color: var(--gin-bg-warning-light);
 
     .gin--dark-mode & {
-      color: var(--colorGinWarning);
+      color: var(--gin-color-warning);
     }
   }
 }
@@ -86,14 +86,14 @@ tr.color-warning,
 .color-error,
 tr.color-error,
 .drupal-upgrade-status-summary-form tr.known-errors {
-  border-left: 8px solid var(--colorGinDanger);
+  border-left: var(--gin-border-m) solid var(--gin-color-danger);
   background-color: transparent;
 
   &:hover, &:active, &:focus {
-    background-color: var(--colorGinDangerLightBackground);
+    background-color: var(--gin-bg-danger-light);
 
     .gin--dark-mode & {
-      color: var(--colorGinDanger);
+      color: var(--gin-color-danger);
     }
   }
 }
@@ -102,7 +102,7 @@ tr.color-error,
 .color-warning,
 .color-error,
 .color-checked {
-  color: var(--colorGinText);
+  color: var(--gin-color-text);
   box-sizing: border-box;
 }
 
@@ -132,7 +132,7 @@ tr.color-error,
 }
 
 .compact-link {
-  font-size: 0.875rem;
+  font-size: var(--gin-font-size-s);
   text-align: right;
 }
 
@@ -147,12 +147,12 @@ tr.color-error,
 
   .table-filter-text {
     width: 100%;
-    padding: 1rem;
+    padding: var(--gin-spacing-m);
   }
 }
 
 #update-status {
   > p {
-    margin-bottom: 2rem;
+    margin-bottom: var(--gin-spacing-xl);
   }
 }

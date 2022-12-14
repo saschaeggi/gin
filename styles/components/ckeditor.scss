@@ -3,38 +3,38 @@
   .cke_wysiwyg_frame,
   .cke_wysiwyg_div {
     .gin--dark-mode & {
-      background: var(--colorGinLayer2Background);
+      background: var(--gin-bg-layer2);
     }
   }
 
   &.cke_chrome {
     width: 100% !important; // Fix issue with field_group
-    border-color: var(--colorGinFormElementBorder);
-    border-radius: var(--ginBorderDefault);
+    border-color: var(--gin-border-color-form-element);
+    border-radius: var(--gin-border-m);
   }
 
   .cke_inner {
-    border-radius: var(--ginBorderDefault);
+    border-radius: var(--gin-border-m);
   }
 
   .cke_top {
-    background: var(--colorGinLayerBackground);
-    border-bottom: 1px solid var(--colorGinBorder);
-    border-radius: calc(var(--ginBorderDefault) - 1px) calc(var(--ginBorderDefault) - 1px) 0 0;
+    background: var(--gin-bg-layer);
+    border-bottom: 1px solid var(--gin-border-color);
+    border-radius: calc(var(--gin-border-m) - 1px) calc(var(--gin-border-m) - 1px) 0 0;
 
     .gin--dark-mode & {
-      background: var(--colorGinLayer2Background);
+      background: var(--gin-bg-layer2);
     }
   }
 
   .cke_bottom {
-    background: var(--colorGinLayer3Background);
-    border-radius: 0 0 calc(var(--ginBorderDefault) - 1px) calc(var(--ginBorderDefault) - 1px);
+    background: var(--gin-bg-layer3);
+    border-radius: 0 0 calc(var(--gin-border-m) - 1px) calc(var(--gin-border-m) - 1px);
   }
 
   .cke_contents {
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: var(--gin-spacing-xs);
+    padding-right: var(--gin-spacing-xs);
   }
 
   .cke_path_empty:only-child::after {
@@ -43,25 +43,25 @@
 
   .cke_combo {
     &::after {
-      border-right: 1px solid var(--colorGinBorder);
+      border-right: 1px solid var(--gin-border-color);
     }
   }
 
   .cke_combo_text {
-    color: var(--colorGinText);
+    color: var(--gin-color-text);
   }
 
   .cke_combo_on a.cke_combo_button,
   .cke_combo_off a.cke_combo_button:hover,
   .cke_combo_off a.cke_combo_button:focus,
   .cke_combo_off a.cke_combo_button:active {
-    background: var(--colorGinAppBackground);
-    border: 1px solid var(--colorGinLayer2Background);
+    background: var(--gin-bg-app);
+    border: 1px solid var(--gin-bg-layer2);
   }
 
   a.cke_path_item,
   span.cke_path_empty {
-    color: var(--colorGinTextLight);
+    color: var(--gin-color-text-light);
   }
 
   a.cke_button {
@@ -76,8 +76,8 @@
     &:hover,
     &:focus,
     &:active {
-      background: var(--colorGinItemHover);
-      border: 1px solid var(--colorGinLayer2Border);
+      background: var(--gin-bg-item-hover);
+      border: 1px solid var(--gin-border-color-layer2);
     }
   }
 
@@ -90,30 +90,27 @@
   }
 
   &.cke_panel {
-    background-color: var(--colorGinAppBackground);
+    background-color: var(--gin-bg-app);
     border: 0 none;
   }
 }
 
-.cke.cke_chrome.cke_focus {
-  border-color: transparent;
-}
-
+.cke.cke_chrome.cke_focus,
 .cke.cke_chrome:hover,
 .cke:hover .cke_contents,
 .cke:hover .cke_top,
 .cke:hover .cke_bottom {
-  border-color: var(--colorGinText);
+  border-color: var(--gin-color-text);
 
   .gin--dark-mode & {
-    border-color: var(--colorGinLayer2Border);
+    border-color: var(--gin-border-color-layer2);
   }
 }
 
 .cke:hover .cke_top {
   &,
   .gin--dark-mode & {
-    border-bottom-color: var(--colorGinBorder);
+    border-bottom-color: var(--gin-border-color);
   }
 }
 
@@ -125,7 +122,7 @@
 .error + .cke.cke_focus .cke_contents,
 .error + .cke.cke_focus .cke_top,
 .error + .cke.cke_focus .cke_bottom {
-  border-color: var(--colorGinText);
+  border-color: var(--gin-color-text);
 }
 
 .cke_top,
@@ -133,31 +130,31 @@
 .cke.cke_focus .cke_top,
 .error + .cke.cke_focus .cke_top,
 .error + .cke.cke_chrome.cke_focus:hover .cke_top {
-  border-bottom: 1px solid var(--colorGinBorder);
+  border-bottom: 1px solid var(--gin-border-color);
 }
 
 .cke textarea.cke_source {
-  padding: .75rem .5rem;
-  color: var(--colorGinText);
+  padding: var(--gin-spacing-s) var(--gin-spacing-xs);
+  color: var(--gin-color-text);
   background-color: transparent;
 }
 
 body .cke_notification_info {
   opacity: 1;
-  padding: .5rem;
-  background: var(--colorGinLayer4Background);
+  padding: var(--gin-spacing-xs);
+  background: var(--gin-bg-layer4);
   border: 0 none;
-  border-radius: var(--ginBorderDefault);
-  box-shadow: var(--ginShadowLevel1);
+  border-radius: var(--gin-border-m);
+  box-shadow: var(--gin-shadow-l1);
 
   .cke_notification_message {
-    color: var(--colorGinText);
+    color: var(--gin-color-text);
   }
 
   .cke_notification_close {
-    top: 4px;
-    right: 4px;
-    background: var(--colorGinText);
+    top: var(--gin-spacing-xxs);
+    right: var(--gin-spacing-xxs);
+    background: var(--gin-color-text);
     mask-image: icon('close');
     mask-position: center center;
     mask-repeat: no-repeat;
@@ -166,5 +163,5 @@ body .cke_notification_info {
 }
 
 .filter-tips {
-  color: var(--colorGinTextLight);
+  color: var(--gin-color-text-light);
 }

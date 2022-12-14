@@ -7,13 +7,13 @@
 .help-icon__description-toggle {
   all: unset;
   flex-shrink: 0;
-  margin: .3rem 1rem 0 .3rem;
+  margin: .3rem var(--gin-spacing-m) 0 .3rem;
   height: 16px;
   width: 16px;
   border-radius: 50%;
 
   &:before {
-    background-color: var(--colorGinIcons);
+    background-color: var(--gin-icon-color);
     content: "";
     display: block;
     width: 100%;
@@ -25,7 +25,7 @@
   }
 
   &:hover:before {
-    background-color: var(--colorGinPrimary);
+    background-color: var(--gin-color-primary);
   }
 }
 
@@ -41,7 +41,7 @@
   }
 
   .checkbox-toggle + .help-icon {
-    padding-left: 4px;
+    padding-left: var(--gin-spacing-xxs);
   }
 }
 
@@ -50,14 +50,6 @@
     .checkbox-toggle {
       width: 50px !important;
     }
-  }
-}
-
-// Subtract description toggle width from input fields
-.help-icon__element-has-description {
-  input:not(.form-checkbox):not(.form-autocomplete):not(.form-file),
-  select {
-    max-width: calc(100% - 34px); /* 1 */
   }
 }
 
@@ -85,10 +77,10 @@ fieldset.media-library-widget,
   }
 
   .fieldset__description {
-    padding-left: 1rem;
+    padding-left: var(--gin-spacing-m);
 
-    @include mq($breakpointSmall) {
-      padding-left: 1.5rem;
+    @include mq(small) {
+      padding-left: var(--gin-spacing-l);
     }
   }
 }
@@ -100,7 +92,7 @@ fieldset.media-library-widget,
 
   .help-icon__description-toggle {
     position: absolute;
-    right: -8px;
-    top: 16px;
+    right: calc(var(--gin-spacing-xs) * -1);
+    top: var(--gin-spacing-m);
   }
 }

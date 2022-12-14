@@ -1,8 +1,8 @@
 .card {
   padding: 0;
   background: transparent;
-  border: 1px solid var(--colorGinLayer2Border);
-  border-radius: var(--ginBorderDefault);
+  border: 1px solid var(--gin-border-color-layer2);
+  border-radius: var(--gin-border-m);
   box-shadow: none;
   overflow: hidden;
 
@@ -11,33 +11,33 @@
   }
 
   &-list {
-    margin-bottom: 2rem;
+    margin-bottom: var(--gin-spacing-xl);
   }
 
   &__image {
     img {
-      border-radius: var(--ginBorderDefault) var(--ginBorderDefault) 0 0;
+      border-radius: var(--gin-border-m) var(--gin-border-m) 0 0;
 
-      @include mq($breakpointXSmall) {
-        border-radius: var(--ginBorderDefault) 0 0 var(--ginBorderDefault);
+      @include mq(xsmall) {
+        border-radius: var(--gin-border-m) 0 0 var(--gin-border-m);
       }
     }
   }
 
   &__content-wrapper {
-    background-color: var(--colorGinLayerBackground);
-    border-radius: 0 0 var(--ginBorderXSmall) var(--ginBorderXSmall);
+    background-color: var(--gin-bg-layer);
+    border-radius: 0 0 var(--gin-border-xs) var(--gin-border-xs);
 
-    @include mq($breakpointXSmall) {
-      border-radius: 0 var(--ginBorderXSmall) var(--ginBorderXSmall) 0;
+    @include mq(xsmall) {
+      border-radius: 0 var(--gin-border-xs) var(--gin-border-xs) 0;
     }
 
     .gin--dark-mode & {
-      background-color: var(--colorGinLayer2Background);
+      background-color: var(--gin-bg-layer2);
     }
   }
 
   .heading-f {
-    color: var(--colorGinTitle);
+    color: var(--gin-color-title);
   }
 }

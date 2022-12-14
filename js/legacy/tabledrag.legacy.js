@@ -18,7 +18,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       }
 
       Object.keys(settings.tableDrag || {}).forEach(function (base) {
-        initTableDrag($(context).find("#".concat(base)).once('tabledrag'), base);
+        const $initTableDrag = initTableDrag($(context).find("#".concat(base)), base);
+        once('tabledrag', $initTableDrag);
       });
     }
   };
@@ -1018,7 +1019,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 (function ($, Drupal) {
   Drupal.behaviors.ginTableDrag = {
     attach: function attach(context, settings) {
-      var createItemWrapBoundaries = function createItemWrapBoundaries(index, row) {
+      var createItemWrapBoundaries = function createItemWrapBoundaries(row) {
         var $row = $(row);
         var $firstCell = $row.find('td:first-of-type').eq(0).wrapInner(Drupal.theme('tableDragCellContentWrapper')).wrapInner($(Drupal.theme('tableDragCellItemsWrapper')).addClass('js-tabledrag-cell-content'));
         var $targetElem = $firstCell.find('.js-tabledrag-cell-content');
@@ -1026,7 +1027,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       };
 
       Object.keys(settings.tableDrag || {}).forEach(function (base) {
-        $(context).find("#".concat(base)).find('> tr.draggable, > tbody > tr.draggable').once('claroTabledrag').each(createItemWrapBoundaries);
+        once('ginTabledrag', $(context).find("#".concat(base)).find('> tr.draggable, > tbody > tr.draggable')).forEach(createItemWrapBoundaries);
       });
     }
   };

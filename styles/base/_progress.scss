@@ -1,20 +1,20 @@
 .progress {
   &__bar {
-    border-color: var(--colorGinPrimary);
-    background-color: var(--colorGinPrimary);
-    box-shadow: 0 .125em .25em var(--colorGinPrimaryLight),
-                1.25em .9375em 2em var(--colorGinPrimaryLight);
+    border-color: var(--gin-color-primary);
+    background-color: var(--gin-color-primary);
+    box-shadow: 0 .125em .25em var(--gin-color-primary-light),
+                1.25em .9375em 2em var(--gin-color-primary-light);
   }
 
   &__track {
-    padding: 8px;
-    border-color: var(--colorGinBorder);
-    background-color: var(--colorGinLayer3Background);
+    padding: var(--gin-spacing-xs);
+    border-color: var(--gin-border-color);
+    background-color: var(--gin-bg-layer3);
   }
 
   &__description,
   &__percentage {
-    color: var(--colorGinText);
+    color: var(--gin-color-text);
   }
 }
 

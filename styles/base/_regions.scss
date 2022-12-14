@@ -1,19 +1,27 @@
 .region-sticky {
-  position: relative;
+  position: sticky;
+  top: var(--gin-toolbar-y-offset);
   z-index: 101;
-  padding: 1rem 0 0;
+  padding: 0;
   width: 100%;
-  background: var(--colorGinAppBackground);
+  background: var(--gin-bg-app);
   box-sizing: border-box;
-  transition: var(--ginTransition);
+  transition: var(--gin-transition);
 
-  @include mq($breakpointLarge) {
-    position: sticky;
+  .gin--edit-form & {
+    top: calc(var(--gin-toolbar-y-offset) - var(--gin-spacing-xxxl));
+    padding-top: var(--gin-spacing-m);
+
+    @include mq(large) {
+      padding-top: var(--gin-spacing-s);
+    }
+  }
+
+  @include mq(large) {
     top: -1px;
     width: 100%;
-    height: var(--ginStickyHeight);
-    padding: .75rem 0;
-    margin-top: .25rem;
+    height: var(--gin-height-sticky);
+    padding: var(--gin-spacing-s) 0;
 
     &-watcher {
       position: sticky;
@@ -23,16 +31,16 @@
 
     &--is-sticky {
       opacity: .95;
-      background: var(--colorGinAppBackground);
+      background: var(--gin-bg-app);
 
       @supports (backdrop-filter: blur()) {
         opacity: .999;
-        background: rgba(var(--colorGinAppBackgroundRGB), .8);
+        background: rgba(var(--gin-bg-app-rgb), .8);
         backdrop-filter: blur(12px);
       }
 
       .gin--high-contrast-mode & {
-        background: var(--colorGinAppBackground);
+        background: var(--gin-bg-app);
         backdrop-filter: none;
       }
     }
@@ -40,7 +48,7 @@
     .gin--vertical-toolbar &,
     .gin--horizontal-toolbar &,
     .gin--classic-toolbar & {
-      top: var(--ginHorizontalToolbarOffset);
+      top: var(--gin-toolbar-y-offset);
     }
 
     .gin--classic-toolbar:not(.gin--edit-form) & {
@@ -51,9 +59,9 @@
   &__items {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: var(--gin-spacing-m);
 
-    @include mq($breakpointSmall) {
+    @include mq(small) {
       height: 100%;
 
       .settings-tray-editable {
@@ -66,13 +74,7 @@
       flex-wrap: wrap;
       width: 100%;
 
-      // Set max-width to max content-width
-      // .gin--edit-form & {
-      //   max-width: $breakpointWide;
-      //   margin: 0 auto;
-      // }
-
-      @include mq($breakpointLarge) {
+      @include mq(large) {
         flex-wrap: nowrap;
         align-items: center;
         margin-bottom: 0;
@@ -97,11 +99,10 @@
     }
 
     .gin-sticky {
-      display: none;
+      display: flex;
 
-      @include mq($breakpointLarge) {
-        display: flex;
-        padding-left: 1.5rem;
+      @include mq(large) {
+        padding-left: var(--gin-spacing-l);
       }
     }
   }
@@ -115,12 +116,12 @@
 }
 
 .sticky-shadow {
-  @include mq($breakpointLarge) {
+  @include mq(large) {
     z-index: 98;
     position: relative;
     pointer-events: none;
     height: 40px;
-    margin: -64px auto 1.5rem;
+    margin: calc(var(--gin-spacing-xxxl) * -1) auto var(--gin-spacing-l);
     box-shadow: 0 10px 20px -16px rgba(0, 0, 0, .4);
 
     .gin--dark-mode & {
@@ -128,10 +129,10 @@
     }
   }
 
-  @include mq($breakpointLarge) {
+  @include mq(large) {
     position: sticky;
-    top: calc(var(--ginHorizontalToolbarOffset) + 32px);
-    width: calc(100% - min(10vw, 96px) + 24px);
+    top: calc(var(--gin-toolbar-y-offset) + var(--gin-spacing-xl));
+    width: calc(100% - min(10vw, 96px) + var(--gin-spacing-l));
 
     // Classic, legacy toolbar
     .gin--classic-toolbar:not(.gin--edit-form) & {
@@ -145,24 +146,24 @@
 }
 
 .page-wrapper {
-  @include mq($breakpointLarge) {
+  @include mq(large) {
     margin-top: 1px; // fix for top: auto;
   }
 }
 
 .toolbar-tray-open:not(.toolbar-vertical) .layout-container,
 body:not(.toolbar-tray-open) .layout-container {
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: var(--gin-spacing-m);
+  margin-right: var(--gin-spacing-m);
 
-  @include mq($breakpointSmall) {
-    margin-left: 2rem;
-    margin-right: 2rem;
+  @include mq(small) {
+    margin-left: var(--gin-spacing-xl);
+    margin-right: var(--gin-spacing-xl);
   }
 
-  @include mq($breakpointMedium) {
-    margin-left: m#{i}n(5vw, 48px);
-    margin-right: m#{i}n(5vw, 48px);
+  @include mq(medium) {
+    margin-left: m#{i}n(5vw, var(--gin-spacing-xxl));
+    margin-right: m#{i}n(5vw, var(--gin-spacing-xxl));
 
     .layout-container {
       margin-left: 0;
@@ -171,57 +172,9 @@ body:not(.toolbar-tray-open) .layout-container {
   }
 }
 
-// Action bar
+// Hide action bar
 .layout-node-form__actions {
-  z-index: 102;
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  padding: 0 1rem;
-  margin-left: calc((.5em + 1.5rem) * -1);
-  background-color: var(--colorGinAppBackground);
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, .1);
-  box-sizing: border-box;
-
-  @include mq($breakpointSmall) {
-    padding-left: 2rem;
-    padding-right: 2rem;
-    margin-left: calc((2em + 1.5rem) * -1);
-  }
-
-  @include mq($breakpointMedium) {
-    padding-left: m#{i}n(5vw, 48px);
-    padding-right: m#{i}n(5vw, 48px);
-  }
-
-  .toolbar-vertical.toolbar-tray-open & {
-    width: calc(100% - 240px);
-  }
-
-  @include mq($breakpointMedium 1023px) {
-    margin-left: 0;
-    left: 0;
-
-    .gin--vertical-toolbar & {
-      left: var(--ginToolbarWidthCollapsed);
-      width: calc(100% - var(--ginToolbarWidthCollapsed));
-    }
-
-    .gin--vertical-toolbar[data-toolbar-menu='open'] & {
-      left: var(--ginToolbarWidth);
-      width: calc(100% - var(--ginToolbarWidth));
-    }
-  }
-
-  @include mq($breakpointLarge) {
-    display: none; // Hide the real deal
-  }
-
-  @include mq($breakpointBig) {
-    margin-left: calc(100% + 2.5rem);
-  }
+  display: none;
 }
 
 .gin-sticky {
@@ -232,14 +185,16 @@ body:not(.toolbar-tray-open) .layout-container {
   justify-content: space-between;
   width: 100%;
 
-  @include mq($breakpointLarge) {
+  @include mq(large) {
     flex-wrap: nowrap;
     width: max-content;
   }
 
   .form-actions {
     margin: 0;
+    flex-grow: 1;
     align-items: center;
+    justify-content: flex-end;
 
     :last-child {
       margin-right: 0;
@@ -249,11 +204,11 @@ body:not(.toolbar-tray-open) .layout-container {
   .field--name-status {
     display: flex;
     align-items: center;
-    margin-right: 1.5rem;
+    margin-right: var(--gin-spacing-l);
 
     .form-type--checkbox {
-      margin-top: .5rem;
-      margin-bottom: .5rem;
+      margin-top: var(--gin-spacing-xs);
+      margin-bottom: var(--gin-spacing-xs);
     }
   }
 }

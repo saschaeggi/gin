@@ -1,14 +1,14 @@
 .admin-list {
-  padding: .75rem 0;
+  padding: var(--gin-spacing-s) 0;
 }
 
 .admin-item {
   position: relative;
-  padding: 1em 40px 1em 24px;
-  margin: 1.5rem .75rem;
+  padding: var(--gin-spacing-s) calc(var(--gin-spacing-xs) + var(--gin-spacing-xl)) var(--gin-spacing-s) var(--gin-spacing-l);
+  margin: var(--gin-spacing-l) var(--gin-spacing-s);
 
   &--panel {
-    margin: 0 -1.5rem;
+    margin: 0 calc(var(--gin-spacing-l) * -1);
   }
 
   &:not(:last-child) {
@@ -19,11 +19,11 @@
       opacity: .75;
       display: block;
       position: absolute;
-      left: -.75rem;
-      bottom: -.75rem;
-      width: calc(100% + 1.5rem);
+      left: calc(var(--gin-spacing-s) * -1);
+      bottom: calc(var(--gin-spacing-s) * -1);
+      width: calc(100% + var(--gin-spacing-l));
       height: 1px;
-      border-bottom: 1px solid var(--colorGinTableBorder);
+      border-bottom: 1px solid var(--gin-border-color-table);
     }
   }
 
@@ -36,13 +36,13 @@
   }
 
   &__title {
-    font-size: 17px;
-    font-weight: 500;
+    font-size: var(--gin-font-size);
+    font-weight: var(--gin-font-weight-semibold);
   }
 
   &__description {
-    font-size: 0.875rem;
-    color: var(--colorGinTextLight);
+    font-size: var(--gin-font-size-s);
+    color: var(--gin-color-text-light);
   }
 
   & &__link {
@@ -56,12 +56,12 @@
     text-indent: -999em;
 
     &::before {
-      right: 16px;
+      right: var(--gin-spacing-m);
       left: auto;
       top: 50%;
-      transform: translateY(-50%);
+      transform: translateY(-50%) unquote("/*! rtl:append scaleX(-1) */");
       background-image: none;
-      background-color: var(--colorGinPrimary);
+      background-color: var(--gin-color-primary);
       mask-image: icon('handle');
       mask-size: 1em 1em;
       mask-repeat: no-repeat;
@@ -70,17 +70,17 @@
 
     &:hover,
     &:focus {
-      background: var(--colorGinPrimaryLight);
-      border-radius: var(--ginBorderDefault);
+      background: var(--gin-color-primary-light);
+      border-radius: var(--gin-border-m);
 
       ~ .admin-item__title,
       ~ .admin-item__description {
-        color: var(--colorGinPrimary);
+        color: var(--gin-color-primary);
       }
     }
 
     &:focus {
-      box-shadow: inset 0 0 0 1px var(--colorGinFocusBorder), inset 0 0 0 4px var(--colorGinFocus);
+      box-shadow: inset 0 0 0 1px var(--gin-color-focus-border), inset 0 0 0 4px var(--gin-color-focus);
     }
   }
 }

@@ -3,7 +3,7 @@
   &-item &-item__edit,
   &-item &-item__remove,
   &-item &-item__remove.button {
-    border-color: var(--colorGinBorder) !important;
+    border-color: var(--gin-border-color) !important;
 
     &:link,
     &:hover,
@@ -16,8 +16,8 @@
     &:hover,
     &:focus,
     &:active {
-      box-shadow: 0 0 0 1px var(--colorGinFocusBorder),
-                  0 0 0 4px var(--colorGinFocus) !important;
+      box-shadow: 0 0 0 1px var(--gin-color-focus-border),
+                  0 0 0 4px var(--gin-color-focus) !important;
     }
 
     &,
@@ -26,7 +26,7 @@
     &:active {
       width: 32px;
       height: 32px;
-      margin: .75rem;
+      margin: var(--gin-spacing-s);
       background-color: white;
       border-radius: 50%;
       box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
@@ -42,16 +42,23 @@
     background-size: .75rem .75rem;
   }
 
-  &-item &-item__remove {
+  &-item &-item__remove,
+  &-item &-item__remove.button {
     background-image: icon('media-remove');
   }
 }
 
+
+
 .media-library-item {
   background: none;
 
+  img {
+    @include color-pattern;
+  }
+
   &--grid {
-    border-radius: var(--ginBorderBig);
+    border-radius: var(--gin-border-xl);
 
     &::before,
     &.is-hover::before,
@@ -62,7 +69,7 @@
 
     // User is dragging item.
     &.sortable-chosen {
-      background: var(--colorGinLayerBackground);
+      background: var(--gin-bg-layer);
       box-shadow: 0 0 48px rgba(0, 0, 0, 0.075) !important;
       outline: none;
 
@@ -74,7 +81,7 @@
 
     // Show where to drag to.
     &.sortable-ghost {
-      border: 2px dashed var(--colorGinBorder);
+      border: 2px dashed var(--gin-border-color);
     }
   }
 
@@ -92,7 +99,7 @@
   }
 
   &__name {
-    color: var(--colorGinText);
+    color: var(--gin-color-text);
     word-break: break-all;
     text-overflow: initial;
     white-space: initial;
@@ -102,7 +109,7 @@
 
   &__attributes {
     position: static;
-    padding: .5rem;
+    padding: var(--gin-spacing-xs);
     background: none;
   }
 
@@ -114,8 +121,8 @@
   & &__preview {
     position: relative;
     padding-bottom: 100%;
-    border: 1px solid var(--colorGinBorder);
-    border-radius: var(--ginBorderBig);
+    border: 1px solid var(--gin-border-color);
+    border-radius: var(--gin-border-xl);
     overflow: hidden;
 
     .field {
@@ -131,25 +138,25 @@
   }
 
   &.is-hover &__preview {
-    border-color: var(--colorGinText);
-    box-shadow: 0 0 0 2px var(--colorGinText);
+    border-color: var(--gin-color-text);
+    box-shadow: 0 0 0 2px var(--gin-color-text);
   }
 
   &.checked &__preview,
   &.is-active &__preview {
-    border-color: var(--colorGinPrimary);
-    box-shadow: 0 0 0 2px var(--colorGinPrimary);
+    border-color: var(--gin-color-primary);
+    box-shadow: 0 0 0 2px var(--gin-color-primary);
   }
 
   &__click-to-select-checkbox .form-boolean {
     width: 29px;
     height: 29px;
-    border-radius: var(--ginBorderXSmall);
+    border-radius: var(--gin-border-xs);
     box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
 
     &,
     .gin--dark-mode & {
-      border-radius: var(--ginBorderXSmall);
+      border-radius: var(--gin-border-xs);
 
       &:not(:checked) {
         background-color: white;
@@ -160,19 +167,19 @@
       }
 
       &:focus {
-        box-shadow: 0 0 0 1px var(--colorGinFocusBorder), 0 0 0 4px var(--colorGinFocus) !important;
+        box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus) !important;
       }
 
       &:checked {
-        background-color: var(--colorGinPrimary);
-        border-color: var(--colorGinPrimary);
+        background-color: var(--gin-color-primary);
+        border-color: var(--gin-color-primary);
         box-shadow: none;
       }
     }
   }
 
   .form-item {
-    margin: .5rem;
+    margin: var(--gin-spacing-xs);
   }
 
   // Drupal 9.2 Throbber Fix
@@ -186,23 +193,24 @@
 }
 
 fieldset.media-library-widget {
-  padding: 1.5rem;
-  border: 1px solid var(--colorGinBorder);
-  border-radius: 6px;
-
   .media-library-widget__toggle-weight {
-    font-size: .75em;
-    padding: 8px;
+    font-size: var(--gin-font-size-xxs);
+    padding: var(--gin-spacing-xs);
   }
 
-  .fieldset__wrapper {
-    margin-bottom: 0;
+  .media-library {
+    &-edit__link,
+    &-item .media-library-item__edit,
+    &-item .media-library-item__remove,
+    &-item .media-library-item__remove.button {
+      margin: var(--gin-spacing-xs);
+    }
   }
 }
 
 .media-library-widget-empty-text {
-  color: var(--colorGinTextLight);
-  margin: 0 0 -.5rem 0;
+  color: var(--gin-color-text-light);
+  margin: 0 0 calc(var(--gin-spacing-xs) * -1) 0;
 }
 
 .media-library-open-button {
@@ -211,7 +219,7 @@ fieldset.media-library-widget {
 
 .media-library-add-form {
   &__preview {
-    background: var(--colorGinAppBackground);
+    background: var(--gin-bg-app);
   }
 
   &__input-wrapper {
@@ -234,13 +242,13 @@ fieldset.media-library-widget {
 }
 
 .media-library-menu {
-  border-color: var(--colorGinBorder);
-  background-color: var(--colorGinAppBackground);
+  border-color: var(--gin-border-color);
+  background-color: var(--gin-bg-app);
 
   &__link {
-    color: var(--colorGinText);
+    color: var(--gin-color-text);
     text-shadow: none;
-    border-color: var(--colorGinBorder);
+    border-color: var(--gin-border-color);
     background-color: transparent;
 
     &:active,
@@ -250,43 +258,43 @@ fieldset.media-library-widget {
     &:hover:focus,
     &.active:hover,
     &.active:focus {
-      color: var(--colorGinPrimary);
+      color: var(--gin-color-primary);
       text-shadow: none;
-      background-color: var(--colorGinLayerBackground);
+      background-color: var(--gin-bg-layer);
       border-right: 0 none;
-      border-bottom: 1px solid var(--colorGinBorder);
+      border-bottom: 1px solid var(--gin-border-color);
       box-shadow: none;
     }
 
     &.active::before {
-      border-left-color: var(--colorGinPrimary);
+      border-left-color: var(--gin-color-primary);
     }
 
     &:focus::after {
-      border: 4px solid var(--colorGinFocus);
+      border: var(--gin-border-xs) solid var(--gin-color-focus);
     }
   }
 }
 
 + .media-library-content {
-  border-left: 1px solid var(--colorGinBorder);
+  border-left: 1px solid var(--gin-border-color);
 }
 
 .media-library-view {
   .view-header {
-    padding: 1rem;
-    color: var(--colorGinText);
+    padding: var(--gin-spacing-m);
+    color: var(--gin-color-text);
     text-decoration: none;
-    background: var(--colorGinLayer3Background);
-    border-radius: var(--ginBorderDefault);
-    box-shadow: var(--ginShadowLevel1);
+    background: var(--gin-bg-layer3);
+    border-radius: var(--gin-border-m);
+    box-shadow: var(--gin-shadow-l1);
   }
 }
 
 .media-library-wrapper {
   .views-display-link {
     position: relative;
-    color: var(--colorGinText);
+    color: var(--gin-color-text);
     text-decoration: none;
     background-image: none;
     white-space: nowrap;
@@ -299,14 +307,14 @@ fieldset.media-library-widget {
       position: absolute;
       left: 0;
       top: 1px;
-      background-color: var(--colorGinText);
+      background-color: var(--gin-color-text);
     }
 
     &.is-active {
-      color: var(--colorGinPrimary);
+      color: var(--gin-color-primary);
 
       &::before {
-        background-color: var(--colorGinPrimary);
+        background-color: var(--gin-color-primary);
       }
     }
   }
@@ -326,16 +334,24 @@ fieldset.media-library-widget {
 
 .media-library-content {
   border-left: 0 none;
-  border-color: var(--colorGinBorder);
+  border-color: var(--gin-border-color);
 }
 
 .media-library-select-all {
-  margin-top: 0;
+  color: var(--gin-color-title);
   padding: 1rem;
-  color: var(--colorGinTitle);
-  background: var(--colorGinTableHeader);
-  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, .03);
-  border-radius: var(--ginBorderDefault);
+  margin-left: 0;
+  margin-top: 0;
+  background: var(--gin-bg-layer);
+  border-bottom-left-radius: var(--gin-border-m);
+  border-bottom-right-radius: var(--gin-border-m);
+  box-sizing: border-box;
+
+  @include mq(medium) {
+    z-index: 98;
+    position: sticky;
+    top: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset));
+  }
 }
 
 .views-field-thumbnail__target-id {
@@ -349,33 +365,57 @@ fieldset.media-library-widget {
   .views-exposed-form,
   .views-form {
     .gin--dark-mode & {
-      background: var(--colorGinLayer2Background);
+      background: var(--gin-bg-layer2);
     }
   }
 }
 
 .media-library-widget-modal .media-library-item--grid {
-  @include mq($breakpointBig) {
+  @include mq(ultra) {
     width: 20%;
   }
 }
 
+.media-library-widget-modal .ui-dialog-buttonpane {
+  .form-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    white-space: nowrap;
+    margin-top: 0;
+
+    .button:not(:last-child) {
+      margin-right: var(--gin-spacing-xs);
+    }
+  }
+
+  .media-library-selected-count {
+    flex-grow: 1;
+    margin-left: 0;
+  }
+}
+
 .media-library-selection .media-library-item--grid {
-  @include mq($breakpointWide) {
+  @include mq(wide) {
     width: 20%;
   }
+}
+
+// Sidebar override
+.layout-region-node-secondary .media-library-selection .media-library-item--grid {
+  width: auto;
 }
 
 .field--name-field-media {
   &.field--widget-entity-reference-autocomplete {
     fieldset.form-item {
-      padding: 2rem 1.25rem 1rem 1.25rem;
-      border: 1px solid var(--colorGinBorder);
+      padding: var(--gin-spacing-xl) calc(var(--gin-spacing-l) - var(--gin-spacing-xxs)) var(--gin-spacing-m) calc(var(--gin-spacing-l) - var(--gin-spacing-xxs));
+      border: 1px solid var(--gin-border-color);
 
       > legend {
-        font-weight: bold;
+        font-weight: var(--gin-font-weight-heavy);
         position: relative;
-        top: 1.25rem;
+        top: calc(var(--gin-spacing-l) - var(--gin-spacing-xxs));
         transform: translateY(50%);
 
         &::before {
@@ -384,9 +424,9 @@ fieldset.media-library-widget {
           width: 100%;
           height: 1px;
           position: absolute;
-          top: -1.25rem;
+          top: calc((var(--gin-spacing-l) - var(--gin-spacing-xxs)) * -1);
           left: 0;
-          background: var(--colorGinBorder);
+          background: var(--gin-border-color);
         }
       }
 
@@ -400,5 +440,5 @@ fieldset.media-library-widget {
 }
 
 .media-library-selected-count {
-  color: var(--colorGinTextLight);
+  color: var(--gin-color-text-light);
 }

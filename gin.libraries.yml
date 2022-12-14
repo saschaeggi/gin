@@ -4,6 +4,7 @@ gin:
       dist/css/base/gin.css: { minified: false }
   dependencies:
     - gin/gin_base
+    - gin/legacy_css
 
 gin_base:
   css:
@@ -11,6 +12,7 @@ gin_base:
       dist/css/theme/font.css: { minified: false }
       dist/css/theme/variables.css: { minified: false }
   dependencies:
+    - gin/tabs
     - gin/dialog
 
 # Legacy
@@ -22,6 +24,8 @@ gin_init:
   header: true
   js:
     dist/js/init.js: { minified: false, preprocess: false, weight: -99 }
+  dependencies:
+    - core/drupalSettings
 
 gin_toolbar:
   css:
@@ -40,6 +44,8 @@ gin_toolbar:
     - gin/breadcrumb
     - gin/settings_tray
     - gin/settings_tray_edit
+    - core/drupalSettings
+    - core/once
 
 gin_horizontal_toolbar:
   css:
@@ -58,6 +64,7 @@ gin_horizontal_toolbar:
     - gin/breadcrumb
     - gin/settings_tray
     - gin/settings_tray_edit
+    - core/once
 
 gin_classic_toolbar:
   css:
@@ -73,6 +80,7 @@ gin_classic_toolbar:
     - gin/contextual_links
     - gin/breadcrumb
     - gin/settings_tray_edit
+    - core/once
 
 gin_accent:
   css:
@@ -80,6 +88,8 @@ gin_accent:
       dist/css/theme/accent.css: { minified: false }
   js:
     dist/js/accent.js: { minified: false }
+  dependencies:
+    - core/drupalSettings
 
 gin_dialog:
   css:
@@ -101,16 +111,24 @@ gin_messages:
   js:
     dist/js/messages.js: { minified: false }
   dependencies:
-    - core/jquery.once
+    - core/once
+
+# Custom CSS
 
 gin_custom_css:
   css:
     theme:
       public://gin-custom.css: { preprocess: false, minified: false, weight: 100 }
 
-gin_tabledrag:
+# Overrides
+
+once:
   js:
-    js/overrides/tabledrag.js: { minified: false, weight: -1 }
+    js/libs/once.js: { minified: false, weight: -1 }
+
+gin_tabledrag_legacy:
+  js:
+    js/legacy/tabledrag.legacy.js: { minified: false, weight: -1 }
 
 gin_media_embed_ckeditor_theme:
   js:
@@ -118,12 +136,32 @@ gin_media_embed_ckeditor_theme:
 
 # Components
 
+sticky:
+  js:
+    dist/js/sticky.js: { minified: false }
+
+sidebar:
+  css:
+    theme:
+      dist/css/components/sidebar.css: { minified: false }
+  js:
+    dist/js/sidebar.js: { minified: false }
+  dependencies:
+    - core/once
+
 settings:
   js:
     dist/js/settings.js: { minified: false }
   css:
     component:
       dist/css/components/settings.css: { minified: false }
+  dependencies:
+    - core/drupalSettings
+
+tabs:
+  css:
+    component:
+      dist/css/components/tabs.css: { minified: false, weight: 99 }
 
 edit_form:
   js:
@@ -153,6 +191,14 @@ ckeditor:
   css:
     theme:
       dist/css/components/ckeditor.css: { minified: false }
+  dependencies:
+    - core/drupalSettings
+    - core/once
+
+ckeditor5:
+  css:
+    theme:
+      dist/css/components/ckeditor5.css: { minified: false }
 
 ajax:
   css:
@@ -170,7 +216,6 @@ autocomplete:
       dist/css/components/autocomplete.css: { minified: false }
 
 breadcrumb:
-  version: VERSION
   css:
     theme:
       dist/css/components/breadcrumb.css: { minified: false }
@@ -232,6 +277,11 @@ webform:
     component:
       dist/css/components/webform.css: { minified: false }
 
+workbench:
+  css:
+    component:
+      dist/css/components/workbench.css: { minified: false }
+
 autosave:
   css:
     component:
@@ -266,3 +316,10 @@ linkit:
   css:
     component:
       dist/css/components/linkit.css: { minified: false }
+
+# Legacy
+
+legacy_css:
+  css:
+    theme:
+      dist/css/theme/legacy.css: { minified: false }

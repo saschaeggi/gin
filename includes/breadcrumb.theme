@@ -5,20 +5,70 @@
  * breadcrumb.theme
  */
 
+use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
+use Drupal\Core\Entity\ContentEntityInterface;
 
 /**
  * Breadcrumb.
  */
 function gin_preprocess_breadcrumb(&$variables) {
   // Alter node breadcrumb.
-  if (($node = \Drupal::routeMatch()->getParameter('node')) && $variables['breadcrumb']) {
+  if ($variables['breadcrumb']) {
     foreach ($variables['breadcrumb'] as $key => $item) {
-      if ($item['url'] === '/node') {
-        if ($node instanceof NodeInterface) {
-          $variables['breadcrumb'][$key]['text'] = t('Edit') . ' ' . $node->type->entity->label();
+      $entity = _gin_get_route_entity();
+      $entity_id = $entity ? $entity->getEntityTypeId() : NULL;
+      $url = $entity ? $entity->toUrl() : NULL;
+
+      // Back to site item.
+      if ($key === 0) {
+        $variables['breadcrumb'][$key]['text'] = t('Back to site');
+        $variables['breadcrumb'][$key]['attributes']['title'] = t('Return to site content');
+
+        // Media handling.
+        if ($entity_id === 'media' && !\Drupal::config('media.settings')->get('standalone_url')) {
+          $url = Url::fromRoute('<front>');
+        }
+
+        // Check for entity $url.
+        if ($url && $url->access()) {
+          $variables['breadcrumb'][$key]['url'] = $url;
+        }
+        else {
+          // Let escapeAdmin override the return URL.
+          $variables['breadcrumb'][$key]['attributes']['data'] = 'data-gin-toolbar-escape-admin';
         }
       }
+      elseif ($item['url'] === $url) {
+        // Remove as we already have the back to site link set.
+        unset($variables['breadcrumb'][$key]);
+      }
+    }
+
+    // Adjust breadcrumb for nodes.
+    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+      if ($node instanceof NodeInterface) {
+        // Unset items, except home link.
+        foreach ($variables['breadcrumb'] as $key => $item) {
+          if ($key > 0) {
+            unset($variables['breadcrumb'][$key]);
+          }
+        }
+
+        // Add bundle info.
+        $variables['breadcrumb'][] = [
+          'text' => t('Edit') . ' ' . $node->type->entity->label(),
+          'url' => '',
+        ];
+      }
+    }
+    // Adjust breadcrumb for other entities.
+    elseif ($entity) {
+      // Add bundle info.
+      $variables['breadcrumb'][] = [
+        'text' => t('Edit') . ' ' . $entity->getEntityType()->getLabel(),
+        'url' => '',
+      ];
     }
   }
 
@@ -27,6 +77,31 @@ function gin_preprocess_breadcrumb(&$variables) {
     foreach ($variables['breadcrumb'] as $key => $item) {
       if ($variables['breadcrumb'][$key]['text'] == '') {
         unset($variables['breadcrumb'][$key]);
+      }
+    }
+  }
+}
+
+/**
+ * Helper function to extract the entity for the supplied route.
+ *
+ * @return null|\Drupal\Core\Entity\ContentEntityInterface
+ *   Returns the content entity.
+ */
+function _gin_get_route_entity() {
+  $route_match = \Drupal::routeMatch();
+  // Entity will be found in the route parameters.
+  if (($route = $route_match->getRouteObject()) && ($parameters = $route->getOption('parameters'))) {
+    // Determine if the current route represents an entity.
+    foreach ($parameters as $name => $options) {
+      if (isset($options['type']) && strpos($options['type'], 'entity:') === 0) {
+        $entity = $route_match->getParameter($name);
+        if ($entity instanceof ContentEntityInterface && $entity->hasLinkTemplate('canonical')) {
+          return $entity;
+        }
+
+        // Since entity was found, no need to iterate further.
+        return NULL;
       }
     }
   }

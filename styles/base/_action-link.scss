@@ -1,21 +1,25 @@
 .action-link {
-  color: var(--colorGinPrimary);
+  color: var(--gin-color-primary);
   background-color: transparent;
-  border-radius: var(--ginBorderSmall);
+  border-radius: var(--gin-border-s);
 
   &:hover {
-    color: var(--colorGinPrimaryHover);
-    background-color: var(--colorGinPrimaryLight);
+    color: var(--gin-color-primary-hover);
+    background-color: var(--gin-bg-item-hover);
   }
 
   &:focus {
-    color: var(--colorGinPrimaryActive);
-    background-color: var(--colorGinPrimaryLightHover);
+    color: var(--gin-color-primary-active);
+    background-color: var(--gin-color-primary-light-hover);
+  }
+
+  &.action-link--extrasmall {
+    font-size: var(--gin-font-size-xxs);
   }
 
   &:before {
     background-image: none;
-    background-color: var(--colorGinPrimary);
+    background-color: var(--gin-color-primary);
     mask-size: contain;
     mask-repeat: no-repeat;
     mask-position: center;
@@ -29,7 +33,7 @@
   &--icon-show:before,
   &--icon-hide:before {
     background-image: none;
-    background-color: var(--colorGinPrimary);
+    background-color: var(--gin-color-primary);
   }
 
   &--icon-checkmark:before {
@@ -64,19 +68,19 @@
 .action-link--icon-trash.action-link--danger,
 .button.button--danger,
 a.button.button--danger {
-  color: var(--colorGinDanger);
-  box-shadow: 0 1px 2px var(--colorGinDangerLightest);
+  color: var(--gin-color-danger);
+  box-shadow: 0 1px 2px var(--gin-color-danger-lightest);
 
   &,
   &:hover,
   &:focus,
   &:active {
     // border-color: transparent !important;
-    border-color: var(--colorGinDanger) !important;
+    border-color: var(--gin-color-danger) !important;
 
     &:before {
       background-image: none;
-      background-color: var(--colorGinDanger);
+      background-color: var(--gin-color-danger);
       mask-image: icon('trash');
     }
   }
@@ -84,17 +88,17 @@ a.button.button--danger {
   &:hover,
   &:focus,
   &:active {
-    color: var(--colorGinLayerBackground);
-    background-color: var(--colorGinDanger);
+    color: var(--gin-bg-layer);
+    background-color: var(--gin-color-danger);
 
     &:before {
-      background-color: var(--colorGinLayerBackground);
+      background-color: var(--gin-bg-layer);
     }
   }
 }
 
 // Primary danger button
 .button--primary.button--danger {
-  color: var(--colorGinLayerBackground);
-  background-color: var(--colorGinDanger);
+  color: var(--gin-bg-layer);
+  background-color: var(--gin-color-danger);
 }

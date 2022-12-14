@@ -1,90 +1,94 @@
 .button,
 .dropbutton__item:first-of-type > *,
 .dropbutton__toggle {
-  font-size: .875rem;
-  color: var(--colorGinPrimary);
+  font-size: var(--gin-font-size-s);
+  font-weight: var(--gin-font-weight-semibold);
+  color: var(--gin-color-primary);
   background-color: transparent;
   box-shadow: none;
-  transition: var(--ginTransition);
+  transition: var(--gin-transition);
 
-  @include mq($breakpointWide) {
-    font-size: 1rem;
+  @include mq(wide) {
+    font-size: var(--gin-font-size);
   }
 
   &:hover {
-    background-color: var(--colorGinPrimaryHover);
+    background-color: var(--gin-color-primary-hover);
   }
 
   &:active, &:focus {
-    background-color: var(--colorGinPrimaryActive);
+    background-color: var(--gin-color-primary-active);
   }
 
   &:hover, &:active, &:focus {
-    color: var(--colorGinButtonText);
+    color: var(--gin-color-button-text);
   }
 }
 
 .button,
 .button:not(:focus),
-.form-actions .button,
+.form-actions .button,
 .action-link--icon-trash.action-link {
-  padding: calc(1rem - 2px) calc(1.5rem - 2px);
-  border: 2px solid var(--colorGinPrimary) !important;
-  border-radius: var(--ginBorderDefault);
-  box-shadow: 0 1px 2px var(--colorGinPrimaryLight);
-  transition: var(--ginTransition);
+  padding: calc(var(--gin-spacing-m) - 2px) calc(var(--gin-spacing-l) - 2px);
+  border: 2px solid var(--gin-color-primary) !important;
+  border-radius: var(--gin-border-m);
+  box-shadow: 0 1px 2px var(--gin-color-primary-light);
+  transition: var(--gin-transition);
 
   .gin--dark-mode & {
-    box-shadow: 0 2px 18px var(--colorGinButtonShadow);
+    box-shadow: 0 2px 18px var(--gin-shadow-button);
   }
 
   &:hover {
-    background-color: var(--colorGinPrimaryHover);
-    border-color: var(--colorGinPrimaryHover) !important;
+    background-color: var(--gin-color-primary-hover);
+    border-color: var(--gin-color-primary-hover) !important;
   }
 
   &:active, &:focus {
-    border-color: var(--colorGinPrimaryActive) !important;
+    border-color: var(--gin-color-primary-active) !important;
   }
 
   &:hover, &:active, &:focus, &:hover:focus {
-    color: var(--colorGinButtonText);
+    color: var(--gin-color-button-text);
   }
 }
 
+.form-actions .button {
+  margin-right: var(--gin-spacing-xs);
+}
+
 .button.button--small {
-  padding: .5rem 1rem;
-  border-radius: var(--ginBorderSmall);
+  padding: var(--gin-spacing-xs) var(--gin-spacing-m);
+  border-radius: var(--gin-border-s);
 }
 
 .button.button--extrasmall {
-  padding: .25rem .75rem;
-  border-radius: var(--ginBorderSmall);
+  padding: var(--gin-spacing-xxs) var(--gin-spacing-s);
+  border-radius: var(--gin-border-s);
 }
 
 .button--primary,
 .button--primary:not(:focus),
 .ief-entity-submit {
-  background: var(--colorGinPrimary);
-  box-shadow: .1em .25em .5em var(--colorGinPrimaryLight),
-              -.25em -.5em 1em var(--colorGinAppBackground);
+  background: var(--gin-color-primary);
+  box-shadow: .1em .25em .5em var(--gin-color-primary-light);
 
   &:hover {
-    background-color: var(--colorGinPrimaryHover);
+    background-color: var(--gin-color-primary-hover);
   }
 
   &:active, &:focus {
-    background-color: var(--colorGinPrimaryActive);
+    background-color: var(--gin-color-primary-active);
   }
 
   &, &:hover, &:active, &:focus {
-    color: var(--colorGinButtonText);
+    color: var(--gin-color-button-text);
   }
 }
 
 a.button:hover,
 a.button:active {
-  color: var(--colorGinButtonText);
+  color: var(--gin-color-button-text);
 }
 
 a.button--primary:hover,
@@ -92,28 +96,33 @@ a.button--primary:active,
 a.button--primary:focus,
 a.button--primary:focus:hover {
   .gin--dark-mode & {
-    color: var(--colorGinAppBackground);
+    color: var(--gin-bg-app);
   }
 }
 
 .button.button:disabled, .button.button.is-disabled {
   &, &:hover, &:active, &:focus {
-    border: 2px solid var(--colorGinDisabled) !important;
+    color: var(--gin-color-disabled);
+    background: transparent;
+    border: 2px solid var(--gin-color-disabled-border) !important;
+    box-shadow: none;
   }
+}
 
-  .gin--dark-mode & {
-    color: var(--colorGinDisabled);
-    background-color: var(--colorGinInputBackground);
+.button.button--primary:disabled, .button.button--primary.is-disabled {
+  &, &:hover, &:active, &:focus {
+    color: var(--gin-color-disabled);
+    background-color: var(--gin-color-disabled-bg);
   }
 }
 
 .action-link.action-link--icon-trash {
   min-height: 48px;
-  padding: calc(.75rem - 1px) calc(1.5rem - 2px);
+  padding: calc(var(--gin-spacing-s) - 1px) calc(var(--gin-spacing-l) - 2px);
   box-sizing: border-box;
 
   &, &:hover, &:active, &:focus, &:focus:hover {
-    border: 2px solid var(--colorGinDanger) !important;
+    border: 2px solid var(--gin-color-danger) !important;
     // border: 2px solid transparent !important;
   }
 }

@@ -4,7 +4,7 @@
 .upgrade-status-error-list tr.no-known-error,
 .upgrade-status-next-step-relax tr,
 .upgrade-status-summary-environment tr.no-known-error {
-  color: var(--colorGinText);
+  color: var(--gin-color-text);
 }
 
 .upgrade-status-summary > summary {
@@ -28,7 +28,7 @@
     height: 20px;
     display: inline-block;
     position: absolute;
-    left: 8px;
+    left: var(--gin-spacing-xs);
     margin-top: 2px;
   }
 }
@@ -39,7 +39,7 @@
 
 .upgrade-status-summary .select-all,
 .upgrade-status-summary th.project-label, .upgrade-status-summary th.requirement-label {
-  border-left: 8px solid var(--colorGinTableHeader);
+  border-left: var(--gin-border-m) solid var(--gin-bg-header);
 }
 
 .upgrade-status-error-list tr.rector-covered,
@@ -58,16 +58,16 @@
 
 // Passed
 .drupal-upgrade-status-summary-form tr.no-known-error {
-  color: var(--colorGinGreen);
+  color: var(--gin-color-green);
 }
 
 // Warning
 .upgrade-status-next-step-remove tr,
 .drupal-upgrade-status-summary-form tr.known-warnings {
-  color: var(--colorGinWarning);
+  color: var(--gin-color-warning);
 }
 
 // Error
 .drupal-upgrade-status-summary-form tr.known-errors {
-  color: var(--colorGinDanger);
+  color: var(--gin-color-danger);
 }
