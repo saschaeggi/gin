@@ -7,14 +7,14 @@
   }
 
   // Followed by a title
-  + div:not(.layer-wrapper) {
+  + div:not(.gin-layer-wrapper) {
     // @extend h3;
     margin-bottom: var(--gin-spacing-s);
   }
 }
 
 .webform-ui-element-type-change-form {
-  .layer-wrapper {
+  .gin-layer-wrapper {
     padding: 0;
   }
 }

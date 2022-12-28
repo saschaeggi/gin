@@ -93,6 +93,7 @@
 }
 
 #module-filter-update-status-form .table-filter .form-type--search {
+  margin-top: 0;
   margin-bottom: var(--gin-spacing-xs);
 }
 

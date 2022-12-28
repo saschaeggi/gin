@@ -7,11 +7,11 @@
   margin-bottom: var(--gin-spacing-xs);
 }
 
-.webform-filter-form + div:not(.layer-wrapper) {
+.webform-filter-form + div:not(.gin-layer-wrapper) {
   margin-bottom: var(--gin-spacing-s);
 }
 
-.webform-ui-element-type-change-form .layer-wrapper {
+.webform-ui-element-type-change-form .gin-layer-wrapper {
   padding: 0;
 }
 

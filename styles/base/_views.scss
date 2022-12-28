@@ -145,11 +145,7 @@
   margin-right: var(--gin-spacing-xs);
 }
 
-.view-files .view-content {
-  padding-top: 0;
-}
-
-.layer-wrapper {
+.gin-layer-wrapper {
   padding: var(--gin-spacing-l);
 
   @include mq($to: large) {
@@ -157,7 +153,7 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  & + .layer-wrapper {
+  & + .gin-layer-wrapper {
     margin-top: var(--gin-spacing-l);
   }
 
@@ -210,7 +206,7 @@
 .views-live-preview {
   padding: 0;
 
-  .layer-wrapper {
+  .gin-layer-wrapper {
     border-color: var(--gin-border-color);
   }
 }
