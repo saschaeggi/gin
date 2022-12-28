@@ -106,6 +106,8 @@ body {
   --colorGinAppBackground: var(--gin-bg-app);
   --colorGinAppBackgroundRGB: var(--gin-bg-app-rgb);
   --colorGinPrimary: var(--gin-color-primary);
+  --colorGinPrimaryHover: var(--gin-color-primary-hover);
+  --colorGinPrimaryActive: var(--gin-color-primary-active);
   --colorGinPrimaryRGB: var(--gin-color-primary-rgb);
   --colorGinPrimaryLight: var(--gin-color-primary-light);
   --colorGinPrimaryLightRGB: var(--gin-color-primary-light-rgb);

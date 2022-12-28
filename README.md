@@ -38,10 +38,10 @@ Install as you would normally install a contributed Drupal theme. See [Gin docum
 - Setup Gin locally that you can compile CSS & JS files.\
 `nvm use && npm i`
 
-- Run dev env with watcher and debug output (development process\
+- Run dev env with watcher and debug output (development process)\
 `npm run dev`
 
-- Compile assets (for dev branch)\
+- Compile assets\
 `npm run build`
 
 ## Maintainers
