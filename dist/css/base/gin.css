@@ -433,10 +433,6 @@ body:not(.toolbar-tray-open) .layout-container {
   box-shadow: none;
 }
 
-.admin.my-workbench {
-  background-color: red !important;
-}
-
 .gin-layer-wrapper,
 .block-system-main-block > form,
 .views-exposed-form.views-exposed-form,

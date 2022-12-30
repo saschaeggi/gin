@@ -26,7 +26,7 @@
       <h3 class="panel__title">{{ title }}</h3>
     {% endif %}
 
-    <dl{{ attributes.addClass('gin-layer-wrapper', 'admin-list', 'panel__content') }}>
+    <dl{{ attributes.addClass('admin-list', 'panel__content', 'gin-layer-wrapper') }}>
       {% for bundle in bundles %}
         {#
           Add 'admin-item__link' class to the link attributes.
