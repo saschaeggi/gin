@@ -10,23 +10,14 @@
   }
 }
 
-.layer-wrapper,
+.gin-layer-wrapper,
+.gin-layer-wrapper-shadow,
 .block-system > form,
-.view-content .views-form,
-.view-without-bulk .view-content,
-.panel,
-.admin-list,
-.view-watchdog .view-content,
 .views-exposed-form.views-exposed-form,
-.system-status-counter,
-.system-status-general-info,
-.system-status-report,
 .views-edit-view,
 .views-preview-wrapper,
-.view-block-content .view-content,
-.view-files .view-content,
-.system-themes-list,
 .modules-tabs,
+.module-filter-update-status-form .table-filter,
 #views-entity-list,
 .admin.my-workbench
 {
@@ -43,23 +34,13 @@
   }
 }
 
-.layer-wrapper,
+.gin-layer-wrapper,
 .block-system-main-block > form,
-.view-content .views-form,
-.view-without-bulk .view-content,
 .views-exposed-form.views-exposed-form,
-.panel,
-.admin-list,
-.update,
-.view-files .view-content,
-.view-watchdog .view-content,
-.system-status-general-info,
-.system-status-report,
 .views-edit-view,
 .views-preview-wrapper,
-.view-block-content .view-content,
-.system-themes-list,
 #views-entity-list,
+.module-filter-update-status-form .table-filter,
 .admin.my-workbench
 {
   width: 100%;

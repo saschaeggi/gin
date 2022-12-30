@@ -392,23 +392,14 @@ body:not(.toolbar-tray-open) .layout-container {
   }
 }
 
-.layer-wrapper,
+.gin-layer-wrapper,
+.gin-layer-wrapper-shadow,
 .block-system > form,
-.view-content .views-form,
-.view-without-bulk .view-content,
-.panel,
-.admin-list,
-.view-watchdog .view-content,
 .views-exposed-form.views-exposed-form,
-.system-status-counter,
-.system-status-general-info,
-.system-status-report,
 .views-edit-view,
 .views-preview-wrapper,
-.view-block-content .view-content,
-.view-files .view-content,
-.system-themes-list,
 .modules-tabs,
+.module-filter-update-status-form .table-filter,
 #views-entity-list,
 .admin.my-workbench {
   margin-top: 0;
@@ -416,67 +407,39 @@ body:not(.toolbar-tray-open) .layout-container {
   border-radius: var(--gin-border-l);
 }
 
-.gin--dark-mode .layer-wrapper,
+.gin--dark-mode .gin-layer-wrapper,
+.gin--dark-mode .gin-layer-wrapper-shadow,
 .gin--dark-mode .block-system > form,
-.gin--dark-mode .view-content .views-form,
-.gin--dark-mode .view-without-bulk .view-content,
-.gin--dark-mode .panel,
-.gin--dark-mode .admin-list,
-.gin--dark-mode .view-watchdog .view-content,
 .gin--dark-mode .views-exposed-form.views-exposed-form,
-.gin--dark-mode .system-status-counter,
-.gin--dark-mode .system-status-general-info,
-.gin--dark-mode .system-status-report,
 .gin--dark-mode .views-edit-view,
 .gin--dark-mode .views-preview-wrapper,
-.gin--dark-mode .view-block-content .view-content,
-.gin--dark-mode .view-files .view-content,
-.gin--dark-mode .system-themes-list,
 .gin--dark-mode .modules-tabs,
+.gin--dark-mode .module-filter-update-status-form .table-filter,
 .gin--dark-mode #views-entity-list,
 .gin--dark-mode .admin.my-workbench {
   box-shadow: 0 6px 16px var(--gin-border-color-layer);
 }
 
-.gin--high-contrast-mode .layer-wrapper,
+.gin--high-contrast-mode .gin-layer-wrapper,
+.gin--high-contrast-mode .gin-layer-wrapper-shadow,
 .gin--high-contrast-mode .block-system > form,
-.gin--high-contrast-mode .view-content .views-form,
-.gin--high-contrast-mode .view-without-bulk .view-content,
-.gin--high-contrast-mode .panel,
-.gin--high-contrast-mode .admin-list,
-.gin--high-contrast-mode .view-watchdog .view-content,
 .gin--high-contrast-mode .views-exposed-form.views-exposed-form,
-.gin--high-contrast-mode .system-status-counter,
-.gin--high-contrast-mode .system-status-general-info,
-.gin--high-contrast-mode .system-status-report,
 .gin--high-contrast-mode .views-edit-view,
 .gin--high-contrast-mode .views-preview-wrapper,
-.gin--high-contrast-mode .view-block-content .view-content,
-.gin--high-contrast-mode .view-files .view-content,
-.gin--high-contrast-mode .system-themes-list,
 .gin--high-contrast-mode .modules-tabs,
+.gin--high-contrast-mode .module-filter-update-status-form .table-filter,
 .gin--high-contrast-mode #views-entity-list,
 .gin--high-contrast-mode .admin.my-workbench {
   box-shadow: none;
 }
 
-.layer-wrapper,
+.gin-layer-wrapper,
 .block-system-main-block > form,
-.view-content .views-form,
-.view-without-bulk .view-content,
 .views-exposed-form.views-exposed-form,
-.panel,
-.admin-list,
-.update,
-.view-files .view-content,
-.view-watchdog .view-content,
-.system-status-general-info,
-.system-status-report,
 .views-edit-view,
 .views-preview-wrapper,
-.view-block-content .view-content,
-.system-themes-list,
 #views-entity-list,
+.module-filter-update-status-form .table-filter,
 .admin.my-workbench {
   width: 100%;
   padding: var(--gin-spacing-s);
@@ -486,62 +449,32 @@ body:not(.toolbar-tray-open) .layout-container {
 }
 
 @media (min-width: 48em) {
-  .layer-wrapper,
+  .gin-layer-wrapper,
   .block-system-main-block > form,
-  .view-content .views-form,
-  .view-without-bulk .view-content,
   .views-exposed-form.views-exposed-form,
-  .panel,
-  .admin-list,
-  .update,
-  .view-files .view-content,
-  .view-watchdog .view-content,
-  .system-status-general-info,
-  .system-status-report,
   .views-edit-view,
   .views-preview-wrapper,
-  .view-block-content .view-content,
-  .system-themes-list,
   #views-entity-list,
+  .module-filter-update-status-form .table-filter,
   .admin.my-workbench {
     padding: var(--gin-spacing-l);
   }
 }
 
-.layer-wrapper > .form-wrapper:first-of-type .form-item,
-.layer-wrapper .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.gin-layer-wrapper > .form-wrapper:first-of-type .form-item,
+.gin-layer-wrapper .layout-region-node-main > .form-wrapper:first-of-type .form-item,
 .block-system-main-block > form > .form-wrapper:first-of-type .form-item,
 .block-system-main-block > form .layout-region-node-main > .form-wrapper:first-of-type .form-item,
-.view-content .views-form > .form-wrapper:first-of-type .form-item,
-.view-content .views-form .layout-region-node-main > .form-wrapper:first-of-type .form-item,
-.view-without-bulk .view-content > .form-wrapper:first-of-type .form-item,
-.view-without-bulk .view-content .layout-region-node-main > .form-wrapper:first-of-type .form-item,
 .views-exposed-form.views-exposed-form > .form-wrapper:first-of-type .form-item,
 .views-exposed-form.views-exposed-form .layout-region-node-main > .form-wrapper:first-of-type .form-item,
-.panel > .form-wrapper:first-of-type .form-item,
-.panel .layout-region-node-main > .form-wrapper:first-of-type .form-item,
-.admin-list > .form-wrapper:first-of-type .form-item,
-.admin-list .layout-region-node-main > .form-wrapper:first-of-type .form-item,
-.update > .form-wrapper:first-of-type .form-item,
-.update .layout-region-node-main > .form-wrapper:first-of-type .form-item,
-.view-files .view-content > .form-wrapper:first-of-type .form-item,
-.view-files .view-content .layout-region-node-main > .form-wrapper:first-of-type .form-item,
-.view-watchdog .view-content > .form-wrapper:first-of-type .form-item,
-.view-watchdog .view-content .layout-region-node-main > .form-wrapper:first-of-type .form-item,
-.system-status-general-info > .form-wrapper:first-of-type .form-item,
-.system-status-general-info .layout-region-node-main > .form-wrapper:first-of-type .form-item,
-.system-status-report > .form-wrapper:first-of-type .form-item,
-.system-status-report .layout-region-node-main > .form-wrapper:first-of-type .form-item,
 .views-edit-view > .form-wrapper:first-of-type .form-item,
 .views-edit-view .layout-region-node-main > .form-wrapper:first-of-type .form-item,
 .views-preview-wrapper > .form-wrapper:first-of-type .form-item,
 .views-preview-wrapper .layout-region-node-main > .form-wrapper:first-of-type .form-item,
-.view-block-content .view-content > .form-wrapper:first-of-type .form-item,
-.view-block-content .view-content .layout-region-node-main > .form-wrapper:first-of-type .form-item,
-.system-themes-list > .form-wrapper:first-of-type .form-item,
-.system-themes-list .layout-region-node-main > .form-wrapper:first-of-type .form-item,
 #views-entity-list > .form-wrapper:first-of-type .form-item,
 #views-entity-list .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.module-filter-update-status-form .table-filter > .form-wrapper:first-of-type .form-item,
+.module-filter-update-status-form .table-filter .layout-region-node-main > .form-wrapper:first-of-type .form-item,
 .admin.my-workbench > .form-wrapper:first-of-type .form-item,
 .admin.my-workbench .layout-region-node-main > .form-wrapper:first-of-type .form-item {
   margin-top: 0;
@@ -1013,26 +946,22 @@ details summary {
   margin-left: var(--gin-spacing-xs);
 }
 
-.view-files .view-content {
-  padding-top: 0;
-}
-
-.layer-wrapper {
+.gin-layer-wrapper {
   padding: var(--gin-spacing-l);
 }
 
 @media (max-width: 63.99em) {
-  .layer-wrapper {
+  .gin-layer-wrapper {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
   }
 }
 
-.layer-wrapper + .layer-wrapper {
+.gin-layer-wrapper + .gin-layer-wrapper {
   margin-top: var(--gin-spacing-l);
 }
 
-.layer-wrapper + h2, .views-edit-view .layer-wrapper + .unit-title, .layer-wrapper + h3 {
+.gin-layer-wrapper + h2, .views-edit-view .gin-layer-wrapper + .unit-title, .gin-layer-wrapper + h3 {
   margin-top: var(--gin-spacing-xl);
 }
 
@@ -1078,7 +1007,7 @@ details summary {
   padding: 0;
 }
 
-.views-live-preview .layer-wrapper {
+.views-live-preview .gin-layer-wrapper {
   border-color: var(--gin-border-color);
 }
 
@@ -1664,7 +1593,7 @@ td.webform-has-field-suffix > .form-item > .form-element {
   margin-bottom: var(--gin-spacing-m);
 }
 
-.view-without-bulk .view-content .views-table {
+.gin-layer-wrapper .views-table {
   margin-top: 0;
 }
 
@@ -1698,39 +1627,39 @@ td.webform-has-field-suffix > .form-item > .form-element {
 }
 
 @media (min-width: 48em) {
-  #field-display-overview .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  #field-display-overview-wrapper .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  .field--widget-entity-reference-paragraphs .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  .field--type-link .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  .field--type-smartdate .layer-wrapper > .tabledrag-toggle-weight-wrapper {
+  #field-display-overview .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  #field-display-overview-wrapper .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  .field--widget-entity-reference-paragraphs .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  .field--type-link .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  .field--type-smartdate .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper {
     position: relative;
     z-index: 1;
     margin-bottom: calc(var(--gin-spacing-xxl) * -1);
     pointer-events: none;
   }
 
-  [dir="ltr"] #field-display-overview .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  [dir="ltr"] #field-display-overview-wrapper .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  [dir="ltr"] .field--widget-entity-reference-paragraphs .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  [dir="ltr"] .field--type-link .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  [dir="ltr"] .field--type-smartdate .layer-wrapper > .tabledrag-toggle-weight-wrapper {
+  [dir="ltr"] #field-display-overview .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  [dir="ltr"] #field-display-overview-wrapper .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  [dir="ltr"] .field--widget-entity-reference-paragraphs .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  [dir="ltr"] .field--type-link .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  [dir="ltr"] .field--type-smartdate .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper {
     margin-right: var(--gin-spacing-m);
   }
 
-  [dir="rtl"] #field-display-overview .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  [dir="rtl"] #field-display-overview-wrapper .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  [dir="rtl"] .field--widget-entity-reference-paragraphs .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  [dir="rtl"] .field--type-link .layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  [dir="rtl"] .field--type-smartdate .layer-wrapper > .tabledrag-toggle-weight-wrapper {
+  [dir="rtl"] #field-display-overview .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  [dir="rtl"] #field-display-overview-wrapper .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  [dir="rtl"] .field--widget-entity-reference-paragraphs .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  [dir="rtl"] .field--type-link .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
+  [dir="rtl"] .field--type-smartdate .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper {
     margin-left: var(--gin-spacing-m);
   }
 }
 
-#field-display-overview .layer-wrapper > .tabledrag-toggle-weight-wrapper .action-link,
-#field-display-overview-wrapper .layer-wrapper > .tabledrag-toggle-weight-wrapper .action-link,
-.field--widget-entity-reference-paragraphs .layer-wrapper > .tabledrag-toggle-weight-wrapper .action-link,
-.field--type-link .layer-wrapper > .tabledrag-toggle-weight-wrapper .action-link,
-.field--type-smartdate .layer-wrapper > .tabledrag-toggle-weight-wrapper .action-link {
+#field-display-overview .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper .action-link,
+#field-display-overview-wrapper .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper .action-link,
+.field--widget-entity-reference-paragraphs .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper .action-link,
+.field--type-link .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper .action-link,
+.field--type-smartdate .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper .action-link {
   pointer-events: all;
 }
 
@@ -3083,7 +3012,7 @@ a.button.button--danger:active:before {
 }
 
 .system-status-general-info__items {
-  margin: var(--gin-spacing-m) var(--gin-spacing-xs) 0;
+  margin: var(--gin-spacing-m) 0 0;
 }
 
 .system-status-general-info__item {
@@ -3832,11 +3761,11 @@ tr.color-error:focus,
   border-bottom: 0 none;
 }
 
-.layer-wrapper .responsive-enabled {
+.gin-layer-wrapper .responsive-enabled {
   margin-top: 0;
 }
 
-.block-system > form .layer-wrapper,
+.block-system > form .gin-layer-wrapper,
 .panel .admin-list,
 .block-system > form .dataset-table-wrapper {
   padding: 0;
@@ -4113,10 +4042,6 @@ tr.color-error:focus,
   height: 24px;
 }
 
-.view-watchdog .view-content {
-  padding-top: 0;
-}
-
 .divider {
   background-color: var(--gin-border-color);
 }
@@ -4148,7 +4073,7 @@ tr.color-error:focus,
   z-index: 2000;
 }
 
-[data-drupal-selector=edit-fields-field-image-settings-edit-form-third-party-settings-insert] .layer-wrapper {
+[data-drupal-selector=edit-fields-field-image-settings-edit-form-third-party-settings-insert] .gin-layer-wrapper {
   margin-top: var(--gin-spacing-m);
 }
 

@@ -21,7 +21,7 @@
   ]
 %}
 {% if content %}
-  <dl{{ attributes.addClass('admin-list') }}>
+  <dl{{ attributes.addClass('admin-list', 'gin-layer-wrapper') }}>
     {% for item in content %}
       <div{{ create_attribute({class: item_classes}) }}>
         {{ item.link }}

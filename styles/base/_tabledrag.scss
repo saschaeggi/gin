@@ -34,7 +34,7 @@
 .field--widget-entity-reference-paragraphs,
 .field--type-link,
 .field--type-smartdate {
-  .layer-wrapper > .tabledrag-toggle-weight-wrapper {
+  .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper {
     @include mq(small) {
       position: relative;
       z-index: 1;
