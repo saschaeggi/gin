@@ -31,7 +31,7 @@
   }
 }
 
-@include mq(small) {
+@include mq($to: small) {
   .ui-dialog:not(.ui-dialog-off-canvas) {
     min-width: 92%;
     max-width: 92%;
