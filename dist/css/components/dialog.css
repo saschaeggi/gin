@@ -1,6 +1,5 @@
 .ui-dialog:not(.ui-dialog-off-canvas) {
   max-width: 1280px;
-  margin: var(--gin-spacing-m);
   border: 0 none !important;
   border-radius: var(--gin-border-m);
   background: var(--gin-bg-layer);
@@ -34,6 +33,13 @@
 .ui-dialog:not(.ui-dialog-off-canvas) .views-exposed-form.views-exposed-form,
 .ui-dialog:not(.ui-dialog-off-canvas) .views-displays {
   border: 1px solid var(--gin-border-color-layer);
+}
+
+@media (min-width: 48em) {
+  .ui-dialog:not(.ui-dialog-off-canvas) {
+    min-width: 92%;
+    max-width: 92%;
+  }
 }
 
 .ui-dialog {
