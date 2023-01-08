@@ -35,7 +35,7 @@
   border: 1px solid var(--gin-border-color-layer);
 }
 
-@media (min-width: 48em) {
+@media (max-width: 47.99em) {
   .ui-dialog:not(.ui-dialog-off-canvas) {
     min-width: 92%;
     max-width: 92%;
