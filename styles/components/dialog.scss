@@ -1,6 +1,5 @@
 .ui-dialog:not(.ui-dialog-off-canvas) {
   max-width: $breakpointWide;
-  margin: var(--gin-spacing-m);
   border: 0 none !important;
   border-radius: var(--gin-border-m);
   background: var(--gin-bg-layer);
@@ -29,6 +28,13 @@
   .views-exposed-form.views-exposed-form,
   .views-displays {
     border: 1px solid var(--gin-border-color-layer);
+  }
+}
+
+@include mq($to: small) {
+  .ui-dialog:not(.ui-dialog-off-canvas) {
+    min-width: 92%;
+    max-width: 92%;
   }
 }
 
