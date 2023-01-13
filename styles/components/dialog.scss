@@ -33,6 +33,9 @@
 }
 
 .ui-dialog {
+  position: absolute;
+  left: 0;
+  top: 0;
   font-family: var(--gin-font);
   outline: none;
 

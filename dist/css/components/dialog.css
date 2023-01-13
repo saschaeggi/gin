@@ -37,8 +37,18 @@
 }
 
 .ui-dialog {
+  position: absolute;
+  top: 0;
   font-family: var(--gin-font);
   outline: none;
+}
+
+[dir="ltr"] .ui-dialog {
+  left: 0;
+}
+
+[dir="rtl"] .ui-dialog {
+  right: 0;
 }
 
 .ui-dialog, .ui-dialog:focus, .ui-dialog:focus:active, .ui-dialog:focus:hover {
