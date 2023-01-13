@@ -43,11 +43,13 @@
       .querySelector('[data-drupal-selector*="edit-header"]');
 
     const updateSticky = (state) => {
-      if (state === true) {
-        stickyHeader.classList.add(setClass);
-      }
-      else {
-        stickyHeader.classList.remove(setClass);
+      if (stickyHeader) {
+        if (state === true) {
+          stickyHeader.classList.add(setClass);
+        }
+        else {
+          stickyHeader.classList.remove(setClass);
+        }
       }
     };
 
