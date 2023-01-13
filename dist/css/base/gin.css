@@ -141,12 +141,13 @@ button.link:active,
 }
 
 .gin--edit-form .region-sticky {
-  top: calc(var(--gin-toolbar-y-offset) - var(--gin-spacing-xxxl));
+  top: calc(var(--gin-toolbar-y-offset) - var(--gin-spacing-xxl) - var(--gin-spacing-xxs));
   padding-top: var(--gin-spacing-m);
 }
 
 @media (min-width: 64em) {
   .gin--edit-form .region-sticky {
+    top: calc(var(--gin-toolbar-y-offset) - var(--gin-spacing-xxxl));
     padding-top: var(--gin-spacing-s);
   }
 }
@@ -368,11 +369,21 @@ body:not(.toolbar-tray-open) .layout-container {
 }
 
 [dir="ltr"] .gin-sticky .field--name-status {
-  margin-right: var(--gin-spacing-l);
+  margin-right: var(--gin-spacing-xxs);
 }
 
 [dir="rtl"] .gin-sticky .field--name-status {
-  margin-left: var(--gin-spacing-l);
+  margin-left: var(--gin-spacing-xxs);
+}
+
+@media (min-width: 61em) {
+  [dir="ltr"] .gin-sticky .field--name-status {
+    margin-right: var(--gin-spacing-l);
+  }
+
+  [dir="rtl"] .gin-sticky .field--name-status {
+    margin-left: var(--gin-spacing-l);
+  }
 }
 
 .gin-sticky .field--name-status .form-type--checkbox {

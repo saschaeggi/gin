@@ -9,10 +9,11 @@
   transition: var(--gin-transition);
 
   .gin--edit-form & {
-    top: calc(var(--gin-toolbar-y-offset) - var(--gin-spacing-xxxl));
+    top: calc(var(--gin-toolbar-y-offset) - var(--gin-spacing-xxl) - var(--gin-spacing-xxs));
     padding-top: var(--gin-spacing-m);
 
     @include mq(large) {
+      top: calc(var(--gin-toolbar-y-offset) - var(--gin-spacing-xxxl));
       padding-top: var(--gin-spacing-s);
     }
   }
@@ -204,7 +205,11 @@ body:not(.toolbar-tray-open) .layout-container {
   .field--name-status {
     display: flex;
     align-items: center;
-    margin-right: var(--gin-spacing-l);
+    margin-right: var(--gin-spacing-xxs);
+
+    @include mq(medium) {
+      margin-right: var(--gin-spacing-l);
+    }
 
     .form-type--checkbox {
       margin-top: var(--gin-spacing-xs);
