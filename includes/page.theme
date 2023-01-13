@@ -97,11 +97,6 @@ function gin_page_attachments_alter(&$page) {
       $page['#attached']['library'][] = 'gin/once';
     }
 
-    // Use legacy tabledrag for Drupal versions below 9.0.
-    if ($drupal_version < 9.0) {
-      $page['#attached']['library'][] = 'gin/gin_tabledrag_legacy';
-    }
-
     // Custom CSS file.
     if (file_exists('public://gin-custom.css')) {
       $page['#attached']['library'][] = 'gin/gin_custom_css';

@@ -126,10 +126,6 @@ once:
   js:
     js/libs/once.js: { minified: false, weight: -1 }
 
-gin_tabledrag_legacy:
-  js:
-    js/legacy/tabledrag.legacy.js: { minified: false, weight: -1 }
-
 gin_media_embed_ckeditor_theme:
   js:
     js/overrides/media_embed_ckeditor.theme.js: {}
