@@ -174,13 +174,9 @@
 .toolbar .toolbar-menu {
   background: transparent;
 
-  .toolbar-menu {
-    background: var(--gin-bg-app);
-
-    a,
-    span {
-      color: var(--gin-color-text);
-    }
+  .toolbar-menu a,
+  .toolbar-menu span {
+    color: var(--gin-color-text);
   }
 }
 
@@ -207,6 +203,10 @@ a.toolbar-menu__trigger,
 @include mq(medium) {
   #toolbar-item-administration-tray {
     display: block;
+  }
+
+  .toolbar .toolbar-menu .toolbar-menu {
+    background: var(--gin-bg-app);
   }
 
   .toolbar-fixed {

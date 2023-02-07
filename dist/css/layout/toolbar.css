@@ -207,10 +207,6 @@
   background: transparent;
 }
 
-.toolbar .toolbar-menu .toolbar-menu {
-  background: var(--gin-bg-app);
-}
-
 .toolbar .toolbar-menu .toolbar-menu a,
 .toolbar .toolbar-menu .toolbar-menu span {
   color: var(--gin-color-text);
@@ -240,6 +236,10 @@ a.toolbar-menu__trigger,
 @media (min-width: 61em) {
   #toolbar-item-administration-tray {
     display: block;
+  }
+
+  .toolbar .toolbar-menu .toolbar-menu {
+    background: var(--gin-bg-app);
   }
 
   .toolbar-fixed {
