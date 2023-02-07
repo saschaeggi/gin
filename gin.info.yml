@@ -89,6 +89,8 @@ libraries-extend:
     - gin/entity_browser
   entity_browser/entity_reference:
     - gin/entity_browser
+  length_indicator/length_indicator:
+    - gin/length_indicator
   linkit/linkit.admin:
     - gin/linkit
   module_filter/modules.tabs:

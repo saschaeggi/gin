@@ -45,6 +45,7 @@ module.exports = {
     'components/entity_reference_layout': ['./styles/components/entity_reference_layout.scss'],
     'components/inline_entity_form': ['./styles/components/inline_entity_form.scss'],
     'components/layout_paragraphs': ['./styles/components/layout_paragraphs.scss'],
+    'components/length_indicator': ['./styles/components/length_indicator.scss'],
     'components/linkit': ['./styles/components/linkit.scss'],
     'components/media_library': ['./styles/components/media_library.scss'],
     'components/module_filter': ['./styles/components/module_filter.scss'],

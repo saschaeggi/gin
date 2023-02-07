@@ -313,6 +313,10 @@ linkit:
     component:
       dist/css/components/linkit.css: { minified: false }
 
+length_indicator:
+  css:
+    component:
+      dist/css/components/length_indicator.css: { minified: false }
 # Legacy
 
 legacy_css:
