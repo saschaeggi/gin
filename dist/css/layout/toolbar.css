@@ -212,6 +212,14 @@
   color: var(--gin-color-text);
 }
 
+.toolbar .level-2 > .toolbar-menu {
+  background-color: var(--gin-bg-layer2);
+}
+
+.toolbar .level-3 > .toolbar-menu {
+  background-color: var(--gin-bg-app);
+}
+
 .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
 .toolbar .toolbar-tray a.is-active {
   color: var(--gin-color-primary);
