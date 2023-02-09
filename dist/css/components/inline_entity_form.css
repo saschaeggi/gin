@@ -10,6 +10,11 @@
   padding-bottom: 0;
 }
 
+.ief-entity-table tr.ief-row-form .form-item {
+  margin-top: var(--ginSpacingDensitySmall);
+  margin-bottom: var(--ginSpacingDensitySmall);
+}
+
 .ief-form > .form-wrapper > .form-wrapper:last-of-type {
   background: var(--gin-bg-layer2);
   padding: 0 var(--gin-spacing-m);
