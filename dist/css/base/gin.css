@@ -1382,16 +1382,6 @@ table.sticky-header::before, table.sticky-header::after {
   background: var(--gin-bg-layer);
 }
 
-@media (min-width: 61em) {
-  .gin--vertical-toolbar table.sticky-header {
-    width: calc(100% - min(10vw, 96px) - var(--gin-spacing-xxl) - 2px - var(--gin-toolbar-width-collapsed)) !important;
-  }
-
-  .gin--vertical-toolbar[data-toolbar-menu=open] table.sticky-header {
-    width: calc(100% - min(10vw, 96px) - var(--gin-spacing-xxl) - 2px - var(--gin-toolbar-width)) !important;
-  }
-}
-
 table thead {
   background: transparent;
   border-radius: var(--gin-border-m);

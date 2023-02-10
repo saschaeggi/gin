@@ -48,16 +48,6 @@ table.sticky-header {
       background: var(--gin-bg-layer);
     }
   }
-
-  @include mq(medium) {
-    .gin--vertical-toolbar & {
-      width: calc(100% - min(10vw, 96px) - var(--gin-spacing-xxl) - 2px - var(--gin-toolbar-width-collapsed)) !important;
-    }
-
-    .gin--vertical-toolbar[data-toolbar-menu='open'] & {
-      width: calc(100% - min(10vw, 96px) - var(--gin-spacing-xxl) - 2px - var(--gin-toolbar-width)) !important;
-    }
-  }
 }
 
 table {
