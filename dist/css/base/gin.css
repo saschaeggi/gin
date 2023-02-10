@@ -1769,6 +1769,10 @@ td.webform-has-field-suffix > .form-item > .form-element {
   box-shadow: none;
 }
 
+.gin--dark-mode .form-element {
+  color-scheme: dark;
+}
+
 .form-textarea-wrapper {
   border-radius: var(--gin-border-m);
 }

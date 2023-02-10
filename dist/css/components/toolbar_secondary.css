@@ -77,9 +77,9 @@
 .gin-secondary-toolbar__layout-container {
   display: flex;
   align-items: center;
+  min-width: 1px;
   width: 100%;
   margin: 0 var(--gin-spacing-m);
-  min-width: 1px;
 }
 
 @media (min-width: 48em) {

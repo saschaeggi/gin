@@ -315,6 +315,10 @@
   box-shadow: none;
 }
 
+.gin--dark-mode .ui-dialog .form-element {
+  color-scheme: dark;
+}
+
 .ui-dialog .form-textarea-wrapper {
   border-radius: var(--gin-border-m);
 }
