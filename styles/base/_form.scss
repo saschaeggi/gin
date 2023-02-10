@@ -28,6 +28,10 @@ $maxWidth: 520px;
     border-color: var(--gin-color-disabled-border);
     box-shadow: none;
   }
+
+  .gin--dark-mode & {
+    color-scheme: dark;
+  }
 }
 
 .form-textarea-wrapper {
