@@ -458,6 +458,14 @@ body.gin--classic-toolbar {
     border-bottom: 1px solid var(--gin-border-color-layer);
   }
 
+  .level-2 .toolbar-menu {
+    background-color: var(--gin-toolbar-bg-level2);
+  }
+
+  .level-3 .toolbar-menu {
+    background-color: var(--gin-toolbar-bg-level3);
+  }
+
   .gin--dark-mode & {
     .toolbar-menu ul ul {
       border-color: transparent;
