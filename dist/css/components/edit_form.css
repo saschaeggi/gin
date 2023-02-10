@@ -80,7 +80,6 @@
 @media (min-width: 64em) {
   .gin--edit-form .page-wrapper__node-edit-form .block-page-title-block .page-title {
     width: auto;
-    max-width: 800px;
     margin: 0;
     overflow: hidden;
   }

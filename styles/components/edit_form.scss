@@ -62,7 +62,6 @@
       .page-title {
         @include mq(large) {
           width: auto;
-          max-width: 800px;
           margin: 0;
           overflow: hidden;
         }
