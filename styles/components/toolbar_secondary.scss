@@ -60,6 +60,7 @@
   &__layout-container {
     display: flex;
     align-items: center;
+    min-width: 1px; // Fixes broken flex layout due to white-space: nowrap in breadcrumbs.
     width: 100%;
     margin: 0 var(--gin-spacing-m);
 
