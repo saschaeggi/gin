@@ -464,6 +464,14 @@ body.gin--classic-toolbar {
   border-bottom: 1px solid var(--gin-border-color-layer);
 }
 
+.toolbar .toolbar-tray-vertical .level-2 .toolbar-menu {
+  background-color: var(--gin-toolbar-bg-level2);
+}
+
+.toolbar .toolbar-tray-vertical .level-3 .toolbar-menu {
+  background-color: var(--gin-toolbar-bg-level3);
+}
+
 .gin--dark-mode .toolbar .toolbar-tray-vertical .toolbar-menu ul ul {
   border-color: transparent;
 }
