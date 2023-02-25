@@ -36,6 +36,7 @@
 
 .media-library-item .media-library-item__remove, .media-library-item .media-library-item__remove.button {
   background-image: url("../../media/sprite.svg#media-remove-view");
+  background-size: .75rem .75rem;
 }
 
 .media-library-item {
