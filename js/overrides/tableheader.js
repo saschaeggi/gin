@@ -67,6 +67,7 @@
       const header = table.querySelector(':scope > thead');
       header.querySelectorAll('th').forEach((el, i) => {
         table.querySelector(`table.sticky-header > thead th:nth-of-type(${i+1})`).style.width = `${el.offsetWidth}px`;
+        table.querySelector(`table.sticky-header`).style.width = `${el.parentNode.offsetWidth}px`;
       });
     },
   };
