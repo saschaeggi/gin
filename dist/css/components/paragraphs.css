@@ -309,7 +309,13 @@ html[dir="rtl"].js .paragraph-type-icon {
 }
 
 .js .paragraph-top {
-  grid-template-columns: 1fr auto 1fr auto;
+  grid-template-columns: auto auto 1fr auto;
+}
+
+.paragraphs-icon-changed {
+  background-size: auto;
+  height: 32px;
+  width: 32px;
 }
 
 .gin--dark-mode .paragraphs-tabs-wrapper .field-multiple-table .draggable {
