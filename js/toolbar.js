@@ -19,7 +19,12 @@
       once('ginEscapeAdmin', '[data-gin-toolbar-escape-admin]', context).forEach(el => {
         const escapeAdminPath = sessionStorage.getItem('escapeAdminPath');
 
-        if (drupalSettings.path.currentPathIsAdmin && escapeAdminPath !== null) {
+        if (escapeAdminPath === null) {
+          el.remove();
+          return;
+        }
+
+        if (drupalSettings.path.currentPathIsAdmin) {
           el.setAttribute('href', escapeAdminPath);
         }
       });
