@@ -49,19 +49,19 @@
   background: none;
 }
 
-.gin-breadcrumb__item:first-of-type .gin-breadcrumb__link {
+.gin-breadcrumb__item--back-to-site .gin-breadcrumb__link {
   position: relative;
 }
 
-[dir="ltr"] .gin-breadcrumb__item:first-of-type .gin-breadcrumb__link {
+[dir="ltr"] .gin-breadcrumb__item--back-to-site .gin-breadcrumb__link {
   padding-left: 1.75em;
 }
 
-[dir="rtl"] .gin-breadcrumb__item:first-of-type .gin-breadcrumb__link {
+[dir="rtl"] .gin-breadcrumb__item--back-to-site .gin-breadcrumb__link {
   padding-right: 1.75em;
 }
 
-.gin-breadcrumb__item:first-of-type .gin-breadcrumb__link::before {
+.gin-breadcrumb__item--back-to-site .gin-breadcrumb__link::before {
   content: "";
   display: inline-block;
   position: absolute;
@@ -78,33 +78,33 @@
           mask-position: center center;
 }
 
-[dir="ltr"] .gin-breadcrumb__item:first-of-type .gin-breadcrumb__link::before {
+[dir="ltr"] .gin-breadcrumb__item--back-to-site .gin-breadcrumb__link::before {
   left: 0;
 }
 
-[dir="rtl"] .gin-breadcrumb__item:first-of-type .gin-breadcrumb__link::before {
+[dir="rtl"] .gin-breadcrumb__item--back-to-site .gin-breadcrumb__link::before {
   right: 0;
 }
 
-.gin-breadcrumb__item:first-of-type .gin-breadcrumb__link:hover::before {
+.gin-breadcrumb__item--back-to-site .gin-breadcrumb__link:hover::before {
   background-color: var(--gin-color-primary);
 }
 
-.gin-breadcrumb__item:first-of-type + .gin-breadcrumb__item::before {
+.gin-breadcrumb__item--back-to-site + .gin-breadcrumb__item::before {
   content: "";
   opacity: .3;
   width: 1px;
   height: 20px;
 }
 
-[dir="ltr"] .gin-breadcrumb__item:first-of-type + .gin-breadcrumb__item::before {
+[dir="ltr"] .gin-breadcrumb__item--back-to-site + .gin-breadcrumb__item::before {
   border-right: 1px solid var(--gin-color-text);
   padding-left: .75em;
   padding-right: 0;
   margin-right: .75em;
 }
 
-[dir="rtl"] .gin-breadcrumb__item:first-of-type + .gin-breadcrumb__item::before {
+[dir="rtl"] .gin-breadcrumb__item--back-to-site + .gin-breadcrumb__item::before {
   border-left: 1px solid var(--gin-color-text);
   padding-right: .75em;
   padding-left: 0;

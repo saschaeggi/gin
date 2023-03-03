@@ -7,7 +7,7 @@
     attach: context => {
       once("ginEscapeAdmin", "[data-gin-toolbar-escape-admin]", context).forEach((el => {
         const escapeAdminPath = sessionStorage.getItem("escapeAdminPath");
-        null !== escapeAdminPath ? drupalSettings.path.currentPathIsAdmin && el.setAttribute("href", escapeAdminPath) : el.remove();
+        null !== escapeAdminPath ? drupalSettings.path.currentPathIsAdmin && el.setAttribute("href", escapeAdminPath) : el.parentElement.remove();
       }));
     }
   }, Drupal.ginToolbar = {

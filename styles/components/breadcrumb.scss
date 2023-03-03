@@ -42,7 +42,7 @@
     background: none;
   }
 
-  &__item:first-of-type &__link {
+  &__item--back-to-site &__link {
     position: relative;
     padding-left: 1.75em;
 
@@ -66,7 +66,7 @@
     }
   }
 
-  &__item:first-of-type + &__item::before {
+  &__item--back-to-site + &__item::before {
     content: "";
     opacity: .3;
     border-right: 1px solid var(--gin-color-text);

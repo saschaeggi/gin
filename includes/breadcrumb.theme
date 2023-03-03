@@ -20,10 +20,14 @@ function gin_preprocess_breadcrumb(&$variables) {
       $entity_id = $entity ? $entity->getEntityTypeId() : NULL;
       $url = $entity ? $entity->toUrl() : NULL;
 
+      $variables['breadcrumb'][$key]['itemAttributes'] = new \Drupal\Core\Template\Attribute();
+      $variables['breadcrumb'][$key]['linkAttributes'] = new \Drupal\Core\Template\Attribute();
+
       // Back to site item.
       if ($key === 0) {
         $variables['breadcrumb'][$key]['text'] = t('Back to site');
-        $variables['breadcrumb'][$key]['attributes']['title'] = t('Return to site content');
+        $variables['breadcrumb'][$key]['linkAttributes']->setAttribute('title', t('Return to site content'));
+        $variables['breadcrumb'][$key]['itemAttributes']->addClass('gin-breadcrumb__item--back-to-site');
 
         // Media handling.
         if ($entity_id === 'media' && !\Drupal::config('media.settings')->get('standalone_url')) {
@@ -36,7 +40,7 @@ function gin_preprocess_breadcrumb(&$variables) {
         }
         else {
           // Let escapeAdmin override the return URL.
-          $variables['breadcrumb'][$key]['attributes']['data'] = 'data-gin-toolbar-escape-admin';
+          $variables['breadcrumb'][$key]['linkAttributes']->setAttribute('data-gin-toolbar-escape-admin', TRUE);
         }
       }
       elseif ($item['url'] === $url) {
@@ -59,6 +63,8 @@ function gin_preprocess_breadcrumb(&$variables) {
         $variables['breadcrumb'][] = [
           'text' => t('Edit') . ' ' . $node->type->entity->label(),
           'url' => '',
+          'itemAttributes' => new \Drupal\Core\Template\Attribute(),
+          'linkAttributes' => new \Drupal\Core\Template\Attribute(),
         ];
       }
     }
@@ -68,6 +74,8 @@ function gin_preprocess_breadcrumb(&$variables) {
       $variables['breadcrumb'][] = [
         'text' => t('Edit') . ' ' . $entity->getEntityType()->getLabel(),
         'url' => '',
+        'itemAttributes' => new \Drupal\Core\Template\Attribute(),
+        'linkAttributes' => new \Drupal\Core\Template\Attribute(),
       ];
     }
   }

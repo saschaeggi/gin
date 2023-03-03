@@ -20,7 +20,7 @@
         const escapeAdminPath = sessionStorage.getItem('escapeAdminPath');
 
         if (escapeAdminPath === null) {
-          el.remove();
+          el.parentElement.remove();
           return;
         }
 
