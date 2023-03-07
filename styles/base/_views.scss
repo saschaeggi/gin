@@ -51,6 +51,7 @@
     left: 0;
     padding: 0 var(--gin-spacing-m) var(--gin-spacing-m) var(--gin-spacing-m);
     border-radius: var(--gin-border-m);
+    background: rgba(var(--gin-color-sticky-rgb), .9);
 
     @supports (backdrop-filter: blur()) {
       opacity: .999; /* Fix Chrome issue with mask */
