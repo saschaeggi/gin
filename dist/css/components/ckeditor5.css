@@ -42,7 +42,6 @@
   --ck-color-image-caption-text: var(--gin-color-text-light);
   --ck-color-image-caption-background: transparent;
   --ck-border-radius: var(--gin-border-m);
-  --ck-z-modal: 98;
 }
 
 .ck .ck-content blockquote,
