@@ -119,7 +119,7 @@
       transform: none;
       background: #fff;
       mask-image: icon('close');
-      mask-size: 24px 24px;
+      mask-size: var(--gin-icon-size-close) var(--gin-icon-size-close);
       mask-repeat: no-repeat;
       mask-position: center center;
     }
