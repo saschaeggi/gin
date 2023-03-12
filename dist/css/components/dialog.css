@@ -159,8 +159,13 @@
 }
 
 .ui-dialog .ui-widget-content.ui-dialog-content {
-  padding: var(--gin-spacing-l);
+  padding-left: var(--gin-spacing-l);
+  padding-right: var(--gin-spacing-l);
   background: var(--gin-bg-layer);
+}
+
+.ui-dialog .gin-layer-wrapper {
+  margin-bottom: var(--gin-spacing-l);
 }
 
 .erl-overlay,

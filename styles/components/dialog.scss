@@ -69,7 +69,6 @@
 
   .ui-dialog-content {
     color: var(--gin-color-text);
-    padding: var(--gin-spacing-l);
   }
 
   .ui-widget-content.ui-dialog-buttonpane {
@@ -131,7 +130,13 @@
   }
 
   .ui-widget-content.ui-dialog-content {
+    padding-left: var(--gin-spacing-l);
+    padding-right: var(--gin-spacing-l);
     background: var(--gin-bg-layer);
+  }
+
+  .gin-layer-wrapper {
+    margin-bottom: var(--gin-spacing-l);
   }
 }
 
