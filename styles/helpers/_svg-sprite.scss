@@ -58,7 +58,6 @@ $sprites: (
     'group': "../../media/sprite.svg#group-view",
     'hamburger': "../../media/sprite.svg#hamburger-view",
     'help': "../../media/sprite.svg#help-view",
-    'local-tasks-copy': "../../media/sprite.svg#local-tasks-copy-view",
     'local-tasks': "../../media/sprite.svg#local-tasks-view",
     'nav-toggle-toleft': "../../media/sprite.svg#nav-toggle-toleft-view",
     'nav-toggle-totop': "../../media/sprite.svg#nav-toggle-totop-view",
@@ -306,13 +305,9 @@ $sizes: (
         'width': 24px,
         'height': 24px
     ),
-    'local-tasks-copy': (
-        'width': 24px,
-        'height': 25px
-    ),
     'local-tasks': (
         'width': 24px,
-        'height': 25px
+        'height': 24px
     ),
     'nav-toggle-toleft': (
         'width': 24px,
