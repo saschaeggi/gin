@@ -67,6 +67,7 @@
   background: #1b1b1d;
   border: 0 none;
   border-radius: var(--gin-border-m) var(--gin-border-m) 0 0;
+  position: relative;
 }
 
 .ui-dialog .ui-dialog-title {
@@ -112,20 +113,20 @@
 
 .ui-dialog .ui-dialog-titlebar-close {
   position: absolute;
-  top: 18px;
+  top: 50%;
   opacity: .8;
-  margin: 0;
-  transform: none;
+  margin: 0 var(--gin-spacing-l);
+  transform: translateY(-50%);
   background: none;
   border: none;
 }
 
 [dir="ltr"] .ui-dialog .ui-dialog-titlebar-close {
-  right: 24px;
+  right: 0;
 }
 
 [dir="rtl"] .ui-dialog .ui-dialog-titlebar-close {
-  left: 24px;
+  left: 0;
 }
 
 .ui-dialog .ui-dialog-titlebar-close .ui-icon-closethick {
@@ -137,8 +138,8 @@
   background: #fff;
   -webkit-mask-image: url("../../media/sprite.svg#close-view");
           mask-image: url("../../media/sprite.svg#close-view");
-  -webkit-mask-size: 24px 24px;
-          mask-size: 24px 24px;
+  -webkit-mask-size: var(--gin-icon-size-close) var(--gin-icon-size-close);
+          mask-size: var(--gin-icon-size-close) var(--gin-icon-size-close);
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
   -webkit-mask-position: center center;
