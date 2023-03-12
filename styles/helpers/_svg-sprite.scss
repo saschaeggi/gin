@@ -58,6 +58,7 @@ $sprites: (
     'group': "../../media/sprite.svg#group-view",
     'hamburger': "../../media/sprite.svg#hamburger-view",
     'help': "../../media/sprite.svg#help-view",
+    'local-tasks': "../../media/sprite.svg#local-tasks-view",
     'nav-toggle-toleft': "../../media/sprite.svg#nav-toggle-toleft-view",
     'nav-toggle-totop': "../../media/sprite.svg#nav-toggle-totop-view",
     'people': "../../media/sprite.svg#people-view",
@@ -301,6 +302,10 @@ $sizes: (
         'height': 24px
     ),
     'help': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'local-tasks': (
         'width': 24px,
         'height': 24px
     ),

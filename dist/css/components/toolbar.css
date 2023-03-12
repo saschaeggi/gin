@@ -291,10 +291,16 @@ body.gin--classic-toolbar {
 }
 
 .toolbar .toolbar-bar .toolbar-icon-edit:before,
-.toolbar .toolbar-bar .toolbar-icon-local-tasks:before,
 .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:before {
   -webkit-mask-image: url("../../media/sprite.svg#edit-view");
           mask-image: url("../../media/sprite.svg#edit-view");
+  -webkit-mask-size: var(--gin-icon-size-toolbar-secondary) var(--gin-icon-size-toolbar-secondary);
+          mask-size: var(--gin-icon-size-toolbar-secondary) var(--gin-icon-size-toolbar-secondary);
+}
+
+.toolbar .toolbar-bar .toolbar-icon-local-tasks:before {
+  -webkit-mask-image: url("../../media/sprite.svg#local-tasks-view");
+          mask-image: url("../../media/sprite.svg#local-tasks-view");
   -webkit-mask-size: var(--gin-icon-size-toolbar-secondary) var(--gin-icon-size-toolbar-secondary);
           mask-size: var(--gin-icon-size-toolbar-secondary) var(--gin-icon-size-toolbar-secondary);
 }
