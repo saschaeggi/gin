@@ -794,7 +794,7 @@ details summary {
   position: relative;
   padding: 0 var(--gin-spacing-m) var(--gin-spacing-m) var(--gin-spacing-m);
   border-radius: var(--gin-border-m);
-  background: rgba(var(--gin-color-sticky-rgb), .9);
+  background: rgba(var(--gin-color-sticky-rgb), .95);
 }
 
 [dir="ltr"] .block-system > .views-form [data-drupal-selector*=edit-header],
