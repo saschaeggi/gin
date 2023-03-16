@@ -153,6 +153,10 @@
   }
 }
 
+ul.paragraphs-add-dialog-list {
+  margin: var(--gin-spacing-l) 0;
+}
+
 .ui-widget-overlay {
   opacity: .9;
   background: var(--gin-bg-layer2);
