@@ -135,6 +135,8 @@ gin_media_embed_ckeditor_theme:
 sticky:
   js:
     dist/js/sticky.js: { minified: false }
+  dependencies:
+    - core/drupal.displace
 
 sidebar:
   css:
