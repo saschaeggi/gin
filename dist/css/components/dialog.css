@@ -44,17 +44,10 @@
 
 .ui-dialog {
   position: absolute;
+  left: 0;
   top: 0;
   font-family: var(--gin-font);
   outline: none;
-}
-
-[dir="ltr"] .ui-dialog {
-  left: 0;
-}
-
-[dir="rtl"] .ui-dialog {
-  right: 0;
 }
 
 .ui-dialog, .ui-dialog:focus, .ui-dialog:focus:active, .ui-dialog:focus:hover {
@@ -74,6 +67,16 @@
   font-size: var(--gin-font-size-l);
   font-weight: var(--gin-font-weight-normal);
   color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+[dir="ltr"] .ui-dialog .ui-dialog-title {
+  padding-right: var(--gin-spacing-xl);
+}
+
+[dir="rtl"] .ui-dialog .ui-dialog-title {
+  padding-left: var(--gin-spacing-xl);
 }
 
 .ui-dialog .ui-dialog-content {
@@ -122,10 +125,12 @@
 }
 
 [dir="ltr"] .ui-dialog .ui-dialog-titlebar-close {
+  left: auto;
   right: 0;
 }
 
 [dir="rtl"] .ui-dialog .ui-dialog-titlebar-close {
+  right: auto;
   left: 0;
 }
 

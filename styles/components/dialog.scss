@@ -40,6 +40,7 @@
 
 .ui-dialog {
   position: absolute;
+  /*rtl:ignore*/
   left: 0;
   top: 0;
   font-family: var(--gin-font);
@@ -65,6 +66,9 @@
     font-size: var(--gin-font-size-l);
     font-weight: var(--gin-font-weight-normal);
     color: #fff;
+    width: 100%;
+    padding-right: var(--gin-spacing-xl);
+    box-sizing: border-box;
   }
 
   .ui-dialog-content {
@@ -103,6 +107,7 @@
   .ui-dialog-titlebar-close {
     position: absolute;
     top: 50%;
+    left: auto;
     right: 0;
     opacity: .8;
     margin: 0 var(--gin-spacing-l);
