@@ -10,7 +10,7 @@
   padding-bottom: 0;
 }
 
-.ief-entity-table tr.ief-row-form .form-item {
+.ief-entity-table .ief-row-form .form-item {
   margin-top: var(--gin-spacing-density-s);
   margin-bottom: var(--gin-spacing-density-s);
 }
