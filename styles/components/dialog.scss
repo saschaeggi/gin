@@ -134,6 +134,10 @@
     padding-right: var(--gin-spacing-l);
     background: var(--gin-bg-layer);
   }
+
+  .gin-layer-wrapper {
+    margin-bottom: var(--gin-spacing-l);
+  }
 }
 
 .erl-overlay,
@@ -147,6 +151,10 @@
   @include mq(large) {
     width: calc(100% - var(--gin-spacing-xxxl)) !important;
   }
+}
+
+ul.paragraphs-add-dialog-list {
+  margin: var(--gin-spacing-l) 0;
 }
 
 .ui-widget-overlay {

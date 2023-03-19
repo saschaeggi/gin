@@ -164,6 +164,10 @@
   background: var(--gin-bg-layer);
 }
 
+.ui-dialog .gin-layer-wrapper {
+  margin-bottom: var(--gin-spacing-l);
+}
+
 .erl-overlay,
 .layout-paragraphs-dialog {
   position: fixed !important;
@@ -188,6 +192,10 @@
   .layout-paragraphs-dialog {
     width: calc(100% - var(--gin-spacing-xxxl)) !important;
   }
+}
+
+ul.paragraphs-add-dialog-list {
+  margin: var(--gin-spacing-l) 0;
 }
 
 .ui-widget-overlay {
