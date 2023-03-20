@@ -3,12 +3,14 @@
 namespace Drupal\gin;
 
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+use Drupal\Core\Entity\ContentEntityFormInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Theme\ThemeManagerInterface;
+use Drupal\taxonomy\TermInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -94,6 +96,8 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     if (!$this->isContentForm($form, $form_state, $form_id)) {
       return;
     }
+
+    $base_form_id = $form_state->getBuildInfo()['base_form_id'] ?? NULL;
 
     // Provide a default meta form element if not already provided.
     // @see NodeForm::form()
@@ -202,6 +206,47 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       ];
     }
 
+    // Taxonomy term forms.
+    if ($base_form_id === 'taxonomy_term_form') {
+      $form_object = $form_state->getFormObject();
+      assert($form_object instanceof ContentEntityFormInterface);
+
+      $term = $form_object->getEntity();
+      assert($term instanceof TermInterface);
+
+      if ($form['langcode']) {
+        $form['langcode']['widget'][0]['#type'] = 'details';
+        $form['langcode']['widget'][0]['#group'] = 'advanced';
+      }
+
+      // Move pathauto into sidebar. We have to copy this code from the PathWidget
+      // because, at the time the PathWidget is processed the advanced group is
+      // still not present. The group will be created later in a form alter.
+      $form['path_settings'] = [
+        '#type' => 'details',
+        '#title' => t('URL path settings'),
+        '#open' => !empty($form['path']['widget'][0]['alias']['#value']),
+        '#group' => 'advanced',
+        '#access' => !empty($form['path']['#access']) && $term->hasField('path') && $term->get('path')->access('edit'),
+        '#attributes' => [
+          'class' => ['path-form'],
+        ],
+        '#attached' => [
+          'library' => ['path/drupal.path'],
+        ],
+        '#weight' => 30,
+      ];
+      $form['path']['#group'] = 'path_settings';
+
+      if ($form['content_translation']) {
+        $form['content_translation']['#group'] = 'advanced';
+      }
+
+      if ($form['relations']) {
+        $form['relations']['#group'] = 'advanced';
+      }
+    }
+
     // Specify necessary node form theme and library.
     // @see claro_form_node_form_alter
     $form['#theme'] = ['node_edit_form'];
@@ -247,6 +292,9 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       'node.add',
       'entity.node.content_translation_add',
       'entity.node.content_translation_edit',
+      'entity.taxonomy_term.edit_form',
+      'entity.taxonomy_term.add_form',
+      'entity.taxonomy_term.content_translation_add',
       'quick_node_clone.node.quick_clone',
       'entity.node.edit_form',
     ];
