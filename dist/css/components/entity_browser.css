@@ -48,7 +48,7 @@
   background-image: url("../../media/sprite.svg#trash-view");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 15px;
+  background-size: 15px 15px;
   border-radius: 50%;
   border-color: transparent !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
@@ -86,7 +86,7 @@
   background-image: url("../../media/sprite.svg#edit-view");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 15px;
+  background-size: 15px 15px;
   border-radius: 50%;
   border-color: transparent !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
