@@ -34,9 +34,10 @@
     stickyPosition: () => {
       let offsetTop = 0;
       if (!document.body.classList.contains('gin--classic-toolbar')) {
+        const toolbar = document.querySelector('#gin-toolbar-bar');
         offsetTop = document.querySelector('.region-sticky').clientHeight;
-        if (document.querySelector('#gin-toolbar-bar') !== null) {
-          offsetTop += document.querySelector('#gin-toolbar-bar').clientHeight;
+        if (toolbar) {
+          offsetTop += toolbar.clientHeight;
         }
       } else {
         offsetTop = document.querySelector('#toolbar-bar').clientHeight;
