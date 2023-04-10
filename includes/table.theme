@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * table.theme
+ */
+
+/**
+ * Implements form_alter() for tables.
+ */
+function gin_theme_suggestions_table_alter(array &$suggestions, array $variables) {
+  var_dump($variables['attributes']['id']);
+
+  $suggestions[] = 'table__' . str_replace('-', '_', $variables['attributes']['id']);
+}
