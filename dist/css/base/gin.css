@@ -3540,7 +3540,7 @@ table.diff tr .diff-deletedline .diffchange {
 }
 
 .gin--dark-mode table.diff tr .diff-deletedline .diffchange {
-  color: var(--gin-color-danger-light);
+  color: var(--gin-color-button-text);
 }
 
 table.diff tr .diff-addedline {
@@ -3556,7 +3556,7 @@ table.diff tr .diff-addedline .diffchange {
 }
 
 .gin--dark-mode table.diff tr .diff-addedline .diffchange {
-  color: var(--gin-color-green-lightest);
+  color: var(--gin-color-button-text);
 }
 
 [dir="ltr"] .project-update__version-links {

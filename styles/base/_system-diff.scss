@@ -28,7 +28,7 @@ table.diff {
 
       .gin--dark-mode & {
         .diffchange {
-          color: var(--gin-color-danger-light);
+          color: var(--gin-color-button-text);
         }
       }
     }
@@ -44,7 +44,7 @@ table.diff {
         background: var(--gin-bg-green);
 
         .diffchange {
-          color: var(--gin-color-green-lightest);
+          color: var(--gin-color-button-text);
         }
       }
     }
