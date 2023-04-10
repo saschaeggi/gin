@@ -393,6 +393,10 @@
   width: 100%;
 }
 
+.horizontal-tabs .horizontal-tabs {
+  margin-top: var(--gin-spacing-m);
+}
+
 .horizontal-tabs .horizontal-tabs-panes,
 .horizontal-tabs [data-horizontal-tabs-panes] {
   width: 100%;

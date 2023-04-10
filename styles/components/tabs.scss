@@ -318,6 +318,11 @@
     }
   }
 
+  // Nested horizontal tabs.
+  .horizontal-tabs {
+    margin-top: var(--gin-spacing-m);
+  }
+
   .horizontal-tabs-panes,
   [data-horizontal-tabs-panes] {
     width: 100%;
