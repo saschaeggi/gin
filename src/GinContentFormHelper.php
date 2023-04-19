@@ -181,7 +181,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       $form['gin_sidebar']['footer'] = ($form['footer']) ?? [];
       // Copy actions.
       $form['gin_sidebar']['actions'] = [];
-      $form['gin_sidebar']['actions']['#type'] = ($form['actions']['#type']) ?? [];
+      $form['gin_sidebar']['actions']['#type'] = ($form['actions']['#type']) ?? 'actions';
       // Copy delete action.
       $form['gin_sidebar']['actions']['delete'] = ($form['actions']['delete']) ?? [];
       // Copy delete_translation action.
