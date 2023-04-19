@@ -907,6 +907,17 @@ details summary {
   margin-left: var(--gin-spacing-xs);
 }
 
+.views-exposed-form.views-exposed-form .form-type--boolean.form-type--checkbox {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  margin-top: auto;
+}
+
+.views-exposed-form.views-exposed-form .form-type--boolean.form-type--checkbox .form-item__label {
+  margin-bottom: 0;
+}
+
 .views-exposed-form.views-exposed-form .fieldset--group {
   margin-top: var(--gin-spacing-s);
 }

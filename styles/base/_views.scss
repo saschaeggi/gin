@@ -116,6 +116,18 @@
     margin-right: var(--gin-spacing-xs);
   }
 
+  // Single on/off checkbox (through Better Exposed Filters)
+  .form-type--boolean.form-type--checkbox {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    margin-top: auto;
+
+    .form-item__label {
+      margin-bottom: 0;
+    }
+  }
+
   .fieldset--group {
     margin-top: var(--gin-spacing-s);
   }
