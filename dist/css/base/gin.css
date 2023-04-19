@@ -908,10 +908,8 @@ details summary {
 }
 
 .views-exposed-form.views-exposed-form .form-type--boolean.form-type--checkbox {
-  display: flex;
-  align-items: center;
-  height: 3rem;
   margin-top: auto;
+  margin-bottom: .75rem;
 }
 
 .views-exposed-form.views-exposed-form .form-type--boolean.form-type--checkbox .form-item__label {
