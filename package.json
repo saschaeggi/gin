@@ -39,7 +39,7 @@
     "file-loader": "^5.0.2",
     "img-loader": "^4.0.0",
     "mini-css-extract-plugin": "^0.11.3",
-    "postcss-loader": "^6.2.1",
+    "postcss-loader": "^7.2.4",
     "postcss-perfectionist": "^2.3.9",
     "postcss-rtlcss": "^3.5.2",
     "raw-loader": "^4.0.2",
