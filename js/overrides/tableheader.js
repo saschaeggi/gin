@@ -29,6 +29,11 @@
         window.onresize = () => {
           Drupal.debounce(this.handleResize(el), 150);
         };
+
+        // Watch Scroll Event.
+        window.onscroll = () => {
+          this.handleScroll(el);
+        };
       });
     },
     stickyPosition: () => {
@@ -73,6 +78,17 @@
         table.querySelector(`table.sticky-header > thead th:nth-of-type(${i+1})`).style.width = `${el.offsetWidth}px`;
         table.querySelector(`table.sticky-header`).style.width = `${el.parentNode.offsetWidth}px`;
       });
+    },
+    // Handle header sticky on scroll.
+    handleScroll: function (table) {
+      const scrollTop = document.documentElement['scrollTop'] || document.body['scrollTop'];
+      const tableTop = table.getBoundingClientRect().top + scrollTop;
+      const tableBottom = tableTop + table.offsetHeight;
+      if (tableTop < scrollTop && scrollTop < tableBottom - 100) {
+        table.querySelector('.sticky-header').style.visibility = 'visible';
+      } else {
+        table.querySelector('.sticky-header').style.visibility = 'hidden';
+      }
     },
   };
 
