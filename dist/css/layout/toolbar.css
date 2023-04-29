@@ -223,6 +223,7 @@
 @media (max-width: 60.99em) {
   .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
   .toolbar .toolbar-tray a.is-active {
+    width: 100%;
     background: var(--gin-color-primary-light);
   }
 }
@@ -369,16 +370,23 @@ a.toolbar-menu__trigger,
     width: var(--gin-toolbar-width);
   }
 
-  .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item.hover-intent ul {
+  .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item.hover-intent ul,
+  .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item:focus-within ul {
     margin-top: 0;
   }
 
-  [dir="ltr"] .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item.hover-intent ul {
+  [dir="ltr"] .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item.hover-intent ul,
+  [dir="ltr"] .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item:focus-within ul {
     margin-left: calc(var(--gin-toolbar-width) - 2px);
   }
 
-  [dir="rtl"] .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item.hover-intent ul {
+  [dir="rtl"] .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item.hover-intent ul,
+  [dir="rtl"] .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item:focus-within ul {
     margin-right: calc(var(--gin-toolbar-width) - 2px);
+  }
+
+  .toolbar-tray-horizontal .toolbar-menu-administration .toolbar-icon.toolbar-handle {
+    display: none !important;
   }
 
   .toolbar-vertical .toolbar-menu-administration {
@@ -567,6 +575,9 @@ a.toolbar-menu__trigger,
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item .toolbar-icon {
     font-size: var(--gin-font-size);
+    display: block;
+    width: 100%;
+    max-width: calc(100% - var(--gin-spacing-l));
     margin: .25em var(--gin-spacing-s);
     border-radius: var(--gin-border-m);
     overflow: hidden;
@@ -599,22 +610,26 @@ a.toolbar-menu__trigger,
     background-size: 100% 40px, 100% 40px, 100% 24px, 100% 24px;
   }
 
-  .toolbar-menu-administration .menu-item.hover-intent > .toolbar-menu {
+  .toolbar-menu-administration .menu-item.hover-intent > .toolbar-menu,
+  .toolbar-menu-administration .menu-item:focus-within > .toolbar-menu {
     z-index: 2;
     display: block;
   }
 
-  [dir="ltr"] .toolbar-menu-administration .menu-item.hover-intent > .toolbar-menu {
+  [dir="ltr"] .toolbar-menu-administration .menu-item.hover-intent > .toolbar-menu,
+  [dir="ltr"] .toolbar-menu-administration .menu-item:focus-within > .toolbar-menu {
     border-right: 1px solid rgba(0, 0, 0, .075);
     box-shadow: 7px 0 16px rgba(0, 0, 0, .075), -12px 0 0 0 var(--gin-bg-layer);
   }
 
-  [dir="rtl"] .toolbar-menu-administration .menu-item.hover-intent > .toolbar-menu {
+  [dir="rtl"] .toolbar-menu-administration .menu-item.hover-intent > .toolbar-menu,
+  [dir="rtl"] .toolbar-menu-administration .menu-item:focus-within > .toolbar-menu {
     border-left: 1px solid rgba(0, 0, 0, .075);
     box-shadow: -7px 0 16px rgba(0, 0, 0, .075), 12px 0 0 0 var(--gin-bg-layer);
   }
 
-  .toolbar-menu-administration .menu-item .menu-item:hover > .toolbar-icon {
+  .toolbar-menu-administration .menu-item .menu-item:hover > .toolbar-icon,
+  .toolbar-menu-administration .menu-item .menu-item:hover > .toolbar-box .toolbar-icon {
     color: var(--gin-color-primary-hover);
     background: var(--gin-color-primary-light);
   }

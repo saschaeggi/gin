@@ -494,6 +494,11 @@ body.gin--classic-toolbar {
   background: #5a5a61;
 }
 
+.toolbar-tray-horizontal .menu-item.hover-intent,
+.toolbar-tray-horizontal .menu-item--expanded {
+  background-color: transparent;
+}
+
 .toolbar-tray-horizontal ul li.menu-item .menu-item {
   background: transparent;
   border-left: none;
@@ -501,15 +506,7 @@ body.gin--classic-toolbar {
   border-bottom: 0 none;
 }
 
-.toolbar-tray-horizontal ul li.menu-item--expanded {
-  background-color: transparent;
-}
-
-[dir=rtl] .toolbar-tray-horizontal ul li.menu-item--expanded {
-  background-color: transparent;
-}
-
-.toolbar-tray-horizontal ul li.menu-item--expanded.hover-intent ul {
+.toolbar-tray-horizontal ul li.menu-item--expanded.hover-intent ul, .toolbar-tray-horizontal ul li.menu-item--expanded:focus-within ul {
   box-shadow: 0 8px 14px rgba(0, 0, 0, .15);
 }
 
@@ -603,7 +600,8 @@ body.gin--classic-toolbar {
   padding-right: 3.25em;
 }
 
-.toolbar .toolbar-tray-vertical .toolbar-menu a:hover, .toolbar .toolbar-tray-vertical .toolbar-menu a:focus,
+.toolbar .toolbar-tray-vertical .toolbar-menu a:visited, .toolbar .toolbar-tray-vertical .toolbar-menu a:hover, .toolbar .toolbar-tray-vertical .toolbar-menu a:focus,
+.toolbar .toolbar-tray-vertical .toolbar-menu span:visited,
 .toolbar .toolbar-tray-vertical .toolbar-menu span:hover,
 .toolbar .toolbar-tray-vertical .toolbar-menu span:focus {
   color: var(--gin-color-text);
@@ -796,8 +794,70 @@ body.gin--classic-toolbar {
 }
 
 .ui-autocomplete.admin-toolbar-search-autocomplete-list .ui-menu-item-wrapper.ui-state-active {
-  color: var(--gin-color-button-text);
   background-color: var(--gin-color-primary);
   border: 0 none;
+}
+
+.ui-autocomplete.admin-toolbar-search-autocomplete-list .ui-menu-item-wrapper.ui-state-active, .ui-autocomplete.admin-toolbar-search-autocomplete-list .ui-menu-item-wrapper.ui-state-active a {
+  color: var(--gin-color-button-text);
+}
+
+.toolbar-tray-horizontal .toolbar-menu .level-1 > .toolbar-box .toolbar-icon.toolbar-handle, .toolbar-tray-horizontal .toolbar-menu .level-1 > .toolbar-box .toolbar-handle.responsive-preview-icon {
+  position: absolute;
+  top: 1.1875rem;
+  width: 1rem;
+  height: 1rem;
+  padding: 0;
+}
+
+[dir="ltr"] .toolbar-tray-horizontal .toolbar-menu .level-1 > .toolbar-box .toolbar-icon.toolbar-handle, [dir="ltr"] .toolbar-tray-horizontal .toolbar-menu .level-1 > .toolbar-box .toolbar-handle.responsive-preview-icon {
+  right: .5rem;
+}
+
+[dir="rtl"] .toolbar-tray-horizontal .toolbar-menu .level-1 > .toolbar-box .toolbar-icon.toolbar-handle, [dir="rtl"] .toolbar-tray-horizontal .toolbar-menu .level-1 > .toolbar-box .toolbar-handle.responsive-preview-icon {
+  left: .5rem;
+}
+
+.toolbar-tray-horizontal .toolbar-menu .level-1 > .toolbar-box .toolbar-icon.toolbar-handle::before, .toolbar-tray-horizontal .toolbar-menu .level-1 > .toolbar-box .toolbar-handle.responsive-preview-icon::before {
+  top: 0;
+  -webkit-mask-size: 12px 12px;
+          mask-size: 12px 12px;
+}
+
+[dir="ltr"] .toolbar-tray-horizontal .toolbar-menu .level-1 > .toolbar-box .toolbar-icon.toolbar-handle::before, [dir="ltr"] .toolbar-tray-horizontal .toolbar-menu .level-1 > .toolbar-box .toolbar-handle.responsive-preview-icon::before {
+  left: 0;
+}
+
+[dir="rtl"] .toolbar-tray-horizontal .toolbar-menu .level-1 > .toolbar-box .toolbar-icon.toolbar-handle::before, [dir="rtl"] .toolbar-tray-horizontal .toolbar-menu .level-1 > .toolbar-box .toolbar-handle.responsive-preview-icon::before {
+  right: 0;
+}
+
+.toolbar-tray-horizontal .level-1 .menu-item--expanded > .toolbar-box .toolbar-handle {
+  position: absolute;
+  top: 0;
+  width: 39px;
+  height: 100%;
+  padding: 0;
+  background: none;
+}
+
+[dir="ltr"] .toolbar-tray-horizontal .level-1 .menu-item--expanded > .toolbar-box .toolbar-handle {
+  right: 0;
+}
+
+[dir="rtl"] .toolbar-tray-horizontal .level-1 .menu-item--expanded > .toolbar-box .toolbar-handle {
+  left: 0;
+}
+
+.toolbar-tray-horizontal .level-1 .menu-item--expanded > .toolbar-box .toolbar-handle:focus {
+  box-shadow: inset 0 0 0 1px var(--gin-color-focus-border), inset 0 0 0 4px var(--gin-color-focus);
+}
+
+.toolbar-tray-horizontal .level-1 .menu-item--expanded > .toolbar-box .toolbar-handle::before {
+  display: none !important;
+}
+
+.toolbar-tray-horizontal .toolbar-icon:not(.toolbar-handle), .toolbar-tray-horizontal .responsive-preview-icon:not(.toolbar-handle) {
+  width: 100%;
 }
 

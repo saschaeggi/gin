@@ -35,10 +35,6 @@
   box-shadow: 0 1px 2px var(--gin-color-primary-light);
   transition: var(--gin-transition);
 
-  .gin--dark-mode & {
-    box-shadow: 0 2px 18px var(--gin-shadow-button);
-  }
-
   &:hover {
     background-color: var(--gin-color-primary-hover);
     border-color: var(--gin-color-primary-hover) !important;

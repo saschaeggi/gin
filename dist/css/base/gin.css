@@ -1849,6 +1849,10 @@ td.webform-has-field-suffix > .form-item > .form-element {
   background-color: var(--gin-color-primary);
 }
 
+.gin--dark-mode .form-boolean--type-checkbox:checked {
+  background-image: url("../../media/sprite.svg#checked-view");
+}
+
 .form-boolean--type-checkbox:checked:hover {
   background-color: var(--gin-color-primary-hover);
 }
@@ -2319,13 +2323,6 @@ tr .form-item {
   border-radius: var(--gin-border-m);
   box-shadow: 0 1px 2px var(--gin-color-primary-light);
   transition: var(--gin-transition);
-}
-
-.gin--dark-mode .button,
-.gin--dark-mode .button:not(:focus),
-.gin--dark-mode .form-actions .button,
-.gin--dark-mode .action-link--icon-trash.action-link {
-  box-shadow: 0 2px 18px var(--gin-shadow-button);
 }
 
 .button:hover,
@@ -3117,6 +3114,7 @@ a.button.button--danger:active:before {
   border-radius: var(--gin-border-m);
   border-color: transparent !important;
   transition: var(--gin-transition);
+  box-shadow: none;
 }
 
 [dir="ltr"] .messages .button--dismiss {
@@ -3454,7 +3452,8 @@ hr {
 .layout-paragraphs-field .layout-paragraphs-actions input.layout-paragraphs-remove:focus,
 .ck .ck.ck-button:active,
 .ck .ck.ck-button:focus,
-.ck .ck.ck-button:active:focus {
+.ck .ck.ck-button:active:focus,
+.toolbar-box .toolbar-handle:focus {
   outline: none;
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }
