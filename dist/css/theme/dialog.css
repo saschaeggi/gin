@@ -138,13 +138,6 @@
   transition: var(--gin-transition);
 }
 
-.gin--dark-mode .ui-dialog .button,
-.gin--dark-mode .ui-dialog .button:not(:focus),
-.gin--dark-mode .ui-dialog .form-actions .button,
-.gin--dark-mode .ui-dialog .action-link--icon-trash.action-link {
-  box-shadow: 0 2px 18px var(--gin-shadow-button);
-}
-
 .ui-dialog .button:hover,
 .ui-dialog .button:not(:focus):hover,
 .ui-dialog .form-actions .button:hover,
@@ -402,6 +395,10 @@
 
 .ui-dialog .form-boolean--type-checkbox:checked {
   background-color: var(--gin-color-primary);
+}
+
+.gin--dark-mode .ui-dialog .form-boolean--type-checkbox:checked {
+  background-image: url("../../media/sprite.svg#checked-view");
 }
 
 .ui-dialog .form-boolean--type-checkbox:checked:hover {

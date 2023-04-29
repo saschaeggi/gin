@@ -18,7 +18,9 @@
 .layout-paragraphs-field .layout-paragraphs-actions input.layout-paragraphs-remove:focus,
 .ck .ck.ck-button:active,
 .ck .ck.ck-button:focus,
-.ck .ck.ck-button:active:focus {
+.ck .ck.ck-button:active:focus,
+.toolbar-box .toolbar-handle:focus
+{
   outline: none;
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }

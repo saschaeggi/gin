@@ -40,25 +40,22 @@
 }
 
 .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
-.toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
+.toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:not(.toolbar-handle) {
   padding-top: 20px;
   padding-bottom: 20px;
   white-space: nowrap;
 }
 
 [dir="ltr"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
-[dir="ltr"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
+[dir="ltr"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:not(.toolbar-handle) {
   padding-left: 3em;
+  padding-right: 2.25em;
 }
 
 [dir="rtl"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
-[dir="rtl"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
+[dir="rtl"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:not(.toolbar-handle) {
   padding-right: 3em;
-}
-
-.toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon::before,
-.toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon::before {
-  margin-top: -1px;
+  padding-left: 2.25em;
 }
 
 [dir="ltr"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:not(.toolbar-handle)::before {
@@ -69,20 +66,24 @@
   right: var(--gin-spacing-s);
 }
 
-.toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu .toolbar-icon.toolbar-handle {
-  width: 48px;
+.toolbar .toolbar-bar .toolbar-toggle-orientation {
+  display: none !important;
 }
 
-[dir="ltr"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu .toolbar-icon.toolbar-handle:before {
+.toolbar-tray-vertical .toolbar-menu .level-1 > .toolbar-box .toolbar-icon.toolbar-handle {
+  width: 3rem;
+}
+
+[dir="ltr"] .toolbar-tray-vertical .toolbar-menu .level-1 > .toolbar-box .toolbar-icon.toolbar-handle:before {
   left: var(--gin-spacing-m);
 }
 
-[dir="rtl"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu .toolbar-icon.toolbar-handle:before {
+[dir="rtl"] .toolbar-tray-vertical .toolbar-menu .level-1 > .toolbar-box .toolbar-icon.toolbar-handle:before {
   right: var(--gin-spacing-m);
 }
 
-.toolbar .toolbar-bar .toolbar-toggle-orientation {
-  display: none !important;
+.toolbar-tray-horizontal .level-1 .menu-item--expanded > .toolbar-box a {
+  width: 100%;
 }
 
 .toolbar-horizontal .toolbar-tray {
@@ -90,6 +91,7 @@
 }
 
 .toolbar .toolbar-menu,
+.toolbar-horizontal .menu-item > .toolbar-menu,
 .toolbar-horizontal .toolbar-tray .menu-item--expanded.menu-item--expanded,
 .toolbar .toolbar-tray {
   background-color: var(--gin-bg-layer);
@@ -132,13 +134,17 @@
   background: var(--gin-color-primary);
 }
 
-.toolbar .toolbar-tray .hover-intent > .toolbar-icon {
+.toolbar .toolbar-tray .hover-intent > .toolbar-icon,
+.toolbar .toolbar-tray .hover-intent > .toolbar-box > .toolbar-icon:not(.toolbar-handle) {
   color: var(--gin-color-primary-hover);
   background-color: var(--gin-bg-item-hover);
 }
 
-.toolbar .toolbar-tray .hover-intent > .toolbar-icon::before {
-  background: var(--gin-color-primary);
+.toolbar .toolbar-tray .hover-intent > .toolbar-icon::before,
+.toolbar .toolbar-tray .hover-intent > .toolbar-icon + .toolbar-handle::before,
+.toolbar .toolbar-tray .hover-intent > .toolbar-box > .toolbar-icon:not(.toolbar-handle)::before,
+.toolbar .toolbar-tray .hover-intent > .toolbar-box > .toolbar-icon:not(.toolbar-handle) + .toolbar-handle::before {
+  background-color: var(--gin-color-primary);
 }
 
 .toolbar-tray-horizontal a:focus,
@@ -153,13 +159,8 @@
   display: none !important;
 }
 
-.toolbar .level-2 > ul,
 .gin--dark-mode .toolbar .toolbar-toggle-orientation {
   background-color: var(--gin-bg-layer2);
-}
-
-.toolbar .level-3 > ul {
-  background-color: var(--gin-bg-app);
 }
 
 @media (min-width: 64em) {

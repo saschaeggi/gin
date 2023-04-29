@@ -39,27 +39,16 @@
       > .toolbar-menu {
         > .menu-item {
           > .toolbar-icon,
-          > .toolbar-box > .toolbar-icon {
+          > .toolbar-box > .toolbar-icon:not(.toolbar-handle) {
             padding-top: 20px;
             padding-bottom: 20px;
             padding-left: 3em;
+            padding-right: 2.25em;
             white-space: nowrap;
-
-            &::before {
-              margin-top: -1px;
-            }
           }
 
           > .toolbar-box > .toolbar-icon:not(.toolbar-handle)::before {
             left: var(--gin-spacing-s);
-          }
-        }
-
-        .toolbar-icon.toolbar-handle {
-          width: 48px;
-
-          &:before {
-            left: var(--gin-spacing-m);
           }
         }
       }
@@ -71,11 +60,24 @@
   }
 }
 
+.toolbar-tray-vertical .toolbar-menu .level-1 > .toolbar-box .toolbar-icon.toolbar-handle {
+  width: 3rem;
+
+  &:before {
+    left: var(--gin-spacing-m);
+  }
+}
+
+.toolbar-tray-horizontal .level-1 .menu-item--expanded > .toolbar-box a {
+  width: 100%;
+}
+
 .toolbar-horizontal .toolbar-tray {
   border-bottom: 0 none;
 }
 
 .toolbar .toolbar-menu,
+.toolbar-horizontal .menu-item > .toolbar-menu,
 .toolbar-horizontal .toolbar-tray .menu-item--expanded.menu-item--expanded,
 .toolbar .toolbar-tray {
   background-color: var(--gin-bg-layer);
@@ -108,12 +110,14 @@
   }
 }
 
-.toolbar .toolbar-tray .hover-intent > .toolbar-icon {
+.toolbar .toolbar-tray .hover-intent > .toolbar-icon,
+.toolbar .toolbar-tray .hover-intent > .toolbar-box > .toolbar-icon:not(.toolbar-handle) {
   color: var(--gin-color-primary-hover);
   background-color: var(--gin-bg-item-hover);
 
-  &::before {
-    background: var(--gin-color-primary);
+  &::before,
+  + .toolbar-handle::before {
+    background-color: var(--gin-color-primary);
   }
 }
 
@@ -129,13 +133,8 @@
   display: none !important;
 }
 
-.toolbar .level-2 > ul,
 .gin--dark-mode .toolbar .toolbar-toggle-orientation {
   background-color: var(--gin-bg-layer2);
-}
-
-.toolbar .level-3 > ul {
-  background-color: var(--gin-bg-app);
 }
 
 .gin--classic-toolbar {
