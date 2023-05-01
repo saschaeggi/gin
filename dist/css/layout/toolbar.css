@@ -213,7 +213,7 @@
   color: var(--gin-color-text);
 }
 
-.toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
+.toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box > a.toolbar-icon,
 .toolbar .toolbar-tray a.is-active {
   color: var(--gin-color-primary);
   font-weight: var(--gin-font-weight-semibold);
@@ -221,7 +221,7 @@
 }
 
 @media (max-width: 60.99em) {
-  .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
+  .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box > a.toolbar-icon,
   .toolbar .toolbar-tray a.is-active {
     width: 100%;
     background: var(--gin-color-primary-light);
@@ -561,6 +561,7 @@ a.toolbar-menu__trigger,
   }
 
   .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item {
+    float: none;
     border-top: 0 none;
     border-bottom: 0 none;
   }
@@ -629,7 +630,9 @@ a.toolbar-menu__trigger,
   }
 
   .toolbar-menu-administration .menu-item .menu-item:hover > .toolbar-icon,
-  .toolbar-menu-administration .menu-item .menu-item:hover > .toolbar-box .toolbar-icon {
+  .toolbar-menu-administration .menu-item .menu-item:focus-within > .toolbar-icon,
+  .toolbar-menu-administration .menu-item .menu-item:hover > .toolbar-box > .toolbar-icon,
+  .toolbar-menu-administration .menu-item .menu-item:focus-within > .toolbar-box > .toolbar-icon {
     color: var(--gin-color-primary-hover);
     background: var(--gin-color-primary-light);
   }

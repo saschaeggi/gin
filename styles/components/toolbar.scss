@@ -487,6 +487,7 @@ body.gin--classic-toolbar {
 .toolbar-tray-horizontal {
   // admin_toolbar 3.3.1 fix
   .menu-item.hover-intent,
+  .menu-item:focus-within,
   .menu-item--expanded {
     background-color: transparent;
   }
@@ -555,7 +556,8 @@ body.gin--classic-toolbar {
 
   &.menu-item--active-trail,
   &:hover,
-  &:focus {
+  &:focus,
+  &:focus-within {
     &::before {
       background-color: var(--gin-color-primary);
     }

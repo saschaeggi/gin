@@ -495,6 +495,7 @@ body.gin--classic-toolbar {
 }
 
 .toolbar-tray-horizontal .menu-item.hover-intent,
+.toolbar-tray-horizontal .menu-item:focus-within,
 .toolbar-tray-horizontal .menu-item--expanded {
   background-color: transparent;
 }
@@ -567,19 +568,23 @@ body.gin--classic-toolbar {
   transform: scaleX(-1);
 }
 
-.toolbar .toolbar-icon.toolbar-handle.menu-item--active-trail::before, .toolbar .toolbar-handle.menu-item--active-trail.responsive-preview-icon::before, .toolbar .toolbar-icon.toolbar-handle:hover::before, .toolbar .toolbar-handle.responsive-preview-icon:hover::before, .toolbar .toolbar-icon.toolbar-handle:focus::before, .toolbar .toolbar-handle.responsive-preview-icon:focus::before,
+.toolbar .toolbar-icon.toolbar-handle.menu-item--active-trail::before, .toolbar .toolbar-handle.menu-item--active-trail.responsive-preview-icon::before, .toolbar .toolbar-icon.toolbar-handle:hover::before, .toolbar .toolbar-handle.responsive-preview-icon:hover::before, .toolbar .toolbar-icon.toolbar-handle:focus::before, .toolbar .toolbar-handle.responsive-preview-icon:focus::before, .toolbar .toolbar-icon.toolbar-handle:focus-within::before, .toolbar .toolbar-handle.responsive-preview-icon:focus-within::before,
 .toolbar .toolbar-icon.toolbar-handle.open.menu-item--active-trail::before,
 .toolbar .toolbar-icon.toolbar-handle.open:hover::before,
 .toolbar .toolbar-icon.toolbar-handle.open:focus::before,
+.toolbar .toolbar-icon.toolbar-handle.open:focus-within::before,
 .toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.menu-item--active-trail::before,
 .toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle:hover::before,
 .toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle:focus::before,
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle:focus-within::before,
 .toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open.menu-item--active-trail::before,
 .toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open:hover::before,
 .toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open:focus::before,
+.toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open:focus-within::before,
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded.menu-item--active-trail::before,
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:hover::before,
-.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:focus::before {
+.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:focus::before,
+.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:focus-within::before {
   background-color: var(--gin-color-primary);
 }
 
