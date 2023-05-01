@@ -39,6 +39,7 @@
 
 .gin--edit-form .layout-node-form {
   overflow: inherit;
+  display: block;
 }
 
 .gin--edit-form .layout-region-node-main,
