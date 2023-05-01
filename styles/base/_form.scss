@@ -115,8 +115,10 @@ $maxWidth: 520px;
   &:checked {
     background-color: var(--gin-color-primary);
 
-    .gin--dark-mode & {
-      background-image: icon('checked');
+    &:not(:disabled) {
+      .gin--dark-mode & {
+        background-image: icon('checked');
+      }
     }
 
     &:hover {

@@ -1849,7 +1849,7 @@ td.webform-has-field-suffix > .form-item > .form-element {
   background-color: var(--gin-color-primary);
 }
 
-.gin--dark-mode .form-boolean--type-checkbox:checked {
+.gin--dark-mode .form-boolean--type-checkbox:checked:not(:disabled) {
   background-image: url("../../media/sprite.svg#checked-view");
 }
 

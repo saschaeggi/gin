@@ -397,7 +397,7 @@
   background-color: var(--gin-color-primary);
 }
 
-.gin--dark-mode .ui-dialog .form-boolean--type-checkbox:checked {
+.gin--dark-mode .ui-dialog .form-boolean--type-checkbox:checked:not(:disabled) {
   background-image: url("../../media/sprite.svg#checked-view");
 }
 
