@@ -99,7 +99,8 @@
 
     // Custom logo
     #toolbar-item-administration-tray .toolbar-logo {
-      padding: var(--gin-spacing-xs) var(--gin-spacing-s);
+      display: block;
+      padding: var(--gin-spacing-xs) 0;
 
       img {
         max-width: calc(var(--gin-toolbar-width-collapsed) - 1px);
