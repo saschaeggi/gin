@@ -2731,6 +2731,10 @@ html.js .dropbutton-wrapper:not(.open) .dropbutton__items .dropbutton__item:firs
   display: block;
 }
 
+html.js .dropbutton-widget {
+  background-color: transparent;
+}
+
 html[dir="ltr"].js.no-touchevents .dropbutton--multiple.dropbutton--small .dropbutton__item:first-of-type {
   margin-right: 0;
 }

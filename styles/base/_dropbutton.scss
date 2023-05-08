@@ -194,6 +194,10 @@ html.js {
   .dropbutton-wrapper:not(.open) .dropbutton__items .dropbutton__item:first-of-type ~ .dropbutton__item {
     display: block;
   }
+
+  .dropbutton-widget {
+    background-color: transparent;
+  }
 }
 
 html.js.no-touchevents {
