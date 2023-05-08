@@ -1,9 +1,9 @@
 services:
   php:
-    image: q0rban/tugboat-drupal:9.1
+    image: q0rban/tugboat-drupal:10
     default: true
     http: false
-    # depends: mysql
+    depends: mysql
     commands:
       # init: # prevents warning - Program sqlite3 not found.
       #   - apt-get update
@@ -67,5 +67,5 @@ services:
         composer update drupal/gin
         vendor/bin/drush --yes updb
         vendor/bin/drush cache:rebuild
-  # mysql:
-  #   image: tugboatqa/mariadb
+  mysql:
+    image: tugboatqa/mariadb
