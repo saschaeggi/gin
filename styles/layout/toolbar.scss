@@ -99,6 +99,7 @@
 
     // Custom logo
     #toolbar-item-administration-tray .toolbar-logo {
+      display: block;
       padding: var(--gin-spacing-xs) 0;
 
       img {

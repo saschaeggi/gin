@@ -115,6 +115,7 @@
 }
 
 .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-logo {
+  display: block;
   padding: var(--gin-spacing-xs) 0;
 }
 
