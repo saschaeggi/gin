@@ -74,11 +74,8 @@
 
   &--remove {
     .shortcut-action__icon {
+      mask-image: icon('shortcut-filled');
       background: var(--gin-color-primary);
-
-      .gin--high-contrast-mode & {
-        mask-image: icon('shortcut-filled');
-      }
     }
 
     &:hover .shortcut-action__icon {
@@ -88,11 +85,13 @@
   }
 
   &__message {
+    z-index: 2;
     position: absolute;
-    top: calc(100% + var(--gin-spacing-xs));
-    right: 0;
+    top: 0;
+    left: 100%;
     min-width: 120px;
     pointer-events: none;
+    white-space: nowrap;
     padding: var(--gin-spacing-xs);
     margin-top: calc(var(--gin-spacing-xxs) * -1);
     color: var(--gin-color-contextual-text);

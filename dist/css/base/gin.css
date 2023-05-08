@@ -586,12 +586,9 @@ body:not(.toolbar-tray-open) .layout-container {
 }
 
 .shortcut-action--remove .shortcut-action__icon {
-  background: var(--gin-color-primary);
-}
-
-.gin--high-contrast-mode .shortcut-action--remove .shortcut-action__icon {
   -webkit-mask-image: url("../../media/sprite.svg#shortcut-filled-view");
           mask-image: url("../../media/sprite.svg#shortcut-filled-view");
+  background: var(--gin-color-primary);
 }
 
 .shortcut-action--remove:hover .shortcut-action__icon {
@@ -600,10 +597,12 @@ body:not(.toolbar-tray-open) .layout-container {
 }
 
 .shortcut-action__message {
+  z-index: 2;
   position: absolute;
-  top: calc(100% + var(--gin-spacing-xs));
+  top: 0;
   min-width: 120px;
   pointer-events: none;
+  white-space: nowrap;
   padding: var(--gin-spacing-xs);
   margin-top: calc(var(--gin-spacing-xxs) * -1);
   color: var(--gin-color-contextual-text);
@@ -612,11 +611,11 @@ body:not(.toolbar-tray-open) .layout-container {
 }
 
 [dir="ltr"] .shortcut-action__message {
-  right: 0;
+  left: 100%;
 }
 
 [dir="rtl"] .shortcut-action__message {
-  left: 0;
+  right: 100%;
 }
 
 .modules-table-filter {

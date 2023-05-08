@@ -36,7 +36,8 @@
 }
 
 .toolbar .toolbar-menu,
-.toolbar-horizontal .toolbar-tray .menu-item--expanded,
+.toolbar-horizontal .menu-item > .toolbar-menu,
+.toolbar-horizontal .toolbar-tray .menu-item--expanded.menu-item--expanded,
 .toolbar .toolbar-tray {
   background-color: var(--gin-bg-layer);
 }
