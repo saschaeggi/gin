@@ -11,11 +11,13 @@
         // Watch sticky table header.
         const observer = new IntersectionObserver(
           ([e]) => {
-            if (context.querySelector('.gin-table-scroll-wrapper')) {
-              context.querySelector('.gin-table-scroll-wrapper').classList.toggle('--is-sticky', e.intersectionRatio < 1 || window.scrollY > context.querySelector('.gin-table-scroll-wrapper').offsetTop);
+            if (!e.isIntersecting && e.intersectionRect.top == e.rootBounds.top) {
+              context.querySelector('.gin-table-scroll-wrapper').classList.add('--is-sticky');
+            } else {
+              context.querySelector('.gin-table-scroll-wrapper').classList.remove('--is-sticky');
             }
           },
-          { threshold: [1], rootMargin: `-${this.stickyPosition()}px 0px 0px 0px` }
+          { threshold: 1.0, rootMargin: `-${this.stickyPosition()}px 0px 0px 0px` }
         );
         observer.observe(el.querySelector('thead'));
 
@@ -74,6 +76,7 @@
         table.querySelector(`table.sticky-header`).style.width = `${el.parentNode.offsetWidth}px`;
       });
     },
+
   };
 
 })(Drupal, once);
