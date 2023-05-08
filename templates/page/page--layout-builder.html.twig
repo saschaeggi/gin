@@ -41,8 +41,12 @@
 #}
 
 <div class="layout-container">
-	{{ page.pre_content }}
-	<main class="page-content clearfix" role="main">
-		{{ page.content|without(local_actions_block) }}
-	</main>
+  {{ page.pre_content }}
+  <main class="page-content clearfix" role="main">
+    {% if page.content.local_actions_block %}
+      {{ page.content|without(local_actions_block) }}
+    {% else %}
+      {{ page.content }}
+    {% endif %}
+  </main>
 </div>
