@@ -9,15 +9,18 @@
     init: function (context) {
       once('ginTableHeader', '.sticky-enabled', context).forEach(el => {
         // Watch sticky table header.
+        const stickyOffsetTop = this.stickyPosition();
         const observer = new IntersectionObserver(
           ([e]) => {
-            if (!e.isIntersecting && e.intersectionRect.top == e.rootBounds.top) {
-              context.querySelector('.gin-table-scroll-wrapper').classList.add('--is-sticky');
-            } else {
-              context.querySelector('.gin-table-scroll-wrapper').classList.remove('--is-sticky');
+            if (context.querySelector('.gin-table-scroll-wrapper')) {
+              if (!e.isIntersecting && e.rootBounds.top === stickyOffsetTop) {
+                context.querySelector('.gin-table-scroll-wrapper').classList.add('--is-sticky');
+              } else {
+                context.querySelector('.gin-table-scroll-wrapper').classList.remove('--is-sticky');
+              }
             }
           },
-          { threshold: 1.0, rootMargin: `-${this.stickyPosition()}px 0px 0px 0px` }
+          { threshold: 1.0, rootMargin: `-${stickyOffsetTop}px 0px 0px 0px` }
         );
         observer.observe(el.querySelector('thead'));
 
@@ -35,14 +38,14 @@
     },
     stickyPosition: () => {
       let offsetTop = 0;
-      if (!document.body.classList.contains('gin--classic-toolbar')) {
+      if (document.body.classList.contains('gin--classic-toolbar')) {
+        offsetTop = document.querySelector('#toolbar-bar').clientHeight;
+      } else {
         const toolbar = document.querySelector('#gin-toolbar-bar');
         offsetTop = document.querySelector('.region-sticky').clientHeight;
         if (toolbar) {
           offsetTop += toolbar.clientHeight;
         }
-      } else {
-        offsetTop = document.querySelector('#toolbar-bar').clientHeight;
       }
 
       return offsetTop;

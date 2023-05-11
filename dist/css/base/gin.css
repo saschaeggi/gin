@@ -3782,6 +3782,10 @@ tr.color-error:focus,
   box-shadow: none;
 }
 
+.block-system > form .gin-layer-wrapper {
+  padding-bottom: 1px;
+}
+
 .compact-link {
   font-size: var(--gin-font-size-s);
 }
