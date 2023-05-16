@@ -552,7 +552,7 @@
   }
 }
 
-.vertical-tabs__items .vertical-tabs__item .claro-details__wrapper {
+.vertical-tabs__items .vertical-tabs__item > .claro-details__wrapper {
   display: inline-block;
   width: 100%;
 }
