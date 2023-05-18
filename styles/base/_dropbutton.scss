@@ -162,7 +162,7 @@
     > a,
     > input,
     > .button {
-      font-size: var(--gin-font-size-s);
+      font-size: var(--gin-font-size-s) !important;
       padding: .75em 1em !important;
     }
   }

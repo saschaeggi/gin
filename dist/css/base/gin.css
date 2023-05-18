@@ -2709,7 +2709,7 @@ a.button:active {
 .dropbutton .dropbutton__items > .dropbutton__item > .button, .dropbutton > .dropbutton__items > .dropbutton__item ~ .dropbutton__item > a,
 .dropbutton > .dropbutton__items > .dropbutton__item ~ .dropbutton__item > input,
 .dropbutton > .dropbutton__items > .dropbutton__item ~ .dropbutton__item > .button {
-  font-size: var(--gin-font-size-s);
+  font-size: var(--gin-font-size-s) !important;
   padding: .75em 1em !important;
 }
 
