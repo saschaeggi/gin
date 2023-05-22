@@ -131,6 +131,11 @@ tr.color-error,
   box-shadow: none;
 }
 
+// fix overflow issue in FF
+.block-system > form .gin-layer-wrapper {
+  padding-bottom: 1px;
+}
+
 .compact-link {
   font-size: var(--gin-font-size-s);
   text-align: right;
