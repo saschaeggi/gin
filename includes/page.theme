@@ -134,7 +134,10 @@ function gin_preprocess_page_title(&$variables) {
   if (preg_match('/entity\.node\..*/', \Drupal::routeMatch()->getRouteName(), $matches)) {
     $node = \Drupal::routeMatch()->getParameter('node');
     if ($node instanceof Node) {
-      if ($node->isDefaultTranslation() && $matches[0] !== 'entity.node.content_translation_add') {
+      if ($node->isDefaultTranslation() && !in_array($matches[0], [
+        'entity.node.content_translation_add',
+        'entity.node.delete_form',
+      ])) {
         $variables['title'] = $node->getTitle();
       }
       elseif ($matches[0] === 'entity.node.edit_form') {
