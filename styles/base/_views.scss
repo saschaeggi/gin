@@ -119,7 +119,7 @@
   // Single on/off checkbox (through Better Exposed Filters)
   .form-type--boolean.form-type--checkbox {
     margin-top: auto;
-    margin-bottom: 0.75rem;
+    margin-bottom: var(--gin-spacing-s);
 
     .form-item__label {
       margin-bottom: 0;

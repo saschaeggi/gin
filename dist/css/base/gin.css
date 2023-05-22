@@ -909,7 +909,7 @@ details summary {
 
 .views-exposed-form.views-exposed-form .form-type--boolean.form-type--checkbox {
   margin-top: auto;
-  margin-bottom: .75rem;
+  margin-bottom: var(--gin-spacing-s);
 }
 
 .views-exposed-form.views-exposed-form .form-type--boolean.form-type--checkbox .form-item__label {
