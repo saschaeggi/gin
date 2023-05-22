@@ -413,6 +413,7 @@
 @media (min-width: 61em) {
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-menu {
     background-color: transparent;
+    float: unset;
   }
 }
 
