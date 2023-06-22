@@ -11,11 +11,11 @@
 }
 
 [dir="ltr"] .help-icon__description-toggle {
-  margin: .3rem var(--gin-spacing-m) 0 .3rem;
+  margin: .1rem var(--gin-spacing-m) 0 .3rem;
 }
 
 [dir="rtl"] .help-icon__description-toggle {
-  margin: .3rem .3rem 0 var(--gin-spacing-m);
+  margin: .1rem .3rem 0 var(--gin-spacing-m);
 }
 
 .help-icon__description-toggle:before {
@@ -83,7 +83,7 @@
 .field-group-fieldset > .help-icon > .help-icon__description-toggle,
 fieldset.media-library-widget .help-icon > .help-icon__description-toggle,
 .field--type-datetime fieldset .help-icon > .help-icon__description-toggle {
-  margin-top: 1.3rem;
+  margin-top: 1rem;
 }
 
 [dir="ltr"] .field-group-fieldset > .fieldset__description,

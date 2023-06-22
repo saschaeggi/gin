@@ -7,7 +7,7 @@
 .help-icon__description-toggle {
   all: unset;
   flex-shrink: 0;
-  margin: .3rem var(--gin-spacing-m) 0 .3rem;
+  margin: .1rem var(--gin-spacing-m) 0 .3rem;
   height: 16px;
   width: 16px;
   border-radius: 50%;
@@ -72,7 +72,7 @@ fieldset.media-library-widget,
 .field--type-datetime fieldset {
   .help-icon {
     > .help-icon__description-toggle {
-      margin-top: 1.3rem;
+      margin-top: 1rem;
     }
   }
 
