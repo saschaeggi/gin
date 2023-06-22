@@ -94,7 +94,8 @@
   }
 }
 
-.toolbar .toolbar-tray .menu-item:hover > .toolbar-icon {
+.toolbar .toolbar-tray .menu-item:hover > .toolbar-icon,
+.toolbar .toolbar-tray .toolbar-menu > li:hover > a {
   color: var(--gin-color-primary-hover);
   background-color: var(--gin-bg-item-hover);
 

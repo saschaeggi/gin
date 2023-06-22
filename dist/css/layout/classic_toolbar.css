@@ -97,12 +97,14 @@
   background: var(--gin-color-primary);
 }
 
-.toolbar .toolbar-tray .menu-item:hover > .toolbar-icon {
+.toolbar .toolbar-tray .menu-item:hover > .toolbar-icon,
+.toolbar .toolbar-tray .toolbar-menu > li:hover > a {
   color: var(--gin-color-primary-hover);
   background-color: var(--gin-bg-item-hover);
 }
 
-.toolbar .toolbar-tray .menu-item:hover > .toolbar-icon::before {
+.toolbar .toolbar-tray .menu-item:hover > .toolbar-icon::before,
+.toolbar .toolbar-tray .toolbar-menu > li:hover > a::before {
   background: var(--gin-color-primary);
 }
 
