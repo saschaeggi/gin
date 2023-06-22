@@ -682,6 +682,7 @@ body.gin--classic-toolbar {
 #toolbar-item-user {
   display: inline-block;
   vertical-align: top;
+  min-width: unset;
 }
 
 #toolbar-item-user.icon-user {
