@@ -156,6 +156,10 @@
   .toolbar-logo {
     display: flex;
     height: 100%;
+
+    + .toolbar-handle {
+      display: none;
+    }
   }
 }
 

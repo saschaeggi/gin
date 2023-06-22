@@ -182,6 +182,10 @@
   height: 100%;
 }
 
+#toolbar-item-administration-tray .toolbar-logo + .toolbar-handle {
+  display: none;
+}
+
 .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
 .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
   position: relative;
