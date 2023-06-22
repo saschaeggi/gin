@@ -492,3 +492,10 @@ a.views-field-excluded {
   margin-bottom: 0;
   margin-right: var(--gin-spacing-xs);
 }
+
+.views-field .marker {
+  font-size: var(--gin-font-size-xxs);
+  font-style: italic;
+  color: var(--gin-color-text-light);
+  padding: var(--gin-spacing-xxs);
+}

@@ -1321,6 +1321,13 @@ a.views-field-excluded {
   margin-left: var(--gin-spacing-xs);
 }
 
+.views-field .marker {
+  font-size: var(--gin-font-size-xxs);
+  font-style: italic;
+  color: var(--gin-color-text-light);
+  padding: var(--gin-spacing-xxs);
+}
+
 .gin-table-scroll-wrapper {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
