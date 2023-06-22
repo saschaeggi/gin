@@ -13,6 +13,7 @@ body[data-meta-sidebar=closed] {
 
   .layout-region-node-secondary {
     transform: translateX(var(--gin-sidebar-width));
+    visibility: hidden;
   }
 }
 
