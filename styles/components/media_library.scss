@@ -290,9 +290,15 @@ fieldset.media-library-widget {
     border-radius: var(--gin-border-m);
     box-shadow: var(--gin-shadow-l1);
   }
+
+  .views-form {
+    background: transparent !important;
+  }
 }
 
 .media-library-wrapper {
+  margin-top: 0;
+
   .views-display-link {
     position: relative;
     color: var(--gin-color-text);

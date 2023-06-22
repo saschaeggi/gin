@@ -295,6 +295,14 @@ fieldset.media-library-widget .media-library-edit__link, fieldset.media-library-
   box-shadow: var(--gin-shadow-l1);
 }
 
+.media-library-view .views-form {
+  background: transparent !important;
+}
+
+.media-library-wrapper {
+  margin-top: 0;
+}
+
 .media-library-wrapper .views-display-link {
   position: relative;
   color: var(--gin-color-text);
