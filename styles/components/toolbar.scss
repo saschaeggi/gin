@@ -3,7 +3,7 @@ body.gin--vertical-toolbar,
 body.gin--horizontal-toolbar,
 body.gin--classic-toolbar {
   padding-top: var(--gin-toolbar-y-offset) !important;
-  padding-left: var(--gin-toolbar-x-offset, 256px);
+  padding-left: var(--gin-toolbar-x-offset, 256px) !important;
   margin-left: 0; // Fix for Drupal 9.3+
 }
 
@@ -790,4 +790,15 @@ body.gin--classic-toolbar {
 
 .toolbar-tray-horizontal .toolbar-icon:not(.toolbar-handle) {
   width: 100%;
+}
+
+// Drupal 10.1 Toolbar loading overrides
+.toolbar-loading #toolbar-item-administration-tray {
+  border-right: 0;
+  background-color: transparent;
+
+  .menu-item + .menu-item {
+    border-left: 0;
+    border-right: 0;
+  }
 }

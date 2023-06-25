@@ -1,3 +1,8 @@
+.dropbutton-widget,
+html.js .dropbutton-widget {
+  background-color: transparent;
+}
+
 .dropbutton {
   border: 2px solid var(--gin-color-primary);
   border-radius: var(--gin-border-m);
@@ -193,10 +198,6 @@ html.js {
 
   .dropbutton-wrapper:not(.open) .dropbutton__items .dropbutton__item:first-of-type ~ .dropbutton__item {
     display: block;
-  }
-
-  .dropbutton-widget {
-    background-color: transparent;
   }
 }
 

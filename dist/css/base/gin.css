@@ -2512,6 +2512,11 @@ a.button:active {
           mask-position: center center;
 }
 
+.dropbutton-widget,
+html.js .dropbutton-widget {
+  background-color: transparent;
+}
+
 .dropbutton {
   border: 2px solid var(--gin-color-primary);
   border-radius: var(--gin-border-m);
@@ -2774,10 +2779,6 @@ html.js .dropbutton-wrapper:not(.open) .dropbutton__item:first-of-type ~ .dropbu
 
 html.js .dropbutton-wrapper:not(.open) .dropbutton__items .dropbutton__item:first-of-type ~ .dropbutton__item {
   display: block;
-}
-
-html.js .dropbutton-widget {
-  background-color: transparent;
 }
 
 html[dir="ltr"].js.no-touchevents .dropbutton--multiple.dropbutton--small .dropbutton__item:first-of-type {
