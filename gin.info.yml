@@ -55,6 +55,8 @@ libraries-override:
         css/theme/colors.css: false
 
 libraries-extend:
+  core/drupal.tableselect:
+    - gin/tableselect
   core/drupal.autocomplete:
     - gin/autocomplete
   core/ckeditor:

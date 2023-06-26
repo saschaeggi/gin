@@ -146,13 +146,6 @@
 }
 
 #toolbar-item-administration-tray {
-  box-shadow: 0 0 4px rgba(0, 0, 0, .1),
-              0 2px 6px 2px rgba(0, 0, 0, .03);
-
-  .gin--dark-mode & {
-    box-shadow: 0 0 4px rgba(0, 0, 0, .3);
-  }
-
   .toolbar-logo {
     display: flex;
     height: 100%;
@@ -260,5 +253,16 @@
       color: var(--gin-color-primary-hover);
       background: var(--gin-color-primary-light);
     }
+  }
+}
+
+// Drupal 10.1 Toolbar loading overrides
+#toolbar-item-administration-tray,
+.toolbar-loading #toolbar-item-administration-tray {
+  box-shadow: 0 0 4px rgba(0, 0, 0, .1),
+    0 2px 6px 2px rgba(0, 0, 0, .03);
+
+  .gin--dark-mode & {
+    box-shadow: 0 0 4px rgba(0, 0, 0, .3);
   }
 }

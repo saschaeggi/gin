@@ -156,6 +156,11 @@ settings:
   dependencies:
     - core/drupalSettings
 
+tableselect:
+  css:
+    component:
+      dist/css/components/tableselect.css: { minified: false }
+
 tabs:
   css:
     component:
