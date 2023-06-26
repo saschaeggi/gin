@@ -10,7 +10,11 @@
  - Maintainers
 ## Introduction
 
-A radically new UI layout paired with goodies like a Darkmode will give your Drupal's Admin interface a facelift. The Gin theme also includes things which are currently out of scope for Claro and/or some customisations we're experimenting with for the future. Built on the foundation of Claro from one of the lead designers of Claro & Drupal Design System.
+A radically new UI layout paired with goodies like a Darkmode will give your
+Drupal's Admin interface a facelift. The Gin theme also includes things which
+are currently out of scope for Claro and/or some customisations we're
+experimenting with for the future. Built on the foundation of Claro from one
+of the lead designers of Claro & Drupal Design System.
 
 Gin can be used in a headless environment, as it provides a nice [login screen](https://drupal.org/project/gin_login) which is missing in the default Drupal admin themes.
 

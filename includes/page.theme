@@ -5,8 +5,8 @@
  * page.theme
  */
 
-use Drupal\gin\GinContentFormHelper;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\gin\GinContentFormHelper;
 use Drupal\gin\GinSettings;
 use Drupal\node\Entity\Node;
 
