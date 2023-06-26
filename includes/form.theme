@@ -6,9 +6,9 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\gin\GinContentFormHelper;
 use Drupal\gin\GinDescriptionToggle;
 use Drupal\gin\GinPreRender;
-use Drupal\gin\GinContentFormHelper;
 use Drupal\gin\GinSettings;
 
 /**

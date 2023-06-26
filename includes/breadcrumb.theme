@@ -5,9 +5,9 @@
  * breadcrumb.theme
  */
 
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
-use Drupal\Core\Entity\ContentEntityInterface;
 
 /**
  * Breadcrumb.
