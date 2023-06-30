@@ -253,3 +253,8 @@ table.treetable tr.branch {
   background-color: transparent;
 }
 
+.ui-dialog .gin-layer-wrapper {
+  margin-bottom: var(--gin-spacing-l);
+  margin-top: var(--gin-spacing-l);
+}
+
