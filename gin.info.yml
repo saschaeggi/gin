@@ -122,6 +122,8 @@ libraries-extend:
     - gin/layout_paragraphs
   layout_paragraphs/layout_paragraphs_widget:
     - gin/layout_paragraphs
+  layout_paragraphs/builder:
+    - gin/layout_paragraphs2
   responsive_preview/drupal.responsive-preview:
     - gin/responsive_preview
 

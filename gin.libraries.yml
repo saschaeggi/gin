@@ -260,6 +260,11 @@ layout_paragraphs:
     component:
       dist/css/components/layout_paragraphs.css: { minified: false }
 
+layout_paragraphs2:
+  css:
+    component:
+      dist/css/components/layout_paragraphs_2.0.css: { minified: false }
+
 entity_reference_layout:
   css:
     component:
