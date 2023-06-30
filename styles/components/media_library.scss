@@ -384,6 +384,8 @@ fieldset.media-library-widget {
 }
 
 .media-library-widget-modal .ui-dialog-buttonpane {
+  flex-direction: column;
+
   .form-actions {
     display: flex;
     flex-direction: row;
@@ -398,7 +400,16 @@ fieldset.media-library-widget {
 
   .media-library-selected-count {
     flex-grow: 1;
-    margin-left: 0;
+    margin-bottom: var(--gin-spacing-s);
+  }
+
+  @include mq(xsmall) {
+    flex-direction: row;
+
+    .media-library-selected-count {
+      margin-bottom: 0;
+      margin-left: 0;
+    }
   }
 }
 

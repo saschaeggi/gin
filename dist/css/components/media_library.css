@@ -400,6 +400,10 @@ fieldset.media-library-widget .media-library-edit__link, fieldset.media-library-
   }
 }
 
+.media-library-widget-modal .ui-dialog-buttonpane {
+  flex-direction: column;
+}
+
 .media-library-widget-modal .ui-dialog-buttonpane .form-actions {
   display: flex;
   flex-direction: row;
@@ -418,14 +422,25 @@ fieldset.media-library-widget .media-library-edit__link, fieldset.media-library-
 
 .media-library-widget-modal .ui-dialog-buttonpane .media-library-selected-count {
   flex-grow: 1;
+  margin-bottom: var(--gin-spacing-s);
 }
 
-[dir="ltr"] .media-library-widget-modal .ui-dialog-buttonpane .media-library-selected-count {
-  margin-left: 0;
-}
+@media (min-width: 36.75em) {
+  .media-library-widget-modal .ui-dialog-buttonpane {
+    flex-direction: row;
+  }
 
-[dir="rtl"] .media-library-widget-modal .ui-dialog-buttonpane .media-library-selected-count {
-  margin-right: 0;
+  .media-library-widget-modal .ui-dialog-buttonpane .media-library-selected-count {
+    margin-bottom: 0;
+  }
+
+  [dir="ltr"] .media-library-widget-modal .ui-dialog-buttonpane .media-library-selected-count {
+    margin-left: 0;
+  }
+
+  [dir="rtl"] .media-library-widget-modal .ui-dialog-buttonpane .media-library-selected-count {
+    margin-right: 0;
+  }
 }
 
 @media (min-width: 80em) {
