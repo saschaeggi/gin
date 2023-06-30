@@ -169,14 +169,6 @@
   }
 }
 
-#toolbar-item-administration-tray {
-  box-shadow: 0 0 4px rgba(0, 0, 0, .1), 0 2px 6px 2px rgba(0, 0, 0, .03);
-}
-
-.gin--dark-mode #toolbar-item-administration-tray {
-  box-shadow: 0 0 4px rgba(0, 0, 0, .3);
-}
-
 #toolbar-item-administration-tray .toolbar-logo {
   display: flex;
   height: 100%;
@@ -319,5 +311,15 @@
 .gin--horizontal-toolbar #toolbar-administration .toolbar-menu-administration .menu-item .menu-item:hover > .toolbar-icon {
   color: var(--gin-color-primary-hover);
   background: var(--gin-color-primary-light);
+}
+
+#toolbar-item-administration-tray,
+.toolbar-loading #toolbar-item-administration-tray {
+  box-shadow: 0 0 4px rgba(0, 0, 0, .1), 0 2px 6px 2px rgba(0, 0, 0, .03);
+}
+
+.gin--dark-mode #toolbar-item-administration-tray,
+.gin--dark-mode .toolbar-loading #toolbar-item-administration-tray {
+  box-shadow: 0 0 4px rgba(0, 0, 0, .3);
 }
 

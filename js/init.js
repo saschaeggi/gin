@@ -49,9 +49,10 @@ if (localStorage.getItem('Drupal.gin.toolbarExpanded')) {
   if (localStorage.getItem('Drupal.gin.toolbarExpanded') === 'true') {
     style.innerHTML = `
     @media (min-width: 976px) {
-      body.gin--vertical-toolbar:not([data-toolbar-menu=open]) {
-        padding-inline-start: 256px;
-        transition: none;
+      /* Small CSS hack to make sure this has the highest priority */
+      body.gin--vertical-toolbar.gin--vertical-toolbar.gin--vertical-toolbar {
+        padding-inline-start: 256px !important;
+        transition: none !important;
       }
 
       .gin--vertical-toolbar .toolbar-menu-administration {

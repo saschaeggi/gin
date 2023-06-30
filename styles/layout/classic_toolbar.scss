@@ -180,8 +180,6 @@
 }
 
 #toolbar-item-administration-tray {
-  box-shadow: 0 0 4px rgba(0,0,0,0.1);
-
   .toolbar-logo {
     img {
       @include mq(large) {
@@ -210,4 +208,15 @@
 
 #admin-toolbar-search-input {
   padding-left: var(--gin-spacing-xl);
+}
+
+// Drupal 10.1 Toolbar loading overrides
+#toolbar-item-administration-tray,
+.toolbar-loading #toolbar-item-administration-tray {
+  border-bottom: 1px solid var(--gin-border-color);
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+
+  .toolbar-lining {
+    background-color: var(--gin-bg-layer);
+  }
 }

@@ -600,6 +600,12 @@ a.toolbar-menu__trigger,
   }
 }
 
+// Drupal 10.1 Toolbar loading overrides
+#toolbar-item-administration-tray,
+.toolbar-loading #toolbar-item-administration-tray {
+  box-shadow: none;
+}
+
 // New navigation approach.
 // .toolbar-fixed[data-toolbar-menu=open] {
 //   @include mq(medium) {

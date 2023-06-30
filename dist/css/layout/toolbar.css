@@ -728,3 +728,8 @@ a.toolbar-menu__trigger,
   }
 }
 
+#toolbar-item-administration-tray,
+.toolbar-loading #toolbar-item-administration-tray {
+  box-shadow: none;
+}
+

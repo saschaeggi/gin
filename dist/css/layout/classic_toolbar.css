@@ -183,10 +183,6 @@
   }
 }
 
-#toolbar-item-administration-tray {
-  box-shadow: 0 0 4px rgba(0, 0, 0, .1);
-}
-
 @media (min-width: 64em) {
   #toolbar-item-administration-tray .toolbar-logo img {
     max-height: 21px;
@@ -231,5 +227,16 @@
 
 [dir="rtl"] #admin-toolbar-search-input {
   padding-right: var(--gin-spacing-xl);
+}
+
+#toolbar-item-administration-tray,
+.toolbar-loading #toolbar-item-administration-tray {
+  border-bottom: 1px solid var(--gin-border-color);
+  box-shadow: 0 0 4px rgba(0, 0, 0, .1);
+}
+
+#toolbar-item-administration-tray .toolbar-lining,
+.toolbar-loading #toolbar-item-administration-tray .toolbar-lining {
+  background-color: var(--gin-bg-layer);
 }
 

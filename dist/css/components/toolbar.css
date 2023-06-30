@@ -7,14 +7,14 @@ body.gin--classic-toolbar {
 [dir="ltr"] body.gin--vertical-toolbar,
 [dir="ltr"] body.gin--horizontal-toolbar,
 [dir="ltr"] body.gin--classic-toolbar {
-  padding-left: var(--gin-toolbar-x-offset, 256px);
+  padding-left: var(--gin-toolbar-x-offset, 256px) !important;
   margin-left: 0;
 }
 
 [dir="rtl"] body.gin--vertical-toolbar,
 [dir="rtl"] body.gin--horizontal-toolbar,
 [dir="rtl"] body.gin--classic-toolbar {
-  padding-right: var(--gin-toolbar-x-offset, 256px);
+  padding-right: var(--gin-toolbar-x-offset, 256px) !important;
   margin-right: 0;
 }
 
@@ -865,5 +865,22 @@ body.gin--classic-toolbar {
 
 .toolbar-tray-horizontal .toolbar-icon:not(.toolbar-handle), .toolbar-tray-horizontal .responsive-preview-icon:not(.toolbar-handle) {
   width: 100%;
+}
+
+.toolbar-loading #toolbar-item-administration-tray {
+  background-color: transparent;
+}
+
+[dir="ltr"] .toolbar-loading #toolbar-item-administration-tray {
+  border-right: 0;
+}
+
+[dir="rtl"] .toolbar-loading #toolbar-item-administration-tray {
+  border-left: 0;
+}
+
+.toolbar-loading #toolbar-item-administration-tray .menu-item + .menu-item {
+  border-left: 0;
+  border-right: 0;
 }
 
