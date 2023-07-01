@@ -19,10 +19,14 @@
         toolbarTrigger.classList.add("is-active")) : (document.body.setAttribute("data-toolbar-menu", ""), 
         toolbarTrigger.classList.remove("is-active")), document.addEventListener("keydown", (e => {
           !0 === e.altKey && "KeyT" === e.code && this.toggleToolbar();
-        }));
+        })), this.initDisplace();
       })), once("ginToolbarToggle", ".toolbar-menu__trigger", context).forEach((el => el.addEventListener("click", (e => {
         e.preventDefault(), this.toggleToolbar();
       }))));
+    },
+    initDisplace: () => {
+      const toolbar = document.querySelector("#gin-toolbar-bar .toolbar-menu-administration"), toolbarVariant = drupalSettings.gin.toolbar_variant;
+      toolbar && ("vertical" === toolbarVariant ? toolbar.setAttribute("data-offset-left", "") : toolbar.setAttribute("data-offset-top", ""));
     },
     toggleToolbar: () => {
       const toolbarTrigger = document.querySelector(".toolbar-menu__trigger");
@@ -37,7 +41,9 @@
       const event = new CustomEvent("toolbar-toggle", {
         detail: "true" === active
       });
-      document.dispatchEvent(event);
+      document.dispatchEvent(event), ontransitionend = () => {
+        Drupal.displace(!0);
+      };
     }
   };
 })(Drupal, drupalSettings, once);

@@ -46,6 +46,7 @@ gin_toolbar:
     - gin/settings_tray_edit
     - core/drupalSettings
     - core/once
+    - core/drupal.displace
 
 gin_horizontal_toolbar:
   css:

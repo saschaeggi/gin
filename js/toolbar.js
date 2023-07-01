@@ -53,6 +53,8 @@
             this.toggleToolbar();
           }
         });
+
+        this.initDisplace();
       });
 
       // Toolbar toggle
@@ -60,6 +62,19 @@
         e.preventDefault();
         this.toggleToolbar();
       }));
+    },
+
+    initDisplace: () => {
+      const toolbar = document.querySelector('#gin-toolbar-bar .toolbar-menu-administration');
+      const toolbarVariant = drupalSettings.gin.toolbar_variant;
+
+      if (toolbar) {
+        if (toolbarVariant === 'vertical') {
+          toolbar.setAttribute('data-offset-left', '');
+        } else {
+          toolbar.setAttribute('data-offset-top', '');
+        }
+      }
     },
 
     toggleToolbar: () => {
@@ -75,6 +90,7 @@
       }
       else {
         document.body.setAttribute('data-toolbar-menu', '');
+
         active = 'false';
         const elementToRemove = document.querySelector('.gin-toolbar-inline-styles');
         if (elementToRemove) {
@@ -88,6 +104,11 @@
       // Dispatch event.
       const event = new CustomEvent('toolbar-toggle', { detail: active === 'true'})
       document.dispatchEvent(event);
+
+      // Displace.
+      ontransitionend = () => {
+        Drupal.displace(true);
+      };
     },
 
   };

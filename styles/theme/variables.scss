@@ -146,6 +146,10 @@
   // Buttons
   --gin-shadow-button: #00000033;
   --gin-color-button-text: #fff;
+
+  // Drupal
+  --gin-offset-x: var(--gin-toolbar-x-offset);
+  --gin-offset-y: calc(var(--gin-toolbar-y-offset) + var(--gin-height-sticky));
 }
 
 // Density spacings
