@@ -1209,6 +1209,10 @@ a.views-field-excluded {
   padding: var(--gin-spacing-xxs);
 }
 
+.view-header {
+  margin-bottom: var(--gin-spacing-l);
+}
+
 .gin-table-scroll-wrapper {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
