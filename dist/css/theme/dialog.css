@@ -181,7 +181,7 @@
 }
 
 .ui-dialog .button.button--small {
-  padding: var(--gin-spacing-xs) var(--gin-spacing-m);
+  padding: calc(var(--gin-spacing-xxs) + 2px) var(--gin-spacing-m);
   border-radius: var(--gin-border-s);
 }
 

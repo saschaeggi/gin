@@ -22,7 +22,7 @@
   &__link,
   &__text {
     display: inline;
-    font-weight: var(--gin-font-weight-normal);;
+    font-weight: var(--gin-font-weight-normal);
     color: var(--gin-color-text-light);
     text-decoration: none;
     vertical-align: middle;
@@ -85,7 +85,7 @@
 
     &, em {
       &, &:link, &:visited {
-        font-weight: var(--gin-font-weight-normal);;
+        font-weight: var(--gin-font-weight-normal);
         color: var(--gin-color-text-light);
       }
     }

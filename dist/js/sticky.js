@@ -1,7 +1,7 @@
 (Drupal => {
   Drupal.behaviors.ginSticky = {
     attach: context => {
-      once("ginSticky", document.querySelectorAll(".region-sticky-watcher")).forEach((() => {
+      once("ginSticky", ".region-sticky-watcher").forEach((() => {
         const observer = new IntersectionObserver((_ref => {
           let [e] = _ref;
           const regionSticky = context.querySelector(".region-sticky");

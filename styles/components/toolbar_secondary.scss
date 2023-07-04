@@ -87,7 +87,7 @@
 .gin-back-to-admin {
   font-family: var(--gin-font);
   font-size: var(--gin-font-size-xs);
-  font-weight: var(--gin-font-weight-normal);;
+  font-weight: var(--gin-font-weight-normal);
   line-height: 2;
   color: var(--gin-color-text-light);
   text-decoration: none;
@@ -301,7 +301,7 @@
         &:focus,
         &.is-active,
         &.is-active:hover {
-          font-weight: var(--gin-font-weight-normal);;
+          font-weight: var(--gin-font-weight-normal);
           color: var(--gin-color-text-light);
           background-color: transparent;
 

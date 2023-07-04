@@ -1221,7 +1221,7 @@ table.sticky-header {
   visibility: hidden;
   z-index: 98;
   position: fixed;
-  top: calc(var(--ginHorizontalToolbarOffset) + var(--ginStickyOffset)) !important;
+  top: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset)) !important;
   background: transparent;
 }
 
@@ -2264,7 +2264,7 @@ tr .form-item {
 }
 
 .button.button--small {
-  padding: var(--gin-spacing-xs) var(--gin-spacing-m);
+  padding: calc(var(--gin-spacing-xxs) + 2px) var(--gin-spacing-m);
   border-radius: var(--gin-border-s);
 }
 

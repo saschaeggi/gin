@@ -5,8 +5,7 @@
 ((Drupal) => {
   Drupal.behaviors.ginSticky = {
     attach: (context) => {
-      const ginSticky = once('ginSticky', document.querySelectorAll('.region-sticky-watcher'));
-      ginSticky.forEach(() => {
+      once('ginSticky', '.region-sticky-watcher').forEach(() => {
         // Watch sticky header
         const observer = new IntersectionObserver(
           ([e]) => {

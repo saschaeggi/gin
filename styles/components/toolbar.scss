@@ -34,7 +34,7 @@ body.gin--classic-toolbar {
     }
 
     .toolbar-tab > .toolbar-item {
-      font-weight: var(--gin-font-weight-normal);;
+      font-weight: var(--gin-font-weight-normal);
     }
 
     .toolbar-tab > .toolbar-icon {
@@ -368,7 +368,7 @@ body.gin--classic-toolbar {
   a,
   span {
     color: var(--gin-color-text);
-    font-weight: var(--gin-font-weight-normal);;
+    font-weight: var(--gin-font-weight-normal);
 
     &:hover, &:active, &:focus, &.is-active {
       text-decoration: none;

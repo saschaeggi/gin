@@ -11,7 +11,7 @@ table.sticky-header {
   z-index: 98;
   position: fixed;
   left: auto !important;
-  top: calc(var(--ginHorizontalToolbarOffset) + var(--ginStickyOffset)) !important;
+  top: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset)) !important;
   background: transparent;
 
   &::before,

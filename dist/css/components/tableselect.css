@@ -147,3 +147,11 @@
   color: var(--gin-color-text);
 }
 
+[dir="ltr"] .views-bulk-actions__item {
+  margin-right: var(--gin-spacing-xs);
+}
+
+[dir="rtl"] .views-bulk-actions__item {
+  margin-left: var(--gin-spacing-xs);
+}
+

@@ -90,3 +90,9 @@
     }
   }
 }
+
+.views-bulk-actions {
+  &__item {
+    margin-right: var(--gin-spacing-xs);
+  }
+}

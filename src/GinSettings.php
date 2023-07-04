@@ -275,6 +275,7 @@ class GinSettings implements ContainerInjectionInterface {
    *   The theme setting form elements.
    */
   public function getSettingsForm(AccountInterface $account = NULL): array {
+    $experimental_label = ' (EXPERIMENTAL)';
     $beta_label = ' (BETA)';
 
     $form['enable_darkmode'] = [
@@ -370,7 +371,7 @@ class GinSettings implements ContainerInjectionInterface {
     // Focus color group.
     $form['focus_group'] = [
       '#type' => 'fieldset',
-      '#title' => $this->t('Custom Focus color (BETA)'),
+      '#title' => $this->t('Custom Focus color') . $beta_label,
       '#description' => $this->t('Use with caution, values should meet a11y criteria.'),
       '#states' => [
         // Show if met.
@@ -393,7 +394,7 @@ class GinSettings implements ContainerInjectionInterface {
     // Custom Focus color setting.
     $form['focus_color'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Custom Focus color (BETA)'),
+      '#title' => $this->t('Custom Focus color') . $beta_label,
       '#title_display' => 'invisible',
       '#placeholder' => '#777777',
       '#maxlength' => 7,
@@ -408,7 +409,7 @@ class GinSettings implements ContainerInjectionInterface {
     // High contrast mode.
     $form['high_contrast_mode'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('Increase contrast (EXPERIMENTAL)'),
+      '#title' => $this->t('Increase contrast') . $experimental_label,
       '#description' => $this->t('Enables high contrast mode.'),
       '#default_value' => $account ? $this->get('high_contrast_mode', $account) : $this->getDefault('high_contrast_mode'),
     ];

@@ -1,3 +1,7 @@
+.paragraphs-tabs-wrapper .gin-table-scroll-wrapper {
+  overflow: initial;
+}
+
 .gin--dark-mode .paragraphs-tabs-wrapper tr:hover, .paragraphs-tabs-wrapper tr:hover, .gin--dark-mode .paragraphs-tabs-wrapper tr:focus, .paragraphs-tabs-wrapper tr:focus {
   background-color: inherit;
 }
@@ -143,6 +147,12 @@
   margin-bottom: var(--gin-spacing-xs);
 }
 
+.paragraphs-add-wrapper.button--small,
+.paragraphs-dropbutton-wrapper.button--small {
+  padding: 0;
+  margin: 0;
+}
+
 .paragraphs-dropdown-toggle {
   position: relative;
   margin: var(--gin-spacing-xs) 0;
@@ -183,6 +193,10 @@
 
 .paragraphs-dropdown-toggle:hover::after, .paragraphs-dropdown-toggle:active::after, .paragraphs-dropdown-toggle:focus::after {
   background-color: var(--gin-color-primary);
+}
+
+.field--widget-paragraphs .paragraphs-tabs-wrapper .field-multiple-table tr[class*=paragraph-type--] {
+  margin-top: var(--gin-spacing-m);
 }
 
 html.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle,

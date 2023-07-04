@@ -149,7 +149,7 @@
 
   // Drupal
   --gin-offset-x: var(--gin-toolbar-x-offset);
-  --gin-offset-y: calc(var(--gin-toolbar-y-offset) + var(--gin-height-sticky));
+  --gin-offset-y: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset));
 }
 
 // Density spacings
