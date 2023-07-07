@@ -148,6 +148,17 @@ body.gin--classic-toolbar {
           mask-size: var(--gin-icon-size-toolbar) var(--gin-icon-size-toolbar);
 }
 
+@media (forced-colors: active) {
+  .toolbar .toolbar-bar #toolbar-item-administration-search::before,
+  .toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon::before,
+  .toolbar .toolbar-bar .toolbar-menu-administration .responsive-preview-icon::before,
+  .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before,
+  .toolbar .toolbar-bar .toolbar-icon-toggle-vertical::before,
+  .toolbar .toolbar-bar .toolbar-icon-toggle-horizontal::before {
+    background: linktext !important;
+  }
+}
+
 .toolbar .toolbar-bar #toolbar-item-administration-search.toolbar-icon-default::before,
 .toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon.toolbar-icon-default::before,
 .toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon-default.responsive-preview-icon::before,
@@ -657,6 +668,12 @@ body.gin--classic-toolbar {
 
 .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon::before, .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .responsive-preview-icon::before {
   background-color: var(--gin-icon-color);
+}
+
+@media (forced-colors: active) {
+  .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon::before, .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .responsive-preview-icon::before {
+    background: linktext !important;
+  }
 }
 
 [dir="ltr"] .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item::before, [dir="ltr"] .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.responsive-preview-icon::before {
