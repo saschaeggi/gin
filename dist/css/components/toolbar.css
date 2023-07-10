@@ -679,22 +679,26 @@ body.gin--classic-toolbar {
   object-position: center;
 }
 
-#toolbar-item-user {
+#toolbar-item-user,
+#toolbar-item-user-secondary {
   display: inline-block;
   vertical-align: top;
   min-width: unset;
 }
 
-#toolbar-item-user.icon-user {
+#toolbar-item-user.icon-user,
+#toolbar-item-user-secondary.icon-user {
   margin-top: 2px;
 }
 
-[dir="ltr"] #toolbar-item-user.icon-user {
+[dir="ltr"] #toolbar-item-user.icon-user,
+[dir="ltr"] #toolbar-item-user-secondary.icon-user {
   padding-left: 0;
   margin-left: var(--gin-spacing-xs);
 }
 
-[dir="rtl"] #toolbar-item-user.icon-user {
+[dir="rtl"] #toolbar-item-user.icon-user,
+[dir="rtl"] #toolbar-item-user-secondary.icon-user {
   padding-right: 0;
   margin-right: var(--gin-spacing-xs);
 }
