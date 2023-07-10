@@ -214,7 +214,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       $term = $form_object->getEntity();
       assert($term instanceof TermInterface);
 
-      if ($form['langcode']) {
+      if (isset($form['langcode'])) {
         $form['langcode']['widget'][0]['#type'] = 'details';
         $form['langcode']['widget'][0]['#group'] = 'advanced';
       }
@@ -238,11 +238,11 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       ];
       $form['path']['#group'] = 'path_settings';
 
-      if ($form['content_translation']) {
+      if (isset($form['content_translation'])) {
         $form['content_translation']['#group'] = 'advanced';
       }
 
-      if ($form['relations']) {
+      if (isset($form['relations'])) {
         $form['relations']['#group'] = 'advanced';
       }
     }
