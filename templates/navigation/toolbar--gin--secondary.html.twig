@@ -20,6 +20,15 @@
  * @see template_preprocess_toolbar()
  */
 #}
+
+{# Prevent duplicate ids by using secondary tabs and trays when provided. #}
+{% if _context['#secondary']['tabs'] %}
+  {% set tabs = _context['#secondary']['tabs'] %}
+{% endif %}
+{% if _context['#secondary']['trays'] %}
+  {% set trays = _context['#secondary']['trays'] %}
+{% endif %}
+
 <div{{ attributes.addClass('toolbar', 'toolbar-secondary').setAttribute('id', 'toolbar-administration-secondary') }}>
   <nav{{ toolbar_attributes.addClass('toolbar-bar', 'clearfix').setAttribute('id', 'toolbar-bar') }}>
     <h2 class="visually-hidden">{{ toolbar_heading }}</h2>
