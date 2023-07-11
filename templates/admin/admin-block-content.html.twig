@@ -21,15 +21,16 @@
   ]
 %}
 {% if content %}
-  <dl{{ attributes.addClass('admin-list', 'gin-layer-wrapper') }}>
+  <div{{ attributes.addClass('admin-list', 'gin-layer-wrapper') }}>
     {% for item in content %}
+      {% set description_id = item.title|clean_id ~ '-desc' %}
       <div{{ create_attribute({class: item_classes}) }}>
         {{ item.link }}
-        <dt class="admin-item__title">{{ item.title }}</dt>
+        <div class="admin-item__title" aria-details="{{ description_id }}">{{ item.title }}</div>
         {% if item.description %}
-          <dd class="admin-item__description">{{ item.description }}</dd>
+          <div class="admin-item__description" id="{{ description_id }}">{{ item.description }}</div>
         {% endif %}
       </div>
     {% endfor %}
-  </dl>
+  </div>
 {% endif %}
