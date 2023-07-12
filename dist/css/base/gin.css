@@ -2474,6 +2474,12 @@ html.js .dropbutton-widget {
   white-space: nowrap;
 }
 
+@media (forced-colors: active) {
+  .dropbutton__item:first-of-type > *, .dropbutton__toggle {
+    border-width: 0 !important;
+  }
+}
+
 .dropbutton__item:first-of-type > * {
   padding: calc(.875rem - 1px) calc(var(--gin-spacing-l) - 1px);
 }
@@ -2496,21 +2502,23 @@ html.js .dropbutton-widget {
   background-color: var(--gin-color-primary);
 }
 
-.dropbutton__toggle::before {
-  background-image: none;
-  background-color: var(--gin-color-primary);
-  -webkit-mask-image: url("../../media/sprite.svg#drop-view");
-          mask-image: url("../../media/sprite.svg#drop-view");
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  -webkit-mask-position: center center;
-          mask-position: center center;
-  -webkit-mask-size: 12px 12px;
-          mask-size: 12px 12px;
-}
+@media not (forced-colors: active) {
+  .dropbutton__toggle::before {
+    background-image: none;
+    background-color: var(--gin-color-primary);
+    -webkit-mask-image: url("../../media/sprite.svg#drop-view");
+            mask-image: url("../../media/sprite.svg#drop-view");
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+    -webkit-mask-position: center center;
+            mask-position: center center;
+    -webkit-mask-size: 12px 12px;
+            mask-size: 12px 12px;
+  }
 
-.dropbutton__toggle:hover::before, .dropbutton__toggle:active::before, .dropbutton__toggle:focus::before {
-  background-color: var(--gin-color-button-text);
+  .dropbutton__toggle:hover::before, .dropbutton__toggle:active::before, .dropbutton__toggle:focus::before {
+    background-color: var(--gin-color-button-text);
+  }
 }
 
 .dropbutton .dropbutton__items {
@@ -2540,6 +2548,12 @@ html.js .dropbutton-widget {
 [dir="rtl"] .node-form .dropbutton .dropbutton__items {
   right: 0;
   left: auto;
+}
+
+@media (forced-colors: active) {
+  .dropbutton .dropbutton__items {
+    border: 1px solid linktext;
+  }
 }
 
 .dropbutton > .dropbutton__items > .dropbutton__item:first-of-type > a,
@@ -2635,6 +2649,43 @@ html.js .dropbutton-widget {
   color: var(--gin-color-button-text);
   background: var(--gin-color-primary);
   border-radius: var(--gin-border-s);
+}
+
+@media (forced-colors: active) {
+  .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > a:hover, .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > a:active, .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > a:focus,
+  .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > input:hover,
+  .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > input:active,
+  .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > input:focus,
+  .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > .button:hover,
+  .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > .button:active,
+  .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > .button:focus, .dropbutton .dropbutton__items > .dropbutton__item > a:hover, .dropbutton .dropbutton__items > .dropbutton__item > a:active, .dropbutton .dropbutton__items > .dropbutton__item > a:focus,
+  .dropbutton .dropbutton__items > .dropbutton__item > input:hover,
+  .dropbutton .dropbutton__items > .dropbutton__item > input:active,
+  .dropbutton .dropbutton__items > .dropbutton__item > input:focus,
+  .dropbutton .dropbutton__items > .dropbutton__item > .button:hover,
+  .dropbutton .dropbutton__items > .dropbutton__item > .button:active,
+  .dropbutton .dropbutton__items > .dropbutton__item > .button:focus, .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > a:hover, .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > a:active, .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > a:focus,
+  .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > input:hover,
+  .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > input:active,
+  .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > input:focus,
+  .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > .button:hover,
+  .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > .button:active,
+  .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > .button:focus {
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+  }
+}
+
+@media (forced-colors: active) {
+  .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > a:focus,
+  .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > input:focus,
+  .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item > .button:focus, .dropbutton .dropbutton__items > .dropbutton__item > a:focus,
+  .dropbutton .dropbutton__items > .dropbutton__item > input:focus,
+  .dropbutton .dropbutton__items > .dropbutton__item > .button:focus, .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > a:focus,
+  .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > input:focus,
+  .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item > .button:focus {
+    outline-style: dotted;
+  }
 }
 
 .dropbutton > .dropbutton__item:first-of-type > a:hover, .dropbutton > .dropbutton__item:first-of-type > a:active, .dropbutton > .dropbutton__item:first-of-type > a:focus,
