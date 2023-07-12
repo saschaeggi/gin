@@ -266,3 +266,9 @@
     box-shadow: 0 0 4px rgba(0, 0, 0, .3);
   }
 }
+
+// Classes that hide submenus are not available until the toolbar has
+// initialized, so hide them until loading is complete.
+.toolbar-loading .menu-item--expanded > .toolbar-menu {
+  display: none;
+}
