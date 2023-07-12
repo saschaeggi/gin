@@ -1575,7 +1575,6 @@ td.webform-has-field-suffix > .form-item > .form-element {
 
 .tabledrag-handle::after {
   background-image: none;
-  background-color: var(--gin-color-text-light);
   -webkit-mask-image: url("../../media/sprite.svg#drag-view");
           mask-image: url("../../media/sprite.svg#drag-view");
   -webkit-mask-repeat: no-repeat;
@@ -1586,9 +1585,20 @@ td.webform-has-field-suffix > .form-item > .form-element {
           mask-size: 16px 16px;
 }
 
+@media (forced-colors: none) {
+  .tabledrag-handle::after {
+    background-color: var(--gin-color-text-light);
+  }
+}
+
 .tabledrag-handle:hover::after {
   transform: scale(1);
-  background-color: var(--gin-color-primary);
+}
+
+@media (forced-colors: none) {
+  .tabledrag-handle:hover::after {
+    background-color: var(--gin-color-primary);
+  }
 }
 
 .draggable.drag, .draggable.drag:focus {
@@ -1609,6 +1619,29 @@ td.webform-has-field-suffix > .form-item > .form-element {
 
 [dir="rtl"] .draggable.drag-previous {
   box-shadow: inset -6px 0 0 0 var(--gin-color-warning);
+}
+
+.draggable.drag-previous::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 6px;
+}
+
+@media (forced-colors: active) {
+  .draggable.drag-previous {
+    position: relative;
+  }
+
+  [dir="ltr"] .draggable.drag-previous::after {
+    border-left: 6px solid linktext;
+    left: 0;
+  }
+
+  [dir="rtl"] .draggable.drag-previous::after {
+    border-right: 6px solid linktext;
+    right: 0;
+  }
 }
 
 .tabledrag-leaf td,
