@@ -46,6 +46,7 @@ a {
 // Gin's contrast support.
 .visually-hidden {
   color: #000;
+
   .gin--dark-mode & {
     color: #FFF;
   }
