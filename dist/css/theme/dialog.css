@@ -819,3 +819,7 @@
   margin-bottom: var(--gin-spacing-xs);
 }
 
+.ui-dialog .length-indicator {
+  margin-bottom: var(--gin-spacing-l);
+}
+
