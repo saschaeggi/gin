@@ -26,7 +26,7 @@
       <h3 class="panel__title">{{ title }}</h3>
     {% endif %}
 
-    <dl{{ attributes.addClass('admin-list', 'panel__content', 'gin-layer-wrapper') }}>
+    <div{{ attributes.addClass('admin-list', 'panel__content', 'gin-layer-wrapper') }}>
       {% for bundle in bundles %}
         {#
           Add 'admin-item__link' class to the link attributes.
@@ -34,18 +34,19 @@
         #}
         {% set bundle_attributes = bundle.add_link.url.getOption('attributes') ?: {} %}
         {% set link_attributes = create_attribute(bundle_attributes).addClass('admin-item__link') %}
+        {% set description_id = bundle.add_link.text|clean_id ~ '-desc' %}
         <div{{ create_attribute({ class: item_classes }) }}>
           <a class="admin-item__link" title="{{ bundle.add_link.text }}" href="{{ bundle.add_link.url }}"></a>
-          <dt class="admin-item__title">
+          <div class="admin-item__title"{% if bundle.description %} aria-details="{{ description_id }}"{% endif %}>
             {{ bundle.add_link.text }}
-          </dt>
+          </div>
           {# Don't print empty description wrapper if there is no description #}
           {% if bundle.description %}
-            <dd class="admin-item__description">{{ bundle.description }}</dd>
+            <div class="admin-item__description" id="{{ description_id }}">{{ bundle.description }}</div>
           {% endif %}
         </div>
       {% endfor %}
-    </dl>
+    </div>
   </div>
 {% elseif add_bundle_message is not empty %}
   <p>
