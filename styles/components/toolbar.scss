@@ -641,7 +641,8 @@ body.gin--classic-toolbar {
   }
 }
 
-#toolbar-item-user {
+#toolbar-item-user,
+#toolbar-item-user-secondary {
   display: inline-block;
   vertical-align: top;
   min-width: unset;
