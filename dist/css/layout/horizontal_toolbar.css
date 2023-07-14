@@ -323,3 +323,7 @@
   box-shadow: 0 0 4px rgba(0, 0, 0, .3);
 }
 
+.toolbar-loading .menu-item--expanded > .toolbar-menu {
+  display: none;
+}
+
