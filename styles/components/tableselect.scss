@@ -83,16 +83,18 @@
     bottom: var(--gin-spacing-xs);
     box-shadow: 0 2px 6px 2px rgba(0, 0, 0, .03);
   }
-
-  .views-bulk-actions[data-drupal-sticky-vbo] {
-    .views-bulk-actions__item {
-      color: var(--gin-color-text);
-    }
-  }
 }
 
 .views-bulk-actions {
+  padding: var(--gin-spacing-m);
+
   &__item {
+    color: var(--gin-color-text);
+    font-weight: var(--gin-font-weight-semibold);
     margin-right: var(--gin-spacing-xs);
+
+    &--status {
+      margin-right: var(--gin-spacing-l);
+    }
   }
 }

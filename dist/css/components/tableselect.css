@@ -142,9 +142,13 @@
   right: 0;
 }
 
-.block-system > .views-form .views-bulk-actions[data-drupal-sticky-vbo] .views-bulk-actions__item,
-.view-content .views-form .views-bulk-actions[data-drupal-sticky-vbo] .views-bulk-actions__item {
+.views-bulk-actions {
+  padding: var(--gin-spacing-m);
+}
+
+.views-bulk-actions__item {
   color: var(--gin-color-text);
+  font-weight: var(--gin-font-weight-semibold);
 }
 
 [dir="ltr"] .views-bulk-actions__item {
@@ -153,5 +157,13 @@
 
 [dir="rtl"] .views-bulk-actions__item {
   margin-left: var(--gin-spacing-xs);
+}
+
+[dir="ltr"] .views-bulk-actions__item--status {
+  margin-right: var(--gin-spacing-l);
+}
+
+[dir="rtl"] .views-bulk-actions__item--status {
+  margin-left: var(--gin-spacing-l);
 }
 
