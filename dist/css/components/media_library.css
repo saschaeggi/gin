@@ -191,6 +191,7 @@
 
 .media-library-views-form {
   flex-wrap: initial;
+  flex-direction: column;
 }
 
 fieldset.media-library-widget .media-library-widget__toggle-weight {
@@ -301,6 +302,8 @@ fieldset.media-library-widget .media-library-edit__link, fieldset.media-library-
 
 .media-library-wrapper {
   margin-top: 0;
+  margin-left: calc(var(--gin-spacing-m) * -1);
+  margin-right: calc(var(--gin-spacing-m) * -1);
 }
 
 .media-library-wrapper .views-display-link {

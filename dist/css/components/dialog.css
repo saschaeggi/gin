@@ -118,7 +118,7 @@
   position: absolute;
   top: 50%;
   opacity: .8;
-  margin: 0 var(--gin-spacing-l);
+  margin: 0 var(--gin-spacing-m);
   transform: translateY(-50%);
   background: none;
   border: none;

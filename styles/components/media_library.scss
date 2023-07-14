@@ -191,6 +191,7 @@
 
 .media-library-views-form {
   flex-wrap: initial;
+  flex-direction: column;
 }
 
 fieldset.media-library-widget {
@@ -298,6 +299,8 @@ fieldset.media-library-widget {
 
 .media-library-wrapper {
   margin-top: 0;
+  margin-left: calc(var(--gin-spacing-m) * -1);
+  margin-right: calc(var(--gin-spacing-m) * -1);
 
   .views-display-link {
     position: relative;
