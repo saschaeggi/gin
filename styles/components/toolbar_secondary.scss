@@ -162,6 +162,7 @@
 
 .gin-secondary-toolbar .toolbar-secondary {
   display: none;
+
   @include mq(medium) {
     display: block;
 
