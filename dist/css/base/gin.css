@@ -2272,6 +2272,10 @@ tr .form-item {
   margin-bottom: var(--gin-spacing-xs);
 }
 
+.length-indicator {
+  margin-bottom: var(--gin-spacing-l);
+}
+
 .button,
 .dropbutton__item:first-of-type > *,
 .dropbutton__toggle {
