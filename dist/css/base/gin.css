@@ -43,6 +43,14 @@ a {
   word-wrap: break-word;
 }
 
+.visually-hidden {
+  color: #000;
+}
+
+.gin--dark-mode .visually-hidden {
+  color: #fff;
+}
+
 a,
 .link,
 button.link,

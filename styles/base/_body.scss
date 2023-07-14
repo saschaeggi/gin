@@ -38,3 +38,18 @@ a {
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
+
+// Enforcing colors on visually hidden text does not change anything for the
+// user, but it prevents accessibilty scanners like Wave from reporting contrast
+// errors on visually hidden elements. While this is certainly an issue with the
+// scanners and not Gin, this ensures that scans provide an accurate account of
+// Gin's contrast support.
+.visually-hidden {
+  color: #000;
+
+  .gin--dark-mode & {
+    color: #FFF;
+  }
+}
+
+
