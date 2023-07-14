@@ -132,7 +132,7 @@ $maxWidth: 520px;
 }
 
 // Single Checkbox: show as toggle
-:not(.form-checkboxes):not(td):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox {
+:not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content) > .form-type--checkbox {
   position: relative;
   margin-left: 0;
 
@@ -263,6 +263,11 @@ $maxWidth: 520px;
     padding-bottom: 0;
     color: var(--gin-color-text);
   }
+}
+
+// Correctly align bulk action checkboxes when used in combination with tabledrag
+table:has(.tabledrag-cell-content__item .form-checkbox) th.select-all .form-checkbox {
+  margin-left: calc(var(--tabledrag-handle-icon-size) + var(--space-m));
 }
 
 .form-boolean {

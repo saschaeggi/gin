@@ -357,11 +357,11 @@ body.gin--classic-toolbar {
 }
 
 @media (min-width: 61em) {
-  [dir="ltr"] .toolbar .toolbar-menu .toolbar-icon {
+  [dir="ltr"] .toolbar .toolbar-menu .toolbar-icon, [dir="ltr"] .toolbar .toolbar-menu .responsive-preview-icon {
     padding-right: var(--gin-spacing-l);
   }
 
-  [dir="rtl"] .toolbar .toolbar-menu .toolbar-icon {
+  [dir="rtl"] .toolbar .toolbar-menu .toolbar-icon, [dir="rtl"] .toolbar .toolbar-menu .responsive-preview-icon {
     padding-left: var(--gin-spacing-l);
   }
 }
