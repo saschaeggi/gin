@@ -355,6 +355,14 @@ body.gin--classic-toolbar {
       }
     }
   }
+
+  .toolbar-menu {
+    .toolbar-icon {
+      @include mq(medium) {
+        padding-right: var(--gin-spacing-l);
+      }
+    }
+  }
 }
 
 .toolbar-horizontal .toolbar-tray {

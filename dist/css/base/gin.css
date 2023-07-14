@@ -1297,7 +1297,7 @@ table thead {
 }
 
 table thead tr {
-  border-bottom: 1px solid var(--gin-border-color-table-header);
+  border-bottom: 2px solid var(--gin-border-color-table-header);
 }
 
 table thead tr:hover {
