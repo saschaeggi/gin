@@ -75,7 +75,7 @@
         </li>
         {% if toolbar_variant == 'vertical' %}
           <li class="menu-item">
-            {{ link('Overview'|t, parent.url, {'class': [item.in_active_trail ? 'is-active']}) }}
+            <a href="{{ parent.url }}" class="toolbar-icon">{{ 'Overview'|t }}</a>
           </li>
         {% endif %}
       {% elseif menu_level > 1 and loop.index == 1 %}
@@ -86,7 +86,7 @@
         </li>
         {% if toolbar_variant == 'vertical' %}
           <li class="menu-item">
-            {{ link('Overview'|t, parent.url, {'class': [item.in_active_trail ? 'is-active']}) }}
+            <a href="{{ parent.url }}" class="toolbar-icon">{{ 'Overview'|t }}</a>
           </li>
         {% endif %}
       {% endif %}
