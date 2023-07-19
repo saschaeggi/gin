@@ -12,10 +12,8 @@ function gin_theme_suggestions_table_alter(array &$suggestions, array $variables
   if (empty($variables['attributes']['class'])) {
     return;
   }
-  if (!($variables['attributes']['class'] instanceof \Traversable)) {
-    $variables['attributes']['class'] = [$variables['attributes']['class']];
-  }
-  if (in_array('field-multiple-table', $variables['attributes']['class'])) {
+
+  if (is_array($variables['attributes']['class']) && in_array('field-multiple-table', $variables['attributes']['class'])) {
     $suggestions[] = 'table__simple';
   }
 }
