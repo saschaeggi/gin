@@ -23,7 +23,7 @@
 {% if content %}
   <div{{ attributes.addClass('admin-list', 'gin-layer-wrapper') }}>
     {% for item in content %}
-      {% set description_id = item.title|clean_id ~ '-desc' %}
+      {% set description_id = item.title|render|clean_id ~ '-desc' %}
       <div{{ create_attribute({class: item_classes}) }}>
         {{ item.link }}
         <div class="admin-item__title" aria-details="{{ description_id }}">{{ item.title }}</div>
