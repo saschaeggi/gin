@@ -3173,6 +3173,12 @@ a.button.button--danger:active:before {
   right: 0;
 }
 
+@media (forced-colors: active) {
+  .messages .button--dismiss .icon-close {
+    background-color: buttonBorder;
+  }
+}
+
 .messages--webform .button--dismiss {
   display: none;
 }

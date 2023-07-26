@@ -91,6 +91,9 @@
       mask-repeat: no-repeat;
       mask-position: center;
       background-color: #fff;
+      @media (forced-colors: active) {
+        background-color: buttonBorder;
+      }
     }
   }
 
