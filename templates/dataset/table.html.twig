@@ -40,7 +40,9 @@
  */
 #}
 <div class="layer-wrapper gin-layer-wrapper">
+  {% if header %}
   <div class="gin-table-scroll-wrapper">
+  {% endif %}
     <table{{ attributes }}>
       {% if caption %}
         <caption>{{ caption }}</caption>
@@ -123,5 +125,7 @@
         </tfoot>
       {% endif %}
     </table>
+  {% if header %}
   </div>
+  {% endif %}
 </div>
