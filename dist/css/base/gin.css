@@ -3222,6 +3222,12 @@ a.button.button--danger:active:before {
           mask-position: center left;
 }
 
+@media (forced-colors: active) {
+  .messages.messages--status .messages__header:before {
+    background-color: buttonBorder;
+  }
+}
+
 .messages.messages--status .button--dismiss .icon-close:link {
   background-color: var(--gin-color-green-light);
 }
@@ -4254,3 +4260,5 @@ blockquote::before {
   }
 }
 
+
+/*# sourceMappingURL=gin.css.map*/
