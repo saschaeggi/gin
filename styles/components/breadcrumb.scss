@@ -40,6 +40,10 @@
     display: inline-block;
     padding: 0 .5em;
     background: none;
+
+    @media (forced-colors: active) {
+      opacity: 1;
+    }
   }
 
   &__item:first-of-type &__link {
@@ -59,10 +63,19 @@
       mask-image: icon('backtosite');
       mask-size: 100% 100%;
       mask-position: center center;
+
+      // forced color style for breadcrumbs
+      @media (forced-colors: active) {
+        background: linktext;
+      }
     }
 
     &:hover::before {
       background-color: var(--gin-color-primary);
+
+      @media (forced-colors: active) {
+        background: linktext;
+      }
     }
   }
 
@@ -75,6 +88,10 @@
     padding-left: .75em;
     padding-right: 0;
     margin-right: .75em;
+
+    @media (forced-colors: active) {
+      opacity: 1;
+    }
   }
 
   &__link,
