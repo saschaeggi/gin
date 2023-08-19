@@ -43,6 +43,7 @@ html.js .dropbutton-widget {
   &__toggle {
     background: none;
     white-space: nowrap;
+
     @media (forced-colors: active) {
       border-width: 0 !important;
     }
@@ -61,6 +62,7 @@ html.js .dropbutton-widget {
     &:hover {
       background-color: var(--gin-color-primary);
     }
+
     @media not (forced-colors: active) {
       &::before {
         background-image: none;
@@ -150,11 +152,13 @@ html.js .dropbutton-widget {
         color: var(--gin-color-button-text);
         background: var(--gin-color-primary);
         border-radius: var(--gin-border-s);
+
         @media (forced-colors: active) {
           outline: 2px solid transparent;
           outline-offset: -2px;
         }
       }
+
       &:focus {
         @media (forced-colors: active) {
           outline-style: dotted;
