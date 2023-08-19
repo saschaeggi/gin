@@ -310,7 +310,15 @@ a.toolbar-menu__trigger,
   [dir="rtl"] .toolbar-menu-administration a.toolbar-menu__trigger::before {
     right: calc((var(--gin-toolbar-width-collapsed) - 36px) / 2);
   }
+}
 
+@media (min-width: 61em) and (forced-colors: active) {
+  .toolbar-menu-administration a.toolbar-menu__trigger::before {
+    background: var(--gin-bg-layer) url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='linkText'/%3E%3C/svg%3E") no-repeat center center;
+  }
+}
+
+@media (min-width: 61em) {
   .toolbar-menu-administration a.toolbar-menu__trigger.is-active {
     display: flex;
     font-weight: var(--gin-font-weight-normal);
@@ -329,19 +337,27 @@ a.toolbar-menu__trigger,
   [dir="rtl"] .toolbar-menu-administration a.toolbar-menu__trigger.is-active:before {
     transform: rotate(-180deg);
   }
+}
 
+@media (min-width: 61em) {
   .toolbar-menu-administration a.toolbar-menu__trigger .menu {
     display: none;
   }
+}
 
+@media (min-width: 61em) {
   .toolbar-menu-administration a.toolbar-menu__trigger .close {
     display: inline;
   }
+}
 
+@media (min-width: 61em) {
   .toolbar-tab--toolbar-item-administration {
     order: -1;
   }
+}
 
+@media (min-width: 61em) {
   .toolbar-menu-administration {
     display: flex;
     position: fixed;
@@ -637,7 +653,9 @@ a.toolbar-menu__trigger,
     color: var(--gin-color-primary-hover);
     background: var(--gin-color-primary-light);
   }
+}
 
+@media (min-width: 61em) {
   .toolbar .toolbar-toggle-orientation button {
     display: none;
   }
