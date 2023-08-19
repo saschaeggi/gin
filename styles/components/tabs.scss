@@ -352,6 +352,23 @@
   mask-repeat: no-repeat;
   mask-position: center center;
   mask-size: 100% 100%;
+
+  @media (forced-colors: active) {
+    background-color: buttonBorder;
+  }
+}
+
+.claro-details__summary::before {
+  @media (forced-colors: active) {
+    transform: rotate(90deg);
+  }
+}
+
+.claro-details[open] > .claro-details__summary::before {
+  @media (forced-colors: active) {
+    transform: rotate(270deg);
+    margin-top: -6px;
+  }
 }
 
 .claro-details__summary:hover::before,
@@ -362,6 +379,10 @@
 .claro-details[open] > .claro-details__summary--accordion-item::before,
 .claro-details[open] > .claro-details__summary--vertical-tabs-item::before {
   background: var(--gin-color-primary);
+
+  @media (forced-colors: active) {
+    background-color: linkText;
+  }
 }
 
 .claro-details {

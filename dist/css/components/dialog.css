@@ -5,6 +5,12 @@
   background: var(--gin-bg-layer);
 }
 
+@media (forced-colors: active) {
+  .ui-dialog:not(.ui-dialog-off-canvas) {
+    border: 1px solid buttonBorder !important;
+  }
+}
+
 .ui-dialog:not(.ui-dialog-off-canvas) .ui-dialog-content:first-of-type {
   border-top-left-radius: var(--gin-border-m);
   border-top-right-radius: var(--gin-border-m);
@@ -61,6 +67,12 @@
   border: 0 none;
   border-radius: var(--gin-border-m) var(--gin-border-m) 0 0;
   position: relative;
+}
+
+@media (forced-colors: active) {
+  .ui-dialog .ui-dialog-titlebar {
+    border-bottom: 1px solid buttonBorder;
+  }
 }
 
 .ui-dialog .ui-dialog-title {
@@ -159,6 +171,12 @@
   right: 0;
 }
 
+@media (forced-colors: active) {
+  .ui-dialog .ui-dialog-titlebar-close .ui-icon-closethick {
+    background: linktext;
+  }
+}
+
 .ui-dialog .ui-dialog-titlebar-close:hover {
   opacity: 1;
 }
@@ -210,6 +228,12 @@ ul.paragraphs-add-dialog-list {
 
 .views-ui-dialog .views-offset-bottom {
   border-top: 1px solid var(--gin-border-color);
+}
+
+@media (forced-colors: active) {
+  .views-ui-dialog .views-offset-bottom {
+    border-top: none;
+  }
 }
 
 .ui-widget-content a {

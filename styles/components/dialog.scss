@@ -4,6 +4,10 @@
   border-radius: var(--gin-border-m);
   background: var(--gin-bg-layer);
 
+  @media (forced-colors: active) {
+    border: 1px solid buttonBorder !important;
+  }
+
   // Dialog without title
   .ui-dialog-content:first-of-type {
     border-top-left-radius: var(--gin-border-m);
@@ -60,6 +64,10 @@
     border: 0 none;
     border-radius: var(--gin-border-m) var(--gin-border-m) 0 0;
     position: relative;
+
+    @media (forced-colors: active) {
+      border-bottom: 1px solid buttonBorder;
+    }
   }
 
   .ui-dialog-title {
@@ -127,6 +135,10 @@
       mask-size: var(--gin-icon-size-close) var(--gin-icon-size-close);
       mask-repeat: no-repeat;
       mask-position: center center;
+
+      @media (forced-colors: active) {
+        background: linktext;
+      }
     }
 
     &:hover {
@@ -170,6 +182,10 @@ ul.paragraphs-add-dialog-list {
 .views-ui-dialog {
   .views-offset-bottom {
     border-top: 1px solid var(--gin-border-color);
+
+    @media (forced-colors: active) {
+      border-top: none;
+    }
   }
 }
 
