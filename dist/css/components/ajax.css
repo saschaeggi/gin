@@ -1,3 +1,13 @@
+@keyframes gin-throbber {
+  0% {
+    transform: rotateZ(0);
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
 .ajax-progress__throbber, .ajax-progress__throbber--fullscreen,
 .ui-dialog .ajax-progress__throbber,
 .media-library-item .ajax-progress__throbber {
@@ -113,16 +123,6 @@
 
 [dir="rtl"] .contextual-links .ajax-progress-throbber::before {
   right: .25em;
-}
-
-@keyframes gin-throbber {
-  0% {
-    transform: rotateZ(0);
-  }
-
-  100% {
-    transform: rotateZ(360deg);
-  }
 }
 
 .claro-autocomplete__message {

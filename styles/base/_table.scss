@@ -223,23 +223,28 @@ td.webform-has-field-suffix > .form-item > .form-element {
       border-bottom: 0;
     }
 
-    .label {
+    .field-label .label,
+    .form-item__label--multiple-value-form {
       display: inline-block;
       font-size: var(--gin-font-size-l);
       font-weight: var(--gin-font-weight-bold);
       letter-spacing: -0.025em;
       line-height: 1.33333em;
       color: var(--gin-color-primary-active);
-      padding: 0;
-      margin: var(--gin-spacing-xs) 0;
+      padding: var(--gin-spacing-xs) 0;
+      margin: 0;
     }
   }
 
-  tr .form-item {
+  tr .form-item:not(:last-of-type) {
     margin-bottom: var(--gin-spacing-m);
   }
 }
 
 .gin-layer-wrapper .views-table {
   margin-top: 0;
+}
+
+table td.field-plugin-summary-cell {
+  vertical-align: middle;
 }

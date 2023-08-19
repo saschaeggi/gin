@@ -39,6 +39,51 @@ a.ui-button:active,
   border: 1px solid var(--gin-border-color);
 }
 
+.js .form-autocomplete {
+  transition: var(--gin-transition), background-position none;
+}
+
+.js .form-autocomplete.is-autocompleting,
+.js input.form-autocomplete.ui-autocomplete-loading,
+div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open {
+  background-image: none;
+}
+
+.form-autocomplete.is-autocompleting + .claro-autocomplete__message,
+div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open {
+  display: block;
+}
+
+.form-autocomplete.is-autocompleting + .claro-autocomplete__message::after,
+div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open::after {
+  content: "";
+  position: absolute;
+  top: 35px;
+  display: block;
+  border: 2px solid var(--gin-bg-input);
+  border-radius: 50%;
+  border-top: 2px solid var(--gin-color-primary);
+  width: 14px;
+  height: 14px;
+  animation: gin-throbber 1s linear infinite;
+}
+
+[dir="ltr"] .form-autocomplete.is-autocompleting + .claro-autocomplete__message::after,
+[dir="ltr"] div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open::after {
+  right: 12px;
+  text-align: right;
+}
+
+[dir="rtl"] .form-autocomplete.is-autocompleting + .claro-autocomplete__message::after,
+[dir="rtl"] div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open::after {
+  left: 12px;
+  text-align: left;
+}
+
+div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open::after {
+  top: 2px;
+}
+
 div.autocomplete-deluxe-multiple {
   color: var(--gin-color-text);
   background: var(--gin-bg-input);

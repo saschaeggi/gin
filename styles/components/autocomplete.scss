@@ -36,6 +36,43 @@ a.ui-button:active,
   border: 1px solid var(--gin-border-color);
 }
 
+.js .form-autocomplete {
+  transition: var(--gin-transition), background-position none;
+}
+
+.js .form-autocomplete.is-autocompleting,
+.js input.form-autocomplete.ui-autocomplete-loading,
+div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open {
+  background-image: none;
+}
+
+.form-autocomplete.is-autocompleting + .claro-autocomplete__message,
+div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open {
+  display: block;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 35px;
+    right: 12px;
+    display: block;
+    text-align: right;
+    border: 2px solid var(--gin-bg-input);
+    border-radius: 50%;
+    border-top: 2px solid var(--gin-color-primary);
+    width: 14px;
+    height: 14px;
+    animation: gin-throbber 1s linear infinite;
+  }
+}
+
+div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open {
+  &::after {
+    top: 2px;
+  }
+}
+
+// Autocomplete Deluxe
 div.autocomplete-deluxe-multiple {
   color: var(--gin-color-text);
   background: var(--gin-bg-input);
@@ -69,7 +106,7 @@ div.autocomplete-deluxe-multiple {
   .autocomplete-deluxe-item-delete {
     top: 6px;
     right: 6px;
-    mask-image: icon('close');
+    mask-image: icon("close");
     mask-size: 10px 10px;
     mask-repeat: no-repeat;
     mask-position: center;
