@@ -109,6 +109,7 @@ body.gin--classic-toolbar {
         mask-repeat: no-repeat;
         mask-position: center center;
         mask-size: var(--gin-icon-size-toolbar) var(--gin-icon-size-toolbar);
+
         @media (forced-colors: active) {
           background: linktext !important;
         }
@@ -625,6 +626,7 @@ body.gin--classic-toolbar {
 
 .toolbar.toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon::before {
   background-color: var(--gin-icon-color);
+
   @media (forced-colors: active) {
     background: linktext !important;
   }
