@@ -56,7 +56,8 @@
     mask-repeat: no-repeat;
     mask-position: center center;
     mask-size: 16px 16px;
-    @media (forced-colors: none){
+
+    @media (forced-colors: none) {
       background-color: var(--gin-color-text-light);
     }
   }
@@ -64,6 +65,7 @@
   &:hover {
     &::after {
       transform: scale(1);
+
       @media (forced-colors: none) {
         background-color: var(--gin-color-primary);
       }
@@ -82,13 +84,15 @@
 .draggable.drag-previous {
   background-color: var(--gin-bg-layer2);
   box-shadow: inset 6px 0 0 0 var(--gin-color-warning);
+
   &::after {
     content: "";
     position: absolute;
     height: 100%;
     width: 6px;
   }
-  @media (forced-colors: active){
+
+  @media (forced-colors: active) {
     position: relative;
     &::after {
       border-left: 6px solid linktext;
