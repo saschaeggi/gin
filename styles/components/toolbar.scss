@@ -728,6 +728,10 @@ body.gin--classic-toolbar {
     mask-image: icon('search');
     mask-size: 100% 100%;
     mask-position: center center;
+
+    @media (forced-colors: active) {
+      background-color: buttonBorder;
+    }
   }
 }
 

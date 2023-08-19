@@ -801,6 +801,12 @@ body.gin--classic-toolbar {
   right: var(--gin-spacing-m);
 }
 
+@media (forced-colors: active) {
+  #admin-toolbar-search-tab .js-form-type-search::before {
+    background-color: buttonBorder;
+  }
+}
+
 .ui-autocomplete.admin-toolbar-search-autocomplete-list {
   color: var(--gin-color-text);
   background-color: var(--gin-bg-layer3);

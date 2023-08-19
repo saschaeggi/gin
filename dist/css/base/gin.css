@@ -1385,6 +1385,12 @@ table td .group-label {
           mask-position: center center;
 }
 
+@media (forced-colors: active) {
+  .sortable-heading > a::after {
+    background: linktext;
+  }
+}
+
 .sortable-heading.is-active > a, .sortable-heading.is-active > a:hover, .sortable-heading.is-active > a:active {
   color: var(--gin-color-primary-active);
 }
@@ -1410,10 +1416,24 @@ table td .group-label {
           mask-image: url("../../media/sprite.svg#sort-asc-view");
 }
 
+@media (forced-colors: active) {
+  .tablesort--asc,
+  [dir=rtl] .tablesort--asc {
+    background: linktext;
+  }
+}
+
 .tablesort--desc,
 [dir=rtl] .tablesort--desc {
   -webkit-mask-image: url("../../media/sprite.svg#sort-desc-view");
           mask-image: url("../../media/sprite.svg#sort-desc-view");
+}
+
+@media (forced-colors: active) {
+  .tablesort--desc,
+  [dir=rtl] .tablesort--desc {
+    background: linktext;
+  }
 }
 
 [dir="ltr"] .field-plugin-settings-edit-wrapper {
@@ -3226,12 +3246,6 @@ a.button.button--danger:active:before {
           mask-repeat: no-repeat;
   -webkit-mask-position: center left;
           mask-position: center left;
-}
-
-@media (forced-colors: active) {
-  .messages.messages--status .messages__header:before {
-    background-color: buttonBorder;
-  }
 }
 
 .messages.messages--status .button--dismiss .icon-close:link {

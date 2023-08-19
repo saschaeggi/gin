@@ -142,6 +142,10 @@ table {
     mask-image: icon('sort');
     mask-repeat: no-repeat;
     mask-position: center center;
+
+    @media (forced-colors: active) {
+      background: linktext;
+    }
   }
 
   &.is-active > a {
@@ -166,11 +170,19 @@ table {
 .tablesort--asc,
 [dir="rtl"] .tablesort--asc {
   mask-image: icon('sort-asc');
+
+  @media (forced-colors: active) {
+    background: linktext;
+  }
 }
 
 .tablesort--desc,
 [dir="rtl"] .tablesort--desc {
   mask-image: icon('sort-desc');
+
+  @media (forced-colors: active) {
+    background: linktext;
+  }
 }
 
 .field-plugin-settings-edit-wrapper {
