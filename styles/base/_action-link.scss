@@ -1,16 +1,16 @@
 .action-link {
   color: var(--gin-color-primary);
-  background-color: transparent;
+  background: transparent;
   border-radius: var(--gin-border-s);
 
   &:hover {
     color: var(--gin-color-primary-hover);
-    background-color: var(--gin-bg-item-hover);
+    background: var(--gin-bg-item-hover);
   }
 
   &:focus {
     color: var(--gin-color-primary-active);
-    background-color: var(--gin-color-primary-light-hover);
+    background: var(--gin-color-primary-light-hover);
   }
 
   &.action-link--extrasmall {
@@ -19,7 +19,7 @@
 
   &:before {
     background-image: none;
-    background-color: var(--gin-color-primary);
+    background: var(--gin-color-primary) !important;
     mask-size: contain;
     mask-repeat: no-repeat;
     mask-position: center;

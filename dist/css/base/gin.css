@@ -2832,18 +2832,18 @@ table tr:not(:first-of-type):last-of-type td .dropbutton__items {
 
 .action-link {
   color: var(--gin-color-primary);
-  background-color: transparent;
+  background: transparent;
   border-radius: var(--gin-border-s);
 }
 
 .action-link:hover {
   color: var(--gin-color-primary-hover);
-  background-color: var(--gin-bg-item-hover);
+  background: var(--gin-bg-item-hover);
 }
 
 .action-link:focus {
   color: var(--gin-color-primary-active);
-  background-color: var(--gin-color-primary-light-hover);
+  background: var(--gin-color-primary-light-hover);
 }
 
 .action-link.action-link--extrasmall {
@@ -2852,7 +2852,7 @@ table tr:not(:first-of-type):last-of-type td .dropbutton__items {
 
 .action-link:before {
   background-image: none;
-  background-color: var(--gin-color-primary);
+  background: var(--gin-color-primary) !important;
   -webkit-mask-size: contain;
           mask-size: contain;
   -webkit-mask-repeat: no-repeat;
