@@ -136,11 +136,12 @@
       }
 
       &:focus {
+        z-index: 3;
+        background: var(--gin-color-primary-light);
         box-shadow: none;
         box-shadow: inset 0 0 0 1px var(--gin-color-focus-border),
                     inset 0 0 0 4px var(--gin-color-focus);
-        background: var(--gin-color-primary-light);
-        z-index: 3;
+
         &::before {
           background: var(--gin-color-primary-active);
         }
