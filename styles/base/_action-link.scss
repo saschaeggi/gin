@@ -25,6 +25,7 @@
     mask-position: center;
   }
 
+  &--icon-plus:hover:before,
   &--icon-ex:hover::before,
   &--icon-checkmark:hover:before,
   &--icon-show:hover::before,
@@ -34,6 +35,10 @@
   &--icon-hide:before {
     background-image: none;
     background-color: var(--gin-color-primary);
+  }
+
+  &--icon-plus:before {
+    mask-image: icon('add');
   }
 
   &--icon-checkmark:before {
