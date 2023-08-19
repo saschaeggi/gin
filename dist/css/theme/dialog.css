@@ -7,7 +7,8 @@
 .ui-dialog [open] .claro-details__summary--vertical-tabs-item,
 .ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link {
   color: var(--gin-color-primary);
-  text-decoration: none;
+  -webkit-text-decoration-style: dotted;
+          text-decoration-style: dotted;
 }
 
 .ui-dialog a:hover,
@@ -30,6 +31,18 @@
 .ui-dialog [open] .claro-details__summary--vertical-tabs-item:active,
 .ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link:active {
   color: var(--gin-color-primary-active);
+}
+
+.ui-dialog *|*:-webkit-any-link:not(svg|a) {
+  text-decoration: underline;
+  -webkit-text-decoration-style: dotted;
+          text-decoration-style: dotted;
+}
+
+.ui-dialog *|*:any-link:not(svg|a) {
+  text-decoration: underline;
+  -webkit-text-decoration-style: dotted;
+          text-decoration-style: dotted;
 }
 
 .ui-dialog .is-horizontal .tabs__link:hover,
