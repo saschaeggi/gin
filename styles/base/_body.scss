@@ -50,6 +50,10 @@ a {
   .gin--dark-mode & {
     color: #FFF;
   }
+
+  &.skip-link {
+    color: var(--gin-color-button-text);
+  }
 }
 
 
