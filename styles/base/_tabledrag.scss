@@ -52,17 +52,23 @@
 .tabledrag-handle {
   &::after {
     background-image: none;
-    background-color: var(--gin-color-text-light);
     mask-image: icon('drag');
     mask-repeat: no-repeat;
     mask-position: center center;
     mask-size: 16px 16px;
+
+    @media (forced-colors: none) {
+      background-color: var(--gin-color-text-light);
+    }
   }
 
   &:hover {
     &::after {
       transform: scale(1);
-      background-color: var(--gin-color-primary);
+
+      @media (forced-colors: none) {
+        background-color: var(--gin-color-primary);
+      }
     }
   }
 }
@@ -78,6 +84,21 @@
 .draggable.drag-previous {
   background-color: var(--gin-bg-layer2);
   box-shadow: inset 6px 0 0 0 var(--gin-color-warning);
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 6px;
+  }
+
+  @media (forced-colors: active) {
+    position: relative;
+    &::after {
+      border-left: 6px solid linktext;
+      left:0
+    }
+  }
 }
 
 .tabledrag-leaf td,
