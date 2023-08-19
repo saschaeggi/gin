@@ -3116,6 +3116,12 @@ a.button.button--danger:active:before {
   right: 0;
 }
 
+@media (forced-colors: active) {
+  .messages .messages__header:before {
+    background-color: linktext !important;
+  }
+}
+
 .messages .button--dismiss {
   position: absolute;
   top: 0;
@@ -4260,5 +4266,3 @@ blockquote::before {
   }
 }
 
-
-/*# sourceMappingURL=gin.css.map*/

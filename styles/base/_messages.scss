@@ -49,6 +49,10 @@
       left: 0;
       width: 1.5rem;
       height: 1.5rem;
+
+      @media (forced-colors: active) {
+        background-color: linktext !important;
+      }
     }
   }
 
@@ -91,6 +95,7 @@
       mask-repeat: no-repeat;
       mask-position: center;
       background-color: #fff;
+
       @media (forced-colors: active) {
         background-color: buttonBorder;
       }
