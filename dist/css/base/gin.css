@@ -3116,6 +3116,12 @@ a.button.button--danger:active:before {
   right: 0;
 }
 
+@media (forced-colors: active) {
+  .messages .messages__header:before {
+    background-color: linktext !important;
+  }
+}
+
 .messages .button--dismiss {
   position: absolute;
   top: 0;
@@ -3173,6 +3179,12 @@ a.button.button--danger:active:before {
   right: 0;
 }
 
+@media (forced-colors: active) {
+  .messages .button--dismiss .icon-close {
+    background-color: buttonBorder;
+  }
+}
+
 .messages--webform .button--dismiss {
   display: none;
 }
@@ -3214,6 +3226,12 @@ a.button.button--danger:active:before {
           mask-repeat: no-repeat;
   -webkit-mask-position: center left;
           mask-position: center left;
+}
+
+@media (forced-colors: active) {
+  .messages.messages--status .messages__header:before {
+    background-color: buttonBorder;
+  }
 }
 
 .messages.messages--status .button--dismiss .icon-close:link {
