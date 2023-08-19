@@ -66,6 +66,10 @@
       mask-size: 1em 1em;
       mask-repeat: no-repeat;
       mask-position: center center;
+
+      @media (forced-colors: active) {
+        background-color: linktext;
+      }
     }
 
     &:hover,
