@@ -53,7 +53,7 @@
 
       {# All items except main nav #}
       {% if item_id[0] not in denylist_items %}
-        <div{{ tab.attributes.addClass(tab_classes) }}>
+        <div{{ tab.attributes.addClass(tab_classes) }}{% if 'tour-toolbar-tab' in tab.attributes.class %} id="toolbar-tab-tour"{% endif %}>
           {% if item_id[0] == 'toolbar-id--toolbar-icon-user' %}
             {{ user_picture }}
           {% else %}
