@@ -64,7 +64,8 @@ button.link,
 [open] .claro-details__summary--vertical-tabs-item,
 .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link {
   color: var(--gin-color-primary);
-  text-decoration: none;
+  -webkit-text-decoration-style: dotted;
+          text-decoration-style: dotted;
 }
 
 a:hover,
@@ -87,6 +88,18 @@ button.link:active,
 [open] .claro-details__summary--vertical-tabs-item:active,
 .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link:active {
   color: var(--gin-color-primary-active);
+}
+
+*|*:-webkit-any-link:not(svg|a) {
+  text-decoration: underline;
+  -webkit-text-decoration-style: dotted;
+          text-decoration-style: dotted;
+}
+
+*|*:any-link:not(svg|a) {
+  text-decoration: underline;
+  -webkit-text-decoration-style: dotted;
+          text-decoration-style: dotted;
 }
 
 .is-horizontal .tabs__link:hover,
@@ -1365,6 +1378,8 @@ table td a {
 
 table td a:hover {
   text-decoration: underline;
+  -webkit-text-decoration-style: dotted;
+          text-decoration-style: dotted;
 }
 
 table td .group-label {
