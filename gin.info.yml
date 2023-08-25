@@ -42,11 +42,6 @@ libraries-override:
         misc/dialog/off-canvas.css: false
         misc/dialog/off-canvas.theme.css: false
 
-  paragraphs_ee/paragraphs_ee.off_canvas:
-    css:
-      theme:
-        css/paragraphs_ee.off_canvas.css: false
-
   claro/global-styling:
     css:
       layout:
@@ -115,8 +110,6 @@ libraries-extend:
    - gin/workbench
   paragraphs/drupal.paragraphs.widget:
     - gin/paragraphs
-  paragraphs_ee/paragraphs_ee.paragraphs:
-    - gin/paragraphs_ee
   entity_reference_layout/erl_widget:
     - gin/entity_reference_layout
     - gin/layout_paragraphs

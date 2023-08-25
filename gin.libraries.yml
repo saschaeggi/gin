@@ -251,11 +251,6 @@ paragraphs:
     component:
       dist/css/components/paragraphs.css: { minified: false }
 
-paragraphs_ee:
-  css:
-    component:
-      dist/css/components/paragraphs_ee.css: { minified: false }
-
 layout_paragraphs:
   css:
     component:
