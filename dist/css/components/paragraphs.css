@@ -369,7 +369,7 @@ html[dir="rtl"].js .paragraph-type-icon {
 }
 
 .paragraphs-dragdrop__icon {
-  top: var(--gin-spacing-xs);
+  top: 2.5px;
 }
 
 .js .paragraph-type-add-modal-button:hover {
