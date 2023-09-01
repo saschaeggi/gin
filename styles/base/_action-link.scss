@@ -97,7 +97,7 @@ a.button.button--danger {
     background-color: var(--gin-color-danger);
 
     &:before {
-      background-color: var(--gin-bg-layer);
+      background-color: var(--gin-bg-layer) !important;
     }
   }
 }

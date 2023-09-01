@@ -2973,7 +2973,7 @@ a.button.button--danger:active {
 a.button.button--danger:hover:before,
 a.button.button--danger:focus:before,
 a.button.button--danger:active:before {
-  background-color: var(--gin-bg-layer);
+  background-color: var(--gin-bg-layer) !important;
 }
 
 .button--primary.button--danger {
