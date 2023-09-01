@@ -2818,7 +2818,7 @@ html.js.no-touchevents .dropbutton--small {
 }
 
 html.js.no-touchevents .dropbutton--small .dropbutton__toggle {
-  width: calc(var(--dropbutton-small-toggle-size) + 1px);
+  width: 2rem;
 }
 
 html.js.no-touchevents .dropbutton--extrasmall {
@@ -2829,7 +2829,7 @@ html.js.no-touchevents .dropbutton--extrasmall {
 }
 
 html.js.no-touchevents .dropbutton--extrasmall .dropbutton__toggle {
-  width: calc(var(--dropbutton-extrasmall-toggle-size) + 1px);
+  width: 1.5rem;
 }
 
 html[dir="ltr"].js.no-touchevents .dropbutton--multiple.dropbutton--extrasmall .dropbutton__items .dropbutton__item {
