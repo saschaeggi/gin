@@ -254,7 +254,7 @@ html.js.no-touchevents {
     border-radius: var(--gin-border-s);
 
     .dropbutton__toggle {
-      width: calc(var(--dropbutton-small-toggle-size, 1.5rem) + 1px);
+      width: calc(var(--dropbutton-extrasmall-toggle-size, 1.5rem) + 1px);
     }
   }
 
