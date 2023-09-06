@@ -587,11 +587,11 @@
 }
 
 [dir="ltr"] .ui-dialog table:has(.tabledrag-cell-content__item .form-checkbox) th.select-all .form-checkbox {
-  margin-left: calc(var(--tabledrag-handle-icon-size) + var(--space-m));
+  margin-left: calc(var(--tabledrag-handle-icon-size, 1.0625rem) + var(--gin-spacing-m));
 }
 
 [dir="rtl"] .ui-dialog table:has(.tabledrag-cell-content__item .form-checkbox) th.select-all .form-checkbox {
-  margin-right: calc(var(--tabledrag-handle-icon-size) + var(--space-m));
+  margin-right: calc(var(--tabledrag-handle-icon-size, 1.0625rem) + var(--gin-spacing-m));
 }
 
 .gin--dark-mode .ui-dialog .form-boolean:hover, .gin--dark-mode .ui-dialog .form-boolean:active {

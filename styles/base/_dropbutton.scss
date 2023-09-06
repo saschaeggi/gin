@@ -58,7 +58,7 @@ html.js .dropbutton-widget {
     right: 2px;
     width: calc(var(--gin-spacing-xxl) + 1px);
     height: 2.75rem;
-    border-inline-start: var(--dropbutton-border-size) solid var(--gin-color-primary) !important;
+    border-inline-start: var(--dropbutton-border-size, 1px) solid var(--gin-color-primary) !important;
 
     &:hover {
       background-color: var(--gin-color-primary);
