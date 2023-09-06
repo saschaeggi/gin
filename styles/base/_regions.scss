@@ -4,6 +4,9 @@
   z-index: 101;
   padding: 0;
   width: 100%;
+  display: flex;
+  align-items: center;
+  min-height: var(--gin-height-sticky);
   background: var(--gin-bg-app);
   box-sizing: border-box;
   transition: var(--gin-transition);
@@ -18,53 +21,52 @@
     }
   }
 
+  &-watcher {
+    position: sticky;
+    top: -1px;
+    height: 0;
+  }
+
+  &--is-sticky {
+    opacity: .95;
+    background: var(--gin-bg-app);
+
+    @supports (backdrop-filter: blur()) {
+      opacity: .999;
+      background: rgba(var(--gin-bg-app-rgb), .8);
+      backdrop-filter: blur(12px);
+    }
+
+    .gin--high-contrast-mode & {
+      background: var(--gin-bg-app);
+      backdrop-filter: none;
+    }
+  }
+
+  .gin--classic-toolbar:not(.gin--edit-form) & {
+    position: static;
+  }
+
   @include mq(large) {
     top: -1px;
-    width: 100%;
-    height: var(--gin-height-sticky);
     padding: var(--gin-spacing-s) 0;
-
-    &-watcher {
-      position: sticky;
-      top: -1px;
-      height: 0;
-    }
-
-    &--is-sticky {
-      opacity: .95;
-      background: var(--gin-bg-app);
-
-      @supports (backdrop-filter: blur()) {
-        opacity: .999;
-        background: rgba(var(--gin-bg-app-rgb), .8);
-        backdrop-filter: blur(12px);
-      }
-
-      .gin--high-contrast-mode & {
-        background: var(--gin-bg-app);
-        backdrop-filter: none;
-      }
-    }
+    height: var(--gin-height-sticky);
+    margin-bottom: 0;
 
     .gin--vertical-toolbar &,
     .gin--horizontal-toolbar &,
     .gin--classic-toolbar & {
       top: var(--gin-toolbar-y-offset);
     }
-
-    .gin--classic-toolbar:not(.gin--edit-form) & {
-      position: static;
-    }
   }
 
   &__items {
     display: flex;
     align-items: center;
-    margin-bottom: var(--gin-spacing-m);
+    width: 100%;
+    height: 100%;
 
     @include mq(small) {
-      height: 100%;
-
       .settings-tray-editable {
         flex-shrink: 0;
       }
