@@ -10,6 +10,10 @@
   @include mq(large) {
     --gin-icon-size-toolbar: 16px;
     --gin-scroll-offset: 200px;
+
+    .gin--edit-form {
+      --gin-sticky-offset: var(--gin-height-sticky);
+    }
   }
 }
 

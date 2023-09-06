@@ -67,7 +67,8 @@
   }
 
   &.ck-sticky-panel .ck-sticky-panel__content.ck-sticky-panel__content_sticky {
-    top: var(--gin-sticky-offset);
+    z-index: 2;
+    top: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset)) !important;
   }
 
   .ck-toolbar__separator {
