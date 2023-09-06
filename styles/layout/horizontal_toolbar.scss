@@ -23,6 +23,9 @@
 // Toolbar
 .toolbar {
   .toolbar-bar {
+    position: fixed;
+    left: 0;
+    width: 100%;
     background: #100f10;
     box-shadow: none;
 

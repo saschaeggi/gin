@@ -33,8 +33,18 @@
 }
 
 .toolbar .toolbar-bar {
+  position: fixed;
+  width: 100%;
   background: #100f10;
   box-shadow: none;
+}
+
+[dir="ltr"] .toolbar .toolbar-bar {
+  left: 0;
+}
+
+[dir="rtl"] .toolbar .toolbar-bar {
+  right: 0;
 }
 
 .toolbar .toolbar-menu,
