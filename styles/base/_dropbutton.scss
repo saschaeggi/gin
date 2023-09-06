@@ -58,7 +58,7 @@ html.js .dropbutton-widget {
     right: 2px;
     width: calc(var(--gin-spacing-xxl) + 1px);
     height: 2.75rem;
-    border-inline-start: var(--dropbutton-border-size) solid var(--gin-color-primary) !important;
+    border-inline-start: var(--dropbutton-border-size, 1px) solid var(--gin-color-primary) !important;
 
     &:hover {
       background-color: var(--gin-color-primary);
@@ -243,7 +243,7 @@ html.js.no-touchevents {
     border-radius: var(--gin-border-s);
 
     .dropbutton__toggle {
-      width: calc(var(--dropbutton-small-toggle-size) + 1px);
+      width: calc(var(--dropbutton-small-toggle-size, 2rem) + 1px);
     }
   }
 
@@ -254,7 +254,7 @@ html.js.no-touchevents {
     border-radius: var(--gin-border-s);
 
     .dropbutton__toggle {
-      width: calc(var(--dropbutton-extrasmall-toggle-size) + 1px);
+      width: calc(var(--dropbutton-extrasmall-toggle-size, 1.5rem) + 1px);
     }
   }
 

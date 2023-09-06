@@ -2011,11 +2011,11 @@ table td.field-plugin-summary-cell {
 }
 
 [dir="ltr"] table:has(.tabledrag-cell-content__item .form-checkbox) th.select-all .form-checkbox {
-  margin-left: calc(var(--tabledrag-handle-icon-size) + var(--space-m));
+  margin-left: calc(var(--tabledrag-handle-icon-size, 1.0625rem) + var(--gin-spacing-m));
 }
 
 [dir="rtl"] table:has(.tabledrag-cell-content__item .form-checkbox) th.select-all .form-checkbox {
-  margin-right: calc(var(--tabledrag-handle-icon-size) + var(--space-m));
+  margin-right: calc(var(--tabledrag-handle-icon-size, 1.0625rem) + var(--gin-spacing-m));
 }
 
 .gin--dark-mode .form-boolean:hover, .gin--dark-mode .form-boolean:active {
@@ -2532,8 +2532,8 @@ html.js .dropbutton-widget {
   top: 2px;
   width: calc(var(--gin-spacing-xxl) + 1px);
   height: 2.75rem;
-  -webkit-border-start: var(--dropbutton-border-size) solid var(--gin-color-primary) !important;
-          border-inline-start: var(--dropbutton-border-size) solid var(--gin-color-primary) !important;
+  -webkit-border-start: var(--dropbutton-border-size, 1px) solid var(--gin-color-primary) !important;
+          border-inline-start: var(--dropbutton-border-size, 1px) solid var(--gin-color-primary) !important;
 }
 
 [dir="ltr"] .dropbutton__toggle {
@@ -2818,7 +2818,7 @@ html.js.no-touchevents .dropbutton--small {
 }
 
 html.js.no-touchevents .dropbutton--small .dropbutton__toggle {
-  width: calc(var(--dropbutton-small-toggle-size) + 1px);
+  width: calc(var(--dropbutton-small-toggle-size, 2rem) + 1px);
 }
 
 html.js.no-touchevents .dropbutton--extrasmall {
@@ -2829,7 +2829,7 @@ html.js.no-touchevents .dropbutton--extrasmall {
 }
 
 html.js.no-touchevents .dropbutton--extrasmall .dropbutton__toggle {
-  width: calc(var(--dropbutton-extrasmall-toggle-size) + 1px);
+  width: calc(var(--dropbutton-extrasmall-toggle-size, 1.5rem) + 1px);
 }
 
 html[dir="ltr"].js.no-touchevents .dropbutton--multiple.dropbutton--extrasmall .dropbutton__items .dropbutton__item {
