@@ -12,6 +12,10 @@
     --gin-icon-size-toolbar: 16px;
     --gin-scroll-offset: 200px;
   }
+
+  :root .gin--edit-form {
+    --gin-sticky-offset: var(--gin-height-sticky);
+  }
 }
 
 @media (min-width: 61em) {
