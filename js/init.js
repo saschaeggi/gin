@@ -38,6 +38,10 @@ window.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('Drupal.gin.darkmode', drupalSettings.gin.darkmode);
     ginInitDarkmode();
   }
+  else if (drupalSettings.gin.darkmode != localStorage.getItem('Drupal.gin.darkmode') && !drupalSettings.gin.show_user_theme_settings) {
+    localStorage.setItem('Drupal.gin.darkmode', drupalSettings.gin.darkmode);
+    ginInitDarkmode();
+  }
 });
 
 // Toolbar Check.

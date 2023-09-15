@@ -5,7 +5,7 @@
   if (localStorage.getItem("GinDarkMode") && (localStorage.setItem("Drupal.gin.darkmode", localStorage.getItem("GinDarkMode")), 
   localStorage.removeItem("GinDarkMode")), localStorage.getItem("GinSidebarOpen") && (localStorage.setItem("Drupal.gin.toolbarExpanded", localStorage.getItem("GinSidebarOpen")), 
   localStorage.removeItem("GinSidebarOpen")), ginInitDarkmode(), window.addEventListener("DOMContentLoaded", (() => {
-    localStorage.getItem("Drupal.gin.darkmode") || (localStorage.setItem("Drupal.gin.darkmode", drupalSettings.gin.darkmode), 
+    localStorage.getItem("Drupal.gin.darkmode") && (drupalSettings.gin.darkmode == localStorage.getItem("Drupal.gin.darkmode") || drupalSettings.gin.show_user_theme_settings) || (localStorage.setItem("Drupal.gin.darkmode", drupalSettings.gin.darkmode), 
     ginInitDarkmode());
   })), localStorage.getItem("Drupal.gin.toolbarExpanded")) {
     const style = document.createElement("style"), className = "gin-toolbar-inline-styles";
