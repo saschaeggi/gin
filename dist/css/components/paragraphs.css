@@ -284,11 +284,11 @@ html.js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
 }
 
 html[dir="ltr"].js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
-  right: calc(var(--gin-spacing-xxs) * -1);
+  right: var(--gin-spacing-xxs);
 }
 
 html[dir="rtl"].js .field--widget-paragraphs th .paragraphs-actions .paragraphs-dropdown {
-  left: calc(var(--gin-spacing-xxs) * -1);
+  left: var(--gin-spacing-xxs);
 }
 
 .paragraphs-dropdown-actions {
@@ -369,7 +369,7 @@ html[dir="rtl"].js .paragraph-type-icon {
 }
 
 .paragraphs-dragdrop__icon {
-  top: var(--gin-spacing-xs);
+  top: calc(var(--gin-spacing-xxs) / 2);
 }
 
 .js .paragraph-type-add-modal-button:hover {
