@@ -13,7 +13,7 @@
         const observer = new IntersectionObserver(
           ([e]) => {
             if (context.querySelector('.gin-table-scroll-wrapper')) {
-              if (!e.isIntersecting && e.rootBounds.top === stickyOffsetTop) {
+              if (!e.isIntersecting && e.intersectionRect.top === stickyOffsetTop) {
                 context.querySelector('.gin-table-scroll-wrapper').classList.add('--is-sticky');
               } else {
                 context.querySelector('.gin-table-scroll-wrapper').classList.remove('--is-sticky');
