@@ -85,7 +85,7 @@ a.button.button--danger {
 
     &:before {
       background-image: none;
-      background-color: var(--gin-color-danger);
+      background-color: var(--gin-color-danger) !important;
       mask-image: icon('trash');
     }
   }
@@ -97,7 +97,7 @@ a.button.button--danger {
     background-color: var(--gin-color-danger);
 
     &:before {
-      background-color: var(--gin-bg-layer);
+      background-color: var(--gin-bg-layer) !important;
     }
   }
 }
