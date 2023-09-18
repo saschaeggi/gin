@@ -27,6 +27,25 @@ gin_init:
   dependencies:
     - core/drupalSettings
 
+navigation:
+  css:
+    component:
+      dist/css/components/toolbar.css: { minified: false }
+      dist/css/components/toolbar_secondary.css: { minified: false }
+    theme:
+      dist/css/layout/navigation.css: { minified: false }
+  dependencies:
+  - navigation/navigation
+  - gin/coffee
+  - gin/node_preview
+  - gin/responsive_preview
+  - gin/contextual_links
+  - gin/settings_tray
+  - gin/settings_tray_edit
+  - core/drupalSettings
+  - core/once
+  - core/drupal.displace
+
 gin_toolbar:
   css:
     component:

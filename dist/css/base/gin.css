@@ -211,7 +211,7 @@ button.link:active,
             backdrop-filter: none;
   }
 
-  .gin--vertical-toolbar .region-sticky, .gin--horizontal-toolbar .region-sticky, .gin--classic-toolbar .region-sticky {
+  .gin--navigation .region-sticky, .gin--vertical-toolbar .region-sticky, .gin--horizontal-toolbar .region-sticky, .gin--classic-toolbar .region-sticky {
     top: var(--gin-toolbar-y-offset);
   }
 
@@ -514,6 +514,10 @@ body:not(.toolbar-tray-open) .layout-container {
 .admin.my-workbench > .form-wrapper:first-of-type .form-item,
 .admin.my-workbench .layout-region-node-main > .form-wrapper:first-of-type .form-item {
   margin-top: 0;
+}
+
+#system-clear-cache + #system-performance-settings {
+  margin-top: var(--gin-spacing-l);
 }
 
 @media (max-width: 60.99em) {
@@ -3539,7 +3543,9 @@ hr {
 .ck .ck.ck-button:active,
 .ck .ck.ck-button:focus,
 .ck .ck.ck-button:active:focus,
-.toolbar-box .toolbar-handle:focus {
+.toolbar-box .toolbar-handle:focus,
+.gin--navigation .navigation-link:focus,
+.gin--navigation .level-1 > .navigation-link:hover {
   outline: none;
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }

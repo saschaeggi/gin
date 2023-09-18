@@ -302,6 +302,7 @@
     padding: var(--gin-spacing-s) var(--gin-spacing-m);
     border-radius: var(--gin-border-s);
     font-size: var(--gin-font-size-xs);
+    font-weight: normal;
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray a:hover, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray a:active {

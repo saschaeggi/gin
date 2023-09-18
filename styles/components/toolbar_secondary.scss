@@ -249,6 +249,7 @@
             padding: var(--gin-spacing-s) var(--gin-spacing-m);
             border-radius: var(--gin-border-s);
             font-size: var(--gin-font-size-xs);
+            font-weight: normal;
 
             &:hover, &:active {
               color: var(--gin-color-button-text);

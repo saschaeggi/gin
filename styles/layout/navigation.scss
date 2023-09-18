@@ -1,0 +1,211 @@
+// Toolbar Variables
+:root {
+  --gin-toolbar-secondary-height: 48px;
+  --gin-scroll-offset: 72px;
+  --gin-toolbar-y-offset: 0px; // Needs px to work in calc() functions.
+  --gin-toolbar-x-offset: var(--drupal-displace-offset-left, 64px);
+  --gin-sticky-offset: 0px; // Needs px to work in calc() functions.
+
+  @include mq(medium) {
+    --gin-toolbar-secondary-height: 60px;
+    --gin-icon-size-toolbar: 22px;
+    --gin-scroll-offset: 130px;
+    --gin-sticky-offset: var(--gin-height-sticky);
+  }
+}
+
+html.navigation-active {
+  @include mq(medium) {
+    --gin-toolbar-x-offset: var(--drupal-displace-offset-left, 264px);
+  }
+}
+
+// Set transtion to Gin's to avoid different speeds.
+.navigation__sidebar ~ .dialog-off-canvas-main-canvas {
+  transition: margin-left var(--gin-transition-fast);
+}
+
+.gin--navigation {
+  .navigation__sidebar {
+    transition: var(--gin-transition-fast);
+  }
+
+  .navigation__sidebar,
+  .navigation__sidebar--sticky-menu {
+    background: var(--gin-bg-layer);
+    border-right: 1px solid var(--gin-border-color-layer);
+  }
+
+  // Navigation link
+  .navigation-link {
+    color: var(--gin-color-text);
+    font-weight: normal;
+
+    // Icon
+    &::before {
+      background-color: var(--gin-icon-color);
+    }
+  }
+
+  .menu-item.current > .navigation-link {
+    color: var(--gin-color-primary);
+  }
+
+  // -------
+  // Level 1
+  // -------
+  .level-1 > .navigation-link::before {
+    width: var(--gin-icon-size-toolbar);
+    height: var(--gin-icon-size-toolbar);
+  }
+
+  //Active menu item
+  .level-1.menu-item--expanded,
+  .level-1.current {
+    background-color: transparent;
+
+    > .navigation-link {
+      color: var(--gin-color-primary);
+      background-color: var(--gin-color-primary-light);
+
+      // Icons
+      &::before,
+      &::after {
+        background: var(--gin-color-primary);
+      }
+
+      &:hover,
+      &:focus {
+        color: var(--gin-color-primary-hover);
+        background-color: var(--gin-color-primary-light-hover);
+      }
+    }
+  }
+
+  // Menu item hover
+  .level-1 > .navigation-link:hover,
+  .level-1 > .navigation-link:focus,
+  .level-2 > .navigation-link:hover,
+  .level-2 > .navigation-link:focus,
+  .level-2 .navigation-link:hover,
+  .level-2 .navigation-link:focus,
+  .menu-item.menu-item--expanded:not(.current) > .navigation-link,
+  #sidebar-control:hover,
+  #sidebar-control:focus {
+    color: var(--gin-color-primary-hover);
+    background-color: var(--gin-color-primary-light-hover);
+
+    // Icons
+    &::before,
+    &::after {
+      background: var(--gin-color-primary-hover);
+    }
+  }
+}
+
+// Submenu
+html:not(.navigation-active) .gin--navigation .level-1 {
+  > .navigation-menu-wrapper,
+  &.menu-item--expanded > .navigation-menu-wrapper .arrow-ref::before {
+    background-color: var(--gin-bg-layer2);
+  }
+}
+
+// Fixes a quirk when the toolbar
+// module is still active
+.toolbar-anti-flicker.toolbar-loading.toolbar-fixed body.gin--navigation {
+  padding-top: 0;
+}
+
+.toolbar-loading.toolbar-horizontal .toolbar .toolbar-tray .toolbar-menu > li,
+.toolbar .toolbar-bar .toolbar-tab, .toolbar .toolbar-tray-horizontal li {
+  float: none;
+}
+
+.gin-secondary-toolbar {
+  // -------------
+  // Secondary nav
+  // -------------
+
+  // Fixes quirks when the toolbar
+  // module is still active
+  .toolbar-menu__trigger {
+    display: none;
+  }
+
+  .toolbar-tray .menu-item + .menu-item {
+    border-left: none;
+  }
+
+  // Hide user menu as we have it
+  // declared in the new nav
+  #toolbar-item-user-secondary {
+    display: none;
+  }
+
+  // ----------
+  // Breadcrumb
+  // ----------
+  .breadcrumb__item,
+  .breadcrumb__link {
+    color: var(--gin-color-text-light);
+    font-weight: normal;
+
+    &:hover {
+      color: var(--gin-color-primary-hover);
+    }
+  }
+
+  .breadcrumb__item {
+    // Remove whitespace.
+    display: flex;
+  }
+
+  .breadcrumb__item:first-child + .breadcrumb__item::before {
+    content: '|';
+  }
+
+  // Back to site link color
+  .breadcrumb__item:first-child .breadcrumb__link {
+    position: relative;
+    padding-left: 1.75em;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: var(--gin-icon-size-toolbar-secondary);
+      height: var(--gin-icon-size-toolbar-secondary);
+      padding: 0;
+      transform: translateY(-50%);
+      background-color: var(--gin-icon-color);
+      mask-image: icon('backtosite');
+      mask-size: 100% 100%;
+      mask-position: center center;
+
+      // forced color style for breadcrumbs
+      @media (forced-colors: active) {
+        background: linktext;
+      }
+    }
+  }
+
+  .breadcrumb__item:first-child .breadcrumb__link:hover::before {
+    background-color: var(--gin-color-primary-hover);
+  }
+
+  .breadcrumb__item + .breadcrumb__item::before {
+    content: "/";
+    opacity: .3;
+    font-size: var(--gin-font-size-xs);
+    display: inline-block;
+    padding: 0;
+    background: none;
+
+    @media (forced-colors: active) {
+      opacity: 1;
+    }
+  }
+}

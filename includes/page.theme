@@ -68,7 +68,15 @@ function gin_page_attachments_alter(&$page) {
 
     // Get theme settings.
     $settings = \Drupal::classResolver(GinSettings::class);
-    $toolbar = $settings->get('classic_toolbar');
+    $module_handler = \Drupal::service('module_handler');
+
+    // Check for new Drupal navigation
+    if ($module_handler->moduleExists('navigation')) {
+      // Set toolbar class.
+      $toolbar = 'new';
+    } else {
+      $toolbar = $settings->get('classic_toolbar');
+    }
 
     // Attach the init script.
     $page['#attached']['library'][] = 'gin/gin_init';
@@ -80,6 +88,10 @@ function gin_page_attachments_alter(&$page) {
     elseif ($toolbar === 'horizontal') {
       // Attach the horizontal toolbar styles.
       $page['#attached']['library'][] = 'gin/gin_horizontal_toolbar';
+    }
+    elseif ($toolbar === 'new') {
+      // Attach the new drupal navigation styles.
+      $page['#attached']['library'][] = 'gin/navigation';
     }
     else {
       // Attach toolbar styles.

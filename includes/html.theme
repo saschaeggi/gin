@@ -45,8 +45,16 @@ function gin_preprocess_html(&$variables) {
       return;
     }
 
-    // Set toolbar class.
-    $variables['attributes']['class'][] = 'gin--' . $toolbar . '-toolbar';
+    $module_handler = \Drupal::service('module_handler');
+
+    // Check for new Drupal navigation
+    if ($module_handler->moduleExists('navigation')) {
+      // Set toolbar class.
+      $variables['attributes']['class'][] = 'gin--navigation';
+    } else {
+      // Set toolbar class.
+      $variables['attributes']['class'][] = 'gin--' . $toolbar . '-toolbar';
+    }
 
     // Gin secondary toolbar.
     if ($toolbar !== 'classic') {
