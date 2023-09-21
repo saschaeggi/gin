@@ -21,6 +21,13 @@ function gin_theme() {
     $icon_path = $settings->getDefault('logo.path');
   }
 
+  //Check if help is enabled.
+  $help_enabled = FALSE;
+  $module_handler = \Drupal::service('module_handler');
+  if ($module_handler->moduleExists('help')) {
+    $help_enabled = TRUE;
+  }
+
   $items['navigation'] = [
     'variables' => [
       'icon_path' => $icon_path,
@@ -51,6 +58,7 @@ function gin_theme() {
 
   $items['menu_region__bottom'] = [
     'variables' => [
+      'help_enabled' => $help_enabled,
       'items' => [],
       'title' => NULL,
       'menu_name' => NULL,

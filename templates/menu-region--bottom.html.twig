@@ -6,11 +6,13 @@
         <span id="sidebar-state">{{ 'Collapse sidebar'|t }}</span>
       </button>
     </li>
+    {% if help_enabled %}
     <li class="menu-item level-1">
       <a href="{{ path('help.main') }}" class="navigation-link navigation-link--has-icon navigation-link--help">
         <span>{{ 'Help'|t }}</span>
       </a>
     </li>
+    {% endif %}
     <li class="navigation-menu__user menu-item menu-item--has-dropdown level-1">
       <button class="navigation-link navigation-link--has-icon navigation-link--{{ menu_name|clean_class }}">
         <span class="action">{{ 'Extend'|t }}</span>

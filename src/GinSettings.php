@@ -423,7 +423,7 @@ class GinSettings implements ContainerInjectionInterface {
         'vertical' => $this->t('Sidebar, Vertical Toolbar (Default)'),
         'horizontal' => $this->t('Horizontal, Modern Toolbar'),
         'classic' => $this->t('Legacy, Classic Drupal Toolbar'),
-        'new' => $this->t('New Drupal Navigation') . $experimental_label,
+        'new' => $this->t('New Drupal Navigation, Test integration') . $experimental_label,
       ],
       '#after_build' => [
         '_gin_toolbar_radios',
