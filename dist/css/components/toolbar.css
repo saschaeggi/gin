@@ -322,7 +322,9 @@ body.gin--classic-toolbar {
 }
 
 .toolbar .toolbar-bar .toolbar-icon-coffee:before,
-.toolbar .toolbar-bar #toolbar-item-administration-search:before {
+.toolbar .toolbar-bar #toolbar-item-administration-search:before,
+.toolbar .toolbar-bar #admin-toolbar-mobile-search-tab .toolbar-icon:before,
+.toolbar .toolbar-bar #admin-toolbar-mobile-search-tab .responsive-preview-icon:before {
   -webkit-mask-image: url("../../media/sprite.svg#search-view");
           mask-image: url("../../media/sprite.svg#search-view");
 }

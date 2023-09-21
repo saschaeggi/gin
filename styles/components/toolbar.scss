@@ -297,7 +297,8 @@ body.gin--classic-toolbar {
 
     // Coffee & Search
     .toolbar-icon-coffee,
-    #toolbar-item-administration-search {
+    #toolbar-item-administration-search,
+    #admin-toolbar-mobile-search-tab .toolbar-icon {
       &:before {
         mask-image: icon('search');
       }
