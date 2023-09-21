@@ -5,7 +5,7 @@
  * theme.theme
  */
 
- use Drupal\gin\GinSettings;
+use Drupal\gin\GinSettings;
 
 /**
  * Implements hook_theme().
@@ -33,7 +33,12 @@ function gin_theme() {
 
   $items['menu_region__middle'] = [
     'base hook' => 'menu',
-    'variables' => ['menu_name' => NULL, 'items' => [], 'attributes' => [], 'title' => NULL],
+    'variables' => [
+      'menu_name' => NULL,
+      'items' => [],
+      'attributes' => [],
+      'title' => NULL,
+    ],
   ];
 
   $items['menu_region__top'] = [

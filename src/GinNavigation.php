@@ -2,23 +2,17 @@
 
 namespace Drupal\gin;
 
-use Drupal\Core\Url;
-use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
-use Drupal\Core\Session\AccountInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\block_content\Entity\BlockContentType;
+use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+use Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\Core\Url;
 use Drupal\taxonomy\Entity\Vocabulary;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Service to handle overridden user settings.
  */
 class GinNavigation implements ContainerInjectionInterface {
-  /**
-   * Settings constructor.
-   *
-   */
-  public function __construct() {}
 
   /**
    * {@inheritdoc}
@@ -29,7 +23,6 @@ class GinNavigation implements ContainerInjectionInterface {
 
   /**
    * Get Navigation Admin Menu Items.
-   *
    */
   public function getNavigationAdminMenuItems(): array {
     $parameters = new MenuTreeParameters();
@@ -59,7 +52,6 @@ class GinNavigation implements ContainerInjectionInterface {
 
   /**
    * Get Navigation Bookmarks.
-   *
    */
   public function getNavigationBookmarksMenuItems(): array {
     // Check if the shortcut module is installed.
@@ -77,7 +69,6 @@ class GinNavigation implements ContainerInjectionInterface {
 
   /**
    * Get Navigation Content menu.
-   *
    */
   public function getNavigationContentMenuItems(): array {
     // Get the Entity Type Manager service.
@@ -109,7 +100,7 @@ class GinNavigation implements ContainerInjectionInterface {
     foreach ($media_types as $item) {
       $media_items[] = [
         'title' => $item->label(),
-        'url' =>  Url::fromRoute('entity.media.add_form', ['media_type' =>  $item->id()]),
+        'url' => Url::fromRoute('entity.media.add_form', ['media_type' => $item->id()]),
       ];
     }
 
@@ -119,7 +110,7 @@ class GinNavigation implements ContainerInjectionInterface {
     foreach ($taxonomy_types as $item) {
       $taxonomy_items[] = [
         'title' => $item->label(),
-        'url' =>  Url::fromRoute('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => $item->id()]),
+        'url' => Url::fromRoute('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => $item->id()]),
       ];
     }
 
@@ -175,7 +166,6 @@ class GinNavigation implements ContainerInjectionInterface {
 
   /**
    * Get Navigation User menu.
-   *
    */
   public function getMenuNavigationUserItems(): array {
     $user_items = [
