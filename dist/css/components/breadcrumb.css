@@ -71,7 +71,7 @@
   content: "";
   display: inline-block;
   position: absolute;
-  top: 50%;
+  top: calc(50% - 1px);
   width: var(--gin-icon-size-toolbar-secondary);
   height: var(--gin-icon-size-toolbar-secondary);
   transform: translateY(-50%);

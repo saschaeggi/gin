@@ -167,6 +167,7 @@
 @media (min-width: 61em) {
   .toolbar .toolbar-bar {
     background: transparent;
+    box-shadow: none !important;
   }
 
   .toolbar .toolbar-bar .toolbar-tab, .toolbar .toolbar-bar .toolbar-tab .toolbar-menu__logo {
@@ -444,7 +445,7 @@
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-item::before {
     width: var(--gin-icon-size-toolbar-secondary);
     height: var(--gin-icon-size-toolbar-secondary);
-    top: 50%;
+    top: calc(50% - 1px);
     transform: translateY(-50%);
   }
 

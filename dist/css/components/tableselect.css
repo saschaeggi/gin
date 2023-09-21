@@ -159,6 +159,10 @@
   margin-left: var(--gin-spacing-xs);
 }
 
+.views-bulk-actions__item--status {
+  color: var(--gin-color-text-light);
+}
+
 [dir="ltr"] .views-bulk-actions__item--status {
   margin-right: var(--gin-spacing-l);
 }

@@ -1,3 +1,11 @@
+// -------
+// Imports
+// -------
+@import "../navigation/variables";
+@import "../navigation/base";
+@import "../navigation/icons";
+@import "../navigation/menu";
+
 // Toolbar Variables
 :root {
   --gin-toolbar-secondary-height: 48px;
@@ -5,10 +13,10 @@
   --gin-toolbar-y-offset: 0px; // Needs px to work in calc() functions.
   --gin-toolbar-x-offset: var(--drupal-displace-offset-left, 64px);
   --gin-sticky-offset: 0px; // Needs px to work in calc() functions.
+  --gin-icon-size-toolbar: 20px;
 
   @include mq(medium) {
     --gin-toolbar-secondary-height: 60px;
-    --gin-icon-size-toolbar: 22px;
     --gin-scroll-offset: 130px;
     --gin-sticky-offset: var(--gin-height-sticky);
   }
@@ -20,12 +28,31 @@ html.navigation-active {
   }
 }
 
-// Set transtion to Gin's to avoid different speeds.
-.navigation__sidebar ~ .dialog-off-canvas-main-canvas {
-  transition: margin-left var(--gin-transition-fast);
+.gin--navigation .gin-secondary-toolbar--frontend {
+  z-index: 102;
+  margin-inline-start: var(--gin-toolbar-x-offset);
 }
 
+// Set transtion to Gin's to avoid different speeds.
+.navigation__sidebar ~ .dialog-off-canvas-main-canvas,
+.gin--navigation .gin-secondary-toolbar--frontend {
+  transition: margin-inline-start var(--gin-transition-fast), margin-left var(--gin-transition-fast);
+}
+
+// ------------
+// Hide Toolbar
+// ------------
+#toolbar-administration {
+  display: none;
+}
+
+// ----------
+// Navigation
+// ----------
 .gin--navigation {
+  font-family: var(--gin-font);
+  padding-top: 0 !important;
+
   .navigation__sidebar {
     transition: var(--gin-transition-fast);
   }
@@ -36,15 +63,26 @@ html.navigation-active {
     border-right: 1px solid var(--gin-border-color-layer);
   }
 
+  // Navigation header
+  .navigation__header {
+    margin-bottom: -4px;
+  }
+
   // Navigation link
   .navigation-link {
     color: var(--gin-color-text);
     font-weight: normal;
+  }
 
-    // Icon
-    &::before {
-      background-color: var(--gin-icon-color);
-    }
+  // Focus
+  .navigation-link:focus,
+  .level-1 > .navigation-link:hover {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
+  }
+
+  .navigation-link--gin-home {
+    color: var(--gin-bg-layer2);
   }
 
   .menu-item.current > .navigation-link {
@@ -54,9 +92,10 @@ html.navigation-active {
   // -------
   // Level 1
   // -------
-  .level-1 > .navigation-link::before {
-    width: var(--gin-icon-size-toolbar);
-    height: var(--gin-icon-size-toolbar);
+
+  // Gin Custom logo menu
+  .menu--logo .navigation-menu {
+    margin-top: 0;
   }
 
   //Active menu item
@@ -90,16 +129,34 @@ html.navigation-active {
   .level-2 .navigation-link:hover,
   .level-2 .navigation-link:focus,
   .menu-item.menu-item--expanded:not(.current) > .navigation-link,
-  #sidebar-control:hover,
-  #sidebar-control:focus {
+  .navigation-link--sidebar-toggle:hover,
+  .navigation-link--sidebar-toggle:focus {
     color: var(--gin-color-primary-hover);
     background-color: var(--gin-color-primary-light-hover);
 
     // Icons
     &::before,
     &::after {
-      background: var(--gin-color-primary-hover);
+      background: var(--gin-color-primary);
     }
+  }
+
+  // -----------
+  // Level 2 & 3
+  // -----------
+  .level-2,
+  .level-3  {
+    font-size: var(--gin-font-size-xs);
+  }
+
+  .level-2.current > .navigation-link::after,
+  .level-3.current > .navigation-link::after {
+    background-color: var(--gin-color-primary);
+  }
+
+  .level-2 > .navigation-link::before, .level-3 > .navigation-link::before,
+  .level-2.menu-item--expanded > .navigation-menu::before {
+    background-color: var(--gin-border-color-layer2);
   }
 }
 
@@ -107,26 +164,161 @@ html.navigation-active {
 html:not(.navigation-active) .gin--navigation .level-1 {
   > .navigation-menu-wrapper,
   &.menu-item--expanded > .navigation-menu-wrapper .arrow-ref::before {
-    background-color: var(--gin-bg-layer2);
+    background-color: var(--gin-bg-layer3);
   }
 }
 
 // Fixes a quirk when the toolbar
 // module is still active
-.toolbar-anti-flicker.toolbar-loading.toolbar-fixed body.gin--navigation {
+.toolbar-anti-flicker.toolbar-loading.toolbar-fixed body.gin--navigation,
+.toolbar-anti-flicker.toolbar-loading.toolbar-fixed.toolbar-horizontal.toolbar-tray-open body.gin--navigation {
   padding-top: 0;
 }
 
-.toolbar-loading.toolbar-horizontal .toolbar .toolbar-tray .toolbar-menu > li,
-.toolbar .toolbar-bar .toolbar-tab, .toolbar .toolbar-tray-horizontal li {
-  float: none;
+// Fix padding
+.menu-title, .level-1 .navigation-link,
+.dashboard-link .navigation-link {
+  padding-inline: 6px 10px;
 }
 
-.gin-secondary-toolbar {
-  // -------------
-  // Secondary nav
-  // -------------
+// Scrollbar fix
+.navigation-active .navigation__sidebar {
+  overflow-y: initial;
+}
 
+// ---------
+// RTL Fixes
+// ---------
+
+html:not(.navigation-active) .navigation__highlighted > .navigation-menu-wrapper .navigation-menu-wrapper > .navigation-menu, html:not(.navigation-active) .navigation__sidebar--menu > .navigation-menu-wrapper .navigation-menu-wrapper > .navigation-menu,
+html:not(.navigation-active) .navigation__sidebar--sticky-menu .navigation-menu-wrapper > .navigation-menu,
+.gin--navigation .menu-title.visually-hidden + .navigation-menu {
+  margin-inline-start: 0;
+}
+
+.navigation-active .gin--navigation .navigation-menu {
+  margin-inline-start: -2px;
+}
+
+// --------------
+// Icon overrides
+// --------------
+
+.navigation-link--has-icon {
+  --icon: icon('fallback'); /* Default icon, aka --basic */
+
+  &::before {
+    width: var(--gin-icon-size-toolbar);
+    height: var(--gin-icon-size-toolbar);
+    background-color: var(--gin-icon-color);
+    mask-size: 100% 100%;
+  }
+
+  &:hover::before,
+  &:focus::before {
+    background-color: var(--gin-color-primary);
+  }
+}
+
+// Custom Gin Home logo
+.navigation-link--gin-home {
+  box-sizing: border-box;
+  padding: 5px !important; // make the logo 32px
+  margin: 8px 4px 4px;
+  background: var(--gin-color-primary);
+
+  &::before {
+    --icon: #{icon('drupal')};
+    background: var(--gin-bg-layer2);
+  }
+
+  // Navigation expanded
+  .navigation-active & {
+    max-width: 30px;
+    margin-inline-start: 0;
+
+    span {
+      display: none;
+    }
+
+    &::before {
+      margin-inline-end: 0;
+    }
+  }
+}
+
+.navigation-link--tools::before {
+  --icon: #{icon('tool')};
+}
+
+.navigation-link--appearance::before {
+  --icon: #{icon('appearance')};
+}
+
+.navigation-link--blocks::before {
+  --icon: #{icon('blocks')};
+}
+
+.navigation-link--bookmarks::before {
+  --icon: #{icon('bookmarks')};
+}
+
+.navigation-link--configuration::before {
+  --icon: #{icon('config')};
+}
+
+.navigation-link--content::before {
+  --icon: #{icon('content')};
+}
+
+.navigation-link--create::before {
+  --icon: #{icon('create')};
+}
+
+.navigation-link--extend::before {
+  --icon: #{icon('extend-new')};
+}
+
+.navigation-link--files::before {
+  --icon: #{icon('files')};
+}
+
+.navigation-link--help::before {
+  --icon: #{icon('help')};
+}
+
+.navigation-link--media::before {
+  --icon: #{icon('media')};
+}
+
+.navigation-link--people::before {
+  --icon: #{icon('people-new')};
+}
+
+.navigation-link--reports::before {
+  --icon: #{icon('reports')};
+}
+
+.navigation-link--structure::before {
+  --icon: #{icon('structure')};
+}
+
+.navigation-link--sidebar-toggle[aria-expanded=true]::before {
+  --icon: #{icon('toggle-collapse')};
+}
+
+.navigation-link--sidebar-toggle[aria-expanded=false]::before {
+  --icon: #{icon('toggle-expand')};
+}
+
+.navigation-link--user::before {
+  --icon: #{icon('user')};
+}
+
+// -------------
+// Secondary nav
+// -------------
+.gin-secondary-toolbar {
   // Fixes quirks when the toolbar
   // module is still active
   .toolbar-menu__trigger {
@@ -139,73 +331,30 @@ html:not(.navigation-active) .gin--navigation .level-1 {
 
   // Hide user menu as we have it
   // declared in the new nav
-  #toolbar-item-user-secondary {
-    display: none;
+  .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user {
+    margin-right: -1em;
   }
 
-  // ----------
-  // Breadcrumb
-  // ----------
-  .breadcrumb__item,
-  .breadcrumb__link {
-    color: var(--gin-color-text-light);
-    font-weight: normal;
-
-    &:hover {
-      color: var(--gin-color-primary-hover);
-    }
+  // Hide Shortcuts now we have Bookmarks
+  .toolbar-tab--toolbar-item-shortcuts {
+    display: none !important;
   }
+}
 
-  .breadcrumb__item {
-    // Remove whitespace.
-    display: flex;
-  }
+// ---------
+// User menu
+// ---------
 
-  .breadcrumb__item:first-child + .breadcrumb__item::before {
-    content: '|';
-  }
+// Hide user menu in favor
+// of secondary one
+.gin--navigation .navigation-menu__user {
+  display: none !important;
+}
 
-  // Back to site link color
-  .breadcrumb__item:first-child .breadcrumb__link {
-    position: relative;
-    padding-left: 1.75em;
-
-    &::before {
-      content: "";
-      display: inline-block;
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: var(--gin-icon-size-toolbar-secondary);
-      height: var(--gin-icon-size-toolbar-secondary);
-      padding: 0;
-      transform: translateY(-50%);
-      background-color: var(--gin-icon-color);
-      mask-image: icon('backtosite');
-      mask-size: 100% 100%;
-      mask-position: center center;
-
-      // forced color style for breadcrumbs
-      @media (forced-colors: active) {
-        background: linktext;
-      }
-    }
-  }
-
-  .breadcrumb__item:first-child .breadcrumb__link:hover::before {
-    background-color: var(--gin-color-primary-hover);
-  }
-
-  .breadcrumb__item + .breadcrumb__item::before {
-    content: "/";
-    opacity: .3;
-    font-size: var(--gin-font-size-xs);
-    display: inline-block;
-    padding: 0;
-    background: none;
-
-    @media (forced-colors: active) {
-      opacity: 1;
-    }
-  }
+// -----------
+// Sticky menu
+// -----------
+.navigation__sidebar--sticky-menu .navigation-menu {
+  display: flex;
+  flex-direction: column;
 }

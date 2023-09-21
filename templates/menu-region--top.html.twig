@@ -1,0 +1,24 @@
+<div class="navigation-menu-wrapper menu--shortcuts">
+  {% set id = 'menu--top-menus'|clean_unique_id %}
+  <h2 id="{{ id }}" class="menu-title visually-hidden">{{ 'Top Menus'|t }}</h2>
+  <ul class="navigation-menu" aria-labelledby="{{ id }}">
+    <li class="menu-item menu-item--has-dropdown level-1">
+      <button class="navigation-link navigation-link--has-icon navigation-link--{{ menu_name|clean_class }}">
+        <span class="action">{{ 'Extend'|t }}</span>
+        <span class="label">{{ title }}</span>
+      </button>
+      <div class="navigation-menu-wrapper">
+        <div class="arrow-ref"></div>
+        <ul class="navigation-menu">
+          {% for item in links %}
+            <li class="menu-item level-2">
+              <a href="{{ item.url }}" class="navigation-link">
+                <span>{{ item.title }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>

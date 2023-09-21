@@ -1,0 +1,55 @@
+{% import _self as menus %}
+<div class="navigation-menu-wrapper">
+  {% set menu_heading_id = 'menu--' ~ menu_name|clean_unique_id %}
+  <h2 id="{{ menu_heading_id }}" class="menu-title visually-hidden focusable">{{ title }}</h2>
+  <ul class="navigation-menu" aria-labelledby="{{ menu_heading_id }}">
+    {{ menus.menu_items(items, attribute) }}
+  </ul>
+</div>
+
+{% macro menu_items(items, attributes) %}
+  {% for item in items %}
+    <li class="{{ item.below ? 'menu-item--has-dropdown' }} menu-item level-1">
+      {% if item.below is empty %}
+        <a href="{{ item.url }}" class="navigation-link navigation-link--has-icon navigation-link--{{item.title|clean_class }}">
+          <span>{{ item.title }}</span>
+        </a>
+      {% endif %}
+    {% if item.below %}
+      <button class="navigation-link navigation-link--has-icon navigation-link--{{item.title|clean_class }}">
+        <span class="action">{{ 'Extend'|t }}</span>
+        <span class="label">{{ item.title }}</span>
+      </button>
+      <div class="navigation-menu-wrapper">
+        <div class="arrow-ref"></div>
+        <ul class="navigation-menu">
+          {% for item in item.below %}
+            <li class="{{ item.below ? 'menu-item--has-dropdown'}} menu-item level-2">
+              {% if item.below is empty %}
+                <a href="{{ item.url }}" class="navigation-link">
+                <span>{{item.title}}</span>
+              </a>
+              {% endif %}
+              {% if item.below %}
+                <button class="navigation-link" aria-expanded="false">
+                  <span class="action">{{ 'Extend'|t }}</span>
+                  <span class="label">{{ item.title }}</span>
+                </button>
+                <ul class="navigation-menu">
+                  {% for item in item.below %}
+                    <li class="menu-item level-3">
+                      <a href="{{ item.url }}" class="navigation-link">
+                        <span>{{ item.title }}</span>
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </li>
+  {% endfor %}
+{% endmacro %}

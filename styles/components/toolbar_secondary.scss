@@ -124,6 +124,7 @@
   // Hide unused tabs
   .toolbar .toolbar-bar {
     background: transparent;
+    box-shadow: none !important; // fixes an RTL issue
 
     .toolbar-tab {
       &, .toolbar-menu__logo {
@@ -376,7 +377,7 @@
           &::before {
             width: var(--gin-icon-size-toolbar-secondary);
             height: var(--gin-icon-size-toolbar-secondary);
-            top: 50%;
+            top: calc(50% - 1px);
             left: 12px;
             transform: translateY(-50%);
           }

@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function gin_theme() {
+  $items['navigation'] = [
+    'variables' => [
+      'path' => \Drupal::service('extension.list.theme')->getPath('gin'),
+      'menu_middle' => [],
+      'menu_top' => [],
+      'menu_bottom' => [],
+    ],
+  ];
+
+  $items['menu_region__middle'] = [
+    'base hook' => 'menu',
+    'variables' => ['menu_name' => NULL, 'items' => [], 'attributes' => [], 'title' => NULL],
+  ];
+
+  $items['menu_region__top'] = [
+    'variables' => [
+      'links' => [],
+      'title' => NULL,
+      'menu_name' => NULL,
+    ],
+  ];
+
+  $items['menu_region__bottom'] = [
+    'variables' => [
+      'items' => [],
+      'title' => NULL,
+      'menu_name' => NULL,
+      'path' => \Drupal::service('extension.list.theme')->getPath('gin'),
+    ],
+  ];
+
+  return $items;
+}

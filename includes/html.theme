@@ -7,6 +7,7 @@
 
 use Drupal\gin\GinContentFormHelper;
 use Drupal\gin\GinSettings;
+use Drupal\gin\GinNavigation;
 
 /**
  * Implements hook_preprocess_HOOK() for html.
@@ -45,10 +46,42 @@ function gin_preprocess_html(&$variables) {
       return;
     }
 
-    $module_handler = \Drupal::service('module_handler');
-
     // Check for new Drupal navigation
-    if ($module_handler->moduleExists('navigation')) {
+    if ($toolbar === 'new') {
+      // Activate navigation.
+      // unset($variables['page_top']['toolbar']);
+
+      // Get navigation items.
+      /** @var \Drupal\gin\GinNavigaton $navigation */
+      $navigation = \Drupal::classResolver(GinNavigation::class);
+
+      // Set menus.
+      $menu['top']['bookmarks'] = $navigation->getNavigationBookmarksMenuItems();
+      $menu['middle']['content'] = $navigation->getNavigationContentMenuItems();
+      $menu['middle']['admin'] = $navigation->getNavigationAdminMenuItems();
+      $menu['bottom']['user'] = $navigation->getMenuNavigationUserItems();
+
+      $variables['page_top']['navigation'] = [
+        '#theme' => 'navigation',
+        '#menu_top' => $menu['top'],
+        '#menu_middle' =>  $menu['middle'],
+        '#menu_bottom' => $menu['bottom'],
+        '#attached' => [
+          'library' => [
+            'gin/navigation',
+          ],
+        ],
+        '#access' => \Drupal::currentUser()->hasPermission('access toolbar'),
+      ];
+
+      // Get the breadcrumb paths to maintain active trail in the toolbar.
+      $links = \Drupal::service('breadcrumb')->build(\Drupal::routeMatch())->getLinks();
+      $paths = [];
+      foreach ($links as $link) {
+        $paths[] = $link->getUrl()->getInternalPath();
+      }
+      $variables['#attached']['drupalSettings']['active_trail_paths'] = $paths;
+
       // Set toolbar class.
       $variables['attributes']['class'][] = 'gin--navigation';
     } else {

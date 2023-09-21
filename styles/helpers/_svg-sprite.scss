@@ -26,6 +26,17 @@ $sprites: (
     'question': "../../media/sprite.svg#question-view",
     'status': "../../media/sprite.svg#status-view",
     'warning': "../../media/sprite.svg#warning-view",
+    'block': "../../media/sprite.svg#block-view",
+    'blocks': "../../media/sprite.svg#blocks-view",
+    'bookmarks': "../../media/sprite.svg#bookmarks-view",
+    'chevron-down': "../../media/sprite.svg#chevron-down-view",
+    'create': "../../media/sprite.svg#create-view",
+    'extend-new': "../../media/sprite.svg#extend-new-view",
+    'files': "../../media/sprite.svg#files-view",
+    'media': "../../media/sprite.svg#media-view",
+    'people-new': "../../media/sprite.svg#people-new-view",
+    'toggle-collapse': "../../media/sprite.svg#toggle-collapse-view",
+    'toggle-expand': "../../media/sprite.svg#toggle-expand-view",
     'first': "../../media/sprite.svg#first-view",
     'last': "../../media/sprite.svg#last-view",
     'next': "../../media/sprite.svg#next-view",
@@ -174,6 +185,50 @@ $sizes: (
         'height': 24px
     ),
     'warning': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'block': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'blocks': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'bookmarks': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'chevron-down': (
+        'width': 14px,
+        'height': 9px
+    ),
+    'create': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'extend-new': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'files': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'media': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'people-new': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'toggle-collapse': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'toggle-expand': (
         'width': 24px,
         'height': 24px
     ),

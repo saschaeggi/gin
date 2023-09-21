@@ -68,15 +68,7 @@ function gin_page_attachments_alter(&$page) {
 
     // Get theme settings.
     $settings = \Drupal::classResolver(GinSettings::class);
-    $module_handler = \Drupal::service('module_handler');
-
-    // Check for new Drupal navigation
-    if ($module_handler->moduleExists('navigation')) {
-      // Set toolbar class.
-      $toolbar = 'new';
-    } else {
-      $toolbar = $settings->get('classic_toolbar');
-    }
+    $toolbar = $settings->get('classic_toolbar');
 
     // Attach the init script.
     $page['#attached']['library'][] = 'gin/gin_init';

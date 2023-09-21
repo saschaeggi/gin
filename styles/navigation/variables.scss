@@ -1,0 +1,36 @@
+.gin--navigation {
+  /*
+   * Color Palette.
+   */
+  --color-focus: #26A769;
+  --drupal--brand-blue: #009CDE;
+   /* Blue variations. */
+  --color-blue-100: #CCDBFF;
+  --color-blue-600: #003ECC;
+  --color-blue-700: #002E9A;
+  /* Gray variations. */
+  --color-gray-050: #F3F4F9;
+  --color-gray-100: #DEDFE4;
+  --color-gray-300: #C1C2C7;
+  --color-gray-500: #919297;
+  --color-gray-600: #828388;
+  --color-gray-700: #75767B;
+  --color-gray-800: #55565B;
+  --color-gray-900: #393A3F;
+  --color-gray-950: #232429;
+  /**
+   * Spaces.
+   */
+  --space-xl: 2rem; /* 3 * 16px = 48px */
+  --space-l: 1.5rem; /* 1.5 * 16px = 24px */
+  --space-m: 1rem; /* 1 * 16px = 16px */
+  --space-s: 0.75rem; /* 0.75 * 16px = 12px */
+  --space-xs: 0.5rem; /* 0.5 * 16px = 8px */
+  /**
+   * Font Sizes.
+   */
+  --font-size-base: 1rem; /* 1rem = 16px if font root is 100% ands browser defaults are used. */
+  --font-size-s: 0.875rem; /* ~14px */
+  --font-size-xs: 0.75rem; /* ~12px */
+  --font-size-xxs: 0.625rem; /* ~10px */
+}

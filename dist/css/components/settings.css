@@ -265,6 +265,14 @@
   background-image: url(../../media/settings/toolbar_sidebar_darkmode.png);
 }
 
+[data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input[data-gin-toolbar=new] {
+  background-image: url(../../media/settings/toolbar_new.png);
+}
+
+.gin--dark-mode [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input[data-gin-toolbar=new] {
+  background-image: url(../../media/settings/toolbar_new_darkmode.png);
+}
+
 [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input[data-gin-toolbar=horizontal] {
   background-image: url(../../media/settings/toolbar_minimal.png);
 }
