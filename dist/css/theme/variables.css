@@ -96,6 +96,7 @@
   --gin-color-button-text: #fff;
   --gin-offset-x: var(--gin-toolbar-x-offset);
   --gin-offset-y: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset));
+  --gin-link-decoration-style: dotted;
 }
 
 @media (min-width: 61em) {
