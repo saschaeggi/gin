@@ -121,7 +121,7 @@ table {
 
       &:hover {
         text-decoration: underline;
-        text-decoration-style: dotted;
+        text-decoration-style: var(--gin-link-decoration-style);
       }
     }
 

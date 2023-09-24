@@ -150,6 +150,9 @@
   // Drupal
   --gin-offset-x: var(--gin-toolbar-x-offset);
   --gin-offset-y: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset));
+
+  // Links
+  --gin-link-decoration-style: dotted;
 }
 
 // Density spacings
