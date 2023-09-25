@@ -520,6 +520,10 @@ body:not(.toolbar-tray-open) .layout-container {
   margin-top: var(--gin-spacing-l);
 }
 
+.node--unpublished {
+  background-color: var(--gin-bg-unpublished);
+}
+
 @media (max-width: 60.99em) {
   .gin--edit-form .region-sticky--is-sticky .block-page-title-block {
     visibility: hidden;

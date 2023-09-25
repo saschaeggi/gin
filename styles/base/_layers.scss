@@ -63,3 +63,8 @@
 #system-clear-cache + #system-performance-settings {
   margin-top: var(--gin-spacing-l);
 }
+
+// Unplublished node
+.node--unpublished {
+  background-color: var(--gin-bg-unpublished);
+}

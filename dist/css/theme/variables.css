@@ -182,6 +182,7 @@
   --gin-bg-layer3: #47474c;
   --gin-bg-layer4: #19191b;
   --gin-bg-secondary: var(--gin-bg-app);
+  --gin-bg-unpublished: var(--gin-bg-warning-light);
   --gin-color-contextual: var(--gin-bg-layer3);
   --gin-border-color: #43454a;
   --gin-border-color-secondary: rgba(255, 255, 255, .075);
