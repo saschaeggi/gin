@@ -9,7 +9,7 @@ button.link,
 .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link
 {
   color: var(--gin-color-primary);
-  text-decoration-style: dotted;
+  text-decoration-style: var(--gin-link-decoration-style);
 
   &:hover {
     color: var(--gin-color-primary-hover);
@@ -22,7 +22,7 @@ button.link,
 
 *|*:any-link:not(svg|a) {
   text-decoration: underline;
-  text-decoration-style: dotted;
+  text-decoration-style: var(--gin-link-decoration-style);
 }
 
 // Only hover
