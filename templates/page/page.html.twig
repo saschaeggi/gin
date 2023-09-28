@@ -42,10 +42,6 @@
 {% set page_title_block = active_admin_theme ~ '_page_title' %}
 {% set local_actions_block = active_admin_theme ~ '_local_actions' %}
 
-{% if toolbar_variant != 'vertical' %}
-<div class="region-sticky-watcher"></div>
-{% endif %}
-
 <div class="gin-secondary-toolbar layout-container">
   <div class="gin-breadcrumb-wrapper">
   {% if route_name == 'entity.node.canonical' %}
@@ -70,9 +66,7 @@
   {{ page.gin_secondary_toolbar }}
 </div>
 
-{% if toolbar_variant == 'vertical' %}
 <div class="region-sticky-watcher"></div>
-{% endif %}
 
 <header class="region region-sticky">
   <div class="layout-container region-sticky__items">

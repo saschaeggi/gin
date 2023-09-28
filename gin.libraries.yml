@@ -185,6 +185,10 @@ tableselect:
     component:
       dist/css/components/tableselect.css: { minified: false }
 
+tableheader:
+  js:
+    dist/js/tableheader.js: { minified: false }
+
 tabs:
   css:
     component:
