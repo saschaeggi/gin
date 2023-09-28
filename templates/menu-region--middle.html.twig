@@ -1,6 +1,6 @@
 {% import _self as menus %}
 <div class="navigation-menu-wrapper">
-  {% set menu_heading_id = 'menu--' ~ menu_name|clean_unique_id %}
+  {% set menu_heading_id = 'menu--' ~ menu_name %}
   <h2 id="{{ menu_heading_id }}" class="menu-title visually-hidden focusable">{{ title }}</h2>
   <ul class="navigation-menu" aria-labelledby="{{ menu_heading_id }}">
     {{ menus.menu_items(items, attribute) }}

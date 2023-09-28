@@ -68,17 +68,17 @@ class GinNavigation implements ContainerInjectionInterface {
   }
 
   /**
-   * Get Navigation Content menu.
+   * Get Navigation Create menu.
    */
-  public function getNavigationContentMenuItems(): array {
+  public function getNavigationCreateMenuItems(): array {
     // Get the Entity Type Manager service.
     $entity_type_manager = \Drupal::entityTypeManager();
 
     // Get node types.
     $content_types = $entity_type_manager->getStorage('node_type')->loadMultiple();
-    $content_items = [];
+    $content_type_items = [];
     foreach ($content_types as $item) {
-      $content_items[] = [
+      $content_type_items[] = [
         'title' => $item->label(),
         'url' => Url::fromRoute('node.add', ['node_type' => $item->id()]),
       ];
@@ -86,9 +86,9 @@ class GinNavigation implements ContainerInjectionInterface {
 
     // Get block types.
     $block_content_types = BlockContentType::loadMultiple();
-    $block_items = [];
+    $block_type_items = [];
     foreach ($block_content_types as $item) {
-      $block_items[] = [
+      $block_type_items[] = [
         'title' => $item->label(),
         'url' => Url::fromRoute('block_content.add_form', ['block_content_type' => $item->id()]),
       ];
@@ -96,9 +96,9 @@ class GinNavigation implements ContainerInjectionInterface {
 
     // Get media types.
     $media_types = $entity_type_manager->getStorage('media_type')->loadMultiple();
-    $media_items = [];
+    $media_type_items = [];
     foreach ($media_types as $item) {
-      $media_items[] = [
+      $media_type_items[] = [
         'title' => $item->label(),
         'url' => Url::fromRoute('entity.media.add_form', ['media_type' => $item->id()]),
       ];
@@ -106,39 +106,58 @@ class GinNavigation implements ContainerInjectionInterface {
 
     // Get taxomony types.
     $taxonomy_types = Vocabulary::loadMultiple();
-    $taxonomy_items = [];
+    $taxonomy_type_items = [];
     foreach ($taxonomy_types as $item) {
-      $taxonomy_items[] = [
+      $taxonomy_type_items[] = [
         'title' => $item->label(),
         'url' => Url::fromRoute('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => $item->id()]),
       ];
     }
 
-    $create_items = [
-      ...$content_items,
+    // Needs to be this syntax to
+    // support older PHP versions
+    // for Druapl 9.0+.
+    $create_type_items = array_merge(
+      $content_type_items,
       [
-        'title' => t('Blocks'),
-        'url' => '',
-        'below' => $block_items,
-      ],
-      [
-        'title' => t('Media'),
-        'url' => '',
-        'below' => $media_items,
-      ],
-      [
-        'title' => t('Taxonomy'),
-        'url' => '',
-        'below' => $taxonomy_items,
-      ],
-    ];
+        [
+          'title' => t('Blocks'),
+          'url' => '',
+          'below' => $block_type_items,
+        ],
+        [
+          'title' => t('Media'),
+          'url' => '',
+          'below' => $media_type_items,
+        ],
+        [
+          'title' => t('Taxonomy'),
+          'url' => '',
+          'below' => $taxonomy_type_items,
+        ],
+      ]
+    );
 
-    $content_items = [
+    $create_items = [
       [
         'title' => t('Create'),
         'url' => Url::fromRoute('node.add_page')->toString(),
-        'below' => $create_items,
+        'below' => $create_type_items,
       ],
+    ];
+    return [
+      '#theme' => 'menu_region__middle',
+      '#items' => $create_items,
+      '#menu_name' => 'create',
+      '#title' => t('Create Navigation'),
+    ];
+  }
+
+  /**
+   * Get Navigation Content menu.
+   */
+  public function getNavigationContentMenuItems(): array {
+    $content_items = [
       [
         'title' => t('Content'),
         'url' => Url::fromRoute('system.admin_content')->toString(),
@@ -188,6 +207,44 @@ class GinNavigation implements ContainerInjectionInterface {
       '#menu_name' => 'user',
       '#title' => t('User'),
     ];
+  }
+
+  /**
+   * Get Navigation.
+   */
+  public function getNavigationStructure() {
+    // Get navigation items.
+    $menu['top']['create'] = $this->getNavigationCreateMenuItems();
+    $menu['middle']['content'] = $this->getNavigationContentMenuItems();
+    $menu['middle']['admin'] = $this->getNavigationAdminMenuItems();
+    $menu['bottom']['user'] = $this->getMenuNavigationUserItems();
+
+    return $variables['page_top']['navigation'] = [
+      '#theme' => 'navigation',
+      '#menu_top' => $menu['top'],
+      '#menu_middle' => $menu['middle'],
+      '#menu_bottom' => $menu['bottom'],
+      '#attached' => [
+        'library' => [
+          'gin/navigation',
+        ],
+      ],
+      '#access' => \Drupal::currentUser()->hasPermission('access toolbar'),
+    ];
+  }
+
+  /**
+   * Get Active trail.
+   */
+  public function getNavigationActiveTrail() {
+    // Get the breadcrumb paths to maintain active trail in the toolbar.
+    $links = \Drupal::service('breadcrumb')->build(\Drupal::routeMatch())->getLinks();
+    $paths = [];
+    foreach ($links as $link) {
+      $paths[] = $link->getUrl()->getInternalPath();
+    }
+
+    return $paths;
   }
 
 }

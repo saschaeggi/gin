@@ -50,34 +50,10 @@ function gin_preprocess_html(&$variables) {
     if ($toolbar === 'new') {
       /** @var \Drupal\gin\GinNavigaton $navigation */
       $navigation = \Drupal::classResolver(GinNavigation::class);
-
-      // Get navigation items.
-      $menu['top']['bookmarks'] = $navigation->getNavigationBookmarksMenuItems();
-      $menu['middle']['content'] = $navigation->getNavigationContentMenuItems();
-      $menu['middle']['admin'] = $navigation->getNavigationAdminMenuItems();
-      $menu['bottom']['user'] = $navigation->getMenuNavigationUserItems();
-
-      $variables['page_top']['navigation'] = [
-        '#theme' => 'navigation',
-        '#menu_top' => $menu['top'],
-        '#menu_middle' => $menu['middle'],
-        '#menu_bottom' => $menu['bottom'],
-        '#attached' => [
-          'library' => [
-            'gin/navigation',
-          ],
-        ],
-        '#access' => \Drupal::currentUser()->hasPermission('access toolbar'),
-      ];
-
-      // Get the breadcrumb paths to maintain active trail in the toolbar.
-      $links = \Drupal::service('breadcrumb')->build(\Drupal::routeMatch())->getLinks();
-      $paths = [];
-      foreach ($links as $link) {
-        $paths[] = $link->getUrl()->getInternalPath();
-      }
-      $variables['#attached']['drupalSettings']['active_trail_paths'] = $paths;
-
+      // Get new navigation.
+      $variables['page_top']['navigation'] = $navigation->getNavigationStructure();
+      // Get active trail.
+      $variables['#attached']['drupalSettings']['active_trail_paths'] = $navigation->getNavigationActiveTrail();
       // Set toolbar class.
       $variables['attributes']['class'][] = 'gin--navigation';
     }

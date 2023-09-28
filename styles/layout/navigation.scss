@@ -39,13 +39,6 @@ html.navigation-active {
   transition: margin-inline-start var(--gin-transition-fast), margin-left var(--gin-transition-fast);
 }
 
-// ------------
-// Hide Toolbar
-// ------------
-#toolbar-administration {
-  display: none;
-}
-
 // ----------
 // Navigation
 // ----------
@@ -54,13 +47,18 @@ html.navigation-active {
   padding-top: 0 !important;
 
   .navigation__sidebar {
+    border-right: 1px solid var(--gin-border-color-layer);
     transition: var(--gin-transition-fast);
+
+    // Hide on smaller screens for now as this is not ready yet.
+    @include mq($to: medium) {
+      display: none;
+    }
   }
 
   .navigation__sidebar,
   .navigation__sidebar--sticky-menu {
     background: var(--gin-bg-layer);
-    border-right: 1px solid var(--gin-border-color-layer);
   }
 
   // Navigation header
@@ -141,6 +139,14 @@ html.navigation-active {
     }
   }
 
+  // Hide Drupal 9 block_content links
+  .level-1 > .navigation-link--manage-fields,
+  .level-1 > .navigation-link--manage-form-display,
+  .level-1 > .navigation-link--manage-display,
+  .level-1 > .navigation-link--delete {
+    display: none;
+  }
+
   // -----------
   // Level 2 & 3
   // -----------
@@ -176,7 +182,8 @@ html:not(.navigation-active) .gin--navigation .level-1 {
 }
 
 // Fix padding
-.menu-title, .level-1 .navigation-link,
+.menu-title,
+.level-1 .navigation-link,
 .dashboard-link .navigation-link {
   padding-inline: 6px 10px;
 }
@@ -334,11 +341,6 @@ html:not(.navigation-active) .navigation__sidebar--sticky-menu .navigation-menu-
   .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user {
     margin-right: -1em;
   }
-
-  // Hide Shortcuts now we have Bookmarks
-  .toolbar-tab--toolbar-item-shortcuts {
-    display: none !important;
-  }
 }
 
 // ---------
@@ -357,4 +359,28 @@ html:not(.navigation-active) .navigation__sidebar--sticky-menu .navigation-menu-
 .navigation__sidebar--sticky-menu .navigation-menu {
   display: flex;
   flex-direction: column;
+}
+
+// -----------------------
+// Hide Toolbar on desktop
+// -----------------------
+#toolbar-administration {
+  .level-1 {
+    display: block;
+  }
+
+  .menu-item {
+    font-weight: var(--gin-font-weight-normal);
+  }
+
+  // Show toolbar on smaller screens for now as this is not ready yet.
+  @include mq(medium) {
+    display: none;
+  }
+}
+
+.toolbar-menu__title,
+.toolbar-menu__sub-title,
+.toolbar-menu__trigger {
+  display: none !important;
 }

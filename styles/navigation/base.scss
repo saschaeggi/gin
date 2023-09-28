@@ -56,8 +56,10 @@ body {
   }
 
   & ~ .dialog-off-canvas-main-canvas {
-    margin-inline-start: var(--drupal-displace-offset-left, var(--sidebar-width));
-    transition: margin-inline-start 0.2s linear;
+    @include mq(medium) {
+      margin-inline-start: var(--drupal-displace-offset-left, var(--sidebar-width));
+      transition: margin-inline-start 0.2s linear;
+    }
   }
 
   .navigation-active & {

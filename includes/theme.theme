@@ -38,6 +38,14 @@ function gin_theme() {
     ],
   ];
 
+  $items['menu_region__top'] = [
+    'variables' => [
+      'links' => [],
+      'title' => NULL,
+      'menu_name' => NULL,
+    ],
+  ];
+
   $items['menu_region__middle'] = [
     'base hook' => 'menu',
     'variables' => [
@@ -45,14 +53,6 @@ function gin_theme() {
       'items' => [],
       'attributes' => [],
       'title' => NULL,
-    ],
-  ];
-
-  $items['menu_region__top'] = [
-    'variables' => [
-      'links' => [],
-      'title' => NULL,
-      'menu_name' => NULL,
     ],
   ];
 
