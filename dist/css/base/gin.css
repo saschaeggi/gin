@@ -2139,6 +2139,7 @@ fieldset:not(.fieldgroup).error {
 
 .form-item__description,
 .fieldset__description {
+  max-width: 60ch;
   color: var(--gin-color-text-light);
 }
 
