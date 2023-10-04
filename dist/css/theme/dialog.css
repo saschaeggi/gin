@@ -709,7 +709,6 @@
 
 .ui-dialog .form-item__description,
 .ui-dialog .fieldset__description {
-  max-width: 520px;
   color: var(--gin-color-text-light);
 }
 
