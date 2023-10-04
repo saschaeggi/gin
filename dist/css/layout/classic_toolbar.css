@@ -1,6 +1,6 @@
 :root {
-  --gin-toolbar-secondary-height: 0px;
   --gin-toolbar-height: 39px;
+  --gin-toolbar-secondary-height: 0px;
   --gin-scroll-offset: 72px;
   --gin-toolbar-y-offset: var(--gin-toolbar-height);
   --gin-toolbar-x-offset: 0px;
@@ -33,8 +33,18 @@
 }
 
 .toolbar .toolbar-bar {
+  position: fixed;
+  width: 100%;
   background: #100f10;
   box-shadow: none;
+}
+
+[dir="ltr"] .toolbar .toolbar-bar {
+  left: 0;
+}
+
+[dir="rtl"] .toolbar .toolbar-bar {
+  right: 0;
 }
 
 .toolbar .toolbar-menu,

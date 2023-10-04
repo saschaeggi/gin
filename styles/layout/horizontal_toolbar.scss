@@ -1,15 +1,15 @@
 // Toolbar Variables
 :root {
-  --gin-toolbar-secondary-height: 48px;
   --gin-toolbar-height: 39px;
+  --gin-toolbar-secondary-height: 48px;
   --gin-scroll-offset: 72px;
   --gin-toolbar-y-offset: var(--gin-toolbar-height);
   --gin-toolbar-x-offset: 0px; // Needs px to work in calc() functions.
   --gin-sticky-offset: 0px; // Needs px to work in calc() functions.
 
   @include mq(medium) {
-    --gin-toolbar-secondary-height: 60px;
     --gin-toolbar-height: 53px;
+    --gin-toolbar-secondary-height: 60px;
     --gin-scroll-offset: 180px;
     --gin-icon-size-toolbar: 18px;
     --gin-sticky-offset: var(--gin-height-sticky);
@@ -23,6 +23,9 @@
 // Toolbar
 .toolbar {
   .toolbar-bar {
+    position: fixed;
+    left: 0;
+    width: 100%;
     background: #100f10;
     box-shadow: none;
 

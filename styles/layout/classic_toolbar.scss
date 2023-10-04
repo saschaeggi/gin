@@ -1,7 +1,7 @@
 // Toolbar Variables
 :root {
-  --gin-toolbar-secondary-height: 0px; // Needs px to work in calc() functions.
   --gin-toolbar-height: 39px;
+  --gin-toolbar-secondary-height: 0px; // Needs px to work in calc() functions.
   --gin-scroll-offset: 72px;
   --gin-toolbar-y-offset: var(--gin-toolbar-height);
   --gin-toolbar-x-offset: 0px; // Needs px to work in calc() functions.
@@ -32,11 +32,12 @@
 }
 
 // Toolbar
-.toolbar {
-  .toolbar-bar {
-    background: #100f10;
-    box-shadow: none;
-  }
+.toolbar .toolbar-bar {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  background: #100f10;
+  box-shadow: none;
 }
 
 .toolbar .toolbar-menu,

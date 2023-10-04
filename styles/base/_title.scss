@@ -1,10 +1,4 @@
 .block-page-title-block {
-  @include mq($to: medium) {
-    .gin--edit-form .region-sticky--is-sticky & {
-      visibility: hidden;
-    }
-  }
-
   &:last-child {
     margin-bottom: 0;
   }

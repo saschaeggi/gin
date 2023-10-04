@@ -8,15 +8,18 @@
 
 // Toolbar Variables
 :root {
+  --gin-toolbar-height: 39px;
   --gin-toolbar-secondary-height: 48px;
   --gin-scroll-offset: 72px;
-  --gin-toolbar-y-offset: 0px; // Needs px to work in calc() functions.
-  --gin-toolbar-x-offset: var(--drupal-displace-offset-left, 64px);
+  --gin-toolbar-y-offset: var(--gin-toolbar-height);
+  --gin-toolbar-x-offset: 0px; // Needs px to work in calc() functions.
   --gin-sticky-offset: 0px; // Needs px to work in calc() functions.
   --gin-icon-size-toolbar: 20px;
 
   @include mq(medium) {
+    --gin-toolbar-height: 0px; // Needs px to work in calc() functions.
     --gin-toolbar-secondary-height: 60px;
+    --gin-toolbar-x-offset: var(--drupal-displace-offset-left, 64px);
     --gin-scroll-offset: 130px;
     --gin-sticky-offset: var(--gin-height-sticky);
   }
@@ -25,6 +28,13 @@
 html.navigation-active {
   @include mq(medium) {
     --gin-toolbar-x-offset: var(--drupal-displace-offset-left, 264px);
+  }
+}
+
+body.gin--navigation {
+  @include mq($to: medium) {
+    padding-top: var(--gin-toolbar-y-offset) !important;
+    padding-left: var(--gin-toolbar-x-offset, 39px) !important;
   }
 }
 
