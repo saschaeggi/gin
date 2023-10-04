@@ -16,14 +16,6 @@ libraries:
 
 libraries-override:
   # Gin overrides: replace
-  core/drupal.tableselect:
-    js:
-      misc/tableselect.js: js/overrides/tableselect.js
-
-  core/drupal.tableheader:
-    js:
-      misc/tableheader.js: js/overrides/tableheader.js
-
   media_library/view:
     js:
       js/media_library.view.js: js/overrides/media_library.view.js
@@ -52,6 +44,8 @@ libraries-override:
 libraries-extend:
   core/drupal.tableselect:
     - gin/tableselect
+  core/drupal.tableheader:
+    - gin/tableheader
   core/drupal.autocomplete:
     - gin/autocomplete
   core/ckeditor:
