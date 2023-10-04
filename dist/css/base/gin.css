@@ -55,6 +55,10 @@ a {
   color: var(--gin-color-button-text);
 }
 
+.gin--dark-mode {
+  color-scheme: dark;
+}
+
 a,
 .link,
 button.link,
