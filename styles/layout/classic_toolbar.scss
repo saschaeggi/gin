@@ -1,7 +1,7 @@
 // Toolbar Variables
 :root {
-  --gin-toolbar-secondary-height: 0px; // Needs px to work in calc() functions.
   --gin-toolbar-height: 39px;
+  --gin-toolbar-secondary-height: 0px; // Needs px to work in calc() functions.
   --gin-scroll-offset: 72px;
   --gin-toolbar-y-offset: var(--gin-toolbar-height);
   --gin-toolbar-x-offset: 0px; // Needs px to work in calc() functions.

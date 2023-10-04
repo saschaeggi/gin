@@ -787,17 +787,20 @@ html:not(.navigation-active) .navigation-menu-wrapper {
 }
 
 :root {
+  --gin-toolbar-height: 39px;
   --gin-toolbar-secondary-height: 48px;
   --gin-scroll-offset: 72px;
-  --gin-toolbar-y-offset: 0px;
-  --gin-toolbar-x-offset: var(--drupal-displace-offset-left, 64px);
+  --gin-toolbar-y-offset: var(--gin-toolbar-height);
+  --gin-toolbar-x-offset: 0px;
   --gin-sticky-offset: 0px;
   --gin-icon-size-toolbar: 20px;
 }
 
 @media (min-width: 61em) {
   :root {
+    --gin-toolbar-height: 0px;
     --gin-toolbar-secondary-height: 60px;
+    --gin-toolbar-x-offset: var(--drupal-displace-offset-left, 64px);
     --gin-scroll-offset: 130px;
     --gin-sticky-offset: var(--gin-height-sticky);
   }
@@ -806,6 +809,20 @@ html:not(.navigation-active) .navigation-menu-wrapper {
 @media (min-width: 61em) {
   html.navigation-active {
     --gin-toolbar-x-offset: var(--drupal-displace-offset-left, 264px);
+  }
+}
+
+@media (max-width: 60.99em) {
+  body.gin--navigation {
+    padding-top: var(--gin-toolbar-y-offset) !important;
+  }
+
+  [dir="ltr"] body.gin--navigation {
+    padding-left: var(--gin-toolbar-x-offset, 39px) !important;
+  }
+
+  [dir="rtl"] body.gin--navigation {
+    padding-right: var(--gin-toolbar-x-offset, 39px) !important;
   }
 }
 

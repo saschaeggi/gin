@@ -1,6 +1,6 @@
 :root {
-  --gin-toolbar-secondary-height: 0px;
   --gin-toolbar-height: 39px;
+  --gin-toolbar-secondary-height: 0px;
   --gin-scroll-offset: 72px;
   --gin-toolbar-y-offset: var(--gin-toolbar-height);
   --gin-toolbar-x-offset: 0px;
