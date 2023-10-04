@@ -57,6 +57,7 @@ body.gin--navigation {
   padding-top: 0 !important;
 
   .navigation__sidebar {
+    top: 0;
     border-right: 1px solid var(--gin-border-color-layer);
     transition: var(--gin-transition-fast);
 

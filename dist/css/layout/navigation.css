@@ -852,6 +852,7 @@ html:not(.navigation-active) .navigation-menu-wrapper {
 }
 
 .gin--navigation .navigation__sidebar {
+  top: 0;
   transition: var(--gin-transition-fast);
 }
 

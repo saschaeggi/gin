@@ -219,7 +219,7 @@ class GinNavigation implements ContainerInjectionInterface {
     $menu['middle']['admin'] = $this->getNavigationAdminMenuItems();
     $menu['bottom']['user'] = $this->getMenuNavigationUserItems();
 
-    return $variables['page_top']['navigation'] = [
+    return [
       '#theme' => 'navigation',
       '#menu_top' => $menu['top'],
       '#menu_middle' => $menu['middle'],

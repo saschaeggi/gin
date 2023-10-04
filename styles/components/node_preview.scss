@@ -1,4 +1,4 @@
-.node-preview-container {
+.node-preview-container.node-preview-container {
   font-size: var(--gin-font-size-xs);
   z-index: 501; /* on top of the Drupal world */
   position: sticky;
@@ -28,21 +28,42 @@
     backdrop-filter: none;
   }
 
+  .gin--navigation & {
+    margin-left: var(--gin-toolbar-x-offset);
+    width: calc(100% - var(--gin-toolbar-x-offset));
+  }
+
+  .gin-layout-container {
+    box-sizing: border-box;
+  }
+
   .node-preview-backlink,
   .node-preview-form-select label {
     color: var(--gin-color-text-light);
   }
 
   .node-preview-backlink {
+    all: revert;
     position: relative;
-    padding-left: 2em;
+    padding-left: 1.75em;
     text-decoration: none;
+    font-weight: var(--gin-font-weight-normal);
+    color: var(--gin-color-text-light);
+    border-radius: var(--gin-border-xxs);
+
+    &:hover {
+      color: var(--gin-color-primary-hover);
+    }
+
+    &:active {
+      color: var(--gin-color-primary-active);
+    }
 
     &::before {
       content: "";
       display: inline-block;
       position: absolute;
-      top: 50%;
+      top: calc(50% - 1px);
       left: 0;
       width: var(--gin-icon-size-toolbar-secondary);
       height: var(--gin-icon-size-toolbar-secondary);
@@ -51,6 +72,17 @@
       mask-image: icon('backtosite');
       mask-size: 100% 100%;
       mask-position: center center;
+    }
+  }
+
+  .form-item {
+    all: revert;
+
+    &__label {
+      font-size: var(--gin-font-size-s);
+      font-weight: var(--gin-font-weight-normal);
+      color: var(--gin-color-title);
+      margin: 0;
     }
   }
 
@@ -76,6 +108,18 @@
     }
   }
 
+  .form-element {
+    all: revert;
+    font-size: var(--gin-font-size-s);
+    line-height: 1.5;
+    color: var(--gin-color-text);
+    background-color: var(--gin-bg-input);
+    border: 1px solid var(--gin-border-color-form-element);
+    border-radius: var(--gin-border-s);
+    box-sizing: border-box;
+    transition: var(--gin-transition);
+  }
+
   .js-hide {
     display: none;
   }
@@ -83,5 +127,10 @@
   // Hide Secondary Toolbar while in Preview mode.
   ~ .gin-secondary-toolbar--frontend {
     display: none;
+  }
+
+  *:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
   }
 }
