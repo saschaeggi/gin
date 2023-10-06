@@ -259,6 +259,13 @@ body.gin--classic-toolbar {
       }
     }
 
+    // Admin Toolbar Language Switcher
+    .toolbar-icon-language {
+      &:before {
+        mask-image: icon('tmgmt');
+      }
+    }
+
     // BAT
     .toolbar-icon-bat-admin {
       &:before {
