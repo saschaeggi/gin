@@ -1,45 +1,52 @@
 {% import _self as menus %}
-<div class="navigation-menu-wrapper">
+<div class="admin-toolbar__item toolbar-block">
   {% set menu_heading_id = 'menu--' ~ menu_name %}
-  <h2 id="{{ menu_heading_id }}" class="menu-title visually-hidden focusable">{{ title }}</h2>
-  <ul class="navigation-menu" aria-labelledby="{{ menu_heading_id }}">
+  <h2 id="{{ menu_heading_id }}" class="toolbar-block__title visually-hidden focusable">{{ title }}</h2>
+  <ul class="toolbar-menu toolbar-menu toolbar-block__content" aria-toolbar-link__labelledby="{{ menu_heading_id }}">
     {{ menus.menu_items(items, attribute) }}
   </ul>
 </div>
 
 {% macro menu_items(items, attributes) %}
   {% for item in items %}
-    <li class="{{ item.below ? 'menu-item--has-dropdown' }} menu-item level-1">
+  {% set item_id = 'item-' ~ item.title %}
+    <li id="{{ item_id }}" class="{{ item.below ? 'toolbar-menu__item--has-dropdown' }} toolbar-menu__item toolbar-menu__item--level-1">
       {% if item.below is empty %}
-        <a href="{{ item.url }}" class="navigation-link navigation-link--has-icon navigation-link--{{item.title|clean_class }}">
+        <a href="{{ item.url }}" class="toolbar-link toolbar-link--has-icon toolbar-link--{{item.title|clean_class }}">
           <span>{{ item.title }}</span>
         </a>
       {% endif %}
     {% if item.below %}
-      <button class="navigation-link navigation-link--has-icon navigation-link--{{item.title|clean_class }}">
-        <span class="action">{{ 'Extend'|t }}</span>
-        <span class="label">{{ item.title }}</span>
+      <button class="toolbar-link toolbar-link--has-icon toolbar-link--{{item.title|clean_class }}">
+        <span class="toolbar-link__action">{{ 'Extend'|t }}</span>
+        <span class="toolbar-link__label">{{ item.title }}</span>
       </button>
-      <div class="navigation-menu-wrapper">
-        <div class="arrow-ref"></div>
-        <ul class="navigation-menu">
+      <div class="toolbar-menu__submenu">
+        <div class="toolbar-menu__arrow-ref"></div>
+        <ul class="toolbar-menu">
+          <li class="toolbar-menu__item toolbar-menu__item--to-title">
+            <button class="toolbar-link toolbar-link--has-icon toolbar-link--{{ item.title|clean_class }}" tabindex="-1" data-url="{{ item.url }}">
+              <span class="toolbar-link__action">{{ 'Extend'|t }}</span>
+              <span class="toolbar-link__label">{{ item.title }}</span>
+            </button>
+          </li>
           {% for item in item.below %}
-            <li class="{{ item.below ? 'menu-item--has-dropdown'}} menu-item level-2">
+            <li class="{{ item.below ? 'toolbar-menu__item--has-dropdown'}} toolbar-menu__item toolbar-menu__item--level-2">
               {% if item.below is empty %}
-                <a href="{{ item.url }}" class="navigation-link">
+                <a href="{{ item.url }}" class="toolbar-link">
                 <span>{{item.title}}</span>
               </a>
               {% endif %}
               {% if item.below %}
-                <button class="navigation-link" aria-expanded="false">
-                  <span class="action">{{ 'Extend'|t }}</span>
-                  <span class="label">{{ item.title }}</span>
+                <button class="toolbar-link" aria-expanded="false">
+                  <span class="toolbar-link__action">{{ 'Extend'|t }}</span>
+                  <span class="toolbar-link__label">{{ item.title }}</span>
                 </button>
-                <ul class="navigation-menu">
+                <ul class="toolbar-menu">
                   {% for item in item.below %}
-                    <li class="menu-item level-3">
-                      <a href="{{ item.url }}" class="navigation-link">
-                        <span>{{ item.title }}</span>
+                    <li class="toolbar-menu__item toolbar-menu__item--level-3">
+                      <a href="{{ item.url }}" class="toolbar-link">
+                        <span class="toolbar-link__label">{{ item.title }}</span>
                       </a>
                     </li>
                   {% endfor %}

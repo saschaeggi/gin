@@ -5,12 +5,24 @@
   let sidebar;
 
   /**
+   * Collapsed toolbar keydown handling vars.
+   */
+  let firstFocusableEl;
+  const firstLevelToolbarItems = Array.from(document.querySelectorAll('.navigation__logo, .toolbar-menu > .toolbar-menu__item--level-1 > .toolbar-link')); // 1st level menu items.
+  const keys = {
+    tab:     9,
+    esc:    27,
+    space:  32,
+  };
+  let currentIndex, subIndex;
+
+  /**
    * Informs in the navigation is expanded.
    *
    * @returns {boolean} - If the navigation is expanded.
    */
   function isNavExpanded() {
-    return document.documentElement.classList.contains('navigation-active');
+    return document.documentElement.classList.contains('admin-toolbar-expanded');
   }
 
   /**
@@ -19,20 +31,27 @@
    * transitioning between expanded and collapsed states.
    */
   function autoExpandToActiveMenuItem() {
-    const activeItem = sidebar.querySelector('.is-active');
+    const activeItems = sidebar.querySelectorAll('.is-active');
     closeAllSubmenus();
+    activeItems.forEach(activeItem => {
+      activeItem?.closest('.toolbar-menu__item.toolbar-menu__item--level-2')?.classList.add('toolbar-menu__item--expanded');
+      activeItem?.closest('.toolbar-menu__item.toolbar-menu__item--level-2')?.classList.add('active-path');
 
-    activeItem?.closest('.menu-item.level-2')?.classList.add('menu-item--expanded');
+      // Only expand level one if sidebar is in expanded state.
+      // Gin Custom start ---------------------
+      if (activeItem) {
+        activeItem.closest('.toolbar-menu__item.toolbar-menu__item--level-1')?.classList.add('toolbar-menu__item--expanded');
+        activeItem.closest('.toolbar-menu__item.toolbar-menu__item--level-1')?.classList.add('active-path');
+      }
+      // Gin Custom end ------------------------
+    });
+    // Scroll to the open trays so they're in view.
+    const expandedTray = sidebar.querySelector('.toolbar-menu__item.toolbar-menu__item--expanded');
+    expandedTray?.scrollIntoView({ behavior: 'smooth' });
 
-    // Only expand level one if sidebar is in expanded state.
-    if (activeItem && isNavExpanded()) {
-      activeItem.closest('.menu-item.level-1')?.classList.add('menu-item--expanded');
-      // Scroll to the open trays so they're in view.
-      const expandedTray = sidebar.querySelector('.menu-item.menu-item--expanded');
-      expandedTray?.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    checkOverflow();
+    // Gin Custom start ---------------------
+    // checkOverflow();
+    // Gin Custom end -----------------------
   }
 
   /**
@@ -47,7 +66,7 @@
     // Check all links on the sidebar (that are not in the shortcutsNav
     // <div>) to see if they are the current page. If so, set a `current`
     // and `is-active` CSS class on the parent <li>.
-    const sidebarLinks = sidebar.querySelectorAll('a.navigation-link:not(.menu--shortcuts *)');
+    const sidebarLinks = sidebar.querySelectorAll('a.toolbar-link:not(.menu--shortcuts *)');
     sidebarLinks.forEach(link => {
       if (link.href === document.URL) {
         link.parentElement.classList.add('current', 'is-active');
@@ -62,8 +81,9 @@
    *   transitioning to (true if expanded, false if collapsed).
    */
   function expandCollapseSidebar(toState) {
-    const expandCollapseButton = sidebar.querySelector('[aria-controls="navigation-sidebar"]');
-    document.documentElement.classList.toggle('navigation-active', toState);
+    const expandCollapseButton = sidebar.querySelector('[aria-controls="admin-toolbar"]');
+    if (toState) closeTooltip();
+    document.documentElement.classList.toggle('admin-toolbar-expanded', toState);
     Drupal.displace(true);
     sidebar.querySelector('#sidebar-state').textContent = toState ? Drupal.t('Collapse sidebar') : Drupal.t('Expand sidebar');
     expandCollapseButton.setAttribute('aria-expanded', toState);
@@ -71,10 +91,10 @@
     autoExpandToActiveMenuItem();
 
     if (toState) {
-      flyoutDetach();
+      flyoutTooltipDetach();
     }
     else {
-      flyoutInit();
+      flyoutTooltipInit();
     }
   }
 
@@ -85,27 +105,28 @@
    * @todo this should be using either CSS only or Intersection Observer instead
    * of getBoundingClientRect().
    */
-  function checkOverflow() {
-    if (isNavExpanded()) {
-      const stickyMenu = sidebar.querySelector('.navigation__sidebar--sticky-menu');
-      const mainMenu = sidebar.querySelector('#menu-builder'); // @todo why are we using ID here?
-      const stickyMenuTopPos = stickyMenu?.getBoundingClientRect().top;
-      const mainMenuBottomPos = mainMenu?.getBoundingClientRect().bottom;
-      stickyMenu?.classList.toggle('shadow', mainMenuBottomPos > stickyMenuTopPos);
-    }
-  }
+  // Gin Custom start ---------------------
+  // function checkOverflow() {
+  //   if (isNavExpanded()) {
+  //     const stickyMenu = sidebar.querySelector('.admin-toolbar__sticky-section');
+  //     const mainMenu = sidebar.querySelector('#menu-builder'); // @todo why are we using ID here?
+  //     const stickyMenuTopPos = stickyMenu?.getBoundingClientRect().top;
+  //     const mainMenuBottomPos = mainMenu?.getBoundingClientRect().bottom;
+  //     stickyMenu?.classList.toggle('shadow', mainMenuBottomPos > stickyMenuTopPos);
+  //   }
+  // }
+  // Gin Custom end ------------------------
 
   /**
    * Calculate and place flyouts relative to their parent links using the
    * floating UI library.
    *
-   * @param {Element} anchorEl - <button> element within the navigation link
-   *   that was hovered over.
-   * @param {Element} flyoutEl - Top level <ul> that contains menu items to be
-   *   shown.
-   * @param {Element} arrowEl - Empty <div> that is styled as an arrow.
+   * @param {Element} hoveredEl - <li> element that was hovered over.
    */
-  function positionFlyout(anchorEl, flyoutEl, arrowEl) {
+  function positionFlyout(hoveredEl) {
+    const anchorEl = hoveredEl.querySelector('.toolbar-link'); // This is the <button> element within the <li>.
+    const flyoutEl = document.getElementById(anchorEl.getAttribute('aria-controls')); // Top level <ul> that contains menu items to be shown.
+    const arrowEl = flyoutEl?.querySelector('.toolbar-menu__arrow-ref'); // Empty <div> that is styled as an arrow.
     computePosition(anchorEl, flyoutEl, {
       placement: 'right',
       middleware: [
@@ -141,6 +162,33 @@
   }
 
   /**
+   * Calculate and place tooltips relative to their parent links using the
+   * floating UI library.
+   *
+   * @param {Element} anchorEl - <a> element within the navigation link
+   *   that was hovered over.
+   * @param {Element} tooltipEl - Tooltip span
+   *   shown.
+   */
+  function positionTooltip(hoveredEl) {
+    const anchorEl = hoveredEl.querySelector('.toolbar-link'); // This is the <a> element within the navigation link.
+    const tooltipEl = document.querySelector('.tooltip'); // This is the tooltip span.
+    computePosition(anchorEl, tooltipEl, {
+      placement: 'right',
+      middleware: [
+        offset(6),
+        flip({ padding: 16 }),
+        shift({ padding: 16 }),
+      ],
+    }).then(({ x, y }) => {
+      Object.assign(tooltipEl.style, {
+        left: `${x}px`,
+        top: `${y}px`,
+      });
+    });
+  }
+
+  /**
    * When flyouts are active, any click outside of the flyout should close the
    * flyout.
    *
@@ -154,49 +202,130 @@
     // ensure this only runs when navigation is collapsed.
     if (isNavExpanded()) return;
 
-    if (!e.target.closest('.level-1.menu-item--expanded')) {
-      closeAllSubmenus();
-      document.removeEventListener('click', closeFlyoutOnClickOutside);
+    if (!e.target.closest('.cloned-flyout')) {
+      closeFlyout();
     }
   }
 
   /**
    * Open the flyout when in collapsed mode.
    *
-   * @param {Event} e - The mouseenter event from the parentListItem.
+   * @param {Event || Element} e - Either the  mouseenter event from the parentListItem or an element.
    */
   function openFlyout(e) {
-    const hoveredEl = e.target; // This is the <li> that was hovered over.
-    const anchorEl = hoveredEl.querySelector('.navigation-link'); // This is the <button> element within the navigation link.
-    const flyoutEl = hoveredEl.querySelector('.navigation-menu-wrapper'); // Top level <ul> that contains menu items to be shown.
-    const arrowEl = hoveredEl.querySelector('.arrow-ref'); // Empty <div> that is styled as an arrow.
+    // Only one flyout can be open at once, so close currently
+    // open flyouts.
+    const hoveredEl = e.target ? e.target : e.parentElement; // This is the <li> that was hovered over. Check if it's an event object or not.
+    const buttonEl = hoveredEl.querySelector('.toolbar-link'); // The level-1 list item <button>.
+    const clonedFlyout = hoveredEl.querySelector('.toolbar-menu__submenu').cloneNode(true); // Flyout clone.
+    const clonedFlyoutId = `${hoveredEl.id}--flyout-clone`; // ID for flyout aria-controls.
+    if (hoveredEl.classList.contains('toolbar-menu__item--expanded')) return;
+    closeFlyout();
+    closeTooltip();
+    // Add aria attributes to the flyout and <button>.
+    // Add a class to easily remove flyout in closeFlyout().
+    // Append the cloned flyout to the body to fix overflow issues with
+    // vertical scrolling on the collapsed sidebar.
+    buttonEl.setAttribute('aria-controls', clonedFlyoutId);
+    buttonEl.setAttribute('aria-expanded', true);
+    clonedFlyout.setAttribute('id', clonedFlyoutId);
+    clonedFlyout.classList.add('cloned-flyout');
+    document.querySelector('body').append(clonedFlyout);
+
+    // Add click event listeners to all buttons and then contains the callback
+    // to expand / collapse the button's menus.
+    clonedFlyout.querySelectorAll('.toolbar-menu__item--has-dropdown > button').forEach(el => el.addEventListener('click', (e) => {
+      openCloseSubmenu(e.currentTarget.parentElement);
+    }));
+
+    // Add click event listeners to title buttons when navigation is collapsed.
+    clonedFlyout.querySelectorAll('.toolbar-menu__item--to-title > button').forEach(el => el.addEventListener('click', (e) => {
+      const dataUrl = el.getAttribute('data-url');
+      if (!isNavExpanded() && dataUrl) {
+        window.location.assign(dataUrl);
+      }
+    }));
+
+    // Gin Custom start ---------------------
+    // Add the event listeners for focus handling on flyout clone.
+    const flyoutEls = document.querySelectorAll('.cloned-flyout .toolbar-menu__item--level-2 > .toolbar-link, .cloned-flyout .toolbar-menu__item--level-3 > .toolbar-link');
+    flyoutEls?.forEach(el => {
+      el.addEventListener('keydown', handleKeydownFlyout, false);
+    });
+    // Gin Custom end ------------------------
 
     // If the active submenu is not yet open (it might be open if it has
     // focus-within and the user did a  mouseleave and mouseenter).
-    if (!hoveredEl.classList.contains('menu-item--expanded')) {
-      closeAllSubmenus();
-
+    if (!hoveredEl.classList.contains('toolbar-menu__item--expanded')) {
       // Only position if the submenu is not already open. This prevents the
       // flyout from unexpectedly shifting.
-      positionFlyout(anchorEl, flyoutEl, arrowEl);
-      autoExpandToActiveMenuItem();
+      positionFlyout(hoveredEl);
     }
-    hoveredEl.classList.add('menu-item--expanded');
+    hoveredEl.classList.add('toolbar-menu__item--expanded');
+
+    // When a level-1 item hover ends, check if the flyout has focus and if
+    // not, close it.
+    clonedFlyout.addEventListener('mouseleave', delayedFlyoutClose, false);
 
     // When a flyout is open, listen for clicks outside the flyout.
     document.addEventListener('click', closeFlyoutOnClickOutside, false);
+    // Auto expand to the active menu item on the cloned flyout.
+    autoExpandToActiveMenuItem();
+  }
+
+  /**
+   * Open the tooltip when in collapsed mode.
+   * Note: JS solution needed due to requirement for vertical scrolling.
+   * CSS solution of overflow-y:scroll and overflow-x:visible on sidebar is not possible.
+   *
+   * @param {Event} e - The mouseenter event from the parentListItem.
+   */
+  function openTooltip(e) {
+    closeFlyout();
+    closeTooltip();
+    const hoveredEl = e.target; // This is the <li> that was hovered over.
+    const clonedTooltip = hoveredEl.querySelector('.toolbar-link > span').cloneNode(true); // Tooltip clone.
+    // Add a class to easily remove flyout in closeTooltip().
+    // Append the cloned tooltip to the body to fix overflow issues with
+    // vertical scrolling on the collapsed sidebar.
+    clonedTooltip.classList.add('tooltip');
+    document.querySelector('body').append(clonedTooltip);
+    if (!hoveredEl.classList.contains('toolbar-menu__item--expanded')) {
+      positionTooltip(hoveredEl);
+    }
   }
 
   /**
    * Close the flyout.
-   *
-   * @param {Element} parentListItem - The top level <li> element that is
-   * expanded.
    */
-  function flyoutClose(parentListItem) {
+  function closeFlyout() {
     // Remove expanded class if sidebar is collapsed.
+    // Remove cloned flyout element.
     if (!isNavExpanded()) {
-      parentListItem?.classList.remove('menu-item--expanded');
+      // Remove the event listeners for focus handling on flyout clone.
+      const flyoutEls = document.querySelectorAll('.cloned-flyout .toolbar-menu__item--level-2, .cloned-flyout .toolbar-menu__item--level-3');
+      flyoutEls?.forEach(el => {
+        el.removeEventListener('keydown', handleKeydownFlyout);
+      });
+
+      const clonedFlyout = document.querySelector('.cloned-flyout');
+      const clonedFlyoutControl = document.querySelector(`[aria-controls=${clonedFlyout?.id}]`);
+      clonedFlyoutControl?.removeAttribute('aria-controls');
+      clonedFlyoutControl?.setAttribute('aria-expanded', false);
+      closeAllSubmenus();
+      clonedFlyout?.removeEventListener('mouseleave', delayedFlyoutClose);
+      clonedFlyout?.remove();
+      document.removeEventListener('click', closeFlyoutOnClickOutside);
+    }
+  }
+
+  /**
+   * Close the tooltip.
+   */
+  function closeTooltip() {
+    if (!isNavExpanded()) {
+      const clonedTooltip = document.querySelector('.tooltip');
+      clonedTooltip?.remove();
     }
   }
 
@@ -207,57 +336,178 @@
    */
   function delayedFlyoutClose(e) {
     const parentListItem = e.currentTarget;
+    const currentFlyout = document.querySelector('.cloned-flyout');
 
     // Do not close flyout if it contains focus.
-    if (parentListItem.contains(document.activeElement)) return;
+    if (currentFlyout.contains(document.activeElement)) return;
 
     timer = setTimeout(() => {
-      flyoutClose(parentListItem);
+      closeFlyout();
       parentListItem.removeEventListener('mouseover', () => clearTimeout(timer), { once: true });
     }, 400);
     parentListItem.addEventListener('mouseover', () => clearTimeout(timer), { once: true });
   }
 
   /**
-   * Flyout setup in the collapsed toolbar state. This gets called when toolbar
-   * is put into a collapsed state.
+   * Keyboard navigation for the collapsed toolbar top level items.
+   * This is particularly complex because of the flyout positioning outside of
+   * the sidebar markup.
+   *
+   * @param {Event} event - The keydown event.
+   *
    */
-  function flyoutInit() {
-    if (sidebar.querySelectorAll('.level-1 > .navigation-menu-wrapper')) {
-      // @todo why are we not doing this in Twig? Talked to Claire and she's
-      // okay with moving this to Twig.
-      sidebar.querySelectorAll('.level-1 > .navigation-menu-wrapper').forEach(flyoutEl => {
-        // Duplicate the level-1 icon and title append it to the first item in
-        // the submenu.
-        const parentListItem = flyoutEl.parentElement;
-        const anchorEl = parentListItem.querySelector('.navigation-link');
-        const menuTitle = `<li class="menu-item menu-item--title">${anchorEl.outerHTML}</li>`;
-        const menu = flyoutEl.querySelector('.navigation-menu');
-        if (!menu.querySelector('.menu-item--title')) {
-          flyoutEl.querySelector('.navigation-menu').insertAdjacentHTML('afterbegin', menuTitle);
+  function handleKeydownTopLevel(event) {
+    // Reset the currentIndex so it's always accurate.
+    currentIndex = firstLevelToolbarItems.indexOf(event.target);
+    switch (event.keyCode) {
+      case keys.tab:
+        if (event.shiftKey) {
+          // Focus the previous menu item.
+          currentIndex--;
+          firstLevelToolbarItems[currentIndex]?.focus();
+        } else {
+          // Focus the next menu item.
+          currentIndex++;
+          if (firstLevelToolbarItems[currentIndex]) {
+            firstLevelToolbarItems[currentIndex].focus();
+          } else {
+            firstFocusableEl.focus();
+          }
         }
-
-        // when a level-1 list item is hovered, open the flyout
-        parentListItem.addEventListener('mouseenter', openFlyout, false);
-
-        // When a level-1 item hover ends, check if the flyout has focus and if
-        // not, close it.
-        parentListItem.addEventListener('mouseleave', delayedFlyoutClose, false);
-      });
+        event.preventDefault();
+        break;
+      case keys.space:
+        // Open the flyout and focus the first item in the flyout.
+        if (this.parentElement.classList.contains('toolbar-menu__item--has-dropdown')) {
+          openFlyout(this);
+          window.setTimeout(() => document.querySelector('.cloned-flyout .toolbar-menu__item--level-2 .toolbar-link').focus(), 0);
+        }
+        event.preventDefault();
+        break;
+      case keys.esc:
+        // Leave the menu, focus goes to first focusable element in the page content.
+        firstFocusableEl.focus();
+        event.preventDefault();
+        break;
     }
   }
 
   /**
-   * Remove all flyout related event listeners. This gets called when toolbar is
+   * Keyboard navigation for the collapsed toolbar flyouts.
+   *
+   * @param {Event} event - The keydown event.
+   *
+   */
+  function handleKeydownFlyout(event) {
+    let flyoutEls = Array.from(document.querySelectorAll('.cloned-flyout .toolbar-menu__item--level-2 > .toolbar-link, .cloned-flyout .toolbar-menu__item--expanded .toolbar-menu__item--level-3 .toolbar-link'));;
+    subIndex = flyoutEls.indexOf(event.target);
+    switch (event.keyCode) {
+      case keys.tab:
+        if (event.shiftKey) {
+          // Tab & shift.
+          if (document.activeElement == event.target.parentElement.querySelector('li:nth-child(2) .toolbar-link') &&
+          document.activeElement.parentElement.classList.contains('toolbar-menu__item--level-2')) {
+            // Focus previous element but this was the first element in the flyout.
+            // Close the flyout and focus the parent element.
+            currentIndex--;
+            window.setTimeout(() => firstLevelToolbarItems[currentIndex].focus(), 0);
+            closeFlyout();
+            subIndex = 1;
+          } else {
+            subIndex--;
+            window.setTimeout(() => flyoutEls[subIndex].focus(), 0);
+          }
+        } else {
+          // Tab.
+          if (document.activeElement == event.target.parentElement.querySelector('li:last-of-type .toolbar-link') &&
+          document.activeElement.parentElement.classList.contains('toolbar-menu__item--level-2')) {
+            // Focus next element but there are no more elements in the flyout.
+            // Close the flyout and focus the parent element.
+            // Timeout needed for Firefox.
+            currentIndex++;
+            window.setTimeout(() => firstLevelToolbarItems[currentIndex].focus(), 0);
+            closeFlyout();
+            subIndex = 1;
+          } else {
+            subIndex++;
+            window.setTimeout(() => flyoutEls[subIndex].focus(), 0);
+          }
+        }
+        event.preventDefault();
+        break;
+      case keys.space:
+        const thirdLevel = event.target.parentElement.querySelectorAll('.toolbar-menu__item--level-3 .toolbar-link');
+        let indexToAdd = flyoutEls.indexOf(event.target) + 1;
+        thirdLevel.forEach(item => {
+          flyoutEls.splice(indexToAdd, 0, item);
+          indexToAdd++;
+        });
+        subIndex++;
+        window.setTimeout(() => flyoutEls[subIndex].focus(), 0);
+        break;
+      case keys.esc:
+        if (document.querySelector('.cloned-flyout')) {
+          currentIndex++;
+          firstLevelToolbarItems[currentIndex].focus();
+          closeFlyout();
+          subIndex = 1;
+        }
+        event.preventDefault();
+        break;
+    }
+  }
+
+  /**
+   * Flyout and tooltip setup in the collapsed toolbar state. This gets called when toolbar
+   * is put into a collapsed state.
+   */
+  function flyoutTooltipInit() {
+    // Flyouts.
+    sidebar.querySelectorAll('.toolbar-menu__item--level-1 > .toolbar-menu__submenu')?.forEach(flyoutEl => {
+      const parentListItem = flyoutEl.parentElement;
+      // when a level-1 list item with children is hovered, open the flyout
+      parentListItem.addEventListener('mouseenter', openFlyout, false);
+    });
+
+    // Tooltips.
+    sidebar.querySelectorAll('.toolbar-menu__item--level-1:not(.toolbar-menu__item--has-dropdown) > .toolbar-link')?.forEach(tooltipEl => {
+      const parentListItem = tooltipEl.parentElement;
+      // when a childless level-1 list item is hovered, open the tooltip
+      parentListItem.addEventListener('mouseenter', openTooltip, false);
+      parentListItem.addEventListener('mouseleave', closeTooltip, false);
+    });
+
+    // Handle focus and keyboard nav in the collapse toolbar.
+    // Needed due to flyout markup repositioning in the DOM.
+    currentIndex = 0;
+    subIndex = 1;
+    firstFocusableEl = getFirstFocusableEl();
+    firstLevelToolbarItems?.forEach(firstLevelEl => {
+      firstLevelEl.addEventListener('keydown', handleKeydownTopLevel, false);
+    });
+  }
+
+  /**
+   * Remove all flyout and tooltip related event listeners. This gets called when toolbar is
    * put into an expanded state.
    */
-  function flyoutDetach() {
-    sidebar.querySelectorAll('.level-1 > .navigation-menu-wrapper').forEach(flyoutEl => {
-      // Duplicate the level-1 icon and title append it to the first item in the
-      // submenu.
+  function flyoutTooltipDetach() {
+    // Flyouts.
+    sidebar.querySelectorAll('.toolbar-menu__item--level-1 > .toolbar-menu__submenu')?.forEach(flyoutEl => {
       const parentListItem = flyoutEl.parentElement;
       parentListItem.removeEventListener('mouseenter', openFlyout);
-      parentListItem.removeEventListener('mouseleave', delayedFlyoutClose);
+    });
+
+    // Tooltips.
+    sidebar.querySelectorAll('.toolbar-menu__item--level-1:not(.toolbar-menu__item--has-dropdown) > .toolbar-link')?.forEach(tooltipEl => {
+      const parentListItem = tooltipEl.parentElement;
+      parentListItem.removeEventListener('mouseenter', openTooltip);
+      parentListItem.removeEventListener('mouseleave', closeTooltip);
+    });
+
+    // Keyboard navigation for collapsed toolbar and flyouts.
+    firstLevelToolbarItems?.forEach(firstLevelEl => {
+      firstLevelEl.removeEventListener('keydown', handleKeydownTopLevel);
     });
   }
 
@@ -270,10 +520,15 @@
   function closeAllSubmenus(Element) {
     const submenuParentElement = Element ?? sidebar;
     const selectorsToIgnore = '.sidebar-toggle';
-    submenuParentElement.querySelectorAll('.menu-item--expanded').forEach(el => el.classList.remove('menu-item--expanded'));
-    submenuParentElement.querySelectorAll(`.navigation-link[aria-expanded="true"]:not(:is(${selectorsToIgnore}))`).forEach(el => {
+    let itemsToClose = submenuParentElement.querySelectorAll('.toolbar-menu__item--expanded');
+    // Don't remove expanded class from active trail when toolbar is collapsed.
+    if (!isNavExpanded()) {
+      itemsToClose = submenuParentElement.querySelectorAll('.toolbar-menu__item--expanded:not(.active-path)');
+    }
+    itemsToClose.forEach(el => el.classList.remove('toolbar-menu__item--expanded'));
+    submenuParentElement.querySelectorAll(`.toolbar-link[aria-expanded="true"]:not(:is(${selectorsToIgnore}))`).forEach(el => {
       el.setAttribute('aria-expanded', false);
-      el.querySelector('.action').textContent = Drupal.t('Extend');
+      el.querySelector('.toolbar-link__action').textContent = Drupal.t('Extend');
     });
   }
 
@@ -287,22 +542,24 @@
    *   opened, or false if closed). If omitted, state will be toggled.
    */
   function openCloseSubmenu(parentListItem, state) {
-    toState = state ?? parentListItem.classList.contains('menu-item--expanded');
-    const buttonEl = parentListItem.querySelector('button.navigation-link');
+    toState = state ?? parentListItem.classList.contains('toolbar-menu__item--expanded');
+    const buttonEl = parentListItem.querySelector('button.toolbar-link');
 
     // If we're clicking on a top level menu item, ensure that all other menu
     // items close. Otherwise just close any other sibling menu items.
-    if (buttonEl.matches('.menu-item.level-1 > *')) {
+    if (buttonEl.matches('.toolbar-menu__item.toolbar-menu__item--level-1 > *')) {
       closeAllSubmenus()
     }
     else {
       closeAllSubmenus(parentListItem.parentElement);
     }
 
-    parentListItem.classList.toggle('menu-item--expanded', !toState);
+    parentListItem.classList.toggle('toolbar-menu__item--expanded', !toState);
     buttonEl.setAttribute('aria-expanded', toState);
-    buttonEl.querySelector('.action').textContent = toState ? Drupal.t('Extend') : Drupal.t('Collapse');
-    checkOverflow();
+    buttonEl.querySelector('.toolbar-link__action').textContent = toState ? Drupal.t('Extend') : Drupal.t('Collapse');
+    // Gin Custom start ---------------------
+    // checkOverflow();
+    // Gin Custom end ------------------------
   }
 
   /**
@@ -313,10 +570,20 @@
    * navbar share the same exact width.
    */
   function initDisplace() {
-    const displaceElement = sidebar.querySelector('.navigation__displace-placeholder');
+    const displaceElement = sidebar.querySelector('.admin-toolbar__displace-placeholder');
     const edge = document.documentElement.dir === 'rtl' ? 'right' : 'left';
     displaceElement.setAttribute(`data-offset-${edge}`, '');
     Drupal.displace(true);
+  }
+
+  /**
+   * Get the first focusable element in the page content (not drupal toolbar).
+   * This is used for the focus handling in the toolbar.
+   */
+  function getFirstFocusableEl() {
+    const nextEl = sidebar.nextElementSibling.tagName == 'SCRIPT' ? sidebar.nextElementSibling.nextElementSibling : sidebar.nextElementSibling;
+    const focusableEls = nextEl.querySelectorAll('input:not([disabled]), select:not([disabled]), textarea:not([disabled]), iframe, [href], button, [tabindex="-1"]');
+    return focusableEls[0];
   }
 
   /**
@@ -324,7 +591,8 @@
    */
   function init(el) {
     sidebar = el;
-    const expandCollapseButton = sidebar.querySelector('[aria-controls="navigation-sidebar"]');
+    firstFocusableEl = getFirstFocusableEl();
+    const expandCollapseButton = sidebar.querySelector('[aria-controls="admin-toolbar"]');
 
     markCurrentPageInMenu();
     expandCollapseSidebar(localStorage.getItem('Drupal.navigation.sidebarExpanded') !== 'false');
@@ -343,7 +611,7 @@
 
     // Add click event listeners to all buttons and then contains the callback
     // to expand / collapse the button's menus.
-    sidebar.querySelectorAll('.menu-item--has-dropdown > button').forEach(el => el.addEventListener('click', (e) => {
+    sidebar.querySelectorAll('.toolbar-menu__item--has-dropdown > button').forEach(el => el.addEventListener('click', (e) => {
       openCloseSubmenu(e.currentTarget.parentElement);
     }));
 
@@ -360,7 +628,7 @@
 
   Drupal.behaviors.navigation = {
     attach(context) {
-      once('navigation', '.navigation__sidebar', context).forEach(init);
+      once('navigation', '.admin-toolbar', context).forEach(init);
     },
   };
 })(Drupal, once, FloatingUIDOM);
