@@ -984,7 +984,7 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 .gin--navigation .toolbar-menu__item--level-2 > .toolbar-link:focus,
 .gin--navigation .toolbar-menu__item--level-2 .toolbar-link:hover,
 .gin--navigation .toolbar-menu__item--level-2 .toolbar-link:focus,
-.gin--navigation .menu-item.menu-item--expanded:not(.current) > .toolbar-link,
+.gin--navigation .toolbar-menu__item.toolbar-menu__item--expanded:not(.current) > .toolbar-link,
 .gin--navigation .toolbar-link--sidebar-toggle:hover,
 .gin--navigation .toolbar-link--sidebar-toggle:focus {
   color: var(--gin-color-primary-hover);
@@ -1002,8 +1002,8 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 .gin--navigation .toolbar-menu__item--level-2 .toolbar-link:hover::after,
 .gin--navigation .toolbar-menu__item--level-2 .toolbar-link:focus::before,
 .gin--navigation .toolbar-menu__item--level-2 .toolbar-link:focus::after,
-.gin--navigation .menu-item.menu-item--expanded:not(.current) > .toolbar-link::before,
-.gin--navigation .menu-item.menu-item--expanded:not(.current) > .toolbar-link::after,
+.gin--navigation .toolbar-menu__item.toolbar-menu__item--expanded:not(.current) > .toolbar-link::before,
+.gin--navigation .toolbar-menu__item.toolbar-menu__item--expanded:not(.current) > .toolbar-link::after,
 .gin--navigation .toolbar-link--sidebar-toggle:hover::before,
 .gin--navigation .toolbar-link--sidebar-toggle:hover::after,
 .gin--navigation .toolbar-link--sidebar-toggle:focus::before,
@@ -1032,6 +1032,15 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 .gin--navigation .toolbar-menu__item--level-3 > .toolbar-link::before,
 .gin--navigation .toolbar-menu__item--level-2.menu-item--expanded > .toolbar-menu::before {
   background-color: var(--gin-border-color-layer2);
+}
+
+.gin--navigation .toolbar .toolbar-menu,
+.gin--navigation .toolbar .toolbar-icon.toolbar-handle {
+  background-color: transparent;
+}
+
+.gin--navigation .toolbar .toolbar-menu .toolbar-menu a {
+  color: var(--gin-color-text);
 }
 
 html:not(.admin-toolbar-expanded) .gin--navigation .cloned-flyout,

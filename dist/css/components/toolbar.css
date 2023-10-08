@@ -928,3 +928,7 @@ body.gin--classic-toolbar {
   border-right: 0;
 }
 
+.toolbar-loading #toolbar-item-administration-tray.toolbar-tray {
+  background: var(--gin-bg-layer);
+}
+

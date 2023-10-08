@@ -161,7 +161,7 @@ body.gin--navigation {
   .toolbar-menu__item--level-2 > .toolbar-link:focus,
   .toolbar-menu__item--level-2 .toolbar-link:hover,
   .toolbar-menu__item--level-2 .toolbar-link:focus,
-  .menu-item.menu-item--expanded:not(.current) > .toolbar-link,
+  .toolbar-menu__item.toolbar-menu__item--expanded:not(.current) > .toolbar-link,
   .toolbar-link--sidebar-toggle:hover,
   .toolbar-link--sidebar-toggle:focus {
     color: var(--gin-color-primary-hover);
@@ -199,6 +199,15 @@ body.gin--navigation {
   .toolbar-menu__item--level-3 > .toolbar-link::before,
   .toolbar-menu__item--level-2.menu-item--expanded > .toolbar-menu::before {
     background-color: var(--gin-border-color-layer2);
+  }
+
+  .toolbar .toolbar-menu,
+  .toolbar .toolbar-icon.toolbar-handle {
+    background-color: transparent;
+  }
+
+  .toolbar .toolbar-menu .toolbar-menu a {
+    color: var(--gin-color-text);
   }
 }
 
