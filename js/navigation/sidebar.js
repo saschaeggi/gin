@@ -72,6 +72,16 @@
         link.parentElement.classList.add('current', 'is-active');
       }
     });
+
+    // Gin Custom start ---------------------
+    // Mark overview pages as active.
+    const sidebarTitles = sidebar.querySelectorAll('.toolbar-menu__item--level-1[data-url]');
+    sidebarTitles.forEach(title => {
+      if (title.getAttribute('data-url') === window.location.pathname) {
+        title.querySelector('button.toolbar-link')?.classList.add('current', 'is-active');
+      }
+    });
+    // Gin Custom end ------------------------
   }
 
   /**
@@ -614,6 +624,16 @@
     sidebar.querySelectorAll('.toolbar-menu__item--has-dropdown > button').forEach(el => el.addEventListener('click', (e) => {
       openCloseSubmenu(e.currentTarget.parentElement);
     }));
+
+    // Gin Custom start ---------------------
+    // Make overview buttons clickable when collapsed
+    sidebar.querySelectorAll('.toolbar-menu__item--level-1 > button.toolbar-link').forEach(el => el.addEventListener('click', () => {
+      const dataUrl = el.parentElement.getAttribute('data-url');
+      if (!isNavExpanded() && dataUrl) {
+        window.location.assign(dataUrl);
+      }
+    }));
+    // Gin Custom end ------------------------
 
     // Gin Custom start ---------------------
     // Show toolbar navigation with shortcut:

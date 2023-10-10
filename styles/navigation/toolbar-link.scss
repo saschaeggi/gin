@@ -47,7 +47,7 @@ button.toolbar-link {
   text-align: left;
 
   /* Chevron styles. */
-  &::after {
+  &:not(.toolbar-link--sidebar-toggle)::after {
     display: block;
     block-size: var(--space-s);
     inline-size: var(--space-s);
@@ -101,14 +101,12 @@ html:not(.admin-toolbar-expanded) {
   }
 
   /* Hide the chevron when toolbar collapsed. */
-  // Gin Custom start ---------------------
   .toolbar-menu__item--has-dropdown.toolbar-menu__item--level-1,
   .toolbar-menu__item--to-title {
     > button.toolbar-link::after {
       content: unset;
     }
   }
-  // Gin Custom end ------------------------
 }
 
 .toolbar-link--sidebar-toogle {

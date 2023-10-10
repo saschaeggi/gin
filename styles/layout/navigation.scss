@@ -61,7 +61,6 @@ body.gin--navigation {
   .admin-toolbar {
     top: 0;
     border-right: 1px solid var(--gin-border-color-layer);
-    transition: none; //var(--gin-transition-fast);
     overflow-y: initial;
     padding-inline: 0;
     padding-block-start: 0;
@@ -73,7 +72,7 @@ body.gin--navigation {
   }
 
   .admin-toolbar__content {
-    padding-block-start: var(--gin-spacing-xxs);
+    padding-block: var(--gin-spacing-xxs);
     padding-inline: var(--gin-spacing-xs);
     margin-block-end: 0;
     overflow-y: auto;
@@ -293,11 +292,6 @@ html:not(.admin-toolbar-expanded) .gin--navigation .toolbar-menu__item--level-1.
       margin-inline-end: 0;
     }
   }
-}
-
-// Hide Toggle chevron
-.toolbar-link--sidebar-toggle::after {
-  display: none !important;
 }
 
 .toolbar-link--tools::before {

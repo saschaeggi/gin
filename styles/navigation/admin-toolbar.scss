@@ -44,7 +44,6 @@
   z-index: 501;
   padding-inline: var(--space-xs);
   padding-block-start: var(--space-xs);
-  transition: width 0.2s linear;
   overflow-y: scroll;
 
   @media only screen and (max-height: 300px)  {

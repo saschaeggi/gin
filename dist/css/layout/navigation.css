@@ -94,7 +94,6 @@ body {
   padding-inline: var(--space-xs);
   -webkit-padding-before: var(--space-xs);
           padding-block-start: var(--space-xs);
-  transition: width .2s linear;
   overflow-y: scroll;
 }
 
@@ -639,7 +638,7 @@ button.toolbar-link {
   text-align: right;
 }
 
-button.toolbar-link::after {
+button.toolbar-link:not(.toolbar-link--sidebar-toggle)::after {
   display: block;
   block-size: var(--space-s);
   inline-size: var(--space-s);
@@ -866,7 +865,6 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 
 .gin--navigation .admin-toolbar {
   top: 0;
-  transition: none;
   overflow-y: initial;
   padding-inline: 0;
   -webkit-padding-before: 0;
@@ -888,8 +886,7 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 }
 
 .gin--navigation .admin-toolbar__content {
-  -webkit-padding-before: var(--gin-spacing-xxs);
-          padding-block-start: var(--gin-spacing-xxs);
+  padding-block: var(--gin-spacing-xxs);
   padding-inline: var(--gin-spacing-xs);
   -webkit-margin-after: 0;
           margin-block-end: 0;
@@ -1118,10 +1115,6 @@ html:not(.admin-toolbar-expanded) .gin--navigation .toolbar-menu__item--level-1.
 .admin-toolbar-expanded .toolbar-link--gin-home::before {
   -webkit-margin-end: 0;
           margin-inline-end: 0;
-}
-
-.toolbar-link--sidebar-toggle::after {
-  display: none !important;
 }
 
 .toolbar-link--tools::before {
