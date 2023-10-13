@@ -30,6 +30,11 @@ function gin_preprocess_breadcrumb(&$variables) {
           $url = Url::fromRoute('<front>');
         }
 
+        // Custom block handling (a custom block cannot be viewed standalone).
+        if ($entity_id === 'block_content') {
+          $url = Url::fromRoute('<front>');
+        }
+
         // Check for entity $url.
         if ($url && $url->access()) {
           $variables['breadcrumb'][$key]['url'] = $url;
