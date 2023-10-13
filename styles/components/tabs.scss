@@ -343,6 +343,10 @@
   }
 }
 
+.claro-details__description {
+  max-width: var(--gin-max-line-length);
+}
+
 // Icon
 .claro-details__summary::before,
 .claro-details[open] > .claro-details__summary::before {
