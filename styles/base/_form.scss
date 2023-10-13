@@ -1,5 +1,3 @@
-$maxWidth: 60ch;
-
 .form-element {
   color: var(--gin-color-text);
   background-color: var(--gin-bg-input);
@@ -60,7 +58,7 @@ $maxWidth: 60ch;
 
 .password-confirm {
   width: 100%;
-  max-width: $maxWidth;
+  max-width: var(--gin-max-line-length);
 }
 
 .password-strength {
@@ -406,7 +404,7 @@ fieldset:not(.fieldgroup) {
 
 .form-item__description,
 .fieldset__description {
-  max-width: $maxWidth;
+  max-width: var(--gin-max-line-length);
   color: var(--gin-color-text-light);
 }
 

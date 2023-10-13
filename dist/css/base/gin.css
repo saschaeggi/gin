@@ -520,7 +520,8 @@ body:not(.toolbar-tray-open) .layout-container {
   margin-top: 0;
 }
 
-#system-clear-cache + #system-performance-settings {
+#system-clear-cache + #system-performance-settings,
+.gin-layer-wrapper + .imageapi-optimize-default-pipeline {
   margin-top: var(--gin-spacing-l);
 }
 
@@ -1780,7 +1781,7 @@ table td.field-plugin-summary-cell {
 
 .password-confirm {
   width: 100%;
-  max-width: 520px;
+  max-width: var(--gin-max-line-length);
 }
 
 .password-strength__title {
@@ -2139,7 +2140,7 @@ fieldset:not(.fieldgroup).error {
 
 .form-item__description,
 .fieldset__description {
-  max-width: 60ch;
+  max-width: var(--gin-max-line-length);
   color: var(--gin-color-text-light);
 }
 
