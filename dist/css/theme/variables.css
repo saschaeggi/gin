@@ -97,7 +97,7 @@
   --gin-offset-x: var(--gin-toolbar-x-offset);
   --gin-offset-y: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset));
   --gin-link-decoration-style: dotted;
-  --gin-max-line-length: 64ch;
+  --gin-max-line-length: 80ch;
 }
 
 @media (min-width: 61em) {
