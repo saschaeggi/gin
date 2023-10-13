@@ -275,8 +275,9 @@ class GinSettings implements ContainerInjectionInterface {
    *   The theme setting form elements.
    */
   public function getSettingsForm(AccountInterface $account = NULL): array {
-    $experimental_label = ' (EXPERIMENTAL)';
-    $beta_label = ' (BETA)';
+    $experimental_label = ' <span class="gin-experimental-flag">Experimental</span>';
+    $beta_label = ' <span class="gin-beta-flag">Beta</span>';
+    $new_label = ' <span class="gin-new-flag">New</span>';
 
     $form['enable_darkmode'] = [
       '#type' => 'radios',
@@ -423,7 +424,7 @@ class GinSettings implements ContainerInjectionInterface {
         'vertical' => $this->t('Sidebar, Vertical Toolbar (Default)'),
         'horizontal' => $this->t('Horizontal, Modern Toolbar'),
         'classic' => $this->t('Legacy, Classic Drupal Toolbar'),
-        'new' => $this->t('New Drupal Navigation, Test integration') . $experimental_label,
+        'new' => $this->t('New Drupal Navigation, Test integration') . $new_label . $experimental_label,
       ],
       '#after_build' => [
         '_gin_toolbar_radios',
