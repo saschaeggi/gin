@@ -125,7 +125,7 @@
                 0 20px 24px rgb(20 45 82 / 12%);
 
   // Sticky bar
-  --gin-height-sticky: 72px;
+  --gin-height-sticky: 64px;
 
   // Toolbar
   --gin-toolbar-width-collapsed: 66px;
@@ -156,6 +156,11 @@
 
   // Max line length
   --gin-max-line-length: 80ch;
+
+  // Form fields
+  --input-line-height: var(--gin-spacing-l);
+  --input-padding-horizontal: var(--gin-spacing-s);
+  --input-padding-vertical: var(--gin-spacing-xs);
 }
 
 // Density spacings

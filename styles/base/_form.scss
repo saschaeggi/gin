@@ -1,5 +1,8 @@
 .form-element {
   color: var(--gin-color-text);
+  line-height: var(--input-line-height);
+  padding: calc(var(--input-padding-vertical) - 1px) var(--input-padding-horizontal);
+  min-height: calc((var(--input-padding-vertical) * 2) + var(--input-line-height));
   background-color: var(--gin-bg-input);
   border: 1px solid var(--gin-border-color-form-element);
   border-radius: var(--gin-border-m);

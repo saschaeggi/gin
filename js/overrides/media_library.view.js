@@ -53,6 +53,7 @@
             if (selectAll && selectAll.checked === true && checkboxes.length !== checkboxesChecked.length) {
               selectAll.checked = false;
               selectAll.dispatchEvent(new Event('change'));
+
             } else if (checkboxes.length === Array.from(checkboxes).filter(el => el.checked === true).length) {
               selectAll.checked = true;
               selectAll.dispatchEvent(new Event('change'));
@@ -65,11 +66,14 @@
 
     bulkOperations: () => {
       const bulkOperations = document.querySelector('.media-library-view [data-drupal-selector*="edit-header"]');
+      const bulkOperationsStickyBar = document.querySelector('.media-library-views-form__bulk_form');
 
       if (bulkOperations && document.querySelectorAll('.media-library-view .form-checkbox:checked').length > 0) {
         bulkOperations.classList.add('is-sticky');
+        bulkOperationsStickyBar?.setAttribute('data-drupal-sticky-vbo', true);
       } else {
         bulkOperations.classList.remove('is-sticky');
+        bulkOperationsStickyBar?.setAttribute('data-drupal-sticky-vbo', false);
       }
     },
 

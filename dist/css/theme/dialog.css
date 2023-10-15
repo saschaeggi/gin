@@ -144,7 +144,8 @@
 .ui-dialog .button:not(:focus),
 .ui-dialog .form-actions .button,
 .ui-dialog .action-link--icon-trash.action-link {
-  padding: calc(var(--gin-spacing-m) - 2px) calc(var(--gin-spacing-l) - 2px);
+  font-size: var(--gin-font-size-s);
+  padding: calc(var(--gin-spacing-s) - 2px) var(--gin-spacing-m);
   border: 2px solid var(--gin-color-primary) !important;
   border-radius: var(--gin-border-m);
   box-shadow: 0 1px 2px var(--gin-color-primary-light);
@@ -272,8 +273,8 @@
 }
 
 .ui-dialog .action-link.action-link--icon-trash {
-  min-height: 48px;
-  padding: calc(var(--gin-spacing-s) - 1px) calc(var(--gin-spacing-l) - 2px);
+  line-height: 1;
+  min-height: 2.5rem;
   box-sizing: border-box;
 }
 
@@ -295,6 +296,9 @@
 
 .ui-dialog .form-element {
   color: var(--gin-color-text);
+  line-height: var(--input-line-height);
+  padding: calc(var(--input-padding-vertical) - 1px) var(--input-padding-horizontal);
+  min-height: calc(var(--input-padding-vertical) * 2 + var(--input-line-height));
   background-color: var(--gin-bg-input);
   border: 1px solid var(--gin-border-color-form-element);
   border-radius: var(--gin-border-m);

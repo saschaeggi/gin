@@ -39,10 +39,7 @@
 
       // Only expand level one if sidebar is in expanded state.
       // Gin Custom start ---------------------
-      if (activeItem) {
-        activeItem.closest('.toolbar-menu__item.toolbar-menu__item--level-1')?.classList.add('toolbar-menu__item--expanded');
-        activeItem.closest('.toolbar-menu__item.toolbar-menu__item--level-1')?.classList.add('active-path');
-      }
+      activeItem?.closest('.toolbar-menu__item.toolbar-menu__item--level-1')?.classList.add('active-path');
       // Gin Custom end ------------------------
     });
     // Scroll to the open trays so they're in view.

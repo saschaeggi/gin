@@ -84,7 +84,7 @@
   --gin-transition-fast: .3s var(--gin-easing);
   --gin-shadow-l1: 0 1px 2px rgb(20 45 82 / 2%), 0 3px 4px rgb(20 45 82 / 3%), 0 5px 8px rgb(20 45 82 / 4%);
   --gin-shadow-l2: 0 1px 2px rgb(20 45 82 / 2%), 0 3px 4px rgb(20 45 82 / 3%), 0 5px 8px rgb(20 45 82 / 4%), 0 20px 24px rgb(20 45 82 / 12%);
-  --gin-height-sticky: 72px;
+  --gin-height-sticky: 64px;
   --gin-toolbar-width-collapsed: 66px;
   --gin-toolbar-width: 256px;
   --gin-toolbar-bg-level2: #edeff5;
@@ -98,6 +98,9 @@
   --gin-offset-y: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset));
   --gin-link-decoration-style: dotted;
   --gin-max-line-length: 80ch;
+  --input-line-height: var(--gin-spacing-l);
+  --input-padding-horizontal: var(--gin-spacing-s);
+  --input-padding-vertical: var(--gin-spacing-xs);
 }
 
 @media (min-width: 61em) {

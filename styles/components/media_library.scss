@@ -349,19 +349,19 @@ fieldset.media-library-widget {
 
 .media-library-select-all {
   color: var(--gin-color-title);
-  padding: 1rem;
+  padding: 0 var(--gin-spacing-m) var(--gin-spacing-m);
   margin-left: 0;
   margin-top: 0;
   background: var(--gin-bg-layer);
-  border-bottom-left-radius: var(--gin-border-m);
-  border-bottom-right-radius: var(--gin-border-m);
+  border-bottom: 1px solid var(--gin-border-color-table-header);
+  border-radius: 0;
   box-sizing: border-box;
 
-  @include mq(medium) {
-    z-index: 98;
-    position: sticky;
-    top: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset));
-  }
+  // @include mq(medium) {
+  //   z-index: 98;
+  //   position: sticky;
+  //   top: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset));
+  // }
 }
 
 .views-field-thumbnail__target-id {

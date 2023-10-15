@@ -50,8 +50,7 @@
 
 .tabs__link,
 .claro-details__summary,
-.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a
-{
+.horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
   color: var(--gin-color-text);
   font-size: var(--gin-font-size);
   font-weight: var(--gin-font-weight-bold);
@@ -218,10 +217,10 @@
     height: 100%;
 
     @include mq(small) {
-      padding: var(--gin-spacing-s) var(--gin-spacing-m);
+      padding: calc(var(--gin-spacing-s) - 2px) var(--gin-spacing-m);
       margin-right: 0.25em;
-      min-height: 0;
-      border-radius: 48px;
+      min-height: 2.5rem;
+      border-radius: 2.5rem;
     }
 
     &.is-active {

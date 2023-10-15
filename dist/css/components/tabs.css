@@ -268,9 +268,9 @@
 
 @media (min-width: 48em) {
   .is-horizontal .tabs--primary .tabs__link {
-    padding: var(--gin-spacing-s) var(--gin-spacing-m);
-    min-height: 0;
-    border-radius: 48px;
+    padding: calc(var(--gin-spacing-s) - 2px) var(--gin-spacing-m);
+    min-height: 2.5rem;
+    border-radius: 2.5rem;
   }
 
   [dir="ltr"] .is-horizontal .tabs--primary .tabs__link {

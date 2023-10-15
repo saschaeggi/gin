@@ -284,37 +284,6 @@
   }
 }
 
-// Flags.
-.gin-beta-flag,
-.gin-experimental-flag,
-.gin-new-flag
-{
-  font-size: 10px;
-  font-weight: var(--gin-font-weight-semibold);
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  display: inline-block;
-  padding:.125em .5em;
-  vertical-align: .125em;
-  border-radius: var(--gin-border-xs);
-}
-
-.gin-beta-flag,
-.gin-experimental-flag {
-  color: #555;
-  background: #ddd;
-
-  .gin--dark-mode & {
-    color: #eee;
-    background: #444;
-  }
-}
-
-.gin-new-flag {
-  color: #fff;
-  background-color: #26a769;
-}
-
 input[data-gin-toolbar="new"] + label .gin-new-flag {
   position: absolute;
   top: -100px;

@@ -17,7 +17,7 @@
   max-width: 90%;
   transition: font-size 0.25s ease;
 
-  @include mq(ultra) {
+  @include mq(large) {
     .region-sticky--is-sticky & {
       font-size: var(--gin-font-size-h3);
     }

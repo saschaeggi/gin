@@ -171,3 +171,15 @@
   margin-left: var(--gin-spacing-l);
 }
 
+.views-bulk-actions__item .button--primary:not(:disabled, .is-disabled) {
+  background-color: var(--gin-color-primary);
+}
+
+.views-bulk-actions__item .button--primary:not(:disabled, .is-disabled):hover {
+  background-color: var(--gin-color-primary-hover);
+}
+
+.views-bulk-actions__item .button--primary:not(:disabled, .is-disabled):active {
+  background-color: var(--gin-color-primary-active);
+}
+

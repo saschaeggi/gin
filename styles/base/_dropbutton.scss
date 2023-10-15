@@ -256,6 +256,11 @@ html.js.no-touchevents {
     .dropbutton__toggle {
       width: calc(var(--dropbutton-extrasmall-toggle-size, 1.5rem) + 1px);
     }
+
+    .dropbutton__item:first-of-type > * {
+      padding-left: var(--gin-spacing-s);
+      padding-right: var(--gin-spacing-s);
+    }
   }
 
   .dropbutton--multiple.dropbutton--extrasmall .dropbutton__items .dropbutton__item {

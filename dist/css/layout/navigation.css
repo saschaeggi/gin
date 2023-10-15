@@ -811,7 +811,7 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 @media (min-width: 61em) {
   :root {
     --gin-toolbar-height: 0px;
-    --gin-toolbar-secondary-height: 60px;
+    --gin-toolbar-secondary-height: 56px;
     --gin-toolbar-x-offset: var(--drupal-displace-offset-left, 64px);
     --gin-scroll-offset: 130px;
     --gin-sticky-offset: var(--gin-height-sticky);
@@ -927,6 +927,11 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
   margin-bottom: -4px;
 }
 
+.gin--navigation .toolbar-block__content.toolbar-block__content--content {
+  -webkit-margin-before: var(--space-m);
+          margin-block-start: var(--space-m);
+}
+
 .gin--navigation .toolbar-link {
   color: var(--gin-color-text);
   font-weight: normal;
@@ -938,7 +943,7 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 }
 
 .gin--navigation .navigation-menu-wrapper.menu--logo {
-  margin-bottom: 1.75rem;
+  margin-bottom: -2px;
 }
 
 .gin--navigation .menu-item.current > .toolbar-link {
@@ -1011,6 +1016,7 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--manage-fields,
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--manage-form-display,
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--manage-display,
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--manage-permissions,
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--delete {
   display: none;
 }

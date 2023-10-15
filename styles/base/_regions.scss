@@ -135,7 +135,7 @@
 
   @include mq(large) {
     position: sticky;
-    top: calc(var(--gin-toolbar-y-offset) + var(--gin-spacing-xl));
+    top: calc(var(--gin-toolbar-y-offset) + var(--gin-spacing-l));
     width: calc(100% - min(10vw, 96px) + var(--gin-spacing-l));
 
     // Classic, legacy toolbar
