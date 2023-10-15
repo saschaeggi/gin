@@ -8,11 +8,13 @@
         <span id="sidebar-state" class="toolbar-link__label">{{ 'Collapse sidebar'|t }}</span>
       </button>
     </li>
+    {% if help_enabled %}
     <li class="toolbar-menu__item toolbar-menu__item--level-1">
       <a href="{{ path('help.main') }}" class="toolbar-link toolbar-link--has-icon toolbar-link--help">
         <span>{{ 'Help'|t }}</span>
       </a>
     </li>
+    {% endif %}
     <li class="toolbar-menu__item toolbar-menu__item--has-dropdown toolbar-menu__item--user toolbar-menu__item--level-1">
       <button class="toolbar-link toolbar-link--has-icon toolbar-link--{{ menu_name|clean_class }}" data-url="{{ url }}">
         <span class="toolbar-link__action">{{ 'Extend'|t }}</span>

@@ -74,70 +74,95 @@ class GinNavigation implements ContainerInjectionInterface {
     // Get the Entity Type Manager service.
     $entity_type_manager = \Drupal::entityTypeManager();
 
-    // Get node types.
-    $content_types = $entity_type_manager->getStorage('node_type')->loadMultiple();
-    $content_type_items = [];
-    foreach ($content_types as $item) {
-      $content_type_items[] = [
-        'title' => $item->label(),
-        'url' => Url::fromRoute('node.add', ['node_type' => $item->id()]),
-      ];
-    }
-
-    // Get block types.
-    $block_content_types = BlockContentType::loadMultiple();
-    $block_type_items = [];
-    foreach ($block_content_types as $item) {
-      $block_type_items[] = [
-        'title' => $item->label(),
-        'url' => Url::fromRoute('block_content.add_form', ['block_content_type' => $item->id()]),
-      ];
-    }
-
-    // Get media types.
-    $media_types = $entity_type_manager->getStorage('media_type')->loadMultiple();
-    $media_type_items = [];
-    foreach ($media_types as $item) {
-      $media_type_items[] = [
-        'title' => $item->label(),
-        'url' => Url::fromRoute('entity.media.add_form', ['media_type' => $item->id()]),
-      ];
-    }
-
-    // Get taxomony types.
-    $taxonomy_types = Vocabulary::loadMultiple();
-    $taxonomy_type_items = [];
-    foreach ($taxonomy_types as $item) {
-      $taxonomy_type_items[] = [
-        'title' => $item->label(),
-        'url' => Url::fromRoute('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => $item->id()]),
-      ];
-    }
-
     // Needs to be this syntax to
     // support older PHP versions
     // for Druapl 9.0+.
-    $create_type_items = array_merge(
-      $content_type_items,
-      [
-        [
-          'title' => t('Blocks'),
-          'url' => '',
-          'below' => $block_type_items,
-        ],
-        [
-          'title' => t('Media'),
-          'url' => '',
-          'below' => $media_type_items,
-        ],
-        [
-          'title' => t('Taxonomy'),
-          'url' => '',
-          'below' => $taxonomy_type_items,
-        ],
-      ]
-    );
+    $create_type_items = [];
 
+    // Get node types.
+    if ($content_types = $entity_type_manager->getStorage('node_type')->loadMultiple()) {
+      $content_type_items = [];
+
+      foreach ($content_types as $item) {
+        $content_type_items[] = [
+          'title' => $item->label(),
+          'url' => Url::fromRoute('node.add', ['node_type' => $item->id()]),
+        ];
+      }
+
+      $create_type_items = array_merge($content_type_items);
+    }
+
+    // Get block types.
+    if ($block_content_types = BlockContentType::loadMultiple()) {
+      $block_type_items = [];
+
+      foreach ($block_content_types as $item) {
+        $block_type_items[] = [
+          'title' => $item->label(),
+          'url' => Url::fromRoute('block_content.add_form', ['block_content_type' => $item->id()]),
+        ];
+      }
+
+      $create_type_items = array_merge(
+        $create_type_items,
+        [
+          [
+            'title' => t('Blocks'),
+            'url' => '',
+            'below' => $block_type_items,
+          ],
+        ]
+      );
+    }
+
+    // Get media types.
+    if ($media_types = $entity_type_manager->getStorage('media_type')->loadMultiple()) {
+      $media_type_items = [];
+
+      foreach ($media_types as $item) {
+        $media_type_items[] = [
+          'title' => $item->label(),
+          'url' => Url::fromRoute('entity.media.add_form', ['media_type' => $item->id()]),
+        ];
+      }
+
+      $create_type_items = array_merge(
+        $create_type_items,
+        [
+          [
+            'title' => t('Media'),
+            'url' => '',
+            'below' => $media_type_items,
+          ],
+        ]
+      );
+    }
+
+    // Get taxomony types.
+    if ($taxonomy_types = Vocabulary::loadMultiple()) {
+      $taxonomy_type_items = [];
+
+      foreach ($taxonomy_types as $item) {
+        $taxonomy_type_items[] = [
+          'title' => $item->label(),
+          'url' => Url::fromRoute('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => $item->id()]),
+        ];
+      }
+
+      $create_type_items = array_merge(
+        $create_type_items,
+        [
+          [
+            'title' => t('Taxonomy'),
+            'url' => '',
+            'below' => $taxonomy_type_items,
+          ],
+        ]
+      );
+    }
+
+    // Generate menu items.
     $create_items = [
       [
         'title' => t('Create'),
@@ -145,6 +170,7 @@ class GinNavigation implements ContainerInjectionInterface {
         'below' => $create_type_items,
       ],
     ];
+
     return [
       '#theme' => 'menu_region__middle',
       '#items' => $create_items,
