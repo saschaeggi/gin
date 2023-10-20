@@ -100,6 +100,8 @@
     handleResize: () => {
       Drupal.ginSidebar.removeInlineStyles();
 
+      console.log(window.innerWidth);
+
       // If small viewport, always collapse sidebar.
       if (window.innerWidth < breakpoint) {
         Drupal.ginSidebar.collapseSidebar();

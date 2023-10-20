@@ -34,7 +34,7 @@
       document.body.setAttribute("data-meta-sidebar", "closed"), localStorage.setItem(chooseStorage, "false");
     },
     handleResize: () => {
-      Drupal.ginSidebar.removeInlineStyles(), window.innerWidth < 1024 ? Drupal.ginSidebar.collapseSidebar() : "true" === localStorage.getItem(storageDesktop) ? Drupal.ginSidebar.showSidebar() : Drupal.ginSidebar.collapseSidebar();
+      Drupal.ginSidebar.removeInlineStyles(), console.log(window.innerWidth), window.innerWidth < 1024 ? Drupal.ginSidebar.collapseSidebar() : "true" === localStorage.getItem(storageDesktop) ? Drupal.ginSidebar.showSidebar() : Drupal.ginSidebar.collapseSidebar();
     },
     removeInlineStyles: () => {
       const elementToRemove = document.querySelector(".gin-sidebar-inline-styles");
