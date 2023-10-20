@@ -1,5 +1,5 @@
 {% set menu_id = 'menu-top-menus' %}
-{% set item_id = 'item-' ~ title %}
+{% set item_id = 'item-' ~ class|clean_class %}
 
 <div class="admin-toolbar__item toolbar-block menu--shortcuts">
   <h2 id="{{ menu_id }}" class="toolbar-block__title visually-hidden">{{ 'Top Menus'|t }}</h2>
