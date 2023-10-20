@@ -25,7 +25,7 @@
         <div class="toolbar-menu__arrow-ref"></div>
         <ul class="toolbar-menu">
           <li class="toolbar-menu__item toolbar-menu__item--to-title">
-            <button class="toolbar-link toolbar-link--has-icon toolbar-link--{{ item.class|clean_class }}" tabindex="-1" data-url="{{ item.url }}">
+            <button class="toolbar-link toolbar-link--has-icon {{ item_class }}" tabindex="-1" data-url="{{ item.url }}">
               <span class="toolbar-link__action">{{ 'Extend'|t }}</span>
               <span class="toolbar-link__label">{{ item.title }}</span>
             </button>
