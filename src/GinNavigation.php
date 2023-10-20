@@ -74,70 +74,99 @@ class GinNavigation implements ContainerInjectionInterface {
     // Get the Entity Type Manager service.
     $entity_type_manager = \Drupal::entityTypeManager();
 
-    // Get node types.
-    $content_types = $entity_type_manager->getStorage('node_type')->loadMultiple();
-    $content_type_items = [];
-    foreach ($content_types as $item) {
-      $content_type_items[] = [
-        'title' => $item->label(),
-        'url' => Url::fromRoute('node.add', ['node_type' => $item->id()]),
-      ];
-    }
-
-    // Get block types.
-    $block_content_types = BlockContentType::loadMultiple();
-    $block_type_items = [];
-    foreach ($block_content_types as $item) {
-      $block_type_items[] = [
-        'title' => $item->label(),
-        'url' => Url::fromRoute('block_content.add_form', ['block_content_type' => $item->id()]),
-      ];
-    }
-
-    // Get media types.
-    $media_types = $entity_type_manager->getStorage('media_type')->loadMultiple();
-    $media_type_items = [];
-    foreach ($media_types as $item) {
-      $media_type_items[] = [
-        'title' => $item->label(),
-        'url' => Url::fromRoute('entity.media.add_form', ['media_type' => $item->id()]),
-      ];
-    }
-
-    // Get taxomony types.
-    $taxonomy_types = Vocabulary::loadMultiple();
-    $taxonomy_type_items = [];
-    foreach ($taxonomy_types as $item) {
-      $taxonomy_type_items[] = [
-        'title' => $item->label(),
-        'url' => Url::fromRoute('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => $item->id()]),
-      ];
-    }
-
     // Needs to be this syntax to
     // support older PHP versions
     // for Druapl 9.0+.
-    $create_type_items = array_merge(
-      $content_type_items,
-      [
-        [
-          'title' => t('Blocks'),
-          'url' => '',
-          'below' => $block_type_items,
-        ],
-        [
-          'title' => t('Media'),
-          'url' => '',
-          'below' => $media_type_items,
-        ],
-        [
-          'title' => t('Taxonomy'),
-          'url' => '',
-          'below' => $taxonomy_type_items,
-        ],
-      ]
-    );
+    $create_type_items = [];
 
+    // Get node types.
+    if ($entity_type_manager->hasDefinition('node')) {
+      $content_types = $entity_type_manager->getStorage('node_type')->loadMultiple();
+      $content_type_items = [];
+
+      foreach ($content_types as $item) {
+        $content_type_items[] = [
+          'title' => $item->label(),
+          'url' => Url::fromRoute('node.add', ['node_type' => $item->id()]),
+        ];
+      }
+
+      $create_type_items = array_merge($content_type_items);
+    }
+
+    // Get block types.
+    if ($entity_type_manager->hasDefinition('block_content')) {
+      $block_content_types = BlockContentType::loadMultiple();
+      $block_type_items = [];
+
+      foreach ($block_content_types as $item) {
+        $block_type_items[] = [
+          'title' => $item->label(),
+          'url' => Url::fromRoute('block_content.add_form', ['block_content_type' => $item->id()]),
+        ];
+      }
+
+      $create_type_items = array_merge(
+        $create_type_items,
+        [
+          [
+            'title' => t('Blocks'),
+            'url' => '',
+            'below' => $block_type_items,
+          ],
+        ]
+      );
+    }
+
+    // Get media types.
+    if ($entity_type_manager->hasDefinition('media')) {
+      $media_types = $entity_type_manager->getStorage('media_type')->loadMultiple();
+      $media_type_items = [];
+
+      foreach ($media_types as $item) {
+        $media_type_items[] = [
+          'title' => $item->label(),
+          'url' => Url::fromRoute('entity.media.add_form', ['media_type' => $item->id()]),
+        ];
+      }
+
+      $create_type_items = array_merge(
+        $create_type_items,
+        [
+          [
+            'title' => t('Media'),
+            'url' => '',
+            'below' => $media_type_items,
+          ],
+        ]
+      );
+    }
+
+    // Get taxomony types.
+    if ($entity_type_manager->hasDefinition('taxonomy_term')) {
+      $taxonomy_types = Vocabulary::loadMultiple();
+      $taxonomy_type_items = [];
+
+      foreach ($taxonomy_types as $item) {
+        $taxonomy_type_items[] = [
+          'title' => $item->label(),
+          'url' => Url::fromRoute('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => $item->id()]),
+        ];
+      }
+
+      $create_type_items = array_merge(
+        $create_type_items,
+        [
+          [
+            'title' => t('Taxonomy'),
+            'url' => '',
+            'below' => $taxonomy_type_items,
+          ],
+        ]
+      );
+    }
+
+    // Generate menu items.
     $create_items = [
       [
         'title' => t('Create'),
@@ -145,6 +174,7 @@ class GinNavigation implements ContainerInjectionInterface {
         'below' => $create_type_items,
       ],
     ];
+
     return [
       '#theme' => 'menu_region__middle',
       '#items' => $create_items,
@@ -157,27 +187,64 @@ class GinNavigation implements ContainerInjectionInterface {
    * Get Navigation Content menu.
    */
   public function getNavigationContentMenuItems(): array {
-    $content_items = [
-      [
-        'title' => t('Content'),
-        'url' => Url::fromRoute('system.admin_content')->toString(),
-      ],
-      [
-        'title' => t('Blocks'),
-        'url' => Url::fromRoute('entity.block_content.collection')->toString(),
-      ],
-      [
-        'title' => t('Files'),
-        'url' => '/admin/content/files',
-      ],
-      [
-        'title' => t('Media'),
-        'url' => '/admin/content/media',
-      ],
-    ];
+    $entity_type_manager = \Drupal::entityTypeManager();
+
+    $create_content_items = [];
+
+    // Get Content menu item.
+    if ($entity_type_manager->hasDefinition('node')) {
+      $create_content_items = [
+        [
+          'title' => t('Content'),
+          'url' => Url::fromRoute('system.admin_content')->toString(),
+        ],
+      ];
+
+      $create_content_items = array_merge($create_content_items);
+    }
+
+    // Get Blocks menu item.
+    if ($entity_type_manager->hasDefinition('block_content')) {
+      $create_content_items = array_merge(
+        $create_content_items,
+        [
+          [
+            'title' => t('Blocks'),
+            'url' => Url::fromRoute('entity.block_content.collection')->toString(),
+          ],
+        ]
+      );
+    }
+
+    // Get File menu item.
+    if ($entity_type_manager->hasDefinition('file')) {
+      $create_content_items = array_merge(
+        $create_content_items,
+        [
+          [
+            'title' => t('Files'),
+            'url' => '/admin/content/files',
+          ],
+        ]
+      );
+    }
+
+    // Get Media menu item.
+    if ($entity_type_manager->hasDefinition('media')) {
+      $create_content_items = array_merge(
+        $create_content_items,
+        [
+          [
+            'title' => t('Media'),
+            'url' => '/admin/content/media',
+          ],
+        ]
+      );
+    }
+
     return [
       '#theme' => 'menu_region__middle',
-      '#items' => $content_items,
+      '#items' => $create_content_items,
       '#menu_name' => 'content',
       '#title' => t('Content Navigation'),
     ];
