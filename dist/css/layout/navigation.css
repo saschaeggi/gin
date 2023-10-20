@@ -872,11 +872,13 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 }
 
 [dir="ltr"] .gin--navigation .admin-toolbar {
-  border-right: 1px solid var(--gin-border-color-layer);
+  border-right: 0;
+  box-shadow: 1px 0 0 var(--gin-border-color-layer);
 }
 
 [dir="rtl"] .gin--navigation .admin-toolbar {
-  border-left: 1px solid var(--gin-border-color-layer);
+  border-left: 0;
+  box-shadow: -1px 0 0 var(--gin-border-color-layer);
 }
 
 @media (max-width: 60.99em) {
@@ -1076,6 +1078,42 @@ html:not(.admin-toolbar-expanded) .gin--navigation .toolbar-menu__item--level-1.
   padding-top: 0;
 }
 
+button.toolbar-link--sidebar-toggle {
+  background: var(--gin-bg-layer2);
+}
+
+button.toolbar-link--sidebar-toggle::before {
+  opacity: .75;
+  position: relative;
+  -webkit-mask-size: var(--space-s);
+          mask-size: var(--space-s);
+  transition: transform var(--gin-transition);
+}
+
+button.toolbar-link--sidebar-toggle:hover::before, button.toolbar-link--sidebar-toggle:active::before, button.toolbar-link--sidebar-toggle:focus::before {
+  opacity: 1;
+}
+
+[dir="ltr"] button.toolbar-link--sidebar-toggle[aria-expanded=false]::before {
+  left: 1px;
+  transform: rotate(-90deg);
+}
+
+[dir="rtl"] button.toolbar-link--sidebar-toggle[aria-expanded=false]::before {
+  right: 1px;
+  transform: rotate(90deg);
+}
+
+[dir="ltr"] button.toolbar-link--sidebar-toggle[aria-expanded=true]::before {
+  left: -1px;
+  transform: rotate(90deg);
+}
+
+[dir="rtl"] button.toolbar-link--sidebar-toggle[aria-expanded=true]::before {
+  right: -1px;
+  transform: rotate(-90deg);
+}
+
 .toolbar-link--has-icon {
   --icon: icon("fallback"); /* Default icon, aka --basic */
 }
@@ -1179,12 +1217,9 @@ html:not(.admin-toolbar-expanded) .gin--navigation .toolbar-menu__item--level-1.
   --icon: url("../../media/sprite.svg#structure-view");
 }
 
+.toolbar-link--sidebar-toggle[aria-expanded=false]::before,
 .toolbar-link--sidebar-toggle[aria-expanded=true]::before {
-  --icon: url("../../media/sprite.svg#toggle-collapse-view");
-}
-
-.toolbar-link--sidebar-toggle[aria-expanded=false]::before {
-  --icon: url("../../media/sprite.svg#toggle-expand-view");
+  --icon: url("../../media/sprite.svg#chevron-down-view");
 }
 
 .toolbar-link--user::before {
@@ -1213,11 +1248,6 @@ html:not(.admin-toolbar-expanded) .gin--navigation .toolbar-menu__item--level-1.
 
 .gin--navigation .toolbar-link--user {
   display: none !important;
-}
-
-.admin-toolbar__sticky-section .toolbar-menu {
-  display: flex;
-  flex-direction: column;
 }
 
 #toolbar-administration .toolbar-menu__item--level-1 {

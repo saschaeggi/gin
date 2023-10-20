@@ -35,8 +35,6 @@ $sprites: (
     'files': "../../media/sprite.svg#files-view",
     'media': "../../media/sprite.svg#media-view",
     'people-new': "../../media/sprite.svg#people-new-view",
-    'toggle-collapse': "../../media/sprite.svg#toggle-collapse-view",
-    'toggle-expand': "../../media/sprite.svg#toggle-expand-view",
     'first': "../../media/sprite.svg#first-view",
     'last': "../../media/sprite.svg#last-view",
     'next': "../../media/sprite.svg#next-view",
@@ -221,14 +219,6 @@ $sizes: (
         'height': 24px
     ),
     'people-new': (
-        'width': 24px,
-        'height': 24px
-    ),
-    'toggle-collapse': (
-        'width': 24px,
-        'height': 24px
-    ),
-    'toggle-expand': (
         'width': 24px,
         'height': 24px
     ),

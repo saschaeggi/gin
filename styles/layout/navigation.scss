@@ -60,10 +60,11 @@ body.gin--navigation {
 
   .admin-toolbar {
     top: 0;
-    border-right: 1px solid var(--gin-border-color-layer);
     overflow-y: initial;
     padding-inline: 0;
     padding-block-start: 0;
+    border-right: 0;
+    box-shadow: 1px 0 0 var(--gin-border-color-layer);
 
     // Hide on smaller screens for now as this is not ready yet.
     @include mq($to: medium) {
@@ -250,6 +251,36 @@ html:not(.admin-toolbar-expanded) .gin--navigation .toolbar-menu__item--level-1.
 }
 
 // --------------
+// Sidebar toggle
+// --------------
+button.toolbar-link--sidebar-toggle {
+  background: var(--gin-bg-layer2);
+
+  &::before {
+    opacity: .75;
+    position: relative;
+    mask-size: var(--space-s);
+    transition: transform var(--gin-transition);
+  }
+
+  &:hover::before,
+  &:active::before,
+  &:focus::before {
+    opacity: 1;
+  }
+
+  &[aria-expanded=false]::before {
+    left: 1px;
+    transform: rotate(-90deg);
+  }
+
+  &[aria-expanded=true]::before {
+    left: -1px;
+    transform: rotate(90deg);
+  }
+}
+
+// --------------
 // Icon overrides
 // --------------
 
@@ -356,12 +387,9 @@ html:not(.admin-toolbar-expanded) .gin--navigation .toolbar-menu__item--level-1.
   --icon: #{icon('structure')};
 }
 
+.toolbar-link--sidebar-toggle[aria-expanded=false]::before,
 .toolbar-link--sidebar-toggle[aria-expanded=true]::before {
-  --icon: #{icon('toggle-collapse')};
-}
-
-.toolbar-link--sidebar-toggle[aria-expanded=false]::before {
-  --icon: #{icon('toggle-expand')};
+  --icon: #{icon('chevron-down')};
 }
 
 .toolbar-link--user::before {
@@ -395,14 +423,6 @@ html:not(.admin-toolbar-expanded) .gin--navigation .toolbar-menu__item--level-1.
 // of secondary one
 .gin--navigation .toolbar-link--user {
   display: none !important;
-}
-
-// -----------
-// Sticky menu
-// -----------
-.admin-toolbar__sticky-section .toolbar-menu {
-  display: flex;
-  flex-direction: column;
 }
 
 // -----------------------
