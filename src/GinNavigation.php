@@ -4,6 +4,7 @@ namespace Drupal\gin;
 
 use Drupal\block_content\Entity\BlockContentType;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+use Drupal\Core\Menu\MenuLinkTree;
 use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\Core\Url;
 use Drupal\taxonomy\Entity\Vocabulary;
@@ -27,6 +28,7 @@ class GinNavigation implements ContainerInjectionInterface {
   public function getNavigationAdminMenuItems(): array {
     $parameters = new MenuTreeParameters();
     $parameters->setMinDepth(2)->setMaxDepth(4)->onlyEnabledLinks();
+    /** @var MenuLinkTree $menu_tree */
     $menu_tree = \Drupal::service('menu.link_tree');
     $tree = $menu_tree->load('admin', $parameters);
     $manipulators = [
@@ -42,12 +44,6 @@ class GinNavigation implements ContainerInjectionInterface {
     $menu_name = $first_link->getMenuName();
     $build['#menu_name'] = $menu_name;
     $build['#theme'] = 'menu_region__middle';
-
-    // Loop through menu items and add the title as a class.
-    foreach ($tree as $item) {
-      $title = $item->link->getTitle();
-      $build['#items'][$item->link->getPluginId()]['class'] = $title;
-    }
 
     // Remove content and help from admin menu.
     unset($build['#items']['system.admin_content']);
@@ -181,13 +177,11 @@ class GinNavigation implements ContainerInjectionInterface {
     }
 
     // Generate menu items.
-    $create_items = [
-      [
-        'title' => t('Create'),
-        'class' => 'create',
-        'url' => Url::fromRoute('node.add_page')->toString(),
-        'below' => $create_type_items,
-      ],
+    $create_items['create'] = [
+      'title' => t('Create'),
+      'class' => 'create',
+      'url' => Url::fromRoute('node.add_page')->toString(),
+      'below' => $create_type_items,
     ];
 
     return [
@@ -208,57 +202,38 @@ class GinNavigation implements ContainerInjectionInterface {
 
     // Get Content menu item.
     if ($entity_type_manager->hasDefinition('node')) {
-      $create_content_items = [
-        [
-          'title' => t('Content'),
-          'class' => 'content',
-          'url' => Url::fromRoute('system.admin_content')->toString(),
-        ],
+      $create_content_items['content'] = [
+        'title' => t('Content'),
+        'class' => 'content',
+        'url' => Url::fromRoute('system.admin_content')->toString(),
       ];
-
-      $create_content_items = array_merge($create_content_items);
     }
 
     // Get Blocks menu item.
     if ($entity_type_manager->hasDefinition('block_content')) {
-      $create_content_items = array_merge(
-        $create_content_items,
-        [
-          [
-            'title' => t('Blocks'),
-            'class' => 'blocks',
-            'url' => Url::fromRoute('entity.block_content.collection')->toString(),
-          ],
-        ]
-      );
+      $create_content_items['blocks'] = [
+        'title' => t('Blocks'),
+        'class' => 'blocks',
+        'url' => Url::fromRoute('entity.block_content.collection')->toString(),
+      ];
     }
 
     // Get File menu item.
     if ($entity_type_manager->hasDefinition('file')) {
-      $create_content_items = array_merge(
-        $create_content_items,
-        [
-          [
-            'title' => t('Files'),
-            'class' => 'files',
-            'url' => '/admin/content/files',
-          ],
-        ]
-      );
+      $create_content_items['files'] = [
+        'title' => t('Files'),
+        'class' => 'files',
+        'url' => '/admin/content/files',
+      ];
     }
 
     // Get Media menu item.
     if ($entity_type_manager->hasDefinition('media')) {
-      $create_content_items = array_merge(
-        $create_content_items,
-        [
-          [
-            'title' => t('Media'),
-            'class' => 'media',
-            'url' => '/admin/content/media',
-          ],
-        ]
-      );
+      $create_content_items['media'] = [
+        'title' => t('Media'),
+        'class' => 'media',
+        'url' => '/admin/content/media',
+      ];
     }
 
     return [
