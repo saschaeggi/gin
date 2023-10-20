@@ -4,7 +4,6 @@ namespace Drupal\gin;
 
 use Drupal\block_content\Entity\BlockContentType;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
-use Drupal\Core\Menu\MenuLinkTree;
 use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\Core\Url;
 use Drupal\taxonomy\Entity\Vocabulary;
@@ -28,7 +27,7 @@ class GinNavigation implements ContainerInjectionInterface {
   public function getNavigationAdminMenuItems(): array {
     $parameters = new MenuTreeParameters();
     $parameters->setMinDepth(2)->setMaxDepth(4)->onlyEnabledLinks();
-    /** @var MenuLinkTree $menu_tree */
+    /** @var Drupal\Core\Menu\MenuLinkTree $menu_tree */
     $menu_tree = \Drupal::service('menu.link_tree');
     $tree = $menu_tree->load('admin', $parameters);
     $manipulators = [
@@ -132,7 +131,7 @@ class GinNavigation implements ContainerInjectionInterface {
       foreach ($media_types as $item) {
         $media_type_items[] = [
           'title' => $item->label(),
-          'class' =>  $item->label(),
+          'class' => $item->label(),
           'url' => Url::fromRoute('entity.media.add_form', ['media_type' => $item->id()]),
         ];
       }
