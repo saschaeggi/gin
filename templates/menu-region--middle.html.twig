@@ -9,15 +9,15 @@
 
 {% macro menu_items(items, attributes) %}
   {% for item in items %}
-  {% set item_id = 'item-' ~ item.title %}
+    {% set item_class = 'toolbar-link--' ~ (item.title.getUntranslatedString() ?? item.title)|clean_class %}
     <li id="{{ item_id }}" class="{{ item.below ? 'toolbar-menu__item--has-dropdown' }} toolbar-menu__item toolbar-menu__item--level-1" data-url="{{ item.url }}">
       {% if item.below is empty %}
-        <a href="{{ item.url }}" class="toolbar-link toolbar-link--has-icon toolbar-link--{{item.title|clean_class }}">
+        <a href="{{ item.url }}" class="toolbar-link toolbar-link--has-icon {{ item_class }}">
           <span>{{ item.title }}</span>
         </a>
       {% endif %}
     {% if item.below %}
-      <button class="toolbar-link toolbar-link--has-icon toolbar-link--{{item.title|clean_class }}">
+      <button class="toolbar-link toolbar-link--has-icon {{ item_class }}">
         <span class="toolbar-link__action">{{ 'Extend'|t }}</span>
         <span class="toolbar-link__label">{{ item.title }}</span>
       </button>
@@ -25,7 +25,7 @@
         <div class="toolbar-menu__arrow-ref"></div>
         <ul class="toolbar-menu">
           <li class="toolbar-menu__item toolbar-menu__item--to-title">
-            <button class="toolbar-link toolbar-link--has-icon toolbar-link--{{ item.title|clean_class }}" tabindex="-1" data-url="{{ item.url }}">
+            <button class="toolbar-link toolbar-link--has-icon toolbar-link--{{ item.class|clean_class }}" tabindex="-1" data-url="{{ item.url }}">
               <span class="toolbar-link__action">{{ 'Extend'|t }}</span>
               <span class="toolbar-link__label">{{ item.title }}</span>
             </button>

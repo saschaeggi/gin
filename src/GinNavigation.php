@@ -87,6 +87,7 @@ class GinNavigation implements ContainerInjectionInterface {
       foreach ($content_types as $item) {
         $content_type_items[] = [
           'title' => $item->label(),
+          'class' => $item->id(),
           'url' => Url::fromRoute('node.add', ['node_type' => $item->id()]),
         ];
       }
@@ -102,6 +103,7 @@ class GinNavigation implements ContainerInjectionInterface {
       foreach ($block_content_types as $item) {
         $block_type_items[] = [
           'title' => $item->label(),
+          'class' => $item->id(),
           'url' => Url::fromRoute('block_content.add_form', ['block_content_type' => $item->id()]),
         ];
       }
@@ -111,6 +113,7 @@ class GinNavigation implements ContainerInjectionInterface {
         [
           [
             'title' => t('Blocks'),
+            'class' => 'blocks',
             'url' => '',
             'below' => $block_type_items,
           ],
@@ -126,6 +129,7 @@ class GinNavigation implements ContainerInjectionInterface {
       foreach ($media_types as $item) {
         $media_type_items[] = [
           'title' => $item->label(),
+          'class' =>  $item->label(),
           'url' => Url::fromRoute('entity.media.add_form', ['media_type' => $item->id()]),
         ];
       }
@@ -135,6 +139,7 @@ class GinNavigation implements ContainerInjectionInterface {
         [
           [
             'title' => t('Media'),
+            'class' => 'media',
             'url' => '',
             'below' => $media_type_items,
           ],
@@ -150,6 +155,7 @@ class GinNavigation implements ContainerInjectionInterface {
       foreach ($taxonomy_types as $item) {
         $taxonomy_type_items[] = [
           'title' => $item->label(),
+          'class' => $item->id(),
           'url' => Url::fromRoute('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => $item->id()]),
         ];
       }
@@ -159,6 +165,7 @@ class GinNavigation implements ContainerInjectionInterface {
         [
           [
             'title' => t('Taxonomy'),
+            'class' => 'taxonomy',
             'url' => '',
             'below' => $taxonomy_type_items,
           ],
@@ -170,6 +177,7 @@ class GinNavigation implements ContainerInjectionInterface {
     $create_items = [
       [
         'title' => t('Create'),
+        'class' => 'create',
         'url' => Url::fromRoute('node.add_page')->toString(),
         'below' => $create_type_items,
       ],
@@ -196,6 +204,7 @@ class GinNavigation implements ContainerInjectionInterface {
       $create_content_items = [
         [
           'title' => t('Content'),
+          'class' => 'content',
           'url' => Url::fromRoute('system.admin_content')->toString(),
         ],
       ];
@@ -210,6 +219,7 @@ class GinNavigation implements ContainerInjectionInterface {
         [
           [
             'title' => t('Blocks'),
+            'class' => 'blocks',
             'url' => Url::fromRoute('entity.block_content.collection')->toString(),
           ],
         ]
@@ -223,6 +233,7 @@ class GinNavigation implements ContainerInjectionInterface {
         [
           [
             'title' => t('Files'),
+            'class' => 'files',
             'url' => '/admin/content/files',
           ],
         ]
@@ -236,6 +247,7 @@ class GinNavigation implements ContainerInjectionInterface {
         [
           [
             'title' => t('Media'),
+            'class' => 'media',
             'url' => '/admin/content/media',
           ],
         ]
@@ -257,14 +269,17 @@ class GinNavigation implements ContainerInjectionInterface {
     $user_items = [
       [
         'title' => t('Profile'),
+        'class' => 'profile',
         'url' => Url::fromRoute('user.page')->toString(),
       ],
       [
         'title' => t('Settings'),
+        'class' => 'settings',
         'url' => Url::fromRoute('entity.user.admin_form')->toString(),
       ],
       [
         'title' => t('Log out'),
+        'class' => 'logout',
         'url' => Url::fromRoute('user.logout')->toString(),
       ],
     ];
