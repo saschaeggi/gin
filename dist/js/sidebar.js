@@ -1,5 +1,5 @@
 ((Drupal, drupalSettings, once) => {
-  const storageDesktop = "Drupal.gin.sidebarExpanded.desktop";
+  const toolbarVariant = drupalSettings.gin.toolbar_variant, storageDesktop = "Drupal.gin.sidebarExpanded.desktop";
   Drupal.behaviors.ginSidebar = {
     attach: function(context) {
       Drupal.ginSidebar.init(context);
@@ -26,7 +26,7 @@
       sidebarTrigger.setAttribute("title", showLabel), sidebarTrigger.querySelector("span").innerHTML = showLabel, 
       sidebarTrigger.setAttribute("aria-expanded", "true"), sidebarTrigger.classList.add("is-active"), 
       document.body.setAttribute("data-meta-sidebar", "open"), localStorage.setItem(chooseStorage, "true"), 
-      window.innerWidth < 1280 && ("vertical" === drupalSettings.gin.toolbar_variant ? Drupal.ginToolbar.collapseToolbar() : "new" === drupalSettings.gin.toolbar_variant && Drupal.behaviors.navigation.collapseSidebar());
+      window.innerWidth < 1280 && ("vertical" === toolbarVariant ? Drupal.ginToolbar.collapseToolbar() : "new" === toolbarVariant && Drupal.behaviors.navigation.collapseSidebar());
     },
     collapseSidebar: () => {
       const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, hideLabel = Drupal.t("Show sidebar panel"), sidebarTrigger = document.querySelector(".meta-sidebar__trigger");
