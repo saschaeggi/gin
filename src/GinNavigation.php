@@ -44,6 +44,13 @@ class GinNavigation implements ContainerInjectionInterface {
     $build['#menu_name'] = $menu_name;
     $build['#theme'] = 'menu_region__middle';
 
+    // Loop through menu items and add the title as a class.
+    foreach ($tree as $item) {
+      $plugin_id = $item->link->getPluginId();
+      $plugin_class = str_replace('.', '_', $plugin_id);
+      $build['#items'][$plugin_id]['class'] = $plugin_class;
+    }
+
     // Remove content and help from admin menu.
     unset($build['#items']['system.admin_content']);
     unset($build['#items']['help.main']);
