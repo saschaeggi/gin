@@ -79,6 +79,8 @@
 
       // Expose to localStorage.
       localStorage.setItem(chooseStorage, 'true');
+
+      Drupal.ginToolbar.collapseToolbar();
     },
 
     collapseSidebar: () => {

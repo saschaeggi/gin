@@ -1,6 +1,8 @@
 /* eslint-disable func-names, no-mutable-exports, comma-dangle, strict */
 
 ((Drupal, drupalSettings, once) => {
+  const breakpoint = 976;
+
   Drupal.behaviors.ginToolbar = {
     attach: (context) => {
       Drupal.ginToolbar.init(context);
@@ -62,6 +64,14 @@
         e.preventDefault();
         this.toggleToolbar();
       }));
+
+      // Toolbar administration toggle
+      once('ginToolbarAdminToggle', '#toolbar-item-administration', context).forEach(el => el.addEventListener('click', e => {
+        if (window.innerWidth < breakpoint) {
+          e.preventDefault();
+          this.toggleToolbarAdmin();
+        }
+      }));
     },
 
     initDisplace: () => {
@@ -111,6 +121,19 @@
       };
     },
 
+    toggleToolbarAdmin: () => {
+      // Hide sidebar when opening toolbar
+      if (document.querySelector('.meta-sidebar__trigger').classList.contains('is-active')) {
+        Drupal.ginSidebar.collapseSidebar();
+      }
+    },
+
+    collapseToolbar: () => {
+      // Hide toolbar whe opening sidebar
+      if (window.innerWidth < breakpoint && document.querySelector('#toolbar-item-administration').classList.contains('is-active')) {
+        Drupal.toolbar.models.toolbarModel.set('activeTab', null);
+      }
+    },
   };
 
 })(Drupal, drupalSettings, once);
