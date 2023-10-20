@@ -1167,11 +1167,11 @@ button.toolbar-link--sidebar-toggle:hover::before, button.toolbar-link--sidebar-
           margin-inline-end: 0;
 }
 
-.toolbar-link--tools::before {
+.toolbar-link--admin-toolbar-tools-help::before {
   --icon: url("../../media/sprite.svg#tool-view");
 }
 
-.toolbar-link--appearance::before {
+.toolbar-link--system-themes-page::before {
   --icon: url("../../media/sprite.svg#appearance-view");
 }
 
@@ -1183,7 +1183,7 @@ button.toolbar-link--sidebar-toggle:hover::before, button.toolbar-link--sidebar-
   --icon: url("../../media/sprite.svg#bookmarks-view");
 }
 
-.toolbar-link--configuration::before {
+.toolbar-link--system-admin-config::before {
   --icon: url("../../media/sprite.svg#config-view");
 }
 
@@ -1195,7 +1195,7 @@ button.toolbar-link--sidebar-toggle:hover::before, button.toolbar-link--sidebar-
   --icon: url("../../media/sprite.svg#create-view");
 }
 
-.toolbar-link--extend::before {
+.toolbar-link--system-modules-list::before {
   --icon: url("../../media/sprite.svg#extend-new-view");
 }
 
@@ -1211,15 +1211,15 @@ button.toolbar-link--sidebar-toggle:hover::before, button.toolbar-link--sidebar-
   --icon: url("../../media/sprite.svg#media-view");
 }
 
-.toolbar-link--people::before {
+.toolbar-link--entity-user-collection::before {
   --icon: url("../../media/sprite.svg#people-new-view");
 }
 
-.toolbar-link--reports::before {
+.toolbar-link--system-admin-reports::before {
   --icon: url("../../media/sprite.svg#reports-view");
 }
 
-.toolbar-link--structure::before {
+.toolbar-link--system-admin-structure::before {
   --icon: url("../../media/sprite.svg#structure-view");
 }
 
