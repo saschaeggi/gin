@@ -22,8 +22,6 @@
         })), this.initDisplace();
       })), once("ginToolbarToggle", ".toolbar-menu__trigger", context).forEach((el => el.addEventListener("click", (e => {
         e.preventDefault(), this.toggleToolbar();
-      })))), once("ginToolbarAdminToggle", "#toolbar-item-administration", context).forEach((el => el.addEventListener("click", (e => {
-        window.innerWidth < 976 && (e.preventDefault(), this.toggleToolbarAdmin());
       }))));
     },
     initDisplace: () => {
@@ -47,11 +45,17 @@
         Drupal.displace(!0);
       };
     },
-    toggleToolbarAdmin: () => {
-      document.querySelector(".meta-sidebar__trigger").classList.contains("is-active") && Drupal.ginSidebar.collapseSidebar();
-    },
     collapseToolbar: () => {
-      window.innerWidth < 976 && document.querySelector("#toolbar-item-administration").classList.contains("is-active") && Drupal.toolbar.models.toolbarModel.set("activeTab", null);
+      document.querySelector(".toolbar-menu__trigger").classList.remove("is-active"), 
+      document.body.setAttribute("data-toolbar-menu", "");
+      const elementToRemove = document.querySelector(".gin-toolbar-inline-styles");
+      elementToRemove && elementToRemove.parentNode.removeChild(elementToRemove), localStorage.setItem("Drupal.gin.toolbarExpanded", "false");
+      const event = new CustomEvent("toolbar-toggle", {
+        detail: !1
+      });
+      document.dispatchEvent(event), ontransitionend = () => {
+        Drupal.displace(!0);
+      };
     }
   };
 })(Drupal, drupalSettings, once);

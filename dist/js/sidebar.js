@@ -1,4 +1,4 @@
-((Drupal, once) => {
+((Drupal, drupalSettings, once) => {
   const storageDesktop = "Drupal.gin.sidebarExpanded.desktop";
   Drupal.behaviors.ginSidebar = {
     attach: function(context) {
@@ -26,7 +26,7 @@
       sidebarTrigger.setAttribute("title", showLabel), sidebarTrigger.querySelector("span").innerHTML = showLabel, 
       sidebarTrigger.setAttribute("aria-expanded", "true"), sidebarTrigger.classList.add("is-active"), 
       document.body.setAttribute("data-meta-sidebar", "open"), localStorage.setItem(chooseStorage, "true"), 
-      Drupal.ginToolbar.collapseToolbar();
+      window.innerWidth < 1280 && ("vertical" === drupalSettings.gin.toolbar_variant ? Drupal.ginToolbar.collapseToolbar() : "new" === drupalSettings.gin.toolbar_variant && Drupal.behaviors.navigation.collapseSidebar());
     },
     collapseSidebar: () => {
       const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, hideLabel = Drupal.t("Show sidebar panel"), sidebarTrigger = document.querySelector(".meta-sidebar__trigger");
@@ -42,4 +42,4 @@
       elementToRemove && elementToRemove.parentNode.removeChild(elementToRemove);
     }
   };
-})(Drupal, once);
+})(Drupal, drupalSettings, once);

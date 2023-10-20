@@ -1,7 +1,8 @@
 /* eslint-disable func-names, no-mutable-exports, comma-dangle, strict */
 
-((Drupal, once) => {
+((Drupal, drupalSettings, once) => {
   const breakpoint = 1024;
+  const breakpointLarge = 1280;
   const storageMobile = 'Drupal.gin.sidebarExpanded.mobile';
   const storageDesktop = 'Drupal.gin.sidebarExpanded.desktop';
 
@@ -80,7 +81,14 @@
       // Expose to localStorage.
       localStorage.setItem(chooseStorage, 'true');
 
-      Drupal.ginToolbar.collapseToolbar();
+      // Check which toolbar is active.
+      if (window.innerWidth < breakpointLarge) {
+        if (drupalSettings.gin.toolbar_variant === 'vertical') {
+          Drupal.ginToolbar.collapseToolbar();
+        } else if (drupalSettings.gin.toolbar_variant === 'new') {
+          Drupal.behaviors.navigation.collapseSidebar();
+        }
+      }
     },
 
     collapseSidebar: () => {
@@ -124,4 +132,4 @@
     },
 
   };
-})(Drupal, once);
+})(Drupal, drupalSettings, once);

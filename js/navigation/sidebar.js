@@ -647,5 +647,10 @@
     attach(context) {
       once('navigation', '.admin-toolbar', context).forEach(init);
     },
+    // Gin Custom start ---------------------
+    collapseSidebar() {
+      expandCollapseSidebar(false);
+    },
+    // Gin Custom end ------------------------
   };
 })(Drupal, once, FloatingUIDOM);
