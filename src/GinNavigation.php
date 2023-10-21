@@ -87,9 +87,11 @@ class GinNavigation implements ContainerInjectionInterface {
     // support older PHP versions
     // for Druapl 9.0+.
     $create_type_items = [];
+    $create_item_url = '';
 
     // Get node types.
     if ($entity_type_manager->hasDefinition('node')) {
+      $create_item_url = Url::fromRoute('node.add_page')->toString();
       $content_types = $entity_type_manager->getStorage('node_type')->loadMultiple();
       $content_type_items = [];
 
@@ -97,7 +99,7 @@ class GinNavigation implements ContainerInjectionInterface {
         $content_type_items[] = [
           'title' => $item->label(),
           'class' => $item->id(),
-          'url' => Url::fromRoute('node.add', ['node_type' => $item->id()]),
+          'url' => $create_item_url,
         ];
       }
 
@@ -182,11 +184,15 @@ class GinNavigation implements ContainerInjectionInterface {
       );
     }
 
+   if (!$create_type_items && !$create_item_url) {
+     return [];
+   }
+
     // Generate menu items.
     $create_items['create'] = [
       'title' => t('Create'),
       'class' => 'create',
-      'url' => Url::fromRoute('node.add_page')->toString(),
+      'url' => $create_item_url,
       'below' => $create_type_items,
     ];
 

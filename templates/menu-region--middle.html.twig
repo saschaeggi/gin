@@ -12,9 +12,15 @@
     {% set item_class = 'toolbar-link--' ~ item.class|clean_class %}
     <li id="{{ item_id }}" class="{{ item.below ? 'toolbar-menu__item--has-dropdown' }} toolbar-menu__item toolbar-menu__item--level-1" data-url="{{ item.url }}">
       {% if item.below is empty %}
-        <a href="{{ item.url }}" class="toolbar-link toolbar-link--has-icon {{ item_class }}">
-          <span>{{ item.title }}</span>
-        </a>
+        {% if item.url %}
+          <a href="{{ item.url }}" class="toolbar-link toolbar-link--has-icon {{ item_class }}">
+            <span>{{ item.title }}</span>
+          </a>
+        {% else %}
+          <button href="{{ item.url }}" class="toolbar-link toolbar-link--has-icon {{ item_class }}">
+            <span>{{ item.title }}</span>
+          </button>
+        {% endif %}
       {% endif %}
     {% if item.below %}
       <button class="toolbar-link toolbar-link--has-icon {{ item_class }}">
