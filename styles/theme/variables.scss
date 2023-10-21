@@ -110,6 +110,8 @@
   --gin-border-color-table-header: rgba(0, 0, 0, .2);
   --gin-border-color-form-element: #8E929C;
 
+  --size-summary-border-radius: calc(var(--gin-border-m) - 1px);
+
   // Transitions / Animations
   --gin-easing: cubic-bezier(.19, 1, .22, 1);
   --gin-transition: .15s var(--gin-easing);
@@ -125,7 +127,7 @@
                 0 20px 24px rgb(20 45 82 / 12%);
 
   // Sticky bar
-  --gin-height-sticky: 64px;
+  --gin-height-sticky: 60px;
 
   // Toolbar
   --gin-toolbar-width-collapsed: 66px;

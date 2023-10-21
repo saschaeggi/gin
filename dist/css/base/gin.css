@@ -343,7 +343,7 @@ button.link:active,
 @media (min-width: 64em) {
   .sticky-shadow {
     position: sticky;
-    top: calc(var(--gin-toolbar-y-offset) + var(--gin-spacing-l));
+    top: calc(var(--gin-toolbar-y-offset) + var(--gin-height-sticky) - 40px);
     width: calc(100% - min(10vw, 96px) + var(--gin-spacing-l));
   }
 
@@ -1589,6 +1589,14 @@ td.webform-has-field-suffix > .form-item > .form-element {
 
 table td.field-plugin-summary-cell {
   vertical-align: middle;
+}
+
+[dir="ltr"] table .views-field.views-field-operations {
+  text-align: right;
+}
+
+[dir="rtl"] table .views-field.views-field-operations {
+  text-align: left;
 }
 
 .draggable a.tabledrag-handle {

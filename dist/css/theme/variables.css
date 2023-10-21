@@ -79,12 +79,13 @@
   --gin-border-color-table: rgba(0, 0, 0, .1);
   --gin-border-color-table-header: rgba(0, 0, 0, .2);
   --gin-border-color-form-element: #8e929c;
+  --size-summary-border-radius: calc(var(--gin-border-m) - 1px);
   --gin-easing: cubic-bezier(.19, 1, .22, 1);
   --gin-transition: .15s var(--gin-easing);
   --gin-transition-fast: .3s var(--gin-easing);
   --gin-shadow-l1: 0 1px 2px rgb(20 45 82 / 2%), 0 3px 4px rgb(20 45 82 / 3%), 0 5px 8px rgb(20 45 82 / 4%);
   --gin-shadow-l2: 0 1px 2px rgb(20 45 82 / 2%), 0 3px 4px rgb(20 45 82 / 3%), 0 5px 8px rgb(20 45 82 / 4%), 0 20px 24px rgb(20 45 82 / 12%);
-  --gin-height-sticky: 64px;
+  --gin-height-sticky: 60px;
   --gin-toolbar-width-collapsed: 66px;
   --gin-toolbar-width: 256px;
   --gin-toolbar-bg-level2: #edeff5;

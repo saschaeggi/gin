@@ -20,7 +20,7 @@
 
   @include mq(medium) {
     --gin-toolbar-height: 0px; // Needs px to work in calc() functions.
-    --gin-toolbar-secondary-height: 56px;
+    --gin-toolbar-secondary-height: 52px;
     --gin-toolbar-x-offset: var(--drupal-displace-offset-left, 64px);
     --gin-scroll-offset: 130px;
     --gin-sticky-offset: var(--gin-height-sticky);
@@ -38,6 +38,10 @@ body.gin--navigation {
     padding-top: var(--gin-toolbar-y-offset) !important;
     padding-left: var(--gin-toolbar-x-offset, 39px) !important;
   }
+}
+
+.gin--navigation .gin-secondary-toolbar:not(.gin-secondary-toolbar--frontend) {
+  margin-bottom: var(--gin-spacing-xxs);
 }
 
 .gin--navigation .gin-secondary-toolbar--frontend {
@@ -108,7 +112,7 @@ body.gin--navigation {
 
   // Content block
   .toolbar-block__content.toolbar-block__content--content {
-    margin-block-start: var(--space-m);
+    margin-block-start: var(--space-s);
   }
 
   // Navigation link
@@ -124,7 +128,7 @@ body.gin--navigation {
   }
 
   .navigation-menu-wrapper.menu--logo {
-    margin-bottom: -2px;
+    margin-bottom: -5px;
   }
 
   .menu-item.current > .toolbar-link {
@@ -304,9 +308,11 @@ button.toolbar-link--sidebar-toggle {
 .toolbar-link--gin-home {
   color: var(--gin-bg-layer2);
   box-sizing: border-box;
-  max-width: 30px;
-  padding: 5px !important; // make the logo 32px
-  margin: 8px 8px 4px !important;
+  width: 40px;
+  height: 40px;
+  max-width: 40px;
+  padding: 10px !important; // make the logo 32px
+  margin: 6px 4px 0 !important;
 
   &, &:hover, &:focus {
     background: var(--gin-color-primary) !important;

@@ -811,7 +811,7 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 @media (min-width: 61em) {
   :root {
     --gin-toolbar-height: 0px;
-    --gin-toolbar-secondary-height: 56px;
+    --gin-toolbar-secondary-height: 52px;
     --gin-toolbar-x-offset: var(--drupal-displace-offset-left, 64px);
     --gin-scroll-offset: 130px;
     --gin-sticky-offset: var(--gin-height-sticky);
@@ -836,6 +836,10 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
   [dir="rtl"] body.gin--navigation {
     padding-right: var(--gin-toolbar-x-offset, 39px) !important;
   }
+}
+
+.gin--navigation .gin-secondary-toolbar:not(.gin-secondary-toolbar--frontend) {
+  margin-bottom: var(--gin-spacing-xxs);
 }
 
 .gin--navigation .gin-secondary-toolbar--frontend {
@@ -930,8 +934,8 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 }
 
 .gin--navigation .toolbar-block__content.toolbar-block__content--content {
-  -webkit-margin-before: var(--space-m);
-          margin-block-start: var(--space-m);
+  -webkit-margin-before: var(--space-s);
+          margin-block-start: var(--space-s);
 }
 
 .gin--navigation .toolbar-link {
@@ -945,7 +949,7 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 }
 
 .gin--navigation .navigation-menu-wrapper.menu--logo {
-  margin-bottom: -2px;
+  margin-bottom: -5px;
 }
 
 .gin--navigation .menu-item.current > .toolbar-link {
@@ -1133,9 +1137,11 @@ button.toolbar-link--sidebar-toggle:hover::before, button.toolbar-link--sidebar-
 .toolbar-link--gin-home {
   color: var(--gin-bg-layer2);
   box-sizing: border-box;
-  max-width: 30px;
-  padding: 5px !important;
-  margin: 8px 8px 4px !important;
+  width: 40px;
+  height: 40px;
+  max-width: 40px;
+  padding: 10px !important;
+  margin: 6px 4px 0 !important;
 }
 
 .toolbar-link--gin-home, .toolbar-link--gin-home:hover, .toolbar-link--gin-home:focus {

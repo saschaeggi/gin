@@ -80,6 +80,10 @@
     box-shadow: none;
   }
 
+  .ck.ck-editor__editable_inline {
+    padding: 0 var(--gin-spacing-s);
+  }
+
   .ck-button[aria-pressed=true] {
     color: var(--gin-color-primary-active);
     border: 2px solid var(--gin-color-primary);
