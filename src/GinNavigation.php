@@ -184,9 +184,9 @@ class GinNavigation implements ContainerInjectionInterface {
       );
     }
 
-   if (!$create_type_items && !$create_item_url) {
-     return [];
-   }
+    if (!$create_type_items && !$create_item_url) {
+      return [];
+    }
 
     // Generate menu items.
     $create_items['create'] = [
