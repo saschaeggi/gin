@@ -337,11 +337,11 @@ button.toolbar-link--sidebar-toggle {
   }
 }
 
-.toolbar-link--tools::before {
+.toolbar-link--admin-toolbar-tools-help::before {
   --icon: #{icon('tool')};
 }
 
-.toolbar-link--appearance::before {
+.toolbar-link--system-themes-page::before {
   --icon: #{icon('appearance')};
 }
 
@@ -353,7 +353,7 @@ button.toolbar-link--sidebar-toggle {
   --icon: #{icon('bookmarks')};
 }
 
-.toolbar-link--configuration::before {
+.toolbar-link--system-admin-config::before {
   --icon: #{icon('config')};
 }
 
@@ -365,7 +365,7 @@ button.toolbar-link--sidebar-toggle {
   --icon: #{icon('create')};
 }
 
-.toolbar-link--extend::before {
+.toolbar-link--system-modules-list::before {
   --icon: #{icon('extend-new')};
 }
 
@@ -381,15 +381,15 @@ button.toolbar-link--sidebar-toggle {
   --icon: #{icon('media')};
 }
 
-.toolbar-link--people::before {
+.toolbar-link--entity-user-collection::before {
   --icon: #{icon('people-new')};
 }
 
-.toolbar-link--reports::before {
+.toolbar-link--system-admin-reports::before {
   --icon: #{icon('reports')};
 }
 
-.toolbar-link--structure::before {
+.toolbar-link--system-admin-structure::before {
   --icon: #{icon('structure')};
 }
 

@@ -153,7 +153,7 @@ html:not(.admin-toolbar-expanded) {
 }
 
 // Gin Custom start ---------------------
-// .toolbar-link--appearance::before {
+// .toolbar-link--system-themes-page::before {
 //   --icon: url(../../assets/icons/appearance.svg);
 // }
 
@@ -165,7 +165,7 @@ html:not(.admin-toolbar-expanded) {
 //   --icon: url(../../assets/icons/bookmarks.svg);
 // }
 
-// .toolbar-link--configuration::before {
+// .toolbar-link--system-admin-config::before {
 //   --icon: url(../../assets/icons/config.svg);
 // }
 
@@ -177,7 +177,7 @@ html:not(.admin-toolbar-expanded) {
 //   --icon: url(../../assets/icons/create.svg);
 // }
 
-// .toolbar-link--extend::before {
+// .toolbar-link--system-modules-list::before {
 //   --icon: url(../../assets/icons/extend.svg);
 // }
 
@@ -193,15 +193,15 @@ html:not(.admin-toolbar-expanded) {
 //   --icon: url(../../assets/icons/media.svg);
 // }
 
-// .toolbar-link--people::before {
+// .toolbar-link--entity-user-collection::before {
 //   --icon: url(../../assets/icons/people.svg);
 // }
 
-// .toolbar-link--reports::before {
+// .toolbar-link--system-admin-reports::before {
 //   --icon: url(../../assets/icons/reports.svg);
 // }
 
-// .toolbar-link--structure::before {
+// .toolbar-link--system-admin-structure::before {
 //   --icon: url(../../assets/icons/structure.svg);
 // }
 
