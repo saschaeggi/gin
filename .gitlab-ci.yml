@@ -22,3 +22,19 @@ stylelint:
   stage: test
   script:
     - yarn version
+
+frontend:
+  stage: build
+  image: node:16.13-alpine
+  variables:
+    GIT_STRATEGY: fetch
+    GIT_CHECKOUT: "true"
+  script:
+    - apk add bash git openssh
+    - npm install
+    - npm run build
+    - 'git diff --exit-code src dist || (echo "Error: Uncommitted changes detected"; exit 1)'
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 6 mos
