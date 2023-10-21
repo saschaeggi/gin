@@ -4,7 +4,7 @@
 
 .admin-item {
   position: relative;
-  padding: var(--gin-spacing-s) calc(var(--gin-spacing-xs) + var(--gin-spacing-xl)) var(--gin-spacing-s) var(--gin-spacing-l);
+  padding: var(--gin-spacing-density-s) calc(var(--gin-spacing-xs) + var(--gin-spacing-xl)) var(--gin-spacing-density-s) var(--gin-spacing-l);
   margin: var(--gin-spacing-l) var(--gin-spacing-s);
 
   &--panel {

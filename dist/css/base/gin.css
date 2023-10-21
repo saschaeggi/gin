@@ -325,6 +325,14 @@ button.link:active,
   overflow: initial;
 }
 
+.content-header:has(.layout-container:empty) {
+  display: none;
+}
+
+.content-header:not(.content-header:has(.region)) {
+  display: none;
+}
+
 @media (min-width: 64em) {
   .sticky-shadow {
     z-index: 98;
@@ -3458,11 +3466,11 @@ hr {
 }
 
 [dir="ltr"] .admin-item {
-  padding: var(--gin-spacing-s) calc(var(--gin-spacing-xs) + var(--gin-spacing-xl)) var(--gin-spacing-s) var(--gin-spacing-l);
+  padding: var(--gin-spacing-density-s) calc(var(--gin-spacing-xs) + var(--gin-spacing-xl)) var(--gin-spacing-density-s) var(--gin-spacing-l);
 }
 
 [dir="rtl"] .admin-item {
-  padding: var(--gin-spacing-s) var(--gin-spacing-l) var(--gin-spacing-s) calc(var(--gin-spacing-xs) + var(--gin-spacing-xl));
+  padding: var(--gin-spacing-density-s) var(--gin-spacing-l) var(--gin-spacing-density-s) calc(var(--gin-spacing-xs) + var(--gin-spacing-xl));
 }
 
 .admin-item--panel {
