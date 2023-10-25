@@ -218,6 +218,9 @@ body {
   list-style: none;
   -webkit-padding-before: 0;
           padding-block-start: 0;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+          hyphens: auto;
 }
 
 .toolbar-menu .toolbar-menu__item--to-title {

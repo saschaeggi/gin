@@ -21,6 +21,8 @@
   & .toolbar-menu__item {
     list-style: none;
     padding-block-start: 0;
+    word-break: break-word;
+    hyphens: auto;
   }
 
   & .toolbar-menu__item--to-title {
