@@ -1085,6 +1085,16 @@ html:not(.admin-toolbar-expanded) .gin--navigation .toolbar-menu__item--level-1.
   padding-top: 0;
 }
 
+.toolbar-menu .toolbar-link--has-icon,
+.toolbar-menu .toolbar-link--has-icon .toolbar-link__label {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.toolbar-menu .toolbar-link--has-icon::before, .toolbar-menu .toolbar-link--has-icon::after {
+  flex-shrink: 0;
+}
+
 button.toolbar-link--sidebar-toggle {
   background: var(--gin-bg-layer2);
 }
