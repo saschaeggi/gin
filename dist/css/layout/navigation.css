@@ -218,6 +218,9 @@ body {
   list-style: none;
   -webkit-padding-before: 0;
           padding-block-start: 0;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+          hyphens: auto;
 }
 
 .toolbar-menu .toolbar-menu__item--to-title {
@@ -1080,6 +1083,16 @@ html:not(.admin-toolbar-expanded) .gin--navigation .toolbar-menu__item--level-1.
 .toolbar-anti-flicker.toolbar-loading.toolbar-fixed body.gin--navigation,
 .toolbar-anti-flicker.toolbar-loading.toolbar-fixed.toolbar-horizontal.toolbar-tray-open body.gin--navigation {
   padding-top: 0;
+}
+
+.toolbar-menu .toolbar-link--has-icon,
+.toolbar-menu .toolbar-link--has-icon .toolbar-link__label {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.toolbar-menu .toolbar-link--has-icon::before, .toolbar-menu .toolbar-link--has-icon::after {
+  flex-shrink: 0;
 }
 
 button.toolbar-link--sidebar-toggle {

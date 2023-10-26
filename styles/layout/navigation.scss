@@ -255,6 +255,22 @@ html:not(.admin-toolbar-expanded) .gin--navigation .toolbar-menu__item--level-1.
 }
 
 // --------------
+// Text overflow
+// --------------
+.toolbar-menu .toolbar-link--has-icon {
+  &,
+  .toolbar-link__label {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &::before,
+  &::after {
+    flex-shrink: 0;
+  }
+}
+
+// --------------
 // Sidebar toggle
 // --------------
 button.toolbar-link--sidebar-toggle {
