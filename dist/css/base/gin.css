@@ -325,14 +325,6 @@ button.link:active,
   overflow: initial;
 }
 
-.content-header:has(.layout-container:empty) {
-  display: none;
-}
-
-.content-header:not(.content-header:has(.region)) {
-  display: none;
-}
-
 @media (min-width: 64em) {
   .sticky-shadow {
     z-index: 98;

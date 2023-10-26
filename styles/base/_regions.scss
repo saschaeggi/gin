@@ -117,16 +117,6 @@
   margin-bottom: 0;
   background-color: transparent;
   overflow: initial;
-
-  // Hide if empty.
-  &:has(.layout-container:empty) {
-    display: none;
-  }
-
-  // Hide if region is missing.
-  &:not(.content-header:has(.region)) {
-    display: none;
-  }
 }
 
 .sticky-shadow {
