@@ -200,6 +200,8 @@ edit_form:
   css:
     layout:
       dist/css/components/edit_form.css: { minified: false }
+  dependencies:
+    - core/once
 
 media_library:
   css:
