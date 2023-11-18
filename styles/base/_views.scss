@@ -2,6 +2,7 @@
   0% {
     transform: translateY(100%);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -196,6 +197,24 @@
 .views-tabs {
   a {
     padding: var(--gin-spacing-xs) var(--gin-spacing-m);
+
+    &.views-display-disabled-link {
+      padding-inline-start: var(--gin-spacing-l);
+
+      &::before {
+        mask-image: icon('hide');
+        mask-repeat: no-repeat;
+        mask-position: center left;
+        mask-size: contain;
+        width: var(--gin-spacing-m);
+        height: var(--gin-spacing-s);
+        margin-inline-start: calc(var(--gin-spacing-m) * -1);
+        margin-block-start: var(--gin-spacing-xxs);
+        background-color: currentColor;
+        display: inline-block;
+        content: '';
+      }
+    }
   }
 
   .add a,
@@ -239,7 +258,9 @@
       a {
         background: var(--gin-bg-layer2);
 
-        &:hover, &:focus, &:active {
+        &:hover,
+        &:focus,
+        &:active {
           color: var(--gin-color-primary);
         }
       }
@@ -263,7 +284,10 @@
         border: none !important;
       }
 
-      &:hover, &:focus, &:active {
+      &:hover,
+      &:focus,
+      &:active {
+
         &,
         input.button {
           color: var(--gin-color-button-text);
@@ -275,6 +299,7 @@
 }
 
 .views-ui-display-tab-bucket {
+
   // #3186729: Drupal 9.1 fix
   &__header {
     padding: 0;
@@ -346,6 +371,7 @@
 
 .system-modules,
 .locale-translation-status-form {
+
   tr.even,
   tr.odd {
     background: none;
