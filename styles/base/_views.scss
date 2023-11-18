@@ -196,6 +196,24 @@
 .views-tabs {
   a {
     padding: var(--gin-spacing-xs) var(--gin-spacing-m);
+
+    &.views-display-disabled-link {
+      padding-inline-start: var(--gin-spacing-l);
+
+      &::before {
+        mask-image: icon('hide');
+        mask-repeat: no-repeat;
+        mask-position: center left;
+        mask-size: contain;
+        width: var(--gin-spacing-m);
+        height: var(--gin-spacing-s);
+        margin-inline-start: calc(var(--gin-spacing-m) * -1);
+        margin-block-start: var(--gin-spacing-xxs);
+        background-color: currentColor;
+        display: inline-block;
+        content: '';
+      }
+    }
   }
 
   .add a,
