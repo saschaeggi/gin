@@ -205,10 +205,9 @@
         mask-repeat: no-repeat;
         mask-position: center left;
         mask-size: contain;
-        width: var(--gin-spacing-m);
+        width: var(--gin-spacing-l);
         height: var(--gin-spacing-s);
         margin-inline-start: calc(var(--gin-spacing-m) * -1);
-        margin-block-start: var(--gin-spacing-xxs);
         background-color: currentColor;
         display: inline-block;
         content: '';

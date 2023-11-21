@@ -1050,12 +1050,10 @@ details summary {
           mask-position: center left;
   -webkit-mask-size: contain;
           mask-size: contain;
-  width: var(--gin-spacing-m);
+  width: var(--gin-spacing-l);
   height: var(--gin-spacing-s);
   -webkit-margin-start: calc(var(--gin-spacing-m) * -1);
           margin-inline-start: calc(var(--gin-spacing-m) * -1);
-  -webkit-margin-before: var(--gin-spacing-xxs);
-          margin-block-start: var(--gin-spacing-xxs);
   background-color: currentColor;
   display: inline-block;
   content: "";
