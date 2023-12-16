@@ -121,6 +121,11 @@ body.gin--navigation {
     font-weight: normal;
   }
 
+  // Toolbar menu
+  .toolbar-menu {
+    margin-inline: 0;
+  }
+
   // Focus
   .toolbar-menu__item--level-1 > .toolbar-link:focus {
     outline: none;
@@ -188,7 +193,8 @@ body.gin--navigation {
   .toolbar-menu__item--level-1 > .toolbar-link--manage-form-display,
   .toolbar-menu__item--level-1 > .toolbar-link--manage-display,
   .toolbar-menu__item--level-1 > .toolbar-link--manage-permissions,
-  .toolbar-menu__item--level-1 > .toolbar-link--delete {
+  .toolbar-menu__item--level-1 > .toolbar-link--delete,
+  .toolbar-menu__item--level-1 > .toolbar-link[class*="toolbar-link--admin-toolbar-tools-extra-linksentity"] {
     display: none;
   }
 

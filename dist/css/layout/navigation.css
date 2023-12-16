@@ -946,6 +946,10 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
   font-weight: normal;
 }
 
+.gin--navigation .toolbar-menu {
+  margin-inline: 0;
+}
+
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:focus {
   outline: none;
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
@@ -1026,7 +1030,8 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--manage-form-display,
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--manage-display,
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--manage-permissions,
-.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--delete {
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--delete,
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link[class*=toolbar-link--admin-toolbar-tools-extra-linksentity] {
   display: none;
 }
 
