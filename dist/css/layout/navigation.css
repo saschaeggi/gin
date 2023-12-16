@@ -1107,17 +1107,13 @@ button.toolbar-link--sidebar-toggle {
 button.toolbar-link--sidebar-toggle::before {
   opacity: .75;
   position: relative;
-  -webkit-mask-size: var(--space-s);
-          mask-size: var(--space-s);
+  -webkit-mask-size: var(--space-s) var(--space-s);
+          mask-size: var(--space-s) var(--space-s);
   transition: transform var(--gin-transition);
 }
 
 button.toolbar-link--sidebar-toggle:hover::before, button.toolbar-link--sidebar-toggle:active::before, button.toolbar-link--sidebar-toggle:focus::before {
   opacity: 1;
-}
-
-button.toolbar-link--sidebar-toggle[aria-expanded=false]::before {
-  block-size: var(--space-s);
 }
 
 [dir="ltr"] button.toolbar-link--sidebar-toggle[aria-expanded=false]::before {
@@ -1128,10 +1124,6 @@ button.toolbar-link--sidebar-toggle[aria-expanded=false]::before {
 [dir="rtl"] button.toolbar-link--sidebar-toggle[aria-expanded=false]::before {
   right: 1px;
   transform: rotate(90deg);
-}
-
-button.toolbar-link--sidebar-toggle[aria-expanded=true]::before {
-  block-size: var(--space-s);
 }
 
 [dir="ltr"] button.toolbar-link--sidebar-toggle[aria-expanded=true]::before {

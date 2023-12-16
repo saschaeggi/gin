@@ -285,7 +285,7 @@ button.toolbar-link--sidebar-toggle {
   &::before {
     opacity: .75;
     position: relative;
-    mask-size: var(--space-s);
+    mask-size: var(--space-s) var(--space-s);
     transition: transform var(--gin-transition);
   }
 
@@ -298,13 +298,11 @@ button.toolbar-link--sidebar-toggle {
   &[aria-expanded=false]::before {
     left: 1px;
     transform: rotate(-90deg);
-    block-size: var(--space-s);
   }
 
   &[aria-expanded=true]::before {
     left: -1px;
     transform: rotate(90deg);
-    block-size: var(--space-s);
   }
 }
 
