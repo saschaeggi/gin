@@ -1107,8 +1107,8 @@ button.toolbar-link--sidebar-toggle {
 button.toolbar-link--sidebar-toggle::before {
   opacity: .75;
   position: relative;
-  -webkit-mask-size: var(--space-s);
-          mask-size: var(--space-s);
+  -webkit-mask-size: var(--space-s) var(--space-s);
+          mask-size: var(--space-s) var(--space-s);
   transition: transform var(--gin-transition);
 }
 
