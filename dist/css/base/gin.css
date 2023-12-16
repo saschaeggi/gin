@@ -1037,6 +1037,29 @@ details summary {
   padding: var(--gin-spacing-xs) var(--gin-spacing-m);
 }
 
+.views-tabs a.views-display-disabled-link {
+  -webkit-padding-start: var(--gin-spacing-l);
+          padding-inline-start: var(--gin-spacing-l);
+}
+
+.views-tabs a.views-display-disabled-link::before {
+  -webkit-mask-image: url("../../media/sprite.svg#hide-view");
+          mask-image: url("../../media/sprite.svg#hide-view");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center left;
+          mask-position: center left;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  width: var(--gin-spacing-l);
+  height: var(--gin-spacing-s);
+  -webkit-margin-start: calc(var(--gin-spacing-m) * -1);
+          margin-inline-start: calc(var(--gin-spacing-m) * -1);
+  background-color: currentColor;
+  display: inline-block;
+  content: "";
+}
+
 .views-tabs .add a,
 .views-tabs li a {
   font-size: var(--gin-font-size-xs);
