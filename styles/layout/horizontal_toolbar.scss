@@ -45,9 +45,13 @@
           > .toolbar-box > .toolbar-icon:not(.toolbar-handle) {
             padding-top: 20px;
             padding-bottom: 20px;
-            padding-left: 3em;
-            padding-right: 2.25em;
+            padding-left: 3.25em;
+            padding-right: 1.25em;
             white-space: nowrap;
+
+            &::before {
+              inset-inline-start: 1em;
+            }
           }
 
           > .toolbar-box > .toolbar-icon:not(.toolbar-handle)::before {
@@ -107,6 +111,7 @@
 .toolbar .toolbar-tray a.is-active {
   color: var(--gin-color-primary);
   font-weight: var(--gin-font-weight-bold);
+  background-color: transparent;
 
   &::before {
     background: var(--gin-color-primary);
@@ -252,9 +257,16 @@
       }
     }
 
+    // Hover
     .menu-item .menu-item:hover > .toolbar-icon {
       color: var(--gin-color-primary-hover);
       background: var(--gin-color-primary-light);
+    }
+
+    // Active
+    .menu-item> .toolbar-icon.is-active {
+      color: var(--gin-color-primary-active);
+      background: var(--gin-bg-item-hover);
     }
   }
 }

@@ -58,14 +58,19 @@
 
 [dir="ltr"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
 [dir="ltr"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:not(.toolbar-handle) {
-  padding-left: 3em;
-  padding-right: 2.25em;
+  padding-left: 3.25em;
+  padding-right: 1.25em;
 }
 
 [dir="rtl"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
 [dir="rtl"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:not(.toolbar-handle) {
-  padding-right: 3em;
-  padding-left: 2.25em;
+  padding-right: 3.25em;
+  padding-left: 1.25em;
+}
+
+.toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon::before,
+.toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:not(.toolbar-handle)::before {
+  inset-inline-start: 1em;
 }
 
 [dir="ltr"] .toolbar .toolbar-bar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:not(.toolbar-handle)::before {
@@ -135,6 +140,7 @@
 .toolbar .toolbar-tray a.is-active {
   color: var(--gin-color-primary);
   font-weight: var(--gin-font-weight-bold);
+  background-color: transparent;
 }
 
 .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a::before,
@@ -321,6 +327,11 @@
 .gin--horizontal-toolbar #toolbar-administration .toolbar-menu-administration .menu-item .menu-item:hover > .toolbar-icon {
   color: var(--gin-color-primary-hover);
   background: var(--gin-color-primary-light);
+}
+
+.gin--horizontal-toolbar #toolbar-administration .toolbar-menu-administration .menu-item > .toolbar-icon.is-active {
+  color: var(--gin-color-primary-active);
+  background: var(--gin-bg-item-hover);
 }
 
 #toolbar-item-administration-tray,

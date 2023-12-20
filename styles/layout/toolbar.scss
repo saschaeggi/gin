@@ -190,6 +190,7 @@
   color: var(--gin-color-primary);
   font-weight: var(--gin-font-weight-semibold);
   text-decoration: none;
+  background-color: transparent;
 
   @include mq($to: medium) {
     width: 100%;

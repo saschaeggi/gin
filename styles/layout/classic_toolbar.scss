@@ -94,6 +94,7 @@
 .toolbar .toolbar-tray a.is-active {
   color: var(--gin-color-primary);
   font-weight: var(--gin-font-weight-bold);
+  background-color: transparent;
 
   &::before {
     background: var(--gin-color-primary);

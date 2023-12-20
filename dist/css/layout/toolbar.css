@@ -222,6 +222,7 @@
   color: var(--gin-color-primary);
   font-weight: var(--gin-font-weight-semibold);
   text-decoration: none;
+  background-color: transparent;
 }
 
 @media (max-width: 60.99em) {
