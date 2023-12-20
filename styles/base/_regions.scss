@@ -118,6 +118,11 @@
   margin-bottom: 0;
   background-color: transparent;
   overflow: initial;
+
+  // Hide if empty.
+  &:not(:has(.layout-container *)) {
+    display: none;
+  }
 }
 
 .sticky-shadow {

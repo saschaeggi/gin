@@ -6,7 +6,6 @@
  */
 
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Render\Element;
 use Drupal\gin\GinContentFormHelper;
 use Drupal\gin\GinSettings;
 use Drupal\node\Entity\Node;
@@ -36,12 +35,6 @@ function gin_preprocess_page(&$variables) {
       $variables['entity_edit_url'] = $entity->toUrl('edit-form');
     }
   }
-
-  // Header empty check.
-  $page_title_block = $activeThemeName . '_page_title';
-  $header = $variables['page']['header'];
-  unset($header[$page_title_block]);
-  $variables['header_empty'] = Element::isEmpty($variables['page']['header']);
 }
 
 /**
