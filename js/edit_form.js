@@ -14,12 +14,17 @@
 
           // Attach form elements to main form
           const actionButtons = newParent.querySelectorAll('button, input, select, textarea');
+          const formLabels = newParent.querySelectorAll('label');
 
           if (actionButtons.length > 0) {
             actionButtons.forEach((el) => {
               el.setAttribute('form', form.getAttribute('id'));
               el.setAttribute('id', el.getAttribute('id') + '--gin-edit-form');
             });
+
+            formLabels.forEach((el => {
+              el.setAttribute('for', el.getAttribute('for') + '--gin-edit-form');
+            }));
           }
         }
       });
