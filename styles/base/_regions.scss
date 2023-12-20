@@ -118,6 +118,11 @@
   margin-bottom: 0;
   background-color: transparent;
   overflow: initial;
+
+  // Normalize whitespace if empty.
+  &:not(:has(.layout-container *)) {
+    margin-top: calc(var(--gin-spacing-m) * -1);
+  }
 }
 
 .sticky-shadow {

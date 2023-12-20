@@ -79,13 +79,11 @@
 
 <div class="sticky-shadow"></div>
 
-{% if page.header|without(page_title_block)|render|striptags|trim is not empty %}
 <div class="content-header clearfix">
   <div class="layout-container">
     {{ page.header|without(page_title_block) }}
   </div>
 </div>
-{% endif %}
 
 <div class="layout-container">
   {{ page.pre_content }}
