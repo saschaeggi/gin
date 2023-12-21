@@ -2688,6 +2688,10 @@ html.js .dropbutton-widget {
   border-radius: var(--gin-border-s) var(--gin-border-s) 0 0;
 }
 
+.dropbutton.dropbutton--gin .dropbutton-action > .button {
+  border: var(--dropbutton-border-size) solid transparent !important;
+}
+
 .dropbutton:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item, .dropbutton .dropbutton__items > .dropbutton__item, .dropbutton .dropbutton__items > .dropbutton__item ~ .dropbutton__item {
   background-color: var(--gin-bg-app);
   border: 0 none;
@@ -3418,6 +3422,93 @@ a.button.button--danger:active:before {
   color: var(--gin-color-text-light);
 }
 
+.field-option {
+  --thumb-size: 5rem;
+  align-items: baseline;
+  background-color: transparent;
+  border: 1px solid var(--gin-border-color);
+  border-radius: var(--gin-border-m);
+}
+
+[dir="ltr"] .field-option {
+  padding: 0 var(--gin-spacing-l) 0 0;
+}
+
+[dir="rtl"] .field-option {
+  padding: 0 0 0 var(--gin-spacing-l);
+}
+
+.field-option__thumb {
+  background-color: var(--gin-bg-layer2);
+  border-radius: 0;
+}
+
+[dir="ltr"] .field-option__thumb {
+  border-top-left-radius: var(--gin-border-s);
+  border-bottom-left-radius: var(--gin-border-s);
+}
+
+[dir="rtl"] .field-option__thumb {
+  border-top-right-radius: var(--gin-border-s);
+  border-bottom-right-radius: var(--gin-border-s);
+}
+
+.field-option__icon {
+  filter: brightness(0);
+}
+
+.gin--dark-mode .field-option__icon {
+  filter: brightness(0) invert(1);
+}
+
+.field-option__item {
+  padding-block: var(--gin-spacing-s);
+}
+
+.field-option__item .form-item__label {
+  margin-bottom: var(--gin-spacing-xxs);
+}
+
+.field-option .field-option__description {
+  font-size: var(--gin-font-size-xs);
+  color: var(--gin-color-text-light);
+}
+
+.field-option .field-option-radio {
+  visibility: hidden;
+}
+
+.field-option.selected, .field-option:has(.field-option-radio:checked) {
+  background-color: var(--gin-bg-layer2);
+}
+
+.field-option.selected .field-option__thumb, .field-option:has(.field-option-radio:checked) .field-option__thumb {
+  background-color: var(--gin-color-primary);
+}
+
+.field-option.selected .field-option__icon, .field-option:has(.field-option-radio:checked) .field-option__icon {
+  filter: brightness(0) invert(1);
+}
+
+.gin--dark-mode .field-option.selected .field-option__icon, .gin--dark-mode .field-option:has(.field-option-radio:checked) .field-option__icon {
+  filter: brightness(0);
+}
+
+.subfield-option {
+  border: 1px solid var(--gin-border-color);
+  border-radius: var(--gin-border-m);
+}
+
+.subfield-option .item-list {
+  font-size: var(--gin-font-size-xs);
+  color: var(--gin-color-text-light);
+  margin-top: var(--gin-spacing-xs);
+}
+
+.subfield-option.selected {
+  background-color: var(--gin-bg-layer2);
+}
+
 .card {
   padding: 0;
   background: transparent;
@@ -3624,7 +3715,9 @@ hr {
 .ck .ck.ck-button:active,
 .ck .ck.ck-button:focus,
 .ck .ck.ck-button:active:focus,
-.toolbar-box .toolbar-handle:focus {
+.toolbar-box .toolbar-handle:focus,
+.field-option:has(.field-option-radio:checked),
+.subfield-option:has(.field-option-radio:checked) {
   outline: none;
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }

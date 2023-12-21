@@ -111,6 +111,11 @@ html.js .dropbutton-widget {
     }
   }
 
+  // Drupal 10.2.x fix
+  &.dropbutton--gin .dropbutton-action > .button {
+    border: var(--dropbutton-border-size) solid transparent !important;
+  }
+
   // The ugly part: make it work for all different dropbutton versions out there
   &:not(.dropbutton--gin) > .dropbutton__item ~ .dropbutton__item,
   & &__items > .dropbutton__item,
