@@ -44,7 +44,7 @@ function gin_preprocess_breadcrumb(&$variables) {
           $variables['breadcrumb'][$key]['attributes']['data'] = 'data-gin-toolbar-escape-admin';
         }
       }
-      elseif ($item['url'] === $url) {
+      elseif (isset($item['url']) && $item['url'] === $url) {
         // Remove as we already have the back to site link set.
         unset($variables['breadcrumb'][$key]);
       }
