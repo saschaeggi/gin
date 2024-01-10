@@ -65,6 +65,7 @@ module.exports = {
     'components/upgrade_status': ['./styles/components/upgrade_status.scss'],
     'components/webform': ['./styles/components/webform.scss'],
     'components/workbench': ['./styles/components/workbench.scss'],
+    'components/workspaces': ['./styles/components/workspaces.scss'],
     // Layout
     'layout/navigation': ['./styles/layout/navigation.scss'],
     'layout/toolbar': ['./styles/layout/toolbar.scss'],

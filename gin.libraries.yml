@@ -356,3 +356,8 @@ legacy_css:
   css:
     theme:
       dist/css/theme/legacy.css: { minified: false }
+
+workspaces:
+  css:
+    component:
+      dist/css/components/workspaces.css: { minified: false }
