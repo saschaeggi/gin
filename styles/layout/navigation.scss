@@ -130,7 +130,7 @@ body.gin--navigation {
   .toolbar-menu__item--level-1 {
     > .toolbar-link {
       padding-block: calc(var(--gin-spacing-xs) + 1px);
-      margin-bottom: calc(var(--gin-spacing-xxs) / 2);
+      margin-bottom: var(--gin-spacing-xxxs);
 
       &:focus {
         outline: none;

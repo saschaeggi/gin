@@ -79,9 +79,15 @@
   }
 
   // Spacings
-  @each $name, $size in $ginSpacings {
-    --gin-spacing-#{$name}: #{rem($size)};
-  }
+  --gin-spacing-xxxs:#{rem(2px)};
+  --gin-spacing-xxs:#{rem(4px)};
+  --gin-spacing-xs: #{rem(8px)};
+  --gin-spacing-s: #{rem(12px)};
+  --gin-spacing-m: #{rem(16px)};
+  --gin-spacing-l: #{rem(24px)};
+  --gin-spacing-xl: #{rem(32px)};
+  --gin-spacing-xxl: #{rem(48px)};
+  --gin-spacing-xxxl: #{rem(64px)};
 
   // Icons
   --gin-icon-color: #414247;
