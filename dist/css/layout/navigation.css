@@ -950,6 +950,11 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
   margin-inline: 0;
 }
 
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link {
+  padding-block: calc(var(--gin-spacing-xs) + 1px);
+  margin-bottom: calc(var(--gin-spacing-xxs) / 2);
+}
+
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:focus {
   outline: none;
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
