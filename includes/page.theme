@@ -64,31 +64,11 @@ function gin_page_attachments_alter(&$page) {
   $gin_activated = _gin_is_active();
 
   if ($gin_activated) {
-    $drupal_version = (float) Drupal::VERSION;
-
-    // Get theme settings.
-    $settings = \Drupal::classResolver(GinSettings::class);
-    $toolbar = $settings->get('classic_toolbar');
-
     // Attach the init script.
     $page['#attached']['library'][] = 'gin/gin_init';
 
-    if ($toolbar === 'classic') {
-      // Attach the classic toolbar styles.
-      $page['#attached']['library'][] = 'gin/gin_classic_toolbar';
-    }
-    elseif ($toolbar === 'horizontal') {
-      // Attach the horizontal toolbar styles.
-      $page['#attached']['library'][] = 'gin/gin_horizontal_toolbar';
-    }
-    elseif ($toolbar === 'new') {
-      // Attach the new drupal navigation styles.
-      $page['#attached']['library'][] = 'gin/navigation';
-    }
-    else {
-      // Attach toolbar styles.
-      $page['#attached']['library'][] = 'gin/gin_toolbar';
-    }
+    // Attach breadcrumb styles.
+    $page['#attached']['library'][] = 'gin/breadcrumb';
 
     // Attach accent library.
     $page['#attached']['library'][] = 'gin/gin_accent';
@@ -97,6 +77,7 @@ function gin_page_attachments_alter(&$page) {
     $page['#attached']['library'][] = 'gin/sticky';
 
     // Attach Drupal.once for older Drupal versions.
+    $drupal_version = (float) Drupal::VERSION;
     if ($drupal_version < 9.3) {
       $page['#attached']['library'][] = 'gin/once';
     }
@@ -107,6 +88,8 @@ function gin_page_attachments_alter(&$page) {
     }
 
     // Expose settings to JS.
+    // Get theme settings.
+    $settings = \Drupal::classResolver(GinSettings::class);
     $page['#attached']['drupalSettings']['gin']['darkmode'] = $settings->get('enable_darkmode');
     $page['#attached']['drupalSettings']['gin']['darkmode_class'] = 'gin--dark-mode';
     $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $settings->get('preset_accent_color');

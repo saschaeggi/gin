@@ -212,7 +212,7 @@ button.link:active,
 
 @media (min-width: 64em) {
   .gin--edit-form .region-sticky {
-    top: calc(var(--gin-toolbar-y-offset) - var(--gin-spacing-xxxl));
+    top: var(--gin-toolbar-y-offset);
     padding-top: var(--gin-spacing-s);
   }
 }

@@ -67,6 +67,28 @@ function gin_preprocess_toolbar(&$variables) {
   /** @var \Drupal\gin\GinSettings $settings */
   $settings = \Drupal::classResolver(GinSettings::class);
   $variables['toolbar_variant'] = $settings->get('classic_toolbar');
+
+  switch ($variables['toolbar_variant']) {
+    case 'classic':
+      // Attach the classic toolbar styles.
+      $variables['#attached']['library'][] = 'gin/gin_classic_toolbar';
+      break;
+
+    case 'horizontal':
+      // Attach the horizontal toolbar styles.
+      $variables['#attached']['library'][] = 'gin/gin_horizontal_toolbar';
+      break;
+
+    case 'new':
+      // Attach the new drupal navigation styles.
+      $variables['#attached']['library'][] = 'gin/navigation';
+      break;
+
+    default:
+      // Attach toolbar styles.
+      $variables['#attached']['library'][] = 'gin/gin_toolbar';
+      break;
+  }
 }
 
 /**
