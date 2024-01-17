@@ -273,6 +273,13 @@ body.gin--classic-toolbar {
       }
     }
 
+    // Commerce Inbox
+    .toolbar-icon-commerce-inbox {
+      &:before {
+        mask-image: icon('commerce-inbox');
+      }
+    }
+
     // Back to site
     .toolbar-icon-escape-admin {
       display: none;

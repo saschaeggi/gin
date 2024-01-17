@@ -302,6 +302,11 @@ body.gin--classic-toolbar {
           mask-image: url("../../media/sprite.svg#bat-view");
 }
 
+.toolbar .toolbar-bar .toolbar-icon-commerce-inbox:before {
+  -webkit-mask-image: url("../../media/sprite.svg#commerce-inbox-view");
+          mask-image: url("../../media/sprite.svg#commerce-inbox-view");
+}
+
 .toolbar .toolbar-bar .toolbar-icon-escape-admin {
   display: none;
 }
