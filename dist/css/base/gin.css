@@ -3334,7 +3334,7 @@ a.button.button--danger:active:before {
 
 .messages.messages--info {
   color: var(--gin-color-info-light);
-  background-color: var(--gin-bg-info);
+  background: var(--gin-bg-info);
   border-color: var(--gin-bg-info);
 }
 
@@ -3358,7 +3358,7 @@ a.button.button--danger:active:before {
 
 .messages.messages--status {
   color: var(--gin-color-green-light);
-  background-color: var(--gin-bg-green);
+  background: var(--gin-bg-green);
 }
 
 .messages.messages--status .messages__header:before {
@@ -3377,7 +3377,7 @@ a.button.button--danger:active:before {
 
 .messages.messages--warning {
   color: var(--gin-color-warning-light);
-  background-color: var(--gin-bg-warning);
+  background: var(--gin-bg-warning);
 }
 
 .messages.messages--warning .messages__header:before {
@@ -3396,7 +3396,7 @@ a.button.button--danger:active:before {
 
 .messages--error {
   color: var(--gin-color-danger-light);
-  background-color: var(--gin-bg-danger);
+  background: var(--gin-bg-danger);
 }
 
 .messages--error .messages__header:before {
