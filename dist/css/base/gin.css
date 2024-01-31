@@ -1740,6 +1740,12 @@ table td.field-plugin-summary-cell {
   }
 }
 
+@supports (-webkit-mask-image: url()) and ((-webkit-mask-composite: source-over) or (mask-composite: source-over)) {
+  .tabledrag-handle::after {
+    background-color: var(--gin-color-text-light);
+  }
+}
+
 .tabledrag-handle:hover::after {
   transform: scale(1);
 }
