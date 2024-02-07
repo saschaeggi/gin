@@ -326,8 +326,10 @@ button.link:active,
   overflow: initial;
 }
 
-.content-header:not(:has(.layout-container *)) {
-  margin-top: calc(var(--gin-spacing-m) * -1);
+@media (min-width: 48em) {
+  .content-header:not(:has(.layout-container *)) {
+    margin-top: calc(var(--gin-spacing-m) * -1);
+  }
 }
 
 @media (min-width: 64em) {
