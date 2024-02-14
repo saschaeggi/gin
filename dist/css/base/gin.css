@@ -1020,11 +1020,11 @@ details summary {
 }
 
 [dir="ltr"] .views-display-top .dropbutton-wrapper {
-  right: 2var --gin-spacing-l;
+  right: var(--gin-spacing-l);
 }
 
 [dir="rtl"] .views-display-top .dropbutton-wrapper {
-  left: 2var --gin-spacing-l;
+  left: var(--gin-spacing-l);
 }
 
 #edit-displays .views-display-top {
