@@ -34,6 +34,7 @@
   --gin-bg-layer4: #e2e5ec;
   --gin-bg-secondary: var(--gin-bg-layer);
   --gin-bg-header: #eeeff3;
+  --gin-bg-unpublished: var(--gin-bg-danger-light);
   --gin-pattern: var(--gin-border-color);
   --gin-pattern-fallback: var(--gin-bg-layer2);
   --gin-pattern-square: .5rem;
