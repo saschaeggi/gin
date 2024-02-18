@@ -2846,6 +2846,7 @@ html.js .dropbutton-widget {
 
 .dropbutton__item:first-of-type ~ .dropbutton__item {
   max-width: unset;
+  border-color: var(--gin-color-primary);
 }
 
 .dropbutton__item:first-of-type ~ .dropbutton__item > *:hover {

@@ -201,6 +201,7 @@ html.js .dropbutton-widget {
 
   &__item:first-of-type ~ .dropbutton__item {
     max-width: unset;
+    border-color: var(--gin-color-primary);
 
     & > *:hover {
       background-color: var(--gin-bg-layer3);
