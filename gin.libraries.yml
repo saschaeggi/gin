@@ -43,6 +43,7 @@ navigation:
   - gin/node_preview
   - gin/responsive_preview
   - gin/contextual_links
+  - gin/breadcrumb
   - gin/settings_tray
   - gin/settings_tray_edit
   - core/drupalSettings
@@ -63,6 +64,7 @@ gin_toolbar:
     - gin/node_preview
     - gin/responsive_preview
     - gin/contextual_links
+    - gin/breadcrumb
     - gin/settings_tray
     - gin/settings_tray_edit
     - core/drupalSettings
@@ -83,6 +85,7 @@ gin_horizontal_toolbar:
     - gin/node_preview
     - gin/responsive_preview
     - gin/contextual_links
+    - gin/breadcrumb
     - gin/settings_tray
     - gin/settings_tray_edit
     - core/once
@@ -99,6 +102,7 @@ gin_classic_toolbar:
     - gin/coffee
     - gin/node_preview
     - gin/contextual_links
+    - gin/breadcrumb
     - gin/settings_tray_edit
     - core/once
 
