@@ -103,7 +103,8 @@ a.button.button--danger {
 }
 
 // Primary danger button
-.button--primary.button--danger {
+.button--primary.button--danger,
+a.button--primary.button--danger {
   color: var(--gin-bg-layer);
   background-color: var(--gin-color-danger);
 }
