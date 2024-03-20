@@ -1793,6 +1793,10 @@ table td.field-plugin-summary-cell {
   margin-top: var(--gin-spacing-s);
 }
 
+.table-file-multiple-widget .tabledrag-cell-content {
+  display: flex;
+}
+
 .form-element {
   color: var(--gin-color-text);
   line-height: var(--input-line-height);
