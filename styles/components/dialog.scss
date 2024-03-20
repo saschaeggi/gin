@@ -244,3 +244,8 @@ table.treetable {
   margin-bottom: var(--gin-spacing-l);
   margin-top: var(--gin-spacing-l);
 }
+
+// Removes spacing from views dialog
+.views-ui-dialog.views-ui-dialog > .ui-dialog-content {
+  padding: 0;
+}

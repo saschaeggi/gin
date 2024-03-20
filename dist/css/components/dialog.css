@@ -284,3 +284,7 @@ table.treetable tr.branch {
   margin-top: var(--gin-spacing-l);
 }
 
+.views-ui-dialog.views-ui-dialog > .ui-dialog-content {
+  padding: 0;
+}
+
