@@ -259,7 +259,8 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     if (
       in_array($route_name, $route_names, TRUE) ||
       ($form_state && ($form_state->getBuildInfo()['base_form_id'] ?? NULL) === 'node_form') ||
-      ($route_name === 'entity.group_content.create_form' && strpos($form_id, 'group_node') === FALSE)
+      ($route_name === 'entity.group_content.create_form' && substr($this->routeMatch->getParameter('plugin_id'), 0, 11) === "group_node:") ||
+      ($route_name === 'entity.group_relationship.create_form' && substr($this->routeMatch->getParameter('plugin_id'), 0, 11) === "group_node:")
     ) {
       $is_content_form = TRUE;
     }
