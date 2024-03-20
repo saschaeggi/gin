@@ -114,6 +114,7 @@ gin_accent:
     dist/js/accent.js: { minified: false }
   dependencies:
     - core/drupalSettings
+    - core/once
 
 gin_dialog:
   css:
@@ -161,6 +162,7 @@ sticky:
     dist/js/sticky.js: { minified: false }
   dependencies:
     - core/drupal.displace
+    - core/once
 
 sidebar:
   css:
