@@ -394,6 +394,10 @@
   }
 }
 
+#toolbar-item-administration-search::before {
+  mask-size: var(--gin-icon-size-toolbar-secondary) var(--gin-icon-size-toolbar-secondary) !important;
+}
+
 #admin-toolbar-search-input {
   line-height: 1; // FF fix
   padding-top: 10px;

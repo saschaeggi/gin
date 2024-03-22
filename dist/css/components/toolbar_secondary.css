@@ -463,6 +463,11 @@
   }
 }
 
+#toolbar-item-administration-search::before {
+  -webkit-mask-size: var(--gin-icon-size-toolbar-secondary) var(--gin-icon-size-toolbar-secondary) !important;
+          mask-size: var(--gin-icon-size-toolbar-secondary) var(--gin-icon-size-toolbar-secondary) !important;
+}
+
 #admin-toolbar-search-input {
   line-height: 1;
   padding-top: 10px;
