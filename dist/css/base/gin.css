@@ -2873,6 +2873,14 @@ html.js .dropbutton {
   box-sizing: border-box;
 }
 
+html.js .dropbutton-wrapper:not(.open) .dropbutton__items {
+  display: none;
+}
+
+html.js .dropbutton-wrapper .dropbutton__items {
+  display: block;
+}
+
 html.js .dropbutton-wrapper:not(.open) .dropbutton__item:first-of-type ~ .dropbutton__items {
   display: none;
 }

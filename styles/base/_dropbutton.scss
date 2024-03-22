@@ -220,6 +220,14 @@ html.js {
     box-sizing: border-box;
   }
 
+  .dropbutton-wrapper:not(.open) .dropbutton__items {
+    display: none;
+  }
+
+  .dropbutton-wrapper .dropbutton__items {
+    display: block;
+  }
+
   .dropbutton-wrapper:not(.open) .dropbutton__item:first-of-type ~ .dropbutton__items {
     display: none;
   }
