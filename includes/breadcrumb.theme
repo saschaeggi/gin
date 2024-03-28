@@ -15,11 +15,11 @@ use Drupal\node\NodeInterface;
 function gin_preprocess_breadcrumb(&$variables) {
   // Alter node breadcrumb.
   if ($variables['breadcrumb']) {
-    foreach ($variables['breadcrumb'] as $key => $item) {
-      $entity = _gin_get_route_entity();
-      $entity_id = $entity ? $entity->getEntityTypeId() : NULL;
-      $url = $entity ? $entity->toUrl() : NULL;
+    $entity = _gin_get_route_entity();
+    $entity_id = $entity ? $entity->getEntityTypeId() : NULL;
+    $url = $entity ? $entity->toUrl() : NULL;
 
+    foreach ($variables['breadcrumb'] as $key => $item) {
       // Back to site item.
       if ($key === 0) {
         $variables['breadcrumb'][$key]['text'] = t('Back to site');
