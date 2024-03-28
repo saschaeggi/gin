@@ -1,0 +1,11 @@
+#user-admin-permissions {
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+
+  > .table-filter {
+    padding-block: 0;
+    margin-bottom: var(--gin-spacing-l);
+  }
+}

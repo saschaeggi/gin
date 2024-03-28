@@ -480,7 +480,10 @@ body:not(.toolbar-tray-open) .layout-container {
 .module-filter-update-status-form .table-filter,
 #views-entity-list,
 .admin.my-workbench,
-.media-library-views-form {
+.media-library-views-form,
+#user-admin-permissions > .layer-wrapper,
+#user-admin-permissions > .table-filter,
+#user-admin-permissions > .table-filter + .gin-layer-wrapper {
   margin-top: 0;
   box-shadow: var(--gin-shadow-l1);
   border-radius: var(--gin-border-l);
@@ -496,7 +499,10 @@ body:not(.toolbar-tray-open) .layout-container {
 .gin--dark-mode .module-filter-update-status-form .table-filter,
 .gin--dark-mode #views-entity-list,
 .gin--dark-mode .admin.my-workbench,
-.gin--dark-mode .media-library-views-form {
+.gin--dark-mode .media-library-views-form,
+.gin--dark-mode #user-admin-permissions > .layer-wrapper,
+.gin--dark-mode #user-admin-permissions > .table-filter,
+.gin--dark-mode #user-admin-permissions > .table-filter + .gin-layer-wrapper {
   box-shadow: 0 6px 16px var(--gin-border-color-layer);
 }
 
@@ -510,7 +516,10 @@ body:not(.toolbar-tray-open) .layout-container {
 .gin--high-contrast-mode .module-filter-update-status-form .table-filter,
 .gin--high-contrast-mode #views-entity-list,
 .gin--high-contrast-mode .admin.my-workbench,
-.gin--high-contrast-mode .media-library-views-form {
+.gin--high-contrast-mode .media-library-views-form,
+.gin--high-contrast-mode #user-admin-permissions > .layer-wrapper,
+.gin--high-contrast-mode #user-admin-permissions > .table-filter,
+.gin--high-contrast-mode #user-admin-permissions > .table-filter + .gin-layer-wrapper {
   box-shadow: none;
 }
 
@@ -522,7 +531,10 @@ body:not(.toolbar-tray-open) .layout-container {
 #views-entity-list,
 .module-filter-update-status-form .table-filter,
 .admin.my-workbench,
-.media-library-views-form {
+.media-library-views-form,
+#user-admin-permissions > .layer-wrapper,
+#user-admin-permissions > .table-filter,
+#user-admin-permissions > .table-filter + .gin-layer-wrapper {
   width: 100%;
   padding: var(--gin-spacing-s);
   background: var(--gin-bg-layer);
@@ -539,7 +551,10 @@ body:not(.toolbar-tray-open) .layout-container {
   #views-entity-list,
   .module-filter-update-status-form .table-filter,
   .admin.my-workbench,
-  .media-library-views-form {
+  .media-library-views-form,
+  #user-admin-permissions > .layer-wrapper,
+  #user-admin-permissions > .table-filter,
+  #user-admin-permissions > .table-filter + .gin-layer-wrapper {
     padding: var(--gin-spacing-l);
   }
 }
@@ -561,7 +576,13 @@ body:not(.toolbar-tray-open) .layout-container {
 .admin.my-workbench > .form-wrapper:first-of-type .form-item,
 .admin.my-workbench .layout-region-node-main > .form-wrapper:first-of-type .form-item,
 .media-library-views-form > .form-wrapper:first-of-type .form-item,
-.media-library-views-form .layout-region-node-main > .form-wrapper:first-of-type .form-item {
+.media-library-views-form .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+#user-admin-permissions > .layer-wrapper > .form-wrapper:first-of-type .form-item,
+#user-admin-permissions > .layer-wrapper .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+#user-admin-permissions > .table-filter > .form-wrapper:first-of-type .form-item,
+#user-admin-permissions > .table-filter .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+#user-admin-permissions > .table-filter + .gin-layer-wrapper > .form-wrapper:first-of-type .form-item,
+#user-admin-permissions > .table-filter + .gin-layer-wrapper .layout-region-node-main > .form-wrapper:first-of-type .form-item {
   margin-top: 0;
 }
 
@@ -4505,5 +4526,17 @@ blockquote::before {
   .image-preview img {
     background: none;
   }
+}
+
+#user-admin-permissions {
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+#user-admin-permissions > .table-filter {
+  padding-block: 0;
+  margin-bottom: var(--gin-spacing-l);
 }
 

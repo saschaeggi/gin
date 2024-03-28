@@ -20,7 +20,10 @@
 .module-filter-update-status-form .table-filter,
 #views-entity-list,
 .admin.my-workbench,
-.media-library-views-form
+.media-library-views-form,
+#user-admin-permissions > .layer-wrapper,
+#user-admin-permissions > .table-filter,
+#user-admin-permissions > .table-filter + .gin-layer-wrapper
 {
   margin-top: 0;
   box-shadow: var(--gin-shadow-l1);
@@ -43,7 +46,10 @@
 #views-entity-list,
 .module-filter-update-status-form .table-filter,
 .admin.my-workbench,
-.media-library-views-form
+.media-library-views-form,
+#user-admin-permissions > .layer-wrapper,
+#user-admin-permissions > .table-filter,
+#user-admin-permissions > .table-filter + .gin-layer-wrapper
 {
   width: 100%;
   padding: var(--gin-spacing-s);
