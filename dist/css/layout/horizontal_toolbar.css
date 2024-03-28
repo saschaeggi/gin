@@ -301,14 +301,6 @@
   [dir="rtl"] .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help:before {
     right: 14px;
   }
-
-  [dir="ltr"] .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
-    margin-right: var(--gin-spacing-xs);
-  }
-
-  [dir="rtl"] .gin--horizontal-toolbar #toolbar-administration .toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
-    margin-left: var(--gin-spacing-xs);
-  }
 }
 
 @media (min-width: 61em) {
