@@ -1042,7 +1042,8 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--manage-display,
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--manage-permissions,
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--delete,
-.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link[class*=toolbar-link--admin-toolbar-tools-extra-linksentity] {
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link[class*=toolbar-link--admin-toolbar-tools-extra-linksentity],
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--announcements-feed-announcement {
   display: none;
 }
 

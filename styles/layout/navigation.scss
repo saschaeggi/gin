@@ -202,7 +202,9 @@ body.gin--navigation {
   .toolbar-menu__item--level-1 > .toolbar-link--manage-display,
   .toolbar-menu__item--level-1 > .toolbar-link--manage-permissions,
   .toolbar-menu__item--level-1 > .toolbar-link--delete,
-  .toolbar-menu__item--level-1 > .toolbar-link[class*="toolbar-link--admin-toolbar-tools-extra-linksentity"] {
+  .toolbar-menu__item--level-1 > .toolbar-link[class*="toolbar-link--admin-toolbar-tools-extra-linksentity"],
+  .toolbar-menu__item--level-1 > .toolbar-link--announcements-feed-announcement
+  {
     display: none;
   }
 
