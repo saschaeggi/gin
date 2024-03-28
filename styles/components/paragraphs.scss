@@ -114,7 +114,9 @@
 }
 
 .paragraphs-subform {
-  .form-item {
+  .form-item,
+  .field--type-text-with-summary .form-item,
+  .field--widget-text-textarea .form-item {
     margin-bottom: var(--gin-spacing-l);
   }
 }

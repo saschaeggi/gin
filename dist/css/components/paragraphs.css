@@ -137,7 +137,9 @@
   display: none;
 }
 
-.paragraphs-subform .form-item {
+.paragraphs-subform .form-item,
+.paragraphs-subform .field--type-text-with-summary .form-item,
+.paragraphs-subform .field--widget-text-textarea .form-item {
   margin-bottom: var(--gin-spacing-l);
 }
 
