@@ -26,6 +26,7 @@ $sprites: (
     'question': "../../media/sprite.svg#question-view",
     'status': "../../media/sprite.svg#status-view",
     'warning': "../../media/sprite.svg#warning-view",
+    'announcement': "../../media/sprite.svg#announcement-view",
     'block': "../../media/sprite.svg#block-view",
     'blocks': "../../media/sprite.svg#blocks-view",
     'bookmarks': "../../media/sprite.svg#bookmarks-view",
@@ -184,6 +185,10 @@ $sizes: (
         'height': 24px
     ),
     'warning': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'announcement': (
         'width': 24px,
         'height': 24px
     ),

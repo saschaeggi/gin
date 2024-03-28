@@ -428,3 +428,16 @@
     font-size: var(--gin-font-size-xs);
   }
 }
+
+.announce-toolbar-tab {
+  > .ajax-progress {
+    position: absolute;
+    top: 12px;
+    z-index: 999;
+    background-color: var(--gin-bg-layer);
+
+    .ajax-progress__throbber {
+      border-width: 2px;
+    }
+  }
+}

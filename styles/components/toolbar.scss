@@ -216,6 +216,14 @@ body.gin--classic-toolbar {
       }
     }
 
+    // Admin tray: Announcements
+    .toolbar-icon-announcements-feed-announcement,
+    .toolbar-icon-announce {
+      &:before {
+        mask-image: icon('announcement');
+      }
+    }
+
     // Groups
     .toolbar-icon-system-admin-group {
       &:before {
@@ -684,6 +692,11 @@ body.gin--classic-toolbar {
   .toolbar-logo {
     display: none;
   }
+}
+
+// Hide announcements tab
+.menu-item__announcements_feed-announcement {
+  display: none !important;
 }
 
 .responsive-preview-icon {
