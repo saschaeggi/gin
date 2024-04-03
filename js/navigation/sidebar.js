@@ -4,6 +4,10 @@
    */
   let sidebar;
 
+  // Gin Custom start ---------------------
+  const breakpointLarge = 1280;
+  // Gin Custom end ------------------------
+
   /**
    * Collapsed toolbar keydown handling vars.
    */
@@ -103,6 +107,12 @@
     else {
       flyoutTooltipInit();
     }
+
+    // Gin Custom start ---------------------
+    if (toState === true && window.innerWidth < breakpointLarge) {
+      Drupal.ginSidebar.collapseSidebar();
+    }
+    // Gin Custom end ------------------------
   }
 
   /**
@@ -647,5 +657,10 @@
     attach(context) {
       once('navigation', '.admin-toolbar', context).forEach(init);
     },
+    // Gin Custom start ---------------------
+    collapseSidebar() {
+      expandCollapseSidebar(false);
+    },
+    // Gin Custom end ------------------------
   };
 })(Drupal, once, FloatingUIDOM);

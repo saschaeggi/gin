@@ -1,5 +1,5 @@
-((Drupal, once) => {
-  const storageDesktop = "Drupal.gin.sidebarExpanded.desktop";
+((Drupal, drupalSettings, once) => {
+  const toolbarVariant = drupalSettings.gin.toolbar_variant, storageDesktop = "Drupal.gin.sidebarExpanded.desktop";
   Drupal.behaviors.ginSidebar = {
     attach: function(context) {
       Drupal.ginSidebar.init(context);
@@ -25,7 +25,8 @@
       const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, showLabel = Drupal.t("Hide sidebar panel"), sidebarTrigger = document.querySelector(".meta-sidebar__trigger");
       sidebarTrigger.setAttribute("title", showLabel), sidebarTrigger.querySelector("span").innerHTML = showLabel, 
       sidebarTrigger.setAttribute("aria-expanded", "true"), sidebarTrigger.classList.add("is-active"), 
-      document.body.setAttribute("data-meta-sidebar", "open"), localStorage.setItem(chooseStorage, "true");
+      document.body.setAttribute("data-meta-sidebar", "open"), localStorage.setItem(chooseStorage, "true"), 
+      window.innerWidth < 1280 && ("vertical" === toolbarVariant ? Drupal.ginToolbar.collapseToolbar() : "new" === toolbarVariant && Drupal.behaviors.navigation.collapseSidebar());
     },
     collapseSidebar: () => {
       const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, hideLabel = Drupal.t("Show sidebar panel"), sidebarTrigger = document.querySelector(".meta-sidebar__trigger");
@@ -41,4 +42,4 @@
       elementToRemove && elementToRemove.parentNode.removeChild(elementToRemove);
     }
   };
-})(Drupal, once);
+})(Drupal, drupalSettings, once);

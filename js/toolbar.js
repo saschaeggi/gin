@@ -1,6 +1,9 @@
 /* eslint-disable func-names, no-mutable-exports, comma-dangle, strict */
 
 ((Drupal, drupalSettings, once) => {
+  const breakpointLarge = 1280;
+  const toolbarVariant = drupalSettings.gin.toolbar_variant;
+
   Drupal.behaviors.ginToolbar = {
     attach: (context) => {
       Drupal.ginToolbar.init(context);
@@ -32,7 +35,7 @@
         const toolbarTrigger = document.querySelector('.toolbar-menu__trigger');
 
         // Check for Drupal trayVerticalLocked and remove it.
-        if (drupalSettings.gin.toolbar_variant != 'classic' && localStorage.getItem('Drupal.toolbar.trayVerticalLocked')) {
+        if (toolbarVariant != 'classic' && localStorage.getItem('Drupal.toolbar.trayVerticalLocked')) {
           localStorage.removeItem('Drupal.toolbar.trayVerticalLocked');
         }
 
@@ -66,7 +69,6 @@
 
     initDisplace: () => {
       const toolbar = document.querySelector('#gin-toolbar-bar .toolbar-menu-administration');
-      const toolbarVariant = drupalSettings.gin.toolbar_variant;
 
       if (toolbar) {
         if (toolbarVariant === 'vertical') {
@@ -77,40 +79,67 @@
       }
     },
 
-    toggleToolbar: () => {
+    toggleToolbar: function () {
       const toolbarTrigger = document.querySelector('.toolbar-menu__trigger');
 
       // Toggle active class.
       toolbarTrigger.classList.toggle('is-active');
 
-      // Set active state.
-      let active = 'true';
       if (toolbarTrigger.classList.contains('is-active')) {
-        document.body.setAttribute('data-toolbar-menu', 'open');
+        this.showToolbar();
       }
       else {
-        document.body.setAttribute('data-toolbar-menu', '');
-
-        active = 'false';
-        const elementToRemove = document.querySelector('.gin-toolbar-inline-styles');
-        if (elementToRemove) {
-          elementToRemove.parentNode.removeChild(elementToRemove);
-        }
+        this.collapseToolbar();
       }
+    },
+
+    showToolbar: function () {
+      const active = 'true';
+
+      document.body.setAttribute('data-toolbar-menu', 'open');
 
       // Write state to localStorage.
       localStorage.setItem('Drupal.gin.toolbarExpanded', active);
 
+      this.dispatchToolbarEvent(active);
+      this.displaceToolbar();
+
+      // Check which toolbar is active.
+      if (window.innerWidth < breakpointLarge && toolbarVariant === 'vertical') {
+        Drupal.ginSidebar.collapseSidebar();
+      }
+    },
+
+    collapseToolbar: function () {
+      const toolbarTrigger = document.querySelector('.toolbar-menu__trigger');
+      const elementToRemove = document.querySelector('.gin-toolbar-inline-styles');
+      const active = 'false';
+
+      toolbarTrigger.classList.remove('is-active');
+      document.body.setAttribute('data-toolbar-menu', '');
+
+      if (elementToRemove) {
+        elementToRemove.parentNode.removeChild(elementToRemove);
+      }
+
+      // Write state to localStorage.
+      localStorage.setItem('Drupal.gin.toolbarExpanded', 'false');
+
+      this.dispatchToolbarEvent(active);
+      this.displaceToolbar();
+    },
+
+    dispatchToolbarEvent: (active) => {
       // Dispatch event.
       const event = new CustomEvent('toolbar-toggle', { detail: active === 'true'})
       document.dispatchEvent(event);
+    },
 
-      // Displace.
+    displaceToolbar: () => {
       ontransitionend = () => {
         Drupal.displace(true);
       };
     },
-
   };
 
 })(Drupal, drupalSettings, once);
