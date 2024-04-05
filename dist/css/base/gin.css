@@ -1130,6 +1130,7 @@ details summary {
 
 .views-tabs .add.open a {
   background: var(--gin-bg-layer2);
+  color: var(--gin-color-primary);
 }
 
 .views-tabs .add.open a:hover, .views-tabs .add.open a:focus, .views-tabs .add.open a:active {

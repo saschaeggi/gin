@@ -262,6 +262,7 @@
     &.open {
       a {
         background: var(--gin-bg-layer2);
+        color: var(--gin-color-primary);
 
         &:hover, &:focus, &:active {
           color: var(--gin-color-primary);
