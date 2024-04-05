@@ -2870,6 +2870,10 @@ html.js .dropbutton-widget {
   border-radius: var(--gin-border-s);
 }
 
+.dropbutton:not(.dropbutton--gin) > .dropbutton__item.secondary-action {
+  box-shadow: var(--gin-shadow-l2);
+}
+
 .dropbutton:not(.dropbutton--gin) > .dropbutton__item:not(:first-of-type) > a,
 .dropbutton:not(.dropbutton--gin) > .dropbutton__item:not(:first-of-type) > input,
 .dropbutton:not(.dropbutton--gin) > .dropbutton__item:not(:first-of-type) > .button, .dropbutton .dropbutton__items > .dropbutton__item > a,

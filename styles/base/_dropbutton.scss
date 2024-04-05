@@ -188,6 +188,11 @@ html.js .dropbutton-widget {
     border-radius: var(--gin-border-s);
   }
 
+  // Shadow for pseudo dropdown on views page
+  &:not(.dropbutton--gin) > .dropbutton__item.secondary-action {
+    box-shadow: var(--gin-shadow-l2);
+  }
+
   &:not(.dropbutton--gin) > .dropbutton__item:not(:first-of-type),
   & &__items > .dropbutton__item,
   & > &__items > .dropbutton__item ~ .dropbutton__item {
