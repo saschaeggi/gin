@@ -17,13 +17,10 @@
 .views-edit-view,
 .views-preview-wrapper,
 .modules-tabs,
-.module-filter-update-status-form .table-filter,
 #views-entity-list,
 .admin.my-workbench,
 .media-library-views-form,
-#user-admin-permissions > .layer-wrapper,
-#user-admin-permissions > .table-filter,
-#user-admin-permissions > .table-filter + .gin-layer-wrapper
+.user-admin-permissions
 {
   margin-top: 0;
   box-shadow: var(--gin-shadow-l1);
@@ -44,12 +41,9 @@
 .views-edit-view,
 .views-preview-wrapper,
 #views-entity-list,
-.module-filter-update-status-form .table-filter,
 .admin.my-workbench,
 .media-library-views-form,
-#user-admin-permissions > .layer-wrapper,
-#user-admin-permissions > .table-filter,
-#user-admin-permissions > .table-filter + .gin-layer-wrapper
+.user-admin-permissions
 {
   width: 100%;
   padding: var(--gin-spacing-s);
@@ -76,4 +70,25 @@
 // Unplublished node
 .node--unpublished {
   background-color: var(--gin-bg-unpublished);
+}
+
+// Has table filter
+.block-system-main-block > form:has(.table-filter) {
+  .table-filter {
+    padding: 0;
+    margin-bottom: var(--gin-spacing-l);
+    background: none;
+    border: none;
+    box-shadow: none;
+
+    .form-type--search {
+      margin-block: 0;
+    }
+
+    .table-filter-text {
+      width: 100%;
+      padding: var(--gin-spacing-m);
+      margin-top: 0;
+    }
+  }
 }

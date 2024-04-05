@@ -141,23 +141,6 @@ tr.color-error,
   text-align: right;
 }
 
-// Install & Uninstall search.
-.system-modules,
-.system-modules-uninstall {
-  .table-filter {
-    .form-type--search {
-      margin-top: 0;
-    }
-  }
-
-  .table-filter-text {
-    width: 100%;
-    padding: var(--gin-spacing-m);
-  }
-}
-
-#update-status {
-  > p {
-    margin-bottom: var(--gin-spacing-xl);
-  }
+#update-status > p {
+  margin-bottom: var(--gin-spacing-xl);
 }

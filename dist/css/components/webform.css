@@ -2,6 +2,10 @@
   margin-bottom: var(--gin-spacing-xl);
 }
 
+.webform-filter-form > .container-inline {
+  margin-block: 0;
+}
+
 .webform-filter-form .details-wrapper {
   margin-top: 0;
   margin-bottom: var(--gin-spacing-xs);

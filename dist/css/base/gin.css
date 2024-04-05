@@ -479,13 +479,10 @@ body:not(.toolbar-tray-open) .layout-container {
 .views-edit-view,
 .views-preview-wrapper,
 .modules-tabs,
-.module-filter-update-status-form .table-filter,
 #views-entity-list,
 .admin.my-workbench,
 .media-library-views-form,
-#user-admin-permissions > .layer-wrapper,
-#user-admin-permissions > .table-filter,
-#user-admin-permissions > .table-filter + .gin-layer-wrapper {
+.user-admin-permissions {
   margin-top: 0;
   box-shadow: var(--gin-shadow-l1);
   border-radius: var(--gin-border-l);
@@ -498,13 +495,10 @@ body:not(.toolbar-tray-open) .layout-container {
 .gin--dark-mode .views-edit-view,
 .gin--dark-mode .views-preview-wrapper,
 .gin--dark-mode .modules-tabs,
-.gin--dark-mode .module-filter-update-status-form .table-filter,
 .gin--dark-mode #views-entity-list,
 .gin--dark-mode .admin.my-workbench,
 .gin--dark-mode .media-library-views-form,
-.gin--dark-mode #user-admin-permissions > .layer-wrapper,
-.gin--dark-mode #user-admin-permissions > .table-filter,
-.gin--dark-mode #user-admin-permissions > .table-filter + .gin-layer-wrapper {
+.gin--dark-mode .user-admin-permissions {
   box-shadow: 0 6px 16px var(--gin-border-color-layer);
 }
 
@@ -515,13 +509,10 @@ body:not(.toolbar-tray-open) .layout-container {
 .gin--high-contrast-mode .views-edit-view,
 .gin--high-contrast-mode .views-preview-wrapper,
 .gin--high-contrast-mode .modules-tabs,
-.gin--high-contrast-mode .module-filter-update-status-form .table-filter,
 .gin--high-contrast-mode #views-entity-list,
 .gin--high-contrast-mode .admin.my-workbench,
 .gin--high-contrast-mode .media-library-views-form,
-.gin--high-contrast-mode #user-admin-permissions > .layer-wrapper,
-.gin--high-contrast-mode #user-admin-permissions > .table-filter,
-.gin--high-contrast-mode #user-admin-permissions > .table-filter + .gin-layer-wrapper {
+.gin--high-contrast-mode .user-admin-permissions {
   box-shadow: none;
 }
 
@@ -531,12 +522,9 @@ body:not(.toolbar-tray-open) .layout-container {
 .views-edit-view,
 .views-preview-wrapper,
 #views-entity-list,
-.module-filter-update-status-form .table-filter,
 .admin.my-workbench,
 .media-library-views-form,
-#user-admin-permissions > .layer-wrapper,
-#user-admin-permissions > .table-filter,
-#user-admin-permissions > .table-filter + .gin-layer-wrapper {
+.user-admin-permissions {
   width: 100%;
   padding: var(--gin-spacing-s);
   background: var(--gin-bg-layer);
@@ -551,12 +539,9 @@ body:not(.toolbar-tray-open) .layout-container {
   .views-edit-view,
   .views-preview-wrapper,
   #views-entity-list,
-  .module-filter-update-status-form .table-filter,
   .admin.my-workbench,
   .media-library-views-form,
-  #user-admin-permissions > .layer-wrapper,
-  #user-admin-permissions > .table-filter,
-  #user-admin-permissions > .table-filter + .gin-layer-wrapper {
+  .user-admin-permissions {
     padding: var(--gin-spacing-l);
   }
 }
@@ -573,18 +558,12 @@ body:not(.toolbar-tray-open) .layout-container {
 .views-preview-wrapper .layout-region-node-main > .form-wrapper:first-of-type .form-item,
 #views-entity-list > .form-wrapper:first-of-type .form-item,
 #views-entity-list .layout-region-node-main > .form-wrapper:first-of-type .form-item,
-.module-filter-update-status-form .table-filter > .form-wrapper:first-of-type .form-item,
-.module-filter-update-status-form .table-filter .layout-region-node-main > .form-wrapper:first-of-type .form-item,
 .admin.my-workbench > .form-wrapper:first-of-type .form-item,
 .admin.my-workbench .layout-region-node-main > .form-wrapper:first-of-type .form-item,
 .media-library-views-form > .form-wrapper:first-of-type .form-item,
 .media-library-views-form .layout-region-node-main > .form-wrapper:first-of-type .form-item,
-#user-admin-permissions > .layer-wrapper > .form-wrapper:first-of-type .form-item,
-#user-admin-permissions > .layer-wrapper .layout-region-node-main > .form-wrapper:first-of-type .form-item,
-#user-admin-permissions > .table-filter > .form-wrapper:first-of-type .form-item,
-#user-admin-permissions > .table-filter .layout-region-node-main > .form-wrapper:first-of-type .form-item,
-#user-admin-permissions > .table-filter + .gin-layer-wrapper > .form-wrapper:first-of-type .form-item,
-#user-admin-permissions > .table-filter + .gin-layer-wrapper .layout-region-node-main > .form-wrapper:first-of-type .form-item {
+.user-admin-permissions > .form-wrapper:first-of-type .form-item,
+.user-admin-permissions .layout-region-node-main > .form-wrapper:first-of-type .form-item {
   margin-top: 0;
 }
 
@@ -595,6 +574,24 @@ body:not(.toolbar-tray-open) .layout-container {
 
 .node--unpublished {
   background-color: var(--gin-bg-unpublished);
+}
+
+.block-system-main-block > form:has(.table-filter) .table-filter {
+  padding: 0;
+  margin-bottom: var(--gin-spacing-l);
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.block-system-main-block > form:has(.table-filter) .table-filter .form-type--search {
+  margin-block: 0;
+}
+
+.block-system-main-block > form:has(.table-filter) .table-filter .table-filter-text {
+  width: 100%;
+  padding: var(--gin-spacing-m);
+  margin-top: 0;
 }
 
 .block-page-title-block:last-child {
@@ -3190,6 +3187,11 @@ a.button.button--danger:active:before {
   margin: 0;
 }
 
+#edit-help {
+  font-size: var(--gin-font-size-s);
+  color: var(--gin-color-text-light);
+}
+
 .system-status-report__requirements-group h3 {
   margin-top: 0;
 }
@@ -4102,17 +4104,6 @@ tr.color-error:focus,
   text-align: left;
 }
 
-.system-modules .table-filter .form-type--search,
-.system-modules-uninstall .table-filter .form-type--search {
-  margin-top: 0;
-}
-
-.system-modules .table-filter-text,
-.system-modules-uninstall .table-filter-text {
-  width: 100%;
-  padding: var(--gin-spacing-m);
-}
-
 #update-status > p {
   margin-bottom: var(--gin-spacing-xl);
 }
@@ -4536,15 +4527,7 @@ blockquote::before {
   }
 }
 
-#user-admin-permissions {
-  padding: 0;
-  background: none;
-  border: none;
-  box-shadow: none;
-}
-
-#user-admin-permissions > .table-filter {
-  padding-block: 0;
-  margin-bottom: var(--gin-spacing-l);
+.taxonomy-overview-terms:not(:has(.action-link)) #edit-help {
+  margin-bottom: var(--gin-spacing-m);
 }
 
