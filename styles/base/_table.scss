@@ -1,9 +1,7 @@
 .gin-table-scroll-wrapper {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 240px;
   margin-top: calc(var(--gin-spacing-xs) * -1);
-  margin-bottom: -240px;
 }
 
 table.sticky-header {
@@ -12,6 +10,7 @@ table.sticky-header {
   position: fixed;
   left: auto !important;
   top: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset)) !important;
+  max-width: fit-content;
   background: transparent;
 
   &::before,
@@ -32,21 +31,27 @@ table.sticky-header {
     right: calc(var(--gin-spacing-l) * -1);
     background: linear-gradient(90deg, var(--gin-bg-layer), rgba(255, 255, 255, 0));
   }
+}
 
-  .--is-sticky & {
-    box-shadow: 0 10px 20px -16px rgba(0, 0, 0, .4);
+table.position-sticky {
+  thead {
+    position: static;
+  }
 
-    @include mq(medium) {
-      visibility: visible !important;
-    }
+  tr:has(.sticky-header__content) {
+    border-bottom: none;
+  }
 
-    thead tr {
-      border-bottom: none;
-    }
+  th:has(.sticky-header__content) {
+    padding: 0;
+  }
 
-    th {
-      background: var(--gin-bg-layer);
-    }
+  .sticky-header__content {
+    will-change: transform;
+    padding: var(--gin-spacing-m);
+    background: var(--gin-bg-layer);
+    border-bottom: 2px solid var(--gin-border-color-table-header);
+    box-sizing: border-box;
   }
 }
 
