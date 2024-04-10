@@ -110,7 +110,7 @@
 
     // Gin Custom start ---------------------
     if (toState === true && window.innerWidth < breakpointLarge) {
-      Drupal.ginSidebar.collapseSidebar();
+      Drupal.ginSidebar?.collapseSidebar();
     }
     // Gin Custom end ------------------------
   }
