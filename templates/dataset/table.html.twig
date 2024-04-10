@@ -80,7 +80,7 @@
                 %}
               {% endif %}
               <{{ cell.tag }}{{ cell.attributes.addClass(cell_classes) }}>
-                <div class="sticky-header__content">{{- cell.content -}}<div>
+                {{- cell.content -}}
               </{{ cell.tag }}>
             {% endfor %}
           </tr>

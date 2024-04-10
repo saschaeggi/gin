@@ -1387,22 +1387,14 @@ table.sticky-header::before, table.sticky-header::after {
 
 table.position-sticky thead {
   position: static;
-}
-
-table.position-sticky tr:has(.sticky-header__content) {
-  border-bottom: none;
-}
-
-table.position-sticky th:has(.sticky-header__content) {
-  padding: 0;
-}
-
-table.position-sticky .sticky-header__content {
   will-change: transform;
-  padding: var(--gin-spacing-m);
-  background: var(--gin-bg-layer);
-  border-bottom: 2px solid var(--gin-border-color-table-header);
-  box-sizing: border-box;
+  transform: translate3d(0, 0, 0);
+  border-radius: 0;
+  box-shadow: 0px 2px 0 var(--gin-border-color-table-header);
+}
+
+table.position-sticky thead tr {
+  border-bottom: none;
 }
 
 table thead {

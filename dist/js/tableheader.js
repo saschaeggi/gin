@@ -19,24 +19,18 @@
       }));
     },
     prepareTableHeader: function(el) {
-      const thHeight = `${el.querySelector("thead th").offsetHeight}px`;
-      el.querySelectorAll("thead .sticky-header__content").forEach((th => {
-        th.parentNode.style.height = thHeight, th.style.height = thHeight;
-      })), window.addEventListener("DOMContentLoaded", (() => {
+      document.body.style.overflowX = "hidden", window.addEventListener("DOMContentLoaded", (() => {
         Drupal.displace(!0), this.setScrollBehavior(el);
       }));
     },
     setScrollBehavior: function(el) {
-      el.querySelectorAll("thead .sticky-header__content").forEach((th => {
-        let value = 0;
-        -1 * th.parentNode.getBoundingClientRect().top >= -60 && (value = -1 * th.parentNode.getBoundingClientRect().top + Drupal.displace.offsets.top - 3), 
-        th.style.transform = `translate3d(0, ${value}px, 0)`;
-      }));
+      let value = 0;
+      const thead = el.querySelector("thead");
+      -1 * thead.parentNode.getBoundingClientRect().top >= -60 && (value = Math.round(-1 * thead.parentNode.getBoundingClientRect().top + Drupal.displace.offsets.top - 3)), 
+      thead.style.transform = `translate3d(0, ${value}px, 0)`;
     },
     resetScrollBehavior: function(el) {
-      el.querySelectorAll("thead .sticky-header__content").forEach((th => {
-        th.style.transform = "";
-      }));
+      el.querySelector("thead").style.transform = "";
     }
   };
 })(Drupal, once);
