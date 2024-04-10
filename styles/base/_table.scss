@@ -1,5 +1,6 @@
 .gin-table-scroll-wrapper {
   overflow: auto;
+  overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
   margin-top: calc(var(--gin-spacing-xs) * -1);
 }
@@ -33,17 +34,35 @@ table.sticky-header {
   }
 }
 
+.gin-horizontal-scroll-shadow {
+  background-image:
+    linear-gradient(to right, var(--gin-bg-layer), var(--gin-bg-layer)),
+    linear-gradient(to right, var(--gin-bg-layer), var(--gin-bg-layer)),
+    linear-gradient(to right, rgba(0, 0, 0, .125), rgba(255, 255, 255, 0)),
+    linear-gradient(to left, rgba(0, 0, 0, .125), rgba(255, 255, 255, 0));
+  background-position: left center, right center, left center, right center;
+  background-repeat: no-repeat;
+  background-color: var(--gin-bg-layer);
+  background-size: 24px 100%, 24px 100%, 12px 100%, 12px 100%;
+  background-attachment: local, local, scroll, scroll;
+}
+
+.gin--sticky-table-header {
+  position: sticky;
+  z-index: 2;
+  top: var(--drupal-displace-offset-top);
+  margin-top: -8px;
+  overflow: hidden;
+
+  tr {
+    display: block;
+    width: max-content;
+  }
+}
+
 table.position-sticky {
   thead {
     position: static;
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
-    border-radius: 0;
-    box-shadow: 0px 2px 0 var(--gin-border-color-table-header);
-
-    tr {
-      border-bottom: none;
-    }
   }
 }
 

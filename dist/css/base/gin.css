@@ -954,13 +954,6 @@ details summary {
   padding: var(--gin-spacing-l);
 }
 
-@media (max-width: 63.99em) {
-  .gin-layer-wrapper {
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
 .gin-layer-wrapper + .gin-layer-wrapper {
   margin-top: var(--gin-spacing-l);
 }
@@ -1335,6 +1328,7 @@ a.views-field-excluded {
 
 .gin-table-scroll-wrapper {
   overflow: auto;
+  overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
   margin-top: calc(var(--gin-spacing-xs) * -1);
 }
@@ -1385,16 +1379,38 @@ table.sticky-header::before, table.sticky-header::after {
   background: linear-gradient(-90deg, var(--gin-bg-layer), rgba(255, 255, 255, 0));
 }
 
-table.position-sticky thead {
-  position: static;
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-  border-radius: 0;
-  box-shadow: 0px 2px 0 var(--gin-border-color-table-header);
+.gin-horizontal-scroll-shadow {
+  background-repeat: no-repeat;
+  background-color: var(--gin-bg-layer);
+  background-size: 24px 100%, 24px 100%, 12px 100%, 12px 100%;
+  background-attachment: local, local, scroll, scroll;
 }
 
-table.position-sticky thead tr {
-  border-bottom: none;
+[dir="ltr"] .gin-horizontal-scroll-shadow {
+  background-image: linear-gradient(to right, var(--gin-bg-layer), var(--gin-bg-layer)), linear-gradient(to right, var(--gin-bg-layer), var(--gin-bg-layer)), linear-gradient(to right, rgba(0, 0, 0, .125), rgba(255, 255, 255, 0)), linear-gradient(to left, rgba(0, 0, 0, .125), rgba(255, 255, 255, 0));
+  background-position: left center, right center, left center, right center;
+}
+
+[dir="rtl"] .gin-horizontal-scroll-shadow {
+  background-image: linear-gradient(to left, var(--gin-bg-layer), var(--gin-bg-layer)), linear-gradient(to left, var(--gin-bg-layer), var(--gin-bg-layer)), linear-gradient(to left, rgba(0, 0, 0, .125), rgba(255, 255, 255, 0)), linear-gradient(to right, rgba(0, 0, 0, .125), rgba(255, 255, 255, 0));
+  background-position: right center, left center, right center, left center;
+}
+
+.gin--sticky-table-header {
+  position: sticky;
+  z-index: 2;
+  top: var(--drupal-displace-offset-top);
+  margin-top: -8px;
+  overflow: hidden;
+}
+
+.gin--sticky-table-header tr {
+  display: block;
+  width: max-content;
+}
+
+table.position-sticky thead {
+  position: static;
 }
 
 table thead {

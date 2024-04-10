@@ -145,11 +145,17 @@ gin_custom_css:
     theme:
       public://gin-custom.css: { preprocess: false, minified: false, weight: 100 }
 
-# Overrides
+# Libs
 
 once:
   js:
-    js/libs/once.js: { minified: false, weight: -1 }
+    js/libs/once.js: { minified: true, weight: -1 }
+
+scrollsync:
+  js:
+    js/libs/scrollsync.js: { minified: true, weight: -1 }
+
+# Overrides
 
 gin_media_embed_ckeditor_theme:
   js:
@@ -190,6 +196,8 @@ tableselect:
 tableheader:
   js:
     dist/js/tableheader.js: { minified: false }
+  dependencies:
+    - gin/scrollsync
 
 tabs:
   css:

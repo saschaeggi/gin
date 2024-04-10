@@ -8,57 +8,30 @@
   Drupal.ginTableHeader = {
     init: function (context) {
       // Tables with new position-sticky enabled.
-      // Fix for overflow issue.
       once('ginTableHeaderSticky', 'table.position-sticky', context).forEach(el => {
-        // Prepare table.
-        this.prepareTableHeader(el);
+        this.updateTableHeader(el);
+        this.showTableHeaderOnInit();
 
-        // Watch sticky table header.
-        const observer = new IntersectionObserver(
-          ([e]) => {
-            if (!e.isIntersecting) {
-              window.addEventListener('scroll', () => {
-                this.setScrollBehavior(el)
-              });
-
-            } else {
-              window.removeEventListener('scroll', this.setScrollBehavior);
-              this.resetScrollBehavior(el);
-            }
-
-            Drupal.displace(true);
-          },
-          { threshold: 1.0, rootMargin: `-60px 0px 0px 0px` }
-        );
-
-        // Watch thead.
-        observer.observe(el.querySelector('thead'));
+        window.addEventListener('resize', () => {
+          this.updateTableHeader(el);
+        });
       });
     },
-    prepareTableHeader: function (el) {
-      // Fixes whitespace issue in Chrome.
-      document.body.style.overflowX = 'hidden';
+    showTableHeaderOnInit: function () {
+      const tableHeader = document.querySelector('.gin--sticky-table-header');
 
-      // Set inital placement after DOM is loaded.
-      window.addEventListener('DOMContentLoaded', () => {
-        Drupal.displace(true);
-        this.setScrollBehavior(el);
+      tableHeader.hidden = false;
+      tableHeader.style.display = 'block';
+    },
+    updateTableHeader: function (el) {
+      const tableHeader = document.querySelector('.gin--sticky-table-header');
+
+      tableHeader.style.marginBottom = `-${el.querySelector('thead').getBoundingClientRect().height + 1}px`;
+
+      tableHeader.querySelectorAll('thead th').forEach((th, index) => {
+        th.style.width = `${el.querySelectorAll('thead th')[index].getBoundingClientRect().width}px`;
       });
     },
-    setScrollBehavior: function (el) {
-      let value = 0;
-      const thead = el.querySelector('thead');
-
-      if (thead.parentNode.getBoundingClientRect().top * -1 >= -60) {
-        value = Math.round((thead.parentNode.getBoundingClientRect().top * -1) + Drupal.displace.offsets.top - 3);
-      }
-
-      thead.style.transform = `translate3d(0, ${value}px, 0)`;
-    },
-    resetScrollBehavior: function (el) {
-      el.querySelector('thead').style.transform = '';
-    },
-
   };
 
 })(Drupal, once);

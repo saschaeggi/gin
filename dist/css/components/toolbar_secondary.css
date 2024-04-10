@@ -445,7 +445,7 @@
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-item::before {
     width: var(--gin-icon-size-toolbar-secondary);
     height: var(--gin-icon-size-toolbar-secondary);
-    top: calc(50% - 1px);
+    top: 50%;
     transform: translateY(-50%);
   }
 

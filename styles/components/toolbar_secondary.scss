@@ -377,7 +377,7 @@
           &::before {
             width: var(--gin-icon-size-toolbar-secondary);
             height: var(--gin-icon-size-toolbar-secondary);
-            top: calc(50% - 1px);
+            top: 50%;
             left: 12px;
             transform: translateY(-50%);
           }
