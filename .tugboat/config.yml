@@ -13,6 +13,8 @@ services:
         # Check out a branch using the unique Tugboat ID for this repository, to
         # ensure we don't clobber an existing branch.
         git checkout -b $TUGBOAT_REPO_ID
+        # Rebase
+        git pull --rebase
         # Composer is hungry. You need a Tugboat project with a pretty sizeable
         # chunk of memory.
         export COMPOSER_MEMORY_LIMIT=-1
