@@ -100,3 +100,19 @@ function _gin_is_active() {
 
   return $gin_activated;
 }
+
+/**
+ * Helper function for check if a module is active.
+ */
+function _gin_module_is_active($module) {
+  $module_handler = \Drupal::service('module_handler');
+
+  // Check if Navigation module is active.
+  $check_module = $module_handler->moduleExists($module);
+
+  if ($check_module) {
+    return TRUE;
+  }
+
+  return FALSE;
+}

@@ -213,6 +213,53 @@
 
 // Settings: Toolbar selector.
 [data-drupal-selector="edit-classic-toolbar"] {
+  // Set warning if core navigation module is active.
+  &.gin-core-navigation--is-active {
+    position: relative;
+
+    #edit-classic-toolbar {
+      position: relative;
+      opacity: .5;
+
+      &::before {
+        content: '';
+        z-index: 2;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: not-allowed;
+      }
+    }
+
+    .fieldset__description {
+      pointer-events: none;
+      position: absolute;
+      top: 3.5rem;
+      left: 2rem;
+      display: flex;
+      align-items: center;
+      gap: var(--gin-spacing-xs);
+      color: var(--gin-color-warning);
+      background-color: var(--gin-bg-warning);
+      padding:  var(--gin-spacing-xs) var(--gin-spacing-s);
+      border-radius: var(--gin-border-s);
+
+      &:before {
+        content: '';
+        display: block;
+        width: 1em;
+        height: 1em;
+        background-color: var(--gin-color-warning-light);
+        mask-image: icon('warning');
+        mask-repeat: no-repeat;
+        mask-position: center left;
+      }
+    }
+  }
+
   .form-radios .form-item input {
     // Standard: Sidebar
     &[data-gin-toolbar=vertical] {

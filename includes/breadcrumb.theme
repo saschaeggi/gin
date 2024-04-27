@@ -14,7 +14,7 @@ use Drupal\node\NodeInterface;
  */
 function gin_preprocess_breadcrumb(&$variables) {
   // Alter node breadcrumb.
-  if ($variables['breadcrumb']) {
+  if (isset($variables['breadcrumb'])) {
     $entity = _gin_get_route_entity();
     $entity_id = $entity ? $entity->getEntityTypeId() : NULL;
     $url = $entity ? $entity->toUrl() : NULL;

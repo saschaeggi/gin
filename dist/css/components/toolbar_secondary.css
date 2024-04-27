@@ -289,13 +289,15 @@
   }
 
   [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray {
-    left: 0;
-    border-radius: 0 var(--gin-border-l) var(--gin-border-l) var(--gin-border-l);
+    left: auto;
+    right: 0;
+    border-radius: var(--gin-border-l) 0 var(--gin-border-l) var(--gin-border-l);
   }
 
   [dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray {
-    right: 0;
-    border-radius: var(--gin-border-l) 0 var(--gin-border-l) var(--gin-border-l);
+    right: auto;
+    left: 0;
+    border-radius: 0 var(--gin-border-l) var(--gin-border-l) var(--gin-border-l);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray a {
@@ -329,20 +331,6 @@
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab.hidden {
     display: none;
-  }
-
-  [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar div:nth-last-child(2) .toolbar-tray,
-  [dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar div:last-child .toolbar-tray {
-    left: auto;
-    right: 0;
-    border-radius: var(--gin-border-l) 0 var(--gin-border-l) var(--gin-border-l);
-  }
-
-  [dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar div:nth-last-child(2) .toolbar-tray,
-  [dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar div:last-child .toolbar-tray {
-    right: auto;
-    left: 0;
-    border-radius: 0 var(--gin-border-l) var(--gin-border-l) var(--gin-border-l);
   }
 
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:hover, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:active, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item:focus, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.is-active, .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item.is-active:hover {

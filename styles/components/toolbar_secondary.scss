@@ -238,11 +238,12 @@
 
         .toolbar-tray {
           position: absolute;
-          left: 0;
+          left: auto;
+          right: 0;
           width: 170px;
           background-color: var(--gin-bg-layer3);
           border-bottom: 0 none;
-          border-radius: 0 var(--gin-border-l) var(--gin-border-l) var(--gin-border-l);
+          border-radius: var(--gin-border-l) 0 var(--gin-border-l) var(--gin-border-l);
           box-shadow: var(--gin-shadow-l2);
 
           a {
@@ -283,15 +284,6 @@
 
         &.hidden {
           display: none;
-        }
-      }
-
-      div:nth-last-child(2),
-      div:last-child {
-        .toolbar-tray {
-          left: auto;
-          right: 0;
-          border-radius: var(--gin-border-l) 0 var(--gin-border-l) var(--gin-border-l);
         }
       }
 

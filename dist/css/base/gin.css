@@ -1486,7 +1486,7 @@ table td .group-label {
 }
 
 .sortable-heading > a::before {
-  bottom: -1px;
+  bottom: -2px;
 }
 
 .sortable-heading > a::after {

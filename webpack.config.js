@@ -67,6 +67,7 @@ module.exports = {
     'components/workbench': ['./styles/components/workbench.scss'],
     'components/workspaces': ['./styles/components/workspaces.scss'],
     // Layout
+    'layout/core_navigation': ['./styles/layout/core_navigation.scss'],
     'layout/navigation': ['./styles/layout/navigation.scss'],
     'layout/toolbar': ['./styles/layout/toolbar.scss'],
     'layout/horizontal_toolbar': ['./styles/layout/horizontal_toolbar.scss'],

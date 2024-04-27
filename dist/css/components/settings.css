@@ -257,6 +257,69 @@
   margin-bottom: var(--gin-spacing-m);
 }
 
+[data-drupal-selector=edit-classic-toolbar].gin-core-navigation--is-active {
+  position: relative;
+}
+
+[data-drupal-selector=edit-classic-toolbar].gin-core-navigation--is-active #edit-classic-toolbar {
+  position: relative;
+  opacity: .5;
+}
+
+[data-drupal-selector=edit-classic-toolbar].gin-core-navigation--is-active #edit-classic-toolbar::before {
+  content: "";
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  cursor: not-allowed;
+}
+
+[dir="ltr"] [data-drupal-selector=edit-classic-toolbar].gin-core-navigation--is-active #edit-classic-toolbar::before {
+  left: 0;
+}
+
+[dir="rtl"] [data-drupal-selector=edit-classic-toolbar].gin-core-navigation--is-active #edit-classic-toolbar::before {
+  right: 0;
+}
+
+[data-drupal-selector=edit-classic-toolbar].gin-core-navigation--is-active .fieldset__description {
+  pointer-events: none;
+  position: absolute;
+  top: 3.5rem;
+  display: flex;
+  align-items: center;
+  gap: var(--gin-spacing-xs);
+  color: var(--gin-color-warning);
+  background-color: var(--gin-bg-warning);
+  padding: var(--gin-spacing-xs) var(--gin-spacing-s);
+  border-radius: var(--gin-border-s);
+}
+
+[dir="ltr"] [data-drupal-selector=edit-classic-toolbar].gin-core-navigation--is-active .fieldset__description {
+  left: 2rem;
+}
+
+[dir="rtl"] [data-drupal-selector=edit-classic-toolbar].gin-core-navigation--is-active .fieldset__description {
+  right: 2rem;
+}
+
+[data-drupal-selector=edit-classic-toolbar].gin-core-navigation--is-active .fieldset__description:before {
+  content: "";
+  display: block;
+  width: 1em;
+  height: 1em;
+  background-color: var(--gin-color-warning-light);
+  -webkit-mask-image: url("../../media/sprite.svg#warning-view");
+          mask-image: url("../../media/sprite.svg#warning-view");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center left;
+          mask-position: center left;
+}
+
 [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input[data-gin-toolbar=vertical] {
   background-image: url(../../media/settings/toolbar_sidebar.png);
 }

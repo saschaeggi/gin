@@ -63,6 +63,13 @@ function gin_preprocess_toolbar(&$variables) {
     '#create_placeholder' => TRUE,
   ];
 
+  // Check if Navigation module is active.
+  if (_gin_module_is_active('navigation')) {
+    // Attach the new drupal navigation styles.
+    $variables['#attached']['library'][] = 'gin/core_navigation';
+    return;
+  }
+
   // Expose Toolbar variant.
   /** @var \Drupal\gin\GinSettings $settings */
   $settings = \Drupal::classResolver(GinSettings::class);
@@ -80,7 +87,7 @@ function gin_preprocess_toolbar(&$variables) {
       break;
 
     case 'new':
-      // Attach the new drupal navigation styles.
+      // Attach the experimental drupal navigation styles.
       $variables['#attached']['library'][] = 'gin/navigation';
       break;
 
@@ -100,7 +107,7 @@ function gin_preprocess_toolbar__gin__secondary(&$variables) {
   $settings = \Drupal::classResolver(GinSettings::class);
   $variables['toolbar_variant'] = $settings->get('classic_toolbar');
 
-  if ($variables['toolbar_variant'] !== 'classic') {
+  if ($variables['toolbar_variant'] !== 'classic' || _gin_module_is_active('navigation')) {
     // Move Admin Toolbar Search to start.
     $toolbar_search = array_search('administration_search', array_keys($variables['tabs']));
     if (is_numeric($toolbar_search)) {
@@ -127,17 +134,29 @@ function gin_preprocess_toolbar__gin__secondary(&$variables) {
 }
 
 /**
- * Toolbar alter().
+ * Navigation alter().
+ */
+function gin_preprocess_navigation(&$variables) {
+  // Get theme configs.
+  /** @var \Drupal\gin\GinSettings $settings */
+  $settings = \Drupal::classResolver(GinSettings::class);
+  $logo_default = $settings->getDefault('logo.use_default');
+  $variables['icon_path'] = !$logo_default ? $settings->getDefault('logo.path') : '';
+  $variables['toolbar_variant'] = $settings->get('classic_toolbar');
+  $variables['core_navigation'] = _gin_module_is_active('navigation');
+}
+
+/**
+ * Toolbar theme suggestions().
  */
 function gin_theme_suggestions_toolbar_alter(array &$suggestions, array $variables) {
   /** @var \Drupal\gin\GinSettings $settings */
   $settings = \Drupal::classResolver(GinSettings::class);
-  $toolbar = $settings->get('classic_toolbar');
 
   $suggestions[] = 'toolbar__gin';
 
   // Only if Classic Toolbar is disabled.
-  if ($toolbar !== 'classic') {
+  if ($settings->get('classic_toolbar') !== 'classic' || _gin_module_is_active('navigation')) {
     if ($variables['element']['#attributes']['id'] === 'toolbar-administration-secondary') {
       $suggestions[] = 'toolbar__gin__secondary';
     }

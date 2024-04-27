@@ -110,6 +110,7 @@
   --input-line-height: var(--gin-spacing-l);
   --input-padding-horizontal: var(--gin-spacing-s);
   --input-padding-vertical: var(--gin-spacing-xs);
+  --gin-tooltip-bg: #232429;
   --jui-dialog-z-index: 1260;
 }
 

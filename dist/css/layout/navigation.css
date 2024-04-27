@@ -773,7 +773,7 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title > button.toolbar
 .cloned-tooltip {
   position: absolute;
   top: var(--space-xs);
-  background-color: var(--color-gray-950);
+  background-color: var(--gin-tooltip-bg);
   color: white;
   padding: .25rem var(--space-xs);
   border-radius: var(--space-xs);
@@ -894,6 +894,10 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
   }
 }
 
+.gin--navigation .admin-toolbar::after {
+  display: none;
+}
+
 .gin--navigation .admin-toolbar__content {
   padding-block: var(--gin-spacing-xxs);
   padding-inline: var(--gin-spacing-xs);
@@ -933,7 +937,11 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 }
 
 .gin--navigation .admin-toolbar__header {
-  margin-bottom: -4px;
+  margin-bottom: -0.5rem;
+}
+
+.gin--navigation .admin-toolbar__header:has(img) {
+  margin-bottom: -1.25rem;
 }
 
 .gin--navigation .toolbar-block__content.toolbar-block__content--content {
@@ -958,6 +966,14 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:focus {
   outline: none;
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
+}
+
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--create {
+  margin-top: var(--gin-spacing-l);
+}
+
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--sidebar-toggle {
+  margin-bottom: calc(var(--gin-spacing-xxs) * -1);
 }
 
 .gin--navigation .navigation-menu-wrapper.menu--logo {
@@ -1042,8 +1058,9 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--manage-display,
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--manage-permissions,
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--delete,
-.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link[class*=toolbar-link--admin-toolbar-tools-extra-linksentity],
-.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--announcements-feed-announcement {
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--announcements-feed-announcement,
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link[class*=toolbar-link--admin-toolbar-tools-extra-],
+.gin--navigation .toolbar-menu__item--level-1[data-url*="/media/add/"] {
   display: none;
 }
 
@@ -1070,6 +1087,16 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 
 .gin--navigation .toolbar .toolbar-menu .toolbar-menu a {
   color: var(--gin-color-text);
+}
+
+.gin--navigation .admin-toolbar__item {
+  flex-basis: unset;
+  flex-grow: unset;
+}
+
+.gin--navigation .admin-toolbar__item > .toolbar-menu {
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
 }
 
 html:not(.admin-toolbar-expanded) .gin--navigation .cloned-flyout,
@@ -1149,7 +1176,7 @@ button.toolbar-link--sidebar-toggle:hover::before, button.toolbar-link--sidebar-
 }
 
 .toolbar-link--has-icon {
-  --icon: icon("fallback"); /* Default icon, aka --basic */
+  --icon: url("../../media/sprite.svg#fallback-view"); /* Default icon, aka --basic */
 }
 
 .toolbar-link--has-icon::before {
@@ -1164,37 +1191,60 @@ button.toolbar-link--sidebar-toggle:hover::before, button.toolbar-link--sidebar-
   background-color: var(--gin-color-primary);
 }
 
-.toolbar-link--gin-home {
+.admin-toolbar__logo {
+  margin: 0;
+  overflow: unset;
+}
+
+.admin-toolbar__logo img {
+  width: 40px;
+  height: auto;
+}
+
+.admin-toolbar__logo .toolbar-link:not(.toolbar-link--gin-home) {
+  padding: var(--gin-spacing-xxs) !important;
+  margin-top: var(--gin-spacing-xxs);
+}
+
+.admin-toolbar__logo .toolbar-link--gin-home {
   color: var(--gin-bg-layer2);
   box-sizing: border-box;
   width: 40px;
   height: 40px;
   max-width: 40px;
   padding: 10px !important;
-  margin: 6px 4px 0 !important;
+  margin: 6px var(--gin-spacing-xxs) 0 !important;
 }
 
-.toolbar-link--gin-home, .toolbar-link--gin-home:hover, .toolbar-link--gin-home:focus {
+.admin-toolbar__logo .toolbar-link--gin-home, .admin-toolbar__logo .toolbar-link--gin-home:hover, .admin-toolbar__logo .toolbar-link--gin-home:focus {
   background: var(--gin-color-primary) !important;
 }
 
-.toolbar-link--gin-home::before {
+.admin-toolbar__logo .toolbar-link--gin-home::before {
   --icon: url("../../media/sprite.svg#drupal-view");
   background: var(--gin-bg-layer2) !important;
 }
 
-.toolbar-link--gin-home span {
+.admin-toolbar__logo .toolbar-link--gin-home span {
   display: none;
 }
 
-.admin-toolbar-expanded .toolbar-link--gin-home {
+.admin-toolbar-expanded .admin-toolbar__logo .toolbar-link--gin-home {
   -webkit-margin-start: 0;
           margin-inline-start: 0;
 }
 
-.admin-toolbar-expanded .toolbar-link--gin-home::before {
+.admin-toolbar-expanded .admin-toolbar__logo .toolbar-link--gin-home::before {
   -webkit-margin-end: 0;
           margin-inline-end: 0;
+}
+
+.admin-toolbar__content .toolbar-block:nth-last-child(n+2)::after {
+  margin-top: calc(var(--gin-spacing-s) - var(--gin-spacing-xxs));
+  padding-top: calc(var(--gin-spacing-xs) + var(--gin-spacing-xxs));
+  content: "";
+  display: block;
+  border-top: 1px solid var(--gin-border-color-table);
 }
 
 .toolbar-link--admin-toolbar-tools-help::before {

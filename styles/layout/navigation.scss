@@ -74,6 +74,11 @@ body.gin--navigation {
     @include mq($to: medium) {
       display: none;
     }
+
+    // Beta 1
+    &::after {
+      display: none;
+    }
   }
 
   .admin-toolbar__content {
@@ -107,7 +112,11 @@ body.gin--navigation {
 
   // Navigation header
   .admin-toolbar__header {
-    margin-bottom: -4px;
+    margin-bottom: -.5rem;
+
+    &:has(img) {
+      margin-bottom: -1.25rem;
+    }
   }
 
   // Content block
@@ -136,6 +145,16 @@ body.gin--navigation {
         outline: none;
         box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
       }
+    }
+
+    // Beta 1
+    > .toolbar-link--create {
+      margin-top: var(--gin-spacing-l);
+    }
+
+    // Beta 1
+    > .toolbar-link--sidebar-toggle {
+      margin-bottom: calc(var(--gin-spacing-xxs) * -1);
     }
   }
 
@@ -202,8 +221,10 @@ body.gin--navigation {
   .toolbar-menu__item--level-1 > .toolbar-link--manage-display,
   .toolbar-menu__item--level-1 > .toolbar-link--manage-permissions,
   .toolbar-menu__item--level-1 > .toolbar-link--delete,
-  .toolbar-menu__item--level-1 > .toolbar-link[class*="toolbar-link--admin-toolbar-tools-extra-linksentity"],
-  .toolbar-menu__item--level-1 > .toolbar-link--announcements-feed-announcement
+  .toolbar-menu__item--level-1 > .toolbar-link--announcements-feed-announcement,
+  .toolbar-menu__item--level-1 > .toolbar-link[class*="toolbar-link--admin-toolbar-tools-extra-"],
+  // Beta 1: Hide Admin Toolbar Extra links from Level 1
+  .toolbar-menu__item--level-1[data-url*="/media/add/"]
   {
     display: none;
   }
@@ -234,6 +255,16 @@ body.gin--navigation {
 
   .toolbar .toolbar-menu .toolbar-menu a {
     color: var(--gin-color-text);
+  }
+
+  // Beta 1
+  .admin-toolbar__item {
+    flex-basis: unset;
+    flex-grow: unset;
+  }
+
+  .admin-toolbar__item > .toolbar-menu {
+    margin-block-start: 0;
   }
 }
 
@@ -321,7 +352,7 @@ button.toolbar-link--sidebar-toggle {
 // --------------
 
 .toolbar-link--has-icon {
-  --icon: icon('fallback'); /* Default icon, aka --basic */
+  --icon: #{icon('fallback')}; /* Default icon, aka --basic */
 
   &::before {
     width: var(--gin-icon-size-toolbar);
@@ -336,37 +367,62 @@ button.toolbar-link--sidebar-toggle {
   }
 }
 
-// Custom Gin Home logo
-.toolbar-link--gin-home {
-  color: var(--gin-bg-layer2);
-  box-sizing: border-box;
-  width: 40px;
-  height: 40px;
-  max-width: 40px;
-  padding: 10px !important; // make the logo 32px
-  margin: 6px 4px 0 !important;
+// Beta 1: Logo
+.admin-toolbar__logo {
+  margin: 0;
+  overflow: unset;
 
-  &, &:hover, &:focus {
-    background: var(--gin-color-primary) !important;
+  img {
+    width: 40px;
+    height: auto;
   }
 
-  &::before {
-    --icon: #{icon('drupal')};
-    background: var(--gin-bg-layer2) !important;
+  .toolbar-link:not(.toolbar-link--gin-home) {
+    padding: var(--gin-spacing-xxs) !important;
+    margin-top: var(--gin-spacing-xxs);
   }
 
-  span {
-    display: none;
-  }
+  // Custom Gin Home logo
+  .toolbar-link--gin-home {
+    color: var(--gin-bg-layer2);
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    max-width: 40px;
+    padding: 10px !important;
+    margin: 6px var(--gin-spacing-xxs) 0 !important;
 
-  // Navigation expanded
-  .admin-toolbar-expanded & {
-    margin-inline-start: 0;
+    &, &:hover, &:focus {
+      background: var(--gin-color-primary) !important;
+    }
 
     &::before {
-      margin-inline-end: 0;
+      --icon: #{icon('drupal')};
+      background: var(--gin-bg-layer2) !important;
+    }
+
+    span {
+      display: none;
+    }
+
+    // Navigation expanded
+    .admin-toolbar-expanded & {
+      margin-inline-start: 0;
+
+      &::before {
+        margin-inline-end: 0;
+      }
     }
   }
+}
+
+// Beta 1
+.admin-toolbar__content .toolbar-block:nth-last-child(n+2)::after {
+  margin-top: calc(var(--gin-spacing-s) - var(--gin-spacing-xxs));
+  padding-top: calc(var(--gin-spacing-xs) + var(--gin-spacing-xxs));
+  content: "";
+  display: block;
+  border-top: 1px solid var(--gin-border-color-table);
 }
 
 .toolbar-link--admin-toolbar-tools-help::before {

@@ -1,0 +1,385 @@
+// --------------------------------------------------
+// Toolbar Variables
+// --------------------------------------------------
+:root {
+  --gin-toolbar-height: 39px;
+  --gin-toolbar-secondary-height: 48px;
+  --gin-scroll-offset: 72px;
+  --gin-toolbar-y-offset: var(--gin-toolbar-height);
+  --gin-toolbar-x-offset: 0px; // Needs px to work in calc() functions.
+  --gin-sticky-offset: 0px; // Needs px to work in calc() functions.
+  --gin-icon-size-toolbar: 20px;
+
+  @include mq(medium) {
+    --gin-toolbar-height: 0px; // Needs px to work in calc() functions.
+    --gin-toolbar-secondary-height: 52px;
+    --gin-toolbar-x-offset: var(--drupal-displace-offset-left, 64px);
+    --gin-scroll-offset: 130px;
+    --gin-sticky-offset: var(--gin-height-sticky);
+  }
+}
+
+html.admin-toolbar-expanded {
+  @include mq(medium) {
+    --gin-toolbar-x-offset: var(--drupal-displace-offset-left, 264px);
+  }
+}
+
+// --------------------------------------------------
+// Map CSS3 variables
+// --------------------------------------------------
+.admin-toolbar {
+  --admin-toolbar-sidebar-width: #{rem(64px)};
+  --admin-toolbar-font-family: var(--gin-font);
+  --admin-toolbar-color-white: var(--gin-bg-layer);
+  --admin-toolbar-color-gray-050: var(--gin-bg-layer2);
+  --admin-toolbar-color-gray-100: var(--gin-border-color-layer);
+  --admin-toolbar-color-gray-200: var(--gin-border-color-layer2);
+  --admin-toolbar-color-gray-800: var(--gin-color-text);
+  --admin-toolbar-color-gray-990: var(--gin-color-primary-active);
+  //var(--gin-border-color-table)
+
+  [data-admin-toolbar='expanded'] & {
+    --admin-toolbar-sidebar-width: #{rem(264px)};
+
+    @media (--admin-toolbar-tablet) {
+      --admin-toolbar-sidebar-width: calc(16.5 * var(--admin-toolbar-rem));
+    }
+  }
+}
+
+// --------------------------------------------------
+// Custom overrides
+// --------------------------------------------------
+
+.gin--core-navigation .gin-secondary-toolbar:not(.gin-secondary-toolbar--frontend) {
+  margin-bottom: var(--gin-spacing-xxs);
+}
+
+.gin--core-navigation .gin-secondary-toolbar--frontend {
+  z-index: 102;
+  margin-inline-start: var(--gin-toolbar-x-offset);
+}
+
+.toolbar-menu__link:hover::before {
+  inline-size: var(--gin-spacing-xxs);
+}
+
+.admin-toolbar__content,
+.admin-toolbar__footer {
+  padding: var(--gin-spacing-s);
+}
+
+.admin-toolbar__footer,
+.admin-toolbar__content .toolbar-block:nth-last-child(n+2)::after {
+  border-block-start-color: var(--gin-border-color-secondary);
+}
+
+// --------------------------------------------------
+// Remove anti-flicker
+// --------------------------------------------------
+.toolbar-anti-flicker.toolbar-loading.toolbar-fixed body.gin--core-navigation,
+body.gin--core-navigation {
+  padding-top: unset !important;
+}
+
+// --------------------------------------------------
+// Logo override
+// --------------------------------------------------
+.admin-toolbar__logo {
+  line-height: 0;
+  border-radius: 10px;
+
+  svg rect {
+    fill: var(--gin-color-primary);
+  }
+
+  svg path {
+    fill: var(--gin-bg-app);
+  }
+
+  &:hover svg rect {
+    fill: var(--gin-color-primary-hover);
+  }
+
+  &:active svg rect,
+  &:focus svg rect {
+    fill: var(--gin-color-primary-active);
+  }
+}
+
+// --------------------------------------------------
+// Button style overrides
+// --------------------------------------------------
+.toolbar-button,
+.toolbar-menu__link {
+  color: var(--gin-color-text);
+  font-weight: var(--gin-font-weight-normal);
+  font-variation-settings: unset;
+
+  &,
+  &:hover,
+  &:active {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:hover {
+    color: var(--gin-color-primary);
+    background-color: var(--gin-color-primary-light);
+  }
+
+  &:active,
+  &:focus,
+  &:hover:focus {
+    color: var(--gin-color-primary-hover);
+    background-color: var(--gin-color-primary-light-hover);
+  }
+}
+
+.toolbar-button[aria-expanded="true"],
+.toolbar-button--large {
+  font-weight: var(--gin-font-weight-bold);
+}
+
+// --------------------------------------------------
+// Focus style overrides
+// --------------------------------------------------
+.admin-toolbar__logo:focus,
+.toolbar-button:focus,
+.admin-toolbar__expand-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
+}
+
+.toolbar-menu__link:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 1px var(--gin-color-focus-border), inset 0 0 0 3px var(--gin-color-focus);
+}
+
+// --------------------------------------------------
+// Active style overrides
+// --------------------------------------------------
+.toolbar-button.current {
+  background-color: var(--gin-bg-item-hover);
+
+  &:hover {
+    background-color: var(--gin-color-primary-light);
+  }
+
+  &:active,
+  &:focus,
+  &:hover:focus {
+    background-color: var(--gin-color-primary-light-hover);
+  }
+}
+
+.toolbar-button.current.is-active,
+.toolbar-button:has(+ .toolbar-popover__wrapper .is-active) {
+  color: var(--gin-color-primary);
+  background-color: var(--gin-color-primary-light);
+
+  &::before {
+    background: var(--gin-color-primary);
+  }
+}
+
+// --------------------------------------------------
+// Icon overrides
+// --------------------------------------------------
+[class*="toolbar-button--icon"] {
+  --icon: #{icon('fallback')}; /* Default icon, aka --basic */
+
+  &::before {
+    width: var(--gin-icon-size-toolbar);
+    height: var(--gin-icon-size-toolbar);
+    background-color: var(--gin-icon-color);
+    mask-size: 100% 100%;
+    mask-image: var(--icon);
+  }
+
+  &:hover::before,
+  &:focus::before {
+    background-color: var(--gin-color-primary);
+  }
+}
+
+.toolbar-button--icon--admin-toolbar-tools-help::before {
+  --icon: #{icon('tool')};
+}
+
+.toolbar-button--icon--system-themes-page::before {
+  --icon: #{icon('appearance')};
+}
+
+.toolbar-button--icon--navigation-blocks::before {
+  --icon: #{icon('blocks')};
+}
+
+.toolbar-button--icon--shortcuts::before {
+  --icon: #{icon('shortcut')};
+}
+
+.toolbar-button--icon--system-admin-config::before {
+  --icon: #{icon('config')};
+}
+
+.toolbar-button--icon--navigation-content::before {
+  --icon: #{icon('content')};
+}
+
+.toolbar-button--icon--navigation-create::before {
+  --icon: #{icon('create')};
+}
+
+.toolbar-button--icon--system-modules-list::before {
+  --icon: #{icon('extend-new')};
+}
+
+.toolbar-button--icon--navigation-files::before {
+  --icon: #{icon('files')};
+}
+
+.toolbar-button--icon--help::before {
+  --icon: #{icon('help')};
+}
+
+.toolbar-button--icon--navigation-media::before {
+  --icon: #{icon('media')};
+}
+
+.toolbar-button--icon--entity-user-collection::before {
+  --icon: #{icon('people-new')};
+}
+
+.toolbar-button--icon--system-admin-reports::before {
+  --icon: #{icon('reports')};
+}
+
+.toolbar-button--icon--system-admin-structure::before {
+  --icon: #{icon('structure')};
+}
+
+.toolbar-button--icon--announcements-feed-announcement::before {
+  --icon: #{icon('announcement')};
+}
+
+.toolbar-link--sidebar-toggle[aria-expanded=false]::before,
+.toolbar-link--sidebar-toggle[aria-expanded=true]::before {
+  --icon: #{icon('chevron-down')};
+}
+
+.toolbar-button--icon--user::before {
+  --icon: #{icon('user')};
+}
+
+.toolbar-button--icon--burger::before {
+  --icon: #{icon('hamburger')};
+}
+
+.toolbar-button--icon--back::before {
+  --icon: #{icon('nav-toggle-toleft')};
+}
+
+.toolbar-button--icon--cross::before {
+  --icon: #{icon('close')};
+}
+
+// --------------------------------------------------
+// Create menu: Separate if first item
+// --------------------------------------------------
+#navigation-link-navigationcreate:first-child {
+  margin-block-end: var(--admin-toolbar-space-8);
+
+  &::after {
+    content: "";
+    display: block;
+    margin-block-start: var(--admin-toolbar-space-12);
+    border-block-end: 1px solid var(--gin-border-color-secondary);
+  }
+}
+
+// --------------------------------------------------
+// Expand button
+// --------------------------------------------------
+.admin-toolbar__expand-button {
+  margin-block-start: calc(var(--gin-spacing-xs) * -1);
+
+  &,
+  &:hover {
+    color: var(--gin-color-text-light);
+    border-color: var(--gin-border-color);
+  }
+}
+
+// --------------------------------------------------
+// Popover
+// --------------------------------------------------
+.toolbar-popover--expanded {
+  background-color: transparent;
+
+  > .toolbar-button {
+    background-color: var(--gin-bg-item-hover);
+  }
+}
+
+.gin--dark-mode .toolbar-popover__wrapper {
+  border-inline-start: 2px solid var(--gin-border-color-secondary);
+}
+
+// --------------------------------------------------
+// Tooltips
+// --------------------------------------------------
+.admin-toolbar__tooltip {
+  font-size: var(--gin-font-size-xs);
+  color: #fff;
+  background-color: var(--gin-tooltip-bg);
+}
+
+// --------------------------------------------------
+// Hide links from Admin Toolbar Extra module
+// --------------------------------------------------
+.toolbar-block__list-item[id*="navigation-link-admin-toolbar-toolsextra-links"] {
+  display: none;
+}
+
+// --------------------------------------------------
+// Hide Shortcuts & Announcements in primary nav
+// --------------------------------------------------
+#navigation-block-shortcuts,
+#navigation-link-announcements-feedannouncement,
+.toolbar-block:has(.admin-toolbar__item:first-of-type:last-of-type > #menu--shortcuts) {
+  display: none;
+}
+
+// --------------------------------------------------
+// Hide duplicated Gin secondary items
+// --------------------------------------------------
+.gin-secondary-toolbar {
+  .toolbar-id--toolbar-icon-user {
+    display: none !important;
+  }
+
+  .toolbar-menu {
+    gap: 0;
+  }
+
+  // Fixes quirks when the toolbar
+  // module is still active
+  .toolbar-menu__trigger {
+    display: none;
+  }
+
+  .toolbar-tray .menu-item + .menu-item {
+    border-left: none;
+  }
+
+  .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user {
+    margin-right: -1em;
+  }
+}
+
+// Fix weird shortcuts menu flickering.
+.toolbar-loading #toolbar-item-shortcuts-tray {
+  visibility: hidden;
+}
