@@ -42,6 +42,8 @@ libraries-override:
         css/theme/colors.css: false
 
 libraries-extend:
+  core/drupal.message:
+    - gin/messages
   core/drupal.tableselect:
     - gin/tableselect
   core/drupal.tableheader:
