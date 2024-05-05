@@ -28,16 +28,8 @@ html.admin-toolbar-expanded {
 // --------------------------------------------------
 // Map CSS3 variables
 // --------------------------------------------------
-.admin-toolbar {
+body.gin--core-navigation {
   --admin-toolbar-sidebar-width: #{rem(64px)};
-  --admin-toolbar-font-family: var(--gin-font);
-  --admin-toolbar-color-white: var(--gin-bg-layer);
-  --admin-toolbar-color-gray-050: var(--gin-bg-layer2);
-  --admin-toolbar-color-gray-100: var(--gin-border-color-layer);
-  --admin-toolbar-color-gray-200: var(--gin-border-color-layer2);
-  --admin-toolbar-color-gray-800: var(--gin-color-text);
-  --admin-toolbar-color-gray-990: var(--gin-color-primary-active);
-  //var(--gin-border-color-table)
 
   [data-admin-toolbar='expanded'] & {
     --admin-toolbar-sidebar-width: #{rem(264px)};
@@ -46,6 +38,16 @@ html.admin-toolbar-expanded {
       --admin-toolbar-sidebar-width: calc(16.5 * var(--admin-toolbar-rem));
     }
   }
+}
+
+.admin-toolbar {
+  --admin-toolbar-font-family: var(--gin-font);
+  --admin-toolbar-color-white: var(--gin-bg-layer);
+  --admin-toolbar-color-gray-050: var(--gin-bg-layer2);
+  --admin-toolbar-color-gray-100: var(--gin-border-color-layer);
+  --admin-toolbar-color-gray-200: var(--gin-border-color-layer2);
+  --admin-toolbar-color-gray-800: var(--gin-color-text);
+  --admin-toolbar-color-gray-990: var(--gin-color-primary-active);
 }
 
 // --------------------------------------------------
@@ -137,7 +139,6 @@ body.gin--core-navigation {
   }
 }
 
-.toolbar-button[aria-expanded="true"],
 .toolbar-button--large {
   font-weight: var(--gin-font-weight-bold);
 }
