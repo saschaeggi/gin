@@ -148,7 +148,7 @@ gin_description_toggle:
   js:
     dist/js/description_toggle.js: { minified: false }
 
-gin_messages:
+messages:
   js:
     dist/js/messages.js: { minified: false }
   dependencies:
