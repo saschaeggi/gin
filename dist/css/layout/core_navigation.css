@@ -62,7 +62,32 @@ body.gin--core-navigation {
   inline-size: var(--gin-spacing-xxs);
 }
 
-.admin-toolbar__content,
+.admin-toolbar__header {
+  -webkit-padding-before: var(--gin-spacing-xs);
+          padding-block-start: var(--gin-spacing-xs);
+}
+
+@media (min-width: 64em) {
+  .admin-toolbar__header {
+    -webkit-padding-before: 0;
+            padding-block-start: 0;
+  }
+}
+
+.admin-toolbar__content {
+  padding: var(--admin-toolbar-sidebar-header) var(--gin-spacing-s) var(--gin-spacing-s) var(--gin-spacing-s);
+  -webkit-margin-before: calc(var(--gin-spacing-xxs) * -1);
+          margin-block-start: calc(var(--gin-spacing-xxs) * -1);
+}
+
+@media (min-width: 64em) {
+  .admin-toolbar__content {
+    padding: var(--gin-spacing-s);
+    -webkit-margin-before: 0;
+            margin-block-start: 0;
+  }
+}
+
 .admin-toolbar__footer {
   padding: var(--gin-spacing-s);
 }

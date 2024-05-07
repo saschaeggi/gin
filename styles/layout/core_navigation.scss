@@ -67,7 +67,24 @@ body.gin--core-navigation {
   inline-size: var(--gin-spacing-xxs);
 }
 
-.admin-toolbar__content,
+.admin-toolbar__header {
+  padding-block-start: var(--gin-spacing-xs);
+
+  @include mq(large) {
+    padding-block-start: 0;
+  }
+}
+
+.admin-toolbar__content {
+  padding: var(--admin-toolbar-sidebar-header) var(--gin-spacing-s) var(--gin-spacing-s) var(--gin-spacing-s);
+  margin-block-start: calc(var(--gin-spacing-xxs) * -1);
+
+  @include mq(large) {
+    padding: var(--gin-spacing-s);
+    margin-block-start: 0;
+  }
+}
+
 .admin-toolbar__footer {
   padding: var(--gin-spacing-s);
 }
