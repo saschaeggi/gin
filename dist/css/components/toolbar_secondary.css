@@ -300,6 +300,11 @@
     border-radius: 0 var(--gin-border-l) var(--gin-border-l) var(--gin-border-l);
   }
 
+  .toolbar-loading .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray {
+    opacity: 0;
+    visibility: hidden;
+  }
+
   .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-tab .toolbar-tray a {
     color: var(--gin-color-primary);
     padding: var(--gin-spacing-s) var(--gin-spacing-m);

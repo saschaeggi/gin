@@ -6,7 +6,6 @@
  */
 
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\gin\GinContentFormHelper;
 use Drupal\gin\GinSettings;
 use Drupal\node\Entity\Node;
 
@@ -34,25 +33,6 @@ function gin_preprocess_page(&$variables) {
       $variables['entity_title'] = $entity->label();
       $variables['entity_edit_url'] = $entity->toUrl('edit-form');
     }
-  }
-}
-
-/**
- * Implements hook_preprocess_HOOK() for page_alter.
- */
-function gin_theme_suggestions_page_alter(&$suggestions, $variables) {
-  $path = \Drupal::requestStack()->getCurrentRequest()->getPathInfo();
-
-  if ($path != '/') {
-    $path = trim($path, '/');
-    $arg = str_replace(["/", '-'], ['_', '_'], $path);
-    $suggestions[] = 'page__' . $arg;
-  }
-
-  // The node page template is required to use the node content form.
-  if (\Drupal::classResolver(GinContentFormHelper::class)->isContentForm()
-    && !in_array('page__node', $suggestions)) {
-    $suggestions[] = 'page__node';
   }
 }
 

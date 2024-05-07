@@ -246,6 +246,12 @@
           border-radius: var(--gin-border-l) 0 var(--gin-border-l) var(--gin-border-l);
           box-shadow: var(--gin-shadow-l2);
 
+          // Hide on toolbar loading
+          .toolbar-loading & {
+            opacity: 0;
+            visibility: hidden;
+          }
+
           a {
             color: var(--gin-color-primary);
             padding: var(--gin-spacing-s) var(--gin-spacing-m);

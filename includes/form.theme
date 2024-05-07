@@ -102,22 +102,6 @@ function gin_preprocess_select(&$variables) {
 }
 
 /**
- * Implements form_alter() for forms.
- */
-function gin_theme_suggestions_form_alter(array &$suggestions, array $variables) {
-  $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#id']);
-}
-
-/**
- * Implements form_alter() for input.
- */
-function gin_theme_suggestions_input_alter(array &$suggestions, array $variables) {
-  if ($variables['element']['#type'] === 'checkbox') {
-    $suggestions[] = 'input__checkbox__toggle';
-  }
-}
-
-/**
  * Implements template_preprocess_HOOK() for form_element.
  */
 function gin_preprocess_form_element(&$variables) {
