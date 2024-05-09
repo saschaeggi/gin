@@ -195,11 +195,13 @@
 }
 
 .ui-dialog .button.button--small {
-  padding: calc(var(--gin-spacing-xxs) + 2px) var(--gin-spacing-m);
+  font-size: var(--gin-font-size-xxs);
+  padding: calc(var(--gin-spacing-xxs) + 2px) var(--gin-spacing-s);
   border-radius: var(--gin-border-s);
 }
 
 .ui-dialog .button.button--extrasmall {
+  font-size: var(--gin-font-size-xxs);
   padding: var(--gin-spacing-xxs) var(--gin-spacing-s);
   border-radius: var(--gin-border-s);
 }
