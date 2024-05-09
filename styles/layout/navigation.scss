@@ -59,10 +59,10 @@ body.gin--navigation {
 // Navigation
 // ----------
 .gin--navigation {
-  font-family: var(--gin-font);
   padding-top: 0 !important;
 
   .admin-toolbar {
+    font-family: var(--gin-font);
     top: 0;
     overflow-y: initial;
     padding-inline: 0;

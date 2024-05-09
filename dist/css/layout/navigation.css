@@ -866,11 +866,11 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 }
 
 .gin--navigation {
-  font-family: var(--gin-font);
   padding-top: 0 !important;
 }
 
 .gin--navigation .admin-toolbar {
+  font-family: var(--gin-font);
   top: 0;
   overflow-y: initial;
   padding-inline: 0;
