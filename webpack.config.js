@@ -22,6 +22,8 @@ module.exports = {
     'sidebar': ['./js/sidebar.js'],
     'sticky': ['./js/sticky.js'],
     'toolbar': ['./js/toolbar.js'],
+    'core_navigation': ['./js/core_navigation.js'],
+    'escape_admin': ['./js/escape_admin.js'],
     'tableheader': ['./js/tableheader.js'],
     // ################################################
     // CSS

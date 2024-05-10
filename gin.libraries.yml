@@ -39,6 +39,7 @@ navigation:
     js/navigation/vendor/floating-ui/floating-ui.dom.umd.js: { minified: true }
     js/navigation/sidebar.js: { minified: false }
   dependencies:
+  - gin/escape_admin
   - gin/coffee
   - gin/node_preview
   - gin/responsive_preview
@@ -57,7 +58,10 @@ core_navigation:
       dist/css/components/toolbar_secondary.css: { minified: false }
     theme:
       dist/css/layout/core_navigation.css: { minified: false }
+  js:
+    dist/js/core_navigation.js: { minified: false }
   dependencies:
+  - gin/escape_admin
   - gin/coffee
   - gin/node_preview
   - gin/responsive_preview
@@ -76,6 +80,7 @@ gin_toolbar:
   js:
     dist/js/toolbar.js: { minified: false }
   dependencies:
+    - gin/escape_admin
     - gin/coffee
     - gin/node_preview
     - gin/responsive_preview
@@ -97,6 +102,7 @@ gin_horizontal_toolbar:
   js:
     dist/js/toolbar.js: { minified: false }
   dependencies:
+    - gin/escape_admin
     - gin/coffee
     - gin/node_preview
     - gin/responsive_preview
@@ -115,6 +121,7 @@ gin_classic_toolbar:
   js:
     dist/js/toolbar.js: { minified: false }
   dependencies:
+    - gin/escape_admin
     - gin/coffee
     - gin/node_preview
     - gin/contextual_links
@@ -147,6 +154,12 @@ gin_description_toggle:
       dist/css/components/description_toggle.css: { minified: false }
   js:
     dist/js/description_toggle.js: { minified: false }
+
+escape_admin:
+  js:
+    dist/js/escape_admin.js: { minified: false }
+  dependencies:
+    - core/once
 
 messages:
   js:
