@@ -32,9 +32,12 @@ function ginInitDarkmode() {
 
 ginInitDarkmode();
 
-// GinDarkMode is not set yet.
+// GinDarkMode is not set yet or config changes detected.
 window.addEventListener('DOMContentLoaded', () => {
-  if (!localStorage.getItem('Drupal.gin.darkmode')) {
+  if (
+    !localStorage.getItem('Drupal.gin.darkmode') ||
+    (drupalSettings.gin.darkmode != localStorage.getItem('Drupal.gin.darkmode') && !drupalSettings.gin.show_user_theme_settings)
+  ) {
     localStorage.setItem('Drupal.gin.darkmode', drupalSettings.gin.darkmode);
     ginInitDarkmode();
   }
