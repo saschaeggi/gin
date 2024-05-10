@@ -1594,29 +1594,30 @@ td.webform-has-field-suffix > .form-item > .form-element {
   padding: 0;
 }
 
-.field-multiple-table thead {
-  position: relative;
-  z-index: 0;
-}
-
-.field-multiple-table thead::after {
-  content: "";
-  z-index: -1;
-  display: block;
-  width: 100%;
-  height: 100%;
+.field-multiple-table thead th {
   background: var(--gin-bg-header);
-  position: absolute;
-  top: 0;
-  border-radius: var(--gin-border-m);
 }
 
-[dir="ltr"] .field-multiple-table thead::after {
-  left: 0;
+[dir="ltr"] .field-multiple-table thead th:first-of-type {
+  border-top-left-radius: var(--gin-border-m);
+  border-bottom-left-radius: var(--gin-border-m);
 }
 
-[dir="rtl"] .field-multiple-table thead::after {
-  right: 0;
+[dir="rtl"] .field-multiple-table thead th:first-of-type {
+  border-top-right-radius: var(--gin-border-m);
+  border-bottom-right-radius: var(--gin-border-m);
+}
+
+[dir="ltr"] .field-multiple-table thead:not(:has(th:last-of-type:not([style*="display: none"]))) th:nth-last-of-type(2),
+[dir="ltr"] .field-multiple-table thead th:last-of-type:not([style*="display: none"]) {
+  border-top-right-radius: var(--gin-border-m);
+  border-bottom-right-radius: var(--gin-border-m);
+}
+
+[dir="rtl"] .field-multiple-table thead:not(:has(th:last-of-type:not([style*="display: none"]))) th:nth-last-of-type(2),
+[dir="rtl"] .field-multiple-table thead th:last-of-type:not([style*="display: none"]) {
+  border-top-left-radius: var(--gin-border-m);
+  border-bottom-left-radius: var(--gin-border-m);
 }
 
 .field-multiple-table thead tr {

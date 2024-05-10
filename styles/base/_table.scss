@@ -216,20 +216,19 @@ td.webform-has-field-suffix > .form-item > .form-element {
   }
 
   thead {
-    position: relative;
-    z-index: 0;
-
-    &::after {
-      content: "";
-      z-index: -1;
-      display: block;
-      width: 100%;
-      height: 100%;
+    th {
       background: var(--gin-bg-header);
-      position: absolute;
-      top: 0;
-      left: 0;
-      border-radius: var(--gin-border-m);
+
+      &:first-of-type {
+        border-top-left-radius: var(--gin-border-m);
+        border-bottom-left-radius: var(--gin-border-m);
+      }
+    }
+
+    &:not(:has(th:last-of-type:not([style*="display: none"]))) th:nth-last-of-type(2),
+    th:last-of-type:not([style*="display: none"]) {
+      border-top-right-radius: var(--gin-border-m);
+      border-bottom-right-radius: var(--gin-border-m);
     }
 
     tr {
