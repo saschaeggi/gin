@@ -54,6 +54,10 @@
   top: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset)) !important;
 }
 
+.ck[data-fullscreen=fullscreeneditor] .ck-sticky-panel__content.ck-sticky-panel__content_sticky {
+  top: 0 !important;
+}
+
 .ck .ck-toolbar__separator {
   opacity: .3;
 }
