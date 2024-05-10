@@ -123,4 +123,9 @@
     color: var(--ck-color-image-caption-text);
     background: var(--ck-color-image-caption-background);
   }
+
+  .ck.ck.ck-balloon-panel.ck-powered-by-balloon {
+    z-index: 2;
+    transform: translateY(-13px);
+  }
 }
