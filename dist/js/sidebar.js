@@ -11,7 +11,9 @@
         window.innerWidth >= 1024 && ("true" === localStorage.getItem(storageDesktop) ? this.showSidebar() : this.collapseSidebar()), 
         document.addEventListener("keydown", (e => {
           !0 === e.altKey && "KeyS" === e.code && this.toggleSidebar();
-        })), window.onresize = Drupal.debounce(this.handleResize, 150);
+        })), new ResizeObserver((entries => {
+          for (let entry of entries) Drupal.debounce(this.handleResize(entry.contentRect), 150);
+        })).observe(document.querySelector("html"));
       })), once("ginSidebarToggle", ".meta-sidebar__trigger", context).forEach((el => el.addEventListener("click", (e => {
         e.preventDefault(), this.removeInlineStyles(), this.toggleSidebar();
       })))), once("ginSidebarClose", ".meta-sidebar__close, .meta-sidebar__overlay", context).forEach((el => el.addEventListener("click", (e => {
@@ -34,8 +36,9 @@
       sidebarTrigger.setAttribute("aria-expanded", "false"), sidebarTrigger.classList.remove("is-active"), 
       document.body.setAttribute("data-meta-sidebar", "closed"), localStorage.setItem(chooseStorage, "false");
     },
-    handleResize: () => {
-      Drupal.ginSidebar.removeInlineStyles(), window.innerWidth < 1024 ? Drupal.ginSidebar.collapseSidebar() : "true" === localStorage.getItem(storageDesktop) ? Drupal.ginSidebar.showSidebar() : Drupal.ginSidebar.collapseSidebar();
+    handleResize: function() {
+      let windowSize = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : window;
+      Drupal.ginSidebar.removeInlineStyles(), windowSize.width < 1024 ? Drupal.ginSidebar.collapseSidebar() : "true" === localStorage.getItem(storageDesktop) ? Drupal.ginSidebar.showSidebar() : Drupal.ginSidebar.collapseSidebar();
     },
     removeInlineStyles: () => {
       const elementToRemove = document.querySelector(".gin-sidebar-inline-styles");

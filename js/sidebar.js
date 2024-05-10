@@ -39,7 +39,16 @@
           }
         });
 
-        window.onresize = Drupal.debounce(this.handleResize, 150);
+        // Resize observer.
+        const resizeHandler = new ResizeObserver(entries => {
+          for (let entry of entries) {
+            Drupal.debounce(this.handleResize(entry.contentRect), 150);
+          }
+        });
+
+        // Observe one or multiple elements
+        resizeHandler.observe(document.querySelector('html'));
+
       });
 
       // Toolbar toggle
@@ -108,11 +117,11 @@
       localStorage.setItem(chooseStorage, 'false');
     },
 
-    handleResize: () => {
+    handleResize: (windowSize = window) => {
       Drupal.ginSidebar.removeInlineStyles();
 
       // If small viewport, always collapse sidebar.
-      if (window.innerWidth < breakpoint) {
+      if (windowSize.width < breakpoint) {
         Drupal.ginSidebar.collapseSidebar();
       } else {
         // If large viewport, show sidebar if it was open before.

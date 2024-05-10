@@ -3,6 +3,7 @@
 html {
   font-family: var(--gin-font);
   scroll-padding-top: var(--gin-scroll-offset) !important;
+  background-color: #fff;
 }
 
 body {
