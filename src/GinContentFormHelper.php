@@ -3,6 +3,7 @@
 namespace Drupal\gin;
 
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -90,6 +91,32 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    * @see hook_form_alter()
    */
   public function formAlter(array &$form, FormStateInterface $form_state, $form_id) {
+    // Sticky action buttons.
+    if ($this->stickyActionButtons($form, $form_state, $form_id) || $this->isContentForm($form, $form_state, $form_id)) {
+      // Action buttons.
+      if (isset($form['actions'])) {
+        if (isset($form['actions']['preview'])) {
+          // Put Save after Preview.
+          $save_weight = $form['actions']['preview']['#weight'] ? $form['actions']['preview']['#weight'] + 1 : 11;
+          $form['actions']['submit']['#weight'] = $save_weight;
+        }
+
+        // Move entity_save_and_addanother_node after preview.
+        if (isset($form['actions']['entity_save_and_addanother_node'])) {
+          // Put Save after Preview.
+          $save_weight = $form['actions']['entity_save_and_addanother_node']['#weight'];
+          $form['actions']['preview']['#weight'] = $save_weight - 1;
+        }
+
+        $form['actions']['#attributes']['class'][] = 'gin-sticky';
+
+        $form['#attached']['library'][] = 'gin/edit_form';
+
+        // Add a class that allows the logic in edit_form.js to identify the form.
+        $form['#attributes']['class'][] = 'gin-sticky-form-actions';
+      }
+    }
+
     // Are we on an edit form?
     if (!$this->isContentForm($form, $form_state, $form_id)) {
       return;
@@ -122,19 +149,6 @@ class GinContentFormHelper implements ContainerInjectionInterface {
 
     // Action buttons.
     if (isset($form['actions'])) {
-      if (isset($form['actions']['preview'])) {
-        // Put Save after Preview.
-        $save_weight = $form['actions']['preview']['#weight'] ? $form['actions']['preview']['#weight'] + 1 : 11;
-        $form['actions']['submit']['#weight'] = $save_weight;
-      }
-
-      // Move entity_save_and_addanother_node after preview.
-      if (isset($form['actions']['entity_save_and_addanother_node'])) {
-        // Put Save after Preview.
-        $save_weight = $form['actions']['entity_save_and_addanother_node']['#weight'];
-        $form['actions']['preview']['#weight'] = $save_weight - 1;
-      }
-
       // Create gin_actions group.
       $form['gin_actions'] = [
         '#type' => 'container',
@@ -221,6 +235,50 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       unset($form['meta']['author']);
     }
 
+  }
+
+  /**
+   * Sticky action buttons.
+   *
+   * @param array $form
+   *   An associative array containing the structure of the form.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
+   * @param string $form_id
+   *   The form id.
+   */
+  public function stickyActionButtons(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = NULL) {
+    $sticky_action_buttons = FALSE;
+
+    // Forms to include for moving the actions to top.
+    $form_ids = [
+      'taxonomy_term_tags_form',
+      'user_register_form',
+      'user_admin_permissions',
+      'user_admin_roles_form',
+      'user_role_form',
+      'user_form',
+      'system_modules',
+      'system_modules_uninstall',
+      'update_manager_update_form',
+      'system_site_maintenance_mode',
+      'shortcut_set_customize_form',
+      'shortcut_default_form',
+      'media_library_settings_form',
+      'gin_login_form',
+    ];
+
+    if (
+      strpos($form_id, '_edit_form') !== false ||
+      strpos($form_id, '_display_form') !== false ||
+      strpos($form_id, '_settings') !== false ||
+      strpos($form_id, 'webform_admin_config_') !== false ||
+      in_array($form_id, $form_ids, TRUE)
+    ) {
+      $sticky_action_buttons = TRUE;
+    }
+
+    return $sticky_action_buttons;
   }
 
   /**
