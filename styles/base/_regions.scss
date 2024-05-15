@@ -105,10 +105,20 @@
 
     .gin-sticky {
       display: flex;
+      width: auto;
+      margin-top: 0;
+
+      :last-child {
+        margin-right: 0;
+      }
 
       @include mq(large) {
         padding-left: var(--gin-spacing-l);
       }
+    }
+
+    #block-gin-local-actions + .gin-sticky {
+      padding-left: var(--gin-spacing-xs);
     }
   }
 }
