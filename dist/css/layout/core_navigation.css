@@ -1,5 +1,5 @@
 :root {
-  --gin-toolbar-height: 39px;
+  --gin-toolbar-height: 48px;
   --gin-toolbar-secondary-height: 48px;
   --gin-scroll-offset: 72px;
   --gin-toolbar-y-offset: var(--gin-toolbar-height);
@@ -46,6 +46,11 @@ body.gin--core-navigation {
   --admin-toolbar-color-gray-200: var(--gin-border-color-layer2);
   --admin-toolbar-color-gray-800: var(--gin-color-text);
   --admin-toolbar-color-gray-990: var(--gin-color-primary-active);
+}
+
+.gin--core-navigation .top-bar {
+  position: sticky;
+  top: 0;
 }
 
 .gin--core-navigation .gin-secondary-toolbar:not(.gin-secondary-toolbar--frontend) {

@@ -2,7 +2,7 @@
 // Toolbar Variables
 // --------------------------------------------------
 :root {
-  --gin-toolbar-height: 39px;
+  --gin-toolbar-height: 48px;
   --gin-toolbar-secondary-height: 48px;
   --gin-scroll-offset: 72px;
   --gin-toolbar-y-offset: var(--gin-toolbar-height);
@@ -53,6 +53,11 @@ body.gin--core-navigation {
 // --------------------------------------------------
 // Custom overrides
 // --------------------------------------------------
+
+.gin--core-navigation .top-bar {
+  position: sticky;
+  top: 0;
+}
 
 .gin--core-navigation .gin-secondary-toolbar:not(.gin-secondary-toolbar--frontend) {
   margin-bottom: var(--gin-spacing-xxs);
