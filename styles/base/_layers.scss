@@ -20,7 +20,8 @@
 #views-entity-list,
 .admin.my-workbench,
 .media-library-views-form,
-.user-admin-permissions
+.user-admin-permissions,
+.field-config-form
 {
   margin-top: 0;
   box-shadow: var(--gin-shadow-l1);
@@ -43,7 +44,8 @@
 #views-entity-list,
 .admin.my-workbench,
 .media-library-views-form,
-.user-admin-permissions
+.user-admin-permissions,
+.field-config-form
 {
   width: 100%;
   padding: var(--gin-spacing-s);
@@ -60,6 +62,10 @@
   .layout-region-node-main > .form-wrapper:first-of-type .form-item {
     margin-top: 0;
   }
+}
+
+.field-config-form > .form-item:first-child {
+  margin-top: 0;
 }
 
 #system-clear-cache + #system-performance-settings,

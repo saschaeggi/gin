@@ -5,7 +5,7 @@
 ((Drupal) => {
   Drupal.behaviors.ginEditForm = {
     attach: (context) => {
-      once('ginEditForm', '.region-content form.gin-node-edit-form', context).forEach(form => {
+      once('ginEditForm', '.region-content form.gin-sticky-form-actions', context).forEach(form => {
         const sticky = context.querySelector('.gin-sticky');
         const newParent = context.querySelector('.region-sticky__items__inner');
 
@@ -26,6 +26,13 @@
               el.setAttribute('for', el.getAttribute('for') + '--gin-edit-form');
             }));
           }
+
+          const localActions = document.querySelector('#block-gin-local-actions');
+
+          localActions.querySelectorAll('.button--primary').forEach(button => {
+            button.classList.remove('button--primary');
+            button.classList.remove('button--secondary');
+          });
         }
       });
     }
