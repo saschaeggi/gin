@@ -108,9 +108,9 @@
       width: auto;
       margin-top: 0;
 
-      :last-child {
-        margin-right: 0;
-      }
+      // :last-child {
+      //   margin-right: 0;
+      // }
 
       @include mq(large) {
         padding-left: var(--gin-spacing-l);
@@ -218,9 +218,9 @@ body:not(.toolbar-tray-open) .layout-container {
     align-items: center;
     justify-content: flex-end;
 
-    :last-child {
-      margin-right: 0;
-    }
+    // :last-child {
+    //   margin-right: 0;
+    // }
   }
 
   .field--name-status {
@@ -229,7 +229,7 @@ body:not(.toolbar-tray-open) .layout-container {
     margin-right: var(--gin-spacing-xxs);
 
     @include mq(medium) {
-      margin-right: var(--gin-spacing-l);
+      margin-right: var(--gin-spacing-m);
     }
 
     .form-type--checkbox {
