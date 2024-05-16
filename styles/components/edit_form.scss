@@ -148,6 +148,16 @@
           text-shadow: none;
         }
 
+        &__last-saved,
+        &__author {
+          margin-block: var(--gin-spacing-xxs);
+
+          &,
+          .form-item__label {
+            font-size: var(--gin-font-size-s);
+          }
+        }
+
         > .accordion__item {
           margin: 0;
           border: 0 none;

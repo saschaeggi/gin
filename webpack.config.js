@@ -14,7 +14,7 @@ module.exports = {
     // ################################################
     'accent': ['./js/accent.js'],
     'description_toggle': ['./js/description_toggle.js'],
-    'edit_form': ['./js/edit_form.js'],
+    'more_actions': ['./js/more_actions.js'],
     'gin_ckeditor': ['./js/gin_ckeditor.js'], // Can't rename as we would be in trouble
     'init': ['./js/init.js'],
     'messages': ['./js/messages.js'],
@@ -43,6 +43,7 @@ module.exports = {
     'components/description_toggle': ['./styles/components/description_toggle.scss'],
     'components/dialog': ['./styles/components/dialog.scss'],
     'components/dropzonejs': ['./styles/components/dropzonejs.scss'],
+    'components/more_actions': ['./styles/components/more_actions.scss'],
     'components/edit_form': ['./styles/components/edit_form.scss'],
     'components/entity_browser': ['./styles/components/entity_browser.scss'],
     'components/entity_reference_layout': ['./styles/components/entity_reference_layout.scss'],
