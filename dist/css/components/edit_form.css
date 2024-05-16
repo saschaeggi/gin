@@ -189,6 +189,16 @@
           margin-block-start: var(--gin-spacing-m);
 }
 
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__last-saved, .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__author {
+  margin-block: var(--gin-spacing-xxs);
+}
+
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__last-saved,
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__last-saved .form-item__label, .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__author,
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__author .form-item__label {
+  font-size: var(--gin-font-size-s);
+}
+
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item {
   margin: 0;
   border: 0 none;
