@@ -233,14 +233,19 @@ tabs:
     component:
       dist/css/components/tabs.css: { minified: false, weight: 99 }
 
-edit_form:
+more_actions:
   js:
-    dist/js/edit_form.js: { minified: false }
+    dist/js/more_actions.js: { minified: false }
+  css:
+    layout:
+      dist/css/components/more_actions.css: { minified: false }
+  dependencies:
+    - core/once
+
+edit_form:
   css:
     layout:
       dist/css/components/edit_form.css: { minified: false }
-  dependencies:
-    - core/once
 
 media_library:
   css:
