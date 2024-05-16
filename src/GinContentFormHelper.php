@@ -10,6 +10,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Theme\ThemeManagerInterface;
+use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -110,10 +111,55 @@ class GinContentFormHelper implements ContainerInjectionInterface {
 
         $form['actions']['#attributes']['class'][] = 'gin-sticky';
 
-        $form['#attached']['library'][] = 'gin/edit_form';
+        $form['#attached']['library'][] = 'gin/more_actions';
 
         // Add a class that allows the logic in edit_form.js to identify the form.
         $form['#attributes']['class'][] = 'gin-sticky-form-actions';
+
+        // Create gin_more_actions group.
+        $toggle_more_actions = t('Show more actions');
+        $form['actions']['gin_more_actions'] = [
+          '#type' => 'container',
+          '#multilingual' => TRUE,
+          '#weight' => 998,
+          '#attributes' => [
+            'class' => ['gin-more-actions'],
+          ],
+          'gin_more_actions_toggle' => [
+            '#markup' => '<a href="#toggle-more-actions" class="gin-more-actions__trigger trigger" role="button" title="' . $toggle_more_actions . '" aria-controls="gin_more_actions"><span class="visually-hidden">' . $toggle_more_actions . '</span></a>',
+            '#weight' => 1,
+          ],
+          'gin_more_actions_items' => [
+            '#type' => 'container',
+            '#multilingual' => TRUE,
+          ],
+        ];
+
+        // Move all actions over.
+        $form['actions']['gin_more_actions']['gin_more_actions_items'] = ($form['actions']) ?? [];
+        $form['actions']['gin_more_actions']['gin_more_actions_items']['#weight'] = 2;
+        $form['actions']['gin_more_actions']['gin_more_actions_items']['#attributes']['class'] = ['gin-more-actions__menu'];
+
+        // Unset default visible actions.
+        unset($form['actions']['gin_more_actions']['gin_more_actions_items']['preview']);
+        unset($form['actions']['gin_more_actions']['gin_more_actions_items']['submit']);
+        unset($form['actions']['gin_more_actions']['gin_more_actions_items']['gin_more_actions']);
+
+        // Unset all items we move to the more actions menu.
+        foreach ($form['actions'] as $key => $item) {
+          $excludes = ['submit', 'preview', 'gin_more_actions', '#type', '#attributes'];
+          if (!in_array($key, $excludes)) {
+            unset($form['actions'][$key]);
+          }
+        }
+
+        // Assign status to gin_actions.
+        $form['actions']['gin_actions'] = [
+          '#type' => 'container',
+          '#weight' => -1,
+          '#multilingual' => TRUE,
+        ];
+        $form['status']['#group'] = 'gin_actions';
       }
     }
 
@@ -149,33 +195,11 @@ class GinContentFormHelper implements ContainerInjectionInterface {
 
     // Action buttons.
     if (isset($form['actions'])) {
-      // Create gin_actions group.
-      $form['gin_actions'] = [
-        '#type' => 'container',
-        '#weight' => -1,
-        '#multilingual' => TRUE,
-        '#attributes' => [
-          'class' => [
-            'gin-sticky',
-          ],
-        ],
-      ];
-      // Assign status to gin_actions.
-      $form['status']['#group'] = 'gin_actions';
-
-      // Move all actions over.
-      $form['gin_actions']['actions'] = ($form['actions']) ?? [];
-      $form['gin_actions']['actions']['#weight'] = 130;
-
-      // Now let's just remove delete, as we'll move that over to gin_sidebar.
-      unset($form['gin_actions']['actions']['delete']);
-      unset($form['gin_actions']['actions']['delete_translation']);
-
       // Add sidebar toggle.
       $hide_panel = t('Hide sidebar panel');
-      $form['gin_actions']['gin_sidebar_toggle'] = [
+      $form['actions']['gin_sidebar_toggle'] = [
         '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger" role="button" title="' . $hide_panel . '" aria-controls="gin_sidebar"><span class="visually-hidden">' . $hide_panel . '</span></a>',
-        '#weight' => '999',
+        '#weight' => 999,
       ];
       $form['#attached']['library'][] = 'gin/sidebar';
 
@@ -193,17 +217,6 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       ];
       // Copy footer over.
       $form['gin_sidebar']['footer'] = ($form['footer']) ?? [];
-      // Copy actions.
-      $form['gin_sidebar']['actions'] = [];
-      $form['gin_sidebar']['actions']['#type'] = ($form['actions']['#type']) ?? 'actions';
-      // Copy delete action.
-      $form['gin_sidebar']['actions']['delete'] = ($form['actions']['delete']) ?? [];
-      // Copy delete_translation action.
-      if (isset($form['actions']['delete_translation'])) {
-        $form['gin_sidebar']['actions']['delete_translation'] = ($form['actions']['delete_translation']) ?? [];
-        $form['gin_sidebar']['actions']['delete_translation']['#attributes']['class'][] = 'button--danger';
-        $form['gin_sidebar']['actions']['delete_translation']['#attributes']['class'][] = 'action-link';
-      }
 
       // Sidebar close button.
       $close_sidebar_translation = t('Close sidebar panel');
@@ -249,6 +262,8 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    */
   public function stickyActionButtons(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = NULL) {
     $sticky_action_buttons = FALSE;
+
+    // print_r($this->routeMatch->getRouteName());
 
     // Forms to include for moving the actions to top.
     $form_ids = [
@@ -303,6 +318,8 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     // Routes to include.
     $route_names = [
       'node.add',
+      'block_content.add_page',
+      'entity.block_content.canonical',
       'entity.node.content_translation_add',
       'entity.node.content_translation_edit',
       'quick_node_clone.node.quick_clone',
