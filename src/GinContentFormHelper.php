@@ -3,14 +3,12 @@
 namespace Drupal\gin;
 
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Theme\ThemeManagerInterface;
-use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -113,7 +111,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
 
         $form['#attached']['library'][] = 'gin/more_actions';
 
-        // Add a class that allows the logic in edit_form.js to identify the form.
+        // Add a class to identify modified forms.
         $form['#attributes']['class'][] = 'gin-sticky-form-actions';
 
         // Create gin_more_actions group.
@@ -263,8 +261,6 @@ class GinContentFormHelper implements ContainerInjectionInterface {
   public function stickyActionButtons(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = NULL) {
     $sticky_action_buttons = FALSE;
 
-    // print_r($this->routeMatch->getRouteName());
-
     // Forms to include for moving the actions to top.
     $form_ids = [
       'taxonomy_term_tags_form',
@@ -284,10 +280,10 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     ];
 
     if (
-      strpos($form_id, '_edit_form') !== false ||
-      strpos($form_id, '_display_form') !== false ||
-      strpos($form_id, '_settings') !== false ||
-      strpos($form_id, 'webform_admin_config_') !== false ||
+      strpos($form_id, '_edit_form') !== FALSE ||
+      strpos($form_id, '_display_form') !== FALSE ||
+      strpos($form_id, '_settings') !== FALSE ||
+      strpos($form_id, 'webform_admin_config_') !== FALSE ||
       in_array($form_id, $form_ids, TRUE)
     ) {
       $sticky_action_buttons = TRUE;
