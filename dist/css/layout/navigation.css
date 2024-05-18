@@ -1287,6 +1287,10 @@ button.toolbar-link--sidebar-toggle:hover::before, button.toolbar-link--sidebar-
   --icon: url("../../media/sprite.svg#help-view");
 }
 
+.toolbar-link--commerce-admin-commerce::before {
+  --icon: url("../../media/sprite.svg#commerce-view");
+}
+
 .toolbar-link--media::before {
   --icon: url("../../media/sprite.svg#media-view");
 }

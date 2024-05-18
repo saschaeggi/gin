@@ -465,6 +465,10 @@ button.toolbar-link--sidebar-toggle {
   --icon: #{icon('help')};
 }
 
+.toolbar-link--commerce-admin-commerce::before {
+  --icon: #{icon('commerce')};
+}
+
 .toolbar-link--media::before {
   --icon: #{icon('media')};
 }
