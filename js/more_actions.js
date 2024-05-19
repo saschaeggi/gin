@@ -15,22 +15,21 @@
         const sticky = context.querySelector('.gin-sticky');
         const newParent = context.querySelector('.region-sticky__items__inner');
 
-        if (newParent && newParent.querySelectorAll('.gin-sticky').length === 0) {
-          newParent.appendChild(sticky);
+        if (newParent) {
+          // If action buttons are not moved via hook, move them via JS.
+          if (newParent.querySelectorAll('.gin-sticky').length === 0) {
+            newParent.appendChild(sticky);
+          } else {
+            document.querySelector('.region-content form.gin-sticky-form-actions .gin-sticky')?.remove();
+          }
 
           // Attach form elements to main form
           const actionButtons = newParent.querySelectorAll('button, input, select, textarea');
-          const formLabels = newParent.querySelectorAll('label');
 
           if (actionButtons.length > 0) {
             actionButtons.forEach((el) => {
               el.setAttribute('form', form.getAttribute('id'));
-              el.setAttribute('id', el.getAttribute('id') + '--gin-edit-form');
             });
-
-            formLabels.forEach((el => {
-              el.setAttribute('for', el.getAttribute('for') + '--gin-edit-form');
-            }));
           }
 
           const localActions = document.querySelector('#block-gin-local-actions');
