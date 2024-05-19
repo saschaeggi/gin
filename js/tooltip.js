@@ -46,14 +46,13 @@
 
           const updatePosition = () => {
             computePosition(trigger, tooltip, {
-              strategy: 'fixed',
-              placement: trigger.dataset.drupalTooltipPosition || 'bottom',
+              strategy: 'absolute',
+              placement: trigger.dataset.drupalTooltipPosition || 'bottom-end',
               middleware: [
                 flip({ padding: 16 }),
                 offset(6),
                 shift({ padding: 16 }),
               ],
-
             }).then(({ x, y }) => {
               Object.assign(tooltip.style, {
                 left: `${x}px`,
