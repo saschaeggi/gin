@@ -8,8 +8,8 @@
         title && (trigger.title = ""), trigger.insertAdjacentHTML("afterend", Drupal.theme.ginTooltipWrapper(trigger.dataset, title));
         const tooltip = trigger.nextElementSibling, updatePosition = () => {
           computePosition(trigger, tooltip, {
-            strategy: "fixed",
-            placement: trigger.dataset.drupalTooltipPosition || "bottom",
+            strategy: "absolute",
+            placement: trigger.dataset.drupalTooltipPosition || "bottom-end",
             middleware: [ flip({
               padding: 16
             }), offset(6), shift({
