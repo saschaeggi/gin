@@ -108,10 +108,6 @@
       width: auto;
       margin-top: 0;
 
-      // :last-child {
-      //   margin-right: 0;
-      // }
-
       @include mq(large) {
         padding-left: var(--gin-spacing-l);
       }
@@ -217,19 +213,17 @@ body:not(.toolbar-tray-open) .layout-container {
     flex-grow: 1;
     align-items: center;
     justify-content: flex-end;
-
-    // :last-child {
-    //   margin-right: 0;
-    // }
   }
 
   .field--name-status {
     display: flex;
     align-items: center;
-    margin-right: var(--gin-spacing-xxs);
+    margin-right: var(--gin-spacing-m);
 
-    @include mq(medium) {
-      margin-right: var(--gin-spacing-m);
+    @include mq($to: tiny) {
+      .form-item__label  {
+        display: none;
+      }
     }
 
     .form-type--checkbox {
