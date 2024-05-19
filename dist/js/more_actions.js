@@ -7,14 +7,13 @@
     init: function(context) {
       once("ginEditForm", ".region-content form.gin-sticky-form-actions", context).forEach((form => {
         const sticky = context.querySelector(".gin-sticky"), newParent = context.querySelector(".region-sticky__items__inner");
-        if (newParent && 0 === newParent.querySelectorAll(".gin-sticky").length) {
-          newParent.appendChild(sticky);
-          const actionButtons = newParent.querySelectorAll("button, input, select, textarea"), formLabels = newParent.querySelectorAll("label");
-          actionButtons.length > 0 && (actionButtons.forEach((el => {
-            el.setAttribute("form", form.getAttribute("id")), el.setAttribute("id", el.getAttribute("id") + "--gin-edit-form");
-          })), formLabels.forEach((el => {
-            el.setAttribute("for", el.getAttribute("for") + "--gin-edit-form");
-          })));
+        if (newParent) {
+          var _document$querySelect;
+          0 === newParent.querySelectorAll(".gin-sticky").length ? newParent.appendChild(sticky) : null === (_document$querySelect = document.querySelector(".region-content form.gin-sticky-form-actions .gin-sticky")) || void 0 === _document$querySelect || _document$querySelect.remove();
+          const actionButtons = newParent.querySelectorAll("button, input, select, textarea");
+          actionButtons.length > 0 && actionButtons.forEach((el => {
+            el.setAttribute("form", form.getAttribute("id"));
+          }));
           const localActions = document.querySelector("#block-gin-local-actions");
           null == localActions || localActions.querySelectorAll(".button--primary").forEach((button => {
             button.classList.remove("button--primary"), button.classList.remove("button--secondary");
