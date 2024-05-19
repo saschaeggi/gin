@@ -6,6 +6,8 @@ gin:
     - gin/gin_base
     - gin/legacy_css
 
+# Base
+
 gin_base:
   css:
     component:
@@ -16,6 +18,7 @@ gin_base:
     - gin/dialog
 
 # Legacy
+
 gin_ckeditor:
   dependencies:
     - gin/ckeditor
@@ -27,6 +30,8 @@ gin_init:
   dependencies:
     - core/drupalSettings
 
+# Navigation
+
 navigation:
   css:
     component:
@@ -35,10 +40,9 @@ navigation:
     theme:
       dist/css/layout/navigation.css: { minified: false }
   js:
-    js/navigation/vendor/floating-ui/floating-ui.core.umd.js: { minified: true }
-    js/navigation/vendor/floating-ui/floating-ui.dom.umd.js: { minified: true }
     js/navigation/sidebar.js: { minified: false }
   dependencies:
+    - gin/floating-ui
     - gin/escape_admin
     - gin/coffee
     - gin/node_preview
@@ -129,6 +133,8 @@ gin_classic_toolbar:
     - gin/settings_tray_edit
     - core/once
 
+# Accent
+
 gin_accent:
   css:
     theme:
@@ -138,6 +144,8 @@ gin_accent:
   dependencies:
     - core/drupalSettings
     - core/once
+
+# Libraries
 
 gin_dialog:
   css:
@@ -186,6 +194,15 @@ scrollsync:
 
 # Overrides
 
+floating-ui:
+  js:
+    js/navigation/vendor/floating-ui/floating-ui.core.umd.js: { minified: true }
+    js/navigation/vendor/floating-ui/floating-ui.dom.umd.js: { minified: true }
+  dependencies:
+    - core/once
+
+# Overrides
+
 gin_media_embed_ckeditor_theme:
   js:
     js/overrides/media_embed_ckeditor.theme.js: {}
@@ -196,6 +213,7 @@ sticky:
   js:
     dist/js/sticky.js: { minified: false }
   dependencies:
+    - gin/tooltip
     - core/drupal.displace
     - core/once
 
@@ -233,6 +251,16 @@ tabs:
   css:
     component:
       dist/css/components/tabs.css: { minified: false, weight: 99 }
+
+tooltip:
+  js:
+    dist/js/tooltip.js: { minified: false }
+  css:
+    component:
+      dist/css/components/tooltip.css: { minified: false }
+  dependencies:
+    - gin/floating-ui
+    - core/once
 
 more_actions:
   js:

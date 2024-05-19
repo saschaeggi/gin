@@ -446,20 +446,16 @@ body:not(.toolbar-tray-open) .layout-container {
 }
 
 [dir="ltr"] .gin-sticky .field--name-status {
-  margin-right: var(--gin-spacing-xxs);
+  margin-right: var(--gin-spacing-m);
 }
 
 [dir="rtl"] .gin-sticky .field--name-status {
-  margin-left: var(--gin-spacing-xxs);
+  margin-left: var(--gin-spacing-m);
 }
 
-@media (min-width: 61em) {
-  [dir="ltr"] .gin-sticky .field--name-status {
-    margin-right: var(--gin-spacing-m);
-  }
-
-  [dir="rtl"] .gin-sticky .field--name-status {
-    margin-left: var(--gin-spacing-m);
+@media (max-width: 26.24em) {
+  .gin-sticky .field--name-status .form-item__label {
+    display: none;
   }
 }
 
