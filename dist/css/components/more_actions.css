@@ -77,8 +77,14 @@
   background-color: var(--gin-color-primary-active);
 }
 
-.gin-sticky .gin-more-actions__trigger[aria-expanded=true] + .gin-more-actions__menu {
+.gin-sticky .gin-more-actions__trigger[aria-expanded=true] ~ .gin-more-actions__menu {
   visibility: visible;
   opacity: 1;
+}
+
+.gin-sticky .gin-more-actions__trigger[aria-expanded=true] ~ .gin-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  transition: none !important;
 }
 
