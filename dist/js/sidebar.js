@@ -24,17 +24,18 @@
       document.querySelector(".meta-sidebar__trigger").classList.contains("is-active") ? Drupal.ginSidebar.collapseSidebar() : Drupal.ginSidebar.showSidebar();
     },
     showSidebar: () => {
-      const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, showLabel = Drupal.t("Hide sidebar panel"), sidebarTrigger = document.querySelector(".meta-sidebar__trigger");
-      sidebarTrigger.setAttribute("title", showLabel), sidebarTrigger.querySelector("span").innerHTML = showLabel, 
-      sidebarTrigger.setAttribute("aria-expanded", "true"), sidebarTrigger.classList.add("is-active"), 
-      document.body.setAttribute("data-meta-sidebar", "open"), localStorage.setItem(chooseStorage, "true"), 
-      window.innerWidth < 1280 && ("vertical" === toolbarVariant ? Drupal.ginToolbar.collapseToolbar() : "new" === toolbarVariant && Drupal.behaviors.navigation.collapseSidebar());
+      const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, hideLabel = Drupal.t("Hide sidebar panel"), sidebarTrigger = document.querySelector(".meta-sidebar__trigger"), tooltip = null == sidebarTrigger ? void 0 : sidebarTrigger.nextElementSibling;
+      tooltip.classList.contains("gin-tooltip") ? (tooltip.innerHTML = hideLabel, sidebarTrigger.setAttribute("title", "")) : sidebarTrigger.setAttribute("title", hideLabel), 
+      sidebarTrigger.querySelector("span").innerHTML = hideLabel, sidebarTrigger.setAttribute("aria-expanded", "true"), 
+      sidebarTrigger.classList.add("is-active"), document.body.setAttribute("data-meta-sidebar", "open"), 
+      localStorage.setItem(chooseStorage, "true"), window.innerWidth < 1280 && ("vertical" === toolbarVariant ? Drupal.ginToolbar.collapseToolbar() : "new" === toolbarVariant && Drupal.behaviors.navigation.collapseSidebar());
     },
     collapseSidebar: () => {
-      const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, hideLabel = Drupal.t("Show sidebar panel"), sidebarTrigger = document.querySelector(".meta-sidebar__trigger");
-      sidebarTrigger.setAttribute("title", hideLabel), sidebarTrigger.querySelector("span").innerHTML = hideLabel, 
-      sidebarTrigger.setAttribute("aria-expanded", "false"), sidebarTrigger.classList.remove("is-active"), 
-      document.body.setAttribute("data-meta-sidebar", "closed"), localStorage.setItem(chooseStorage, "false");
+      const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, showLabel = Drupal.t("Show sidebar panel"), sidebarTrigger = document.querySelector(".meta-sidebar__trigger"), tooltip = null == sidebarTrigger ? void 0 : sidebarTrigger.nextElementSibling;
+      tooltip.classList.contains("gin-tooltip") ? (tooltip.innerHTML = showLabel, sidebarTrigger.setAttribute("title", "")) : sidebarTrigger.setAttribute("title", showLabel), 
+      sidebarTrigger.querySelector("span").innerHTML = showLabel, sidebarTrigger.setAttribute("aria-expanded", "false"), 
+      sidebarTrigger.classList.remove("is-active"), document.body.setAttribute("data-meta-sidebar", "closed"), 
+      localStorage.setItem(chooseStorage, "false");
     },
     handleResize: function() {
       let windowSize = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : window;
