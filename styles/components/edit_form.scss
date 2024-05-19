@@ -55,6 +55,18 @@
   }
 
   .page-wrapper__node-edit-form {
+    .region-sticky {
+      @include mq($to: large) {
+        #edit-actions {
+          width: 100%;
+        }
+
+        #edit-gin-actions {
+          flex-grow: 1;
+        }
+      }
+    }
+
     .block-page-title-block {
       @include mq(1730px) {
         width: 100%;

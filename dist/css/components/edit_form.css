@@ -72,6 +72,16 @@
   }
 }
 
+@media (max-width: 63.99em) {
+  .gin--edit-form .page-wrapper__node-edit-form .region-sticky #edit-actions {
+    width: 100%;
+  }
+
+  .gin--edit-form .page-wrapper__node-edit-form .region-sticky #edit-gin-actions {
+    flex-grow: 1;
+  }
+}
+
 @media (min-width: 108.125em) {
   .gin--edit-form .page-wrapper__node-edit-form .block-page-title-block {
     width: 100%;
