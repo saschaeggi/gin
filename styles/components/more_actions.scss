@@ -66,8 +66,17 @@
     }
   }
 
-  &__trigger[aria-expanded="true"] + .gin-more-actions__menu {
-    visibility: visible;
-    opacity: 1;
+  &__trigger[aria-expanded="true"] {
+    ~ .gin-more-actions__menu {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    // Hide tooltip
+    ~ .gin-tooltip {
+      visibility: hidden;
+      opacity: 0;
+      transition: none !important;
+    }
   }
 }

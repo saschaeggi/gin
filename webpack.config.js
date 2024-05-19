@@ -25,6 +25,7 @@ module.exports = {
     'core_navigation': ['./js/core_navigation.js'],
     'escape_admin': ['./js/escape_admin.js'],
     'tableheader': ['./js/tableheader.js'],
+    'tooltip': ['./js/tooltip.js'],
     // ################################################
     // CSS
     // ################################################
@@ -65,6 +66,7 @@ module.exports = {
     'components/tabs': ['./styles/components/tabs.scss'],
     'components/toolbar': ['./styles/components/toolbar.scss'],
     'components/toolbar_secondary': ['./styles/components/toolbar_secondary.scss'],
+    'components/tooltip': ['./styles/components/tooltip.scss'],
     'components/upgrade_status': ['./styles/components/upgrade_status.scss'],
     'components/webform': ['./styles/components/webform.scss'],
     'components/workbench': ['./styles/components/workbench.scss'],
