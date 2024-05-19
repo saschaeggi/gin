@@ -1,0 +1,33 @@
+.gin-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  z-index: 601;
+  position: absolute;
+  top: var(--space-xs);
+  padding: var(--gin-spacing-xxs) var(--gin-spacing-xs);
+  font-size: var(--gin-font-size-xxs);
+  font-weight: var(--gin-font-weight-normal);
+  white-space: nowrap;
+  color: white;
+  background-color: var(--gin-tooltip-bg);
+  box-shadow: var(--gin-shadow-l2);
+  border-radius: var(--gin-border-s);
+  transition: var(--gin-transition-fast);
+  transition-delay: 0;
+}
+
+[dir="ltr"] .gin-tooltip {
+  left: 100%;
+}
+
+[dir="rtl"] .gin-tooltip {
+  right: 100%;
+}
+
+[data-gin-tooltip]:hover + .gin-tooltip,
+[data-gin-tooltip]:focus + .gin-tooltip {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: .75s;
+}
+
