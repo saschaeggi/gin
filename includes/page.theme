@@ -39,44 +39,29 @@ function gin_preprocess_page(&$variables) {
     }
   }
 
-  // Attach form actions to page
-  // so we can display them in the
-  // sticky bar.
-  $route_match = \Drupal::routeMatch();
-  $entity = '';
+  // Check if edit form.
+  $entity_form = \Drupal::request()->attributes->get('_entity_form');
+  if (isset($entity_form)) {
+    $form_type = explode('.', $entity_form);
+    $entity_type_id = $form_type ? $form_type[0] : '';
+    $form_type = $form_type ? $form_type[1] : 'default';
 
-  // Check for known entity types and load the form actions accordingly.
-  if ($node = $route_match->getParameter('node')) {
-    if ($node instanceof NodeInterface) {
-      $entity = $node;
-      $entity_type_id = 'node';
-    }
-  }
-  elseif ($block = $route_match->getParameter('block_content')) {
-    if ($block instanceof BlockContentInterface) {
-      $entity = $block;
-      $entity_type_id = 'block_content';
-    }
-  }
-  elseif ($taxonomy_term = $route_match->getParameter('taxonomy_term')) {
-    if ($taxonomy_term instanceof TermInterface) {
-      $entity = $taxonomy_term;
-      $entity_type_id = 'taxonomy_term';
-    }
-  }
-  elseif ($user = $route_match->getParameter('user')) {
-    if ($user instanceof UserInterface) {
-      $entity = $user;
-      $entity_type_id = 'user';
-    }
-  }
+    $entity = \Drupal::request()->attributes->get($entity_type_id);
 
-  // Get form actions.
-  if ($entity) {
-    $form_object = \Drupal::entityTypeManager()->getFormObject($entity_type_id, 'default')->setEntity($entity);
-    $form = \Drupal::formBuilder()->getForm($form_object);
-    if (isset($form['actions'])) {
-      $variables['gin_form_actions'] = $form['actions'];
+    if (is_scalar($entity)) {
+      $entity = \Drupal::entityTypeManager()->getStorage($entity_type_id)->load($entity);
+    }
+
+    // Get form actions.
+    if ($entity) {
+      $form_object = \Drupal::entityTypeManager()->getFormObject($entity_type_id, $form_type);
+      $form_object = $form_object->setEntity($entity);
+
+      $form = \Drupal::formBuilder()->getForm($form_object);
+      if (isset($form['actions'])) {
+        $variables['gin_form_actions'] = $form['actions'];
+        $variables['gin_form_actions_class'] = 'gin-sticky-form-actions--preprocessed';
+      }
     }
   }
 }

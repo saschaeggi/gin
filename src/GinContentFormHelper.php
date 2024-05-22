@@ -133,6 +133,16 @@ class GinContentFormHelper implements ContainerInjectionInterface {
           ],
         ];
 
+        // Prepare actions.
+        $form_id = preg_replace('/--2$/', '', $form['#id']);
+        foreach ($form['actions'] as $key => $item) {
+          // Attach to original form
+          $excludes = ['#type', '#attributes'];
+          if (!in_array($key, $excludes)) {
+            $form['actions'][$key]['#attributes']['form'] = $form_id;
+          }
+        }
+
         // Move all actions over.
         $form['actions']['gin_more_actions']['gin_more_actions_items'] = ($form['actions']) ?? [];
         $form['actions']['gin_more_actions']['gin_more_actions_items']['#weight'] = 2;
