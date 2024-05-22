@@ -88,3 +88,7 @@
   transition: none !important;
 }
 
+.gin-sticky-form-actions--preprocessed ~ .layout-container form.gin-sticky-form-actions .gin-sticky {
+  display: none;
+}
+
