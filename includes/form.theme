@@ -45,6 +45,14 @@ function gin_form_alter(&$form, $form_state, $form_id) {
 }
 
 /**
+ * Helper function to remember the form actions after form has been built.
+ */
+function gin_form_after_build(array $form, FormStateInterface $form_state): array {
+  _gin_form_actions($form['actions'] ?? NULL);
+  return $form;
+}
+
+/**
  * Implements form_user_form_alter().
  */
 function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
@@ -158,4 +166,22 @@ function gin_preprocess_text_format_wrapper(&$variables) {
  */
 function gin_preprocess_inline_entity_form_entity_table(array &$variables) {
   $variables['table']['#attached']['library'][] = 'gin/inline_entity_form';
+}
+
+/**
+ * Set and get the form actions of the current request.
+ *
+ * @param array|null $actions
+ *   If not NULL, the given actions will be remembered for the current request
+ *   so that they can be retrieved later when processing the page.
+ *
+ * @return array|null
+ *   If set, the previously stored actions, NULL otherwise.
+ */
+function _gin_form_actions(?array $actions = NULL): ?array {
+  if ($actions !== NULL) {
+    // Set the form actions for this request.
+    drupal_static(__FUNCTION__, $actions);
+  }
+  return drupal_static(__FUNCTION__);
 }
