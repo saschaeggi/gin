@@ -13,7 +13,7 @@
     init: function (context) {
       once('ginEditForm', '.region-content form.gin-sticky-form-actions', context).forEach(form => {
         const sticky = context.querySelector('.gin-sticky');
-        const newParent = context.querySelector('.region-sticky__items__inner');
+        const newParent = document.querySelector('.region-sticky__items__inner');
 
         if (newParent) {
           // If action buttons are not moved via hook, move them via JS.
@@ -23,15 +23,6 @@
             document.querySelector('.region-content form.gin-sticky-form-actions .gin-sticky')?.remove();
           }
 
-          // Attach form elements to main form
-          const actionButtons = newParent.querySelectorAll('button, input, select, textarea');
-
-          if (actionButtons.length > 0) {
-            actionButtons.forEach((el) => {
-              el.setAttribute('form', form.getAttribute('id'));
-            });
-          }
-
           const localActions = document.querySelector('#block-gin-local-actions');
 
           localActions?.querySelectorAll('.button--primary').forEach(button => {
@@ -39,6 +30,9 @@
             button.classList.remove('button--secondary');
           });
         }
+
+        // Sync form ID.
+        this.updateFormId(newParent, form);
       });
 
       // More actions menu toggle
@@ -47,6 +41,17 @@
         this.toggleMoreActions();
         document.addEventListener('click', this.closeMoreActionsOnClickOutside, false);
       }));
+    },
+
+    updateFormId: function (newParent, form) {
+      // Attach form elements to main form
+      const actionButtons = newParent.querySelectorAll('button, input, select, textarea');
+
+      if (actionButtons.length > 0) {
+        actionButtons.forEach((el) => {
+          el.setAttribute('form', form.getAttribute('id'));
+        });
+      }
     },
 
     toggleMoreActions: function () {

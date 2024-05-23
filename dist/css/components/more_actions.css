@@ -1,3 +1,13 @@
+.gin-sticky {
+  display: flex;
+  gap: var(--gin-spacing-xs);
+}
+
+.gin-sticky > * {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 .gin-sticky .gin-more-actions {
   position: relative;
 }
@@ -38,6 +48,7 @@
 .gin-sticky .gin-more-actions__trigger {
   cursor: pointer;
   background: transparent;
+  display: block;
   height: 32px;
   width: 32px;
   border-radius: var(--gin-border-m);
