@@ -16,33 +16,57 @@
   display: none;
 }
 
-.gin-sticky .gin-more-actions__menu {
+.gin-sticky .gin-more-actions__menu.form-actions {
   visibility: hidden;
   opacity: 0;
   position: absolute;
   top: 100%;
-  min-width: max-content;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: var(--gin-spacing-xs);
   padding: var(--gin-spacing-xs);
   background-color: var(--gin-bg-layer3);
   border-radius: var(--gin-border-l);
+  box-sizing: border-box;
   box-shadow: var(--gin-shadow-l2);
   transition: opacity var(--gin-transition-fast);
 }
 
-[dir="ltr"] .gin-sticky .gin-more-actions__menu {
+[dir="ltr"] .gin-sticky .gin-more-actions__menu.form-actions {
   right: 0;
 }
 
-[dir="rtl"] .gin-sticky .gin-more-actions__menu {
+[dir="rtl"] .gin-sticky .gin-more-actions__menu.form-actions {
   left: 0;
 }
 
-.gin-sticky .gin-more-actions__menu .action-link,
-.gin-sticky .gin-more-actions__menu .button {
+.gin-sticky .gin-more-actions__menu.form-actions .action-link.action-link,
+.gin-sticky .gin-more-actions__menu.form-actions .button.button {
+  font-size: var(--gin-font-size-xs);
+  font-weight: var(--gin-font-weight-semibold);
+  line-height: 1;
+  width: 100%;
+  max-width: 320px;
+  padding: var(--gin-spacing-s) var(--gin-spacing-m);
   margin: 0 !important;
+  border: 0 !important;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+.gin-sticky .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):hover, .gin-sticky .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):active {
+  color: var(--gin-color-button-text);
+  background-color: var(--gin-color-primary);
+}
+
+.gin-sticky .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):hover::before, .gin-sticky .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):active::before {
+  background-color: var(--gin-bg-layer) !important;
+}
+
+.gin-sticky .gin-more-actions__menu.form-actions > * + .ajax-progress--throbber {
+  display: none;
 }
 
 .gin-sticky .gin-more-actions__trigger {

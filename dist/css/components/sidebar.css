@@ -29,7 +29,7 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
   }
 }
 
-.meta-sidebar__trigger, .meta-sidebar__close {
+.meta-sidebar__close {
   cursor: pointer;
   background: transparent;
   height: 32px;
@@ -38,11 +38,11 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
   transition: background var(--gin-transition-fast);
 }
 
-.meta-sidebar__trigger::before, .meta-sidebar__close::before {
+.meta-sidebar__close::before {
+  content: "";
   display: inline-block;
   width: 100%;
   height: 100%;
-  content: "";
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
   -webkit-mask-position: center center;
@@ -50,19 +50,19 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
   background-color: var(--gin-icon-color);
 }
 
-.meta-sidebar__trigger:hover, .meta-sidebar__trigger:focus, .meta-sidebar__close:hover, .meta-sidebar__close:focus {
+.meta-sidebar__close:hover, .meta-sidebar__close:focus {
   background-color: var(--gin-color-primary-light);
 }
 
-.meta-sidebar__trigger:hover::before, .meta-sidebar__trigger:focus::before, .meta-sidebar__close:hover::before, .meta-sidebar__close:focus::before {
+.meta-sidebar__close:hover::before, .meta-sidebar__close:focus::before {
   background-color: var(--gin-color-primary);
 }
 
-.meta-sidebar__trigger.is-active, .meta-sidebar__close.is-active {
+.meta-sidebar__close.is-active {
   background-color: var(--gin-color-primary-light-hover);
 }
 
-.meta-sidebar__trigger.is-active::before, .meta-sidebar__close.is-active::before {
+.meta-sidebar__close.is-active::before {
   background-color: var(--gin-color-primary-active);
 }
 
@@ -75,11 +75,12 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
 }
 
 .meta-sidebar__trigger::before {
+  content: "";
+  display: inline-block;
   -webkit-mask-image: url("../../media/sprite.svg#sidebar-view");
           mask-image: url("../../media/sprite.svg#sidebar-view");
   -webkit-mask-size: var(--gin-icon-size-sidebar-toggle) var(--gin-icon-size-sidebar-toggle);
           mask-size: var(--gin-icon-size-sidebar-toggle) var(--gin-icon-size-sidebar-toggle);
-  border-radius: 50%;
 }
 
 .meta-sidebar__close {
