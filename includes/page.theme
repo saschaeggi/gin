@@ -5,13 +5,9 @@
  * page.theme
  */
 
-use Drupal\block_content\BlockContentInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\gin\GinSettings;
 use Drupal\node\Entity\Node;
-use Drupal\node\NodeInterface;
-use Drupal\taxonomy\TermInterface;
-use Drupal\user\UserInterface;
 
 /**
  * Implements hook_preprocess_HOOK() for page.
@@ -39,30 +35,10 @@ function gin_preprocess_page(&$variables) {
     }
   }
 
-  // Check if edit form.
-  $entity_form = \Drupal::request()->attributes->get('_entity_form');
-  if (isset($entity_form)) {
-    $form_type = explode('.', $entity_form);
-    $entity_type_id = $form_type ? $form_type[0] : '';
-    $form_type = $form_type ? $form_type[1] : 'default';
-
-    $entity = \Drupal::request()->attributes->get($entity_type_id);
-
-    if (is_scalar($entity)) {
-      $entity = \Drupal::entityTypeManager()->getStorage($entity_type_id)->load($entity);
-    }
-
-    // Get form actions.
-    if ($entity) {
-      $form_object = \Drupal::entityTypeManager()->getFormObject($entity_type_id, $form_type);
-      $form_object = $form_object->setEntity($entity);
-
-      $form = \Drupal::formBuilder()->getForm($form_object);
-      if (isset($form['actions'])) {
-        $variables['gin_form_actions'] = $form['actions'];
-        $variables['gin_form_actions_class'] = 'gin-sticky-form-actions--preprocessed';
-      }
-    }
+  // Are we displaying an edit form?
+  if ($form_actions = _gin_form_actions()) {
+    $variables['gin_form_actions'] = $form_actions;
+    $variables['gin_form_actions_class'] = 'gin-sticky-form-actions--preprocessed';
   }
 }
 

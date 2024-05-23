@@ -100,16 +100,8 @@ class GinContentFormHelper implements ContainerInjectionInterface {
           $form['actions']['submit']['#weight'] = $save_weight;
         }
 
-        // Move entity_save_and_addanother_node after preview.
-        if (isset($form['actions']['entity_save_and_addanother_node'])) {
-          // Put Save after Preview.
-          $save_weight = $form['actions']['entity_save_and_addanother_node']['#weight'];
-          $form['actions']['preview']['#weight'] = $save_weight - 1;
-        }
-
+        // Add sticky class.
         $form['actions']['#attributes']['class'][] = 'gin-sticky';
-
-        $form['#attached']['library'][] = 'gin/more_actions';
 
         // Add a class to identify modified forms.
         $form['#attributes']['class'][] = 'gin-sticky-form-actions';
@@ -136,7 +128,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
         // Prepare actions.
         $form_id = preg_replace('/--2$/', '', $form['#id']);
         foreach ($form['actions'] as $key => $item) {
-          // Attach to original form
+          // Attach to original form.
           $excludes = ['#type', '#attributes'];
           if (!in_array($key, $excludes)) {
             $form['actions'][$key]['#attributes']['form'] = $form_id;
@@ -168,6 +160,11 @@ class GinContentFormHelper implements ContainerInjectionInterface {
           '#multilingual' => TRUE,
         ];
         $form['status']['#group'] = 'gin_actions';
+
+        // Attach library.
+        $form['#attached']['library'][] = 'gin/more_actions';
+
+        $form['#after_build'][] = 'gin_form_after_build';
       }
     }
 
