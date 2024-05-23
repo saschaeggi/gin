@@ -21,7 +21,10 @@
       }))));
     },
     toggleSidebar: () => {
-      document.querySelector(".meta-sidebar__trigger").classList.contains("is-active") ? Drupal.ginSidebar.collapseSidebar() : Drupal.ginSidebar.showSidebar();
+      var _Drupal$ginStickyForm, _Drupal$ginStickyForm2;
+      document.querySelector(".meta-sidebar__trigger").classList.contains("is-active") ? (Drupal.ginSidebar.collapseSidebar(), 
+      null === (_Drupal$ginStickyForm = Drupal.ginStickyFormActions) || void 0 === _Drupal$ginStickyForm || _Drupal$ginStickyForm.hideMoreActions()) : (Drupal.ginSidebar.showSidebar(), 
+      null === (_Drupal$ginStickyForm2 = Drupal.ginStickyFormActions) || void 0 === _Drupal$ginStickyForm2 || _Drupal$ginStickyForm2.hideMoreActions());
     },
     showSidebar: () => {
       const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, hideLabel = Drupal.t("Hide sidebar panel"), sidebarTrigger = document.querySelector(".meta-sidebar__trigger"), tooltip = null == sidebarTrigger ? void 0 : sidebarTrigger.nextElementSibling;

@@ -202,9 +202,9 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     if (isset($form['actions'])) {
       // Add sidebar toggle.
       $hide_panel = t('Hide sidebar panel');
-      $form['actions']['gin_sidebar_toggle'] = [
-        '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger" data-gin-tooltip role="button" title="' . $hide_panel . '" aria-controls="gin_sidebar"><span class="visually-hidden">' . $hide_panel . '</span></a>',
-        '#weight' => 999,
+      $form['actions']['gin_more_actions']['gin_more_actions_items']['gin_sidebar_toggle'] = [
+        '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger action-link" role="button" title="' . $hide_panel . '" aria-controls="gin_sidebar"><span>' . $hide_panel . '</span></a>',
+        '#weight' => -1,
       ];
       $form['#attached']['library'][] = 'gin/sidebar';
 
