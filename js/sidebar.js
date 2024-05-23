@@ -80,7 +80,7 @@
       const sidebarTrigger = document.querySelector('.meta-sidebar__trigger');
       const tooltip = sidebarTrigger?.nextElementSibling;
 
-      if (tooltip.classList.contains('gin-tooltip')) {
+      if (tooltip?.classList.contains('gin-tooltip')) {
         tooltip.innerHTML = hideLabel;
         sidebarTrigger.setAttribute('title', '');
       } else {
