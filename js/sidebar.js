@@ -68,9 +68,11 @@
       // Set active state.
       if (document.querySelector('.meta-sidebar__trigger').classList.contains('is-active')) {
         Drupal.ginSidebar.collapseSidebar();
+        Drupal.ginStickyFormActions?.hideMoreActions();
       }
       else {
         Drupal.ginSidebar.showSidebar();
+        Drupal.ginStickyFormActions?.hideMoreActions();
       }
     },
 
