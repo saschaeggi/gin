@@ -80,14 +80,6 @@
       const chooseStorage = window.innerWidth < breakpoint ? storageMobile : storageDesktop;
       const hideLabel = Drupal.t('Hide sidebar panel');
       const sidebarTrigger = document.querySelector('.meta-sidebar__trigger');
-      const tooltip = sidebarTrigger?.nextElementSibling;
-
-      if (tooltip?.classList.contains('gin-tooltip')) {
-        tooltip.innerHTML = hideLabel;
-        sidebarTrigger.setAttribute('title', '');
-      } else {
-        sidebarTrigger.setAttribute('title', hideLabel);
-      }
 
       sidebarTrigger.querySelector('span').innerHTML = hideLabel;
       sidebarTrigger.setAttribute('aria-expanded', 'true');
@@ -112,14 +104,6 @@
       const chooseStorage = window.innerWidth < breakpoint ? storageMobile : storageDesktop;
       const showLabel = Drupal.t('Show sidebar panel');
       const sidebarTrigger = document.querySelector('.meta-sidebar__trigger');
-      const tooltip = sidebarTrigger?.nextElementSibling;
-
-      if (tooltip.classList.contains('gin-tooltip')) {
-        tooltip.innerHTML = showLabel;
-        sidebarTrigger.setAttribute('title', '');
-      } else {
-        sidebarTrigger.setAttribute('title', showLabel);
-      }
 
       sidebarTrigger.querySelector('span').innerHTML = showLabel;
       sidebarTrigger.setAttribute('aria-expanded', 'false');
