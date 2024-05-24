@@ -7,13 +7,14 @@
     margin-right: 0 !important;
   }
 
+  // Hide if no items are present.
+  [data-drupal-selector="edit-gin-actions"]:empty,
+  .gin-more-actions:has(> .gin-more-actions__menu:empty) {
+    display: none;
+  }
+
   .gin-more-actions {
     position: relative;
-
-    // Hide if no items are present.
-    &:has(> .gin-more-actions__menu:empty) {
-      display: none;
-    }
 
     &__menu.form-actions {
       visibility: hidden;
@@ -25,7 +26,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: var(--gin-spacing-xs);
+      gap: 0;
       padding: var(--gin-spacing-xs);
       background-color: var(--gin-bg-layer3);
       border-radius: var(--gin-border-l);
@@ -35,19 +36,24 @@
 
       // Increase order.
       .action-link.action-link,
+      a:not(.button--danger),
       .button.button {
         font-size: var(--gin-font-size-xs);
         font-weight: var(--gin-font-weight-semibold);
         line-height: 1;
+        text-align: left;
+        text-decoration: none;
         width: 100%;
         max-width: 320px;
         padding: var(--gin-spacing-s) var(--gin-spacing-m);
         margin: 0 !important;
         border: 0 !important;
+        border-radius: var(--gin-border-s);
         box-shadow: none;
         box-sizing: border-box;
       }
 
+      a:not(.button--danger),
       .action-link:not(.action-link--danger) {
         &:hover,
         &:active {
