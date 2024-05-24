@@ -36,7 +36,7 @@
 
       // Increase order.
       .action-link.action-link,
-      a:not(.button--danger),
+      a:not(.button--danger):not(.action-link--danger),
       .button.button {
         font-size: var(--gin-font-size-xs);
         font-weight: var(--gin-font-weight-semibold);
@@ -53,7 +53,7 @@
         box-sizing: border-box;
       }
 
-      a:not(.button--danger),
+      a:not(.button--danger):not(.action-link--danger),
       .action-link:not(.action-link--danger) {
         &:hover,
         &:active {
