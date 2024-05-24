@@ -271,6 +271,8 @@ class GinContentFormHelper implements ContainerInjectionInterface {
   public function stickyActionButtons(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = NULL) {
     $sticky_action_buttons = FALSE;
 
+    print_r($form_id);
+
     // Forms to include for moving the actions to top.
     $form_ids = [
       'taxonomy_term_tags_form',
@@ -287,6 +289,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       'shortcut_default_form',
       'media_library_settings_form',
       'gin_login_form',
+      'navigation_block_form',
     ];
 
     if (
