@@ -5,6 +5,7 @@ namespace Drupal\gin;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -126,13 +127,9 @@ class GinContentFormHelper implements ContainerInjectionInterface {
         ];
 
         // Prepare actions.
-        $form_id = preg_replace('/--2$/', '', $form['#id']);
-        foreach ($form['actions'] as $key => $item) {
-          // Attach to original form.
-          $excludes = ['#type', '#attributes'];
-          if (!in_array($key, $excludes)) {
-            $form['actions'][$key]['#attributes']['form'] = $form_id;
-          }
+        foreach (Element::children($form['actions']) as $key => $item) {
+          // Attach to original form id.
+          $form['actions'][$item]['#attributes']['form'] = $form_id;
         }
 
         // Move all actions over.
@@ -146,10 +143,10 @@ class GinContentFormHelper implements ContainerInjectionInterface {
         unset($form['actions']['gin_more_actions']['gin_more_actions_items']['gin_more_actions']);
 
         // Unset all items we move to the more actions menu.
-        foreach ($form['actions'] as $key => $item) {
-          $excludes = ['submit', 'preview', 'gin_more_actions', '#type', '#attributes'];
-          if (!in_array($key, $excludes)) {
-            unset($form['actions'][$key]);
+        foreach (Element::children($form['actions']) as $key => $item) {
+          $excludes = ['save', 'submit', 'preview', 'gin_more_actions'];
+          if (!in_array($item, $excludes)) {
+            unset($form['actions'][$item]);
           }
         }
 

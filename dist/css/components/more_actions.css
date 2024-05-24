@@ -8,12 +8,13 @@
   margin-right: 0 !important;
 }
 
-.gin-sticky .gin-more-actions {
-  position: relative;
-}
-
+.gin-sticky [data-drupal-selector=edit-gin-actions]:empty,
 .gin-sticky .gin-more-actions:has(> .gin-more-actions__menu:empty) {
   display: none;
+}
+
+.gin-sticky .gin-more-actions {
+  position: relative;
 }
 
 .gin-sticky .gin-more-actions__menu.form-actions {
@@ -25,7 +26,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--gin-spacing-xs);
+  gap: 0;
   padding: var(--gin-spacing-xs);
   background-color: var(--gin-bg-layer3);
   border-radius: var(--gin-border-l);
@@ -43,25 +44,44 @@
 }
 
 .gin-sticky .gin-more-actions__menu.form-actions .action-link.action-link,
+.gin-sticky .gin-more-actions__menu.form-actions a:not(.button--danger),
 .gin-sticky .gin-more-actions__menu.form-actions .button.button {
   font-size: var(--gin-font-size-xs);
   font-weight: var(--gin-font-weight-semibold);
   line-height: 1;
+  text-decoration: none;
   width: 100%;
   max-width: 320px;
   padding: var(--gin-spacing-s) var(--gin-spacing-m);
   margin: 0 !important;
   border: 0 !important;
+  border-radius: var(--gin-border-s);
   box-shadow: none;
   box-sizing: border-box;
 }
 
-.gin-sticky .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):hover, .gin-sticky .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):active {
+[dir="ltr"] .gin-sticky .gin-more-actions__menu.form-actions .action-link.action-link,
+[dir="ltr"] .gin-sticky .gin-more-actions__menu.form-actions a:not(.button--danger),
+[dir="ltr"] .gin-sticky .gin-more-actions__menu.form-actions .button.button {
+  text-align: left;
+}
+
+[dir="rtl"] .gin-sticky .gin-more-actions__menu.form-actions .action-link.action-link,
+[dir="rtl"] .gin-sticky .gin-more-actions__menu.form-actions a:not(.button--danger),
+[dir="rtl"] .gin-sticky .gin-more-actions__menu.form-actions .button.button {
+  text-align: right;
+}
+
+.gin-sticky .gin-more-actions__menu.form-actions a:not(.button--danger):hover, .gin-sticky .gin-more-actions__menu.form-actions a:not(.button--danger):active,
+.gin-sticky .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):hover,
+.gin-sticky .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):active {
   color: var(--gin-color-button-text);
   background-color: var(--gin-color-primary);
 }
 
-.gin-sticky .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):hover::before, .gin-sticky .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):active::before {
+.gin-sticky .gin-more-actions__menu.form-actions a:not(.button--danger):hover::before, .gin-sticky .gin-more-actions__menu.form-actions a:not(.button--danger):active::before,
+.gin-sticky .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):hover::before,
+.gin-sticky .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):active::before {
   background-color: var(--gin-bg-layer) !important;
 }
 
