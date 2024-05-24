@@ -25,9 +25,11 @@
       {{ form.gin_sidebar_toggle }}
     </div>
   </div>
-  <div class="layout-node-form__actions">
-    {{ form.actions }}
-  </div>
+  {% if not form.gin_move_focus_to_sticky_bar %}
+    <div class="layout-node-form__actions">
+      {{ form.actions }}
+    </div>
+  {% endif %}
 </div>
 
 {% if gin_layout_paragraphs == 1 %}

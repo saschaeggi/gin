@@ -6,15 +6,7 @@
   }, Drupal.ginStickyFormActions = {
     init: function(context) {
       once("ginEditForm", ".region-content form.gin-sticky-form-actions", context).forEach((form => {
-        const sticky = context.querySelector(".gin-sticky"), newParent = document.querySelector(".region-sticky__items__inner");
-        if (newParent) {
-          var _document$querySelect;
-          0 === newParent.querySelectorAll(".gin-sticky").length ? newParent.appendChild(sticky) : null === (_document$querySelect = document.querySelector(".region-content form.gin-sticky-form-actions .gin-sticky")) || void 0 === _document$querySelect || _document$querySelect.remove();
-          const localActions = document.querySelector("#block-gin-local-actions");
-          null == localActions || localActions.querySelectorAll(".button--primary").forEach((button => {
-            button.classList.remove("button--primary"), button.classList.remove("button--secondary");
-          }));
-        }
+        const newParent = document.querySelector(".region-sticky__items__inner");
         this.updateFormId(newParent, form), this.moveFocus(newParent, form);
       })), once("ginMoreActionsToggle", ".gin-more-actions__trigger", context).forEach((el => el.addEventListener("click", (e => {
         e.preventDefault(), this.toggleMoreActions(), document.addEventListener("click", this.closeMoreActionsOnClickOutside, !1);
