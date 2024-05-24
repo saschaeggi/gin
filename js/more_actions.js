@@ -33,6 +33,9 @@
 
         // Sync form ID.
         this.updateFormId(newParent, form);
+
+        // Move focus to sticky header.
+        this.moveFocus(newParent, form);
       });
 
       // More actions menu toggle
@@ -52,6 +55,36 @@
           el.setAttribute('form', form.getAttribute('id'));
         });
       }
+    },
+
+    moveFocus: function (newParent, form) {
+      once('ginMoveFocusToStickyBar', '[gin-move-focus-to-sticky-bar]', form).forEach(el => el.addEventListener('focus', e => {
+        e.preventDefault();
+        const focusableElements = ['button, input, select, textarea'];
+
+        // Moves focus to first item.
+        newParent.querySelector(focusableElements).focus();
+
+        // Add temporary element to handle moving focus back to end of form.
+        const markup = '<a href="#" class="visually-hidden" role="button" gin-move-focus-to-end-of-form>Moves focus back to form</a>';
+        let element = document.createElement('div');
+        element.innerHTML = markup;
+        newParent.appendChild(element);
+
+        document.querySelector('[gin-move-focus-to-end-of-form]').addEventListener('focus', eof => {
+          eof.preventDefault();
+
+          // Let's remove ourselves.
+          element.remove();
+
+          // Let's try to move focus back to end of form.
+          if (e.target.nextElementSibling) {
+            e.target.nextElementSibling.focus();
+          } else if (e.target.parentNode.nextElementSibling) {
+            e.target.parentNode.nextElementSibling.focus();
+          }
+        });
+      }));
     },
 
     toggleMoreActions: function () {
