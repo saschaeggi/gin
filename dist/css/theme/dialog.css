@@ -206,31 +206,37 @@
   border-radius: var(--gin-border-s);
 }
 
+.ui-dialog #edit-submit.form-submit,
 .ui-dialog .button--primary,
 .ui-dialog .button--primary:not(:focus),
 .ui-dialog .ief-entity-submit {
   background: var(--gin-color-primary);
 }
 
+[dir="ltr"] .ui-dialog #edit-submit.form-submit,
 [dir="ltr"] .ui-dialog .button--primary,
 [dir="ltr"] .ui-dialog .button--primary:not(:focus),
 [dir="ltr"] .ui-dialog .ief-entity-submit {
   box-shadow: .1em .25em .5em var(--gin-color-primary-light);
 }
 
+[dir="rtl"] .ui-dialog #edit-submit.form-submit,
 [dir="rtl"] .ui-dialog .button--primary,
 [dir="rtl"] .ui-dialog .button--primary:not(:focus),
 [dir="rtl"] .ui-dialog .ief-entity-submit {
   box-shadow: -0.1em .25em .5em var(--gin-color-primary-light);
 }
 
+.ui-dialog #edit-submit.form-submit:hover,
 .ui-dialog .button--primary:hover,
 .ui-dialog .button--primary:not(:focus):hover,
 .ui-dialog .ief-entity-submit:hover {
   background-color: var(--gin-color-primary-hover);
 }
 
-.ui-dialog .button--primary:active, .ui-dialog .button--primary:focus,
+.ui-dialog #edit-submit.form-submit:active, .ui-dialog #edit-submit.form-submit:focus,
+.ui-dialog .button--primary:active,
+.ui-dialog .button--primary:focus,
 .ui-dialog .button--primary:not(:focus):active,
 .ui-dialog .button--primary:not(:focus):focus,
 .ui-dialog .ief-entity-submit:active,
@@ -238,7 +244,11 @@
   background-color: var(--gin-color-primary-active);
 }
 
-.ui-dialog .button--primary, .ui-dialog .button--primary:hover, .ui-dialog .button--primary:active, .ui-dialog .button--primary:focus,
+.ui-dialog #edit-submit.form-submit, .ui-dialog #edit-submit.form-submit:hover, .ui-dialog #edit-submit.form-submit:active, .ui-dialog #edit-submit.form-submit:focus,
+.ui-dialog .button--primary,
+.ui-dialog .button--primary:hover,
+.ui-dialog .button--primary:active,
+.ui-dialog .button--primary:focus,
 .ui-dialog .button--primary:not(:focus),
 .ui-dialog .button--primary:not(:focus):hover,
 .ui-dialog .button--primary:not(:focus):active,
