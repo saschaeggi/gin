@@ -12,24 +12,7 @@
   Drupal.ginStickyFormActions = {
     init: function (context) {
       once('ginEditForm', '.region-content form.gin-sticky-form-actions', context).forEach(form => {
-        const sticky = context.querySelector('.gin-sticky');
         const newParent = document.querySelector('.region-sticky__items__inner');
-
-        if (newParent) {
-          // If action buttons are not moved via hook, move them via JS.
-          if (newParent.querySelectorAll('.gin-sticky').length === 0) {
-            newParent.appendChild(sticky);
-          } else {
-            document.querySelector('.region-content form.gin-sticky-form-actions .gin-sticky')?.remove();
-          }
-
-          const localActions = document.querySelector('#block-gin-local-actions');
-
-          localActions?.querySelectorAll('.button--primary').forEach(button => {
-            button.classList.remove('button--primary');
-            button.classList.remove('button--secondary');
-          });
-        }
 
         // Sync form ID.
         this.updateFormId(newParent, form);
