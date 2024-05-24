@@ -161,6 +161,12 @@ class GinContentFormHelper implements ContainerInjectionInterface {
         ];
         $form['status']['#group'] = 'gin_actions';
 
+        // Helper item to move focus to sticky header.
+        $form['gin_move_focus_to_sticky_bar'] = [
+          '#markup' => '<a href="#" class="visually-hidden" role="button" gin-move-focus-to-sticky-bar>Moves focus to sticky header actions</a>',
+          '#weight' => 999,
+        ];
+
         // Attach library.
         $form['#attached']['library'][] = 'gin/more_actions';
 
