@@ -293,3 +293,7 @@ table.treetable tr.branch {
   padding: 0;
 }
 
+#drupal-modal .gin-sticky.form-actions {
+  display: none;
+}
+
