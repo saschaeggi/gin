@@ -41,7 +41,7 @@ navigation:
       dist/css/layout/navigation.css: { minified: false }
       dist/css/components/tooltip.css: { minified: false }
   js:
-    js/navigation/sidebar.js: { minified: false }
+    js/navigation/navigation.js: { minified: false }
   dependencies:
     - gin/floating-ui
     - gin/escape_admin
