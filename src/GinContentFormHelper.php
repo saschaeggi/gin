@@ -170,6 +170,11 @@ class GinContentFormHelper implements ContainerInjectionInterface {
           '#weight' => 999,
         ];
 
+        // Duplicate submit action so we don't break tests.
+        $form['gin-hidden-submit'] = $form['actions']['submit'];
+        $form['gin-hidden-submit']['#attributes']['class'][] = 'visually-hidden';
+        $form['gin-hidden-submit']['#weight'] = 1000;
+
         // Attach library.
         $form['#attached']['library'][] = 'gin/more_actions';
 
