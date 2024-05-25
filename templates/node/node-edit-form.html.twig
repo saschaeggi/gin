@@ -25,14 +25,6 @@
       {{ form.gin_sidebar_toggle }}
     </div>
   </div>
-  <div class="layout-node-form__actions visually-hidden">
-    {% if form.gin_move_focus_to_sticky_bar %}
-      {{ form.actions['submit'] }}
-      {{ form.actions['cancel'] }}
-    {% else %}
-      {{ form.actions }}
-    {% endif %}
-  </div>
 </div>
 
 {% if gin_layout_paragraphs == 1 %}
