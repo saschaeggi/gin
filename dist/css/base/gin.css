@@ -413,10 +413,6 @@ body:not(.toolbar-tray-open) .layout-container {
   }
 }
 
-.layout-node-form__actions {
-  display: none;
-}
-
 .gin-sticky {
   display: flex;
   flex-wrap: wrap;
