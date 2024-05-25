@@ -219,5 +219,6 @@
   --gin-icon-color: #888;
   --gin-pattern-fallback: var(--gin-bg-layer2);
   --gin-pattern: var(--gin-border-color);
+  --gin-tooltip-bg: var(--gin-bg-layer3);
 }
 
