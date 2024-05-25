@@ -27,8 +27,15 @@
    * @prop {Drupal~behaviorAttach} attach
    *   Attaches the tooltip behavior.
    */
-  Drupal.behaviors.ginTooltipInit = {
+
+  Drupal.behaviors.ginTooltip = {
     attach: (context) => {
+      Drupal.ginTooltip.init(context);
+    },
+  };
+
+  Drupal.ginTooltip = {
+    init: function (context) {
       once('ginTooltipInit', '[data-gin-tooltip]', context).forEach(
         (trigger) => {
           const title = trigger.title;
@@ -43,22 +50,8 @@
             Drupal.theme.ginTooltipWrapper(trigger.dataset, title),
           );
           const tooltip = trigger.nextElementSibling;
-
           const updatePosition = () => {
-            computePosition(trigger, tooltip, {
-              strategy: 'absolute',
-              placement: trigger.dataset.drupalTooltipPosition || 'bottom-end',
-              middleware: [
-                flip({ padding: 16 }),
-                offset(6),
-                shift({ padding: 16 }),
-              ],
-            }).then(({ x, y }) => {
-              Object.assign(tooltip.style, {
-                left: `${x}px`,
-                top: `${y}px`,
-              });
-            });
+            this.computePosition(trigger, tooltip);
           };
 
           // Small trick to avoid tooltip stays on same place when button size changed.
@@ -76,6 +69,23 @@
           trigger.addEventListener('focus', updatePosition);
         },
       );
+    },
+
+    computePosition: function (trigger, tooltip, placement = 'bottom-end') {
+      computePosition(trigger, tooltip, {
+        strategy: 'absolute',
+        placement: trigger.dataset.drupalTooltipPosition || placement,
+        middleware: [
+          flip({ padding: 16 }),
+          offset(6),
+          shift({ padding: 16 }),
+        ],
+      }).then(({ x, y }) => {
+        Object.assign(tooltip.style, {
+          left: `${x}px`,
+          top: `${y}px`,
+        });
+      });
     },
   };
 })(Drupal, once, FloatingUIDOM);
