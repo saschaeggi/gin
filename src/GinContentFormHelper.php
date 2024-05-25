@@ -105,6 +105,11 @@ class GinContentFormHelper implements ContainerInjectionInterface {
         $form['actions']['#attributes']['class'][] = 'gin-sticky';
 
         // Add a class to identify modified forms.
+        if (!isset($form['#attributes']['class'])) {
+          $form['#attributes']['class'] = [];
+        }  elseif (is_string($form['#attributes']['class'])) {
+          $form['#attributes']['class'] = [$form['#attributes']['class']];
+        }
         $form['#attributes']['class'][] = 'gin-sticky-form-actions';
 
         // Create gin_more_actions group.
@@ -129,7 +134,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
         // Prepare actions.
         foreach (Element::children($form['actions']) as $key => $item) {
           // Attach to original form id.
-          $form['actions'][$item]['#attributes']['form'] = $form_id;
+          $form['actions'][$item]['#attributes']['form'] = $form['#id'];
         }
 
         // Move all actions over.
