@@ -25,11 +25,13 @@
       {{ form.gin_sidebar_toggle }}
     </div>
   </div>
-  {% if not form.gin_move_focus_to_sticky_bar %}
-    <div class="layout-node-form__actions">
+  <div class="layout-node-form__actions">
+    {% if form.gin_move_focus_to_sticky_bar %}
+      {{ form.actions['submit'] }}
+    {% else %}
       {{ form.actions }}
-    </div>
-  {% endif %}
+    {% endif %}
+  </div>
 </div>
 
 {% if gin_layout_paragraphs == 1 %}
