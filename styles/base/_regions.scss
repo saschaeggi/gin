@@ -190,11 +190,6 @@ body:not(.toolbar-tray-open) .layout-container {
   }
 }
 
-// Hide action bar
-.layout-node-form__actions {
-  display: none;
-}
-
 .gin-sticky {
   display: flex;
   flex-wrap: wrap;

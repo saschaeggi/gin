@@ -107,7 +107,8 @@ class GinContentFormHelper implements ContainerInjectionInterface {
         // Add a class to identify modified forms.
         if (!isset($form['#attributes']['class'])) {
           $form['#attributes']['class'] = [];
-        }  elseif (is_string($form['#attributes']['class'])) {
+        }
+        elseif (is_string($form['#attributes']['class'])) {
           $form['#attributes']['class'] = [$form['#attributes']['class']];
         }
         $form['#attributes']['class'][] = 'gin-sticky-form-actions';
