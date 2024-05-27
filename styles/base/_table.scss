@@ -50,7 +50,7 @@ table.sticky-header {
 .gin--sticky-table-header {
   position: sticky;
   z-index: 2;
-  top: var(--drupal-displace-offset-top);
+  top: calc(var(--gin-toolbar-y-offset) + var(--gin-height-sticky));
   margin-top: -8px;
   overflow: hidden;
 
