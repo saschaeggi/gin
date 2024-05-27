@@ -307,27 +307,27 @@ button.link:active,
   margin: 0;
 }
 
-.region-sticky__items .gin-sticky {
+.region-sticky__items .gin-sticky-form-actions {
   display: flex;
   width: auto;
   margin-top: 0;
 }
 
 @media (min-width: 64em) {
-  [dir="ltr"] .region-sticky__items .gin-sticky {
+  [dir="ltr"] .region-sticky__items .gin-sticky-form-actions {
     padding-left: var(--gin-spacing-l);
   }
 
-  [dir="rtl"] .region-sticky__items .gin-sticky {
+  [dir="rtl"] .region-sticky__items .gin-sticky-form-actions {
     padding-right: var(--gin-spacing-l);
   }
 }
 
-[dir="ltr"] .region-sticky__items #block-gin-local-actions + .gin-sticky {
+[dir="ltr"] .region-sticky__items #block-gin-local-actions + .gin-sticky-form-actions {
   padding-left: var(--gin-spacing-xs);
 }
 
-[dir="rtl"] .region-sticky__items #block-gin-local-actions + .gin-sticky {
+[dir="rtl"] .region-sticky__items #block-gin-local-actions + .gin-sticky-form-actions {
   padding-right: var(--gin-spacing-xs);
 }
 
@@ -405,7 +405,7 @@ body:not(.toolbar-tray-open) .layout-container {
   }
 }
 
-.gin-sticky {
+.gin-sticky-form-actions {
   display: flex;
   flex-wrap: wrap;
   flex-shrink: 0;
@@ -415,39 +415,39 @@ body:not(.toolbar-tray-open) .layout-container {
 }
 
 @media (min-width: 64em) {
-  .gin-sticky {
+  .gin-sticky-form-actions {
     flex-wrap: nowrap;
     width: max-content;
   }
 }
 
-.gin-sticky .form-actions {
+.gin-sticky-form-actions .form-actions {
   margin: 0;
   flex-grow: 1;
   align-items: center;
   justify-content: flex-end;
 }
 
-.gin-sticky .field--name-status {
+.gin-sticky-form-actions .field--name-status {
   display: flex;
   align-items: center;
 }
 
-[dir="ltr"] .gin-sticky .field--name-status {
+[dir="ltr"] .gin-sticky-form-actions .field--name-status {
   margin-right: var(--gin-spacing-m);
 }
 
-[dir="rtl"] .gin-sticky .field--name-status {
+[dir="rtl"] .gin-sticky-form-actions .field--name-status {
   margin-left: var(--gin-spacing-m);
 }
 
 @media (max-width: 26.24em) {
-  .gin-sticky .field--name-status .form-item__label {
+  .gin-sticky-form-actions .field--name-status .form-item__label {
     display: none;
   }
 }
 
-.gin-sticky .field--name-status .form-type--checkbox {
+.gin-sticky-form-actions .field--name-status .form-type--checkbox {
   margin-top: var(--gin-spacing-xs);
   margin-bottom: var(--gin-spacing-xs);
 }

@@ -11,8 +11,8 @@
 
   Drupal.ginStickyFormActions = {
     init: function (context) {
-      once('ginEditForm', '.region-content form.gin-sticky-form-actions', context).forEach(form => {
-        const newParent = document.querySelector('.region-sticky__items__inner');
+      once('ginEditForm', '.region-content form.gin--has-sticky-form-actions', context).forEach(form => {
+        const newParent = document.querySelector('.gin-sticky-form-actions');
 
         // Sync form ID.
         this.updateFormId(newParent, form);
@@ -51,6 +51,7 @@
         // Add temporary element to handle moving focus back to end of form.
         const markup = '<a href="#" class="visually-hidden" role="button" gin-move-focus-to-end-of-form>Moves focus back to form</a>';
         let element = document.createElement('div');
+        element.style.display = 'contents';
         element.innerHTML = markup;
         newParent.appendChild(element);
 
