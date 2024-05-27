@@ -95,6 +95,11 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     if ($this->stickyActionButtons($form, $form_state, $form_id) || $this->isContentForm($form, $form_state, $form_id)) {
       // Action buttons.
       if (isset($form['actions'])) {
+        // Duplicate actions for Behat tests.
+        $form['hidden_actions'] = $form['actions'];
+        $form['hidden_actions']['#attributes']['class'][] = 'visually-hidden';
+        $form['hidden_actions']['#weight'] = 1000;
+
         if (isset($form['actions']['preview'])) {
           // Put Save after Preview.
           $save_weight = $form['actions']['preview']['#weight'] ? $form['actions']['preview']['#weight'] + 1 : 11;
@@ -169,11 +174,6 @@ class GinContentFormHelper implements ContainerInjectionInterface {
           '#markup' => '<a href="#" class="visually-hidden" role="button" gin-move-focus-to-sticky-bar>Moves focus to sticky header actions</a>',
           '#weight' => 999,
         ];
-
-        // Duplicate submit action so we don't break tests.
-        $form['gin-hidden-submit'] = $form['actions']['submit'];
-        $form['gin-hidden-submit']['#attributes']['class'][] = 'gin-hidden-form-action';
-        $form['gin-hidden-submit']['#weight'] = 1000;
 
         // Attach library.
         $form['#attached']['library'][] = 'gin/more_actions';
