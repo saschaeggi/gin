@@ -99,7 +99,7 @@
       }
     }
 
-    .gin-sticky {
+    .gin-sticky-form-actions {
       display: flex;
       width: auto;
       margin-top: 0;
@@ -109,7 +109,7 @@
       }
     }
 
-    #block-gin-local-actions + .gin-sticky {
+    #block-gin-local-actions + .gin-sticky-form-actions {
       padding-left: var(--gin-spacing-xs);
     }
   }
@@ -181,7 +181,7 @@ body:not(.toolbar-tray-open) .layout-container {
   }
 }
 
-.gin-sticky {
+.gin-sticky-form-actions {
   display: flex;
   flex-wrap: wrap;
   flex-shrink: 0;

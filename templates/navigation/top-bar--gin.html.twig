@@ -1,7 +1,30 @@
 {#
 /**
  * @file
- * Include top-bar.html.twig template from Gin.
+ * Default theme implementation for the navigation top bar.
+ *
+ * Available variables:
+ * - local_tasks: The local tasks for the current route.
+ *
+ * @ingroup themeable
  */
 #}
-{% include '@navigation/top-bar.html.twig' ignore missing %}
+{% set attributes = create_attribute() %}
+{% if local_tasks %}
+  {% set attributes = attributes.setAttribute('data-offset-top', '') %}
+{% endif %}
+<div {{ attributes.addClass('top-bar gin--navigation-top-bar').setAttribute('data-drupal-admin-styles', '') }}>
+  <div class="top-bar__content">
+    {% include '@navigation/toolbar-button.html.twig' with {
+      attributes: create_attribute({'aria-expanded': 'false', 'aria-controls': 'admin-toolbar'}),
+      icon: 'burger',
+      text: 'Expand sidebar'|t,
+      extra_classes: 'top-bar__burger',
+    } only %}
+    {{ local_tasks }}
+    {% if gin_form_actions %}
+      <span>{# empty spacer #}</span>
+      {{ gin_form_actions }}
+    {% endif %}
+  </div>
+</div>

@@ -95,11 +95,6 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     if ($this->stickyActionButtons($form, $form_state, $form_id) || $this->isContentForm($form, $form_state, $form_id)) {
       // Action buttons.
       if (isset($form['actions'])) {
-        // Duplicate actions for Behat tests.
-        $form['hidden_actions'] = $form['actions'];
-        $form['hidden_actions']['#attributes']['class'][] = 'visually-hidden';
-        $form['hidden_actions']['#weight'] = 1000;
-
         if (isset($form['actions']['preview'])) {
           // Put Save after Preview.
           $save_weight = $form['actions']['preview']['#weight'] ? $form['actions']['preview']['#weight'] + 1 : 11;
@@ -107,7 +102,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
         }
 
         // Add sticky class.
-        $form['actions']['#attributes']['class'][] = 'gin-sticky';
+        $form['actions']['#attributes']['class'][] = 'gin-sticky-form-actions';
 
         // Add a class to identify modified forms.
         if (!isset($form['#attributes']['class'])) {
@@ -116,7 +111,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
         elseif (is_string($form['#attributes']['class'])) {
           $form['#attributes']['class'] = [$form['#attributes']['class']];
         }
-        $form['#attributes']['class'][] = 'gin-sticky-form-actions';
+        $form['#attributes']['class'][] = 'gin--has-sticky-form-actions';
 
         // Create gin_more_actions group.
         $toggle_more_actions = t('More actions');
@@ -167,6 +162,11 @@ class GinContentFormHelper implements ContainerInjectionInterface {
           '#weight' => -1,
           '#multilingual' => TRUE,
         ];
+
+        // Set form id to status field.
+        if (isset($form['status']['widget']) && isset($form['status']['widget']['value'])) {
+          $form['status']['widget']['value']['#attributes']['form'] = $form['#id'];
+        }
         $form['status']['#group'] = 'gin_actions';
 
         // Helper item to move focus to sticky header.

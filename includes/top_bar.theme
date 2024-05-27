@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * top_bar.theme
+ */
+
+/**
+ * Implements hook_preprocess_HOOK() for top_bar.
+ */
+function gin_preprocess_top_bar(array &$variables) {
+  $navigation_config = \Drupal::configFactory()->get('navigation.settings');
+  if (!$navigation_config->get('show_top_bar')) {
+    return;
+  }
+
+  // Get form actions.
+  if ($form_actions = _gin_form_actions()) {
+    $variables['gin_form_actions'] = $form_actions;
+    $variables['gin_form_actions_class'] = 'gin-sticky-form-actions--preprocessed';
+    $variables['#attached']['library'][] = 'gin/top_bar';
+  }
+}
