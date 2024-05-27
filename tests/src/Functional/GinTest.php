@@ -120,7 +120,7 @@ class GinTest extends BrowserTestBase {
     $this->submitForm([
       'enable_user_settings' => TRUE,
       'enable_darkmode' => '1',
-    ], 'Save');
+    ], 'Save', 'user-form');
     $this->assertStringContainsString('"darkmode":"1"', $this->drupalGet($user1->toUrl('edit-form')));
 
     // Login as admin.
@@ -133,7 +133,7 @@ class GinTest extends BrowserTestBase {
       'enable_user_settings' => TRUE,
       'high_contrast_mode' => TRUE,
       'enable_darkmode' => '1',
-    ], 'Save');
+    ], 'Save', 'user-form');
 
     // Check logged-in's user is not affected.
     $loggedInUserResponse = $this->drupalGet('edit-form');
