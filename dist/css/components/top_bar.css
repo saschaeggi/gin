@@ -1,0 +1,25 @@
+.gin--navigation-top-bar {
+  padding-block: var(--gin-spacing-xxs);
+  -webkit-border-after: 1px solid var(--admin-toolbar-color-gray-100);
+          border-block-end: 1px solid var(--admin-toolbar-color-gray-100);
+  box-shadow: none;
+}
+
+.gin--navigation-top-bar .top-bar__burger {
+  align-self: center;
+}
+
+.gin--navigation-top-bar .form-actions {
+  margin-top: 0;
+}
+
+.gin--navigation-top-bar:not(:has(.top-bar__burger:only-child)) ~ .dialog-off-canvas-main-canvas {
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+}
+
+body:has(.gin--navigation-top-bar .gin-sticky-form-actions) :where(#gin_sidebar) {
+  top: 54px !important;
+  height: calc(100% - 54px) !important;
+}
+

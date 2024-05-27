@@ -30,6 +30,12 @@ gin_init:
   dependencies:
     - core/drupalSettings
 
+# Top bar
+top_bar:
+  css:
+    component:
+      dist/css/components/top_bar.css: { minified: false }
+
 # Navigation
 
 navigation:

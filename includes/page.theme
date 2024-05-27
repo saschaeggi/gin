@@ -35,9 +35,15 @@ function gin_preprocess_page(&$variables) {
     }
   }
 
-  // Are we displaying an edit form?
+  // Get form actions.
   if ($form_actions = _gin_form_actions()) {
-    $variables['gin_form_actions'] = $form_actions;
+    $navigation_config = \Drupal::configFactory()->get('navigation.settings');
+    if ($navigation_config->get('show_top_bar')) {
+      $variables['gin_form_actions'] = '';
+    }
+    else {
+      $variables['gin_form_actions'] = $form_actions;
+    }
     $variables['gin_form_actions_class'] = 'gin-sticky-form-actions--preprocessed';
   }
 }
