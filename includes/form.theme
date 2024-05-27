@@ -97,6 +97,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
     $form['#attached']['library'][] = 'gin/settings';
 
     array_unshift($form['actions']['submit']['#submit'], '_gin_user_form_submit');
+    array_unshift($form['hidden_actions']['submit']['#submit'], '_gin_user_form_submit');
   }
 }
 
