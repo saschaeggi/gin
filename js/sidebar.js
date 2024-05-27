@@ -95,7 +95,7 @@
         if (toolbarVariant === 'vertical') {
           Drupal.ginToolbar.collapseToolbar();
         } else if (toolbarVariant === 'new') {
-          Drupal.behaviors.navigation.collapseSidebar();
+          Drupal.behaviors.ginNavigation?.collapseSidebar();
         }
       }
     },

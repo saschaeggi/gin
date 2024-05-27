@@ -1,4 +1,4 @@
-.gin-sticky {
+.gin-sticky-form-actions {
   display: flex;
   gap: var(--gin-spacing-xs);
 
@@ -127,17 +127,7 @@
   }
 }
 
-// Hide actions if we use preprocess.
-.gin-sticky-form-actions--preprocessed ~ .layout-container form.gin-sticky-form-actions .gin-sticky {
-  display: none;
-}
-
-// Temporary fix to fix BeHat tests.
-.gin-hidden-form-action.gin-hidden-form-action.gin-hidden-form-action {
-  all: unset !important;
-  width: 1px !important;
-  height: 1px !important;
-  border: 0 !important;
-  background: none !important;
-  font-size: 0 !important;
+// Hide actions if we preprocessed them.
+.gin-sticky-form-actions--preprocessed ~ .layout-container form.gin--has-sticky-form-actions .gin-sticky-form-actions {
+  @include visually-hidden;
 }

@@ -643,7 +643,7 @@
     // Gin Custom end ------------------------
   }
 
-  Drupal.behaviors.navigation = {
+  Drupal.behaviors.ginNavigation = {
     attach(context) {
       once('navigation', '.admin-toolbar', context).forEach(init);
     },
