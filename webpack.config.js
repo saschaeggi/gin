@@ -64,6 +64,7 @@ module.exports = {
     'components/sidebar': ['./styles/components/sidebar.scss'],
     'components/tableselect': ['./styles/components/tableselect.scss'],
     'components/tabs': ['./styles/components/tabs.scss'],
+    'components/top_bar': ['./styles/components/top_bar.scss'],
     'components/toolbar': ['./styles/components/toolbar.scss'],
     'components/toolbar_secondary': ['./styles/components/toolbar_secondary.scss'],
     'components/tooltip': ['./styles/components/tooltip.scss'],
