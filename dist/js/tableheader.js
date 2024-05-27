@@ -5,15 +5,21 @@
     }
   }, Drupal.ginTableHeader = {
     init: function(context) {
-      once("ginTableHeader", ".sticky-enabled", context).forEach((el => {
-        new IntersectionObserver((_ref => {
-          let [e] = _ref;
-          context.querySelector(".gin-table-scroll-wrapper") && (e.isIntersecting || e.intersectionRect.top !== Drupal.displace.offsets.top ? context.querySelector(".gin-table-scroll-wrapper").classList.remove("--is-sticky") : context.querySelector(".gin-table-scroll-wrapper").classList.add("--is-sticky"), 
-          Drupal.displace(!0));
-        }), {
-          threshold: 1,
-          rootMargin: `-${Drupal.displace.offsets.top}px 0px 0px 0px`
-        }).observe(el.querySelector("thead"));
+      once("ginTableHeaderSticky", "table.position-sticky", context).forEach((el => {
+        this.updateTableHeader(el), this.showTableHeaderOnInit(), window.addEventListener("resize", (() => {
+          this.updateTableHeader(el);
+        }));
+      }));
+    },
+    showTableHeaderOnInit: function() {
+      const tableHeader = document.querySelector(".gin--sticky-table-header");
+      tableHeader.hidden = !1, tableHeader.style.display = "block", document.body.style.overflowX = "hidden";
+    },
+    updateTableHeader: function(el) {
+      const tableHeader = document.querySelector(".gin--sticky-table-header");
+      tableHeader.style.marginBottom = `-${el.querySelector("thead").getBoundingClientRect().height + 1}px`, 
+      tableHeader.querySelectorAll("thead th").forEach(((th, index) => {
+        th.style.width = `${el.querySelectorAll("thead th")[index].getBoundingClientRect().width}px`;
       }));
     }
   };

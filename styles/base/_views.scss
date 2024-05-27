@@ -91,11 +91,6 @@
 .gin-layer-wrapper {
   padding: var(--gin-spacing-l);
 
-  @include mq($to: large) {
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
   & + .gin-layer-wrapper {
     margin-top: var(--gin-spacing-l);
   }

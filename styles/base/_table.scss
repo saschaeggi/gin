@@ -1,9 +1,8 @@
 .gin-table-scroll-wrapper {
   overflow: auto;
+  overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 240px;
   margin-top: calc(var(--gin-spacing-xs) * -1);
-  margin-bottom: -240px;
 }
 
 table.sticky-header {
@@ -12,6 +11,7 @@ table.sticky-header {
   position: fixed;
   left: auto !important;
   top: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset)) !important;
+  max-width: fit-content;
   background: transparent;
 
   &::before,
@@ -32,21 +32,37 @@ table.sticky-header {
     right: calc(var(--gin-spacing-l) * -1);
     background: linear-gradient(90deg, var(--gin-bg-layer), rgba(255, 255, 255, 0));
   }
+}
 
-  .--is-sticky & {
-    box-shadow: 0 10px 20px -16px rgba(0, 0, 0, .4);
+.gin-horizontal-scroll-shadow {
+  background-image:
+    linear-gradient(to right, var(--gin-bg-layer), var(--gin-bg-layer)),
+    linear-gradient(to right, var(--gin-bg-layer), var(--gin-bg-layer)),
+    linear-gradient(to right, rgba(0, 0, 0, .125), rgba(255, 255, 255, 0)),
+    linear-gradient(to left, rgba(0, 0, 0, .125), rgba(255, 255, 255, 0));
+  background-position: left center, right center, left center, right center;
+  background-repeat: no-repeat;
+  background-color: var(--gin-bg-layer);
+  background-size: 24px 100%, 24px 100%, 12px 100%, 12px 100%;
+  background-attachment: local, local, scroll, scroll;
+}
 
-    @include mq(medium) {
-      visibility: visible !important;
-    }
+.gin--sticky-table-header {
+  position: sticky;
+  z-index: 2;
+  top: var(--drupal-displace-offset-top);
+  margin-top: -8px;
+  overflow: hidden;
 
-    thead tr {
-      border-bottom: none;
-    }
+  tr {
+    display: block;
+    width: max-content;
+  }
+}
 
-    th {
-      background: var(--gin-bg-layer);
-    }
+table.position-sticky {
+  thead {
+    position: static;
   }
 }
 
