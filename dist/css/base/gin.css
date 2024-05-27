@@ -243,10 +243,6 @@ button.link:active,
           backdrop-filter: none;
 }
 
-.gin--classic-toolbar:not(.gin--edit-form) .region-sticky {
-  position: static;
-}
-
 @media (min-width: 64em) {
   .region-sticky {
     top: -1px;
@@ -362,10 +358,6 @@ button.link:active,
     position: sticky;
     top: calc(var(--gin-toolbar-y-offset) + var(--gin-height-sticky) - 40px);
     width: calc(100% - min(10vw, 96px) + var(--gin-spacing-l));
-  }
-
-  .gin--classic-toolbar:not(.gin--edit-form) .sticky-shadow {
-    display: none;
   }
 
   .gin--edit-form .sticky-shadow {
