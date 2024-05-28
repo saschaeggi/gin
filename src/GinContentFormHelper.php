@@ -103,6 +103,8 @@ class GinContentFormHelper implements ContainerInjectionInterface {
 
         // Add sticky class.
         $form['actions']['#attributes']['class'][] = 'gin-sticky-form-actions';
+        // Move to last position possible.
+        $form['actions']['#weight'] = 1000;
 
         // Add a class to identify modified forms.
         if (!isset($form['#attributes']['class'])) {
@@ -301,6 +303,12 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       'navigation_block_form',
     ];
 
+    // API check.
+    $additional_form_ids = $this->moduleHandler->invokeAll('gin_sticky_form_actions');
+    $form_ids = array_merge($additional_form_ids, $form_ids);
+    $this->moduleHandler->alter('gin_sticky_form_actions', $form_ids);
+    $this->themeManager->alter('gin_sticky_form_actions', $form_ids);
+
     if (
       strpos($form_id, '_edit_form') !== FALSE ||
       strpos($form_id, '_display_form') !== FALSE ||
@@ -309,6 +317,22 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       in_array($form_id, $form_ids, TRUE)
     ) {
       $sticky_action_buttons = TRUE;
+    }
+
+    // Forms to exclude.
+    $form_ids_to_ignore = [];
+
+    foreach ($form_ids_to_ignore as $form_id_to_ignore) {
+      if ($form_id && strpos($form_id, $form_id_to_ignore) !== FALSE) {
+        $sticky_action_buttons = FALSE;
+      }
+    }
+
+    if (
+      strpos($form_id, '_delete_form') !== FALSE ||
+      strpos($form_id, '_confirm_form') !== FALSE
+    ) {
+      $sticky_action_buttons = FALSE;
     }
 
     return $sticky_action_buttons;
@@ -346,6 +370,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       'entity.node.edit_form',
     ];
 
+    // API check.
     $additional_routes = $this->moduleHandler->invokeAll('gin_content_form_routes');
     $route_names = array_merge($additional_routes, $route_names);
     $this->moduleHandler->alter('gin_content_form_routes', $route_names);
