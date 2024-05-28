@@ -22,7 +22,7 @@
       once("ginMoveFocusToStickyBar", "[gin-move-focus-to-sticky-bar]", form).forEach((el => el.addEventListener("focus", (e => {
         e.preventDefault(), newParent.querySelector([ "button, input, select, textarea" ]).focus();
         let element = document.createElement("div");
-        element.style.display = "contents", element.innerHTML = '<a href="#" class="visually-hidden" role="button" gin-move-focus-to-end-of-form>Moves focus back to form</a>', 
+        element.style.display = "contents", element.innerHTML = '<a href="#" class="visually-hidden" role="button" gin-move-focus-to-end-of-form>Moves focus back to form</a>',
         newParent.appendChild(element), document.querySelector("[gin-move-focus-to-end-of-form]").addEventListener("focus", (eof => {
           eof.preventDefault(), element.remove(), e.target.nextElementSibling ? e.target.nextElementSibling.focus() : e.target.parentNode.nextElementSibling && e.target.parentNode.nextElementSibling.focus();
         }));
@@ -37,7 +37,7 @@
     },
     hideMoreActions: function() {
       const trigger = document.querySelector(".gin-more-actions__trigger");
-      trigger.setAttribute("aria-expanded", "false"), trigger.classList.remove("is-active"), 
+      trigger.setAttribute("aria-expanded", "false"), trigger.classList.remove("is-active"),
       document.removeEventListener("click", this.closeMoreActionsOnClickOutside);
     },
     closeMoreActionsOnClickOutside: function(e) {
