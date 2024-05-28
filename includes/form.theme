@@ -44,8 +44,6 @@ function gin_form_alter(&$form, $form_state, $form_id) {
   }
 }
 
-use Drupal\Core\Render\Element;
-
 /**
  * Helper function to remember the form actions after form has been built.
  */
