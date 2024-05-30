@@ -282,57 +282,20 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    *   The form id.
    */
   public function stickyActionButtons(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = NULL) {
-    $sticky_action_buttons = FALSE;
-
-    // Forms to include for moving the actions to top.
-    $form_ids = [
-      'taxonomy_term_tags_form',
-      'user_register_form',
-      'user_admin_permissions',
-      'user_admin_roles_form',
-      'user_role_form',
-      'user_form',
-      'system_modules',
-      'system_modules_uninstall',
-      'update_manager_update_form',
-      'system_site_maintenance_mode',
-      'shortcut_set_customize_form',
-      'shortcut_default_form',
-      'media_library_settings_form',
-      'gin_login_form',
-      'navigation_block_form',
-    ];
+    $sticky_action_buttons = TRUE;
 
     // API check.
-    $additional_form_ids = $this->moduleHandler->invokeAll('gin_sticky_form_actions');
-    $form_ids = array_merge($additional_form_ids, $form_ids);
-    $this->moduleHandler->alter('gin_sticky_form_actions', $form_ids);
-    $this->themeManager->alter('gin_sticky_form_actions', $form_ids);
+    $form_ids = $this->moduleHandler->invokeAll('gin_ignore_sticky_form_actions');
+    $this->moduleHandler->alter('gin_ignore_sticky_form_actions', $form_ids);
+    $this->themeManager->alter('gin_ignore_sticky_form_actions', $form_ids);
 
     if (
-      strpos($form_id, '_edit_form') !== FALSE ||
-      strpos($form_id, '_display_form') !== FALSE ||
-      strpos($form_id, '_settings') !== FALSE ||
-      strpos($form_id, 'webform_admin_config_') !== FALSE ||
+      strpos($form_id, 'views_exposed_form') !== FALSE ||
+      strpos($form_id, '_delete_form') !== FALSE ||
+      strpos($form_id, '_confirm_form') !== FALSE ||
       in_array($form_id, $form_ids, TRUE)
     ) {
-      $sticky_action_buttons = TRUE;
-    }
-
-    // Forms to exclude.
-    $form_ids_to_ignore = [];
-
-    foreach ($form_ids_to_ignore as $form_id_to_ignore) {
-      if ($form_id && strpos($form_id, $form_id_to_ignore) !== FALSE) {
         $sticky_action_buttons = FALSE;
-      }
-    }
-
-    if (
-      strpos($form_id, '_delete_form') !== FALSE ||
-      strpos($form_id, '_confirm_form') !== FALSE
-    ) {
-      $sticky_action_buttons = FALSE;
     }
 
     return $sticky_action_buttons;
