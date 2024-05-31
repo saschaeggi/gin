@@ -145,16 +145,17 @@ class GinContentFormHelper implements ContainerInjectionInterface {
         $form['actions']['gin_more_actions']['gin_more_actions_items']['#weight'] = 2;
         $form['actions']['gin_more_actions']['gin_more_actions_items']['#attributes']['class'] = ['gin-more-actions__menu'];
 
-        // Unset default visible actions.
-        unset($form['actions']['gin_more_actions']['gin_more_actions_items']['preview']);
-        unset($form['actions']['gin_more_actions']['gin_more_actions_items']['submit']);
-        unset($form['actions']['gin_more_actions']['gin_more_actions_items']['gin_more_actions']);
-
         // Unset all items we move to the more actions menu.
+        $excludes = ['save', 'submit', 'preview', 'gin_more_actions'];
         foreach (Element::children($form['actions']) as $key => $item) {
-          $excludes = ['save', 'submit', 'preview', 'gin_more_actions'];
-          if (!in_array($item, $excludes)) {
+          if (!empty($form['actions'][$item]['#gin_action_item'])) {
+            $excludes[] = $item;
+          }
+          if (!in_array($item, $excludes, TRUE)) {
             unset($form['actions'][$item]);
+          }
+          else {
+            unset($form['actions']['gin_more_actions']['gin_more_actions_items'][$item]);
           }
         }
 
