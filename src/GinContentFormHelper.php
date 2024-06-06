@@ -296,7 +296,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       strpos($form_id, '_confirm_form') !== FALSE ||
       in_array($form_id, $form_ids, TRUE)
     ) {
-        $sticky_action_buttons = FALSE;
+      $sticky_action_buttons = FALSE;
     }
 
     return $sticky_action_buttons;
