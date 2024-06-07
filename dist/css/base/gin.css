@@ -588,8 +588,12 @@ body:not(.toolbar-tray-open) .layout-container {
   margin-block: 0;
 }
 
+.block-system-main-block > form:has(.table-filter) .table-filter .winnow-input,
 .block-system-main-block > form:has(.table-filter) .table-filter .table-filter-text {
   width: 100%;
+}
+
+.block-system-main-block > form:has(.table-filter) .table-filter .table-filter-text {
   padding: var(--gin-spacing-m);
   margin-top: 0;
 }

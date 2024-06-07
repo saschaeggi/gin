@@ -85,8 +85,12 @@
       margin-block: 0;
     }
 
+    .winnow-input,
     .table-filter-text {
       width: 100%;
+    }
+
+    .table-filter-text {
       padding: var(--gin-spacing-m);
       margin-top: 0;
     }
