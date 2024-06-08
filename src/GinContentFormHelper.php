@@ -283,7 +283,11 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    *   The form id.
    */
   public function stickyActionButtons(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = NULL) {
-    $sticky_action_buttons = TRUE;
+    /** @var \Drupal\gin\GinSettings $settings */
+    $settings = \Drupal::classResolver(GinSettings::class);
+
+    // Sets default to TRUE if setting is enabled.
+    $sticky_action_buttons = $settings->get('sticky_action_buttons') ? TRUE : FALSE;
 
     // API check.
     $form_ids = $this->moduleHandler->invokeAll('gin_ignore_sticky_form_actions');
