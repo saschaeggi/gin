@@ -77,19 +77,25 @@ a {
 .gin-beta-flag,
 .gin-experimental-flag {
   color: #555;
-  background: #ddd;
+  background: #eee;
 }
 
 .gin--dark-mode .views-field .marker,
 .gin--dark-mode .gin-beta-flag,
 .gin--dark-mode .gin-experimental-flag {
-  color: #eee;
-  background: #444;
+  color: #999;
+  background: rgba(68, 68, 68, .5215686275);
 }
 
-.gin-new-flag {
-  color: #fff;
-  background-color: #26a769;
+.gin-new-flag,
+.views-field .marker--published {
+  color: #1d7c4e;
+  background-color: rgba(38, 167, 105, .1882352941);
+}
+
+.gin--dark-mode .gin-new-flag,
+.gin--dark-mode .views-field .marker--published {
+  color: #39b77b;
 }
 
 a,
@@ -3534,6 +3540,7 @@ a.button--primary.button--danger {
 }
 
 .field-option__item .form-item__label {
+  font-weight: var(--gin-font-weight-semibold);
   margin-bottom: var(--gin-spacing-xxs);
 }
 

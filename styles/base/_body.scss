@@ -81,15 +81,20 @@ a {
 .gin-beta-flag,
 .gin-experimental-flag {
   color: #555;
-  background: #ddd;
+  background: #eee;
 
   .gin--dark-mode & {
-    color: #eee;
-    background: #444;
+    color: #999;
+    background: #44444485;
   }
 }
 
-.gin-new-flag {
-  color: #fff;
-  background-color: #26a769;
+.gin-new-flag,
+.views-field .marker--published {
+  color: #1d7c4e;
+  background-color: #26a76930;
+
+  .gin--dark-mode & {
+    color: #39b77b;
+  }
 }
