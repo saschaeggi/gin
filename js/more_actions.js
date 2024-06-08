@@ -32,10 +32,11 @@
     updateFormId: function (newParent, form) {
       // Attach form elements to main form
       const actionButtons = newParent.querySelectorAll('button, input, select, textarea');
+      const formId = form.getAttribute('id');
 
       if (actionButtons.length > 0) {
         actionButtons.forEach((el) => {
-          el.setAttribute('form', form.getAttribute('id'));
+          el.setAttribute('form', formId);
         });
       }
     },
