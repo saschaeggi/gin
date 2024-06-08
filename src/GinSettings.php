@@ -434,6 +434,14 @@ class GinSettings implements ContainerInjectionInterface {
       ],
     ];
 
+    // Sticky action toggle.
+    $form['sticky_action_buttons'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Enable sticky action buttons') . $new_label,
+      '#description' => $this->t('Shows from actions in the sticky header.'),
+      '#default_value' => $account ? $this->get('sticky_action_buttons', $account) : $this->getDefault('sticky_action_buttons'),
+    ];
+
     // Show secondary toolbar in Frontend.
     if (!$account) {
       $form['secondary_toolbar_frontend'] = [
