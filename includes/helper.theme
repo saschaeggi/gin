@@ -58,6 +58,7 @@ function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
       'high_contrast_mode' => (bool) $form_state->getValue('high_contrast_mode'),
       'layout_density' => $form_state->getValue('layout_density'),
       'show_description_toggle' => $form_state->getValue('show_description_toggle'),
+      'sticky_action_buttons' => $form_state->getValue('sticky_action_buttons'),
     ];
     $settings->setAll($user_settings, $account);
   }
