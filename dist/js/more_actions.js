@@ -13,9 +13,9 @@
       }))));
     },
     updateFormId: function(newParent, form) {
-      const actionButtons = newParent.querySelectorAll("button, input, select, textarea");
+      const actionButtons = newParent.querySelectorAll("button, input, select, textarea"), formId = form.getAttribute("id");
       actionButtons.length > 0 && actionButtons.forEach((el => {
-        el.setAttribute("form", form.getAttribute("id"));
+        el.setAttribute("form", formId);
       }));
     },
     moveFocus: function(newParent, form) {
