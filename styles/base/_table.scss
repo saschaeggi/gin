@@ -73,6 +73,10 @@ table.position-sticky {
   thead {
     position: static;
   }
+
+  &.--is-processed thead tr {
+    border-color: transparent;
+  }
 }
 
 table {

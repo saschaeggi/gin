@@ -20,10 +20,12 @@
     },
     updateTableHeader: function(el) {
       const tableHeader = document.querySelector(".gin--sticky-table-header");
-      tableHeader && (tableHeader.style.marginBottom = `-${el.querySelector("thead").getBoundingClientRect().height + 1}px`, 
-      tableHeader.querySelectorAll("thead th").forEach(((th, index) => {
+      if (!tableHeader) return;
+      const offset = el.classList.contains("sticky-enabled") ? -7 : 1;
+      tableHeader.style.marginBottom = `-${el.querySelector("thead").getBoundingClientRect().height + offset}px`, 
+      el.classList.add("--is-processed"), tableHeader.querySelectorAll("thead th").forEach(((th, index) => {
         th.style.width = `${el.querySelectorAll("thead th")[index].getBoundingClientRect().width}px`;
-      })));
+      }));
     }
   };
 })(Drupal, once);

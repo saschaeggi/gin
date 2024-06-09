@@ -1439,6 +1439,10 @@ table.position-sticky thead {
   position: static;
 }
 
+table.position-sticky.--is-processed thead tr {
+  border-color: transparent;
+}
+
 table thead {
   background: transparent;
   border-radius: var(--gin-border-m);
