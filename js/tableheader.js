@@ -12,9 +12,11 @@
         this.updateTableHeader(el);
         this.showTableHeaderOnInit();
 
-        window.addEventListener('resize', () => {
-          this.updateTableHeader(el);
+        // Resize observer.
+        const resizeHandler = new ResizeObserver(() => {
+          Drupal.debounce(this.updateTableHeader(el), 150);
         });
+        resizeHandler.observe(el);
 
         document.querySelector('.gin--sticky-bulk-select > input[type="checkbox"]').addEventListener('click', (event) => {
           event.stopImmediatePropagation();

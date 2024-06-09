@@ -6,9 +6,9 @@
   }, Drupal.ginTableHeader = {
     init: function(context) {
       once("ginTableHeaderSticky", "table.position-sticky", context).forEach((el => {
-        this.updateTableHeader(el), this.showTableHeaderOnInit(), window.addEventListener("resize", (() => {
-          this.updateTableHeader(el);
-        })), document.querySelector('.gin--sticky-bulk-select > input[type="checkbox"]').addEventListener("click", (event => {
+        this.updateTableHeader(el), this.showTableHeaderOnInit(), new ResizeObserver((() => {
+          Drupal.debounce(this.updateTableHeader(el), 150);
+        })).observe(el), document.querySelector('.gin--sticky-bulk-select > input[type="checkbox"]').addEventListener("click", (event => {
           event.stopImmediatePropagation(), event.checked = !event.checked, document.querySelector(".gin-table-scroll-wrapper table.sticky-enabled thead .select-all > input").click();
         }));
       }));

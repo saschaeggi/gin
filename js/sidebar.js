@@ -45,8 +45,6 @@
             Drupal.debounce(this.handleResize(entry.contentRect), 150);
           }
         });
-
-        // Observe one or multiple elements
         resizeHandler.observe(document.querySelector('html'));
 
       });

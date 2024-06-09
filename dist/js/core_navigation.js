@@ -1,4 +1,4 @@
-((Drupal, drupalSettings, once) => {
+((Drupal, once) => {
   Drupal.behaviors.ginCoreNavigation = {
     attach: context => {
       Drupal.ginCoreNavigation.initKeyboardShortcut(context);
@@ -16,4 +16,4 @@
       toolbarTrigger && toolbarTrigger.click();
     }
   };
-})(Drupal, drupalSettings, once);
+})(Drupal, once);

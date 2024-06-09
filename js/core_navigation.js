@@ -1,6 +1,6 @@
 /* eslint-disable func-names, no-mutable-exports, comma-dangle, strict */
 
-((Drupal, drupalSettings, once) => {
+((Drupal, once) => {
   Drupal.behaviors.ginCoreNavigation = {
     attach: (context) => {
       Drupal.ginCoreNavigation.initKeyboardShortcut(context);
@@ -31,4 +31,4 @@
     },
   };
 
-})(Drupal, drupalSettings, once);
+})(Drupal, once);

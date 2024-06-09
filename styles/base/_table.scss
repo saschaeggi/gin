@@ -5,12 +5,17 @@
   margin-top: calc(var(--gin-spacing-xs) * -1);
 }
 
+table.sticky-header,
+.gin--sticky-table-header,
+.gin--sticky-table-header.sticky-header {
+  z-index: 98;
+  position: sticky;
+  top: calc(var(--gin-toolbar-y-offset) + var(--gin-height-sticky) - 1px);
+}
+
 table.sticky-header {
   visibility: hidden;
-  z-index: 98;
-  position: fixed;
   left: auto !important;
-  top: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset)) !important;
   max-width: fit-content;
   background: transparent;
 
@@ -49,9 +54,6 @@ table.sticky-header {
 
 .gin--sticky-table-header,
 .gin--sticky-table-header.sticky-header {
-  position: sticky;
-  z-index: 4;
-  top: calc(var(--gin-toolbar-y-offset) + var(--gin-height-sticky));
   margin-top: -8px;
   overflow: hidden;
 
