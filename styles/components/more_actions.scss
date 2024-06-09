@@ -131,3 +131,8 @@
 .gin-sticky-form-actions--preprocessed ~ .layout-container form.gin--has-sticky-form-actions .gin-sticky-form-actions {
   @include visually-hidden;
 }
+
+// Hide trigger in dialogs.
+.ui-dialog-content .gin-more-actions__trigger {
+  display: none;
+}
