@@ -161,132 +161,15 @@ body.gin--classic-toolbar {
     }
 
     // Fallback icon if none is set
+    --icon: #{icon('fallback')}; /* Default icon, aka --basic */
+
     .toolbar-icon {
       &:before {
-        mask-image: icon('fallback');
+        mask-image: var(--icon);
       }
     }
 
-    // Hamburger
-    .toolbar-icon-menu {
-      &:before {
-        mask-image: icon('hamburger');
-      }
-    }
-
-    // Admin tray: Add content
-    .toolbar-icon-system-admin-content {
-      &:before {
-        mask-image: icon('content');
-      }
-    }
-
-    // Admin tray: Structure
-    .toolbar-icon-system-admin-structure {
-      &:before {
-        mask-image: icon('structure');
-      }
-    }
-
-    // Admin tray: Appearance
-    .toolbar-icon-system-themes-page {
-      &:before {
-        mask-image: icon('appearance');
-      }
-    }
-
-    // Admin tray: Extend
-    .toolbar-icon-system-modules-list {
-      &:before {
-        mask-image: icon('extend');
-      }
-    }
-
-    // Admin tray: Configuration
-    .toolbar-icon-system-admin-config {
-      &:before {
-        mask-image: icon('config');
-      }
-    }
-
-    // Admin tray: People
-    .toolbar-icon-entity-user-collection {
-      &:before {
-        mask-image: icon('people');
-      }
-    }
-
-    // Admin tray: Announcements
-    .toolbar-icon-announcements-feed-announcement,
-    .toolbar-icon-announce {
-      &:before {
-        mask-image: icon('announcement');
-      }
-    }
-
-    // Groups
-    .toolbar-icon-system-admin-group {
-      &:before {
-        mask-image: icon('group');
-      }
-    }
-
-    // Admin tray: Statistics
-    .toolbar-icon-system-admin-reports {
-      &:before {
-        mask-image: icon('reports');
-      }
-    }
-
-    // Admin tray: Help
-    .toolbar-icon-help-main,
-    .toolbar-icon-help {
-      &:before {
-        mask-image: icon('help');
-      }
-    }
-
-    // Commerce
-    .toolbar-icon-commerce-admin-commerce {
-      &:before {
-        mask-image: icon('commerce');
-      }
-    }
-
-    // Webform
-    .toolbar-icon-entity-webform-collection {
-      &:before {
-        mask-image: icon('webform');
-      }
-    }
-
-    // Admin tray: TMGMT Translation.
-    .toolbar-icon-tmgmt-admin-tmgmt {
-      &:before {
-        mask-image: icon('tmgmt');
-      }
-    }
-
-    // Admin Toolbar Language Switcher
-    .toolbar-icon-language {
-      &:before {
-        mask-image: icon('tmgmt');
-      }
-    }
-
-    // BAT
-    .toolbar-icon-bat-admin {
-      &:before {
-        mask-image: icon('bat');
-      }
-    }
-
-    // Commerce Inbox
-    .toolbar-icon-commerce-inbox {
-      &:before {
-        mask-image: icon('commerce-inbox');
-      }
-    }
+    @import "../helpers/toolbar-icons";
 
     // Back to site
     .toolbar-icon-escape-admin {
@@ -307,78 +190,6 @@ body.gin--classic-toolbar {
       &:before {
         mask-image: icon('local-tasks');
         mask-size: var(--gin-icon-size-toolbar-secondary) var(--gin-icon-size-toolbar-secondary);
-      }
-    }
-
-    // Shortcuts
-    .toolbar-icon-shortcut {
-      &:before {
-        mask-image: icon('shortcut');
-      }
-    }
-
-    // Coffee & Search
-    .toolbar-icon-coffee,
-    #toolbar-item-administration-search,
-    #admin-toolbar-mobile-search-tab .toolbar-icon {
-      &:before {
-        mask-image: icon('search');
-      }
-    }
-
-    // Devel
-    .toolbar-icon-devel {
-      &:before {
-        mask-image: icon('devel');
-      }
-    }
-
-    // Rebuild Cache Access
-    .toolbar-icon-rebuild-cache-access {
-      &:before {
-        mask-image: icon('rebuild-cache');
-      }
-    }
-
-    // Responsive Preview
-    .responsive-preview-icon {
-      &:before {
-        mask-image: icon('responsive-preview');
-      }
-    }
-
-    // User
-    .toolbar-icon-user {
-      &:before {
-        mask-image: icon('user');
-      }
-    }
-
-    // Environment
-    .toolbar-icon-environment {
-      &:before {
-        mask-image: icon('server');
-      }
-    }
-
-    // Toggle vertical
-    .toolbar-icon-toggle-vertical {
-      &:before {
-        mask-image: icon('nav-toggle-toleft');
-      }
-    }
-
-    // Toogle horizontal
-    .toolbar-icon-toggle-horizontal {
-      &:before {
-        mask-image: icon('nav-toggle-totop');
-      }
-    }
-
-    // Workbench
-    .toolbar-icon-workbench-content-tab {
-      &:before {
-        mask-image: icon('tool');
       }
     }
   }

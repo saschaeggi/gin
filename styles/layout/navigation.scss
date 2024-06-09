@@ -421,74 +421,7 @@ button.toolbar-link--sidebar-toggle {
   border-top: 1px solid var(--gin-border-color-table);
 }
 
-.toolbar-link--admin-toolbar-tools-help::before {
-  --icon: #{icon('tool')};
-}
-
-.toolbar-link--system-themes-page::before {
-  --icon: #{icon('appearance')};
-}
-
-.toolbar-link--blocks::before {
-  --icon: #{icon('blocks')};
-}
-
-.toolbar-link--bookmarks::before {
-  --icon: #{icon('bookmarks')};
-}
-
-.toolbar-link--system-admin-config::before {
-  --icon: #{icon('config')};
-}
-
-.toolbar-link--content::before {
-  --icon: #{icon('content')};
-}
-
-.toolbar-link--create::before {
-  --icon: #{icon('create')};
-}
-
-.toolbar-link--system-modules-list::before {
-  --icon: #{icon('extend-new')};
-}
-
-.toolbar-link--files::before {
-  --icon: #{icon('files')};
-}
-
-.toolbar-link--help::before {
-  --icon: #{icon('help')};
-}
-
-.toolbar-link--commerce-admin-commerce::before {
-  --icon: #{icon('commerce')};
-}
-
-.toolbar-link--media::before {
-  --icon: #{icon('media')};
-}
-
-.toolbar-link--entity-user-collection::before {
-  --icon: #{icon('people-new')};
-}
-
-.toolbar-link--system-admin-reports::before {
-  --icon: #{icon('reports')};
-}
-
-.toolbar-link--system-admin-structure::before {
-  --icon: #{icon('structure')};
-}
-
-.toolbar-link--sidebar-toggle[aria-expanded=false]::before,
-.toolbar-link--sidebar-toggle[aria-expanded=true]::before {
-  --icon: #{icon('chevron-down')};
-}
-
-.toolbar-link--user::before {
-  --icon: #{icon('user')};
-}
+@import "../helpers/toolbar-icons";
 
 // -------------
 // Secondary nav
