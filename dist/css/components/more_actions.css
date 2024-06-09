@@ -152,3 +152,7 @@
   word-wrap: normal;
 }
 
+.ui-dialog-content .gin-more-actions__trigger {
+  display: none;
+}
+
