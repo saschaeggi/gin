@@ -611,6 +611,13 @@ html:not(.admin-toolbar-expanded) .admin-toolbar__content .admin-toolbar__item .
 
 .toolbar-link:hover {
   z-index: 20;
+  color: var(--gin-color-primary-hover);
+  background-color: var(--gin-color-primary-light);
+}
+
+.toolbar-link:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }
 
 .toolbar-link + .toolbar-menu__item--has-dropdown > button {
@@ -694,10 +701,16 @@ html:not(.admin-toolbar-expanded) .toolbar-link {
 html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title > .toolbar-link {
   display: flex;
   align-items: center;
+  font-weight: var(--gin-font-weight-semibold);
 }
 
 html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title > .toolbar-link:hover {
-  background-color: unset;
+  color: var(--gin-color-primary-hover);
+}
+
+html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title > .toolbar-link:focus {
+  color: var(--gin-color-primary-active);
+  background-color: var(--gin-color-primary-light-hover);
 }
 
 html:not(.admin-toolbar-expanded) .toolbar-menu__item--has-dropdown.toolbar-menu__item--level-1 > button.toolbar-link::after,
@@ -1113,10 +1126,6 @@ html:not(.admin-toolbar-expanded) .gin--navigation .toolbar-menu__item--level-1.
 
 .toolbar-menu__item--to-title {
   padding-inline: 6px;
-}
-
-.toolbar-menu__item--to-title .toolbar-link:hover {
-  color: var(--gin-color-primary-hover);
 }
 
 .toolbar-menu__item--level-1 .toolbar-link,

@@ -31,10 +31,10 @@
         <div class="toolbar-menu__arrow-ref"></div>
         <ul class="toolbar-menu">
           <li class="toolbar-menu__item toolbar-menu__item--to-title">
-            <button class="toolbar-link toolbar-link--has-icon {{ item_class }}" tabindex="-1" data-url="{{ item.url }}">
+            <a class="toolbar-link toolbar-link--has-icon {{ item_class }}" href="{{ item.url }}" data-url="{{ item.url }}">
               <span class="toolbar-link__action">{{ 'Extend'|t }}</span>
               <span class="toolbar-link__label">{{ item.title }}</span>
-            </button>
+            </a>
           </li>
           {% for item in item.below %}
             <li class="{{ item.below ? 'toolbar-menu__item--has-dropdown'}} toolbar-menu__item toolbar-menu__item--level-2">
@@ -44,7 +44,7 @@
               </a>
               {% endif %}
               {% if item.below %}
-                <button class="toolbar-link" aria-expanded="false">
+                <button class="toolbar-link" aria-expanded="false" data-url="{{ item.url }}">
                   <span class="toolbar-link__action">{{ 'Extend'|t }}</span>
                   <span class="toolbar-link__label">{{ item.title }}</span>
                 </button>

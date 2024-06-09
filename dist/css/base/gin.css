@@ -1443,6 +1443,10 @@ table.position-sticky.--is-processed thead tr {
   border-color: transparent;
 }
 
+table.position-sticky.--is-processed thead tr .sortable-heading.is-active > a::before {
+  display: none;
+}
+
 table thead {
   background: transparent;
   border-radius: var(--gin-border-m);

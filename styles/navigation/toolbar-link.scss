@@ -18,6 +18,13 @@
 
   &:hover {
     z-index: 20;
+    color: var(--gin-color-primary-hover);
+    background-color: var(--gin-color-primary-light);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
   }
 
   // Gin Custom start ---------------------
@@ -94,9 +101,15 @@ html:not(.admin-toolbar-expanded) {
   & .toolbar-menu__item--to-title > .toolbar-link {
     display: flex;
     align-items: center;
+    font-weight: var(--gin-font-weight-semibold);
 
     &:hover {
-      background-color: unset;
+      color: var(--gin-color-primary-hover);
+    }
+
+    &:focus {
+      color: var(--gin-color-primary-active);
+      background-color: var(--gin-color-primary-light-hover);
     }
   }
 

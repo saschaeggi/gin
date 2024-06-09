@@ -76,6 +76,10 @@ table.position-sticky {
 
   &.--is-processed thead tr {
     border-color: transparent;
+
+    .sortable-heading.is-active > a::before {
+      display: none;
+    }
   }
 }
 

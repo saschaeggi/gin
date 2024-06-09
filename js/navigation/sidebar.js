@@ -67,7 +67,7 @@
     // Check all links on the sidebar (that are not in the shortcutsNav
     // <div>) to see if they are the current page. If so, set a `current`
     // and `is-active` CSS class on the parent <li>.
-    const sidebarLinks = sidebar.querySelectorAll('a.toolbar-link:not(.menu--shortcuts *)');
+    const sidebarLinks = sidebar.querySelectorAll('a.toolbar-link:not(.menu--shortcuts *):not(.toolbar-link--create)');
     sidebarLinks.forEach(link => {
       if (link.href === document.URL) {
         link.parentElement.classList.add('current', 'is-active');
@@ -79,7 +79,7 @@
     const sidebarTitles = sidebar.querySelectorAll('.toolbar-menu__item--level-1[data-url]');
     sidebarTitles.forEach(title => {
       if (title.getAttribute('data-url') === window.location.pathname) {
-        title.querySelector('button.toolbar-link')?.classList.add('current', 'is-active');
+        title.querySelector('a.toolbar-link')?.classList.add('current', 'is-active');
       }
     });
     // Gin Custom end ------------------------
@@ -252,14 +252,14 @@
     // Add click event listeners to all buttons and then contains the callback
     // to expand / collapse the button's menus.
     clonedFlyout.querySelectorAll('.toolbar-menu__item--has-dropdown > button').forEach(el => el.addEventListener('click', (e) => {
-      openCloseSubmenu(e.currentTarget.parentElement);
-    }));
-
-    // Add click event listeners to title buttons when navigation is collapsed.
-    clonedFlyout.querySelectorAll('.toolbar-menu__item--to-title > button').forEach(el => el.addEventListener('click', (e) => {
+      // Gin Custom start ---------------------
       const dataUrl = el.getAttribute('data-url');
-      if (!isNavExpanded() && dataUrl) {
-        window.location.assign(dataUrl);
+      if ((e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) && dataUrl) {
+        window.open(dataUrl, '_blank');
+      }
+      // Gin Custom end ------------------------
+      else {
+        openCloseSubmenu(e.currentTarget.parentElement);
       }
     }));
 
@@ -631,16 +631,6 @@
     sidebar.querySelectorAll('.toolbar-menu__item--has-dropdown > button').forEach(el => el.addEventListener('click', (e) => {
       openCloseSubmenu(e.currentTarget.parentElement);
     }));
-
-    // Gin Custom start ---------------------
-    // Make overview buttons clickable when collapsed
-    sidebar.querySelectorAll('.toolbar-menu__item--level-1 > button.toolbar-link').forEach(el => el.addEventListener('click', () => {
-      const dataUrl = el.parentElement.getAttribute('data-url');
-      if (!isNavExpanded() && dataUrl) {
-        window.location.assign(dataUrl);
-      }
-    }));
-    // Gin Custom end ------------------------
 
     // Gin Custom start ---------------------
     // Show toolbar navigation with shortcut:
