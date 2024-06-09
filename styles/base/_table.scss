@@ -74,11 +74,15 @@ table.position-sticky {
     position: static;
   }
 
-  &.--is-processed thead tr {
-    border-color: transparent;
+  &.--is-processed thead {
+    pointer-events: none;
 
-    .sortable-heading.is-active > a::before {
-      display: none;
+    tr {
+      border-color: transparent;
+
+      .sortable-heading.is-active > a::before {
+        display: none;
+      }
     }
   }
 }
@@ -130,7 +134,7 @@ table {
 
     &:hover {
       color: var(--gin-color-text);
-      background: var(--gin-bg-item-hover);
+      background: var(--gin-bg-item);
     }
 
     &.selected:hover {
@@ -144,7 +148,7 @@ table {
     }
 
     td {
-      background-color: var(--gin-color-primary-light);
+      background-color: var(--gin-bg-item-hover);
     }
   }
 
@@ -182,12 +186,25 @@ table {
     }
   }
 
+  &.is-active > a::before,
+  > a:hover::before {
+    width: 100%;
+    left: 0;
+  }
+
+  > a:hover::before {
+    border-bottom-width: 3px;
+  }
+
   &.is-active > a {
     &, &:hover, &:active {
       color: var(--gin-color-primary-active);
     }
 
     &::before {
+      background-color: var(--gin-bg-item);
+      border-top-left-radius: var(--gin-border-s);
+      border-top-right-radius: var(--gin-border-s);
       border-bottom: .1875rem solid var(--gin-color-primary-active);
     }
   }
