@@ -1683,6 +1683,10 @@ td.webform-has-field-suffix > .form-item > .form-element {
   margin-bottom: var(--gin-spacing-m);
 }
 
+.field-multiple-table .ck.ck-toolbar.ck-toolbar_grouping > .ck-toolbar__items {
+  flex-wrap: wrap;
+}
+
 .gin-layer-wrapper .views-table {
   margin-top: 0;
 }

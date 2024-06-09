@@ -284,6 +284,11 @@ td.webform-has-field-suffix > .form-item > .form-element {
   tr .form-item:not(:last-of-type) {
     margin-bottom: var(--gin-spacing-m);
   }
+
+  // Fixes paragraphs extending beyond layout
+  .ck.ck-toolbar.ck-toolbar_grouping>.ck-toolbar__items {
+    flex-wrap: wrap;
+  }
 }
 
 .gin-layer-wrapper .views-table {
