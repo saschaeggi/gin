@@ -298,6 +298,8 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       strpos($form_id, 'views_exposed_form') !== FALSE ||
       strpos($form_id, '_delete_form') !== FALSE ||
       strpos($form_id, '_confirm_form') !== FALSE ||
+      strpos($form_id, '_paragraphs_component_form') !== FALSE ||
+      strpos($form_id, '_delete_component_form') !== FALSE ||
       in_array($form_id, $form_ids, TRUE)
     ) {
       $sticky_action_buttons = FALSE;
