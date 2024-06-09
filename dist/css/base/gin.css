@@ -1412,17 +1412,27 @@ table.sticky-header::before, table.sticky-header::after {
   background-position: right center, left center, right center, left center;
 }
 
-.gin--sticky-table-header {
+.gin--sticky-table-header,
+.gin--sticky-table-header.sticky-header {
   position: sticky;
-  z-index: 2;
+  z-index: 4;
   top: calc(var(--gin-toolbar-y-offset) + var(--gin-height-sticky));
   margin-top: -8px;
   overflow: hidden;
 }
 
-.gin--sticky-table-header tr {
+.gin--sticky-table-header tr,
+.gin--sticky-table-header.sticky-header tr {
   display: block;
   width: max-content;
+}
+
+.gin--sticky-table-header.sticky-header {
+  width: auto !important;
+}
+
+.gin--sticky-table-header.sticky-header::after {
+  display: none;
 }
 
 table.position-sticky thead {

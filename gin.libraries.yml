@@ -39,17 +39,17 @@ navigation:
     js/navigation/vendor/floating-ui/floating-ui.dom.umd.js: { minified: true }
     js/navigation/sidebar.js: { minified: false }
   dependencies:
-  - gin/escape_admin
-  - gin/coffee
-  - gin/node_preview
-  - gin/responsive_preview
-  - gin/contextual_links
-  - gin/breadcrumb
-  - gin/settings_tray
-  - gin/settings_tray_edit
-  - core/drupalSettings
-  - core/once
-  - core/drupal.displace
+    - gin/escape_admin
+    - gin/coffee
+    - gin/node_preview
+    - gin/responsive_preview
+    - gin/contextual_links
+    - gin/breadcrumb
+    - gin/settings_tray
+    - gin/settings_tray_edit
+    - core/drupalSettings
+    - core/once
+    - core/drupal.displace
 
 core_navigation:
   css:
@@ -61,14 +61,14 @@ core_navigation:
   js:
     dist/js/core_navigation.js: { minified: false }
   dependencies:
-  - gin/escape_admin
-  - gin/coffee
-  - gin/node_preview
-  - gin/responsive_preview
-  - gin/contextual_links
-  - gin/breadcrumb
-  - gin/settings_tray
-  - gin/settings_tray_edit
+    - gin/escape_admin
+    - gin/coffee
+    - gin/node_preview
+    - gin/responsive_preview
+    - gin/contextual_links
+    - gin/breadcrumb
+    - gin/settings_tray
+    - gin/settings_tray_edit
 
 gin_toolbar:
   css:
@@ -226,6 +226,7 @@ tableheader:
   js:
     dist/js/tableheader.js: { minified: false }
   dependencies:
+    - core/once
     - gin/scrollsync
 
 tabs:

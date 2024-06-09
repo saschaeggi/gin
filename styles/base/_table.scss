@@ -47,9 +47,10 @@ table.sticky-header {
   background-attachment: local, local, scroll, scroll;
 }
 
-.gin--sticky-table-header {
+.gin--sticky-table-header,
+.gin--sticky-table-header.sticky-header {
   position: sticky;
-  z-index: 2;
+  z-index: 4;
   top: calc(var(--gin-toolbar-y-offset) + var(--gin-height-sticky));
   margin-top: -8px;
   overflow: hidden;
@@ -57,6 +58,14 @@ table.sticky-header {
   tr {
     display: block;
     width: max-content;
+  }
+}
+
+.gin--sticky-table-header.sticky-header {
+  width: auto !important;
+
+  &::after {
+    display: none;
   }
 }
 

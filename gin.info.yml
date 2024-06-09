@@ -20,6 +20,10 @@ libraries-override:
     js:
       js/media_library.view.js: js/overrides/media_library.view.js
 
+  core/drupal.tableselect:
+    js:
+      misc/tableselect.js: js/overrides/tableselect.js
+
   # Gin overrides: disable
   # needed override to overcome dialog styling issues
   claro/claro.drupal.dialog:
@@ -40,6 +44,10 @@ libraries-override:
         css/layout/local-actions.css: false
       theme:
         css/theme/colors.css: false
+
+  core/drupal.tableheader:
+    js:
+      misc/tableheader.js: false
 
 libraries-extend:
   core/drupal.message:

@@ -15,19 +15,28 @@
         window.addEventListener('resize', () => {
           this.updateTableHeader(el);
         });
+
+        document.querySelector('.gin--sticky-bulk-select > input[type="checkbox"]').addEventListener('click', (event) => {
+          event.stopImmediatePropagation();
+          event.checked = !event.checked;
+          document.querySelector('.gin-table-scroll-wrapper table.sticky-enabled thead .select-all > input').click();
+        });
       });
     },
     showTableHeaderOnInit: function () {
       const tableHeader = document.querySelector('.gin--sticky-table-header');
+      if (!tableHeader) { return; }
 
       tableHeader.hidden = false;
       tableHeader.style.display = 'block';
+      tableHeader.style.visibility = 'visible';
 
       // Fixes whitespace issue in Chrome.
       document.body.style.overflowX = 'hidden';
     },
     updateTableHeader: function (el) {
       const tableHeader = document.querySelector('.gin--sticky-table-header');
+      if (!tableHeader) { return; }
 
       tableHeader.style.marginBottom = `-${el.querySelector('thead').getBoundingClientRect().height + 1}px`;
 
