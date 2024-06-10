@@ -296,6 +296,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
 
     if (
       strpos($form_id, 'views_exposed_form') !== FALSE ||
+      strpos($form_id, 'view_preview_form') !== FALSE ||
       strpos($form_id, '_delete_form') !== FALSE ||
       strpos($form_id, '_confirm_form') !== FALSE ||
       strpos($form_id, '_paragraphs_component_form') !== FALSE ||
