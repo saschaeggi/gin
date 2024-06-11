@@ -66,12 +66,9 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
   background-color: var(--gin-color-primary-active);
 }
 
-[dir="ltr"] .meta-sidebar__trigger {
-  margin-left: var(--gin-spacing-xs);
-}
-
-[dir="rtl"] .meta-sidebar__trigger {
-  margin-right: var(--gin-spacing-xs);
+.meta-sidebar__trigger {
+  -webkit-margin-start: var(--gin-spacing-xs);
+          margin-inline-start: var(--gin-spacing-xs);
 }
 
 .meta-sidebar__trigger::before {
@@ -85,15 +82,8 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
 .meta-sidebar__close {
   z-index: 104;
   position: absolute;
-  top: 18px;
-}
-
-[dir="ltr"] .meta-sidebar__close {
-  right: var(--gin-spacing-m);
-}
-
-[dir="rtl"] .meta-sidebar__close {
-  left: var(--gin-spacing-m);
+  inset-block-start: 18px;
+  inset-inline-end: var(--gin-spacing-m);
 }
 
 @media (min-width: 64em) {
@@ -112,20 +102,13 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
 .meta-sidebar__overlay {
   z-index: 102;
   position: fixed;
-  top: 0;
+  inset-block-start: 0;
+  inset-inline-start: 0;
   width: 100%;
   height: 100%;
   opacity: 0;
   visibility: hidden;
   background: var(--gin-bg-layer2);
-}
-
-[dir="ltr"] .meta-sidebar__overlay {
-  left: 0;
-}
-
-[dir="rtl"] .meta-sidebar__overlay {
-  right: 0;
 }
 
 body[data-meta-sidebar=open] .meta-sidebar__overlay {

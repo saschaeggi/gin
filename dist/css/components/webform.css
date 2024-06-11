@@ -1,5 +1,6 @@
 .webform-filter-form {
-  margin-bottom: var(--gin-spacing-xl);
+  -webkit-margin-after: var(--gin-spacing-xl);
+          margin-block-end: var(--gin-spacing-xl);
 }
 
 .webform-filter-form > .container-inline {
@@ -7,12 +8,15 @@
 }
 
 .webform-filter-form .details-wrapper {
-  margin-top: 0;
-  margin-bottom: var(--gin-spacing-xs);
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+  -webkit-margin-after: var(--gin-spacing-xs);
+          margin-block-end: var(--gin-spacing-xs);
 }
 
 .webform-filter-form + div:not(.gin-layer-wrapper) {
-  margin-bottom: var(--gin-spacing-s);
+  -webkit-margin-after: var(--gin-spacing-s);
+          margin-block-end: var(--gin-spacing-s);
 }
 
 .webform-ui-element-type-change-form .gin-layer-wrapper {
@@ -57,13 +61,13 @@
 }
 
 .webform-ui-elements-table tr.webform-ui-element-type-webform_actions td {
-  border-top: none;
-  border-bottom: none;
+  border-block: none;
   background: none;
 }
 
 .webform-tabs.ui-tabs .ui-tabs-nav {
-  border-bottom: 0 none;
+  -webkit-border-after: 0 none;
+          border-block-end: 0 none;
 }
 
 .webform-tabs.ui-tabs .ui-tabs-nav .ui-tabs-active.ui-state-active a {
