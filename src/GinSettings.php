@@ -437,7 +437,7 @@ class GinSettings implements ContainerInjectionInterface {
     // Sticky action toggle.
     $form['sticky_action_buttons'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('Enable sticky action buttons') . $new_label,
+      '#title' => $this->t('Enable sticky action buttons') . $beta_label . $new_label,
       '#description' => $this->t('Displays all actions of the form in the sticky header.'),
       '#default_value' => $account ? $this->get('sticky_action_buttons', $account) : $this->getDefault('sticky_action_buttons'),
     ];
@@ -455,7 +455,7 @@ class GinSettings implements ContainerInjectionInterface {
     // Layout density setting.
     $form['layout_density'] = [
       '#type' => 'radios',
-      '#title' => $this->t('Layout density') . $beta_label,
+      '#title' => $this->t('Layout density'),
       '#description' => $this->t('Changes the layout density for tables in the admin interface.'),
       '#default_value' => (string) ($account ? $this->get('layout_density', $account) : $this->getDefault('layout_density')),
       '#options' => [
