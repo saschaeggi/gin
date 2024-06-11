@@ -5,11 +5,11 @@
 }
 
 .package-listing {
-  margin-top: var(--gin-spacing-m);
+  margin-block-start: var(--gin-spacing-m);
 }
 
 .claro-details__summary {
-  padding-left: 2.75rem;
+  padding-inline-start: 2.75rem;
 }
 
 .claro-details.claro-details--package-listing,
@@ -44,5 +44,5 @@
 }
 
 .module-list__module {
-  border-bottom: 1px solid var(--gin-border-color);
+  border-block-end: 1px solid var(--gin-border-color);
 }
