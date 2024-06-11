@@ -115,7 +115,7 @@
 
       .field--name-revision-log,
       .field--name-revision-log-message {
-        margin-top: var(--gin-spacing-l);
+        margin-top: var(--gin-spacing-s);
       }
 
       .accordion {
@@ -129,8 +129,7 @@
 
         &__header {
           color: var(--gin-color-text);
-          padding-left: $sidebarSpacer;
-          padding-right: $sidebarSpacer;
+          padding: var(--gin-spacing-m) #{$sidebarSpacer};
           background-color: var(--gin-bg-layer);
           border: 0 none;
 
@@ -138,14 +137,25 @@
             padding-top: calc(var(--gin-spacing-l) - var(--gin-spacing-xxs));
             padding-right: var(--gin-spacing-l);
           }
+
+          .form-type--item,
+          .form-item__label {
+            font-size: var(--gin-font-size-s);
+          }
+
+          .form-item {
+            margin-block: var(--gin-spacing-xxs);
+          }
         }
 
         &__title {
           color: var(--gin-color-title);
           font-weight: var(--gin-font-weight-semibold);
-          margin-top: var(--gin-spacing-xxs);
-          margin-bottom: var(--gin-spacing-m);
           text-shadow: none;
+        }
+
+        &__revision {
+          margin-block-start: var(--gin-spacing-m);
         }
 
         > .accordion__item {
@@ -252,7 +262,7 @@
 
   .field--name-title .form-element {
     font-size: var(--gin-font-size-h3);
-    font-weight: var(--gin-font-weight-semibold);
+    font-weight: 475;
     line-height: normal;
     letter-spacing: -0.025em;
     width: 100%;

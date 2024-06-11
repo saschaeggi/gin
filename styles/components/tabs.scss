@@ -53,9 +53,8 @@
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
   color: var(--gin-color-text);
   font-size: var(--gin-font-size);
-  font-weight: var(--gin-font-weight-bold);
-  padding-top: calc(var(--gin-spacing-l) - var(--gin-spacing-xxs));
-  padding-bottom: calc(var(--gin-spacing-l) - var(--gin-spacing-xxs));
+  font-weight: var(--gin-font-weight-semibold);
+  padding-block: calc(var(--gin-spacing-l) - var(--gin-spacing-xxs));
 
   strong {
     font-weight: inherit;
@@ -65,7 +64,7 @@
 .tabs__link.is-active,
 .claro-details__summary[aria-expanded=true],
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.selected a {
-  font-weight: var(--gin-font-weight-bold);
+  font-weight: var(--gin-font-weight-semibold);
 }
 
 .is-horizontal .tabs__link,
@@ -103,7 +102,7 @@
   @include mq(small) {
     width: 100%;
     padding: .3125rem var(--gin-spacing-xs) var(--gin-spacing-l);
-    margin-bottom: calc(var(--gin-spacing-l) * -1);
+    margin-bottom: calc(var(--gin-spacing-xl) * -1);
     overflow-x: auto;
 
     .gin--edit-form & {
@@ -217,10 +216,11 @@
     height: 100%;
 
     @include mq(small) {
-      padding: calc(var(--gin-spacing-s) - 2px) var(--gin-spacing-m);
+      font-size: var(--gin-font-size);
+      padding: calc(var(--gin-spacing-xs) - 2px) var(--gin-spacing-s);
       margin-right: 0.25em;
-      min-height: 2.5rem;
-      border-radius: 2.5rem;
+      min-height: 2rem;
+      border-radius: 2rem;
     }
 
     &.is-active {
@@ -474,6 +474,10 @@
         width: 100%;
       }
     }
+  }
+
+  &__menu-item-title {
+    font-weight: var(--gin-font-weight-bold);
   }
 
   &__menu-item {

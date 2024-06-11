@@ -146,7 +146,7 @@ body.gin--core-navigation {
 .toolbar-button:hover,
 .toolbar-menu__link:hover {
   color: var(--gin-color-primary);
-  background-color: var(--gin-color-primary-light);
+  background-color: var(--gin-bg-item-hover);
 }
 
 .toolbar-button:active, .toolbar-button:focus, .toolbar-button:hover:focus,
@@ -154,7 +154,7 @@ body.gin--core-navigation {
 .toolbar-menu__link:focus,
 .toolbar-menu__link:hover:focus {
   color: var(--gin-color-primary-hover);
-  background-color: var(--gin-color-primary-light-hover);
+  background-color: var(--gin-color-primary-light);
 }
 
 .toolbar-button--large {
@@ -182,7 +182,7 @@ body.gin--core-navigation {
 }
 
 .toolbar-button.current:active, .toolbar-button.current:focus, .toolbar-button.current:hover:focus {
-  background-color: var(--gin-color-primary-light-hover);
+  background-color: var(--gin-color-primary-light);
 }
 
 .toolbar-button.current.is-active,

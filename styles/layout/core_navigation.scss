@@ -150,14 +150,14 @@ body.gin--core-navigation {
 
   &:hover {
     color: var(--gin-color-primary);
-    background-color: var(--gin-color-primary-light);
+    background-color: var(--gin-bg-item-hover);
   }
 
   &:active,
   &:focus,
   &:hover:focus {
     color: var(--gin-color-primary-hover);
-    background-color: var(--gin-color-primary-light-hover);
+    background-color: var(--gin-color-primary-light);
   }
 }
 
@@ -193,7 +193,7 @@ body.gin--core-navigation {
   &:active,
   &:focus,
   &:hover:focus {
-    background-color: var(--gin-color-primary-light-hover);
+    background-color: var(--gin-color-primary-light);
   }
 }
 

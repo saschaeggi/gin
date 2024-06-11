@@ -206,7 +206,7 @@ body.gin--navigation {
   .toolbar-link--sidebar-toggle:hover,
   .toolbar-link--sidebar-toggle:focus {
     color: var(--gin-color-primary-hover);
-    background-color: var(--gin-color-primary-light-hover);
+    background-color: var(--gin-bg-item-hover);
 
     // Icons
     &::before,

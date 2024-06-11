@@ -1043,7 +1043,7 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu
 .gin--navigation .toolbar-link--sidebar-toggle:hover,
 .gin--navigation .toolbar-link--sidebar-toggle:focus {
   color: var(--gin-color-primary-hover);
-  background-color: var(--gin-color-primary-light-hover);
+  background-color: var(--gin-bg-item-hover);
 }
 
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:hover::before, .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:hover::after,

@@ -44,9 +44,8 @@
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
   color: var(--gin-color-text);
   font-size: var(--gin-font-size);
-  font-weight: var(--gin-font-weight-bold);
-  padding-top: calc(var(--gin-spacing-l) - var(--gin-spacing-xxs));
-  padding-bottom: calc(var(--gin-spacing-l) - var(--gin-spacing-xxs));
+  font-weight: var(--gin-font-weight-semibold);
+  padding-block: calc(var(--gin-spacing-l) - var(--gin-spacing-xxs));
 }
 
 .tabs__link strong,
@@ -58,7 +57,7 @@
 .tabs__link.is-active,
 .claro-details__summary[aria-expanded=true],
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.selected a {
-  font-weight: var(--gin-font-weight-bold);
+  font-weight: var(--gin-font-weight-semibold);
 }
 
 .is-horizontal .tabs__link:hover, .is-horizontal .tabs__link:focus,
@@ -96,7 +95,7 @@
   .horizontal-tabs ul.horizontal-tabs-list {
     width: 100%;
     padding: .3125rem var(--gin-spacing-xs) var(--gin-spacing-l);
-    margin-bottom: calc(var(--gin-spacing-l) * -1);
+    margin-bottom: calc(var(--gin-spacing-xl) * -1);
     overflow-x: auto;
   }
 
@@ -268,9 +267,10 @@
 
 @media (min-width: 48em) {
   .is-horizontal .tabs--primary .tabs__link {
-    padding: calc(var(--gin-spacing-s) - 2px) var(--gin-spacing-m);
-    min-height: 2.5rem;
-    border-radius: 2.5rem;
+    font-size: var(--gin-font-size);
+    padding: calc(var(--gin-spacing-xs) - 2px) var(--gin-spacing-s);
+    min-height: 2rem;
+    border-radius: 2rem;
   }
 
   [dir="ltr"] .is-horizontal .tabs--primary .tabs__link {
@@ -602,6 +602,10 @@
 .vertical-tabs__items .vertical-tabs__item > .claro-details__wrapper {
   display: inline-block;
   width: 100%;
+}
+
+.vertical-tabs__menu-item-title {
+  font-weight: var(--gin-font-weight-bold);
 }
 
 .vertical-tabs__menu-item::before, .vertical-tabs__menu-item::after {
