@@ -54,13 +54,13 @@
   margin-right: 6px;
 }
 
-[dir="ltr"] .form-type--checkbox .checkbox-toggle + .help-icon,
-[dir="ltr"] .form-type--radio .checkbox-toggle + .help-icon {
+[dir="ltr"] .form-type--checkbox .checkbox-toggle ~ .help-icon,
+[dir="ltr"] .form-type--radio .checkbox-toggle ~ .help-icon {
   padding-left: var(--gin-spacing-xxs);
 }
 
-[dir="rtl"] .form-type--checkbox .checkbox-toggle + .help-icon,
-[dir="rtl"] .form-type--radio .checkbox-toggle + .help-icon {
+[dir="rtl"] .form-type--checkbox .checkbox-toggle ~ .help-icon,
+[dir="rtl"] .form-type--radio .checkbox-toggle ~ .help-icon {
   padding-right: var(--gin-spacing-xxs);
 }
 

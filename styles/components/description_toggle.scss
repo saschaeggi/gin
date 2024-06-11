@@ -40,7 +40,7 @@
     }
   }
 
-  .checkbox-toggle + .help-icon {
+  .checkbox-toggle ~ .help-icon {
     padding-left: var(--gin-spacing-xxs);
   }
 }

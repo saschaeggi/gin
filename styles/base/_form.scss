@@ -188,6 +188,7 @@
     opacity: 0;
     cursor: pointer;
     z-index: 1;
+    left: 0;
 
     &:hover,
     &:focus,
@@ -199,61 +200,64 @@
       border: none;
     }
 
-    &:hover ~ .checkbox-toggle {
-      opacity: .9;
-      box-shadow: 0 0 2px rgba(0, 0, 0, .2);
-    }
-
-    &:checked ~ .checkbox-toggle {
-      border-color: var(--gin-color-primary-light-active);
-
-      .gin--high-contrast-mode & {
-        border-color: var(--gin-border-color);
-      }
-
-      .checkbox-toggle__inner {
-        background-color: var(--gin-switch);
-
-        .gin--dark-mode & {
-          background-color: var(--gin-color-primary-light-active);
-        }
-
-        &:before {
-          transform: translateX(16px);
-          background-color: #fff;
-
-          .gin--dark-mode & {
-            background-color: var(--gin-color-primary-hover);
-          }
-
-          .gin--high-contrast-mode & {
-            background-color: var(--gin-border-color);
-          }
-        }
-      }
-    }
-
-    &:active ~ .checkbox-toggle .checkbox-toggle__inner,
-    &:focus ~ .checkbox-toggle .checkbox-toggle__inner {
-      box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
-    }
-
     // Disabled state: set cursor to not-allowed
     &:disabled {
       cursor: not-allowed;
     }
+  }
 
-    // Disabled styles
-    &:disabled ~ .checkbox-toggle,
-    &:disabled ~ .checkbox-toggle:hover,
-    &:disabled:checked ~ .checkbox-toggle .checkbox-toggle__inner,
-    &:disabled:checked ~ .checkbox-toggle:hover .checkbox-toggle__inner {
-      background-color: var(--gin-color-disabled);
+  // Hover state
+  :where(.form-type--checkbox:has(input:hover) .checkbox-toggle) {
+    opacity: .9;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .2);
+  }
 
-      &::before {
-        background-color: #fff;
-        opacity: .4;
+  // Hover/Focus state
+  :where(.form-type--checkbox:has(input:active) .checkbox-toggle .checkbox-toggle__inner),
+  :where(.form-type--checkbox:has(input:focus) .checkbox-toggle .checkbox-toggle__inner) {
+    box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
+  }
+
+  // Active state
+  :where(.form-type--checkbox:has(input:checked) .checkbox-toggle) {
+    border-color: var(--gin-color-primary-light-active);
+
+    .gin--high-contrast-mode & {
+      border-color: var(--gin-border-color);
+    }
+
+    .checkbox-toggle__inner {
+      background-color: var(--gin-switch);
+
+      .gin--dark-mode & {
+        background-color: var(--gin-color-primary-light-active);
       }
+
+      &:before {
+        transform: translateX(16px);
+        background-color: #fff;
+
+        .gin--dark-mode & {
+          background-color: var(--gin-color-primary-hover);
+        }
+
+        .gin--high-contrast-mode & {
+          background-color: var(--gin-border-color);
+        }
+      }
+    }
+  }
+
+  // Disabled state
+  :where(.form-type--checkbox:has(input:disabled) .checkbox-toggle),
+  :where(.form-type--checkbox:has(input:disabled) .checkbox-toggle .checkbox-toggle__inner) {
+    opacity: 0.75;
+    background-color: var(--gin-color-disabled);
+    box-shadow: none;
+
+    &::before {
+      background-color: #fff;
+      opacity: .6;
     }
   }
 
