@@ -91,6 +91,8 @@
 
       // Check which toolbar is active.
       if (window.innerWidth < breakpointLarge) {
+        Drupal.ginCoreNavigation?.collapseToolbar();
+
         if (toolbarVariant === 'vertical') {
           Drupal.ginToolbar.collapseToolbar();
         } else if (toolbarVariant === 'new') {

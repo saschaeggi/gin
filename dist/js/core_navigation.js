@@ -5,15 +5,25 @@
     }
   }, Drupal.ginCoreNavigation = {
     initKeyboardShortcut: function(context) {
-      once("ginToolbarKeyboardShortcutInit", ".toolbar-menu__trigger, .admin-toolbar__expand-button", context).forEach((() => {
+      once("ginToolbarKeyboardShortcut", ".admin-toolbar__expand-button", context).forEach((() => {
         document.addEventListener("keydown", (e => {
           !0 === e.altKey && "KeyT" === e.code && this.toggleToolbar();
         }));
+      })), once("ginToolbarClickHandler", ".top-bar__burger, .admin-toolbar__expand-button", context).forEach((button => {
+        button.addEventListener("click", (() => {
+          var _Drupal$ginSidebar;
+          window.innerWidth < 1280 && button.getAttribute("aria-expanded", "false") && (null === (_Drupal$ginSidebar = Drupal.ginSidebar) || void 0 === _Drupal$ginSidebar || _Drupal$ginSidebar.collapseSidebar());
+        }));
       }));
     },
-    toggleToolbar: function() {
+    toggleToolbar() {
       let toolbarTrigger = document.querySelector(".admin-toolbar__expand-button");
       toolbarTrigger && toolbarTrigger.click();
+    },
+    collapseToolbar: function() {
+      document.querySelectorAll(".top-bar__burger, .admin-toolbar__expand-button").forEach((button => {
+        button.setAttribute("aria-expanded", "false");
+      })), document.documentElement.setAttribute("data-admin-toolbar", "collapsed"), Drupal.displace(!0);
     }
   };
 })(Drupal, once);
