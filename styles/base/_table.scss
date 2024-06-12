@@ -5,23 +5,29 @@
   margin-top: calc(var(--gin-spacing-xs) * -1);
 }
 
-table.sticky-header,
-.gin--sticky-table-header,
-.gin--sticky-table-header.sticky-header {
+table.gin--sticky-table-header {
+  visibility: hidden;
   z-index: 98;
   position: sticky;
   top: calc(var(--gin-toolbar-y-offset) + var(--gin-height-sticky) - 1px);
+  width: auto !important;
+  margin-top: -8px;
+  overflow: hidden;
+
+  tr {
+    display: block;
+    width: max-content;
+  }
 }
 
-table.sticky-header {
-  visibility: hidden;
-  left: auto !important;
-  max-width: fit-content;
-  background: transparent;
+.views-form > form:has(> .gin--sticky-table-header),
+.gin-layer-wrapper:has(> .gin--sticky-table-header) {
+  position: relative;
 
   &::before,
   &::after {
     content: '';
+    z-index: 98;
     position: absolute;
     top: 0;
     width: 1.5rem;
@@ -52,26 +58,14 @@ table.sticky-header {
   background-attachment: local, local, scroll, scroll;
 }
 
-.gin--sticky-table-header,
-.gin--sticky-table-header.sticky-header {
-  margin-top: -8px;
-  overflow: hidden;
-
-  tr {
-    display: block;
-    width: max-content;
-  }
+table.sticky-header {
+  left: auto !important;
+  max-width: fit-content;
+  background: transparent;
 }
 
-.gin--sticky-table-header.sticky-header {
-  width: auto !important;
-
-  &::after {
-    display: none;
-  }
-}
-
-table.position-sticky {
+table.position-sticky,
+table.sticky-header {
   thead {
     position: static;
   }

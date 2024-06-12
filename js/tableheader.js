@@ -8,7 +8,7 @@
   Drupal.ginTableHeader = {
     init: function (context) {
       // Tables with new position-sticky enabled.
-      once('ginTableHeaderSticky', 'table.position-sticky', context).forEach(el => {
+      once('ginTableHeaderSticky', 'table.position-sticky, table.sticky-header', context).forEach(el => {
         this.updateTableHeader(el);
         this.showTableHeaderOnInit();
 
@@ -18,10 +18,12 @@
         });
         resizeHandler.observe(el);
 
-        document.querySelector('.gin--sticky-bulk-select > input[type="checkbox"]').addEventListener('click', (event) => {
-          event.stopImmediatePropagation();
-          event.checked = !event.checked;
-          document.querySelector('.gin-table-scroll-wrapper table.sticky-enabled thead .select-all > input').click();
+        document.querySelectorAll('.gin--sticky-bulk-select > input[type="checkbox"]').forEach(checkbox => {
+          checkbox.addEventListener('click', (event) => {
+            event.stopImmediatePropagation();
+            event.checked = !event.checked;
+            document.querySelector('.gin-table-scroll-wrapper table.sticky-enabled thead .select-all > input').click();
+          });
         });
       });
     },

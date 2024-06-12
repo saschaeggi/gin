@@ -1349,53 +1349,57 @@ a.views-field-excluded {
   margin-top: calc(var(--gin-spacing-xs) * -1);
 }
 
-table.sticky-header,
-.gin--sticky-table-header,
-.gin--sticky-table-header.sticky-header {
+table.gin--sticky-table-header {
+  visibility: hidden;
   z-index: 98;
   position: sticky;
   top: calc(var(--gin-toolbar-y-offset) + var(--gin-height-sticky) - 1px);
+  width: auto !important;
+  margin-top: -8px;
+  overflow: hidden;
 }
 
-table.sticky-header {
-  visibility: hidden;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
-  background: transparent;
+table.gin--sticky-table-header tr {
+  display: block;
+  width: max-content;
 }
 
-[dir="ltr"] table.sticky-header {
-  left: auto !important;
+.views-form > form:has(> .gin--sticky-table-header),
+.gin-layer-wrapper:has(> .gin--sticky-table-header) {
+  position: relative;
 }
 
-[dir="rtl"] table.sticky-header {
-  right: auto !important;
-}
-
-table.sticky-header::before, table.sticky-header::after {
+.views-form > form:has(> .gin--sticky-table-header)::before, .views-form > form:has(> .gin--sticky-table-header)::after,
+.gin-layer-wrapper:has(> .gin--sticky-table-header)::before,
+.gin-layer-wrapper:has(> .gin--sticky-table-header)::after {
   content: "";
+  z-index: 98;
   position: absolute;
   top: 0;
   width: 1.5rem;
   height: 100%;
 }
 
-[dir="ltr"] table.sticky-header::before {
+[dir="ltr"] .views-form > form:has(> .gin--sticky-table-header)::before,
+[dir="ltr"] .gin-layer-wrapper:has(> .gin--sticky-table-header)::before {
   left: calc(var(--gin-spacing-l) * -1);
   background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--gin-bg-layer));
 }
 
-[dir="rtl"] table.sticky-header::before {
+[dir="rtl"] .views-form > form:has(> .gin--sticky-table-header)::before,
+[dir="rtl"] .gin-layer-wrapper:has(> .gin--sticky-table-header)::before {
   right: calc(var(--gin-spacing-l) * -1);
   background: linear-gradient(-90deg, rgba(255, 255, 255, 0), var(--gin-bg-layer));
 }
 
-[dir="ltr"] table.sticky-header::after {
+[dir="ltr"] .views-form > form:has(> .gin--sticky-table-header)::after,
+[dir="ltr"] .gin-layer-wrapper:has(> .gin--sticky-table-header)::after {
   right: calc(var(--gin-spacing-l) * -1);
   background: linear-gradient(90deg, var(--gin-bg-layer), rgba(255, 255, 255, 0));
 }
 
-[dir="rtl"] table.sticky-header::after {
+[dir="rtl"] .views-form > form:has(> .gin--sticky-table-header)::after,
+[dir="rtl"] .gin-layer-wrapper:has(> .gin--sticky-table-header)::after {
   left: calc(var(--gin-spacing-l) * -1);
   background: linear-gradient(-90deg, var(--gin-bg-layer), rgba(255, 255, 255, 0));
 }
@@ -1417,39 +1421,37 @@ table.sticky-header::before, table.sticky-header::after {
   background-position: right center, left center, right center, left center;
 }
 
-.gin--sticky-table-header,
-.gin--sticky-table-header.sticky-header {
-  margin-top: -8px;
-  overflow: hidden;
+table.sticky-header {
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  background: transparent;
 }
 
-.gin--sticky-table-header tr,
-.gin--sticky-table-header.sticky-header tr {
-  display: block;
-  width: max-content;
+[dir="ltr"] table.sticky-header {
+  left: auto !important;
 }
 
-.gin--sticky-table-header.sticky-header {
-  width: auto !important;
+[dir="rtl"] table.sticky-header {
+  right: auto !important;
 }
 
-.gin--sticky-table-header.sticky-header::after {
-  display: none;
-}
-
-table.position-sticky thead {
+table.position-sticky thead,
+table.sticky-header thead {
   position: static;
 }
 
-table.position-sticky.--is-processed thead {
+table.position-sticky.--is-processed thead,
+table.sticky-header.--is-processed thead {
   pointer-events: none;
 }
 
-table.position-sticky.--is-processed thead tr {
+table.position-sticky.--is-processed thead tr,
+table.sticky-header.--is-processed thead tr {
   border-color: transparent;
 }
 
-table.position-sticky.--is-processed thead tr .sortable-heading.is-active > a::before {
+table.position-sticky.--is-processed thead tr .sortable-heading.is-active > a::before,
+table.sticky-header.--is-processed thead tr .sortable-heading.is-active > a::before {
   display: none;
 }
 

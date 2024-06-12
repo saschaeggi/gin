@@ -48,6 +48,10 @@ libraries-override:
   core/drupal.tableheader:
     js:
       misc/tableheader.js: false
+    css:
+      component:
+        css/components/sticky-header.module.css: false
+        misc/components/sticky-header.module.css: false
 
 libraries-extend:
   core/drupal.message:
