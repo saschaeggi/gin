@@ -204,10 +204,12 @@ body:not(.toolbar-tray-open) .layout-container {
   .field--name-status {
     display: flex;
     align-items: center;
-    margin-right: var(--gin-spacing-m);
+    margin-right: var(--gin-spacing-s);
 
-    @include mq($to: tiny) {
-      .form-item__label  {
+    .form-item__label {
+      font-size: 0.8125rem;
+
+      @include mq($to: tiny) {
         display: none;
       }
     }

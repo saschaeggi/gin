@@ -434,11 +434,15 @@ body:not(.toolbar-tray-open) .layout-container {
 }
 
 [dir="ltr"] .gin-sticky-form-actions .field--name-status {
-  margin-right: var(--gin-spacing-m);
+  margin-right: var(--gin-spacing-s);
 }
 
 [dir="rtl"] .gin-sticky-form-actions .field--name-status {
-  margin-left: var(--gin-spacing-m);
+  margin-left: var(--gin-spacing-s);
+}
+
+.gin-sticky-form-actions .field--name-status .form-item__label {
+  font-size: .8125rem;
 }
 
 @media (max-width: 26.24em) {

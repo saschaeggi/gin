@@ -104,7 +104,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
         // Add sticky class.
         $form['actions']['#attributes']['class'][] = 'gin-sticky-form-actions';
         // Move to last position possible.
-        $form['actions']['#weight'] = 1000;
+        $form['actions']['#weight'] = 999;
 
         // Add a class to identify modified forms.
         if (!isset($form['#attributes']['class'])) {
@@ -219,9 +219,9 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     if (isset($form['actions'])) {
       // Add sidebar toggle.
       $hide_panel = t('Hide sidebar panel');
-      $form['actions']['gin_more_actions']['gin_more_actions_items']['gin_sidebar_toggle'] = [
-        '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger action-link" role="button" aria-controls="gin_sidebar"><span>' . $hide_panel . '</span></a>',
-        '#weight' => -1,
+      $form['actions']['gin_sidebar_toggle'] = [
+        '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger" role="button" aria-controls="gin_sidebar"><span class="visually-hidden">' . $hide_panel . '</span></a>',
+        '#weight' => 1000,
       ];
       $form['#attached']['library'][] = 'gin/sidebar';
 

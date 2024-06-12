@@ -1,10 +1,14 @@
 .gin-sticky-form-actions {
   display: flex;
-  gap: var(--gin-spacing-xs);
+  gap: var(--gin-spacing-xxs);
 
   > * {
     margin-left: 0 !important;
     margin-right: 0 !important;
+  }
+
+  > input + input {
+    margin-inline-start: var(--gin-spacing-xxs) !important;
   }
 
   // Hide if no items are present.

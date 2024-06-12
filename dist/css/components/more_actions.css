@@ -1,11 +1,16 @@
 .gin-sticky-form-actions {
   display: flex;
-  gap: var(--gin-spacing-xs);
+  gap: var(--gin-spacing-xxs);
 }
 
 .gin-sticky-form-actions > * {
   margin-left: 0 !important;
   margin-right: 0 !important;
+}
+
+.gin-sticky-form-actions > input + input {
+  -webkit-margin-start: var(--gin-spacing-xxs) !important;
+          margin-inline-start: var(--gin-spacing-xxs) !important;
 }
 
 .gin-sticky-form-actions [data-drupal-selector=edit-gin-actions]:empty,
