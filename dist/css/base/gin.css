@@ -249,10 +249,6 @@ button.link:active,
           backdrop-filter: none;
 }
 
-.gin--classic-toolbar:not(.gin--edit-form) .region-sticky {
-  position: static;
-}
-
 @media (min-width: 64em) {
   .region-sticky {
     top: -1px;
@@ -311,18 +307,28 @@ button.link:active,
   margin: 0;
 }
 
-.region-sticky__items .gin-sticky {
+.region-sticky__items .gin-sticky-form-actions {
   display: flex;
+  width: auto;
+  margin-top: 0;
 }
 
 @media (min-width: 64em) {
-  [dir="ltr"] .region-sticky__items .gin-sticky {
+  [dir="ltr"] .region-sticky__items .gin-sticky-form-actions {
     padding-left: var(--gin-spacing-l);
   }
 
-  [dir="rtl"] .region-sticky__items .gin-sticky {
+  [dir="rtl"] .region-sticky__items .gin-sticky-form-actions {
     padding-right: var(--gin-spacing-l);
   }
+}
+
+[dir="ltr"] .region-sticky__items #block-gin-local-actions + .gin-sticky-form-actions {
+  padding-left: var(--gin-spacing-xs);
+}
+
+[dir="rtl"] .region-sticky__items #block-gin-local-actions + .gin-sticky-form-actions {
+  padding-right: var(--gin-spacing-xs);
 }
 
 .content-header {
@@ -358,10 +364,6 @@ button.link:active,
     position: sticky;
     top: calc(var(--gin-toolbar-y-offset) + var(--gin-height-sticky) - 40px);
     width: calc(100% - min(10vw, 96px) + var(--gin-spacing-l));
-  }
-
-  .gin--classic-toolbar:not(.gin--edit-form) .sticky-shadow {
-    display: none;
   }
 
   .gin--edit-form .sticky-shadow {
@@ -403,11 +405,7 @@ body:not(.toolbar-tray-open) .layout-container {
   }
 }
 
-.layout-node-form__actions {
-  display: none;
-}
-
-.gin-sticky {
+.gin-sticky-form-actions {
   display: flex;
   flex-wrap: wrap;
   flex-shrink: 0;
@@ -417,51 +415,43 @@ body:not(.toolbar-tray-open) .layout-container {
 }
 
 @media (min-width: 64em) {
-  .gin-sticky {
+  .gin-sticky-form-actions {
     flex-wrap: nowrap;
     width: max-content;
   }
 }
 
-.gin-sticky .form-actions {
+.gin-sticky-form-actions .form-actions {
   margin: 0;
   flex-grow: 1;
   align-items: center;
   justify-content: flex-end;
 }
 
-[dir="ltr"] .gin-sticky .form-actions :last-child {
-  margin-right: 0;
-}
-
-[dir="rtl"] .gin-sticky .form-actions :last-child {
-  margin-left: 0;
-}
-
-.gin-sticky .field--name-status {
+.gin-sticky-form-actions .field--name-status {
   display: flex;
   align-items: center;
 }
 
-[dir="ltr"] .gin-sticky .field--name-status {
-  margin-right: var(--gin-spacing-xxs);
+[dir="ltr"] .gin-sticky-form-actions .field--name-status {
+  margin-right: var(--gin-spacing-s);
 }
 
-[dir="rtl"] .gin-sticky .field--name-status {
-  margin-left: var(--gin-spacing-xxs);
+[dir="rtl"] .gin-sticky-form-actions .field--name-status {
+  margin-left: var(--gin-spacing-s);
 }
 
-@media (min-width: 61em) {
-  [dir="ltr"] .gin-sticky .field--name-status {
-    margin-right: var(--gin-spacing-l);
+.gin-sticky-form-actions .field--name-status .form-item__label {
+  font-size: .8125rem;
+}
+
+@media (max-width: 26.24em) {
+  .gin-sticky-form-actions .field--name-status .form-item__label {
+    display: none;
   }
-
-  [dir="rtl"] .gin-sticky .field--name-status {
-    margin-left: var(--gin-spacing-l);
-  }
 }
 
-.gin-sticky .field--name-status .form-type--checkbox {
+.gin-sticky-form-actions .field--name-status .form-type--checkbox {
   margin-top: var(--gin-spacing-xs);
   margin-bottom: var(--gin-spacing-xs);
 }
@@ -488,7 +478,8 @@ body:not(.toolbar-tray-open) .layout-container {
 #views-entity-list,
 .admin.my-workbench,
 .media-library-views-form,
-.user-admin-permissions {
+.user-admin-permissions,
+.field-config-form {
   margin-top: 0;
   box-shadow: var(--gin-shadow-l1);
   border-radius: var(--gin-border-l);
@@ -504,7 +495,8 @@ body:not(.toolbar-tray-open) .layout-container {
 .gin--dark-mode #views-entity-list,
 .gin--dark-mode .admin.my-workbench,
 .gin--dark-mode .media-library-views-form,
-.gin--dark-mode .user-admin-permissions {
+.gin--dark-mode .user-admin-permissions,
+.gin--dark-mode .field-config-form {
   box-shadow: 0 6px 16px var(--gin-border-color-layer);
 }
 
@@ -518,7 +510,8 @@ body:not(.toolbar-tray-open) .layout-container {
 .gin--high-contrast-mode #views-entity-list,
 .gin--high-contrast-mode .admin.my-workbench,
 .gin--high-contrast-mode .media-library-views-form,
-.gin--high-contrast-mode .user-admin-permissions {
+.gin--high-contrast-mode .user-admin-permissions,
+.gin--high-contrast-mode .field-config-form {
   box-shadow: none;
 }
 
@@ -530,7 +523,8 @@ body:not(.toolbar-tray-open) .layout-container {
 #views-entity-list,
 .admin.my-workbench,
 .media-library-views-form,
-.user-admin-permissions {
+.user-admin-permissions,
+.field-config-form {
   width: 100%;
   padding: var(--gin-spacing-s);
   background: var(--gin-bg-layer);
@@ -547,7 +541,8 @@ body:not(.toolbar-tray-open) .layout-container {
   #views-entity-list,
   .admin.my-workbench,
   .media-library-views-form,
-  .user-admin-permissions {
+  .user-admin-permissions,
+  .field-config-form {
     padding: var(--gin-spacing-l);
   }
 }
@@ -569,7 +564,13 @@ body:not(.toolbar-tray-open) .layout-container {
 .media-library-views-form > .form-wrapper:first-of-type .form-item,
 .media-library-views-form .layout-region-node-main > .form-wrapper:first-of-type .form-item,
 .user-admin-permissions > .form-wrapper:first-of-type .form-item,
-.user-admin-permissions .layout-region-node-main > .form-wrapper:first-of-type .form-item {
+.user-admin-permissions .layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.field-config-form > .form-wrapper:first-of-type .form-item,
+.field-config-form .layout-region-node-main > .form-wrapper:first-of-type .form-item {
+  margin-top: 0;
+}
+
+.field-config-form > .form-item:first-child {
   margin-top: 0;
 }
 
@@ -610,7 +611,7 @@ body:not(.toolbar-tray-open) .layout-container {
 
 .page-title {
   font-size: var(--gin-font-size-h1);
-  font-weight: var(--gin-font-weight-semibold);
+  font-weight: var(--gin-font-weight-bold);
   line-height: normal;
   letter-spacing: -0.05em;
   color: var(--gin-color-title);
@@ -2579,31 +2580,37 @@ tr .form-item {
   border-radius: var(--gin-border-s);
 }
 
+#edit-submit.form-submit,
 .button--primary,
 .button--primary:not(:focus),
 .ief-entity-submit {
   background: var(--gin-color-primary);
 }
 
+[dir="ltr"] #edit-submit.form-submit,
 [dir="ltr"] .button--primary,
 [dir="ltr"] .button--primary:not(:focus),
 [dir="ltr"] .ief-entity-submit {
   box-shadow: .1em .25em .5em var(--gin-color-primary-light);
 }
 
+[dir="rtl"] #edit-submit.form-submit,
 [dir="rtl"] .button--primary,
 [dir="rtl"] .button--primary:not(:focus),
 [dir="rtl"] .ief-entity-submit {
   box-shadow: -0.1em .25em .5em var(--gin-color-primary-light);
 }
 
+#edit-submit.form-submit:hover,
 .button--primary:hover,
 .button--primary:not(:focus):hover,
 .ief-entity-submit:hover {
   background-color: var(--gin-color-primary-hover);
 }
 
-.button--primary:active, .button--primary:focus,
+#edit-submit.form-submit:active, #edit-submit.form-submit:focus,
+.button--primary:active,
+.button--primary:focus,
 .button--primary:not(:focus):active,
 .button--primary:not(:focus):focus,
 .ief-entity-submit:active,
@@ -2611,7 +2618,11 @@ tr .form-item {
   background-color: var(--gin-color-primary-active);
 }
 
-.button--primary, .button--primary:hover, .button--primary:active, .button--primary:focus,
+#edit-submit.form-submit, #edit-submit.form-submit:hover, #edit-submit.form-submit:active, #edit-submit.form-submit:focus,
+.button--primary,
+.button--primary:hover,
+.button--primary:active,
+.button--primary:focus,
 .button--primary:not(:focus),
 .button--primary:not(:focus):hover,
 .button--primary:not(:focus):active,
@@ -3858,7 +3869,8 @@ hr {
 .ck .ck.ck-button:active:focus,
 .toolbar-box .toolbar-handle:focus,
 .field-option:has(.field-option-radio:checked),
-.subfield-option:has(.field-option-radio:checked) {
+.subfield-option:has(.field-option-radio:checked),
+#edit-submit.form-submit:focus {
   outline: none;
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }

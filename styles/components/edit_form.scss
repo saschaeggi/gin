@@ -55,6 +55,18 @@
   }
 
   .page-wrapper__node-edit-form {
+    .region-sticky {
+      @include mq($to: large) {
+        #edit-actions {
+          width: 100%;
+        }
+
+        #edit-gin-actions {
+          flex-grow: 1;
+        }
+      }
+    }
+
     .block-page-title-block {
       @include mq(1730px) {
         width: 100%;
@@ -156,6 +168,16 @@
 
         &__revision {
           margin-block-start: var(--gin-spacing-m);
+        }
+
+        &__last-saved,
+        &__author {
+          margin-block: var(--gin-spacing-xxs);
+
+          &,
+          .form-item__label {
+            font-size: var(--gin-font-size-s);
+          }
         }
 
         > .accordion__item {

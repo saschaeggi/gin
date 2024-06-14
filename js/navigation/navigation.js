@@ -189,7 +189,7 @@
    */
   function positionTooltip(hoveredEl) {
     const anchorEl = hoveredEl.querySelector('.toolbar-link'); // This is the <a> element within the navigation link.
-    const tooltipEl = document.querySelector('.tooltip'); // This is the tooltip span.
+    const tooltipEl = document.querySelector('.gin-tooltip-navigation'); // This is the tooltip span.
     computePosition(anchorEl, tooltipEl, {
       placement: 'right',
       middleware: [
@@ -305,7 +305,7 @@
     // Add a class to easily remove flyout in closeTooltip().
     // Append the cloned tooltip to the body to fix overflow issues with
     // vertical scrolling on the collapsed sidebar.
-    clonedTooltip.classList.add('tooltip');
+    clonedTooltip.classList.add('gin-tooltip-navigation');
     document.querySelector('body').append(clonedTooltip);
     if (!hoveredEl.classList.contains('toolbar-menu__item--expanded')) {
       positionTooltip(hoveredEl);
@@ -341,7 +341,7 @@
    */
   function closeTooltip() {
     if (!isNavExpanded()) {
-      const clonedTooltip = document.querySelector('.tooltip');
+      const clonedTooltip = document.querySelector('.gin-tooltip-navigation');
       clonedTooltip?.remove();
     }
   }
@@ -643,7 +643,7 @@
     // Gin Custom end ------------------------
   }
 
-  Drupal.behaviors.navigation = {
+  Drupal.behaviors.ginNavigation = {
     attach(context) {
       once('navigation', '.admin-toolbar', context).forEach(init);
     },

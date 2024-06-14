@@ -6,6 +6,8 @@ gin:
     - gin/gin_base
     - gin/legacy_css
 
+# Base
+
 gin_base:
   css:
     component:
@@ -16,6 +18,7 @@ gin_base:
     - gin/dialog
 
 # Legacy
+
 gin_ckeditor:
   dependencies:
     - gin/ckeditor
@@ -27,6 +30,14 @@ gin_init:
   dependencies:
     - core/drupalSettings
 
+# Top bar
+top_bar:
+  css:
+    component:
+      dist/css/components/top_bar.css: { minified: false }
+
+# Navigation
+
 navigation:
   css:
     component:
@@ -34,11 +45,11 @@ navigation:
       dist/css/components/toolbar_secondary.css: { minified: false }
     theme:
       dist/css/layout/navigation.css: { minified: false }
+      dist/css/components/tooltip.css: { minified: false }
   js:
-    js/navigation/vendor/floating-ui/floating-ui.core.umd.js: { minified: true }
-    js/navigation/vendor/floating-ui/floating-ui.dom.umd.js: { minified: true }
-    js/navigation/sidebar.js: { minified: false }
+    js/navigation/navigation.js: { minified: false }
   dependencies:
+    - gin/floating-ui
     - gin/escape_admin
     - gin/coffee
     - gin/node_preview
@@ -129,6 +140,8 @@ gin_classic_toolbar:
     - gin/settings_tray_edit
     - core/once
 
+# Accent
+
 gin_accent:
   css:
     theme:
@@ -138,6 +151,8 @@ gin_accent:
   dependencies:
     - core/drupalSettings
     - core/once
+
+# Libraries
 
 gin_dialog:
   css:
@@ -186,6 +201,15 @@ scrollsync:
 
 # Overrides
 
+floating-ui:
+  js:
+    js/navigation/vendor/floating-ui/floating-ui.core.umd.js: { minified: true }
+    js/navigation/vendor/floating-ui/floating-ui.dom.umd.js: { minified: true }
+  dependencies:
+    - core/once
+
+# Overrides
+
 gin_media_embed_ckeditor_theme:
   js:
     js/overrides/media_embed_ckeditor.theme.js: {}
@@ -196,6 +220,7 @@ sticky:
   js:
     dist/js/sticky.js: { minified: false }
   dependencies:
+    - gin/tooltip
     - core/drupal.displace
     - core/once
 
@@ -234,14 +259,29 @@ tabs:
     component:
       dist/css/components/tabs.css: { minified: false, weight: 99 }
 
-edit_form:
+tooltip:
   js:
-    dist/js/edit_form.js: { minified: false }
+    dist/js/tooltip.js: { minified: false }
+  css:
+    component:
+      dist/css/components/tooltip.css: { minified: false }
+  dependencies:
+    - gin/floating-ui
+    - core/once
+
+more_actions:
+  js:
+    dist/js/more_actions.js: { minified: false }
+  css:
+    layout:
+      dist/css/components/more_actions.css: { minified: false }
+  dependencies:
+    - core/once
+
+edit_form:
   css:
     layout:
       dist/css/components/edit_form.css: { minified: false }
-  dependencies:
-    - core/once
 
 media_library:
   css:
