@@ -286,6 +286,9 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     /** @var \Drupal\gin\GinSettings $settings */
     $settings = \Drupal::classResolver(GinSettings::class);
 
+    // Get route name.
+    $route_name = $this->routeMatch->getRouteName();
+
     // Sets default to TRUE if setting is enabled.
     $sticky_action_buttons = $settings->get('sticky_action_buttons') ? TRUE : FALSE;
 
@@ -301,7 +304,8 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       strpos($form_id, '_confirm_form') !== FALSE ||
       strpos($form_id, '_paragraphs_component_form') !== FALSE ||
       strpos($form_id, '_delete_component_form') !== FALSE ||
-      in_array($form_id, $form_ids, TRUE)
+      in_array($form_id, $form_ids, TRUE) ||
+      in_array($route_name, $form_ids, TRUE)
     ) {
       $sticky_action_buttons = FALSE;
     }
