@@ -353,6 +353,17 @@ settings_tray_edit:
     component:
       dist/css/components/settings_tray_edit.css: { minified: false }
 
+maintenance_page:
+  css:
+    theme:
+      dist/css/components/maintenance_page.css: {}
+  dependencies:
+    - system/maintenance
+    - gin/gin
+    - gin/gin_accent
+    - gin/gin_init
+
+
 # Modules
 
 paragraphs:
