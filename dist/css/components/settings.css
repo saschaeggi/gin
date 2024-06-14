@@ -320,6 +320,10 @@
           mask-position: center left;
 }
 
+[data-drupal-selector=edit-classic-toolbar].gin-core-navigation--is-active .fieldset__description .form-item__warning {
+  display: none;
+}
+
 [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input[data-gin-toolbar=vertical] {
   background-image: url(../../media/settings/toolbar_sidebar.png);
 }
