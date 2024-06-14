@@ -2,21 +2,6 @@
  * we use native JS instead of Drupal's behaviors.
 */
 
-// Legacy Check: Transform old localStorage items to newer ones.
-function checkLegacy() {
-  if (localStorage.getItem('GinDarkMode')) {
-    localStorage.setItem('Drupal.gin.darkmode', localStorage.getItem('GinDarkMode'));
-    localStorage.removeItem('GinDarkMode');
-  }
-
-  if (localStorage.getItem('GinSidebarOpen')) {
-    localStorage.setItem('Drupal.gin.toolbarExpanded', localStorage.getItem('GinSidebarOpen'));
-    localStorage.removeItem('GinSidebarOpen');
-  }
-}
-
-checkLegacy();
-
 // Darkmode Check.
 function ginInitDarkmode() {
   const darkModeClass = 'gin--dark-mode';

@@ -93,7 +93,7 @@ class GinSettings implements ContainerInjectionInterface {
       $admin_theme = $this->getAdminTheme();
       $value = theme_get_setting($name, $admin_theme);
     }
-    return $this->handleLegacySettings($name, $value);
+    return $value;
   }
 
   /**
@@ -107,7 +107,7 @@ class GinSettings implements ContainerInjectionInterface {
    */
   public function getDefault($name) {
     $admin_theme = $this->getAdminTheme();
-    return $this->handleLegacySettings($name, theme_get_setting($name, $admin_theme));
+    return theme_get_setting($name, $admin_theme);
   }
 
   /**
@@ -184,69 +184,7 @@ class GinSettings implements ContainerInjectionInterface {
       $account = $this->currentUser;
     }
     $admin_theme = $this->getAdminTheme();
-    return $this->handleLegacySettings($name, theme_get_setting($name, $admin_theme)) !== $this->get($name, $account);
-  }
-
-  /**
-   * Return a massaged value from deprecated theme settings.
-   *
-   * @param string $name
-   *   Name of the setting to check.
-   * @param array|bool|mixed|null $value
-   *   The value of the currently used setting.
-   *
-   * @return array|bool|mixed|null
-   *   The value determined by a legacy setting.
-   */
-  private function handleLegacySettings($name, $value) {
-    $admin_theme = $this->getAdminTheme();
-
-    // Darkmode legacy setting.
-    if ($name === 'enable_darkmode') {
-      $value = (string) $value;
-    }
-
-    // High contrast mode legacy setting.
-    if ($name === 'high_contrast_mode') {
-      $value = (bool) $value;
-    }
-
-    // Accent color legacy setting check.
-    if ($name === 'preset_accent_color') {
-      $value = $value === 'claro_blue' ? 'blue' : $value;
-    }
-
-    // Toolbar legacy setting check.
-    if ($name === 'classic_toolbar') {
-      $value = $value === TRUE || $value === 'true' ||  $value === '1' || $value === 1 ? 'classic' : $value;
-    }
-
-    // Layout density check.
-    if ($name === 'layout_density') {
-      $value = $value === '0' ? 'default' : $value;
-    }
-
-    // Logo legacy settings check.
-    if ($name === 'icon_default' && is_null($value)) {
-      $value = $this->get('logo.use_default');
-    }
-    if ($name === 'icon_path' && is_null($value)) {
-      $value = $this->get('logo.path');
-    }
-
-    // Handles switching new version code with old config present.
-    if ($name === 'logo.use_default') {
-      if (theme_get_setting('icon_default', $admin_theme) === FALSE) {
-        return FALSE;
-      }
-    }
-    if ($name === 'logo.path') {
-      if (theme_get_setting('icon_default', $admin_theme) === FALSE && !is_null($this->get('icon_path'))) {
-        return $this->get('icon_path');
-      }
-    }
-
-    return $value;
+    return theme_get_setting($name, $admin_theme) !== $this->get($name, $account);
   }
 
   /**

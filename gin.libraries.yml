@@ -4,7 +4,6 @@ gin:
       dist/css/base/gin.css: { minified: false }
   dependencies:
     - gin/gin_base
-    - gin/legacy_css
 
 # Base
 
@@ -429,13 +428,6 @@ linkit:
   css:
     component:
       dist/css/components/linkit.css: { minified: false }
-
-# Legacy
-
-legacy_css:
-  css:
-    theme:
-      dist/css/theme/legacy.css: { minified: false }
 
 workspaces:
   css:
