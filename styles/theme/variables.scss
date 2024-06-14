@@ -166,6 +166,12 @@
   // Switch
   --gin-switch: #26a769; //#0e9888;
 
+  // Tag
+  --gin-tag-text: #555;
+  --gin-tag-bg: #eee;
+  --gin-tag-success-text: #1d7c4e;
+  --gin-tag-success-bg: #26a76930;
+
   // Buttons
   --gin-shadow-button: #00000033;
   --gin-color-button-text: #fff;
@@ -272,6 +278,12 @@
 
   // Toggle
   --gin-switch: var(--gin-color-primary);
+
+  // Tag
+  --gin-tag-text: var(--gin-color-text-light);
+  --gin-tag-bg: rgba(255, 255, 255, 0.1);
+  --gin-tag-success-text: #39b77b;
+  --gin-tag-success-bg: #26a76930;
 
   // Shadows
   --gin-shadow-l1: 0 1px 2px rgb(0 0 0 / 2%),
