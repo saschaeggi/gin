@@ -360,10 +360,10 @@ class GinSettings implements ContainerInjectionInterface {
       '#title' => $this->t('Navigation (Drupal Toolbar)'),
       '#default_value' => $account ? $this->get('classic_toolbar', $account) : $this->getDefault('classic_toolbar'),
       '#options' => [
+        'new' => $this->t('New Drupal Navigation, Test integration') . $new_label . $experimental_label,
         'vertical' => $this->t('Sidebar, Vertical Toolbar (Default)'),
         'horizontal' => $this->t('Horizontal, Modern Toolbar'),
         'classic' => $this->t('Legacy, Classic Drupal Toolbar'),
-        'new' => $this->t('New Drupal Navigation, Test integration') . $new_label . $experimental_label,
       ],
       '#attributes' => $is_navigation_active ? ['class' => ['gin-core-navigation--is-active']] : [],
       '#description' => $is_navigation_active ? $this->t('This setting is currently deactivated as it is overwritten by the navigation module.') : '',
