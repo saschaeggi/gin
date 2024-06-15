@@ -268,3 +268,12 @@
 .pb-project__project-usage-container {
   gap: var(--gin-spacing-xxxs);
 }
+
+.project-browser-popup {
+  .gin--dark-mode & {
+    .command-box,
+    input {
+      background: var(--gin-bg-layer2);
+    }
+  }
+}

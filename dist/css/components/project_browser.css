@@ -303,3 +303,8 @@
   gap: var(--gin-spacing-xxxs);
 }
 
+.gin--dark-mode .project-browser-popup .command-box,
+.gin--dark-mode .project-browser-popup input {
+  background: var(--gin-bg-layer2);
+}
+
