@@ -314,11 +314,11 @@ button.link:active,
   }
 }
 
-[dir="ltr"] .region-sticky__items #block-gin-local-actions + .gin-sticky-form-actions {
+[dir="ltr"] .region-sticky__items [id*=block-gin-local-actions] + .gin-sticky-form-actions {
   padding-left: var(--gin-spacing-xs);
 }
 
-[dir="rtl"] .region-sticky__items #block-gin-local-actions + .gin-sticky-form-actions {
+[dir="rtl"] .region-sticky__items [id*=block-gin-local-actions] + .gin-sticky-form-actions {
   padding-right: var(--gin-spacing-xs);
 }
 
