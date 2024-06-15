@@ -76,7 +76,8 @@ a {
 .views-field .marker,
 .gin-beta-flag,
 .gin-experimental-flag,
-.pb-project-categories__item {
+.pb-project-categories__item,
+.pb-module-page__categories-list-item {
   color: var(--gin-tag-text);
   background: var(--gin-tag-bg);
 }
