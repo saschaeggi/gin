@@ -99,6 +99,10 @@
       }
     }
 
+    &__filter__toggle-container {
+      margin-inline-end: 0;
+    }
+
     &__filter-button {
       font-size: var(--gin-font-size-xs);
       color: var(--gin-color-primary);

@@ -112,6 +112,11 @@
   }
 }
 
+#project-browser .search__filter__toggle-container {
+  -webkit-margin-end: 0;
+          margin-inline-end: 0;
+}
+
 #project-browser .search__filter-button {
   font-size: var(--gin-font-size-xs);
   color: var(--gin-color-primary);
