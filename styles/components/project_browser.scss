@@ -1,8 +1,4 @@
 #project-browser {
-  .search__search-bar {
-    border: none;
-  }
-
   [slot="head"] .search__form,
   .pb-layout,
   .pb-module-page {
@@ -24,24 +20,21 @@
     .gin--high-contrast-mode & {
       box-shadow: none;
     }
+  }
 
-    &
-    .search__form-item {
-      margin-block-start: 0;
+  .search {
+    &__search-bar {
+      border: none;
     }
 
-    .search__form-item {
-      margin-block-end: var(--gin-spacing-s);
+    &__search-icon {
+      width: 16px;
+      height: 16px;
+      inset-inline-end: 18px;
+      bottom: 18px;
     }
 
-    .search__search-icon {
-      width: 20px;
-      height: 20px;
-      inset-inline-end: var(--gin-spacing-m);
-      bottom: var(--gin-spacing-m);
-    }
-
-    .search__search-clear {
+    &__search-clear {
       width: 24px;
       height: 24px;
       padding: 0;
@@ -67,17 +60,88 @@
         display: none;
       }
     }
-  }
 
-  .pb-layout__header {
-    align-items: baseline;
-    margin-block: var(--gin-spacing-l) var(--gin-spacing-s);
-    border-block-end: none;
+    &__form-item {
+      margin-block-start: 0;
+      margin-block-end: var(--gin-spacing-s);
+    }
+
+    &__results-count {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--gin-spacing-xs);
+    }
+
+    &__grid-container,
+    &__dropdown.dropdown-filters {
+      background-color: transparent;
+      border: none;
+    }
+
+    &__grid-container {
+      grid-gap: 0;
+      padding: 0;
+    }
+
+    &__filters {
+      margin-block-start: var(--gin-spacing-s);
+      padding: var(--gin-spacing-s);
+      background: var(--gin-bg-layer2);
+      border-radius: var(--gin-border-m);
+    }
+
+    &__filter-wrapper {
+      gap: var(--gin-spacing-s);
+      margin-block-start: var(--gin-spacing-s);
+
+      @include mq(small) {
+        margin-block-start: 0;
+      }
+    }
+
+    &__filter-button {
+      font-size: var(--gin-font-size-xs);
+      color: var(--gin-color-primary);
+    }
+
+    &__filter__toggle.form-element,
+    &__sort-select.form-element {
+      color: var(--gin-color-text);
+      text-decoration: none;
+      margin-block-start: 0;
+      margin-inline-start: 0;
+      background-color: var(--gin-bg-input);
+      border: 1px solid var(--gin-border-color-form-element);
+      border-radius: var(--gin-border-m);
+      transition: var(--gin-transition);
+    }
+
+    &__checkbox-label {
+      font-size: var(--gin-font-size-s);
+    }
+
+    &__filter__toggle.form-element .search__filter__toggle-img {
+      padding: 0;
+
+      .gin--dark-mode & {
+        filter: invert(1);
+      }
+    }
+
+    &__sort {
+      display: flex;
+      align-items: center;
+      gap: var(--gin-spacing-xs);
+
+      label {
+        flex-shrink: 0;
+      }
+    }
   }
 
   .pb-display {
     gap: var(--gin-spacing-xxxs);
-    padding: .1875rem var(--gin-spacing-xxs);
+    padding: var(--gin-spacing-xxs);
     margin-inline-end: 0;
     margin-block-end: 0;
     background: var(--gin-bg-layer);
@@ -111,23 +175,39 @@
     }
   }
 
+  .pb-layout__header {
+    align-items: baseline;
+    margin-block: var(--gin-spacing-l) var(--gin-spacing-s);
+    border-block-end: none;
+  }
+
   .filter-group__title-wrapper,
   .pb-filter__heading {
-    font-size: var(--gin-font-size-m);
+    font-size: var(--gin-font-size-s);
     font-weight: var(--gin-font-weight-bold);
     color: var(--gin-color-title);
     margin-block-end: 0;
   }
 
-  .pb-filter__heading {
-    display: block;
-    margin-block-end: var(--gin-spacing-s);
-  }
+  .pb-filter {
+    &__heading {
+      display: inline-flex;
 
-  .search__results-count {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--gin-spacing-xs);
+      @include mq(medium) {
+        margin-block-end: var(--gin-spacing-s);
+      }
+    }
+
+    &__summary {
+      padding: var(--gin-spacing-s);
+      background: var(--gin-bg-layer2);
+      border-radius: var(--gin-border-m);
+    }
+
+    &__checkbox-label {
+      font-size: var(--gin-font-size-s);
+      padding-block-start: 0;
+    }
   }
 
   .filter-applied {
@@ -141,52 +221,6 @@
       .gin--dark-mode & {
         filter: invert(1);
       }
-    }
-  }
-
-  .search__grid-container,
-  .search__dropdown.dropdown-filters {
-    background-color: transparent;
-    border: none;
-  }
-
-  .search__grid-container {
-    grid-gap: 0;
-    padding: 0;
-  }
-
-  .search__filters {
-    padding-inline: 0;
-    padding-block-end: 0;
-  }
-
-  .search__filter-button {
-    font-size: var(--gin-font-size-xs);
-    color: var(--gin-color-primary);
-  }
-
-  .search__sort {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--gin-spacing-xs);
-  }
-
-  .search__filter__toggle.form-element,
-  .search__sort-select.form-element {
-    color: var(--gin-color-text);
-    text-decoration: none;
-    margin-inline-start: 0;
-    background-color: var(--gin-bg-input);
-    border: 1px solid var(--gin-border-color-form-element);
-    border-radius: var(--gin-border-m);
-    transition: var(--gin-transition);
-  }
-
-  .search__filter__toggle.form-element .search__filter__toggle-img {
-    padding: 0;
-
-    .gin--dark-mode & {
-      filter: invert(1);
     }
   }
 }
@@ -228,8 +262,22 @@
   }
 }
 
-.pb-project--list {
-  grid-template-columns: 64px 1fr;
+.pb-project {
+  &--list {
+    grid-template-columns: 64px 1fr;
+  }
+
+  &__image--list {
+    padding-inline-start: 0;
+  }
+
+  &__project-usage-container {
+    gap: var(--gin-spacing-xxxs);
+  }
+
+  &__status-icon img {
+    width: 24px;
+  }
 }
 
 .pb-search-results {
@@ -247,18 +295,24 @@
   border-radius: var(--gin-border-xl);
 }
 
-.pb-project__image--list {
-  padding-inline-start: 0;
-}
+.pb-icon {
+  &--usage {
+    .gin--dark-mode & {
+      filter: invert(1);
+    }
+  }
 
-.pb-icon--usage {
-  .gin--dark-mode & {
-    filter: invert(1);
+  &--module-details {
+    width: auto;
+    margin-inline: 0;
   }
 }
 
-.pb-project__project-usage-container {
-  gap: var(--gin-spacing-xxxs);
+.pb-icon--status.pb-module-page__module-details-icon,
+.pb-project__status-icon img {
+  .gin--dark-mode & {
+    mix-blend-mode: plus-lighter;
+  }
 }
 
 .project-browser-popup {
@@ -284,22 +338,6 @@
   padding: var(--gin-spacing-xxxs) var(--gin-spacing-xs);
 }
 
-.pb-icon--module-details {
-  width: auto;
-  margin-inline: 0;
-}
-
-.pb-icon--status.pb-module-page__module-details-icon,
-.pb-project__status-icon img {
-  .gin--dark-mode & {
-    mix-blend-mode: plus-lighter;
-  }
-}
-
-.pb-project__status-icon img {
-  width: 24px;
-}
-
 .pb-module-page {
   display: flex;
   flex-wrap: wrap;
@@ -310,8 +348,8 @@
     flex-wrap: nowrap;
   }
 
-  .pb-module-page__sidebar,
-  .pb-module-page__main {
+  &__sidebar,
+  &__main {
     flex-basis: 100%;
     padding: var(--gin-spacing-s);
 
@@ -320,7 +358,7 @@
     }
   }
 
-  .pb-module-page__sidebar {
+  &__sidebar {
     @include mq(medium) {
       flex-basis: 320px;
     }
@@ -330,37 +368,38 @@
     margin-block: var(--gin-spacing-s);
   }
 
-  .pb-module-page__project-logo {
+  &__project-logo {
     max-width: 96px;
     margin-block-end: var(--gin-spacing-xs);
   }
 
-  .pb-module-page__title {
+  &__title {
     font-size: var(--gin-font-size-h1);
+    font-weight: var(--gin-font-weight-bold);
     color: var(--gin-color-title);
     margin-block: 0;
   }
 
-  .pb-module-page__author {
+  &__author {
     color: var(--gin-color-text-light);
     margin-block-start: 0;
     margin-block-end: var(--gin-spacing-m);
   }
 
-  .pb-module-page__details-title {
+  &__details-title {
     @include visually-hidden;
   }
 
-  .pb-module-page__module-details {
+  &__module-details {
     grid-template-columns: 0.333fr 2fr;
   }
 
-  .pb-module-page__module-details-info {
+  &__module-details-info {
     font-size: var(--gin-font-size-s);
     margin: 0 0 var(--gin-spacing-s) 0;
   }
 
-  .pb-module-page__categories-list {
+  &__categories-list {
     display: flex;
     height: auto;
     flex-wrap: wrap;
@@ -368,11 +407,15 @@
     margin-block-end: var(--gin-spacing-m);
   }
 
-  .pb-module-page__actions {
+  &__categories-label {
+    margin-block-end: var(--gin-spacing-xs);
+  }
+
+  &__actions {
     margin: var(--gin-spacing-s) 0;
   }
 
-  .pb-module-page__categories-list-item {
+  &__categories-list-item {
     margin: 0;
   }
 }
