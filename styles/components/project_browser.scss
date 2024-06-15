@@ -310,6 +310,10 @@
   .pb-module-page__main {
     flex-basis: 100%;
     padding: var(--gin-spacing-s);
+
+    @include mq(medium) {
+      padding: 0;
+    }
   }
 
   .pb-module-page__sidebar {

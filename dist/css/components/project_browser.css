@@ -354,6 +354,13 @@
 }
 
 @media (min-width: 61em) {
+  .pb-module-page .pb-module-page__sidebar,
+  .pb-module-page .pb-module-page__main {
+    padding: 0;
+  }
+}
+
+@media (min-width: 61em) {
   .pb-module-page .pb-module-page__sidebar {
     flex-basis: 320px;
   }
