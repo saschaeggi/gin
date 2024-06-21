@@ -1763,7 +1763,7 @@ table td.field-plugin-summary-cell {
   margin-bottom: 0;
 }
 
-@media (min-width: 48em) {
+@media (min-width: 61em) {
   #field-display-overview .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
   #field-display-overview-wrapper .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
   .field--widget-entity-reference-paragraphs .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
@@ -1774,22 +1774,6 @@ table td.field-plugin-summary-cell {
     margin-bottom: calc(var(--gin-spacing-xxl) * -1);
     pointer-events: none;
   }
-
-  [dir="ltr"] #field-display-overview .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  [dir="ltr"] #field-display-overview-wrapper .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  [dir="ltr"] .field--widget-entity-reference-paragraphs .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  [dir="ltr"] .field--type-link .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  [dir="ltr"] .field--type-smartdate .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper {
-    margin-right: var(--gin-spacing-m);
-  }
-
-  [dir="rtl"] #field-display-overview .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  [dir="rtl"] #field-display-overview-wrapper .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  [dir="rtl"] .field--widget-entity-reference-paragraphs .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  [dir="rtl"] .field--type-link .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper,
-  [dir="rtl"] .field--type-smartdate .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper {
-    margin-left: var(--gin-spacing-m);
-  }
 }
 
 #field-display-overview .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper .action-link,
@@ -1798,6 +1782,7 @@ table td.field-plugin-summary-cell {
 .field--type-link .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper .action-link,
 .field--type-smartdate .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper .action-link {
   pointer-events: all;
+  background-color: var(--gin-bg-layer);
 }
 
 .tabledrag-handle::after {
@@ -1875,11 +1860,6 @@ table td.field-plugin-summary-cell {
     border-right: 6px solid linktext;
     right: 0;
   }
-}
-
-.tabledrag-leaf td,
-.tabledrag-cell {
-  vertical-align: top;
 }
 
 .tabledrag-cell {
