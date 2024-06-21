@@ -75,27 +75,18 @@ a {
 
 .views-field .marker,
 .gin-beta-flag,
-.gin-experimental-flag {
-  color: #555;
-  background: #eee;
-}
-
-.gin--dark-mode .views-field .marker,
-.gin--dark-mode .gin-beta-flag,
-.gin--dark-mode .gin-experimental-flag {
-  color: #999;
-  background: rgba(68, 68, 68, .5215686275);
+.gin-experimental-flag,
+.pb-project-categories__item,
+.pb-module-page__categories-list-item {
+  color: var(--gin-tag-text);
+  background: var(--gin-tag-bg);
 }
 
 .gin-new-flag,
-.views-field .marker--published {
-  color: #1d7c4e;
-  background-color: rgba(38, 167, 105, .1882352941);
-}
-
-.gin--dark-mode .gin-new-flag,
-.gin--dark-mode .views-field .marker--published {
-  color: #39b77b;
+.views-field .marker--published,
+.pb-actions .project_status-indicator {
+  color: var(--gin-tag-success-text);
+  background-color: var(--gin-tag-success-bg);
 }
 
 a,
@@ -323,11 +314,11 @@ button.link:active,
   }
 }
 
-[dir="ltr"] .region-sticky__items #block-gin-local-actions + .gin-sticky-form-actions {
+[dir="ltr"] .region-sticky__items [id*=block-gin-local-actions] + .gin-sticky-form-actions {
   padding-left: var(--gin-spacing-xs);
 }
 
-[dir="rtl"] .region-sticky__items #block-gin-local-actions + .gin-sticky-form-actions {
+[dir="rtl"] .region-sticky__items [id*=block-gin-local-actions] + .gin-sticky-form-actions {
   padding-right: var(--gin-spacing-xs);
 }
 
@@ -2418,6 +2409,7 @@ tr .form-item {
 }
 
 .button,
+.project__action_button,
 .dropbutton__item:first-of-type > *,
 .dropbutton__toggle {
   font-size: var(--gin-font-size-s);
@@ -2430,6 +2422,7 @@ tr .form-item {
 
 @media (min-width: 80em) {
   .button,
+  .project__action_button,
   .dropbutton__item:first-of-type > *,
   .dropbutton__toggle {
     font-size: var(--gin-font-size);
@@ -2437,12 +2430,15 @@ tr .form-item {
 }
 
 .button:hover,
+.project__action_button:hover,
 .dropbutton__item:first-of-type > *:hover,
 .dropbutton__toggle:hover {
   background-color: var(--gin-color-primary-hover);
 }
 
 .button:active, .button:focus,
+.project__action_button:active,
+.project__action_button:focus,
 .dropbutton__item:first-of-type > *:active,
 .dropbutton__item:first-of-type > *:focus,
 .dropbutton__toggle:active,
@@ -2451,6 +2447,9 @@ tr .form-item {
 }
 
 .button:hover, .button:active, .button:focus,
+.project__action_button:hover,
+.project__action_button:active,
+.project__action_button:focus,
 .dropbutton__item:first-of-type > *:hover,
 .dropbutton__item:first-of-type > *:active,
 .dropbutton__item:first-of-type > *:focus,
@@ -2463,6 +2462,7 @@ tr .form-item {
 .button,
 .button:not(:focus),
 .form-actions .button,
+.project__action_button,
 .action-link--icon-trash.action-link {
   font-size: var(--gin-font-size-s);
   padding: calc(var(--gin-spacing-s) - 2px) var(--gin-spacing-m);
@@ -2475,6 +2475,7 @@ tr .form-item {
 .button:hover,
 .button:not(:focus):hover,
 .form-actions .button:hover,
+.project__action_button:hover,
 .action-link--icon-trash.action-link:hover {
   background-color: var(--gin-color-primary-hover);
   border-color: var(--gin-color-primary-hover) !important;
@@ -2485,6 +2486,8 @@ tr .form-item {
 .button:not(:focus):focus,
 .form-actions .button:active,
 .form-actions .button:focus,
+.project__action_button:active,
+.project__action_button:focus,
 .action-link--icon-trash.action-link:active,
 .action-link--icon-trash.action-link:focus {
   border-color: var(--gin-color-primary-active) !important;
@@ -2499,6 +2502,10 @@ tr .form-item {
 .form-actions .button:active,
 .form-actions .button:focus,
 .form-actions .button:hover:focus,
+.project__action_button:hover,
+.project__action_button:active,
+.project__action_button:focus,
+.project__action_button:hover:focus,
 .action-link--icon-trash.action-link:hover,
 .action-link--icon-trash.action-link:active,
 .action-link--icon-trash.action-link:focus,

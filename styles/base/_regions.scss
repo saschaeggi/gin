@@ -109,7 +109,7 @@
       }
     }
 
-    #block-gin-local-actions + .gin-sticky-form-actions {
+    [id*="block-gin-local-actions"] + .gin-sticky-form-actions {
       padding-left: var(--gin-spacing-xs);
     }
   }

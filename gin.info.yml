@@ -133,6 +133,8 @@ libraries-extend:
     - gin/responsive_preview
   workspaces/drupal.workspaces.overview:
     - gin/workspaces
+  project_browser/project_browser:
+    - gin/project_browser
 
 ckeditor_stylesheets:
   - dist/css/theme/accent.css

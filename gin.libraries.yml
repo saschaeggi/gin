@@ -199,8 +199,6 @@ scrollsync:
   js:
     js/libs/scrollsync.js: { minified: true, weight: -1 }
 
-# Overrides
-
 floating-ui:
   js:
     js/navigation/vendor/floating-ui/floating-ui.core.umd.js: { minified: true }
@@ -356,13 +354,12 @@ settings_tray_edit:
 maintenance_page:
   css:
     theme:
-      dist/css/components/maintenance_page.css: {}
+      dist/css/components/maintenance_page.css: { minified: false }
   dependencies:
     - system/maintenance
     - gin/gin
     - gin/gin_accent
     - gin/gin_init
-
 
 # Modules
 
@@ -452,3 +449,8 @@ workspaces:
   css:
     component:
       dist/css/components/workspaces.css: { minified: false }
+
+project_browser:
+  css:
+    theme:
+      dist/css/components/project_browser.css: { minified: false }
