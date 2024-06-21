@@ -137,103 +137,67 @@
   position: relative;
   margin-left: 0;
 
-  .checkbox-toggle {
-    z-index: 0;
-    display: inline-block;
-    vertical-align: top;
+  input {
+    all: unset;
+    appearance: none;
+    cursor: pointer;
+    float: left;
+    display: block;
     width: 2.5rem;
     height: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    clip-path: circle(var(--gin-spacing-l) at 50% 50%); // Fix Safari bug
+    background-color: var(--gin-color-disabled);
+    border: 3px solid transparent;
     border-radius: var(--gin-border-l);
     box-sizing: border-box;
 
-    &__inner {
-      position: relative;
-      display: block;
+    .gin--dark-mode & {
+      background-color: var(--gin-bg-input);
+    }
+
+    &::before {
+      position: absolute;
+      content: "";
       width: 100%;
       height: 100%;
-      overflow: hidden;
-      clip-path: circle(var(--gin-spacing-l) at 50% 50%); // Fix Safari bug
-      background-color: var(--gin-color-disabled);
-      border: 3px solid transparent;
-      border-radius: var(--gin-border-l);
-      box-sizing: border-box;
+      background-color: #fff;
+      border-radius: 21px;
+      transform: translateX(-16px);
+      transition: transform .3s;
 
       .gin--dark-mode & {
-        background-color: var(--gin-bg-input);
+        background-color: var(--gin-border-color-form-element);
       }
-
-      &:before {
-        position: absolute;
-        content: "";
-        width: 100%;
-        height: 100%;
-        background-color: #fff;
-        border-radius: 21px;
-        transform: translateX(-16px);
-        transition: transform .3s;
-
-        .gin--dark-mode & {
-          background-color: var(--gin-border-color-form-element);
-        }
-      }
-    }
-  }
-
-  input {
-    @include visually-hidden;
-    width: 40px;
-    height: 24px;
-    clip: auto;
-    margin-left: 0;
-    opacity: 0;
-    cursor: pointer;
-    z-index: 1;
-    left: 0;
-
-    &:hover,
-    &:focus,
-    &:active,
-    &:hover:focus,
-    &:active:focus {
-      outline: none;
-      box-shadow: none;
-      border: none;
     }
 
     // Disabled state: set cursor to not-allowed
     &:disabled {
       cursor: not-allowed;
     }
-  }
 
-  // Hover state
-  :where(.form-type--checkbox:has(input:hover) .checkbox-toggle) {
-    opacity: .9;
-    box-shadow: 0 0 2px rgba(0, 0, 0, .2);
-  }
-
-  // Hover/Focus state
-  :where(.form-type--checkbox:has(input:active) .checkbox-toggle .checkbox-toggle__inner),
-  :where(.form-type--checkbox:has(input:focus) .checkbox-toggle .checkbox-toggle__inner) {
-    box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
-  }
-
-  // Active state
-  :where(.form-type--checkbox:has(input:checked) .checkbox-toggle) {
-    border-color: var(--gin-color-primary-light-active);
-
-    .gin--high-contrast-mode & {
-      border-color: var(--gin-border-color);
+    // Hover state
+    &:hover {
+      opacity: .9;
+      box-shadow: 0 0 2px rgba(0, 0, 0, .2);
     }
 
-    .checkbox-toggle__inner {
+    // Hover/Focus state
+    &:active,
+    &:focus {
+      box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
+    }
+
+    // Active state
+    &:checked {
       background-color: var(--gin-switch);
 
       .gin--dark-mode & {
         background-color: var(--gin-color-primary-light-active);
       }
 
-      &:before {
+      &::before {
         transform: translateX(16px);
         background-color: #fff;
 
@@ -246,18 +210,17 @@
         }
       }
     }
-  }
 
-  // Disabled state
-  :where(.form-type--checkbox:has(input:disabled) .checkbox-toggle),
-  :where(.form-type--checkbox:has(input:disabled) .checkbox-toggle .checkbox-toggle__inner) {
-    opacity: 0.75;
-    background-color: var(--gin-color-disabled);
-    box-shadow: none;
+    // Disabled state
+    &:disabled {
+      opacity: 0.75;
+      background-color: var(--gin-color-disabled);
+      box-shadow: none;
 
-    &::before {
-      background-color: #fff;
-      opacity: .6;
+      &::before {
+        background-color: #fff;
+        opacity: .6;
+      }
     }
   }
 

@@ -134,15 +134,6 @@ function gin_theme_suggestions_form_alter(array &$suggestions, array $variables)
 }
 
 /**
- * Implements input_alter().
- */
-function gin_theme_suggestions_input_alter(array &$suggestions, array $variables) {
-  if ($variables['element']['#type'] === 'checkbox') {
-    $suggestions[] = 'input__checkbox__toggle';
-  }
-}
-
-/**
  * Implements table_alter().
  */
 function gin_theme_suggestions_table_alter(array &$suggestions, array $variables): void {
