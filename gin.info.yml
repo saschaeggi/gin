@@ -24,6 +24,10 @@ libraries-override:
     js:
       misc/tableselect.js: js/overrides/tableselect.js
 
+  core/drupal.tabledrag:
+    js:
+      misc/tabledrag.js: js/overrides/tabledrag.js
+
   # Gin overrides: disable
   # needed override to overcome dialog styling issues
   claro/claro.drupal.dialog:

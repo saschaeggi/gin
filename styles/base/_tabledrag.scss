@@ -35,16 +35,16 @@
 .field--type-link,
 .field--type-smartdate {
   .gin-layer-wrapper > .tabledrag-toggle-weight-wrapper {
-    @include mq(small) {
+    @include mq(medium) {
       position: relative;
       z-index: 1;
-      margin-right: var(--gin-spacing-m);
       margin-bottom: calc(var(--gin-spacing-xxl) * -1);
       pointer-events: none;
     }
 
     .action-link {
       pointer-events: all;
+      background-color: var(--gin-bg-layer);
     }
   }
 }
@@ -103,11 +103,6 @@
       left:0
     }
   }
-}
-
-.tabledrag-leaf td,
-.tabledrag-cell {
-  vertical-align: top;
 }
 
 .tabledrag-cell {
