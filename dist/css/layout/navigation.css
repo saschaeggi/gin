@@ -952,10 +952,6 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title > button.toolbar
   margin-bottom: calc(var(--gin-spacing-xxs) * -1);
 }
 
-.gin--navigation .navigation-menu-wrapper.menu--logo {
-  margin-bottom: -5px;
-}
-
 .gin--navigation .menu-item.current > .toolbar-link {
   color: var(--gin-color-primary);
 }

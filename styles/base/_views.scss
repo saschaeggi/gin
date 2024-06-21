@@ -81,7 +81,6 @@
   background: none;
   border-color: var(--gin-border-color);
   border-radius: var(--gin-border-l);
-
 }
 
 .views-exposed-form__item--preceding-actions.views-exposed-form__item--preceding-actions {
@@ -95,7 +94,11 @@
 }
 
 .gin-layer-wrapper {
-  padding: var(--gin-spacing-l);
+  padding: var(--gin-spacing-s);
+
+  @include mq(medium) {
+    padding: var(--gin-spacing-l);
+  }
 
   & + .gin-layer-wrapper {
     margin-top: var(--gin-spacing-l);
@@ -125,7 +128,7 @@
 
   .preview-section {
     padding: var(--gin-spacing-m);
-    border: 1px dashed var(--gin-border-color-layer2)
+    border: 1px dashed var(--gin-border-color-layer2);
   }
 
   .view-filters .preview-section {

@@ -968,7 +968,13 @@ details summary {
 }
 
 .gin-layer-wrapper {
-  padding: var(--gin-spacing-l);
+  padding: var(--gin-spacing-s);
+}
+
+@media (min-width: 61em) {
+  .gin-layer-wrapper {
+    padding: var(--gin-spacing-l);
+  }
 }
 
 .gin-layer-wrapper + .gin-layer-wrapper {
@@ -1344,7 +1350,7 @@ a.views-field-excluded {
 }
 
 .gin-table-scroll-wrapper {
-  overflow: auto;
+  overflow-x: auto;
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
   margin-top: calc(var(--gin-spacing-xs) * -1);
@@ -1352,7 +1358,7 @@ a.views-field-excluded {
 
 table.gin--sticky-table-header {
   visibility: hidden;
-  z-index: 98;
+  z-index: 97;
   position: sticky;
   top: calc(var(--gin-toolbar-y-offset) + var(--gin-height-sticky) - 1px);
   width: auto !important;
@@ -1363,46 +1369,6 @@ table.gin--sticky-table-header {
 table.gin--sticky-table-header tr {
   display: block;
   width: max-content;
-}
-
-.views-form > form:has(> .gin--sticky-table-header),
-.gin-layer-wrapper:has(> .gin--sticky-table-header) {
-  position: relative;
-}
-
-.views-form > form:has(> .gin--sticky-table-header)::before, .views-form > form:has(> .gin--sticky-table-header)::after,
-.gin-layer-wrapper:has(> .gin--sticky-table-header)::before,
-.gin-layer-wrapper:has(> .gin--sticky-table-header)::after {
-  content: "";
-  z-index: 98;
-  position: absolute;
-  top: 0;
-  width: 1.5rem;
-  height: 100%;
-}
-
-[dir="ltr"] .views-form > form:has(> .gin--sticky-table-header)::before,
-[dir="ltr"] .gin-layer-wrapper:has(> .gin--sticky-table-header)::before {
-  left: calc(var(--gin-spacing-l) * -1);
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--gin-bg-layer));
-}
-
-[dir="rtl"] .views-form > form:has(> .gin--sticky-table-header)::before,
-[dir="rtl"] .gin-layer-wrapper:has(> .gin--sticky-table-header)::before {
-  right: calc(var(--gin-spacing-l) * -1);
-  background: linear-gradient(-90deg, rgba(255, 255, 255, 0), var(--gin-bg-layer));
-}
-
-[dir="ltr"] .views-form > form:has(> .gin--sticky-table-header)::after,
-[dir="ltr"] .gin-layer-wrapper:has(> .gin--sticky-table-header)::after {
-  right: calc(var(--gin-spacing-l) * -1);
-  background: linear-gradient(90deg, var(--gin-bg-layer), rgba(255, 255, 255, 0));
-}
-
-[dir="rtl"] .views-form > form:has(> .gin--sticky-table-header)::after,
-[dir="rtl"] .gin-layer-wrapper:has(> .gin--sticky-table-header)::after {
-  left: calc(var(--gin-spacing-l) * -1);
-  background: linear-gradient(-90deg, var(--gin-bg-layer), rgba(255, 255, 255, 0));
 }
 
 .gin-horizontal-scroll-shadow {
