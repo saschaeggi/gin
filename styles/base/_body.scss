@@ -79,22 +79,16 @@ a {
 
 .views-field .marker,
 .gin-beta-flag,
-.gin-experimental-flag {
-  color: #555;
-  background: #eee;
-
-  .gin--dark-mode & {
-    color: #999;
-    background: #44444485;
-  }
+.gin-experimental-flag,
+.pb-project-categories__item,
+.pb-module-page__categories-list-item {
+  color: var(--gin-tag-text);
+  background: var(--gin-tag-bg);
 }
 
 .gin-new-flag,
-.views-field .marker--published {
-  color: #1d7c4e;
-  background-color: #26a76930;
-
-  .gin--dark-mode & {
-    color: #39b77b;
-  }
+.views-field .marker--published,
+.pb-actions .project_status-indicator {
+  color: var(--gin-tag-success-text);
+  background-color: var(--gin-tag-success-bg);
 }

@@ -1,4 +1,5 @@
 .button,
+.project__action_button,
 .dropbutton__item:first-of-type > *,
 .dropbutton__toggle {
   font-size: var(--gin-font-size-s);
@@ -28,6 +29,7 @@
 .button,
 .button:not(:focus),
 .form-actions .button,
+.project__action_button,
 .action-link--icon-trash.action-link {
   font-size: var(--gin-font-size-s);
   padding: calc(var(--gin-spacing-s) - 2px) var(--gin-spacing-m);

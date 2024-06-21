@@ -101,6 +101,10 @@
   --gin-sidebar-width: 320px;
   --gin-sidebar-offset: var(--gin-sidebar-width);
   --gin-switch: #26a769;
+  --gin-tag-text: #555;
+  --gin-tag-bg: #eee;
+  --gin-tag-success-text: #1d7c4e;
+  --gin-tag-success-bg: #26a76930;
   --gin-shadow-button: #00000033;
   --gin-color-button-text: #fff;
   --gin-offset-x: var(--gin-toolbar-x-offset);
@@ -214,6 +218,10 @@
   --gin-border-color-form-element: var(--gin-border-color-layer2);
   --gin-bg-header: #1b1b1d;
   --gin-switch: var(--gin-color-primary);
+  --gin-tag-text: var(--gin-color-text-light);
+  --gin-tag-bg: rgba(255, 255, 255, .1);
+  --gin-tag-success-text: #39b77b;
+  --gin-tag-success-bg: #26a76930;
   --gin-shadow-l1: 0 1px 2px rgb(0 0 0 / 2%), 0 3px 4px rgb(0 0 0 / 3%), 0 5px 8px rgb(0 0 0 / 4%);
   --gin-shadow-l2: 0 1px 2px rgb(0 0 0 / 2%), 0 3px 4px rgb(0 0 0 / 3%), 0 5px 8px rgb(0 0 0 / 4%), 0 20px 24px rgb(0 0 0 / 12%);
   --gin-icon-color: #888;
