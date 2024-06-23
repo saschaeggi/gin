@@ -1,6 +1,7 @@
 .media-library {
   &-item &-edit__link,
   &-item &-item__edit,
+  &-item &-item__edit.button,
   &-item &-item__remove,
   &-item &-item__remove.button {
     border-color: var(--gin-border-color) !important;
@@ -197,6 +198,7 @@
 fieldset.media-library-widget {
   .media-library-widget__toggle-weight {
     font-size: var(--gin-font-size-xxs);
+    line-height: 1;
     padding: var(--gin-spacing-xs);
   }
 
