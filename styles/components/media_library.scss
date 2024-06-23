@@ -1,5 +1,5 @@
 .media-library {
-  &-edit__link,
+  &-item &-edit__link,
   &-item &-item__edit,
   &-item &-item__remove,
   &-item &-item__remove.button {
@@ -26,7 +26,7 @@
     &:active {
       width: 32px;
       height: 32px;
-      margin: var(--gin-spacing-s);
+      margin: var(--gin-spacing-xs);
       background-color: white;
       border-radius: 50%;
       box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
@@ -34,7 +34,7 @@
     }
   }
 
-  &-edit__link,
+  &-item &-edit__link,
   &-item &-item__edit {
     top: .625rem;
     right: 3.125rem;
@@ -356,12 +356,6 @@ fieldset.media-library-widget {
   border-bottom: 1px solid var(--gin-border-color-table-header);
   border-radius: 0;
   box-sizing: border-box;
-
-  // @include mq(medium) {
-  //   z-index: 98;
-  //   position: sticky;
-  //   top: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset));
-  // }
 }
 
 .views-field-thumbnail__target-id {
