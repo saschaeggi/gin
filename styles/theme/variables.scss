@@ -304,3 +304,13 @@
   // Tooltips
   --gin-tooltip-bg: var(--gin-bg-layer3);
 }
+
+.entity-meta {
+  --entity-meta-color-bg: transparent;
+  --entity-meta-border-color: var(--gin-border-color);
+}
+
+.accordion {
+  --accordion-bg-color: transparent;
+  --accordion-border-color: var(--gin-border-color);
+}

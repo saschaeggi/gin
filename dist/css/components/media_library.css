@@ -1,36 +1,36 @@
-.media-library-edit__link, .media-library-item .media-library-item__edit, .media-library-item .media-library-item__remove, .media-library-item .media-library-item__remove.button {
+.media-library-item .media-library-edit__link, .media-library-item .media-library-item__edit, .media-library-item .media-library-item__remove, .media-library-item .media-library-item__remove.button {
   border-color: var(--gin-border-color) !important;
 }
 
-.media-library-edit__link:link, .media-library-edit__link:hover, .media-library-edit__link:focus, .media-library-edit__link:active, .media-library-edit__link:not(:hover):not(:checked), .media-library-item .media-library-item__edit:link, .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__edit:active, .media-library-item .media-library-item__edit:not(:hover):not(:checked), .media-library-item .media-library-item__remove:link, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove:active, .media-library-item .media-library-item__remove:not(:hover):not(:checked), .media-library-item .media-library-item__remove.button:link, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus, .media-library-item .media-library-item__remove.button:active, .media-library-item .media-library-item__remove.button:not(:hover):not(:checked) {
+.media-library-item .media-library-edit__link:link, .media-library-item .media-library-edit__link:hover, .media-library-item .media-library-edit__link:focus, .media-library-item .media-library-edit__link:active, .media-library-item .media-library-edit__link:not(:hover):not(:checked), .media-library-item .media-library-item__edit:link, .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__edit:active, .media-library-item .media-library-item__edit:not(:hover):not(:checked), .media-library-item .media-library-item__remove:link, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove:active, .media-library-item .media-library-item__remove:not(:hover):not(:checked), .media-library-item .media-library-item__remove.button:link, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus, .media-library-item .media-library-item__remove.button:active, .media-library-item .media-library-item__remove.button:not(:hover):not(:checked) {
   border-color: transparent !important;
 }
 
-.media-library-edit__link:hover, .media-library-edit__link:focus, .media-library-edit__link:active, .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__edit:active, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove:active, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus, .media-library-item .media-library-item__remove.button:active {
+.media-library-item .media-library-edit__link:hover, .media-library-item .media-library-edit__link:focus, .media-library-item .media-library-edit__link:active, .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__edit:active, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove:active, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus, .media-library-item .media-library-item__remove.button:active {
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus) !important;
 }
 
-.media-library-edit__link, .media-library-edit__link:hover, .media-library-edit__link:focus, .media-library-edit__link:active, .media-library-item .media-library-item__edit, .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__edit:active, .media-library-item .media-library-item__remove, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove:active, .media-library-item .media-library-item__remove.button, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus, .media-library-item .media-library-item__remove.button:active {
+.media-library-item .media-library-edit__link, .media-library-item .media-library-edit__link:hover, .media-library-item .media-library-edit__link:focus, .media-library-item .media-library-edit__link:active, .media-library-item .media-library-item__edit, .media-library-item .media-library-item__edit:hover, .media-library-item .media-library-item__edit:focus, .media-library-item .media-library-item__edit:active, .media-library-item .media-library-item__remove, .media-library-item .media-library-item__remove:hover, .media-library-item .media-library-item__remove:focus, .media-library-item .media-library-item__remove:active, .media-library-item .media-library-item__remove.button, .media-library-item .media-library-item__remove.button:hover, .media-library-item .media-library-item__remove.button:focus, .media-library-item .media-library-item__remove.button:active {
   width: 32px;
   height: 32px;
-  margin: var(--gin-spacing-s);
+  margin: var(--gin-spacing-xs);
   background-color: white;
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
   box-sizing: border-box;
 }
 
-.media-library-edit__link, .media-library-item .media-library-item__edit {
+.media-library-item .media-library-edit__link, .media-library-item .media-library-item__edit {
   top: .625rem;
   background-image: url("../../media/sprite.svg#media-edit-view");
   background-size: .75rem .75rem;
 }
 
-[dir="ltr"] .media-library-edit__link, [dir="ltr"] .media-library-item .media-library-item__edit {
+[dir="ltr"] .media-library-item .media-library-edit__link, [dir="ltr"] .media-library-item .media-library-item__edit {
   right: 3.125rem;
 }
 
-[dir="rtl"] .media-library-edit__link, [dir="rtl"] .media-library-item .media-library-item__edit {
+[dir="rtl"] .media-library-item .media-library-edit__link, [dir="rtl"] .media-library-item .media-library-item__edit {
   left: 3.125rem;
 }
 
