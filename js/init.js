@@ -77,7 +77,12 @@ if (localStorage.getItem('Drupal.gin.toolbarExpanded')) {
   }
 }
 
-// Sidebar check.
+// Sidebar checks.
+if (localStorage.getItem('Drupal.gin.sidebarWidth')) {
+  const sidebarWidth = localStorage.getItem('Drupal.gin.sidebarWidth');
+  document.documentElement.style.setProperty('--gin-sidebar-width', sidebarWidth);
+}
+
 if (localStorage.getItem('Drupal.gin.sidebarExpanded.desktop')) {
   const style = document.createElement('style');
   const className = 'gin-sidebar-inline-styles';

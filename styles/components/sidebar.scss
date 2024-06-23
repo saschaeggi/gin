@@ -1,3 +1,24 @@
+#gin-sidebar-draggable {
+  cursor: ew-resize;
+  z-index: 104;
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  padding: 0;
+  display: block;
+  width: 2px;
+  height: 100%;
+  transition: var(--gin-transition-fast);
+
+  &:hover {
+    background-color: var(--gin-border-color-table);
+  }
+
+  &:active {
+    background-color: var(--gin-border-color);
+  }
+}
+
 .layout-region-node-secondary {
   transition: transform var(--gin-transition-fast);
 

@@ -98,6 +98,8 @@
     .layout-region-node-secondary {
       z-index: 103;
       width: var(--gin-sidebar-width);
+      min-width: var(--gin-sidebar-min-width);
+      max-width: var(--gin-sidebar-max-width);
       height: calc(100% - var(--gin-toolbar-y-offset));
       position: fixed;
       top: var(--gin-toolbar-y-offset);
@@ -191,6 +193,7 @@
           }
 
           > .claro-details__summary {
+            font-size: var(--gin-font-size-s);
             display: block;
             padding-left: #{$sidebarSpacer + 1.5rem};
 

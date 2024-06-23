@@ -15,6 +15,10 @@
       scriptTag.parentNode.insertBefore(style, scriptTag);
     } else document.getElementsByClassName(className).length > 0 && document.getElementsByClassName(className)[0].remove();
   }
+  if (localStorage.getItem("Drupal.gin.sidebarWidth")) {
+    const sidebarWidth = localStorage.getItem("Drupal.gin.sidebarWidth");
+    document.documentElement.style.setProperty("--gin-sidebar-width", sidebarWidth);
+  }
   if (localStorage.getItem("Drupal.gin.sidebarExpanded.desktop")) {
     const style = document.createElement("style"), className = "gin-sidebar-inline-styles";
     if (style.className = className, window.innerWidth < 1024 || "false" === localStorage.getItem("Drupal.gin.sidebarExpanded.desktop")) {
