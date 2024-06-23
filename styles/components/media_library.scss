@@ -412,6 +412,16 @@ fieldset.media-library-widget {
   }
 }
 
+.js-media-library-widget {
+  .fieldset__label {
+    margin-block-end: 0;
+  }
+
+  .media-library-selection {
+    margin-block-start: 0;
+  }
+}
+
 .media-library-selection .media-library-item--grid {
   @include mq(wide) {
     width: 20%;
@@ -458,4 +468,26 @@ fieldset.media-library-widget {
 
 .media-library-selected-count {
   color: var(--gin-color-text-light);
+}
+
+.media-library-new-widget {
+  .fieldset__label {
+    margin-block-end: 0;
+  }
+
+  .label {
+    font-size: var(--gin-font-size-l);
+    font-weight: var(--gin-font-weight-bold);
+    color: var(--gin-color-title);
+    margin-block-start: 0;
+  }
+
+  .description {
+    font-size: var(--gin-font-size-s);
+    color: var(--gin-color-text-light);
+  }
+
+  .form-type--entity-autocomplete {
+    margin-block: var(--gin-spacing-s);
+  }
 }
