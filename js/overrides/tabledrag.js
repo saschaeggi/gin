@@ -1379,9 +1379,20 @@
   Drupal.tableDrag.prototype.row.prototype.addChangedWarning = function () {
     // Do not add the changed warning if one is already present.
     if (!$(this.table.parentNode).find('.tabledrag-changed-warning').length) {
+      const $changedWarning = $(Drupal.theme('tableDragChangedWarning'));
       const $form = $(this.table).closest('form');
-      $(Drupal.theme('tableDragChangedWarning'))
-        .insertBefore(this.table)
+      let $moveTo = this.table;
+
+      // Check where to insert
+      if ($changedWarning.parents('.gin-table-scroll-wrapper').has('.tabledrag-toggle-weight-wrapper')) {
+        $moveTo = '.tabledrag-toggle-weight-wrapper';
+      }
+      else if ($changedWarning.parents('.gin-table-scroll-wrapper')) {
+        $moveTo = '.gin-table-scroll-wrapper';
+      }
+
+      $changedWarning
+        .insertBefore($moveTo)
         .hide()
         // If a warning has already been shown, do not fade the warning in, so
         // it appears static when the table is rebuilt.
