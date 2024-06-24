@@ -11,6 +11,7 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Theme\ThemeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Service to handle content form overrides.
@@ -48,6 +49,13 @@ class GinContentFormHelper implements ContainerInjectionInterface {
   protected $themeManager;
 
   /**
+   * The HTTP request stack.
+   *
+   * @var \Symfony\Component\HttpFoundation\RequestStack
+   */
+  protected $requestStack;
+
+  /**
    * GinContentFormHelper constructor.
    *
    * @param \Drupal\Core\Session\AccountInterface $current_user
@@ -58,12 +66,15 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    *   The current route match.
    * @param \Drupal\Core\Theme\ThemeManagerInterface $theme_manager
    *   The theme manager.
+   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
+   *   The HTTP request stack.
    */
-  public function __construct(AccountInterface $current_user, ModuleHandlerInterface $module_handler, RouteMatchInterface $route_match, ThemeManagerInterface $theme_manager) {
+  public function __construct(AccountInterface $current_user, ModuleHandlerInterface $module_handler, RouteMatchInterface $route_match, ThemeManagerInterface $theme_manager, RequestStack $request_stack) {
     $this->currentUser = $current_user;
     $this->moduleHandler = $module_handler;
     $this->routeMatch = $route_match;
     $this->themeManager = $theme_manager;
+    $this->requestStack = $request_stack;
   }
 
   /**
@@ -75,6 +86,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       $container->get('module_handler'),
       $container->get('current_route_match'),
       $container->get('theme.manager'),
+      $container->get('request_stack'),
     );
   }
 
@@ -283,6 +295,11 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    *   The form id.
    */
   public function stickyActionButtons(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = NULL) {
+    // Generally don't use sticky buttons in Ajax requests (modals).
+    if ($this->requestStack->getCurrentRequest()->isXmlHttpRequest()) {
+      return FALSE;
+    }
+
     /** @var \Drupal\gin\GinSettings $settings */
     $settings = \Drupal::classResolver(GinSettings::class);
 
@@ -302,8 +319,6 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       strpos($form_id, '_preview_form') !== FALSE ||
       strpos($form_id, '_delete_form') !== FALSE ||
       strpos($form_id, '_confirm_form') !== FALSE ||
-      strpos($form_id, '_paragraphs_component_form') !== FALSE ||
-      strpos($form_id, '_delete_component_form') !== FALSE ||
       in_array($form_id, $form_ids, TRUE) ||
       in_array($route_name, $form_ids, TRUE)
     ) {
@@ -327,6 +342,29 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    *   The form id.
    */
   public function isContentForm(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = '') {
+    // Generally ignore all forms in Ajax requests (modals).
+    if ($this->requestStack->getCurrentRequest()->isXmlHttpRequest()) {
+      return FALSE;
+    }
+
+    // Forms to exclude.
+    // If media library widget, don't use new content edit form.
+    // gin_preprocess_html is not triggered here, so checking
+    // the form id is enough.
+    $form_ids_to_ignore = [
+      'media_library_add_form_',
+      'views_form_media_library_widget_',
+      'views_exposed_form',
+      'date_recur_modular_sierra_occurrences_modal',
+      'date_recur_modular_sierra_modal',
+    ];
+
+    foreach ($form_ids_to_ignore as $form_id_to_ignore) {
+      if ($form_id && strpos($form_id, $form_id_to_ignore) !== FALSE) {
+        return FALSE;
+      }
+    }
+
     $is_content_form = FALSE;
 
     // Get route name.
@@ -358,24 +396,6 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       ($route_name === 'entity.group_relationship.create_form' && substr($this->routeMatch->getParameter('plugin_id'), 0, 11) === "group_node:")
     ) {
       $is_content_form = TRUE;
-    }
-
-    // Forms to exclude.
-    // If media library widget, don't use new content edit form.
-    // gin_preprocess_html is not triggered here, so checking
-    // the form id is enough.
-    $form_ids_to_ignore = [
-      'media_library_add_form_',
-      'views_form_media_library_widget_',
-      'views_exposed_form',
-      'date_recur_modular_sierra_occurrences_modal',
-      'date_recur_modular_sierra_modal',
-    ];
-
-    foreach ($form_ids_to_ignore as $form_id_to_ignore) {
-      if ($form_id && strpos($form_id, $form_id_to_ignore) !== FALSE) {
-        $is_content_form = FALSE;
-      }
     }
 
     return $is_content_form;
