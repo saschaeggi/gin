@@ -113,12 +113,6 @@
     margin-top: var(--gin-spacing-xs);
     margin-bottom: var(--gin-spacing-xs);
   }
-
-  &-content__item {
-    .checkbox-toggle:hover {
-      cursor: pointer;
-    }
-  }
 }
 
 .field-plugin-settings-edit-wrapper,
