@@ -182,6 +182,12 @@ messages:
   dependencies:
     - core/once
 
+dropbutton:
+  js:
+    dist/js/dropbutton.js: { minified: false }
+  dependencies:
+    - core/once
+
 # Custom CSS
 
 gin_custom_css:

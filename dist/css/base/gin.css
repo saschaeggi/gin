@@ -1342,6 +1342,7 @@ a.views-field-excluded {
 
 .gin-table-scroll-wrapper {
   overflow-x: auto;
+  overflow-y: hidden;
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
   margin-top: calc(var(--gin-spacing-xs) * -1);
@@ -2907,11 +2908,13 @@ html.js .dropbutton {
 }
 
 html.js .dropbutton-wrapper:not(.open) .dropbutton__items {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
 }
 
 html.js .dropbutton-wrapper .dropbutton__items {
-  display: block;
+  visibility: visible;
+  opacity: 1;
 }
 
 html.js .dropbutton-wrapper:not(.open) .dropbutton__item:first-of-type ~ .dropbutton__items {
@@ -2979,11 +2982,6 @@ html[dir="ltr"].js.no-touchevents .dropbutton--multiple.dropbutton--extrasmall .
 
 html[dir="rtl"].js.no-touchevents .dropbutton--multiple.dropbutton--extrasmall .dropbutton__items .dropbutton__item {
   margin-left: 0;
-}
-
-table tr:not(:first-of-type):nth-last-child(2) td .dropbutton__items,
-table tr:not(:first-of-type):last-of-type td .dropbutton__items {
-  bottom: 100%;
 }
 
 .action-link {

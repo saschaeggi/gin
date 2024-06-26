@@ -226,11 +226,13 @@ html.js {
   }
 
   .dropbutton-wrapper:not(.open) .dropbutton__items {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
   }
 
   .dropbutton-wrapper .dropbutton__items {
-    display: block;
+    visibility: visible;
+    opacity: 1;
   }
 
   .dropbutton-wrapper:not(.open) .dropbutton__item:first-of-type ~ .dropbutton__items {
@@ -285,10 +287,4 @@ html.js.no-touchevents {
   .dropbutton--multiple.dropbutton--extrasmall .dropbutton__items .dropbutton__item {
     margin-right: 0;
   }
-}
-
-// Last item in table
-table tr:not(:first-of-type):nth-last-child(2) td .dropbutton__items,
-table tr:not(:first-of-type):last-of-type td .dropbutton__items {
-  bottom: 100%;
 }
