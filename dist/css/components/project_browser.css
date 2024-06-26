@@ -51,7 +51,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gin-tag-bg);
+  background: var(--gin-status-bg);
   border-radius: 50%;
 }
 

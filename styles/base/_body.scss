@@ -60,35 +60,3 @@ a {
 .gin--dark-mode {
   color-scheme: dark;
 }
-
-// Flags.
-.views-field .marker,
-.gin-beta-flag,
-.gin-experimental-flag,
-.gin-new-flag
-{
-  font-size: 10px;
-  font-weight: var(--gin-font-weight-semibold);
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  display: inline-block;
-  padding: .125em .5em;
-  vertical-align: .125em;
-  border-radius: var(--gin-border-xs);
-}
-
-.views-field .marker,
-.gin-beta-flag,
-.gin-experimental-flag,
-.pb-project-categories__item,
-.pb-module-page__categories-list-item {
-  color: var(--gin-tag-text);
-  background: var(--gin-tag-bg);
-}
-
-.gin-new-flag,
-.views-field .marker--published,
-.pb-actions .project_status-indicator {
-  color: var(--gin-tag-success-text);
-  background-color: var(--gin-tag-success-bg);
-}

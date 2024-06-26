@@ -59,36 +59,6 @@ a {
   color-scheme: dark;
 }
 
-.views-field .marker,
-.gin-beta-flag,
-.gin-experimental-flag,
-.gin-new-flag {
-  font-size: 10px;
-  font-weight: var(--gin-font-weight-semibold);
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  display: inline-block;
-  padding: .125em .5em;
-  vertical-align: .125em;
-  border-radius: var(--gin-border-xs);
-}
-
-.views-field .marker,
-.gin-beta-flag,
-.gin-experimental-flag,
-.pb-project-categories__item,
-.pb-module-page__categories-list-item {
-  color: var(--gin-tag-text);
-  background: var(--gin-tag-bg);
-}
-
-.gin-new-flag,
-.views-field .marker--published,
-.pb-actions .project_status-indicator {
-  color: var(--gin-tag-success-text);
-  background-color: var(--gin-tag-success-bg);
-}
-
 a,
 .link,
 button.link,
@@ -3876,6 +3846,10 @@ table.diff tr .diff-addedline .diffchange {
   color: var(--gin-color-button-text);
 }
 
+.project-update__version {
+  padding-block: 0;
+}
+
 [dir="ltr"] .project-update__version-links {
   padding-right: 0;
 }
@@ -3884,68 +3858,30 @@ table.diff tr .diff-addedline .diffchange {
   padding-left: 0;
 }
 
-.project-update__status-icon {
-  width: 24px;
-  height: 24px;
+.project-update__details {
+  font-size: var(--gin-font-size-s);
+  color: var(--gin-color-text-light);
+  padding: 0;
+}
+
+.project-update__status .gin-status-icon {
+  width: 1rem;
+  height: 1rem;
   display: inline-block;
-  vertical-align: bottom;
-}
-
-.project-update__status-icon img {
-  display: none;
-}
-
-.project-update__status .project-update__status-icon {
-  background-color: var(--gin-color-danger);
-  -webkit-mask-image: url("../../media/sprite.svg#error-view");
-          mask-image: url("../../media/sprite.svg#error-view");
   -webkit-mask-position: center right;
           mask-position: center right;
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
-  -webkit-mask-size: 20px 20px;
-          mask-size: 20px 20px;
+  -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
 }
 
-[dir="ltr"] .project-update__status .project-update__status-icon {
-  padding-left: 0;
-}
-
-[dir="rtl"] .project-update__status .project-update__status-icon {
-  padding-right: 0;
+.project-update__status .gin-status-icon img {
+  display: none;
 }
 
 .project-update__status--security-error {
   color: var(--gin-color-danger);
-}
-
-.project-update__status--security-error span {
-  position: relative;
-  top: 2px;
-}
-
-.project-update__status--not-current .project-update__status-icon {
-  background-color: var(--gin-color-warning);
-  -webkit-mask-image: url("../../media/sprite.svg#warning-view");
-          mask-image: url("../../media/sprite.svg#warning-view");
-  -webkit-mask-position: center right;
-          mask-position: center right;
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  -webkit-mask-size: 20px 20px;
-          mask-size: 20px 20px;
-}
-
-.project-update__status--current .project-update__status-icon {
-  background-color: var(--gin-color-green);
-  -webkit-mask-image: url("../../media/sprite.svg#status-view");
-          mask-image: url("../../media/sprite.svg#status-view");
-  -webkit-mask-position: center right;
-          mask-position: center right;
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  -webkit-mask-size: 20px 20px;
-          mask-size: 20px 20px;
 }
 
 .color-success,
@@ -3959,14 +3895,14 @@ tr.color-success,
 [dir="ltr"] tr.color-success,
 [dir="ltr"] .color-checked,
 [dir="ltr"] .drupal-upgrade-status-summary-form tr.no-known-error {
-  border-left: var(--gin-border-m) solid var(--gin-color-green);
+  border-left: var(--gin-border-xs) solid var(--gin-color-green);
 }
 
 [dir="rtl"] .color-success,
 [dir="rtl"] tr.color-success,
 [dir="rtl"] .color-checked,
 [dir="rtl"] .drupal-upgrade-status-summary-form tr.no-known-error {
-  border-right: var(--gin-border-m) solid var(--gin-color-green);
+  border-right: var(--gin-border-xs) solid var(--gin-color-green);
 }
 
 .color-success:hover, .color-success:active, .color-success:focus,
@@ -3993,14 +3929,14 @@ tr.color-warning,
 [dir="ltr"] tr.color-warning,
 [dir="ltr"] .upgrade-status-next-step-remove tr,
 [dir="ltr"] .drupal-upgrade-status-summary-form tr.known-warnings {
-  border-left: var(--gin-border-m) solid var(--gin-color-warning);
+  border-left: var(--gin-border-xs) solid var(--gin-color-warning);
 }
 
 [dir="rtl"] .color-warning,
 [dir="rtl"] tr.color-warning,
 [dir="rtl"] .upgrade-status-next-step-remove tr,
 [dir="rtl"] .drupal-upgrade-status-summary-form tr.known-warnings {
-  border-right: var(--gin-border-m) solid var(--gin-color-warning);
+  border-right: var(--gin-border-xs) solid var(--gin-color-warning);
 }
 
 .color-warning:hover, .color-warning:active, .color-warning:focus,
@@ -4038,13 +3974,13 @@ tr.color-error,
 [dir="ltr"] .color-error,
 [dir="ltr"] tr.color-error,
 [dir="ltr"] .drupal-upgrade-status-summary-form tr.known-errors {
-  border-left: var(--gin-border-m) solid var(--gin-color-danger);
+  border-left: var(--gin-border-xs) solid var(--gin-color-danger);
 }
 
 [dir="rtl"] .color-error,
 [dir="rtl"] tr.color-error,
 [dir="rtl"] .drupal-upgrade-status-summary-form tr.known-errors {
-  border-right: var(--gin-border-m) solid var(--gin-color-danger);
+  border-right: var(--gin-border-xs) solid var(--gin-color-danger);
 }
 
 .color-error:hover, .color-error:active, .color-error:focus,
@@ -4541,5 +4477,78 @@ blockquote::before {
 
 .taxonomy-overview-terms:not(:has(.action-link)) #edit-help {
   margin-bottom: var(--gin-spacing-m);
+}
+
+.gin-status,
+.views-field .marker,
+.gin-beta-flag,
+.gin-experimental-flag,
+.gin-new-flag {
+  font-size: var(--gin-font-size-xxs);
+  font-weight: var(--gin-font-weight-semibold);
+  display: inline-block;
+  padding: .125em .75em;
+  vertical-align: .125em;
+  border-radius: var(--gin-border-l);
+}
+
+.gin-status,
+.views-field .marker,
+.gin-beta-flag,
+.gin-experimental-flag,
+.pb-project-categories__item,
+.pb-module-page__categories-list-item {
+  color: var(--gin-status-text);
+  background: var(--gin-status-bg);
+}
+
+.gin-status--success,
+.gin-new-flag,
+.views-field .marker--published,
+.pb-actions .project_status-indicator {
+  color: var(--gin-status-success-text);
+  background-color: var(--gin-status-success-bg);
+}
+
+.gin-status--success .gin-status-icon {
+  background-color: currentColor;
+  -webkit-mask-image: url("../../media/sprite.svg#status-view");
+          mask-image: url("../../media/sprite.svg#status-view");
+}
+
+.gin-status--warning {
+  color: var(--gin-status-warning-text);
+  background: var(--gin-status-warning-bg);
+}
+
+.gin-status--warning .gin-status-icon {
+  background-color: currentColor;
+  -webkit-mask-image: url("../../media/sprite.svg#warning-view");
+          mask-image: url("../../media/sprite.svg#warning-view");
+}
+
+.gin-status--danger {
+  color: var(--gin-status-danger-text);
+  background: var(--gin-status-danger-bg);
+}
+
+.gin-status--danger .gin-status-icon {
+  background-color: currentColor;
+  -webkit-mask-image: url("../../media/sprite.svg#error-view");
+          mask-image: url("../../media/sprite.svg#error-view");
+}
+
+.gin-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gin-spacing-xxs);
+}
+
+[dir="ltr"] .gin-status-icon {
+  margin-left: -0.5em;
+}
+
+[dir="rtl"] .gin-status-icon {
+  margin-right: -0.5em;
 }
 
