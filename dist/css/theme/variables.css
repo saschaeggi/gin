@@ -106,7 +106,10 @@
   --gin-toolbar-x-offset: 0px;
   --gin-scroll-offset: 0px;
   --gin-sticky-offset: 0px;
+  --gin-sidebar-small-width: 320px;
+  --gin-sidebar-min-width: 240px;
   --gin-sidebar-width: 320px;
+  --gin-sidebar-max-width: 560px;
   --gin-sidebar-offset: var(--gin-sidebar-width);
   --gin-switch: #26a769;
   --gin-shadow-button: #00000033;

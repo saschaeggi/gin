@@ -1,5 +1,32 @@
+#gin-sidebar-draggable {
+  cursor: ew-resize;
+  z-index: 104;
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  padding: 0;
+  display: block;
+  width: 2px;
+  height: 100%;
+  transition: var(--gin-transition-fast);
+}
+
+#gin-sidebar-draggable:hover {
+  background-color: var(--gin-border-color-table);
+}
+
+#gin-sidebar-draggable:active {
+  background-color: var(--gin-border-color);
+}
+
 .layout-region-node-secondary {
   transition: transform var(--gin-transition-fast);
+}
+
+@media (max-width: 60.99em) {
+  .layout-region-node-secondary {
+    --gin-sidebar-width: var(--gin-sidebar-small-width);
+  }
 }
 
 @media (max-width: 63.99em) {
@@ -10,7 +37,7 @@
 }
 
 body[data-meta-sidebar=closed] {
-  --gin-sidebar-offset: 0px;
+  --gin-sidebar-width-offset: 0px;
 }
 
 body[data-meta-sidebar=closed] .layout-region-node-secondary {
