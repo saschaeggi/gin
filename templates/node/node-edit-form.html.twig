@@ -20,6 +20,7 @@
     {{ form|without('advanced', 'footer', 'actions', 'gin_actions', 'gin_sidebar', 'gin_sidebar_toggle') }}
   </div>
   <div class="layout-region layout-region-node-secondary" id="gin_sidebar">
+    <span class="gin-sidebar-draggable" id="gin-sidebar-draggable"></span>
     <div class="layout-region__content">
       {{ form.advanced }}
       {{ form.gin_sidebar_toggle }}

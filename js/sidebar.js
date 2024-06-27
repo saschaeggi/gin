@@ -6,6 +6,11 @@
   const toolbarVariant = drupalSettings.gin.toolbar_variant;
   const storageMobile = 'Drupal.gin.sidebarExpanded.mobile';
   const storageDesktop = 'Drupal.gin.sidebarExpanded.desktop';
+  const storageWidth = "Drupal.gin.sidebarWidth";
+  const resizer = document.getElementById('gin-sidebar-draggable');
+  const resizable = document.getElementById('gin_sidebar');
+  let isResizing = false;
+  let startX, startWidth;
 
   Drupal.behaviors.ginSidebar = {
     attach: function attach(context) {
@@ -47,6 +52,8 @@
         });
         resizeHandler.observe(document.querySelector('html'));
 
+        // Init resizable sidebar.
+        this.resizeInit();
       });
 
       // Toolbar toggle
@@ -144,6 +151,50 @@
         elementToRemove.parentNode.removeChild(elementToRemove);
       }
     },
+
+    resizeInit: function () {
+      // Mouse
+      resizer.addEventListener('mousedown', this.resizeStart);
+      document.addEventListener('mousemove', this.resizeWidth);
+      document.addEventListener('mouseup', this.resizeEnd);
+
+      // Touch
+      resizer.addEventListener('touchstart', this.resizeStart);
+      document.addEventListener('touchmove', this.resizeWidth);
+      document.addEventListener('touchend', this.resizeEnd);
+    },
+
+    resizeStart: (e) => {
+      e.preventDefault();
+      isResizing = true;
+      startX = e.clientX;
+      startWidth = parseInt(document.defaultView.getComputedStyle(resizable).width, 10);
+    },
+
+    resizeEnd: () => {
+      isResizing = false;
+      const setWidth = document.documentElement.style.getPropertyValue('--gin-sidebar-width');
+      const currentWidth = setWidth ? setWidth : resizable.style.width;
+      localStorage.setItem(storageWidth, currentWidth);
+      document.removeEventListener('mousemove', this.resizeWidth);
+      document.removeEventListener('touchend', this.resizeWidth);
+    },
+
+    resizeWidth: (e) => {
+      if (isResizing) {
+        let sidebarWidth = startWidth - (e.clientX - startX);
+
+        if (sidebarWidth <= 240) {
+          sidebarWidth = 240;
+        } else if (sidebarWidth >= 560) {
+          sidebarWidth = 560;
+        }
+
+        sidebarWidth = `${sidebarWidth}px`;
+        // resizable.style.width = sidebarWidth;
+        document.documentElement.style.setProperty('--gin-sidebar-width', sidebarWidth);
+      }
+    }
 
   };
 })(Drupal, drupalSettings, once);

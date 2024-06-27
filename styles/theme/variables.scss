@@ -167,8 +167,12 @@
   }
 
   // Sidebar
+  --gin-sidebar-small-width: 320px;
+  --gin-sidebar-min-width: 240px;
   --gin-sidebar-width: 320px;
+  --gin-sidebar-max-width: 560px;
   --gin-sidebar-offset: var(--gin-sidebar-width);
+
   @include mq(wide) {
     --gin-sidebar-width: 360px;
   }
