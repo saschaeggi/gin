@@ -1008,7 +1008,7 @@ details summary {
 }
 
 .views-display-top {
-  padding: var(--gin-spacing-m);
+  padding-block: var(--gin-spacing-m) var(--gin-spacing-xs);
   background-color: var(--gin-bg-header);
   border: 0 none;
   border-radius: var(--gin-border-l);
@@ -1040,16 +1040,16 @@ details summary {
   margin: 0;
 }
 
-.views-tabs a {
+.views-tabs.views-tabs a {
   padding: var(--gin-spacing-xs) var(--gin-spacing-m);
 }
 
-.views-tabs a.views-display-disabled-link {
+.views-tabs.views-tabs a.views-display-disabled-link {
   -webkit-padding-start: var(--gin-spacing-l);
           padding-inline-start: var(--gin-spacing-l);
 }
 
-.views-tabs a.views-display-disabled-link::before {
+.views-tabs.views-tabs a.views-display-disabled-link::before {
   -webkit-mask-image: url("../../media/sprite.svg#hide-view");
           mask-image: url("../../media/sprite.svg#hide-view");
   -webkit-mask-repeat: no-repeat;
@@ -1067,8 +1067,8 @@ details summary {
   content: "";
 }
 
-.views-tabs .add a,
-.views-tabs li a {
+.views-tabs.views-tabs .add a,
+.views-tabs.views-tabs li a {
   font-size: var(--gin-font-size-xs);
   font-weight: var(--gin-font-weight-heavy);
   color: var(--gin-color-primary);
@@ -1078,72 +1078,72 @@ details summary {
   border-radius: var(--gin-border-xs);
 }
 
-.views-tabs .add a::before,
-.views-tabs li a::before {
-  display: none;
+.views-tabs.views-tabs .add a::before,
+.views-tabs.views-tabs li a::before {
+  display: none !important;
 }
 
-.views-tabs .add a .icon.add,
-.views-tabs li a .icon.add {
+.views-tabs.views-tabs .add a .icon.add,
+.views-tabs.views-tabs li a .icon.add {
   display: block;
 }
 
-.views-tabs .add a:hover,
-.views-tabs .add a:focus,
-.views-tabs li a:hover,
-.views-tabs li a:focus,
-.views-tabs li.is-active a,
-.views-tabs li.is-active a.is-active {
+.views-tabs.views-tabs .add a:hover,
+.views-tabs.views-tabs .add a:focus,
+.views-tabs.views-tabs li a:hover,
+.views-tabs.views-tabs li a:focus,
+.views-tabs.views-tabs li.is-active a,
+.views-tabs.views-tabs li.is-active a.is-active {
   color: var(--gin-bg-app);
   background: var(--gin-color-primary);
   border-color: transparent;
 }
 
-.views-tabs .add a:focus,
-.views-tabs li a:focus {
+.views-tabs.views-tabs .add a:focus,
+.views-tabs.views-tabs li a:focus {
   outline: none;
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }
 
-.views-tabs .add.open a {
+.views-tabs.views-tabs .add.open a {
   background: var(--gin-bg-layer2);
   color: var(--gin-color-primary);
 }
 
-.views-tabs .add.open a:hover, .views-tabs .add.open a:focus, .views-tabs .add.open a:active {
+.views-tabs.views-tabs .add.open a:hover, .views-tabs.views-tabs .add.open a:focus, .views-tabs.views-tabs .add.open a:active {
   color: var(--gin-color-primary);
 }
 
-.views-tabs .action-list {
+.views-tabs.views-tabs .action-list {
   top: 36px;
   background: var(--gin-bg-layer3);
   box-shadow: 0 1px 2px var(--gin-shadow-button);
 }
 
-.views-tabs .action-list li {
+.views-tabs.views-tabs .action-list li {
   background-color: transparent;
   border: none;
 }
 
-.views-tabs .action-list li input.button {
+.views-tabs.views-tabs .action-list li input.button {
   width: 100%;
   line-height: 1.2;
   box-shadow: none;
   border: none !important;
 }
 
-[dir="ltr"] .views-tabs .action-list li input.button {
+[dir="ltr"] .views-tabs.views-tabs .action-list li input.button {
   text-align: left;
 }
 
-[dir="rtl"] .views-tabs .action-list li input.button {
+[dir="rtl"] .views-tabs.views-tabs .action-list li input.button {
   text-align: right;
 }
 
-.views-tabs .action-list li:hover,
-.views-tabs .action-list li:hover input.button, .views-tabs .action-list li:focus,
-.views-tabs .action-list li:focus input.button, .views-tabs .action-list li:active,
-.views-tabs .action-list li:active input.button {
+.views-tabs.views-tabs .action-list li:hover,
+.views-tabs.views-tabs .action-list li:hover input.button, .views-tabs.views-tabs .action-list li:focus,
+.views-tabs.views-tabs .action-list li:focus input.button, .views-tabs.views-tabs .action-list li:active,
+.views-tabs.views-tabs .action-list li:active input.button {
   color: var(--gin-color-button-text);
   background: var(--gin-color-primary);
 }
@@ -1308,6 +1308,15 @@ a.views-field-excluded {
 
 .view-header {
   margin-bottom: var(--gin-spacing-l);
+}
+
+.views-edit-view.disabled .views-displays,
+.views-edit-view.disabled .views-display-column {
+  background-color: transparent;
+}
+
+.views-edit-view.disabled .views-display-column {
+  opacity: .75;
 }
 
 .gin-table-scroll-wrapper {
