@@ -103,6 +103,11 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    * @see hook_form_alter()
    */
   public function formAlter(array &$form, FormStateInterface $form_state, $form_id) {
+    // Generally don't use sticky buttons in Ajax requests (modals).
+    if ($this->requestStack->getCurrentRequest()->isXmlHttpRequest()) {
+      $form['is_ajax_request'] = ['#weight' => -1];
+    }
+
     // Sticky action buttons.
     if ($this->stickyActionButtons($form, $form_state, $form_id) || $this->isContentForm($form, $form_state, $form_id)) {
       // Action buttons.
