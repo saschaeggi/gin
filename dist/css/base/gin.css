@@ -1433,18 +1433,21 @@ table tbody td {
 }
 
 table tr,
+table tr:focus-within,
 table .draggable-table.tabledrag-disabled tr {
   color: var(--gin-color-text);
   background-color: transparent;
 }
 
 table tr:hover,
+table tr:focus-within:hover,
 table .draggable-table.tabledrag-disabled tr:hover {
   color: var(--gin-color-text);
   background: var(--gin-bg-item);
 }
 
 table tr.selected:hover,
+table tr:focus-within.selected:hover,
 table .draggable-table.tabledrag-disabled tr.selected:hover {
   background: transparent;
 }
@@ -1722,7 +1725,8 @@ table td.field-plugin-summary-cell {
   background-color: var(--gin-bg-layer);
 }
 
-.tabledrag-handle::after {
+.tabledrag-handle::after,
+.tabledrag-handle.tabledrag-handle-y::after {
   background-image: none;
   -webkit-mask-image: url("../../media/sprite.svg#drag-view");
           mask-image: url("../../media/sprite.svg#drag-view");
@@ -1735,25 +1739,34 @@ table td.field-plugin-summary-cell {
 }
 
 @media (forced-colors: none) {
-  .tabledrag-handle::after {
+  .tabledrag-handle::after,
+  .tabledrag-handle.tabledrag-handle-y::after {
     background-color: var(--gin-color-text-light);
   }
 }
 
 @supports (-webkit-mask-image: url()) and ((-webkit-mask-composite: source-over) or (mask-composite: source-over)) {
-  .tabledrag-handle::after {
+  .tabledrag-handle::after,
+  .tabledrag-handle.tabledrag-handle-y::after {
     background-color: var(--gin-color-text-light);
   }
 }
 
-.tabledrag-handle:hover::after {
+.tabledrag-handle:hover::after,
+.tabledrag-handle.tabledrag-handle-y:hover::after {
   transform: scale(1);
 }
 
 @media (forced-colors: none) {
-  .tabledrag-handle:hover::after {
+  .tabledrag-handle:hover::after,
+  .tabledrag-handle.tabledrag-handle-y:hover::after {
     background-color: var(--gin-color-primary);
   }
+}
+
+.tabledrag-handle.tabledrag-handle-y::after {
+  -webkit-mask-image: url("../../media/sprite.svg#drag-y-view");
+          mask-image: url("../../media/sprite.svg#drag-y-view");
 }
 
 .draggable.drag, .draggable.drag:focus {

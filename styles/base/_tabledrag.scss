@@ -49,7 +49,8 @@
   }
 }
 
-.tabledrag-handle {
+.tabledrag-handle,
+.tabledrag-handle.tabledrag-handle-y {
   &::after {
     background-image: none;
     mask-image: icon('drag');
@@ -75,6 +76,10 @@
       }
     }
   }
+}
+
+.tabledrag-handle.tabledrag-handle-y::after {
+  mask-image: icon('drag-y');
 }
 
 .draggable.drag, .draggable.drag:focus {
