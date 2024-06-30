@@ -100,6 +100,7 @@ table {
   }
 
   tr,
+  tr:focus-within,
   .draggable-table.tabledrag-disabled tr {
     color: var(--gin-color-text);
     background-color: transparent;

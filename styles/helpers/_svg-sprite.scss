@@ -45,6 +45,8 @@ $sprites: (
     'php': "../../media/sprite.svg#php-view",
     'server': "../../media/sprite.svg#server-view",
     'drag-dots': "../../media/sprite.svg#drag-dots-view",
+    'drag-x': "../../media/sprite.svg#drag-x-view",
+    'drag-y': "../../media/sprite.svg#drag-y-view",
     'drag': "../../media/sprite.svg#drag-view",
     'sort-asc': "../../media/sprite.svg#sort-asc-view",
     'sort-desc': "../../media/sprite.svg#sort-desc-view",
@@ -260,6 +262,14 @@ $sizes: (
         'height': 24px
     ),
     'drag-dots': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'drag-x': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'drag-y': (
         'width': 24px,
         'height': 24px
     ),
