@@ -855,13 +855,11 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title > button.toolbar
 }
 
 [dir="ltr"] .gin--navigation .admin-toolbar {
-  border-right: 0;
-  box-shadow: 1px 0 0 var(--gin-border-color-layer);
+  border-right: 1px solid var(--gin-border-color-layer);
 }
 
 [dir="rtl"] .gin--navigation .admin-toolbar {
-  border-left: 0;
-  box-shadow: -1px 0 0 var(--gin-border-color-layer);
+  border-left: 1px solid var(--gin-border-color-layer);
 }
 
 @media (max-width: 60.99em) {
@@ -981,6 +979,18 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title > button.toolbar
   background: var(--gin-color-primary);
 }
 
+@media (forced-colors: active) {
+  .gin--navigation .toolbar-menu__item--level-1.menu-item--expanded > .toolbar-link::before, .gin--navigation .toolbar-menu__item--level-1.menu-item--expanded > .toolbar-link::after,
+  .gin--navigation .toolbar-menu__item--level-1.current > .toolbar-link::before,
+  .gin--navigation .toolbar-menu__item--level-1.current > .toolbar-link::after,
+  .gin--navigation .toolbar-menu__item--level-1.active-path > .toolbar-link::before,
+  .gin--navigation .toolbar-menu__item--level-1.active-path > .toolbar-link::after,
+  .gin--navigation .toolbar-menu__item--level-2.active-path > .toolbar-link::before,
+  .gin--navigation .toolbar-menu__item--level-2.active-path > .toolbar-link::after {
+    background-color: LinkText;
+  }
+}
+
 .gin--navigation .toolbar-menu__item--level-1.menu-item--expanded > .toolbar-link:hover, .gin--navigation .toolbar-menu__item--level-1.menu-item--expanded > .toolbar-link:focus,
 .gin--navigation .toolbar-menu__item--level-1.current > .toolbar-link:hover,
 .gin--navigation .toolbar-menu__item--level-1.current > .toolbar-link:focus,
@@ -1023,6 +1033,28 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title > button.toolbar
 .gin--navigation .toolbar-link--sidebar-toggle:focus::before,
 .gin--navigation .toolbar-link--sidebar-toggle:focus::after {
   background: var(--gin-color-primary);
+}
+
+@media (forced-colors: active) {
+  .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:hover::before, .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:hover::after,
+  .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:focus::before,
+  .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:focus::after,
+  .gin--navigation .toolbar-menu__item--level-2 > .toolbar-link:hover::before,
+  .gin--navigation .toolbar-menu__item--level-2 > .toolbar-link:hover::after,
+  .gin--navigation .toolbar-menu__item--level-2 > .toolbar-link:focus::before,
+  .gin--navigation .toolbar-menu__item--level-2 > .toolbar-link:focus::after,
+  .gin--navigation .toolbar-menu__item--level-2 .toolbar-link:hover::before,
+  .gin--navigation .toolbar-menu__item--level-2 .toolbar-link:hover::after,
+  .gin--navigation .toolbar-menu__item--level-2 .toolbar-link:focus::before,
+  .gin--navigation .toolbar-menu__item--level-2 .toolbar-link:focus::after,
+  .gin--navigation .toolbar-menu__item.toolbar-menu__item--expanded:not(.current) > .toolbar-link::before,
+  .gin--navigation .toolbar-menu__item.toolbar-menu__item--expanded:not(.current) > .toolbar-link::after,
+  .gin--navigation .toolbar-link--sidebar-toggle:hover::before,
+  .gin--navigation .toolbar-link--sidebar-toggle:hover::after,
+  .gin--navigation .toolbar-link--sidebar-toggle:focus::before,
+  .gin--navigation .toolbar-link--sidebar-toggle:focus::after {
+    background-color: LinkText;
+  }
 }
 
 .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--manage-fields,
@@ -1188,9 +1220,21 @@ button.toolbar-link--sidebar-toggle:hover::before, button.toolbar-link--sidebar-
   background: var(--gin-color-primary) !important;
 }
 
+@media (forced-colors: active) {
+  .admin-toolbar__logo .toolbar-link--gin-home, .admin-toolbar__logo .toolbar-link--gin-home:hover, .admin-toolbar__logo .toolbar-link--gin-home:focus {
+    background: CanvasText !important;
+  }
+}
+
 .admin-toolbar__logo .toolbar-link--gin-home::before {
   --icon: url("../../media/sprite.svg#drupal-view");
   background: var(--gin-bg-layer2) !important;
+}
+
+@media (forced-colors: active) {
+  .admin-toolbar__logo .toolbar-link--gin-home::before {
+    background: Canvas !important;
+  }
 }
 
 .admin-toolbar__logo .toolbar-link--gin-home span {

@@ -260,34 +260,36 @@
   --gin-bg-header: #454547;
 }
 
-.gin--high-contrast-mode {
-  --gin-bg-app: #d9dbde;
-  --gin-color-text: rgba(0, 0, 0, .8);
-  --gin-color-text-light: rgba(0, 0, 0, .8);
-  --gin-icon-color: rgba(0, 0, 0, .8);
-  --gin-color-focus: rgba(0, 0, 0, .8);
-  --gin-border-color: rgba(0, 0, 0, .8);
-  --gin-border-color-secondary: rgba(0, 0, 0, .6);
-  --gin-border-color-layer: rgba(0, 0, 0, .6);
-  --gin-border-color-layer2: rgba(0, 0, 0, .8);
-  --gin-border-color-table: rgba(0, 0, 0, .8);
-  --gin-border-color-table-header: rgba(0, 0, 0, .8);
-  --gin-border-color-form-element: rgba(0, 0, 0, .8);
-}
+@media (forced-colors: none) {
+  .gin--high-contrast-mode {
+    --gin-bg-app: #d9dbde;
+    --gin-color-text: rgba(0, 0, 0, .8);
+    --gin-color-text-light: rgba(0, 0, 0, .8);
+    --gin-icon-color: rgba(0, 0, 0, .8);
+    --gin-color-focus: rgba(0, 0, 0, .8);
+    --gin-border-color: rgba(0, 0, 0, .8);
+    --gin-border-color-secondary: rgba(0, 0, 0, .6);
+    --gin-border-color-layer: rgba(0, 0, 0, .6);
+    --gin-border-color-layer2: rgba(0, 0, 0, .8);
+    --gin-border-color-table: rgba(0, 0, 0, .8);
+    --gin-border-color-table-header: rgba(0, 0, 0, .8);
+    --gin-border-color-form-element: rgba(0, 0, 0, .8);
+  }
 
-.gin--dark-mode .gin--high-contrast-mode {
-  --gin-bg-app: #000;
-  --gin-color-text: rgba(255, 255, 255, .8);
-  --gin-color-text-light: rgba(255, 255, 255, .8);
-  --gin-icon-color: rgba(255, 255, 255, .8);
-  --gin-color-focus: rgba(255, 255, 255, .8);
-  --gin-border-color: rgba(255, 255, 255, .8);
-  --gin-border-color-secondary: rgba(255, 255, 255, .6);
-  --gin-border-color-layer: rgba(255, 255, 255, .6);
-  --gin-border-color-layer2: rgba(255, 255, 255, .8);
-  --gin-border-color-table: rgba(255, 255, 255, .8);
-  --gin-border-color-table-header: rgba(255, 255, 255, .8);
-  --gin-border-color-form-element: rgba(255, 255, 255, .8);
+  .gin--dark-mode .gin--high-contrast-mode {
+    --gin-bg-app: #000;
+    --gin-color-text: rgba(255, 255, 255, .8);
+    --gin-color-text-light: rgba(255, 255, 255, .8);
+    --gin-icon-color: rgba(255, 255, 255, .8);
+    --gin-color-focus: rgba(255, 255, 255, .8);
+    --gin-border-color: rgba(255, 255, 255, .8);
+    --gin-border-color-secondary: rgba(255, 255, 255, .6);
+    --gin-border-color-layer: rgba(255, 255, 255, .6);
+    --gin-border-color-layer2: rgba(255, 255, 255, .8);
+    --gin-border-color-table: rgba(255, 255, 255, .8);
+    --gin-border-color-table-header: rgba(255, 255, 255, .8);
+    --gin-border-color-form-element: rgba(255, 255, 255, .8);
+  }
 }
 
 [data-gin-focus=green] {
