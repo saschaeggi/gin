@@ -37,7 +37,7 @@
 }
 
 body[data-meta-sidebar=closed] {
-  --gin-sidebar-width-offset: 0px;
+  --gin-sidebar-offset: 0px;
 }
 
 body[data-meta-sidebar=closed] .layout-region-node-secondary {
