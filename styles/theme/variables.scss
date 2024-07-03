@@ -317,6 +317,12 @@
   --gin-tooltip-bg: var(--gin-bg-layer3);
 }
 
+@media (forced-colors: active) {
+  :root {
+    --gin-icon-color: CanvasText;
+  }
+}
+
 .entity-meta {
   --entity-meta-color-bg: transparent;
   --entity-meta-border-color: var(--gin-border-color);

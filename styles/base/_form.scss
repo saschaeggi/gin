@@ -157,6 +157,10 @@
       background-color: var(--gin-bg-input);
     }
 
+    @media (forced-colors: active) {
+      border-width: 2px;
+    }
+
     &::before {
       position: absolute;
       content: "";
@@ -169,6 +173,26 @@
 
       .gin--dark-mode & {
         background-color: var(--gin-border-color-form-element);
+      }
+
+      @media (forced-colors: active) {
+        background-color: CanvasText;
+      }
+    }
+
+    @media (forced-colors: active) {
+      &::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-color: Canvas;
+        mask-image: icon('toggle-unchecked');
+        mask-size: 16px 16px;
+        mask-position: 17px 2px;
+        mask-repeat: no-repeat;
+        transform: translateX(-16px);
+        transition: transform .3s;
       }
     }
 
@@ -207,6 +231,19 @@
 
         .gin--high-contrast-mode & {
           background-color: var(--gin-border-color);
+        }
+
+        @media (forced-colors: active) {
+          padding-left: 8px;
+          background-color: LinkText !important;
+        }
+      }
+
+      @media (forced-colors: active) {
+        &::after {
+          transform: translateX(16px);
+          mask-image: icon('checked');
+          mask-position: 2px 2px;
         }
       }
     }

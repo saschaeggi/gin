@@ -85,37 +85,39 @@ $ginDarkmodeColors: (
 }
 
 // High contrast mode
-.gin--high-contrast-mode {
-  $highContrastMode: rgba(0, 0, 0, .8);
+@media (forced-colors: none) {
+  .gin--high-contrast-mode {
+    $highContrastMode: rgba(0, 0, 0, .8);
 
-  --gin-bg-app: #d9dbde;
-  --gin-color-text: #{$highContrastMode};
-  --gin-color-text-light: #{$highContrastMode};
-  --gin-icon-color: #{$highContrastMode};
-  --gin-color-focus: #{$highContrastMode};
-  --gin-border-color: #{$highContrastMode};
-  --gin-border-color-secondary: rgba(0, 0, 0, .6);
-  --gin-border-color-layer: rgba(0, 0, 0, .6);
-  --gin-border-color-layer2: #{$highContrastMode};
-  --gin-border-color-table: #{$highContrastMode};
-  --gin-border-color-table-header: #{$highContrastMode};
-  --gin-border-color-form-element: #{$highContrastMode};
-
-  .gin--dark-mode & {
-    $highContrastMode: rgba(255, 255, 255, .8);
-
-    --gin-bg-app: #000;
+    --gin-bg-app: #d9dbde;
     --gin-color-text: #{$highContrastMode};
     --gin-color-text-light: #{$highContrastMode};
     --gin-icon-color: #{$highContrastMode};
     --gin-color-focus: #{$highContrastMode};
     --gin-border-color: #{$highContrastMode};
-    --gin-border-color-secondary: rgba(255, 255, 255, .6);
-    --gin-border-color-layer: rgba(255, 255, 255, .6);
+    --gin-border-color-secondary: rgba(0, 0, 0, .6);
+    --gin-border-color-layer: rgba(0, 0, 0, .6);
     --gin-border-color-layer2: #{$highContrastMode};
     --gin-border-color-table: #{$highContrastMode};
     --gin-border-color-table-header: #{$highContrastMode};
     --gin-border-color-form-element: #{$highContrastMode};
+
+    .gin--dark-mode & {
+      $highContrastMode: rgba(255, 255, 255, .8);
+
+      --gin-bg-app: #000;
+      --gin-color-text: #{$highContrastMode};
+      --gin-color-text-light: #{$highContrastMode};
+      --gin-icon-color: #{$highContrastMode};
+      --gin-color-focus: #{$highContrastMode};
+      --gin-border-color: #{$highContrastMode};
+      --gin-border-color-secondary: rgba(255, 255, 255, .6);
+      --gin-border-color-layer: rgba(255, 255, 255, .6);
+      --gin-border-color-layer2: #{$highContrastMode};
+      --gin-border-color-table: #{$highContrastMode};
+      --gin-border-color-table-header: #{$highContrastMode};
+      --gin-border-color-form-element: #{$highContrastMode};
+    }
   }
 }
 

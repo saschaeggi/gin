@@ -6,6 +6,7 @@ $sprites: (
     'trash': "../../media/sprite.svg#trash-view",
     'asterisk': "../../media/sprite.svg#asterisk-view",
     'checked': "../../media/sprite.svg#checked-view",
+    'toggle-unchecked': "../../media/sprite.svg#toggle-unchecked-view",
     'add': "../../media/sprite.svg#add-view",
     'calendar': "../../media/sprite.svg#calendar-view",
     'circle': "../../media/sprite.svg#circle-view",
@@ -106,6 +107,10 @@ $sizes: (
         'height': 24px
     ),
     'checked': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'toggle-unchecked': (
         'width': 24px,
         'height': 24px
     ),
