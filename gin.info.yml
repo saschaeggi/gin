@@ -114,6 +114,7 @@ libraries-extend:
     - gin/webform
   webform_ui/webform_ui:
     - gin/webform
+    - gin/webform_ui
   webform/webform.element.help:
     - gin/webform
   webform/webform.element.details.toggle:

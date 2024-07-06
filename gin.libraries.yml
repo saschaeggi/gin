@@ -215,7 +215,11 @@ floating-ui:
 
 gin_media_embed_ckeditor_theme:
   js:
-    js/overrides/media_embed_ckeditor.theme.js: {}
+    js/overrides/media_embed_ckeditor.theme.js: { minified: false }
+
+webform_ui:
+  js:
+    js/overrides/webform_ui.js: { minified: false }
 
 # Components
 

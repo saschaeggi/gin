@@ -1320,6 +1320,7 @@ a.views-field-excluded {
 }
 
 .gin-table-scroll-wrapper {
+  clear: both;
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
