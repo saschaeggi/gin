@@ -51,18 +51,27 @@
             set cell_classes = [
               'th__item',
               cell.active_table_sort ? 'is-active',
+              'select-all' in cell.attributes ? 'gin--sticky-bulk-select',
             ]
           %}
         {% else %}
           {%
             set cell_classes = [
-              'th__' ~ cell.content|render|clean_class,
+              cell.content|render|clean_class ? 'th__' ~ cell.content|render|clean_class,
               cell.active_table_sort ? 'is-active',
+              'select-all' in cell.attributes ? 'gin--sticky-bulk-select',
             ]
           %}
         {% endif %}
         <{{ cell.tag }}{{ cell.attributes.addClass(cell_classes) }}>
           {{- cell.content -}}
+          {% if 'gin--sticky-bulk-select' in cell_classes %}
+            <input
+              type="checkbox"
+              class="form-checkbox form-boolean form-boolean--type-checkbox"
+              title="{{ 'Select all rows in this table'|t }}"
+            />
+          {% endif %}
         </{{ cell.tag }}>
       {% endfor %}
     </tr>

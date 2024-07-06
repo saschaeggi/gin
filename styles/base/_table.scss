@@ -36,6 +36,7 @@ table.gin--sticky-table-header {
 
 table.sticky-header {
   left: auto !important;
+  min-width: 100%;
   max-width: fit-content;
   background: transparent;
 }
