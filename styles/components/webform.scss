@@ -86,3 +86,27 @@
     margin-block: 0;
   }
 }
+
+.webform-ajax-messages {
+  left: var(--gin-offset-x);
+  bottom: var(--gin-spacing-s);
+  margin-left: var(--gin-spacing-m);
+
+  .messages--info,
+  .messages--status,
+  .messages--warning,
+  .messages--error {
+    display: inline-block;
+  }
+}
+
+.webform-edit-form {
+  .tabledrag-toggle-weight-wrapper {
+    float: right;
+    margin-top: calc(var(--gin-spacing-s) * -1);
+
+    button {
+      position: static;
+    }
+  }
+}
