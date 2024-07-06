@@ -11,9 +11,14 @@
 
   Drupal.ginStickyFormActions = {
     init: function (context) {
-      once('ginEditForm', '.region-content form.gin--has-sticky-form-actions', context).forEach(form => {
-        const newParent = document.querySelector('.gin-sticky-form-actions');
+      const newParent = document.querySelector('.gin-sticky-form-actions');
 
+      // If form updates, update form IDs.
+      if (context.classList?.contains('gin--has-sticky-form-actions') && context.getAttribute('id')) {
+        this.updateFormId(newParent, context);
+      }
+
+      once('ginEditForm', '.region-content form.gin--has-sticky-form-actions', context).forEach(form => {
         // Sync form ID.
         this.updateFormId(newParent, form);
 
