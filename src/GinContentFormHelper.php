@@ -3,6 +3,7 @@
 namespace Drupal\gin;
 
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+use Drupal\Core\EventSubscriber\MainContentViewSubscriber;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
@@ -103,6 +104,11 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    * @see hook_form_alter()
    */
   public function formAlter(array &$form, FormStateInterface $form_state, $form_id) {
+    if ($this->isModalOrOffcanvas()) {
+      $form['is_ajax_request'] = ['#weight' => -1];
+      return FALSE;
+    }
+
     // Sticky action buttons.
     if ($this->stickyActionButtons($form, $form_state, $form_id) || $this->isContentForm($form, $form_state, $form_id)) {
       // Action buttons.
@@ -296,7 +302,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    */
   public function stickyActionButtons(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = NULL) {
     // Generally don't use sticky buttons in Ajax requests (modals).
-    if ($this->requestStack->getCurrentRequest()->isXmlHttpRequest()) {
+    if ($this->isModalOrOffcanvas()) {
       return FALSE;
     }
 
@@ -343,7 +349,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    */
   public function isContentForm(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = '') {
     // Generally ignore all forms in Ajax requests (modals).
-    if ($this->requestStack->getCurrentRequest()->isXmlHttpRequest()) {
+    if ($this->isModalOrOffcanvas()) {
       return FALSE;
     }
 
@@ -399,6 +405,21 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     }
 
     return $is_content_form;
+  }
+
+  /**
+   * Check the context we're in.
+   *
+   * Checks if the form is in either
+   * a modal or an off-canvas dialog.
+   */
+  private function isModalOrOffcanvas() {
+    $wrapper_format = \Drupal::request()->query->get(MainContentViewSubscriber::WRAPPER_FORMAT);
+    return (in_array($wrapper_format, [
+      'drupal_modal',
+      'drupal_dialog',
+      'drupal_dialog.off_canvas',
+    ])) ? TRUE : FALSE;
   }
 
 }

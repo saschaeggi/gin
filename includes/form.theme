@@ -49,6 +49,8 @@ function gin_form_alter(&$form, $form_state, $form_id) {
  */
 function gin_form_after_build(array $form, FormStateInterface $form_state): array {
   _gin_form_actions($form['actions'] ?? NULL);
+  unset($form['actions']);
+  unset($form['gin_actions']);
   return $form;
 }
 
