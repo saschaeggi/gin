@@ -63,6 +63,13 @@
            */
           if (stateChanged) {
             $checkbox.prop('checked', state).trigger('change');
+
+            // Update status in Gin sticky table header.
+            $table
+              .parents('.gin-table-scroll-wrapper')
+              .prev('table.gin--sticky-table-header')
+              .find('th.select-all input[type="checkbox"]')
+              .prop('checked', state);
           }
         });
     };

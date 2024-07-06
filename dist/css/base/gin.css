@@ -1360,6 +1360,7 @@ table.gin--sticky-table-header tr {
 }
 
 table.sticky-header {
+  min-width: 100%;
   max-width: -moz-fit-content;
   max-width: fit-content;
   background: transparent;

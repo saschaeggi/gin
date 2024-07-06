@@ -22,7 +22,7 @@
           checkbox.addEventListener('click', (event) => {
             event.stopImmediatePropagation();
             event.checked = !event.checked;
-            document.querySelector('.gin-table-scroll-wrapper table.sticky-enabled thead .select-all > input').click();
+            document.querySelector('.gin-table-scroll-wrapper table.sticky-enabled thead .select-all > input, .gin-table-scroll-wrapper table.sticky-header thead .select-all > input').click();
           });
         });
       });

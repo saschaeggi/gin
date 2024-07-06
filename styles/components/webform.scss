@@ -75,3 +75,14 @@
     }
   }
 }
+
+.webform-bulk-form[data-drupal-selector*=-bulk-form] {
+  > .container-inline {
+    margin-block-start: calc(var(--gin-spacing-xxs) * -1);
+    margin-block-end: var(--gin-spacing-l);
+  }
+
+  td:first-child > .form-type-checkbox {
+    margin-block: 0;
+  }
+}
