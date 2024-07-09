@@ -8,8 +8,8 @@
       }));
     },
     updatePosition: function(el) {
-      const secondaryAction = el.querySelector(".secondary-action"), dropbuttonItems = el.querySelector(".dropbutton__items"), toggleHeight = el.offsetHeight, dropbuttonHeight = dropbuttonItems.offsetHeight, boundingRect = secondaryAction.getBoundingClientRect(), spaceBelow = window.innerHeight - boundingRect.bottom;
-      dropbuttonItems.style.position = "fixed", dropbuttonItems.style.right = window.innerWidth - boundingRect.right + "px", 
+      const leftAligned = el.closest(".node-form") || !1, secondaryAction = el.querySelector(".secondary-action"), dropbuttonItems = el.querySelector(".dropbutton__items"), toggleHeight = el.offsetHeight, dropbuttonHeight = dropbuttonItems.offsetHeight, boundingRect = secondaryAction.getBoundingClientRect(), spaceBelow = window.innerHeight - boundingRect.bottom;
+      dropbuttonItems.style.position = "fixed", leftAligned ? dropbuttonItems.style.left = `${boundingRect.left}px` : dropbuttonItems.style.right = window.innerWidth - boundingRect.right + "px", 
       dropbuttonItems.style.top = spaceBelow < dropbuttonHeight ? boundingRect.top - toggleHeight - dropbuttonHeight + "px" : `${boundingRect.bottom}px`;
     }
   };

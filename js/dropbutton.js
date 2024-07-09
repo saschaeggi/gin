@@ -12,6 +12,7 @@
     },
 
     updatePosition: function (el) {
+      const leftAligned = el.closest('.node-form') || false;
       const secondaryAction = el.querySelector('.secondary-action');
       const dropbuttonItems = el.querySelector('.dropbutton__items');
       const toggleHeight = el.offsetHeight;
@@ -20,7 +21,11 @@
       const spaceBelow = window.innerHeight - boundingRect.bottom;
 
       dropbuttonItems.style.position = 'fixed';
-      dropbuttonItems.style.right = `${window.innerWidth - boundingRect.right}px`;
+      if (leftAligned) {
+        dropbuttonItems.style.left = `${boundingRect.left}px`;
+      } else {
+        dropbuttonItems.style.right = `${window.innerWidth - boundingRect.right}px`;
+      }
 
       if (spaceBelow < dropbuttonHeight) {
         dropbuttonItems.style.top = `${boundingRect.top - toggleHeight - dropbuttonHeight}px`;
