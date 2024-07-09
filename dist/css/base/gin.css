@@ -3180,7 +3180,8 @@ a.button.button--danger:active:before {
 }
 
 .button--primary.button--danger,
-a.button--primary.button--danger {
+a.button--primary.button--danger,
+#edit-submit.button.button--danger {
   color: var(--gin-bg-layer);
   background-color: var(--gin-color-danger);
 }
