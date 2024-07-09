@@ -12,6 +12,7 @@
   Drupal.ginStickyFormActions = {
     init: function (context) {
       const newParent = document.querySelector('.gin-sticky-form-actions');
+      if (!newParent) { return }
 
       // If form updates, update form IDs.
       if (context.classList?.contains('gin--has-sticky-form-actions') && context.getAttribute('id')) {
