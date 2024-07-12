@@ -11,6 +11,36 @@
 
 (function ($, Drupal, drupalSettings) {
   /**
+   * Determine if an element is visible.
+   *
+   * @param {HTMLElement} elem
+   *   The element to check.
+   *
+   * @return {boolean}
+   *  True if the element is visible.
+   */
+  Drupal.elementIsVisible = function (elem) {
+    return !!(
+      elem.offsetWidth ||
+      elem.offsetHeight ||
+      elem.getClientRects().length
+    );
+  };
+
+  /**
+   * Determine if an element is hidden.
+   *
+   * @param {HTMLElement} elem
+   *   The element to check.
+   *
+   * @return {boolean}
+   *  True if the element is hidden.
+   */
+  Drupal.elementIsHidden = function (elem) {
+    return !Drupal.elementIsVisible(elem);
+  };
+
+  /**
    * Store the state of weight columns display for all tables.
    *
    * Default value is to hide weight columns.
