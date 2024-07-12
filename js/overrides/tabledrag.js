@@ -253,7 +253,8 @@
         this.toggleColumns();
       }.bind(this),
     );
-    if ($table.parents('.gin-table-scroll-wrapper')) {
+
+    if ($table.parents('.gin-table-scroll-wrapper').length > 0) {
       $table.parents('.gin-table-scroll-wrapper').before($toggleWeightWrapper);
     }
     else {
