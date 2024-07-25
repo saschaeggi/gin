@@ -2,6 +2,7 @@
 
 namespace Drupal\gin;
 
+use Drupal\Core\Ajax\AjaxHelperTrait;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\EventSubscriber\MainContentViewSubscriber;
 use Drupal\Core\Extension\ModuleHandlerInterface;
@@ -19,6 +20,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 class GinContentFormHelper implements ContainerInjectionInterface {
 
+  use AjaxHelperTrait;
   use StringTranslationTrait;
 
   /**
@@ -414,17 +416,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    * a modal or an off-canvas dialog.
    */
   private function isModalOrOffcanvas() {
-    $wrapper_format = \Drupal::request()->query->get(MainContentViewSubscriber::WRAPPER_FORMAT);
-
-    if ($wrapper_format === 'drupal_ajax') {
-      return \Drupal::request()->query->has('media_library_opener_id');
-    }
-
-    return (in_array($wrapper_format, [
-      'drupal_modal',
-      'drupal_dialog',
-      'drupal_dialog.off_canvas',
-    ])) ? TRUE : FALSE;
+    return $this->isAjax();
   }
 
 }
