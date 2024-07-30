@@ -3049,6 +3049,10 @@ html[dir="rtl"].js.no-touchevents .dropbutton--multiple.dropbutton--extrasmall .
   margin-left: 0;
 }
 
+.layout-region-node-secondary .dropbutton .dropbutton__items {
+  min-width: 80px;
+}
+
 .action-link {
   color: var(--gin-color-primary);
   background: transparent;
