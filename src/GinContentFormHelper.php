@@ -422,6 +422,10 @@ class GinContentFormHelper implements ContainerInjectionInterface {
   private function isModalOrOffcanvas() {
     $wrapper_format = \Drupal::request()->query->get(MainContentViewSubscriber::WRAPPER_FORMAT);
 
+    if ($wrapper_format === 'drupal_ajax') {
+      return \Drupal::request()->query->has('media_library_opener_id');
+    }
+
     return (in_array($wrapper_format, [
       'drupal_modal',
       'drupal_dialog',
