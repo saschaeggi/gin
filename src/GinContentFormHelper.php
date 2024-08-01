@@ -330,6 +330,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       strpos($form_id, 'views_ui_add_') !== FALSE ||
       strpos($form_id, 'views_ui_config_') !== FALSE ||
       strpos($form_id, 'views_ui_edit_') !== FALSE ||
+      strpos($form_id, 'layout_paragraphs_component_form') !== FALSE ||
       in_array($form_id, $form_ids, TRUE) ||
       in_array($route_name, $form_ids, TRUE)
     ) {
@@ -420,6 +421,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    */
   private function isModalOrOffcanvas() {
     $wrapper_format = \Drupal::request()->query->get(MainContentViewSubscriber::WRAPPER_FORMAT);
+
     return (in_array($wrapper_format, [
       'drupal_modal',
       'drupal_dialog',
