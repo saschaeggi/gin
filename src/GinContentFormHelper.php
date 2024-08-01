@@ -321,6 +321,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     $this->themeManager->alter('gin_ignore_sticky_form_actions', $form_ids);
 
     if (
+      strpos($form_id, '_entity_add_form') !== FALSE ||
       strpos($form_id, '_entity_edit_form') !== FALSE ||
       strpos($form_id, '_exposed_form') !== FALSE ||
       strpos($form_id, '_preview_form') !== FALSE ||
