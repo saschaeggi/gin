@@ -327,8 +327,9 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       strpos($form_id, '_preview_form') !== FALSE ||
       strpos($form_id, '_delete_form') !== FALSE ||
       strpos($form_id, '_confirm_form') !== FALSE ||
-      strpos($form_id, 'views_ui_add_handler_form') !== FALSE ||
-      strpos($form_id, 'views_ui_config_item_form') !== FALSE ||
+      strpos($form_id, 'views_ui_add_') !== FALSE ||
+      strpos($form_id, 'views_ui_config_') !== FALSE ||
+      strpos($form_id, 'views_ui_edit_') !== FALSE ||
       in_array($form_id, $form_ids, TRUE) ||
       in_array($route_name, $form_ids, TRUE)
     ) {
