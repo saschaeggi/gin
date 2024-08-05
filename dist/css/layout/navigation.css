@@ -1454,14 +1454,6 @@ button.toolbar-link--sidebar-toggle:hover::before, button.toolbar-link--sidebar-
   border-right: none;
 }
 
-[dir="ltr"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user {
-  margin-right: -1em;
-}
-
-[dir="rtl"] .gin-secondary-toolbar .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user {
-  margin-left: -1em;
-}
-
 .gin--navigation .toolbar-link--user {
   display: none !important;
 }
