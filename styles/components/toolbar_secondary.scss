@@ -200,9 +200,13 @@
           margin: 0;
           border-radius: var(--gin-border-s) var(--gin-border-s) 0 0;
 
-          &:before {
+          &::before {
             top: 0;
-            left: 10px;
+            width: 2rem;
+
+            @include mq(wide) {
+              left: -8px;
+            }
           }
 
           &:focus {

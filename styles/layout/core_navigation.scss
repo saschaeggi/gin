@@ -105,6 +105,7 @@ body.gin--core-navigation {
 .toolbar-anti-flicker.toolbar-loading.toolbar-fixed body.gin--core-navigation,
 body.gin--core-navigation {
   padding-top: unset !important;
+  margin-inline-start: auto !important;
 }
 
 // --------------------------------------------------
@@ -316,10 +317,6 @@ body.gin--core-navigation {
 
   .toolbar-tray .menu-item + .menu-item {
     border-left: none;
-  }
-
-  .toolbar-secondary .toolbar-bar .toolbar-id--toolbar-icon-user {
-    margin-right: -1em;
   }
 }
 
