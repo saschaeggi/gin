@@ -37,8 +37,7 @@ function gin_preprocess_page(&$variables) {
 
   // Get form actions.
   if ($form_actions = _gin_form_actions()) {
-    $navigation_config = \Drupal::configFactory()->get('navigation.settings');
-    if ($navigation_config->get('show_top_bar')) {
+    if (_gin_module_is_active('navigation_top_bar')) {
       $variables['gin_form_actions'] = '';
     }
     else {

@@ -136,6 +136,20 @@ body.gin--core-navigation {
 // --------------------------------------------------
 // Button style overrides
 // --------------------------------------------------
+#navigation-link-navigationcreate {
+  margin-top: var(--gin-spacing-xxs);
+}
+
+.toolbar-block__list {
+  gap: 0;
+}
+
+.toolbar-button {
+  padding-inline: 10px;
+  padding-block: calc(var(--gin-spacing-xs) + 1px);
+  margin-bottom: var(--gin-spacing-xxxs);
+}
+
 .toolbar-button,
 .toolbar-menu__link {
   color: var(--gin-color-text);
