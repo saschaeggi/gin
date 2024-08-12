@@ -113,10 +113,10 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
   -webkit-mask-position: center center;
           mask-position: center center;
   background-color: var(--gin-icon-color);
-  -webkit-mask-image: url("../../media/sprite.svg#config-view");
-          mask-image: url("../../media/sprite.svg#config-view");
-  -webkit-mask-size: var(--gin-icon-size-toolbar-secondary) var(--gin-icon-size-toolbar-secondary);
-          mask-size: var(--gin-icon-size-toolbar-secondary) var(--gin-icon-size-toolbar-secondary);
+  -webkit-mask-image: url("../../media/sprite.svg#sidebar-view");
+          mask-image: url("../../media/sprite.svg#sidebar-view");
+  -webkit-mask-size: var(--gin-icon-size-sidebar-toggle) var(--gin-icon-size-sidebar-toggle);
+          mask-size: var(--gin-icon-size-sidebar-toggle) var(--gin-icon-size-sidebar-toggle);
   border-radius: 50%;
 }
 
