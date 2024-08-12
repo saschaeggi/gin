@@ -110,8 +110,8 @@ body[data-meta-sidebar=open] {
       mask-repeat: no-repeat;
       mask-position: center center;
       background-color: var(--gin-icon-color);
-      mask-image: icon('config');
-      mask-size: var(--gin-icon-size-toolbar-secondary) var(--gin-icon-size-toolbar-secondary);
+      mask-image: icon('sidebar');
+      mask-size: var(--gin-icon-size-sidebar-toggle) var(--gin-icon-size-sidebar-toggle);
       border-radius: 50%;
     }
 
