@@ -91,9 +91,12 @@
     background: var(--gin-bg-app);
 
     .button {
-      font-weight: var(--gin-font-weight-heavy);
-      margin-top: 0;
-      margin-bottom: 0;
+      font-family: var(--gin-font);
+      font-size: var(--gin-font-size-s);
+      font-weight: var(--gin-font-weight-semibold);
+      padding: calc(var(--gin-spacing-s) - 2px) var(--gin-spacing-m);
+      margin-block: 0;
+      height: auto;
 
       &:last-of-type {
         margin-right: 0;

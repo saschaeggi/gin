@@ -113,12 +113,6 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     if ($this->stickyActionButtons($form, $form_state, $form_id) || $this->isContentForm($form, $form_state, $form_id)) {
       // Action buttons.
       if (isset($form['actions'])) {
-        if (isset($form['actions']['preview'])) {
-          // Put Save after Preview.
-          $save_weight = $form['actions']['preview']['#weight'] ? $form['actions']['preview']['#weight'] + 1 : 11;
-          $form['actions']['submit']['#weight'] = $save_weight;
-        }
-
         // Add sticky class.
         $form['actions']['#attributes']['class'][] = 'gin-sticky-form-actions';
         // Move to last position possible.
