@@ -28,7 +28,8 @@
     backdrop-filter: none;
   }
 
-  .gin--navigation & {
+  .gin--navigation &,
+  .gin--core-navigation & {
     margin-left: var(--gin-toolbar-x-offset);
     width: calc(100% - var(--gin-toolbar-x-offset));
   }
@@ -91,7 +92,7 @@
     align-items: center;
     justify-content: space-between;
     width: auto;
-    padding: var(--gin-spacing-m) 0;
+    padding: var(--gin-spacing-s) 0;
     margin: 0 var(--gin-spacing-m);
     height: 100%;
 

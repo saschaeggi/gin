@@ -3129,6 +3129,13 @@ html[dir="rtl"].js.no-touchevents .dropbutton--multiple.dropbutton--extrasmall .
 a.button.button--danger {
   color: var(--gin-color-danger);
   box-shadow: 0 1px 2px var(--gin-color-danger-lightest);
+  min-height: 0;
+}
+
+.action-link--icon-trash.action-link--danger::before,
+.button.button--danger::before,
+a.button.button--danger::before {
+  display: none;
 }
 
 .action-link--icon-trash.action-link--danger, .action-link--icon-trash.action-link--danger:hover, .action-link--icon-trash.action-link--danger:focus, .action-link--icon-trash.action-link--danger:active,
@@ -3143,21 +3150,6 @@ a.button.button--danger:active {
   border-color: var(--gin-color-danger) !important;
 }
 
-.action-link--icon-trash.action-link--danger:before, .action-link--icon-trash.action-link--danger:hover:before, .action-link--icon-trash.action-link--danger:focus:before, .action-link--icon-trash.action-link--danger:active:before,
-.button.button--danger:before,
-.button.button--danger:hover:before,
-.button.button--danger:focus:before,
-.button.button--danger:active:before,
-a.button.button--danger:before,
-a.button.button--danger:hover:before,
-a.button.button--danger:focus:before,
-a.button.button--danger:active:before {
-  background-image: none;
-  background-color: var(--gin-color-danger) !important;
-  -webkit-mask-image: url("../../media/sprite.svg#trash-view");
-          mask-image: url("../../media/sprite.svg#trash-view");
-}
-
 .action-link--icon-trash.action-link--danger:hover, .action-link--icon-trash.action-link--danger:focus, .action-link--icon-trash.action-link--danger:active,
 .button.button--danger:hover,
 .button.button--danger:focus,
@@ -3167,16 +3159,6 @@ a.button.button--danger:focus,
 a.button.button--danger:active {
   color: var(--gin-bg-layer);
   background-color: var(--gin-color-danger);
-}
-
-.action-link--icon-trash.action-link--danger:hover:before, .action-link--icon-trash.action-link--danger:focus:before, .action-link--icon-trash.action-link--danger:active:before,
-.button.button--danger:hover:before,
-.button.button--danger:focus:before,
-.button.button--danger:active:before,
-a.button.button--danger:hover:before,
-a.button.button--danger:focus:before,
-a.button.button--danger:active:before {
-  background-color: var(--gin-bg-layer) !important;
 }
 
 .button--primary.button--danger,
