@@ -1,7 +1,10 @@
+$topbar: 54px;
+
 .gin--navigation-top-bar {
-  padding-block: var(--gin-spacing-xxs);
+  padding-block: var(--gin-spacing-xxxs);
   border-block-end: 1px solid var(--admin-toolbar-color-gray-100);
   box-shadow: none;
+  height: $topbar;
 
   .top-bar__burger {
     align-self: center;
@@ -10,6 +13,13 @@
   .form-actions {
     margin-top: 0;
   }
+
+  button,
+  input[type="submit"] {
+    padding: 8px 12px;
+    margin-block: 0;
+    box-shadow: none;
+  }
 }
 
 .gin--navigation-top-bar:not(:has(.top-bar__burger:only-child)) ~ .dialog-off-canvas-main-canvas {
@@ -17,6 +27,6 @@
 }
 
 body:has(.gin--navigation-top-bar .gin-sticky-form-actions) :where(#gin_sidebar) {
-  top: 54px !important;
-  height: calc(100% - 54px) !important;
+  top: $topbar !important;
+  height: calc(100% - #{$topbar}) !important;
 }

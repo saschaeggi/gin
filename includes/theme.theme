@@ -114,7 +114,7 @@ function gin_theme_suggestions_toolbar_alter(array &$suggestions, array $variabl
  * Implements menu_alter().
  */
 function gin_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
-  if (isset($variables['theme_hook_original']) && $variables['theme_hook_original'] == 'menu__toolbar__admin') {
+  if (isset($variables['theme_hook_original']) && strpos($variables['theme_hook_original'], 'menu__toolbar__') === 0) {
     $suggestions[] = 'menu__toolbar__gin';
   }
 }

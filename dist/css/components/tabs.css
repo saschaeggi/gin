@@ -404,7 +404,6 @@
 
 .horizontal-tabs .horizontal-tabs-pane {
   padding: 0;
-  margin: 0;
   box-shadow: none;
 }
 
@@ -414,6 +413,10 @@
 
 .horizontal-tabs .horizontal-tabs-pane > .details-wrapper > .claro-details__description {
   margin-top: var(--gin-spacing-m);
+}
+
+.horizontal-tabs .paragraphs-subform .horizontal-tabs-panes {
+  margin-top: var(--gin-spacing-s);
 }
 
 .claro-details__description {

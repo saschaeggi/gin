@@ -12,7 +12,7 @@ use Drupal\gin\GinUserPicture;
  * Implements hook_preprocess_menu().
  */
 function gin_preprocess_menu(&$variables) {
-  if (isset($variables['theme_hook_original']) && $variables['theme_hook_original'] == 'menu__toolbar__admin') {
+  if (isset($variables['theme_hook_original']) && strpos($variables['theme_hook_original'], 'menu__toolbar__') === 0) {
     // Check if the admin_toolbar module is installed.
     foreach ($variables['items'] as $key => $item) {
       $gin_id = str_replace('.', '-', $key);
@@ -144,4 +144,5 @@ function gin_preprocess_navigation(&$variables) {
   $variables['icon_path'] = !$logo_default ? $settings->getDefault('logo.path') : '';
   $variables['toolbar_variant'] = $settings->get('classic_toolbar');
   $variables['core_navigation'] = _gin_module_is_active('navigation');
+  $variables['is_backend'] = TRUE;
 }

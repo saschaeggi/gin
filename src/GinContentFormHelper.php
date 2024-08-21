@@ -113,12 +113,6 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     if ($this->stickyActionButtons($form, $form_state, $form_id) || $this->isContentForm($form, $form_state, $form_id)) {
       // Action buttons.
       if (isset($form['actions'])) {
-        if (isset($form['actions']['preview'])) {
-          // Put Save after Preview.
-          $save_weight = $form['actions']['preview']['#weight'] ? $form['actions']['preview']['#weight'] + 1 : 11;
-          $form['actions']['submit']['#weight'] = $save_weight;
-        }
-
         // Add sticky class.
         $form['actions']['#attributes']['class'][] = 'gin-sticky-form-actions';
         // Move to last position possible.
@@ -321,10 +315,16 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     $this->themeManager->alter('gin_ignore_sticky_form_actions', $form_ids);
 
     if (
+      strpos($form_id, '_entity_add_form') !== FALSE ||
+      strpos($form_id, '_entity_edit_form') !== FALSE ||
       strpos($form_id, '_exposed_form') !== FALSE ||
       strpos($form_id, '_preview_form') !== FALSE ||
       strpos($form_id, '_delete_form') !== FALSE ||
       strpos($form_id, '_confirm_form') !== FALSE ||
+      strpos($form_id, 'views_ui_add_') !== FALSE ||
+      strpos($form_id, 'views_ui_config_') !== FALSE ||
+      strpos($form_id, 'views_ui_edit_') !== FALSE ||
+      strpos($form_id, 'layout_paragraphs_component_form') !== FALSE ||
       in_array($form_id, $form_ids, TRUE) ||
       in_array($route_name, $form_ids, TRUE)
     ) {
@@ -415,6 +415,11 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    */
   private function isModalOrOffcanvas() {
     $wrapper_format = \Drupal::request()->query->get(MainContentViewSubscriber::WRAPPER_FORMAT);
+
+    if ($wrapper_format === 'drupal_ajax') {
+      return \Drupal::request()->query->has('media_library_opener_id');
+    }
+
     return (in_array($wrapper_format, [
       'drupal_modal',
       'drupal_dialog',
