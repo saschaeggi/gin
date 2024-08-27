@@ -20,31 +20,22 @@
       const boundingRect = secondaryAction.getBoundingClientRect();
       const spaceBelow = window.innerHeight - dropbuttonHeight - boundingRect.height;
 
-       // Define position vars.
-      let dropbuttonItemsPosition   = 'fixed';
-      let dropbuttonItemsLeft       = 'auto';
-      let dropbuttonItemsRight      = 'auto';
-      let dropbuttonItemsTop        = 'auto';
+      // Define initial position variables.
+      let dropbuttonItemsPosition = 'fixed';
+      let dropbuttonItemsTop= `${toggleHeight}px`;
+      let dropbuttonItemsLeft = leftAligned ? `${boundingRect.left}px` : 'auto';
+      let dropbuttonItemsRight = leftAligned ? 'auto' : `${window.innerWidth - boundingRect.right}px`;
 
-      if (leftAligned) {
-        dropbuttonItemsLeft = `${boundingRect.left}px`;
-      } else {
-        dropbuttonItemsRight = `${window.innerWidth - boundingRect.right}px`;
-      }
-
-      //Space below can be negative, meaning we don't have enough space in the top
-      if ((spaceBelow < dropbuttonHeight) && spaceBelow > 0) {
-        dropbuttonItemsTop = `${boundingRect.top - toggleHeight - dropbuttonHeight}px`;
-      } else if(spaceBelow > dropbuttonHeight)  {
+      // Calculate the top position based on available space.
+      if (spaceBelow >= dropbuttonHeight) {
         dropbuttonItemsTop = `${boundingRect.bottom}px`;
       } else {
-        // Consider case when space bellow is negative
-        dropbuttonItemsPosition   = 'absolute';
-        dropbuttonItemsTop        = `${toggleHeight}px`;
-        dropbuttonItemsLeft       = 'auto';
-        dropbuttonItemsRight      = 'auto'
+        // Not enough space either above, use absolute positioning.
+        dropbuttonItemsPosition = 'absolute';
+        // Reset left and right to avoid conflicts with fixed positioning.
+        dropbuttonItemsLeft = 'auto';
+        dropbuttonItemsRight = 'auto';
       }
-
       dropbuttonItems.style.position = dropbuttonItemsPosition;
       dropbuttonItems.style.left    = dropbuttonItemsLeft;
       dropbuttonItems.style.right   = dropbuttonItemsRight;

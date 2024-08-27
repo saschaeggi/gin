@@ -8,9 +8,12 @@
       }));
     },
     updatePosition: function(el) {
-      const leftAligned = el.closest(".node-form") || !1, secondaryAction = el.querySelector(".secondary-action"), dropbuttonItems = el.querySelector(".dropbutton__items"), toggleHeight = el.offsetHeight, dropbuttonHeight = dropbuttonItems.offsetHeight, boundingRect = secondaryAction.getBoundingClientRect(), spaceBelow = window.innerHeight - boundingRect.bottom;
-      dropbuttonItems.style.position = "fixed", leftAligned ? dropbuttonItems.style.left = `${boundingRect.left}px` : dropbuttonItems.style.right = window.innerWidth - boundingRect.right + "px", 
-      dropbuttonItems.style.top = spaceBelow < dropbuttonHeight ? boundingRect.top - toggleHeight - dropbuttonHeight + "px" : `${boundingRect.bottom}px`;
+      const leftAligned = null !== el.closest(".node-form"), secondaryAction = el.querySelector(".secondary-action"), dropbuttonItems = el.querySelector(".dropbutton__items"), toggleHeight = el.offsetHeight, dropbuttonHeight = dropbuttonItems.offsetHeight, boundingRect = secondaryAction.getBoundingClientRect(), spaceBelow = window.innerHeight - dropbuttonHeight - boundingRect.height;
+      let dropbuttonItemsPosition = "fixed", dropbuttonItemsTop = `${toggleHeight}px`, dropbuttonItemsLeft = leftAligned ? `${boundingRect.left}px` : "auto", dropbuttonItemsRight = leftAligned ? "auto" : window.innerWidth - boundingRect.right + "px";
+      spaceBelow >= dropbuttonHeight ? dropbuttonItemsTop = `${boundingRect.bottom}px` : (dropbuttonItemsPosition = "absolute", 
+      dropbuttonItemsLeft = "auto", dropbuttonItemsRight = "auto"), dropbuttonItems.style.position = dropbuttonItemsPosition, 
+      dropbuttonItems.style.left = dropbuttonItemsLeft, dropbuttonItems.style.right = dropbuttonItemsRight, 
+      dropbuttonItems.style.top = dropbuttonItemsTop;
     }
   };
 })(Drupal, once);
