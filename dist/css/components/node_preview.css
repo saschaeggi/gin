@@ -1,6 +1,6 @@
 .node-preview-container.node-preview-container {
   font-size: var(--gin-font-size-xs);
-  z-index: 501; /* on top of the Drupal world */
+  z-index: 501;
   position: sticky;
   top: 0;
   padding: 0;
@@ -12,7 +12,7 @@
 
 @supports ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) {
   .node-preview-container.node-preview-container {
-    opacity: .999; /* Fix Chrome issue with mask */
+    opacity: .999;
     background: rgba(255, 255, 255, .8);
     -webkit-backdrop-filter: blur(12px);
             backdrop-filter: blur(12px);
@@ -35,15 +35,15 @@
           backdrop-filter: none;
 }
 
-.gin--navigation .node-preview-container.node-preview-container, .gin--core-navigation .node-preview-container.node-preview-container {
+.gin--navigation .node-preview-container.node-preview-container,.gin--core-navigation .node-preview-container.node-preview-container {
   width: calc(100% - var(--gin-toolbar-x-offset));
 }
 
-[dir="ltr"] .gin--navigation .node-preview-container.node-preview-container, [dir="ltr"] .gin--core-navigation .node-preview-container.node-preview-container {
+[dir="ltr"] .gin--navigation .node-preview-container.node-preview-container,[dir="ltr"] .gin--core-navigation .node-preview-container.node-preview-container {
   margin-left: var(--gin-toolbar-x-offset);
 }
 
-[dir="rtl"] .gin--navigation .node-preview-container.node-preview-container, [dir="rtl"] .gin--core-navigation .node-preview-container.node-preview-container {
+[dir="rtl"] .gin--navigation .node-preview-container.node-preview-container,[dir="rtl"] .gin--core-navigation .node-preview-container.node-preview-container {
   margin-right: var(--gin-toolbar-x-offset);
 }
 
@@ -51,8 +51,7 @@
   box-sizing: border-box;
 }
 
-.node-preview-container.node-preview-container .node-preview-backlink,
-.node-preview-container.node-preview-container .node-preview-form-select label {
+.node-preview-container.node-preview-container .node-preview-backlink,.node-preview-container.node-preview-container .node-preview-form-select label {
   color: var(--gin-color-text-light);
 }
 
@@ -163,7 +162,7 @@
   display: none;
 }
 
-.node-preview-container.node-preview-container ~ .gin-secondary-toolbar--frontend {
+.node-preview-container.node-preview-container~.gin-secondary-toolbar--frontend {
   display: none;
 }
 

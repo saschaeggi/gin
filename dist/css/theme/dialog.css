@@ -1,35 +1,14 @@
-.ui-dialog a,
-.ui-dialog .link,
-.ui-dialog button.link,
-.ui-dialog .tabs__link.is-active,
-.ui-dialog [open] .claro-details__summary--accordion,
-.ui-dialog [open] .claro-details__summary--accordion-item,
-.ui-dialog [open] .claro-details__summary--vertical-tabs-item,
-.ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link {
+.ui-dialog a,.ui-dialog .link,.ui-dialog button.link,.ui-dialog .tabs__link.is-active,.ui-dialog [open] .claro-details__summary--accordion,.ui-dialog [open] .claro-details__summary--accordion-item,.ui-dialog [open] .claro-details__summary--vertical-tabs-item,.ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link {
   color: var(--gin-color-primary);
   -webkit-text-decoration-style: var(--gin-link-decoration-style);
           text-decoration-style: var(--gin-link-decoration-style);
 }
 
-.ui-dialog a:hover,
-.ui-dialog .link:hover,
-.ui-dialog button.link:hover,
-.ui-dialog .tabs__link.is-active:hover,
-.ui-dialog [open] .claro-details__summary--accordion:hover,
-.ui-dialog [open] .claro-details__summary--accordion-item:hover,
-.ui-dialog [open] .claro-details__summary--vertical-tabs-item:hover,
-.ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link:hover {
+.ui-dialog a:hover,.ui-dialog .link:hover,.ui-dialog button.link:hover,.ui-dialog .tabs__link.is-active:hover,.ui-dialog [open] .claro-details__summary--accordion:hover,.ui-dialog [open] .claro-details__summary--accordion-item:hover,.ui-dialog [open] .claro-details__summary--vertical-tabs-item:hover,.ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link:hover {
   color: var(--gin-color-primary-hover);
 }
 
-.ui-dialog a:active,
-.ui-dialog .link:active,
-.ui-dialog button.link:active,
-.ui-dialog .tabs__link.is-active:active,
-.ui-dialog [open] .claro-details__summary--accordion:active,
-.ui-dialog [open] .claro-details__summary--accordion-item:active,
-.ui-dialog [open] .claro-details__summary--vertical-tabs-item:active,
-.ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link:active {
+.ui-dialog a:active,.ui-dialog .link:active,.ui-dialog button.link:active,.ui-dialog .tabs__link.is-active:active,.ui-dialog [open] .claro-details__summary--accordion:active,.ui-dialog [open] .claro-details__summary--accordion-item:active,.ui-dialog [open] .claro-details__summary--vertical-tabs-item:active,.ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link:active {
   color: var(--gin-color-primary-active);
 }
 
@@ -45,114 +24,54 @@
           text-decoration-style: var(--gin-link-decoration-style);
 }
 
-.ui-dialog .is-horizontal .tabs__link:hover,
-.ui-dialog .claro-details__summary:hover,
-.ui-dialog .action-link:hover {
+.ui-dialog .is-horizontal .tabs__link:hover,.ui-dialog .claro-details__summary:hover,.ui-dialog .action-link:hover {
   color: var(--gin-color-primary-hover);
 }
 
-.ui-dialog .claro-details[open] > .claro-details__summary:focus {
+.ui-dialog .claro-details[open]>.claro-details__summary:focus {
   color: var(--gin-color-primary-active);
 }
 
-.ui-dialog .form-boolean--type-checkbox:checked,
-.ui-dialog .form-boolean--type-radio:checked:not(:disabled),
-.ui-dialog .is-horizontal .tabs__link.is-active::before,
-.ui-dialog .tabs__tab.is-active::before,
-.ui-dialog [open] > .claro-details__summary--accordion:not(:focus):not(:active)::after,
-.ui-dialog [open] > .claro-details__summary--accordion-item:not(:focus):not(:active)::after,
-.ui-dialog .collapse-processed[open] > .claro-details__summary--accordion .details-title:not(:focus)::after,
-.ui-dialog .collapse-processed[open] > .claro-details__summary--accordion-item .details-title:not(:focus)::after,
-.ui-dialog [open] > .claro-details__summary--vertical-tabs-item:not(:focus):not(:active)::after,
-.ui-dialog .collapse-processed[open] > .claro-details__summary--vertical-tabs-item .details-title:not(:focus)::after,
-.ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link::before {
+.ui-dialog .form-boolean--type-checkbox:checked,.ui-dialog .form-boolean--type-radio:checked:not(:disabled),.ui-dialog .is-horizontal .tabs__link.is-active::before,.ui-dialog .tabs__tab.is-active::before,.ui-dialog [open]>.claro-details__summary--accordion:not(:focus):not(:active)::after,.ui-dialog [open]>.claro-details__summary--accordion-item:not(:focus):not(:active)::after,.ui-dialog .collapse-processed[open]>.claro-details__summary--accordion .details-title:not(:focus)::after,.ui-dialog .collapse-processed[open]>.claro-details__summary--accordion-item .details-title:not(:focus)::after,.ui-dialog [open]>.claro-details__summary--vertical-tabs-item:not(:focus):not(:active)::after,.ui-dialog .collapse-processed[open]>.claro-details__summary--vertical-tabs-item .details-title:not(:focus)::after,.ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link::before {
   border-color: var(--gin-color-primary);
 }
 
-.ui-dialog .form-boolean--type-checkbox:checked:hover,
-.ui-dialog .form-boolean--type-radio:checked:not(:disabled):hover,
-.ui-dialog .is-horizontal .tabs__link.is-active::before:hover,
-.ui-dialog .tabs__tab.is-active::before:hover,
-.ui-dialog [open] > .claro-details__summary--accordion:not(:focus):not(:active)::after:hover,
-.ui-dialog [open] > .claro-details__summary--accordion-item:not(:focus):not(:active)::after:hover,
-.ui-dialog .collapse-processed[open] > .claro-details__summary--accordion .details-title:not(:focus)::after:hover,
-.ui-dialog .collapse-processed[open] > .claro-details__summary--accordion-item .details-title:not(:focus)::after:hover,
-.ui-dialog [open] > .claro-details__summary--vertical-tabs-item:not(:focus):not(:active)::after:hover,
-.ui-dialog .collapse-processed[open] > .claro-details__summary--vertical-tabs-item .details-title:not(:focus)::after:hover,
-.ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link::before:hover {
+.ui-dialog .form-boolean--type-checkbox:checked:hover,.ui-dialog .form-boolean--type-radio:checked:not(:disabled):hover,.ui-dialog .is-horizontal .tabs__link.is-active::before:hover,.ui-dialog .tabs__tab.is-active::before:hover,.ui-dialog [open]>.claro-details__summary--accordion:not(:focus):not(:active)::after:hover,.ui-dialog [open]>.claro-details__summary--accordion-item:not(:focus):not(:active)::after:hover,.ui-dialog .collapse-processed[open]>.claro-details__summary--accordion .details-title:not(:focus)::after:hover,.ui-dialog .collapse-processed[open]>.claro-details__summary--accordion-item .details-title:not(:focus)::after:hover,.ui-dialog [open]>.claro-details__summary--vertical-tabs-item:not(:focus):not(:active)::after:hover,.ui-dialog .collapse-processed[open]>.claro-details__summary--vertical-tabs-item .details-title:not(:focus)::after:hover,.ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link::before:hover {
   border-color: var(--gin-color-primary-hover);
 }
 
-.ui-dialog .form-boolean--type-checkbox:checked:active,
-.ui-dialog .form-boolean--type-radio:checked:not(:disabled):active,
-.ui-dialog .is-horizontal .tabs__link.is-active::before:active,
-.ui-dialog .tabs__tab.is-active::before:active,
-.ui-dialog [open] > .claro-details__summary--accordion:not(:focus):not(:active)::after:active,
-.ui-dialog [open] > .claro-details__summary--accordion-item:not(:focus):not(:active)::after:active,
-.ui-dialog .collapse-processed[open] > .claro-details__summary--accordion .details-title:not(:focus)::after:active,
-.ui-dialog .collapse-processed[open] > .claro-details__summary--accordion-item .details-title:not(:focus)::after:active,
-.ui-dialog [open] > .claro-details__summary--vertical-tabs-item:not(:focus):not(:active)::after:active,
-.ui-dialog .collapse-processed[open] > .claro-details__summary--vertical-tabs-item .details-title:not(:focus)::after:active,
-.ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link::before:active {
+.ui-dialog .form-boolean--type-checkbox:checked:active,.ui-dialog .form-boolean--type-radio:checked:not(:disabled):active,.ui-dialog .is-horizontal .tabs__link.is-active::before:active,.ui-dialog .tabs__tab.is-active::before:active,.ui-dialog [open]>.claro-details__summary--accordion:not(:focus):not(:active)::after:active,.ui-dialog [open]>.claro-details__summary--accordion-item:not(:focus):not(:active)::after:active,.ui-dialog .collapse-processed[open]>.claro-details__summary--accordion .details-title:not(:focus)::after:active,.ui-dialog .collapse-processed[open]>.claro-details__summary--accordion-item .details-title:not(:focus)::after:active,.ui-dialog [open]>.claro-details__summary--vertical-tabs-item:not(:focus):not(:active)::after:active,.ui-dialog .collapse-processed[open]>.claro-details__summary--vertical-tabs-item .details-title:not(:focus)::after:active,.ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link::before:active {
   border-color: var(--gin-color-primary-active);
 }
 
-.ui-dialog .button,
-.ui-dialog .project__action_button,
-.ui-dialog .dropbutton__item:first-of-type > *,
-.ui-dialog .dropbutton__toggle {
+.ui-dialog .button,.ui-dialog .project__action_button,.ui-dialog .dropbutton__item:first-of-type>*,.ui-dialog .dropbutton__toggle {
   font-size: var(--gin-font-size-s);
   font-weight: var(--gin-font-weight-semibold);
   color: var(--gin-color-primary);
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
   box-shadow: none;
   transition: var(--gin-transition);
 }
 
 @media (min-width: 80em) {
-  .ui-dialog .button,
-  .ui-dialog .project__action_button,
-  .ui-dialog .dropbutton__item:first-of-type > *,
-  .ui-dialog .dropbutton__toggle {
+  .ui-dialog .button,.ui-dialog .project__action_button,.ui-dialog .dropbutton__item:first-of-type>*,.ui-dialog .dropbutton__toggle {
     font-size: var(--gin-font-size);
   }
 }
 
-.ui-dialog .button:hover,
-.ui-dialog .project__action_button:hover,
-.ui-dialog .dropbutton__item:first-of-type > *:hover,
-.ui-dialog .dropbutton__toggle:hover {
+.ui-dialog .button:hover,.ui-dialog .project__action_button:hover,.ui-dialog .dropbutton__item:first-of-type>*:hover,.ui-dialog .dropbutton__toggle:hover {
   background-color: var(--gin-color-primary-hover);
 }
 
-.ui-dialog .button:active, .ui-dialog .button:focus,
-.ui-dialog .project__action_button:active,
-.ui-dialog .project__action_button:focus,
-.ui-dialog .dropbutton__item:first-of-type > *:active,
-.ui-dialog .dropbutton__item:first-of-type > *:focus,
-.ui-dialog .dropbutton__toggle:active,
-.ui-dialog .dropbutton__toggle:focus {
+.ui-dialog .button:active,.ui-dialog .button:focus,.ui-dialog .project__action_button:active,.ui-dialog .project__action_button:focus,.ui-dialog .dropbutton__item:first-of-type>*:active,.ui-dialog .dropbutton__item:first-of-type>*:focus,.ui-dialog .dropbutton__toggle:active,.ui-dialog .dropbutton__toggle:focus {
   background-color: var(--gin-color-primary-active);
 }
 
-.ui-dialog .button:hover, .ui-dialog .button:active, .ui-dialog .button:focus,
-.ui-dialog .project__action_button:hover,
-.ui-dialog .project__action_button:active,
-.ui-dialog .project__action_button:focus,
-.ui-dialog .dropbutton__item:first-of-type > *:hover,
-.ui-dialog .dropbutton__item:first-of-type > *:active,
-.ui-dialog .dropbutton__item:first-of-type > *:focus,
-.ui-dialog .dropbutton__toggle:hover,
-.ui-dialog .dropbutton__toggle:active,
-.ui-dialog .dropbutton__toggle:focus {
+.ui-dialog .button:hover,.ui-dialog .button:active,.ui-dialog .button:focus,.ui-dialog .project__action_button:hover,.ui-dialog .project__action_button:active,.ui-dialog .project__action_button:focus,.ui-dialog .dropbutton__item:first-of-type>*:hover,.ui-dialog .dropbutton__item:first-of-type>*:active,.ui-dialog .dropbutton__item:first-of-type>*:focus,.ui-dialog .dropbutton__toggle:hover,.ui-dialog .dropbutton__toggle:active,.ui-dialog .dropbutton__toggle:focus {
   color: var(--gin-color-button-text);
 }
 
-.ui-dialog .button,
-.ui-dialog .button:not(:focus),
-.ui-dialog .form-actions .button,
-.ui-dialog .project__action_button,
-.ui-dialog .action-link--icon-trash.action-link {
+.ui-dialog .button,.ui-dialog .button:not(:focus),.ui-dialog .form-actions .button,.ui-dialog .project__action_button,.ui-dialog .action-link--icon-trash.action-link {
   font-size: var(--gin-font-size-s);
   padding: calc(var(--gin-spacing-s) - 2px) var(--gin-spacing-m);
   border: 2px solid var(--gin-color-primary) !important;
@@ -161,44 +80,16 @@
   transition: var(--gin-transition);
 }
 
-.ui-dialog .button:hover,
-.ui-dialog .button:not(:focus):hover,
-.ui-dialog .form-actions .button:hover,
-.ui-dialog .project__action_button:hover,
-.ui-dialog .action-link--icon-trash.action-link:hover {
+.ui-dialog .button:hover,.ui-dialog .button:not(:focus):hover,.ui-dialog .form-actions .button:hover,.ui-dialog .project__action_button:hover,.ui-dialog .action-link--icon-trash.action-link:hover {
   background-color: var(--gin-color-primary-hover);
   border-color: var(--gin-color-primary-hover) !important;
 }
 
-.ui-dialog .button:active, .ui-dialog .button:focus,
-.ui-dialog .button:not(:focus):active,
-.ui-dialog .button:not(:focus):focus,
-.ui-dialog .form-actions .button:active,
-.ui-dialog .form-actions .button:focus,
-.ui-dialog .project__action_button:active,
-.ui-dialog .project__action_button:focus,
-.ui-dialog .action-link--icon-trash.action-link:active,
-.ui-dialog .action-link--icon-trash.action-link:focus {
+.ui-dialog .button:active,.ui-dialog .button:focus,.ui-dialog .button:not(:focus):active,.ui-dialog .button:not(:focus):focus,.ui-dialog .form-actions .button:active,.ui-dialog .form-actions .button:focus,.ui-dialog .project__action_button:active,.ui-dialog .project__action_button:focus,.ui-dialog .action-link--icon-trash.action-link:active,.ui-dialog .action-link--icon-trash.action-link:focus {
   border-color: var(--gin-color-primary-active) !important;
 }
 
-.ui-dialog .button:hover, .ui-dialog .button:active, .ui-dialog .button:focus, .ui-dialog .button:hover:focus,
-.ui-dialog .button:not(:focus):hover,
-.ui-dialog .button:not(:focus):active,
-.ui-dialog .button:not(:focus):focus,
-.ui-dialog .button:not(:focus):hover:focus,
-.ui-dialog .form-actions .button:hover,
-.ui-dialog .form-actions .button:active,
-.ui-dialog .form-actions .button:focus,
-.ui-dialog .form-actions .button:hover:focus,
-.ui-dialog .project__action_button:hover,
-.ui-dialog .project__action_button:active,
-.ui-dialog .project__action_button:focus,
-.ui-dialog .project__action_button:hover:focus,
-.ui-dialog .action-link--icon-trash.action-link:hover,
-.ui-dialog .action-link--icon-trash.action-link:active,
-.ui-dialog .action-link--icon-trash.action-link:focus,
-.ui-dialog .action-link--icon-trash.action-link:hover:focus {
+.ui-dialog .button:hover,.ui-dialog .button:active,.ui-dialog .button:focus,.ui-dialog .button:hover:focus,.ui-dialog .button:not(:focus):hover,.ui-dialog .button:not(:focus):active,.ui-dialog .button:not(:focus):focus,.ui-dialog .button:not(:focus):hover:focus,.ui-dialog .form-actions .button:hover,.ui-dialog .form-actions .button:active,.ui-dialog .form-actions .button:focus,.ui-dialog .form-actions .button:hover:focus,.ui-dialog .project__action_button:hover,.ui-dialog .project__action_button:active,.ui-dialog .project__action_button:focus,.ui-dialog .project__action_button:hover:focus,.ui-dialog .action-link--icon-trash.action-link:hover,.ui-dialog .action-link--icon-trash.action-link:active,.ui-dialog .action-link--icon-trash.action-link:focus,.ui-dialog .action-link--icon-trash.action-link:hover:focus {
   color: var(--gin-color-button-text);
 }
 
@@ -222,80 +113,46 @@
   border-radius: var(--gin-border-s);
 }
 
-.ui-dialog #edit-submit.form-submit,
-.ui-dialog .button--primary,
-.ui-dialog .button--primary:not(:focus),
-.ui-dialog .ief-entity-submit {
+.ui-dialog #edit-submit.form-submit,.ui-dialog .button--primary,.ui-dialog .button--primary:not(:focus),.ui-dialog .ief-entity-submit {
   background: var(--gin-color-primary);
 }
 
-[dir="ltr"] .ui-dialog #edit-submit.form-submit,
-[dir="ltr"] .ui-dialog .button--primary,
-[dir="ltr"] .ui-dialog .button--primary:not(:focus),
-[dir="ltr"] .ui-dialog .ief-entity-submit {
+[dir="ltr"] .ui-dialog #edit-submit.form-submit,[dir="ltr"] .ui-dialog .button--primary,[dir="ltr"] .ui-dialog .button--primary:not(:focus),[dir="ltr"] .ui-dialog .ief-entity-submit {
   box-shadow: .1em .25em .5em var(--gin-color-primary-light);
 }
 
-[dir="rtl"] .ui-dialog #edit-submit.form-submit,
-[dir="rtl"] .ui-dialog .button--primary,
-[dir="rtl"] .ui-dialog .button--primary:not(:focus),
-[dir="rtl"] .ui-dialog .ief-entity-submit {
+[dir="rtl"] .ui-dialog #edit-submit.form-submit,[dir="rtl"] .ui-dialog .button--primary,[dir="rtl"] .ui-dialog .button--primary:not(:focus),[dir="rtl"] .ui-dialog .ief-entity-submit {
   box-shadow: -0.1em .25em .5em var(--gin-color-primary-light);
 }
 
-.ui-dialog #edit-submit.form-submit:hover,
-.ui-dialog .button--primary:hover,
-.ui-dialog .button--primary:not(:focus):hover,
-.ui-dialog .ief-entity-submit:hover {
+.ui-dialog #edit-submit.form-submit:hover,.ui-dialog .button--primary:hover,.ui-dialog .button--primary:not(:focus):hover,.ui-dialog .ief-entity-submit:hover {
   background-color: var(--gin-color-primary-hover);
 }
 
-.ui-dialog #edit-submit.form-submit:active, .ui-dialog #edit-submit.form-submit:focus,
-.ui-dialog .button--primary:active,
-.ui-dialog .button--primary:focus,
-.ui-dialog .button--primary:not(:focus):active,
-.ui-dialog .button--primary:not(:focus):focus,
-.ui-dialog .ief-entity-submit:active,
-.ui-dialog .ief-entity-submit:focus {
+.ui-dialog #edit-submit.form-submit:active,.ui-dialog #edit-submit.form-submit:focus,.ui-dialog .button--primary:active,.ui-dialog .button--primary:focus,.ui-dialog .button--primary:not(:focus):active,.ui-dialog .button--primary:not(:focus):focus,.ui-dialog .ief-entity-submit:active,.ui-dialog .ief-entity-submit:focus {
   background-color: var(--gin-color-primary-active);
 }
 
-.ui-dialog #edit-submit.form-submit, .ui-dialog #edit-submit.form-submit:hover, .ui-dialog #edit-submit.form-submit:active, .ui-dialog #edit-submit.form-submit:focus,
-.ui-dialog .button--primary,
-.ui-dialog .button--primary:hover,
-.ui-dialog .button--primary:active,
-.ui-dialog .button--primary:focus,
-.ui-dialog .button--primary:not(:focus),
-.ui-dialog .button--primary:not(:focus):hover,
-.ui-dialog .button--primary:not(:focus):active,
-.ui-dialog .button--primary:not(:focus):focus,
-.ui-dialog .ief-entity-submit,
-.ui-dialog .ief-entity-submit:hover,
-.ui-dialog .ief-entity-submit:active,
-.ui-dialog .ief-entity-submit:focus {
+.ui-dialog #edit-submit.form-submit,.ui-dialog #edit-submit.form-submit:hover,.ui-dialog #edit-submit.form-submit:active,.ui-dialog #edit-submit.form-submit:focus,.ui-dialog .button--primary,.ui-dialog .button--primary:hover,.ui-dialog .button--primary:active,.ui-dialog .button--primary:focus,.ui-dialog .button--primary:not(:focus),.ui-dialog .button--primary:not(:focus):hover,.ui-dialog .button--primary:not(:focus):active,.ui-dialog .button--primary:not(:focus):focus,.ui-dialog .ief-entity-submit,.ui-dialog .ief-entity-submit:hover,.ui-dialog .ief-entity-submit:active,.ui-dialog .ief-entity-submit:focus {
   color: var(--gin-color-button-text);
 }
 
-.ui-dialog a.button:hover,
-.ui-dialog a.button:active {
+.ui-dialog a.button:hover,.ui-dialog a.button:active {
   color: var(--gin-color-button-text);
 }
 
-.gin--dark-mode .ui-dialog a.button--primary:hover,
-.gin--dark-mode .ui-dialog a.button--primary:active,
-.gin--dark-mode .ui-dialog a.button--primary:focus,
-.gin--dark-mode .ui-dialog a.button--primary:focus:hover {
+.gin--dark-mode .ui-dialog a.button--primary:hover,.gin--dark-mode .ui-dialog a.button--primary:active,.gin--dark-mode .ui-dialog a.button--primary:focus,.gin--dark-mode .ui-dialog a.button--primary:focus:hover {
   color: var(--gin-bg-app);
 }
 
-.ui-dialog .button.button:disabled, .ui-dialog .button.button:disabled:hover, .ui-dialog .button.button:disabled:active, .ui-dialog .button.button:disabled:focus, .ui-dialog .button.button.is-disabled, .ui-dialog .button.button.is-disabled:hover, .ui-dialog .button.button.is-disabled:active, .ui-dialog .button.button.is-disabled:focus {
+.ui-dialog .button.button:disabled,.ui-dialog .button.button:disabled:hover,.ui-dialog .button.button:disabled:active,.ui-dialog .button.button:disabled:focus,.ui-dialog .button.button.is-disabled,.ui-dialog .button.button.is-disabled:hover,.ui-dialog .button.button.is-disabled:active,.ui-dialog .button.button.is-disabled:focus {
   color: var(--gin-color-disabled);
-  background: transparent;
+  background: rgba(0, 0, 0, 0);
   border: 2px solid var(--gin-color-disabled-border) !important;
   box-shadow: none;
 }
 
-.ui-dialog .button.button--primary:disabled, .ui-dialog .button.button--primary:disabled:hover, .ui-dialog .button.button--primary:disabled:active, .ui-dialog .button.button--primary:disabled:focus, .ui-dialog .button.button--primary.is-disabled, .ui-dialog .button.button--primary.is-disabled:hover, .ui-dialog .button.button--primary.is-disabled:active, .ui-dialog .button.button--primary.is-disabled:focus {
+.ui-dialog .button.button--primary:disabled,.ui-dialog .button.button--primary:disabled:hover,.ui-dialog .button.button--primary:disabled:active,.ui-dialog .button.button--primary:disabled:focus,.ui-dialog .button.button--primary.is-disabled,.ui-dialog .button.button--primary.is-disabled:hover,.ui-dialog .button.button--primary.is-disabled:active,.ui-dialog .button.button--primary.is-disabled:focus {
   color: var(--gin-color-disabled);
   background-color: var(--gin-color-disabled-bg);
 }
@@ -306,7 +163,7 @@
   box-sizing: border-box;
 }
 
-.ui-dialog .action-link.action-link--icon-trash, .ui-dialog .action-link.action-link--icon-trash:hover, .ui-dialog .action-link.action-link--icon-trash:active, .ui-dialog .action-link.action-link--icon-trash:focus, .ui-dialog .action-link.action-link--icon-trash:focus:hover {
+.ui-dialog .action-link.action-link--icon-trash,.ui-dialog .action-link.action-link--icon-trash:hover,.ui-dialog .action-link.action-link--icon-trash:active,.ui-dialog .action-link.action-link--icon-trash:focus,.ui-dialog .action-link.action-link--icon-trash:focus:hover {
   border: 2px solid var(--gin-color-danger) !important;
 }
 
@@ -326,7 +183,7 @@
   color: var(--gin-color-text);
   line-height: var(--input-line-height);
   padding: calc(var(--input-padding-vertical) - 1px) var(--input-padding-horizontal);
-  min-height: calc(var(--input-padding-vertical) * 2 + var(--input-line-height));
+  min-height: calc(var(--input-padding-vertical)*2 + var(--input-line-height));
   background-color: var(--gin-bg-input);
   border: 1px solid var(--gin-border-color-form-element);
   border-radius: var(--gin-border-m);
@@ -339,13 +196,13 @@
   box-shadow: inset 0 0 0 1px var(--gin-color-text);
 }
 
-.ui-dialog .form-element--small, .ui-dialog .form-element--extrasmall {
+.ui-dialog .form-element--small,.ui-dialog .form-element--extrasmall {
   font-size: var(--gin-font-size-s);
   line-height: 1.5;
   border-radius: var(--gin-border-s);
 }
 
-.ui-dialog .form-element[disabled], .ui-dialog .form-element[disabled]:hover {
+.ui-dialog .form-element[disabled],.ui-dialog .form-element[disabled]:hover {
   cursor: not-allowed;
   color: var(--gin-color-disabled);
   background-color: var(--gin-color-disabled-bg) !important;
@@ -365,13 +222,11 @@
   max-width: 100%;
 }
 
-.ui-dialog .form-item--editor-format,
-.ui-dialog .form-element--editor-format {
+.ui-dialog .form-item--editor-format,.ui-dialog .form-element--editor-format {
   width: auto;
 }
 
-.ui-dialog .form-item--editor-format .form-item__label,
-.ui-dialog .form-element--editor-format .form-item__label {
+.ui-dialog .form-item--editor-format .form-item__label,.ui-dialog .form-element--editor-format .form-item__label {
   top: 3px;
   padding-bottom: 0;
 }
@@ -396,7 +251,7 @@
 .ui-dialog .password-suggestions {
   color: var(--gin-color-text-light);
   border: 1px solid var(--gin-border-color-layer2);
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 [dir="ltr"] .ui-dialog .form-element--type-select {
@@ -454,19 +309,19 @@
   background-color: var(--gin-color-primary-active);
 }
 
-.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox {
+.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox {
   position: relative;
 }
 
-[dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox {
+[dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox {
   margin-left: 0;
 }
 
-[dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox {
+[dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox {
   margin-right: 0;
 }
 
-.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input {
+.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input {
   all: unset;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -481,22 +336,22 @@
   -webkit-clip-path: circle(var(--gin-spacing-l) at 50% 50%);
           clip-path: circle(var(--gin-spacing-l) at 50% 50%);
   background-color: var(--gin-color-disabled);
-  border: 3px solid transparent;
+  border: 3px solid rgba(0, 0, 0, 0);
   border-radius: var(--gin-border-l);
   box-sizing: border-box;
 }
 
-.gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input {
+.gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input {
   background-color: var(--gin-bg-input);
 }
 
 @media (forced-colors: active) {
-  .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input {
+  .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input {
     border-width: 2px;
   }
 }
 
-.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input::before {
+.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input::before {
   position: absolute;
   content: "";
   width: 100%;
@@ -506,26 +361,26 @@
   transition: transform .3s;
 }
 
-[dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input::before {
+[dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input::before {
   transform: translateX(-16px);
 }
 
-[dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input::before {
+[dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input::before {
   transform: translateX(16px);
 }
 
-.gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input::before {
+.gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input::before {
   background-color: var(--gin-border-color-form-element);
 }
 
 @media (forced-colors: active) {
-  .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input::before {
+  .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input::before {
     background-color: CanvasText;
   }
 }
 
 @media (forced-colors: active) {
-  .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input::after {
+  .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input::after {
     position: absolute;
     content: "";
     width: 100%;
@@ -542,110 +397,110 @@
     transition: transform .3s;
   }
 
-  [dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input::after {
+  [dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input::after {
     transform: translateX(-16px);
   }
 
-  [dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input::after {
+  [dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input::after {
     transform: translateX(16px);
   }
 }
 
-.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:disabled {
+.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:disabled {
   cursor: not-allowed;
 }
 
-.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:hover {
+.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:hover {
   opacity: .9;
   box-shadow: 0 0 2px rgba(0, 0, 0, .2);
 }
 
-.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:active, .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:focus {
+.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:active,.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:focus {
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }
 
-.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:checked {
+.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:checked {
   background-color: var(--gin-switch);
 }
 
-.gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:checked {
+.gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:checked {
   background-color: var(--gin-color-primary-light-active);
 }
 
-.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:checked::before {
+.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:checked::before {
   background-color: #fff;
 }
 
-[dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:checked::before {
+[dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:checked::before {
   transform: translateX(16px);
 }
 
-[dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:checked::before {
+[dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:checked::before {
   transform: translateX(-16px);
 }
 
-.gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:checked::before {
+.gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:checked::before {
   background-color: var(--gin-color-primary-hover);
 }
 
-.gin--high-contrast-mode .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:checked::before {
+.gin--high-contrast-mode .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:checked::before {
   background-color: var(--gin-border-color);
 }
 
 @media (forced-colors: active) {
-  .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:checked::before {
+  .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:checked::before {
     background-color: LinkText !important;
   }
 
-  [dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:checked::before {
+  [dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:checked::before {
     padding-left: 8px;
   }
 
-  [dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:checked::before {
+  [dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:checked::before {
     padding-right: 8px;
   }
 }
 
 @media (forced-colors: active) {
-  .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:checked::after {
+  .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:checked::after {
     -webkit-mask-image: url("../../media/sprite.svg#checked-view");
             mask-image: url("../../media/sprite.svg#checked-view");
     -webkit-mask-position: 2px 2px;
             mask-position: 2px 2px;
   }
 
-  [dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:checked::after {
+  [dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:checked::after {
     transform: translateX(16px);
   }
 
-  [dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:checked::after {
+  [dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:checked::after {
     transform: translateX(-16px);
   }
 }
 
-.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:disabled {
+.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:disabled {
   opacity: .75;
   background-color: var(--gin-color-disabled);
   box-shadow: none;
 }
 
-.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input:disabled::before {
+.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox input:disabled::before {
   background-color: #fff;
   opacity: .6;
 }
 
-.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox label {
+.ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox label {
   z-index: 1;
   position: relative;
   padding-bottom: 0;
   color: var(--gin-color-text);
 }
 
-[dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox label {
+[dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox label {
   padding-left: var(--gin-spacing-xxs);
 }
 
-[dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox label {
+[dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content)>.form-type--checkbox label {
   padding-right: var(--gin-spacing-xxs);
 }
 
@@ -657,12 +512,12 @@
   margin-right: calc(var(--tabledrag-handle-icon-size, 1.0625rem) + var(--gin-spacing-m));
 }
 
-.gin--dark-mode .ui-dialog .form-boolean:hover, .gin--dark-mode .ui-dialog .form-boolean:active {
+.gin--dark-mode .ui-dialog .form-boolean:hover,.gin--dark-mode .ui-dialog .form-boolean:active {
   box-shadow: none;
   border-color: var(--gin-color-text);
 }
 
-.ui-dialog .form-boolean--type-radio, .ui-dialog .form-boolean--type-radio:hover, .ui-dialog .form-boolean--type-radio:active, .ui-dialog .form-boolean--type-radio:focus, .ui-dialog .form-boolean--type-radio:hover:focus {
+.ui-dialog .form-boolean--type-radio,.ui-dialog .form-boolean--type-radio:hover,.ui-dialog .form-boolean--type-radio:active,.ui-dialog .form-boolean--type-radio:focus,.ui-dialog .form-boolean--type-radio:hover:focus {
   background-image: none;
   background-color: var(--gin-bg-input);
   border-color: var(--gin-border-color-form-element);
@@ -673,50 +528,49 @@
   box-shadow: inset 0 0 0 1px var(--gin-border-color-layer2);
 }
 
-.ui-dialog .form-boolean--type-radio:hover, .gin--dark-mode .ui-dialog .form-boolean--type-radio:hover {
+.ui-dialog .form-boolean--type-radio:hover,.gin--dark-mode .ui-dialog .form-boolean--type-radio:hover {
   border-color: var(--gin-color-text);
 }
 
-.ui-dialog .form-boolean--type-radio:active, .ui-dialog .form-boolean--type-radio:focus {
+.ui-dialog .form-boolean--type-radio:active,.ui-dialog .form-boolean--type-radio:focus {
   box-shadow: inset 0 0 0 1px var(--gin-border-color-layer2), 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }
 
-.ui-dialog .form-boolean--type-radio:checked:not(:disabled), .ui-dialog .form-boolean--type-radio:checked:not(:disabled):hover {
+.ui-dialog .form-boolean--type-radio:checked:not(:disabled),.ui-dialog .form-boolean--type-radio:checked:not(:disabled):hover {
   background-image: none;
   background-color: var(--gin-bg-layer);
   box-shadow: inset 0 0 0 5px var(--gin-color-primary);
 }
 
-.ui-dialog .form-boolean--type-radio:checked:not(:disabled):active, .ui-dialog .form-boolean--type-radio:checked:not(:disabled):focus, .ui-dialog .form-boolean--type-radio:checked:not(:disabled):hover:focus {
+.ui-dialog .form-boolean--type-radio:checked:not(:disabled):active,.ui-dialog .form-boolean--type-radio:checked:not(:disabled):focus,.ui-dialog .form-boolean--type-radio:checked:not(:disabled):hover:focus {
   box-shadow: inset 0 0 0 5px var(--gin-color-primary), 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
   border-color: var(--gin-color-focus-border);
 }
 
-.ui-dialog .form-boolean--type-radio:disabled, .ui-dialog .form-boolean--type-radio:disabled:hover {
+.ui-dialog .form-boolean--type-radio:disabled,.ui-dialog .form-boolean--type-radio:disabled:hover {
   cursor: not-allowed;
   background: var(--gin-color-disabled-bg);
   border-color: var(--gin-color-disabled-border);
 }
 
-.ui-dialog .form-boolean--type-radio:checked:disabled, .ui-dialog .form-boolean--type-radio:checked:disabled:hover {
+.ui-dialog .form-boolean--type-radio:checked:disabled,.ui-dialog .form-boolean--type-radio:checked:disabled:hover {
   background: var(--gin-color-disabled);
   box-shadow: inset 0 0 0 5px var(--gin-color-disabled-bg);
 }
 
-.ui-dialog .form-boolean--type-checkbox[disabled], .ui-dialog .form-boolean--type-checkbox[disabled]:hover {
+.ui-dialog .form-boolean--type-checkbox[disabled],.ui-dialog .form-boolean--type-checkbox[disabled]:hover {
   cursor: not-allowed;
   background-color: var(--gin-color-disabled-bg);
   border-color: var(--gin-color-disabled-border);
 }
 
-.ui-dialog .form-boolean--type-checkbox[disabled]:checked, .ui-dialog .form-boolean--type-checkbox[disabled]:hover:checked {
+.ui-dialog .form-boolean--type-checkbox[disabled]:checked,.ui-dialog .form-boolean--type-checkbox[disabled]:hover:checked {
   border-color: var(--gin-color-disabled-border);
   background-color: var(--gin-color-disabled-bg);
   box-shadow: none;
 }
 
-.ui-dialog .form-radios .form-type--boolean,
-.ui-dialog .form-checkboxes .form-type--boolean {
+.ui-dialog .form-radios .form-type--boolean,.ui-dialog .form-checkboxes .form-type--boolean {
   margin-top: var(--gin-spacing-xs);
   margin-bottom: var(--gin-spacing-xs);
 }
@@ -729,7 +583,7 @@
   padding: 0;
   margin-bottom: 0;
   border: 0 none;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .ui-dialog fieldset:not(.fieldgroup) {
@@ -737,17 +591,17 @@
   padding-top: var(--gin-spacing-xs);
   padding-left: 0;
   padding-right: 0;
-  background: transparent;
+  background: rgba(0, 0, 0, 0);
   border-color: var(--gin-border-color);
   border-radius: var(--gin-border-m);
   box-shadow: none;
 }
 
-.ui-dialog fieldset:not(.fieldgroup) > legend {
+.ui-dialog fieldset:not(.fieldgroup)>legend {
   top: 20px;
 }
 
-.ui-dialog fieldset:not(.fieldgroup) > .fieldset-wrapper {
+.ui-dialog fieldset:not(.fieldgroup)>.fieldset-wrapper {
   margin-top: 20px;
 }
 
@@ -755,9 +609,7 @@
   border: 2px solid var(--gin-color-danger);
 }
 
-.ui-dialog .fieldset__label,
-.ui-dialog .fieldset__label--group,
-.ui-dialog .form-item__label {
+.ui-dialog .fieldset__label,.ui-dialog .fieldset__label--group,.ui-dialog .form-item__label {
   font-size: var(--gin-font-size-s);
   font-weight: var(--gin-font-weight-semibold);
   color: var(--gin-color-title);
@@ -765,22 +617,16 @@
   margin-bottom: var(--gin-spacing-xs);
 }
 
-.ui-dialog .form-item__label.has-error,
-.ui-dialog .form-item__error-message {
+.ui-dialog .form-item__label.has-error,.ui-dialog .form-item__error-message {
   color: var(--gin-color-danger);
 }
 
-.ui-dialog .form-item__description,
-.ui-dialog .fieldset__description {
+.ui-dialog .form-item__description,.ui-dialog .fieldset__description {
   max-width: var(--gin-max-line-length);
   color: var(--gin-color-text-light);
 }
 
-.ui-dialog .form-item__label.form-required::after,
-.ui-dialog .fieldset__label.form-required::after,
-.ui-dialog .form-required > .fieldset__label::after,
-.ui-dialog .horizontal-tab-button .form-required::after,
-.ui-dialog .vertical-tabs__menu-link .form-required::after {
+.ui-dialog .form-item__label.form-required::after,.ui-dialog .fieldset__label.form-required::after,.ui-dialog .form-required>.fieldset__label::after,.ui-dialog .horizontal-tab-button .form-required::after,.ui-dialog .vertical-tabs__menu-link .form-required::after {
   content: "*";
   color: var(--gin-color-danger);
   line-height: 1;
@@ -811,7 +657,7 @@
   padding-left: 36px;
 }
 
-.ui-dialog .entity-form-display-form > .form-actions {
+.ui-dialog .entity-form-display-form>.form-actions {
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -826,18 +672,15 @@
           mask-size: 100% 100%;
 }
 
-.ui-dialog .form-wrapper .form-item__label,
-.ui-dialog .form-composite .form-item__label {
+.ui-dialog .form-wrapper .form-item__label,.ui-dialog .form-composite .form-item__label {
   position: relative;
 }
 
-.ui-dialog .field--type-text-with-summary .form-item,
-.ui-dialog .field--widget-text-textarea .form-item {
+.ui-dialog .field--type-text-with-summary .form-item,.ui-dialog .field--widget-text-textarea .form-item {
   margin-bottom: 0;
 }
 
-.ui-dialog .field--type-text-with-summary .filter-wrapper,
-.ui-dialog .field--widget-text-textarea .filter-wrapper {
+.ui-dialog .field--type-text-with-summary .filter-wrapper,.ui-dialog .field--widget-text-textarea .filter-wrapper {
   border: 0 none;
   padding-left: 0;
   padding-right: 0;
@@ -867,7 +710,7 @@
   min-height: 1.75rem;
 }
 
-.ui-dialog #block-gin-content > form > .form-item:first-of-type {
+.ui-dialog #block-gin-content>form>.form-item:first-of-type {
   margin-top: 0;
 }
 

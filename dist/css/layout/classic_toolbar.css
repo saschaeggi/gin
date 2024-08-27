@@ -48,10 +48,7 @@
   right: 0;
 }
 
-.toolbar .toolbar-menu,
-.toolbar-horizontal .menu-item > .toolbar-menu,
-.toolbar-horizontal .toolbar-tray .menu-item--expanded.menu-item--expanded,
-.toolbar .toolbar-tray {
+.toolbar .toolbar-menu,.toolbar-horizontal .menu-item>.toolbar-menu,.toolbar-horizontal .toolbar-tray .menu-item--expanded.menu-item--expanded,.toolbar .toolbar-tray {
   background-color: var(--gin-bg-layer);
 }
 
@@ -67,60 +64,46 @@
   border-bottom: 1px solid var(--gin-border-color);
 }
 
-[dir="ltr"] .toolbar-tray-horizontal .toolbar-menu .level-1 > .toolbar-box a {
+[dir="ltr"] .toolbar-tray-horizontal .toolbar-menu .level-1>.toolbar-box a {
   padding-right: 2.25em;
 }
 
-[dir="rtl"] .toolbar-tray-horizontal .toolbar-menu .level-1 > .toolbar-box a {
+[dir="rtl"] .toolbar-tray-horizontal .toolbar-menu .level-1>.toolbar-box a {
   padding-left: 2.25em;
 }
 
-.toolbar-tray-horizontal .toolbar-menu .level-1 > .toolbar-box .toolbar-icon.toolbar-handle {
+.toolbar-tray-horizontal .toolbar-menu .level-1>.toolbar-box .toolbar-icon.toolbar-handle {
   top: .75rem;
 }
 
-.toolbar-tray-horizontal .level-1 .menu-item--expanded > .toolbar-box a {
+.toolbar-tray-horizontal .level-1 .menu-item--expanded>.toolbar-box a {
   width: 100%;
 }
 
-.toolbar-tray a,
-.toolbar-tray span,
-.toolbar .toolbar-menu .toolbar-menu a,
-.toolbar .toolbar-menu .toolbar-menu span {
+.toolbar-tray a,.toolbar-tray span,.toolbar .toolbar-menu .toolbar-menu a,.toolbar .toolbar-menu .toolbar-menu span {
   color: var(--gin-color-text);
 }
 
-.toolbar-tray a:hover,
-.toolbar-tray span:hover,
-.toolbar .toolbar-menu .toolbar-menu a:hover,
-.toolbar .toolbar-menu .toolbar-menu span:hover {
+.toolbar-tray a:hover,.toolbar-tray span:hover,.toolbar .toolbar-menu .toolbar-menu a:hover,.toolbar .toolbar-menu .toolbar-menu span:hover {
   color: var(--gin-color-title);
 }
 
-.toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
-.toolbar .toolbar-tray .menu-item > .toolbar-icon.is-active,
-.toolbar .toolbar-tray .menu-item > .toolbar-box > .toolbar-icon.is-active,
-.toolbar .toolbar-tray a.is-active {
+.toolbar .toolbar-tray .menu-item--active-trail>.toolbar-box a,.toolbar .toolbar-tray .menu-item>.toolbar-icon.is-active,.toolbar .toolbar-tray .menu-item>.toolbar-box>.toolbar-icon.is-active,.toolbar .toolbar-tray a.is-active {
   color: var(--gin-color-primary);
   font-weight: var(--gin-font-weight-bold);
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
 }
 
-.toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a::before,
-.toolbar .toolbar-tray .menu-item > .toolbar-icon.is-active::before,
-.toolbar .toolbar-tray .menu-item > .toolbar-box > .toolbar-icon.is-active::before,
-.toolbar .toolbar-tray a.is-active::before {
+.toolbar .toolbar-tray .menu-item--active-trail>.toolbar-box a::before,.toolbar .toolbar-tray .menu-item>.toolbar-icon.is-active::before,.toolbar .toolbar-tray .menu-item>.toolbar-box>.toolbar-icon.is-active::before,.toolbar .toolbar-tray a.is-active::before {
   background: var(--gin-color-primary);
 }
 
-.toolbar .toolbar-tray .menu-item:hover > .toolbar-icon,
-.toolbar .toolbar-tray .toolbar-menu > li:hover > a {
+.toolbar .toolbar-tray .menu-item:hover>.toolbar-icon,.toolbar .toolbar-tray .toolbar-menu>li:hover>a {
   color: var(--gin-color-primary-hover);
   background-color: var(--gin-bg-item-hover);
 }
 
-.toolbar .toolbar-tray .menu-item:hover > .toolbar-icon::before,
-.toolbar .toolbar-tray .toolbar-menu > li:hover > a::before {
+.toolbar .toolbar-tray .menu-item:hover>.toolbar-icon::before,.toolbar .toolbar-tray .toolbar-menu>li:hover>a::before {
   background: var(--gin-color-primary);
 }
 
@@ -128,31 +111,27 @@
   background: #100f10;
 }
 
-#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item, #toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active, #toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item:focus {
+#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item,#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active,#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item:focus {
   background: var(--gin-color-primary);
 }
 
-#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item:hover, #toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active:hover {
+#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item:hover,#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active:hover {
   background: var(--gin-color-primary-hover);
 }
 
-#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item:hover::before, #toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active:hover::before {
+#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item:hover::before,#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active:hover::before {
   background: #fff;
 }
 
-.toolbar-tray-horizontal a:focus,
-.toolbar-box a:focus,
-.toolbar .toolbar-icon.toolbar-handle:focus {
+.toolbar-tray-horizontal a:focus,.toolbar-box a:focus,.toolbar .toolbar-icon.toolbar-handle:focus {
   background-color: var(--gin-bg-layer2);
 }
 
 .toolbar-tray-horizontal .menu-item:hover {
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
 }
 
-.toolbar-menu__trigger,
-.toolbar .menu-item-title,
-.menu-item-sub-title {
+.toolbar-menu__trigger,.toolbar .menu-item-title,.menu-item-sub-title {
   display: none !important;
 }
 
@@ -170,11 +149,11 @@
   }
 }
 
-[dir="ltr"] .toolbar-menu .menu-item > span {
+[dir="ltr"] .toolbar-menu .menu-item>span {
   padding-left: 2.75em;
 }
 
-[dir="rtl"] .toolbar-menu .menu-item > span {
+[dir="rtl"] .toolbar-menu .menu-item>span {
   padding-right: 2.75em;
 }
 
@@ -205,23 +184,19 @@
   }
 }
 
-.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
-.toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
+.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,.toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded>a:focus {
   position: relative;
 }
 
-.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:before,
-.toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus:before {
+.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:before,.toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded>a:focus:before {
   top: var(--gin-spacing-s);
 }
 
-[dir="ltr"] .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:before,
-[dir="ltr"] .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus:before {
+[dir="ltr"] .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:before,[dir="ltr"] .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded>a:focus:before {
   right: var(--gin-spacing-s);
 }
 
-[dir="rtl"] .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:before,
-[dir="rtl"] .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus:before {
+[dir="rtl"] .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded:before,[dir="rtl"] .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded>a:focus:before {
   left: var(--gin-spacing-s);
 }
 
@@ -245,14 +220,12 @@
   padding-right: var(--gin-spacing-xl);
 }
 
-#toolbar-item-administration-tray,
-.toolbar-loading #toolbar-item-administration-tray {
+#toolbar-item-administration-tray,.toolbar-loading #toolbar-item-administration-tray {
   border-bottom: 1px solid var(--gin-border-color);
   box-shadow: 0 0 4px rgba(0, 0, 0, .1);
 }
 
-#toolbar-item-administration-tray .toolbar-lining,
-.toolbar-loading #toolbar-item-administration-tray .toolbar-lining {
+#toolbar-item-administration-tray .toolbar-lining,.toolbar-loading #toolbar-item-administration-tray .toolbar-lining {
   background-color: var(--gin-bg-layer);
 }
 

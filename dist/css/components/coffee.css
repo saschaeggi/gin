@@ -4,8 +4,7 @@
   border-radius: var(--gin-border-l);
 }
 
-#coffee-form #coffee-form-inner,
-#coffee-form #coffee-q {
+#coffee-form #coffee-form-inner,#coffee-form #coffee-q {
   color: var(--gin-color-title);
   background: var(--gin-bg-layer);
   border-radius: var(--gin-border-m);
@@ -21,20 +20,20 @@
   padding-top: var(--gin-spacing-xxs);
 }
 
-#coffee-form #coffee-results a:hover, #coffee-form #coffee-results a.ui-state-active {
+#coffee-form #coffee-results a:hover,#coffee-form #coffee-results a.ui-state-active {
   background: var(--gin-color-primary);
 }
 
-#coffee-form #coffee-results a:hover, #coffee-form #coffee-results a:hover .description, #coffee-form #coffee-results a.ui-state-active, #coffee-form #coffee-results a.ui-state-active .description {
+#coffee-form #coffee-results a:hover,#coffee-form #coffee-results a:hover .description,#coffee-form #coffee-results a.ui-state-active,#coffee-form #coffee-results a.ui-state-active .description {
   color: var(--gin-color-button-text);
 }
 
-#coffee-form #coffee-results a:hover .description, #coffee-form #coffee-results a.ui-state-active .description {
+#coffee-form #coffee-results a:hover .description,#coffee-form #coffee-results a.ui-state-active .description {
   opacity: .9;
 }
 
 #coffee-form .ui-autocomplete {
-  background: transparent;
+  background: rgba(0, 0, 0, 0);
   box-shadow: none;
 }
 

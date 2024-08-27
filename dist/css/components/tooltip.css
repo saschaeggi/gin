@@ -1,7 +1,4 @@
-.gin-tooltip,
-.gin-tooltip-navigation,
-.cloned-gin-tooltip-navigation,
-.admin-toolbar__tooltip {
+.gin-tooltip,.gin-tooltip-navigation,.cloned-gin-tooltip-navigation,.admin-toolbar__tooltip {
   z-index: 601;
   position: absolute;
   top: var(--space-xs);
@@ -10,23 +7,17 @@
   font-weight: var(--gin-font-weight-semibold);
   font-variation-settings: initial;
   white-space: nowrap;
-  color: white;
+  color: #fff;
   background-color: var(--gin-tooltip-bg);
   box-shadow: var(--gin-shadow-l2);
   border-radius: var(--gin-border-s);
 }
 
-[dir="ltr"] .gin-tooltip,
-[dir="ltr"] .gin-tooltip-navigation,
-[dir="ltr"] .cloned-gin-tooltip-navigation,
-[dir="ltr"] .admin-toolbar__tooltip {
+[dir="ltr"] .gin-tooltip,[dir="ltr"] .gin-tooltip-navigation,[dir="ltr"] .cloned-gin-tooltip-navigation,[dir="ltr"] .admin-toolbar__tooltip {
   left: 100%;
 }
 
-[dir="rtl"] .gin-tooltip,
-[dir="rtl"] .gin-tooltip-navigation,
-[dir="rtl"] .cloned-gin-tooltip-navigation,
-[dir="rtl"] .admin-toolbar__tooltip {
+[dir="rtl"] .gin-tooltip,[dir="rtl"] .gin-tooltip-navigation,[dir="rtl"] .cloned-gin-tooltip-navigation,[dir="rtl"] .admin-toolbar__tooltip {
   right: 100%;
 }
 
@@ -36,8 +27,7 @@
   transition: var(--gin-transition-fast);
 }
 
-[data-gin-tooltip]:hover + .gin-tooltip,
-[data-gin-tooltip]:focus + .gin-tooltip {
+[data-gin-tooltip]:hover+.gin-tooltip,[data-gin-tooltip]:focus+.gin-tooltip {
   visibility: visible;
   opacity: 1;
 }

@@ -45,8 +45,12 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
   visibility: hidden;
 }
 
-[dir=rtl] body[data-meta-sidebar=closed] .layout-region-node-secondary {
+[dir="ltr"] [dir=rtl] body[data-meta-sidebar=closed] .layout-region-node-secondary {
   transform: translateX(calc(var(--gin-sidebar-width) * -1));
+}
+
+[dir="rtl"] [dir=rtl] body[data-meta-sidebar=closed] .layout-region-node-secondary {
+  transform: translateX(calc(-1*(var(--gin-sidebar-width) * -1)));
 }
 
 @media (max-width: 63.99em) {
@@ -58,7 +62,7 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
 
 .meta-sidebar__close {
   cursor: pointer;
-  background: transparent;
+  background: rgba(0, 0, 0, 0);
   height: 32px;
   width: 32px;
   border-radius: var(--gin-border-m);
@@ -77,11 +81,11 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
   background-color: var(--gin-icon-color);
 }
 
-.meta-sidebar__close:hover, .meta-sidebar__close:focus {
+.meta-sidebar__close:hover,.meta-sidebar__close:focus {
   background-color: var(--gin-color-primary-light);
 }
 
-.meta-sidebar__close:hover::before, .meta-sidebar__close:focus::before {
+.meta-sidebar__close:hover::before,.meta-sidebar__close:focus::before {
   background-color: var(--gin-color-primary);
 }
 
@@ -95,7 +99,7 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
 
 .meta-sidebar__trigger {
   cursor: pointer;
-  background: transparent;
+  background: rgba(0, 0, 0, 0);
   display: block;
   height: 32px;
   width: 32px;
@@ -120,11 +124,11 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
   border-radius: 50%;
 }
 
-.meta-sidebar__trigger:hover, .meta-sidebar__trigger:focus, .meta-sidebar__trigger.is-active, .meta-sidebar__trigger.is-active:hover {
+.meta-sidebar__trigger:hover,.meta-sidebar__trigger:focus,.meta-sidebar__trigger.is-active,.meta-sidebar__trigger.is-active:hover {
   background-color: var(--gin-color-primary-light);
 }
 
-.meta-sidebar__trigger:hover::before, .meta-sidebar__trigger:focus::before, .meta-sidebar__trigger.is-active::before, .meta-sidebar__trigger.is-active:hover::before {
+.meta-sidebar__trigger:hover::before,.meta-sidebar__trigger:focus::before,.meta-sidebar__trigger.is-active::before,.meta-sidebar__trigger.is-active:hover::before {
   background-color: var(--gin-color-primary);
 }
 

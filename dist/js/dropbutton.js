@@ -1,19 +1,2 @@
-((Drupal, once) => {
-  Drupal.behaviors.ginDropbutton = {
-    attach: function(context) {
-      once("ginDropbutton", ".dropbutton-multiple:has(.dropbutton--gin)", context).forEach((el => {
-        el.querySelector(".dropbutton__toggle").addEventListener("click", (() => {
-          this.updatePosition(el);
-        })), window.addEventListener("scroll", (() => this.updatePosition(el))), window.addEventListener("resize", (() => this.updatePosition(el)));
-      }));
-    },
-    updatePosition: function(el) {
-      const leftAligned = null !== el.closest(".node-form"), secondaryAction = el.querySelector(".secondary-action"), dropbuttonItems = el.querySelector(".dropbutton__items"), toggleHeight = el.offsetHeight, dropbuttonHeight = dropbuttonItems.offsetHeight, boundingRect = secondaryAction.getBoundingClientRect(), spaceBelow = window.innerHeight - dropbuttonHeight - boundingRect.height;
-      let dropbuttonItemsPosition = "fixed", dropbuttonItemsTop = `${toggleHeight}px`, dropbuttonItemsLeft = leftAligned ? `${boundingRect.left}px` : "auto", dropbuttonItemsRight = leftAligned ? "auto" : window.innerWidth - boundingRect.right + "px";
-      spaceBelow >= dropbuttonHeight ? dropbuttonItemsTop = `${boundingRect.bottom}px` : (dropbuttonItemsPosition = "absolute", 
-      dropbuttonItemsLeft = "auto", dropbuttonItemsRight = "auto"), dropbuttonItems.style.position = dropbuttonItemsPosition, 
-      dropbuttonItems.style.left = dropbuttonItemsLeft, dropbuttonItems.style.right = dropbuttonItemsRight, 
-      dropbuttonItems.style.top = dropbuttonItemsTop;
-    }
-  };
-})(Drupal, once);
+/*! For license information please see dropbutton.js.LICENSE.txt */
+((t,o)=>{t.behaviors.ginDropbutton={attach:function(t){o("ginDropbutton",".dropbutton-multiple:has(.dropbutton--gin)",t).forEach((t=>{t.querySelector(".dropbutton__toggle").addEventListener("click",(()=>{this.updatePosition(t)})),window.addEventListener("scroll",(()=>this.updatePosition(t))),window.addEventListener("resize",(()=>this.updatePosition(t)))}))},updatePosition:function(t){const o=null!==t.closest(".node-form"),e=t.querySelector(".secondary-action"),i=t.querySelector(".dropbutton__items"),n=t.offsetHeight,s=i.offsetHeight,r=e.getBoundingClientRect(),u=window.innerHeight-s-r.height;let d="fixed",l=`${n}px`,a=o?`${r.left}px`:"auto",p=o?"auto":window.innerWidth-r.right+"px";u>=s?l=`${r.bottom}px`:(d="absolute",a="auto",p="auto"),i.style.position=d,i.style.left=a,i.style.right=p,i.style.top=l}}})(Drupal,once);

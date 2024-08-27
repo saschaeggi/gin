@@ -21,7 +21,7 @@
   right: var(--gin-spacing-s);
 }
 
-#toolbar-item-workbench-tray .toolbar-icon:hover:before, #toolbar-item-workbench-tray .toolbar-icon.is-active:before {
+#toolbar-item-workbench-tray .toolbar-icon:hover:before,#toolbar-item-workbench-tray .toolbar-icon.is-active:before {
   background: var(--gin-color-primary);
 }
 
