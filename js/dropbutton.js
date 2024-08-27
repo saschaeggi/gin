@@ -12,26 +12,44 @@
     },
 
     updatePosition: function (el) {
-      const leftAligned = el.closest('.node-form') || false;
+      const leftAligned = el.closest('.node-form') !== null;
       const secondaryAction = el.querySelector('.secondary-action');
       const dropbuttonItems = el.querySelector('.dropbutton__items');
       const toggleHeight = el.offsetHeight;
       const dropbuttonHeight = dropbuttonItems.offsetHeight;
       const boundingRect = secondaryAction.getBoundingClientRect();
-      const spaceBelow = window.innerHeight - boundingRect.bottom;
+      const spaceBelow = window.innerHeight - dropbuttonHeight - boundingRect.height;
 
-      dropbuttonItems.style.position = 'fixed';
+       // Define position vars.
+      let dropbuttonItemsPosition   = 'fixed';
+      let dropbuttonItemsLeft       = 'auto';
+      let dropbuttonItemsRight      = 'auto';
+      let dropbuttonItemsTop        = 'auto';
+
       if (leftAligned) {
-        dropbuttonItems.style.left = `${boundingRect.left}px`;
+        dropbuttonItemsLeft = `${boundingRect.left}px`;
       } else {
-        dropbuttonItems.style.right = `${window.innerWidth - boundingRect.right}px`;
+        dropbuttonItemsRight = `${window.innerWidth - boundingRect.right}px`;
       }
 
-      if (spaceBelow < dropbuttonHeight) {
-        dropbuttonItems.style.top = `${boundingRect.top - toggleHeight - dropbuttonHeight}px`;
+      //Space below can be negative, meaning we don't have enough space in the top
+      if ((spaceBelow < dropbuttonHeight) && spaceBelow > 0) {
+        dropbuttonItemsTop = `${boundingRect.top - toggleHeight - dropbuttonHeight}px`;
+      } else if(spaceBelow > dropbuttonHeight)  {
+        dropbuttonItemsTop = `${boundingRect.bottom}px`;
       } else {
-        dropbuttonItems.style.top = `${boundingRect.bottom}px`;
+        // Consider case when space bellow is negative
+        dropbuttonItemsPosition   = 'absolute';
+        dropbuttonItemsTop        = `${toggleHeight}px`;
+        dropbuttonItemsLeft       = 'auto';
+        dropbuttonItemsRight      = 'auto'
       }
+
+      dropbuttonItems.style.position = dropbuttonItemsPosition;
+      dropbuttonItems.style.left    = dropbuttonItemsLeft;
+      dropbuttonItems.style.right   = dropbuttonItemsRight;
+      dropbuttonItems.style.top     = dropbuttonItemsTop;
+
     },
 
   };
