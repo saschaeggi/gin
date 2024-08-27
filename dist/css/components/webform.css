@@ -2,7 +2,7 @@
   margin-bottom: var(--gin-spacing-xl);
 }
 
-.webform-filter-form>.container-inline {
+.webform-filter-form > .container-inline {
   margin-block: 0;
 }
 
@@ -11,7 +11,7 @@
   margin-bottom: var(--gin-spacing-xs);
 }
 
-.webform-filter-form+div:not(.gin-layer-wrapper) {
+.webform-filter-form + div:not(.gin-layer-wrapper) {
   margin-bottom: var(--gin-spacing-s);
 }
 
@@ -21,14 +21,14 @@
 
 .webform-element-help {
   color: var(--gin-color-text);
-  background: rgba(0, 0, 0, 0);
+  background: transparent;
   border-color: var(--gin-color-text);
 }
 
-.webform-element-help:hover,.webform-element-help:active,.webform-element-help:focus {
+.webform-element-help:hover, .webform-element-help:active, .webform-element-help:focus {
   color: var(--gin-color-primary);
   border-color: var(--gin-color-primary);
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
 }
 
 .ui-tooltip.ui-widget {
@@ -71,14 +71,14 @@
   border-radius: var(--gin-border-m);
 }
 
-.webform-bulk-form[data-drupal-selector*=-bulk-form]>.container-inline {
-  -webkit-margin-before: calc(var(--gin-spacing-xxs)*-1);
-          margin-block-start: calc(var(--gin-spacing-xxs)*-1);
+.webform-bulk-form[data-drupal-selector*=-bulk-form] > .container-inline {
+  -webkit-margin-before: calc(var(--gin-spacing-xxs) * -1);
+          margin-block-start: calc(var(--gin-spacing-xxs) * -1);
   -webkit-margin-after: var(--gin-spacing-l);
           margin-block-end: var(--gin-spacing-l);
 }
 
-.webform-bulk-form[data-drupal-selector*=-bulk-form] td:first-child>.form-type-checkbox {
+.webform-bulk-form[data-drupal-selector*=-bulk-form] td:first-child > .form-type-checkbox {
   margin-block: 0;
 }
 
@@ -96,12 +96,15 @@
   margin-right: var(--gin-spacing-m);
 }
 
-.webform-ajax-messages .messages--info,.webform-ajax-messages .messages--status,.webform-ajax-messages .messages--warning,.webform-ajax-messages .messages--error {
+.webform-ajax-messages .messages--info,
+.webform-ajax-messages .messages--status,
+.webform-ajax-messages .messages--warning,
+.webform-ajax-messages .messages--error {
   display: inline-block;
 }
 
 .webform-edit-form .tabledrag-toggle-weight-wrapper {
-  margin-top: calc(var(--gin-spacing-s)*-1);
+  margin-top: calc(var(--gin-spacing-s) * -1);
 }
 
 [dir="ltr"] .webform-edit-form .tabledrag-toggle-weight-wrapper {

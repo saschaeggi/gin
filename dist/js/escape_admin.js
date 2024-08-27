@@ -1,2 +1,10 @@
-/*! For license information please see escape_admin.js.LICENSE.txt */
-((a,t,e)=>{a.behaviors.ginEscapeAdmin={attach:a=>{e("ginEscapeAdmin","[data-gin-toolbar-escape-admin]",a).forEach((a=>{const e=sessionStorage.getItem("escapeAdminPath");t.path.currentPathIsAdmin&&null!==e&&a.setAttribute("href",e)}))}}})(Drupal,drupalSettings,once);
+((Drupal, drupalSettings, once) => {
+  Drupal.behaviors.ginEscapeAdmin = {
+    attach: context => {
+      once("ginEscapeAdmin", "[data-gin-toolbar-escape-admin]", context).forEach((el => {
+        const escapeAdminPath = sessionStorage.getItem("escapeAdminPath");
+        drupalSettings.path.currentPathIsAdmin && null !== escapeAdminPath && el.setAttribute("href", escapeAdminPath);
+      }));
+    }
+  };
+})(Drupal, drupalSettings, once);

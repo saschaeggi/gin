@@ -1,9 +1,14 @@
 .gin--navigation {
+  /*
+   * Color Palette.
+   */
   --color-focus: var(--gin-color-focus);
   --drupal--brand-blue: var(--gin-color-primary);
+  /* Blue variations. */
   --color-blue-100: var(--gin-color-primary-light);
   --color-blue-600: var(--gin-color-primary);
   --color-blue-700: var(--gin-color-primary-hover);
+  /* Gray variations. */
   --color-gray-050: rgba(var(--gin-color-primary-light-rgb), .25);
   --color-gray-100: #dedfe4;
   --color-gray-300: #c1c2c7;
@@ -13,16 +18,32 @@
   --color-gray-800: #55565b;
   --color-gray-900: #393a3f;
   --color-gray-950: #232429;
+  /**
+   * Spaces.
+   */
   --space-xl: var(--gin-spacing-xl);
   --space-l: var(--gin-spacing-l);
   --space-m: var(--gin-spacing-m);
   --space-s: var(--gin-spacing-s);
   --space-xs: var(--gin-spacing-xs);
+  /**
+   * Font Sizes.
+   */
   --font-size-base: var(--gin-font-size);
   --font-size-s: var(--gin-font-size-s);
   --font-size-xs: var(--gin-font-size-xxs);
-  --font-size-xxs: .625rem;
+  --font-size-xxs: .625rem; /* ~10px */
 }
+
+/**
+ * @file
+ * Admin Toolbar styles.
+ */
+
+/**
+ * Sidebar width is attached to the <body> element because it's used as a
+ * fallback value to the margin-inline-start property of the layout container.
+ */
 
 body {
   --sidebar-width: 64px;
@@ -31,6 +52,12 @@ body {
 .admin-toolbar-expanded body {
   --sidebar-width: 264px;
 }
+
+/**
+ * This zero height div has the [data-offset-left] attribute for
+ * Drupal.displace() to measure. It purposefully does not have any transitions
+ * because we want Drupal.displace() to measure the width immediately
+ */
 
 .admin-toolbar__displace-placeholder {
   position: absolute;
@@ -46,13 +73,17 @@ body {
   right: 0;
 }
 
+/**
+ * The Admin toolbar component.
+ */
+
 .admin-toolbar {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   -webkit-border-end: 1px solid #aaa;
           border-inline-end: 1px solid #aaa;
-  background-color: #fff;
+  background-color: white;
   -webkit-border-end: 1px solid var(--color-gray-100);
           border-inline-end: 1px solid var(--color-gray-100);
   font-size: var(--font-size-base);
@@ -73,7 +104,7 @@ body {
 }
 
 @media (min-width: 61em) {
-  .admin-toolbar~.dialog-off-canvas-main-canvas {
+  .admin-toolbar ~ .dialog-off-canvas-main-canvas {
     -webkit-margin-start: var(--drupal-displace-offset-left, var(--sidebar-width));
             margin-inline-start: var(--drupal-displace-offset-left, var(--sidebar-width));
     transition: -webkit-margin-start .2s linear;
@@ -86,11 +117,17 @@ body {
   overflow-y: auto;
 }
 
+/* @todo: Correct the class name with a BEM modifier. */
+
+.admin-toolbar-expanded .admin-toolbar {
+  /* Sticky section at the bottom */
+}
+
 .admin-toolbar-expanded .admin-toolbar .admin-toolbar__sticky-section {
   padding-inline: var(--space-xs);
 }
 
-.admin-toolbar-expanded .admin-toolbar .admin-toolbar__content .admin-toolbar__item,.admin-toolbar-expanded .admin-toolbar .admin-toolbar__sticky-section .admin-toolbar__item {
+.admin-toolbar-expanded .admin-toolbar .admin-toolbar__content .admin-toolbar__item, .admin-toolbar-expanded .admin-toolbar .admin-toolbar__sticky-section .admin-toolbar__item {
   margin-inline: var(--space-xs);
 }
 
@@ -109,7 +146,7 @@ body {
 }
 
 .admin-toolbar__logo:hover {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
 }
 
 .admin-toolbar__logo:focus {
@@ -120,13 +157,23 @@ body {
   display: block;
 }
 
+/**
+ * Middle Content region.
+ * Region where most of the content will be printed.
+ */
+
 .admin-toolbar__content:not(:last-child) {
   -webkit-margin-after: 20px;
           margin-block-end: 20px;
 }
 
+/**
+ * Sticky bottom region.
+ * Region with less used items and button for collapse.
+ */
+
 .admin-toolbar__sticky-section {
-  background-color: #fff;
+  background-color: white;
   -webkit-margin-before: auto;
           margin-block-start: auto;
   position: sticky;
@@ -134,8 +181,8 @@ body {
   z-index: 40;
   margin-inline: -8px;
   width: calc(100% + var(--space-m));
-  -webkit-border-before: 1px solid rgba(0, 0, 0, 0);
-          border-block-start: 1px solid rgba(0, 0, 0, 0);
+  -webkit-border-before: 1px solid transparent;
+          border-block-start: 1px solid transparent;
   box-sizing: inherit;
   padding-block: var(--space-m);
   padding-inline: var(--space-xs);
@@ -145,6 +192,11 @@ body {
   box-shadow: 0px 0px 56px 0px rgba(0, 0, 0, .14);
   border-color: var(--color-gray-100);
 }
+
+/**
+ * @file
+ * Admin Toolbar menus styles.
+ */
 
 .toolbar-menu {
   margin: 0;
@@ -182,7 +234,9 @@ body {
           margin-inline-start: var(--space-m);
 }
 
-.cloned-flyout>.toolbar-menu {
+/* Add extra bottom space to the main menu in the flyout. */
+
+.cloned-flyout > .toolbar-menu {
   -webkit-padding-after: var(--space-l);
           padding-block-end: var(--space-l);
 }
@@ -191,25 +245,27 @@ body {
   flex: 1 0 100%;
 }
 
+/* Toolbar menu item. */
+
 .toolbar-menu__item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   font-weight: 700;
   position: relative;
   flex-wrap: nowrap;
 }
 
-.toolbar-menu__item.toolbar-menu__item--expanded>.toolbar-link {
+.toolbar-menu__item.toolbar-menu__item--expanded > .toolbar-link {
   color: var(--color-blue-700);
 }
 
-.toolbar-menu__item.current>.toolbar-link {
+.toolbar-menu__item.current > .toolbar-link {
   color: var(--color-blue-600);
 }
 
-.toolbar-menu__item:not(.toolbar-menu__item--expanded)>.toolbar-menu__submenu,.toolbar-menu__item:not(.toolbar-menu__item--expanded)>ul.toolbar-menu {
+.toolbar-menu__item:not(.toolbar-menu__item--expanded) > .toolbar-menu__submenu, .toolbar-menu__item:not(.toolbar-menu__item--expanded) > ul.toolbar-menu {
   display: none;
 }
 
@@ -221,23 +277,23 @@ body {
   flex-basis: 100%;
 }
 
-.toolbar-menu__item.toolbar-menu__item--expanded:not(.current)>.toolbar-link {
+.toolbar-menu__item.toolbar-menu__item--expanded:not(.current) > .toolbar-link {
   color: var(--color-gray-950);
 }
 
-.toolbar-menu__item.toolbar-menu__item--expanded:not(.current)>.toolbar-link::before {
+.toolbar-menu__item.toolbar-menu__item--expanded:not(.current) > .toolbar-link::before {
   background-color: var(--color-gray-950);
 }
 
-.toolbar-menu__item.toolbar-menu__item--expanded:not(.current)>.toolbar-link:hover {
+.toolbar-menu__item.toolbar-menu__item--expanded:not(.current) > .toolbar-link:hover {
   color: var(--color-blue-700);
 }
 
-.toolbar-menu__item:not(.toolbar-menu__item--to-title) .toolbar-link:hover,.toolbar-menu__item:not(.toolbar-menu__item--to-title) .toolbar-link:focus {
+.toolbar-menu__item:not(.toolbar-menu__item--to-title) .toolbar-link:hover, .toolbar-menu__item:not(.toolbar-menu__item--to-title) .toolbar-link:focus {
   color: var(--color-blue-700);
 }
 
-.toolbar-menu__item:not(.toolbar-menu__item--to-title) .toolbar-link--has-icon:hover::before,.toolbar-menu__item:not(.toolbar-menu__item--to-title) .toolbar-link--has-icon:focus::before {
+.toolbar-menu__item:not(.toolbar-menu__item--to-title) .toolbar-link--has-icon:hover::before, .toolbar-menu__item:not(.toolbar-menu__item--to-title) .toolbar-link--has-icon:focus::before {
   background-color: var(--color-blue-700);
 }
 
@@ -245,10 +301,12 @@ body {
   flex-wrap: wrap;
 }
 
-.toolbar-menu__item--level-2 .toolbar-menu__item--has-dropdown>button::after {
+.toolbar-menu__item--level-2 .toolbar-menu__item--has-dropdown > button::after {
   -webkit-mask-size: var(--space-xs);
           mask-size: var(--space-xs);
 }
+
+/* Duplicated level-1 toolbar-link to use as title in the flyout. */
 
 .toolbar-menu__item--to-title {
   color: var(--color-gray-800);
@@ -266,12 +324,12 @@ body {
           margin-block-start: 10px;
 }
 
-.toolbar-menu__item--user .navigation-box,.toolbar-menu__item--user .toolbar-menu__item--has-dropdown>button[aria-expanded=true] {
-  background-color: rgba(0, 0, 0, 0);
+.toolbar-menu__item--user .navigation-box, .toolbar-menu__item--user .toolbar-menu__item--has-dropdown > button[aria-expanded=true] {
+  background-color: transparent;
 }
 
 .toolbar-menu__item--user .toolbar-menu__item {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
 }
 
 .toolbar-menu__item--level-1 {
@@ -284,25 +342,25 @@ body {
   background-color: var(--color-gray-050);
 }
 
-.toolbar-menu__item--level-1>.toolbar-link {
+.toolbar-menu__item--level-1 > .toolbar-link {
   padding-inline: 5px 10px;
   border-radius: var(--space-xs);
 }
 
-.toolbar-menu__item--level-1>.toolbar-link:hover,.toolbar-menu__item--level-1>.toolbar-link:focus {
+.toolbar-menu__item--level-1 > .toolbar-link:hover, .toolbar-menu__item--level-1 > .toolbar-link:focus {
   background-color: var(--color-gray-050);
 }
 
-.toolbar-menu__item--level-1>.toolbar-link:focus {
+.toolbar-menu__item--level-1 > .toolbar-link:focus {
   outline-offset: 0;
 }
 
-.toolbar-menu__item--level-1>.toolbar-menu__item--has-dropdown>button {
+.toolbar-menu__item--level-1 > .toolbar-menu__item--has-dropdown > button {
   inline-size: 40px;
   block-size: 40px;
 }
 
-.toolbar-menu__item--level-1.toolbar-menu__item--expanded,.toolbar-menu__item--level-1.current {
+.toolbar-menu__item--level-1.toolbar-menu__item--expanded, .toolbar-menu__item--level-1.current {
   background-color: var(--color-gray-050);
 }
 
@@ -310,16 +368,20 @@ body {
   font-weight: 700;
 }
 
-.toolbar-menu__item--level-1 .toolbar-menu>.toolbar-menu__item--to-title {
+.toolbar-menu__item--level-1 .toolbar-menu > .toolbar-menu__item--to-title {
   display: none;
 }
 
-.toolbar-menu__item--level-2,.toolbar-menu__item--level-3 {
+/* Current page dot indicator. */
+
+.toolbar-menu__item--level-2,
+.toolbar-menu__item--level-3 {
   position: relative;
   font-size: var(--font-size-xs);
 }
 
-.toolbar-menu__item--level-2.current>.toolbar-link::after,.toolbar-menu__item--level-3.current>.toolbar-link::after {
+.toolbar-menu__item--level-2.current > .toolbar-link::after,
+.toolbar-menu__item--level-3.current > .toolbar-link::after {
   content: "";
   inline-size: var(--space-xs);
   block-size: var(--space-xs);
@@ -330,20 +392,27 @@ body {
   z-index: 1;
 }
 
-[dir="ltr"] .toolbar-menu__item--level-2.current>.toolbar-link::after,[dir="ltr"] .toolbar-menu__item--level-3.current>.toolbar-link::after {
+[dir="ltr"] .toolbar-menu__item--level-2.current > .toolbar-link::after,
+[dir="ltr"] .toolbar-menu__item--level-3.current > .toolbar-link::after {
   left: -11px;
 }
 
-[dir="rtl"] .toolbar-menu__item--level-2.current>.toolbar-link::after,[dir="rtl"] .toolbar-menu__item--level-3.current>.toolbar-link::after {
+[dir="rtl"] .toolbar-menu__item--level-2.current > .toolbar-link::after,
+[dir="rtl"] .toolbar-menu__item--level-3.current > .toolbar-link::after {
   right: -11px;
 }
 
-.toolbar-menu__item--level-2:not(.current)>.toolbar-link:hover::before,.toolbar-menu__item--level-3:not(.current)>.toolbar-link:hover::before {
+.toolbar-menu__item--level-2:not(.current) > .toolbar-link:hover::before,
+.toolbar-menu__item--level-3:not(.current) > .toolbar-link:hover::before {
   background-color: var(--color-blue-700);
   inline-size: 2px;
 }
 
-.toolbar-menu__item--level-2>.toolbar-link::before,.toolbar-menu__item--level-3>.toolbar-link::before,.toolbar-menu__item--level-2.toolbar-menu__item--expanded>.toolbar-menu::before {
+/* Left grey border for submenu items. */
+
+.toolbar-menu__item--level-2 > .toolbar-link::before,
+.toolbar-menu__item--level-3 > .toolbar-link::before,
+.toolbar-menu__item--level-2.toolbar-menu__item--expanded > .toolbar-menu::before {
   content: "";
   block-size: 100%;
   inline-size: 1px;
@@ -352,19 +421,23 @@ body {
   background-color: var(--color-gray-300);
 }
 
-[dir="ltr"] .toolbar-menu__item--level-2>.toolbar-link::before,[dir="ltr"] .toolbar-menu__item--level-3>.toolbar-link::before,[dir="ltr"] .toolbar-menu__item--level-2.toolbar-menu__item--expanded>.toolbar-menu::before {
+[dir="ltr"] .toolbar-menu__item--level-2 > .toolbar-link::before,
+[dir="ltr"] .toolbar-menu__item--level-3 > .toolbar-link::before,
+[dir="ltr"] .toolbar-menu__item--level-2.toolbar-menu__item--expanded > .toolbar-menu::before {
   left: -8px;
 }
 
-[dir="rtl"] .toolbar-menu__item--level-2>.toolbar-link::before,[dir="rtl"] .toolbar-menu__item--level-3>.toolbar-link::before,[dir="rtl"] .toolbar-menu__item--level-2.toolbar-menu__item--expanded>.toolbar-menu::before {
+[dir="rtl"] .toolbar-menu__item--level-2 > .toolbar-link::before,
+[dir="rtl"] .toolbar-menu__item--level-3 > .toolbar-link::before,
+[dir="rtl"] .toolbar-menu__item--level-2.toolbar-menu__item--expanded > .toolbar-menu::before {
   right: -8px;
 }
 
-[dir="ltr"] .toolbar-menu__item--level-2.toolbar-menu__item--expanded>.toolbar-menu::before {
+[dir="ltr"] .toolbar-menu__item--level-2.toolbar-menu__item--expanded > .toolbar-menu::before {
   left: 0;
 }
 
-[dir="rtl"] .toolbar-menu__item--level-2.toolbar-menu__item--expanded>.toolbar-menu::before {
+[dir="rtl"] .toolbar-menu__item--level-2.toolbar-menu__item--expanded > .toolbar-menu::before {
   right: 0;
 }
 
@@ -373,17 +446,18 @@ body {
 }
 
 .toolbar-menu__item--level-2 .toolbar-link:hover {
+  /* umami override */
   background-color: var(--color-gray-050);
   z-index: 9;
 }
 
-.toolbar-menu__item--level-2>.toolbar-link {
+.toolbar-menu__item--level-2 > .toolbar-link {
   padding-inline: var(--space-xs);
   -webkit-margin-start: var(--space-xs);
           margin-inline-start: var(--space-xs);
 }
 
-.toolbar-menu__item--level-2>.toolbar-menu {
+.toolbar-menu__item--level-2 > .toolbar-menu {
   padding-block: var(--space-xs);
 }
 
@@ -392,12 +466,18 @@ body {
           margin-inline-start: var(--space-l);
 }
 
-.toolbar-menu__item--level-3.toolbar-menu__item>.toolbar-link {
+.toolbar-menu__item--level-3.toolbar-menu__item > .toolbar-link {
   -webkit-padding-start: var(--space-s);
           padding-inline-start: var(--space-s);
 }
 
-html:not(.admin-toolbar-expanded) .admin-toolbar__item>.toolbar-menu {
+/* Collapsed styles.*/
+
+html:not(.admin-toolbar-expanded) {
+  /* First level specific styles. *//* Cloned flyout. */
+}
+
+html:not(.admin-toolbar-expanded) .admin-toolbar__item > .toolbar-menu {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -407,12 +487,12 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1 {
   display: inline-block;
 }
 
-html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1>.toolbar-link span,html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1>.toolbar-menu__item--has-dropdown>button {
+html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1 > .toolbar-link span, html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1 > .toolbar-menu__item--has-dropdown > button {
   display: none;
   opacity: 0;
 }
 
-html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1>.toolbar-menu__submenu {
+html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1 > .toolbar-menu__submenu {
   display: none;
 }
 
@@ -482,6 +562,11 @@ html:not(.admin-toolbar-expanded) .cloned-flyout .toolbar-menu__item--level-2 {
   display: none;
 }
 
+/**
+ * @file
+ * Toolbar block styles.
+ */
+
 .toolbar-block__title {
   padding-inline: 5px 10px;
   font-size: var(--font-size-xxs);
@@ -492,14 +577,23 @@ html:not(.admin-toolbar-expanded) .cloned-flyout .toolbar-menu__item--level-2 {
   margin-block: var(--space-l) var(--space-s);
 }
 
-.toolbar-block__title.visually-hidden+.toolbar-block__content {
+/* Add extra space when the title is hidden. */
+
+.toolbar-block__title.visually-hidden + .toolbar-block__content {
   -webkit-margin-before: var(--space-l);
           margin-block-start: var(--space-l);
 }
 
-html:not(.admin-toolbar-expanded) .admin-toolbar__content .admin-toolbar__item .toolbar-block__title,html:not(.admin-toolbar-expanded) .admin-toolbar__sticky-section .toolbar-block__title {
+/* Temporarily hide titles on collapse. */
+
+html:not(.admin-toolbar-expanded) .admin-toolbar__content .admin-toolbar__item .toolbar-block__title, html:not(.admin-toolbar-expanded) .admin-toolbar__sticky-section .toolbar-block__title {
   display: none;
 }
+
+/**
+ * @file
+ * Toolbar linke styles.
+ */
 
 .toolbar-link {
   position: relative;
@@ -526,18 +620,24 @@ html:not(.admin-toolbar-expanded) .admin-toolbar__content .admin-toolbar__item .
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }
 
-.toolbar-link+.toolbar-menu__item--has-dropdown>button {
+.toolbar-link + .toolbar-menu__item--has-dropdown > button {
   -webkit-margin-start: 4px;
           margin-inline-start: 4px;
 }
+
+/**
+ * Specific styles when toolbar-link is a button that toggles a submenu or
+ * content.
+ */
 
 button.toolbar-link {
   border: 0;
   z-index: 1;
   display: flex;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   cursor: pointer;
+  /* Chevron styles. */
 }
 
 [dir="ltr"] button.toolbar-link {
@@ -566,21 +666,29 @@ button.toolbar-link:not(.toolbar-link--sidebar-toggle)::after {
           margin-inline-start: auto;
 }
 
-button.toolbar-link:hover::after,button.toolbar-link:focus::after {
+button.toolbar-link:hover::after, button.toolbar-link:focus::after {
   background-color: var(--color-blue-700);
 }
 
-button.toolbar-link+a {
+button.toolbar-link + a {
   -webkit-margin-end: var(--space-xl);
           margin-inline-end: var(--space-xl);
 }
 
-[dir="ltr"] .toolbar-menu__item--expanded.toolbar-menu__item--has-dropdown>button::after {
+/* Chevron styles when the item is expanded. */
+
+[dir="ltr"] .toolbar-menu__item--expanded.toolbar-menu__item--has-dropdown > button::after {
   transform: rotate(180deg);
 }
 
-[dir="rtl"] .toolbar-menu__item--expanded.toolbar-menu__item--has-dropdown>button::after {
+[dir="rtl"] .toolbar-menu__item--expanded.toolbar-menu__item--has-dropdown > button::after {
   transform: rotate(-180deg);
+}
+
+/* Sidebar collapsed styles.*/
+
+html:not(.admin-toolbar-expanded) {
+  /* Specific styles for the title duplicated for the flyout. *//* Hide the chevron when toolbar collapsed. */
 }
 
 html:not(.admin-toolbar-expanded) .toolbar-link {
@@ -590,22 +698,23 @@ html:not(.admin-toolbar-expanded) .toolbar-link {
   flex-basis: 100%;
 }
 
-html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title>.toolbar-link {
+html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title > .toolbar-link {
   display: flex;
   align-items: center;
   font-weight: var(--gin-font-weight-semibold);
 }
 
-html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title>.toolbar-link:hover {
+html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title > .toolbar-link:hover {
   color: var(--gin-color-primary-hover);
 }
 
-html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title>.toolbar-link:focus {
+html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title > .toolbar-link:focus {
   color: var(--gin-color-primary-active);
   background-color: var(--gin-color-primary-light-hover);
 }
 
-html:not(.admin-toolbar-expanded) .toolbar-menu__item--has-dropdown.toolbar-menu__item--level-1>button.toolbar-link::after,html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title>button.toolbar-link::after {
+html:not(.admin-toolbar-expanded) .toolbar-menu__item--has-dropdown.toolbar-menu__item--level-1 > button.toolbar-link::after,
+html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title > button.toolbar-link::after {
   content: unset;
 }
 
@@ -616,7 +725,7 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--has-dropdown.toolbar-menu
   line-height: 1;
 }
 
-.toolbar-link--sidebar-toogle:hover,.toolbar-link--sidebar-toogle:focus {
+.toolbar-link--sidebar-toogle:hover, .toolbar-link--sidebar-toogle:focus {
   background-color: var(--color-gray-050);
 }
 
@@ -651,9 +760,11 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--has-dropdown.toolbar-menu
           margin-inline-end: 10px;
 }
 
-.current>.toolbar-link--has-icon::before {
+.current > .toolbar-link--has-icon::before {
   background-color: var(--color-blue-600);
 }
+
+/* Visually-hidden button text. */
 
 .toolbar-link__action {
   clip: rect(0 0 0 0);
@@ -716,13 +827,15 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--has-dropdown.toolbar-menu
           margin-inline-start: var(--gin-toolbar-x-offset);
 }
 
-[dir="ltr"] .admin-toolbar~.dialog-off-canvas-main-canvas,[dir="ltr"] .gin--navigation .gin-secondary-toolbar--frontend {
+[dir="ltr"] .admin-toolbar ~ .dialog-off-canvas-main-canvas,
+[dir="ltr"] .gin--navigation .gin-secondary-toolbar--frontend {
   transition: margin-left var(--gin-transition-fast), -webkit-margin-start var(--gin-transition-fast);
   transition: margin-inline-start var(--gin-transition-fast), margin-left var(--gin-transition-fast);
   transition: margin-inline-start var(--gin-transition-fast), margin-left var(--gin-transition-fast), -webkit-margin-start var(--gin-transition-fast);
 }
 
-[dir="rtl"] .admin-toolbar~.dialog-off-canvas-main-canvas,[dir="rtl"] .gin--navigation .gin-secondary-toolbar--frontend {
+[dir="rtl"] .admin-toolbar ~ .dialog-off-canvas-main-canvas,
+[dir="rtl"] .gin--navigation .gin-secondary-toolbar--frontend {
   transition: margin-right var(--gin-transition-fast), -webkit-margin-start var(--gin-transition-fast);
   transition: margin-inline-start var(--gin-transition-fast), margin-right var(--gin-transition-fast);
   transition: margin-inline-start var(--gin-transition-fast), margin-right var(--gin-transition-fast), -webkit-margin-start var(--gin-transition-fast);
@@ -792,7 +905,8 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--has-dropdown.toolbar-menu
           padding-block-end: 0;
 }
 
-.gin--navigation .admin-toolbar,.gin--navigation .admin-toolbar__sticky-section {
+.gin--navigation .admin-toolbar,
+.gin--navigation .admin-toolbar__sticky-section {
   background: var(--gin-bg-layer);
 }
 
@@ -818,85 +932,161 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--has-dropdown.toolbar-menu
   margin-inline: 0;
 }
 
-.gin--navigation .toolbar-menu__item--level-1>.toolbar-link {
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link {
   padding-block: calc(var(--gin-spacing-xs) + 1px);
   margin-bottom: var(--gin-spacing-xxxs);
 }
 
-.gin--navigation .toolbar-menu__item--level-1>.toolbar-link:focus {
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:focus {
   outline: none;
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }
 
-.gin--navigation .toolbar-menu__item--level-1>.toolbar-link--create {
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--create {
   margin-top: var(--gin-spacing-l);
 }
 
-.gin--navigation .toolbar-menu__item--level-1>.toolbar-link--sidebar-toggle {
-  margin-bottom: calc(var(--gin-spacing-xxs)*-1);
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--sidebar-toggle {
+  margin-bottom: calc(var(--gin-spacing-xxs) * -1);
 }
 
-.gin--navigation .menu-item.current>.toolbar-link {
+.gin--navigation .menu-item.current > .toolbar-link {
   color: var(--gin-color-primary);
 }
 
-.gin--navigation .toolbar-menu__item--level-1.menu-item--expanded,.gin--navigation .toolbar-menu__item--level-1.current,.gin--navigation .toolbar-menu__item--level-1.active-path,.gin--navigation .toolbar-menu__item--level-2.active-path {
-  background-color: rgba(0, 0, 0, 0);
+.gin--navigation .toolbar-menu__item--level-1.menu-item--expanded,
+.gin--navigation .toolbar-menu__item--level-1.current,
+.gin--navigation .toolbar-menu__item--level-1.active-path,
+.gin--navigation .toolbar-menu__item--level-2.active-path {
+  background-color: transparent;
 }
 
-.gin--navigation .toolbar-menu__item--level-1.menu-item--expanded>.toolbar-link,.gin--navigation .toolbar-menu__item--level-1.current>.toolbar-link,.gin--navigation .toolbar-menu__item--level-1.active-path>.toolbar-link,.gin--navigation .toolbar-menu__item--level-2.active-path>.toolbar-link {
+.gin--navigation .toolbar-menu__item--level-1.menu-item--expanded > .toolbar-link,
+.gin--navigation .toolbar-menu__item--level-1.current > .toolbar-link,
+.gin--navigation .toolbar-menu__item--level-1.active-path > .toolbar-link,
+.gin--navigation .toolbar-menu__item--level-2.active-path > .toolbar-link {
   color: var(--gin-color-primary);
   background-color: var(--gin-color-primary-light);
 }
 
-.gin--navigation .toolbar-menu__item--level-1.menu-item--expanded>.toolbar-link::before,.gin--navigation .toolbar-menu__item--level-1.menu-item--expanded>.toolbar-link::after,.gin--navigation .toolbar-menu__item--level-1.current>.toolbar-link::before,.gin--navigation .toolbar-menu__item--level-1.current>.toolbar-link::after,.gin--navigation .toolbar-menu__item--level-1.active-path>.toolbar-link::before,.gin--navigation .toolbar-menu__item--level-1.active-path>.toolbar-link::after,.gin--navigation .toolbar-menu__item--level-2.active-path>.toolbar-link::before,.gin--navigation .toolbar-menu__item--level-2.active-path>.toolbar-link::after {
+.gin--navigation .toolbar-menu__item--level-1.menu-item--expanded > .toolbar-link::before, .gin--navigation .toolbar-menu__item--level-1.menu-item--expanded > .toolbar-link::after,
+.gin--navigation .toolbar-menu__item--level-1.current > .toolbar-link::before,
+.gin--navigation .toolbar-menu__item--level-1.current > .toolbar-link::after,
+.gin--navigation .toolbar-menu__item--level-1.active-path > .toolbar-link::before,
+.gin--navigation .toolbar-menu__item--level-1.active-path > .toolbar-link::after,
+.gin--navigation .toolbar-menu__item--level-2.active-path > .toolbar-link::before,
+.gin--navigation .toolbar-menu__item--level-2.active-path > .toolbar-link::after {
   background: var(--gin-color-primary);
 }
 
 @media (forced-colors: active) {
-  .gin--navigation .toolbar-menu__item--level-1.menu-item--expanded>.toolbar-link::before,.gin--navigation .toolbar-menu__item--level-1.menu-item--expanded>.toolbar-link::after,.gin--navigation .toolbar-menu__item--level-1.current>.toolbar-link::before,.gin--navigation .toolbar-menu__item--level-1.current>.toolbar-link::after,.gin--navigation .toolbar-menu__item--level-1.active-path>.toolbar-link::before,.gin--navigation .toolbar-menu__item--level-1.active-path>.toolbar-link::after,.gin--navigation .toolbar-menu__item--level-2.active-path>.toolbar-link::before,.gin--navigation .toolbar-menu__item--level-2.active-path>.toolbar-link::after {
+  .gin--navigation .toolbar-menu__item--level-1.menu-item--expanded > .toolbar-link::before, .gin--navigation .toolbar-menu__item--level-1.menu-item--expanded > .toolbar-link::after,
+  .gin--navigation .toolbar-menu__item--level-1.current > .toolbar-link::before,
+  .gin--navigation .toolbar-menu__item--level-1.current > .toolbar-link::after,
+  .gin--navigation .toolbar-menu__item--level-1.active-path > .toolbar-link::before,
+  .gin--navigation .toolbar-menu__item--level-1.active-path > .toolbar-link::after,
+  .gin--navigation .toolbar-menu__item--level-2.active-path > .toolbar-link::before,
+  .gin--navigation .toolbar-menu__item--level-2.active-path > .toolbar-link::after {
     background-color: LinkText;
   }
 }
 
-.gin--navigation .toolbar-menu__item--level-1.menu-item--expanded>.toolbar-link:hover,.gin--navigation .toolbar-menu__item--level-1.menu-item--expanded>.toolbar-link:focus,.gin--navigation .toolbar-menu__item--level-1.current>.toolbar-link:hover,.gin--navigation .toolbar-menu__item--level-1.current>.toolbar-link:focus,.gin--navigation .toolbar-menu__item--level-1.active-path>.toolbar-link:hover,.gin--navigation .toolbar-menu__item--level-1.active-path>.toolbar-link:focus,.gin--navigation .toolbar-menu__item--level-2.active-path>.toolbar-link:hover,.gin--navigation .toolbar-menu__item--level-2.active-path>.toolbar-link:focus {
+.gin--navigation .toolbar-menu__item--level-1.menu-item--expanded > .toolbar-link:hover, .gin--navigation .toolbar-menu__item--level-1.menu-item--expanded > .toolbar-link:focus,
+.gin--navigation .toolbar-menu__item--level-1.current > .toolbar-link:hover,
+.gin--navigation .toolbar-menu__item--level-1.current > .toolbar-link:focus,
+.gin--navigation .toolbar-menu__item--level-1.active-path > .toolbar-link:hover,
+.gin--navigation .toolbar-menu__item--level-1.active-path > .toolbar-link:focus,
+.gin--navigation .toolbar-menu__item--level-2.active-path > .toolbar-link:hover,
+.gin--navigation .toolbar-menu__item--level-2.active-path > .toolbar-link:focus {
   color: var(--gin-color-primary-hover);
   background-color: var(--gin-color-primary-light-hover);
 }
 
-.gin--navigation .toolbar-menu__item--level-1>.toolbar-link:hover,.gin--navigation .toolbar-menu__item--level-1>.toolbar-link:focus,.gin--navigation .toolbar-menu__item--level-2>.toolbar-link:hover,.gin--navigation .toolbar-menu__item--level-2>.toolbar-link:focus,.gin--navigation .toolbar-menu__item--level-2 .toolbar-link:hover,.gin--navigation .toolbar-menu__item--level-2 .toolbar-link:focus,.gin--navigation .toolbar-menu__item.toolbar-menu__item--expanded:not(.current)>.toolbar-link,.gin--navigation .toolbar-link--sidebar-toggle:hover,.gin--navigation .toolbar-link--sidebar-toggle:focus {
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:hover,
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:focus,
+.gin--navigation .toolbar-menu__item--level-2 > .toolbar-link:hover,
+.gin--navigation .toolbar-menu__item--level-2 > .toolbar-link:focus,
+.gin--navigation .toolbar-menu__item--level-2 .toolbar-link:hover,
+.gin--navigation .toolbar-menu__item--level-2 .toolbar-link:focus,
+.gin--navigation .toolbar-menu__item.toolbar-menu__item--expanded:not(.current) > .toolbar-link,
+.gin--navigation .toolbar-link--sidebar-toggle:hover,
+.gin--navigation .toolbar-link--sidebar-toggle:focus {
   color: var(--gin-color-primary-hover);
   background-color: var(--gin-bg-item-hover);
 }
 
-.gin--navigation .toolbar-menu__item--level-1>.toolbar-link:hover::before,.gin--navigation .toolbar-menu__item--level-1>.toolbar-link:hover::after,.gin--navigation .toolbar-menu__item--level-1>.toolbar-link:focus::before,.gin--navigation .toolbar-menu__item--level-1>.toolbar-link:focus::after,.gin--navigation .toolbar-menu__item--level-2>.toolbar-link:hover::before,.gin--navigation .toolbar-menu__item--level-2>.toolbar-link:hover::after,.gin--navigation .toolbar-menu__item--level-2>.toolbar-link:focus::before,.gin--navigation .toolbar-menu__item--level-2>.toolbar-link:focus::after,.gin--navigation .toolbar-menu__item--level-2 .toolbar-link:hover::before,.gin--navigation .toolbar-menu__item--level-2 .toolbar-link:hover::after,.gin--navigation .toolbar-menu__item--level-2 .toolbar-link:focus::before,.gin--navigation .toolbar-menu__item--level-2 .toolbar-link:focus::after,.gin--navigation .toolbar-menu__item.toolbar-menu__item--expanded:not(.current)>.toolbar-link::before,.gin--navigation .toolbar-menu__item.toolbar-menu__item--expanded:not(.current)>.toolbar-link::after,.gin--navigation .toolbar-link--sidebar-toggle:hover::before,.gin--navigation .toolbar-link--sidebar-toggle:hover::after,.gin--navigation .toolbar-link--sidebar-toggle:focus::before,.gin--navigation .toolbar-link--sidebar-toggle:focus::after {
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:hover::before, .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:hover::after,
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:focus::before,
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:focus::after,
+.gin--navigation .toolbar-menu__item--level-2 > .toolbar-link:hover::before,
+.gin--navigation .toolbar-menu__item--level-2 > .toolbar-link:hover::after,
+.gin--navigation .toolbar-menu__item--level-2 > .toolbar-link:focus::before,
+.gin--navigation .toolbar-menu__item--level-2 > .toolbar-link:focus::after,
+.gin--navigation .toolbar-menu__item--level-2 .toolbar-link:hover::before,
+.gin--navigation .toolbar-menu__item--level-2 .toolbar-link:hover::after,
+.gin--navigation .toolbar-menu__item--level-2 .toolbar-link:focus::before,
+.gin--navigation .toolbar-menu__item--level-2 .toolbar-link:focus::after,
+.gin--navigation .toolbar-menu__item.toolbar-menu__item--expanded:not(.current) > .toolbar-link::before,
+.gin--navigation .toolbar-menu__item.toolbar-menu__item--expanded:not(.current) > .toolbar-link::after,
+.gin--navigation .toolbar-link--sidebar-toggle:hover::before,
+.gin--navigation .toolbar-link--sidebar-toggle:hover::after,
+.gin--navigation .toolbar-link--sidebar-toggle:focus::before,
+.gin--navigation .toolbar-link--sidebar-toggle:focus::after {
   background: var(--gin-color-primary);
 }
 
 @media (forced-colors: active) {
-  .gin--navigation .toolbar-menu__item--level-1>.toolbar-link:hover::before,.gin--navigation .toolbar-menu__item--level-1>.toolbar-link:hover::after,.gin--navigation .toolbar-menu__item--level-1>.toolbar-link:focus::before,.gin--navigation .toolbar-menu__item--level-1>.toolbar-link:focus::after,.gin--navigation .toolbar-menu__item--level-2>.toolbar-link:hover::before,.gin--navigation .toolbar-menu__item--level-2>.toolbar-link:hover::after,.gin--navigation .toolbar-menu__item--level-2>.toolbar-link:focus::before,.gin--navigation .toolbar-menu__item--level-2>.toolbar-link:focus::after,.gin--navigation .toolbar-menu__item--level-2 .toolbar-link:hover::before,.gin--navigation .toolbar-menu__item--level-2 .toolbar-link:hover::after,.gin--navigation .toolbar-menu__item--level-2 .toolbar-link:focus::before,.gin--navigation .toolbar-menu__item--level-2 .toolbar-link:focus::after,.gin--navigation .toolbar-menu__item.toolbar-menu__item--expanded:not(.current)>.toolbar-link::before,.gin--navigation .toolbar-menu__item.toolbar-menu__item--expanded:not(.current)>.toolbar-link::after,.gin--navigation .toolbar-link--sidebar-toggle:hover::before,.gin--navigation .toolbar-link--sidebar-toggle:hover::after,.gin--navigation .toolbar-link--sidebar-toggle:focus::before,.gin--navigation .toolbar-link--sidebar-toggle:focus::after {
+  .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:hover::before, .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:hover::after,
+  .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:focus::before,
+  .gin--navigation .toolbar-menu__item--level-1 > .toolbar-link:focus::after,
+  .gin--navigation .toolbar-menu__item--level-2 > .toolbar-link:hover::before,
+  .gin--navigation .toolbar-menu__item--level-2 > .toolbar-link:hover::after,
+  .gin--navigation .toolbar-menu__item--level-2 > .toolbar-link:focus::before,
+  .gin--navigation .toolbar-menu__item--level-2 > .toolbar-link:focus::after,
+  .gin--navigation .toolbar-menu__item--level-2 .toolbar-link:hover::before,
+  .gin--navigation .toolbar-menu__item--level-2 .toolbar-link:hover::after,
+  .gin--navigation .toolbar-menu__item--level-2 .toolbar-link:focus::before,
+  .gin--navigation .toolbar-menu__item--level-2 .toolbar-link:focus::after,
+  .gin--navigation .toolbar-menu__item.toolbar-menu__item--expanded:not(.current) > .toolbar-link::before,
+  .gin--navigation .toolbar-menu__item.toolbar-menu__item--expanded:not(.current) > .toolbar-link::after,
+  .gin--navigation .toolbar-link--sidebar-toggle:hover::before,
+  .gin--navigation .toolbar-link--sidebar-toggle:hover::after,
+  .gin--navigation .toolbar-link--sidebar-toggle:focus::before,
+  .gin--navigation .toolbar-link--sidebar-toggle:focus::after {
     background-color: LinkText;
   }
 }
 
-.gin--navigation .toolbar-menu__item--level-1>.toolbar-link--manage-fields,.gin--navigation .toolbar-menu__item--level-1>.toolbar-link--manage-form-display,.gin--navigation .toolbar-menu__item--level-1>.toolbar-link--manage-display,.gin--navigation .toolbar-menu__item--level-1>.toolbar-link--manage-permissions,.gin--navigation .toolbar-menu__item--level-1>.toolbar-link--delete,.gin--navigation .toolbar-menu__item--level-1>.toolbar-link--announcements-feed-announcement,.gin--navigation .toolbar-menu__item--level-1>.toolbar-link[class*=toolbar-link--admin-toolbar-tools-extra-],.gin--navigation .toolbar-menu__item--level-1[data-url*="/media/add/"] {
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--manage-fields,
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--manage-form-display,
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--manage-display,
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--manage-permissions,
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--delete,
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link--announcements-feed-announcement,
+.gin--navigation .toolbar-menu__item--level-1 > .toolbar-link[class*=toolbar-link--admin-toolbar-tools-extra-],
+.gin--navigation .toolbar-menu__item--level-1[data-url*="/media/add/"] {
   display: none;
 }
 
-.gin--navigation .toolbar-menu__item--level-2,.gin--navigation .toolbar-menu__item--level-3 {
+.gin--navigation .toolbar-menu__item--level-2,
+.gin--navigation .toolbar-menu__item--level-3 {
   font-size: var(--gin-font-size-xs);
 }
 
-.gin--navigation .toolbar-menu__item--level-2.current>.toolbar-link::after,.gin--navigation .toolbar-menu__item--level-3.current>.toolbar-link::after {
+.gin--navigation .toolbar-menu__item--level-2.current > .toolbar-link::after,
+.gin--navigation .toolbar-menu__item--level-3.current > .toolbar-link::after {
   background-color: var(--gin-color-primary);
 }
 
-.gin--navigation .toolbar-menu__item--level-2>.toolbar-link::before,.gin--navigation .toolbar-menu__item--level-3>.toolbar-link::before,.gin--navigation .toolbar-menu__item--level-2.menu-item--expanded>.toolbar-menu::before {
+.gin--navigation .toolbar-menu__item--level-2 > .toolbar-link::before,
+.gin--navigation .toolbar-menu__item--level-3 > .toolbar-link::before,
+.gin--navigation .toolbar-menu__item--level-2.menu-item--expanded > .toolbar-menu::before {
   background-color: var(--gin-border-color-layer2);
 }
 
-.gin--navigation .toolbar .toolbar-menu,.gin--navigation .toolbar .toolbar-icon.toolbar-handle {
-  background-color: rgba(0, 0, 0, 0);
+.gin--navigation .toolbar .toolbar-menu,
+.gin--navigation .toolbar .toolbar-icon.toolbar-handle {
+  background-color: transparent;
 }
 
 .gin--navigation .toolbar .toolbar-menu .toolbar-menu a {
@@ -908,16 +1098,20 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--has-dropdown.toolbar-menu
   flex-grow: unset;
 }
 
-.gin--navigation .admin-toolbar__item>.toolbar-menu {
+.gin--navigation .admin-toolbar__item > .toolbar-menu {
   -webkit-margin-before: 0;
           margin-block-start: 0;
 }
 
-html:not(.admin-toolbar-expanded) .gin--navigation .cloned-flyout,html:not(.admin-toolbar-expanded) .gin--navigation .cloned-flyout .toolbar-menu__arrow-ref::before,html:not(.admin-toolbar-expanded) .gin--navigation .toolbar-menu__item--level-1>.toolbar-menu-wrapper,html:not(.admin-toolbar-expanded) .gin--navigation .toolbar-menu__item--level-1.menu-item--expanded>.toolbar-menu-wrapper .toolbar-menu__arrow-ref::before {
+html:not(.admin-toolbar-expanded) .gin--navigation .cloned-flyout,
+html:not(.admin-toolbar-expanded) .gin--navigation .cloned-flyout .toolbar-menu__arrow-ref::before,
+html:not(.admin-toolbar-expanded) .gin--navigation .toolbar-menu__item--level-1 > .toolbar-menu-wrapper,
+html:not(.admin-toolbar-expanded) .gin--navigation .toolbar-menu__item--level-1.menu-item--expanded > .toolbar-menu-wrapper .toolbar-menu__arrow-ref::before {
   background-color: var(--gin-bg-layer3);
 }
 
-.admin-toolbar-expanded .admin-toolbar .admin-toolbar__content .admin-toolbar__item,.admin-toolbar-expanded .admin-toolbar .admin-toolbar__sticky-section .admin-toolbar__item {
+.admin-toolbar-expanded .admin-toolbar .admin-toolbar__content .admin-toolbar__item,
+.admin-toolbar-expanded .admin-toolbar .admin-toolbar__sticky-section .admin-toolbar__item {
   margin-inline: var(--gin-spacing-xxs);
 }
 
@@ -925,20 +1119,23 @@ html:not(.admin-toolbar-expanded) .gin--navigation .cloned-flyout,html:not(.admi
   padding-inline: 6px;
 }
 
-.toolbar-menu__item--level-1 .toolbar-link,.dashboard-link .toolbar-link {
+.toolbar-menu__item--level-1 .toolbar-link,
+.dashboard-link .toolbar-link {
   padding-inline: 10px;
 }
 
-.toolbar-anti-flicker.toolbar-loading.toolbar-fixed body.gin--navigation,.toolbar-anti-flicker.toolbar-loading.toolbar-fixed.toolbar-horizontal.toolbar-tray-open body.gin--navigation {
+.toolbar-anti-flicker.toolbar-loading.toolbar-fixed body.gin--navigation,
+.toolbar-anti-flicker.toolbar-loading.toolbar-fixed.toolbar-horizontal.toolbar-tray-open body.gin--navigation {
   padding-top: 0;
 }
 
-.toolbar-menu .toolbar-link--has-icon,.toolbar-menu .toolbar-link--has-icon .toolbar-link__label {
+.toolbar-menu .toolbar-link--has-icon,
+.toolbar-menu .toolbar-link--has-icon .toolbar-link__label {
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-.toolbar-menu .toolbar-link--has-icon::before,.toolbar-menu .toolbar-link--has-icon::after {
+.toolbar-menu .toolbar-link--has-icon::before, .toolbar-menu .toolbar-link--has-icon::after {
   flex-shrink: 0;
 }
 
@@ -954,7 +1151,7 @@ button.toolbar-link--sidebar-toggle::before {
   transition: transform var(--gin-transition);
 }
 
-button.toolbar-link--sidebar-toggle:hover::before,button.toolbar-link--sidebar-toggle:active::before,button.toolbar-link--sidebar-toggle:focus::before {
+button.toolbar-link--sidebar-toggle:hover::before, button.toolbar-link--sidebar-toggle:active::before, button.toolbar-link--sidebar-toggle:focus::before {
   opacity: 1;
 }
 
@@ -979,7 +1176,7 @@ button.toolbar-link--sidebar-toggle:hover::before,button.toolbar-link--sidebar-t
 }
 
 .toolbar-link--has-icon {
-  --icon: url("../../media/sprite.svg#fallback-view");
+  --icon: url("../../media/sprite.svg#fallback-view"); /* Default icon, aka --basic */
 }
 
 .toolbar-link--has-icon::before {
@@ -990,7 +1187,7 @@ button.toolbar-link--sidebar-toggle:hover::before,button.toolbar-link--sidebar-t
           mask-size: 100% 100%;
 }
 
-.toolbar-link--has-icon:hover::before,.toolbar-link--has-icon:focus::before {
+.toolbar-link--has-icon:hover::before, .toolbar-link--has-icon:focus::before {
   background-color: var(--gin-color-primary);
 }
 
@@ -1019,12 +1216,12 @@ button.toolbar-link--sidebar-toggle:hover::before,button.toolbar-link--sidebar-t
   margin: 6px var(--gin-spacing-xxs) 0 !important;
 }
 
-.admin-toolbar__logo .toolbar-link--gin-home,.admin-toolbar__logo .toolbar-link--gin-home:hover,.admin-toolbar__logo .toolbar-link--gin-home:focus {
+.admin-toolbar__logo .toolbar-link--gin-home, .admin-toolbar__logo .toolbar-link--gin-home:hover, .admin-toolbar__logo .toolbar-link--gin-home:focus {
   background: var(--gin-color-primary) !important;
 }
 
 @media (forced-colors: active) {
-  .admin-toolbar__logo .toolbar-link--gin-home,.admin-toolbar__logo .toolbar-link--gin-home:hover,.admin-toolbar__logo .toolbar-link--gin-home:focus {
+  .admin-toolbar__logo .toolbar-link--gin-home, .admin-toolbar__logo .toolbar-link--gin-home:hover, .admin-toolbar__logo .toolbar-link--gin-home:focus {
     background: CanvasText !important;
   }
 }
@@ -1062,107 +1259,160 @@ button.toolbar-link--sidebar-toggle:hover::before,button.toolbar-link--sidebar-t
   border-top: 1px solid var(--gin-border-color-table);
 }
 
-.toolbar-icon-workbench-content-tab::before,.toolbar-link--admin-toolbar-tools-help::before,.toolbar-button--icon--admin-toolbar-tools-help::before {
+.toolbar-icon-workbench-content-tab::before,
+.toolbar-link--admin-toolbar-tools-help::before,
+.toolbar-button--icon--admin-toolbar-tools-help::before {
   --icon: url("../../media/sprite.svg#tool-view");
 }
 
-.toolbar-icon-system-themes-page::before,.toolbar-link--system-themes-page::before,.toolbar-button--icon--system-themes-page::before {
+.toolbar-icon-system-themes-page::before,
+.toolbar-link--system-themes-page::before,
+.toolbar-button--icon--system-themes-page::before {
   --icon: url("../../media/sprite.svg#appearance-view");
 }
 
-.toolbar-link--blocks::before,.toolbar-button--icon--navigation-blocks::before {
+.toolbar-link--blocks::before,
+.toolbar-button--icon--navigation-blocks::before {
   --icon: url("../../media/sprite.svg#blocks-view");
 }
 
-.toolbar-link--bookmarks::before,.toolbar-button--icon--bookmarks::before {
+.toolbar-link--bookmarks::before,
+.toolbar-button--icon--bookmarks::before {
   --icon: url("../../media/sprite.svg#bookmarks-view");
 }
 
-.toolbar-icon-shortcut::before,.toolbar-button--icon--shortcuts::before {
+.toolbar-icon-shortcut::before,
+.toolbar-button--icon--shortcuts::before {
   --icon: url("../../media/sprite.svg#shortcut-view");
 }
 
-.toolbar-icon-system-admin-config::before,.toolbar-link--system-admin-config::before,.toolbar-button--icon--system-admin-config::before {
+.toolbar-icon-system-admin-config::before,
+.toolbar-link--system-admin-config::before,
+.toolbar-button--icon--system-admin-config::before {
   --icon: url("../../media/sprite.svg#config-view");
 }
 
-.toolbar-icon-system-admin-content::before,.toolbar-link--content::before,.toolbar-button--icon--navigation-content::before {
+.toolbar-icon-system-admin-content::before,
+.toolbar-link--content::before,
+.toolbar-button--icon--navigation-content::before {
   --icon: url("../../media/sprite.svg#content-view");
 }
 
-.toolbar-link--create::before,.toolbar-button--icon--navigation-create::before {
+.toolbar-link--create::before,
+.toolbar-button--icon--navigation-create::before {
   --icon: url("../../media/sprite.svg#create-view");
 }
 
-.toolbar-icon-system-modules-list::before,.toolbar-link--system-modules-list::before,.toolbar-button--icon--system-modules-list::before {
+.toolbar-icon-system-modules-list::before,
+.toolbar-link--system-modules-list::before,
+.toolbar-button--icon--system-modules-list::before {
   --icon: url("../../media/sprite.svg#extend-new-view");
 }
 
-.toolbar-link--files::before,.toolbar-button--icon--navigation-files::before {
+.toolbar-link--files::before,
+.toolbar-button--icon--navigation-files::before {
   --icon: url("../../media/sprite.svg#files-view");
 }
 
-.toolbar-icon-help-main::before,.toolbar-icon-help::before,.toolbar-link--help::before,.toolbar-button--icon--help::before {
+.toolbar-icon-help-main::before,
+.toolbar-icon-help::before,
+.toolbar-link--help::before,
+.toolbar-button--icon--help::before {
   --icon: url("../../media/sprite.svg#help-view");
 }
 
-.toolbar-icon-commerce-admin-commerce::before,.toolbar-link--commerce-admin-commerce::before,.toolbar-button--icon--commerce-admin-commerce::before,.toolbar-icon-commerce-inbox::before,.toolbar-link---commerce-inbox::before,.toolbar-button--icon--commerce-inbox::before {
+.toolbar-icon-commerce-admin-commerce::before,
+.toolbar-link--commerce-admin-commerce::before,
+.toolbar-button--icon--commerce-admin-commerce::before,
+.toolbar-icon-commerce-inbox::before,
+.toolbar-link---commerce-inbox::before,
+.toolbar-button--icon--commerce-inbox::before {
   --icon: url("../../media/sprite.svg#commerce-view");
 }
 
-.toolbar-link--media::before,.toolbar-button--icon--navigation-media::before {
+.toolbar-link--media::before,
+.toolbar-button--icon--navigation-media::before {
   --icon: url("../../media/sprite.svg#media-view");
 }
 
-.toolbar-icon-entity-user-collection::before,.toolbar-link--entity-user-collection::before,.toolbar-button--icon--entity-user-collection::before {
+.toolbar-icon-entity-user-collection::before,
+.toolbar-link--entity-user-collection::before,
+.toolbar-button--icon--entity-user-collection::before {
   --icon: url("../../media/sprite.svg#people-new-view");
 }
 
-.toolbar-icon-system-admin-reports::before,.toolbar-link--system-admin-reports::before,.toolbar-button--icon--system-admin-reports::before {
+.toolbar-icon-system-admin-reports::before,
+.toolbar-link--system-admin-reports::before,
+.toolbar-button--icon--system-admin-reports::before {
   --icon: url("../../media/sprite.svg#reports-view");
 }
 
-.toolbar-icon-system-admin-structure::before,.toolbar-link--system-admin-structure::before,.toolbar-button--icon--system-admin-structure::before {
+.toolbar-icon-system-admin-structure::before,
+.toolbar-link--system-admin-structure::before,
+.toolbar-button--icon--system-admin-structure::before {
   --icon: url("../../media/sprite.svg#structure-view");
 }
 
-.toolbar-icon-entity-webform-collection::before,.toolbar-link--entity-webform-collection::before,.toolbar-button--icon--entity-webform-collection::before {
+.toolbar-icon-entity-webform-collection::before,
+.toolbar-link--entity-webform-collection::before,
+.toolbar-button--icon--entity-webform-collection::before {
   --icon: url("../../media/sprite.svg#webform-view");
 }
 
-.toolbar-link--sidebar-toggle[aria-expanded=false]::before,.toolbar-link--sidebar-toggle[aria-expanded=true]::before,.toolbar-link--sidebar-toggle[aria-expanded=false]::before,.toolbar-link--sidebar-toggle[aria-expanded=true]::before {
+.toolbar-link--sidebar-toggle[aria-expanded=false]::before,
+.toolbar-link--sidebar-toggle[aria-expanded=true]::before,
+.toolbar-link--sidebar-toggle[aria-expanded=false]::before,
+.toolbar-link--sidebar-toggle[aria-expanded=true]::before {
   --icon: url("../../media/sprite.svg#chevron-down-view");
 }
 
-.toolbar-icon-user::before,.toolbar-link--user::before,.toolbar-button--icon--user::before {
+.toolbar-icon-user::before,
+.toolbar-link--user::before,
+.toolbar-button--icon--user::before {
   --icon: url("../../media/sprite.svg#user-view");
 }
 
-.toolbar-icon-announcements-feed-announcement::before,.toolbar-icon-announce::before,.toolbar-link--announcements-feed-announcement::before,.toolbar-button--icon--announcements-feed-announcement::before {
+.toolbar-icon-announcements-feed-announcement::before,
+.toolbar-icon-announce::before,
+.toolbar-link--announcements-feed-announcement::before,
+.toolbar-button--icon--announcements-feed-announcement::before {
   --icon: url("../../media/sprite.svg#announcement-view");
 }
 
-.toolbar-icon-system-admin-group::before,.toolbar-link--system-admin-group::before,.toolbar-button--icon--system-admin-group::before {
+.toolbar-icon-system-admin-group::before,
+.toolbar-link--system-admin-group::before,
+.toolbar-button--icon--system-admin-group::before {
   --icon: url("../../media/sprite.svg#group-view");
 }
 
-.toolbar-icon-tmgmt-admin-tmgmt::before,.toolbar-link--tmgmt-admin-tmgmt::before,.toolbar-icon-language::before,.toolbar-link--language::before,.toolbar-button--icon--tmgmt-admin-tmgmt::before,.toolbar-button--icon--language::before {
+.toolbar-icon-tmgmt-admin-tmgmt::before,
+.toolbar-link--tmgmt-admin-tmgmt::before,
+.toolbar-icon-language::before,
+.toolbar-link--language::before,
+.toolbar-button--icon--tmgmt-admin-tmgmt::before,
+.toolbar-button--icon--language::before {
   --icon: url("../../media/sprite.svg#tmgmt-view");
 }
 
-.toolbar-icon-bat-admin::before,.toolbar-link--bat-admin::before,.toolbar-button--icon--bat-admin::before {
+.toolbar-icon-bat-admin::before,
+.toolbar-link--bat-admin::before,
+.toolbar-button--icon--bat-admin::before {
   --icon: url("../../media/sprite.svg#bat-view");
 }
 
-.toolbar-icon-menu::before,.toolbar-button--icon--burger::before {
+.toolbar-icon-menu::before,
+.toolbar-button--icon--burger::before {
   --icon: url("../../media/sprite.svg#hamburger-view");
 }
 
-.toolbar-icon-coffee::before,#toolbar-item-administration-search::before,#admin-toolbar-mobile-search-tab .toolbar-icon::before {
+.toolbar-icon-coffee::before,
+#toolbar-item-administration-search::before,
+#admin-toolbar-mobile-search-tab .toolbar-icon::before {
   --icon: url("../../media/sprite.svg#search-view");
 }
 
-.toolbar-icon-devel::before,.toolbar-button--icon--devel::before {
+.toolbar-icon-devel::before,
+.toolbar-button--icon--devel::before {
   --icon: url("../../media/sprite.svg#devel-view");
 }
 
@@ -1174,11 +1424,13 @@ button.toolbar-link--sidebar-toggle:hover::before,button.toolbar-link--sidebar-t
   --icon: url("../../media/sprite.svg#responsive-preview-view");
 }
 
-.toolbar-icon-environment::before,.toolbar-button--icon--environment::before {
+.toolbar-icon-environment::before,
+.toolbar-button--icon--environment::before {
   --icon: url("../../media/sprite.svg#server-view");
 }
 
-.toolbar-icon-toggle-vertical::before,.toolbar-button--icon--back::before {
+.toolbar-icon-toggle-vertical::before,
+.toolbar-button--icon--back::before {
   --icon: url("../../media/sprite.svg#nav-toggle-toleft-view");
 }
 
@@ -1194,11 +1446,11 @@ button.toolbar-link--sidebar-toggle:hover::before,button.toolbar-link--sidebar-t
   display: none;
 }
 
-[dir="ltr"] .gin-secondary-toolbar .toolbar-tray .menu-item+.menu-item {
+[dir="ltr"] .gin-secondary-toolbar .toolbar-tray .menu-item + .menu-item {
   border-left: none;
 }
 
-[dir="rtl"] .gin-secondary-toolbar .toolbar-tray .menu-item+.menu-item {
+[dir="rtl"] .gin-secondary-toolbar .toolbar-tray .menu-item + .menu-item {
   border-right: none;
 }
 
@@ -1220,7 +1472,9 @@ button.toolbar-link--sidebar-toggle:hover::before,button.toolbar-link--sidebar-t
   }
 }
 
-.toolbar-menu__title,.toolbar-menu__sub-title,.toolbar-menu__trigger {
+.toolbar-menu__title,
+.toolbar-menu__sub-title,
+.toolbar-menu__trigger {
   display: none !important;
 }
 

@@ -1,9 +1,9 @@
 .modules-tabs {
-  background: rgba(0, 0, 0, 0);
+  background: transparent;
   border: 0 none;
 }
 
-.modules-tabs__pane,.modules-tabs__menu,.modules-tabs__menu-item {
+.modules-tabs__pane, .modules-tabs__menu, .modules-tabs__menu-item {
   background: var(--gin-bg-layer);
 }
 
@@ -32,16 +32,22 @@
 }
 
 .modules-tabs__menu-item.disabled {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   border-top-color: var(--gin-border-color);
-  border-bottom-color: rgba(0, 0, 0, 0);
+  border-bottom-color: transparent;
 }
 
-.modules-tabs__menu-item.suggest,.modules-tabs__menu-item a:hover,.modules-tabs__menu-item a:focus,.modules-tabs__menu-item a:active {
+.modules-tabs__menu-item.suggest,
+.modules-tabs__menu-item a:hover,
+.modules-tabs__menu-item a:focus,
+.modules-tabs__menu-item a:active {
   background: var(--gin-bg-item-hover);
 }
 
-.modules-tabs__menu-item.is-selected a,.modules-tabs__menu-item.is-selected a:hover,.modules-tabs__menu-item.is-selected a:focus,.modules-tabs__menu-item.is-selected a:active {
+.modules-tabs__menu-item.is-selected a,
+.modules-tabs__menu-item.is-selected a:hover,
+.modules-tabs__menu-item.is-selected a:focus,
+.modules-tabs__menu-item.is-selected a:active {
   background: var(--gin-bg-layer);
 }
 

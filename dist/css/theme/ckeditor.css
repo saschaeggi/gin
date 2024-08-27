@@ -15,13 +15,18 @@ a {
   background: var(--gin-bg-layer2);
 }
 
-.cke_panel_listItem.cke_selected a,.cke_panel_listItem a:hover,.cke_panel_listItem a:focus,.cke_panel_listItem a:active {
+.cke_panel_listItem.cke_selected a,
+.cke_panel_listItem a:hover,
+.cke_panel_listItem a:focus,
+.cke_panel_listItem a:active {
   background-color: var(--gin-color-primary-light);
 }
 
 .cke_editable {
   line-height: 1.5;
 }
+
+/* CKE Context Menu */
 
 .cke_panel_block {
   border-color: var(--gin-border-color-form-element);
@@ -44,11 +49,11 @@ a {
   color: var(--gin-color-text-light);
 }
 
-.cke_panel_block .cke_menu a:hover,.cke_panel_block .cke_menu a:focus,.cke_panel_block .cke_menu a:active {
+.cke_panel_block .cke_menu a:hover, .cke_panel_block .cke_menu a:focus, .cke_panel_block .cke_menu a:active {
   background-color: var(--gin-color-primary-light);
 }
 
-.cke_panel_block .cke_menu a:hover .cke_menubutton_icon,.cke_panel_block .cke_menu a:focus .cke_menubutton_icon,.cke_panel_block .cke_menu a:active .cke_menubutton_icon {
+.cke_panel_block .cke_menu a:hover .cke_menubutton_icon, .cke_panel_block .cke_menu a:focus .cke_menubutton_icon, .cke_panel_block .cke_menu a:active .cke_menubutton_icon {
   background-color: var(--gin-color-primary-light);
 }
 

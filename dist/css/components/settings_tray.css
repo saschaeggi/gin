@@ -19,16 +19,18 @@
 }
 
 #toolbar-bar.toolbar-bar.js-settings-tray-edit-mode {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   border-radius: var(--gin-border-s);
 }
 
-#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-item,#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-item.is-active:hover {
+#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-item,
+#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-item.is-active:hover {
   background: var(--gin-switch);
   border-radius: var(--gin-border-s);
 }
 
-#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-item::before,#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-item.is-active:hover::before {
+#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-item::before,
+#toolbar-bar.toolbar-bar.js-settings-tray-edit-mode .toolbar-item.is-active:hover::before {
   background-color: #fff;
 }
 

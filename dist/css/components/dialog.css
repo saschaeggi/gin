@@ -36,7 +36,8 @@
   width: 100%;
 }
 
-.ui-dialog:not(.ui-dialog-off-canvas) .views-exposed-form.views-exposed-form,.ui-dialog:not(.ui-dialog-off-canvas) .views-displays {
+.ui-dialog:not(.ui-dialog-off-canvas) .views-exposed-form.views-exposed-form,
+.ui-dialog:not(.ui-dialog-off-canvas) .views-displays {
   border: 1px solid var(--gin-border-color-layer);
 }
 
@@ -49,20 +50,13 @@
 
 .ui-dialog {
   position: absolute;
+  left: 0;
   top: 0;
   font-family: var(--gin-font);
   outline: none;
 }
 
-[dir="ltr"] .ui-dialog {
-  left: 0;
-}
-
-[dir="rtl"] .ui-dialog {
-  right: 0;
-}
-
-.ui-dialog,.ui-dialog:focus,.ui-dialog:focus:active,.ui-dialog:focus:hover {
+.ui-dialog, .ui-dialog:focus, .ui-dialog:focus:active, .ui-dialog:focus:hover {
   box-shadow: var(--gin-shadow-l1);
 }
 
@@ -126,7 +120,8 @@
   margin-left: 0;
 }
 
-.ui-dialog .ui-widget-content.ui-dialog-buttonpane .button.button--danger,.ui-dialog [data-drupal-selector*=-remove-form] .button.button--danger {
+.ui-dialog .ui-widget-content.ui-dialog-buttonpane .button.button--danger,
+.ui-dialog [data-drupal-selector*=-remove-form] .button.button--danger {
   border-color: var(--gin-color-danger) !important;
 }
 
@@ -206,24 +201,28 @@
   margin-bottom: var(--gin-spacing-s);
 }
 
-.erl-overlay,.layout-paragraphs-dialog {
+.erl-overlay,
+.layout-paragraphs-dialog {
   position: fixed !important;
   top: 50% !important;
   width: calc(100% - var(--gin-spacing-xl)) !important;
 }
 
-[dir="ltr"] .erl-overlay,[dir="ltr"] .layout-paragraphs-dialog {
+[dir="ltr"] .erl-overlay,
+[dir="ltr"] .layout-paragraphs-dialog {
   left: 50% !important;
   transform: translate(-50%, -50%);
 }
 
-[dir="rtl"] .erl-overlay,[dir="rtl"] .layout-paragraphs-dialog {
+[dir="rtl"] .erl-overlay,
+[dir="rtl"] .layout-paragraphs-dialog {
   right: 50% !important;
   transform: translate(50%, -50%);
 }
 
 @media (min-width: 64em) {
-  .erl-overlay,.layout-paragraphs-dialog {
+  .erl-overlay,
+  .layout-paragraphs-dialog {
     width: calc(100% - var(--gin-spacing-xxxl)) !important;
   }
 }
@@ -265,7 +264,7 @@ ul.paragraphs-add-dialog-list {
 
 .ui-widget.ui-dialog.ui-dialog-off-canvas .ui-resizable-w {
   border: 0 none;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
 }
 
 .ui-widget.ui-dialog.ui-dialog-off-canvas .fieldset {
@@ -285,7 +284,7 @@ ul.paragraphs-add-dialog-list {
 }
 
 table.treetable tr.branch {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
 }
 
 .ui-dialog .gin-layer-wrapper {
@@ -293,7 +292,7 @@ table.treetable tr.branch {
   margin-top: var(--gin-spacing-l);
 }
 
-.views-ui-dialog.views-ui-dialog>.ui-dialog-content {
+.views-ui-dialog.views-ui-dialog > .ui-dialog-content {
   padding: 0;
 }
 

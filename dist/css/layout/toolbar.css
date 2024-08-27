@@ -50,33 +50,36 @@
   }
 }
 
-.toolbar .toolbar-bar .toolbar-tab>.toolbar-item {
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-item {
   font-weight: var(--gin-font-weight-normal);
 }
 
 @media (min-width: 61em) {
-  .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-icon::before,.toolbar .toolbar-bar .toolbar-tab>.toolbar-icon-edit.toolbar-item::before {
+  .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-icon::before,
+  .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
     width: var(--gin-icon-size-toolbar);
     height: var(--gin-icon-size-toolbar);
     top: 50%;
     transform: translateY(-50%);
   }
 
-  [dir="ltr"] .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-icon::before,[dir="ltr"] .toolbar .toolbar-bar .toolbar-tab>.toolbar-icon-edit.toolbar-item::before {
-    left: calc((var(--gin-toolbar-width-collapsed) - var(--gin-icon-size-toolbar))/2 - 9px);
+  [dir="ltr"] .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-icon::before,
+  [dir="ltr"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
+    left: calc((var(--gin-toolbar-width-collapsed) - var(--gin-icon-size-toolbar)) / 2 - 9px);
   }
 
-  [dir="rtl"] .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-icon::before,[dir="rtl"] .toolbar .toolbar-bar .toolbar-tab>.toolbar-icon-edit.toolbar-item::before {
-    right: calc((var(--gin-toolbar-width-collapsed) - var(--gin-icon-size-toolbar))/2 - 9px);
+  [dir="rtl"] .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-icon::before,
+  [dir="rtl"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
+    right: calc((var(--gin-toolbar-width-collapsed) - var(--gin-icon-size-toolbar)) / 2 - 9px);
   }
 }
 
 @media (max-width: 36.74em) {
-  [dir="ltr"] .toolbar .toolbar-bar .toolbar-tab>.toolbar-icon-edit.toolbar-item::before {
+  [dir="ltr"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
     left: 0;
   }
 
-  [dir="rtl"] .toolbar .toolbar-bar .toolbar-tab>.toolbar-icon-edit.toolbar-item::before {
+  [dir="rtl"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon-edit.toolbar-item::before {
     right: 0;
   }
 }
@@ -86,7 +89,7 @@
     height: var(--gin-height-sticky);
   }
 
-  .toolbar .toolbar-bar .toolbar-logo:hover,.toolbar .toolbar-bar .toolbar-logo:focus {
+  .toolbar .toolbar-bar .toolbar-logo:hover, .toolbar .toolbar-bar .toolbar-logo:focus {
     z-index: 3;
     position: relative;
   }
@@ -140,11 +143,11 @@
   }
 
   [dir="ltr"] .toolbar .toolbar-bar #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default::before {
-    left: calc((var(--gin-toolbar-width-collapsed) - 32px)/2 - 9px);
+    left: calc((var(--gin-toolbar-width-collapsed) - 32px) / 2 - 9px);
   }
 
   [dir="rtl"] .toolbar .toolbar-bar #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default::before {
-    right: calc((var(--gin-toolbar-width-collapsed) - 32px)/2 - 9px);
+    right: calc((var(--gin-toolbar-width-collapsed) - 32px) / 2 - 9px);
   }
 }
 
@@ -167,7 +170,9 @@
   background: var(--gin-color-primary-active);
 }
 
-.toolbar-tray a,.toolbar-tray a:visited,.toolbar-tray span {
+.toolbar-tray a,
+.toolbar-tray a:visited,
+.toolbar-tray span {
   color: var(--gin-color-text);
 }
 
@@ -204,28 +209,34 @@
 }
 
 .toolbar .toolbar-menu {
-  background: rgba(0, 0, 0, 0);
+  background: transparent;
 }
 
-.toolbar .toolbar-menu .toolbar-menu a,.toolbar .toolbar-menu .toolbar-menu span {
+.toolbar .toolbar-menu .toolbar-menu a,
+.toolbar .toolbar-menu .toolbar-menu span {
   color: var(--gin-color-text);
 }
 
-.toolbar .toolbar-tray .menu-item--active-trail>.toolbar-box>a.toolbar-icon,.toolbar .toolbar-tray a.is-active {
+.toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box > a.toolbar-icon,
+.toolbar .toolbar-tray a.is-active {
   color: var(--gin-color-primary);
   font-weight: var(--gin-font-weight-semibold);
   text-decoration: none;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
 }
 
 @media (max-width: 60.99em) {
-  .toolbar .toolbar-tray .menu-item--active-trail>.toolbar-box>a.toolbar-icon,.toolbar .toolbar-tray a.is-active {
+  .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box > a.toolbar-icon,
+  .toolbar .toolbar-tray a.is-active {
     width: 100%;
     background: var(--gin-color-primary-light);
   }
 }
 
-.toolbar-menu__title,.toolbar-menu__sub-title,a.toolbar-menu__trigger,.toolbar-menu__logo {
+.toolbar-menu__title,
+.toolbar-menu__sub-title,
+a.toolbar-menu__trigger,
+.toolbar-menu__logo {
   display: none;
 }
 
@@ -246,7 +257,7 @@
     position: static;
   }
 
-  .toolbar-tab>.toolbar-item.toolbar-icon-menu {
+  .toolbar-tab > .toolbar-item.toolbar-icon-menu {
     display: none;
   }
 
@@ -275,11 +286,11 @@
     padding: var(--gin-spacing-m) var(--gin-toolbar-width-collapsed) var(--gin-spacing-m) 0;
   }
 
-  .toolbar-menu-administration a.toolbar-menu__trigger,.toolbar-menu-administration a.toolbar-menu__trigger:active,.toolbar-menu-administration a.toolbar-menu__trigger:focus {
-    background-color: rgba(0, 0, 0, 0);
+  .toolbar-menu-administration a.toolbar-menu__trigger, .toolbar-menu-administration a.toolbar-menu__trigger:active, .toolbar-menu-administration a.toolbar-menu__trigger:focus {
+    background-color: transparent;
   }
 
-  .toolbar-menu-administration a.toolbar-menu__trigger:hover::before,.toolbar-menu-administration a.toolbar-menu__trigger:focus::before {
+  .toolbar-menu-administration a.toolbar-menu__trigger:hover::before, .toolbar-menu-administration a.toolbar-menu__trigger:focus::before {
     background-color: var(--gin-color-title);
   }
 
@@ -297,15 +308,15 @@
   }
 
   [dir="ltr"] .toolbar-menu-administration a.toolbar-menu__trigger::before {
-    left: calc((var(--gin-toolbar-width-collapsed) - 36px)/2);
+    left: calc((var(--gin-toolbar-width-collapsed) - 36px) / 2);
   }
 
   [dir="rtl"] .toolbar-menu-administration a.toolbar-menu__trigger::before {
-    right: calc((var(--gin-toolbar-width-collapsed) - 36px)/2);
+    right: calc((var(--gin-toolbar-width-collapsed) - 36px) / 2);
   }
 }
 
-@media (min-width: 61em)and (forced-colors: active) {
+@media (min-width: 61em) and (forced-colors: active) {
   .toolbar-menu-administration a.toolbar-menu__trigger::before {
     background: var(--gin-bg-layer) url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='linkText'/%3E%3C/svg%3E") no-repeat center center;
   }
@@ -386,15 +397,18 @@
     width: var(--gin-toolbar-width);
   }
 
-  .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item.hover-intent ul,.toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item:focus-within ul {
+  .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item.hover-intent ul,
+  .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item:focus-within ul {
     margin-top: 0;
   }
 
-  [dir="ltr"] .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item.hover-intent ul,[dir="ltr"] .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item:focus-within ul {
+  [dir="ltr"] .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item.hover-intent ul,
+  [dir="ltr"] .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item:focus-within ul {
     margin-left: calc(var(--gin-toolbar-width) - 2px);
   }
 
-  [dir="rtl"] .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item.hover-intent ul,[dir="rtl"] .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item:focus-within ul {
+  [dir="rtl"] .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item.hover-intent ul,
+  [dir="rtl"] .toolbar-tray-horizontal .toolbar-menu-administration ul li.menu-item--expanded .menu-item:focus-within ul {
     margin-right: calc(var(--gin-toolbar-width) - 2px);
   }
 
@@ -406,44 +420,48 @@
     width: var(--gin-toolbar-width);
   }
 
-  .toolbar-vertical .toolbar-menu-administration>.toolbar-menu>.menu-item {
+  .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item {
     border-top: 0 none;
     border-bottom: 0 none;
   }
 
-  .toolbar-vertical .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon,.toolbar-vertical .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon {
+  .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
+  .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
     width: auto;
   }
 
-  [dir="ltr"] .toolbar-vertical .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon,[dir="ltr"] .toolbar-vertical .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon {
+  [dir="ltr"] .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
+  [dir="ltr"] .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
     padding-left: calc(var(--gin-spacing-xxl) + var(--gin-spacing-xs));
   }
 
-  [dir="rtl"] .toolbar-vertical .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon,[dir="rtl"] .toolbar-vertical .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon {
+  [dir="rtl"] .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
+  [dir="rtl"] .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
     padding-right: calc(var(--gin-spacing-xxl) + var(--gin-spacing-xs));
   }
 
-  [dir="ltr"] .toolbar-vertical .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu {
+  [dir="ltr"] .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
     left: var(--gin-toolbar-width);
   }
 
-  [dir="rtl"] .toolbar-vertical .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu {
+  [dir="rtl"] .toolbar-vertical .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
     right: var(--gin-toolbar-width);
   }
 
-  .toolbar-menu-administration>.toolbar-menu {
+  .toolbar-menu-administration > .toolbar-menu {
     align-self: flex-start;
     height: 100%;
     max-height: calc(100% - var(--gin-toolbar-width-collapsed));
     overflow-y: auto;
-    background: rgba(0, 0, 0, 0);
+    background: transparent;
     -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon,.toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
     font-size: var(--gin-font-size);
     font-weight: 475;
     letter-spacing: -0.0125rem;
@@ -458,39 +476,46 @@
     transition: width var(--gin-transition);
   }
 
-  [dir="ltr"] .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon,[dir="ltr"] .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon {
+  [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
+  [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
     padding-left: calc(var(--gin-toolbar-width-collapsed) - var(--gin-spacing-m));
     padding-right: 0;
   }
 
-  [dir="rtl"] .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon,[dir="rtl"] .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon {
+  [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
+  [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
     padding-right: calc(var(--gin-toolbar-width-collapsed) - var(--gin-spacing-m));
     padding-left: 0;
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon:hover,.toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon:hover {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:hover,
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon:hover {
     color: var(--gin-color-primary);
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon.is-active,.toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon.is-active {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.is-active,
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.is-active {
     color: var(--gin-color-primary-active);
     font-weight: var(--gin-font-weight-semibold);
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon.is-active:before,.toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon.is-active:before {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.is-active:before,
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.is-active:before {
     background: var(--gin-color-primary);
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon.toolbar-handle,.toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon.toolbar-handle {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.toolbar-handle,
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.toolbar-handle {
     width: var(--gin-toolbar-width-collapsed);
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon.toolbar-handle:before,.toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-box>.toolbar-icon.toolbar-handle:before {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.toolbar-handle:before,
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon.toolbar-handle:before {
     display: none;
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
     display: none;
     top: 0;
     height: 100vh;
@@ -500,39 +525,42 @@
     overflow-x: hidden;
   }
 
-  [dir="ltr"] .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu {
+  [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
     margin-left: calc(var(--gin-toolbar-x-offset) - 1px);
     border-left: 1px solid var(--gin-border-color-layer);
     transition: margin-left var(--gin-transition);
   }
 
-  [dir="rtl"] .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu {
+  [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
     margin-right: calc(var(--gin-toolbar-x-offset) - 1px);
     border-right: 1px solid var(--gin-border-color-layer);
     transition: margin-right var(--gin-transition);
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu,[dir] .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu, [dir] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {
     position: fixed;
     width: var(--gin-toolbar-width);
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu a,.toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu span {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu a,
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu span {
     color: var(--gin-color-text);
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu a.is-active,.toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu span.is-active {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu a.is-active,
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu span.is-active {
     color: var(--gin-color-primary);
     font-weight: var(--gin-font-weight-semibold);
     background: var(--gin-color-primary-light);
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu a.is-active:hover,.toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu span.is-active:hover {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu a.is-active:hover,
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu span.is-active:hover {
     color: var(--gin-color-primary-hover);
     background: var(--gin-color-primary-light-hover);
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu__title,.toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu__sub-title {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__title, .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__sub-title {
     position: relative;
     display: block;
     min-height: 36px;
@@ -542,38 +570,38 @@
     margin: var(--gin-spacing-m) var(--gin-spacing-s) calc(var(--gin-spacing-l) - var(--gin-spacing-xxs)) var(--gin-spacing-s);
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu__title a,.toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu__sub-title a {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__title a, .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__sub-title a {
     font-weight: var(--gin-font-weight-semibold);
     color: var(--gin-color-title);
     padding: var(--gin-spacing-s);
     border-radius: var(--gin-border-m);
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu__sub-title {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__sub-title {
     font-size: var(--gin-font-size-xl);
     letter-spacing: -0.01em;
     margin-bottom: 1.275rem;
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu__sub-title a {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu__sub-title a {
     padding: .9rem var(--gin-spacing-s);
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu .menu-item {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item {
     float: none;
     border-top: 0 none;
     border-bottom: 0 none;
   }
 
-  [dir="ltr"] .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu .menu-item {
+  [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item {
     border-left: 0 none;
   }
 
-  [dir="rtl"] .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu .menu-item {
+  [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item {
     border-right: 0 none;
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu .menu-item .toolbar-icon {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item .toolbar-icon {
     font-size: var(--gin-font-size);
     display: block;
     width: 100%;
@@ -583,49 +611,55 @@
     overflow: hidden;
   }
 
-  [dir="ltr"] .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu .menu-item .toolbar-icon {
+  [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item .toolbar-icon {
     padding: var(--gin-spacing-s) var(--gin-spacing-xl) var(--gin-spacing-s) var(--gin-spacing-s);
   }
 
-  [dir="rtl"] .toolbar-menu-administration>.toolbar-menu>.menu-item .toolbar-menu .menu-item .toolbar-icon {
+  [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu .menu-item .toolbar-icon {
     padding: var(--gin-spacing-s) var(--gin-spacing-s) var(--gin-spacing-s) var(--gin-spacing-xl);
   }
 
-  [dir="ltr"] .toolbar-menu-administration>.toolbar-menu,[dir="ltr"] .toolbar-menu-administration>.toolbar-menu .toolbar-menu {
+  [dir="ltr"] .toolbar-menu-administration > .toolbar-menu, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu .toolbar-menu {
     background: linear-gradient(var(--gin-bg-layer) 30%, var(--gin-bg-layer)), linear-gradient(var(--gin-bg-layer), var(--gin-bg-layer) 80%) 0 100%, radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .15), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .15), rgba(0, 0, 0, 0)) 0 100%;
   }
 
-  [dir="rtl"] .toolbar-menu-administration>.toolbar-menu,[dir="rtl"] .toolbar-menu-administration>.toolbar-menu .toolbar-menu {
+  [dir="rtl"] .toolbar-menu-administration > .toolbar-menu, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu .toolbar-menu {
     background: linear-gradient(var(--gin-bg-layer) 30%, var(--gin-bg-layer)), linear-gradient(var(--gin-bg-layer), var(--gin-bg-layer) 80%) 100% 100%, radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .15), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .15), rgba(0, 0, 0, 0)) 100% 100%;
   }
 
-  [dir] .toolbar-menu-administration>.toolbar-menu,[dir] .toolbar-menu-administration>.toolbar-menu .toolbar-menu {
+  [dir] .toolbar-menu-administration > .toolbar-menu, [dir] .toolbar-menu-administration > .toolbar-menu .toolbar-menu {
     background-color: var(--gin-bg-layer);
     background-repeat: no-repeat;
     background-attachment: local, local, scroll, scroll;
     background-size: 100% 40px, 100% 40px, 100% 16px, 100% 16px;
   }
 
-  .toolbar-menu-administration>.toolbar-menu .toolbar-menu {
+  .toolbar-menu-administration > .toolbar-menu .toolbar-menu {
     background-size: 100% 40px, 100% 40px, 100% 24px, 100% 24px;
   }
 
-  .toolbar-menu-administration .menu-item.hover-intent>.toolbar-menu,.toolbar-menu-administration .menu-item:focus-within>.toolbar-menu {
+  .toolbar-menu-administration .menu-item.hover-intent > .toolbar-menu,
+  .toolbar-menu-administration .menu-item:focus-within > .toolbar-menu {
     z-index: 2;
     display: block;
   }
 
-  [dir="ltr"] .toolbar-menu-administration .menu-item.hover-intent>.toolbar-menu,[dir="ltr"] .toolbar-menu-administration .menu-item:focus-within>.toolbar-menu {
+  [dir="ltr"] .toolbar-menu-administration .menu-item.hover-intent > .toolbar-menu,
+  [dir="ltr"] .toolbar-menu-administration .menu-item:focus-within > .toolbar-menu {
     border-right: 1px solid rgba(0, 0, 0, .075);
     box-shadow: 7px 0 16px rgba(0, 0, 0, .075), -12px 0 0 0 var(--gin-bg-layer);
   }
 
-  [dir="rtl"] .toolbar-menu-administration .menu-item.hover-intent>.toolbar-menu,[dir="rtl"] .toolbar-menu-administration .menu-item:focus-within>.toolbar-menu {
+  [dir="rtl"] .toolbar-menu-administration .menu-item.hover-intent > .toolbar-menu,
+  [dir="rtl"] .toolbar-menu-administration .menu-item:focus-within > .toolbar-menu {
     border-left: 1px solid rgba(0, 0, 0, .075);
     box-shadow: -7px 0 16px rgba(0, 0, 0, .075), 12px 0 0 0 var(--gin-bg-layer);
   }
 
-  .toolbar-menu-administration .menu-item .menu-item:hover>.toolbar-icon,.toolbar-menu-administration .menu-item .menu-item:focus-within>.toolbar-icon,.toolbar-menu-administration .menu-item .menu-item:hover>.toolbar-box>.toolbar-icon,.toolbar-menu-administration .menu-item .menu-item:focus-within>.toolbar-box>.toolbar-icon {
+  .toolbar-menu-administration .menu-item .menu-item:hover > .toolbar-icon,
+  .toolbar-menu-administration .menu-item .menu-item:focus-within > .toolbar-icon,
+  .toolbar-menu-administration .menu-item .menu-item:hover > .toolbar-box > .toolbar-icon,
+  .toolbar-menu-administration .menu-item .menu-item:focus-within > .toolbar-box > .toolbar-icon {
     color: var(--gin-color-primary-hover);
     background: var(--gin-color-primary-light);
   }
@@ -647,38 +681,45 @@
   outline: none;
 }
 
-.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,.toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded>a:focus {
+.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
+.toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
   position: relative;
 }
 
-.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded::before,.toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded>a:focus::before {
+.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded::before,
+.toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus::before {
   z-index: 1;
   top: 1em;
 }
 
-[dir="ltr"] .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded::before,[dir="ltr"] .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded>a:focus::before {
+[dir="ltr"] .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded::before,
+[dir="ltr"] .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus::before {
   right: 20px;
 }
 
-[dir="rtl"] .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded::before,[dir="rtl"] .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded>a:focus::before {
+[dir="rtl"] .toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded::before,
+[dir="rtl"] .toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus::before {
   left: 20px;
 }
 
-.toolbar-menu-administration>.toolbar-menu>.menu-item:hover {
-  background: rgba(0, 0, 0, 0);
+.toolbar-menu-administration > .toolbar-menu > .menu-item:hover {
+  background: transparent;
 }
 
 @media (min-width: 61em) {
-  .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-icon,.toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-box>a.toolbar-icon,.toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon:focus,.toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-icon,.toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail:hover>.toolbar-icon,.toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-box>a.toolbar-icon {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon,
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon {
     color: var(--gin-color-primary-hover);
     box-shadow: none;
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-icon::before,.toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-box>a.toolbar-icon::before,.toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon:focus::before,.toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-icon::before,.toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail:hover>.toolbar-icon::before,.toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-box>a.toolbar-icon::before {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::before,
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon::before, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::before {
     background: var(--gin-color-primary-active);
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-icon::after,.toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-box>a.toolbar-icon::after,.toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon:focus::after,.toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-icon::after,.toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail:hover>.toolbar-icon::after,.toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-box>a.toolbar-icon::after {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::after,
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
     content: "";
     display: block;
     position: absolute;
@@ -689,30 +730,34 @@
     border-radius: var(--gin-border-m);
   }
 
-  [dir="ltr"] .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-icon::after,[dir="ltr"] .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-box>a.toolbar-icon::after,[dir="ltr"] .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon:focus::after,[dir="ltr"] .toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-icon::after,[dir="ltr"] .toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail:hover>.toolbar-icon::after,[dir="ltr"] .toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-box>a.toolbar-icon::after {
-    left: calc((var(--gin-toolbar-width-collapsed) - var(--gin-spacing-xl) - var(--gin-spacing-xs))/2 - 9px);
+  [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon::after, [dir="ltr"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
+    left: calc((var(--gin-toolbar-width-collapsed) - var(--gin-spacing-xl) - var(--gin-spacing-xs)) / 2 - 9px);
   }
 
-  [dir="rtl"] .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-icon::after,[dir="rtl"] .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-box>a.toolbar-icon::after,[dir="rtl"] .toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon:focus::after,[dir="rtl"] .toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-icon::after,[dir="rtl"] .toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail:hover>.toolbar-icon::after,[dir="rtl"] .toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-box>a.toolbar-icon::after {
-    right: calc((var(--gin-toolbar-width-collapsed) - var(--gin-spacing-xl) - var(--gin-spacing-xs))/2 - 9px);
+  [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon::after, [dir="rtl"] .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after {
+    right: calc((var(--gin-toolbar-width-collapsed) - var(--gin-spacing-xl) - var(--gin-spacing-xs)) / 2 - 9px);
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-icon:focus,.toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-box>a.toolbar-icon:focus,.toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon:focus:focus,.toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-icon:focus,.toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail:hover>.toolbar-icon:focus,.toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-box>a.toolbar-icon:focus {
-    background: rgba(0, 0, 0, 0);
+  .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon:focus,
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon:focus, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon:focus {
+    background: transparent;
   }
 
-  .toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-icon:focus::after,.toolbar-menu-administration>.toolbar-menu>.menu-item:hover>.toolbar-box>a.toolbar-icon:focus::after,.toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon:focus:focus::after,.toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-icon:focus::after,.toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail:hover>.toolbar-icon:focus::after,.toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-box>a.toolbar-icon:focus::after {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > .toolbar-box > a.toolbar-icon:focus::after,
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon:focus:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail:hover > .toolbar-icon:focus::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon:focus::after {
     box-shadow: inset 0 0 0 1px var(--gin-color-focus-border), inset 0 0 0 4px var(--gin-color-focus);
   }
 }
 
 @media (min-width: 61em) {
-  .toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-icon::after,.toolbar-menu-administration>.toolbar-menu>.menu-item.menu-item--active-trail>.toolbar-box>a.toolbar-icon::after,.toolbar-menu-administration>.toolbar-menu>.menu-item>.toolbar-icon.is-active::after {
+  .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-icon::after, .toolbar-menu-administration > .toolbar-menu > .menu-item.menu-item--active-trail > .toolbar-box > a.toolbar-icon::after,
+  .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon.is-active::after {
     background: var(--gin-bg-item-hover);
   }
 }
 
-#toolbar-item-administration-tray,.toolbar-loading #toolbar-item-administration-tray {
+#toolbar-item-administration-tray,
+.toolbar-loading #toolbar-item-administration-tray {
   box-shadow: none;
 }
 

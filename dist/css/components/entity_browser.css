@@ -19,12 +19,12 @@
 }
 
 .entities-list .item-container .field__item {
-  border: 3px solid rgba(0, 0, 0, 0);
+  border: 3px solid transparent;
   border-radius: var(--gin-border-xl);
   overflow: hidden;
 }
 
-.entities-list .item-container .field__item:hover,.entities-list .item-container .field__item:focus {
+.entities-list .item-container .field__item:hover, .entities-list .item-container .field__item:focus {
   border-color: var(--gin-color-primary) !important;
   cursor: pointer;
 }
@@ -41,17 +41,18 @@
   vertical-align: middle;
 }
 
-.entities-list .item-container>.entity-browser-remove-selected-entity,.entities-list .item-container>.remove-button {
+.entities-list .item-container > .entity-browser-remove-selected-entity,
+.entities-list .item-container > .remove-button {
   all: unset;
-  background-color: #fff;
+  background-color: white;
   background-image: url("../../media/sprite.svg#trash-view");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 15px 15px;
   border-radius: 50%;
-  border-color: rgba(0, 0, 0, 0) !important;
+  border-color: transparent !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
-  color: rgba(0, 0, 0, 0);
+  color: transparent;
   width: 29px;
   height: 29px;
   margin: var(--gin-spacing-s);
@@ -59,32 +60,37 @@
   top: 0;
 }
 
-[dir="ltr"] .entities-list .item-container>.entity-browser-remove-selected-entity,[dir="ltr"] .entities-list .item-container>.remove-button {
+[dir="ltr"] .entities-list .item-container > .entity-browser-remove-selected-entity,
+[dir="ltr"] .entities-list .item-container > .remove-button {
   right: 0;
 }
 
-[dir="rtl"] .entities-list .item-container>.entity-browser-remove-selected-entity,[dir="rtl"] .entities-list .item-container>.remove-button {
+[dir="rtl"] .entities-list .item-container > .entity-browser-remove-selected-entity,
+[dir="rtl"] .entities-list .item-container > .remove-button {
   left: 0;
 }
 
-.entities-list .item-container>.entity-browser-remove-selected-entity:hover,.entities-list .item-container>.entity-browser-remove-selected-entity:focus,.entities-list .item-container>.remove-button:hover,.entities-list .item-container>.remove-button:focus {
-  background-color: #fff;
+.entities-list .item-container > .entity-browser-remove-selected-entity:hover, .entities-list .item-container > .entity-browser-remove-selected-entity:focus,
+.entities-list .item-container > .remove-button:hover,
+.entities-list .item-container > .remove-button:focus {
+  background-color: white;
   border-color: var(--gin-color-primary) !important;
-  color: rgba(0, 0, 0, 0);
+  color: transparent;
   cursor: pointer;
 }
 
-.entities-list .item-container>.replace-button,.entities-list .item-container>.edit-button {
+.entities-list .item-container > .replace-button,
+.entities-list .item-container > .edit-button {
   all: unset;
-  background-color: #fff;
+  background-color: white;
   background-image: url("../../media/sprite.svg#edit-view");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 15px 15px;
   border-radius: 50%;
-  border-color: rgba(0, 0, 0, 0) !important;
+  border-color: transparent !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
-  color: rgba(0, 0, 0, 0);
+  color: transparent;
   width: 29px;
   height: 29px;
   margin: var(--gin-spacing-s);
@@ -92,18 +98,22 @@
   top: 0;
 }
 
-[dir="ltr"] .entities-list .item-container>.replace-button,[dir="ltr"] .entities-list .item-container>.edit-button {
+[dir="ltr"] .entities-list .item-container > .replace-button,
+[dir="ltr"] .entities-list .item-container > .edit-button {
   right: 2.6rem;
 }
 
-[dir="rtl"] .entities-list .item-container>.replace-button,[dir="rtl"] .entities-list .item-container>.edit-button {
+[dir="rtl"] .entities-list .item-container > .replace-button,
+[dir="rtl"] .entities-list .item-container > .edit-button {
   left: 2.6rem;
 }
 
-.entities-list .item-container>.replace-button:hover,.entities-list .item-container>.replace-button:focus,.entities-list .item-container>.edit-button:hover,.entities-list .item-container>.edit-button:focus {
-  background-color: #fff;
+.entities-list .item-container > .replace-button:hover, .entities-list .item-container > .replace-button:focus,
+.entities-list .item-container > .edit-button:hover,
+.entities-list .item-container > .edit-button:focus {
+  background-color: white;
   border-color: var(--gin-color-primary) !important;
-  color: rgba(0, 0, 0, 0);
+  color: transparent;
   cursor: pointer;
 }
 
@@ -122,7 +132,7 @@ table.entities-list td {
   box-shadow: none;
 }
 
-.gin-entity-browser .entity-browser-form .page-wrapper>.layout-container {
+.gin-entity-browser .entity-browser-form .page-wrapper > .layout-container {
   margin: 0;
 }
 
@@ -143,7 +153,7 @@ table.entities-list td {
   position: relative;
 }
 
-.gin-entity-browser .entity-browser-form .views-row .views-field-thumbnail__target-id:hover,.gin-entity-browser .entity-browser-form .views-row .views-field-thumbnail__target-id:focus {
+.gin-entity-browser .entity-browser-form .views-row .views-field-thumbnail__target-id:hover, .gin-entity-browser .entity-browser-form .views-row .views-field-thumbnail__target-id:focus {
   cursor: pointer;
   border-color: var(--gin-color-primary);
 }
@@ -176,12 +186,12 @@ table.entities-list td {
 }
 
 .gin-entity-browser .entity-browser-form .views-field-thumbnail__target-id {
-  border: 3px solid rgba(0, 0, 0, 0);
+  border: 3px solid transparent;
   border-radius: var(--gin-border-xl);
   overflow: hidden;
 }
 
-.gin-entity-browser .entity-browser-form .views-field-thumbnail__target-id:hover,.gin-entity-browser .entity-browser-form .views-field-thumbnail__target-id:focus {
+.gin-entity-browser .entity-browser-form .views-field-thumbnail__target-id:hover, .gin-entity-browser .entity-browser-form .views-field-thumbnail__target-id:focus {
   border-color: var(--gin-color-primary);
 }
 
@@ -194,7 +204,9 @@ table.entities-list td {
   box-shadow: none;
 }
 
-.field--widget-entity-browser-entity-reference .entities-list.sortable .item-container:hover,.field--widget-entity-browser-entity-reference .entities-list.sortable .item-container:focus,.field--widget-entity-browser-entity-reference .entities-list.sortable .field__item:hover,.field--widget-entity-browser-entity-reference .entities-list.sortable .field__item:focus {
+.field--widget-entity-browser-entity-reference .entities-list.sortable .item-container:hover, .field--widget-entity-browser-entity-reference .entities-list.sortable .item-container:focus,
+.field--widget-entity-browser-entity-reference .entities-list.sortable .field__item:hover,
+.field--widget-entity-browser-entity-reference .entities-list.sortable .field__item:focus {
   cursor: move;
   opacity: 1;
 }

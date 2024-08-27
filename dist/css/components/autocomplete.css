@@ -1,15 +1,27 @@
-.ui-autocomplete,.ui-dialog .ui-autocomplete {
+.ui-autocomplete,
+.ui-dialog .ui-autocomplete {
   color: var(--gin-color-text);
   background: var(--gin-bg-input);
   border-radius: 0 0 var(--gin-border-m) var(--gin-border-m);
 }
 
-.ui-autocomplete .ui-menu-item-wrapper.ui-state-active,.ui-dialog .ui-autocomplete .ui-menu-item-wrapper.ui-state-active {
+.ui-autocomplete .ui-menu-item-wrapper.ui-state-active,
+.ui-dialog .ui-autocomplete .ui-menu-item-wrapper.ui-state-active {
   color: var(--gin-color-primary-hover);
   background-color: var(--gin-bg-item-hover);
 }
 
-.ui-state-active,.ui-dialog .ui-state-active,.ui-widget-content .ui-state-active,.ui-dialog .ui-widget-content .ui-state-active,.ui-widget-header .ui-state-active,.ui-dialog .ui-widget-header .ui-state-active,a.ui-button:active,.ui-dialog a.ui-button:active,.ui-button:active,.ui-dialog .ui-button:active,.ui-button.ui-state-active:hover,.ui-dialog .ui-button.ui-state-active:hover {
+.ui-state-active, .ui-dialog .ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-dialog .ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+.ui-dialog .ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-dialog a.ui-button:active,
+.ui-button:active,
+.ui-dialog .ui-button:active,
+.ui-button.ui-state-active:hover,
+.ui-dialog .ui-button.ui-state-active:hover {
   border: none;
 }
 
@@ -31,15 +43,19 @@
   transition: var(--gin-transition), background-position none;
 }
 
-.js .form-autocomplete.is-autocompleting,.js input.form-autocomplete.ui-autocomplete-loading,div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open {
+.js .form-autocomplete.is-autocompleting,
+.js input.form-autocomplete.ui-autocomplete-loading,
+div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open {
   background-image: none;
 }
 
-.form-autocomplete.is-autocompleting+.claro-autocomplete__message,div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open {
+.form-autocomplete.is-autocompleting + .claro-autocomplete__message,
+div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open {
   display: block;
 }
 
-.form-autocomplete.is-autocompleting+.claro-autocomplete__message::after,div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open::after {
+.form-autocomplete.is-autocompleting + .claro-autocomplete__message::after,
+div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open::after {
   content: "";
   position: absolute;
   top: 35px;
@@ -52,12 +68,14 @@
   animation: gin-throbber 1s linear infinite;
 }
 
-[dir="ltr"] .form-autocomplete.is-autocompleting+.claro-autocomplete__message::after,[dir="ltr"] div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open::after {
+[dir="ltr"] .form-autocomplete.is-autocompleting + .claro-autocomplete__message::after,
+[dir="ltr"] div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open::after {
   right: 12px;
   text-align: right;
 }
 
-[dir="rtl"] .form-autocomplete.is-autocompleting+.claro-autocomplete__message::after,[dir="rtl"] div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open::after {
+[dir="rtl"] .form-autocomplete.is-autocompleting + .claro-autocomplete__message::after,
+[dir="rtl"] div.autocomplete-deluxe-container div.autocomplete-deluxe-throbber.autocomplete-deluxe-open::after {
   left: 12px;
   text-align: left;
 }
@@ -96,7 +114,7 @@ div.autocomplete-deluxe-multiple {
   padding: 6px 12px 6px var(--gin-spacing-l);
 }
 
-.autocomplete-deluxe-item:hover,.autocomplete-deluxe-item:active {
+.autocomplete-deluxe-item:hover, .autocomplete-deluxe-item:active {
   color: var(--gin-color-button-text);
   background-color: var(--gin-color-primary);
 }
@@ -122,7 +140,8 @@ div.autocomplete-deluxe-multiple {
   left: 6px;
 }
 
-.autocomplete-deluxe-item:hover .autocomplete-deluxe-item-delete,.autocomplete-deluxe-item .autocomplete-deluxe-item-delete:hover {
+.autocomplete-deluxe-item:hover .autocomplete-deluxe-item-delete,
+.autocomplete-deluxe-item .autocomplete-deluxe-item-delete:hover {
   background: var(--gin-color-button-text);
 }
 

@@ -36,12 +36,12 @@
   transform: translate(50%, -50%);
 }
 
-.contextual .trigger,.contextual .trigger:hover,.contextual .trigger:focus {
+.contextual .trigger, .contextual .trigger:hover, .contextual .trigger:focus {
   background: var(--gin-bg-layer3);
   border: 1px solid var(--gin-border-color-layer2);
 }
 
-.contextual .trigger:hover,.contextual .trigger:focus {
+.contextual .trigger:hover, .contextual .trigger:focus {
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }
 
@@ -62,7 +62,7 @@
 }
 
 .contextual-region .contextual .contextual-links li {
-  background: rgba(0, 0, 0, 0);
+  background: transparent;
 }
 
 .contextual-region .contextual .contextual-links li a {
@@ -72,11 +72,11 @@
   white-space: nowrap;
   padding: var(--gin-spacing-xs) var(--gin-spacing-m);
   margin: 0;
-  background: rgba(0, 0, 0, 0);
+  background: transparent;
   border-radius: var(--gin-border-s);
 }
 
-.contextual-region .contextual .contextual-links li a:hover,.contextual-region .contextual .contextual-links li a:active {
+.contextual-region .contextual .contextual-links li a:hover, .contextual-region .contextual .contextual-links li a:active {
   color: var(--gin-color-button-text);
   background: var(--gin-color-primary);
 }
@@ -101,15 +101,15 @@
 
 [dir="ltr"] .contextual-region .contextual .contextual-links .ajax-progress-throbber::before {
   left: var(--gin-spacing-xxs);
-  border-right: 2px dotted rgba(0, 0, 0, 0);
+  border-right: 2px dotted transparent;
 }
 
 [dir="rtl"] .contextual-region .contextual .contextual-links .ajax-progress-throbber::before {
   right: var(--gin-spacing-xxs);
-  border-left: 2px dotted rgba(0, 0, 0, 0);
+  border-left: 2px dotted transparent;
 }
 
-.no-touchevents .contextual-region .contextual .contextual-links li a:hover,.no-touchevents .contextual-region .contextual .contextual-links li a:active {
+.no-touchevents .contextual-region .contextual .contextual-links li a:hover, .no-touchevents .contextual-region .contextual .contextual-links li a:active {
   color: var(--gin-color-button-text);
   background: var(--gin-color-primary);
 }

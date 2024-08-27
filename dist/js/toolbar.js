@@ -1,2 +1,56 @@
-/*! For license information please see toolbar.js.LICENSE.txt */
-((t,o,e)=>{const a=o.gin.toolbar_variant;t.behaviors.ginToolbar={attach:o=>{t.ginToolbar.init(o),t.ginToolbar.initKeyboardShortcut(o)}},t.ginToolbar={init:function(t){e("ginToolbarInit","#gin-toolbar-bar",t).forEach((()=>{const t=document.querySelector(".toolbar-menu__trigger");"classic"!=a&&localStorage.getItem("Drupal.toolbar.trayVerticalLocked")&&localStorage.removeItem("Drupal.toolbar.trayVerticalLocked"),"true"===localStorage.getItem("Drupal.gin.toolbarExpanded")?(document.body.setAttribute("data-toolbar-menu","open"),t.classList.add("is-active")):(document.body.setAttribute("data-toolbar-menu",""),t.classList.remove("is-active")),this.initDisplace()})),e("ginToolbarToggle",".toolbar-menu__trigger",t).forEach((t=>t.addEventListener("click",(t=>{t.preventDefault(),this.toggleToolbar()}))))},initKeyboardShortcut:function(t){e("ginToolbarKeyboardShortcutInit",".toolbar-menu__trigger, .admin-toolbar__expand-button",t).forEach((()=>{document.addEventListener("keydown",(t=>{!0===t.altKey&&"KeyT"===t.code&&this.toggleToolbar()}))}))},initDisplace:()=>{const t=document.querySelector("#gin-toolbar-bar .toolbar-menu-administration");t&&("vertical"===a?t.setAttribute("data-offset-left",""):t.setAttribute("data-offset-top",""))},toggleToolbar:function(){const t=document.querySelector(".toolbar-menu__trigger");t.classList.toggle("is-active"),t.classList.contains("is-active")?this.showToolbar():this.collapseToolbar()},showToolbar:function(){const o="true";document.body.setAttribute("data-toolbar-menu","open"),localStorage.setItem("Drupal.gin.toolbarExpanded",o),this.dispatchToolbarEvent(o),this.displaceToolbar(),window.innerWidth<1280&&"vertical"===a&&t.ginSidebar.collapseSidebar()},collapseToolbar:function(){const t=document.querySelector(".toolbar-menu__trigger"),o=document.querySelector(".gin-toolbar-inline-styles");t.classList.remove("is-active"),document.body.setAttribute("data-toolbar-menu",""),o&&o.parentNode.removeChild(o),localStorage.setItem("Drupal.gin.toolbarExpanded","false"),this.dispatchToolbarEvent("false"),this.displaceToolbar()},dispatchToolbarEvent:t=>{const o=new CustomEvent("toolbar-toggle",{detail:"true"===t});document.dispatchEvent(o)},displaceToolbar:()=>{ontransitionend=()=>{t.displace(!0)}}}})(Drupal,drupalSettings,once);
+((Drupal, drupalSettings, once) => {
+  const toolbarVariant = drupalSettings.gin.toolbar_variant;
+  Drupal.behaviors.ginToolbar = {
+    attach: context => {
+      Drupal.ginToolbar.init(context), Drupal.ginToolbar.initKeyboardShortcut(context);
+    }
+  }, Drupal.ginToolbar = {
+    init: function(context) {
+      once("ginToolbarInit", "#gin-toolbar-bar", context).forEach((() => {
+        const toolbarTrigger = document.querySelector(".toolbar-menu__trigger");
+        "classic" != toolbarVariant && localStorage.getItem("Drupal.toolbar.trayVerticalLocked") && localStorage.removeItem("Drupal.toolbar.trayVerticalLocked"), 
+        "true" === localStorage.getItem("Drupal.gin.toolbarExpanded") ? (document.body.setAttribute("data-toolbar-menu", "open"), 
+        toolbarTrigger.classList.add("is-active")) : (document.body.setAttribute("data-toolbar-menu", ""), 
+        toolbarTrigger.classList.remove("is-active")), this.initDisplace();
+      })), once("ginToolbarToggle", ".toolbar-menu__trigger", context).forEach((el => el.addEventListener("click", (e => {
+        e.preventDefault(), this.toggleToolbar();
+      }))));
+    },
+    initKeyboardShortcut: function(context) {
+      once("ginToolbarKeyboardShortcutInit", ".toolbar-menu__trigger, .admin-toolbar__expand-button", context).forEach((() => {
+        document.addEventListener("keydown", (e => {
+          !0 === e.altKey && "KeyT" === e.code && this.toggleToolbar();
+        }));
+      }));
+    },
+    initDisplace: () => {
+      const toolbar = document.querySelector("#gin-toolbar-bar .toolbar-menu-administration");
+      toolbar && ("vertical" === toolbarVariant ? toolbar.setAttribute("data-offset-left", "") : toolbar.setAttribute("data-offset-top", ""));
+    },
+    toggleToolbar: function() {
+      const toolbarTrigger = document.querySelector(".toolbar-menu__trigger");
+      toolbarTrigger.classList.toggle("is-active"), toolbarTrigger.classList.contains("is-active") ? this.showToolbar() : this.collapseToolbar();
+    },
+    showToolbar: function() {
+      document.body.setAttribute("data-toolbar-menu", "open"), localStorage.setItem("Drupal.gin.toolbarExpanded", "true"), 
+      this.dispatchToolbarEvent("true"), this.displaceToolbar(), window.innerWidth < 1280 && "vertical" === toolbarVariant && Drupal.ginSidebar.collapseSidebar();
+    },
+    collapseToolbar: function() {
+      const toolbarTrigger = document.querySelector(".toolbar-menu__trigger"), elementToRemove = document.querySelector(".gin-toolbar-inline-styles");
+      toolbarTrigger.classList.remove("is-active"), document.body.setAttribute("data-toolbar-menu", ""), 
+      elementToRemove && elementToRemove.parentNode.removeChild(elementToRemove), localStorage.setItem("Drupal.gin.toolbarExpanded", "false"), 
+      this.dispatchToolbarEvent("false"), this.displaceToolbar();
+    },
+    dispatchToolbarEvent: active => {
+      const event = new CustomEvent("toolbar-toggle", {
+        detail: "true" === active
+      });
+      document.dispatchEvent(event);
+    },
+    displaceToolbar: () => {
+      ontransitionend = () => {
+        Drupal.displace(!0);
+      };
+    }
+  };
+})(Drupal, drupalSettings, once);

@@ -1,2 +1,39 @@
-/*! For license information please see gin_ckeditor.js.LICENSE.txt */
-((e,t,o)=>{e.behaviors.ginCKEditor={attach:t=>{e.ginCKEditor.init(t)}},e.ginCKEditor={init:n=>{o("ginCKEditors","body",n).forEach((()=>{if(window.CKEDITOR&&void 0!==CKEDITOR){if(t.path.currentPath.indexOf("admin/config/content/formats/manage")>-1)return;const o=t.gin.variables_css_path,n=t.gin.accent_css_path,c=t.gin.ckeditor_css_path,a=t.gin.preset_accent_color,d=t.gin.accent_color,s=t.gin.darkmode_class;(1==localStorage.getItem("Drupal.gin.darkmode")||"auto"===localStorage.getItem("Drupal.gin.darkmode")&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&(CKEDITOR.config.bodyClass=s),void 0===CKEDITOR.config.contentsCss&&CKEDITOR.config.contentsCss.push(o,n,c),void 0===CKEDITOR.config.contextmenu_contentsCss&&(CKEDITOR.config.contextmenu_contentsCss=new Array,void 0===CKEDITOR.skinName&&(CKEDITOR.skinName=CKEDITOR.skin.name),CKEDITOR.config.contextmenu_contentsCss.push(CKEDITOR.skin.getPath("editor"),o,n,c)),CKEDITOR.on("instanceReady",(t=>{const o=t.editor;o.document.$.body.setAttribute("data-gin-accent",a),"custom"===a&&d&&e.ginAccent.setCustomAccentColor(d,o.document.$.head),o.on("mode",(function(){"wysiwyg"==this.mode&&(o.document.$.body.setAttribute("data-gin-accent",a),"custom"===a&&d&&e.ginAccent.setCustomAccentColor(d,o.document.$.head),"auto"===localStorage.getItem("Drupal.gin.darkmode")&&(window.matchMedia("(prefers-color-scheme: dark)").matches?o.document.$.body.classList.add(s):o.document.$.body.classList.remove(s)))})),o.on("menuShow",(function(t){const o=1==localStorage.getItem("Drupal.gin.darkmode")||"auto"===localStorage.getItem("Drupal.gin.darkmode")&&window.matchMedia("(prefers-color-scheme: dark)").matches?s:"",n=t.data[0].element.$.childNodes[0].contentWindow.document;o&&n.body.classList.add(o),n.body.setAttribute("data-gin-accent",a),"custom"===a&&d&&e.ginAccent.setCustomAccentColor(d,n.head)})),window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",(e=>{e.matches&&"auto"===localStorage.getItem("Drupal.gin.darkmode")&&(o.document.$.body.classList.add(s),document.querySelectorAll(`.${o.id}.cke_panel`).length>0)&&document.querySelector(`.${o.id}.cke_panel`).childNodes[0].contentWindow.document.body.classList.add(s)})),window.matchMedia("(prefers-color-scheme: light)").addEventListener("change",(e=>{e.matches&&"auto"===localStorage.getItem("Drupal.gin.darkmode")&&(o.document.$.body.classList.remove(s),document.querySelectorAll(`.${o.id}.cke_panel`).length>0)&&document.querySelector(`.${o.id}.cke_panel`).childNodes[0].contentWindow.document.body.classList.remove(s)}))}))}}))}}})(Drupal,drupalSettings,once);
+((Drupal, drupalSettings, once) => {
+  Drupal.behaviors.ginCKEditor = {
+    attach: context => {
+      Drupal.ginCKEditor.init(context);
+    }
+  }, Drupal.ginCKEditor = {
+    init: context => {
+      once("ginCKEditors", "body", context).forEach((() => {
+        if (window.CKEDITOR && void 0 !== CKEDITOR) {
+          if (drupalSettings.path.currentPath.indexOf("admin/config/content/formats/manage") > -1) return;
+          const variablesCss = drupalSettings.gin.variables_css_path, accentCss = drupalSettings.gin.accent_css_path, contentsCss = drupalSettings.gin.ckeditor_css_path, accentColorPreset = drupalSettings.gin.preset_accent_color, accentColor = drupalSettings.gin.accent_color, darkmodeClass = drupalSettings.gin.darkmode_class;
+          (1 == localStorage.getItem("Drupal.gin.darkmode") || "auto" === localStorage.getItem("Drupal.gin.darkmode") && window.matchMedia("(prefers-color-scheme: dark)").matches) && (CKEDITOR.config.bodyClass = darkmodeClass), 
+          void 0 === CKEDITOR.config.contentsCss && CKEDITOR.config.contentsCss.push(variablesCss, accentCss, contentsCss), 
+          void 0 === CKEDITOR.config.contextmenu_contentsCss && (CKEDITOR.config.contextmenu_contentsCss = new Array, 
+          void 0 === CKEDITOR.skinName && (CKEDITOR.skinName = CKEDITOR.skin.name), CKEDITOR.config.contextmenu_contentsCss.push(CKEDITOR.skin.getPath("editor"), variablesCss, accentCss, contentsCss)), 
+          CKEDITOR.on("instanceReady", (element => {
+            const editor = element.editor;
+            editor.document.$.body.setAttribute("data-gin-accent", accentColorPreset), "custom" === accentColorPreset && accentColor && Drupal.ginAccent.setCustomAccentColor(accentColor, editor.document.$.head), 
+            editor.on("mode", (function() {
+              "wysiwyg" == this.mode && (editor.document.$.body.setAttribute("data-gin-accent", accentColorPreset), 
+              "custom" === accentColorPreset && accentColor && Drupal.ginAccent.setCustomAccentColor(accentColor, editor.document.$.head), 
+              "auto" === localStorage.getItem("Drupal.gin.darkmode") && (window.matchMedia("(prefers-color-scheme: dark)").matches ? editor.document.$.body.classList.add(darkmodeClass) : editor.document.$.body.classList.remove(darkmodeClass)));
+            })), editor.on("menuShow", (function(element) {
+              const darkModeClass = 1 == localStorage.getItem("Drupal.gin.darkmode") || "auto" === localStorage.getItem("Drupal.gin.darkmode") && window.matchMedia("(prefers-color-scheme: dark)").matches ? darkmodeClass : "", iframeElement = element.data[0].element.$.childNodes[0].contentWindow.document;
+              darkModeClass && iframeElement.body.classList.add(darkModeClass), iframeElement.body.setAttribute("data-gin-accent", accentColorPreset), 
+              "custom" === accentColorPreset && accentColor && Drupal.ginAccent.setCustomAccentColor(accentColor, iframeElement.head);
+            })), window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e => {
+              e.matches && "auto" === localStorage.getItem("Drupal.gin.darkmode") && (editor.document.$.body.classList.add(darkmodeClass), 
+              document.querySelectorAll(`.${editor.id}.cke_panel`).length > 0) && document.querySelector(`.${editor.id}.cke_panel`).childNodes[0].contentWindow.document.body.classList.add(darkmodeClass);
+            })), window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e => {
+              e.matches && "auto" === localStorage.getItem("Drupal.gin.darkmode") && (editor.document.$.body.classList.remove(darkmodeClass), 
+              document.querySelectorAll(`.${editor.id}.cke_panel`).length > 0) && document.querySelector(`.${editor.id}.cke_panel`).childNodes[0].contentWindow.document.body.classList.remove(darkmodeClass);
+            }));
+          }));
+        }
+      }));
+    }
+  };
+})(Drupal, drupalSettings, once);

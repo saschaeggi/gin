@@ -44,7 +44,8 @@
   --ck-border-radius: var(--gin-border-m);
 }
 
-.ck .ck-content blockquote,.ck .ck.ck-dropdown__panel {
+.ck .ck-content blockquote,
+.ck .ck.ck-dropdown__panel {
   border: none;
 }
 
@@ -61,7 +62,8 @@
   opacity: .3;
 }
 
-.ck .ck-toolbar_grouping:focus,.ck .ck-toolbar__items:focus {
+.ck .ck-toolbar_grouping:focus,
+.ck .ck-toolbar__items:focus {
   box-shadow: none;
 }
 
@@ -104,7 +106,7 @@
   border: none;
 }
 
-.ck .ck-content .drupal-media>figcaption {
+.ck .ck-content .drupal-media > figcaption {
   color: var(--ck-color-image-caption-text);
   background: var(--ck-color-image-caption-background);
 }
