@@ -2653,6 +2653,14 @@ html.js .dropbutton-widget {
   background-color: transparent;
 }
 
+html.js .dropbutton-wrapper.open .dropbutton-widget {
+  z-index: 1500;
+}
+
+html.js .dropbutton-wrapper.open .dropbutton {
+  background: var(--gin-bg-layer3);
+}
+
 .dropbutton {
   border: 2px solid var(--gin-color-primary);
   border-radius: var(--gin-border-m);
