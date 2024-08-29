@@ -25,7 +25,7 @@
   --gin-color-info: #082538;
   --gin-color-info-light: #589ac5;
   --gin-bg-info: #122b3c;
-  --gin-status-text: #6c6c6c;
+  --gin-status-text: #626262;
   --gin-status-bg: #eee;
   --gin-status-success-text: #1d6844;
   --gin-status-success-bg: #26a76930;
@@ -225,9 +225,9 @@
   --gin-border-color-form-element: var(--gin-border-color-layer2);
   --gin-bg-header: #1b1b1d;
   --gin-switch: var(--gin-color-primary);
-  --gin-status-text: #adb1b2;
+  --gin-status-text: #c3cbd0;
   --gin-status-bg: rgba(255, 255, 255, .12);
-  --gin-status-success-text: #79c8a2;
+  --gin-status-success-text: #8bd3b1;
   --gin-status-success-bg: #26a76940;
   --gin-status-warning-text: #e8d185;
   --gin-status-warning-bg: rgba(226, 151, 0, .15);
