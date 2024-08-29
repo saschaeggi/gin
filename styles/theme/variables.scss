@@ -31,7 +31,7 @@
   --gin-bg-info: #{mix(black, #2d6c96, 60%)};
 
   // Status
-  --gin-status-text: #6c6c6c;
+  --gin-status-text: #626262;
   --gin-status-bg: #eee;
   --gin-status-success-text: #1d6844;
   --gin-status-success-bg: #26a76930;
@@ -288,9 +288,9 @@
   --gin-switch: var(--gin-color-primary);
 
   // Tag
-  --gin-status-text: #adb1b2;
+  --gin-status-text: #c3cbd0;
   --gin-status-bg: rgba(255, 255, 255, 0.12);
-  --gin-status-success-text: #79c8a2;
+  --gin-status-success-text: #8bd3b1;
   --gin-status-success-bg: #26a76940;
   --gin-status-warning-text: #{mix(white, #d8b234, 40%)};
   --gin-status-warning-bg: rgba(226, 151, 0, .15);

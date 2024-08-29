@@ -1,5 +1,5 @@
 #project-browser {
-  [slot="head"] .search__form,
+  .search__form-container,
   .pb-layout,
   .pb-module-page {
     padding: var(--gin-spacing-s);
@@ -23,23 +23,33 @@
   }
 
   .search {
+    &__form-container {
+      margin-top: var(--gin-spacing-l);
+    }
+
     &__search-bar {
+      background: none;
       border: none;
+
+      .search__search_term {
+        padding: var(--gin-spacing-m);
+        border: 1px solid var(--gin-border-color-form-element);
+      }
     }
 
     &__search-icon {
       width: 16px;
       height: 16px;
-      inset-inline-end: 18px;
-      bottom: 18px;
+      inset-inline-end: 20px;
+      bottom: 20px;
     }
 
     &__search-clear {
       width: 24px;
       height: 24px;
       padding: 0;
-      top: 13px;
-      inset-inline-end: 13px;
+      top: 17px;
+      inset-inline-end: 16px;
       z-index: 2;
       display: flex;
       align-items: center;
@@ -72,6 +82,22 @@
       gap: var(--gin-spacing-xs);
     }
 
+    &__form-filters-container {
+      padding: var(--gin-spacing-m);
+      background: none;
+      border: 1px solid var(--gin-border-color);
+      border-radius: var(--gin-border-m);
+    }
+
+    &__form-filters {
+      align-items: baseline;
+
+      .form-item {
+        padding-block-start: 0;
+        margin-block: 0 var(--gin-spacing-s);
+      }
+    }
+
     &__grid-container,
     &__dropdown.dropdown-filters {
       background-color: transparent;
@@ -84,10 +110,9 @@
     }
 
     &__filters {
-      margin-block-start: var(--gin-spacing-s);
-      padding: var(--gin-spacing-s);
-      background: var(--gin-bg-layer2);
-      border-radius: var(--gin-border-m);
+      margin-block-start: 0;
+      padding: 0;
+      background: none;
     }
 
     &__filter-wrapper {
@@ -153,6 +178,7 @@
     border-radius: var(--gin-spacing-xl);
 
     &__button {
+      font-size: var(--gin-font-size-s);
       color: var(--gin-color-text);
       background: var(--gin-bg-layer);
       padding: var(--gin-spacing-xs) var(--gin-spacing-s);
@@ -165,10 +191,24 @@
         background: var(--gin-color-primary-light);
       }
 
+      &:active,
+      &:focus,
       &--selected {
         z-index: 2;
-        color: var(--gin-color-primary-active);
-        background: var(--gin-color-primary-light-active);
+        color: var(--gin-color-button-text);
+        background: var(--gin-color-primary);
+
+        img {
+          filter: invert(1);
+
+          .gin--dark-mode & {
+            filter: none;
+          }
+        }
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
       }
     }
 
@@ -215,6 +255,8 @@
   }
 
   .filter-applied {
+    font-size: var(--gin-font-size-xs);
+    font-weight: var(--gin-font-weight-semibold);
     color: var(--gin-color-primary-active);
     background: var(--gin-color-primary-light);
     padding: 0 var(--gin-spacing-xs) 0 var(--gin-spacing-s);
@@ -259,6 +301,10 @@
     }
   }
 
+  .pb-project__body {
+    font-size: var(--gin-font-size-s);
+  }
+
   .project__action_button {
     font-size: var(--gin-font-size-xxs);
     padding: calc(var(--gin-spacing-xxs) + 2px) var(--gin-spacing-s);
@@ -297,6 +343,10 @@
   font-size: var(--gin-font-size-s);
   font-weight: var(--gin-font-weight-bold);
   border-radius: var(--gin-border-xl);
+}
+
+.pb-actions__icon {
+  color: var(--gin-status-success-text);
 }
 
 .pb-icon {
