@@ -443,6 +443,11 @@
   }
 }
 
+.pb-module-page__main {
+  max-width: 100%;
+  overflow: auto;
+}
+
 @media (min-width: 61em) {
   .pb-module-page__sidebar {
     flex-basis: 320px;
@@ -484,7 +489,8 @@
 }
 
 .pb-module-page__module-details {
-  grid-template-columns: .333fr 2fr;
+  grid-template-columns: 2rem 2fr;
+  align-items: start;
 }
 
 .pb-module-page__module-details-info {
