@@ -14,7 +14,7 @@
 
   --gin-color-warning: #d8b234;
   --gin-color-warning-light: #efcf64;
-  --gin-bg-warning: #{mix(black, #efcf64, 60%)};
+  --gin-bg-warning: #{mix(black, #efcf64, 70%)};
   --gin-bg-warning-light: rgba(226, 151, 0, .08);
   --gin-color-danger: #cc3d3d;
   --gin-color-danger-lightest: #fdd9d9;
@@ -31,9 +31,9 @@
   --gin-bg-info: #{mix(black, #2d6c96, 60%)};
 
   // Status
-  --gin-status-text: #777;
+  --gin-status-text: #6c6c6c;
   --gin-status-bg: #eee;
-  --gin-status-success-text: #1d7c4e;
+  --gin-status-success-text: #1d6844;
   --gin-status-success-bg: #26a76930;
   --gin-status-warning-text: #{mix(black, #d8b234, 40%)};
   --gin-status-warning-bg: rgba(226, 151, 0, .15);
@@ -239,7 +239,7 @@
   --gin-color-focus-neutral-rgb: rgba(255, 255, 255, .8);
 
   // Disabled
-  --gin-color-disabled: #646464;
+  --gin-color-disabled: #767676;
   --gin-color-disabled-border: #646464;
   --gin-color-disabled-bg: #47474c;
 
@@ -288,10 +288,10 @@
   --gin-switch: var(--gin-color-primary);
 
   // Tag
-  --gin-status-text: var(--gin-color-text-light);
-  --gin-status-bg: rgba(255, 255, 255, 0.1);
-  --gin-status-success-text: #39b77b;
-  --gin-status-success-bg: #26a76930;
+  --gin-status-text: #adb1b2;
+  --gin-status-bg: rgba(255, 255, 255, 0.12);
+  --gin-status-success-text: #79c8a2;
+  --gin-status-success-bg: #26a76940;
   --gin-status-warning-text: #{mix(white, #d8b234, 40%)};
   --gin-status-warning-bg: rgba(226, 151, 0, .15);
   --gin-status-danger-text: #{mix(white, #cc3d3d, 50%)};

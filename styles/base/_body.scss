@@ -34,6 +34,10 @@ h3 {
   background: var(--gin-color-primary-light-hover);
 }
 
+@view-transition {
+  navigation: auto;
+}
+
 a {
   overflow-wrap: break-word;
   word-wrap: break-word;

@@ -123,7 +123,7 @@
 [data-drupal-selector=edit-enable-darkmode] .form-radios {
   display: inline-flex;
   flex-wrap: wrap;
-  padding: .1875rem var(--gin-spacing-xs);
+  padding: 0 var(--gin-spacing-xxs);
   border: 1px solid var(--gin-border-color-form-element);
   border-radius: var(--gin-spacing-xl);
 }
@@ -168,14 +168,13 @@
   border: 0;
 }
 
-[data-drupal-selector=edit-enable-darkmode] .form-radios input:focus + .form-item__label {
+[data-drupal-selector=edit-enable-darkmode] .form-radios input:active + .form-item__label, [data-drupal-selector=edit-enable-darkmode] .form-radios input:focus + .form-item__label {
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }
 
 [data-drupal-selector=edit-enable-darkmode] .form-radios input:checked + .form-item__label {
-  font-weight: var(--gin-font-weight-bold);
-  color: var(--gin-color-primary-active);
-  background: var(--gin-color-primary-light-active);
+  color: var(--gin-color-button-text);
+  background: var(--gin-color-primary);
 }
 
 [data-drupal-selector=edit-classic-toolbar] .form-radios,
