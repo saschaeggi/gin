@@ -992,6 +992,10 @@ details summary {
   padding: 0;
 }
 
+.views-live-preview .section-title {
+  color: var(--gin-color-text);
+}
+
 .views-live-preview .gin-layer-wrapper {
   border-color: var(--gin-border-color);
 }
