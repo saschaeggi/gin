@@ -8,12 +8,17 @@
       }));
     },
     updatePosition: function(el) {
-      const leftAligned = null !== el.closest(".node-form"), secondaryAction = el.querySelector(".secondary-action"), dropbuttonItems = el.querySelector(".dropbutton__items"), toggleHeight = el.offsetHeight, dropbuttonHeight = dropbuttonItems.offsetHeight, boundingRect = secondaryAction.getBoundingClientRect(), spaceBelow = window.innerHeight - dropbuttonHeight - boundingRect.height;
-      let dropbuttonItemsPosition = "fixed", dropbuttonItemsTop = `${toggleHeight}px`, dropbuttonItemsLeft = leftAligned ? `${boundingRect.left}px` : "auto", dropbuttonItemsRight = leftAligned ? "auto" : window.innerWidth - boundingRect.right + "px";
-      spaceBelow >= dropbuttonHeight ? dropbuttonItemsTop = `${boundingRect.bottom}px` : (dropbuttonItemsPosition = "absolute", 
-      dropbuttonItemsLeft = "auto", dropbuttonItemsRight = "auto"), dropbuttonItems.style.position = dropbuttonItemsPosition, 
-      dropbuttonItems.style.left = dropbuttonItemsLeft, dropbuttonItems.style.right = dropbuttonItemsRight, 
-      dropbuttonItems.style.top = dropbuttonItemsTop;
+      const preferredDir = document.documentElement.dir ?? "ltr", secondaryAction = el.querySelector(".secondary-action"), dropMenu = el.querySelector(".dropbutton__items"), toggleHeight = el.offsetHeight, dropMenuWidth = dropMenu.offsetWidth, dropMenuHeight = dropMenu.offsetHeight, boundingRect = secondaryAction.getBoundingClientRect(), spaceBelow = window.innerHeight - boundingRect.bottom, spaceLeft = boundingRect.left, spaceRight = window.innerWidth - boundingRect.right;
+      dropMenu.style.position = "fixed";
+      const leftAlignStyles = {
+        left: `${boundingRect.left}px`,
+        right: "auto"
+      }, rightAlignStyles = {
+        left: "auto",
+        right: window.innerWidth - boundingRect.right + "px"
+      };
+      "ltr" === preferredDir ? spaceRight >= dropMenuWidth ? Object.assign(dropMenu.style, leftAlignStyles) : Object.assign(dropMenu.style, rightAlignStyles) : spaceLeft >= dropMenuWidth ? Object.assign(dropMenu.style, rightAlignStyles) : Object.assign(dropMenu.style, leftAlignStyles), 
+      dropMenu.style.top = spaceBelow >= dropMenuHeight ? `${boundingRect.bottom}px` : boundingRect.top - toggleHeight - dropMenuHeight + "px";
     }
   };
 })(Drupal, once);

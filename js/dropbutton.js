@@ -12,34 +12,49 @@
     },
 
     updatePosition: function (el) {
-      const leftAligned = el.closest('.node-form') !== null;
+      const preferredDir = document.documentElement.dir ?? 'ltr';
       const secondaryAction = el.querySelector('.secondary-action');
-      const dropbuttonItems = el.querySelector('.dropbutton__items');
+      const dropMenu = el.querySelector('.dropbutton__items');
       const toggleHeight = el.offsetHeight;
-      const dropbuttonHeight = dropbuttonItems.offsetHeight;
+      const dropMenuWidth = dropMenu.offsetWidth;
+      const dropMenuHeight = dropMenu.offsetHeight;
       const boundingRect = secondaryAction.getBoundingClientRect();
-      const spaceBelow = window.innerHeight - dropbuttonHeight - boundingRect.height;
+      const spaceBelow = window.innerHeight - boundingRect.bottom;
+      const spaceLeft = boundingRect.left;
+      const spaceRight = window.innerWidth - boundingRect.right;
 
-      // Define initial position variables.
-      let dropbuttonItemsPosition = 'fixed';
-      let dropbuttonItemsTop= `${toggleHeight}px`;
-      let dropbuttonItemsLeft = leftAligned ? `${boundingRect.left}px` : 'auto';
-      let dropbuttonItemsRight = leftAligned ? 'auto' : `${window.innerWidth - boundingRect.right}px`;
+      dropMenu.style.position = 'fixed';
 
-      // Calculate the top position based on available space.
-      if (spaceBelow >= dropbuttonHeight) {
-        dropbuttonItemsTop = `${boundingRect.bottom}px`;
+      // Calculate the menu position based on available space and the preferred
+      // reading direction.
+      const leftAlignStyles = {
+        left: `${boundingRect.left}px`,
+        right: 'auto'
+      };
+      const rightAlignStyles = {
+        left: 'auto',
+        right: `${window.innerWidth - boundingRect.right}px`
+      };
+
+      if ('ltr' === preferredDir) {
+        if (spaceRight >= dropMenuWidth) {
+          Object.assign(dropMenu.style, leftAlignStyles);
+        } else {
+          Object.assign(dropMenu.style, rightAlignStyles);
+        }
       } else {
-        // Not enough space either above, use absolute positioning.
-        dropbuttonItemsPosition = 'absolute';
-        // Reset left and right to avoid conflicts with fixed positioning.
-        dropbuttonItemsLeft = 'auto';
-        dropbuttonItemsRight = 'auto';
+        if (spaceLeft >= dropMenuWidth) {
+          Object.assign(dropMenu.style, rightAlignStyles);
+        } else {
+          Object.assign(dropMenu.style, leftAlignStyles);
+        }
       }
-      dropbuttonItems.style.position = dropbuttonItemsPosition;
-      dropbuttonItems.style.left    = dropbuttonItemsLeft;
-      dropbuttonItems.style.right   = dropbuttonItemsRight;
-      dropbuttonItems.style.top     = dropbuttonItemsTop;
+
+      if (spaceBelow >= dropMenuHeight) {
+        dropMenu.style.top = `${boundingRect.bottom}px`;
+      } else {
+        dropMenu.style.top = `${boundingRect.top - toggleHeight - dropMenuHeight}px`
+      }
 
     },
 

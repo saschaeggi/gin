@@ -2654,7 +2654,7 @@ html.js .dropbutton-widget {
 }
 
 html.js .dropbutton-wrapper.open .dropbutton-widget {
-  z-index: 1500;
+  z-index: 502;
 }
 
 html.js .dropbutton-wrapper.open .dropbutton {
@@ -2987,6 +2987,8 @@ html.js .dropbutton-wrapper:not(.open) .dropbutton__items {
 html.js .dropbutton-wrapper .dropbutton__items {
   visibility: visible;
   opacity: 1;
+  max-height: 30vh;
+  overflow: auto;
 }
 
 html.js .dropbutton-wrapper:not(.open) .dropbutton__item:first-of-type ~ .dropbutton__items {
