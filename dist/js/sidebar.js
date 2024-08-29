@@ -33,9 +33,10 @@
           const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, hideLabel = Drupal.t("Hide sidebar panel"), sidebarTrigger = document.querySelector(".meta-sidebar__trigger");
           var _Drupal$ginCoreNaviga;
           if (sidebarTrigger.querySelector("span").innerHTML = hideLabel, sidebarTrigger.setAttribute("title", hideLabel), 
-          sidebarTrigger.nextSibling.innerHTML = hideLabel, sidebarTrigger.setAttribute("aria-expanded", "true"), 
-          sidebarTrigger.classList.add("is-active"), document.body.setAttribute("data-meta-sidebar", "open"), 
-          localStorage.setItem(chooseStorage, "true"), window.innerWidth < 1280) if (null === (_Drupal$ginCoreNaviga = Drupal.ginCoreNavigation) || void 0 === _Drupal$ginCoreNaviga || _Drupal$ginCoreNaviga.collapseToolbar(), 
+          sidebarTrigger.nextSibling && (sidebarTrigger.nextSibling.innerHTML = hideLabel), 
+          sidebarTrigger.setAttribute("aria-expanded", "true"), sidebarTrigger.classList.add("is-active"), 
+          document.body.setAttribute("data-meta-sidebar", "open"), localStorage.setItem(chooseStorage, "true"), 
+          window.innerWidth < 1280) if (null === (_Drupal$ginCoreNaviga = Drupal.ginCoreNavigation) || void 0 === _Drupal$ginCoreNaviga || _Drupal$ginCoreNaviga.collapseToolbar(), 
           "vertical" === toolbarVariant) Drupal.ginToolbar.collapseToolbar(); else if ("new" === toolbarVariant) {
             var _Drupal$behaviors$gin;
             null === (_Drupal$behaviors$gin = Drupal.behaviors.ginNavigation) || void 0 === _Drupal$behaviors$gin || _Drupal$behaviors$gin.collapseSidebar();
@@ -44,9 +45,9 @@
         collapseSidebar: () => {
           const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, showLabel = Drupal.t("Show sidebar panel"), sidebarTrigger = document.querySelector(".meta-sidebar__trigger");
           sidebarTrigger.querySelector("span").innerHTML = showLabel, sidebarTrigger.setAttribute("title", showLabel), 
-          sidebarTrigger.nextSibling.innerHTML = showLabel, sidebarTrigger.setAttribute("aria-expanded", "false"), 
-          sidebarTrigger.classList.remove("is-active"), document.body.setAttribute("data-meta-sidebar", "closed"), 
-          localStorage.setItem(chooseStorage, "false");
+          sidebarTrigger.nextSibling && (sidebarTrigger.nextSibling.innerHTML = showLabel), 
+          sidebarTrigger.setAttribute("aria-expanded", "false"), sidebarTrigger.classList.remove("is-active"), 
+          document.body.setAttribute("data-meta-sidebar", "closed"), localStorage.setItem(chooseStorage, "false");
         },
         handleResize: function() {
           let windowSize = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : window;

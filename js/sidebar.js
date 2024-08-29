@@ -90,7 +90,9 @@
 
       sidebarTrigger.querySelector('span').innerHTML = hideLabel;
       sidebarTrigger.setAttribute('title', hideLabel);
-      sidebarTrigger.nextSibling.innerHTML = hideLabel;
+      if (sidebarTrigger.nextSibling) {
+        sidebarTrigger.nextSibling.innerHTML = hideLabel;
+      }
       sidebarTrigger.setAttribute('aria-expanded', 'true');
       sidebarTrigger.classList.add('is-active');
 
@@ -118,7 +120,9 @@
 
       sidebarTrigger.querySelector('span').innerHTML = showLabel;
       sidebarTrigger.setAttribute('title', showLabel);
-      sidebarTrigger.nextSibling.innerHTML = showLabel;
+      if (sidebarTrigger.nextSibling) {
+        sidebarTrigger.nextSibling.innerHTML = showLabel;
+      }
       sidebarTrigger.setAttribute('aria-expanded', 'false');
       sidebarTrigger.classList.remove('is-active');
 
