@@ -215,13 +215,11 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     $form['advanced']['#attributes']['class'][] = 'entity-meta';
     if (!isset($form['meta'])) {
       $form['meta'] = [
-        '#type' => 'container',
         '#group' => 'advanced',
         '#weight' => -10,
         '#title' => $this->t('Status'),
         '#attributes' => ['class' => ['entity-meta__header']],
         '#tree' => TRUE,
-        '#access' => TRUE,
       ];
     }
 
@@ -302,12 +300,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    * @param string $form_id
    *   The form id.
    */
-  public function stickyActionButtons(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = NULL) {
-    // Generally don't use sticky buttons in Ajax requests (modals).
-    if ($this->isModalOrOffcanvas()) {
-      return FALSE;
-    }
-
+  private function stickyActionButtons(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = NULL): bool {
     /** @var \Drupal\gin\GinSettings $settings */
     $settings = \Drupal::classResolver(GinSettings::class);
 
@@ -355,12 +348,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    * @param string $form_id
    *   The form id.
    */
-  public function isContentForm(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = '') {
-    // Generally ignore all forms in Ajax requests (modals).
-    if ($this->isModalOrOffcanvas()) {
-      return FALSE;
-    }
-
+  public function isContentForm(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = ''): bool {
     // Forms to exclude.
     // If media library widget, don't use new content edit form.
     // gin_preprocess_html is not triggered here, so checking
@@ -422,7 +410,9 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    * a modal or an off-canvas dialog.
    */
   private function isModalOrOffcanvas() {
-    return $this->isAjax();
+    $wrapper_format = $this->getRequestWrapperFormat() ?? '';
+    return str_contains($wrapper_format, 'drupal_modal') ||
+      str_contains($wrapper_format, 'drupal_dialog');
   }
 
 }
