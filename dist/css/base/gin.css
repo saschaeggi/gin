@@ -38,6 +38,10 @@ h3 {
   background: var(--gin-color-primary-light-hover);
 }
 
+@view-transition {
+  navigation: auto;
+}
+
 a {
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -1015,7 +1019,7 @@ details summary {
 }
 
 .views-display-top__extra-actions-wrapper {
-  margin-bottom: 0;
+  margin-block: 0;
 }
 
 .views-display-top .dropbutton-wrapper {
