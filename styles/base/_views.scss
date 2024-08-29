@@ -153,6 +153,10 @@
 .views-live-preview {
   padding: 0;
 
+  .section-title {
+    color: var(--gin-color-text);
+  }
+
   .gin-layer-wrapper {
     border-color: var(--gin-border-color);
   }

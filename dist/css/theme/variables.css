@@ -5,7 +5,7 @@
   --gin-color-focus: rgba(0, 125, 250, .6);
   --gin-color-focus-border: rgba(0, 0, 0, .2);
   --gin-color-focus-neutral-rgb: rgba(0, 0, 0, .4);
-  --gin-color-disabled: #8d8d8d;
+  --gin-color-disabled: #767676;
   --gin-color-disabled-bg: #eaeaea;
   --gin-color-disabled-border: #c2c2c2;
   --gin-color-warning: #d8b234;
@@ -198,7 +198,7 @@
   --gin-color-focus: rgb(81, 168, 255);
   --gin-color-focus-border: rgba(0, 0, 0, .8);
   --gin-color-focus-neutral-rgb: rgba(255, 255, 255, .8);
-  --gin-color-disabled: #767676;
+  --gin-color-disabled: #919191;
   --gin-color-disabled-border: #646464;
   --gin-color-disabled-bg: #47474c;
   --gin-color-warning: #dec15f;
