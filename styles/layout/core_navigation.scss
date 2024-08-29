@@ -54,7 +54,8 @@ body.gin--core-navigation {
 // Custom overrides
 // --------------------------------------------------
 
-.gin--core-navigation .top-bar {
+.gin--core-navigation .top-bar,
+.gin--core-navigation .admin-toolbar-control-bar {
   position: sticky;
   top: 0;
 }

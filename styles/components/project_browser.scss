@@ -412,6 +412,11 @@
     }
   }
 
+  &__main {
+    max-width: 100%;
+    overflow: auto;
+  }
+
   &__sidebar {
     @include mq(medium) {
       flex-basis: 320px;
@@ -445,7 +450,8 @@
   }
 
   &__module-details {
-    grid-template-columns: 0.333fr 2fr;
+    grid-template-columns: 2rem 2fr;
+    align-items: start;
   }
 
   &__module-details-info {

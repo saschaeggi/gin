@@ -48,7 +48,8 @@ body.gin--core-navigation {
   --admin-toolbar-color-gray-990: var(--gin-color-primary-active);
 }
 
-.gin--core-navigation .top-bar {
+.gin--core-navigation .top-bar,
+.gin--core-navigation .admin-toolbar-control-bar {
   position: sticky;
   top: 0;
 }
