@@ -6,22 +6,25 @@
   }, Drupal.ginStickyFormActions = {
     init: function(context) {
       const newParent = document.querySelector(".gin-sticky-form-actions");
-      newParent && (context.classList?.contains("gin--has-sticky-form-actions") && context.getAttribute("id") && this.updateFormId(newParent, context), 
+      newParent && (context.classList?.contains("gin--has-sticky-form-actions") && context.getAttribute("id") && this.updateLabelIds(newParent, context), 
       once("ginEditForm", ".region-content form.gin--has-sticky-form-actions", context).forEach((form => {
-        this.updateFormId(newParent, form), this.moveFocus(newParent, form);
+        this.updateLabelIds(newParent, context), this.moveFocus(newParent, form);
       })), once("ginMoreActionsToggle", ".gin-more-actions__trigger", context).forEach((el => el.addEventListener("click", (e => {
         e.preventDefault(), this.toggleMoreActions(), document.addEventListener("click", this.closeMoreActionsOnClickOutside, !1);
       })))));
     },
-    updateFormId: function(newParent, form) {
-      const actionButtons = newParent.querySelectorAll("button, input, select, textarea"), formId = form.getAttribute("id");
+    updateLabelIds: function(newParent, form) {
+      const formActions = form.querySelector('[data-drupal-selector="edit-actions"]'), actionButtons = Array.from(formActions.children);
       actionButtons.length > 0 && actionButtons.forEach((el => {
-        el.setAttribute("form", formId);
+        const drupalSelector = el.dataset.drupalSelector, buttonSelector = newParent.querySelector(`label[data-gin-sticky-form-selector="${drupalSelector}"]`);
+        buttonSelector && (buttonSelector.setAttribute("for", el.id), buttonSelector.addEventListener("keydown", (e => {
+          " " !== event.key && "Enter" !== event.key || (e.preventDefault(), e.target.click());
+        })));
       }));
     },
     moveFocus: function(newParent, form) {
       once("ginMoveFocusToStickyBar", "[gin-move-focus-to-sticky-bar]", form).forEach((el => el.addEventListener("focus", (e => {
-        e.preventDefault(), newParent.querySelector([ "button, input, select, textarea" ]).focus();
+        e.preventDefault(), newParent.querySelector([ "label, button, input, select, textarea" ]).focus();
         let element = document.createElement("div");
         element.style.display = "contents", element.innerHTML = '<a href="#" class="visually-hidden" role="button" gin-move-focus-to-end-of-form>Moves focus back to form</a>', 
         newParent.appendChild(element), document.querySelector("[gin-move-focus-to-end-of-form]").addEventListener("focus", (eof => {

@@ -16,12 +16,12 @@
 
       // If form updates, update form IDs.
       if (context.classList?.contains('gin--has-sticky-form-actions') && context.getAttribute('id')) {
-        this.updateFormId(newParent, context);
+        this.updateLabelIds(newParent, context);
       }
 
       once('ginEditForm', '.region-content form.gin--has-sticky-form-actions', context).forEach(form => {
         // Sync form ID.
-        this.updateFormId(newParent, form);
+        this.updateLabelIds(newParent, context);
 
         // Move focus to sticky header.
         this.moveFocus(newParent, form);
@@ -35,14 +35,27 @@
       }));
     },
 
-    updateFormId: function (newParent, form) {
+    updateLabelIds: function (newParent, form) {
       // Attach form elements to main form
-      const actionButtons = newParent.querySelectorAll('button, input, select, textarea');
-      const formId = form.getAttribute('id');
+      const formActions = form.querySelector('[data-drupal-selector="edit-actions"]');
+      const actionButtons = Array.from(formActions.children);
 
       if (actionButtons.length > 0) {
         actionButtons.forEach((el) => {
-          el.setAttribute('form', formId);
+          const drupalSelector = el.dataset.drupalSelector;
+          const buttonSelector = newParent.querySelector(`label[data-gin-sticky-form-selector="${drupalSelector}"]`);
+
+          if (buttonSelector) {
+            buttonSelector.setAttribute('for', el.id);
+
+            // Add event listener to trigger click on spacebar or enter key
+            buttonSelector.addEventListener('keydown', (e) => {
+              if (event.key === ' ' || event.key === 'Enter') {
+                e.preventDefault();
+                e.target.click();
+              }
+            });
+          }
         });
       }
     },
@@ -50,7 +63,7 @@
     moveFocus: function (newParent, form) {
       once('ginMoveFocusToStickyBar', '[gin-move-focus-to-sticky-bar]', form).forEach(el => el.addEventListener('focus', e => {
         e.preventDefault();
-        const focusableElements = ['button, input, select, textarea'];
+        const focusableElements = ['label, button, input, select, textarea'];
 
         // Moves focus to first item.
         newParent.querySelector(focusableElements).focus();
