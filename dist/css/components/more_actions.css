@@ -1,6 +1,6 @@
 .gin-sticky-form-actions {
   display: flex;
-  gap: var(--gin-spacing-xxs);
+  gap: var(--gin-spacing-xs);
 }
 
 .gin-sticky-form-actions > * {
@@ -8,9 +8,13 @@
   margin-right: 0 !important;
 }
 
-.gin-sticky-form-actions > .button + .button {
-  -webkit-margin-start: var(--gin-spacing-xxs) !important;
-          margin-inline-start: var(--gin-spacing-xxs) !important;
+.gin-sticky-form-actions .button.button {
+  padding: var(--gin-spacing-xs) var(--gin-spacing-s);
+}
+
+.gin-sticky-form-actions .action-link.action-link {
+  font-size: var(--gin-font-size-xs);
+  padding: calc(var(--gin-spacing-xs) + 1.5px) var(--gin-spacing-s);
 }
 
 .gin-sticky-form-actions [data-drupal-selector=edit-status]:empty,
@@ -27,7 +31,7 @@
   opacity: 0;
   position: absolute;
   top: 100%;
-  min-width: 200px;
+  min-width: 152px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -51,13 +55,13 @@
 .gin-sticky-form-actions .gin-more-actions__menu .action-link.action-link,
 .gin-sticky-form-actions .gin-more-actions__menu a:not(.button--danger):not(.action-link--danger),
 .gin-sticky-form-actions .gin-more-actions__menu .button.button {
-  font-size: var(--gin-font-size-s);
+  font-size: var(--gin-font-size-xs);
   font-weight: var(--gin-font-weight-semibold);
   line-height: 1;
   text-decoration: none;
   width: 100%;
-  max-width: 320px;
-  padding: var(--gin-spacing-s) var(--gin-spacing-m);
+  max-width: 240px;
+  padding: var(--gin-spacing-xs) var(--gin-spacing-s);
   margin: 0 !important;
   border: 0 !important;
   border-radius: var(--gin-border-s);
@@ -104,6 +108,7 @@
   display: block;
   height: 32px;
   width: 32px;
+  margin-inline: calc(var(--gin-spacing-xxs) * -1);
   border-radius: var(--gin-border-m);
   transition: background var(--gin-transition-fast);
 }
