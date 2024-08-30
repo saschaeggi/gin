@@ -376,7 +376,7 @@ body:not(.toolbar-tray-open) .layout-container {
 .gin-sticky-form-actions .field--name-status {
   display: flex;
   align-items: center;
-  margin-inline-end: var(--gin-spacing-s);
+  margin-inline-end: var(--gin-spacing-xs);
 }
 
 .gin-sticky-form-actions .field--name-status .form-item__label {
@@ -4060,6 +4060,12 @@ tr.color-error:focus,
   display: inline-block;
   margin-block: 0 var(--gin-spacing-xs);
   margin-inline: var(--gin-spacing-xxs);
+}
+
+.local-actions__item .button {
+  font-size: var(--gin-font-size-xs);
+  padding-block: var(--gin-spacing-xs);
+  padding-inline: var(--gin-spacing-s);
 }
 
 .shepherd-element {

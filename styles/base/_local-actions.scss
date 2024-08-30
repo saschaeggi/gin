@@ -12,5 +12,11 @@
     display: inline-block;
     margin-block: 0 var(--gin-spacing-xs);
     margin-inline: var(--gin-spacing-xxs);
+
+    .button {
+      font-size: var(--gin-font-size-xs);
+      padding-block: var(--gin-spacing-xs);
+      padding-inline: var(--gin-spacing-s);
+    }
   }
 }
