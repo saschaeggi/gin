@@ -72,10 +72,8 @@
 }
 
 .webform-bulk-form[data-drupal-selector*=-bulk-form] > .container-inline {
-  -webkit-margin-before: calc(var(--gin-spacing-xxs) * -1);
-          margin-block-start: calc(var(--gin-spacing-xxs) * -1);
-  -webkit-margin-after: var(--gin-spacing-l);
-          margin-block-end: var(--gin-spacing-l);
+  margin-block-start: calc(var(--gin-spacing-xxs) * -1);
+  margin-block-end: var(--gin-spacing-l);
 }
 
 .webform-bulk-form[data-drupal-selector*=-bulk-form] td:first-child > .form-type-checkbox {

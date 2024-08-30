@@ -326,9 +326,7 @@ a.toolbar-menu__trigger,
   .toolbar-menu-administration a.toolbar-menu__trigger:focus::before {
     box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
   }
-}
 
-@media (min-width: 61em) {
   .toolbar-menu-administration a.toolbar-menu__trigger.is-active {
     display: flex;
     font-weight: var(--gin-font-weight-normal);
@@ -347,27 +345,19 @@ a.toolbar-menu__trigger,
   [dir="rtl"] .toolbar-menu-administration a.toolbar-menu__trigger.is-active:before {
     transform: rotate(-180deg);
   }
-}
 
-@media (min-width: 61em) {
   .toolbar-menu-administration a.toolbar-menu__trigger .menu {
     display: none;
   }
-}
 
-@media (min-width: 61em) {
   .toolbar-menu-administration a.toolbar-menu__trigger .close {
     display: inline;
   }
-}
 
-@media (min-width: 61em) {
   .toolbar-tab--toolbar-item-administration {
     order: -1;
   }
-}
 
-@media (min-width: 61em) {
   .toolbar-menu-administration {
     display: flex;
     position: fixed;
@@ -663,9 +653,7 @@ a.toolbar-menu__trigger,
     color: var(--gin-color-primary-hover);
     background: var(--gin-color-primary-light);
   }
-}
 
-@media (min-width: 61em) {
   .toolbar .toolbar-toggle-orientation button {
     display: none;
   }

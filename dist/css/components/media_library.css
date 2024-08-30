@@ -440,13 +440,11 @@ fieldset.media-library-widget .media-library-edit__link, fieldset.media-library-
 }
 
 .js-media-library-widget .fieldset__label {
-  -webkit-margin-after: 0;
-          margin-block-end: 0;
+  margin-block-end: 0;
 }
 
 .js-media-library-widget .media-library-selection {
-  -webkit-margin-before: 0;
-          margin-block-start: 0;
+  margin-block-start: 0;
 }
 
 @media (min-width: 80em) {
@@ -498,16 +496,14 @@ fieldset.media-library-widget .media-library-edit__link, fieldset.media-library-
 }
 
 .media-library-new-widget .fieldset__label {
-  -webkit-margin-after: 0;
-          margin-block-end: 0;
+  margin-block-end: 0;
 }
 
 .media-library-new-widget .label {
   font-size: var(--gin-font-size-l);
   font-weight: var(--gin-font-weight-bold);
   color: var(--gin-color-title);
-  -webkit-margin-before: 0;
-          margin-block-start: 0;
+  margin-block-start: 0;
 }
 
 .media-library-new-widget .description {

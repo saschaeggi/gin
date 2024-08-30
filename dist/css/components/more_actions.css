@@ -9,8 +9,7 @@
 }
 
 .gin-sticky-form-actions > input + input {
-  -webkit-margin-start: var(--gin-spacing-xxs) !important;
-          margin-inline-start: var(--gin-spacing-xxs) !important;
+  margin-inline-start: var(--gin-spacing-xxs) !important;
 }
 
 .gin-sticky-form-actions [data-drupal-selector=edit-gin-actions]:empty,

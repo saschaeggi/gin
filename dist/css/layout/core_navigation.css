@@ -60,8 +60,7 @@ body.gin--core-navigation {
 
 .gin--core-navigation .gin-secondary-toolbar--frontend {
   z-index: 102;
-  -webkit-margin-start: var(--gin-toolbar-x-offset);
-          margin-inline-start: var(--gin-toolbar-x-offset);
+  margin-inline-start: var(--gin-toolbar-x-offset);
 }
 
 .toolbar-menu__link:hover::before {
@@ -69,28 +68,24 @@ body.gin--core-navigation {
 }
 
 .admin-toolbar__header {
-  -webkit-padding-before: var(--gin-spacing-xs);
-          padding-block-start: var(--gin-spacing-xs);
+  padding-block-start: var(--gin-spacing-xs);
 }
 
 @media (min-width: 64em) {
   .admin-toolbar__header {
-    -webkit-padding-before: 0;
-            padding-block-start: 0;
+    padding-block-start: 0;
   }
 }
 
 .admin-toolbar__content {
   padding: var(--admin-toolbar-sidebar-header) var(--gin-spacing-s) var(--gin-spacing-s) var(--gin-spacing-s);
-  -webkit-margin-before: calc(var(--gin-spacing-xxs) * -1);
-          margin-block-start: calc(var(--gin-spacing-xxs) * -1);
+  margin-block-start: calc(var(--gin-spacing-xxs) * -1);
 }
 
 @media (min-width: 64em) {
   .admin-toolbar__content {
     padding: var(--gin-spacing-s);
-    -webkit-margin-before: 0;
-            margin-block-start: 0;
+    margin-block-start: 0;
   }
 }
 
@@ -106,8 +101,7 @@ body.gin--core-navigation {
 .toolbar-anti-flicker.toolbar-loading.toolbar-fixed body.gin--core-navigation,
 body.gin--core-navigation {
   padding-top: unset !important;
-  -webkit-margin-start: auto !important;
-          margin-inline-start: auto !important;
+  margin-inline-start: auto !important;
 }
 
 .admin-toolbar__logo {
@@ -415,22 +409,18 @@ body.gin--core-navigation {
 }
 
 #navigation-link-navigationcreate:first-child {
-  -webkit-margin-after: var(--admin-toolbar-space-8);
-          margin-block-end: var(--admin-toolbar-space-8);
+  margin-block-end: var(--admin-toolbar-space-8);
 }
 
 #navigation-link-navigationcreate:first-child::after {
   content: "";
   display: block;
-  -webkit-margin-before: var(--admin-toolbar-space-12);
-          margin-block-start: var(--admin-toolbar-space-12);
-  -webkit-border-after: 1px solid var(--gin-border-color-secondary);
-          border-block-end: 1px solid var(--gin-border-color-secondary);
+  margin-block-start: var(--admin-toolbar-space-12);
+  border-block-end: 1px solid var(--gin-border-color-secondary);
 }
 
 .admin-toolbar__expand-button {
-  -webkit-margin-before: calc(var(--gin-spacing-xs) * -1);
-          margin-block-start: calc(var(--gin-spacing-xs) * -1);
+  margin-block-start: calc(var(--gin-spacing-xs) * -1);
 }
 
 .admin-toolbar__expand-button, .admin-toolbar__expand-button:hover {
@@ -447,8 +437,7 @@ body.gin--core-navigation {
 }
 
 .gin--dark-mode .toolbar-popover__wrapper {
-  -webkit-border-start: 2px solid var(--gin-border-color-secondary);
-          border-inline-start: 2px solid var(--gin-border-color-secondary);
+  border-inline-start: 2px solid var(--gin-border-color-secondary);
 }
 
 .admin-toolbar__tooltip {

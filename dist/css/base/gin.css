@@ -72,8 +72,7 @@ button.link,
 [open] .claro-details__summary--vertical-tabs-item,
 .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link {
   color: var(--gin-color-primary);
-  -webkit-text-decoration-style: var(--gin-link-decoration-style);
-          text-decoration-style: var(--gin-link-decoration-style);
+  text-decoration-style: var(--gin-link-decoration-style);
 }
 
 a:hover,
@@ -98,16 +97,9 @@ button.link:active,
   color: var(--gin-color-primary-active);
 }
 
-*|*:-webkit-any-link:not(svg|a) {
-  text-decoration: underline;
-  -webkit-text-decoration-style: var(--gin-link-decoration-style);
-          text-decoration-style: var(--gin-link-decoration-style);
-}
-
 *|*:any-link:not(svg|a) {
   text-decoration: underline;
-  -webkit-text-decoration-style: var(--gin-link-decoration-style);
-          text-decoration-style: var(--gin-link-decoration-style);
+  text-decoration-style: var(--gin-link-decoration-style);
 }
 
 .is-horizontal .tabs__link:hover,
@@ -1053,8 +1045,7 @@ details summary {
 }
 
 .views-tabs.views-tabs a.views-display-disabled-link {
-  -webkit-padding-start: var(--gin-spacing-l);
-          padding-inline-start: var(--gin-spacing-l);
+  padding-inline-start: var(--gin-spacing-l);
 }
 
 .views-tabs.views-tabs a.views-display-disabled-link::before {
@@ -1068,8 +1059,7 @@ details summary {
           mask-size: contain;
   width: var(--gin-spacing-l);
   height: var(--gin-spacing-s);
-  -webkit-margin-start: calc(var(--gin-spacing-m) * -1);
-          margin-inline-start: calc(var(--gin-spacing-m) * -1);
+  margin-inline-start: calc(var(--gin-spacing-m) * -1);
   background-color: currentColor;
   display: inline-block;
   content: "";
@@ -1370,7 +1360,6 @@ table.gin--sticky-table-header tr {
 
 table.sticky-header {
   min-width: 100%;
-  max-width: -moz-fit-content;
   max-width: fit-content;
   background: transparent;
 }
@@ -1476,8 +1465,7 @@ table td a {
 
 table td a:hover {
   text-decoration: underline;
-  -webkit-text-decoration-style: var(--gin-link-decoration-style);
-          text-decoration-style: var(--gin-link-decoration-style);
+  text-decoration-style: var(--gin-link-decoration-style);
 }
 
 table td .group-label {
@@ -1992,9 +1980,7 @@ table td.field-plugin-summary-cell {
 
 :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input {
   all: unset;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  appearance: none;
   cursor: pointer;
   display: inline-block;
   vertical-align: top;
@@ -2002,8 +1988,7 @@ table td.field-plugin-summary-cell {
   height: 1.5rem;
   position: relative;
   overflow: hidden;
-  -webkit-clip-path: circle(var(--gin-spacing-l) at 50% 50%);
-          clip-path: circle(var(--gin-spacing-l) at 50% 50%);
+  clip-path: circle(var(--gin-spacing-l) at 50% 50%);
   background-color: var(--gin-color-disabled);
   border: 3px solid transparent;
   border-radius: var(--gin-border-l);
@@ -2724,8 +2709,7 @@ html.js .dropbutton-widget {
   top: 2px;
   width: calc(var(--gin-spacing-xxl) + 1px);
   height: 2.75rem;
-  -webkit-border-start: var(--dropbutton-border-size, 1px) solid var(--gin-color-primary) !important;
-          border-inline-start: var(--dropbutton-border-size, 1px) solid var(--gin-color-primary) !important;
+  border-inline-start: var(--dropbutton-border-size, 1px) solid var(--gin-color-primary) !important;
 }
 
 [dir="ltr"] .dropbutton__toggle {
