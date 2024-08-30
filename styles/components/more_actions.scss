@@ -7,12 +7,12 @@
     margin-right: 0 !important;
   }
 
-  > input + input {
+  > .button + .button {
     margin-inline-start: var(--gin-spacing-xxs) !important;
   }
 
   // Hide if no items are present.
-  [data-drupal-selector="edit-gin-actions"]:empty,
+  [data-drupal-selector="edit-status"]:empty,
   .gin-more-actions:has(> .gin-more-actions__menu:empty) {
     display: none;
   }
@@ -20,7 +20,7 @@
   .gin-more-actions {
     position: relative;
 
-    &__menu.form-actions {
+    &__menu {
       visibility: hidden;
       opacity: 0;
       position: absolute;
@@ -68,6 +68,10 @@
             background-color: var(--gin-bg-layer) !important;
           }
         }
+      }
+
+      .action-link--danger:hover:focus {
+        border: none !important;
       }
 
       // Hide throbber.
@@ -134,9 +138,16 @@
 // Hide actions if we preprocessed them.
 .gin-sticky-form-actions--preprocessed ~ .layout-container form.gin--has-sticky-form-actions .gin-sticky-form-actions {
   @include visually-hidden;
+  position: fixed !important;
+  top: 0;
 }
 
 // Hide trigger in dialogs.
 .ui-dialog-content .gin-more-actions__trigger {
   display: none;
+}
+
+// Gutenberg alignment.
+.edit-post-header .gin-sticky-form-actions {
+  margin-top: 0;
 }
