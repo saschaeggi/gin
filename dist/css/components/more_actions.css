@@ -8,12 +8,12 @@
   margin-right: 0 !important;
 }
 
-.gin-sticky-form-actions > input + input {
+.gin-sticky-form-actions > .button + .button {
   -webkit-margin-start: var(--gin-spacing-xxs) !important;
           margin-inline-start: var(--gin-spacing-xxs) !important;
 }
 
-.gin-sticky-form-actions [data-drupal-selector=edit-gin-actions]:empty,
+.gin-sticky-form-actions [data-drupal-selector=edit-status]:empty,
 .gin-sticky-form-actions .gin-more-actions:has(> .gin-more-actions__menu:empty) {
   display: none;
 }
@@ -22,7 +22,7 @@
   position: relative;
 }
 
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions {
+.gin-sticky-form-actions .gin-more-actions__menu {
   visibility: hidden;
   opacity: 0;
   position: absolute;
@@ -40,17 +40,17 @@
   transition: opacity var(--gin-transition-fast);
 }
 
-[dir="ltr"] .gin-sticky-form-actions .gin-more-actions__menu.form-actions {
+[dir="ltr"] .gin-sticky-form-actions .gin-more-actions__menu {
   right: 0;
 }
 
-[dir="rtl"] .gin-sticky-form-actions .gin-more-actions__menu.form-actions {
+[dir="rtl"] .gin-sticky-form-actions .gin-more-actions__menu {
   left: 0;
 }
 
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions .action-link.action-link,
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions a:not(.button--danger):not(.action-link--danger),
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions .button.button {
+.gin-sticky-form-actions .gin-more-actions__menu .action-link.action-link,
+.gin-sticky-form-actions .gin-more-actions__menu a:not(.button--danger):not(.action-link--danger),
+.gin-sticky-form-actions .gin-more-actions__menu .button.button {
   font-size: var(--gin-font-size-s);
   font-weight: var(--gin-font-weight-semibold);
   line-height: 1;
@@ -65,32 +65,36 @@
   box-sizing: border-box;
 }
 
-[dir="ltr"] .gin-sticky-form-actions .gin-more-actions__menu.form-actions .action-link.action-link,
-[dir="ltr"] .gin-sticky-form-actions .gin-more-actions__menu.form-actions a:not(.button--danger):not(.action-link--danger),
-[dir="ltr"] .gin-sticky-form-actions .gin-more-actions__menu.form-actions .button.button {
+[dir="ltr"] .gin-sticky-form-actions .gin-more-actions__menu .action-link.action-link,
+[dir="ltr"] .gin-sticky-form-actions .gin-more-actions__menu a:not(.button--danger):not(.action-link--danger),
+[dir="ltr"] .gin-sticky-form-actions .gin-more-actions__menu .button.button {
   text-align: left;
 }
 
-[dir="rtl"] .gin-sticky-form-actions .gin-more-actions__menu.form-actions .action-link.action-link,
-[dir="rtl"] .gin-sticky-form-actions .gin-more-actions__menu.form-actions a:not(.button--danger):not(.action-link--danger),
-[dir="rtl"] .gin-sticky-form-actions .gin-more-actions__menu.form-actions .button.button {
+[dir="rtl"] .gin-sticky-form-actions .gin-more-actions__menu .action-link.action-link,
+[dir="rtl"] .gin-sticky-form-actions .gin-more-actions__menu a:not(.button--danger):not(.action-link--danger),
+[dir="rtl"] .gin-sticky-form-actions .gin-more-actions__menu .button.button {
   text-align: right;
 }
 
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions a:not(.button--danger):not(.action-link--danger):hover, .gin-sticky-form-actions .gin-more-actions__menu.form-actions a:not(.button--danger):not(.action-link--danger):active,
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):hover,
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):active {
+.gin-sticky-form-actions .gin-more-actions__menu a:not(.button--danger):not(.action-link--danger):hover, .gin-sticky-form-actions .gin-more-actions__menu a:not(.button--danger):not(.action-link--danger):active,
+.gin-sticky-form-actions .gin-more-actions__menu .action-link:not(.action-link--danger):hover,
+.gin-sticky-form-actions .gin-more-actions__menu .action-link:not(.action-link--danger):active {
   color: var(--gin-color-button-text);
   background-color: var(--gin-color-primary);
 }
 
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions a:not(.button--danger):not(.action-link--danger):hover::before, .gin-sticky-form-actions .gin-more-actions__menu.form-actions a:not(.button--danger):not(.action-link--danger):active::before,
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):hover::before,
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):active::before {
+.gin-sticky-form-actions .gin-more-actions__menu a:not(.button--danger):not(.action-link--danger):hover::before, .gin-sticky-form-actions .gin-more-actions__menu a:not(.button--danger):not(.action-link--danger):active::before,
+.gin-sticky-form-actions .gin-more-actions__menu .action-link:not(.action-link--danger):hover::before,
+.gin-sticky-form-actions .gin-more-actions__menu .action-link:not(.action-link--danger):active::before {
   background-color: var(--gin-bg-layer) !important;
 }
 
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions > * + .ajax-progress--throbber {
+.gin-sticky-form-actions .gin-more-actions__menu .action-link--danger:hover:focus {
+  border: none !important;
+}
+
+.gin-sticky-form-actions .gin-more-actions__menu > * + .ajax-progress--throbber {
   display: none;
 }
 
@@ -155,9 +159,15 @@
   height: 1px;
   width: 1px;
   word-wrap: normal;
+  position: fixed !important;
+  top: 0;
 }
 
 .ui-dialog-content .gin-more-actions__trigger {
   display: none;
+}
+
+.edit-post-header .gin-sticky-form-actions {
+  margin-top: 0;
 }
 
