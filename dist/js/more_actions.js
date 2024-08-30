@@ -6,11 +6,7 @@
   }, Drupal.ginStickyFormActions = {
     init: function(context) {
       const newParent = document.querySelector(".gin-sticky-form-actions");
-<<<<<<< HEAD
-      newParent && (context.classList?.contains("gin--has-sticky-form-actions") && context.getAttribute("id") && this.updateFormId(newParent, context), 
-=======
-      newParent && (null !== (_context$classList = context.classList) && void 0 !== _context$classList && _context$classList.contains("gin--has-sticky-form-actions") && context.getAttribute("id") && this.updateLabelIds(newParent, context), 
->>>>>>> a6367f8b (New approach to address specific form issues)
+      newParent && (context.classList?.contains("gin--has-sticky-form-actions") && context.getAttribute("id") && this.updateLabelIds(newParent, context), 
       once("ginEditForm", ".region-content form.gin--has-sticky-form-actions", context).forEach((form => {
         this.updateLabelIds(newParent, context), this.moveFocus(newParent, form);
       })), once("ginMoreActionsToggle", ".gin-more-actions__trigger", context).forEach((el => el.addEventListener("click", (e => {

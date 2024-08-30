@@ -1,14 +1,19 @@
 .gin-sticky-form-actions {
   display: flex;
-  gap: var(--gin-spacing-xxs);
+  gap: var(--gin-spacing-xs);
 
   > * {
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
 
-  > .button + .button {
-    margin-inline-start: var(--gin-spacing-xxs) !important;
+  .button.button {
+    padding: var(--gin-spacing-xs) var(--gin-spacing-s);
+  }
+
+  .action-link.action-link {
+    font-size: var(--gin-font-size-xs);
+    padding: calc(var(--gin-spacing-xs) + 1.5px) var(--gin-spacing-s);
   }
 
   // Hide if no items are present.
@@ -26,7 +31,7 @@
       position: absolute;
       top: 100%;
       right: 0;
-      min-width: 200px;
+      min-width: 152px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -42,14 +47,14 @@
       .action-link.action-link,
       a:not(.button--danger):not(.action-link--danger),
       .button.button {
-        font-size: var(--gin-font-size-s);
+        font-size: var(--gin-font-size-xs);
         font-weight: var(--gin-font-weight-semibold);
         line-height: 1;
         text-align: left;
         text-decoration: none;
         width: 100%;
-        max-width: 320px;
-        padding: var(--gin-spacing-s) var(--gin-spacing-m);
+        max-width: 240px;
+        padding: var(--gin-spacing-xs) var(--gin-spacing-s);
         margin: 0 !important;
         border: 0 !important;
         border-radius: var(--gin-border-s);
@@ -86,6 +91,7 @@
       display: block;
       height: 32px;
       width: 32px;
+      margin-inline: calc(var(--gin-spacing-xxs) * -1);
       border-radius: var(--gin-border-m);
       transition: background var(--gin-transition-fast);
 
