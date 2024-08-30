@@ -391,11 +391,11 @@ body:not(.toolbar-tray-open) .layout-container {
 }
 
 [dir="ltr"] .gin-sticky-form-actions .field--name-status {
-  margin-right: var(--gin-spacing-s);
+  margin-right: var(--gin-spacing-xs);
 }
 
 [dir="rtl"] .gin-sticky-form-actions .field--name-status {
-  margin-left: var(--gin-spacing-s);
+  margin-left: var(--gin-spacing-xs);
 }
 
 .gin-sticky-form-actions .field--name-status .form-item__label {
@@ -4475,6 +4475,11 @@ tr.color-error:focus,
 .local-actions__item {
   display: inline-block;
   margin: 0 var(--gin-spacing-xxs) var(--gin-spacing-xs);
+}
+
+.local-actions__item .button {
+  font-size: var(--gin-font-size-xs);
+  padding: var(--gin-spacing-xs) var(--gin-spacing-s);
 }
 
 .shepherd-element {

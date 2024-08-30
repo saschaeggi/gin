@@ -10,5 +10,10 @@
   &__item {
     display: inline-block;
     margin: 0 var(--gin-spacing-xxs) var(--gin-spacing-xs);
+
+    .button {
+      font-size: var(--gin-font-size-xs);
+      padding: var(--gin-spacing-xs) var(--gin-spacing-s);
+    }
   }
 }
