@@ -448,6 +448,11 @@ linkit:
     component:
       dist/css/components/linkit.css: { minified: false }
 
+term_reference_tree:
+  css:
+    component:
+      dist/css/components/term_reference_tree.css: { minified: false }
+
 # Legacy
 
 legacy_css:
