@@ -13,11 +13,11 @@
         <ul class="toolbar-menu" data-once="toolbar-menu" aria-labelledby="menu--logo">
           <li class="toolbar-menu__item toolbar-menu__item--level-1">
             {% if icon_path %}
-              <a class="toolbar-link" href="/">
+              <a class="toolbar-link" href="{{ path('<front>') }}">
                 <img alt="{{ 'Home'|t }}" src="{{ file_url(icon_path) }}" loading="eager" />
               </a>
             {% else %}
-              <a href="/" class="toolbar-link toolbar-link--has-icon toolbar-link--gin-home">
+              <a href="{{ path('<front>') }}" class="toolbar-link toolbar-link--has-icon toolbar-link--gin-home">
                 <span>{{ 'Home'|t }}</span>
               </a>
             {% endif %}
