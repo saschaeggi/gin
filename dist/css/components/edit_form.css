@@ -197,8 +197,7 @@
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__revision {
-  -webkit-margin-before: var(--gin-spacing-m);
-          margin-block-start: var(--gin-spacing-m);
+  margin-block-start: var(--gin-spacing-m);
 }
 
 .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__last-saved, .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta__author {

@@ -28,15 +28,12 @@
 }
 
 .title {
-  -webkit-margin-before: var(--gin-spacing-m);
-          margin-block-start: var(--gin-spacing-m);
-  -webkit-margin-after: var(--gin-spacing-s);
-          margin-block-end: var(--gin-spacing-s);
+  margin-block-start: var(--gin-spacing-m);
+  margin-block-end: var(--gin-spacing-s);
 }
 
 .button {
-  -webkit-margin-after: 0;
-          margin-block-end: 0;
+  margin-block-end: 0;
 }
 
 .task-list li.is-active {

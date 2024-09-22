@@ -7,8 +7,7 @@
 .ui-dialog [open] .claro-details__summary--vertical-tabs-item,
 .ui-dialog .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link {
   color: var(--gin-color-primary);
-  -webkit-text-decoration-style: var(--gin-link-decoration-style);
-          text-decoration-style: var(--gin-link-decoration-style);
+  text-decoration-style: var(--gin-link-decoration-style);
 }
 
 .ui-dialog a:hover,
@@ -33,16 +32,9 @@
   color: var(--gin-color-primary-active);
 }
 
-.ui-dialog *|*:-webkit-any-link:not(svg|a) {
-  text-decoration: underline;
-  -webkit-text-decoration-style: var(--gin-link-decoration-style);
-          text-decoration-style: var(--gin-link-decoration-style);
-}
-
 .ui-dialog *|*:any-link:not(svg|a) {
   text-decoration: underline;
-  -webkit-text-decoration-style: var(--gin-link-decoration-style);
-          text-decoration-style: var(--gin-link-decoration-style);
+  text-decoration-style: var(--gin-link-decoration-style);
 }
 
 .ui-dialog .is-horizontal .tabs__link:hover,
@@ -468,9 +460,7 @@
 
 .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox input {
   all: unset;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  appearance: none;
   cursor: pointer;
   display: inline-block;
   vertical-align: top;
@@ -478,8 +468,7 @@
   height: 1.5rem;
   position: relative;
   overflow: hidden;
-  -webkit-clip-path: circle(var(--gin-spacing-l) at 50% 50%);
-          clip-path: circle(var(--gin-spacing-l) at 50% 50%);
+  clip-path: circle(var(--gin-spacing-l) at 50% 50%);
   background-color: var(--gin-color-disabled);
   border: 3px solid transparent;
   border-radius: var(--gin-border-l);

@@ -11,8 +11,7 @@
         }));
       })), once("ginToolbarClickHandler", ".top-bar__burger, .admin-toolbar__expand-button", context).forEach((button => {
         button.addEventListener("click", (() => {
-          var _Drupal$ginSidebar;
-          window.innerWidth < 1280 && button.getAttribute("aria-expanded", "false") && (null === (_Drupal$ginSidebar = Drupal.ginSidebar) || void 0 === _Drupal$ginSidebar || _Drupal$ginSidebar.collapseSidebar());
+          window.innerWidth < 1280 && button.getAttribute("aria-expanded", "false") && Drupal.ginSidebar?.collapseSidebar();
         }));
       }));
     },
