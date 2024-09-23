@@ -4,10 +4,10 @@
       once('ginDropbutton', '.dropbutton-multiple:has(.dropbutton--gin)', context).forEach(el => {
         el.querySelector('.dropbutton__toggle').addEventListener('click', () => {
           this.updatePosition(el);
-        });
 
-        window.addEventListener('scroll', () => this.updatePosition(el));
-        window.addEventListener('resize', () => this.updatePosition(el));
+          window.addEventListener('scroll', () => Drupal.debounce(this.updatePositionIfOpen(el), 100));
+        window.addEventListener('resize', () => Drupal.debounce(this.updatePositionIfOpen(el), 100));
+        });
       });
     },
 
@@ -56,6 +56,12 @@
         dropMenu.style.top = `${boundingRect.top - toggleHeight - dropMenuHeight}px`
       }
 
+    },
+
+    updatePositionIfOpen: function (el) {
+      if(el.classList.contains('open')) {
+        this.updatePosition(el);
+      }
     },
 
   };
