@@ -74,7 +74,7 @@ class GinSettings implements ContainerInjectionInterface {
    * @return array|bool|mixed|null
    *   The current value.
    */
-  public function get($name, AccountInterface $account = NULL) {
+  public function get($name, ?AccountInterface $account = NULL) {
     $value = NULL;
     if (!$account) {
       $account = $this->currentUser;
@@ -118,7 +118,7 @@ class GinSettings implements ContainerInjectionInterface {
    * @param \Drupal\Core\Session\AccountInterface|null $account
    *   The account object. Current user if NULL.
    */
-  public function setAll(array $settings, AccountInterface $account = NULL) {
+  public function setAll(array $settings, ?AccountInterface $account = NULL) {
     if (!$account || !$this->userData) {
       $account = $this->currentUser;
     }
@@ -134,7 +134,7 @@ class GinSettings implements ContainerInjectionInterface {
    * @param \Drupal\Core\Session\AccountInterface|null $account
    *   The account object. Current user if NULL.
    */
-  public function clear(AccountInterface $account = NULL) {
+  public function clear(?AccountInterface $account = NULL) {
     if (!$account || !$this->userData) {
       $account = $this->currentUser;
     }
@@ -161,7 +161,7 @@ class GinSettings implements ContainerInjectionInterface {
    * @return bool
    *   TRUE or FALSE.
    */
-  public function userOverrideEnabled(AccountInterface $account = NULL) {
+  public function userOverrideEnabled(?AccountInterface $account = NULL) {
     if (!$account || !$this->userData) {
       $account = $this->currentUser;
     }
@@ -179,7 +179,7 @@ class GinSettings implements ContainerInjectionInterface {
    * @return bool
    *   TRUE or FALSE.
    */
-  public function overridden($name, AccountInterface $account = NULL) {
+  public function overridden($name, ?AccountInterface $account = NULL) {
     if (!$account) {
       $account = $this->currentUser;
     }
@@ -272,7 +272,7 @@ class GinSettings implements ContainerInjectionInterface {
    * @return array
    *   The theme setting form elements.
    */
-  public function getSettingsForm(AccountInterface $account = NULL): array {
+  public function getSettingsForm(?AccountInterface $account = NULL): array {
     $experimental_label = ' <span class="gin-experimental-flag">Experimental</span>';
     $beta_label = ' <span class="gin-beta-flag">Beta</span>';
     $new_label = ' <span class="gin-new-flag">New</span>';

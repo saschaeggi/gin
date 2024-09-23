@@ -2,10 +2,10 @@
 
 namespace Drupal\gin;
 
-use Drupal\block_content\Entity\BlockContentType;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\Core\Url;
+use Drupal\block_content\Entity\BlockContentType;
 use Drupal\taxonomy\Entity\Vocabulary;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
