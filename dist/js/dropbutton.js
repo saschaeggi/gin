@@ -8,9 +8,17 @@
       }));
     },
     updatePosition: function(el) {
-      const secondaryAction = el.querySelector(".secondary-action"), dropbuttonItems = el.querySelector(".dropbutton__items"), toggleHeight = el.offsetHeight, dropbuttonHeight = dropbuttonItems.offsetHeight, boundingRect = secondaryAction.getBoundingClientRect(), spaceBelow = window.innerHeight - boundingRect.bottom;
-      dropbuttonItems.style.position = "fixed", dropbuttonItems.style.right = window.innerWidth - boundingRect.right + "px", 
-      dropbuttonItems.style.top = spaceBelow < dropbuttonHeight ? boundingRect.top - toggleHeight - dropbuttonHeight + "px" : `${boundingRect.bottom}px`;
+      const preferredDir = document.documentElement.dir ?? "ltr", secondaryAction = el.querySelector(".secondary-action"), dropMenu = el.querySelector(".dropbutton__items"), toggleHeight = el.offsetHeight, dropMenuWidth = dropMenu.offsetWidth, dropMenuHeight = dropMenu.offsetHeight, boundingRect = secondaryAction.getBoundingClientRect(), spaceBelow = window.innerHeight - boundingRect.bottom, spaceLeft = boundingRect.left, spaceRight = window.innerWidth - boundingRect.right;
+      dropMenu.style.position = "fixed";
+      const leftAlignStyles = {
+        left: `${boundingRect.left}px`,
+        right: "auto"
+      }, rightAlignStyles = {
+        left: "auto",
+        right: window.innerWidth - boundingRect.right + "px"
+      };
+      "ltr" === preferredDir ? spaceRight >= dropMenuWidth ? Object.assign(dropMenu.style, leftAlignStyles) : Object.assign(dropMenu.style, rightAlignStyles) : spaceLeft >= dropMenuWidth ? Object.assign(dropMenu.style, rightAlignStyles) : Object.assign(dropMenu.style, leftAlignStyles), 
+      dropMenu.style.top = spaceBelow >= dropMenuHeight ? `${boundingRect.bottom}px` : boundingRect.top - toggleHeight - dropMenuHeight + "px";
     }
   };
 })(Drupal, once);

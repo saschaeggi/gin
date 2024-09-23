@@ -2646,6 +2646,14 @@ html.js .dropbutton-widget {
   background-color: transparent;
 }
 
+html.js .dropbutton-wrapper.open .dropbutton-widget {
+  z-index: 502;
+}
+
+html.js .dropbutton-wrapper.open .dropbutton {
+  background: var(--gin-bg-layer3);
+}
+
 .dropbutton {
   border: 2px solid var(--gin-color-primary);
   border-radius: var(--gin-border-m);
@@ -2971,6 +2979,8 @@ html.js .dropbutton-wrapper:not(.open) .dropbutton__items {
 html.js .dropbutton-wrapper .dropbutton__items {
   visibility: visible;
   opacity: 1;
+  max-height: 30vh;
+  overflow: auto;
 }
 
 html.js .dropbutton-wrapper:not(.open) .dropbutton__item:first-of-type ~ .dropbutton__items {
@@ -2979,6 +2989,7 @@ html.js .dropbutton-wrapper:not(.open) .dropbutton__item:first-of-type ~ .dropbu
 
 html.js .dropbutton-wrapper:not(.open) .dropbutton__items .dropbutton__item:first-of-type ~ .dropbutton__item {
   display: block;
+  height: auto;
 }
 
 html[dir="ltr"].js.no-touchevents .dropbutton--multiple.dropbutton--small .dropbutton__item:first-of-type {
