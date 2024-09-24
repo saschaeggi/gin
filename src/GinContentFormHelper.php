@@ -275,7 +275,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    * @param string $form_id
    *   The form id.
    */
-  private function stickyActionButtons(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = NULL): bool {
+  private function stickyActionButtons(?array $form = NULL, ?FormStateInterface $form_state = NULL, $form_id = NULL): bool {
     /** @var \Drupal\gin\GinSettings $settings */
     $settings = \Drupal::classResolver(GinSettings::class);
 
@@ -325,7 +325,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    * @param string $form_id
    *   The form id.
    */
-  public function isContentForm(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = ''): bool {
+  public function isContentForm(?array $form = NULL, ?FormStateInterface $form_state = NULL, $form_id = ''): bool {
     // Forms to exclude.
     // If media library widget, don't use new content edit form.
     // gin_preprocess_html is not triggered here, so checking
