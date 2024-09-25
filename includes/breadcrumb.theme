@@ -22,8 +22,10 @@ function gin_preprocess_breadcrumb(&$variables) {
     foreach ($variables['breadcrumb'] as $key => $item) {
       // Back to site item.
       if ($key === 0) {
-        $variables['breadcrumb'][$key]['text'] = t('Back to site');
-        $variables['breadcrumb'][$key]['attributes']['title'] = t('Return to site content');
+        if ($variables['breadcrumb'][$key]['url'] === Url::fromRoute('<front>')->toString()) {
+          $variables['breadcrumb'][$key]['text'] = t('Back to site');
+          $variables['breadcrumb'][$key]['attributes']['title'] = t('Return to site content');
+        }
 
         // Media handling.
         if ($entity_id === 'media' && !\Drupal::config('media.settings')->get('standalone_url')) {
