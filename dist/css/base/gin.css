@@ -3578,23 +3578,27 @@ a.button--primary.button--danger,
 }
 
 .field-option .field-option-radio {
-  visibility: hidden;
+  all: unset !important;
 }
 
-.field-option.selected, .field-option:has(.field-option-radio:checked) {
+.field-option.selected, .field-option:focus-within, .field-option:has(.field-option-radio:checked) {
   background-color: var(--gin-bg-layer2);
 }
 
-.field-option.selected .field-option__thumb, .field-option:has(.field-option-radio:checked) .field-option__thumb {
+.field-option.selected .field-option__thumb, .field-option:focus-within .field-option__thumb, .field-option:has(.field-option-radio:checked) .field-option__thumb {
   background-color: var(--gin-color-primary);
 }
 
-.field-option.selected .field-option__icon, .field-option:has(.field-option-radio:checked) .field-option__icon {
+.field-option.selected .field-option__icon, .field-option:focus-within .field-option__icon, .field-option:has(.field-option-radio:checked) .field-option__icon {
   filter: brightness(0) invert(1);
 }
 
-.gin--dark-mode .field-option.selected .field-option__icon, .gin--dark-mode .field-option:has(.field-option-radio:checked) .field-option__icon {
+.gin--dark-mode .field-option.selected .field-option__icon, .gin--dark-mode .field-option:focus-within .field-option__icon, .gin--dark-mode .field-option:has(.field-option-radio:checked) .field-option__icon {
   filter: brightness(0);
+}
+
+.field-option:focus-within .field-option__thumb, .field-option:focus-within:has(.field-option-radio:checked) .field-option__thumb {
+  background-color: var(--gin-color-primary-active);
 }
 
 .subfield-option {
@@ -3608,7 +3612,7 @@ a.button--primary.button--danger,
   margin-top: var(--gin-spacing-xs);
 }
 
-.subfield-option.selected {
+.subfield-option.selected, .subfield-option:focus-within {
   background-color: var(--gin-bg-layer2);
 }
 
@@ -3820,7 +3824,9 @@ hr {
 .ck .ck.ck-button:active:focus,
 .toolbar-box .toolbar-handle:focus,
 .field-option:has(.field-option-radio:checked),
+.field-option:focus-within,
 .subfield-option:has(.field-option-radio:checked),
+.subfield-option:focus-within,
 #edit-submit.form-submit:focus {
   outline: none;
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
