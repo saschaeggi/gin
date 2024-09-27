@@ -75,6 +75,7 @@ function gin_form_after_build(array $form, FormStateInterface $form_state): arra
           $button['#attributes'],
           [
             'for' => $button['#id'],
+            'role' => 'button',
             'class' => array_merge(
               ['button', $button_type_class, $button_disabled_class],
               $button_classes
