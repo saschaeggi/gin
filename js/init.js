@@ -5,10 +5,11 @@
 // Legacy Check: Transform old localStorage items to newer ones.
 function checkLegacy() {
   if (localStorage.getItem('GinDarkMode')) {
-    localStorage.setItem('Drupal.gin.darkmode', localStorage.getItem('GinDarkMode'));
     localStorage.removeItem('GinDarkMode');
   }
-
+  if (localStorage.getItem('Drupal.gin.darkmode')) {
+    localStorage.removeItem('Drupal.gin.darkmode');
+  }
   if (localStorage.getItem('GinSidebarOpen')) {
     localStorage.setItem('Drupal.gin.toolbarExpanded', localStorage.getItem('GinSidebarOpen'));
     localStorage.removeItem('GinSidebarOpen');
@@ -20,9 +21,10 @@ checkLegacy();
 // Darkmode Check.
 function ginInitDarkmode() {
   const darkModeClass = 'gin--dark-mode';
+
   if (
-    localStorage.getItem('Drupal.gin.darkmode') == 1 ||
-    (localStorage.getItem('Drupal.gin.darkmode') === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    window.ginDarkmode == 1 ||
+    window.ginDarkmode === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches
   ) {
     document.documentElement.classList.add(darkModeClass);
   } else {
@@ -31,17 +33,6 @@ function ginInitDarkmode() {
 }
 
 ginInitDarkmode();
-
-// GinDarkMode is not set yet or config changes detected.
-window.addEventListener('DOMContentLoaded', () => {
-  if (
-    !localStorage.getItem('Drupal.gin.darkmode') ||
-    (drupalSettings.gin.darkmode != localStorage.getItem('Drupal.gin.darkmode') && !drupalSettings.gin.show_user_theme_settings)
-  ) {
-    localStorage.setItem('Drupal.gin.darkmode', drupalSettings.gin.darkmode);
-    ginInitDarkmode();
-  }
-});
 
 // Toolbar Check.
 if (localStorage.getItem('Drupal.gin.toolbarExpanded')) {
