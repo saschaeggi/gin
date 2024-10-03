@@ -193,7 +193,7 @@ dropbutton:
 gin_custom_css:
   css:
     theme:
-      public://gin-custom.css: { preprocess: false, minified: false, weight: 100 }
+      public://gin-custom.css: { preprocess: false, minified: false, weight: 50 }
 
 # Libs
 
