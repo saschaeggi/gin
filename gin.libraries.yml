@@ -193,7 +193,7 @@ dropbutton:
 gin_custom_css:
   css:
     theme:
-      public://gin-custom.css: { preprocess: false, minified: false, weight: 100 }
+      public://gin-custom.css: { preprocess: false, minified: false, weight: 50 }
 
 # Libs
 
@@ -447,6 +447,11 @@ linkit:
   css:
     component:
       dist/css/components/linkit.css: { minified: false }
+
+term_reference_tree:
+  css:
+    component:
+      dist/css/components/term_reference_tree.css: { minified: false }
 
 # Legacy
 

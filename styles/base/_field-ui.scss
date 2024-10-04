@@ -18,7 +18,6 @@
   border-radius: var(--gin-border-m);
 
   &__thumb {
-    // background-color: var(--gin-bg-header);
     background-color: var(--gin-bg-layer2);
     border-radius: 0;
     border-top-left-radius: var(--gin-border-s);
@@ -50,10 +49,11 @@
   }
 
   .field-option-radio {
-    visibility: hidden;
+    all: unset !important;
   }
 
   &.selected,
+  &:focus-within,
   &:has(.field-option-radio:checked) {
     background-color: var(--gin-bg-layer2);
 
@@ -69,6 +69,13 @@
       }
     }
   }
+
+  &:focus-within,
+  &:focus-within:has(.field-option-radio:checked) {
+    .field-option__thumb {
+      background-color: var(--gin-color-primary-active);
+    }
+  }
 }
 
 .subfield-option {
@@ -81,7 +88,8 @@
     margin-top: var(--gin-spacing-xs);
   }
 
-  &.selected {
+  &.selected,
+  &:focus-within {
     background-color: var(--gin-bg-layer2);
   }
 }

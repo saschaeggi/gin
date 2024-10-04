@@ -2646,6 +2646,14 @@ html.js .dropbutton-widget {
   background-color: transparent;
 }
 
+html.js .dropbutton-wrapper.open .dropbutton-widget {
+  z-index: 502;
+}
+
+html.js .dropbutton-wrapper.open .dropbutton {
+  background: var(--gin-bg-layer3);
+}
+
 .dropbutton {
   border: 2px solid var(--gin-color-primary);
   border-radius: var(--gin-border-m);
@@ -2971,6 +2979,8 @@ html.js .dropbutton-wrapper:not(.open) .dropbutton__items {
 html.js .dropbutton-wrapper .dropbutton__items {
   visibility: visible;
   opacity: 1;
+  max-height: 30vh;
+  overflow: auto;
 }
 
 html.js .dropbutton-wrapper:not(.open) .dropbutton__item:first-of-type ~ .dropbutton__items {
@@ -2979,6 +2989,7 @@ html.js .dropbutton-wrapper:not(.open) .dropbutton__item:first-of-type ~ .dropbu
 
 html.js .dropbutton-wrapper:not(.open) .dropbutton__items .dropbutton__item:first-of-type ~ .dropbutton__item {
   display: block;
+  height: auto;
 }
 
 html[dir="ltr"].js.no-touchevents .dropbutton--multiple.dropbutton--small .dropbutton__item:first-of-type {
@@ -3567,23 +3578,27 @@ a.button--primary.button--danger,
 }
 
 .field-option .field-option-radio {
-  visibility: hidden;
+  all: unset !important;
 }
 
-.field-option.selected, .field-option:has(.field-option-radio:checked) {
+.field-option.selected, .field-option:focus-within, .field-option:has(.field-option-radio:checked) {
   background-color: var(--gin-bg-layer2);
 }
 
-.field-option.selected .field-option__thumb, .field-option:has(.field-option-radio:checked) .field-option__thumb {
+.field-option.selected .field-option__thumb, .field-option:focus-within .field-option__thumb, .field-option:has(.field-option-radio:checked) .field-option__thumb {
   background-color: var(--gin-color-primary);
 }
 
-.field-option.selected .field-option__icon, .field-option:has(.field-option-radio:checked) .field-option__icon {
+.field-option.selected .field-option__icon, .field-option:focus-within .field-option__icon, .field-option:has(.field-option-radio:checked) .field-option__icon {
   filter: brightness(0) invert(1);
 }
 
-.gin--dark-mode .field-option.selected .field-option__icon, .gin--dark-mode .field-option:has(.field-option-radio:checked) .field-option__icon {
+.gin--dark-mode .field-option.selected .field-option__icon, .gin--dark-mode .field-option:focus-within .field-option__icon, .gin--dark-mode .field-option:has(.field-option-radio:checked) .field-option__icon {
   filter: brightness(0);
+}
+
+.field-option:focus-within .field-option__thumb, .field-option:focus-within:has(.field-option-radio:checked) .field-option__thumb {
+  background-color: var(--gin-color-primary-active);
 }
 
 .subfield-option {
@@ -3597,7 +3612,7 @@ a.button--primary.button--danger,
   margin-top: var(--gin-spacing-xs);
 }
 
-.subfield-option.selected {
+.subfield-option.selected, .subfield-option:focus-within {
   background-color: var(--gin-bg-layer2);
 }
 
@@ -3809,7 +3824,9 @@ hr {
 .ck .ck.ck-button:active:focus,
 .toolbar-box .toolbar-handle:focus,
 .field-option:has(.field-option-radio:checked),
+.field-option:focus-within,
 .subfield-option:has(.field-option-radio:checked),
+.subfield-option:focus-within,
 #edit-submit.form-submit:focus {
   outline: none;
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);

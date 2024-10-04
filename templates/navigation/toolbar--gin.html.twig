@@ -41,7 +41,7 @@
         <div{{ tab.attributes.addClass('toolbar-tab', user_menu, tab.link['#id'] ? 'toolbar-tab--' ~ tab.link['#id'] : null) }}>
         {% endif %}
           {% if tab.link['#id'] == 'toolbar-item-administration' %}
-            <a class="toolbar-menu__logo" href="/admin/content" aria-label="{{ 'Toolbar Menu Logo'|t }}">
+            <a class="toolbar-menu__logo" href="{{ path('system.admin_content') }}" aria-label="{{ 'Toolbar Menu Logo'|t }}">
               <span class="visually-hidden">{{ 'Toolbar Menu Logo'|t }}</span>
             </a>
             {{ tab.link }}

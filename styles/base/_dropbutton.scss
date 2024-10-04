@@ -3,6 +3,19 @@ html.js .dropbutton-widget {
   background-color: transparent;
 }
 
+// Overlay the dropdown button on top of the sticky header and main toolbar
+html.js {
+  .dropbutton-wrapper.open {
+    .dropbutton-widget {
+      z-index: 502; // Above toolbar and sticky header
+    }
+
+    .dropbutton {
+      background: var(--gin-bg-layer3);
+    }
+  }
+}
+
 .dropbutton {
   border: 2px solid var(--gin-color-primary);
   border-radius: var(--gin-border-m);
@@ -233,6 +246,8 @@ html.js {
   .dropbutton-wrapper .dropbutton__items {
     visibility: visible;
     opacity: 1;
+    max-height: 30vh;
+    overflow: auto;
   }
 
   .dropbutton-wrapper:not(.open) .dropbutton__item:first-of-type ~ .dropbutton__items {
@@ -241,6 +256,7 @@ html.js {
 
   .dropbutton-wrapper:not(.open) .dropbutton__items .dropbutton__item:first-of-type ~ .dropbutton__item {
     display: block;
+    height: auto;
   }
 }
 

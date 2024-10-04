@@ -294,7 +294,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    * @param string $form_id
    *   The form id.
    */
-  public function stickyActionButtons(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = NULL) {
+  public function stickyActionButtons(?array $form = NULL, ?FormStateInterface $form_state = NULL, $form_id = NULL) {
     // Generally don't use sticky buttons in Ajax requests (modals).
     if ($this->isModalOrOffcanvas()) {
       return FALSE;
@@ -347,7 +347,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    * @param string $form_id
    *   The form id.
    */
-  public function isContentForm(array $form = NULL, FormStateInterface $form_state = NULL, $form_id = '') {
+  public function isContentForm(?array $form = NULL, ?FormStateInterface $form_state = NULL, $form_id = '') {
     // Generally ignore all forms in Ajax requests (modals).
     if ($this->isModalOrOffcanvas()) {
       return FALSE;
