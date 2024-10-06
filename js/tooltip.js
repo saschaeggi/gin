@@ -82,8 +82,8 @@
         ],
       }).then(({ x, y }) => {
         Object.assign(tooltip.style, {
-          left: `${x}px`,
-          top: `${y}px`,
+          'inset-inline-start': `${x}px`,
+          'inset-block-start': `${y}px`,
         });
       });
     },

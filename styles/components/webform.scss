@@ -1,19 +1,19 @@
 .webform-filter-form {
-  margin-bottom: var(--gin-spacing-xl);
+  margin-block-end: var(--gin-spacing-xl);
 
   > .container-inline {
      margin-block: 0;
   }
 
   .details-wrapper {
-    margin-top: 0;
-    margin-bottom: var(--gin-spacing-xs);
+    margin-block-start: 0;
+    margin-block-end: var(--gin-spacing-xs);
   }
 
   // Followed by a title
   + div:not(.gin-layer-wrapper) {
     // @extend h3;
-    margin-bottom: var(--gin-spacing-s);
+    margin-block-end: var(--gin-spacing-s);
   }
 }
 
@@ -58,8 +58,7 @@
 .webform-ui-elements-table {
   tr.webform-ui-element-type-webform_actions {
     td {
-      border-top: none;
-      border-bottom: none;
+      border-block: none;
       background: none;
     }
   }
@@ -67,7 +66,7 @@
 
 .webform-tabs.ui-tabs {
   .ui-tabs-nav {
-    border-bottom: 0 none;
+    border-block-end: 0 none;
 
     .ui-tabs-active.ui-state-active a {
       border: 2px solid var(--gin-color-primary);
@@ -88,9 +87,9 @@
 }
 
 .webform-ajax-messages {
-  left: var(--gin-offset-x);
-  bottom: var(--gin-spacing-s);
-  margin-left: var(--gin-spacing-m);
+  inset-inline-start: var(--gin-offset-x);
+  inset-block-end: var(--gin-spacing-s);
+  margin-inline-start: var(--gin-spacing-m);
 
   .messages--info,
   .messages--status,
@@ -102,8 +101,8 @@
 
 .webform-edit-form {
   .tabledrag-toggle-weight-wrapper {
-    float: right;
-    margin-top: calc(var(--gin-spacing-s) * -1);
+    float: end;
+    margin-block-start: calc(var(--gin-spacing-s) * -1);
 
     button {
       position: static;

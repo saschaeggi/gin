@@ -2,12 +2,12 @@
   font-size: var(--gin-font-size-xs);
   z-index: 501; /* on top of the Drupal world */
   position: sticky;
-  top: 0;
+  inset-block-start: 0;
   padding: 0;
   width: 100%;
   height: var(--gin-toolbar-secondary-height);
   background: rgba(#fff, .98);
-  border-bottom: 1px solid var(--gin-border-color-layer);
+  border-block-end: 1px solid var(--gin-border-color-layer);
 
   @supports (backdrop-filter: blur()) {
     opacity: .999; /* Fix Chrome issue with mask */
@@ -30,7 +30,7 @@
 
   .gin--navigation &,
   .gin--core-navigation & {
-    margin-left: var(--gin-toolbar-x-offset);
+    margin-inline-start: var(--gin-toolbar-x-offset);
     width: calc(100% - var(--gin-toolbar-x-offset));
   }
 
@@ -46,7 +46,7 @@
   .node-preview-backlink {
     all: revert;
     position: relative;
-    padding-left: 1.75em;
+    padding-inline-start: 1.75em;
     text-decoration: none;
     font-weight: var(--gin-font-weight-normal);
     color: var(--gin-color-text-light);
@@ -64,8 +64,8 @@
       content: "";
       display: inline-block;
       position: absolute;
-      top: calc(50% - 1px);
-      left: 0;
+      inset-block-start: calc(50% - 1px);
+      inset-inline-start: 0;
       width: var(--gin-icon-size-toolbar-secondary);
       height: var(--gin-icon-size-toolbar-secondary);
       transform: translateY(-50%);
@@ -105,7 +105,7 @@
     }
 
     label {
-      padding-right: .5em;
+      padding-inline-end: .5em;
     }
   }
 

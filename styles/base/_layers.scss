@@ -1,11 +1,11 @@
 .page-content {
-  margin-top: 0;
+  margin-block-start: 0;
 
   > .help,
   > .region-content,
   > .region-highlighted {
     @include mq(small) {
-      margin-top: var(--gin-spacing-l);
+      margin-block-start: var(--gin-spacing-l);
     }
   }
 }
@@ -23,7 +23,7 @@
 .user-admin-permissions,
 .field-config-form
 {
-  margin-top: 0;
+  margin-block-start: 0;
   box-shadow: var(--gin-shadow-l1);
   border-radius: var(--gin-border-l);
 
@@ -60,17 +60,17 @@
   // Remove extra spacing on top of form.
   > .form-wrapper:first-of-type .form-item,
   .layout-region-node-main > .form-wrapper:first-of-type .form-item {
-    margin-top: 0;
+    margin-block-start: 0;
   }
 }
 
 .field-config-form > .form-item:first-child {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 #system-clear-cache + #system-performance-settings,
 .gin-layer-wrapper + .imageapi-optimize-default-pipeline {
-  margin-top: var(--gin-spacing-l);
+  margin-block-start: var(--gin-spacing-l);
 }
 
 // Unplublished node
@@ -82,7 +82,7 @@
 .block-system-main-block > form:has(.table-filter) {
   .table-filter {
     padding: 0;
-    margin-bottom: var(--gin-spacing-l);
+    margin-block-end: var(--gin-spacing-l);
     background: none;
     border: none;
     box-shadow: none;
@@ -98,7 +98,7 @@
 
     .table-filter-text {
       padding: var(--gin-spacing-m);
-      margin-top: 0;
+      margin-block-start: 0;
     }
   }
 }

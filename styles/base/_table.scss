@@ -4,16 +4,16 @@
   overflow-y: hidden;
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
-  margin-top: calc(var(--gin-spacing-xs) * -1);
+  margin-block-start: calc(var(--gin-spacing-xs) * -1);
 }
 
 table.gin--sticky-table-header {
   visibility: hidden;
   z-index: 97;
   position: sticky;
-  top: calc(var(--gin-toolbar-y-offset) + var(--gin-height-sticky) - 1px);
+  inset-block-start: calc(var(--gin-toolbar-y-offset) + var(--gin-height-sticky) - 1px);
   width: auto !important;
-  margin-top: -8px;
+  margin-block-start: calc(var(--gin-spacing-xs) * -1);
   overflow: hidden;
 
   tr {
@@ -36,7 +36,7 @@ table.gin--sticky-table-header {
 }
 
 table.sticky-header {
-  left: auto !important;
+  inset-inline-start: auto !important;
   min-width: 100%;
   max-width: fit-content;
   background: transparent;
@@ -67,7 +67,7 @@ table {
     border-radius: var(--gin-border-m);
 
     tr {
-      border-bottom: 2px solid var(--gin-border-color-table-header);
+      border-block-end: 2px solid var(--gin-border-color-table-header);
 
       &:hover {
         background: transparent;
@@ -92,7 +92,7 @@ table {
 
   tbody {
     tr {
-      border-bottom: 1px solid var(--gin-border-color-table);
+      border-block-end: 1px solid var(--gin-border-color-table);
     }
 
     td {
@@ -147,7 +147,7 @@ table {
   padding: var(--gin-spacing-xs) var(--gin-spacing-m);
 
   > a::before {
-    bottom: -2px;
+    inset-block-end: -2px;
   }
 
   > a::after {
@@ -164,11 +164,11 @@ table {
   &.is-active > a::before,
   > a:hover::before {
     width: 100%;
-    left: 0;
+    inset-inline-start: 0;
   }
 
   > a:hover::before {
-    border-bottom-width: 3px;
+    border-block-end-width: 3px;
   }
 
   &.is-active > a {
@@ -178,9 +178,9 @@ table {
 
     &::before {
       background-color: var(--gin-bg-item);
-      border-top-left-radius: var(--gin-border-s);
-      border-top-right-radius: var(--gin-border-s);
-      border-bottom: .1875rem solid var(--gin-color-primary-active);
+      border-start-start-radius: var(--gin-border-s);
+      border-start-end-radius: var(--gin-border-s);
+      border-block-end: .1875rem solid var(--gin-color-primary-active);
     }
   }
 }
@@ -212,15 +212,15 @@ table {
 }
 
 .field-plugin-settings-edit-wrapper {
-  float: right;
+  float: inline-end;
 
   + a {
-    float: left;
+    float: inline-start;
   }
 }
 
 .region-title {
-  border-bottom: 2px solid var(--gin-color-text);
+  border-block-end: 2px solid var(--gin-color-text);
 }
 
 td.webform-has-field-suffix > .form-item > .form-element {
@@ -230,8 +230,9 @@ td.webform-has-field-suffix > .form-item > .form-element {
 
 .field-multiple-table {
   th {
-    padding: var(--gin-spacing-xs) var(--gin-spacing-m) var(--gin-spacing-xs) var(--gin-spacing-l);
-    border-bottom: 0;
+    padding-block: var(--gin-spacing-xs);
+    padding-inline: var(--gin-spacing-l) var(--gin-spacing-m);
+    border-block-end: 0;
     background: transparent;
 
     &.th__order {
@@ -245,19 +246,19 @@ td.webform-has-field-suffix > .form-item > .form-element {
       background: var(--gin-bg-header);
 
       &:first-of-type {
-        border-top-left-radius: var(--gin-border-m);
-        border-bottom-left-radius: var(--gin-border-m);
+        border-start-start-radius: var(--gin-border-m);
+        border-end-start-radius: var(--gin-border-m);
       }
     }
 
     &:not(:has(th:last-of-type:not([style*="display: none"]))) th:nth-last-of-type(2),
     th:last-of-type:not([style*="display: none"]) {
-      border-top-right-radius: var(--gin-border-m);
-      border-bottom-right-radius: var(--gin-border-m);
+      border-start-end-radius: var(--gin-border-m);
+      border-end-end-radius: var(--gin-border-m);
     }
 
     tr {
-      border-bottom: 0;
+      border-block-end: 0;
     }
 
     .field-label .label,
@@ -274,7 +275,7 @@ td.webform-has-field-suffix > .form-item > .form-element {
   }
 
   tr .form-item:not(:last-of-type) {
-    margin-bottom: var(--gin-spacing-m);
+    margin-block-end: var(--gin-spacing-m);
   }
 
   // Fixes paragraphs extending beyond layout
@@ -284,7 +285,7 @@ td.webform-has-field-suffix > .form-item > .form-element {
 }
 
 .gin-layer-wrapper .views-table {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 table td.field-plugin-summary-cell {
@@ -292,5 +293,5 @@ table td.field-plugin-summary-cell {
 }
 
 table .views-field.views-field-operations {
-  text-align: right;
+  text-align: end;
 }

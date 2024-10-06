@@ -57,7 +57,8 @@
   },
   "dependencies": {
     "core-js": "^3.9.1",
-    "postcss": "^8.1.0",
+    "postcss": "^8.4.47",
+    "postcss-rtl-logical-properties": "^1.0.7",
     "sass": "^1.44.0"
   },
   "repository": {

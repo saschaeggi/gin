@@ -50,11 +50,11 @@
 
 .ck.ck-sticky-panel .ck-sticky-panel__content.ck-sticky-panel__content_sticky {
   z-index: 2;
-  top: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset)) !important;
+  inset-block-start: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset)) !important;
 }
 
 .ck[data-fullscreen=fullscreeneditor] .ck-sticky-panel__content.ck-sticky-panel__content_sticky {
-  top: 0 !important;
+  inset-block-start: 0 !important;
 }
 
 .ck .ck-toolbar__separator {
@@ -75,12 +75,8 @@
   border: 2px solid var(--gin-color-primary);
 }
 
-[dir="ltr"] .ck .ck-button.ck-source-editing-button {
-  padding-left: var(--gin-spacing-m);
-}
-
-[dir="rtl"] .ck .ck-button.ck-source-editing-button {
-  padding-right: var(--gin-spacing-m);
+.ck .ck-button.ck-source-editing-button {
+  padding-inline-start: var(--gin-spacing-m);
 }
 
 .ck.ck-button:not(.ck-disabled):hover {

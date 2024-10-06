@@ -4,7 +4,7 @@
   }
 
   &__version-links {
-    padding-right: 0;
+    padding-inline-end: 0;
   }
 
   &__details {
@@ -38,7 +38,7 @@ tr.color-success,
 .color-checked,
 .drupal-upgrade-status-summary-form tr.no-known-error
 {
-  border-left: var(--gin-border-xs) solid var(--gin-color-green);
+  border-inline-start: var(--gin-border-xs) solid var(--gin-color-green);
   background-color: transparent;
 
   &:hover, &:active, &:focus {
@@ -50,7 +50,7 @@ tr.color-success,
 tr.color-warning,
 .upgrade-status-next-step-remove tr,
 .drupal-upgrade-status-summary-form tr.known-warnings {
-  border-left: var(--gin-border-xs) solid var(--gin-color-warning);
+  border-inline-start: var(--gin-border-xs) solid var(--gin-color-warning);
   background-color: transparent;
 
   &:hover, &:active, &:focus {
@@ -65,7 +65,7 @@ tr.color-warning,
 .color-error,
 tr.color-error,
 .drupal-upgrade-status-summary-form tr.known-errors {
-  border-left: var(--gin-border-xs) solid var(--gin-color-danger);
+  border-inline-start: var(--gin-border-xs) solid var(--gin-color-danger);
   background-color: transparent;
 
   &:hover, &:active, &:focus {
@@ -91,14 +91,14 @@ tr.color-error,
 
   tbody {
     tr:last-child {
-      border-bottom: 0 none;
+      border-block-end: 0 none;
     }
   }
 }
 
 .gin-layer-wrapper {
   .responsive-enabled {
-    margin-top: 0;
+    margin-block-start: 0;
   }
 }
 
@@ -112,14 +112,14 @@ tr.color-error,
 
 // fix overflow issue in FF
 .block-system > form .gin-layer-wrapper {
-  padding-bottom: 1px;
+  padding-block-end: 1px;
 }
 
 .compact-link {
   font-size: var(--gin-font-size-s);
-  text-align: right;
+  text-align: end;
 }
 
 #update-status > p {
-  margin-bottom: var(--gin-spacing-xl);
+  margin-block-end: var(--gin-spacing-xl);
 }

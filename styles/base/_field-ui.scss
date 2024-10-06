@@ -20,8 +20,8 @@
   &__thumb {
     background-color: var(--gin-bg-layer2);
     border-radius: 0;
-    border-top-left-radius: var(--gin-border-s);
-    border-bottom-left-radius: var(--gin-border-s);
+    border-start-start-radius: var(--gin-border-s);
+    border-end-start-radius: var(--gin-border-s);
   }
 
   &__icon {
@@ -38,7 +38,7 @@
 
     .form-item__label {
       font-weight: var(--gin-font-weight-semibold);
-      margin-bottom: var(--gin-spacing-xxs);
+      margin-block-end: var(--gin-spacing-xxs);
     }
   }
 
@@ -85,7 +85,7 @@
   .item-list {
     font-size: var(--gin-font-size-xs);
     color: var(--gin-color-text-light);
-    margin-top: var(--gin-spacing-xs);
+    margin-block-start: var(--gin-spacing-xs);
   }
 
   &.selected,

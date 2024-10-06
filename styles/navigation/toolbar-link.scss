@@ -51,7 +51,7 @@ button.toolbar-link {
   align-items: center;
   background-color: transparent;
   cursor: pointer;
-  text-align: left;
+  text-align: start;
 
   /* Chevron styles. */
   &:not(.toolbar-link--sidebar-toggle)::after {
