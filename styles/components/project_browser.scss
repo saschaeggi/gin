@@ -24,7 +24,7 @@
 
   .search {
     &__form-container {
-      margin-top: var(--gin-spacing-l);
+      margin-block-start: var(--gin-spacing-l);
     }
 
     &__search-bar {
@@ -41,14 +41,14 @@
       width: 16px;
       height: 16px;
       inset-inline-end: 20px;
-      bottom: 20px;
+      inset-block-end: 20px;
     }
 
     &__search-clear {
       width: 24px;
       height: 24px;
       padding: 0;
-      top: 17px;
+      inset-block-start: 17px;
       inset-inline-end: 16px;
       z-index: 2;
       display: flex;
@@ -259,7 +259,8 @@
     font-weight: var(--gin-font-weight-semibold);
     color: var(--gin-color-primary-active);
     background: var(--gin-color-primary-light);
-    padding: 0 var(--gin-spacing-xs) 0 var(--gin-spacing-s);
+    padding-block: 0;
+    padding-inline: var(--gin-spacing-s) var(--gin-spacing-xs);
     margin: 0;
     min-height: 2rem;
 
@@ -307,7 +308,8 @@
 
   .project__action_button {
     font-size: var(--gin-font-size-xxs);
-    padding: calc(var(--gin-spacing-xxs) + 2px) var(--gin-spacing-s);
+    padding-block: calc(var(--gin-spacing-xxs) + 2px);
+    padding-inline: var(--gin-spacing-s);
     border-radius: var(--gin-border-s);
   }
 }
@@ -333,13 +335,15 @@
 .pb-search-results {
   font-size: var(--gin-font-size-h3);
   font-weight: var(--gin-font-weight-bold);
-  margin: var(--gin-spacing-xs) 0 0 0;
+  margin: 0;
+  margin-block-start: var(--gin-spacing-xs);
 }
 
 .pb-actions .project_status-indicator {
   display: inline-flex;
   gap: var(--gin-spacing-xs);
-  padding: var(--gin-spacing-xxs) var(--gin-spacing-s) var(--gin-spacing-xxs) var(--gin-spacing-xs);
+  padding-block: var(--gin-spacing-xxs);
+  padding-inline: var(--gin-spacing-xs) var(--gin-spacing-s);
   font-size: var(--gin-font-size-s);
   font-weight: var(--gin-font-weight-bold);
   border-radius: var(--gin-border-xl);
@@ -456,7 +460,8 @@
 
   &__module-details-info {
     font-size: var(--gin-font-size-s);
-    margin: 0 0 var(--gin-spacing-s) 0;
+    margin: 0;
+    margin-block-end: var(--gin-spacing-s);
   }
 
   &__categories-list {

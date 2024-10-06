@@ -4,8 +4,7 @@
 .admin-toolbar__tooltip {
   z-index: 601;
   position: absolute;
-  top: var(--space-xs);
-  left: 100%;
+  inset-block-start: var(--space-xs);
   padding: var(--gin-spacing-xs) var(--gin-spacing-s);
   font-size: var(--gin-font-size-xxs);
   font-weight: var(--gin-font-weight-semibold);

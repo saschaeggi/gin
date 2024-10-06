@@ -4,7 +4,7 @@
 .admin-toolbar__tooltip {
   z-index: 601;
   position: absolute;
-  top: var(--space-xs);
+  inset-block-start: var(--space-xs);
   padding: var(--gin-spacing-xs) var(--gin-spacing-s);
   font-size: var(--gin-font-size-xxs);
   font-weight: var(--gin-font-weight-semibold);
@@ -14,20 +14,6 @@
   background-color: var(--gin-tooltip-bg);
   box-shadow: var(--gin-shadow-l2);
   border-radius: var(--gin-border-s);
-}
-
-[dir="ltr"] .gin-tooltip,
-[dir="ltr"] .gin-tooltip-navigation,
-[dir="ltr"] .cloned-gin-tooltip-navigation,
-[dir="ltr"] .admin-toolbar__tooltip {
-  left: 100%;
-}
-
-[dir="rtl"] .gin-tooltip,
-[dir="rtl"] .gin-tooltip-navigation,
-[dir="rtl"] .cloned-gin-tooltip-navigation,
-[dir="rtl"] .admin-toolbar__tooltip {
-  right: 100%;
 }
 
 .gin-tooltip {
