@@ -44,9 +44,11 @@
 
 .ui-dialog {
   position: absolute;
-  /*rtl:ignore*/
-  inset-inline-start: 0;
   inset-block-start: 0;
+  // Don't migrate to logical CSS
+  // as otherwise it will break
+  // jQuery UI's dialog placement
+  left: 0;
   font-family: var(--gin-font);
   outline: none;
 

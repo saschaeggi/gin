@@ -42,10 +42,17 @@
 
 .ui-dialog {
   position: absolute;
-  inset-inline-start: 0;
   inset-block-start: 0;
   font-family: var(--gin-font);
   outline: none;
+}
+
+[dir="ltr"] .ui-dialog {
+  inset-inline-start: 0;
+}
+
+[dir="rtl"] .ui-dialog {
+  inset-inline-end: 0;
 }
 
 .ui-dialog, .ui-dialog:focus, .ui-dialog:focus:active, .ui-dialog:focus:hover {
