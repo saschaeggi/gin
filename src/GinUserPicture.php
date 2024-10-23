@@ -7,6 +7,7 @@ use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Security\TrustedCallbackInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -58,10 +59,16 @@ class GinUserPicture implements ContainerInjectionInterface, TrustedCallbackInte
 
     /** @var \Drupal\user\UserInterface $user */
     $user = $this->entityTypeManager->getStorage('user')->load($this->currentUser->id());
+    $url = $user->toUrl();
+
+    // If the user is anonymous, we cannot link to the user profile.
+    if ($user->isAnonymous()) {
+      $url = Url::fromUri('route:<nolink>');
+    }
 
     $build = [
       '#type' => 'link',
-      '#url' => $user->toUrl(),
+      '#url' => $url,
       '#title' => [
         '#markup' => $user->getDisplayName(),
       ],

@@ -32,7 +32,8 @@
 .project__action_button,
 .action-link--icon-trash.action-link {
   font-size: var(--gin-font-size-s);
-  padding: calc(var(--gin-spacing-s) - 2px) var(--gin-spacing-m);
+  padding-block: calc(var(--gin-spacing-s) - 2px);
+  padding-inline: var(--gin-spacing-m);
   border: 2px solid var(--gin-color-primary) !important;
   border-radius: var(--gin-border-m);
   box-shadow: 0 1px 2px var(--gin-color-primary-light);
@@ -53,18 +54,20 @@
 }
 
 .form-actions .button {
-  margin-right: var(--gin-spacing-xs);
+  margin-inline-end: var(--gin-spacing-xs);
 }
 
 .button.button--small {
   font-size: var(--gin-font-size-xxs);
-  padding: calc(var(--gin-spacing-xxs) + 2px) var(--gin-spacing-s);
+  padding-block: calc(var(--gin-spacing-xxs) + 2px);
+  padding-inline: var(--gin-spacing-s);
   border-radius: var(--gin-border-s);
 }
 
 .button.button--extrasmall {
   font-size: var(--gin-font-size-xxs);
-  padding: var(--gin-spacing-xxs) var(--gin-spacing-s);
+  padding-block: var(--gin-spacing-xxs);
+  padding-inline: var(--gin-spacing-s);
   border-radius: var(--gin-border-s);
 }
 

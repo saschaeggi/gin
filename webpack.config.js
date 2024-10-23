@@ -6,6 +6,7 @@ const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const postcssRTLCSS = require('postcss-rtlcss');
+const postcssRtlLogicalProperties = require('postcss-rtl-logical-properties');
 
 module.exports = {
   entry: {
@@ -165,6 +166,7 @@ module.exports = {
               postcssOptions: {
                 plugins: [
                   autoprefixer(),
+                  postcssRtlLogicalProperties(),
                   postcssRTLCSS(),
                   ['postcss-perfectionist', {
                     format: 'expanded',

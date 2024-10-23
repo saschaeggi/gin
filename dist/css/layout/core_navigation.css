@@ -51,11 +51,11 @@ body.gin--core-navigation {
 .gin--core-navigation .top-bar,
 .gin--core-navigation .admin-toolbar-control-bar {
   position: sticky;
-  top: 0;
+  inset-block-start: 0;
 }
 
 .gin--core-navigation .gin-secondary-toolbar:not(.gin-secondary-toolbar--frontend) {
-  margin-bottom: var(--gin-spacing-xxs);
+  margin-block-end: var(--gin-spacing-xxs);
 }
 
 .gin--core-navigation .gin-secondary-toolbar--frontend {
@@ -100,7 +100,7 @@ body.gin--core-navigation {
 
 .toolbar-anti-flicker.toolbar-loading.toolbar-fixed body.gin--core-navigation,
 body.gin--core-navigation {
-  padding-top: unset !important;
+  padding-block-start: unset !important;
   margin-inline-start: auto !important;
 }
 
@@ -126,7 +126,7 @@ body.gin--core-navigation {
 }
 
 #navigation-link-navigationcreate {
-  margin-top: var(--gin-spacing-xxs);
+  margin-block-start: var(--gin-spacing-xxs);
 }
 
 .toolbar-block__list {
@@ -136,7 +136,7 @@ body.gin--core-navigation {
 .toolbar-button {
   padding-inline: 10px;
   padding-block: calc(var(--gin-spacing-xs) + 1px);
-  margin-bottom: var(--gin-spacing-xxxs);
+  margin-block-end: var(--gin-spacing-xxxs);
 }
 
 .toolbar-button,
@@ -468,12 +468,8 @@ body.gin--core-navigation {
   display: none;
 }
 
-[dir="ltr"] .gin-secondary-toolbar .toolbar-tray .menu-item + .menu-item {
-  border-left: none;
-}
-
-[dir="rtl"] .gin-secondary-toolbar .toolbar-tray .menu-item + .menu-item {
-  border-right: none;
+.gin-secondary-toolbar .toolbar-tray .menu-item + .menu-item {
+  border-inline-start: none;
 }
 
 .toolbar-loading #toolbar-item-shortcuts-tray {

@@ -1,7 +1,8 @@
 .form-element {
   color: var(--gin-color-text);
   line-height: var(--input-line-height);
-  padding: calc(var(--input-padding-vertical) - 1px) var(--input-padding-horizontal);
+  padding-block: calc(var(--input-padding-vertical) - 1px);
+  padding-inline: var(--input-padding-horizontal);
   min-height: calc((var(--input-padding-vertical) * 2) + var(--input-line-height));
   background-color: var(--gin-bg-input);
   border: 1px solid var(--gin-border-color-form-element);
@@ -49,8 +50,8 @@
   width: auto;
 
   .form-item__label {
-    top: 3px;
-    padding-bottom: 0;
+    inset-block-start: 3px;
+    padding-block-end: 0;
   }
 }
 
@@ -82,7 +83,7 @@
 
 // Select
 .form-element--type-select {
-  padding-right: calc(var(--gin-spacing-xs) + var(--gin-spacing-xl) - 1px);
+  padding-inline-end: calc(var(--gin-spacing-xs) + var(--gin-spacing-xl) - 1px);
 
   .gin--dark-mode & {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath fill='none' stroke-width='1.5' d='M1 1L7 7L13 1' stroke='%23ffffff'/%3E%3C/svg%3E%0A");
@@ -93,8 +94,7 @@
   font-size: var(--gin-font-size-xs);
   min-height: 2.25rem;
   line-height: 1.4;
-  padding-top: .474rem; // 0.79rem * 1.2 / 2
-  padding-bottom: .474rem; // 0.79rem * 1.2 / 2
+  padding-block: .474rem; // 0.79rem * 1.2 / 2
   background-position: 100% 52%;
 }
 
@@ -135,7 +135,7 @@
 // Single Checkbox: show as toggle
 :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.tablesaw-cell-content) > .form-type--checkbox {
   position: relative;
-  margin-left: 0;
+  margin-inline-start: 0;
 
   input {
     all: unset;
@@ -234,7 +234,7 @@
         }
 
         @media (forced-colors: active) {
-          padding-left: 8px;
+          padding-inline-start: var(--gin-spacing-xs);
           background-color: LinkText !important;
         }
       }
@@ -264,15 +264,15 @@
   label {
     z-index: 1;
     position: relative;
-    padding-left: var(--gin-spacing-xxs);
-    padding-bottom: 0;
+    padding-inline-start: var(--gin-spacing-xxs);
+    padding-block-end: 0;
     color: var(--gin-color-text);
   }
 }
 
 // Correctly align bulk action checkboxes when used in combination with tabledrag
 table:has(.tabledrag-cell-content__item .form-checkbox) th.select-all .form-checkbox {
-  margin-left: calc(var(--tabledrag-handle-icon-size, calc(17rem / 16)) + var(--gin-spacing-m));
+  margin-inline-start: calc(var(--tabledrag-handle-icon-size, calc(17rem / 16)) + var(--gin-spacing-m));
 }
 
 .form-boolean {
@@ -354,18 +354,17 @@ table:has(.tabledrag-cell-content__item .form-checkbox) th.select-all .form-chec
 .form-radios,
 .form-checkboxes {
   .form-type--boolean {
-    margin-top: var(--gin-spacing-xs);
-    margin-bottom: var(--gin-spacing-xs);
+    margin-block: var(--gin-spacing-xs);
   }
 }
 
 .form-actions {
-  margin-bottom: 0;
+  margin-block-end: 0;
 }
 
 .form-edit .form-actions {
   padding: 0;
-  margin-bottom: 0;
+  margin-block-end: 0;
   border: 0 none;
   background-color: transparent;
 }
@@ -373,20 +372,19 @@ table:has(.tabledrag-cell-content__item .form-checkbox) th.select-all .form-chec
 // Fieldgroup
 fieldset:not(.fieldgroup) {
   color: var(--gin-color-text-light);
-  padding-top: var(--gin-spacing-xs);
-  padding-left: 0;
-  padding-right: 0;
+  padding-block-start: var(--gin-spacing-xs);
+  padding-inline: 0;
   background: transparent;
   border-color: var(--gin-border-color);
   border-radius: var(--gin-border-m);
   box-shadow: none;
 
   > legend {
-    top: 20px;
+    inset-block-start: 20px;
   }
 
   > .fieldset-wrapper {
-    margin-top: 20px;
+    margin-block-start: 20px;
   }
 
   &.error {
@@ -400,8 +398,8 @@ fieldset:not(.fieldgroup) {
   font-size: var(--gin-font-size-s);
   font-weight: var(--gin-font-weight-semibold);
   color: var(--gin-color-title);
-  margin-top: 0;
-  margin-bottom: var(--gin-spacing-xs);
+  margin-block-start: 0;
+  margin-block-end: var(--gin-spacing-xs);
 }
 
 .form-item__label.has-error,
@@ -423,8 +421,7 @@ fieldset:not(.fieldgroup) {
   content: "*";
   color: var(--gin-color-danger);
   line-height: 1;
-  margin-right: .15em;
-  margin-left: .15em;
+  margin-inline: .15em;
   vertical-align: text-top;
   background: none;
 }
@@ -441,17 +438,16 @@ fieldset:not(.fieldgroup) {
 
 .form-item__warning {
   display: inline-block;
-  margin-top: var(--gin-spacing-xs);
+  margin-block-start: var(--gin-spacing-xs);
 }
 
 html.js .form-autocomplete {
-  padding-right: 36px;
+  padding-inline-end: 36px;
 }
 
 .entity-form-display-form {
   > .form-actions {
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-block: 0;
   }
 }
 
@@ -474,19 +470,18 @@ html.js .form-autocomplete {
 .field--type-text-with-summary,
 .field--widget-text-textarea {
   .form-item {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 
   .filter-wrapper {
     border: 0 none;
-    padding-left: 0;
-    padding-right: 0;
+    padding-inline: 0;
   }
 }
 
 // Autocomplete field
 html.js input.form-linkit-autocomplete {
-  padding-right: var(--gin-spacing-xl);
+  padding-inline-end: var(--gin-spacing-xl);
   background-position: right 8px center;
 }
 
@@ -504,42 +499,38 @@ html.js input.form-linkit-autocomplete {
   min-height: 1.75rem;
 }
 
-// Special case, form starts with a form item, remove margin-top.
+// Special case, form starts with a form item, remove margin-block-start.
 #block-gin-content > form > .form-item:first-of-type {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 .image-style-new {
   .form-item {
-    margin-right: var(--gin-spacing-xxs);
+    margin-inline-end: var(--gin-spacing-xxs);
   }
 }
 
 tr .form-item {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-block: 0;
 }
 
 .container-inline .form-item {
-  margin-top: var(--gin-spacing-density-s);
-  margin-bottom: var(--gin-spacing-density-s);
+  margin-block: var(--gin-spacing-density-s);
 }
 
 .field-plugin-settings-edit-form {
-  margin-top: var(--gin-spacing-s);
+  margin-block-start: var(--gin-spacing-s);
 
   .form-item {
-    margin-top: var(--gin-spacing-m);
-    margin-bottom: var(--gin-spacing-m);
+    margin-block: var(--gin-spacing-m);
   }
 
   .form-boolean-group .form-item {
-    margin-top: var(--gin-spacing-xs);
-    margin-bottom: var(--gin-spacing-xs);
+    margin-block: var(--gin-spacing-xs);
   }
 }
 
 // Length indicator
 .length-indicator {
-  margin-bottom: var(--gin-spacing-l);
+  margin-block-end: var(--gin-spacing-l);
 }

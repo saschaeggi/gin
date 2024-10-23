@@ -1,6 +1,6 @@
 .region-sticky {
   position: sticky;
-  top: var(--gin-toolbar-y-offset);
+  inset-block-start: var(--gin-toolbar-y-offset);
   z-index: 101;
   padding: 0;
   width: 100%;
@@ -12,18 +12,18 @@
   transition: var(--gin-transition);
 
   .gin--edit-form & {
-    top: calc(var(--gin-toolbar-y-offset) - var(--gin-spacing-xxl) - var(--gin-spacing-xxs));
-    padding-top: var(--gin-spacing-m);
+    inset-block-start: calc(var(--gin-toolbar-y-offset) - var(--gin-spacing-xxl) - var(--gin-spacing-xxs));
+    padding-block-start: var(--gin-spacing-m);
 
     @include mq(large) {
-      top: var(--gin-toolbar-y-offset);
-      padding-top: var(--gin-spacing-s);
+      inset-block-start: var(--gin-toolbar-y-offset);
+      padding-block-start: var(--gin-spacing-s);
     }
   }
 
   &-watcher {
     position: sticky;
-    top: -1px;
+    inset-block-start: -1px;
     height: 0;
   }
 
@@ -44,16 +44,16 @@
   }
 
   @include mq(large) {
-    top: -1px;
+    inset-block-start: -1px;
     padding: var(--gin-spacing-s) 0;
     height: var(--gin-height-sticky);
-    margin-bottom: 0;
+    margin-block-end: 0;
 
     .gin--navigation &,
     .gin--vertical-toolbar &,
     .gin--horizontal-toolbar &,
     .gin--classic-toolbar & {
-      top: var(--gin-toolbar-y-offset);
+      inset-block-start: var(--gin-toolbar-y-offset);
     }
   }
 
@@ -78,7 +78,7 @@
       @include mq(large) {
         flex-wrap: nowrap;
         align-items: center;
-        margin-bottom: 0;
+        margin-block-end: 0;
 
         .block-page-title-block {
           margin: 0;
@@ -102,29 +102,28 @@
     .gin-sticky-form-actions {
       display: flex;
       width: auto;
-      margin-top: 0;
+      margin-block-start: 0;
 
       @include mq(large) {
-        padding-left: var(--gin-spacing-l);
+        padding-inline-start: var(--gin-spacing-l);
       }
     }
 
     [id*="block-gin-local-actions"] + .gin-sticky-form-actions {
-      padding-left: var(--gin-spacing-xs);
+      padding-inline-start: var(--gin-spacing-xs);
     }
   }
 }
 
 .content-header {
-  padding-top: 0;
-  margin-bottom: 0;
+  padding-block: 0;
   background-color: transparent;
   overflow: initial;
 
   // Normalize whitespace if empty.
   @include mq(small) {
     &:not(:has(.layout-container *)) {
-      margin-top: calc(var(--gin-spacing-m) * -1);
+      margin-block-start: calc(var(--gin-spacing-m) * -1);
     }
   }
 }
@@ -135,7 +134,8 @@
     position: relative;
     pointer-events: none;
     height: 40px;
-    margin: calc(var(--gin-spacing-xxxl) * -1) auto var(--gin-spacing-l);
+    margin-block: calc(var(--gin-spacing-xxxl) * -1) var(--gin-spacing-l);
+    margin-inline: auto;
     box-shadow: 0 10px 20px -16px rgba(0, 0, 0, .4);
 
     .gin--dark-mode & {
@@ -145,7 +145,7 @@
 
   @include mq(large) {
     position: sticky;
-    top: calc(var(--gin-toolbar-y-offset) + (var(--gin-height-sticky) - 40px));
+    inset-block-start: calc(var(--gin-toolbar-y-offset) + (var(--gin-height-sticky) - 40px));
     width: calc(100% - min(10vw, 96px) + var(--gin-spacing-l));
 
     .gin--edit-form & {
@@ -156,27 +156,23 @@
 
 .page-wrapper {
   @include mq(large) {
-    margin-top: 1px; // fix for top: auto;
+    margin-block-start: 1px; // fix for inset-block-start: auto;
   }
 }
 
 .toolbar-tray-open:not(.toolbar-vertical) .layout-container,
 body:not(.toolbar-tray-open) .layout-container {
-  margin-left: var(--gin-spacing-m);
-  margin-right: var(--gin-spacing-m);
+  margin-inline: var(--gin-spacing-m);
 
   @include mq(small) {
-    margin-left: var(--gin-spacing-xl);
-    margin-right: var(--gin-spacing-xl);
+    margin-inline: var(--gin-spacing-xl);
   }
 
   @include mq(medium) {
-    margin-left: m#{i}n(5vw, var(--gin-spacing-xxl));
-    margin-right: m#{i}n(5vw, var(--gin-spacing-xxl));
+    margin-inline: m#{i}n(5vw, var(--gin-spacing-xxl));
 
     .layout-container {
-      margin-left: 0;
-      margin-right: 0;
+      margin-inline: 0;
     }
   }
 }
@@ -204,7 +200,7 @@ body:not(.toolbar-tray-open) .layout-container {
   .field--name-status {
     display: flex;
     align-items: center;
-    margin-right: var(--gin-spacing-s);
+    margin-inline-end: var(--gin-spacing-s);
 
     .form-item__label {
       font-size: 0.8125rem;
@@ -215,8 +211,7 @@ body:not(.toolbar-tray-open) .layout-container {
     }
 
     .form-type--checkbox {
-      margin-top: var(--gin-spacing-xs);
-      margin-bottom: var(--gin-spacing-xs);
+      margin-block: var(--gin-spacing-xs);
     }
   }
 }
