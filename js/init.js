@@ -22,6 +22,8 @@ checkLegacy();
 function ginInitDarkmode() {
   const darkModeClass = 'gin--dark-mode';
 
+  window.ginDarkmode = JSON.parse(document.getElementById('gin-darkmode').textContent).ginDarkmode;
+
   if (
     window.ginDarkmode == 1 ||
     window.ginDarkmode === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches

@@ -2,7 +2,8 @@
   if (localStorage.getItem("GinDarkMode") && localStorage.removeItem("GinDarkMode"), 
   localStorage.getItem("Drupal.gin.darkmode") && localStorage.removeItem("Drupal.gin.darkmode"), 
   localStorage.getItem("GinSidebarOpen") && (localStorage.setItem("Drupal.gin.toolbarExpanded", localStorage.getItem("GinSidebarOpen")), 
-  localStorage.removeItem("GinSidebarOpen")), 1 == window.ginDarkmode || "auto" === window.ginDarkmode && window.matchMedia("(prefers-color-scheme: dark)").matches ? document.documentElement.classList.add("gin--dark-mode") : !0 === document.documentElement.classList.contains("gin--dark-mode") && document.documentElement.classList.remove("gin--dark-mode"), 
+  localStorage.removeItem("GinSidebarOpen")), window.ginDarkmode = JSON.parse(document.getElementById("gin-darkmode").textContent).ginDarkmode, 
+  1 == window.ginDarkmode || "auto" === window.ginDarkmode && window.matchMedia("(prefers-color-scheme: dark)").matches ? document.documentElement.classList.add("gin--dark-mode") : !0 === document.documentElement.classList.contains("gin--dark-mode") && document.documentElement.classList.remove("gin--dark-mode"), 
   localStorage.getItem("Drupal.gin.toolbarExpanded")) {
     const style = document.createElement("style"), className = "gin-toolbar-inline-styles";
     if (style.className = className, "true" === localStorage.getItem("Drupal.gin.toolbarExpanded")) {

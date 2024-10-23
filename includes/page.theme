@@ -103,9 +103,10 @@ function gin_page_attachments_alter(&$page) {
       [
         '#tag' => 'script',
         '#attributes' => [
-          'type' => 'text/javascript',
+          'type' => 'application/json',
+          'id' => 'gin-darkmode',
         ],
-        '#value' => new FormattableMarkup('window.ginDarkmode = \'@value\';', ['@value' => $settings->get('enable_darkmode')]),
+        '#value' => new FormattableMarkup('{ "ginDarkmode": "@value" }', ['@value' => $settings->get('enable_darkmode')]),
       ],
       'gin_darkmode',
     ];
