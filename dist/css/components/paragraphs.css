@@ -11,12 +11,40 @@
   margin-inline-end: var(--gin-spacing-m);
 }
 
-.paragraphs-tabs-wrapper .field-multiple-table > tbody > .draggable > td + td {
+.paragraphs-tabs-wrapper .field-multiple-table > tbody {
+  display: block;
+}
+
+.paragraphs-tabs-wrapper .field-multiple-table > thead {
+  display: block;
+}
+
+.paragraphs-tabs-wrapper .field-multiple-table > thead > tr {
+  display: flex;
+}
+
+.paragraphs-tabs-wrapper .field-multiple-table > thead > tr th:first-child.field-label {
+  display: flex;
   width: 100%;
+  padding-inline-end: 0;
+}
+
+.paragraphs-tabs-wrapper .field-multiple-table > thead > tr th:first-child .paragraphs-actions {
+  margin-inline: auto 0;
+}
+
+.paragraphs-tabs-wrapper .field-multiple-table > thead > tr .tabledrag-hide {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable {
-  display: block;
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-wrap: nowrap;
+  flex-direction: row;
   padding: var(--gin-spacing-m) var(--gin-spacing-xs);
   margin-block-start: var(--gin-spacing-m);
   border: 1px solid var(--gin-border-color-table);
@@ -53,6 +81,17 @@
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable td {
   padding: var(--gin-spacing-xxs);
+}
+
+.paragraphs-tabs-wrapper .field-multiple-table .draggable > td {
+  position: relative;
+  display: block;
+  flex: 0 0 auto;
+}
+
+.paragraphs-tabs-wrapper .field-multiple-table .draggable > td:nth-child(2) {
+  flex: 1 0 0;
+  min-width: 0;
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable .has-multiple-fields-remove-button {
@@ -100,6 +139,16 @@
   margin-inline-end: var(--gin-spacing-xs);
 }
 
+.js .field--widget-paragraphs .field-multiple-table,
+.js .field--widget-paragraphs-previewer .field-multiple-table {
+  display: block;
+}
+
+td .claro-details {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .paragraph .contextual {
   display: none;
 }
@@ -108,6 +157,14 @@
 .paragraphs-subform .field--type-text-with-summary .form-item,
 .paragraphs-subform .field--widget-text-textarea .form-item {
   margin-block-end: var(--gin-spacing-l);
+}
+
+.paragraphs-subform .field-multiple-table.draggable-table .form-item {
+  margin-block-end: 0;
+}
+
+.paragraphs-subform .field-multiple-table.draggable-table .tabledrag-handle::after {
+  margin-block-start: 0;
 }
 
 .paragraphs-add-wrapper .button--small,
@@ -160,18 +217,6 @@
   margin-block-start: var(--gin-spacing-m);
 }
 
-html.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle,
-html.js .field--widget-paragraphs .draggable .tabledrag-handle {
-  min-width: 20px;
-}
-
-@media (min-width: 61em) {
-  html.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle,
-  html.js .field--widget-paragraphs .draggable .tabledrag-handle {
-    min-width: 24px;
-  }
-}
-
 html.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after,
 html.js .field--widget-paragraphs .draggable .tabledrag-handle::after {
   position: relative;
@@ -184,21 +229,6 @@ html.js .field--widget-paragraphs .draggable .tabledrag-handle::after {
 .js .draggable:hover .paragraphs-collapsed-description::after {
   inset-block-start: 2px;
   background: var(--gin-bg-layer2);
-}
-
-html.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
-  min-width: 32px;
-}
-
-@media (min-width: 61em) {
-  html.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle {
-    min-width: 48px;
-  }
-
-  html.js .field--widget-entity-reference-paragraphs .draggable .tabledrag-handle::after {
-    inset-block-start: -2px;
-    inset-inline-start: 8px;
-  }
 }
 
 [dir="ltr"] .paragraphs-collapsed-description::after,

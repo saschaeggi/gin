@@ -18,15 +18,41 @@
 
   .field-multiple-table {
     > tbody {
-      > .draggable {
-        > td + td {
-          width: 100%;
+      display: block;
+    }
+
+    > thead {
+      display: block;
+
+      > tr {
+        display: flex;
+
+        th:first-child {
+          &.field-label {
+            display: flex;
+            width: 100%;
+            padding-inline-end: 0;
+          }
+
+          .paragraphs-actions {
+            margin-inline: auto 0;
+          }
+        }
+
+        .tabledrag-hide {
+          display: inline-flex;
+          align-items: center;
+          margin: 0 auto;
         }
       }
     }
 
     .draggable {
-      display: block;
+      display: flex;
+      align-items: center;
+      position: relative;
+      flex-wrap: nowrap;
+      flex-direction: row;
       padding: var(--gin-spacing-m) var(--gin-spacing-xs);
       margin-block-start: var(--gin-spacing-m);
       border: 1px solid var(--gin-border-color-table);
@@ -57,6 +83,17 @@
 
       td {
         padding: var(--gin-spacing-xxs);
+      }
+
+      > td {
+        position: relative;
+        display: block;
+        flex: 0 0 auto;
+
+        &:nth-child(2) {
+          flex: 1 0 0;
+          min-width: 0;
+        }
       }
 
       .has-multiple-fields-remove-button {
@@ -107,6 +144,20 @@
   }
 }
 
+.js {
+  .field--widget-paragraphs,
+  .field--widget-paragraphs-previewer {
+    .field-multiple-table {
+      display: block;
+    }
+  }
+}
+
+td .claro-details {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .paragraph {
   .contextual {
     display: none;
@@ -118,6 +169,16 @@
   .field--type-text-with-summary .form-item,
   .field--widget-text-textarea .form-item {
     margin-block-end: var(--gin-spacing-l);
+  }
+
+  .field-multiple-table.draggable-table {
+    .form-item {
+      margin-block-end: 0;
+    }
+
+    .tabledrag-handle::after {
+      margin-block-start: 0;
+    }
   }
 }
 
@@ -173,12 +234,6 @@
 html.js .field--widget-entity-reference-paragraphs,
 html.js .field--widget-paragraphs {
   .draggable .tabledrag-handle {
-    min-width: 20px;
-
-    @include mq(medium) {
-      min-width: 24px;
-    }
-
     &::after {
       position: relative;
       inset-inline-start: 0;
@@ -192,21 +247,6 @@ html.js .field--widget-paragraphs {
 .js .draggable:hover .paragraphs-collapsed-description::after {
   inset-block-start: 2px;
   background: var(--gin-bg-layer2);
-}
-
-html.js .field--widget-entity-reference-paragraphs {
-  .draggable .tabledrag-handle {
-    min-width: 32px;
-
-    @include mq(medium) {
-      min-width: 48px;
-
-      &::after {
-        inset-block-start: -2px;
-        inset-inline-start: 8px;
-      }
-    }
-  }
 }
 
 .paragraphs-collapsed-description::after,
