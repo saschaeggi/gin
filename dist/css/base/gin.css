@@ -376,7 +376,7 @@ body:not(.toolbar-tray-open) .layout-container {
 .gin-sticky-form-actions .field--name-status {
   display: flex;
   align-items: center;
-  margin-inline-end: var(--gin-spacing-s);
+  margin-inline-end: var(--gin-spacing-xs);
 }
 
 .gin-sticky-form-actions .field--name-status .form-item__label {

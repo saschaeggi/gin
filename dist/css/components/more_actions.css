@@ -1,17 +1,13 @@
 .gin-sticky-form-actions {
   display: flex;
-  gap: var(--gin-spacing-xxs);
+  gap: var(--gin-spacing-xs);
 }
 
 .gin-sticky-form-actions > * {
   margin-inline: 0 !important;
 }
 
-.gin-sticky-form-actions > input + input {
-  margin-inline-start: var(--gin-spacing-xxs) !important;
-}
-
-.gin-sticky-form-actions [data-drupal-selector=edit-gin-actions]:empty,
+.gin-sticky-form-actions [data-drupal-selector=edit-status]:empty,
 .gin-sticky-form-actions .gin-more-actions:has(> .gin-more-actions__menu:empty) {
   display: none;
 }
@@ -20,13 +16,13 @@
   position: relative;
 }
 
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions {
+.gin-sticky-form-actions .gin-more-actions__menu {
   visibility: hidden;
   opacity: 0;
   position: absolute;
   inset-block-start: 100%;
   inset-inline-end: 0;
-  min-width: 200px;
+  min-width: 152px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -39,17 +35,18 @@
   transition: opacity var(--gin-transition-fast);
 }
 
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions .action-link.action-link,
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions a:not(.button--danger):not(.action-link--danger),
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions .button.button {
-  font-size: var(--gin-font-size-s);
+.gin-sticky-form-actions .gin-more-actions__menu .action-link.action-link,
+.gin-sticky-form-actions .gin-more-actions__menu a:not(.button--danger):not(.action-link--danger),
+.gin-sticky-form-actions .gin-more-actions__menu .button.button {
+  font-size: var(--gin-font-size-xs);
   font-weight: var(--gin-font-weight-semibold);
   line-height: 1;
   text-align: start;
   text-decoration: none;
   width: 100%;
-  max-width: 320px;
-  padding: var(--gin-spacing-s) var(--gin-spacing-m);
+  max-width: 240px;
+  padding-block: var(--gin-spacing-xs);
+  padding-inline: var(--gin-spacing-s);
   margin: 0 !important;
   border: 0 !important;
   border-radius: var(--gin-border-s);
@@ -57,20 +54,24 @@
   box-sizing: border-box;
 }
 
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions a:not(.button--danger):not(.action-link--danger):hover, .gin-sticky-form-actions .gin-more-actions__menu.form-actions a:not(.button--danger):not(.action-link--danger):active,
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):hover,
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):active {
+.gin-sticky-form-actions .gin-more-actions__menu a:not(.button--danger):not(.action-link--danger):hover, .gin-sticky-form-actions .gin-more-actions__menu a:not(.button--danger):not(.action-link--danger):active,
+.gin-sticky-form-actions .gin-more-actions__menu .action-link:not(.action-link--danger):hover,
+.gin-sticky-form-actions .gin-more-actions__menu .action-link:not(.action-link--danger):active {
   color: var(--gin-color-button-text);
   background-color: var(--gin-color-primary);
 }
 
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions a:not(.button--danger):not(.action-link--danger):hover::before, .gin-sticky-form-actions .gin-more-actions__menu.form-actions a:not(.button--danger):not(.action-link--danger):active::before,
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):hover::before,
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions .action-link:not(.action-link--danger):active::before {
+.gin-sticky-form-actions .gin-more-actions__menu a:not(.button--danger):not(.action-link--danger):hover::before, .gin-sticky-form-actions .gin-more-actions__menu a:not(.button--danger):not(.action-link--danger):active::before,
+.gin-sticky-form-actions .gin-more-actions__menu .action-link:not(.action-link--danger):hover::before,
+.gin-sticky-form-actions .gin-more-actions__menu .action-link:not(.action-link--danger):active::before {
   background-color: var(--gin-bg-layer) !important;
 }
 
-.gin-sticky-form-actions .gin-more-actions__menu.form-actions > * + .ajax-progress--throbber {
+.gin-sticky-form-actions .gin-more-actions__menu .action-link--danger:hover:focus {
+  border: none !important;
+}
+
+.gin-sticky-form-actions .gin-more-actions__menu > * + .ajax-progress--throbber {
   display: none;
 }
 
@@ -80,6 +81,7 @@
   display: block;
   height: 32px;
   width: 32px;
+  margin-inline: calc(var(--gin-spacing-xxs) * -1);
   border-radius: var(--gin-border-m);
   transition: background var(--gin-transition-fast);
 }
@@ -135,9 +137,15 @@
   height: 1px;
   width: 1px;
   word-wrap: normal;
+  position: fixed !important;
+  inset-block-start: 0;
 }
 
 .ui-dialog-content .gin-more-actions__trigger {
   display: none;
+}
+
+.edit-post-header .gin-sticky-form-actions {
+  margin-block-start: 0;
 }
 

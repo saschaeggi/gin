@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
 use Drupal\gin\GinContentFormHelper;
 use Drupal\gin\GinDescriptionToggle;
 use Drupal\gin\GinPreRender;
@@ -42,19 +43,71 @@ function gin_form_alter(&$form, $form_state, $form_id) {
     $form['actions']['submit']['#attributes']['class'][] = 'button--danger';
     $form['actions']['cancel']['#attributes']['class'][] = 'button--secondary';
   }
+
+  // $form['#attached']['library'][] = 'gin/more_actions';
 }
 
 /**
  * Helper function to remember the form actions after form has been built.
  */
 function gin_form_after_build(array $form, FormStateInterface $form_state): array {
-  _gin_form_actions($form['actions'] ?? NULL);
+  // Allowlist for visible actions.
+  $includes = ['save', 'submit', 'preview'];
 
-  // Don't unset if Gutenberg or Mercury Editor is active.
-  if (!isset($form['#gutenberg_enabled']) && strpos($form['#form_id'], 'mercury_editor') === FALSE) {
-    unset($form['actions']);
+  // Secondary action container options.
+  $form['gin_sticky_actions']['more_actions']['more_actions_items']['#weight'] = 2;
+  $form['gin_sticky_actions']['more_actions']['more_actions_items']['#attributes']['class'] = ['gin-more-actions__menu'];
+
+  // Build actions.
+  foreach (Element::children($form['actions']) as $key) {
+    $button = $form['actions'][$key];
+
+    if (isset($button['#type']) && $button['#type'] === 'submit') {
+      $button_classes = isset($button['#attributes']['class']) && is_array($button['#attributes']['class']) ? $button['#attributes']['class'] : [];
+      $button_type_class = isset($button['#button_type']) ? "button--{$button['#button_type']}" : NULL;
+      $button_disabled_class = isset($button['#attributes']['disabled']) ? 'is-disabled' : NULL;
+
+      // Create a new label element.
+      $new_label = [
+        '#type' => 'html_tag',
+        '#tag' => 'label',
+        '#attributes' => array_merge(
+          $button['#attributes'],
+          [
+            'for' => $button['#id'],
+            'role' => 'button',
+            'class' => array_merge(
+              ['button', $button_type_class, $button_disabled_class],
+              $button_classes
+            ),
+            'disabled' => isset($button['#attributes']['disabled']),
+            'tabindex' => 0,
+            'data-gin-sticky-form-selector' => $button['#attributes']['data-drupal-selector'],
+          ]
+        ),
+        '#value' => $button['#value'] ?? $button['#title'],
+      ];
+
+      // Add the label to the form actions array.
+      if (in_array($key, $includes, TRUE)) {
+        $form['gin_sticky_actions']['actions'][$key] = $new_label;
+      }
+      // Add to more menu.
+      else {
+        $form['gin_sticky_actions']['more_actions']['more_actions_items'][$key] = $new_label;
+      }
+    }
+    // Else add button to more menu.
+    elseif (!in_array($key, $includes, TRUE)) {
+      $form['gin_sticky_actions']['more_actions']['more_actions_items'][$key] = $button;
+      $form['gin_sticky_actions']['more_actions']['more_actions_items'][$key]['#attributes']['form'] = $button['#id'];
+      continue;
+    }
   }
-  unset($form['gin_actions']);
+
+  _gin_form_actions($form['gin_sticky_actions'] ?? NULL);
+  unset($form['gin_sticky_actions']);
+
   return $form;
 }
 

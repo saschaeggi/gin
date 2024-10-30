@@ -1,17 +1,13 @@
 .gin-sticky-form-actions {
   display: flex;
-  gap: var(--gin-spacing-xxs);
+  gap: var(--gin-spacing-xs);
 
   > * {
     margin-inline: 0 !important;
   }
 
-  > input + input {
-    margin-inline-start: var(--gin-spacing-xxs) !important;
-  }
-
   // Hide if no items are present.
-  [data-drupal-selector="edit-gin-actions"]:empty,
+  [data-drupal-selector="edit-status"]:empty,
   .gin-more-actions:has(> .gin-more-actions__menu:empty) {
     display: none;
   }
@@ -19,13 +15,13 @@
   .gin-more-actions {
     position: relative;
 
-    &__menu.form-actions {
+    &__menu {
       visibility: hidden;
       opacity: 0;
       position: absolute;
       inset-block-start: 100%;
       inset-inline-end: 0;
-      min-width: 200px;
+      min-width: 152px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -41,14 +37,15 @@
       .action-link.action-link,
       a:not(.button--danger):not(.action-link--danger),
       .button.button {
-        font-size: var(--gin-font-size-s);
+        font-size: var(--gin-font-size-xs);
         font-weight: var(--gin-font-weight-semibold);
         line-height: 1;
         text-align: start;
         text-decoration: none;
         width: 100%;
-        max-width: 320px;
-        padding: var(--gin-spacing-s) var(--gin-spacing-m);
+        max-width: 240px;
+        padding-block: var(--gin-spacing-xs);
+        padding-inline: var(--gin-spacing-s);
         margin: 0 !important;
         border: 0 !important;
         border-radius: var(--gin-border-s);
@@ -69,6 +66,10 @@
         }
       }
 
+      .action-link--danger:hover:focus {
+        border: none !important;
+      }
+
       // Hide throbber.
       > * + .ajax-progress--throbber {
         display: none;
@@ -81,6 +82,7 @@
       display: block;
       height: 32px;
       width: 32px;
+      margin-inline: calc(var(--gin-spacing-xxs) * -1);
       border-radius: var(--gin-border-m);
       transition: background var(--gin-transition-fast);
 
@@ -133,9 +135,16 @@
 // Hide actions if we preprocessed them.
 .gin-sticky-form-actions--preprocessed ~ .layout-container form.gin--has-sticky-form-actions .gin-sticky-form-actions {
   @include visually-hidden;
+  position: fixed !important;
+  inset-block-start: 0;
 }
 
 // Hide trigger in dialogs.
 .ui-dialog-content .gin-more-actions__trigger {
   display: none;
+}
+
+// Gutenberg alignment.
+.edit-post-header .gin-sticky-form-actions {
+  margin-block-start: 0;
 }

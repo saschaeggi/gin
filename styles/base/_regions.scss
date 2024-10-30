@@ -200,7 +200,7 @@ body:not(.toolbar-tray-open) .layout-container {
   .field--name-status {
     display: flex;
     align-items: center;
-    margin-inline-end: var(--gin-spacing-s);
+    margin-inline-end: var(--gin-spacing-xs);
 
     .form-item__label {
       font-size: 0.8125rem;
@@ -215,3 +215,4 @@ body:not(.toolbar-tray-open) .layout-container {
     }
   }
 }
+
