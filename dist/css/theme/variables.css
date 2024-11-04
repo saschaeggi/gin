@@ -221,7 +221,7 @@
   --gin-border-color-layer: rgba(0, 0, 0, .05);
   --gin-border-color-layer2: #76777b;
   --gin-border-color-table: #43454a;
-  --gin-border-color-table-header: rgba(255, 255, 255, .12);
+  --gin-border-color-table-header: rgba(255, 255, 255, .4);
   --gin-border-color-form-element: var(--gin-border-color-layer2);
   --gin-bg-header: #1b1b1d;
   --gin-switch: var(--gin-color-primary);

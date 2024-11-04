@@ -452,7 +452,7 @@ body.gin--core-navigation {
 }
 
 #navigation-block-shortcuts,
-#navigation-link-announcements-feedannouncement,
+#toolbar-item-announcement,
 .toolbar-block:has(.admin-toolbar__item:first-of-type:last-of-type > #menu--shortcuts) {
   display: none;
 }
@@ -473,7 +473,8 @@ body.gin--core-navigation {
   border-inline-start: none;
 }
 
-.toolbar-loading #toolbar-item-shortcuts-tray {
+.toolbar-loading #toolbar-item-shortcuts-tray,
+.toolbar-loading #toolbar-item-shortcuts {
   visibility: hidden;
 }
 

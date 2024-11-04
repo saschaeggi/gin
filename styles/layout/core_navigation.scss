@@ -306,9 +306,12 @@ body.gin--core-navigation {
 // --------------------------------------------------
 // Hide Shortcuts & Announcements in primary nav
 // --------------------------------------------------
+// #toolbar-item-shortcuts,
 #navigation-block-shortcuts,
-#navigation-link-announcements-feedannouncement,
-.toolbar-block:has(.admin-toolbar__item:first-of-type:last-of-type > #menu--shortcuts) {
+#toolbar-item-announcement,
+// #navigation-link-announcements-feedannouncement,
+.toolbar-block:has(.admin-toolbar__item:first-of-type:last-of-type > #menu--shortcuts)
+{
   display: none;
 }
 
@@ -336,6 +339,7 @@ body.gin--core-navigation {
 }
 
 // Fix weird shortcuts menu flickering.
-.toolbar-loading #toolbar-item-shortcuts-tray {
+.toolbar-loading #toolbar-item-shortcuts-tray,
+.toolbar-loading #toolbar-item-shortcuts {
   visibility: hidden;
 }
