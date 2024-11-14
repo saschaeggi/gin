@@ -159,10 +159,6 @@ td .claro-details {
   margin-block-end: var(--gin-spacing-l);
 }
 
-.paragraphs-subform .field-multiple-table.draggable-table .form-item {
-  margin-block-end: 0;
-}
-
 .paragraphs-subform .field-multiple-table.draggable-table .tabledrag-handle::after {
   margin-block-start: 0;
 }
