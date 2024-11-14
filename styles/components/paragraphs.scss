@@ -172,10 +172,6 @@ td .claro-details {
   }
 
   .field-multiple-table.draggable-table {
-    .form-item {
-      margin-block-end: 0;
-    }
-
     .tabledrag-handle::after {
       margin-block-start: 0;
     }
