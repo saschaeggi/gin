@@ -40,7 +40,8 @@ body.gin--core-navigation {
   }
 }
 
-.admin-toolbar {
+// This applies to both the sidebar and the control bar on small screens.
+[data-drupal-admin-styles] {
   --admin-toolbar-font-family: var(--gin-font);
   --admin-toolbar-color-white: var(--gin-bg-layer);
   --admin-toolbar-color-gray-050: var(--gin-bg-layer2);
@@ -58,6 +59,12 @@ body.gin--core-navigation {
 .gin--core-navigation .admin-toolbar-control-bar {
   position: sticky;
   inset-block-start: 0;
+}
+
+// Core currently hard codes this as 'white' rather than a custom property, so
+// we need to fix that to correctly apply dark colours.
+.gin--core-navigation .admin-toolbar-control-bar {
+  background-color: var(--admin-toolbar-color-white);
 }
 
 .gin--core-navigation .gin-secondary-toolbar:not(.gin-secondary-toolbar--frontend) {
