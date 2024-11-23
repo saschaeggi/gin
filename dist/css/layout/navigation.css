@@ -1329,6 +1329,10 @@ button.toolbar-link--sidebar-toggle[aria-expanded=true]::before {
   --icon: url("../../media/sprite.svg#close-view");
 }
 
+.toolbar-button--icon--navigation-trash {
+  --icon: url("../../media/sprite.svg#trash-module-view");
+}
+
 .gin-secondary-toolbar .toolbar-menu__trigger {
   display: none;
 }

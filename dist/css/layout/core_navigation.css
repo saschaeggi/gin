@@ -409,6 +409,10 @@ body.gin--core-navigation {
   --icon: url("../../media/sprite.svg#close-view");
 }
 
+.toolbar-button--icon--navigation-trash {
+  --icon: url("../../media/sprite.svg#trash-module-view");
+}
+
 #navigation-link-navigationcreate:first-child {
   margin-block-end: var(--admin-toolbar-space-8);
 }

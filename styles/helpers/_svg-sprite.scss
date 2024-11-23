@@ -78,6 +78,7 @@ $sprites: (
     'reports': "../../media/sprite.svg#reports-view",
     'structure': "../../media/sprite.svg#structure-view",
     'tmgmt': "../../media/sprite.svg#tmgmt-view",
+    'trash-module': "../../media/sprite.svg#trash-module-view",
     'webform': "../../media/sprite.svg#webform-view"
 );
 
@@ -395,6 +396,10 @@ $sizes: (
         'height': 24px
     ),
     'tmgmt': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'trash-module': (
         'width': 24px,
         'height': 24px
     ),
