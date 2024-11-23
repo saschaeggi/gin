@@ -181,3 +181,7 @@
 .toolbar-button--icon--cross::before {
   --icon: #{icon('close')};
 }
+
+.toolbar-button--icon--navigation-trash {
+  --icon: #{icon('trash-module')};
+}

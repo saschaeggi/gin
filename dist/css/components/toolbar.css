@@ -377,6 +377,10 @@ body.gin--classic-toolbar {
   --icon: url("../../media/sprite.svg#close-view");
 }
 
+.toolbar .toolbar-bar .toolbar-button--icon--navigation-trash {
+  --icon: url("../../media/sprite.svg#trash-module-view");
+}
+
 .toolbar .toolbar-bar .toolbar-icon-escape-admin {
   display: none;
 }
