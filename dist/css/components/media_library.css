@@ -249,10 +249,6 @@ fieldset.media-library-widget .media-library-edit__link, fieldset.media-library-
   border: var(--gin-border-xs) solid var(--gin-color-focus);
 }
 
-+ .media-library-content {
-  border-inline-start: 1px solid var(--gin-border-color);
-}
-
 .media-library-view .view-header {
   padding: var(--gin-spacing-m);
   color: var(--gin-color-text);
