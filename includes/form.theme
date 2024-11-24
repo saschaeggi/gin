@@ -62,6 +62,10 @@ function gin_form_after_build(array $form, FormStateInterface $form_state): arra
   foreach (Element::children($form['actions']) as $key) {
     $button = $form['actions'][$key];
 
+    if (!($button['#access'] ?? TRUE)) {
+      continue;
+    }
+
     if (isset($button['#type']) && $button['#type'] === 'submit') {
       $button_classes = isset($button['#attributes']['class']) && is_array($button['#attributes']['class']) ? $button['#attributes']['class'] : [];
       $button_type_class = isset($button['#button_type']) ? "button--{$button['#button_type']}" : NULL;
@@ -89,7 +93,7 @@ function gin_form_after_build(array $form, FormStateInterface $form_state): arra
       ];
 
       // Add the label to the form actions array.
-      if (in_array($key, $includes, TRUE)) {
+      if (in_array($key, $includes, TRUE) || !empty($button['#gin_action_item'])) {
         $form['gin_sticky_actions']['actions'][$key] = $new_label;
       }
       // Add to more menu.
