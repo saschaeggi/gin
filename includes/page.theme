@@ -5,6 +5,7 @@
  * page.theme
  */
 
+use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\gin\GinSettings;
 use Drupal\node\Entity\Node;
@@ -97,6 +98,19 @@ function gin_page_attachments_alter(&$page) {
     $page['#attached']['drupalSettings']['gin']['variables_css_path'] = $basethemeurl . '/dist/css/theme/variables.css';
     $page['#attached']['drupalSettings']['gin']['accent_css_path'] = $basethemeurl . '/dist/css/theme/accent.css';
     $page['#attached']['drupalSettings']['gin']['ckeditor_css_path'] = $basethemeurl . '/dist/css/theme/ckeditor.css';
+
+    $page['#attached']['html_head'][] = [
+      [
+        '#tag' => 'script',
+        '#attributes' => [
+          'type' => 'application/json',
+          'id' => 'gin-setting-darkmode',
+        ],
+        '#value' => new FormattableMarkup('{ "ginDarkmode": "@value" }', ['@value' => $settings->get('enable_darkmode')]),
+      ],
+      'gin_darkmode',
+    ];
+
   }
 }
 
