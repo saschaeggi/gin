@@ -22,7 +22,9 @@ checkLegacy();
 function ginInitDarkmode() {
   const darkModeClass = 'gin--dark-mode';
 
-  window.ginDarkmode = JSON.parse(document.getElementById('gin-setting-darkmode').textContent).ginDarkmode;
+  const darkmodeSetting = document.getElementById('gin-setting-darkmode')?.textContent;
+  // Set window variable.
+  window.ginDarkmode = darkmodeSetting ? JSON.parse(darkmodeSetting)?.ginDarkmode : 'auto';
 
   if (
     window.ginDarkmode == 1 ||

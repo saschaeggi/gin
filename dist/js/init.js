@@ -2,9 +2,11 @@
   if (localStorage.getItem("GinDarkMode") && localStorage.removeItem("GinDarkMode"), 
   localStorage.getItem("Drupal.gin.darkmode") && localStorage.removeItem("Drupal.gin.darkmode"), 
   localStorage.getItem("GinSidebarOpen") && (localStorage.setItem("Drupal.gin.toolbarExpanded", localStorage.getItem("GinSidebarOpen")), 
-  localStorage.removeItem("GinSidebarOpen")), window.ginDarkmode = JSON.parse(document.getElementById("gin-setting-darkmode").textContent).ginDarkmode, 
-  1 == window.ginDarkmode || "auto" === window.ginDarkmode && window.matchMedia("(prefers-color-scheme: dark)").matches ? document.documentElement.classList.add("gin--dark-mode") : !0 === document.documentElement.classList.contains("gin--dark-mode") && document.documentElement.classList.remove("gin--dark-mode"), 
-  localStorage.getItem("Drupal.gin.toolbarExpanded")) {
+  localStorage.removeItem("GinSidebarOpen")), function() {
+    const darkmodeSetting = document.getElementById("gin-setting-darkmode")?.textContent;
+    window.ginDarkmode = darkmodeSetting ? JSON.parse(darkmodeSetting)?.ginDarkmode : "auto", 
+    1 == window.ginDarkmode || "auto" === window.ginDarkmode && window.matchMedia("(prefers-color-scheme: dark)").matches ? document.documentElement.classList.add("gin--dark-mode") : !0 === document.documentElement.classList.contains("gin--dark-mode") && document.documentElement.classList.remove("gin--dark-mode");
+  }(), localStorage.getItem("Drupal.gin.toolbarExpanded")) {
     const style = document.createElement("style"), className = "gin-toolbar-inline-styles";
     if (style.className = className, "true" === localStorage.getItem("Drupal.gin.toolbarExpanded")) {
       style.innerHTML = "\n    @media (min-width: 976px) {\n      /* Small CSS hack to make sure this has the highest priority */\n      body.gin--vertical-toolbar.gin--vertical-toolbar.gin--vertical-toolbar {\n        padding-inline-start: 256px !important;\n        transition: none !important;\n      }\n\n      .gin--vertical-toolbar .toolbar-menu-administration {\n        min-width: var(--gin-toolbar-width, 256px);\n        transition: none;\n      }\n\n      .gin--vertical-toolbar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,\n      .gin--vertical-toolbar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {\n        min-width: calc(var(--gin-toolbar-width, 256px) - 16px);\n      }\n    }\n    ";
