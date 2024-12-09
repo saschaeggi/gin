@@ -72,7 +72,17 @@
 }
 
 .gin-sticky-form-actions .gin-more-actions__menu > * + .ajax-progress--throbber {
-  display: none;
+  z-index: 1;
+  position: absolute;
+  top: var(--gin-spacing-m);
+}
+
+[dir="ltr"] .gin-sticky-form-actions .gin-more-actions__menu > * + .ajax-progress--throbber {
+  inset-inline-end: var(--gin-spacing-xxxs);
+}
+
+[dir="rtl"] .gin-sticky-form-actions .gin-more-actions__menu > * + .ajax-progress--throbber {
+  inset-inline-start: var(--gin-spacing-xxxs);
 }
 
 .gin-sticky-form-actions .gin-more-actions__trigger {
@@ -147,5 +157,48 @@
 
 .edit-post-header .gin-sticky-form-actions {
   margin-block-start: 0;
+}
+
+@keyframes gin-pseudo-throbber {
+  0% {
+    background-size: 8px 8px;
+    background-position: 16px 18px;
+  }
+
+  50% {
+    background-size: 32px 32px;
+    background-position: 4px 14px;
+  }
+
+  100% {
+    background-size: 8px 8px;
+    background-position: 16px 18px;
+  }
+}
+
+[data-drupal-selector=gin-sticky-edit-save],
+[data-drupal-selector=gin-sticky-edit-preview],
+[data-drupal-selector=gin-sticky-edit-delete] {
+  background-repeat: no-repeat;
+  background-position: var(--gin-spacing-xs) center;
+}
+
+body:has([data-drupal-selector=edit-save] + .ajax-progress) :where([data-drupal-selector=gin-sticky-edit-save]),
+body:has([data-drupal-selector=edit-preview] + .ajax-progress) :where([data-drupal-selector=gin-sticky-edit-preview]),
+body:has([data-drupal-selector=edit-delete] + .ajax-progress) :where([data-drupal-selector=gin-sticky-edit-delete]) {
+  background-image: url("../../media/sprite.svg#loader-view");
+  animation: gin-pseudo-throbber 1s linear infinite;
+}
+
+[dir="ltr"] body:has([data-drupal-selector=edit-save] + .ajax-progress) :where([data-drupal-selector=gin-sticky-edit-save]),
+[dir="ltr"] body:has([data-drupal-selector=edit-preview] + .ajax-progress) :where([data-drupal-selector=gin-sticky-edit-preview]),
+[dir="ltr"] body:has([data-drupal-selector=edit-delete] + .ajax-progress) :where([data-drupal-selector=gin-sticky-edit-delete]) {
+  padding-inline-start: var(--gin-spacing-xl);
+}
+
+[dir="rtl"] body:has([data-drupal-selector=edit-save] + .ajax-progress) :where([data-drupal-selector=gin-sticky-edit-save]),
+[dir="rtl"] body:has([data-drupal-selector=edit-preview] + .ajax-progress) :where([data-drupal-selector=gin-sticky-edit-preview]),
+[dir="rtl"] body:has([data-drupal-selector=edit-delete] + .ajax-progress) :where([data-drupal-selector=gin-sticky-edit-delete]) {
+  padding-inline-end: var(--gin-spacing-xl);
 }
 
