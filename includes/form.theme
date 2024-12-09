@@ -5,6 +5,7 @@
  * form.theme
  */
 
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\gin\GinContentFormHelper;
@@ -60,45 +61,26 @@ function gin_form_after_build(array $form, FormStateInterface $form_state): arra
 
   // Build actions.
   foreach (Element::children($form['actions']) as $key) {
-    $button = $form['actions'][$key];
+    $button = ($form['actions'][$key]) ?? [];
 
     if (!($button['#access'] ?? TRUE)) {
       continue;
     }
 
     if (isset($button['#type']) && $button['#type'] === 'submit') {
-      $button_classes = isset($button['#attributes']['class']) && is_array($button['#attributes']['class']) ? $button['#attributes']['class'] : [];
-      $button_type_class = isset($button['#button_type']) ? "button--{$button['#button_type']}" : NULL;
-      $button_disabled_class = isset($button['#attributes']['disabled']) ? 'is-disabled' : NULL;
+      // Update button.
+      $button['#attributes']['id'] = 'gin-sticky-' . $button['#id'];
+      $button['#attributes']['form'] = $form['#id'];
+      $button['#attributes']['data-drupal-selector'] = 'gin-sticky-' . $button['#attributes']['data-drupal-selector'];
+      $button['#attributes']['data-gin-sticky-form-selector'] = $button['#attributes']['data-drupal-selector'];
 
-      // Create a new label element.
-      $new_label = [
-        '#type' => 'html_tag',
-        '#tag' => 'label',
-        '#attributes' => array_merge(
-          $button['#attributes'],
-          [
-            'for' => $button['#id'],
-            'role' => 'button',
-            'class' => array_merge(
-              ['button', $button_type_class, $button_disabled_class],
-              $button_classes
-            ),
-            'disabled' => isset($button['#attributes']['disabled']),
-            'tabindex' => 0,
-            'data-gin-sticky-form-selector' => $button['#attributes']['data-drupal-selector'],
-          ]
-        ),
-        '#value' => $button['#value'] ?? $button['#title'],
-      ];
-
-      // Add the label to the form actions array.
+      // Add the button to the form actions array.
       if (in_array($key, $includes, TRUE) || !empty($button['#gin_action_item'])) {
-        $form['gin_sticky_actions']['actions'][$key] = $new_label;
+        $form['gin_sticky_actions']['actions'][$key] = $button;
       }
       // Add to more menu.
       else {
-        $form['gin_sticky_actions']['more_actions']['more_actions_items'][$key] = $new_label;
+        $form['gin_sticky_actions']['more_actions']['more_actions_items'][$key] = $button;
       }
     }
     // Else add button to more menu.
@@ -242,11 +224,11 @@ function gin_preprocess_inline_entity_form_entity_table(array &$variables) {
  *   If set, the previously stored actions, NULL otherwise.
  */
 function _gin_form_actions(?array $actions = NULL): ?array {
+  static $preparedActions;
   if ($actions !== NULL) {
-    // Set the form actions for this request.
-    drupal_static(__FUNCTION__, $actions);
+    $preparedActions = $actions;
   }
-  return drupal_static(__FUNCTION__);
+  return $preparedActions;
 }
 
 /**

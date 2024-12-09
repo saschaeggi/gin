@@ -15,6 +15,7 @@ $sprites: (
     'drupal': "../../media/sprite.svg#drupal-view",
     'gin': "../../media/sprite.svg#gin-view",
     'handle': "../../media/sprite.svg#handle-view",
+    'loader': "../../media/sprite.svg#loader-view",
     'more': "../../media/sprite.svg#more-view",
     'sidebar': "../../media/sprite.svg#sidebar-view",
     'tool': "../../media/sprite.svg#tool-view",
@@ -144,6 +145,10 @@ $sizes: (
         'height': 24px
     ),
     'handle': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'loader': (
         'width': 24px,
         'height': 24px
     ),
