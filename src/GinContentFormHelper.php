@@ -168,7 +168,10 @@ class GinContentFormHelper implements ContainerInjectionInterface {
           if (isset($form['status']['widget']) && isset($form['status']['widget']['value'])) {
             $form['status']['widget']['value']['#attributes']['form'] = $form['#id'];
           }
-          if (isset($form['status']['#group'])) {
+
+          // Only move status to status group if it is a checkbox.
+          $widget_type = $form['status']['widget']['#type'] ?? FALSE;
+          if ($widget_type === 'checkbox' && isset($form['status']['#group'])) {
             $form['status']['#group'] = 'status';
           }
 
