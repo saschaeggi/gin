@@ -161,12 +161,17 @@ class GinContentFormHelper implements ContainerInjectionInterface {
           '#multilingual' => TRUE,
         ];
 
-        // Set form id to status field.
-        if (isset($form['status']['widget']) && isset($form['status']['widget']['value'])) {
-          $form['status']['widget']['value']['#attributes']['form'] = $form['#id'];
-        }
-        if (isset($form['status']['#group'])) {
-          $form['status']['#group'] = 'status';
+        // Only alter the status field on content forms.
+        if ($this->isContentForm($form, $form_state, $form_id)) {
+
+          // Set form id to status field.
+          if (isset($form['status']['widget']) && isset($form['status']['widget']['value'])) {
+            $form['status']['widget']['value']['#attributes']['form'] = $form['#id'];
+          }
+          if (isset($form['status']['#group'])) {
+            $form['status']['#group'] = 'status';
+          }
+
         }
 
         // Helper item to move focus to sticky header.
