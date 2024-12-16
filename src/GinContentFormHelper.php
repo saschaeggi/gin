@@ -110,84 +110,82 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     }
 
     // Sticky action buttons.
-    if ($this->stickyActionButtons($form, $form_state, $form_id) || $this->isContentForm($form, $form_state, $form_id)) {
-      // Action buttons.
-      if (isset($form['actions'])) {
-        // Add sticky class.
-        $form['actions']['#attributes']['class'][] = 'gin-sticky-form-actions';
+    if (($this->stickyActionButtons($form, $form_state, $form_id) || $this->isContentForm($form, $form_state, $form_id)) && isset($form['actions'])) {
 
-        // Add a class to identify modified forms.
-        if (!isset($form['#attributes']['class'])) {
-          $form['#attributes']['class'] = [];
-        }
-        elseif (is_string($form['#attributes']['class'])) {
-          $form['#attributes']['class'] = [$form['#attributes']['class']];
-        }
-        $form['#attributes']['class'][] = 'gin--has-sticky-form-actions';
+      // Add sticky class.
+      $form['actions']['#attributes']['class'][] = 'gin-sticky-form-actions';
 
-        // Sticky action container.
-        $form['gin_sticky_actions'] = [
-          '#type' => 'container',
-          '#weight' => -1,
-          '#multilingual' => TRUE,
-          '#attributes' => [
-            'class' => ['gin-sticky-form-actions'],
-          ],
-        ];
-
-        // Create gin_more_actions group.
-        $toggle_more_actions = t('More actions');
-        $form['gin_sticky_actions']['more_actions'] = [
-          '#type' => 'container',
-          '#multilingual' => TRUE,
-          '#weight' => 998,
-          '#attributes' => [
-            'class' => ['gin-more-actions'],
-          ],
-          'more_actions_toggle' => [
-            '#markup' => '<a href="#toggle-more-actions" class="gin-more-actions__trigger trigger" data-gin-tooltip role="button" title="' . $toggle_more_actions . '" aria-controls="gin_more_actions"><span class="visually-hidden">' . $toggle_more_actions . '</span></a>',
-            '#weight' => 1,
-          ],
-          'more_actions_items' => [
-            '#type' => 'container',
-            '#multilingual' => TRUE,
-          ],
-        ];
-
-        // Assign status to gin_actions.
-        $form['gin_sticky_actions']['status'] = [
-          '#type' => 'container',
-          '#weight' => -1,
-          '#multilingual' => TRUE,
-        ];
-
-        // Only alter the status field on content forms.
-        if ($this->isContentForm($form, $form_state, $form_id)) {
-
-          // Set form id to status field.
-          if (isset($form['status']['widget']) && isset($form['status']['widget']['value'])) {
-            $form['status']['widget']['value']['#attributes']['form'] = $form['#id'];
-          }
-
-          // Only move status to status group if it is a checkbox.
-          $widget_type = $form['status']['widget']['#type'] ?? FALSE;
-          if ($widget_type === 'checkbox' && isset($form['status']['#group'])) {
-            $form['status']['#group'] = 'status';
-          }
-
-        }
-
-        // Helper item to move focus to sticky header.
-        $form['gin_move_focus_to_sticky_bar'] = [
-          '#markup' => '<a href="#" class="visually-hidden" role="button" gin-move-focus-to-sticky-bar>Moves focus to sticky header actions</a>',
-          '#weight' => 999,
-        ];
-
-        // Attach library.
-        $form['#attached']['library'][] = 'gin/more_actions';
-
-        $form['#after_build'][] = 'gin_form_after_build';
+      // Add a class to identify modified forms.
+      if (!isset($form['#attributes']['class'])) {
+        $form['#attributes']['class'] = [];
       }
+      elseif (is_string($form['#attributes']['class'])) {
+        $form['#attributes']['class'] = [$form['#attributes']['class']];
+      }
+      $form['#attributes']['class'][] = 'gin--has-sticky-form-actions';
+
+      // Sticky action container.
+      $form['gin_sticky_actions'] = [
+        '#type' => 'container',
+        '#weight' => -1,
+        '#multilingual' => TRUE,
+        '#attributes' => [
+          'class' => ['gin-sticky-form-actions'],
+        ],
+      ];
+
+      // Create gin_more_actions group.
+      $toggle_more_actions = t('More actions');
+      $form['gin_sticky_actions']['more_actions'] = [
+        '#type' => 'container',
+        '#multilingual' => TRUE,
+        '#weight' => 998,
+        '#attributes' => [
+          'class' => ['gin-more-actions'],
+        ],
+        'more_actions_toggle' => [
+          '#markup' => '<a href="#toggle-more-actions" class="gin-more-actions__trigger trigger" data-gin-tooltip role="button" title="' . $toggle_more_actions . '" aria-controls="gin_more_actions"><span class="visually-hidden">' . $toggle_more_actions . '</span></a>',
+          '#weight' => 1,
+        ],
+        'more_actions_items' => [
+          '#type' => 'container',
+          '#multilingual' => TRUE,
+        ],
+      ];
+
+      // Assign status to gin_actions.
+      $form['gin_sticky_actions']['status'] = [
+        '#type' => 'container',
+        '#weight' => -1,
+        '#multilingual' => TRUE,
+      ];
+
+      // Only alter the status field on content forms.
+      if ($this->isContentForm($form, $form_state, $form_id)) {
+
+        // Set form id to status field.
+        if (isset($form['status']['widget']) && isset($form['status']['widget']['value'])) {
+          $form['status']['widget']['value']['#attributes']['form'] = $form['#id'];
+        }
+
+        // Only move status to status group if it is a checkbox.
+        $widget_type = $form['status']['widget']['#type'] ?? FALSE;
+        if ($widget_type === 'checkbox' && isset($form['status']['#group'])) {
+          $form['status']['#group'] = 'status';
+        }
+
+      }
+
+      // Helper item to move focus to sticky header.
+      $form['gin_move_focus_to_sticky_bar'] = [
+        '#markup' => '<a href="#" class="visually-hidden" role="button" gin-move-focus-to-sticky-bar>Moves focus to sticky header actions</a>',
+        '#weight' => 999,
+      ];
+
+      // Attach library.
+      $form['#attached']['library'][] = 'gin/more_actions';
+
+      $form['#after_build'][] = 'gin_form_after_build';
     }
 
     // Are we on an edit form?
