@@ -109,8 +109,12 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       return FALSE;
     }
 
+    // Save form types and behaviors.
+    $use_sticky_action_buttons = $this->stickyActionButtons($form, $form_state, $form_id);
+    $is_content_form = $this->isContentForm($form, $form_state, $form_id);
+
     // Sticky action buttons.
-    if (($this->stickyActionButtons($form, $form_state, $form_id) || $this->isContentForm($form, $form_state, $form_id)) && isset($form['actions'])) {
+    if (($use_sticky_action_buttons || $is_content_form) && isset($form['actions'])) {
 
       // Add sticky class.
       $form['actions']['#attributes']['class'][] = 'gin-sticky-form-actions';
@@ -161,7 +165,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       ];
 
       // Only alter the status field on content forms.
-      if ($this->isContentForm($form, $form_state, $form_id)) {
+      if ($is_content_form) {
 
         // Set form id to status field.
         if (isset($form['status']['widget']) && isset($form['status']['widget']['value'])) {
@@ -188,8 +192,8 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       $form['#after_build'][] = 'gin_form_after_build';
     }
 
-    // Are we on an edit form?
-    if (!$this->isContentForm($form, $form_state, $form_id)) {
+    // Remaining changes only apply to content forms.
+    if (!$is_content_form) {
       return;
     }
 
