@@ -21,7 +21,8 @@
           const formElement = el.dataset.drupalSelector, buttonId = el.id, buttonSelector = newParent.querySelector(`[data-drupal-selector="gin-sticky-${formElement}"]`);
           buttonSelector && (buttonSelector.setAttribute("form", formId), buttonSelector.setAttribute("data-gin-sticky-form-selector", buttonId), 
           buttonSelector.addEventListener("click", (e => {
-            e.preventDefault(), document.querySelector(`[data-drupal-selector="${formId}"] [data-drupal-selector="${buttonId}"]`).click();
+            null !== document.querySelector(`[data-drupal-selector="${formId}"] [data-drupal-selector="${buttonId}"]`) && (e.preventDefault(), 
+            document.querySelector(`[data-drupal-selector="${formId}"] [data-drupal-selector="${buttonId}"]`).click());
           })));
         }));
       }
