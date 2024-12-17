@@ -56,6 +56,10 @@
 
             // Trigger original button from within the form.
             buttonSelector.addEventListener('click', (e) => {
+              const button = document.querySelector(`[data-drupal-selector="${formId}"] [data-drupal-selector="${buttonId}"]`);
+              if (button === null) {
+                return;
+              }
               e.preventDefault();
               document.querySelector(`[data-drupal-selector="${formId}"] [data-drupal-selector="${buttonId}"]`).click();
             });
