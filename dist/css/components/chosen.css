@@ -19,6 +19,10 @@
   background: none !important;
 }
 
+.form-element.chosen-container-single .chosen-single span {
+  color: var(--gin-color-text);
+}
+
 .form-element.chosen-container-multi {
   width: auto !important;
 }
