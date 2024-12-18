@@ -30,7 +30,7 @@ function gin_preprocess_page(&$variables) {
   if (preg_match('#entity\.(?<entity_type_id>.+)\.canonical#', $variables['route_name'], $matches)) {
     $entity = \Drupal::request()->attributes->get($matches['entity_type_id']);
 
-    if ($entity instanceof EntityInterface && $entity->hasLinkTemplate('edit-form')) {
+    if ($entity instanceof EntityInterface && $entity->hasLinkTemplate('edit-form') && $entity->access('update')) {
       $variables['entity_title'] = $entity->label();
       $variables['entity_edit_url'] = $entity->toUrl('edit-form');
     }
