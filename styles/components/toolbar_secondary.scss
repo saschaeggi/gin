@@ -178,7 +178,8 @@
         &:hover, &:focus-within {
           border-radius: var(--gin-border-s) var(--gin-border-s) 0 0;
 
-          > .toolbar-item {
+          > .toolbar-item,
+          > .toolbar-item.is-active {
             color: var(--gin-color-title);
 
             &:before {
@@ -193,7 +194,6 @@
 
         .toolbar-item {
           font-size: 0;
-          color: var(--gin-color-text-light);
           width: 32px;
           height: 32px;
           margin: 0;
@@ -215,11 +215,27 @@
           &:focus ~ .toolbar-tray {
             display: block;
           }
+        }
+
+        .toolbar-item,
+        .toolbar-item.is-active {
+          color: var(--gin-color-text-light);
+          background: none;
+          border: 0 none;
+
+          &::before {
+            background-color: var(--gin-color-text-light);
+            filter: none;
+          }
 
           &:hover,
           &:focus {
             color: var(--gin-color-title);
             background: none;
+
+            &:has(+ .toolbar-tray) {
+              background: var(--gin-bg-layer3);
+            }
 
             &::before {
               background-color: var(--gin-color-title);
