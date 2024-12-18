@@ -167,6 +167,11 @@
     margin-block-start: var(--gin-spacing-m);
     margin-block-end: var(--gin-spacing-s);
   }
+
+  &.token-tree-dialog {
+    max-width: none;
+    z-index: 505;
+  }
 }
 
 .erl-overlay,
