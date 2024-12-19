@@ -36,22 +36,26 @@
   background: none;
 }
 
+.media-library-item svg,
 .media-library-item img {
   background-color: var(--gin-pattern-fallback);
   background-size: calc(var(--gin-pattern-square) * 2) calc(var(--gin-pattern-square) * 2);
 }
 
+[dir="ltr"] .media-library-item svg,
 [dir="ltr"] .media-library-item img {
   background-image: linear-gradient(-45deg, var(--gin-pattern) 25%, transparent 26%), linear-gradient(-45deg, var(--gin-pattern) 25%, transparent 26%), linear-gradient(135deg, var(--gin-pattern) 25%, transparent 26%), linear-gradient(135deg, var(--gin-pattern) 25%, transparent 26%);
   background-position: 0 0, var(--gin-pattern-square) var(--gin-pattern-square), var(--gin-pattern-square) var(--gin-pattern-square), 0 0;
 }
 
+[dir="rtl"] .media-library-item svg,
 [dir="rtl"] .media-library-item img {
   background-image: linear-gradient(45deg, var(--gin-pattern) 25%, transparent 26%), linear-gradient(45deg, var(--gin-pattern) 25%, transparent 26%), linear-gradient(-135deg, var(--gin-pattern) 25%, transparent 26%), linear-gradient(-135deg, var(--gin-pattern) 25%, transparent 26%);
   background-position: 100% 0, var(--gin-pattern-square) var(--gin-pattern-square), var(--gin-pattern-square) var(--gin-pattern-square), 100% 0;
 }
 
 @media screen and (-ms-high-contrast: active) {
+  .media-library-item svg,
   .media-library-item img {
     background: none;
   }
@@ -119,6 +123,7 @@
   overflow: hidden;
 }
 
+.media-library-item .media-library-item__preview .field svg,
 .media-library-item .media-library-item__preview .field img {
   position: absolute;
   inset-block-start: 0;
