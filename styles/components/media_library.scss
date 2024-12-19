@@ -55,6 +55,7 @@
 .media-library-item {
   background: none;
 
+  svg,
   img {
     @include color-pattern;
   }
@@ -128,6 +129,7 @@
     overflow: hidden;
 
     .field {
+      svg,
       img {
         position: absolute;
         inset-block-start: 0;
