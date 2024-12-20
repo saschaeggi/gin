@@ -4,7 +4,6 @@ namespace Drupal\gin;
 
 use Drupal\Core\Ajax\AjaxHelperTrait;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
-use Drupal\Core\EventSubscriber\MainContentViewSubscriber;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
