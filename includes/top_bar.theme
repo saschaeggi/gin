@@ -13,6 +13,14 @@ function gin_preprocess_top_bar(array &$variables) {
     return;
   }
 
+  // Get local actions.
+  $block_manager = \Drupal::service('plugin.manager.block');
+  if ($plugin_block = $block_manager->createInstance('local_actions_block', [])) {
+    $block_content = $plugin_block->build();
+    $variables['gin_local_actions'] = \Drupal::service('renderer')->render($block_content);
+    $variables['#attached']['library'][] = 'gin/top_bar';
+  }
+
   // Get form actions.
   if ($form_actions = _gin_form_actions()) {
     $variables['gin_form_actions'] = $form_actions;
