@@ -3,19 +3,34 @@ $topbar: 54px;
 .gin--navigation-top-bar {
   padding-block: var(--gin-spacing-xxxs);
   border-block-end: 1px solid var(--admin-toolbar-color-gray-100);
+  background: var(--gin-bg-layer);
   box-shadow: none;
-  height: $topbar;
+  min-height: $topbar;
+  height: auto;
 
   .top-bar__burger {
     align-self: center;
   }
 
-  .form-actions {
-    margin-block-start: 0;
+  .top-bar__actions,
+  .local-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gin-spacing-xs);
+  }
+
+  .local-actions,
+  .local-actions__item,
+  .form-actions,
+  .gin-sticky-form-actions {
+    width: auto;
+    margin: 0;
   }
 
   button,
-  input[type="submit"] {
+  input[type="submit"],
+  .local-actions__item a {
     padding: var(--gin-spacing-xs) var(--gin-spacing-s);
     margin-block: 0;
     box-shadow: none;
