@@ -2057,7 +2057,8 @@ fieldset:not(.fieldgroup).error {
 }
 
 .form-item__description,
-.fieldset__description {
+.fieldset__description,
+.filter-guidelines__item {
   max-width: var(--gin-max-line-length);
   color: var(--gin-color-text-light);
 }
@@ -3743,6 +3744,7 @@ tr.color-error:focus,
 .admin-dblog .dblog-notice .icon,
 .system-status-report__status-icon--checked .details-title:before,
 .details .system-status-report__status-icon--checked:before,
+.claro-details .system-status-report__status-icon--checked:before,
 .color-checked .system-status-report__status-title:before,
 .upgrade-status-counter__status-icon--checked:before,
 .upgrade-status-error-list tr.no-known-error > td.status-info:before,
@@ -3764,6 +3766,7 @@ tr.color-error:focus,
 .admin-dblog .dblog-warning .icon,
 .system-status-report__status-icon--warning .details-title:before,
 .details .system-status-report__status-icon--warning:before,
+.claro-details .system-status-report__status-icon--warning:before,
 .upgrade-status-counter__status-icon--warning:before,
 .upgrade-status-error-list tr.known-warnings > td.status-info:before,
 .upgrade-status-summary tr.known-warnings > td.status-info:before {
@@ -3786,6 +3789,7 @@ tr.color-error:focus,
 .admin-dblog .dblog-emergency .icon,
 .system-status-report__status-icon--error .details-title:before,
 .details .system-status-report__status-icon--error:before,
+.claro-details .system-status-report__status-icon--error:before,
 .upgrade-status-counter__status-icon--error:before,
 .upgrade-status-error-list tr.known-errors > td.status-info:before,
 .upgrade-status-summary tr.known-errors > td.status-info:before {
@@ -3937,7 +3941,8 @@ tr.color-error:focus,
 }
 
 .system-status-report__status-title .details-title:before,
-.details .system-status-report__status-icon:before {
+.details .system-status-report__status-icon:before,
+.claro-details .system-status-report__status-icon:before {
   width: 24px;
   height: 24px;
 }

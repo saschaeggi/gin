@@ -728,7 +728,8 @@
 }
 
 .ui-dialog .form-item__description,
-.ui-dialog .fieldset__description {
+.ui-dialog .fieldset__description,
+.ui-dialog .filter-guidelines__item {
   max-width: var(--gin-max-line-length);
   color: var(--gin-color-text-light);
 }

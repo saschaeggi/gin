@@ -71,6 +71,11 @@ body.gin--core-navigation {
   inline-size: var(--gin-spacing-xxs);
 }
 
+.admin-toolbar {
+  top: 0;
+  height: 100%;
+}
+
 .admin-toolbar__header {
   padding-block-start: var(--gin-spacing-xs);
 }
@@ -459,9 +464,8 @@ body.gin--core-navigation {
   display: none;
 }
 
-#navigation-block-shortcuts,
-#toolbar-item-announcement,
-.toolbar-block:has(.admin-toolbar__item:first-of-type:last-of-type > #menu--shortcuts) {
+#toolbar-item-shortcuts,
+#toolbar-item-announcement {
   display: none;
 }
 

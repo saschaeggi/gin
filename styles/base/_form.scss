@@ -408,7 +408,8 @@ fieldset:not(.fieldgroup) {
 }
 
 .form-item__description,
-.fieldset__description {
+.fieldset__description,
+.filter-guidelines__item {
   max-width: var(--gin-max-line-length);
   color: var(--gin-color-text-light);
 }
