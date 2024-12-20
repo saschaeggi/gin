@@ -17,3 +17,21 @@ function gin_preprocess_menu_local_action(&$variables) {
     });
   }
 }
+
+/**
+ * Set and get the local actions of the current request.
+ *
+ * @param array|null $actions
+ *   If not NULL, the given actions will be remembered for the current request
+ *   so that they can be retrieved later when processing the page.
+ *
+ * @return array|null
+ *   If set, the previously stored actions, NULL otherwise.
+ */
+function _gin_local_actions(?array $actions = NULL): ?array {
+  static $preparedActions;
+  if ($actions !== NULL) {
+    $preparedActions = $actions;
+  }
+  return $preparedActions;
+}
