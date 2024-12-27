@@ -370,6 +370,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       'entity.block_content.canonical',
       'entity.media.add_form',
       'entity.media.canonical',
+      'entity.media.edit_form',
       'entity.node.content_translation_add',
       'entity.node.content_translation_edit',
       'quick_node_clone.node.quick_clone',
