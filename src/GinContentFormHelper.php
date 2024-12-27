@@ -115,7 +115,6 @@ class GinContentFormHelper implements ContainerInjectionInterface {
 
     // Sticky action buttons.
     if (($use_sticky_action_buttons || $is_content_form) && isset($form['actions'])) {
-
       // Add sticky class.
       $form['actions']['#attributes']['class'][] = 'gin-sticky-form-actions';
 
@@ -166,7 +165,6 @@ class GinContentFormHelper implements ContainerInjectionInterface {
 
       // Only alter the status field on content forms.
       if ($is_content_form) {
-
         // Set form id to status field.
         if (isset($form['status']['widget']) && isset($form['status']['widget']['value'])) {
           $form['status']['widget']['value']['#attributes']['form'] = $form['#id'];
@@ -176,10 +174,9 @@ class GinContentFormHelper implements ContainerInjectionInterface {
           $widget_type = $form['status']['widget']['#type'] ?? FALSE;
         }
         // Only move status to status group if it is a checkbox.
-        if ($widget_type === 'checkbox' && isset($form['status']['#group'])) {
+        if ($widget_type === 'checkbox') {
           $form['status']['#group'] = 'status';
         }
-
       }
 
       // Helper item to move focus to sticky header.
