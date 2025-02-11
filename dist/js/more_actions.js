@@ -1,4 +1,4 @@
-(Drupal => {
+((Drupal, once) => {
   Drupal.behaviors.ginFormActions = {
     attach: context => {
       Drupal.ginStickyFormActions.init(context);
@@ -17,12 +17,12 @@
       const formActions = form.querySelector('[data-drupal-selector="edit-actions"]'), actionButtons = Array.from(formActions.children);
       if (actionButtons.length > 0) {
         const formId = form.getAttribute("id");
-        actionButtons.forEach((el => {
+        once("ginSyncActionButtons", actionButtons).forEach((el => {
           const formElement = el.dataset.drupalSelector, buttonId = el.id, buttonSelector = newParent.querySelector(`[data-drupal-selector="gin-sticky-${formElement}"]`);
           buttonSelector && (buttonSelector.setAttribute("form", formId), buttonSelector.setAttribute("data-gin-sticky-form-selector", buttonId), 
           buttonSelector.addEventListener("click", (e => {
-            null !== document.querySelector(`[data-drupal-selector="${formId}"] [data-drupal-selector="${buttonId}"]`) && (e.preventDefault(), 
-            document.querySelector(`[data-drupal-selector="${formId}"] [data-drupal-selector="${buttonId}"]`).click());
+            const button = document.querySelector(`#${formId} [data-drupal-selector="${buttonId}"]`);
+            null !== button && (e.preventDefault(), button.click());
           })));
         }));
       }
@@ -53,4 +53,4 @@
       "false" !== document.querySelector(".gin-more-actions__trigger").getAttribute("aria-expanded") && (e.target.closest(".gin-more-actions") || Drupal.ginStickyFormActions.hideMoreActions());
     }
   };
-})(Drupal);
+})(Drupal, once);

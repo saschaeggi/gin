@@ -2,7 +2,7 @@
 
 'use strict';
 
-((Drupal) => {
+((Drupal, once) => {
   Drupal.behaviors.ginFormActions = {
     attach: (context) => {
       Drupal.ginStickyFormActions.init(context);
@@ -43,8 +43,7 @@
       // Keep buttons in sync.
       if (actionButtons.length > 0) {
         const formId = form.getAttribute('id');
-
-        actionButtons.forEach((el) => {
+        once('ginSyncActionButtons', actionButtons).forEach((el) => {
           const formElement = el.dataset.drupalSelector;
           const buttonId = el.id;
           const buttonSelector = newParent.querySelector(`[data-drupal-selector="gin-sticky-${formElement}"]`);
@@ -56,12 +55,12 @@
 
             // Trigger original button from within the form.
             buttonSelector.addEventListener('click', (e) => {
-              const button = document.querySelector(`[data-drupal-selector="${formId}"] [data-drupal-selector="${buttonId}"]`);
+              const button = document.querySelector(`#${formId} [data-drupal-selector="${buttonId}"]`);
               if (button === null) {
                 return;
               }
               e.preventDefault();
-              document.querySelector(`[data-drupal-selector="${formId}"] [data-drupal-selector="${buttonId}"]`).click();
+              button.click();
             });
           }
         });
@@ -134,4 +133,4 @@
     },
 
   };
-})(Drupal);
+})(Drupal, once);
