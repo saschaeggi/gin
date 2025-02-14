@@ -38,18 +38,18 @@
     }
 
     &__search-icon {
-      width: 16px;
-      height: 16px;
+      width: 1rem;
+      height: 1rem;
       inset-inline-end: 20px;
       inset-block-end: 20px;
     }
 
     &__search-clear {
-      width: 24px;
-      height: 24px;
+      width: 1.5rem;
+      height: 1.5rem;
       padding: 0;
       inset-block-start: 17px;
-      inset-inline-end: 16px;
+      inset-inline-end: 56px;
       z-index: 2;
       display: flex;
       align-items: center;
@@ -69,6 +69,10 @@
       + .search__search-icon {
         display: none;
       }
+    }
+
+    &__search-submit {
+      padding: 0 16px;
     }
 
     &__form-item {
@@ -168,6 +172,43 @@
     }
   }
 
+  .pb-display__button,
+  .select_button {
+    font-size: var(--gin-font-size-s);
+    color: var(--gin-color-primary);
+    background: transparent;
+    padding: var(--gin-spacing-xs) var(--gin-spacing-s);
+    border-color: inherit;
+    border-radius: var(--gin-border-s);
+    box-shadow: none;
+
+    &:hover {
+      z-index: 2;
+      color: var(--gin-color-primary);
+      background: var(--gin-color-primary-light);
+    }
+
+    &:active,
+    &:focus,
+    &--selected {
+      z-index: 2;
+      color: var(--gin-color-button-text);
+      background: var(--gin-color-primary);
+
+      img {
+        filter: invert(1);
+
+        .gin--dark-mode & {
+          filter: none;
+        }
+      }
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
+    }
+  }
+
   .pb-display {
     gap: var(--gin-spacing-xxxs);
     padding: var(--gin-spacing-xxs);
@@ -178,38 +219,9 @@
     border-radius: var(--gin-spacing-xl);
 
     &__button {
-      font-size: var(--gin-font-size-s);
       color: var(--gin-color-text);
       background: var(--gin-bg-layer);
-      padding: var(--gin-spacing-xs) var(--gin-spacing-s);
       border-radius: var(--gin-border-xl);
-      box-shadow: none;
-
-      &:hover {
-        z-index: 2;
-        color: var(--gin-color-primary);
-        background: var(--gin-color-primary-light);
-      }
-
-      &:active,
-      &:focus,
-      &--selected {
-        z-index: 2;
-        color: var(--gin-color-button-text);
-        background: var(--gin-color-primary);
-
-        img {
-          filter: invert(1);
-
-          .gin--dark-mode & {
-            filter: none;
-          }
-        }
-      }
-
-      &:focus {
-        box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
-      }
     }
 
     &__button-icon {
@@ -327,8 +339,13 @@
     gap: var(--gin-spacing-xxxs);
   }
 
-  &__status-icon img {
-    width: 24px;
+  &__status-icon,
+  &__maintenance-icon {
+    margin-top: 0.25rem;
+
+    img {
+      width: 24px;
+    }
   }
 }
 

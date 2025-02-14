@@ -44,18 +44,18 @@
 }
 
 #project-browser .search__search-icon {
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
   inset-inline-end: 20px;
   inset-block-end: 20px;
 }
 
 #project-browser .search__search-clear {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   padding: 0;
   inset-block-start: 17px;
-  inset-inline-end: 16px;
+  inset-inline-end: 56px;
   z-index: 2;
   display: flex;
   align-items: center;
@@ -75,6 +75,10 @@
 
 #project-browser .search__search-clear + .search__search-icon {
   display: none;
+}
+
+#project-browser .search__search-submit {
+  padding: 0 16px;
 }
 
 #project-browser .search__form-item {
@@ -173,6 +177,52 @@
   flex-shrink: 0;
 }
 
+#project-browser .pb-display__button,
+#project-browser .select_button {
+  font-size: var(--gin-font-size-s);
+  color: var(--gin-color-primary);
+  background: transparent;
+  padding: var(--gin-spacing-xs) var(--gin-spacing-s);
+  border-color: inherit;
+  border-radius: var(--gin-border-s);
+  box-shadow: none;
+}
+
+#project-browser .pb-display__button:hover,
+#project-browser .select_button:hover {
+  z-index: 2;
+  color: var(--gin-color-primary);
+  background: var(--gin-color-primary-light);
+}
+
+#project-browser .pb-display__button:active, #project-browser .pb-display__button:focus, #project-browser .pb-display__button--selected,
+#project-browser .select_button:active,
+#project-browser .select_button:focus,
+#project-browser .select_button--selected {
+  z-index: 2;
+  color: var(--gin-color-button-text);
+  background: var(--gin-color-primary);
+}
+
+#project-browser .pb-display__button:active img, #project-browser .pb-display__button:focus img, #project-browser .pb-display__button--selected img,
+#project-browser .select_button:active img,
+#project-browser .select_button:focus img,
+#project-browser .select_button--selected img {
+  filter: invert(1);
+}
+
+.gin--dark-mode #project-browser .pb-display__button:active img, .gin--dark-mode #project-browser .pb-display__button:focus img, .gin--dark-mode #project-browser .pb-display__button--selected img,
+.gin--dark-mode #project-browser .select_button:active img,
+.gin--dark-mode #project-browser .select_button:focus img,
+.gin--dark-mode #project-browser .select_button--selected img {
+  filter: none;
+}
+
+#project-browser .pb-display__button:focus,
+#project-browser .select_button:focus {
+  box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
+}
+
 #project-browser .pb-display {
   gap: var(--gin-spacing-xxxs);
   padding: var(--gin-spacing-xxs);
@@ -184,36 +234,9 @@
 }
 
 #project-browser .pb-display__button {
-  font-size: var(--gin-font-size-s);
   color: var(--gin-color-text);
   background: var(--gin-bg-layer);
-  padding: var(--gin-spacing-xs) var(--gin-spacing-s);
   border-radius: var(--gin-border-xl);
-  box-shadow: none;
-}
-
-#project-browser .pb-display__button:hover {
-  z-index: 2;
-  color: var(--gin-color-primary);
-  background: var(--gin-color-primary-light);
-}
-
-#project-browser .pb-display__button:active, #project-browser .pb-display__button:focus, #project-browser .pb-display__button--selected {
-  z-index: 2;
-  color: var(--gin-color-button-text);
-  background: var(--gin-color-primary);
-}
-
-#project-browser .pb-display__button:active img, #project-browser .pb-display__button:focus img, #project-browser .pb-display__button--selected img {
-  filter: invert(1);
-}
-
-.gin--dark-mode #project-browser .pb-display__button:active img, .gin--dark-mode #project-browser .pb-display__button:focus img, .gin--dark-mode #project-browser .pb-display__button--selected img {
-  filter: none;
-}
-
-#project-browser .pb-display__button:focus {
-  box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }
 
 .gin--dark-mode #project-browser .pb-display__button-icon {
@@ -331,7 +354,11 @@
   gap: var(--gin-spacing-xxxs);
 }
 
-.pb-project__status-icon img {
+.pb-project__status-icon, .pb-project__maintenance-icon {
+  margin-top: .25rem;
+}
+
+.pb-project__status-icon img, .pb-project__maintenance-icon img {
   width: 24px;
 }
 
