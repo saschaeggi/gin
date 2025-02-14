@@ -1813,8 +1813,22 @@
        * @return {string}
        *  HTML markup for the weight toggle button content.s
        */
-      toggleButtonContent: (show) =>
-        show ? Drupal.t('Hide row weights') : Drupal.t('Show row weights'),
+      toggleButtonContent: (show) => {
+        const classes = [
+          'action-link',
+          'action-link--extrasmall',
+          'tabledrag-toggle-weight',
+        ];
+        let text = '';
+        if (show) {
+          classes.push('action-link--icon-hide');
+          text = Drupal.t('Hide row weights');
+        } else {
+          classes.push('action-link--icon-show');
+          text = Drupal.t('Show row weights');
+        }
+        return `<span class="${classes.join(' ')}">${text}</span>`;
+      },
 
       /**
        * @return {string}
