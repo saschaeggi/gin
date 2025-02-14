@@ -60,6 +60,8 @@
                 return;
               }
               e.preventDefault();
+              // Additionally trigger mouse down event in case of AJAX.
+              once.filter('drupal-ajax', button).length && button.dispatchEvent(new Event('mousedown'));
               button.click();
             });
           }

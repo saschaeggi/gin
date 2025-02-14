@@ -22,7 +22,8 @@
           buttonSelector && (buttonSelector.setAttribute("form", formId), buttonSelector.setAttribute("data-gin-sticky-form-selector", buttonId), 
           buttonSelector.addEventListener("click", (e => {
             const button = document.querySelector(`#${formId} [data-drupal-selector="${buttonId}"]`);
-            null !== button && (e.preventDefault(), button.click());
+            null !== button && (e.preventDefault(), once.filter("drupal-ajax", button).length && button.dispatchEvent(new Event("mousedown")), 
+            button.click());
           })));
         }));
       }
