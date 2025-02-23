@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * modules.theme
+ */
+
+/**
+ * Implements hook_preprocess_HOOK() for node_edit_form.
+ */
+function gin_preprocess_project_browser_main_app(&$variables) {
+  // Attach project browser library if version is >2.0.0-alpha10.
+  if (version_compare(_gin_module_version('project_browser'), '2.0.0-alpha10', '<')) {
+    $variables['#attached']['library'][] = 'gin/project_browser';
+  }
+}
