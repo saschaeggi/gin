@@ -5,7 +5,7 @@
  * navigation.theme
  */
 
- use Drupal\gin\GinSettings;
+use Drupal\gin\GinSettings;
 
 /**
  * Navigation alter().
