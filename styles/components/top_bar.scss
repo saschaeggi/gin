@@ -1,7 +1,7 @@
 $topbar: 54px;
 
 .gin--navigation-top-bar {
-  padding-block: 0;
+  padding-block: var(--gin-spacing-xxxs);
   border-block-end: 1px solid var(--admin-toolbar-color-gray-100);
   background: var(--gin-bg-layer);
   box-shadow: none;
@@ -12,8 +12,8 @@ $topbar: 54px;
     margin-top: calc(#{$topbar} + var(--gin-spacing-s));
   }
 
-  .top-bar__content {
-    padding-block: var(--gin-spacing-xs);
+  &:has(.top-bar__tools:not(:empty), .top-bar__context:not(:empty), .top-bar__actions:not(:empty)) {
+    display: flex;
   }
 
   .top-bar__burger {

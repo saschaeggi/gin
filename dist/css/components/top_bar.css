@@ -1,5 +1,5 @@
 .gin--navigation-top-bar {
-  padding-block: 0;
+  padding-block: var(--gin-spacing-xxxs);
   border-block-end: 1px solid var(--admin-toolbar-color-gray-100);
   background: var(--gin-bg-layer);
   box-shadow: none;
@@ -11,8 +11,8 @@
   margin-top: calc(54px + var(--gin-spacing-s));
 }
 
-.gin--navigation-top-bar .top-bar__content {
-  padding-block: var(--gin-spacing-xs);
+.gin--navigation-top-bar:has(.top-bar__tools:not(:empty), .top-bar__context:not(:empty), .top-bar__actions:not(:empty)) {
+  display: flex;
 }
 
 .gin--navigation-top-bar .top-bar__burger {
