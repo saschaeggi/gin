@@ -220,11 +220,11 @@ body.gin--core-navigation {
   background: var(--gin-color-primary);
 }
 
-[class*=toolbar-button--icon] {
+.gin--core-navigation [class*=toolbar-button--icon] {
   --icon: url("../../media/sprite.svg#fallback-view"); /* Default icon, aka --basic */
 }
 
-[class*=toolbar-button--icon]::before {
+.gin--core-navigation [class*=toolbar-button--icon]::before {
   width: var(--gin-icon-size-toolbar);
   height: var(--gin-icon-size-toolbar);
   background-color: var(--gin-icon-color);
@@ -234,7 +234,7 @@ body.gin--core-navigation {
           mask-image: var(--icon);
 }
 
-[class*=toolbar-button--icon]:hover::before, [class*=toolbar-button--icon]:focus::before {
+.gin--core-navigation [class*=toolbar-button--icon]:hover::before, .gin--core-navigation [class*=toolbar-button--icon]:focus::before {
   background-color: var(--gin-color-primary);
 }
 

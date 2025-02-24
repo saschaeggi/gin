@@ -242,7 +242,7 @@ body.gin--core-navigation {
 // --------------------------------------------------
 // Icon overrides
 // --------------------------------------------------
-[class*="toolbar-button--icon"] {
+.gin--core-navigation [class*="toolbar-button--icon"] {
   --icon: #{icon('fallback')}; /* Default icon, aka --basic */
 
   &::before {
