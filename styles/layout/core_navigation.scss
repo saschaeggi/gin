@@ -163,6 +163,10 @@ body.gin--core-navigation {
   margin-block-end: var(--gin-spacing-xxxs);
 }
 
+.toolbar-button--primary {
+  color: var(--gin-color-button-text) !important;
+}
+
 .toolbar-button,
 .toolbar-menu__link {
   color: var(--gin-color-text);
