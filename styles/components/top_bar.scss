@@ -1,12 +1,20 @@
 $topbar: 54px;
 
 .gin--navigation-top-bar {
-  padding-block: var(--gin-spacing-xxxs);
+  padding-block: 0;
   border-block-end: 1px solid var(--admin-toolbar-color-gray-100);
   background: var(--gin-bg-layer);
   box-shadow: none;
   min-height: $topbar;
   height: auto;
+
+  &--offset {
+    margin-top: calc(#{$topbar} + var(--gin-spacing-s));
+  }
+
+  .top-bar__content {
+    padding-block: var(--gin-spacing-xs);
+  }
 
   .top-bar__burger {
     align-self: center;

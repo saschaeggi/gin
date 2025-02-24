@@ -22,6 +22,10 @@
       extra_classes: 'top-bar__burger',
     } only %}
     <div class="top-bar__tools">
+      {% if gin_breadcrumbs %}
+        {{ gin_breadcrumbs }}
+      {% endif %}
+
       {% if local_tasks %}
         {{ local_tasks }}
       {% endif %}

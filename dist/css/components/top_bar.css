@@ -1,10 +1,18 @@
 .gin--navigation-top-bar {
-  padding-block: var(--gin-spacing-xxxs);
+  padding-block: 0;
   border-block-end: 1px solid var(--admin-toolbar-color-gray-100);
   background: var(--gin-bg-layer);
   box-shadow: none;
   min-height: 54px;
   height: auto;
+}
+
+.gin--navigation-top-bar--offset {
+  margin-top: calc(54px + var(--gin-spacing-s));
+}
+
+.gin--navigation-top-bar .top-bar__content {
+  padding-block: var(--gin-spacing-xs);
 }
 
 .gin--navigation-top-bar .top-bar__burger {

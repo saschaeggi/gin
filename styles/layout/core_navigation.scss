@@ -57,7 +57,7 @@ body.gin--core-navigation {
 
 .gin--core-navigation .top-bar,
 .gin--core-navigation .admin-toolbar-control-bar {
-  position: sticky;
+  position: fixed;
   inset-block-start: 0;
 }
 

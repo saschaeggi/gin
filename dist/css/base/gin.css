@@ -4121,6 +4121,7 @@ blockquote::before {
 }
 
 .gin-status,
+.toolbar-badge,
 .views-field .marker,
 .gin-beta-flag,
 .gin-experimental-flag,
@@ -4135,6 +4136,7 @@ blockquote::before {
 }
 
 .gin-status,
+.toolbar-badge,
 .views-field .marker,
 .gin-beta-flag,
 .gin-experimental-flag,
@@ -4145,6 +4147,7 @@ blockquote::before {
 }
 
 .gin-status--success,
+.toolbar-badge--success,
 .gin-new-flag,
 .views-field .marker--published,
 .pb-actions .project_status-indicator {
@@ -4158,23 +4161,27 @@ blockquote::before {
           mask-image: url("../../media/sprite.svg#status-view");
 }
 
-.gin-status--warning {
+.gin-status--warning,
+.toolbar-badge--warning {
   color: var(--gin-status-warning-text);
   background: var(--gin-status-warning-bg);
 }
 
-.gin-status--warning .gin-status-icon {
+.gin-status--warning .gin-status-icon,
+.toolbar-badge--warning .gin-status-icon {
   background-color: currentColor;
   -webkit-mask-image: url("../../media/sprite.svg#warning-view");
           mask-image: url("../../media/sprite.svg#warning-view");
 }
 
-.gin-status--danger {
+.gin-status--danger,
+.toolbar-badge--danger {
   color: var(--gin-status-danger-text);
   background: var(--gin-status-danger-bg);
 }
 
-.gin-status--danger .gin-status-icon {
+.gin-status--danger .gin-status-icon,
+.toolbar-badge--danger .gin-status-icon {
   background-color: currentColor;
   -webkit-mask-image: url("../../media/sprite.svg#error-view");
           mask-image: url("../../media/sprite.svg#error-view");
