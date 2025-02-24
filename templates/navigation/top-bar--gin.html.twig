@@ -36,8 +36,6 @@
       {{- context -}}
     </div>
     <div class="top-bar__actions">
-      {{- actions -}}
-
       {% if gin_local_actions %}
         <ul class="local-actions">
           {{ gin_local_actions }}
@@ -47,6 +45,8 @@
       {% if gin_form_actions %}
         {{ gin_form_actions }}
       {% endif %}
+
+      {{- actions -}}
     </div>
   </div>
 </div>

@@ -142,41 +142,94 @@ body.gin--core-navigation {
   gap: 0;
 }
 
-.toolbar-button {
-  padding-inline: 10px;
-  padding-block: calc(var(--gin-spacing-xs) + 1px);
-  margin-block-end: var(--gin-spacing-xxxs);
+.toolbar-button.toolbar-button {
+  padding: var(--gin-spacing-xs) var(--gin-spacing-s);
+  min-height: auto;
+  border: 0 none;
+  border-radius: var(--gin-border-m);
+  transition: var(--gin-transition);
+  outline: none;
 }
 
-.toolbar-button--primary {
-  color: var(--gin-color-button-text) !important;
+.toolbar-button.toolbar-button--primary {
+  --toolbar-button-color: var(--gin-color-button-text);
+  --toolbar-button-bg: var(--gin-color-primary);
+  --toolbar-button-hover-color: var(--gin-color-button-text);
+  --toolbar-button-hover-bg: var(--gin-color-primary-hover);
+  --toolbar-button-focus-color: var(--gin-color-button-text);
+  --toolbar-button-focus-bg: var(--gin-color-primary-active);
+  --toolbar-button-icon-size: var(--gin-font-size-s);
 }
 
-.toolbar-button,
+[dir="ltr"] .toolbar-button.toolbar-button--primary {
+  box-shadow: .1em .25em .5em var(--gin-color-primary-light);
+}
+
+[dir="rtl"] .toolbar-button.toolbar-button--primary {
+  box-shadow: -0.1em .25em .5em var(--gin-color-primary-light);
+}
+
+.gin--core-navigation .toolbar-button.toolbar-button--icon--dots {
+  cursor: pointer;
+  background: transparent;
+  display: block;
+  height: 32px;
+  width: 32px;
+  margin-inline: calc(var(--gin-spacing-xxs) * -1);
+  border-radius: var(--gin-border-m);
+  transition: background var(--gin-transition-fast);
+}
+
+.gin--core-navigation .toolbar-button.toolbar-button--icon--dots::before {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  content: "";
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center center;
+          mask-position: center center;
+  background-color: var(--gin-icon-color);
+  -webkit-mask-image: url("../../media/sprite.svg#more-view");
+          mask-image: url("../../media/sprite.svg#more-view");
+  -webkit-mask-size: var(--gin-icon-size-toolbar-secondary) var(--gin-icon-size-toolbar-secondary);
+          mask-size: var(--gin-icon-size-toolbar-secondary) var(--gin-icon-size-toolbar-secondary);
+  border-radius: 50%;
+}
+
+.gin--core-navigation .toolbar-button.toolbar-button--icon--dots:hover, .gin--core-navigation .toolbar-button.toolbar-button--icon--dots:focus {
+  background-color: var(--gin-color-primary-light);
+}
+
+.gin--core-navigation .toolbar-button.toolbar-button--icon--dots:hover::before, .gin--core-navigation .toolbar-button.toolbar-button--icon--dots:focus::before {
+  background-color: var(--gin-color-primary);
+}
+
+.gin--core-navigation .toolbar-button.toolbar-button--icon--dots.is-active {
+  background-color: var(--gin-color-primary-light-hover);
+}
+
+.gin--core-navigation .toolbar-button.toolbar-button--icon--dots.is-active::before {
+  background-color: var(--gin-color-primary-active);
+}
+
 .toolbar-menu__link {
   color: var(--gin-color-text);
   font-weight: var(--gin-font-weight-normal);
   font-variation-settings: unset;
 }
 
-.toolbar-button, .toolbar-button:hover, .toolbar-button:active,
-.toolbar-menu__link,
-.toolbar-menu__link:hover,
-.toolbar-menu__link:active {
+.toolbar-menu__link, .toolbar-menu__link:hover, .toolbar-menu__link:active {
   outline: none;
   box-shadow: none;
 }
 
-.toolbar-button:hover,
 .toolbar-menu__link:hover {
   color: var(--gin-color-primary);
   background-color: var(--gin-bg-item-hover);
 }
 
-.toolbar-button:active, .toolbar-button:focus, .toolbar-button:hover:focus,
-.toolbar-menu__link:active,
-.toolbar-menu__link:focus,
-.toolbar-menu__link:hover:focus {
+.toolbar-menu__link:active, .toolbar-menu__link:focus, .toolbar-menu__link:hover:focus {
   color: var(--gin-color-primary-hover);
   background-color: var(--gin-color-primary-light);
 }
@@ -185,8 +238,10 @@ body.gin--core-navigation {
   font-weight: var(--gin-font-weight-bold);
 }
 
+[data-drupal-admin-styles] *:focus,
+.gin--navigation-top-bar .local-actions__item *:focus,
 .admin-toolbar__logo:focus,
-.toolbar-button:focus,
+.toolbar-button.toolbar-button:focus,
 .admin-toolbar__expand-button:focus {
   outline: none;
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);

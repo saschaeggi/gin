@@ -157,17 +157,67 @@ body.gin--core-navigation {
   gap: 0;
 }
 
-.toolbar-button {
-  padding-inline: 10px;
-  padding-block: calc(var(--gin-spacing-xs) + 1px);
-  margin-block-end: var(--gin-spacing-xxxs);
+.toolbar-button.toolbar-button {
+  padding: var(--gin-spacing-xs) var(--gin-spacing-s);
+  min-height: auto;
+  border: 0 none;
+  border-radius: var(--gin-border-m);
+  transition: var(--gin-transition);
+  outline: none;
 }
 
-.toolbar-button--primary {
-  color: var(--gin-color-button-text) !important;
+.toolbar-button.toolbar-button--primary {
+  --toolbar-button-color: var(--gin-color-button-text);
+  --toolbar-button-bg: var(--gin-color-primary);
+  --toolbar-button-hover-color: var(--gin-color-button-text);
+  --toolbar-button-hover-bg: var(--gin-color-primary-hover);
+  --toolbar-button-focus-color: var(--gin-color-button-text);
+  --toolbar-button-focus-bg: var(--gin-color-primary-active);
+  --toolbar-button-icon-size: var(--gin-font-size-s);
+  box-shadow: .1em .25em .5em var(--gin-color-primary-light);
 }
 
-.toolbar-button,
+.gin--core-navigation .toolbar-button.toolbar-button--icon--dots {
+  cursor: pointer;
+  background: transparent;
+  display: block;
+  height: 32px;
+  width: 32px;
+  margin-inline: calc(var(--gin-spacing-xxs) * -1);
+  border-radius: var(--gin-border-m);
+  transition: background var(--gin-transition-fast);
+
+  &::before {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    content: "";
+    mask-repeat: no-repeat;
+    mask-position: center center;
+    background-color: var(--gin-icon-color);
+    mask-image: icon('more');
+    mask-size: var(--gin-icon-size-toolbar-secondary) var(--gin-icon-size-toolbar-secondary);
+    border-radius: 50%;
+  }
+
+  &:hover, &:focus {
+    background-color: var(--gin-color-primary-light);
+
+    &::before {
+      background-color: var(--gin-color-primary);
+    }
+  }
+
+  &.is-active {
+    background-color: var(--gin-color-primary-light-hover);
+
+    &::before {
+      background-color: var(--gin-color-primary-active);
+    }
+  }
+}
+
+// .toolbar-button,
 .toolbar-menu__link {
   color: var(--gin-color-text);
   font-weight: var(--gin-font-weight-normal);
@@ -200,8 +250,10 @@ body.gin--core-navigation {
 // --------------------------------------------------
 // Focus style overrides
 // --------------------------------------------------
+[data-drupal-admin-styles] *:focus,
+.gin--navigation-top-bar .local-actions__item *:focus,
 .admin-toolbar__logo:focus,
-.toolbar-button:focus,
+.toolbar-button.toolbar-button:focus,
 .admin-toolbar__expand-button:focus {
   outline: none;
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
