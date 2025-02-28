@@ -121,3 +121,18 @@ function _gin_module_is_active($module) {
 
   return FALSE;
 }
+
+/**
+ * Helper function for check for the module version installed.
+ */
+function _gin_module_version($module) {
+  $extensionList = \Drupal::service('extension.list.module');
+  $extension_info = $extensionList->getExtensionInfo($module);
+
+  if (!empty($extension_info['version'])) {
+    return $extension_info['version'];
+  }
+
+  // Module not found or version unavailable.
+  return FALSE;
+}

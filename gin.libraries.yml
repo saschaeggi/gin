@@ -467,4 +467,5 @@ workspaces:
 project_browser:
   css:
     theme:
-      dist/css/components/project_browser.css: { minified: false }
+      dist/css/deprecated/project_browser.css: { minified: false }
+  deprecated: The project_browser library is deprecated in Gin 4.0.6 and will be removed in Gin 5.0.0. Consider upgrading to Project browser 2.0.0-alpha10+, see https://www.drupal.org/project/gin/issues/3508067
