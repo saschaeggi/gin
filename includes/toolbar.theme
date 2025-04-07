@@ -53,11 +53,12 @@ function gin_preprocess_menu__toolbar__gin(&$variables) {
  * Implements toolbar preprocess.
  */
 function gin_preprocess_toolbar(&$variables) {
-  // Use single `:` to make ControllerResolver get the class from definition.
-  // @see Drupal\Core\Controller\ControllerResolver->createController().
+  // The controller resolver does not support Closures at this time. For now,
+  // we use a wrapper function to load the service with dependencies.
+  // @see https://www.drupal.org/project/drupal/issues/3060638
   $variables['user_picture'] = [
     '#lazy_builder' => [
-      GinUserPicture::class . ':build',
+      GinUserPicture::class . '::build',
       [],
     ],
     '#create_placeholder' => TRUE,

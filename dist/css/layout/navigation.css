@@ -371,7 +371,7 @@ body {
   inline-size: 2px;
 }
 
-/* Left grey border for submenu items. */
+/* Left gray border for submenu items. */
 
 .toolbar-menu__item--level-2 > .toolbar-link::before,
 .toolbar-menu__item--level-3 > .toolbar-link::before,
@@ -521,7 +521,7 @@ html:not(.admin-toolbar-expanded) .admin-toolbar__content .admin-toolbar__item .
 
 /**
  * @file
- * Toolbar linke styles.
+ * Toolbar link styles.
  */
 
 .toolbar-link {

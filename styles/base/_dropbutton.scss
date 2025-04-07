@@ -141,7 +141,7 @@ html.js {
       margin-inline-end: 0;
     }
 
-    // Mutiple Dropbutton only has one item
+    // Multiple Dropbutton only has one item
     &:first-of-type:last-of-type > * {
       .js .dropbutton--multiple & {
         border-radius: var(--gin-border-s);

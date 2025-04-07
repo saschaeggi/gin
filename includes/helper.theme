@@ -68,7 +68,7 @@ function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
 
   // Clear render cache to ensure the correct
   // templates are loaded for our toolbar options.
-  \Drupal::service('cache.render')->invalidateAll();
+  \Drupal::service('cache.render')->deleteAll();
 }
 
 /**

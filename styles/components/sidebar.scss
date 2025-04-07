@@ -26,7 +26,7 @@
     --gin-sidebar-width: var(--gin-sidebar-small-width);
   }
 
-  // Fixes the flickering happinging on smaller devices.
+  // Fixes the flickering happening on smaller devices.
   @include mq($to: large) {
     opacity: 0;
     visibility: hidden;

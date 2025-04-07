@@ -48,7 +48,7 @@ body.gin--navigation {
   margin-inline-start: var(--gin-toolbar-x-offset);
 }
 
-// Set transtion to Gin's to avoid different speeds.
+// Set transition to Gin's to avoid different speeds.
 .admin-toolbar ~ .dialog-off-canvas-main-canvas,
 .gin--navigation .gin-secondary-toolbar--frontend {
   transition: margin-inline-start var(--gin-transition-fast), margin-inline-start var(--gin-transition-fast);

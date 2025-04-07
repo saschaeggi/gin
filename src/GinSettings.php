@@ -17,25 +17,11 @@ class GinSettings implements ContainerInjectionInterface {
   use StringTranslationTrait;
 
   /**
-   * The config factory.
-   *
-   * @var \Drupal\Core\Config\ConfigFactoryInterface
-   */
-  protected $configFactory;
-
-  /**
    * The user data service.
    *
    * @var \Drupal\user\UserDataInterface|null
    */
   protected $userData;
-
-  /**
-   * The current user.
-   *
-   * @var \Drupal\Core\Session\AccountInterface
-   */
-  protected $currentUser;
 
   /**
    * Settings constructor.
@@ -45,12 +31,17 @@ class GinSettings implements ContainerInjectionInterface {
    * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
    *   The config factory.
    */
-  public function __construct(AccountInterface $currentUser, ConfigFactoryInterface $configFactory) {
+  public function __construct(
+    protected AccountInterface $currentUser,
+    protected ConfigFactoryInterface $configFactory,
+  ) {
+    // phpcs:disable
+    // @phpstan-ignore-next-line
     if (\Drupal::hasService('user.data')) {
+      // @phpstan-ignore-next-line
       $this->userData = \Drupal::service('user.data');
+      // phpcs:enable
     }
-    $this->currentUser = $currentUser;
-    $this->configFactory = $configFactory;
   }
 
   /**
@@ -59,7 +50,7 @@ class GinSettings implements ContainerInjectionInterface {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('current_user'),
-      $container->get('config.factory')
+      $container->get('config.factory'),
     );
   }
 

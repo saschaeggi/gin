@@ -23,6 +23,7 @@ class GinTest extends BrowserTestBase {
   protected static $modules = [
     'shortcut',
     'toolbar',
+    'node',
   ];
 
   /**
@@ -47,6 +48,7 @@ class GinTest extends BrowserTestBase {
       'access administration pages',
       'administer themes',
       'access toolbar',
+      'access content overview',
     ]);
     $this->drupalLogin($adminUser);
   }
