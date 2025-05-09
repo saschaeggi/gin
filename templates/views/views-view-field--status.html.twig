@@ -20,7 +20,12 @@
  * @ingroup themeable
  */
 #}
-{% if row._entity.isPublished() %}
+{% set entity = row._entity %}
+{% if entity.hasTranslation(row.node_field_data_langcode) %}
+  {% set entity = row._entity.getTranslation(row.node_field_data_langcode) %}
+{% endif %}
+
+{% if entity.isPublished() %}
   <span class="marker marker--published">{{ output -}}</span>
 {% else %}
   <span class="marker">{{ output -}}</span>
