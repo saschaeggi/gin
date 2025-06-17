@@ -50,7 +50,7 @@ body.gin--core-navigation {
 
 .gin--core-navigation .top-bar,
 .gin--core-navigation .admin-toolbar-control-bar {
-  position: sticky;
+  position: fixed;
   inset-block-start: 0;
 }
 
@@ -142,20 +142,78 @@ body.gin--core-navigation {
   gap: 0;
 }
 
-.toolbar-button {
+.admin-toolbar .toolbar-button {
   padding-inline: 10px;
   padding-block: calc(var(--gin-spacing-xs) + 1px);
   margin-block-end: var(--gin-spacing-xxxs);
 }
 
-.toolbar-button,
+.admin-toolbar .toolbar-button--primary {
+  color: var(--gin-color-button-text) !important;
+}
+
+.gin--navigation-top-bar .toolbar-button.toolbar-button {
+  padding: var(--gin-spacing-xs) var(--gin-spacing-s);
+  min-height: auto;
+  border: 0 none;
+  border-radius: var(--gin-border-m);
+  transition: var(--gin-transition);
+  outline: none;
+}
+
+.gin--navigation-top-bar .toolbar-button.toolbar-button--primary {
+  --toolbar-button-color: var(--gin-color-button-text);
+  --toolbar-button-bg: var(--gin-color-primary);
+  --toolbar-button-hover-color: var(--gin-color-button-text);
+  --toolbar-button-hover-bg: var(--gin-color-primary-hover);
+  --toolbar-button-focus-color: var(--gin-color-button-text);
+  --toolbar-button-focus-bg: var(--gin-color-primary-active);
+  --toolbar-button-icon-size: var(--gin-font-size-s);
+}
+
+[dir="ltr"] .gin--navigation-top-bar .toolbar-button.toolbar-button--primary {
+  box-shadow: .1em .25em .5em var(--gin-color-primary-light);
+}
+
+[dir="rtl"] .gin--navigation-top-bar .toolbar-button.toolbar-button--primary {
+  box-shadow: -0.1em .25em .5em var(--gin-color-primary-light);
+}
+
+.gin--navigation-top-bar .toolbar-button.toolbar-button--icon--dots {
+  cursor: pointer;
+  background: transparent;
+  display: block;
+  height: 32px;
+  width: 32px;
+  margin-inline: calc(var(--gin-spacing-xxs) * -1);
+  border-radius: var(--gin-border-m);
+  transition: background var(--gin-transition-fast);
+}
+
+.gin--navigation-top-bar .toolbar-button.toolbar-button--icon--dots:hover, .gin--navigation-top-bar .toolbar-button.toolbar-button--icon--dots:focus {
+  background: var(--gin-color-primary-light);
+}
+
+.gin--navigation-top-bar .toolbar-button.toolbar-button--icon--dots:hover::before, .gin--navigation-top-bar .toolbar-button.toolbar-button--icon--dots:focus::before {
+  background: var(--gin-color-primary);
+}
+
+.gin--navigation-top-bar .toolbar-button.toolbar-button--icon--dots.is-active {
+  background-color: var(--gin-color-primary-light-hover);
+}
+
+.gin--navigation-top-bar .toolbar-button.toolbar-button--icon--dots.is-active::before {
+  background-color: var(--gin-color-primary-active);
+}
+
+.admin-toolbar .toolbar-button,
 .toolbar-menu__link {
   color: var(--gin-color-text);
   font-weight: var(--gin-font-weight-normal);
   font-variation-settings: unset;
 }
 
-.toolbar-button, .toolbar-button:hover, .toolbar-button:active,
+.admin-toolbar .toolbar-button, .admin-toolbar .toolbar-button:hover, .admin-toolbar .toolbar-button:active,
 .toolbar-menu__link,
 .toolbar-menu__link:hover,
 .toolbar-menu__link:active {
@@ -163,13 +221,13 @@ body.gin--core-navigation {
   box-shadow: none;
 }
 
-.toolbar-button:hover,
+.admin-toolbar .toolbar-button:hover,
 .toolbar-menu__link:hover {
   color: var(--gin-color-primary);
   background-color: var(--gin-bg-item-hover);
 }
 
-.toolbar-button:active, .toolbar-button:focus, .toolbar-button:hover:focus,
+.admin-toolbar .toolbar-button:active, .admin-toolbar .toolbar-button:focus, .admin-toolbar .toolbar-button:hover:focus,
 .toolbar-menu__link:active,
 .toolbar-menu__link:focus,
 .toolbar-menu__link:hover:focus {
@@ -181,8 +239,13 @@ body.gin--core-navigation {
   font-weight: var(--gin-font-weight-bold);
 }
 
+[data-drupal-admin-styles] *:focus,
+.gin--navigation-top-bar .button:focus,
+.gin--navigation-top-bar .local-actions__item *:focus,
+.gin--navigation-top-bar .toolbar-button.toolbar-button:focus,
+.local-actions__item *:focus,
 .admin-toolbar__logo:focus,
-.toolbar-button:focus,
+.toolbar-button.toolbar-button:focus,
 .admin-toolbar__expand-button:focus {
   outline: none;
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
@@ -216,11 +279,11 @@ body.gin--core-navigation {
   background: var(--gin-color-primary);
 }
 
-[class*=toolbar-button--icon] {
+.gin--core-navigation [class*=toolbar-button--icon] {
   --icon: url("../../media/sprite.svg#fallback-view"); /* Default icon, aka --basic */
 }
 
-[class*=toolbar-button--icon]::before {
+.gin--core-navigation [class*=toolbar-button--icon]::before {
   width: var(--gin-icon-size-toolbar);
   height: var(--gin-icon-size-toolbar);
   background-color: var(--gin-icon-color);
@@ -230,7 +293,7 @@ body.gin--core-navigation {
           mask-image: var(--icon);
 }
 
-[class*=toolbar-button--icon]:hover::before, [class*=toolbar-button--icon]:focus::before {
+.gin--core-navigation [class*=toolbar-button--icon]:hover::before, .gin--core-navigation [class*=toolbar-button--icon]:focus::before {
   background-color: var(--gin-color-primary);
 }
 
@@ -277,6 +340,10 @@ body.gin--core-navigation {
 .toolbar-link--create::before,
 .toolbar-button--icon--navigation-create::before {
   --icon: url("../../media/sprite.svg#create-view");
+}
+
+.toolbar-button--icon--thin-pencil::before {
+  --icon: url("../../media/sprite.svg#edit-view");
 }
 
 .toolbar-icon-system-modules-list::before,
@@ -344,7 +411,8 @@ body.gin--core-navigation {
 
 .toolbar-icon-user::before,
 .toolbar-link--user::before,
-.toolbar-button--icon--user::before {
+.toolbar-button--icon--user::before,
+.toolbar-button--icon--navigation-user-links-user-wrapper::before {
   --icon: url("../../media/sprite.svg#user-view");
 }
 

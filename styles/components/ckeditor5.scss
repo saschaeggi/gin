@@ -77,6 +77,11 @@
     opacity: .3;
   }
 
+  .ck.ck-editor__top .ck-sticky-panel .ck-sticky-panel__content .ck-toolbar {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
   .ck-toolbar_grouping:focus,
   .ck-toolbar__items:focus {
     box-shadow: none;

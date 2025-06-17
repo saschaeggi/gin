@@ -267,6 +267,11 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     // Sets default to TRUE if setting is enabled.
     $sticky_action_buttons = $settings->get('sticky_action_buttons') ? TRUE : FALSE;
 
+    // Always enable if navigation is active.
+    if (_gin_module_is_active('navigation')) {
+      $sticky_action_buttons = TRUE;
+    }
+
     // API check.
     $form_ids = $this->moduleHandler->invokeAll('gin_ignore_sticky_form_actions');
     $this->moduleHandler->alter('gin_ignore_sticky_form_actions', $form_ids);

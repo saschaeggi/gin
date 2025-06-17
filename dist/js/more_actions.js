@@ -30,7 +30,7 @@
     },
     moveFocus: function(newParent, form) {
       once("ginMoveFocusToStickyBar", "[gin-move-focus-to-sticky-bar]", form).forEach((el => el.addEventListener("focus", (e => {
-        e.preventDefault(), newParent.querySelector([ "button, input, select, textarea" ]).focus();
+        e.preventDefault(), newParent.querySelector([ "button, input, select, textarea, .action-link" ]).focus();
         let element = document.createElement("div");
         element.style.display = "contents", element.innerHTML = '<a href="#" class="visually-hidden" role="button" gin-move-focus-to-end-of-form>Moves focus back to form</a>', 
         newParent.appendChild(element), document.querySelector("[gin-move-focus-to-end-of-form]").addEventListener("focus", (eof => {
@@ -43,15 +43,16 @@
     },
     showMoreActions: function() {
       const trigger = document.querySelector(".gin-more-actions__trigger");
-      trigger.setAttribute("aria-expanded", "true"), trigger.classList.add("is-active");
+      null !== trigger && (trigger.setAttribute("aria-expanded", "true"), trigger.classList.add("is-active"));
     },
     hideMoreActions: function() {
       const trigger = document.querySelector(".gin-more-actions__trigger");
-      trigger.setAttribute("aria-expanded", "false"), trigger.classList.remove("is-active"), 
-      document.removeEventListener("click", this.closeMoreActionsOnClickOutside);
+      null !== trigger && (trigger.setAttribute("aria-expanded", "false"), trigger.classList.remove("is-active"), 
+      document.removeEventListener("click", this.closeMoreActionsOnClickOutside));
     },
     closeMoreActionsOnClickOutside: function(e) {
-      "false" !== document.querySelector(".gin-more-actions__trigger").getAttribute("aria-expanded") && (e.target.closest(".gin-more-actions") || Drupal.ginStickyFormActions.hideMoreActions());
+      const trigger = document.querySelector(".gin-more-actions__trigger");
+      null !== trigger && "false" !== trigger.getAttribute("aria-expanded") && (e.target.closest(".gin-more-actions") || Drupal.ginStickyFormActions.hideMoreActions());
     }
   };
 })(Drupal, once);

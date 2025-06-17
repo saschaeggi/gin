@@ -72,7 +72,7 @@
     moveFocus: function (newParent, form) {
       once('ginMoveFocusToStickyBar', '[gin-move-focus-to-sticky-bar]', form).forEach(el => el.addEventListener('focus', e => {
         e.preventDefault();
-        const focusableElements = ['button, input, select, textarea'];
+        const focusableElements = ['button, input, select, textarea, .action-link'];
 
         // Moves focus to first item.
         newParent.querySelector(focusableElements).focus();
@@ -113,12 +113,18 @@
 
     showMoreActions: function () {
       const trigger = document.querySelector('.gin-more-actions__trigger');
+      if (trigger === null) {
+        return;
+      }
       trigger.setAttribute('aria-expanded', 'true');
       trigger.classList.add('is-active');
     },
 
     hideMoreActions: function () {
       const trigger = document.querySelector('.gin-more-actions__trigger');
+      if (trigger === null) {
+        return;
+      }
       trigger.setAttribute('aria-expanded', 'false');
       trigger.classList.remove('is-active');
       document.removeEventListener('click', this.closeMoreActionsOnClickOutside);
@@ -126,6 +132,9 @@
 
     closeMoreActionsOnClickOutside: function (e) {
       const trigger = document.querySelector('.gin-more-actions__trigger');
+      if (trigger === null) {
+        return;
+      }
 
       if (trigger.getAttribute('aria-expanded') === "false") return;
 

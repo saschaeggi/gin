@@ -61,6 +61,11 @@
   opacity: .3;
 }
 
+.ck .ck.ck-editor__top .ck-sticky-panel .ck-sticky-panel__content .ck-toolbar {
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+
 .ck .ck-toolbar_grouping:focus,
 .ck .ck-toolbar__items:focus {
   box-shadow: none;

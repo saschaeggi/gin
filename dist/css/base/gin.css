@@ -3462,7 +3462,8 @@ hr {
 .field-option:focus-within,
 .subfield-option:has(.field-option-radio:checked),
 .subfield-option:focus-within,
-#edit-submit.form-submit:focus {
+#edit-submit.form-submit:focus,
+.toolbar-dropdown__menu .toolbar-dropdown__link:focus {
   outline: none;
   box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
 }
@@ -4118,75 +4119,5 @@ blockquote::before {
 
 .taxonomy-overview-terms:not(:has(.action-link)) #edit-help {
   margin-block-end: var(--gin-spacing-m);
-}
-
-.gin-status,
-.views-field .marker,
-.gin-beta-flag,
-.gin-experimental-flag,
-.gin-new-flag {
-  font-size: var(--gin-font-size-xxs);
-  font-weight: var(--gin-font-weight-semibold);
-  display: inline-block;
-  padding: .125em .75em;
-  vertical-align: .125em;
-  border: 1px solid transparent;
-  border-radius: var(--gin-border-l);
-}
-
-.gin-status,
-.views-field .marker,
-.gin-beta-flag,
-.gin-experimental-flag,
-.pb-project-categories__item,
-.pb-module-page__categories-list-item {
-  color: var(--gin-status-text);
-  background: var(--gin-status-bg);
-}
-
-.gin-status--success,
-.gin-new-flag,
-.views-field .marker--published,
-.pb-actions .project_status-indicator {
-  color: var(--gin-status-success-text);
-  background-color: var(--gin-status-success-bg);
-}
-
-.gin-status--success .gin-status-icon {
-  background-color: currentColor;
-  -webkit-mask-image: url("../../media/sprite.svg#status-view");
-          mask-image: url("../../media/sprite.svg#status-view");
-}
-
-.gin-status--warning {
-  color: var(--gin-status-warning-text);
-  background: var(--gin-status-warning-bg);
-}
-
-.gin-status--warning .gin-status-icon {
-  background-color: currentColor;
-  -webkit-mask-image: url("../../media/sprite.svg#warning-view");
-          mask-image: url("../../media/sprite.svg#warning-view");
-}
-
-.gin-status--danger {
-  color: var(--gin-status-danger-text);
-  background: var(--gin-status-danger-bg);
-}
-
-.gin-status--danger .gin-status-icon {
-  background-color: currentColor;
-  -webkit-mask-image: url("../../media/sprite.svg#error-view");
-          mask-image: url("../../media/sprite.svg#error-view");
-}
-
-.gin-status {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--gin-spacing-xxs);
-}
-
-.gin-status-icon {
-  margin-inline-start: -0.5em;
 }
 
