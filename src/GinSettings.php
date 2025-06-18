@@ -7,6 +7,7 @@ use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\user\UserDataInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -17,31 +18,20 @@ class GinSettings implements ContainerInjectionInterface {
   use StringTranslationTrait;
 
   /**
-   * The user data service.
-   *
-   * @var \Drupal\user\UserDataInterface|null
-   */
-  protected $userData;
-
-  /**
    * Settings constructor.
    *
    * @param \Drupal\Core\Session\AccountInterface $currentUser
    *   The current user.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
    *   The config factory.
+   * @param \Drupal\user\UserDataInterface|null $userData
+   *   The user data service.
    */
   public function __construct(
     protected AccountInterface $currentUser,
     protected ConfigFactoryInterface $configFactory,
+    protected ?UserDataInterface $userData,
   ) {
-    // phpcs:disable
-    // @phpstan-ignore-next-line
-    if (\Drupal::hasService('user.data')) {
-      // @phpstan-ignore-next-line
-      $this->userData = \Drupal::service('user.data');
-      // phpcs:enable
-    }
   }
 
   /**
@@ -51,6 +41,7 @@ class GinSettings implements ContainerInjectionInterface {
     return new static(
       $container->get('current_user'),
       $container->get('config.factory'),
+      $container->get('user.data', ContainerInterface::NULL_ON_INVALID_REFERENCE)
     );
   }
 
