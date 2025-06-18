@@ -153,10 +153,18 @@ class GinSettings implements ContainerInjectionInterface {
    *   TRUE or FALSE.
    */
   public function userOverrideEnabled(?AccountInterface $account = NULL) {
+    $overrides = &drupal_static(__CLASS__ . '_' . __METHOD__, []);
+
     if (!$account || !$this->userData) {
       $account = $this->currentUser;
     }
-    return $this->allowUserOverrides() && (bool) $this->userData->get('gin', $account->id(), 'enable_user_settings');
+
+    if (!isset($overrides[$account->id()])) {
+      $overrides[$account->id()] = $this->allowUserOverrides()
+        && (bool) $this->userData->get('gin', $account->id(), 'enable_user_settings');
+    }
+
+    return $overrides[$account->id()];
   }
 
   /**
