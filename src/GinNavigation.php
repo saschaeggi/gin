@@ -66,8 +66,10 @@ class GinNavigation implements ContainerInjectionInterface {
     $manipulators = [
       ['callable' => 'menu.default_tree_manipulators:checkAccess'],
       ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
-      ['callable' => 'toolbar_menu_navigation_links'],
     ];
+    if (_gin_module_is_active('toolbar')) {
+      $manipulators[] = ['callable' => 'toolbar_menu_navigation_links'];
+    }
     $tree = $this->menuLinkTree->transform($tree, $manipulators);
     $build = $this->menuLinkTree->build($tree);
     /** @var \Drupal\Core\Menu\MenuLinkInterface $link */
