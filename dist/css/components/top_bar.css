@@ -1,3 +1,8 @@
+:root {
+  --drupal-displace-offset-top: 54px;
+  --admin-toolbar-top-bar-height: 54px;
+}
+
 .gin--navigation-top-bar {
   padding-inline: calc(var(--admin-toolbar-sidebar-width) + var(--gin-spacing-m)) var(--gin-spacing-m);
   padding-block: var(--gin-spacing-xxxs);
@@ -56,6 +61,20 @@
   margin: 0;
 }
 
+.gin--navigation-top-bar .toolbar-title {
+  color: var(--gin-color-text);
+}
+
+.gin--navigation-top-bar .toolbar-title__icon path {
+  fill: var(--gin-color-text);
+}
+
+.gin--navigation-top-bar .toolbar-button {
+  font-size: var(--gin-font-size-xs);
+  font-weight: var(--gin-font-weight-semibold);
+  font-variation-settings: normal;
+}
+
 .gin--navigation-top-bar .toolbar-dropdown__menu {
   gap: 0;
   padding: var(--gin-spacing-xs);
@@ -99,13 +118,12 @@
 .gin--navigation-top-bar button,
 .gin--navigation-top-bar input[type=submit],
 .gin--navigation-top-bar .local-actions__item a {
-  padding: var(--gin-spacing-xs) var(--gin-spacing-s);
+  font-size: var(--gin-font-size-xs);
+  font-weight: var(--gin-font-weight-bold);
+  padding-block: calc(var(--gin-spacing-xs) - var(--gin-spacing-xxxs));
+  padding-inline: var(--gin-spacing-s);
   margin-block: 0;
   box-shadow: none;
-}
-
-.gin--navigation-top-bar:not(:has(.top-bar__burger:only-child)) ~ .dialog-off-canvas-main-canvas {
-  margin-block-start: 0;
 }
 
 body:has(.gin--navigation-top-bar .gin-sticky-form-actions) :where(#gin_sidebar) {

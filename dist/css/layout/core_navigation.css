@@ -48,12 +48,6 @@ body.gin--core-navigation {
   --admin-toolbar-color-gray-990: var(--gin-color-primary-active);
 }
 
-.gin--core-navigation .top-bar,
-.gin--core-navigation .admin-toolbar-control-bar {
-  position: fixed;
-  inset-block-start: 0;
-}
-
 .gin--core-navigation .admin-toolbar-control-bar {
   background-color: var(--admin-toolbar-color-white);
 }
@@ -107,12 +101,6 @@ body.gin--core-navigation {
   border-block-start-color: var(--gin-border-color-secondary);
 }
 
-.toolbar-anti-flicker.toolbar-loading.toolbar-fixed body.gin--core-navigation,
-body.gin--core-navigation {
-  padding-block-start: unset !important;
-  margin-inline-start: auto !important;
-}
-
 .admin-toolbar__logo {
   line-height: 0;
   border-radius: 10px;
@@ -143,6 +131,7 @@ body.gin--core-navigation {
 }
 
 .admin-toolbar .toolbar-button {
+  min-height: unset;
   padding-inline: 10px;
   padding-block: calc(var(--gin-spacing-xs) + 1px);
   margin-block-end: var(--gin-spacing-xxxs);
@@ -181,10 +170,12 @@ body.gin--core-navigation {
 
 .gin--navigation-top-bar .toolbar-button.toolbar-button--icon--dots {
   cursor: pointer;
+  color: var(--gin-color-text);
   background: transparent;
   display: block;
   height: 32px;
   width: 32px;
+  padding: 6px;
   margin-inline: calc(var(--gin-spacing-xxs) * -1);
   border-radius: var(--gin-border-m);
   transition: background var(--gin-transition-fast);
@@ -198,18 +189,18 @@ body.gin--core-navigation {
   background: var(--gin-color-primary);
 }
 
-.gin--navigation-top-bar .toolbar-button.toolbar-button--icon--dots.is-active {
+.gin--navigation-top-bar .toolbar-button.toolbar-button--icon--dots[aria-expanded=true], .gin--navigation-top-bar .toolbar-button.toolbar-button--icon--dots.is-active {
   background-color: var(--gin-color-primary-light-hover);
 }
 
-.gin--navigation-top-bar .toolbar-button.toolbar-button--icon--dots.is-active::before {
+.gin--navigation-top-bar .toolbar-button.toolbar-button--icon--dots[aria-expanded=true]::before, .gin--navigation-top-bar .toolbar-button.toolbar-button--icon--dots.is-active::before {
   background-color: var(--gin-color-primary-active);
 }
 
 .admin-toolbar .toolbar-button,
 .toolbar-menu__link {
   color: var(--gin-color-text);
-  font-weight: var(--gin-font-weight-normal);
+  font-weight: var(--gin-font-weight-semibold);
   font-variation-settings: unset;
 }
 
@@ -279,215 +270,9 @@ body.gin--core-navigation {
   background: var(--gin-color-primary);
 }
 
-.gin--core-navigation [class*=toolbar-button--icon] {
-  --icon: url("../../media/sprite.svg#fallback-view"); /* Default icon, aka --basic */
-}
-
-.gin--core-navigation [class*=toolbar-button--icon]::before {
-  width: var(--gin-icon-size-toolbar);
-  height: var(--gin-icon-size-toolbar);
-  background-color: var(--gin-icon-color);
-  -webkit-mask-size: 100% 100%;
-          mask-size: 100% 100%;
-  -webkit-mask-image: var(--icon);
-          mask-image: var(--icon);
-}
-
-.gin--core-navigation [class*=toolbar-button--icon]:hover::before, .gin--core-navigation [class*=toolbar-button--icon]:focus::before {
-  background-color: var(--gin-color-primary);
-}
-
-.toolbar-icon-workbench-content-tab::before,
-.toolbar-link--admin-toolbar-tools-help::before,
-.toolbar-button--icon--admin-toolbar-tools-help::before,
-.toolbar-button--icon--navigation-extra-tools-help::before {
-  --icon: url("../../media/sprite.svg#tool-view");
-}
-
-.toolbar-icon-system-themes-page::before,
-.toolbar-link--system-themes-page::before,
-.toolbar-button--icon--system-themes-page::before {
-  --icon: url("../../media/sprite.svg#appearance-view");
-}
-
-.toolbar-link--blocks::before,
-.toolbar-button--icon--navigation-blocks::before {
-  --icon: url("../../media/sprite.svg#blocks-view");
-}
-
-.toolbar-link--bookmarks::before,
-.toolbar-button--icon--bookmarks::before {
-  --icon: url("../../media/sprite.svg#bookmarks-view");
-}
-
-.toolbar-icon-shortcut::before,
-.toolbar-button--icon--shortcuts::before {
-  --icon: url("../../media/sprite.svg#shortcut-view");
-}
-
-.toolbar-icon-system-admin-config::before,
-.toolbar-link--system-admin-config::before,
-.toolbar-button--icon--system-admin-config::before {
-  --icon: url("../../media/sprite.svg#config-view");
-}
-
-.toolbar-icon-system-admin-content::before,
-.toolbar-link--content::before,
-.toolbar-button--icon--navigation-content::before {
-  --icon: url("../../media/sprite.svg#content-view");
-}
-
-.toolbar-link--create::before,
-.toolbar-button--icon--navigation-create::before {
-  --icon: url("../../media/sprite.svg#create-view");
-}
-
-.toolbar-button--icon--thin-pencil::before {
-  --icon: url("../../media/sprite.svg#edit-view");
-}
-
-.toolbar-icon-system-modules-list::before,
-.toolbar-link--system-modules-list::before,
-.toolbar-button--icon--system-modules-list::before {
-  --icon: url("../../media/sprite.svg#extend-new-view");
-}
-
-.toolbar-link--files::before,
-.toolbar-button--icon--navigation-files::before {
-  --icon: url("../../media/sprite.svg#files-view");
-}
-
-.toolbar-icon-help-main::before,
-.toolbar-icon-help::before,
-.toolbar-link--help::before,
-.toolbar-button--icon--help::before {
-  --icon: url("../../media/sprite.svg#help-view");
-}
-
-.toolbar-icon-commerce-admin-commerce::before,
-.toolbar-link--commerce-admin-commerce::before,
-.toolbar-button--icon--commerce-admin-commerce::before,
-.toolbar-icon-commerce-inbox::before,
-.toolbar-link---commerce-inbox::before,
-.toolbar-button--icon--commerce-inbox::before {
-  --icon: url("../../media/sprite.svg#commerce-view");
-}
-
-.toolbar-link--media::before,
-.toolbar-button--icon--navigation-media::before {
-  --icon: url("../../media/sprite.svg#media-view");
-}
-
-.toolbar-icon-entity-user-collection::before,
-.toolbar-link--entity-user-collection::before,
-.toolbar-button--icon--entity-user-collection::before {
-  --icon: url("../../media/sprite.svg#people-new-view");
-}
-
-.toolbar-icon-system-admin-reports::before,
-.toolbar-link--system-admin-reports::before,
-.toolbar-button--icon--system-admin-reports::before {
-  --icon: url("../../media/sprite.svg#reports-view");
-}
-
-.toolbar-icon-system-admin-structure::before,
-.toolbar-link--system-admin-structure::before,
-.toolbar-button--icon--system-admin-structure::before {
-  --icon: url("../../media/sprite.svg#structure-view");
-}
-
-.toolbar-icon-entity-webform-collection::before,
-.toolbar-link--entity-webform-collection::before,
-.toolbar-button--icon--entity-webform-collection::before {
-  --icon: url("../../media/sprite.svg#webform-view");
-}
-
-.toolbar-link--sidebar-toggle[aria-expanded=false]::before,
-.toolbar-link--sidebar-toggle[aria-expanded=true]::before,
-.toolbar-link--sidebar-toggle[aria-expanded=false]::before,
-.toolbar-link--sidebar-toggle[aria-expanded=true]::before {
-  --icon: url("../../media/sprite.svg#chevron-down-view");
-}
-
-.toolbar-icon-user::before,
-.toolbar-link--user::before,
-.toolbar-button--icon--user::before,
-.toolbar-button--icon--navigation-user-links-user-wrapper::before {
-  --icon: url("../../media/sprite.svg#user-view");
-}
-
-.toolbar-icon-announcements-feed-announcement::before,
-.toolbar-icon-announce::before,
-.toolbar-link--announcements-feed-announcement::before,
-.toolbar-button--icon--announcements-feed-announcement::before {
-  --icon: url("../../media/sprite.svg#announcement-view");
-}
-
-.toolbar-icon-system-admin-group::before,
-.toolbar-link--system-admin-group::before,
-.toolbar-button--icon--system-admin-group::before {
-  --icon: url("../../media/sprite.svg#group-view");
-}
-
-.toolbar-icon-tmgmt-admin-tmgmt::before,
-.toolbar-link--tmgmt-admin-tmgmt::before,
-.toolbar-icon-language::before,
-.toolbar-link--language::before,
-.toolbar-button--icon--tmgmt-admin-tmgmt::before,
-.toolbar-button--icon--language::before {
-  --icon: url("../../media/sprite.svg#tmgmt-view");
-}
-
-.toolbar-icon-bat-admin::before,
-.toolbar-link--bat-admin::before,
-.toolbar-button--icon--bat-admin::before {
-  --icon: url("../../media/sprite.svg#bat-view");
-}
-
-.toolbar-icon-menu::before,
-.toolbar-button--icon--burger::before {
-  --icon: url("../../media/sprite.svg#hamburger-view");
-}
-
-.toolbar-icon-coffee::before,
-#toolbar-item-administration-search::before,
-#admin-toolbar-mobile-search-tab .toolbar-icon::before {
-  --icon: url("../../media/sprite.svg#search-view");
-}
-
-.toolbar-icon-devel::before,
-.toolbar-button--icon--devel::before {
-  --icon: url("../../media/sprite.svg#devel-view");
-}
-
-.toolbar-icon-rebuild-cache-access::before {
-  --icon: url("../../media/sprite.svg#rebuild-cache-view");
-}
-
-.responsive-preview-icon::before {
-  --icon: url("../../media/sprite.svg#responsive-preview-view");
-}
-
-.toolbar-icon-environment::before,
-.toolbar-button--icon--environment::before {
-  --icon: url("../../media/sprite.svg#server-view");
-}
-
-.toolbar-icon-toggle-vertical::before,
-.toolbar-button--icon--back::before {
-  --icon: url("../../media/sprite.svg#nav-toggle-toleft-view");
-}
-
-.toolbar-icon-toggle-horizontal::before {
-  --icon: url("../../media/sprite.svg#nav-toggle-totop-view");
-}
-
-.toolbar-button--icon--cross::before {
-  --icon: url("../../media/sprite.svg#close-view");
-}
-
-.toolbar-button--icon--navigation-trash {
-  --icon: url("../../media/sprite.svg#trash-module-view");
+.gin--core-navigation .toolbar-button__icon {
+  stroke-width: .25px;
+  stroke: currentColor;
 }
 
 #navigation-link-navigationcreate:first-child {
