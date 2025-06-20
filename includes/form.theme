@@ -76,7 +76,7 @@ function gin_form_after_build(array $form, FormStateInterface $form_state): arra
       $button['#attributes']['data-gin-sticky-form-selector'] = $button['#attributes']['data-drupal-selector'];
 
       // Add the button to the form actions array.
-      if (in_array($key, $includes, TRUE) || !empty($button['#gin_action_item'])) {
+      if (_gin_module_is_active('navigation') || in_array($key, $includes, TRUE) || !empty($button['#gin_action_item'])) {
         $form['gin_sticky_actions']['actions'][$key] = $button;
       }
       // Add to more menu.
