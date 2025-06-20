@@ -5,6 +5,7 @@ namespace Drupal\gin;
 use Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Menu\MenuLinkTreeInterface;
 use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -40,6 +41,7 @@ class GinNavigation implements ContainerInjectionInterface {
     protected BreadcrumbBuilderInterface $breadcrumbBuilder,
     protected RouteMatchInterface $routeMatch,
     protected MenuLinkTreeInterface $menuLinkTree,
+    protected ModuleHandlerInterface $moduleHandler,
   ) {
   }
 
@@ -53,6 +55,7 @@ class GinNavigation implements ContainerInjectionInterface {
       $container->get('breadcrumb'),
       $container->get('current_route_match'),
       $container->get('menu.link_tree'),
+      $container->get('module_handler'),
     );
   }
 
@@ -67,7 +70,7 @@ class GinNavigation implements ContainerInjectionInterface {
       ['callable' => 'menu.default_tree_manipulators:checkAccess'],
       ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
     ];
-    if (_gin_module_is_active('toolbar')) {
+    if ($this->moduleHandler->moduleExists('toolbar')) {
       $manipulators[] = ['callable' => 'toolbar_menu_navigation_links'];
     }
     $tree = $this->menuLinkTree->transform($tree, $manipulators);
