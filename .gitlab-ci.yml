@@ -17,6 +17,10 @@ include:
       - '/includes/include.drupalci.main.yml'
       - '/includes/include.drupalci.variables.yml'
       - '/includes/include.drupalci.workflows.yml'
+    rules:
+      - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $CI_COMMIT_MESSAGE != /MR-Build/
+        when: never
+      - when: always
 #
 ################
 # Pipeline configuration variables are defined with default values and descriptions in the file
@@ -52,3 +56,32 @@ frontend:
     paths:
       - node_modules/
     expire_in: 6 mos
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $CI_COMMIT_MESSAGE != /MR-Build/
+      when: never
+    - when: always
+
+mr-build:
+  stage: build
+  image: node:20.14.0-alpine
+  variables:
+    GIT_STRATEGY: fetch
+    GIT_CHECKOUT: "true"
+  script:
+    - apk add bash git openssh
+    - npm install
+    - npm run build
+  after_script:
+    # Verify if anything has changed and a new MR was required.
+    - git status >/tmp/test.log 2>&1
+    - EC=0
+    - grep "nothing to commit, working tree clean" /tmp/test.log || EC=$?
+    - if [[ $EC -eq 0 ]]; then echo "No changes detected, no MR required"; exit 0; fi
+    - git config --global user.email "${GITLAB_USER_EMAIL}"
+    - git config --global user.name "${GITLAB_USER_NAME}"
+    - git commit -am "MR-Build"
+    - git push origin
+  rules:
+    - if: $CI_COMMIT_MESSAGE == /MR-Build/
+      when: never
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
