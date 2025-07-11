@@ -346,7 +346,7 @@ class GinNavigation implements ContainerInjectionInterface {
           'gin/navigation',
         ],
       ],
-      '#access' => $this->currentUser->hasPermission('access toolbar'),
+      '#access' => $this->currentUser->hasPermission('access toolbar') || $this->currentUser->hasPermission('access navigation'),
     ];
   }
 
