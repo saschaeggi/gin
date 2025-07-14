@@ -67,14 +67,15 @@ mr-build:
   variables:
     GIT_STRATEGY: fetch
     GIT_CHECKOUT: "true"
+  before_script:
+    - echo "Source branch name is $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME"
+    - git checkout $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
   script:
     - apk add bash git openssh
-    - echo "Source branch name is $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME"
-    #- npm install
-    #- npm run build
+    - npm install
+    - npm run build
   after_script:
     # Verify if anything has changed and a new MR was required.
-    - ecit 0
     - git status >/tmp/test.log 2>&1
     - EC=0
     - grep "nothing to commit, working tree clean" /tmp/test.log || EC=$?
@@ -82,7 +83,7 @@ mr-build:
     - git config --global user.email "${GITLAB_USER_EMAIL}"
     - git config --global user.name "${GITLAB_USER_NAME}"
     - git commit -am "MR-Build"
-    - git push origin
+    - git push -set-upstream origin $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
   rules:
     - if: $CI_COMMIT_MESSAGE == /MR-Build/
       when: never
