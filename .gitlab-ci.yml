@@ -69,6 +69,10 @@ mr-build:
     GIT_CHECKOUT: "true"
   before_script:
     - apk add bash git openssh
+    - echo "Project URL $CI_PROJECT_URL"
+    - [[ $CI_PROJECT_URL =~ (^https?://)(.+) ]] && REPO="${BASH_REMATCH[1]}${GITLAB_USER_LOGIN}:${ACCESS_TOKEN}@${BASH_REMATCH[2]}.git"
+    - git remove -v
+    - echo "Repo $REPO"
     - echo "Source branch name is $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME"
     - git checkout -b $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
     - git fetch
