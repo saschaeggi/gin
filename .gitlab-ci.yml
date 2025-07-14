@@ -70,7 +70,8 @@ mr-build:
   before_script:
     - apk add bash git openssh
     - echo "Source branch name is $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME"
-    - git checkout $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+    - git checkout -b $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+    - git fetch
   script:
     - npm install
     - npm run build
