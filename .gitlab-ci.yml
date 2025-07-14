@@ -69,10 +69,12 @@ mr-build:
     GIT_CHECKOUT: "true"
   script:
     - apk add bash git openssh
-    - npm install
-    - npm run build
+    - echo "Source branch name is $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME"
+    #- npm install
+    #- npm run build
   after_script:
     # Verify if anything has changed and a new MR was required.
+    - ecit 0
     - git status >/tmp/test.log 2>&1
     - EC=0
     - grep "nothing to commit, working tree clean" /tmp/test.log || EC=$?
