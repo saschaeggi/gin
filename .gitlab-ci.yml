@@ -84,7 +84,7 @@ mr-build:
     - git config --global user.email "${GITLAB_USER_EMAIL}"
     - git config --global user.name "${GITLAB_USER_NAME}"
     - git commit -am "MR-Build"
-    - git push -set-upstream origin $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+    - git push --set-upstream origin $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
   rules:
     - if: $CI_COMMIT_MESSAGE == /MR-Build/
       when: never
