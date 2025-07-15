@@ -68,7 +68,7 @@ mr-build:
     GIT_STRATEGY: fetch
     GIT_CHECKOUT: "true"
   script:
-    - apk add bash git openssh
+    - apk add bash curl git openssh
     - npm install
     - npm run build
   after_script:
