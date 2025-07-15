@@ -65,8 +65,8 @@ mr-build:
   stage: build
   image: node:20.14.0-alpine
   variables:
-    GIT_STRATEGY: none
-    GIT_CHECKOUT: "false"
+    GIT_STRATEGY: fetch
+    GIT_CHECKOUT: "true"
   script:
     - apk add bash git openssh
     - npm install
