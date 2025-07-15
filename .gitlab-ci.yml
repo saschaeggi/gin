@@ -69,9 +69,7 @@ mr-build:
     GIT_CHECKOUT: "false"
   before_script:
     - apk add bash git openssh
-    - |
-      HOST=${CI_PROJECT_URL}
-      [[ $HOST =~ (^https?://)(.+) ]] && REPO="${BASH_REMATCH[1]}${GITLAB_USER_LOGIN}:${ACCESS_TOKEN}@${BASH_REMATCH[2]}.git"
+    - HOST="https://${GITLAB_USER_LOGIN}:${ACCESS_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git"
     - echo "Host $HOST"
     - git clone $HOST .
     - echo "Source branch name is $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME"
@@ -89,6 +87,7 @@ mr-build:
     - git config --global user.name "${GITLAB_USER_NAME}"
     - git commit -am "MR-Build"
     #- git push --set-upstream origin $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+    - git remote -v
     - git push
   rules:
     - if: $CI_COMMIT_MESSAGE == /MR-Build/
