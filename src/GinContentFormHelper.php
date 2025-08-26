@@ -227,10 +227,10 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     }
 
     // Specify necessary node form theme and library.
-    // @see claro_form_node_form_alter
+    // @see gin_form_node_form_alter
     $form['#theme'] = ['node_edit_form'];
     // Attach libraries.
-    $form['#attached']['library'][] = 'claro/node-form';
+    $form['#attached']['library'][] = 'gin/node-form';
     $form['#attached']['library'][] = 'gin/edit_form';
 
     // Add a class that allows the logic in edit_form.js to identify the form.

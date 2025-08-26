@@ -34,6 +34,8 @@ class GinNavigation implements ContainerInjectionInterface {
    *   The current route match.
    * @param \Drupal\Core\Menu\MenuLinkTreeInterface $menuLinkTree
    *   The menu link tree.
+   * @param \Drupal\Core\Extension\ModuleHandlerInterface $moduleHandler
+   *   The module handler.
    */
   public function __construct(
     protected AccountInterface $currentUser,

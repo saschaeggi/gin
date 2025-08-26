@@ -75,6 +75,12 @@ function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
  * Helper function for check if Gin is active.
  */
 function _gin_is_active() {
+  // Check if set as admin theme.
+  $admin_theme_name = \Drupal::config('system.theme')->get('admin');
+  if ($admin_theme_name === 'gin') {
+    return TRUE;
+  }
+
   $theme_handler = \Drupal::service('theme_handler')->listInfo();
 
   // Check if set as frontend theme.
@@ -87,9 +93,6 @@ function _gin_is_active() {
 
   // Add theme name to base theme array.
   $frontend_base_themes[$frontend_theme_name] = $frontend_theme_name;
-
-  // Check if set as admin theme.
-  $admin_theme_name = \Drupal::config('system.theme')->get('admin');
 
   // Admin theme will have no value if it is set to use the default theme.
   if ($admin_theme_name && isset($theme_handler[$admin_theme_name]->base_themes)) {

@@ -15,7 +15,7 @@
           elem
             .closest('.help-icon__description-container')
             .querySelectorAll(
-              '.claro-details__description, .fieldset__description, .form-item__description',
+              '.gin-details__description, .fieldset__description, .form-item__description',
             )
             .forEach((description) => {
               description.setAttribute('aria-labelledby', a11yLabel);
@@ -35,7 +35,7 @@
             event.currentTarget
               .closest('.help-icon__description-container')
               .querySelectorAll(
-                '.claro-details__description, .fieldset__description, .form-item__description',
+                '.gin-details__description, .fieldset__description, .form-item__description',
               )
               .forEach((description, index) => {
                 if (index > 1) {

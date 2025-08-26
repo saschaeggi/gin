@@ -184,31 +184,31 @@
   border-color: var(--gin-border-color);
 }
 
-.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary {
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .gin-details__summary {
   font-size: var(--gin-font-size-s);
   display: block;
   padding-inline-start: 3rem;
 }
 
-.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary .details-title {
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .gin-details__summary .details-title {
   position: static;
   padding-inline-start: 0;
 }
 
-.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary::before {
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .gin-details__summary::before {
   inset-block-start: var(--gin-spacing-xl);
   inset-inline-start: 1.5rem;
 }
 
-.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .claro-details__summary:focus::after {
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item > .gin-details__summary:focus::after {
   border-radius: 6px;
 }
 
-.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .claro-details__content {
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .gin-details__content {
   margin-inline: 1.5rem;
 }
 
-.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .claro-details__content .claro-details__wrapper {
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .gin-details__content .gin-details__wrapper {
   margin: var(--gin-spacing-l);
 }
 
@@ -216,7 +216,7 @@
   width: 47%;
 }
 
-.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-type--entity-autocomplete .claro-autocomplete {
+.gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary .entity-meta > .accordion__item .form-type--entity-autocomplete .gin-autocomplete {
   width: 100%;
 }
 

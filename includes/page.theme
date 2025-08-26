@@ -53,6 +53,36 @@ function gin_preprocess_page(&$variables) {
  * Implements hook_preprocess_HOOK() for page_attachments.
  */
 function gin_page_attachments_alter(&$page) {
+
+  $theme_path = \Drupal::request()->getBasePath() . '/' . \Drupal::service('extension.list.theme')->getPath('gin');
+  $query_string = \Drupal::service('asset.query_string')->get();
+
+  // Attach non-JavaScript specific CSS via a noscript tag to prevent unwanted
+  // layout shifts.
+  $page['#attached']['html_head'][] = [
+    [
+      '#tag' => 'link',
+      '#noscript' => TRUE,
+      '#attributes' => [
+        'rel' => 'stylesheet',
+        'href' => $theme_path . '/css/components/dropbutton-noscript.css?' . $query_string,
+      ],
+    ],
+    'dropbutton_noscript',
+  ];
+
+  $page['#attached']['html_head'][] = [
+    [
+      '#tag' => 'link',
+      '#noscript' => TRUE,
+      '#attributes' => [
+        'rel' => 'stylesheet',
+        'href' => $theme_path . '/css/components/views-ui-noscript.css?' . $query_string,
+      ],
+    ],
+    'views_ui_noscript',
+  ];
+
   // Are we relevant?
   $gin_activated = _gin_is_active();
 

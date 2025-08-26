@@ -28,12 +28,10 @@ variables:
   SKIP_STYLELINT: '1'
   # @todo Enable ESlint and resolve issues.
   SKIP_ESLINT: '1'
-#   OPT_IN_TEST_NEXT_MAJOR: '1'
-#   _CURL_TEMPLATES_REF: 'main'
   CORE_STABLE: '11.x-dev'
   OPT_IN_TEST_PREVIOUS_MAJOR: 0
-  OPT_IN_TEST_CURRENT: 1
-  OPT_IN_TEST_NEXT_MINOR: 0
+  OPT_IN_TEST_CURRENT: 0
+  OPT_IN_TEST_NEXT_MINOR: 1
   OPT_IN_TEST_NEXT_MAJOR: 0
   RUN_JOB_UPGRADE_STATUS: 0
 
@@ -52,3 +50,22 @@ frontend:
     paths:
       - node_modules/
     expire_in: 6 mos
+
+cspell:
+  allow_failure: false
+phpcs:
+  allow_failure: false
+phpstan:
+  allow_failure: false
+phpstan (next minor):
+  allow_failure: false
+phpstan (next major):
+  allow_failure: false
+phpunit (previous major):
+  allow_failure: false
+phpunit (next minor):
+  allow_failure: false
+phpunit (next major):
+  allow_failure: false
+upgrade status:
+  allow_failure: false

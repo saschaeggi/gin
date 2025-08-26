@@ -51,8 +51,15 @@ function gin_preprocess_menu__toolbar__gin(&$variables) {
 
 /**
  * Implements toolbar preprocess.
+ *
+ * This is also called by system_preprocess_toolbar() in instances where Gin
+ * is the admin theme but not the active theme.
+ *
+ * @see system_preprocess_toolbar()
  */
 function gin_preprocess_toolbar(&$variables) {
+  $variables['attributes']['data-drupal-gin-processed-toolbar'] = TRUE;
+
   // The controller resolver does not support Closures at this time. For now,
   // we use a wrapper function to load the service with dependencies.
   // @see https://www.drupal.org/project/drupal/issues/3060638

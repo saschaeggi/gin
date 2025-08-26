@@ -154,8 +154,8 @@
   --gin-bg-header: #373b45;
 }
 
-.gin--dark-mode[data-gin-accent=claro_blue],
-.gin--dark-mode [data-gin-accent=claro_blue] {
+.gin--dark-mode[data-gin-accent=gin_blue],
+.gin--dark-mode [data-gin-accent=gin_blue] {
   --gin-color-primary-rgb: 115, 145, 216;
   --gin-color-primary-light-rgb: 57, 63, 79;
   --gin-color-primary-hover: #819cdc;

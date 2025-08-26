@@ -191,7 +191,7 @@
             border-color: var(--gin-border-color);
           }
 
-          > .claro-details__summary {
+          > .gin-details__summary {
             font-size: var(--gin-font-size-s);
             display: block;
             padding-inline-start: #{$sidebarSpacer + 1.5rem};
@@ -211,10 +211,10 @@
             }
           }
 
-          .claro-details__content {
+          .gin-details__content {
             margin-inline: $sidebarSpacer;
 
-            .claro-details__wrapper {
+            .gin-details__wrapper {
               margin: var(--gin-spacing-l);
             }
           }
@@ -223,7 +223,7 @@
             width: 47%;
           }
 
-          .form-type--entity-autocomplete .claro-autocomplete {
+          .form-type--entity-autocomplete .gin-autocomplete {
             width: 100%;
           }
 

@@ -48,7 +48,7 @@
 }
 
 .tabs__link,
-.claro-details__summary,
+.gin-details__summary,
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
   color: var(--gin-color-text);
   font-size: var(--gin-font-size);
@@ -61,7 +61,7 @@
 }
 
 .tabs__link.is-active,
-.claro-details__summary[aria-expanded=true],
+.gin-details__summary[aria-expanded=true],
 .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.selected a {
   font-weight: var(--gin-font-weight-semibold);
 }
@@ -75,14 +75,14 @@
   }
 }
 
-.claro-details {
+.gin-details {
   color: var(--gin-color-text);
   border: 1px solid var(--gin-border-color);
   border-radius: var(--gin-border-m);
   box-shadow: none;
 }
 
-.claro-details__summary {
+.gin-details__summary {
   &::after {
     border-radius: var(--gin-border-m);
   }
@@ -260,7 +260,7 @@
   }
 }
 
-// Horizontal Tabs in Claro style
+// Horizontal Tabs in Gin style
 .horizontal-tabs {
   position: static !important;
   display: flex;
@@ -335,7 +335,7 @@
     > .details-wrapper {
       margin: 0;
 
-      > .claro-details__description {
+      > .gin-details__description {
         margin-block-start: var(--gin-spacing-m);
       }
     }
@@ -346,13 +346,13 @@
   }
 }
 
-.claro-details__description {
+.gin-details__description {
   max-width: var(--gin-max-line-length);
 }
 
 // Icon
-.claro-details__summary::before,
-.claro-details[open] > .claro-details__summary::before {
+.gin-details__summary::before,
+.gin-details[open] > .gin-details__summary::before {
   inset-inline-start: 1.125rem;
   background: var(--gin-color-text);
   mask-image: icon('handle');
@@ -365,26 +365,26 @@
   }
 }
 
-.claro-details__summary::before {
+.gin-details__summary::before {
   @media (forced-colors: active) {
     transform: rotate(90deg);
   }
 }
 
-.claro-details[open] > .claro-details__summary::before {
+.gin-details[open] > .gin-details__summary::before {
   @media (forced-colors: active) {
     transform: rotate(270deg);
     margin-block-start: -6px;
   }
 }
 
-.claro-details__summary:hover::before,
-.claro-details__summary:hover:focus::before,
-.claro-details[open] > .claro-details__summary:hover::before,
-.claro-details[open] > .claro-details__summary:focus::before,
-.claro-details[open] > .claro-details__summary--accordion::before,
-.claro-details[open] > .claro-details__summary--accordion-item::before,
-.claro-details[open] > .claro-details__summary--vertical-tabs-item::before {
+.gin-details__summary:hover::before,
+.gin-details__summary:hover:focus::before,
+.gin-details[open] > .gin-details__summary:hover::before,
+.gin-details[open] > .gin-details__summary:focus::before,
+.gin-details[open] > .gin-details__summary--accordion::before,
+.gin-details[open] > .gin-details__summary--accordion-item::before,
+.gin-details[open] > .gin-details__summary--vertical-tabs-item::before {
   background: var(--gin-color-primary);
 
   @media (forced-colors: active) {
@@ -392,28 +392,28 @@
   }
 }
 
-.claro-details {
+.gin-details {
   &__description {
     color: var(--gin-color-text-light);
   }
 }
 
-.claro-details__wrapper--accordion,
-.claro-details__wrapper--accordion-item,
-.claro-details__wrapper--vertical-tabs-item {
+.gin-details__wrapper--accordion,
+.gin-details__wrapper--accordion-item,
+.gin-details__wrapper--vertical-tabs-item {
   border-block-start: 1px solid var(--gin-border-color);
   background: var(--gin-bg-app);
 }
 
 .gin--dark-mode {
-  .claro-details,
-  .claro-details__summary--accordion,
-  .claro-details__summary--accordion-item,
-  .claro-details__summary--vertical-tabs-item {
+  .gin-details,
+  .gin-details__summary--accordion,
+  .gin-details__summary--accordion-item,
+  .gin-details__summary--vertical-tabs-item {
     background-color: transparent;
   }
 
-  .claro-details {
+  .gin-details {
     border-color: var(--gin-border-color);
   }
 
@@ -436,7 +436,7 @@
       color: var(--gin-color-text-light);
     }
 
-    .claro-details__wrapper {
+    .gin-details__wrapper {
       background: var(--gin-bg-app);
     }
   }
@@ -463,7 +463,7 @@
         }
       }
 
-      .claro-details__summary {
+      .gin-details__summary {
         @include mq(large) {
           padding-inline-start: var(--gin-spacing-xxl);
 
@@ -473,7 +473,7 @@
         }
       }
 
-      > .claro-details__wrapper {
+      > .gin-details__wrapper {
         display: inline-block;
         width: 100%;
       }
@@ -503,8 +503,8 @@
   }
 }
 
-[open] > .claro-details__summary--vertical-tabs-item:not(:focus):not(:active)::after,
-[open] > .claro-details__summary--accordion-item:not(:focus):not(:active)::after {
+[open] > .gin-details__summary--vertical-tabs-item:not(:focus):not(:active)::after,
+[open] > .gin-details__summary--accordion-item:not(:focus):not(:active)::after {
   border-inline-start-width: 5px;
 }
 

@@ -116,7 +116,7 @@
     background: none;
   }
 
-  // Hide Claro outline, we use Gin's instead
+  // Hide Gin outline, we use Gin's instead
   &:focus &__preview-wrapper {
     box-shadow: none;
   }

@@ -1,6 +1,6 @@
 name: Gin
 type: theme
-base theme: claro
+base theme: false
 description: 'Admin theme with a strong focus on improving the Editorial Experience. Learn more about Gin’s <a href="https://www.drupal.org/docs/contributed-themes/gin-admin-theme/specific-settings-within-gin" target="_blank">Settings</a> and how to customize Gin in our <a href="https://www.drupal.org/docs/contributed-themes/gin-admin-theme/custom-theming" target="_blank">Custom theming guide</a>.'
 core_version_requirement: ^11.2
 
@@ -11,10 +11,95 @@ core_version_requirement: ^11.2
 #   - drupal:link
 
 libraries:
-  - claro/global-styling
-  - gin/gin
+  - core/drupal.message
+  - core/normalize
+  - gin/global-styling
 
 libraries-override:
+  core/drupal.tabledrag:
+    css:
+      component:
+        misc/components/tabledrag.module.css: merge/css/components/tabledrag.css
+    js:
+      misc/tabledrag.js: js/overrides/tabledrag.js
+
+  core/drupal.ajax:
+    css:
+      component:
+        misc/components/ajax-progress.module.css: merge/css/components/ajax-progress.module.css
+
+  core/drupal.autocomplete:
+    css:
+      component:
+        misc/components/autocomplete-loading.module.css: merge/css/components/autocomplete-loading.module.css
+
+  system/status.report: gin/status.report
+
+  system/admin:
+    css:
+      theme:
+        css/system.admin.css: false
+
+  core/drupal.dropbutton:
+    css:
+      component:
+        misc/dropbutton/dropbutton.css: merge/css/components/dropbutton.css
+
+  core/drupal.vertical-tabs:
+    css:
+      component:
+        misc/vertical-tabs.css: false
+
+  core/internal.jquery_ui:
+    css:
+      theme:
+        assets/vendor/jquery.ui/themes/base/theme.css: false
+
+  core/drupal.dialog:
+    css:
+      component:
+        assets/vendor/jquery.ui/themes/base/dialog.css: false
+
+  user/drupal.user:
+    css:
+      component:
+        css/user.module.css: false
+
+  field_ui/drupal.field_ui:
+    css:
+      theme:
+        css/field_ui.admin.css: merge/css/theme/field-ui.admin.css
+
+  node/drupal.node:
+    css:
+      layout:
+        css/node.module.css: false
+
+  node/form:
+    css:
+      layout:
+        css/node.module.css: false
+
+  toolbar/toolbar:
+    css:
+      component:
+        css/toolbar.module.css: merge/css/components/toolbar.module.css
+      theme:
+        css/toolbar.theme.css: merge/css/theme/toolbar.theme.css
+        css/toolbar.icons.theme.css: merge/css/theme/toolbar.icons.theme.css
+
+  toolbar/toolbar.menu:
+    css:
+      state:
+        css/toolbar.menu.css: merge/css/state/toolbar.menu.css
+
+  views_ui/admin.styling:
+    css:
+      component:
+        css/views_ui.admin.css: merge/css/components/views_ui.admin.css
+      theme:
+        css/views_ui.admin.theme.css: merge/css/theme/views_ui.admin.theme.css
+
   # Gin overrides: replace
   media_library/view:
     js:
@@ -24,13 +109,9 @@ libraries-override:
     js:
       misc/tableselect.js: js/overrides/tableselect.js
 
-  core/drupal.tabledrag:
-    js:
-      misc/tabledrag.js: js/overrides/tabledrag.js
-
   # Gin overrides: disable
   # needed override to overcome dialog styling issues
-  claro/claro.drupal.dialog:
+  gin/gin.drupal.dialog:
     css:
       theme:
         css/components/dialog.css: false
@@ -42,7 +123,7 @@ libraries-override:
         misc/dialog/off-canvas.css: false
         misc/dialog/off-canvas.theme.css: false
 
-  claro/global-styling:
+  gin/global-styling:
     css:
       layout:
         css/layout/local-actions.css: false
@@ -58,32 +139,76 @@ libraries-override:
         misc/components/sticky-header.module.css: false
 
 libraries-extend:
+  core/drupal.collapse:
+    - gin/details-focus
+  core/drupal.dialog:
+    - gin/gin.drupal.dialog
+    - gin/dialog
+  core/drupal.dropbutton:
+    - gin/dropbutton
+  core/drupal.checkbox:
+    - gin/checkbox
+  core/drupal.item-list:
+    - gin/item-list
   core/drupal.message:
     - gin/messages
+  core/drupal.progress:
+    - gin/progress
+  core/drupal.tabbingmanager:
+    - gin/tabbingmanager
+  core/drupal.tabledrag:
+    - gin/gin.tabledrag
   core/drupal.tableselect:
     - gin/tableselect
-  core/drupal.tableheader:
-    - gin/tableheader
+  core/drupal.tablesort:
+    - gin/drupal.tablesort
+  core/drupal.vertical-tabs:
+    - gin/vertical-tabs
+  file/drupal.file:
+    - gin/file
+  filter/drupal.filter.admin:
+    - gin/filter
+  filter/drupal.filter:
+    - gin/filter
+  system/admin:
+    - gin/system.admin
   core/drupal.autocomplete:
     - gin/autocomplete
+  shortcut/drupal.shortcut:
+    - gin/drupal.shortcut
+  core/drupal.ajax:
+    - gin/ajax
+  user/drupal.user:
+    - gin/form.password-confirm
+  node/drupal.node.preview:
+    - gin/drupal.node.preview
+  system/status.report:
+    - gin/status.report
+  views/views.module:
+    - gin/views
+  views_ui/admin.styling:
+    - gin/views_ui
+  media/media_embed_ckeditor_theme:
+    - gin/classy.media_embed_ckeditor_theme
+    - gin/gin_media_embed_ckeditor_theme
+  media_library/ui:
+    - gin/media_library.ui
+  media_library/view:
+    - gin/media_library.theme
+    - gin/media_library
+  media_library/widget:
+    - gin/media_library.theme
+    - gin/media_library
+  image/admin:
+    - gin/image.admin
+  core/drupal.tableheader:
+    - gin/tableheader
   core/ckeditor:
     - gin/ckeditor
   ckeditor/ckeditor:
     - gin/ckeditor
   core/ckeditor5:
     - gin/ckeditor5
-  core/drupal.dialog:
-    - gin/dialog
-  core/drupal.ajax:
-    - gin/ajax
-  core/drupal.dropbutton:
-    - gin/dropbutton
-  media/media_embed_ckeditor_theme:
-    - gin/gin_media_embed_ckeditor_theme
-  media_library/view:
-    - gin/media_library
-  media_library/widget:
-    - gin/media_library
   contextual/drupal.contextual-links:
     - gin/contextual_links
   autosave_form/drupal.autosave_form:
@@ -146,14 +271,14 @@ ckeditor5-stylesheets: false
 
 # Regions
 regions:
-  header: 'Header'
-  pre_content: 'Pre-content'
+  header: Header
+  pre_content: Pre-content
   breadcrumb: Breadcrumb
   highlighted: Highlighted
   help: Help
   content: Content
-  page_top: 'Page top'
-  page_bottom: 'Page bottom'
-  sidebar_first: 'First sidebar'
+  page_top: Page top
+  page_bottom: Page bottom
+  sidebar_first: First sidebar
 regions_hidden:
   - sidebar_first

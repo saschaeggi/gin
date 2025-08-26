@@ -63,9 +63,9 @@ a,
 .link,
 button.link,
 .tabs__link.is-active,
-[open] .claro-details__summary--accordion,
-[open] .claro-details__summary--accordion-item,
-[open] .claro-details__summary--vertical-tabs-item,
+[open] .gin-details__summary--accordion,
+[open] .gin-details__summary--accordion-item,
+[open] .gin-details__summary--vertical-tabs-item,
 .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link {
   color: var(--gin-color-primary);
   text-decoration-style: var(--gin-link-decoration-style);
@@ -75,9 +75,9 @@ a:hover,
 .link:hover,
 button.link:hover,
 .tabs__link.is-active:hover,
-[open] .claro-details__summary--accordion:hover,
-[open] .claro-details__summary--accordion-item:hover,
-[open] .claro-details__summary--vertical-tabs-item:hover,
+[open] .gin-details__summary--accordion:hover,
+[open] .gin-details__summary--accordion-item:hover,
+[open] .gin-details__summary--vertical-tabs-item:hover,
 .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link:hover {
   color: var(--gin-color-primary-hover);
 }
@@ -86,9 +86,9 @@ a:active,
 .link:active,
 button.link:active,
 .tabs__link.is-active:active,
-[open] .claro-details__summary--accordion:active,
-[open] .claro-details__summary--accordion-item:active,
-[open] .claro-details__summary--vertical-tabs-item:active,
+[open] .gin-details__summary--accordion:active,
+[open] .gin-details__summary--accordion-item:active,
+[open] .gin-details__summary--vertical-tabs-item:active,
 .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link:active {
   color: var(--gin-color-primary-active);
 }
@@ -99,12 +99,12 @@ button.link:active,
 }
 
 .is-horizontal .tabs__link:hover,
-.claro-details__summary:hover,
+.gin-details__summary:hover,
 .action-link:hover {
   color: var(--gin-color-primary-hover);
 }
 
-.claro-details[open] > .claro-details__summary:focus {
+.gin-details[open] > .gin-details__summary:focus {
   color: var(--gin-color-primary-active);
 }
 
@@ -112,12 +112,12 @@ button.link:active,
 .form-boolean--type-radio:checked:not(:disabled),
 .is-horizontal .tabs__link.is-active::before,
 .tabs__tab.is-active::before,
-[open] > .claro-details__summary--accordion:not(:focus):not(:active)::after,
-[open] > .claro-details__summary--accordion-item:not(:focus):not(:active)::after,
-.collapse-processed[open] > .claro-details__summary--accordion .details-title:not(:focus)::after,
-.collapse-processed[open] > .claro-details__summary--accordion-item .details-title:not(:focus)::after,
-[open] > .claro-details__summary--vertical-tabs-item:not(:focus):not(:active)::after,
-.collapse-processed[open] > .claro-details__summary--vertical-tabs-item .details-title:not(:focus)::after,
+[open] > .gin-details__summary--accordion:not(:focus):not(:active)::after,
+[open] > .gin-details__summary--accordion-item:not(:focus):not(:active)::after,
+.collapse-processed[open] > .gin-details__summary--accordion .details-title:not(:focus)::after,
+.collapse-processed[open] > .gin-details__summary--accordion-item .details-title:not(:focus)::after,
+[open] > .gin-details__summary--vertical-tabs-item:not(:focus):not(:active)::after,
+.collapse-processed[open] > .gin-details__summary--vertical-tabs-item .details-title:not(:focus)::after,
 .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link::before {
   border-color: var(--gin-color-primary);
 }
@@ -126,12 +126,12 @@ button.link:active,
 .form-boolean--type-radio:checked:not(:disabled):hover,
 .is-horizontal .tabs__link.is-active::before:hover,
 .tabs__tab.is-active::before:hover,
-[open] > .claro-details__summary--accordion:not(:focus):not(:active)::after:hover,
-[open] > .claro-details__summary--accordion-item:not(:focus):not(:active)::after:hover,
-.collapse-processed[open] > .claro-details__summary--accordion .details-title:not(:focus)::after:hover,
-.collapse-processed[open] > .claro-details__summary--accordion-item .details-title:not(:focus)::after:hover,
-[open] > .claro-details__summary--vertical-tabs-item:not(:focus):not(:active)::after:hover,
-.collapse-processed[open] > .claro-details__summary--vertical-tabs-item .details-title:not(:focus)::after:hover,
+[open] > .gin-details__summary--accordion:not(:focus):not(:active)::after:hover,
+[open] > .gin-details__summary--accordion-item:not(:focus):not(:active)::after:hover,
+.collapse-processed[open] > .gin-details__summary--accordion .details-title:not(:focus)::after:hover,
+.collapse-processed[open] > .gin-details__summary--accordion-item .details-title:not(:focus)::after:hover,
+[open] > .gin-details__summary--vertical-tabs-item:not(:focus):not(:active)::after:hover,
+.collapse-processed[open] > .gin-details__summary--vertical-tabs-item .details-title:not(:focus)::after:hover,
 .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link::before:hover {
   border-color: var(--gin-color-primary-hover);
 }
@@ -140,12 +140,12 @@ button.link:active,
 .form-boolean--type-radio:checked:not(:disabled):active,
 .is-horizontal .tabs__link.is-active::before:active,
 .tabs__tab.is-active::before:active,
-[open] > .claro-details__summary--accordion:not(:focus):not(:active)::after:active,
-[open] > .claro-details__summary--accordion-item:not(:focus):not(:active)::after:active,
-.collapse-processed[open] > .claro-details__summary--accordion .details-title:not(:focus)::after:active,
-.collapse-processed[open] > .claro-details__summary--accordion-item .details-title:not(:focus)::after:active,
-[open] > .claro-details__summary--vertical-tabs-item:not(:focus):not(:active)::after:active,
-.collapse-processed[open] > .claro-details__summary--vertical-tabs-item .details-title:not(:focus)::after:active,
+[open] > .gin-details__summary--accordion:not(:focus):not(:active)::after:active,
+[open] > .gin-details__summary--accordion-item:not(:focus):not(:active)::after:active,
+.collapse-processed[open] > .gin-details__summary--accordion .details-title:not(:focus)::after:active,
+.collapse-processed[open] > .gin-details__summary--accordion-item .details-title:not(:focus)::after:active,
+[open] > .gin-details__summary--vertical-tabs-item:not(:focus):not(:active)::after:active,
+.collapse-processed[open] > .gin-details__summary--vertical-tabs-item .details-title:not(:focus)::after:active,
 .vertical-tabs__menu-item.is-selected .vertical-tabs__menu-link::before:active {
   border-color: var(--gin-color-primary-active);
 }
@@ -648,38 +648,38 @@ body:not(.toolbar-tray-open) .layout-container {
   margin-block-start: var(--gin-spacing-m);
 }
 
-.claro-details__summary {
+.gin-details__summary {
   padding-inline-start: 2.75rem;
 }
 
-.claro-details.claro-details--package-listing,
-.claro-details.module-list__module-details,
-.system-status-report .claro-details {
+.gin-details.gin-details--package-listing,
+.gin-details.module-list__module-details,
+.system-status-report .gin-details {
   border: 1px solid var(--gin-border-color);
   border-radius: var(--gin-border-m);
 }
 
-.claro-details__summary,
-.claro-details__summary.claro-details__summary--package-listing,
-.claro-details__summary.claro-details__summary--system-status-report {
+.gin-details__summary,
+.gin-details__summary.gin-details__summary--package-listing,
+.gin-details__summary.gin-details__summary--system-status-report {
   color: var(--gin-color-text);
   background-color: transparent;
 }
 
-.claro-details__wrapper,
-.claro-details__wrapper.claro-details__wrapper--package-listing,
-.claro-details__wrapper.claro-details__wrapper--system-status-report {
+.gin-details__wrapper,
+.gin-details__wrapper.gin-details__wrapper--package-listing,
+.gin-details__wrapper.gin-details__wrapper--system-status-report {
   margin-block: var(--gin-spacing-m);
   margin-inline: calc(var(--gin-spacing-l) - var(--gin-spacing-xxs));
 }
 
-.claro-details__wrapper--accordion,
-.claro-details__wrapper--accordion-item,
-.claro-details__wrapper--vertical-tabs-item {
+.gin-details__wrapper--accordion,
+.gin-details__wrapper--accordion-item,
+.gin-details__wrapper--vertical-tabs-item {
   margin: 0;
 }
 
-.claro-details__summary-summary {
+.gin-details__summary-summary {
   color: var(--gin-color-text-light);
   opacity: .8;
 }
@@ -2076,11 +2076,11 @@ fieldset:not(.fieldgroup).error {
   background: none;
 }
 
-.claro-details.error {
+.gin-details.error {
   border: 2px solid var(--gin-color-danger);
 }
 
-.claro-details__summary:not(.form-required) .required-mark {
+.gin-details__summary:not(.form-required) .required-mark {
   display: none;
 }
 
@@ -2135,11 +2135,11 @@ html[dir="rtl"].js input.form-linkit-autocomplete {
   background-position: left 8px center;
 }
 
-.claro-autocomplete {
+.gin-autocomplete {
   width: calc(100% - var(--gin-spacing-m));
 }
 
-.claro-autocomplete .form-autocomplete {
+.gin-autocomplete .form-autocomplete {
   width: 100%;
 }
 
@@ -2989,7 +2989,7 @@ a.button--primary.button--danger,
   margin-inline: 0;
 }
 
-.claro-details__summary--system-status-report {
+.gin-details__summary--system-status-report {
   background: transparent;
 }
 
@@ -3472,11 +3472,11 @@ hr {
   border-radius: calc(var(--gin-border-xs) / 2);
 }
 
-.claro-details:focus, .claro-details:focus:hover, .claro-details__summary:focus, .claro-details__summary:focus:hover {
+.gin-details:focus, .gin-details:focus:hover, .gin-details__summary:focus, .gin-details__summary:focus:hover {
   box-shadow: none;
 }
 
-.claro-details__summary:after {
+.gin-details__summary:after {
   box-shadow: inset 0 0 0 1px var(--gin-color-focus-border), inset 0 0 0 4px var(--gin-color-focus);
 }
 
@@ -3745,12 +3745,12 @@ tr.color-error:focus,
 .admin-dblog .dblog-notice .icon,
 .system-status-report__status-icon--checked .details-title:before,
 .details .system-status-report__status-icon--checked:before,
-.claro-details .system-status-report__status-icon--checked:before,
+.gin-details .system-status-report__status-icon--checked:before,
 .color-checked .system-status-report__status-title:before,
 .upgrade-status-counter__status-icon--checked:before,
 .upgrade-status-error-list tr.no-known-error > td.status-info:before,
 .upgrade-status-summary tr.no-known-error > td.status-info:before,
-#checked + .claro-details__wrapper--system-status-report .system-status-report__status-title:before {
+#checked + .gin-details__wrapper--system-status-report .system-status-report__status-title:before {
   background-image: none;
   background-color: var(--gin-color-green);
   -webkit-mask-image: url("../../media/sprite.svg#status-view");
@@ -3767,7 +3767,7 @@ tr.color-error:focus,
 .admin-dblog .dblog-warning .icon,
 .system-status-report__status-icon--warning .details-title:before,
 .details .system-status-report__status-icon--warning:before,
-.claro-details .system-status-report__status-icon--warning:before,
+.gin-details .system-status-report__status-icon--warning:before,
 .upgrade-status-counter__status-icon--warning:before,
 .upgrade-status-error-list tr.known-warnings > td.status-info:before,
 .upgrade-status-summary tr.known-warnings > td.status-info:before {
@@ -3790,7 +3790,7 @@ tr.color-error:focus,
 .admin-dblog .dblog-emergency .icon,
 .system-status-report__status-icon--error .details-title:before,
 .details .system-status-report__status-icon--error:before,
-.claro-details .system-status-report__status-icon--error:before,
+.gin-details .system-status-report__status-icon--error:before,
 .upgrade-status-counter__status-icon--error:before,
 .upgrade-status-error-list tr.known-errors > td.status-info:before,
 .upgrade-status-summary tr.known-errors > td.status-info:before {
@@ -3930,7 +3930,7 @@ tr.color-error:focus,
 }
 
 .color-checked .system-status-report__status-title:before,
-#checked + .claro-details__wrapper--system-status-report .system-status-report__status-title:before {
+#checked + .gin-details__wrapper--system-status-report .system-status-report__status-title:before {
   content: "";
   position: absolute;
   inset-block-start: 1em;
@@ -3943,7 +3943,7 @@ tr.color-error:focus,
 
 .system-status-report__status-title .details-title:before,
 .details .system-status-report__status-icon:before,
-.claro-details .system-status-report__status-icon:before {
+.gin-details .system-status-report__status-icon:before {
   width: 24px;
   height: 24px;
 }

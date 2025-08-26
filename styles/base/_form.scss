@@ -427,11 +427,11 @@ fieldset:not(.fieldgroup) {
   background: none;
 }
 
-.claro-details.error {
+.gin-details.error {
   border: 2px solid var(--gin-color-danger);
 }
 
-.claro-details__summary:not(.form-required) {
+.gin-details__summary:not(.form-required) {
   .required-mark {
     display: none;
   }
@@ -486,7 +486,7 @@ html.js input.form-linkit-autocomplete {
   background-position: right 8px center;
 }
 
-.claro-autocomplete {
+.gin-autocomplete {
   width: calc(100% - var(--gin-spacing-m));
 
   .form-autocomplete {

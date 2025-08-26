@@ -87,7 +87,7 @@
   inset-inline-start: .25em;
 }
 
-.claro-autocomplete__message {
+.gin-autocomplete__message {
   color: var(--gin-color-primary);
 }
 

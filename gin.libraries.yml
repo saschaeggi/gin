@@ -1,9 +1,373 @@
-gin:
+global-styling:
+  version: VERSION
+  css:
+    base:
+      merge/css/base/variables.css: {}
+      merge/css/base/elements.css: {}
+      merge/css/base/typography.css: {}
+      merge/css/base/print.css: {}
+    component:
+      merge/css/classy/components/container-inline.css: {}
+      merge/css/classy/components/exposed-filters.css: {}
+      merge/css/classy/components/field.css: {}
+      merge/css/classy/components/icons.css: {}
+      merge/css/classy/components/inline-form.css: {}
+      merge/css/classy/components/link.css: {}
+      merge/css/classy/components/links.css: {}
+      merge/css/classy/components/menu.css: {}
+      merge/css/classy/components/more-link.css: {}
+      merge/css/classy/components/textarea.css: {}
+      merge/css/classy/components/ui-dialog.css: {}
+      merge/css/components/accordion.css: {}
+      merge/css/components/action-link.css: {}
+      merge/css/components/content-header.css: {}
+      merge/css/components/ckeditor5.css: {}
+      merge/css/components/container-inline.css: {}
+      merge/css/components/container-inline.module.css: {}
+      merge/css/components/breadcrumb.css: {}
+      merge/css/components/button.css: {}
+      merge/css/components/details.css: {}
+      merge/css/components/divider.css: {}
+      merge/css/components/messages.css: {}
+      merge/css/components/entity-meta.css: {}
+      merge/css/components/fieldset.css: {}
+      merge/css/components/form.css: {}
+      merge/css/components/form--checkbox-radio.css: {}
+      merge/css/components/form--field-multiple.css: {}
+      merge/css/components/form--managed-file.css: {}
+      merge/css/components/form--text.css: {}
+      merge/css/components/form--select.css: {}
+      merge/css/components/help.css: {}
+      merge/css/components/image-preview.css: {}
+      merge/css/components/menus-and-lists.css: {}
+      merge/css/components/modules-page.css: {}
+      merge/css/components/node.css: {}
+      merge/css/components/page-title.css: {}
+      merge/css/components/pager.css: {}
+      merge/css/components/skip-link.css: {}
+      merge/css/components/tables.css: {}
+      merge/css/components/table--file-multiple-widget.css: {}
+      merge/css/components/search-admin-settings.css: {}
+      merge/css/components/tableselect.css: {}
+      merge/css/components/tabs.css: {}
+    theme:
+      merge/css/theme/colors.css: {}
+      dist/css/base/gin.css: { minified: false }
+    layout:
+      merge/css/layout/breadcrumb.css: {}
+      merge/css/layout/local-actions.css: {}
+      merge/css/layout/layout.css: {}
+  dependencies:
+    - system/admin
+    - core/jquery
+    - core/drupal
+    # Gin has small and extra small variation for most of the control elements
+    # such as inputs, action links, buttons, dropbuttons. For usability and
+    # accessibility reasons, we keep target sizes big enough on touch screen
+    # devices (by not making these elements smaller than their default size).
+    # This library allows conditionally rendering small variations of the
+    # control elements on non-touch devices. In some cases, such as when
+    # rendering links, it is hard to recognize when this detection should be
+    # attached, therefore it is always attached.
+    - core/drupal.touchevents-test
+    - gin/gin_base
+
+form-two-columns:
+  version: VERSION
+  css:
+    layout:
+      merge/css/layout/form-two-columns.css: {}
+
+maintenance-page:
+  version: VERSION
+  js:
+    merge/js/mobile.install.js: {}
   css:
     theme:
-      dist/css/base/gin.css: { minified: false }
+      merge/css/theme/maintenance-page.css: {}
   dependencies:
-    - gin/gin_base
+    - system/maintenance
+    - gin/global-styling
+
+install-page:
+  version: VERSION
+  js:
+    merge/js/mobile.install.js: {}
+  css:
+    theme:
+      merge/css/theme/install-page.css: {}
+  dependencies:
+    - gin/maintenance-page
+
+drupal.nav-tabs:
+  version: VERSION
+  js:
+    merge/js/nav-tabs.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once
+    - core/drupal.debounce
+
+gin.jquery.ui:
+  version: VERSION
+  css:
+    component:
+      merge/css/components/jquery.ui/theme.css: { weight: -1 }
+
+gin.drupal.dialog:
+  version: VERSION
+  css:
+    theme:
+      merge/css/components/dialog.css: {}
+  dependencies:
+    - gin/gin.jquery.ui
+
+gin.tabledrag:
+  version: VERSION
+  js:
+    merge/js/tabledrag.js: {}
+
+drupal.node.preview:
+  version: VERSION
+  css:
+    theme:
+      merge/css/components/node-preview.css: {}
+
+drupal.tablesort:
+  version: VERSION
+  css:
+    component:
+      merge/css/classy/components/tablesort.css: {}
+      merge/css/components/tablesort-indicator.css: {}
+
+media-form:
+  version: VERSION
+  css:
+    layout:
+      merge/css/components/media.css: {}
+  dependencies:
+    - media/form
+
+image.admin:
+  version: VERSION
+  css:
+    component:
+      merge/css/components/image.admin.css: {}
+
+system.admin:
+  version: VERSION
+  css:
+    component:
+      merge/css/components/system-admin--admin-list.css: { weight: -10 }
+      merge/css/components/system-admin--links.css: { weight: -10 }
+      merge/css/components/system-admin--modules.css: { weight: -10 }
+      merge/css/components/system-admin--panel.css: { weight: -10 }
+    layout:
+      merge/css/layout/system-admin--layout.css: { weight: -10 }
+  dependencies:
+    - gin/card
+
+checkbox:
+  version: VERSION
+  js:
+    merge/js/checkbox.js: {}
+  dependencies:
+    - core/drupal
+
+icon-link:
+  version: VERSION
+  css:
+    component:
+      merge/css/components/icon-link.css: {}
+
+dropbutton:
+  version: VERSION
+  js:
+    merge/js/dropbutton.js: { minified: false }
+    dist/js/dropbutton.js: { minified: false }
+  dependencies:
+    - core/drupal
+    - core/once
+
+
+autocomplete:
+  version: VERSION
+  css:
+    theme:
+      dist/css/components/autocomplete.css: { minified: false }
+  js:
+    merge/js/autocomplete.js: {}
+  dependencies:
+    - core/once
+    - gin/gin.jquery.ui
+
+drupal.shortcut:
+  version: VERSION
+  css:
+    # @todo move this to components after
+    #   https://www.drupal.org/project/drupal/issues/3045467 is in.
+    theme:
+      merge/css/components/shortcut.css: {}
+
+details-focus:
+  js:
+    merge/js/details.js: {}
+
+ajax:
+  css:
+    theme:
+      dist/css/components/ajax.css: { minified: false, weight: 99 }
+  js:
+    merge/js/ajax.js: {}
+
+item-list:
+  css:
+    component:
+      merge/css/classy/components/item-list.css: {}
+
+form.password-confirm:
+  css:
+    component:
+      merge/css/components/form--password-confirm.css: {}
+  js:
+    merge/js/user.theme.js: {}
+  dependencies:
+    - core/drupal
+    - gin/global-styling
+
+
+status.report:
+  version: VERSION
+  css:
+    component:
+      merge/css/components/system-status-report-general-info.css: {}
+      merge/css/components/system-status-report.css: {}
+      merge/css/components/system-status-report-counters.css: {}
+      merge/css/components/system-status-counter.css: {}
+
+views:
+  css:
+    component:
+      merge/css/components/views-exposed-form.css: {}
+
+views_ui:
+  css:
+    component:
+      merge/css/components/views-ui.css: {}
+
+messages:
+  js:
+    dist/js/messages.js: { minified: false }
+  dependencies:
+    - core/once
+
+card:
+  css:
+    component:
+      merge/css/layout/card-list.css: {}
+      merge/css/components/card.css: {}
+
+vertical-tabs:
+  css:
+    component:
+      merge/css/components/vertical-tabs.css: {}
+  js:
+    merge/js/vertical-tabs.js: {}
+  dependencies:
+    - gin/global-styling
+
+file:
+  css:
+    component:
+      merge/css/components/file.css: {}
+
+media_library.theme:
+  version: VERSION
+  css:
+    theme:
+      merge/css/theme/media-library.css: {}
+  dependencies:
+    - gin/icon-link
+
+media_library.ui:
+  version: VERSION
+  css:
+    component:
+      merge/css/components/media-library.ui.css : {}
+  js:
+    merge/js/media-library.ui.js: { weight: -1 }
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
+
+progress:
+  version: VERSION
+  css:
+    component:
+      merge/css/components/progress.css: {}
+
+tabbingmanager:
+  version: VERSION
+  dependencies:
+    - gin/gin.jquery.ui
+
+filter:
+  version: VERSION
+  css:
+    component:
+      merge/css/theme/filter.theme.css: {}
+
+tableselect:
+  version: VERSION
+  css:
+    component:
+      dist/css/components/tableselect.css: { minified: false }
+  js:
+    merge/js/tableselect.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.announce
+    - core/drupal.debounce
+    - core/tabbable
+    - core/once
+
+classy.file:
+  version: VERSION
+  css:
+    component:
+      merge/css/classy/components/file.css: { weight: -10 }
+
+classy.indented:
+  version: VERSION
+  css:
+    component:
+      merge/css/classy/components/indented.css: {}
+
+classy.media_embed_error:
+  version: VERSION
+  css:
+    component:
+      merge/css/classy/components/media-embed-error.css: {}
+
+classy.media_embed_ckeditor_theme:
+  version: VERSION
+  js:
+    merge/js/classy/media_embed_ckeditor.theme.js: {}
+
+classy.node:
+  version: VERSION
+  css:
+    component:
+      merge/css/classy/components/node.css: { weight: -10 }
+
+classy.search-results:
+  version: VERSION
+  css:
+    component:
+      merge/css/classy/components/search-results.css: {}
 
 # Base
 
@@ -181,18 +545,6 @@ escape_admin:
   dependencies:
     - core/once
 
-messages:
-  js:
-    dist/js/messages.js: { minified: false }
-  dependencies:
-    - core/once
-
-dropbutton:
-  js:
-    dist/js/dropbutton.js: { minified: false }
-  dependencies:
-    - core/once
-
 # Custom CSS
 
 gin_custom_css:
@@ -254,11 +606,6 @@ settings:
       dist/css/components/settings.css: { minified: false }
   dependencies:
     - core/drupalSettings
-
-tableselect:
-  css:
-    component:
-      dist/css/components/tableselect.css: { minified: false }
 
 tableheader:
   js:
@@ -331,20 +678,10 @@ ckeditor5:
     theme:
       dist/css/components/ckeditor5.css: { minified: false }
 
-ajax:
-  css:
-    theme:
-      dist/css/components/ajax.css: { minified: false, weight: 99 }
-
 revisions:
   css:
     theme:
       dist/css/components/revisions.css: { minified: false }
-
-autocomplete:
-  css:
-    theme:
-      dist/css/components/autocomplete.css: { minified: false }
 
 breadcrumb:
   css:

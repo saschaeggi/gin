@@ -1,8 +1,12 @@
 apng
 backtosite
 basethemeurl
+btransform
+ccircle
 colours
 cpath
+crect
+cstyle
 csvg
 customisations
 darkmode
@@ -12,7 +16,7 @@ deskinset
 dragdrop
 dropzonejs
 eggenberger
-ESlint
+eslint
 flyouts
 fullscreeneditor
 ginter
