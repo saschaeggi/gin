@@ -799,21 +799,3 @@ term_reference_tree:
   css:
     component:
       dist/css/components/term_reference_tree.css: { minified: false }
-
-# Legacy
-
-legacy_css:
-  css:
-    theme:
-      dist/css/theme/legacy.css: { minified: false }
-
-workspaces:
-  css:
-    component:
-      dist/css/components/workspaces.css: { minified: false }
-
-project_browser:
-  css:
-    theme:
-      dist/css/deprecated/project_browser.css: { minified: false }
-  deprecated: The project_browser library is deprecated in Gin 4.0.6 and will be removed in Gin 5.0.0. Consider upgrading to Project browser 2.0.0-alpha10+, see https://www.drupal.org/project/gin/issues/3508067

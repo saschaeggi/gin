@@ -76,7 +76,6 @@ module.exports = {
     'components/upgrade_status': ['./styles/components/upgrade_status.scss'],
     'components/webform': ['./styles/components/webform.scss'],
     'components/workbench': ['./styles/components/workbench.scss'],
-    'components/workspaces': ['./styles/components/workspaces.scss'],
     // Layout
     'layout/core_navigation': ['./styles/layout/core_navigation.scss'],
     'layout/navigation': ['./styles/layout/navigation.scss'],
@@ -89,8 +88,6 @@ module.exports = {
     'theme/dialog': ['./styles/theme/dialog.scss'],
     'theme/font': ['./styles/theme/font.scss'],
     'theme/variables': ['./styles/theme/variables.scss'],
-    // Deprecated
-    'deprecated/project_browser': ['./styles/deprecated/project_browser.scss'],
   },
   output: {
     filename: 'js/[name].js',
