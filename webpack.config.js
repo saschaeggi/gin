@@ -36,7 +36,6 @@ module.exports = {
     // Components
     'components/ajax': ['./styles/components/ajax.scss'],
     'components/autocomplete': ['./styles/components/autocomplete.scss'],
-    'components/autosave': ['./styles/components/autosave.scss'],
     'components/breadcrumb': ['./styles/components/breadcrumb.scss'],
     'components/chosen': ['./styles/components/chosen.scss'],
     'components/ckeditor': ['./styles/components/ckeditor.scss'],

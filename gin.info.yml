@@ -211,8 +211,6 @@ libraries-extend:
     - gin/ckeditor5
   contextual/drupal.contextual-links:
     - gin/contextual_links
-  autosave_form/drupal.autosave_form:
-    - gin/autosave
   chosen/drupal.chosen:
     - gin/chosen
   dropzonejs/widget:

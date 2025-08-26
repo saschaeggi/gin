@@ -760,11 +760,6 @@ workbench:
     component:
       dist/css/components/workbench.css: { minified: false }
 
-autosave:
-  css:
-    component:
-      dist/css/components/autosave.css: { minified: false }
-
 module_filter:
   css:
     component:
