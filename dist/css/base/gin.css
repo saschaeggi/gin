@@ -409,7 +409,6 @@ body:not(.toolbar-tray-open) .layout-container {
 .views-preview-wrapper,
 .modules-tabs,
 #views-entity-list,
-.admin.my-workbench,
 .media-library-views-form,
 .user-admin-permissions,
 .field-config-form {
@@ -426,7 +425,6 @@ body:not(.toolbar-tray-open) .layout-container {
 .gin--dark-mode .views-preview-wrapper,
 .gin--dark-mode .modules-tabs,
 .gin--dark-mode #views-entity-list,
-.gin--dark-mode .admin.my-workbench,
 .gin--dark-mode .media-library-views-form,
 .gin--dark-mode .user-admin-permissions,
 .gin--dark-mode .field-config-form {
@@ -441,7 +439,6 @@ body:not(.toolbar-tray-open) .layout-container {
 .gin--high-contrast-mode .views-preview-wrapper,
 .gin--high-contrast-mode .modules-tabs,
 .gin--high-contrast-mode #views-entity-list,
-.gin--high-contrast-mode .admin.my-workbench,
 .gin--high-contrast-mode .media-library-views-form,
 .gin--high-contrast-mode .user-admin-permissions,
 .gin--high-contrast-mode .field-config-form {
@@ -454,7 +451,6 @@ body:not(.toolbar-tray-open) .layout-container {
 .views-edit-view,
 .views-preview-wrapper,
 #views-entity-list,
-.admin.my-workbench,
 .media-library-views-form,
 .user-admin-permissions,
 .field-config-form {
@@ -472,7 +468,6 @@ body:not(.toolbar-tray-open) .layout-container {
   .views-edit-view,
   .views-preview-wrapper,
   #views-entity-list,
-  .admin.my-workbench,
   .media-library-views-form,
   .user-admin-permissions,
   .field-config-form {
@@ -492,8 +487,6 @@ body:not(.toolbar-tray-open) .layout-container {
 .views-preview-wrapper .layout-region-node-main > .form-wrapper:first-of-type .form-item,
 #views-entity-list > .form-wrapper:first-of-type .form-item,
 #views-entity-list .layout-region-node-main > .form-wrapper:first-of-type .form-item,
-.admin.my-workbench > .form-wrapper:first-of-type .form-item,
-.admin.my-workbench .layout-region-node-main > .form-wrapper:first-of-type .form-item,
 .media-library-views-form > .form-wrapper:first-of-type .form-item,
 .media-library-views-form .layout-region-node-main > .form-wrapper:first-of-type .form-item,
 .user-admin-permissions > .form-wrapper:first-of-type .form-item,

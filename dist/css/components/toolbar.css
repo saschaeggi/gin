@@ -192,7 +192,6 @@ body.gin--classic-toolbar {
           mask-image: var(--icon);
 }
 
-.toolbar .toolbar-bar .toolbar-icon-workbench-content-tab::before,
 .toolbar .toolbar-bar .toolbar-link--admin-toolbar-tools-help::before,
 .toolbar .toolbar-bar .toolbar-button--icon--admin-toolbar-tools-help::before,
 .toolbar .toolbar-bar .toolbar-button--icon--navigation-extra-tools-help::before {

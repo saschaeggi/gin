@@ -1145,7 +1145,6 @@ button.toolbar-link--sidebar-toggle[aria-expanded=true]::before {
   border-block-start: 1px solid var(--gin-border-color-table);
 }
 
-.toolbar-icon-workbench-content-tab::before,
 .toolbar-link--admin-toolbar-tools-help::before,
 .toolbar-button--icon--admin-toolbar-tools-help::before,
 .toolbar-button--icon--navigation-extra-tools-help::before {

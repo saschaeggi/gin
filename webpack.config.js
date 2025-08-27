@@ -73,7 +73,6 @@ module.exports = {
     'components/tooltip': ['./styles/components/tooltip.scss'],
     'components/upgrade_status': ['./styles/components/upgrade_status.scss'],
     'components/webform': ['./styles/components/webform.scss'],
-    'components/workbench': ['./styles/components/workbench.scss'],
     // Layout
     'layout/core_navigation': ['./styles/layout/core_navigation.scss'],
     'layout/navigation': ['./styles/layout/navigation.scss'],

@@ -239,8 +239,6 @@ libraries-extend:
     - gin/webform
   webform/webform.form.tabs:
     - gin/webform
-  workbench/workbench.toolbar:
-   - gin/workbench
   paragraphs/drupal.paragraphs.widget:
     - gin/paragraphs
   entity_reference_layout/erl_widget:
