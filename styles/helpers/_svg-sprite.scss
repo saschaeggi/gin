@@ -80,6 +80,7 @@ $sprites: (
     'structure': "../../media/sprite.svg#structure-view",
     'tmgmt': "../../media/sprite.svg#tmgmt-view",
     'trash-module': "../../media/sprite.svg#trash-module-view",
+    'webform': "../../media/sprite.svg#webform-view"
 );
 
 $sizes: (
@@ -404,6 +405,10 @@ $sizes: (
         'height': 24px
     ),
     'trash-module': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'webform': (
         'width': 24px,
         'height': 24px
     )
