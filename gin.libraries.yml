@@ -365,7 +365,6 @@ navigation:
   dependencies:
     - gin/floating-ui
     - gin/escape_admin
-    - gin/coffee
     - gin/node_preview
     - gin/contextual_links
     - gin/breadcrumb
@@ -383,7 +382,6 @@ core_navigation:
     dist/js/core_navigation.js: { minified: false }
   dependencies:
     - gin/escape_admin
-    - gin/coffee
     - gin/node_preview
     - gin/contextual_links
     - gin/breadcrumb
@@ -407,7 +405,6 @@ gin_toolbar:
     dist/js/toolbar.js: { minified: false }
   dependencies:
     - gin/escape_admin
-    - gin/coffee
     - gin/node_preview
     - gin/contextual_links
     - gin/breadcrumb
@@ -428,7 +425,6 @@ gin_horizontal_toolbar:
     dist/js/toolbar.js: { minified: false }
   dependencies:
     - gin/escape_admin
-    - gin/coffee
     - gin/node_preview
     - gin/contextual_links
     - gin/breadcrumb
@@ -446,7 +442,6 @@ gin_classic_toolbar:
     dist/js/toolbar.js: { minified: false }
   dependencies:
     - gin/escape_admin
-    - gin/coffee
     - gin/node_preview
     - gin/contextual_links
     - gin/breadcrumb
@@ -627,11 +622,6 @@ breadcrumb:
   css:
     theme:
       dist/css/components/breadcrumb.css: { minified: false }
-
-coffee:
-  css:
-    component:
-      dist/css/components/coffee.css: { minified: false }
 
 node_preview:
   css:

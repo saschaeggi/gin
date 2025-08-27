@@ -1290,7 +1290,6 @@ button.toolbar-link--sidebar-toggle[aria-expanded=true]::before {
   --icon: url("../../media/sprite.svg#hamburger-view");
 }
 
-.toolbar-icon-coffee::before,
 #toolbar-item-administration-search::before,
 #admin-toolbar-mobile-search-tab .toolbar-icon::before {
   --icon: url("../../media/sprite.svg#search-view");
