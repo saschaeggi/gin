@@ -7,17 +7,6 @@ global-styling:
       merge/css/base/typography.css: {}
       merge/css/base/print.css: {}
     component:
-      merge/css/classy/components/container-inline.css: {}
-      merge/css/classy/components/exposed-filters.css: {}
-      merge/css/classy/components/field.css: {}
-      merge/css/classy/components/icons.css: {}
-      merge/css/classy/components/inline-form.css: {}
-      merge/css/classy/components/link.css: {}
-      merge/css/classy/components/links.css: {}
-      merge/css/classy/components/menu.css: {}
-      merge/css/classy/components/more-link.css: {}
-      merge/css/classy/components/textarea.css: {}
-      merge/css/classy/components/ui-dialog.css: {}
       merge/css/components/accordion.css: {}
       merge/css/components/action-link.css: {}
       merge/css/components/content-header.css: {}
@@ -138,7 +127,6 @@ drupal.tablesort:
   version: VERSION
   css:
     component:
-      merge/css/classy/components/tablesort.css: {}
       merge/css/components/tablesort-indicator.css: {}
 
 media-form:
@@ -220,11 +208,6 @@ ajax:
       dist/css/components/ajax.css: { minified: false, weight: 99 }
   js:
     merge/js/ajax.js: {}
-
-item-list:
-  css:
-    component:
-      merge/css/classy/components/item-list.css: {}
 
 form.password-confirm:
   css:
@@ -333,41 +316,6 @@ tableselect:
     - core/drupal.debounce
     - core/tabbable
     - core/once
-
-classy.file:
-  version: VERSION
-  css:
-    component:
-      merge/css/classy/components/file.css: { weight: -10 }
-
-classy.indented:
-  version: VERSION
-  css:
-    component:
-      merge/css/classy/components/indented.css: {}
-
-classy.media_embed_error:
-  version: VERSION
-  css:
-    component:
-      merge/css/classy/components/media-embed-error.css: {}
-
-classy.media_embed_ckeditor_theme:
-  version: VERSION
-  js:
-    merge/js/classy/media_embed_ckeditor.theme.js: {}
-
-classy.node:
-  version: VERSION
-  css:
-    component:
-      merge/css/classy/components/node.css: { weight: -10 }
-
-classy.search-results:
-  version: VERSION
-  css:
-    component:
-      merge/css/classy/components/search-results.css: {}
 
 # Base
 

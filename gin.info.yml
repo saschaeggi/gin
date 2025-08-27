@@ -148,8 +148,6 @@ libraries-extend:
     - gin/dropbutton
   core/drupal.checkbox:
     - gin/checkbox
-  core/drupal.item-list:
-    - gin/item-list
   core/drupal.message:
     - gin/messages
   core/drupal.progress:
@@ -189,7 +187,6 @@ libraries-extend:
   views_ui/admin.styling:
     - gin/views_ui
   media/media_embed_ckeditor_theme:
-    - gin/classy.media_embed_ckeditor_theme
     - gin/gin_media_embed_ckeditor_theme
   media_library/ui:
     - gin/media_library.ui
