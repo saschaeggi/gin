@@ -689,11 +689,6 @@ responsive_preview:
     component:
       dist/css/components/responsive_preview.css: { minified: false }
 
-upgrade_status:
-  css:
-    component:
-      dist/css/components/upgrade_status.css: { minified: false }
-
 module_filter:
   css:
     component:

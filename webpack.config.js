@@ -71,7 +71,6 @@ module.exports = {
     'components/toolbar': ['./styles/components/toolbar.scss'],
     'components/toolbar_secondary': ['./styles/components/toolbar_secondary.scss'],
     'components/tooltip': ['./styles/components/tooltip.scss'],
-    'components/upgrade_status': ['./styles/components/upgrade_status.scss'],
     // Layout
     'layout/core_navigation': ['./styles/layout/core_navigation.scss'],
     'layout/navigation': ['./styles/layout/navigation.scss'],
