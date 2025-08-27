@@ -660,11 +660,6 @@ maintenance_page:
 
 # Modules
 
-entity_reference_layout:
-  css:
-    component:
-      dist/css/components/entity_reference_layout.css: { minified: false }
-
 dropzonejs:
   css:
     component:
