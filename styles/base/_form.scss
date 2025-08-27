@@ -480,12 +480,6 @@ html.js .form-autocomplete {
   }
 }
 
-// Autocomplete field
-html.js input.form-linkit-autocomplete {
-  padding-inline-end: var(--gin-spacing-xl);
-  background-position: right 8px center;
-}
-
 .gin-autocomplete {
   width: calc(100% - var(--gin-spacing-m));
 

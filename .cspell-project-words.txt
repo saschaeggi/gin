@@ -26,7 +26,6 @@ highcontrastmode
 imageapi
 imce
 lightmode
-linkit
 menubutton
 navigationcreate
 navigaton

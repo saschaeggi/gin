@@ -794,18 +794,6 @@
   padding-inline: 0;
 }
 
-.ui-dialog html.js input.form-linkit-autocomplete {
-  padding-inline-end: var(--gin-spacing-xl);
-}
-
-[dir="ltr"] .ui-dialog html.js input.form-linkit-autocomplete {
-  background-position: right 8px center;
-}
-
-[dir="rtl"] .ui-dialog html.js input.form-linkit-autocomplete {
-  background-position: left 8px center;
-}
-
 .ui-dialog .gin-autocomplete {
   width: calc(100% - var(--gin-spacing-m));
 }

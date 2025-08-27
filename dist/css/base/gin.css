@@ -2111,18 +2111,6 @@ html.js .form-autocomplete {
   padding-inline: 0;
 }
 
-html.js input.form-linkit-autocomplete {
-  padding-inline-end: var(--gin-spacing-xl);
-}
-
-html[dir="ltr"].js input.form-linkit-autocomplete {
-  background-position: right 8px center;
-}
-
-html[dir="rtl"].js input.form-linkit-autocomplete {
-  background-position: left 8px center;
-}
-
 .gin-autocomplete {
   width: calc(100% - var(--gin-spacing-m));
 }

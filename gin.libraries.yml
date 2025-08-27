@@ -689,8 +689,3 @@ inline_entity_form:
   css:
     component:
       dist/css/components/inline_entity_form.css: { minified: false }
-
-linkit:
-  css:
-    component:
-      dist/css/components/linkit.css: { minified: false }
