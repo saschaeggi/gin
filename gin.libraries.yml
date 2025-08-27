@@ -674,8 +674,3 @@ entity_browser:
   css:
     component:
       dist/css/components/entity_browser.css: { minified: false }
-
-inline_entity_form:
-  css:
-    component:
-      dist/css/components/inline_entity_form.css: { minified: false }

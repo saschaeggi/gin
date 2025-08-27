@@ -472,13 +472,6 @@ function gin_preprocess_text_format_wrapper(&$variables) {
 }
 
 /**
- * Implements template_preprocess_inline_entity_form_entity_table() for forms.
- */
-function gin_preprocess_inline_entity_form_entity_table(array &$variables) {
-  $variables['table']['#attached']['library'][] = 'gin/inline_entity_form';
-}
-
-/**
  * Set and get the form actions of the current request.
  *
  * @param array|null $actions
