@@ -220,11 +220,6 @@ libraries-extend:
     - gin/entity_browser
   entity_reference_layout/erl_widget:
     - gin/entity_reference_layout
-    - gin/layout_paragraphs
-  layout_paragraphs/layout_paragraphs_widget:
-    - gin/layout_paragraphs
-  layout_paragraphs/builder:
-    - gin/layout_paragraphs2
 
 ckeditor_stylesheets:
   - dist/css/theme/accent.css

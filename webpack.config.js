@@ -49,8 +49,6 @@ module.exports = {
     'components/entity_browser': ['./styles/components/entity_browser.scss'],
     'components/entity_reference_layout': ['./styles/components/entity_reference_layout.scss'],
     'components/inline_entity_form': ['./styles/components/inline_entity_form.scss'],
-    'components/layout_paragraphs': ['./styles/components/layout_paragraphs.scss'],
-    'components/layout_paragraphs_2.0': ['./styles/components/layout_paragraphs_2.0.scss'],
     'components/maintenance_page': ['./styles/components/maintenance_page.scss'],
     'components/media_library': ['./styles/components/media_library.scss'],
     'components/node_preview': ['./styles/components/node_preview.scss'],
