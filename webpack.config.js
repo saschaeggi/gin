@@ -17,7 +17,6 @@ module.exports = {
     'description_toggle': ['./js/description_toggle.js'],
     'dropbutton': ['./js/dropbutton.js'],
     'more_actions': ['./js/more_actions.js'],
-    'gin_ckeditor': ['./js/gin_ckeditor.js'], // Can't rename as we would be in trouble
     'init': ['./js/init.js'],
     'messages': ['./js/messages.js'],
     'settings': ['./js/settings.js'],
@@ -37,7 +36,6 @@ module.exports = {
     'components/ajax': ['./styles/components/ajax.scss'],
     'components/autocomplete': ['./styles/components/autocomplete.scss'],
     'components/breadcrumb': ['./styles/components/breadcrumb.scss'],
-    'components/ckeditor': ['./styles/components/ckeditor.scss'],
     'components/ckeditor5': ['./styles/components/ckeditor5.scss'],
     'components/contextual_links': ['./styles/components/contextual_links.scss'],
     'components/description_toggle': ['./styles/components/description_toggle.scss'],
@@ -67,7 +65,6 @@ module.exports = {
     'layout/classic_toolbar': ['./styles/layout/classic_toolbar.scss'],
     // Theme
     'theme/accent': ['./styles/theme/accent.scss'],
-    'theme/ckeditor': ['./styles/theme/ckeditor.scss'],
     'theme/dialog': ['./styles/theme/dialog.scss'],
     'theme/font': ['./styles/theme/font.scss'],
     'theme/variables': ['./styles/theme/variables.scss'],

@@ -329,11 +329,7 @@ gin_base:
     - gin/dialog
     - gin/status
 
-# Legacy
-
-gin_ckeditor:
-  dependencies:
-    - gin/ckeditor
+# Legacy
 
 gin_init:
   header: true
@@ -597,16 +593,6 @@ dialog:
   css:
     theme:
       dist/css/components/dialog.css: { minified: false, weight: 99 }
-
-ckeditor:
-  js:
-    dist/js/gin_ckeditor.js: { minified: false }
-  css:
-    theme:
-      dist/css/components/ckeditor.css: { minified: false }
-  dependencies:
-    - core/drupalSettings
-    - core/once
 
 ckeditor5:
   css:
