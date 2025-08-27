@@ -367,7 +367,6 @@ navigation:
     - gin/escape_admin
     - gin/coffee
     - gin/node_preview
-    - gin/responsive_preview
     - gin/contextual_links
     - gin/breadcrumb
     - gin/settings_tray
@@ -386,7 +385,6 @@ core_navigation:
     - gin/escape_admin
     - gin/coffee
     - gin/node_preview
-    - gin/responsive_preview
     - gin/contextual_links
     - gin/breadcrumb
     - gin/settings_tray
@@ -411,7 +409,6 @@ gin_toolbar:
     - gin/escape_admin
     - gin/coffee
     - gin/node_preview
-    - gin/responsive_preview
     - gin/contextual_links
     - gin/breadcrumb
     - gin/settings_tray
@@ -433,7 +430,6 @@ gin_horizontal_toolbar:
     - gin/escape_admin
     - gin/coffee
     - gin/node_preview
-    - gin/responsive_preview
     - gin/contextual_links
     - gin/breadcrumb
     - gin/settings_tray
@@ -683,11 +679,6 @@ entity_reference_layout:
   css:
     component:
       dist/css/components/entity_reference_layout.css: { minified: false }
-
-responsive_preview:
-  css:
-    component:
-      dist/css/components/responsive_preview.css: { minified: false }
 
 module_filter:
   css:

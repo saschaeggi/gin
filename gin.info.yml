@@ -235,8 +235,6 @@ libraries-extend:
     - gin/layout_paragraphs
   layout_paragraphs/builder:
     - gin/layout_paragraphs2
-  responsive_preview/drupal.responsive-preview:
-    - gin/responsive_preview
 
 ckeditor_stylesheets:
   - dist/css/theme/accent.css
