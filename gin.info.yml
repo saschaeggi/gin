@@ -220,12 +220,6 @@ libraries-extend:
     - gin/entity_browser
   linkit/linkit.admin:
     - gin/linkit
-  module_filter/modules.tabs:
-    - gin/module_filter
-  module_filter/update.status:
-    - gin/module_filter
-  module_filter/modules:
-    - gin/module_filter
   entity_reference_layout/erl_widget:
     - gin/entity_reference_layout
     - gin/layout_paragraphs

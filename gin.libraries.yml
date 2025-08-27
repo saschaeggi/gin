@@ -675,11 +675,6 @@ entity_reference_layout:
     component:
       dist/css/components/entity_reference_layout.css: { minified: false }
 
-module_filter:
-  css:
-    component:
-      dist/css/components/module_filter.css: { minified: false }
-
 dropzonejs:
   css:
     component:
