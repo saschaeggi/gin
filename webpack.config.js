@@ -56,7 +56,6 @@ module.exports = {
     'components/media_library': ['./styles/components/media_library.scss'],
     'components/module_filter': ['./styles/components/module_filter.scss'],
     'components/node_preview': ['./styles/components/node_preview.scss'],
-    'components/paragraphs': ['./styles/components/paragraphs.scss'],
     'components/revisions': ['./styles/components/revisions.scss'],
     'components/settings_tray': ['./styles/components/settings_tray.scss'],
     'components/settings_tray_edit': ['./styles/components/settings_tray_edit.scss'],

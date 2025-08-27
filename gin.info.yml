@@ -226,8 +226,6 @@ libraries-extend:
     - gin/module_filter
   module_filter/modules:
     - gin/module_filter
-  paragraphs/drupal.paragraphs.widget:
-    - gin/paragraphs
   entity_reference_layout/erl_widget:
     - gin/entity_reference_layout
     - gin/layout_paragraphs

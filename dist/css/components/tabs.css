@@ -342,10 +342,6 @@
   margin-block-start: var(--gin-spacing-m);
 }
 
-.horizontal-tabs .paragraphs-subform .horizontal-tabs-panes {
-  margin-block-start: var(--gin-spacing-s);
-}
-
 .gin-details__description {
   max-width: var(--gin-max-line-length);
 }

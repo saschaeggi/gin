@@ -660,11 +660,6 @@ maintenance_page:
 
 # Modules
 
-paragraphs:
-  css:
-    component:
-      dist/css/components/paragraphs.css: { minified: false }
-
 layout_paragraphs:
   css:
     component:
