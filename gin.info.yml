@@ -210,14 +210,6 @@ libraries-extend:
     - gin/contextual_links
   dropzonejs/widget:
     - gin/dropzonejs
-  entity_browser/entity_browser:
-    - gin/entity_browser
-  entity_browser/tabs:
-    - gin/entity_browser
-  entity_browser/entity_list:
-    - gin/entity_browser
-  entity_browser/entity_reference:
-    - gin/entity_browser
 
 ckeditor_stylesheets:
   - dist/css/theme/accent.css

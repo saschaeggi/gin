@@ -664,8 +664,3 @@ dropzonejs:
   css:
     component:
       dist/css/components/dropzonejs.css: { minified: false }
-
-entity_browser:
-  css:
-    component:
-      dist/css/components/entity_browser.css: { minified: false }
