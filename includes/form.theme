@@ -495,10 +495,3 @@ function _gin_form_actions(?array $actions = NULL): ?array {
   }
   return $preparedActions;
 }
-
-/**
- * Implements hook_preprocess_HOOK() for checkbox_tree.
- */
-function gin_preprocess_checkbox_tree(array &$variables) {
-  $variables['#attached']['library'][] = 'gin/term_reference_tree';
-}
