@@ -289,7 +289,6 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       strpos($form_id, 'views_ui_edit_') !== FALSE ||
       strpos($form_id, 'views_ui_rearrange_') !== FALSE ||
       strpos($form_id, 'layout_paragraphs_component_form') !== FALSE ||
-      strpos($form_id, 'webform_submission_contact_edit_form') !== FALSE ||
       in_array($form_id, $form_ids, TRUE) ||
       in_array($route_name, $form_ids, TRUE)
     ) {

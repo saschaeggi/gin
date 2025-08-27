@@ -1413,11 +1413,6 @@ table td .group-label {
   border-block-end: 2px solid var(--gin-color-text);
 }
 
-td.webform-has-field-suffix > .form-item > .form-element {
-  max-width: 100%;
-  width: auto;
-}
-
 .field-multiple-table th {
   padding-block: var(--gin-spacing-xs);
   padding-inline: var(--gin-spacing-l) var(--gin-spacing-m);
@@ -3089,10 +3084,6 @@ a.button--primary.button--danger,
   .messages .button--dismiss .icon-close {
     background-color: buttonBorder;
   }
-}
-
-.messages--webform .button--dismiss {
-  display: none;
 }
 
 .messages.messages--info {

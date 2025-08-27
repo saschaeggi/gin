@@ -96,12 +96,6 @@
   --icon: #{icon('structure')};
 }
 
-.toolbar-icon-entity-webform-collection::before,
-.toolbar-link--entity-webform-collection::before,
-.toolbar-button--icon--entity-webform-collection::before {
-  --icon: #{icon('webform')};
-}
-
 .toolbar-link--sidebar-toggle[aria-expanded=false]::before,
 .toolbar-link--sidebar-toggle[aria-expanded=true]::before,
 .toolbar-link--sidebar-toggle[aria-expanded=false]::before,

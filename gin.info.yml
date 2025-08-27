@@ -228,17 +228,6 @@ libraries-extend:
     - gin/module_filter
   upgrade_status/upgrade_status.admin:
     - gin/upgrade_status
-  webform/webform.filter:
-    - gin/webform
-  webform_ui/webform_ui:
-    - gin/webform
-    - gin/webform_ui
-  webform/webform.element.help:
-    - gin/webform
-  webform/webform.element.details.toggle:
-    - gin/webform
-  webform/webform.form.tabs:
-    - gin/webform
   paragraphs/drupal.paragraphs.widget:
     - gin/paragraphs
   entity_reference_layout/erl_widget:

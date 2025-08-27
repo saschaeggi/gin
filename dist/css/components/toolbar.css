@@ -290,12 +290,6 @@ body.gin--classic-toolbar {
   --icon: url("../../media/sprite.svg#structure-view");
 }
 
-.toolbar .toolbar-bar .toolbar-icon-entity-webform-collection::before,
-.toolbar .toolbar-bar .toolbar-link--entity-webform-collection::before,
-.toolbar .toolbar-bar .toolbar-button--icon--entity-webform-collection::before {
-  --icon: url("../../media/sprite.svg#webform-view");
-}
-
 .toolbar .toolbar-bar .toolbar-link--sidebar-toggle[aria-expanded=false]::before,
 .toolbar .toolbar-bar .toolbar-link--sidebar-toggle[aria-expanded=true]::before,
 .toolbar .toolbar-bar .toolbar-link--sidebar-toggle[aria-expanded=false]::before,

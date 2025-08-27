@@ -102,11 +102,6 @@
     }
   }
 
-  // Hide our close button as Webform has it's own
-  &--webform .button--dismiss {
-    display: none;
-  }
-
   &.messages--info {
     color: var(--gin-color-info-light);
     background: var(--gin-bg-info);

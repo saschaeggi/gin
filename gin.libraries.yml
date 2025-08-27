@@ -523,10 +523,6 @@ gin_media_embed_ckeditor_theme:
   js:
     js/overrides/media_embed_ckeditor.theme.js: { minified: false }
 
-webform_ui:
-  js:
-    js/overrides/webform_ui.js: { minified: false }
-
 # Components
 
 sticky:
@@ -697,11 +693,6 @@ upgrade_status:
   css:
     component:
       dist/css/components/upgrade_status.css: { minified: false }
-
-webform:
-  css:
-    component:
-      dist/css/components/webform.css: { minified: false }
 
 module_filter:
   css:

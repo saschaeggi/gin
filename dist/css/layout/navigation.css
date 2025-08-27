@@ -1243,12 +1243,6 @@ button.toolbar-link--sidebar-toggle[aria-expanded=true]::before {
   --icon: url("../../media/sprite.svg#structure-view");
 }
 
-.toolbar-icon-entity-webform-collection::before,
-.toolbar-link--entity-webform-collection::before,
-.toolbar-button--icon--entity-webform-collection::before {
-  --icon: url("../../media/sprite.svg#webform-view");
-}
-
 .toolbar-link--sidebar-toggle[aria-expanded=false]::before,
 .toolbar-link--sidebar-toggle[aria-expanded=true]::before,
 .toolbar-link--sidebar-toggle[aria-expanded=false]::before,
