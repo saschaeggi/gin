@@ -37,7 +37,6 @@ module.exports = {
     'components/ajax': ['./styles/components/ajax.scss'],
     'components/autocomplete': ['./styles/components/autocomplete.scss'],
     'components/breadcrumb': ['./styles/components/breadcrumb.scss'],
-    'components/chosen': ['./styles/components/chosen.scss'],
     'components/ckeditor': ['./styles/components/ckeditor.scss'],
     'components/ckeditor5': ['./styles/components/ckeditor5.scss'],
     'components/coffee': ['./styles/components/coffee.scss'],

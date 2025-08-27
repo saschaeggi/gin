@@ -765,11 +765,6 @@ module_filter:
     component:
       dist/css/components/module_filter.css: { minified: false }
 
-chosen:
-  css:
-    component:
-      dist/css/components/chosen.css: { minified: false }
-
 dropzonejs:
   css:
     component:
