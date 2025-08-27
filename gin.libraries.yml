@@ -633,5 +633,3 @@ maintenance_page:
     - gin/gin
     - gin/gin_accent
     - gin/gin_init
-
-# Modules
