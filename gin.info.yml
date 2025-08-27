@@ -208,8 +208,6 @@ libraries-extend:
     - gin/ckeditor5
   contextual/drupal.contextual-links:
     - gin/contextual_links
-  dropzonejs/widget:
-    - gin/dropzonejs
 
 ckeditor_stylesheets:
   - dist/css/theme/accent.css

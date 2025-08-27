@@ -14,7 +14,6 @@ dasjo
 dermario
 deskinset
 dragdrop
-dropzonejs
 eggenberger
 eslint
 flyouts

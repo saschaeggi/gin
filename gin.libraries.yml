@@ -659,8 +659,3 @@ maintenance_page:
     - gin/gin_init
 
 # Modules
-
-dropzonejs:
-  css:
-    component:
-      dist/css/components/dropzonejs.css: { minified: false }

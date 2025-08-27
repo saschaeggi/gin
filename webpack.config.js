@@ -43,7 +43,6 @@ module.exports = {
     'components/contextual_links': ['./styles/components/contextual_links.scss'],
     'components/description_toggle': ['./styles/components/description_toggle.scss'],
     'components/dialog': ['./styles/components/dialog.scss'],
-    'components/dropzonejs': ['./styles/components/dropzonejs.scss'],
     'components/more_actions': ['./styles/components/more_actions.scss'],
     'components/edit_form': ['./styles/components/edit_form.scss'],
     'components/maintenance_page': ['./styles/components/maintenance_page.scss'],
