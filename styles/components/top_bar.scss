@@ -116,9 +116,12 @@ $topbar: 54px;
 
   button,
   input[type="submit"],
-  .local-actions__item a {
+  .local-actions__item a,
+  .action-link,
+  .action-link--icon-trash.action-link--danger {
     font-size: var(--gin-font-size-xs);
     font-weight: var(--gin-font-weight-bold);
+    line-height: 1;
     padding-block: calc(var(--gin-spacing-xs) - var(--gin-spacing-xxxs));
     padding-inline: var(--gin-spacing-s);
     margin-block: 0;

@@ -50,8 +50,6 @@
     margin-block-end: 0;
 
     .gin--navigation &,
-    .gin--vertical-toolbar &,
-    .gin--horizontal-toolbar &,
     .gin--classic-toolbar & {
       inset-block-start: var(--gin-toolbar-y-offset);
     }

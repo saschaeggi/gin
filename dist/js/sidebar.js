@@ -1,7 +1,7 @@
 ({
   "./js/sidebar.js": function() {
     ((Drupal, drupalSettings, once) => {
-      const toolbarVariant = drupalSettings.gin.toolbar_variant, storageDesktop = "Drupal.gin.sidebarExpanded.desktop", resizer = document.getElementById("gin-sidebar-draggable"), resizable = document.getElementById("gin_sidebar");
+      const storageDesktop = "Drupal.gin.sidebarExpanded.desktop", resizer = document.getElementById("gin-sidebar-draggable"), resizable = document.getElementById("gin_sidebar");
       let startX, startWidth, isResizing = !1;
       Drupal.behaviors.ginSidebar = {
         attach: function(context) {
@@ -34,7 +34,7 @@
           sidebarTrigger.nextSibling && (sidebarTrigger.nextSibling.innerHTML = hideLabel), 
           sidebarTrigger.setAttribute("aria-expanded", "true"), sidebarTrigger.classList.add("is-active"), 
           document.body.setAttribute("data-meta-sidebar", "open"), localStorage.setItem(chooseStorage, "true"), 
-          window.innerWidth < 1280 && (Drupal.ginCoreNavigation?.collapseToolbar(), "vertical" === toolbarVariant ? Drupal.ginToolbar.collapseToolbar() : "new" === toolbarVariant && Drupal.behaviors.ginNavigation?.collapseSidebar());
+          window.innerWidth < 1280 && Drupal.ginCoreNavigation?.collapseToolbar();
         },
         collapseSidebar: () => {
           const chooseStorage = window.innerWidth < 1024 ? "Drupal.gin.sidebarExpanded.mobile" : storageDesktop, showLabel = Drupal.t("Show sidebar panel"), sidebarTrigger = document.querySelector(".meta-sidebar__trigger");

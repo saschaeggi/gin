@@ -1,6 +1,4 @@
 // Offset
-body.gin--vertical-toolbar,
-body.gin--horizontal-toolbar,
 body.gin--classic-toolbar {
   padding-block-start: var(--gin-toolbar-y-offset) !important;
   padding-inline-start: var(--gin-toolbar-x-offset, 256px) !important;

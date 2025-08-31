@@ -117,9 +117,12 @@
 
 .gin--navigation-top-bar button,
 .gin--navigation-top-bar input[type=submit],
-.gin--navigation-top-bar .local-actions__item a {
+.gin--navigation-top-bar .local-actions__item a,
+.gin--navigation-top-bar .action-link,
+.gin--navigation-top-bar .action-link--icon-trash.action-link--danger {
   font-size: var(--gin-font-size-xs);
   font-weight: var(--gin-font-weight-bold);
+  line-height: 1;
   padding-block: calc(var(--gin-spacing-xs) - var(--gin-spacing-xxxs));
   padding-inline: var(--gin-spacing-s);
   margin-block: 0;

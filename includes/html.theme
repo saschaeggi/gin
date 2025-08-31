@@ -6,7 +6,6 @@
  */
 
 use Drupal\gin\GinContentFormHelper;
-use Drupal\gin\GinNavigation;
 use Drupal\gin\GinSettings;
 
 /**
@@ -25,7 +24,6 @@ function gin_preprocess_html(&$variables) {
     // Get theme settings.
     /** @var \Drupal\gin\GinSettings $settings */
     $settings = \Drupal::classResolver(GinSettings::class);
-    $toolbar = $settings->get('classic_toolbar');
 
     // Set accent color.
     $variables['attributes']['data-gin-accent'] = $settings->get('preset_accent_color');
@@ -46,7 +44,7 @@ function gin_preprocess_html(&$variables) {
       $variables['attributes']['class'][] = 'gin--edit-form';
     }
 
-    // Only add gin--classic-toolbar class if user has permission.
+    // Only add toolbar/navigation class if user has permission.
     if (
       !\Drupal::currentUser()->hasPermission('access toolbar') &&
       !\Drupal::currentUser()->hasPermission('access navigation')
@@ -54,38 +52,13 @@ function gin_preprocess_html(&$variables) {
       return;
     }
 
-    // Gin secondary toolbar.
-    if ($toolbar !== 'classic' || _gin_module_is_active('navigation')) {
-      $variables['page']['gin_secondary_toolbar'] = [
-        '#type' => 'toolbar',
-        '#access' => \Drupal::currentUser()->hasPermission('access toolbar') || \Drupal::currentUser()->hasPermission('access navigation'),
-        '#cache' => [
-          'keys' => ['toolbar_secondary'],
-          'contexts' => ['user.permissions'],
-        ],
-        '#attributes' => [
-          'id' => 'toolbar-administration-secondary',
-        ],
-      ];
-    }
-
     // Check if Navigation module is active.
     if (_gin_module_is_active('navigation')) {
       $variables['attributes']['class'][] = 'gin--core-navigation';
     }
-    elseif ($toolbar === 'new') {
-      /** @var \Drupal\gin\GinNavigaton $navigation */
-      $navigation = \Drupal::classResolver(GinNavigation::class);
-      // Get new navigation.
-      $variables['page_top']['navigation'] = $navigation->getNavigationStructure();
-      // Get active trail.
-      $variables['#attached']['drupalSettings']['active_trail_paths'] = $navigation->getNavigationActiveTrail();
-      // Set toolbar class.
-      $variables['attributes']['class'][] = 'gin--navigation';
-    }
     else {
       // Set toolbar class.
-      $variables['attributes']['class'][] = 'gin--' . $toolbar . '-toolbar';
+      $variables['attributes']['class'][] = 'gin--classic-toolbar';
     }
   }
 }

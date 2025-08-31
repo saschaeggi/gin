@@ -210,7 +210,7 @@ button.link:active,
     margin-block-end: 0;
   }
 
-  .gin--navigation .region-sticky, .gin--vertical-toolbar .region-sticky, .gin--horizontal-toolbar .region-sticky, .gin--classic-toolbar .region-sticky {
+  .gin--navigation .region-sticky, .gin--classic-toolbar .region-sticky {
     inset-block-start: var(--gin-toolbar-y-offset);
   }
 }

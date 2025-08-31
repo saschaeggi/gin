@@ -38,40 +38,6 @@ function ginInitDarkmode() {
 
 ginInitDarkmode();
 
-// Toolbar Check.
-if (localStorage.getItem('Drupal.gin.toolbarExpanded')) {
-  const style = document.createElement('style');
-  const className = 'gin-toolbar-inline-styles';
-  style.className = className;
-
-  if (localStorage.getItem('Drupal.gin.toolbarExpanded') === 'true') {
-    style.innerHTML = `
-    @media (min-width: 976px) {
-      /* Small CSS hack to make sure this has the highest priority */
-      body.gin--vertical-toolbar.gin--vertical-toolbar.gin--vertical-toolbar {
-        padding-inline-start: 256px !important;
-        transition: none !important;
-      }
-
-      .gin--vertical-toolbar .toolbar-menu-administration {
-        min-width: var(--gin-toolbar-width, 256px);
-        transition: none;
-      }
-
-      .gin--vertical-toolbar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-icon,
-      .gin--vertical-toolbar .toolbar-menu-administration > .toolbar-menu > .menu-item > .toolbar-box > .toolbar-icon {
-        min-width: calc(var(--gin-toolbar-width, 256px) - 16px);
-      }
-    }
-    `;
-
-    const scriptTag = document.querySelector('script');
-    scriptTag.parentNode.insertBefore(style, scriptTag);
-  } else if (document.getElementsByClassName(className).length > 0) {
-    document.getElementsByClassName(className)[0].remove();
-  }
-}
-
 // Sidebar checks.
 if (localStorage.getItem('Drupal.gin.sidebarWidth')) {
   const sidebarWidth = localStorage.getItem('Drupal.gin.sidebarWidth');

@@ -344,24 +344,6 @@ class GinSettings implements ContainerInjectionInterface {
     // Toolbar setting.
     $is_navigation_active = _gin_module_is_active('navigation');
 
-    $form['classic_toolbar'] = [
-      '#disabled' => $is_navigation_active,
-      '#type' => 'radios',
-      '#title' => $this->t('Navigation (Drupal Toolbar)'),
-      '#default_value' => $account ? $this->get('classic_toolbar', $account) : $this->getDefault('classic_toolbar'),
-      '#options' => [
-        'new' => $this->t('New Drupal Navigation, Test integration') . $new_label . $experimental_label,
-        'vertical' => $this->t('Sidebar, Vertical Toolbar (Default)'),
-        'horizontal' => $this->t('Horizontal, Modern Toolbar'),
-        'classic' => $this->t('Legacy, Classic Drupal Toolbar'),
-      ],
-      '#attributes' => $is_navigation_active ? ['class' => ['gin-core-navigation--is-active']] : [],
-      '#description' => $is_navigation_active ? $this->t('This setting is currently deactivated as it is overwritten by the navigation module.') : '',
-      '#after_build' => [
-        '_gin_toolbar_radios',
-      ],
-    ];
-
     // Sticky action toggle.
     if (!_gin_module_is_active('navigation')) {
       $form['sticky_action_buttons'] = [
@@ -370,18 +352,6 @@ class GinSettings implements ContainerInjectionInterface {
         '#description' => $this->t('Displays all actions of the form in the sticky header.'),
         '#default_value' => $account ? $this->get('sticky_action_buttons', $account) : $this->getDefault('sticky_action_buttons'),
       ];
-    }
-
-    // Show secondary toolbar in Frontend.
-    if (!_gin_module_is_active('navigation')) {
-      if (!$account) {
-        $form['secondary_toolbar_frontend'] = [
-          '#type' => 'checkbox',
-          '#title' => $this->t('Show Secondary Toolbar in Frontend'),
-          '#description' => $this->t('Show the secondary toolbar in the Frontend (when logged in to Drupal).'),
-          '#default_value' => $this->getDefault('secondary_toolbar_frontend'),
-        ];
-      }
     }
 
     // Layout density setting.

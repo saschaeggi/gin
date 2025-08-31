@@ -52,7 +52,6 @@ function _gin_user_form_submit(&$form, FormStateInterface $form_state) {
       'enable_darkmode' => $form_state->getValue('enable_darkmode'),
       'preset_accent_color' => $form_state->getValue('preset_accent_color'),
       'accent_color' => $form_state->getValue('accent_color'),
-      'classic_toolbar' => $form_state->getValue('classic_toolbar'),
       'preset_focus_color' => $form_state->getValue('preset_focus_color'),
       'focus_color' => $form_state->getValue('focus_color'),
       'high_contrast_mode' => (bool) $form_state->getValue('high_contrast_mode'),

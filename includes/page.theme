@@ -18,13 +18,6 @@ function gin_preprocess_page(&$variables) {
   $activeThemeName = \Drupal::theme()->getActiveTheme()->getName();
   $variables['active_admin_theme'] = $activeThemeName;
   $variables['active_core_navigation'] = _gin_module_is_active('navigation');
-
-  /** @var \Drupal\gin\GinSettings $settings */
-  $settings = \Drupal::classResolver(GinSettings::class);
-
-  // Expose Toolbar variant.
-  $variables['toolbar_variant'] = $settings->get('classic_toolbar');
-
   // Expose Route name.
   $variables['route_name'] = \Drupal::routeMatch()->getRouteName();
 
@@ -121,7 +114,6 @@ function gin_page_attachments_alter(&$page) {
     $page['#attached']['drupalSettings']['gin']['focus_color'] = $settings->get('focus_color');
     $page['#attached']['drupalSettings']['gin']['highcontrastmode'] = $settings->get('high_contrast_mode');
     $page['#attached']['drupalSettings']['gin']['highcontrastmode_class'] = 'gin--high-contrast-mode';
-    $page['#attached']['drupalSettings']['gin']['toolbar_variant'] = $settings->get('classic_toolbar');
     $page['#attached']['drupalSettings']['gin']['show_user_theme_settings'] = $settings->get('show_user_theme_settings');
 
     // Expose stylesheets to JS.

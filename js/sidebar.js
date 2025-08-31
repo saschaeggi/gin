@@ -3,7 +3,6 @@
 ((Drupal, drupalSettings, once) => {
   const breakpoint = 1024;
   const breakpointLarge = 1280;
-  const toolbarVariant = drupalSettings.gin.toolbar_variant;
   const storageMobile = 'Drupal.gin.sidebarExpanded.mobile';
   const storageDesktop = 'Drupal.gin.sidebarExpanded.desktop';
   const storageWidth = "Drupal.gin.sidebarWidth";
@@ -104,12 +103,6 @@
       // Check which toolbar is active.
       if (window.innerWidth < breakpointLarge) {
         Drupal.ginCoreNavigation?.collapseToolbar();
-
-        if (toolbarVariant === 'vertical') {
-          Drupal.ginToolbar.collapseToolbar();
-        } else if (toolbarVariant === 'new') {
-          Drupal.behaviors.ginNavigation?.collapseSidebar();
-        }
       }
     },
 

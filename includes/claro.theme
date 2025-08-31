@@ -13,8 +13,8 @@ use Drupal\Core\Link;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
-use Drupal\media\MediaForm;
 use Drupal\file\FileInterface;
+use Drupal\media\MediaForm;
 use Drupal\views\ViewExecutable;
 
 /**

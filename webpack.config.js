@@ -22,7 +22,6 @@ module.exports = {
     'settings': ['./js/settings.js'],
     'sidebar': ['./js/sidebar.js'],
     'sticky': ['./js/sticky.js'],
-    'toolbar': ['./js/toolbar.js'],
     'core_navigation': ['./js/core_navigation.js'],
     'escape_admin': ['./js/escape_admin.js'],
     'tableheader': ['./js/tableheader.js'],
@@ -55,13 +54,9 @@ module.exports = {
     'components/tabs': ['./styles/components/tabs.scss'],
     'components/top_bar': ['./styles/components/top_bar.scss'],
     'components/toolbar': ['./styles/components/toolbar.scss'],
-    'components/toolbar_secondary': ['./styles/components/toolbar_secondary.scss'],
     'components/tooltip': ['./styles/components/tooltip.scss'],
     // Layout
     'layout/core_navigation': ['./styles/layout/core_navigation.scss'],
-    'layout/navigation': ['./styles/layout/navigation.scss'],
-    'layout/toolbar': ['./styles/layout/toolbar.scss'],
-    'layout/horizontal_toolbar': ['./styles/layout/horizontal_toolbar.scss'],
     'layout/classic_toolbar': ['./styles/layout/classic_toolbar.scss'],
     // Theme
     'theme/accent': ['./styles/theme/accent.scss'],
