@@ -164,10 +164,6 @@ function gin_form_after_build(array $form, FormStateInterface $form_state): arra
   // Allowlist for visible actions.
   $includes = ['save', 'submit', 'preview'];
 
-  // Secondary action container options.
-  $form['gin_sticky_actions']['more_actions']['more_actions_items']['#weight'] = 2;
-  $form['gin_sticky_actions']['more_actions']['more_actions_items']['#attributes']['class'] = ['gin-more-actions__menu'];
-
   // Build actions.
   foreach (Element::children($form['actions']) as $key) {
     $button = ($form['actions'][$key]) ?? [];
@@ -194,20 +190,7 @@ function gin_form_after_build(array $form, FormStateInterface $form_state): arra
       if (_gin_module_is_active('navigation') || in_array($key, $includes, TRUE) || !empty($button['#gin_action_item'])) {
         $form['gin_sticky_actions']['actions'][$key] = $button;
       }
-      // Add to more menu.
-      else {
-        $form['gin_sticky_actions']['more_actions']['more_actions_items'][$key] = $button;
-      }
     }
-    // Else add button to more menu.
-    elseif (!in_array($key, $includes, TRUE)) {
-      $form['gin_sticky_actions']['more_actions']['more_actions_items'][$key] = $button;
-      $form['gin_sticky_actions']['more_actions']['more_actions_items'][$key]['#attributes']['form'] = $button['#id'];
-    }
-  }
-
-  if (_gin_module_is_active('navigation')) {
-    unset($form['gin_sticky_actions']['more_actions']);
   }
 
   _gin_form_actions($form['gin_sticky_actions'] ?? NULL);

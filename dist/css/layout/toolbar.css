@@ -145,7 +145,7 @@
   background-color: var(--gin-bg-layer2);
 }
 
-.gin--toolbar .page-wrapper__node-edit-form .layout-region-node-secondary {
+.gin--toolbar .page-wrapper__node-edit-form .layout-region--secondary {
   padding-block-start: var(--gin-toolbar-y-offset);
 }
 

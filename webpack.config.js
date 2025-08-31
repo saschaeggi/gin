@@ -25,7 +25,6 @@ module.exports = {
     'navigation': ['./js/navigation.js'],
     'escape_admin': ['./js/escape_admin.js'],
     'tableheader': ['./js/tableheader.js'],
-    'tooltip': ['./js/tooltip.js'],
     // ################################################
     // CSS
     // ################################################

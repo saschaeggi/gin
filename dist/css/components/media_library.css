@@ -387,7 +387,7 @@ fieldset.media-library-widget .media-library-edit__link, fieldset.media-library-
   }
 }
 
-.layout-region-node-secondary .media-library-selection .media-library-item--grid {
+.layout-region--secondary .media-library-selection .media-library-item--grid {
   width: auto;
 }
 

@@ -24,7 +24,7 @@
   }
 
   // Show meta full width
-  .layout-region-node-secondary {
+  .layout-region--secondary {
     width: 100%;
   }
 
@@ -42,7 +42,7 @@
   }
 }
 
-.ui-dialog {
+.ui-dialog.ui-dialog {
   position: absolute;
   inset-block-start: 0;
   // Don't migrate to logical CSS
@@ -59,7 +59,7 @@
     box-shadow: var(--gin-shadow-l1);
   }
 
-  .ui-dialog-titlebar {
+  .ui-dialog-titlebar.ui-dialog-titlebar {
     line-height: 1.2;
     padding: var(--gin-spacing-m) var(--gin-spacing-l);
     background: $colorDarkAppBackground;
@@ -72,7 +72,7 @@
     }
   }
 
-  .ui-dialog-title {
+  .ui-dialog-title.ui-dialog-title {
     font-size: var(--gin-font-size-l);
     font-weight: var(--gin-font-weight-normal);
     color: #fff;
@@ -81,7 +81,7 @@
     box-sizing: border-box;
   }
 
-  .ui-dialog-content {
+  .ui-dialog-content.ui-dialog-content {
     color: var(--gin-color-text);
   }
 
@@ -115,10 +115,10 @@
   }
 
   .ui-dialog-buttonset {
-    margin-block-start: 0;
+    margin: 0;
   }
 
-  .ui-dialog-titlebar-close {
+  .ui-dialog-titlebar-close.ui-dialog-titlebar-close {
     position: absolute;
     inset-block-start: 50%;
     inset-inline-start: auto;
@@ -131,7 +131,7 @@
     background: none;
     border: none;
 
-    .ui-icon-closethick {
+    .ui-icon-closethick.ui-icon-closethick {
       width: 100%;
       height: 100%;
       inset-block-start: 0;

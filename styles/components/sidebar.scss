@@ -19,7 +19,7 @@
   }
 }
 
-.layout-region-node-secondary {
+.layout-region--secondary {
   transition: transform var(--gin-transition-fast);
 
   @include mq($to: medium) {
@@ -36,20 +36,20 @@
 body[data-meta-sidebar=closed] {
   --gin-sidebar-offset: 0px;
 
-  .layout-region-node-secondary {
+  .layout-region--secondary {
     transform: translateX(var(--gin-sidebar-width));
     visibility: hidden;
   }
 }
 
 // RTL handling.
-[dir=rtl] body[data-meta-sidebar=closed] .layout-region-node-secondary {
+[dir=rtl] body[data-meta-sidebar=closed] .layout-region--secondary {
   /*rtl:ignore*/
   transform: translateX(calc(var(--gin-sidebar-width) * -1));
 }
 
 body[data-meta-sidebar=open] {
-  .layout-region-node-secondary {
+  .layout-region--secondary {
     @include mq($to: large) {
       opacity: 1;
       visibility: visible;

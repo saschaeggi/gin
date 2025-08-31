@@ -24,7 +24,7 @@
   inset-inline-end: auto;
 }
 
-.ui-dialog:not(.ui-dialog-off-canvas) .layout-region-node-secondary {
+.ui-dialog:not(.ui-dialog-off-canvas) .layout-region--secondary {
   width: 100%;
 }
 
@@ -40,26 +40,26 @@
   }
 }
 
-.ui-dialog {
+.ui-dialog.ui-dialog {
   position: absolute;
   inset-block-start: 0;
   font-family: var(--gin-font);
   outline: none;
 }
 
-[dir="ltr"] .ui-dialog {
+[dir="ltr"] .ui-dialog.ui-dialog {
   inset-inline-start: 0;
 }
 
-[dir="rtl"] .ui-dialog {
+[dir="rtl"] .ui-dialog.ui-dialog {
   inset-inline-end: 0;
 }
 
-.ui-dialog, .ui-dialog:focus, .ui-dialog:focus:active, .ui-dialog:focus:hover {
+.ui-dialog.ui-dialog, .ui-dialog.ui-dialog:focus, .ui-dialog.ui-dialog:focus:active, .ui-dialog.ui-dialog:focus:hover {
   box-shadow: var(--gin-shadow-l1);
 }
 
-.ui-dialog .ui-dialog-titlebar {
+.ui-dialog.ui-dialog .ui-dialog-titlebar.ui-dialog-titlebar {
   line-height: 1.2;
   padding: var(--gin-spacing-m) var(--gin-spacing-l);
   background: #1b1b1d;
@@ -69,12 +69,12 @@
 }
 
 @media (forced-colors: active) {
-  .ui-dialog .ui-dialog-titlebar {
+  .ui-dialog.ui-dialog .ui-dialog-titlebar.ui-dialog-titlebar {
     border-block-end: 1px solid buttonBorder;
   }
 }
 
-.ui-dialog .ui-dialog-title {
+.ui-dialog.ui-dialog .ui-dialog-title.ui-dialog-title {
   font-size: var(--gin-font-size-l);
   font-weight: var(--gin-font-weight-normal);
   color: #fff;
@@ -83,11 +83,11 @@
   box-sizing: border-box;
 }
 
-.ui-dialog .ui-dialog-content {
+.ui-dialog.ui-dialog .ui-dialog-content.ui-dialog-content {
   color: var(--gin-color-text);
 }
 
-.ui-dialog .ui-widget-content.ui-dialog-buttonpane {
+.ui-dialog.ui-dialog .ui-widget-content.ui-dialog-buttonpane {
   padding: var(--gin-spacing-s) var(--gin-spacing-l);
   border-block-start: 1px solid var(--gin-border-color-layer);
   border-end-start-radius: var(--gin-border-m);
@@ -95,7 +95,7 @@
   background: var(--gin-bg-app);
 }
 
-.ui-dialog .ui-widget-content.ui-dialog-buttonpane .button {
+.ui-dialog.ui-dialog .ui-widget-content.ui-dialog-buttonpane .button {
   font-family: var(--gin-font);
   font-size: var(--gin-font-size-s);
   font-weight: var(--gin-font-weight-semibold);
@@ -105,20 +105,20 @@
   height: auto;
 }
 
-.ui-dialog .ui-widget-content.ui-dialog-buttonpane .button:last-of-type {
+.ui-dialog.ui-dialog .ui-widget-content.ui-dialog-buttonpane .button:last-of-type {
   margin-inline-end: 0;
 }
 
-.ui-dialog .ui-widget-content.ui-dialog-buttonpane .button.button--danger,
-.ui-dialog [data-drupal-selector*=-remove-form] .button.button--danger {
+.ui-dialog.ui-dialog .ui-widget-content.ui-dialog-buttonpane .button.button--danger,
+.ui-dialog.ui-dialog [data-drupal-selector*=-remove-form] .button.button--danger {
   border-color: var(--gin-color-danger) !important;
 }
 
-.ui-dialog .ui-dialog-buttonset {
-  margin-block-start: 0;
+.ui-dialog.ui-dialog .ui-dialog-buttonset {
+  margin: 0;
 }
 
-.ui-dialog .ui-dialog-titlebar-close {
+.ui-dialog.ui-dialog .ui-dialog-titlebar-close.ui-dialog-titlebar-close {
   position: absolute;
   inset-block-start: 50%;
   inset-inline-start: auto;
@@ -132,7 +132,7 @@
   border: none;
 }
 
-.ui-dialog .ui-dialog-titlebar-close .ui-icon-closethick {
+.ui-dialog.ui-dialog .ui-dialog-titlebar-close.ui-dialog-titlebar-close .ui-icon-closethick.ui-icon-closethick {
   width: 100%;
   height: 100%;
   inset-block-start: 0;
@@ -151,30 +151,30 @@
 }
 
 @media (forced-colors: active) {
-  .ui-dialog .ui-dialog-titlebar-close .ui-icon-closethick {
+  .ui-dialog.ui-dialog .ui-dialog-titlebar-close.ui-dialog-titlebar-close .ui-icon-closethick.ui-icon-closethick {
     background: linktext;
   }
 }
 
-.ui-dialog .ui-dialog-titlebar-close:hover {
+.ui-dialog.ui-dialog .ui-dialog-titlebar-close.ui-dialog-titlebar-close:hover {
   opacity: 1;
 }
 
-.ui-dialog .ui-widget-content.ui-dialog-content {
+.ui-dialog.ui-dialog .ui-widget-content.ui-dialog-content {
   padding-inline: var(--gin-spacing-l);
   background: var(--gin-bg-layer);
 }
 
-.ui-dialog .gin-layer-wrapper {
+.ui-dialog.ui-dialog .gin-layer-wrapper {
   margin-block-end: var(--gin-spacing-l);
 }
 
-.ui-dialog .gin-confirm-form {
+.ui-dialog.ui-dialog .gin-confirm-form {
   margin-block-start: var(--gin-spacing-m);
   margin-block-end: var(--gin-spacing-s);
 }
 
-.ui-dialog.token-tree-dialog {
+.ui-dialog.ui-dialog.token-tree-dialog {
   max-width: none;
   z-index: 505;
 }

@@ -1,6 +1,3 @@
-.gin-tooltip,
-.gin-tooltip-navigation,
-.cloned-gin-tooltip-navigation,
 .admin-toolbar__tooltip {
   z-index: 601;
   position: absolute;
@@ -14,18 +11,6 @@
   background-color: var(--gin-tooltip-bg);
   box-shadow: var(--gin-shadow-l2);
   border-radius: var(--gin-border-s);
-}
-
-.gin-tooltip {
-  visibility: hidden;
-  opacity: 0;
-  transition: var(--gin-transition-fast);
-}
-
-[data-gin-tooltip]:hover + .gin-tooltip,
-[data-gin-tooltip]:focus + .gin-tooltip {
-  visibility: visible;
-  opacity: 1;
 }
 
 html:not(.admin-toolbar-expanded) .toolbar-menu__item--level-1:not(.toolbar-menu__item--has-dropdown) .toolbar-link span {

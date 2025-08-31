@@ -108,25 +108,6 @@ class GinContentFormHelper implements ContainerInjectionInterface {
         ],
       ];
 
-      // Create gin_more_actions group.
-      $toggle_more_actions = $this->t('More actions');
-      $form['gin_sticky_actions']['more_actions'] = [
-        '#type' => 'container',
-        '#multilingual' => TRUE,
-        '#weight' => 998,
-        '#attributes' => [
-          'class' => ['gin-more-actions'],
-        ],
-        'more_actions_toggle' => [
-          '#markup' => '<a href="#toggle-more-actions" class="gin-more-actions__trigger trigger" data-gin-tooltip role="button" title="' . $toggle_more_actions . '" aria-controls="gin_more_actions"><span class="visually-hidden">' . $toggle_more_actions . '</span></a>',
-          '#weight' => 1,
-        ],
-        'more_actions_items' => [
-          '#type' => 'container',
-          '#multilingual' => TRUE,
-        ],
-      ];
-
       // Assign status to gin_actions.
       $form['gin_sticky_actions']['status'] = [
         '#type' => 'container',
@@ -195,7 +176,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       // Add sidebar toggle.
       $hide_panel = $this->t('Hide sidebar panel');
       $form['gin_sticky_actions']['gin_sidebar_toggle'] = [
-        '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger" data-gin-tooltip role="button" title="' . $hide_panel . '" aria-controls="gin_sidebar"><span class="visually-hidden">' . $hide_panel . '</span></a>',
+        '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger" role="button" title="' . $hide_panel . '" aria-controls="gin_sidebar"><span class="visually-hidden">' . $hide_panel . '</span></a>',
         '#weight' => 1000,
       ];
       $form['#attached']['library'][] = 'gin/sidebar';
@@ -218,7 +199,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       // Sidebar close button.
       $close_sidebar_translation = $this->t('Close sidebar panel');
       $form['gin_sidebar']['gin_sidebar_close'] = [
-        '#markup' => '<a href="#close-sidebar" class="meta-sidebar__close trigger" data-gin-tooltip role="button" title="' . $close_sidebar_translation . '"><span class="visually-hidden">' . $close_sidebar_translation . '</span></a>',
+        '#markup' => '<a href="#close-sidebar" class="meta-sidebar__close trigger" role="button" title="' . $close_sidebar_translation . '"><span class="visually-hidden">' . $close_sidebar_translation . '</span></a>',
       ];
 
       $form['gin_sidebar_overlay'] = [
@@ -334,6 +315,8 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     // Get route name.
     $route_name = $this->routeMatch->getRouteName();
 
+    // print_r($route_name);
+
     // Routes to include.
     $route_names = [
       'node.add',
@@ -347,6 +330,8 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       'entity.node.content_translation_edit',
       'quick_node_clone.node.quick_clone',
       'entity.node.edit_form',
+      'entity.menu.add_link_form',
+      'menu_ui.link_edit',
     ];
 
     // API check.

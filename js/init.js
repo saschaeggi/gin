@@ -57,7 +57,7 @@ if (localStorage.getItem('Drupal.gin.sidebarExpanded.desktop')) {
       transition: none;
     }
 
-    .layout-region-node-secondary {
+    .layout-region--secondary {
       transform: translateX(var(--gin-sidebar-width, 360px));
       transition: none;
     }

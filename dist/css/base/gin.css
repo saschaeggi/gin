@@ -4001,6 +4001,10 @@ tr.color-error:focus,
   margin: var(--gin-spacing-s) 0;
 }
 
+.system-clear-cache #edit-clear {
+  margin: 0;
+}
+
 .block-disabled:not(:hover) {
   opacity: .6;
   background: transparent;
