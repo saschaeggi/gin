@@ -14,8 +14,8 @@
 
 /**
  * Available modifiers are:
- *  - .claro-details--accordion
- *  - .claro-details--accordion-item
+ *  - .gin-details--accordion
+ *  - .gin-details--accordion-item
  *
  * Despite the fact that 'accordion' isn't used anywhere right now, we
  * implemented it (since the design defines that).
@@ -41,7 +41,7 @@
   --summary-accordion-line-height: var(--space-l);
 }
 
-.claro-details {
+.gin-details {
   display: block;
   margin-block: var(--space-m);
   color: var(--color-text);
@@ -58,24 +58,24 @@
    */
 }
 
-td .claro-details {
+td .gin-details {
   width: min-content;
   min-width: 100%;
 }
 
-.claro-details--accordion-item,
-.claro-details--vertical-tabs-item {
+.gin-details--accordion-item,
+.gin-details--vertical-tabs-item {
   margin-block: 0;
   border-radius: 0;
   box-shadow: none;
 }
 
-.claro-details--accordion-item:first-of-type {
+.gin-details--accordion-item:first-of-type {
   border-top-left-radius: var(--details-border-size-radius);
   border-top-right-radius: var(--details-border-size-radius);
 }
 
-.claro-details--accordion-item:last-of-type {
+.gin-details--accordion-item:last-of-type {
   border-bottom-right-radius: var(--details-border-size-radius);
   border-bottom-left-radius: var(--details-border-size-radius);
 }
@@ -84,7 +84,7 @@ td .claro-details {
  * Details summary styles.
  */
 
-.claro-details__summary {
+.gin-details__summary {
   position: relative;
   box-sizing: border-box;
   padding-block: var(--space-m);
@@ -100,9 +100,9 @@ td .claro-details {
 
 /* Modifiers */
 
-.claro-details__summary--accordion,
-.claro-details__summary--accordion-item,
-.claro-details__summary--vertical-tabs-item {
+.gin-details__summary--accordion,
+.gin-details__summary--accordion-item,
+.gin-details__summary--vertical-tabs-item {
   padding-block: var(--summary-accordion-padding-vertical);
   padding-inline: var(--details-desktop-wrapper-padding-start) var(--space-l);
   background: var(--color-white);
@@ -114,16 +114,16 @@ td .claro-details {
  * or the last ones.
  */
 
-.claro-details__summary--accordion-item {
+.gin-details__summary--accordion-item {
   border-radius: 0;
 }
 
-.claro-details--accordion-item:first-child .claro-details__summary--accordion-item {
+.gin-details--accordion-item:first-child .gin-details__summary--accordion-item {
   border-top-left-radius: var(--details-border-size-radius);
   border-top-right-radius: var(--details-border-size-radius);
 }
 
-.claro-details--accordion-item:last-child .claro-details__summary--accordion-item {
+.gin-details--accordion-item:last-child .gin-details__summary--accordion-item {
   border-bottom-right-radius: var(--details-border-size-radius);
   border-bottom-left-radius: var(--details-border-size-radius);
 }
@@ -134,11 +134,11 @@ td .claro-details {
 
 /* Remove the marker on Chrome */
 
-.claro-details__summary::-webkit-details-marker {
+.gin-details__summary::-webkit-details-marker {
   display: none;
 }
 
-.claro-details__summary::before {
+.gin-details__summary::before {
   position: absolute;
   inset-block-start: 50%;
   inset-inline-start: var(--space-s);
@@ -154,18 +154,18 @@ td .claro-details {
   background-size: contain;
 }
 
-[dir="rtl"] :is(.claro-details__summary::before) {
+[dir="rtl"] :is(.gin-details__summary::before) {
   transform: rotate(-270deg);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .claro-details__summary::before {
+  .gin-details__summary::before {
     transition: none;
   }
 }
 
 @media (forced-colors: active) {
-  .claro-details__summary::before {
+  .gin-details__summary::before {
     width: 0.5625rem;
     height: 0.5625rem;
     transition:
@@ -177,7 +177,7 @@ td .claro-details {
     background: none;
   }
 
-  [dir="rtl"] :is(.claro-details__summary::before) {
+  [dir="rtl"] :is(.gin-details__summary::before) {
     transform: rotate(-225deg);
   }
 }
@@ -203,7 +203,7 @@ td .claro-details {
 
 @media not all and (min-resolution: 0.001dpcm) {
   @supports (-webkit-appearance: none) {
-    .claro-details__summary::before {
+    .gin-details__summary::before {
       transition: none;
     }
   }
@@ -213,7 +213,7 @@ td .claro-details {
  * Details summary focus.
  */
 
-.claro-details__summary::after {
+.gin-details__summary::after {
   position: absolute;
   inset: -1px;
   content: "";
@@ -224,19 +224,19 @@ td .claro-details {
   box-shadow: inset 0 0 0 var(--details-summary-focus-border-size) var(--details-summary-shadow-color);
 }
 
-.claro-details > .claro-details__summary--accordion-item::after,
-.vertical-tabs__item > .claro-details__summary--vertical-tabs-item::after {
+.gin-details > .gin-details__summary--accordion-item::after,
+.vertical-tabs__item > .gin-details__summary--vertical-tabs-item::after {
   border-radius: 0;
 }
 
-.claro-details:first-child > .claro-details__summary--accordion-item::after,
-.vertical-tabs__item--first > .claro-details__summary--vertical-tabs-item::after {
+.gin-details:first-child > .gin-details__summary--accordion-item::after,
+.vertical-tabs__item--first > .gin-details__summary--vertical-tabs-item::after {
   border-top-left-radius: var(--details-border-size-radius);
   border-top-right-radius: var(--details-border-size-radius);
 }
 
-.claro-details:last-child > .claro-details__summary--accordion-item::after,
-.vertical-tabs__item--last > .claro-details__summary--vertical-tabs-item::after {
+.gin-details:last-child > .gin-details__summary--accordion-item::after,
+.vertical-tabs__item--last > .gin-details__summary--vertical-tabs-item::after {
   border-bottom-right-radius: var(--details-border-size-radius);
   border-bottom-left-radius: var(--details-border-size-radius);
 }
@@ -246,9 +246,9 @@ td .claro-details {
  * radius if their accordion is expanded.
  */
 
-.claro-details[open] > .claro-details__summary--accordion::after,
-.claro-details[open] > .claro-details__summary--accordion-item::after,
-.vertical-tabs__item--last[open] > .claro-details__summary--vertical-tabs-item::after {
+.gin-details[open] > .gin-details__summary--accordion::after,
+.gin-details[open] > .gin-details__summary--accordion-item::after,
+.vertical-tabs__item--last[open] > .gin-details__summary--vertical-tabs-item::after {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -257,42 +257,42 @@ td .claro-details {
  * Details summary states.
  */
 
-.claro-details__summary:focus {
+.gin-details__summary:focus {
   box-shadow: none;
 }
 
-[open] .claro-details__summary--accordion,
-[open] .claro-details__summary--accordion-item,
-[open] .claro-details__summary--vertical-tabs-item {
+[open] .gin-details__summary--accordion,
+[open] .gin-details__summary--accordion-item,
+[open] .gin-details__summary--vertical-tabs-item {
   color: var(--color-absolutezero);
 }
 
-.claro-details__summary:hover::before,
-.claro-details__summary:hover:focus::before,
-.claro-details[open] > .claro-details__summary:focus::before,
-.claro-details[open] > .claro-details__summary--accordion::before,
-.claro-details[open] > .claro-details__summary--accordion-item::before,
-.claro-details[open] > .claro-details__summary--vertical-tabs-item::before {
+.gin-details__summary:hover::before,
+.gin-details__summary:hover:focus::before,
+.gin-details[open] > .gin-details__summary:focus::before,
+.gin-details[open] > .gin-details__summary--accordion::before,
+.gin-details[open] > .gin-details__summary--accordion-item::before,
+.gin-details[open] > .gin-details__summary--vertical-tabs-item::before {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3e%3cpath d='M5.21 1.314L3.79 2.723l5.302 5.353-5.303 5.354 1.422 1.408 6.697-6.762z' fill='%230036B1'/%3e%3c/svg%3e");
 }
 
-.claro-details[open] > .claro-details__summary {
+.gin-details[open] > .gin-details__summary {
   border-radius: var(--size-summary-border-radius) var(--size-summary-border-radius) 0 0;
 }
 
-.claro-details[open] > .claro-details__summary::before {
+.gin-details[open] > .gin-details__summary::before {
   transform: rotate(-90deg); /* for LTR and RTL */
 }
 
 @media (forced-colors: active) {
-  .claro-details__summary:hover::before,
-  .claro-details__summary:hover:focus::before,
-  .claro-details[open] > .claro-details__summary:focus::before {
+  .gin-details__summary:hover::before,
+  .gin-details__summary:hover:focus::before,
+  .gin-details[open] > .gin-details__summary:focus::before {
     background: none;
   }
 
-  .claro-details[open] > .claro-details__summary::before,
-  [dir="rtl"] .claro-details[open] > .claro-details__summary::before {
+  .gin-details[open] > .gin-details__summary::before,
+  [dir="rtl"] .gin-details[open] > .gin-details__summary::before {
     margin-block-start: -0.125rem;
     margin-inline-end: 0.125rem;
     transform: rotate(-45deg); /* for LTR and RTL */
@@ -300,13 +300,13 @@ td .claro-details {
   }
 }
 
-.claro-details[open] > .claro-details__summary--accordion,
-.claro-details[open] > .claro-details__summary--accordion-item,
-.claro-details[open] > .claro-details__summary--vertical-tabs-item {
+.gin-details[open] > .gin-details__summary--accordion,
+.gin-details[open] > .gin-details__summary--accordion-item,
+.gin-details[open] > .gin-details__summary--vertical-tabs-item {
   box-shadow: var(--details-box-shadow);
 }
 
-.claro-details__summary:hover {
+.gin-details__summary:hover {
   color: var(--color-absolutezero);
   background-color: var(--color-bgblue-hover);
 }
@@ -319,21 +319,21 @@ td .claro-details {
  * Active has to be here for Firefox.
  */
 
-[open] > .claro-details__summary--accordion:not(:focus, :active)::after,
-[open] > .claro-details__summary--accordion-item:not(:focus, :active)::after,
-[open] > .claro-details__summary--vertical-tabs-item:not(:focus, :active)::after {
+[open] > .gin-details__summary--accordion:not(:focus, :active)::after,
+[open] > .gin-details__summary--accordion-item:not(:focus, :active)::after,
+[open] > .gin-details__summary--vertical-tabs-item:not(:focus, :active)::after {
   opacity: 1;
   border: var(--details-summary-focus-border-size) solid var(--color-absolutezero);
   border-width: 0 0 0 var(--details-summary-focus-border-size); /* LTR */
   box-shadow: none;
 }
 
-[dir="rtl"] :is([open] > .claro-details__summary--accordion:not(:focus, :active)::after, [open] > .claro-details__summary--accordion-item:not(:focus, :active)::after, [open] > .claro-details__summary--vertical-tabs-item:not(:focus, :active)::after) {
+[dir="rtl"] :is([open] > .gin-details__summary--accordion:not(:focus, :active)::after, [open] > .gin-details__summary--accordion-item:not(:focus, :active)::after, [open] > .gin-details__summary--vertical-tabs-item:not(:focus, :active)::after) {
   border-width: 0 var(--details-summary-focus-border-size) 0 0;
 }
 
-.claro-details__summary:focus::after,
-.claro-details__summary:active::after {
+.gin-details__summary:focus::after,
+.gin-details__summary:active::after {
   opacity: 1;
 }
 
@@ -345,13 +345,13 @@ td .claro-details {
 
 @media not all and (min-resolution: 0.001dpcm) {
   @supports (-webkit-appearance: none) {
-    .claro-details__summary::after {
+    .gin-details__summary::after {
       transition: none;
     }
   }
 }
 
-.claro-details[open] > .claro-details__summary:focus {
+.gin-details[open] > .gin-details__summary:focus {
   color: var(--color-absolutezero);
 }
 
@@ -359,7 +359,7 @@ td .claro-details {
  * Details wrapper and content.
  *
  * Accordion and accordion-item variants should have an extra background.
- * In that case, we render an additional wrapper 'claro-details__content' that
+ * In that case, we render an additional wrapper 'gin-details__content' that
  * creates the visual margins around the content, and use the original
  * wrapper for setting the background color.
  *
@@ -369,31 +369,31 @@ td .claro-details {
  * vertical spacing.
  */
 
-.claro-details__wrapper,
-.claro-details__content {
+.gin-details__wrapper,
+.gin-details__content {
   margin: var(--space-m);
 }
 
-.claro-details__wrapper--accordion,
-.claro-details__wrapper--accordion-item,
-.claro-details__wrapper--vertical-tabs-item {
+.gin-details__wrapper--accordion,
+.gin-details__wrapper--accordion-item,
+.gin-details__wrapper--vertical-tabs-item {
   margin: 0;
 }
 
-.claro-details__wrapper--accordion::before,
-.claro-details__wrapper--accordion::after,
-.claro-details__wrapper--accordion-item::before,
-.claro-details__wrapper--accordion-item::after,
-.claro-details__wrapper--vertical-tabs-item::before,
-.claro-details__wrapper--vertical-tabs-item::after {
+.gin-details__wrapper--accordion::before,
+.gin-details__wrapper--accordion::after,
+.gin-details__wrapper--accordion-item::before,
+.gin-details__wrapper--accordion-item::after,
+.gin-details__wrapper--vertical-tabs-item::before,
+.gin-details__wrapper--vertical-tabs-item::after {
   display: table;
   clear: both;
   content: "";
 }
 
-.claro-details__wrapper--accordion,
-.claro-details__wrapper--accordion-item,
-.claro-details__wrapper--vertical-tabs-item {
+.gin-details__wrapper--accordion,
+.gin-details__wrapper--accordion-item,
+.gin-details__wrapper--vertical-tabs-item {
   border-top: var(--details-border-size) solid var(--details-border-color);
   background-color: var(--color-gray-050-o-40);
 }
@@ -401,49 +401,49 @@ td .claro-details {
 /* @see Drupal.behaviors.verticalTabs */
 
 @media screen and (min-width: 40.0625rem) {
-  .claro-details__wrapper {
+  .gin-details__wrapper {
     margin: var(--space-l) var(--details-desktop-wrapper-padding-start);
   }
 
-  .claro-details__wrapper--accordion,
-  .claro-details__wrapper--accordion-item,
-  .claro-details__wrapper--vertical-tabs-item {
+  .gin-details__wrapper--accordion,
+  .gin-details__wrapper--accordion-item,
+  .gin-details__wrapper--vertical-tabs-item {
     margin: 0;
   }
 
-  .js .claro-details__wrapper--vertical-tabs-item {
+  .js .gin-details__wrapper--vertical-tabs-item {
     margin: 0;
     border-top: 0;
     background-color: transparent;
   }
 }
 
-.claro-details__content--accordion,
-.claro-details__content--accordion-item,
-.claro-details__content--vertical-tabs-item {
+.gin-details__content--accordion,
+.gin-details__content--accordion-item,
+.gin-details__content--vertical-tabs-item {
   margin: var(--space-m) var(--space-m) var(--space-l);
 }
 
 @media screen and (min-width: 85em) {
-  .vertical-tabs .claro-details__content--vertical-tabs-item {
+  .vertical-tabs .gin-details__content--vertical-tabs-item {
     margin: var(--space-l);
   }
 }
 
 /* Description. */
 
-.claro-details__description {
+.gin-details__description {
   margin-block-end: var(--space-m);
   color: var(--input-fg-color--description);
   font-size: var(--font-size-xs); /* ~13px */
   line-height: calc(17rem / 16); /* 17px */
 }
 
-.claro-details__description.is-disabled {
+.gin-details__description.is-disabled {
   color: var(--input--disabled-fg-color);
 }
 
-.claro-details__summary-summary {
+.gin-details__summary-summary {
   display: block;
   color: var(--color-gray-800);
   font-size: var(--font-size-s);

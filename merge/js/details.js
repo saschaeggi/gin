@@ -35,7 +35,7 @@
    *   The markup for the element that will contain the summarized content.
    */
   Drupal.theme.detailsSummarizedContentWrapper = () =>
-    `<span class="claro-details__summary-summary"></span>`;
+    `<span class="gin-details__summary-summary"></span>`;
 
   /**
    * Theme override of summarized details content text.

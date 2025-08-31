@@ -52,8 +52,8 @@
   display: block;
 }
 
-.claro-details__wrapper {
-  &.claro-details__wrapper--system-status-report {
+.gin-details__wrapper {
+  &.gin-details__wrapper--system-status-report {
     margin: 0;
   }
 }
@@ -91,7 +91,7 @@
 }
 
 .system-status-report {
-  & .claro-details {
+  & .gin-details {
     border: none;
     border-block-end: var(--details-border-size) solid var(--details-border-color);
     box-shadow: none;
@@ -151,7 +151,7 @@
   font-size: var(--font-size-s);
 }
 
-.claro-details__summary--system-status-report {
+.gin-details__summary--system-status-report {
   background: var(--color-gray-050);
 }
 

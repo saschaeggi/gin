@@ -48,7 +48,7 @@
   border-bottom-left-radius: var(--accordion-item-border-radius);
 }
 
-.accordion__item .claro-details__summary .summary {
+.accordion__item .gin-details__summary .summary {
   --accordion-summary-color: var(--color-gray-800);
 
   display: block;
