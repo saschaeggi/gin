@@ -120,11 +120,12 @@
 .gin--navigation-top-bar .local-actions__item a,
 .gin--navigation-top-bar .action-link,
 .gin--navigation-top-bar .action-link--icon-trash.action-link--danger {
-  font-size: var(--gin-font-size-xs);
+  font-size: var(--gin-font-size-xxs);
   font-weight: var(--gin-font-weight-bold);
   line-height: 1;
-  padding-block: calc(var(--gin-spacing-xs) - var(--gin-spacing-xxxs));
+  padding-block: var(--gin-spacing-xs);
   padding-inline: var(--gin-spacing-s);
+  border-radius: var(--gin-border-m);
   margin-block: 0;
   box-shadow: none;
 }

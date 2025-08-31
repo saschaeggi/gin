@@ -59,7 +59,7 @@ global-styling:
     # rendering links, it is hard to recognize when this detection should be
     # attached, therefore it is always attached.
     - core/drupal.touchevents-test
-    - gin/gin_base
+    - gin/base
 
 form-two-columns:
   version: VERSION
@@ -319,7 +319,7 @@ tableselect:
 
 # Base
 
-gin_base:
+base:
   css:
     component:
       dist/css/theme/font.css: { minified: false }
@@ -329,9 +329,9 @@ gin_base:
     - gin/dialog
     - gin/status
 
-# Legacy
+# Init
 
-gin_init:
+init:
   header: true
   js:
     dist/js/init.js: { minified: false, preprocess: false, weight: -99 }
@@ -343,18 +343,18 @@ gin_init:
 top_bar:
   css:
     component:
-      dist/css/components/top_bar.css: { minified: false }
+      dist/css/layout/top_bar.css: { minified: false }
   dependencies:
     - gin/status
 
 # Navigation
 
-core_navigation:
+navigation:
   css:
     theme:
-      dist/css/layout/core_navigation.css: { minified: false }
+      dist/css/layout/navigation.css: { minified: false }
   js:
-    dist/js/core_navigation.js: { minified: false }
+    dist/js/navigation.js: { minified: false }
   dependencies:
     - gin/escape_admin
     - gin/node_preview
@@ -365,12 +365,12 @@ core_navigation:
 
 # Toolbar
 
-gin_classic_toolbar:
+toolbar:
   css:
     component:
       dist/css/components/toolbar.css: { minified: false }
     theme:
-      dist/css/layout/classic_toolbar.css: { minified: false }
+      dist/css/layout/toolbar.css: { minified: false }
   dependencies:
     - gin/escape_admin
     - gin/node_preview
@@ -381,7 +381,7 @@ gin_classic_toolbar:
 
 # Accent
 
-gin_accent:
+accent:
   css:
     theme:
       dist/css/theme/accent.css: { minified: false }
@@ -399,10 +399,10 @@ gin_dialog:
       dist/css/theme/dialog.css: { minified: false }
   dependencies:
     - gin/dialog
-    - gin/gin_base
-    - gin/gin_accent
+    - gin/base
+    - gin/accent
 
-gin_description_toggle:
+description_toggle:
   css:
     theme:
       dist/css/components/description_toggle.css: { minified: false }
@@ -432,16 +432,9 @@ scrollsync:
   js:
     js/libs/scrollsync.js: { minified: true, weight: -1 }
 
-floating-ui:
-  js:
-    js/navigation/vendor/floating-ui/floating-ui.core.umd.js: { minified: true }
-    js/navigation/vendor/floating-ui/floating-ui.dom.umd.js: { minified: true }
-  dependencies:
-    - core/once
-
 # Overrides
 
-gin_media_embed_ckeditor_theme:
+media_embed_ckeditor_theme:
   js:
     js/overrides/media_embed_ckeditor.theme.js: { minified: false }
 
@@ -492,7 +485,6 @@ tooltip:
     component:
       dist/css/components/tooltip.css: { minified: false }
   dependencies:
-    - gin/floating-ui
     - core/once
 
 status:
@@ -566,5 +558,5 @@ maintenance_page:
   dependencies:
     - system/maintenance
     - gin/gin
-    - gin/gin_accent
-    - gin/gin_init
+    - gin/accent
+    - gin/init

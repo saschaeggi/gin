@@ -144,14 +144,12 @@
   background: var(--gin-color-primary);
 }
 
-[data-drupal-selector=edit-classic-toolbar] .form-radios,
 [data-drupal-selector=edit-layout-density] .form-radios {
   display: flex;
   flex-wrap: wrap;
   margin-block-start: var(--gin-spacing-xs);
 }
 
-[data-drupal-selector=edit-classic-toolbar] .form-radios .form-item,
 [data-drupal-selector=edit-layout-density] .form-radios .form-item {
   position: relative;
   display: flex;
@@ -161,7 +159,6 @@
   margin-inline-end: var(--gin-spacing-s);
 }
 
-[data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input,
 [data-drupal-selector=edit-layout-density] .form-radios .form-item input {
   cursor: pointer;
   position: static;
@@ -174,121 +171,29 @@
   background-size: 100% 100%;
 }
 
-[data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input:focus,
-[data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input [data-drupal-selector=edit-layout-density] .form-radios .form-item input:focus,
-[data-drupal-selector=edit-layout-density] .form-radios .form-item input [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input:focus,
 [data-drupal-selector=edit-layout-density] .form-radios .form-item input [data-drupal-selector=edit-layout-density] .form-radios .form-item input:focus {
   border-color: var(--gin-color-text);
   box-shadow: none;
 }
 
-[data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input:checked,
 [data-drupal-selector=edit-layout-density] .form-radios .form-item input:checked {
   border-color: var(--gin-color-primary);
   box-shadow: inset 0 0 0 1px var(--gin-color-primary);
 }
 
-[data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input:focus,
 [data-drupal-selector=edit-layout-density] .form-radios .form-item input:focus {
   box-shadow: 0 0 0 3px var(--gin-color-focus);
 }
 
-[data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input:checked:focus,
 [data-drupal-selector=edit-layout-density] .form-radios .form-item input:checked:focus {
   box-shadow: inset 0 0 0 1px var(--gin-color-primary), 0 0 0 3px var(--gin-color-focus);
 }
 
-[data-drupal-selector=edit-classic-toolbar] .form-radios .form-item .form-item__label,
 [data-drupal-selector=edit-layout-density] .form-radios .form-item .form-item__label {
   font-size: var(--gin-font-size-xxs);
   display: block;
   margin-block-start: var(--gin-spacing-xs);
   margin-block-end: var(--gin-spacing-m);
-}
-
-[data-drupal-selector=edit-classic-toolbar].gin-core-navigation--is-active {
-  position: relative;
-}
-
-[data-drupal-selector=edit-classic-toolbar].gin-core-navigation--is-active #edit-classic-toolbar {
-  position: relative;
-  opacity: .5;
-}
-
-[data-drupal-selector=edit-classic-toolbar].gin-core-navigation--is-active #edit-classic-toolbar::before {
-  content: "";
-  z-index: 2;
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  cursor: not-allowed;
-}
-
-[data-drupal-selector=edit-classic-toolbar].gin-core-navigation--is-active .fieldset__description {
-  pointer-events: none;
-  position: absolute;
-  inset-block-start: 3.5rem;
-  inset-inline-start: 2rem;
-  display: flex;
-  align-items: center;
-  gap: var(--gin-spacing-xs);
-  color: var(--gin-color-warning);
-  background-color: var(--gin-bg-warning);
-  padding: var(--gin-spacing-xs) var(--gin-spacing-s);
-  border-radius: var(--gin-border-s);
-}
-
-[data-drupal-selector=edit-classic-toolbar].gin-core-navigation--is-active .fieldset__description:before {
-  content: "";
-  display: block;
-  width: 1em;
-  height: 1em;
-  background-color: var(--gin-color-warning-light);
-  -webkit-mask-image: url("../../media/sprite.svg#warning-view");
-          mask-image: url("../../media/sprite.svg#warning-view");
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  -webkit-mask-position: center left;
-          mask-position: center left;
-}
-
-[data-drupal-selector=edit-classic-toolbar].gin-core-navigation--is-active .fieldset__description .form-item__warning {
-  display: none;
-}
-
-[data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input[data-gin-toolbar=vertical] {
-  background-image: url(../../media/settings/toolbar_sidebar.png);
-}
-
-.gin--dark-mode [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input[data-gin-toolbar=vertical] {
-  background-image: url(../../media/settings/toolbar_sidebar_darkmode.png);
-}
-
-[data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input[data-gin-toolbar=new] {
-  background-image: url(../../media/settings/toolbar_new.png);
-}
-
-.gin--dark-mode [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input[data-gin-toolbar=new] {
-  background-image: url(../../media/settings/toolbar_new_darkmode.png);
-}
-
-[data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input[data-gin-toolbar=horizontal] {
-  background-image: url(../../media/settings/toolbar_minimal.png);
-}
-
-.gin--dark-mode [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input[data-gin-toolbar=horizontal] {
-  background-image: url(../../media/settings/toolbar_minimal_darkmode.png);
-}
-
-[data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input[data-gin-toolbar=classic] {
-  background-image: url(../../media/settings/toolbar_legacy.png);
-}
-
-.gin--dark-mode [data-drupal-selector=edit-classic-toolbar] .form-radios .form-item input[data-gin-toolbar=classic] {
-  background-image: url(../../media/settings/toolbar_legacy_darkmode.png);
 }
 
 [data-drupal-selector=edit-layout-density] .form-radios .form-item input[data-drupal-selector=edit-layout-density-default] {

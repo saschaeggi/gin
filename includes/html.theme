@@ -54,11 +54,11 @@ function gin_preprocess_html(&$variables) {
 
     // Check if Navigation module is active.
     if (_gin_module_is_active('navigation')) {
-      $variables['attributes']['class'][] = 'gin--core-navigation';
+      $variables['attributes']['class'][] = 'gin--navigation';
     }
     else {
       // Set toolbar class.
-      $variables['attributes']['class'][] = 'gin--classic-toolbar';
+      $variables['attributes']['class'][] = 'gin--toolbar';
     }
   }
 }

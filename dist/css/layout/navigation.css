@@ -24,16 +24,16 @@
   }
 }
 
-body.gin--core-navigation {
+body.gin--navigation {
   --admin-toolbar-sidebar-width: 4rem;
 }
 
-[data-admin-toolbar=expanded] body.gin--core-navigation {
+[data-admin-toolbar=expanded] body.gin--navigation {
   --admin-toolbar-sidebar-width: 16.5rem;
 }
 
 @media (--admin-toolbar-tablet) {
-  [data-admin-toolbar=expanded] body.gin--core-navigation {
+  [data-admin-toolbar=expanded] body.gin--navigation {
     --admin-toolbar-sidebar-width: calc(16.5 * var(--admin-toolbar-rem));
   }
 }
@@ -48,17 +48,8 @@ body.gin--core-navigation {
   --admin-toolbar-color-gray-990: var(--gin-color-primary-active);
 }
 
-.gin--core-navigation .admin-toolbar-control-bar {
+.gin--navigation .admin-toolbar-control-bar {
   background-color: var(--admin-toolbar-color-white);
-}
-
-.gin--core-navigation .gin-secondary-toolbar:not(.gin-secondary-toolbar--frontend) {
-  margin-block-end: var(--gin-spacing-xxs);
-}
-
-.gin--core-navigation .gin-secondary-toolbar--frontend {
-  z-index: 102;
-  margin-inline-start: var(--gin-toolbar-x-offset);
 }
 
 .toolbar-menu__link:hover::before {
@@ -93,6 +84,7 @@ body.gin--core-navigation {
 }
 
 .admin-toolbar__footer {
+  gap: 0;
   padding: var(--gin-spacing-s);
 }
 
@@ -265,14 +257,26 @@ body.gin--core-navigation {
   background-color: var(--gin-color-primary-light);
 }
 
-.toolbar-button.current.is-active::before,
-.toolbar-button:has(+ .toolbar-popover__wrapper .is-active)::before {
-  background: var(--gin-color-primary);
+.toolbar-button.current.is-active .toolbar-button__icon,
+.toolbar-button:has(+ .toolbar-popover__wrapper .is-active) .toolbar-button__icon {
+  color: var(--gin-color-primary) !important;
 }
 
-.gin--core-navigation .toolbar-button__icon {
-  stroke-width: .25px;
+.gin--navigation .toolbar-button__icon {
+  color: var(--gin-icon-color);
+  stroke-width: .03125rem;
   stroke: currentColor;
+  inline-size: 22px;
+  block-size: 22px;
+  margin: -1px;
+}
+
+.gin--navigation .toolbar-button--icon--announcements-feed-announcement .toolbar-button__icon path:not(:first-of-type) {
+  stroke-width: 1.325rem;
+}
+
+.gin--navigation .toolbar-button--icon--dots path {
+  stroke-width: .5rem;
 }
 
 #navigation-link-navigationcreate:first-child {

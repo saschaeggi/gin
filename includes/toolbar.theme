@@ -32,10 +32,10 @@ function gin_preprocess_toolbar(&$variables) {
   // Check if Navigation module is active.
   if (_gin_module_is_active('navigation')) {
     // Attach the new drupal navigation styles.
-    $variables['#attached']['library'][] = 'gin/core_navigation';
+    $variables['#attached']['library'][] = 'gin/navigation';
     return;
   }
 
   // Toolbar library.
-  $variables['#attached']['library'][] = 'gin/gin_classic_toolbar';
+  $variables['#attached']['library'][] = 'gin/toolbar';
 }

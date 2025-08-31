@@ -119,11 +119,12 @@ $topbar: 54px;
   .local-actions__item a,
   .action-link,
   .action-link--icon-trash.action-link--danger {
-    font-size: var(--gin-font-size-xs);
+    font-size: var(--gin-font-size-xxs);
     font-weight: var(--gin-font-weight-bold);
     line-height: 1;
-    padding-block: calc(var(--gin-spacing-xs) - var(--gin-spacing-xxxs));
+    padding-block: var(--gin-spacing-xs);
     padding-inline: var(--gin-spacing-s);
+    border-radius: var(--gin-border-m);
     margin-block: 0;
     box-shadow: none;
   }

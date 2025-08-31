@@ -35,7 +35,7 @@
           backdrop-filter: none;
 }
 
-.gin--navigation .node-preview-container.node-preview-container, .gin--core-navigation .node-preview-container.node-preview-container {
+.gin--navigation .node-preview-container.node-preview-container {
   margin-inline-start: var(--gin-toolbar-x-offset);
   width: calc(100% - var(--gin-toolbar-x-offset));
 }
@@ -135,10 +135,6 @@
 }
 
 .node-preview-container.node-preview-container .js-hide {
-  display: none;
-}
-
-.node-preview-container.node-preview-container ~ .gin-secondary-toolbar--frontend {
   display: none;
 }
 

@@ -1,5 +1,5 @@
 // Offset
-body.gin--classic-toolbar {
+body.gin--toolbar {
   padding-block-start: var(--gin-toolbar-y-offset) !important;
   padding-inline-start: var(--gin-toolbar-x-offset, 256px) !important;
   margin-inline-start: 0; // Fix for Drupal 9.3+

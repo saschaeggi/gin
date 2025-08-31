@@ -17,7 +17,7 @@ function gin_preprocess_page(&$variables) {
   // Required for allowing subtheming Gin.
   $activeThemeName = \Drupal::theme()->getActiveTheme()->getName();
   $variables['active_admin_theme'] = $activeThemeName;
-  $variables['active_core_navigation'] = _gin_module_is_active('navigation');
+  $variables['active_navigation'] = _gin_module_is_active('navigation');
   // Expose Route name.
   $variables['route_name'] = \Drupal::routeMatch()->getRouteName();
 
@@ -81,13 +81,13 @@ function gin_page_attachments_alter(&$page) {
 
   if ($gin_activated) {
     // Attach the init script.
-    $page['#attached']['library'][] = 'gin/gin_init';
+    $page['#attached']['library'][] = 'gin/init';
 
     // Attach breadcrumb styles.
     $page['#attached']['library'][] = 'gin/breadcrumb';
 
     // Attach accent library.
-    $page['#attached']['library'][] = 'gin/gin_accent';
+    $page['#attached']['library'][] = 'gin/accent';
 
     // Attach sticky library.
     $page['#attached']['library'][] = 'gin/sticky';

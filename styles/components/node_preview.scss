@@ -28,8 +28,7 @@
     backdrop-filter: none;
   }
 
-  .gin--navigation &,
-  .gin--core-navigation & {
+  .gin--navigation & {
     margin-inline-start: var(--gin-toolbar-x-offset);
     width: calc(100% - var(--gin-toolbar-x-offset));
   }
@@ -122,11 +121,6 @@
   }
 
   .js-hide {
-    display: none;
-  }
-
-  // Hide Secondary Toolbar while in Preview mode.
-  ~ .gin-secondary-toolbar--frontend {
     display: none;
   }
 
