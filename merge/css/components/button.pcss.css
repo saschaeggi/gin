@@ -28,35 +28,34 @@
   display: inline-block;
   margin-block: var(--space-m);
   margin-inline: 0 var(--space-s);
-  padding: calc(var(--space-m) - 1px) calc(var(--space-l) - 1px); /* 1 */
+  padding-block: var(--space-s);
+  padding-inline: var(--space-m);
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   color: var(--button-fg-color);
-  border: 1px solid transparent;
+  border: 1px solid var(--button-border-color);
   border-radius: var(--button-border-radius-size);
   background-color: var(--button-bg-color);
-  font-size: var(--font-size-base);
-  font-weight: 700;
-  line-height: 1rem;
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: 1;
   appearance: none;
-  -webkit-font-smoothing: antialiased; /* 2 */
-
-  &:not(:focus) {
-    box-shadow: 0 1px 2px rgb(0, 0, 0, 0.25);
-  }
 
   &:hover {
     text-decoration: none;
     color: var(--button-fg-color);
+    border-color: var(--button--hover-border-color);
     background-color: var(--button--hover-bg-color);
   }
 
   &:focus {
     text-decoration: none;
+    box-shadow: var(--focus-ring);
   }
 
   &:active {
+    border-color: var(--button--active-border-color);
     background-color: var(--button--active-bg-color);
   }
 }
@@ -66,16 +65,20 @@
   & .button--small {
     margin-block: var(--space-s);
     margin-inline: 0 var(--space-xs);
-    padding: calc(var(--space-xs) - 1px) calc(var(--space-m) - 1px); /* 1 */
+    padding-block: var(--space-xs);
+    padding-inline: var(--space-s);
     font-size: var(--font-size-xs);
+    min-height: 2rem;
   }
 
   /* Common styles for extra small buttons. */
   & .button--extrasmall {
     margin-block: var(--space-xs);
     margin-inline: 0 var(--space-xs);
-    padding: calc(calc(var(--space-xs) / 2) - 1px) calc(var(--space-s) - 1px); /* 1 */
-    font-size: var(--font-size-xs);
+    padding-block: var(--space-xxs);
+    padding-inline: var(--space-xs);
+    font-size: var(--font-size-xxs);
+    min-height: 1.5rem;
   }
 }
 
@@ -94,10 +97,12 @@
 /* Primary button style.s */
 .button--primary {
   color: var(--button-fg-color--primary);
+  border-color: transparent;
   background-color: var(--button-bg-color--primary);
 
   &:is(:hover, :active) {
     color: var(--button-fg-color--primary);
+    border-color: transparent;
     background-color: var(--button--hover-bg-color--primary);
   }
 }
@@ -105,6 +110,7 @@
 /* Danger button styles */
 .button--danger {
   color: var(--button-fg-color--danger);
+  border-color: transparent;
   background-color: var(--button-bg-color--danger);
 
   &:is(:hover, :active) {

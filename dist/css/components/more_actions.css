@@ -4,7 +4,7 @@
 }
 
 .gin-sticky-form-actions > * {
-  margin-inline: 0 !important;
+  margin: 0 !important;
 }
 
 .gin-sticky-form-actions [data-drupal-selector=edit-status]:empty {

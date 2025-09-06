@@ -1,12 +1,12 @@
 :root {
-  --drupal-displace-offset-top: 54px;
-  --admin-toolbar-top-bar-height: 54px;
+  --drupal-displace-offset-top: 64px;
+  --admin-toolbar-top-bar-height: 64px;
 }
 
 .gin--navigation-top-bar {
   padding-inline: calc(var(--admin-toolbar-sidebar-width) + var(--gin-spacing-m)) var(--gin-spacing-m);
   padding-block: var(--gin-spacing-xxxs);
-  min-height: 54px;
+  min-height: 64px;
   height: auto;
   border-block-end: 1px solid var(--gin-border-color-layer);
   box-shadow: none;
@@ -30,7 +30,7 @@
 }
 
 .gin--navigation-top-bar--offset {
-  margin-top: calc(54px + var(--gin-spacing-s));
+  margin-top: calc(64px + var(--gin-spacing-s));
 }
 
 .gin--navigation-top-bar:has(.top-bar__tools:not(:empty), .top-bar__context:not(:empty), .top-bar__actions:not(:empty)) {
@@ -115,24 +115,9 @@
   border: none;
 }
 
-.gin--navigation-top-bar button,
-.gin--navigation-top-bar input[type=submit],
-.gin--navigation-top-bar .local-actions__item a,
-.gin--navigation-top-bar .action-link,
-.gin--navigation-top-bar .action-link--icon-trash.action-link--danger {
-  font-size: var(--gin-font-size-xxs);
-  font-weight: var(--gin-font-weight-bold);
-  line-height: 1;
-  padding-block: var(--gin-spacing-xs);
-  padding-inline: var(--gin-spacing-s);
-  border-radius: var(--gin-border-m);
-  margin-block: 0;
-  box-shadow: none;
-}
-
 body:has(.gin--navigation-top-bar .gin-sticky-form-actions) :where(#gin_sidebar) {
-  inset-block-start: 54px !important;
-  height: calc(100% - 54px) !important;
+  inset-block-start: 64px !important;
+  height: calc(100% - 64px) !important;
 }
 
 :where(.gin--edit-form) .gin-sticky-form-actions {
