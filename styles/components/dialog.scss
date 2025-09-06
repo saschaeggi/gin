@@ -174,19 +174,6 @@
   }
 }
 
-.erl-overlay,
-.layout-paragraphs-dialog {
-  position: fixed !important;
-  inset-block-start: 50% !important;
-  inset-inline-start: 50% !important;
-  width: calc(100% - var(--gin-spacing-xl)) !important;
-  transform: translate(-50%, -50%);
-
-  @include mq(large) {
-    width: calc(100% - var(--gin-spacing-xxxl)) !important;
-  }
-}
-
 .ui-widget-overlay {
   opacity: .9;
   background: var(--gin-bg-layer2);

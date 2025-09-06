@@ -105,11 +105,15 @@
   /**
    * Spaces.
    */
-  --space-xl: 3rem; /* 3 * 16px = 48px */
+  --space-xxxl: 4rem; /* 4 * 16px = 64px */
+  --space-xxl: 3rem; /* 3 * 16px = 48px */
+  --space-xl: 2rem; /* 2 * 16px = 32px */
   --space-l: 1.5rem; /* 1.5 * 16px = 24px */
   --space-m: 1rem; /* 1 * 16px = 16px */
   --space-s: 0.75rem; /* 0.75 * 16px = 12px */
   --space-xs: 0.5rem; /* 0.5 * 16px = 8px */
+  --space-xxs: 0.25rem; /* 0.25 * 16px = 4px */
+  --space-xxxs: 0.125rem; /* 0.125 * 16px = 2px */
   /*
    * Common.
    */

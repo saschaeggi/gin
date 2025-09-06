@@ -116,7 +116,7 @@ blockquote::before {
   content: open-quote;
   color: var(--color-absolutezero);
   font-family: var(--font-family-serif);
-  font-size: var(--space-xl);
+  font-size: var(--space-xxl);
   line-height: 1em;
 }
 blockquote::after {

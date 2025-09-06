@@ -179,31 +179,6 @@
   z-index: 505;
 }
 
-.erl-overlay,
-.layout-paragraphs-dialog {
-  position: fixed !important;
-  inset-block-start: 50% !important;
-  inset-inline-start: 50% !important;
-  width: calc(100% - var(--gin-spacing-xl)) !important;
-}
-
-[dir="ltr"] .erl-overlay,
-[dir="ltr"] .layout-paragraphs-dialog {
-  transform: translate(-50%, -50%);
-}
-
-[dir="rtl"] .erl-overlay,
-[dir="rtl"] .layout-paragraphs-dialog {
-  transform: translate(50%, -50%);
-}
-
-@media (min-width: 64em) {
-  .erl-overlay,
-  .layout-paragraphs-dialog {
-    width: calc(100% - var(--gin-spacing-xxxl)) !important;
-  }
-}
-
 .ui-widget-overlay {
   opacity: .9;
   background: var(--gin-bg-layer2);

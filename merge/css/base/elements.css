@@ -140,7 +140,7 @@ blockquote::before {
   content: open-quote;
   color: var(--color-absolutezero);
   font-family: var(--font-family-serif);
-  font-size: var(--space-xl);
+  font-size: var(--space-xxl);
   line-height: 1em;
 }
 
@@ -220,7 +220,7 @@ details summary {
   padding: 0.95em 1.45em;
 }
 
-:is(details summary):focus {
+details summary:focus {
   outline: none;
 }
 

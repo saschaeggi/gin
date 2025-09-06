@@ -92,15 +92,15 @@
   }
 
   // Spacings
-  --gin-spacing-xxxs:#{rem(2px)};
-  --gin-spacing-xxs:#{rem(4px)};
-  --gin-spacing-xs: #{rem(8px)};
-  --gin-spacing-s: #{rem(12px)};
-  --gin-spacing-m: #{rem(16px)};
-  --gin-spacing-l: #{rem(24px)};
-  --gin-spacing-xl: #{rem(32px)};
-  --gin-spacing-xxl: #{rem(48px)};
-  --gin-spacing-xxxl: #{rem(64px)};
+  --gin-spacing-xxxs: var(--space-xxxs);
+  --gin-spacing-xxs: var(--space-xxs);
+  --gin-spacing-xs: var(--space-xs);
+  --gin-spacing-s: var(--space-s);
+  --gin-spacing-m: var(--space-m);
+  --gin-spacing-l: var(--space-l);
+  --gin-spacing-xl: var(--space-xl);
+  --gin-spacing-xxl: var(--space-xxl);
+  --gin-spacing-xxxl: var(--space-xxxl);
 
   // Icons
   --gin-icon-color: #414247;
