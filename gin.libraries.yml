@@ -424,10 +424,6 @@ gin_custom_css:
 
 # Libs
 
-once:
-  js:
-    js/libs/once.js: { minified: true, weight: -1 }
-
 scrollsync:
   js:
     js/libs/scrollsync.js: { minified: true, weight: -1 }

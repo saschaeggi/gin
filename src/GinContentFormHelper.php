@@ -315,8 +315,6 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     // Get route name.
     $route_name = $this->routeMatch->getRouteName();
 
-    // print_r($route_name);
-
     // Routes to include.
     $route_names = [
       'node.add',
