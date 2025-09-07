@@ -52,6 +52,12 @@
   appearance: none;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .button {
+    transition: var(--transition);
+  }
+}
+
 .button:hover {
   -webkit-text-decoration: none;
   text-decoration: none;

@@ -42,6 +42,10 @@
   line-height: 1;
   appearance: none;
 
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--transition);
+  }
+
   &:hover {
     text-decoration: none;
     color: var(--button-fg-color);

@@ -117,8 +117,9 @@
   /*
    * Common.
    */
-  --speed-transition: 0.2s;
-  --transition: all var(--speed-transition) ease-out;
+  --easing: cubic-bezier(.19, 1, .22, 1);
+  --speed-transition: 0.15s;
+  --transition: all var(--speed-transition) var(--easing);
   --base-border-radius: 0.5rem;
   --focus-border-size: calc(--base-border-radius - 1px);
   --focus-border-offset-size: 0px;
