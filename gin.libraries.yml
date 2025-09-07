@@ -2,6 +2,7 @@ global-styling:
   version: VERSION
   css:
     base:
+      merge/css/base/accents.css: {}
       merge/css/base/variables.css: {}
       merge/css/base/elements.css: {}
       merge/css/base/typography.css: {}

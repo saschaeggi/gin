@@ -5,7 +5,6 @@ html {
 
 body {
   color: var(--gin-color-text);
-  background: var(--gin-bg-app);
   overflow-x: hidden;
 
   @include mq(large) {

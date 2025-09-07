@@ -202,8 +202,8 @@
   --button--disabled-fg-color: var(--color-gray-500);
   --button-fg-color--primary: var(--color-white);
   --button-bg-color--primary: var(--accent-color-500);
-  --button--hover-bg-color--primary: var(--accent-color-600);
-  --button--active-bg-color--primary: var(--accent-color-700);
+  --button--hover-bg-color--primary: var(--accent-color-550);
+  --button--active-bg-color--primary: var(--accent-color-600);
   --button--focus-bg-color--primary: var(--button-bg-color--primary);
   --button--disabled-bg-color--primary: var(--color-gray-200);
   --button--disabled-fg-color--primary: var(--color-gray-600);

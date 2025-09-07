@@ -1,7 +1,6 @@
 [data-gin-accent] {
   --gin-color-primary: rgb(var(--gin-color-primary-rgb));
   --gin-color-primary-light: rgba(var(--gin-color-primary-rgb), .15);
-  --gin-bg-app: rgb(var(--gin-bg-app-rgb));
   --gin-bg-layer-rgb: 255, 255, 255;
   --gin-bg-item: rgba(var(--gin-color-primary-rgb), .05);
   --gin-bg-item-hover: rgba(var(--gin-color-primary-rgb), .1);

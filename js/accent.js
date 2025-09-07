@@ -19,19 +19,30 @@
   Drupal.ginAccent = {
     setAccentColor: function setAccentColor(preset = null, color = null) {
       const accentColorPreset = preset != null ? preset : drupalSettings.gin.preset_accent_color;
-      document.body.setAttribute('data-gin-accent', accentColorPreset);
+
+      // New way.
+      const accentColors = drupalSettings.gin.accent_colors;
+      const presetColor = accentColors[accentColorPreset]['hex'];
+      document.querySelector('html').style.setProperty('--accent-base', presetColor);
+
+      // Old way.
+      document.documentElement.setAttribute('data-gin-accent', accentColorPreset);
 
       if (accentColorPreset === 'custom') {
         this.setCustomAccentColor(color);
       }
     },
 
-    setCustomAccentColor: function setCustomAccentColor(color = null, element = document.body) {
+    setCustomAccentColor: function setCustomAccentColor(color = null, element = document.documentElement) {
       // If custom color is set, generate colors through JS.
       const accentColor = color != null ? color : drupalSettings.gin.accent_color;
       if (accentColor) {
         this.clearAccentColor(element);
 
+        // New way.
+        element.style.setProperty('--accent-base', accentColor);
+
+        // Old way.
         const strippedAccentColor = accentColor.replace('#', '');
         const darkAccentColor = this.mixColor('ffffff', strippedAccentColor, 65).replace('#', '');
         const style = document.createElement('style');
@@ -58,7 +69,11 @@
       }
     },
 
-    clearAccentColor: (element = document.body) => {
+    clearAccentColor: (element = document.documentElement) => {
+      // New way.
+      element.style.removeProperty('--accent-base');
+
+      // Old way.
       if (element.querySelectorAll('.gin-custom-colors').length > 0) {
         const removeElement = element.querySelector('.gin-custom-colors');
         removeElement.parentNode.removeChild(removeElement);
@@ -67,14 +82,14 @@
 
     setFocusColor: function setFocusColor(preset = null, color = null) {
       const focusColorPreset = preset != null ? preset : drupalSettings.gin.preset_focus_color;
-      document.body.setAttribute('data-gin-focus', focusColorPreset);
+      document.documentElement.setAttribute('data-gin-focus', focusColorPreset);
 
       if (focusColorPreset === 'custom') {
        this.setCustomFocusColor(color);
       }
     },
 
-    setCustomFocusColor: function setCustomFocusColor(color = null, element = document.body) {
+    setCustomFocusColor: function setCustomFocusColor(color = null, element = document.documentElement) {
       const accentColor = color != null ? color : drupalSettings.gin.focus_color;
 
       // Set preset color.
@@ -98,7 +113,7 @@
       }
     },
 
-    clearFocusColor: (element = document.body) => {
+    clearFocusColor: (element = document.documentElement) => {
       if (element.querySelectorAll('.gin-custom-focus').length > 0) {
         const removeElement = element.querySelector('.gin-custom-focus');
         removeElement.parentNode.removeChild(removeElement);

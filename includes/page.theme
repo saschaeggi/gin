@@ -102,6 +102,7 @@ function gin_page_attachments_alter(&$page) {
     $settings = \Drupal::classResolver(GinSettings::class);
     $page['#attached']['drupalSettings']['gin']['darkmode'] = $settings->get('enable_darkmode');
     $page['#attached']['drupalSettings']['gin']['darkmode_class'] = 'gin--dark-mode';
+    $page['#attached']['drupalSettings']['gin']['accent_colors'] = _gin_accent_colors();
     $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $settings->get('preset_accent_color');
     $page['#attached']['drupalSettings']['gin']['accent_color'] = $settings->get('accent_color');
     $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $settings->get('preset_focus_color');
