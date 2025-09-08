@@ -72,7 +72,14 @@ function _gin_accent_radios($element) {
   $options = array_keys($element['#options']);
 
   foreach ($options as $values) {
+    // Old way.
     $element[$values]['#attributes']['data-gin-accent'] = $element[$values]['#return_value'];
+
+    // New way.
+    $accent_colors = _gin_accent_colors();
+    $accent_color = '';
+    $preset = $element[$values]['#return_value'];
+    $element[$values]['#attributes']['style'] = '--accent-base: ' . $accent_colors[$preset]['hex'] . ';';
   }
 
   return $element;

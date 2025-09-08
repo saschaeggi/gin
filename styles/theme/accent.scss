@@ -1,21 +1,3 @@
-[data-gin-accent] {
-  --gin-color-primary: rgb(var(--gin-color-primary-rgb));
-  --gin-color-primary-light: rgba(var(--gin-color-primary-rgb), .15);
-  --gin-bg-layer-rgb: 255, 255, 255;
-  --gin-bg-item: rgba(var(--gin-color-primary-rgb), .05);
-  --gin-bg-item-hover: rgba(var(--gin-color-primary-rgb), .1);
-  --gin-color-primary-light-hover: rgba(var(--gin-color-primary-rgb), .2);
-  --gin-color-primary-light-active: rgba(var(--gin-color-primary-rgb), .3);
-  --gin-shadow-primary-light: rgba(var(--gin-color-primary-rgb), .45);
-}
-
-.gin--dark-mode[data-gin-accent],
-.gin--dark-mode [data-gin-accent] {
-  --gin-bg-item-hover: rgba(var(--gin-color-primary-rgb), .08);
-  --gin-bg-app-rgb: #{color.red($colorDarkAppBackground)}, #{color.green($colorDarkAppBackground)}, #{color.blue($colorDarkAppBackground)};
-  --gin-bg-layer-rgb: #{color.red($colorDarkLayerBackground)}, #{color.green($colorDarkLayerBackground)}, #{color.blue($colorDarkLayerBackground)};
-}
-
 // Light mode
 $ginColors: (
   blue: #0550e6,
@@ -34,54 +16,9 @@ $ginColors: (
 
 @each $name, $color in $ginColors {
   [data-gin-accent=#{'' + $name}] {
-    $bgColor: mix(white, $color, 97%);
-    $lightColor: mix(white, $color, 80%);
     $stickyColor: mix(white, $color, 92%);
 
-    --gin-color-primary-rgb: #{color.red($color)}, #{color.green($color)}, #{color.blue($color)};
-    --gin-color-primary-light-rgb: #{color.red($lightColor)}, #{color.green($lightColor)}, #{color.blue($lightColor)};
-    --gin-color-primary-hover: #{mix(black, $color, 15%)};
-    --gin-color-primary-active: #{mix(black, $color, 25%)};
-    --gin-bg-app-rgb: #{color.red($bgColor)}, #{color.green($bgColor)}, #{color.blue($bgColor)};
-    --gin-bg-header: #{mix(white, $color, 88%)};
     --gin-color-sticky-rgb: #{color.red($stickyColor)}, #{color.green($stickyColor)}, #{color.blue($stickyColor)};
-
-    @if $name == dark_purple or $name == purple {
-      --gin-color-primary-light-hover: rgba(var(--gin-color-primary-rgb), .2);
-      --gin-color-primary-light-active: rgba(var(--gin-color-primary-rgb), .25);
-      --gin-shadow-primary-light: rgba(var(--gin-color-primary-rgb), .4);
-      --gin-bg-item-hover: rgba(var(--gin-color-primary-rgb), .08);
-    }
-  }
-}
-
-// Dark mode
-$ginDarkmodeColors: (
-  blue: #90aeef,
-  gin_blue: #7391d8,
-  light_blue: #82bfe8,
-  dark_purple: #ad8fe8,
-  purple: #dba5ef,
-  teal: #00ead0,
-  green: #6bd4a1,
-  red: #ec8989,
-  orange: #f79576,
-  yellow: #f1c970,
-  pink: #e79da3,
-  neutral: #ffffff,
-  custom: #ffffff,
-);
-
-@each $name, $color in $ginDarkmodeColors {
-  $lightColor: mix(#2A2A2D, $color, 80%);
-
-  .gin--dark-mode[data-gin-accent=#{'' + $name}],
-  .gin--dark-mode [data-gin-accent=#{'' + $name}] {
-    --gin-color-primary-rgb: #{color.red($color)}, #{color.green($color)}, #{color.blue($color)};
-    --gin-color-primary-light-rgb: #{color.red($lightColor)}, #{color.green($lightColor)}, #{color.blue($lightColor)};
-    --gin-color-primary-hover: #{mix(white, $color, 10%)};
-    --gin-color-primary-active: #{mix(white, $color, 15%)};
-    --gin-bg-header: #{mix(#2A2A2D, $color, 87.5%)};
   }
 }
 

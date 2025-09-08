@@ -17,7 +17,7 @@ $topbar: 64px;
 
   @supports (backdrop-filter: blur()) {
     opacity: .999;
-    background: rgba(var(--gin-bg-layer-rgb), .8);
+    background: rgb(from var(--layer-background) r g b / 0.8);
     backdrop-filter: blur(12px);
   }
 

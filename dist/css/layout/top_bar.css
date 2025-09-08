@@ -17,7 +17,7 @@
 @supports ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) {
   .gin--navigation-top-bar {
     opacity: .999;
-    background: rgba(var(--gin-bg-layer-rgb), .8);
+    background: rgb(from var(--layer-background) r g b/.8);
     -webkit-backdrop-filter: blur(12px);
             backdrop-filter: blur(12px);
   }

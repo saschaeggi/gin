@@ -21,7 +21,7 @@ body {
   word-wrap: break-word;
   hyphens: auto;
   color: var(--color-fg);
-  background: var(--accent-app-bg-color);
+  background: var(--app-bg-color);
 }
 
 a,
