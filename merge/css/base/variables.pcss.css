@@ -190,7 +190,7 @@
   --button-font-weight: var(--font-weight-semibold);
   --button--focus-border-color: var(--color-blue-300);
   --button-border-radius-size: var(--base-border-radius);
-  --button-fg-color: var(--gin-color-button-text);
+  --button-fg-color: var(--color-gray-900);
   --button-bg-color: var(--color-gray-050);
   --button-border-color: var(--color-gray-200);
   --button--hover-bg-color: var(--color-gray-100);

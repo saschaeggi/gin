@@ -1,7 +1,7 @@
 ((Drupal, drupalSettings, once) => {
   Drupal.behaviors.ginAccent = {
     attach: function(context) {
-      once("ginAccent", "body", context).forEach((() => {
+      once("ginAccent", "html", context).forEach((() => {
         Drupal.ginAccent.checkDarkmode(), Drupal.ginAccent.setAccentColor(), Drupal.ginAccent.setFocusColor();
       }));
     }
@@ -9,8 +9,8 @@
     setAccentColor: function() {
       let preset = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null, color = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null;
       const accentColorPreset = null != preset ? preset : drupalSettings.gin.preset_accent_color, presetColor = drupalSettings.gin.accent_colors[accentColorPreset].hex;
-      document.querySelector("html").style.setProperty("--accent-base", presetColor), 
-      document.documentElement.setAttribute("data-gin-accent", accentColorPreset), "custom" === accentColorPreset && this.setCustomAccentColor(color);
+      document.documentElement.style.setProperty("--accent-base", presetColor), document.documentElement.setAttribute("data-gin-accent", accentColorPreset), 
+      "custom" === accentColorPreset && this.setCustomAccentColor(color);
     },
     setCustomAccentColor: function() {
       let color = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null, element = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : document.documentElement;
@@ -54,9 +54,9 @@
     checkDarkmode: () => {
       const darkmodeClass = drupalSettings.gin.darkmode_class;
       window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e => {
-        e.matches && "auto" === window.ginDarkmode && document.querySelector("html").classList.add(darkmodeClass);
+        e.matches && "auto" === window.ginDarkmode && document.documentElement.classList.add(darkmodeClass);
       })), window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e => {
-        e.matches && "auto" === window.ginDarkmode && document.querySelector("html").classList.remove(darkmodeClass);
+        e.matches && "auto" === window.ginDarkmode && document.documentElement.classList.remove(darkmodeClass);
       }));
     },
     hexToRgb: hex => {

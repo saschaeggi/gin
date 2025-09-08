@@ -54,9 +54,9 @@
       const darkmodeEnabled = null != darkmodeParam ? darkmodeParam : drupalSettings.gin.darkmode, darkmodeClass = drupalSettings.gin.darkmode_class;
       1 == darkmodeEnabled || "auto" === darkmodeEnabled && window.matchMedia("(prefers-color-scheme: dark)").matches ? document.querySelector("html").classList.add(darkmodeClass) : document.querySelector("html").classList.remove(darkmodeClass), 
       window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e => {
-        e.matches && "auto" === document.querySelector('input[name="enable_darkmode"]:checked').value && document.querySelector("html").classList.add(darkmodeClass);
+        e.matches && "auto" === document.querySelector('input[name="enable_darkmode"]:checked').value && document.documentElement.classList.add(darkmodeClass);
       })), window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e => {
-        e.matches && "auto" === document.querySelector('input[name="enable_darkmode"]:checked').value && document.querySelector("html").classList.remove(darkmodeClass);
+        e.matches && "auto" === document.querySelector('input[name="enable_darkmode"]:checked').value && document.documentElement.classList.remove(darkmodeClass);
       }));
     },
     setHighContrastMode: function() {

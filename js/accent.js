@@ -3,7 +3,7 @@
 ((Drupal, drupalSettings, once) => {
   Drupal.behaviors.ginAccent = {
     attach: function attach(context) {
-      once('ginAccent', 'body', context).forEach(() => {
+      once('ginAccent', 'html', context).forEach(() => {
         // Check Darkmode.
         Drupal.ginAccent.checkDarkmode();
 
@@ -23,7 +23,7 @@
       // New way.
       const accentColors = drupalSettings.gin.accent_colors;
       const presetColor = accentColors[accentColorPreset]['hex'];
-      document.querySelector('html').style.setProperty('--accent-base', presetColor);
+      document.documentElement.style.setProperty('--accent-base', presetColor);
 
       // Old way.
       document.documentElement.setAttribute('data-gin-accent', accentColorPreset);
@@ -126,14 +126,14 @@
       // Change to Darkmode.
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
         if (e.matches && window.ginDarkmode === 'auto') {
-          document.querySelector('html').classList.add(darkmodeClass);
+          document.documentElement.classList.add(darkmodeClass);
         }
       });
 
       // Change to Lightmode.
       window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
         if (e.matches && window.ginDarkmode === 'auto') {
-          document.querySelector('html').classList.remove(darkmodeClass);
+          document.documentElement.classList.remove(darkmodeClass);
         }
       });
     },
