@@ -2,6 +2,7 @@ global-styling:
   version: VERSION
   css:
     base:
+      merge/css/base/accents.css: {}
       merge/css/base/variables.css: {}
       merge/css/base/elements.css: {}
       merge/css/base/typography.css: {}
@@ -422,10 +423,6 @@ gin_custom_css:
       public://gin-custom.css: { preprocess: false, minified: false, weight: 50 }
 
 # Libs
-
-once:
-  js:
-    js/libs/once.js: { minified: true, weight: -1 }
 
 scrollsync:
   js:

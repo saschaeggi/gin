@@ -9,13 +9,77 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\gin\GinSettings;
 
 /**
+ * Accent colors.
+ */
+function _gin_accent_colors() {
+  return [
+    'blue' => [
+      'label' => t('Blue (Default)'),
+      'hex' => '#015efe',
+    ],
+    'light_blue' => [
+      'label' => t('Light Blue'),
+      'hex' => '#2f6dd0',
+    ],
+    'dark_purple' => [
+      'label' => t('Dark Purple'),
+      'hex' => '#4300bf',
+    ],
+    'purple' => [
+      'label' => t('Purple'),
+      'hex' => '#5b00ff',
+    ],
+    'teal' => [
+      'label' => t('Teal'),
+      'hex' => '#0e7772',
+    ],
+    'green' => [
+      'label' => t('Green'),
+      'hex' => '#02742d',
+    ],
+    'pink' => [
+      'label' => t('Pink'),
+      'hex' => '#d12f70',
+    ],
+    'red' => [
+      'label' => t('Red'),
+      'hex' => '#d8002f',
+    ],
+    'orange' => [
+      'label' => t('Orange'),
+      'hex' => '#c55228',
+    ],
+    'yellow' => [
+      'label' => t('Yellow'),
+      'hex' => '#966705',
+    ],
+    'neutral' => [
+      'label' => t('Neutral'),
+      'hex' => '#111111',
+    ],
+    'custom' => [
+      'label' => t('Custom'),
+      // Fallback value.
+      'hex' => '#000',
+    ],
+  ];
+}
+
+/**
  * Accent color element.
  */
 function _gin_accent_radios($element) {
   $options = array_keys($element['#options']);
 
   foreach ($options as $values) {
+    // Old way.
     $element[$values]['#attributes']['data-gin-accent'] = $element[$values]['#return_value'];
+
+    // New way.
+    $accent_colors = _gin_accent_colors();
+    $accent_color = '';
+    $preset = $element[$values]['#return_value'];
+    $element[$values]['#attributes']['style'] = '--accent-base: ' . $accent_colors[$preset]['hex'] . ';';
   }
 
   return $element;

@@ -13,7 +13,7 @@ body {
   word-wrap: break-word;
   hyphens: auto;
   color: var(--color-fg);
-  background: var(--color-bg);
+  background: var(--app-bg-color);
 }
 
 a,
@@ -116,7 +116,7 @@ blockquote::before {
   content: open-quote;
   color: var(--color-absolutezero);
   font-family: var(--font-family-serif);
-  font-size: var(--space-xl);
+  font-size: var(--space-xxl);
   line-height: 1em;
 }
 blockquote::after {

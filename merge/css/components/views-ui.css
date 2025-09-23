@@ -611,13 +611,13 @@ is loaded but does not properly run. */
 }
 
 .views-config-group-region .views-group-box--operator {
-  padding-right: var(--space-xl);
+  padding-right: var(--space-xxl);
   border-right-width: 0;
 }
 
 [dir="rtl"] .views-config-group-region .views-group-box--operator {
   padding-right: var(--space-l);
-  padding-left: var(--space-xl);
+  padding-left: var(--space-xxl);
   border-right-width: 0.0625rem;
   border-left-width: 0;
 }
@@ -634,11 +634,11 @@ is loaded but does not properly run. */
 
 .views-config-group-region .views-group-box--value > .form-item {
   margin-right: var(--space-l); /* LTR */
-  margin-left: var(--space-xl); /* LTR */
+  margin-left: var(--space-xxl); /* LTR */
 }
 
 [dir="rtl"] .views-config-group-region .views-group-box--value > .form-item {
-  margin-right: var(--space-xl); /* LTR */
+  margin-right: var(--space-xxl); /* LTR */
   margin-left: var(--space-l); /* LTR */
 }
 

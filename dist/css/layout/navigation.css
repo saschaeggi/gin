@@ -231,7 +231,7 @@ body.gin--navigation {
 .toolbar-button.toolbar-button:focus,
 .admin-toolbar__expand-button:focus {
   outline: none;
-  box-shadow: 0 0 0 1px var(--gin-color-focus-border), 0 0 0 4px var(--gin-color-focus);
+  box-shadow: var(--focus-ring);
 }
 
 .toolbar-menu__link:focus {

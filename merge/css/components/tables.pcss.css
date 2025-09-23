@@ -20,7 +20,7 @@ caption {
 th {
   position: relative;
   box-sizing: border-box;
-  height: var(--space-xl);
+  height: var(--space-xxl);
   padding: var(--space-xs) var(--space-m);
   text-align: start;
   color: var(--color-text);

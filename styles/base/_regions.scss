@@ -33,7 +33,7 @@
 
     @supports (backdrop-filter: blur()) {
       opacity: .999;
-      background: rgba(var(--gin-bg-app-rgb), .8);
+      background: rgb(from var(--app-bg-color) r g b / 0.8);
       backdrop-filter: blur(12px);
     }
 

@@ -144,14 +144,14 @@
       // Change to Darkmode.
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
         if (e.matches && document.querySelector('input[name="enable_darkmode"]:checked').value === 'auto') {
-          document.querySelector('html').classList.add(darkmodeClass);
+          document.documentElement.classList.add(darkmodeClass);
         }
       });
 
       // Change to Lightmode.
       window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
         if (e.matches && document.querySelector('input[name="enable_darkmode"]:checked').value === 'auto') {
-          document.querySelector('html').classList.remove(darkmodeClass);
+          document.documentElement.classList.remove(darkmodeClass);
         }
       });
     },

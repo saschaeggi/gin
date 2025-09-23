@@ -68,9 +68,12 @@ tr.selected td {
     }
   }
   & .button--primary:not(:disabled, .is-disabled) {
-    background: var(--color-blue-400);
+    background: var(--button-bg-color--primary);
     &:hover {
-      background: var(--color-blue-500);
+      background: var(--button--hover-bg-color--primary);
+    }
+    &:focus {
+      background: var(--button--focus-bg-color--primary);
     }
   }
   & .form-item__label {

@@ -146,7 +146,7 @@ h3 {
   width: auto;
   margin-right: 1.25em;
   margin-left: 1.25em;
-  padding: var(--space-xl);
+  padding: var(--space-xxl);
   border: 1px solid transparent; /* Required for forced-colors mode. */
   border-radius: 0.5rem;
   background: #fff;

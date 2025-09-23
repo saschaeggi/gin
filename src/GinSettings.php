@@ -218,24 +218,16 @@ class GinSettings implements ContainerInjectionInterface {
     ];
 
     // Accent color setting.
+    $presets = _gin_accent_colors();
+    $options = [];
+    foreach ($presets as $key => $preset) {
+      $options[$key] = $preset['label'];
+    }
     $form['preset_accent_color'] = [
       '#type' => 'radios',
       '#title' => $this->t('Accent color'),
       '#default_value' => $account ? $this->get('preset_accent_color', $account) : $this->getDefault('preset_accent_color'),
-      '#options' => [
-        'blue' => $this->t('Gin Blue (Default)'),
-        'light_blue' => $this->t('Light Blue'),
-        'dark_purple' => $this->t('Dark Purple'),
-        'purple' => $this->t('Purple'),
-        'teal' => $this->t('Teal'),
-        'green' => $this->t('Green'),
-        'pink' => $this->t('Pink'),
-        'red' => $this->t('Red'),
-        'orange' => $this->t('Orange'),
-        'yellow' => $this->t('Yellow'),
-        'neutral' => $this->t('Neutral'),
-        'custom' => $this->t('Custom'),
-      ],
+      '#options' => $options,
       '#after_build' => [
         '_gin_accent_radios',
       ],

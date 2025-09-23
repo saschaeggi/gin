@@ -71,17 +71,21 @@ tr.selected td {
   margin-inline-end: 0;
 }
 
-:is(.views-bulk-actions__item .form-element):hover {
+.views-bulk-actions__item .form-element:hover {
   border: var(--input-border-size) solid var(--input-border-color);
   box-shadow: none;
 }
 
 .views-bulk-actions__item .button--primary:not(:disabled, .is-disabled) {
-  background: var(--color-blue-400);
+  background: var(--button-bg-color--primary);
 }
 
-:is(.views-bulk-actions__item .button--primary:not(:disabled, .is-disabled)):hover {
-  background: var(--color-blue-500);
+.views-bulk-actions__item .button--primary:not(:disabled, .is-disabled):hover {
+  background: var(--button--hover-bg-color--primary);
+}
+
+.views-bulk-actions__item .button--primary:not(:disabled, .is-disabled):focus {
+  background: var(--button--focus-bg-color--primary);
 }
 
 .views-bulk-actions__item .form-item__label {
@@ -89,7 +93,7 @@ tr.selected td {
   padding-inline-end: var(--space-xs);
 }
 
-:is(.views-bulk-actions__item .form-item__label)::after {
+.views-bulk-actions__item .form-item__label::after {
   content: ":";
 }
 
