@@ -14,7 +14,7 @@ gin_base:
       dist/css/theme/variables.css: { minified: false }
   dependencies:
     - gin/tabs
-    - gin/dialog
+    - gin/gin_dialog
     - gin/status
 
 # Legacy
@@ -165,7 +165,6 @@ gin_dialog:
       dist/css/theme/dialog.css: { minified: false }
   dependencies:
     - gin/dialog
-    - gin/gin_base
     - gin/gin_accent
 
 gin_description_toggle:
