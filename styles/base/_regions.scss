@@ -59,7 +59,7 @@
     display: flex;
     align-items: center;
     min-width: 0;
-    width: 100%;
+    width: auto;
     height: 100%;
 
     @include mq(small) {
@@ -213,4 +213,3 @@ body:not(.toolbar-tray-open) .layout-container {
     }
   }
 }
-
