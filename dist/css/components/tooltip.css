@@ -19,7 +19,12 @@
 .gin-tooltip {
   visibility: hidden;
   opacity: 0;
-  transition: var(--gin-transition-fast);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gin-tooltip {
+    transition: var(--gin-transition-fast);
+  }
 }
 
 [data-gin-tooltip]:hover + .gin-tooltip,

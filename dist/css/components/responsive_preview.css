@@ -37,7 +37,12 @@
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
   box-sizing: border-box;
-  transition: transform .2s var(--gin-easing);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .toolbar .toolbar-tab-responsive-preview.toolbar-tab .responsive-preview-trigger::after {
+    transition: transform .2s var(--gin-easing);
+  }
 }
 
 .toolbar .toolbar-tab-responsive-preview.toolbar-tab .responsive-preview-options {

@@ -32,7 +32,12 @@
   border-radius: var(--gin-border-l);
   box-sizing: border-box;
   box-shadow: var(--gin-shadow-l2);
-  transition: opacity var(--gin-transition-fast);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gin-sticky-form-actions .gin-more-actions__menu {
+    transition: opacity var(--gin-transition-fast);
+  }
 }
 
 .gin-sticky-form-actions .gin-more-actions__menu .action-link.action-link,
@@ -93,7 +98,12 @@
   width: 32px;
   margin-inline: calc(var(--gin-spacing-xxs) * -1);
   border-radius: var(--gin-border-m);
-  transition: background var(--gin-transition-fast);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gin-sticky-form-actions .gin-more-actions__trigger {
+    transition: background var(--gin-transition-fast);
+  }
 }
 
 .gin-sticky-form-actions .gin-more-actions__trigger::before {

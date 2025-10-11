@@ -39,8 +39,10 @@ a.ui-button:active,
   border: 1px solid var(--gin-border-color);
 }
 
-.js .form-autocomplete {
-  transition: var(--gin-transition), background-position none;
+@media (prefers-reduced-motion: no-preference) {
+  .js .form-autocomplete {
+    transition: var(--gin-transition), background-position none;
+  }
 }
 
 .js .form-autocomplete.is-autocompleting,
@@ -80,7 +82,12 @@ div.autocomplete-deluxe-multiple {
   border: 1px solid var(--gin-border-color-form-element);
   border-radius: var(--gin-border-m);
   box-sizing: border-box;
-  transition: var(--gin-transition);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  div.autocomplete-deluxe-multiple {
+    transition: var(--gin-transition);
+  }
 }
 
 .autocomplete-deluxe-container input.autocomplete-deluxe-form {

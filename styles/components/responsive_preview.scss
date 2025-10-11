@@ -37,7 +37,10 @@
         mask-position: center center;
         mask-repeat: no-repeat;
         box-sizing: border-box;
-        transition: transform .2s var(--gin-easing);
+
+        @media (prefers-reduced-motion: no-preference) {
+          transition: transform .2s var(--gin-easing);
+        }
       }
     }
 

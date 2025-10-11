@@ -160,7 +160,10 @@
       background-color: var(--gin-bg-input);
       border: 1px solid var(--gin-border-color-form-element);
       border-radius: var(--gin-border-m);
-      transition: var(--gin-transition);
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: var(--gin-transition);
+      }
     }
 
     &__checkbox-label {
@@ -515,4 +518,3 @@
     margin: 0;
   }
 }
-

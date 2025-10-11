@@ -82,7 +82,12 @@
   border-radius: var(--gin-border-l);
   box-sizing: border-box;
   box-shadow: var(--gin-shadow-l2);
-  transition: opacity var(--gin-transition-fast);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gin--navigation-top-bar .toolbar-dropdown__menu {
+    transition: opacity var(--gin-transition-fast);
+  }
 }
 
 .gin--navigation-top-bar .toolbar-dropdown__menu .toolbar-dropdown__link {

@@ -8,7 +8,10 @@
   display: block;
   width: 2px;
   height: 100%;
-  transition: var(--gin-transition-fast);
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--gin-transition-fast);
+  }
 
   &:hover {
     background-color: var(--gin-border-color-table);
@@ -20,7 +23,9 @@
 }
 
 .layout-region-node-secondary {
-  transition: transform var(--gin-transition-fast);
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform var(--gin-transition-fast);
+  }
 
   @include mq($to: medium) {
     --gin-sidebar-width: var(--gin-sidebar-small-width);
@@ -64,7 +69,10 @@ body[data-meta-sidebar=open] {
     height: 32px;
     width: 32px;
     border-radius: var(--gin-border-m);
-    transition: background var(--gin-transition-fast);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: background var(--gin-transition-fast);
+    }
 
     &::before {
       content: "";
@@ -100,7 +108,10 @@ body[data-meta-sidebar=open] {
     width: 32px;
     height: 32px;
     border-radius: var(--gin-border-m);
-    transition: background var(--gin-transition-fast);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: background var(--gin-transition-fast);
+    }
 
     &::before {
       display: inline-block;

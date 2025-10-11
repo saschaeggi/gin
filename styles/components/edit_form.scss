@@ -5,7 +5,9 @@
     padding-inline-end: var(--gin-sidebar-offset);
 
     .dialog-off-canvas-main-canvas {
-      transition: padding-inline-start var(--gin-transition-fast);
+      @media (prefers-reduced-motion: no-preference) {
+        transition: padding-inline-start var(--gin-transition-fast);
+      }
     }
 
     // If off-canvas dialog is shown
@@ -109,7 +111,10 @@
       -webkit-overflow-scrolling: touch;
       background:var(--gin-bg-layer);
       border-inline-start: 1px solid var(--gin-border-color-layer);
-      transition: all var(--gin-transition-fast);
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: all var(--gin-transition-fast);
+      }
 
       .gin--dark-mode & {
         box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);

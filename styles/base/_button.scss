@@ -7,7 +7,10 @@
   color: var(--gin-color-primary);
   background-color: transparent;
   box-shadow: none;
-  transition: var(--gin-transition);
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--gin-transition);
+  }
 
   @include mq(wide) {
     font-size: var(--gin-font-size);
@@ -37,7 +40,10 @@
   border: 2px solid var(--gin-color-primary) !important;
   border-radius: var(--gin-border-m);
   box-shadow: 0 1px 2px var(--gin-color-primary-light);
-  transition: var(--gin-transition);
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--gin-transition);
+  }
 
   &:hover {
     background-color: var(--gin-color-primary-hover);

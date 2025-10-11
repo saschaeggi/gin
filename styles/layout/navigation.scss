@@ -51,7 +51,9 @@ body.gin--navigation {
 // Set transition to Gin's to avoid different speeds.
 .admin-toolbar ~ .dialog-off-canvas-main-canvas,
 .gin--navigation .gin-secondary-toolbar--frontend {
-  transition: margin-inline-start var(--gin-transition-fast), margin-inline-start var(--gin-transition-fast);
+  @media (prefers-reduced-motion: no-preference) {
+    transition: margin-inline-start var(--gin-transition-fast), margin-inline-start var(--gin-transition-fast);
+  }
 }
 
 // ----------
@@ -325,7 +327,10 @@ button.toolbar-link--sidebar-toggle {
     opacity: .75;
     position: relative;
     mask-size: var(--space-s) var(--space-s);
-    transition: transform var(--gin-transition);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform var(--gin-transition);
+    }
   }
 
   &:hover::before,

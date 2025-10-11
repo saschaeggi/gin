@@ -112,7 +112,10 @@
       @include mq(medium) {
         height: 74px;
         margin-block-end: 6px;
-        transition: top var(--gin-transition);
+
+        @media (prefers-reduced-motion: no-preference) {
+          transition: top var(--gin-transition);
+        }
       }
 
       &::before {
@@ -217,7 +220,9 @@ a.toolbar-menu__trigger,
   }
 
   .toolbar-fixed {
-    transition: var(--gin-transition);
+    @media (prefers-reduced-motion: no-preference) {
+      transition: var(--gin-transition);
+    }
   }
 
   .toolbar .toolbar-box {
@@ -244,8 +249,11 @@ a.toolbar-menu__trigger,
     padding-block: var(--gin-spacing-m);
     padding-inline: var(--gin-toolbar-width-collapsed) 0;
     margin: 0;
-    transition: width var(--gin-transition);
     overflow: hidden;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: width var(--gin-transition);
+    }
 
     &, &:active, &:focus {
       background-color: transparent;
@@ -269,7 +277,10 @@ a.toolbar-menu__trigger,
       border: 1px solid var(--gin-border-color);
       background: var(--gin-bg-layer) url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='%23999999'/%3E%3C/svg%3E") no-repeat center center;
       background-size: 11px 11px;
-      transition: transform var(--gin-transition);
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: transform var(--gin-transition);
+      }
 
       @media (forced-colors: active) {
         background: var(--gin-bg-layer) url("data:image/svg+xml,%3Csvg width='9' height='14' viewBox='0 0 9 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 1.7109375,0.31445312 0.2890625,1.7226562 5.5917969,7.0761719 0.2890625,12.429688 1.7109375,13.837891 8.4082031,7.0761719 Z' fill='linkText'/%3E%3C/svg%3E") no-repeat center center;
@@ -318,7 +329,10 @@ a.toolbar-menu__trigger,
     max-width: calc(100% - var(--gin-toolbar-height));
     background: var(--gin-bg-layer);
     border-inline-end: 1px solid var(--gin-border-color-layer);
-    transition: var(--gin-transition);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: var(--gin-transition);
+    }
 
     .gin--dark-mode & {
       box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
@@ -391,7 +405,10 @@ a.toolbar-menu__trigger,
           margin-inline: var(--gin-spacing-xs);
           border-radius: var(--gin-border-m);
           overflow: hidden;
-          transition: width var(--gin-transition);
+
+          @media (prefers-reduced-motion: no-preference) {
+            transition: width var(--gin-transition);
+          }
 
           &:hover {
             color: var(--gin-color-primary);
@@ -424,9 +441,12 @@ a.toolbar-menu__trigger,
           max-width: calc(100% - var(--gin-toolbar-height));
           box-shadow: none;
           border-inline-start: 1px solid var(--gin-border-color-layer);
-          transition: margin-inline-start var(--gin-transition);
           overflow-y: auto;
           overflow-x: hidden;
+
+          @media (prefers-reduced-motion: no-preference) {
+            transition: margin-inline-start var(--gin-transition);
+          }
 
           &,
           [dir] & {

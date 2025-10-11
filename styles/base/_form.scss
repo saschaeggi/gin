@@ -8,7 +8,10 @@
   border: 1px solid var(--gin-border-color-form-element);
   border-radius: var(--gin-border-m);
   box-sizing: border-box;
-  transition: var(--gin-transition);
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--gin-transition);
+  }
 
   &:hover {
     border-color: var(--gin-color-text);
@@ -169,7 +172,10 @@
       background-color: #fff;
       border-radius: 21px;
       transform: translateX(-16px);
-      transition: transform .3s;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: transform .3s;
+      }
 
       .gin--dark-mode & {
         background-color: var(--gin-border-color-form-element);
@@ -192,7 +198,10 @@
         mask-position: 17px 2px;
         mask-repeat: no-repeat;
         transform: translateX(-16px);
-        transition: transform .3s;
+
+        @media (prefers-reduced-motion: no-preference) {
+          transition: transform .3s;
+        }
       }
     }
 

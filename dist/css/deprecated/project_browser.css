@@ -152,7 +152,12 @@
   background-color: var(--gin-bg-input);
   border: 1px solid var(--gin-border-color-form-element);
   border-radius: var(--gin-border-m);
-  transition: var(--gin-transition);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #project-browser .search__filter__toggle.form-element, #project-browser .search__sort-select.form-element {
+    transition: var(--gin-transition);
+  }
 }
 
 #project-browser .search__checkbox-label {

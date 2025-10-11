@@ -2,11 +2,15 @@
   .gin--edit-form {
     padding-inline-end: var(--gin-sidebar-offset);
   }
+}
 
+@media (min-width: 64em) and (prefers-reduced-motion: no-preference) {
   .gin--edit-form .dialog-off-canvas-main-canvas {
     transition: padding-inline-start var(--gin-transition-fast);
   }
+}
 
+@media (min-width: 64em) {
   .gin--edit-form.js-off-canvas-dialog-open {
     padding-inline-end: 0;
   }
@@ -103,7 +107,12 @@
   -webkit-overflow-scrolling: touch;
   background: var(--gin-bg-layer);
   border-inline-start: 1px solid var(--gin-border-color-layer);
-  transition: all var(--gin-transition-fast);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {
+    transition: all var(--gin-transition-fast);
+  }
 }
 
 .gin--dark-mode .gin--edit-form .page-wrapper__node-edit-form .layout-region-node-secondary {

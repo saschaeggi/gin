@@ -8,7 +8,12 @@
   display: block;
   width: 2px;
   height: 100%;
-  transition: var(--gin-transition-fast);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #gin-sidebar-draggable {
+    transition: var(--gin-transition-fast);
+  }
 }
 
 #gin-sidebar-draggable:hover {
@@ -19,8 +24,10 @@
   background-color: var(--gin-border-color);
 }
 
-.layout-region-node-secondary {
-  transition: transform var(--gin-transition-fast);
+@media (prefers-reduced-motion: no-preference) {
+  .layout-region-node-secondary {
+    transition: transform var(--gin-transition-fast);
+  }
 }
 
 @media (max-width: 60.99em) {
@@ -62,7 +69,12 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
   height: 32px;
   width: 32px;
   border-radius: var(--gin-border-m);
-  transition: background var(--gin-transition-fast);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .meta-sidebar__close {
+    transition: background var(--gin-transition-fast);
+  }
 }
 
 .meta-sidebar__close::before {
@@ -100,7 +112,12 @@ body[data-meta-sidebar=closed] .layout-region-node-secondary {
   width: 32px;
   height: 32px;
   border-radius: var(--gin-border-m);
-  transition: background var(--gin-transition-fast);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .meta-sidebar__trigger {
+    transition: background var(--gin-transition-fast);
+  }
 }
 
 .meta-sidebar__trigger::before {
