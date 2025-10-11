@@ -54,7 +54,9 @@
 
     &.is-sticky {
       z-index: 4;
-      animation: fadeInBottom 320ms 1 forwards;
+      @media (prefers-reduced-motion: no-preference) {
+        animation: fadeInBottom 320ms 1 forwards;
+      }
     }
   }
 

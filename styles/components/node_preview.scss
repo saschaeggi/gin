@@ -118,7 +118,10 @@
     border: 1px solid var(--gin-border-color-form-element);
     border-radius: var(--gin-border-s);
     box-sizing: border-box;
-    transition: var(--gin-transition);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: var(--gin-transition);
+    }
   }
 
   .js-hide {

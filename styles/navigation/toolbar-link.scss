@@ -140,7 +140,10 @@ html:not(.admin-toolbar-expanded) {
 
   & span {
     opacity: 1;
-    transition: opacity .4s ease;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: opacity .4s ease;
+    }
   }
 
   &::before {

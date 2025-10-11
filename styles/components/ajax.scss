@@ -68,7 +68,9 @@
     border: 2px solid var(--gin-color-primary);
     border-inline-end: 2px dotted transparent;
     border-radius: 50%;
-    animation: gin-throbber 0.75s linear infinite;
+    @media (prefers-reduced-motion: no-preference) {
+      animation: gin-throbber 0.75s linear infinite;
+    }
   }
 }
 

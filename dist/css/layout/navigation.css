@@ -96,6 +96,11 @@ body {
 @media (min-width: 61em) {
   .admin-toolbar ~ .dialog-off-canvas-main-canvas {
     margin-inline-start: var(--drupal-displace-offset-left, var(--sidebar-width));
+  }
+}
+
+@media (min-width: 61em) and (prefers-reduced-motion: no-preference) {
+  .admin-toolbar ~ .dialog-off-canvas-main-canvas {
     transition: margin-inline-start .2s linear;
   }
 }
@@ -651,7 +656,12 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title > button.toolbar
 
 .toolbar-link--has-icon span {
   opacity: 1;
-  transition: opacity .4s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .toolbar-link--has-icon span {
+    transition: opacity .4s ease;
+  }
 }
 
 .toolbar-link--has-icon::before {
@@ -732,9 +742,11 @@ html:not(.admin-toolbar-expanded) .toolbar-menu__item--to-title > button.toolbar
   margin-inline-start: var(--gin-toolbar-x-offset);
 }
 
-.admin-toolbar ~ .dialog-off-canvas-main-canvas,
-.gin--navigation .gin-secondary-toolbar--frontend {
-  transition: margin-inline-start var(--gin-transition-fast), margin-inline-start var(--gin-transition-fast);
+@media (prefers-reduced-motion: no-preference) {
+  .admin-toolbar ~ .dialog-off-canvas-main-canvas,
+  .gin--navigation .gin-secondary-toolbar--frontend {
+    transition: margin-inline-start var(--gin-transition-fast), margin-inline-start var(--gin-transition-fast);
+  }
 }
 
 .gin--navigation {
@@ -1031,7 +1043,12 @@ button.toolbar-link--sidebar-toggle::before {
   position: relative;
   -webkit-mask-size: var(--space-s) var(--space-s);
           mask-size: var(--space-s) var(--space-s);
-  transition: transform var(--gin-transition);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  button.toolbar-link--sidebar-toggle::before {
+    transition: transform var(--gin-transition);
+  }
 }
 
 button.toolbar-link--sidebar-toggle:hover::before, button.toolbar-link--sidebar-toggle:active::before, button.toolbar-link--sidebar-toggle:focus::before {

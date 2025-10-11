@@ -32,7 +32,12 @@
   border-radius: var(--gin-border-l);
   box-sizing: border-box;
   box-shadow: var(--gin-shadow-l2);
-  transition: opacity var(--gin-transition-fast);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gin-sticky-form-actions .gin-more-actions__menu {
+    transition: opacity var(--gin-transition-fast);
+  }
 }
 
 .gin-sticky-form-actions .gin-more-actions__menu .action-link.action-link,
@@ -93,7 +98,12 @@
   width: 32px;
   margin-inline: calc(var(--gin-spacing-xxs) * -1);
   border-radius: var(--gin-border-m);
-  transition: background var(--gin-transition-fast);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gin-sticky-form-actions .gin-more-actions__trigger {
+    transition: background var(--gin-transition-fast);
+  }
 }
 
 .gin-sticky-form-actions .gin-more-actions__trigger::before {
@@ -187,7 +197,6 @@ body:has([data-drupal-selector=edit-save] + .ajax-progress) :where([data-drupal-
 body:has([data-drupal-selector=edit-preview] + .ajax-progress) :where([data-drupal-selector=gin-sticky-edit-preview]),
 body:has([data-drupal-selector=edit-delete] + .ajax-progress) :where([data-drupal-selector=gin-sticky-edit-delete]) {
   background-image: url("../../media/sprite.svg#loader-view");
-  animation: gin-pseudo-throbber 1s linear infinite;
 }
 
 [dir="ltr"] body:has([data-drupal-selector=edit-save] + .ajax-progress) :where([data-drupal-selector=gin-sticky-edit-save]),
@@ -200,5 +209,13 @@ body:has([data-drupal-selector=edit-delete] + .ajax-progress) :where([data-drupa
 [dir="rtl"] body:has([data-drupal-selector=edit-preview] + .ajax-progress) :where([data-drupal-selector=gin-sticky-edit-preview]),
 [dir="rtl"] body:has([data-drupal-selector=edit-delete] + .ajax-progress) :where([data-drupal-selector=gin-sticky-edit-delete]) {
   padding-inline-end: var(--gin-spacing-xl);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body:has([data-drupal-selector=edit-save] + .ajax-progress) :where([data-drupal-selector=gin-sticky-edit-save]),
+  body:has([data-drupal-selector=edit-preview] + .ajax-progress) :where([data-drupal-selector=gin-sticky-edit-preview]),
+  body:has([data-drupal-selector=edit-delete] + .ajax-progress) :where([data-drupal-selector=gin-sticky-edit-delete]) {
+    animation: gin-pseudo-throbber 1s linear infinite;
+  }
 }
 
