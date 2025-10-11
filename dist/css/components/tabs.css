@@ -118,7 +118,14 @@
   width: 100%;
   max-width: calc(100% + var(--gin-spacing-xs));
   border-block-end: 1px solid var(--gin-border-color);
-  transition: var(--gin-transition);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .is-horizontal .tabs--primary::after,
+  .is-horizontal .tabs--secondary::after,
+  .horizontal-tabs ul.horizontal-tabs-list::after {
+    transition: var(--gin-transition);
+  }
 }
 
 @media (min-width: 48em) {

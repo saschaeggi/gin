@@ -99,7 +99,12 @@
   border: 1px solid var(--gin-border-color-form-element);
   border-radius: var(--gin-border-m);
   box-sizing: border-box;
-  transition: var(--gin-transition);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ui-dialog .form-element {
+    transition: var(--gin-transition);
+  }
 }
 
 .ui-dialog .form-element:hover {
@@ -256,7 +261,6 @@
   height: 100%;
   background-color: #fff;
   border-radius: 21px;
-  transition: transform .3s;
 }
 
 [dir="ltr"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.ajax-new-content):not(.tablesaw-cell-content) > .form-type--checkbox input::before {
@@ -265,6 +269,12 @@
 
 [dir="rtl"] .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.ajax-new-content):not(.tablesaw-cell-content) > .form-type--checkbox input::before {
   transform: translateX(16px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.ajax-new-content):not(.tablesaw-cell-content) > .form-type--checkbox input::before {
+    transition: transform .3s;
+  }
 }
 
 .gin--dark-mode .ui-dialog :not(.form-checkboxes):not(td):not(.tabledrag-cell-content__item):not(.media-library-item__click-to-select-checkbox):not(.field-content):not(.ajax-new-content):not(.tablesaw-cell-content) > .form-type--checkbox input::before {

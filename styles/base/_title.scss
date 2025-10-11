@@ -15,7 +15,10 @@
   text-overflow: ellipsis;
   padding-inline-end: .25em;
   max-width: 90%;
-  transition: font-size 0.25s ease;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: font-size 0.25s ease;
+  }
 
   @include mq(large) {
     .region-sticky--is-sticky & {

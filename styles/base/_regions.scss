@@ -9,7 +9,10 @@
   min-height: var(--gin-height-sticky);
   background: var(--gin-bg-app);
   box-sizing: border-box;
-  transition: var(--gin-transition);
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: var(--gin-transition);
+  }
 
   .gin--edit-form & {
     inset-block-start: calc(var(--gin-toolbar-y-offset) - var(--gin-spacing-xxl) - var(--gin-spacing-xxs));

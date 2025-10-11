@@ -138,8 +138,13 @@ body.gin--navigation {
   min-height: auto;
   border: 0 none;
   border-radius: var(--gin-border-m);
-  transition: var(--gin-transition);
   outline: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gin--navigation-top-bar .toolbar-button.toolbar-button {
+    transition: var(--gin-transition);
+  }
 }
 
 .gin--navigation-top-bar .toolbar-button.toolbar-button--primary {
@@ -170,7 +175,12 @@ body.gin--navigation {
   padding: 6px;
   margin-inline: calc(var(--gin-spacing-xxs) * -1);
   border-radius: var(--gin-border-m);
-  transition: background var(--gin-transition-fast);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gin--navigation-top-bar .toolbar-button.toolbar-button--icon--dots {
+    transition: background var(--gin-transition-fast);
+  }
 }
 
 .gin--navigation-top-bar .toolbar-button.toolbar-button--icon--dots:hover, .gin--navigation-top-bar .toolbar-button.toolbar-button--icon--dots:focus {

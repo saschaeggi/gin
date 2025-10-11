@@ -120,7 +120,10 @@
     width: 100%;
     max-width: calc(100% + var(--gin-spacing-xs));
     border-block-end: 1px solid var(--gin-border-color);
-    transition: var(--gin-transition);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: var(--gin-transition);
+    }
 
     @include mq(small) {
       inset-inline-start: var(--gin-spacing-xs);
