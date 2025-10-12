@@ -156,6 +156,7 @@
   }
 }
 
+:root[data-gin-layout-density=small],
 [data-gin-layout-density=small] {
   --gin-spacing-density-xxs: .15625rem;
   --gin-spacing-density-xs: .3125rem;
@@ -167,6 +168,7 @@
   --gin-spacing-density-xxxl: 2.5rem;
 }
 
+:root[data-gin-layout-density=medium],
 [data-gin-layout-density=medium] {
   --gin-spacing-density-xxs: .1875rem;
   --gin-spacing-density-xs: .375rem;

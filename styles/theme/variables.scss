@@ -215,6 +215,7 @@
       }
     }
   } @else {
+    :root[data-gin-layout-density=#{$name}],
     [data-gin-layout-density=#{$name}] {
       @each $name, $size in $ginSpacings {
         --gin-spacing-density-#{$name}: #{rem($size * $density)};
