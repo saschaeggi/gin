@@ -3,18 +3,21 @@
 namespace Drupal\gin;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\DependencyInjection\ClassResolverInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Url;
 use Drupal\user\UserDataInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Service to handle overridden user settings.
  */
-class GinSettings implements ContainerInjectionInterface {
+final class GinSettings implements ContainerInjectionInterface {
 
+  use ClassResolverTrait;
   use StringTranslationTrait;
 
   /**
@@ -24,12 +27,15 @@ class GinSettings implements ContainerInjectionInterface {
    *   The current user.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
    *   The config factory.
+   * @param \Drupal\Core\DependencyInjection\ClassResolverInterface $classResolver
+   *   The class resolver.
    * @param \Drupal\user\UserDataInterface|null $userData
    *   The user data service.
    */
   public function __construct(
     protected AccountInterface $currentUser,
     protected ConfigFactoryInterface $configFactory,
+    protected ClassResolverInterface $classResolver,
     protected ?UserDataInterface $userData,
   ) {
   }
@@ -37,10 +43,11 @@ class GinSettings implements ContainerInjectionInterface {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container) {
-    return new static(
+  public static function create(ContainerInterface $container): GinSettings {
+    return new GinSettings(
       $container->get('current_user'),
       $container->get('config.factory'),
+      $container->get('class_resolver'),
       $container->get('user.data', ContainerInterface::NULL_ON_INVALID_REFERENCE)
     );
   }
@@ -56,20 +63,14 @@ class GinSettings implements ContainerInjectionInterface {
    * @return array|bool|mixed|null
    *   The current value.
    */
-  public function get($name, ?AccountInterface $account = NULL) {
+  public function get(string $name, ?AccountInterface $account = NULL): mixed {
     $value = NULL;
     if (!$account) {
       $account = $this->currentUser;
     }
     if ($this->userOverrideEnabled($account)) {
       $settings = $this->userData->get('gin', $account->id(), 'settings');
-      if (isset($settings[$name])) {
-        $value = $settings[$name];
-      }
-      else {
-        // Try loading legacy settings from user data.
-        $value = $this->userData->get('gin', $account->id(), $name);
-      }
+      $value = $settings[$name] ?? $this->userData->get('gin', $account->id(), $name);
     }
     if (is_null($value)) {
       $admin_theme = $this->getAdminTheme();
@@ -87,7 +88,7 @@ class GinSettings implements ContainerInjectionInterface {
    * @return array|bool|mixed|null
    *   The current value.
    */
-  public function getDefault($name) {
+  public function getDefault(string $name): mixed {
     $admin_theme = $this->getAdminTheme();
     return theme_get_setting($name, $admin_theme);
   }
@@ -100,7 +101,7 @@ class GinSettings implements ContainerInjectionInterface {
    * @param \Drupal\Core\Session\AccountInterface|null $account
    *   The account object. Current user if NULL.
    */
-  public function setAll(array $settings, ?AccountInterface $account = NULL) {
+  public function setAll(array $settings, ?AccountInterface $account = NULL): void {
     if (!$account || !$this->userData) {
       $account = $this->currentUser;
     }
@@ -116,7 +117,7 @@ class GinSettings implements ContainerInjectionInterface {
    * @param \Drupal\Core\Session\AccountInterface|null $account
    *   The account object. Current user if NULL.
    */
-  public function clear(?AccountInterface $account = NULL) {
+  public function clear(?AccountInterface $account = NULL): void {
     if (!$account || !$this->userData) {
       $account = $this->currentUser;
     }
@@ -129,9 +130,9 @@ class GinSettings implements ContainerInjectionInterface {
    * @return bool
    *   TRUE or FALSE.
    */
-  public function allowUserOverrides() {
+  public function allowUserOverrides(): bool {
     $admin_theme = $this->getAdminTheme();
-    return theme_get_setting('show_user_theme_settings', $admin_theme);
+    return theme_get_setting('show_user_theme_settings', $admin_theme) ?? FALSE;
   }
 
   /**
@@ -143,7 +144,7 @@ class GinSettings implements ContainerInjectionInterface {
    * @return bool
    *   TRUE or FALSE.
    */
-  public function userOverrideEnabled(?AccountInterface $account = NULL) {
+  public function userOverrideEnabled(?AccountInterface $account = NULL): bool {
     $overrides = &drupal_static(__CLASS__ . '_' . __METHOD__, []);
 
     if (!$account || !$this->userData) {
@@ -152,7 +153,7 @@ class GinSettings implements ContainerInjectionInterface {
 
     if (!isset($overrides[$account->id()])) {
       $overrides[$account->id()] = $this->allowUserOverrides()
-        && (bool) $this->userData->get('gin', $account->id(), 'enable_user_settings');
+        && $this->userData->get('gin', $account->id(), 'enable_user_settings');
     }
 
     return $overrides[$account->id()];
@@ -169,7 +170,7 @@ class GinSettings implements ContainerInjectionInterface {
    * @return bool
    *   TRUE or FALSE.
    */
-  public function overridden($name, ?AccountInterface $account = NULL) {
+  public function overridden(string $name, ?AccountInterface $account = NULL): bool {
     if (!$account) {
       $account = $this->currentUser;
     }
@@ -183,7 +184,7 @@ class GinSettings implements ContainerInjectionInterface {
    * @return string
    *   The active admin theme name.
    */
-  private function getAdminTheme() {
+  private function getAdminTheme(): string {
     $admin_theme = $this->configFactory->get('system.theme')->get('admin');
     if (empty($admin_theme)) {
       $admin_theme = $this->configFactory->get('system.theme')->get('default');
@@ -218,19 +219,16 @@ class GinSettings implements ContainerInjectionInterface {
     ];
 
     // Accent color setting.
-    $presets = _gin_accent_colors();
-    $options = [];
-    foreach ($presets as $key => $preset) {
-      $options[$key] = $preset['label'];
-    }
+    $presets = GinHelper::accentColors();
+    $options = array_map(static function ($preset) {
+      return $preset['label'];
+    }, $presets);
     $form['preset_accent_color'] = [
       '#type' => 'radios',
       '#title' => $this->t('Accent color'),
       '#default_value' => $account ? $this->get('preset_accent_color', $account) : $this->getDefault('preset_accent_color'),
       '#options' => $options,
-      '#after_build' => [
-        '_gin_accent_radios',
-      ],
+      '#after_build' => [[GinHelper::class, 'accentRadios']],
     ];
 
     // Accent color group.
@@ -266,9 +264,7 @@ class GinSettings implements ContainerInjectionInterface {
       '#type' => 'color',
       '#placeholder' => '#777777',
       '#default_value' => $account ? $this->get('accent_color', $account) : $this->getDefault('accent_color'),
-      '#process' => [
-        [static::class, 'processColorPicker'],
-      ],
+      '#process' => [[__CLASS__, 'processColorPicker']],
     ];
 
     // Focus color setting.
@@ -305,9 +301,7 @@ class GinSettings implements ContainerInjectionInterface {
       '#type' => 'color',
       '#placeholder' => '#777777',
       '#default_value' => $account ? $this->get('focus_color', $account) : $this->getDefault('focus_color'),
-      '#process' => [
-        [static::class, 'processColorPicker'],
-      ],
+      '#process' => [[__CLASS__, 'processColorPicker']],
     ];
 
     // Custom Focus color setting.
@@ -333,11 +327,8 @@ class GinSettings implements ContainerInjectionInterface {
       '#default_value' => $account ? $this->get('high_contrast_mode', $account) : $this->getDefault('high_contrast_mode'),
     ];
 
-    // Toolbar setting.
-    $is_navigation_active = _gin_module_is_active('navigation');
-
     // Sticky action toggle.
-    if (!_gin_module_is_active('navigation')) {
+    if (!GinHelper::moduleIsActive('navigation')) {
       $form['sticky_action_buttons'] = [
         '#type' => 'checkbox',
         '#title' => $this->t('Enable sticky action buttons') . $beta_label . $new_label,
@@ -369,13 +360,47 @@ class GinSettings implements ContainerInjectionInterface {
 
     if (!$account) {
       foreach ($form as $key => $element) {
-        $form[$key]['#after_build'][] = [
-          GinAfterBuild::class, 'overriddenSettingByUser',
-        ];
+        $form[$key]['#after_build'][] = [__CLASS__, 'overriddenSettingByUser'];
       }
     }
 
     return $form;
+  }
+
+  /**
+   * After build callback to modify the description if a setting is overwritten.
+   *
+   * @param array $element
+   *   A renderable array.
+   *
+   * @return array
+   *   The updated renderable array containing the new description.
+   */
+  public static function overriddenSettingByUser(array $element): array {
+    $settings = \Drupal::classResolver(GinSettings::class);
+    // Check if this is overridden by the logged in user.
+    if ($element && isset($element['#name']) && $settings->overridden($element['#name'])) {
+      $userEditUrl = Url::fromRoute('entity.user.edit_form', ['user' => \Drupal::currentUser()->id()])->toString();
+
+      $value = $settings->get($element['#name']);
+      if ($element['#type'] === 'radios' || $element['#type'] === 'select') {
+        $value = $element['#options'][$value];
+      }
+      if ($element['#type'] === 'checkbox') {
+        $value = $value ? t('Enabled') : t('Disabled');
+      }
+
+      $element += ['#description' => ''];
+      $element['#description'] .= '<span class="form-item__warning">' .
+        t('This setting is overridden by the <a href=":editUrl">current user</a>. @title: %value',
+          [
+            '@title' => $element['#title'],
+            '%value' => $value,
+            ':editUrl' => $userEditUrl,
+          ]) . '</span>';
+    }
+
+    return $element;
   }
 
   /**
@@ -390,9 +415,9 @@ class GinSettings implements ContainerInjectionInterface {
    * @return array
    *   The form element.
    */
-  public static function processColorPicker(array $element, FormStateInterface $form_state) {
+  public static function processColorPicker(array $element, FormStateInterface $form_state): array {
     $keys = $form_state->getCleanValueKeys();
-    $form_state->setCleanValueKeys(array_merge((array) $keys, $element['#parents']));
+    $form_state->setCleanValueKeys(array_merge($keys, $element['#parents']));
 
     return $element;
   }

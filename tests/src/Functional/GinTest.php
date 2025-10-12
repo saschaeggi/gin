@@ -56,7 +56,7 @@ class GinTest extends BrowserTestBase {
   /**
    * Tests that the Gin theme always adds its message CSS and Classy's.
    */
-  public function testDefaultGinSettings() {
+  public function testDefaultGinSettings(): void {
     $response = $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);
     $this->assertStringContainsString('"darkmode":"0"', $response);
@@ -68,7 +68,7 @@ class GinTest extends BrowserTestBase {
   /**
    * Tests Darkmode setting.
    */
-  public function testDarkModeSetting() {
+  public function testDarkModeSetting(): void {
     \Drupal::configFactory()->getEditable('gin.settings')->set('enable_darkmode', '1')->save();
     $response = $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);
@@ -78,7 +78,7 @@ class GinTest extends BrowserTestBase {
   /**
    * Tests Color Accent setting.
    */
-  public function testAccentColorSetting() {
+  public function testAccentColorSetting(): void {
     \Drupal::configFactory()->getEditable('gin.settings')->set('preset_accent_color', 'red')->save();
     $response = $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);
@@ -88,7 +88,7 @@ class GinTest extends BrowserTestBase {
   /**
    * Tests Focus Accent setting.
    */
-  public function testFocusColorSetting() {
+  public function testFocusColorSetting(): void {
     \Drupal::configFactory()->getEditable('gin.settings')->set('preset_focus_color', 'blue')->save();
     $response = $this->drupalGet('/admin/content');
     $this->assertSession()->statusCodeEquals(200);
@@ -98,7 +98,7 @@ class GinTest extends BrowserTestBase {
   /**
    * Test user settings.
    */
-  public function testUserSettings() {
+  public function testUserSettings(): void {
     \Drupal::configFactory()->getEditable('gin.settings')->set('show_user_theme_settings', TRUE)->save();
 
     $user1 = $this->createUser();

@@ -7,6 +7,7 @@ use Drupal\Core\DependencyInjection\ClassResolverInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -17,9 +18,10 @@ use Symfony\Component\HttpFoundation\RequestStack;
 /**
  * Service to handle content form overrides.
  */
-class GinContentFormHelper implements ContainerInjectionInterface {
+final class GinContentFormHelper implements ContainerInjectionInterface {
 
   use AjaxHelperTrait;
+  use ClassResolverTrait;
   use StringTranslationTrait;
 
   /**
@@ -51,8 +53,8 @@ class GinContentFormHelper implements ContainerInjectionInterface {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container) {
-    return new static(
+  public static function create(ContainerInterface $container): GinContentFormHelper {
+    return new GinContentFormHelper(
       $container->get('current_user'),
       $container->get('module_handler'),
       $container->get('current_route_match'),
@@ -74,15 +76,15 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    *
    * @see hook_form_alter()
    */
-  public function formAlter(array &$form, FormStateInterface $form_state, $form_id) {
+  public function formAlter(array &$form, FormStateInterface $form_state, string $form_id): void {
     if ($this->isModalOrOffcanvas()) {
       $form['is_ajax_request'] = ['#weight' => -1];
-      return FALSE;
+      return;
     }
 
     // Save form types and behaviors.
-    $use_sticky_action_buttons = $this->stickyActionButtons($form, $form_state, $form_id);
-    $is_content_form = $this->isContentForm($form, $form_state, $form_id);
+    $use_sticky_action_buttons = $this->stickyActionButtons($form_id);
+    $is_content_form = $this->isContentForm($form_state, $form_id);
 
     // Sticky action buttons.
     if (($use_sticky_action_buttons || $is_content_form) && isset($form['actions'])) {
@@ -118,7 +120,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       // Only alter the status field on content forms.
       if ($is_content_form) {
         // Set form id to status field.
-        if (isset($form['status']['widget']) && isset($form['status']['widget']['value'])) {
+        if (isset($form['status']['widget']['value'])) {
           $form['status']['widget']['value']['#attributes']['form'] = $form['#id'];
           $widget_type = $form['status']['widget']['value']['#type'] ?? FALSE;
         }
@@ -140,7 +142,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       // Attach library.
       $form['#attached']['library'][] = 'gin/more_actions';
 
-      $form['#after_build'][] = 'gin_form_after_build';
+      $form['#after_build'][] = [__CLASS__, 'formAfterBuild'];
     }
 
     // Remaining changes only apply to content forms.
@@ -161,15 +163,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
       ];
     }
 
-    // Ensure correct settings for advanced, meta and revision form elements.
-    $form['advanced']['#type'] = 'container';
-    $form['advanced']['#accordion'] = TRUE;
-    $form['meta']['#type'] = 'container';
-    $form['meta']['#access'] = TRUE;
-
-    $form['revision_information']['#type'] = 'container';
-    $form['revision_information']['#group'] = 'meta';
-    $form['revision_information']['#attributes']['class'][] = 'entity-meta__revision';
+    $this->ensureAdvancedSettings($form);
 
     // Action buttons.
     if (isset($form['actions'])) {
@@ -221,35 +215,23 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     $not_logged_in = $this->currentUser->isAnonymous();
     $route = $this->routeMatch->getRouteName();
 
-    if ($not_logged_in && $route == 'node.add') {
-      unset($form['meta']['changed']);
-      unset($form['meta']['author']);
+    if ($not_logged_in && $route === 'node.add') {
+      unset($form['meta']['changed'], $form['meta']['author']);
     }
-
   }
 
   /**
    * Sticky action buttons.
-   *
-   * @param array $form
-   *   An associative array containing the structure of the form.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
-   *   The current state of the form.
-   * @param string $form_id
-   *   The form id.
    */
-  private function stickyActionButtons(?array $form = NULL, ?FormStateInterface $form_state = NULL, $form_id = NULL): bool {
-    /** @var \Drupal\gin\GinSettings $settings */
-    $settings = $this->classResolver->getInstanceFromDefinition(GinSettings::class);
-
+  private function stickyActionButtons(string $form_id): bool {
     // Get route name.
     $route_name = $this->routeMatch->getRouteName();
 
     // Sets default to TRUE if setting is enabled.
-    $sticky_action_buttons = $settings->get('sticky_action_buttons') ? TRUE : FALSE;
+    $sticky_action_buttons = (bool) $this->getSettings()->get('sticky_action_buttons');
 
     // Always enable if navigation is active.
-    if (_gin_module_is_active('navigation')) {
+    if (GinHelper::moduleIsActive('navigation')) {
       $sticky_action_buttons = TRUE;
     }
 
@@ -259,16 +241,16 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     $this->themeManager->alter('gin_ignore_sticky_form_actions', $form_ids);
 
     if (
-      strpos($form_id, '_entity_add_form') !== FALSE ||
-      strpos($form_id, '_entity_edit_form') !== FALSE ||
-      strpos($form_id, '_exposed_form') !== FALSE ||
-      strpos($form_id, '_preview_form') !== FALSE ||
-      strpos($form_id, '_delete_form') !== FALSE ||
-      strpos($form_id, '_confirm_form') !== FALSE ||
-      strpos($form_id, 'views_ui_add_') !== FALSE ||
-      strpos($form_id, 'views_ui_config_') !== FALSE ||
-      strpos($form_id, 'views_ui_edit_') !== FALSE ||
-      strpos($form_id, 'views_ui_rearrange_') !== FALSE ||
+      str_contains($form_id, '_entity_add_form') ||
+      str_contains($form_id, '_entity_edit_form') ||
+      str_contains($form_id, '_exposed_form') ||
+      str_contains($form_id, '_preview_form') ||
+      str_contains($form_id, '_delete_form') ||
+      str_contains($form_id, '_confirm_form') ||
+      str_contains($form_id, 'views_ui_add_') ||
+      str_contains($form_id, 'views_ui_config_') ||
+      str_contains($form_id, 'views_ui_edit_') ||
+      str_contains($form_id, 'views_ui_rearrange_') ||
       in_array($form_id, $form_ids, TRUE) ||
       in_array($route_name, $form_ids, TRUE)
     ) {
@@ -284,14 +266,12 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    * _gin_is_content_form() is replaced by
    * \Drupal::classResolver(GinContentFormHelper::class)->isContentForm().
    *
-   * @param array $form
-   *   An associative array containing the structure of the form.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   * @param \Drupal\Core\Form\FormStateInterface|null $form_state
    *   The current state of the form.
    * @param string $form_id
    *   The form id.
    */
-  public function isContentForm(?array $form = NULL, ?FormStateInterface $form_state = NULL, $form_id = ''): bool {
+  public function isContentForm(?FormStateInterface $form_state = NULL, string $form_id = ''): bool {
     // Forms to exclude.
     // If media library widget, don't use new content edit form.
     // gin_preprocess_html is not triggered here, so checking
@@ -305,7 +285,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     ];
 
     foreach ($form_ids_to_ignore as $form_id_to_ignore) {
-      if ($form_id && strpos($form_id, $form_id_to_ignore) !== FALSE) {
+      if ($form_id && str_contains($form_id, $form_id_to_ignore)) {
         return FALSE;
       }
     }
@@ -341,8 +321,8 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     if (
       in_array($route_name, $route_names, TRUE) ||
       ($form_state && ($form_state->getBuildInfo()['base_form_id'] ?? NULL) === 'node_form') ||
-      ($route_name === 'entity.group_content.create_form' && substr($this->routeMatch->getParameter('plugin_id'), 0, 11) === "group_node:") ||
-      ($route_name === 'entity.group_relationship.create_form' && substr($this->routeMatch->getParameter('plugin_id'), 0, 11) === "group_node:")
+      ($route_name === 'entity.group_content.create_form' && str_starts_with($this->routeMatch->getParameter('plugin_id'), "group_node:")) ||
+      ($route_name === 'entity.group_relationship.create_form' && str_starts_with($this->routeMatch->getParameter('plugin_id'), "group_node:"))
     ) {
       $is_content_form = TRUE;
     }
@@ -356,10 +336,69 @@ class GinContentFormHelper implements ContainerInjectionInterface {
    * Checks if the form is in either
    * a modal or an off-canvas dialog.
    */
-  private function isModalOrOffcanvas() {
+  private function isModalOrOffcanvas(): bool {
     $wrapper_format = $this->getRequestWrapperFormat() ?? '';
     return str_contains($wrapper_format, 'drupal_modal') ||
       str_contains($wrapper_format, 'drupal_dialog');
+  }
+
+  /**
+   * Helper function to remember the form actions after form has been built.
+   */
+  public static function formAfterBuild(array $form): array {
+    // Allowlist for visible actions.
+    $includes = ['save', 'submit', 'preview'];
+
+    // Build actions.
+    foreach (Element::children($form['actions']) as $key) {
+      $button = ($form['actions'][$key]) ?? [];
+
+      if (!($button['#access'] ?? TRUE)) {
+        continue;
+      }
+
+      if (GinHelper::moduleIsActive('navigation')) {
+        $form['gin_sticky_actions']['actions'][$key] = $button;
+      }
+
+      // The media_type_add_form form is a special case.
+      // @see https://www.drupal.org/project/gin/issues/3534385
+      // @see \Drupal\media\MediaTypeForm::actions
+      if ((isset($button['#type']) && $button['#type'] === 'submit') || $form['#form_id'] === 'media_type_add_form') {
+        // Update button.
+        $button['#attributes']['id'] = 'gin-sticky-' . $button['#id'];
+        $button['#attributes']['form'] = $form['#id'];
+        $button['#attributes']['data-drupal-selector'] = 'gin-sticky-' . $button['#attributes']['data-drupal-selector'];
+        $button['#attributes']['data-gin-sticky-form-selector'] = $button['#attributes']['data-drupal-selector'];
+
+        // Add the button to the form actions array.
+        if (!empty($button['#gin_action_item']) || GinHelper::moduleIsActive('navigation') || in_array($key, $includes, TRUE)) {
+          $form['gin_sticky_actions']['actions'][$key] = $button;
+        }
+      }
+    }
+
+    GinHelper::formActions($form['gin_sticky_actions'] ?? NULL);
+    unset($form['gin_sticky_actions']);
+
+    return $form;
+  }
+
+  /**
+   * Ensure correct settings for advanced, meta and revision form elements.
+   *
+   * @param array $form
+   *   The form.
+   */
+  public function ensureAdvancedSettings(array &$form): void {
+    $form['advanced']['#type'] = 'container';
+    $form['advanced']['#accordion'] = TRUE;
+    $form['meta']['#type'] = 'container';
+    $form['meta']['#access'] = TRUE;
+
+    $form['revision_information']['#type'] = 'container';
+    $form['revision_information']['#group'] = 'meta';
+    $form['revision_information']['#attributes']['class'][] = 'entity-meta__revision';
   }
 
 }

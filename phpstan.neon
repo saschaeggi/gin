@@ -1,0 +1,6 @@
+parameters:
+  level: 6
+  ignoreErrors:
+    - identifier: missingType.iterableValue
+  excludePaths:
+    - 'gin.theme'
