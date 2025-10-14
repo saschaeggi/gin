@@ -118,11 +118,9 @@ readonly class ViewsHooks {
   }
 
   /**
-   * Helper function to pre-render a view. called by gin_views_pre_render().
-   *
-   * @param \Drupal\views\ViewExecutable $view
-   *   The view.
+   * Implements hook_views_pre_render().
    */
+  #[Hook('views_pre_render')]
   public function preRender(ViewExecutable $view): void {
     $add_classes = static function (&$option, array $classes_to_add) {
       $classes = preg_split('/\s+/', $option);

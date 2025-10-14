@@ -41,7 +41,7 @@ index c725340912721abcc3f471efa9d19b6d196ae827..983165fd4fb65824a2e131fec2555ec8
      // Add the compiler pass that lets service providers modify existing
      // service definitions. This pass must come before all passes operating on
 diff --git a/core/lib/Drupal/Core/DrupalKernel.php b/core/lib/Drupal/Core/DrupalKernel.php
-index f29bde2e1de94d85ff391009b77693e325eb1edc..402d9284cdaf51e7c4156c72894699cf472ffdc9 100644
+index f29bde2e1de94d85ff391009b77693e325eb1edc..eee404d45c904a9c772681392f7b19f9e6dab0f0 100644
 --- a/core/lib/Drupal/Core/DrupalKernel.php
 +++ b/core/lib/Drupal/Core/DrupalKernel.php
 @@ -164,6 +164,23 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
@@ -49,20 +49,20 @@ index f29bde2e1de94d85ff391009b77693e325eb1edc..402d9284cdaf51e7c4156c72894699cf
    protected $moduleData = [];
  
 +  /**
-+   * Holds the list of enabled themes.
++   * Holds the list of enabled themes from core.extension config.
 +   *
 +   * @var array
 +   *   An associative array whose keys are theme names and whose values are
 +   *   ignored.
 +   */
-+  protected $themeList;
++  protected $themeEnabledList;
 +
 +  /**
 +   * List of available themes.
 +   *
 +   * @var \Drupal\Core\Extension\Extension[]
 +   */
-+  protected $themeData = [];
++  protected $themeExtensions = [];
 +
 +
    /**
@@ -73,8 +73,8 @@ index f29bde2e1de94d85ff391009b77693e325eb1edc..402d9284cdaf51e7c4156c72894699cf
        // Vary the APCu key by which modules are installed to allow
        // class_exists() checks to determine functionality.
 -      $id = 'class_loader:' . crc32(implode(':', array_keys($this->container->getParameter('container.modules'))));
-+      $crc32_implode = static fn($extensions) => crc32(implode(':', array_keys($extensions)));
-+      $id = 'class_loader:' . $crc32_implode($this->container->getParameter('container.modules')) . $crc32_implode($this->container->getParameter('container.themes'));
++      $installed_extensions = array_merge(array_keys($this->container->getParameter('container.modules')), array_keys($this->container->getParameter('container.themes')));
++      $id = 'class_loader:' . crc32(implode(':', $installed_extensions));
        $prefix = Settings::getApcuPrefix($id, $this->root);
        $this->classLoader->setApcuPrefix($prefix);
      }
@@ -82,8 +82,8 @@ index f29bde2e1de94d85ff391009b77693e325eb1edc..402d9284cdaf51e7c4156c72894699cf
      $this->container = NULL;
      $this->moduleList = NULL;
      $this->moduleData = [];
-+    $this->themeList = NULL;
-+    $this->themeData = [];
++    $this->themeEnabledList = NULL;
++    $this->themeExtensions = [];
 +
    }
  
@@ -92,38 +92,41 @@ index f29bde2e1de94d85ff391009b77693e325eb1edc..402d9284cdaf51e7c4156c72894699cf
        }
        $this->moduleList = $extensions['module'] ?? [];
      }
-+    if (!isset($this->themeList)) {
+-    $module_filenames = $this->getModuleFileNames();
+-    $this->classLoaderAddMultiplePsr4($this->getModuleNamespacesPsr4($module_filenames));
++    if (!isset($this->themeEnabledList)) {
 +      $extensions = $this->getExtensions();
-+      $this->themeList = $extensions['theme'] ?? [];
++      $this->themeEnabledList = $extensions['theme'] ?? [];
 +    }
 +
-     $module_filenames = $this->getModuleFileNames();
--    $this->classLoaderAddMultiplePsr4($this->getModuleNamespacesPsr4($module_filenames));
++    $module_filenames = $this->getExtensionFileNames($this->moduleList, [$this, 'moduleData']);
 +    $this->classLoaderAddMultiplePsr4($this->getExtensionNamespacesPsr4($module_filenames));
-+    $theme_filenames = $this->getThemeFileNames();
++    $theme_filenames = $this->getExtensionFileNames($this->themeEnabledList ?? [], [$this, 'themeExtensions']);
 +    $this->classLoaderAddMultiplePsr4($this->getExtensionNamespacesPsr4($theme_filenames));
  
      // Load each module's serviceProvider class.
      foreach ($module_filenames as $module => $filename) {
-@@ -798,7 +826,7 @@ protected function moduleData($module) {
+@@ -798,7 +826,9 @@ protected function moduleData($module) {
    public function updateModules(array $module_list, array $module_filenames = []) {
      $pre_existing_module_namespaces = [];
      if ($this->booted && is_array($this->moduleList)) {
 -      $pre_existing_module_namespaces = $this->getModuleNamespacesPsr4($this->getModuleFileNames());
-+      $pre_existing_module_namespaces = $this->getExtensionNamespacesPsr4($this->getModuleFileNames());
++      $pre_existing_module_namespaces = $this->getExtensionNamespacesPsr4(
++        $this->getExtensionFileNames($this->moduleList, [$this, 'moduleData'])
++      );
      }
      $this->moduleList = $module_list;
      foreach ($module_filenames as $name => $extension) {
-@@ -817,7 +845,7 @@ public function updateModules(array $module_list, array $module_filenames = [])
+@@ -817,7 +847,7 @@ public function updateModules(array $module_list, array $module_filenames = [])
        // class that is now available.
        // @see \Composer\Autoload\ClassLoader::findFile()
        $new_namespaces = array_diff_key(
 -        $this->getModuleNamespacesPsr4($this->getModuleFileNames()),
-+        $this->getExtensionNamespacesPsr4($this->getModuleFileNames()),
++        $this->getExtensionNamespacesPsr4($this->getExtensionFileNames($this->moduleList, [$this, 'moduleData'])),
          $pre_existing_module_namespaces
        );
        if (!empty($new_namespaces)) {
-@@ -830,6 +858,72 @@ public function updateModules(array $module_list, array $module_filenames = [])
+@@ -830,6 +860,76 @@ public function updateModules(array $module_list, array $module_filenames = [])
      }
    }
  
@@ -136,8 +139,8 @@ index f29bde2e1de94d85ff391009b77693e325eb1edc..402d9284cdaf51e7c4156c72894699cf
 +   * @return \Drupal\Core\Extension\Extension|bool
 +   *   Returns an Extension object if the theme is found, FALSE otherwise.
 +   */
-+  protected function themeData($theme) {
-+    if (!$this->themeData) {
++  protected function themeExtensions($theme) {
++    if (!$this->themeExtensions) {
 +      // First, find profiles.
 +      $listing = new ExtensionDiscovery($this->root);
 +      $listing->setProfileDirectories([]);
@@ -150,9 +153,9 @@ index f29bde2e1de94d85ff391009b77693e325eb1edc..402d9284cdaf51e7c4156c72894699cf
 +      $listing->setProfileDirectories($profile_directories);
 +
 +      // Now find themes.
-+      $this->themeData = $listing->scan('theme');
++      $this->themeExtensions = $listing->scan('theme');
 +    }
-+    return $this->themeData[$theme] ?? FALSE;
++    return $this->themeExtensions[$theme] ?? FALSE;
 +  }
 +
 +  /**
@@ -160,12 +163,14 @@ index f29bde2e1de94d85ff391009b77693e325eb1edc..402d9284cdaf51e7c4156c72894699cf
 +   */
 +  public function updateThemes(array $theme_filenames = []): void {
 +    $pre_existing_theme_namespaces = [];
-+    if ($this->booted && is_array($this->themeList)) {
-+      $pre_existing_theme_namespaces = $this->getExtensionNamespacesPsr4($this->getThemeFileNames());
++    if ($this->booted && is_array($this->themeEnabledList)) {
++      $pre_existing_theme_namespaces = $this->getExtensionNamespacesPsr4(
++        $this->getExtensionFileNames($this->themeEnabledList ?? [], [$this, 'themeExtensions'])
++      );
 +    }
-+    $this->themeList = $theme_filenames;
++    $this->themeEnabledList = $theme_filenames;
 +    foreach ($theme_filenames as $name => $extension) {
-+      $this->themeData[$name] = $extension;
++      $this->themeExtensions[$name] = $extension;
 +    }
 +
 +    // If we haven't yet booted, we don't need to do anything: the new theme
@@ -180,7 +185,9 @@ index f29bde2e1de94d85ff391009b77693e325eb1edc..402d9284cdaf51e7c4156c72894699cf
 +      // class that is now available.
 +      // @see \Composer\Autoload\ClassLoader::findFile()
 +      $new_namespaces = array_diff_key(
-+        $this->getExtensionNamespacesPsr4($this->getThemeFileNames()),
++        $this->getExtensionNamespacesPsr4(
++          $this->getExtensionFileNames($this->themeEnabledList ?? [], [$this, 'themeExtensions'])
++        ),
 +        $pre_existing_theme_namespaces
 +      );
 +      if (!empty($new_namespaces)) {
@@ -196,45 +203,50 @@ index f29bde2e1de94d85ff391009b77693e325eb1edc..402d9284cdaf51e7c4156c72894699cf
    /**
     * Returns the container cache key based on the environment.
     *
-@@ -1159,6 +1253,8 @@ public function rebuildContainer() {
+@@ -1159,6 +1259,8 @@ public function rebuildContainer() {
      // Empty module properties and for them to be reloaded from scratch.
      $this->moduleList = NULL;
      $this->moduleData = [];
-+    $this->themeList = NULL;
-+    $this->themeData = [];
++    $this->themeEnabledList = NULL;
++    $this->themeExtensions = [];
      $this->containerNeedsRebuild = TRUE;
      $container = $this->initializeContainer();
      // ThemeManager::render() fails without this. Normally ::preHandle() has
-@@ -1312,10 +1408,12 @@ protected function compileContainer() {
+@@ -1311,11 +1413,19 @@ protected function compileContainer() {
+     $this->initializeServiceProviders();
      $container = $this->getContainerBuilder();
      $container->set('kernel', $this);
-     $container->setParameter('container.modules', $this->getModulesParameter());
-+    $container->setParameter('container.themes', $this->getThemesParameter());
+-    $container->setParameter('container.modules', $this->getModulesParameter());
++    $container->setParameter('container.modules', $this->getExtensionsParameter($this->moduleList, [$this, 'moduleData']));
++    $container->setParameter('container.themes', $this->getExtensionsParameter(
++      $this->themeEnabledList ?? [], [$this, 'themeExtensions'])
++    );
      $container->setParameter('install_profile', $this->getInstallProfile());
  
      // Get a list of namespaces and put it onto the container.
 -    $namespaces = $this->getModuleNamespacesPsr4($this->getModuleFileNames());
-+    $namespaces = $this->getExtensionNamespacesPsr4($this->getModuleFileNames());
-+    $namespaces += $this->getExtensionNamespacesPsr4($this->getThemeFileNames());
++    $namespaces = $this->getExtensionNamespacesPsr4(
++      $this->getExtensionFileNames($this->moduleList, [$this, 'moduleData'])
++    );
++    $namespaces += $this->getExtensionNamespacesPsr4(
++      $this->getExtensionFileNames($this->themeEnabledList ?? [], [$this, 'themeExtensions'])
++    );
      // Add all components in \Drupal\Core and \Drupal\Component that have one or
      // more of Element, Entity and Plugin directories.
      foreach (['Core', 'Component'] as $parent_directory) {
-@@ -1493,10 +1591,37 @@ protected function getConfigStorage() {
+@@ -1491,12 +1601,34 @@ protected function getConfigStorage() {
+    * @return array
+    *   An associated array of module class parameters, keyed by module name, for
     *   all enabled modules.
++   *
++   * @deprecated in drupal:11.3.0 and is removed from drupal:12.0.0. Use
++   *   getExtensionsParameter() instead.
++   *
++   * @see https://www.drupal.org/node/3551652
     */
    protected function getModulesParameter() {
++    @trigger_error(__FUNCTION__ . '() is deprecated in drupal:11.3.0 and is removed from drupal:12.0.0. Use getExtensionsParameter() instead. See https://www.drupal.org/node/3551652', E_USER_DEPRECATED);
 +    return $this->getExtensionsParameter($this->moduleList, [$this, 'moduleData']);
-+  }
-+
-+  /**
-+   * Returns an array of Extension class parameters for all enabled themes.
-+   *
-+   * @return array
-+   *   An associated array of theme class parameters, keyed by theme name, for
-+   *   all enabled themes.
-+   */
-+  protected function getThemesParameter() {
-+    return $this->getExtensionsParameter($this->themeList ?? [], [$this, 'themeData']);
 +  }
 +
 +  /**
@@ -260,7 +272,7 @@ index f29bde2e1de94d85ff391009b77693e325eb1edc..402d9284cdaf51e7c4156c72894699cf
            'type' => $data->getType(),
            'pathname' => $data->getPathname(),
            'filename' => $data->getExtensionFilename(),
-@@ -1507,37 +1632,65 @@ protected function getModulesParameter() {
+@@ -1507,17 +1639,39 @@ protected function getModulesParameter() {
    }
  
    /**
@@ -270,20 +282,15 @@ index f29bde2e1de94d85ff391009b77693e325eb1edc..402d9284cdaf51e7c4156c72894699cf
     * @return array
     *   Array where each key is a module name, and each value is a path to the
     *   respective *.info.yml file.
++   *
++   * @deprecated in drupal:11.3.0 and is removed from drupal:12.0.0. Use
++   *   getExtensionFileNames() instead.
++   *
++   * @see https://www.drupal.org/node/3551652
     */
    protected function getModuleFileNames() {
++    @trigger_error(__FUNCTION__ . '() is deprecated in drupal:11.3.0 and is removed from drupal:12.0.0. Use getExtensionFileNames() instead. See https://www.drupal.org/node/3551652', E_USER_DEPRECATED);
 +    return $this->getExtensionFileNames($this->moduleList, [$this, 'moduleData']);
-+  }
-+
-+  /**
-+   * Gets the filenames for each enabled theme.
-+   *
-+   * @return array
-+   *   Array where each key is a theme name, and each value is a path to the
-+   *   respective *.info.yml file.
-+   */
-+  protected function getThemeFileNames() {
-+    return $this->getExtensionFileNames($this->themeList ?? [], [$this, 'themeData']);
 +  }
 +
 +  /**
@@ -309,27 +316,44 @@ index f29bde2e1de94d85ff391009b77693e325eb1edc..402d9284cdaf51e7c4156c72894699cf
        }
      }
      return $filenames;
-   }
- 
-   /**
--   * Gets the PSR-4 base directories for module namespaces.
-+   * Gets the PSR-4 base directories for extension namespaces.
+@@ -1527,17 +1681,40 @@ protected function getModuleFileNames() {
+    * Gets the PSR-4 base directories for module namespaces.
     *
--   * @param string[] $module_file_names
+    * @param string[] $module_file_names
 -   *   Array where each key is a module name, and each value is a path to the
 -   *   respective *.info.yml file.
-+   * @param string[] $extension_file_names
-+   *   Array where each key is an extension name, and each value is a path to
++   *   Array where each key is an module name, and each value is a path to
 +   *   the respective *.info.yml file.
     *
     * @return string[]
 -   *   Array where each key is a module namespace like 'Drupal\system', and each
 -   *   value is the PSR-4 base directory associated with the module namespace.
++   *   Array where each key is an module namespace like 'Drupal\system', and
++   *   each value is the PSR-4 base directory associated with the module
++   *   namespace.
++   *
++   * @deprecated in drupal:11.3.0 and is removed from drupal:12.0.0. Use
++   *   getExtensionNamespacesPsr4() instead.
++   *
++   * @see https://www.drupal.org/node/3551652
+    */
+   protected function getModuleNamespacesPsr4($module_file_names) {
++    @trigger_error(__FUNCTION__ . '() is deprecated in drupal:11.3.0 and is removed from drupal:12.0.0. Use getExtensionNamespacesPsr4() instead. See https://www.drupal.org/node/3551652', E_USER_DEPRECATED);
++    return $this->getExtensionNamespacesPsr4($module_file_names);
++  }
++
++  /**
++   * Gets the PSR-4 base directories for extension namespaces.
++   *
++   * @param string[] $extension_file_names
++   *   Array where each key is an extension name, and each value is a path to
++   *   the respective *.info.yml file.
++   *
++   * @return string[]
 +   *   Array where each key is an extension namespace like 'Drupal\system', and
 +   *   each value is the PSR-4 base directory associated with the extension
 +   *   namespace.
-    */
--  protected function getModuleNamespacesPsr4($module_file_names) {
++   */
 +  protected function getExtensionNamespacesPsr4($extension_file_names) {
      $namespaces = [];
 -    foreach ($module_file_names as $module => $filename) {
@@ -378,7 +402,7 @@ index 2dd0e05e485c3aca220c274ccf6926b28e54c758..8d6e60c61aa657967c9b10e18bacf8cf
        foreach ($theme->info['libraries'] as $library => $name) {
          $theme->libraries[$library] = $name;
 diff --git a/core/lib/Drupal/Core/Extension/ThemeInstaller.php b/core/lib/Drupal/Core/Extension/ThemeInstaller.php
-index 172193ca8554b1ed78642f9a8ca8bb5925bc52eb..de39c9d67556de50ce7004f890d249c4750d46bf 100644
+index 172193ca8554b1ed78642f9a8ca8bb5925bc52eb..a845aa5470d7fd28592608c85456c16a816ab890 100644
 --- a/core/lib/Drupal/Core/Extension/ThemeInstaller.php
 +++ b/core/lib/Drupal/Core/Extension/ThemeInstaller.php
 @@ -2,18 +2,19 @@
@@ -427,42 +451,40 @@ index 172193ca8554b1ed78642f9a8ca8bb5925bc52eb..de39c9d67556de50ce7004f890d249c4
  
    /**
     * {@inheritdoc}
-@@ -173,8 +171,12 @@ public function install(array $theme_list, $install_dependencies = TRUE) {
-       $this->logger->info('%theme theme installed.', ['%theme' => $key]);
+@@ -174,7 +172,7 @@ public function install(array $theme_list, $install_dependencies = TRUE) {
      }
  
-+    $theme_filenames = [];
-+    foreach ($themes_installed as $theme) {
-+      $theme_filenames[$theme] = $theme_data[$theme];
-+    }
      $this->cssCollectionOptimizer->deleteAll();
 -    $this->resetSystem();
-+    $this->resetSystem($theme_filenames);
++    $this->resetSystem($themes_installed, $theme_data);
  
      // Invoke hook_themes_installed() after the themes have been installed.
      $this->moduleHandler->invokeAll('themes_installed', [$themes_installed]);
-@@ -227,8 +229,9 @@ public function uninstall(array $theme_list) {
-     $extension_config->save(TRUE);
+@@ -228,18 +226,32 @@ public function uninstall(array $theme_list) {
  
      // Refresh theme info.
--    $this->resetSystem();
+     $this->resetSystem();
 -    $this->themeHandler->reset();
-+    $this->resetSystem([]);
 +    // @todo remove namespaces.
 +    $this->themeHandler->reset([]);
  
      $this->moduleHandler->invokeAll('themes_uninstalled', [$theme_list]);
    }
-@@ -236,10 +239,19 @@ public function uninstall(array $theme_list) {
+ 
    /**
     * Resets some other systems like rebuilding the route information or caches.
++   *
++   * @param array $themes_installed
++   *   List of themes installed.
++   * @param array $theme_data
++   *   An array of theme extension objects.
     */
 -  protected function resetSystem() {
-+  protected function resetSystem(array $theme_filenames) {
-     $this->routeBuilder->setRebuildNeeded();
+-    $this->routeBuilder->setRebuildNeeded();
++  protected function resetSystem(array $themes_installed = [], array $theme_data = []) {
      $this->themeRegistry->reset();
 -    $this->componentPluginManager->clearCachedDefinitions();
-+    $this->kernel->updateThemes($theme_filenames);
++    $this->kernel->updateThemes(array_intersect_key($theme_data, array_flip($themes_installed)));
 +    $container = $this->kernel->getContainer();
 +    $container->get('stream_wrapper_manager')->register();
 +    // Clear all plugin caches.
@@ -477,10 +499,10 @@ index 172193ca8554b1ed78642f9a8ca8bb5925bc52eb..de39c9d67556de50ce7004f890d249c4
  }
 diff --git a/core/lib/Drupal/Core/Hook/HookCollector.php b/core/lib/Drupal/Core/Hook/HookCollector.php
 new file mode 100644
-index 0000000000000000000000000000000000000000..b2e765d9f1f9037942af99ab5dc962cb94f2a67c
+index 0000000000000000000000000000000000000000..c519f81fec2bb6613c612f5ca22fce360de96a8a
 --- /dev/null
 +++ b/core/lib/Drupal/Core/Hook/HookCollector.php
-@@ -0,0 +1,311 @@
+@@ -0,0 +1,269 @@
 +<?php
 +
 +declare(strict_types=1);
@@ -590,37 +612,6 @@ index 0000000000000000000000000000000000000000..b2e765d9f1f9037942af99ab5dc962cb
 +  }
 +
 +  /**
-+   * Collects include files by hook name.
-+   *
-+   * @param array<string, array<string, string>> $implementationsByHook
-+   *   Implementations by hook.
-+   * @param array<string, list<string>> $groupIncludes
-+   *   Explicitly defined group includes to filter out.
-+   *
-+   * @return array<string, list<string>>
-+   *   Lists of include files by hook name.
-+   */
-+  protected function collectIncludesPerHook(array $implementationsByHook, array $groupIncludes = []): array {
-+    $includesMap = [];
-+    foreach ($implementationsByHook as $hook => $hookImplementations) {
-+      foreach ($hookImplementations as $identifier => $module) {
-+        if (str_contains($identifier, '::')) {
-+          continue;
-+        }
-+        $include = $this->includes[$identifier] ?? NULL;
-+        if ($include !== NULL) {
-+          // Do not add includes that are already in group includes.
-+          if (isset($groupIncludes[$hook]) && in_array($include, $groupIncludes[$hook])) {
-+            continue;
-+          }
-+          $includesMap[$hook][$include] = TRUE;
-+        }
-+      }
-+    }
-+    return array_map(array_keys(...), $includesMap);
-+  }
-+
-+  /**
 +   * Registers the hook implementation services.
 +   *
 +   * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
@@ -681,9 +672,13 @@ index 0000000000000000000000000000000000000000..b2e765d9f1f9037942af99ab5dc962cb
 +   * @param string $extension
 +   *   The extension implementing the hook, or on behalf of which the hook is
 +   *   implemented.
++   * @param string $type
++   *   The extension implementing the hook, or on behalf of which the hook is
++   *   implemented.
 +   */
-+  protected function addProceduralImplementation(\SplFileInfo $fileinfo, string $hook, string $extension): void {
++  protected function addProceduralImplementation(\SplFileInfo $fileinfo, string $hook, string $extension, string $type): void {
 +    $function = $extension . '_' . $hook;
++
 +    if ($hook === 'hook_info') {
 +      $this->hookInfo[] = $function;
 +      include_once $fileinfo->getPathname();
@@ -694,8 +689,14 @@ index 0000000000000000000000000000000000000000..b2e765d9f1f9037942af99ab5dc962cb
 +      $this->moduleImplementsAlters[] = $function;
 +      include_once $fileinfo->getPathname();
 +    }
++
 +    $this->proceduralImplementations[$hook][] = $extension;
-+    if ($fileinfo->getExtension() !== 'module') {
++
++    if ($type === 'module' && $fileinfo->getExtension() !== 'module') {
++      $this->includes[$function] = $fileinfo->getPathname();
++    }
++
++    if ($type === 'theme' && $fileinfo->getExtension() === 'theme') {
 +      $this->includes[$function] = $fileinfo->getPathname();
 +    }
 +  }
@@ -737,27 +738,6 @@ index 0000000000000000000000000000000000000000..b2e765d9f1f9037942af99ab5dc962cb
 +   *   The class the hook is implemented on.
 +   */
 +  public static function checkInvalidHooksInThemes(Hook $hookAttribute, string $class): void {
-+
-+    $staticDenyHooks = [
-+      'hook_info',
-+      'install',
-+      'install_tasks',
-+      'install_tasks_alter',
-+      'module_implements_alter',
-+      'removed_post_updates',
-+      'requirements',
-+      'schema',
-+      'uninstall',
-+      'update_dependencies',
-+      'update_last_removed',
-+    ];
-+
-+    $preprocessOrAlter = (str_starts_with($hookAttribute->hook, 'preprocess') || str_ends_with($hookAttribute->hook, '_alter'));
-+
-+    if (!$preprocessOrAlter || in_array($hookAttribute->hook, $staticDenyHooks) || preg_match('/^(post_update_|update_\d+$)/', $hookAttribute->hook)) {
-+      throw new \LogicException("The hook $hookAttribute->hook on class $class is not supported for themes.");
-+    }
-+
 +    // A theme cannot implement a hook on behalf of a module or other theme.
 +    if ($hookAttribute->module !== NULL) {
 +      throw new \LogicException("The 'module' parameter on the #[Hook] attribute is not allowed in themes. Found in $class.");
@@ -793,7 +773,7 @@ index 0000000000000000000000000000000000000000..b2e765d9f1f9037942af99ab5dc962cb
 +
 +}
 diff --git a/core/lib/Drupal/Core/Hook/HookCollectorKeyValueWritePass.php b/core/lib/Drupal/Core/Hook/HookCollectorKeyValueWritePass.php
-index f813b86a14f043ccff9a9241612762fc389a92b7..5f770364512b7e78cf136bea74598d70e46a4c87 100644
+index f813b86a14f043ccff9a9241612762fc389a92b7..3b50a9dbded86121e23985942e0f024d1f1c2cdb 100644
 --- a/core/lib/Drupal/Core/Hook/HookCollectorKeyValueWritePass.php
 +++ b/core/lib/Drupal/Core/Hook/HookCollectorKeyValueWritePass.php
 @@ -25,10 +25,15 @@ class HookCollectorKeyValueWritePass implements CompilerPassInterface {
@@ -803,21 +783,22 @@ index f813b86a14f043ccff9a9241612762fc389a92b7..5f770364512b7e78cf136bea74598d70
 +    if ($container->hasParameter('.theme_hook_data')) {
 +      $themeHookData = $container->getParameter('.theme_hook_data');
 +      $hookData = array_merge($hookData, $themeHookData);
++      $hookData['preprocess_for_suggestions'] = array_merge($hookData['preprocess_for_suggestions'], $hookData['theme_preprocess_for_suggestions']);
 +    }
      $keyvalue = $container->get('keyvalue')->get('hook_data');
      assert($keyvalue instanceof KeyValueStoreInterface);
      $keyvalue->setMultiple($hookData);
-     $container->get('cache.bootstrap')->delete('hook_data');
-+    $container->get('cache.bootstrap')->delete('theme_hook_data');
+-    $container->get('cache.bootstrap')->delete('hook_data');
++    $container->get('cache.bootstrap')->deleteMultiple(['hook_data', 'theme_hook_data']);
    }
  
  }
 diff --git a/core/lib/Drupal/Core/Hook/ThemeHookCollectorPass.php b/core/lib/Drupal/Core/Hook/ThemeHookCollectorPass.php
 new file mode 100644
-index 0000000000000000000000000000000000000000..0893939d94be41207c239056990579f548d5efc4
+index 0000000000000000000000000000000000000000..2af0b5fcd6f8ca25aa9d7f5780ba58bf098f182e
 --- /dev/null
 +++ b/core/lib/Drupal/Core/Hook/ThemeHookCollectorPass.php
-@@ -0,0 +1,215 @@
+@@ -0,0 +1,234 @@
 +<?php
 +
 +declare(strict_types=1);
@@ -840,7 +821,7 @@ index 0000000000000000000000000000000000000000..0893939d94be41207c239056990579f5
 + * Collects and registers hook implementations.
 + *
 + * A hook implementation is a class in a Drupal\themename\Hook namespace
-+ * where either the class itself or the methods have a #[ThemeHook] attribute.
++ * where either the class itself or the methods have a #[Hook] attribute.
 + * These classes are automatically registered as autowired services.
 + *
 + * Finally, a hook_implementations_map container parameter is added. This
@@ -880,15 +861,34 @@ index 0000000000000000000000000000000000000000..0893939d94be41207c239056990579f5
 +    $implementationsByHook = $this->calculateImplementations();
 +
 +    static::registerHookServices($container, $implementationsByHook);
-+    $includes = $this->collectIncludesPerHook($implementationsByHook);
 +
 +    // Write aggregated data about hooks into a temporary parameter.
 +    // We use a dot prefixed parameter so it will automatically get cleaned up.
 +    $container->setParameter('.theme_hook_data', [
-+      'theme_hook_list' => $implementationsByHook,
++      'theme_hook_list' => $this->sortByTheme($implementationsByHook),
 +      'theme_preprocess_for_suggestions' => $this->preprocessForSuggestions ?? [],
-+      'theme_includes' => $includes,
 +    ]);
++  }
++
++  /**
++   * Sort by theme.
++   *
++   * @param array<string, array<string, string>> $implementationsByHook
++   *   Implementations, as theme names keyed by hook name and
++   *   "$class::$method" identifier.
++   *
++   * @return array<string, array<string, array<string, string>>>
++   *   Implementations, as theme names keyed by theme, hook name and
++   *   "$class::$method" identifier.
++   */
++  protected function sortByTheme(array $implementationsByHook) {
++    $implementationsByTheme = [];
++    foreach ($implementationsByHook as $hook => $identifiers) {
++      foreach ($identifiers as $identifier => $theme) {
++        $implementationsByTheme[$theme][$hook][$identifier] = $theme;
++      }
++    }
++    return $implementationsByTheme;
 +  }
 +
 +  /**
@@ -1026,91 +1026,32 @@ index 0000000000000000000000000000000000000000..0893939d94be41207c239056990579f5
 +          $procedural_hook_file_cache->set($filename, $implementations);
 +        }
 +        foreach ($implementations as $implementation) {
-+          $this->addProceduralImplementation($fileinfo, $implementation['hook'], $implementation['theme']);
++          $this->addProceduralImplementation($fileinfo, $implementation['hook'], $implementation['theme'], 'theme');
 +        }
 +      }
 +    }
 +  }
 +
 +}
-diff --git a/core/lib/Drupal/Core/Hook/ThemeImplementationList.php b/core/lib/Drupal/Core/Hook/ThemeImplementationList.php
-new file mode 100644
-index 0000000000000000000000000000000000000000..1ae49ac7b63840a647dccbd794730493216389a1
---- /dev/null
-+++ b/core/lib/Drupal/Core/Hook/ThemeImplementationList.php
-@@ -0,0 +1,52 @@
-+<?php
-+
-+declare(strict_types=1);
-+
-+namespace Drupal\Core\Hook;
-+
-+/**
-+ * Contains the ordered list of implementations for a hook.
-+ *
-+ * Also contains information about theme names.
-+ *
-+ * @internal
-+ */
-+class ThemeImplementationList {
-+
-+  /**
-+   * Constructor.
-+   *
-+   * @param list<callable> $listeners
-+   *   List of hook implementation callbacks.
-+   * @param list<string> $themes
-+   *   The theme name associated with each hook implementation.
-+   *   This must have the same keys as $listeners.
-+   */
-+  public function __construct(
-+    public readonly array $listeners,
-+    public readonly array $themes,
-+  ) {
-+    assert(array_is_list($listeners));
-+    assert(array_is_list($themes));
-+    assert(count($listeners) === count($themes));
-+    assert(array_filter($listeners, is_callable(...)) === $listeners);
-+    assert(array_filter($themes, is_string(...)) === $themes, (new \Exception())->getTraceAsString());
-+  }
-+
-+  /**
-+   * Gets listeners for a specific theme.
-+   *
-+   * @param string $theme
-+   *   Theme name.
-+   *
-+   * @return list<callable>
-+   *   Listeners for that theme.
-+   */
-+  public function getForTheme(string $theme): array {
-+    return array_values(array_intersect_key(
-+      $this->listeners,
-+      array_intersect($this->themes, [$theme]),
-+    ));
-+  }
-+
-+}
 diff --git a/core/lib/Drupal/Core/Theme/Registry.php b/core/lib/Drupal/Core/Theme/Registry.php
-index 4c2fcf19a46781cee449c4598844feaccdaeacfa..07925739e0c84709d7f2995ffbd3ae8f7f1b88c1 100644
+index 4c2fcf19a46781cee449c4598844feaccdaeacfa..f41b9b34311cbe9f081569ec231d4b3a5bf3c741 100644
 --- a/core/lib/Drupal/Core/Theme/Registry.php
 +++ b/core/lib/Drupal/Core/Theme/Registry.php
-@@ -985,7 +985,9 @@ protected function collectModulePreprocess(array &$cache, string $hook): array {
-    */
-   protected function getPreprocessForSuggestions(): array {
-     if ($this->preprocessForSuggestions === NULL) {
--      $this->preprocessForSuggestions = $this->keyValueFactory->get('hook_data')->get('preprocess_for_suggestions') ?: [];
-+      $modulePreprocessForSuggestion = $this->keyValueFactory->get('hook_data')->get('preprocess_for_suggestions') ?: [];
-+      $themePreprocessForSuggestion = $this->keyValueFactory->get('hook_data')->get('theme_preprocess_for_suggestions') ?: [];
-+      $this->preprocessForSuggestions = array_merge($modulePreprocessForSuggestion, $themePreprocessForSuggestion);
+@@ -560,6 +560,9 @@ protected function processExtension(array &$cache, $name, $type, $theme, $path)
+       $type = 'module';
+       $args = [$cache, $type, $theme, $path];
      }
-     return $this->preprocessForSuggestions;
-   }
++    elseif ($type === 'theme' || $type === 'base_theme') {
++      $result = $this->themeManager->invoke($name, 'theme', $args);
++    }
+     else {
+       $function = $name . '_theme';
+       if (function_exists($function)) {
 diff --git a/core/lib/Drupal/Core/Theme/ThemeManager.php b/core/lib/Drupal/Core/Theme/ThemeManager.php
-index 2090f19d74dc4a4806eae994f376816631b472a4..afb44af74fe2e02fa028d8083c250726bc138f85 100644
+index 2090f19d74dc4a4806eae994f376816631b472a4..7e4a176579ad239b3a6e3867e3b673c7de88347b 100644
 --- a/core/lib/Drupal/Core/Theme/ThemeManager.php
 +++ b/core/lib/Drupal/Core/Theme/ThemeManager.php
-@@ -3,9 +3,12 @@
+@@ -3,9 +3,11 @@
  namespace Drupal\Core\Theme;
  
  use Drupal\Component\Render\MarkupInterface;
@@ -1118,12 +1059,11 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..afb44af74fe2e02fa028d8083c250726
  use Drupal\Core\Routing\RouteMatchInterface;
  use Drupal\Core\Routing\StackedRouteMatchInterface;
  use Drupal\Core\Extension\ModuleHandlerInterface;
-+use Drupal\Core\Hook\ThemeImplementationList;
 +use Drupal\Core\KeyValueStore\KeyValueFactoryInterface;
  use Drupal\Core\Template\Attribute;
  use Drupal\Core\Template\AttributeHelper;
  use Drupal\Core\Utility\CallableResolver;
-@@ -15,13 +18,6 @@
+@@ -15,13 +17,6 @@
   */
  class ThemeManager implements ThemeManagerInterface {
  
@@ -1137,7 +1077,7 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..afb44af74fe2e02fa028d8083c250726
    /**
     * The theme registry used to render an output.
     *
-@@ -37,53 +33,42 @@ class ThemeManager implements ThemeManagerInterface {
+@@ -37,53 +32,35 @@ class ThemeManager implements ThemeManagerInterface {
    protected $activeTheme;
  
    /**
@@ -1149,37 +1089,34 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..afb44af74fe2e02fa028d8083c250726
 -
 -  /**
 -   * The module handler.
+-   *
+-   * @var \Drupal\Core\Extension\ModuleHandlerInterface
+-   */
+-  protected $moduleHandler;
+-
+-  /**
+-   * The app root.
 +   * Default variables.
     *
--   * @var \Drupal\Core\Extension\ModuleHandlerInterface
+-   * @var string
 +   * @var array|null
     */
--  protected $moduleHandler;
+-  protected $root;
 +  protected ?array $defaultVariables = NULL;
  
    /**
--   * The app root.
-+   * Implementation lists by hook name.
-    *
--   * @var string
-+   * @var array<string, \Drupal\Core\Hook\ThemeImplementationList>
-    */
--  protected $root;
-+  protected array $hookImplementationLists = [];
- 
-   /**
 -   * Default variables.
-+   * Raw list of hook implementations by hook name.
++   * Raw list of hook implementations by theme name.
     *
 -   * @var array|null
-+   * @var array<string, array<string, string>>|null
++   * @var array<string, array<string, array<string, string>>>|null
     */
 -  protected ?array $defaultVariables = NULL;
-+  protected ?array $hookLists = NULL;
++  protected ?array $allHookImplementations = NULL;
  
    /**
 -   * Constructs a new ThemeManager object.
-+   * List of include files keyed by hook.
++   * Raw list of hook callables by theme and hook name.
     *
 -   * @param string $root
 -   *   The app root.
@@ -1191,7 +1128,7 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..afb44af74fe2e02fa028d8083c250726
 -   *   The module handler.
 -   * @param \Drupal\Core\Utility\CallableResolver $callableResolver
 -   *   The callable resolver.
-+   * @var array<string, list<string>>|null
++   * @var array<string, array<string, array<string, callable>>>|null
     */
 -  public function __construct($root, ThemeNegotiatorInterface $theme_negotiator, ThemeInitializationInterface $theme_initialization, ModuleHandlerInterface $module_handler, protected CallableResolver $callableResolver) {
 -    $this->root = $root;
@@ -1199,7 +1136,7 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..afb44af74fe2e02fa028d8083c250726
 -    $this->themeInitialization = $theme_initialization;
 -    $this->moduleHandler = $module_handler;
 -  }
-+  protected ?array $hookIncludes = NULL;
++  protected ?array $themeHookImplementations = NULL;
 +
 +  public function __construct(
 +    protected string $root,
@@ -1213,33 +1150,64 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..afb44af74fe2e02fa028d8083c250726
  
    /**
     * Sets the theme registry.
-@@ -507,27 +492,85 @@ public function alterForTheme(ActiveTheme $theme, $type, &$data, &$context1 = NU
+@@ -484,6 +461,33 @@ protected function initTheme(?RouteMatchInterface $route_match = NULL) {
+     $this->activeTheme = $this->themeInitialization->initTheme($theme);
+   }
  
-     $theme_keys = array_reverse(array_keys($theme->getBaseThemeExtensions()));
-     $theme_keys[] = $theme->getName();
++  /**
++   * {@inheritdoc}
++   */
++  public function invokeAllWith(ActiveTheme $active_theme, string $hook, callable $callback): void {
++    $theme_keys = $this->getThemeChain($active_theme);
++
++    foreach ($theme_keys as $theme_key) {
++      $listeners = $this->getImplementationsForTheme($theme_key, $hook);
++      foreach ($listeners as $listener) {
++        $callback($listener, $theme_key);
++      }
++    }
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function invoke($theme, $hook, array &$args = []) {
++    $listeners = $this->getImplementationsForTheme($theme, $hook);
++    if ($listeners) {
++      if (count($listeners) > 1) {
++        throw new \LogicException("Theme $theme should not implement $hook more than once");
++      }
++      return reset($listeners)(... $args);
++    }
++  }
++
+   /**
+    * {@inheritdoc}
+    *
+@@ -505,27 +509,71 @@ public function alterForTheme(ActiveTheme $theme, $type, &$data, &$context1 = NU
+       }
+     }
+ 
+-    $theme_keys = array_reverse(array_keys($theme->getBaseThemeExtensions()));
+-    $theme_keys[] = $theme->getName();
 -    $functions = [];
++    $theme_keys = $this->getThemeChain($theme);
 +    $listeners = [];
-+    $baseHook = $type . '_alter';
-+    $baseList = $this->getHookImplementationList($baseHook);
++    $base_hook = $type . '_alter';
      foreach ($theme_keys as $theme_key) {
 -      $function = $theme_key . '_' . $type . '_alter';
 -      if (function_exists($function)) {
 -        $functions[] = $function;
-+      $current_listener = $baseList->getForTheme($theme_key);
-+      if ($current_listener) {
-+        $listeners[] = $current_listener;
-       }
+-      }
++      $listeners = array_merge($listeners, $this->getImplementationsForTheme($theme_key, $base_hook));
        if (isset($extra_types)) {
          foreach ($extra_types as $extra_type) {
 -          $function = $theme_key . '_' . $extra_type . '_alter';
 -          if (function_exists($function)) {
 -            $functions[] = $function;
+-          }
 +          $hook = $extra_type . '_alter';
-+          $list = $this->getHookImplementationList($hook);
-+          $current_listener = $list->getForTheme($theme_key);
-+          if ($current_listener) {
-+            $listeners[] = $current_listener;
-           }
++          $listeners = array_merge($listeners, $this->getImplementationsForTheme($theme_key, $hook));
          }
        }
      }
@@ -1247,67 +1215,105 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..afb44af74fe2e02fa028d8083c250726
 -    foreach ($functions as $function) {
 -      $function($data, $context1, $context2);
 +    $listeners = array_filter($listeners);
-+    foreach ($listeners as $listener) {
-+      foreach ($listener as $callback) {
-+        $callback($data, $context1, $context2);
-+      }
-     }
-   }
- 
++    foreach ($listeners as $callback) {
++      $callback($data, $context1, $context2);
++    }
++  }
++
 +  /**
 +   * Gets a hook implementation list for a specific hook.
 +   *
++   * @param string $theme_key
++   *   The theme machine name.
 +   * @param string $hook
 +   *   The hook name.
 +   *
-+   * @return \Drupal\Core\Hook\ThemeImplementationList
-+   *   Object with hook implementation callbacks and their modules.
++   * @return array
++   *   Array with hook implementations.
 +   */
-+  protected function getHookImplementationList(string $hook): ThemeImplementationList {
-+    if (!isset($this->hookImplementationLists[$hook])) {
-+      if ($this->hookLists === NULL) {
-+        if ($cache = $this->cache->get('theme_hook_data')) {
-+          $hook_data = $cache->data;
-+        }
-+        else {
-+          $hook_data = $this->keyValueFactory->get('hook_data')->getMultiple([
-+            'theme_hook_list',
-+            'theme_includes',
-+          ]);
-+          $this->cache->set('theme_hook_data', $hook_data);
-+        }
-+        $this->hookLists = $hook_data['theme_hook_list'] ?? [];
-+        $this->hookIncludes = $hook_data['theme_includes'] ?? [];
-+      }
-+      $hook_list = $this->hookLists[$hook] ?? [];
-+      if ($hook_list) {
-+        $listeners = [];
-+        $themes = [];
-+
-+        // @todo do we need this.
-+        foreach ($this->hookIncludes[$hook] ?? [] as $include) {
-+          include_once $include;
-+        }
-+        foreach ($hook_list as $identifier => $theme) {
-+          $listeners[] = $this->callableResolver->getCallableFromDefinition($identifier);
-+          $themes[] = $theme;
-+        }
-+
-+        $list = new ThemeImplementationList($listeners, $themes);
-+        $this->hookImplementationLists[$hook] = $list;
++  protected function getImplementationsForTheme(string $theme_key, string $hook): array {
++    if (!isset($this->allHookImplementations)) {
++      if ($cache = $this->cache->get('theme_hook_data')) {
++        $this->allHookImplementations = $cache->data;
 +      }
 +      else {
-+        // Set an empty implementation list.
-+        $this->hookImplementationLists[$hook] = new ThemeImplementationList([], []);
++        $this->allHookImplementations = $this->keyValueFactory->get('hook_data')->get('theme_hook_list') ?? [];
++        $this->cache->set('theme_hook_data', $this->allHookImplementations);
 +      }
 +    }
 +
-+    return $this->hookImplementationLists[$hook];
++    if (!isset($this->themeHookImplementations[$theme_key][$hook])) {
++      $listeners = [];
++      foreach ($this->allHookImplementations[$theme_key][$hook] ?? [] as $identifier => $theme) {
++        $listeners[] = $this->callableResolver->getCallableFromDefinition($identifier);
++      }
++      $this->themeHookImplementations[$theme_key][$hook] = $listeners;
+     }
++
++    return $this->themeHookImplementations[$theme_key][$hook];
 +  }
 +
++  /**
++   * Gets theme and base theme in reverse order.
++   *
++   * @param \Drupal\Core\Theme\ActiveTheme $active_theme
++   *   A manually specified theme.
++   *
++   * @return array
++   *   The list of theme keys with the active theme last.
++   */
++  protected function getThemeChain(ActiveTheme $active_theme): array {
++    $theme_keys = array_reverse(array_keys($active_theme->getBaseThemeExtensions()));
++    $theme_keys[] = $active_theme->getName();
++    return $theme_keys;
+   }
+ 
    /**
-    * {@inheritdoc}
+diff --git a/core/lib/Drupal/Core/Theme/ThemeManagerInterface.php b/core/lib/Drupal/Core/Theme/ThemeManagerInterface.php
+index c22a4d04e01d6ab42deb925c4e43b8f2884bd792..301e8c15f7a73aaa5c3553cc631065b27beccaff 100644
+--- a/core/lib/Drupal/Core/Theme/ThemeManagerInterface.php
++++ b/core/lib/Drupal/Core/Theme/ThemeManagerInterface.php
+@@ -71,6 +71,40 @@ public function resetActiveTheme();
     */
+   public function setActiveTheme(ActiveTheme $active_theme);
+ 
++  /**
++   * Invokes a hook in a particular theme.
++   *
++   * @param string $theme_key
++   *   The name of the theme (without the .theme extension).
++   * @param string $hook
++   *   The name of the hook to invoke.
++   * @param array $args
++   *   Arguments to pass to the hook implementation.
++   *
++   * @return mixed
++   *   The return value of the hook implementation.
++   */
++  public function invoke($theme_key, $hook, array &$args = []);
++
++  /**
++   * Executes a callback for each implementation of a hook for a theme.
++   *
++   * The callback is passed one argument, a closure which executes a hook
++   * implementation. Note that this is executed for just a single theme.
++   *
++   * @param \Drupal\Core\Theme\ActiveTheme $active_theme
++   *   A manually specified theme.
++   * @param string $hook
++   *   The name of the hook to invoke.
++   * @param callable(callable, string): mixed $callback
++   *   A callable that invokes a hook implementation. Such that
++   *   $callback is callable(callable, string): mixed.
++   *   Arguments:
++   *    - Closure to a hook implementation.
++   *    - Implementation theme machine name.
++   */
++  public function invokeAllWith(ActiveTheme $active_theme, string $hook, callable $callback): void;
++
+   /**
+    * Passes alterable variables to specific $theme_TYPE_alter() implementations.
+    *
 diff --git a/core/modules/block/tests/src/Functional/BlockDemoTest.php b/core/modules/block/tests/src/Functional/BlockDemoTest.php
 index f19015e424e537aedc36dcac6469de140be1f25e..188a9f04830514c0667d63e2a698f42b0f1e1d1c 100644
 --- a/core/modules/block/tests/src/Functional/BlockDemoTest.php
@@ -1851,8 +1857,59 @@ index 0000000000000000000000000000000000000000..67e7f4176b1d814f829688897ed35034
 +  }
 +
 +}
+diff --git a/core/modules/views/src/ViewExecutable.php b/core/modules/views/src/ViewExecutable.php
+index 554c38cdabafb03d1dcdc986e4acd80712b3fd8c..c920fc86596be51761327b1495b7a1f1db304339 100644
+--- a/core/modules/views/src/ViewExecutable.php
++++ b/core/modules/views/src/ViewExecutable.php
+@@ -1531,9 +1531,9 @@ public function render($display_id = NULL) {
+ 
+     // @todo In the long run, it would be great to execute a view without
+     //   the theme system at all. See https://www.drupal.org/node/2322623.
+-    $active_theme = \Drupal::theme()->getActiveTheme();
+-    $themes = array_reverse(array_keys($active_theme->getBaseThemeExtensions()));
+-    $themes[] = $active_theme->getName();
++    /** @var \Drupal\Core\Theme\ThemeManager $theme_manager */
++    $theme_manager = \Drupal::theme();
++    $active_theme = $theme_manager->getActiveTheme();
+ 
+     // Check for already-cached output.
+     /** @var \Drupal\views\Plugin\views\cache\CachePluginBase $cache */
+@@ -1585,12 +1585,10 @@ public function render($display_id = NULL) {
+     $module_handler->invokeAll('views_pre_render', [$this]);
+ 
+     // Let the themes play too, because prerender is a very themey thing.
+-    foreach ($themes as $theme_name) {
+-      $function = $theme_name . '_views_pre_render';
+-      if (function_exists($function)) {
+-        $function($this);
+-      }
+-    }
++    $theme_manager->invokeAllWith($active_theme, 'views_pre_render', function (callable $hook_listener, string $theme) {
++      $prerender = &$this;
++      $hook_listener($prerender);
++    });
+ 
+     $this->display_handler->output = $this->display_handler->render();
+ 
+@@ -1602,12 +1600,10 @@ public function render($display_id = NULL) {
+     $module_handler->invokeAll('views_post_render', [$this, &$this->display_handler->output, $cache]);
+ 
+     // Let the themes play too, because post render is a very themey thing.
+-    foreach ($themes as $theme_name) {
+-      $function = $theme_name . '_views_post_render';
+-      if (function_exists($function)) {
+-        $function($this, $this->display_handler->output, $cache);
+-      }
+-    }
++    $theme_manager->invokeAllWith($active_theme, 'views_post_render', function (callable $hook_listener, string $theme) use ($cache) {
++      $display_output = &$this->display_handler->output;
++      $hook_listener($this, $display_output, $cache);
++    });
+ 
+     return $this->display_handler->output;
+   }
 diff --git a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryAuthenticatedPerformanceTest.php b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryAuthenticatedPerformanceTest.php
-index b8eb8dd2d3d94e2a2e0ae200063571376b1b51bd..084399bf0abe5d59d25e59f6a19a66290e60495b 100644
+index b8eb8dd2d3d94e2a2e0ae200063571376b1b51bd..9b7e2e857c7c982cb6f8f7a44077e603c1e9ee54 100644
 --- a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryAuthenticatedPerformanceTest.php
 +++ b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryAuthenticatedPerformanceTest.php
 @@ -54,10 +54,10 @@ public function testFrontPageAuthenticatedWarmCache(): void {
@@ -1874,7 +1931,7 @@ index b8eb8dd2d3d94e2a2e0ae200063571376b1b51bd..084399bf0abe5d59d25e59f6a19a6629
      $expected = [
 -      'QueryCount' => 545,
 -      'CacheGetCount' => 568,
-+      'QueryCount' => 547,
++      'QueryCount' => 546,
 +      'CacheGetCount' => 570,
        'CacheGetCountByBin' => [
          'config' => 221,
@@ -1893,7 +1950,7 @@ index b8eb8dd2d3d94e2a2e0ae200063571376b1b51bd..084399bf0abe5d59d25e59f6a19a6629
        'CacheTagInvalidationCount' => 0,
        'CacheTagLookupQueryCount' => 47,
 diff --git a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryFrontPagePerformanceTest.php b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryFrontPagePerformanceTest.php
-index cd8758d7c0d92c6a54979f4a508a1d17aba9b717..31026509bbd80fe558d488eefc37a5ce69a64d55 100644
+index cd8758d7c0d92c6a54979f4a508a1d17aba9b717..46880b14fb07a4c47620b4f3271657ccc4b911e7 100644
 --- a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryFrontPagePerformanceTest.php
 +++ b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryFrontPagePerformanceTest.php
 @@ -52,9 +52,9 @@ protected function testFrontPageColdCache(): void {
@@ -1903,7 +1960,7 @@ index cd8758d7c0d92c6a54979f4a508a1d17aba9b717..31026509bbd80fe558d488eefc37a5ce
 -      'QueryCount' => 366,
 -      'CacheGetCount' => 467,
 -      'CacheSetCount' => 462,
-+      'QueryCount' => 368,
++      'QueryCount' => 367,
 +      'CacheGetCount' => 468,
 +      'CacheSetCount' => 463,
        'CacheDeleteCount' => 0,
@@ -1919,7 +1976,7 @@ index cd8758d7c0d92c6a54979f4a508a1d17aba9b717..31026509bbd80fe558d488eefc37a5ce
        'CacheDeleteCount' => 0,
        'CacheTagInvalidationCount' => 0,
 diff --git a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryNodePagePerformanceTest.php b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryNodePagePerformanceTest.php
-index 5e1fc33edab05071d5950c3e42a2e15e404d879d..01edf90b14e7ffdc24f2ec04e184d8dee3a8e623 100644
+index 5e1fc33edab05071d5950c3e42a2e15e404d879d..d50601f984c05fea65b9de8a71a014ac1cfb5346 100644
 --- a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryNodePagePerformanceTest.php
 +++ b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryNodePagePerformanceTest.php
 @@ -55,8 +55,8 @@ protected function testNodePageColdCache(): void {
@@ -1928,7 +1985,7 @@ index 5e1fc33edab05071d5950c3e42a2e15e404d879d..01edf90b14e7ffdc24f2ec04e184d8de
      $expected = [
 -      'QueryCount' => 459,
 -      'CacheSetCount' => 441,
-+      'QueryCount' => 461,
++      'QueryCount' => 460,
 +      'CacheSetCount' => 442,
        'CacheDeleteCount' => 0,
        'CacheTagLookupQueryCount' => 43,
@@ -2123,7 +2180,7 @@ index c12ff844c93a359c6f5fd5db699b233e60d7901a..3d9d954f8750d27f2d89d6819344ef63
          $this->fail($message);
 diff --git a/core/tests/Drupal/KernelTests/Core/Hook/ThemeHookCollectorPassTest.php b/core/tests/Drupal/KernelTests/Core/Hook/ThemeHookCollectorPassTest.php
 new file mode 100644
-index 0000000000000000000000000000000000000000..83714a3ef2c1d599c9ef73036ccd804c50fca270
+index 0000000000000000000000000000000000000000..c980daf4dc7426d040841a9ca32053be94103983
 --- /dev/null
 +++ b/core/tests/Drupal/KernelTests/Core/Hook/ThemeHookCollectorPassTest.php
 @@ -0,0 +1,148 @@
@@ -2168,7 +2225,7 @@ index 0000000000000000000000000000000000000000..83714a3ef2c1d599c9ef73036ccd804c
 +    $themeHookData = $container->getParameter('.theme_hook_data');
 +    $this->assertEquals(
 +      ['Drupal\oop_hook_theme\Hook\TestHookCollectionHooks::testHookAlter' => 'oop_hook_theme'],
-+      $themeHookData['theme_hook_list']['test_hook_alter'],
++      $themeHookData['theme_hook_list']['oop_hook_theme']['test_hook_alter'],
 +    );
 +  }
 +

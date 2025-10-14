@@ -6,15 +6,6 @@
  */
 
 use Drupal\gin\Hook\PreprocessHooks;
-use Drupal\gin\Hook\ViewsHooks;
-use Drupal\views\ViewExecutable;
-
-/**
- * Implements hook_views_pre_render().
- */
-function gin_views_pre_render(ViewExecutable $view): void {
-  Drupal::classResolver(ViewsHooks::class)->preRender($view);
-}
 
 /**
  * Provides the preprocess class.
