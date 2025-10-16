@@ -30,14 +30,3 @@ gin.settings:
     show_user_theme_settings:
       type: boolean
       label: 'Let user override theme'
-    third_party_settings:
-      type: mapping
-      label: 'Third party settings'
-      mapping:
-        shortcut:
-          type: mapping
-          label: 'Shortcut'
-          mapping:
-            module_link:
-              type: boolean
-              label: 'Module Link'
