@@ -2,7 +2,6 @@
 
 namespace Drupal\gin\Hook;
 
-use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\DependencyInjection\ClassResolverInterface;
 use Drupal\Core\Entity\EntityForm;
@@ -14,10 +13,10 @@ use Drupal\Core\Render\Element;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\gin\ClassResolverTrait;
 use Drupal\gin\GinHelper;
+use Drupal\gin\GinSettings;
 use Drupal\media\MediaForm;
 use Drupal\views\Form\ViewsForm;
 use Drupal\views_ui\Form\Ajax\ViewsFormInterface;
-use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 /**
  * Provides form related hook implementations.
@@ -34,8 +33,6 @@ class FormHooks {
     protected ClassResolverInterface $classResolver,
     protected readonly ModuleHandlerInterface $moduleHandler,
     protected readonly ConfigFactoryInterface $configFactory,
-    #[Autowire(service: 'cache.render')]
-    protected readonly CacheBackendInterface $cacheBackend,
   ) {}
 
   /**
@@ -503,31 +500,32 @@ class FormHooks {
   /**
    * Submit handler for the user form.
    */
-  public function userFormSubmit(array &$form, FormStateInterface $form_state): void {
+  public static function userFormSubmit(array &$form, FormStateInterface $form_state): void {
     /** @var \Drupal\Core\Session\AccountInterface $account */
     $account = $form_state->getBuildInfo()['callback_object']->getEntity();
 
+    $settings = \Drupal::classResolver(GinSettings::class);
     $enabledUserOverrides = $form_state->getValue('enable_user_settings');
     if ($enabledUserOverrides) {
       $user_settings = [
-        'enable_darkmode' => $form_state->getValue('enable_darkmode'),
         'preset_accent_color' => $form_state->getValue('preset_accent_color'),
-        'accent_color' => $form_state->getValue('accent_color'),
         'preset_focus_color' => $form_state->getValue('preset_focus_color'),
-        'focus_color' => $form_state->getValue('focus_color'),
+        'enable_darkmode' => $form_state->getValue('enable_darkmode'),
         'high_contrast_mode' => (bool) $form_state->getValue('high_contrast_mode'),
+        'accent_color' => $form_state->getValue('accent_color'),
+        'focus_color' => $form_state->getValue('focus_color'),
         'layout_density' => $form_state->getValue('layout_density'),
         'show_description_toggle' => $form_state->getValue('show_description_toggle'),
       ];
-      $this->getSettings()->setAll($user_settings, $account);
+      $settings->setAll($user_settings, $account);
     }
     else {
-      $this->getSettings()->clear($account);
+      $settings->clear($account);
     }
 
     // Clear render cache to ensure the correct
     // templates are loaded for our toolbar options.
-    $this->cacheBackend->deleteAll();
+    \Drupal::service('cache.render')->deleteAll();
   }
 
   /**
