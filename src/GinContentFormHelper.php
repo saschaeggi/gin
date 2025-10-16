@@ -248,11 +248,12 @@ final class GinContentFormHelper implements ContainerInjectionInterface {
         }
       }
     }
+    if ($form_state && ($form_state->getBuildInfo()['base_form_id'] ?? NULL) === 'node_form') {
+      return TRUE;
+    }
 
     static $is_content_form;
     if (!isset($is_content_form)) {
-      $is_content_form = FALSE;
-
       // Get route name.
       $route_name = $this->routeMatch->getRouteName();
 
@@ -278,14 +279,7 @@ final class GinContentFormHelper implements ContainerInjectionInterface {
       $this->moduleHandler->alter('gin_content_form_routes', $route_names);
       $this->themeManager->alter('gin_content_form_routes', $route_names);
 
-      if (
-        in_array($route_name, $route_names, TRUE) ||
-        ($form_state && ($form_state->getBuildInfo()['base_form_id'] ?? NULL) === 'node_form') ||
-        ($route_name === 'entity.group_content.create_form' && str_starts_with($this->routeMatch->getParameter('plugin_id'), "group_node:")) ||
-        ($route_name === 'entity.group_relationship.create_form' && str_starts_with($this->routeMatch->getParameter('plugin_id'), "group_node:"))
-      ) {
-        $is_content_form = TRUE;
-      }
+      $is_content_form = in_array($route_name, $route_names, TRUE);
     }
     return $is_content_form;
   }
