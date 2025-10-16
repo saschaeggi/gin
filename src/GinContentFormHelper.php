@@ -231,61 +231,62 @@ final class GinContentFormHelper implements ContainerInjectionInterface {
    *   The form id.
    */
   public function isContentForm(?FormStateInterface $form_state = NULL, string $form_id = ''): bool {
-    // Forms to exclude.
-    // If media library widget, don't use new content edit form.
-    // gin_preprocess_html is not triggered here, so checking
-    // the form id is enough.
-    $form_ids_to_ignore = [
-      'media_library_add_form_',
-      'views_form_media_library_widget_',
-      'views_exposed_form',
-      'date_recur_modular_sierra_occurrences_modal',
-      'date_recur_modular_sierra_modal',
-    ];
-
-    foreach ($form_ids_to_ignore as $form_id_to_ignore) {
-      if ($form_id && str_contains($form_id, $form_id_to_ignore)) {
-        return FALSE;
+    if ($form_id) {
+      // Forms to exclude.
+      // If media library widget, don't use new content edit form.
+      // gin_preprocess_html is not triggered here, so checking
+      // the form id is enough.
+      $form_ids_to_ignore = [
+        'media_library_add_form_',
+        'views_form_media_library_widget_',
+        'views_exposed_form',
+      ];
+      $form_ids_to_ignore = array_merge($this->moduleHandler->invokeAll('gin_content_form_ignore_form_ids'), $form_ids_to_ignore);
+      foreach ($form_ids_to_ignore as $form_id_to_ignore) {
+        if (str_contains($form_id, $form_id_to_ignore)) {
+          return FALSE;
+        }
       }
     }
 
-    $is_content_form = FALSE;
+    static $is_content_form;
+    if (!isset($is_content_form)) {
+      $is_content_form = FALSE;
 
-    // Get route name.
-    $route_name = $this->routeMatch->getRouteName();
+      // Get route name.
+      $route_name = $this->routeMatch->getRouteName();
 
-    // Routes to include.
-    $route_names = [
-      'node.add',
-      'block_content.add_page',
-      'block_content.add_form',
-      'entity.block_content.canonical',
-      'entity.media.add_form',
-      'entity.media.canonical',
-      'entity.media.edit_form',
-      'entity.node.content_translation_add',
-      'entity.node.content_translation_edit',
-      'quick_node_clone.node.quick_clone',
-      'entity.node.edit_form',
-      'entity.menu.add_link_form',
-      'menu_ui.link_edit',
-    ];
+      // Routes to include.
+      $route_names = [
+        'node.add',
+        'block_content.add_page',
+        'block_content.add_form',
+        'entity.block_content.canonical',
+        'entity.media.add_form',
+        'entity.media.canonical',
+        'entity.media.edit_form',
+        'entity.node.content_translation_add',
+        'entity.node.content_translation_edit',
+        'entity.node.edit_form',
+        'entity.menu.add_link_form',
+        'menu_ui.link_edit',
+      ];
 
-    // API check.
-    $additional_routes = $this->moduleHandler->invokeAll('gin_content_form_routes');
-    $route_names = array_merge($additional_routes, $route_names);
-    $this->moduleHandler->alter('gin_content_form_routes', $route_names);
-    $this->themeManager->alter('gin_content_form_routes', $route_names);
+      // API check.
+      $additional_routes = $this->moduleHandler->invokeAll('gin_content_form_routes');
+      $route_names = array_merge($additional_routes, $route_names);
+      $this->moduleHandler->alter('gin_content_form_routes', $route_names);
+      $this->themeManager->alter('gin_content_form_routes', $route_names);
 
-    if (
-      in_array($route_name, $route_names, TRUE) ||
-      ($form_state && ($form_state->getBuildInfo()['base_form_id'] ?? NULL) === 'node_form') ||
-      ($route_name === 'entity.group_content.create_form' && str_starts_with($this->routeMatch->getParameter('plugin_id'), "group_node:")) ||
-      ($route_name === 'entity.group_relationship.create_form' && str_starts_with($this->routeMatch->getParameter('plugin_id'), "group_node:"))
-    ) {
-      $is_content_form = TRUE;
+      if (
+        in_array($route_name, $route_names, TRUE) ||
+        ($form_state && ($form_state->getBuildInfo()['base_form_id'] ?? NULL) === 'node_form') ||
+        ($route_name === 'entity.group_content.create_form' && str_starts_with($this->routeMatch->getParameter('plugin_id'), "group_node:")) ||
+        ($route_name === 'entity.group_relationship.create_form' && str_starts_with($this->routeMatch->getParameter('plugin_id'), "group_node:"))
+      ) {
+        $is_content_form = TRUE;
+      }
     }
-
     return $is_content_form;
   }
 
