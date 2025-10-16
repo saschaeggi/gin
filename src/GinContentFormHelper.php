@@ -83,11 +83,10 @@ final class GinContentFormHelper implements ContainerInjectionInterface {
     }
 
     // Save form types and behaviors.
-    $use_sticky_action_buttons = $this->stickyActionButtons($form_id);
     $is_content_form = $this->isContentForm($form_state, $form_id);
 
     // Sticky action buttons.
-    if (($use_sticky_action_buttons || $is_content_form) && isset($form['actions'])) {
+    if (isset($form['actions'])) {
       // Add sticky class.
       $form['actions']['#attributes']['class'][] = 'gin-sticky-form-actions';
 
@@ -218,46 +217,6 @@ final class GinContentFormHelper implements ContainerInjectionInterface {
     if ($not_logged_in && $route === 'node.add') {
       unset($form['meta']['changed'], $form['meta']['author']);
     }
-  }
-
-  /**
-   * Sticky action buttons.
-   */
-  private function stickyActionButtons(string $form_id): bool {
-    // Get route name.
-    $route_name = $this->routeMatch->getRouteName();
-
-    // Sets default to TRUE if setting is enabled.
-    $sticky_action_buttons = (bool) $this->getSettings()->get('sticky_action_buttons');
-
-    // Always enable if navigation is active.
-    if (GinHelper::moduleIsActive('navigation')) {
-      $sticky_action_buttons = TRUE;
-    }
-
-    // API check.
-    $form_ids = $this->moduleHandler->invokeAll('gin_ignore_sticky_form_actions');
-    $this->moduleHandler->alter('gin_ignore_sticky_form_actions', $form_ids);
-    $this->themeManager->alter('gin_ignore_sticky_form_actions', $form_ids);
-
-    if (
-      str_contains($form_id, '_entity_add_form') ||
-      str_contains($form_id, '_entity_edit_form') ||
-      str_contains($form_id, '_exposed_form') ||
-      str_contains($form_id, '_preview_form') ||
-      str_contains($form_id, '_delete_form') ||
-      str_contains($form_id, '_confirm_form') ||
-      str_contains($form_id, 'views_ui_add_') ||
-      str_contains($form_id, 'views_ui_config_') ||
-      str_contains($form_id, 'views_ui_edit_') ||
-      str_contains($form_id, 'views_ui_rearrange_') ||
-      in_array($form_id, $form_ids, TRUE) ||
-      in_array($route_name, $form_ids, TRUE)
-    ) {
-      $sticky_action_buttons = FALSE;
-    }
-
-    return $sticky_action_buttons;
   }
 
   /**

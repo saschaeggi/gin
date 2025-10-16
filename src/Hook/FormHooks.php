@@ -518,7 +518,6 @@ class FormHooks {
         'high_contrast_mode' => (bool) $form_state->getValue('high_contrast_mode'),
         'layout_density' => $form_state->getValue('layout_density'),
         'show_description_toggle' => $form_state->getValue('show_description_toggle'),
-        'sticky_action_buttons' => $form_state->getValue('sticky_action_buttons'),
       ];
       $this->getSettings()->setAll($user_settings, $account);
     }

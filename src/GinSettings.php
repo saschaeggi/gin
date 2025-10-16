@@ -327,16 +327,6 @@ final class GinSettings implements ContainerInjectionInterface {
       '#default_value' => $account ? $this->get('high_contrast_mode', $account) : $this->getDefault('high_contrast_mode'),
     ];
 
-    // Sticky action toggle.
-    if (!GinHelper::moduleIsActive('navigation')) {
-      $form['sticky_action_buttons'] = [
-        '#type' => 'checkbox',
-        '#title' => $this->t('Enable sticky action buttons') . $beta_label . $new_label,
-        '#description' => $this->t('Displays all actions of the form in the sticky header.'),
-        '#default_value' => $account ? $this->get('sticky_action_buttons', $account) : $this->getDefault('sticky_action_buttons'),
-      ];
-    }
-
     // Layout density setting.
     $form['layout_density'] = [
       '#type' => 'radios',

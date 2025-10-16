@@ -108,7 +108,6 @@ class GinTest extends BrowserTestBase {
     $this->assertStringContainsString('"darkmode":"0"', $this->drupalGet($user1->toUrl('edit-form')));
 
     $this->submitForm([
-      'sticky_action_buttons' => TRUE,
       'enable_user_settings' => TRUE,
       'enable_darkmode' => '1',
     ], 'Save');

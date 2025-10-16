@@ -26,7 +26,7 @@
  * @see GinContentFormHelper->isContentForm()
  * @see hook_gin_content_form_routes_alter()
  */
-function hook_gin_content_form_routes() {
+function hook_gin_content_form_routes(): array {
   return [
     // Layout a custom node form.
     'entity.node.my_custom_form',
@@ -45,27 +45,9 @@ function hook_gin_content_form_routes() {
  * @see GinContentFormHelper->isContentForm()
  * @see hook_gin_content_form_routes()
  */
-function hook_gin_content_form_routes_alter(array &$routes) {
+function hook_gin_content_form_routes_alter(array &$routes): void {
   // Example: disable Gin edit form layout customizations for an entity type.
   $routes = array_diff($routes, ['entity.my_type.edit_form']);
-}
-
-/**
- * Register form ids to opt-out of Gin’s sticky action buttons.
- *
- * Leverage this hook to opt-out of Gin's sticky action buttons.
- * Opting out will keep the action buttons within the form.
- *
- * @return array
- *   An array of form ids to ignore.
- *
- * @see GinContentFormHelper->stickyActionButtons()
- */
-function hook_gin_ignore_sticky_form_actions() {
-  return [
-    // My custom form.
-    'my_custom_form',
-  ];
 }
 
 /**
