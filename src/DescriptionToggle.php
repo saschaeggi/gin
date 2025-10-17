@@ -9,12 +9,12 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Service to handle toggling form descriptions.
  */
-final class GinDescriptionToggle implements ContainerInjectionInterface {
+final class DescriptionToggle implements ContainerInjectionInterface {
 
   use ClassResolverTrait;
 
   /**
-   * GinDescriptionToggle constructor.
+   * DescriptionToggle constructor.
    *
    * @param \Drupal\Core\DependencyInjection\ClassResolverInterface $classResolver
    *   The class resolver.
@@ -27,8 +27,8 @@ final class GinDescriptionToggle implements ContainerInjectionInterface {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container): GinDescriptionToggle {
-    return new GinDescriptionToggle(
+  public static function create(ContainerInterface $container): DescriptionToggle {
+    return new DescriptionToggle(
       $container->get('class_resolver'),
     );
   }

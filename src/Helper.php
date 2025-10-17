@@ -8,7 +8,7 @@ use Drupal\Component\Utility\NestedArray;
 /**
  * Gin helper methods.
  */
-final class GinHelper {
+final class Helper {
 
   /**
    * Flag if Gin is active.

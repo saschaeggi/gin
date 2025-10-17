@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Service to handle overridden user settings.
  */
-final class GinSettings implements ContainerInjectionInterface {
+final class Settings implements ContainerInjectionInterface {
 
   use ClassResolverTrait;
   use StringTranslationTrait;
@@ -43,8 +43,8 @@ final class GinSettings implements ContainerInjectionInterface {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container): GinSettings {
-    return new GinSettings(
+  public static function create(ContainerInterface $container): Settings {
+    return new Settings(
       $container->get('current_user'),
       $container->get('config.factory'),
       $container->get('class_resolver'),
@@ -219,7 +219,7 @@ final class GinSettings implements ContainerInjectionInterface {
     ];
 
     // Accent color setting.
-    $presets = GinHelper::accentColors();
+    $presets = Helper::accentColors();
     $options = array_map(static function ($preset) {
       return $preset['label'];
     }, $presets);
@@ -228,7 +228,7 @@ final class GinSettings implements ContainerInjectionInterface {
       '#title' => $this->t('Accent color'),
       '#default_value' => $account ? $this->get('preset_accent_color', $account) : $this->getDefault('preset_accent_color'),
       '#options' => $options,
-      '#after_build' => [[GinHelper::class, 'accentRadios']],
+      '#after_build' => [[Helper::class, 'accentRadios']],
     ];
 
     // Accent color group.
@@ -367,7 +367,7 @@ final class GinSettings implements ContainerInjectionInterface {
    *   The updated renderable array containing the new description.
    */
   public static function overriddenSettingByUser(array $element): array {
-    $settings = \Drupal::classResolver(GinSettings::class);
+    $settings = \Drupal::classResolver(Settings::class);
     // Check if this is overridden by the logged in user.
     if ($element && isset($element['#name']) && $settings->overridden($element['#name'])) {
       $userEditUrl = Url::fromRoute('entity.user.edit_form', ['user' => \Drupal::currentUser()->id()])->toString();

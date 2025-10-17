@@ -12,8 +12,8 @@ use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Render\Element;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\gin\ClassResolverTrait;
-use Drupal\gin\GinHelper;
-use Drupal\gin\GinSettings;
+use Drupal\gin\Helper;
+use Drupal\gin\Settings;
 use Drupal\media\MediaForm;
 use Drupal\views\Form\ViewsForm;
 use Drupal\views_ui\Form\Ajax\ViewsFormInterface;
@@ -45,11 +45,11 @@ class FormHooks {
 
     // Make entity forms delete link use the action-link component.
     if (isset($form['actions']['delete']['#type']) && $form['actions']['delete']['#type'] === 'link' && !empty($build_info['callback_object']) && $build_info['callback_object'] instanceof EntityForm) {
-      $form['actions']['delete'] = GinHelper::convertLinkToActionLink($form['actions']['delete'], 'trash', 'default', 'danger');
+      $form['actions']['delete'] = Helper::convertLinkToActionLink($form['actions']['delete'], 'trash', 'default', 'danger');
     }
 
     if (isset($form['actions']['delete_translation']['#type']) && $form['actions']['delete_translation']['#type'] === 'link' && !empty($build_info['callback_object']) && $build_info['callback_object'] instanceof EntityForm) {
-      $form['actions']['delete_translation'] = GinHelper::convertLinkToActionLink($form['actions']['delete_translation'], 'trash', 'default', 'danger');
+      $form['actions']['delete_translation'] = Helper::convertLinkToActionLink($form['actions']['delete_translation'], 'trash', 'default', 'danger');
     }
 
     if (($form_object instanceof ViewsForm || $form_object instanceof ViewsFormInterface) && isset($form['override']['#prefix'])) {
@@ -504,7 +504,7 @@ class FormHooks {
     /** @var \Drupal\Core\Session\AccountInterface $account */
     $account = $form_state->getBuildInfo()['callback_object']->getEntity();
 
-    $settings = \Drupal::classResolver(GinSettings::class);
+    $settings = \Drupal::classResolver(Settings::class);
     $enabledUserOverrides = $form_state->getValue('enable_user_settings');
     if ($enabledUserOverrides) {
       $user_settings = [

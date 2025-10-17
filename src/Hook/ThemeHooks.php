@@ -11,8 +11,8 @@ use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Security\TrustedCallbackInterface;
 use Drupal\gin\ClassResolverTrait;
-use Drupal\gin\GinDescriptionToggle;
-use Drupal\gin\GinHelper;
+use Drupal\gin\DescriptionToggle;
+use Drupal\gin\Helper;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -190,7 +190,7 @@ class ThemeHooks implements TrustedCallbackInterface {
     ];
 
     // Are we relevant?
-    $gin_activated = GinHelper::isActive();
+    $gin_activated = Helper::isActive();
 
     if ($gin_activated) {
       // Attach the init script.
@@ -214,7 +214,7 @@ class ThemeHooks implements TrustedCallbackInterface {
       // Get theme settings.
       $page['#attached']['drupalSettings']['gin']['darkmode'] = $this->getSettings()->get('enable_darkmode');
       $page['#attached']['drupalSettings']['gin']['darkmode_class'] = 'gin--dark-mode';
-      $page['#attached']['drupalSettings']['gin']['accent_colors'] = GinHelper::accentColors();
+      $page['#attached']['drupalSettings']['gin']['accent_colors'] = Helper::accentColors();
       $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $this->getSettings()->get('preset_accent_color');
       $page['#attached']['drupalSettings']['gin']['accent_color'] = $this->getSettings()->get('accent_color');
       $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $this->getSettings()->get('preset_focus_color');
@@ -425,7 +425,7 @@ class ThemeHooks implements TrustedCallbackInterface {
       $element['value']['#wrapper_attributes']['class'][] = 'js-form-type-textarea';
     }
 
-    if (!empty($element['#description']) && \Drupal::classResolver(GinDescriptionToggle::class)->isEnabled()) {
+    if (!empty($element['#description']) && \Drupal::classResolver(DescriptionToggle::class)->isEnabled()) {
       if ($element['#type'] === 'text_format') {
         $element['value']['#description_toggle'] = TRUE;
       }

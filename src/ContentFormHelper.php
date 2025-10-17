@@ -18,14 +18,14 @@ use Symfony\Component\HttpFoundation\RequestStack;
 /**
  * Service to handle content form overrides.
  */
-final class GinContentFormHelper implements ContainerInjectionInterface {
+final class ContentFormHelper implements ContainerInjectionInterface {
 
   use AjaxHelperTrait;
   use ClassResolverTrait;
   use StringTranslationTrait;
 
   /**
-   * GinContentFormHelper constructor.
+   * ContentFormHelper constructor.
    *
    * @param \Drupal\Core\Session\AccountInterface $currentUser
    *   The current user.
@@ -53,8 +53,8 @@ final class GinContentFormHelper implements ContainerInjectionInterface {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container): GinContentFormHelper {
-    return new GinContentFormHelper(
+  public static function create(ContainerInterface $container): ContentFormHelper {
+    return new ContentFormHelper(
       $container->get('current_user'),
       $container->get('module_handler'),
       $container->get('current_route_match'),
@@ -223,7 +223,7 @@ final class GinContentFormHelper implements ContainerInjectionInterface {
    * Check if we´re on a content edit form.
    *
    * _gin_is_content_form() is replaced by
-   * \Drupal::classResolver(GinContentFormHelper::class)->isContentForm().
+   * \Drupal::classResolver(ContentFormHelper::class)->isContentForm().
    *
    * @param \Drupal\Core\Form\FormStateInterface|null $form_state
    *   The current state of the form.
@@ -311,7 +311,7 @@ final class GinContentFormHelper implements ContainerInjectionInterface {
         continue;
       }
 
-      if (GinHelper::moduleIsActive('navigation')) {
+      if (Helper::moduleIsActive('navigation')) {
         $form['gin_sticky_actions']['actions'][$key] = $button;
       }
 
@@ -326,13 +326,13 @@ final class GinContentFormHelper implements ContainerInjectionInterface {
         $button['#attributes']['data-gin-sticky-form-selector'] = $button['#attributes']['data-drupal-selector'];
 
         // Add the button to the form actions array.
-        if (!empty($button['#gin_action_item']) || GinHelper::moduleIsActive('navigation') || in_array($key, $includes, TRUE)) {
+        if (!empty($button['#gin_action_item']) || Helper::moduleIsActive('navigation') || in_array($key, $includes, TRUE)) {
           $form['gin_sticky_actions']['actions'][$key] = $button;
         }
       }
     }
 
-    GinHelper::formActions($form['gin_sticky_actions'] ?? NULL);
+    Helper::formActions($form['gin_sticky_actions'] ?? NULL);
     unset($form['gin_sticky_actions']);
 
     return $form;

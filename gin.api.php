@@ -23,7 +23,7 @@
  * @return array
  *   An array of route names.
  *
- * @see GinContentFormHelper->isContentForm()
+ * @see ContentFormHelper->isContentForm()
  * @see hook_gin_content_form_routes_alter()
  */
 function hook_gin_content_form_routes(): array {
@@ -42,7 +42,7 @@ function hook_gin_content_form_routes(): array {
  * @param array $routes
  *   The list of routes.
  *
- * @see GinContentFormHelper->isContentForm()
+ * @see ContentFormHelper->isContentForm()
  * @see hook_gin_content_form_routes()
  */
 function hook_gin_content_form_routes_alter(array &$routes): void {

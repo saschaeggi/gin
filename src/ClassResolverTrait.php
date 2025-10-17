@@ -40,12 +40,12 @@ trait ClassResolverTrait {
   /**
    * Gets the Gin settings.
    *
-   * @return \Drupal\gin\GinSettings
+   * @return \Drupal\gin\Settings
    *   The Gin settings.
    */
-  protected function getSettings(): GinSettings {
+  protected function getSettings(): Settings {
     if ($this->settings === NULL) {
-      $this->settings = $this->classResolver->getInstanceFromDefinition(GinSettings::class);
+      $this->settings = $this->classResolver->getInstanceFromDefinition(Settings::class);
     }
     return $this->settings;
   }
@@ -53,12 +53,12 @@ trait ClassResolverTrait {
   /**
    * Gets the Gin content form helper.
    *
-   * @return \Drupal\gin\GinContentFormHelper
+   * @return \Drupal\gin\ContentFormHelper
    *   The Gin content form helper.
    */
-  protected function getContentFormHelper(): GinContentFormHelper {
+  protected function getContentFormHelper(): ContentFormHelper {
     if ($this->contentFormHelper === NULL) {
-      $this->contentFormHelper = $this->classResolver->getInstanceFromDefinition(GinContentFormHelper::class);
+      $this->contentFormHelper = $this->classResolver->getInstanceFromDefinition(ContentFormHelper::class);
     }
     return $this->contentFormHelper;
   }
@@ -66,12 +66,12 @@ trait ClassResolverTrait {
   /**
    * Gets the Gin description toggle.
    *
-   * @return \Drupal\gin\GinDescriptionToggle
+   * @return \Drupal\gin\DescriptionToggle
    *   The Gin description toggle.
    */
-  protected function getDescriptionToggle(): GinDescriptionToggle {
+  protected function getDescriptionToggle(): DescriptionToggle {
     if ($this->descriptionToggle === NULL) {
-      $this->descriptionToggle = $this->classResolver->getInstanceFromDefinition(GinDescriptionToggle::class);
+      $this->descriptionToggle = $this->classResolver->getInstanceFromDefinition(DescriptionToggle::class);
     }
     return $this->descriptionToggle;
   }

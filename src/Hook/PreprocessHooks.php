@@ -27,7 +27,7 @@ use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\Core\Url;
 use Drupal\file\FileInterface;
 use Drupal\gin\ClassResolverTrait;
-use Drupal\gin\GinHelper;
+use Drupal\gin\Helper;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -592,7 +592,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    */
   public function html(array &$variables): void {
     // Are we relevant?
-    $gin_activated = GinHelper::isActive();
+    $gin_activated = Helper::isActive();
 
     if ($gin_activated) {
       // Check if IMCE is active.
@@ -607,7 +607,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
       $variables['html_attributes']['data-gin-accent'] = $settings->get('preset_accent_color');
 
       // New way to set accent color.
-      $accent_colors = GinHelper::accentColors();
+      $accent_colors = Helper::accentColors();
       $preset = $settings->get('preset_accent_color');
       $accent_color = '';
 
@@ -647,7 +647,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
       }
 
       // Check if Navigation module is active.
-      if (GinHelper::moduleIsActive('navigation')) {
+      if (Helper::moduleIsActive('navigation')) {
         $variables['attributes']['class'][] = 'gin--navigation';
       }
       else {
@@ -761,19 +761,19 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
       if (!empty($links_item['link']) && !empty($links_item['link']['#url']) && $links_item['link']['#url'] instanceof Url && $links_item['link']['#url']->isRouted()) {
         switch ($links_item['link']['#url']->getRouteName()) {
           case 'system.theme_settings_theme':
-            $links_item['link'] = GinHelper::convertLinkToActionLink($links_item['link'], 'cog', 'small');
+            $links_item['link'] = Helper::convertLinkToActionLink($links_item['link'], 'cog', 'small');
             break;
 
           case 'system.theme_uninstall':
-            $links_item['link'] = GinHelper::convertLinkToActionLink($links_item['link'], 'ex', 'small');
+            $links_item['link'] = Helper::convertLinkToActionLink($links_item['link'], 'ex', 'small');
             break;
 
           case 'system.theme_set_default':
-            $links_item['link'] = GinHelper::convertLinkToActionLink($links_item['link'], 'checkmark', 'small');
+            $links_item['link'] = Helper::convertLinkToActionLink($links_item['link'], 'checkmark', 'small');
             break;
 
           case 'system.theme_install':
-            $links_item['link'] = GinHelper::convertLinkToActionLink($links_item['link'], 'plus', 'small');
+            $links_item['link'] = Helper::convertLinkToActionLink($links_item['link'], 'plus', 'small');
             break;
 
         }
@@ -878,7 +878,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
     }
 
     // Are we displaying an edit form?
-    if (GinHelper::formActions()) {
+    if (Helper::formActions()) {
       $classes = &$variables['link']['#options']['attributes']['class'];
       $classes = array_filter($classes, static function ($e) {
         return $e !== 'button--primary';
@@ -956,7 +956,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
     // Get theme configs.
     $logo_default = $this->getSettings()->getDefault('logo.use_default');
     $variables['icon_path'] = !$logo_default ? $this->getSettings()->getDefault('logo.path') : '';
-    $variables['navigation'] = GinHelper::moduleIsActive('navigation');
+    $variables['navigation'] = Helper::moduleIsActive('navigation');
     $variables['is_backend'] = TRUE;
 
     // Attach the new drupal navigation styles.
@@ -998,7 +998,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
     // Required for allowing subtheming Gin.
     $activeThemeName = $this->themeManager->getActiveTheme()->getName();
     $variables['active_admin_theme'] = $activeThemeName;
-    $variables['active_navigation'] = GinHelper::moduleIsActive('navigation');
+    $variables['active_navigation'] = Helper::moduleIsActive('navigation');
     // Expose Route name.
     $variables['route_name'] = $this->currentRouteMatch->getRouteName();
 
@@ -1012,8 +1012,8 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
     }
 
     // Get form actions.
-    if ($form_actions = GinHelper::formActions()) {
-      if (GinHelper::moduleIsActive('navigation')) {
+    if ($form_actions = Helper::formActions()) {
+      if (Helper::moduleIsActive('navigation')) {
         $variables['gin_form_actions'] = '';
       }
       else {
@@ -1202,7 +1202,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
     ];
 
     // Check if Navigation module is active.
-    if (GinHelper::moduleIsActive('navigation')) {
+    if (Helper::moduleIsActive('navigation')) {
       // Attach the new drupal navigation styles.
       $variables['#attached']['library'][] = 'gin/navigation';
       return;
@@ -1293,7 +1293,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    * Implements hook_preprocess_HOOK() for top_bar.
    */
   public function topBar(array &$variables): void {
-    if (!GinHelper::moduleIsActive('navigation')) {
+    if (!Helper::moduleIsActive('navigation')) {
       return;
     }
 
@@ -1304,7 +1304,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
     $variables['#attached']['library'][] = 'gin/top_bar';
 
     // Get form actions.
-    if ($form_actions = GinHelper::formActions()) {
+    if ($form_actions = Helper::formActions()) {
       $variables['gin_form_actions'] = $form_actions;
       $variables['gin_form_actions_class'] = 'gin-sticky-form-actions--preprocessed';
       $variables['#attached']['library'][] = 'gin/top_bar';
