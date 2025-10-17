@@ -1814,7 +1814,7 @@ index 554c38cdabafb03d1dcdc986e4acd80712b3fd8c..bab8f01d165b8ea0365f3abcc762ea79
      return $this->display_handler->output;
    }
 diff --git a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryAuthenticatedPerformanceTest.php b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryAuthenticatedPerformanceTest.php
-index b8eb8dd2d3d94e2a2e0ae200063571376b1b51bd..9b7e2e857c7c982cb6f8f7a44077e603c1e9ee54 100644
+index 129d56ec2b0c7ccb9d8c06eb85f82ab0a312db2c..c18cb9eaaebe65d6e8dcf8d9258a2ead35760129 100644
 --- a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryAuthenticatedPerformanceTest.php
 +++ b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryAuthenticatedPerformanceTest.php
 @@ -54,10 +54,10 @@ public function testFrontPageAuthenticatedWarmCache(): void {
@@ -1834,12 +1834,12 @@ index b8eb8dd2d3d94e2a2e0ae200063571376b1b51bd..9b7e2e857c7c982cb6f8f7a44077e603
      }, 'administratorNodePage');
  
      $expected = [
--      'QueryCount' => 545,
--      'CacheGetCount' => 568,
-+      'QueryCount' => 546,
-+      'CacheGetCount' => 570,
+-      'QueryCount' => 527,
+-      'CacheGetCount' => 550,
++      'QueryCount' => 528,
++      'CacheGetCount' => 552,
        'CacheGetCountByBin' => [
-         'config' => 221,
+         'config' => 203,
 -        'bootstrap' => 26,
 +        'bootstrap' => 28,
          'discovery' => 113,
@@ -1849,25 +1849,25 @@ index b8eb8dd2d3d94e2a2e0ae200063571376b1b51bd..9b7e2e857c7c982cb6f8f7a44077e603
          'render' => 39,
          'menu' => 28,
        ],
--      'CacheSetCount' => 475,
-+      'CacheSetCount' => 476,
+-      'CacheSetCount' => 457,
++      'CacheSetCount' => 458,
        'CacheDeleteCount' => 0,
        'CacheTagInvalidationCount' => 0,
        'CacheTagLookupQueryCount' => 47,
 diff --git a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryFrontPagePerformanceTest.php b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryFrontPagePerformanceTest.php
-index cd8758d7c0d92c6a54979f4a508a1d17aba9b717..46880b14fb07a4c47620b4f3271657ccc4b911e7 100644
+index 1164922772785d859850b261d24e45d2b0e9f2ba..e62fa093241da11ff0d57d3853e8d45f42bf9c1e 100644
 --- a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryFrontPagePerformanceTest.php
 +++ b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryFrontPagePerformanceTest.php
 @@ -52,9 +52,9 @@ protected function testFrontPageColdCache(): void {
      $this->assertSession()->pageTextContains('Umami');
  
      $expected = [
--      'QueryCount' => 366,
--      'CacheGetCount' => 467,
--      'CacheSetCount' => 462,
-+      'QueryCount' => 367,
-+      'CacheGetCount' => 468,
-+      'CacheSetCount' => 463,
+-      'QueryCount' => 352,
+-      'CacheGetCount' => 453,
+-      'CacheSetCount' => 448,
++      'QueryCount' => 353,
++      'CacheGetCount' => 454,
++      'CacheSetCount' => 449,
        'CacheDeleteCount' => 0,
        'CacheTagLookupQueryCount' => 49,
        'CacheTagInvalidationCount' => 0,
@@ -1881,17 +1881,17 @@ index cd8758d7c0d92c6a54979f4a508a1d17aba9b717..46880b14fb07a4c47620b4f3271657cc
        'CacheDeleteCount' => 0,
        'CacheTagInvalidationCount' => 0,
 diff --git a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryNodePagePerformanceTest.php b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryNodePagePerformanceTest.php
-index 5e1fc33edab05071d5950c3e42a2e15e404d879d..d50601f984c05fea65b9de8a71a014ac1cfb5346 100644
+index 43df210c413010a8ec5e7b4d0f02ae39de496527..19e1474a996cfdfe569159c704ff6d409f91c14d 100644
 --- a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryNodePagePerformanceTest.php
 +++ b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryNodePagePerformanceTest.php
 @@ -55,8 +55,8 @@ protected function testNodePageColdCache(): void {
      $this->assertSession()->pageTextContains('quiche');
  
      $expected = [
--      'QueryCount' => 459,
--      'CacheSetCount' => 441,
-+      'QueryCount' => 460,
-+      'CacheSetCount' => 442,
+-      'QueryCount' => 441,
+-      'CacheSetCount' => 423,
++      'QueryCount' => 442,
++      'CacheSetCount' => 424,
        'CacheDeleteCount' => 0,
        'CacheTagLookupQueryCount' => 43,
        'CacheTagInvalidationCount' => 0,
@@ -2085,10 +2085,10 @@ index 9ce1c1fb9da6b484a80748ac78cc2fd07c6f4857..ae33867b2dd937f54a5f14c15f08bb9d
          $this->fail($message);
 diff --git a/core/tests/Drupal/KernelTests/Core/Hook/ThemeHookCollectorPassTest.php b/core/tests/Drupal/KernelTests/Core/Hook/ThemeHookCollectorPassTest.php
 new file mode 100644
-index 0000000000000000000000000000000000000000..c980daf4dc7426d040841a9ca32053be94103983
+index 0000000000000000000000000000000000000000..844b1c2321b0ab50e2c1ec11e761db1e63d2130f
 --- /dev/null
 +++ b/core/tests/Drupal/KernelTests/Core/Hook/ThemeHookCollectorPassTest.php
-@@ -0,0 +1,148 @@
+@@ -0,0 +1,150 @@
 +<?php
 +
 +declare(strict_types=1);
@@ -2101,6 +2101,7 @@ index 0000000000000000000000000000000000000000..c980daf4dc7426d040841a9ca32053be
 +use Drupal\KernelTests\KernelTestBase;
 +use PHPUnit\Framework\Attributes\CoversClass;
 +use PHPUnit\Framework\Attributes\Group;
++use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 +use Symfony\Component\DependencyInjection\ContainerBuilder;
 +use Symfony\Component\DependencyInjection\Definition;
 +
@@ -2109,6 +2110,7 @@ index 0000000000000000000000000000000000000000..c980daf4dc7426d040841a9ca32053be
 + */
 +#[CoversClass(ThemeHookCollectorPass::class)]
 +#[Group('Hook')]
++#[RunTestsInSeparateProcesses]
 +class ThemeHookCollectorPassTest extends KernelTestBase {
 +
 +  /**
