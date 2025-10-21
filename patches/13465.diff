@@ -1,5 +1,5 @@
 diff --git a/core/core.services.yml b/core/core.services.yml
-index 077ce032be0cac521b6d921a2fe3a325813fe0d8..7ca1e68268e3866eaeb21ba7f8edaeca80b01ced 100644
+index 077ce032be0cac521b6d921a2fe3a325813fe0d8..77fca66b266c8c082a75390115413a162a191641 100644
 --- a/core/core.services.yml
 +++ b/core/core.services.yml
 @@ -720,7 +720,7 @@ services:
@@ -16,7 +16,7 @@ index 077ce032be0cac521b6d921a2fe3a325813fe0d8..7ca1e68268e3866eaeb21ba7f8edaeca
    theme.manager:
      class: Drupal\Core\Theme\ThemeManager
 -    arguments: ['%app.root%', '@theme.negotiator', '@theme.initialization', '@module_handler', '@callable_resolver']
-+    arguments: ['%app.root%', '@theme.negotiator', '@theme.initialization', '@module_handler', '@keyvalue', '@callable_resolver', '@cache.bootstrap']
++    arguments: ['%app.root%', '@theme.negotiator', '@theme.initialization', '@module_handler', '@callable_resolver', '@keyvalue', '@cache.bootstrap']
      calls:
        - [setThemeRegistry, ['@theme.registry']]
    Drupal\Core\Theme\ThemeManagerInterface: '@theme.manager'
@@ -41,7 +41,7 @@ index c725340912721abcc3f471efa9d19b6d196ae827..983165fd4fb65824a2e131fec2555ec8
      // Add the compiler pass that lets service providers modify existing
      // service definitions. This pass must come before all passes operating on
 diff --git a/core/lib/Drupal/Core/DrupalKernel.php b/core/lib/Drupal/Core/DrupalKernel.php
-index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..729e4e2c350402a281211664aa97752b39eb7c71 100644
+index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..fcd2cfe0ac8951d497336632d2b0bdad500f43f6 100644
 --- a/core/lib/Drupal/Core/DrupalKernel.php
 +++ b/core/lib/Drupal/Core/DrupalKernel.php
 @@ -164,6 +164,23 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
@@ -73,7 +73,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..729e4e2c350402a281211664aa97752b
        // Vary the APCu key by which modules are installed to allow
        // class_exists() checks to determine functionality.
 -      $id = 'class_loader:' . crc32(implode(':', array_keys($this->container->getParameter('container.modules'))));
-+      $installed_extensions = array_merge(array_keys($this->container->getParameter('container.modules')), array_keys($this->container->getParameter('container.themes')));
++      $installed_extensions = array_keys($this->container->getParameter('container.modules') + $this->container->getParameter('container.themes'));
 +      $id = 'class_loader:' . crc32(implode(':', $installed_extensions));
        $prefix = Settings::getApcuPrefix($id, $this->root);
        $this->classLoader->setApcuPrefix($prefix);
@@ -101,7 +101,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..729e4e2c350402a281211664aa97752b
 +
 +    $module_filenames = $this->getExtensionFileNames($this->moduleList, [$this, 'moduleData']);
 +    $this->classLoaderAddMultiplePsr4($this->getExtensionNamespacesPsr4($module_filenames));
-+    $theme_filenames = $this->getExtensionFileNames($this->themeEnabledList ?? [], [$this, 'themeExtensions']);
++    $theme_filenames = $this->getExtensionFileNames($this->themeEnabledList, [$this, 'themeExtensions']);
 +    $this->classLoaderAddMultiplePsr4($this->getExtensionNamespacesPsr4($theme_filenames));
  
      // Load each module's serviceProvider class.
@@ -126,7 +126,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..729e4e2c350402a281211664aa97752b
          $pre_existing_module_namespaces
        );
        if (!empty($new_namespaces)) {
-@@ -830,6 +860,76 @@ public function updateModules(array $module_list, array $module_filenames = [])
+@@ -830,6 +860,74 @@ public function updateModules(array $module_list, array $module_filenames = [])
      }
    }
  
@@ -136,7 +136,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..729e4e2c350402a281211664aa97752b
 +   * @param string $theme
 +   *   The name of the theme.
 +   *
-+   * @return \Drupal\Core\Extension\Extension|bool
++   * @return \Drupal\Core\Extension\Extension|false
 +   *   Returns an Extension object if the theme is found, FALSE otherwise.
 +   */
 +  protected function themeExtensions($theme) {
@@ -147,9 +147,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..729e4e2c350402a281211664aa97752b
 +      $all_profiles = $listing->scan('profile');
 +      $profiles = array_intersect_key($all_profiles, $this->moduleList);
 +
-+      $profile_directories = array_map(function (Extension $profile) {
-+        return $profile->getPath();
-+      }, $profiles);
++      $profile_directories = array_map(static fn (Extension $profile): string => $profile->getPath(), $profiles);
 +      $listing->setProfileDirectories($profile_directories);
 +
 +      // Now find themes.
@@ -165,7 +163,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..729e4e2c350402a281211664aa97752b
 +    $pre_existing_theme_namespaces = [];
 +    if ($this->booted && is_array($this->themeEnabledList)) {
 +      $pre_existing_theme_namespaces = $this->getExtensionNamespacesPsr4(
-+        $this->getExtensionFileNames($this->themeEnabledList ?? [], [$this, 'themeExtensions'])
++        $this->getExtensionFileNames($this->themeEnabledList, [$this, 'themeExtensions'])
 +      );
 +    }
 +    $this->themeEnabledList = $register_themes;
@@ -186,7 +184,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..729e4e2c350402a281211664aa97752b
 +      // @see \Composer\Autoload\ClassLoader::findFile()
 +      $new_namespaces = array_diff_key(
 +        $this->getExtensionNamespacesPsr4(
-+          $this->getExtensionFileNames($this->themeEnabledList ?? [], [$this, 'themeExtensions'])
++          $this->getExtensionFileNames($this->themeEnabledList, [$this, 'themeExtensions'])
 +        ),
 +        $pre_existing_theme_namespaces
 +      );
@@ -203,7 +201,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..729e4e2c350402a281211664aa97752b
    /**
     * Returns the container cache key based on the environment.
     *
-@@ -1159,6 +1259,8 @@ public function rebuildContainer() {
+@@ -1159,6 +1257,8 @@ public function rebuildContainer() {
      // Empty module properties and for them to be reloaded from scratch.
      $this->moduleList = NULL;
      $this->moduleData = [];
@@ -212,7 +210,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..729e4e2c350402a281211664aa97752b
      $this->containerNeedsRebuild = TRUE;
      $container = $this->initializeContainer();
      // ThemeManager::render() fails without this. Normally ::preHandle() has
-@@ -1311,11 +1413,19 @@ protected function compileContainer() {
+@@ -1311,11 +1411,19 @@ protected function compileContainer() {
      $this->initializeServiceProviders();
      $container = $this->getContainerBuilder();
      $container->set('kernel', $this);
@@ -234,7 +232,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..729e4e2c350402a281211664aa97752b
      // Add all components in \Drupal\Core and \Drupal\Component that have one or
      // more of Element, Entity and Plugin directories.
      foreach (['Core', 'Component'] as $parent_directory) {
-@@ -1491,12 +1601,34 @@ protected function getConfigStorage() {
+@@ -1491,12 +1599,34 @@ protected function getConfigStorage() {
     * @return array
     *   An associated array of module class parameters, keyed by module name, for
     *   all enabled modules.
@@ -272,7 +270,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..729e4e2c350402a281211664aa97752b
            'type' => $data->getType(),
            'pathname' => $data->getPathname(),
            'filename' => $data->getExtensionFilename(),
-@@ -1507,17 +1639,39 @@ protected function getModulesParameter() {
+@@ -1507,17 +1637,39 @@ protected function getModulesParameter() {
    }
  
    /**
@@ -316,19 +314,19 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..729e4e2c350402a281211664aa97752b
        }
      }
      return $filenames;
-@@ -1527,17 +1681,40 @@ protected function getModuleFileNames() {
+@@ -1527,17 +1679,40 @@ protected function getModuleFileNames() {
     * Gets the PSR-4 base directories for module namespaces.
     *
     * @param string[] $module_file_names
 -   *   Array where each key is a module name, and each value is a path to the
 -   *   respective *.info.yml file.
-+   *   Array where each key is an module name, and each value is a path to
++   *   Array where each key is a module name, and each value is a path to
 +   *   the respective *.info.yml file.
     *
     * @return string[]
 -   *   Array where each key is a module namespace like 'Drupal\system', and each
 -   *   value is the PSR-4 base directory associated with the module namespace.
-+   *   Array where each key is an module namespace like 'Drupal\system', and
++   *   Array where each key is a module namespace like 'Drupal\system', and
 +   *   each value is the PSR-4 base directory associated with the module
 +   *   namespace.
 +   *
@@ -354,7 +352,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..729e4e2c350402a281211664aa97752b
 +   *   each value is the PSR-4 base directory associated with the extension
 +   *   namespace.
 +   */
-+  protected function getExtensionNamespacesPsr4($extension_file_names) {
++  protected function getExtensionNamespacesPsr4(array $extension_file_names): array {
      $namespaces = [];
 -    foreach ($module_file_names as $module => $filename) {
 -      $namespaces["Drupal\\$module"] = dirname($filename) . '/src';
@@ -364,7 +362,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..729e4e2c350402a281211664aa97752b
      return $namespaces;
    }
 diff --git a/core/lib/Drupal/Core/DrupalKernelInterface.php b/core/lib/Drupal/Core/DrupalKernelInterface.php
-index 501f6bb2125d6d60d1d525c1d16c243eea1ab95a..ff03a3b5c2b0cd71d158b1eb7ea3ef55779e5932 100644
+index 501f6bb2125d6d60d1d525c1d16c243eea1ab95a..53d1329111749ab8e103b09531d8c2b937c2b501 100644
 --- a/core/lib/Drupal/Core/DrupalKernelInterface.php
 +++ b/core/lib/Drupal/Core/DrupalKernelInterface.php
 @@ -115,6 +115,17 @@ public function getAppRoot();
@@ -377,7 +375,7 @@ index 501f6bb2125d6d60d1d525c1d16c243eea1ab95a..ff03a3b5c2b0cd71d158b1eb7ea3ef55
 +   * The kernel needs to update its list and container to match the new
 +   * list.
 +   *
-+   * @param array $register_themes
++   * array<string, \Drupal\Core\Extension\Extension> $register_themes
 +   *   List of theme extensions, keyed by theme name.
 +   */
 +  public function updateThemes(array $register_themes = []): void;
@@ -402,7 +400,7 @@ index 2dd0e05e485c3aca220c274ccf6926b28e54c758..8d6e60c61aa657967c9b10e18bacf8cf
        foreach ($theme->info['libraries'] as $library => $name) {
          $theme->libraries[$library] = $name;
 diff --git a/core/lib/Drupal/Core/Extension/ThemeInstaller.php b/core/lib/Drupal/Core/Extension/ThemeInstaller.php
-index 172193ca8554b1ed78642f9a8ca8bb5925bc52eb..ab650cf51d9b3a3df28fab5fa74b6d8cf513446a 100644
+index 172193ca8554b1ed78642f9a8ca8bb5925bc52eb..0888c949c8c71518384e2307a9ef6ec2e5263b3a 100644
 --- a/core/lib/Drupal/Core/Extension/ThemeInstaller.php
 +++ b/core/lib/Drupal/Core/Extension/ThemeInstaller.php
 @@ -8,12 +8,14 @@
@@ -486,8 +484,8 @@ index 172193ca8554b1ed78642f9a8ca8bb5925bc52eb..ab650cf51d9b3a3df28fab5fa74b6d8c
    /**
     * Resets some other systems like rebuilding the route information or caches.
 +   *
-+   * @param array $register_themes
-+   *   List of themes that should be registered.
++   * @param array<string, \Drupal\Core\Extension\Extension> $register_themes
++   *   Extension data for themes that should be registered, keyed by name.
     */
 -  protected function resetSystem() {
 -    $this->routeBuilder->setRebuildNeeded();
@@ -530,10 +528,10 @@ index f813b86a14f043ccff9a9241612762fc389a92b7..3b50a9dbded86121e23985942e0f024d
  }
 diff --git a/core/lib/Drupal/Core/Hook/ThemeHookCollectorPass.php b/core/lib/Drupal/Core/Hook/ThemeHookCollectorPass.php
 new file mode 100644
-index 0000000000000000000000000000000000000000..6b9f84956455d366a2171a0e3a82bc9b16f17923
+index 0000000000000000000000000000000000000000..51388b672c2948cff2a50fa03106438fe4c8a357
 --- /dev/null
 +++ b/core/lib/Drupal/Core/Hook/ThemeHookCollectorPass.php
-@@ -0,0 +1,375 @@
+@@ -0,0 +1,393 @@
 +<?php
 +
 +declare(strict_types=1);
@@ -559,7 +557,7 @@ index 0000000000000000000000000000000000000000..6b9f84956455d366a2171a0e3a82bc9b
 + * where either the class itself or the methods have a #[Hook] attribute.
 + * These classes are automatically registered as autowired services.
 + *
-+ * Finally, a hook_implementations_map container parameter is added. This
++ * Finally, a .theme_hook_data container parameter is added. This
 + * contains a mapping from [hook,class,method] to the theme name.
 + *
 + * @internal
@@ -686,26 +684,42 @@ index 0000000000000000000000000000000000000000..6b9f84956455d366a2171a0e3a82bc9b
 +   */
 +  protected static function collectAllHookImplementations(ContainerBuilder $container): static {
 +    $parameters = $container->getParameterBag()->all();
-+    $theme_list = $parameters['container.themes'];
++    $themeList = $parameters['container.themes'];
 +
 +    $skipProcedural = array_filter(
-+      array_keys($theme_list),
++      array_keys($themeList),
 +      static fn(string $theme) => !empty($parameters["$theme.skip_procedural_hook_scan"]),
 +    );
-+    $themes = array_keys($theme_list);
-+    $themes_by_length = $themes;
-+    usort($themes_by_length, static fn ($a, $b) => strlen($b) - strlen($a));
-+    $known_themes_pattern = implode('|', array_map(
-+      static fn ($x) => preg_quote($x, '/'),
-+      $themes_by_length,
-+    ));
-+    $theme_preg = '/^(?<function>(?<theme>' . $known_themes_pattern . ')_(?!update_\d)(?<hook>[a-zA-Z0-9_\x80-\xff]+$))/';
++    $themes = array_keys($themeList);
++    $allThemesPreg = static::getThemeListPattern($themes);
 +    $collector = new static($themes);
-+    foreach ($theme_list as $theme => $info) {
-+      $skip_procedural = in_array($theme, $skipProcedural);
-+      $collector->collectThemeHookImplementations(dirname($info['pathname']), $theme, $theme_preg, $skip_procedural);
++    foreach ($themeList as $theme => $info) {
++      $shouldSkipProceduralScan = in_array($theme, $skipProcedural);
++      $currentThemePreg = static::getThemeListPattern([$theme]);
++      $collector->collectThemeHookImplementations(dirname($info['pathname']), $theme, $currentThemePreg, $allThemesPreg, $shouldSkipProceduralScan);
 +    }
 +    return $collector;
++  }
++
++  /**
++   * Get a pattern used to match hooks for the given theme list.
++   *
++   * The supplied theme list will be sorted by length in descending order so
++   * that longer names are matched first.
++   *
++   * @param list<string> $themeList
++   *   A list of theme names.
++   *
++   * @return string
++   *   The pattern used to match hooks for the given theme list.
++   */
++  protected static function getThemeListPattern(array $themeList): string {
++    usort($themeList, static fn($a, $b) => strlen($b) - strlen($a));
++    $themePattern = implode('|', array_map(
++      static fn($x) => preg_quote($x, '/'),
++      $themeList,
++    ));
++    return '/^(?<function>(?<theme>' . $themePattern . ')_(?!update_\d)(?<hook>[a-zA-Z0-9_\x80-\xff]+$))/';
 +  }
 +
 +  /**
@@ -715,15 +729,17 @@ index 0000000000000000000000000000000000000000..6b9f84956455d366a2171a0e3a82bc9b
 +   *   The directory in which the theme resides.
 +   * @param string $theme
 +   *   The name of the theme.
-+   * @param string $theme_preg
-+   *   A regular expression matching every theme, longer theme names
-+   *   are matched first. This is different for themes and modules.
-+   * @param bool $skip_procedural
++   * @param string $currentThemePreg
++   *   A regular expression matching only the theme being scanned.
++   * @param string $allThemesPreg
++   *   A regular expression matching every theme, longer theme names are
++   *   matched first.
++   * @param bool $shouldSkipProceduralScan
 +   *   Skip the procedural check for the current theme.
 +   */
-+  protected function collectThemeHookImplementations($dir, $theme, $theme_preg, bool $skip_procedural): void {
-+    $hook_file_cache = FileCacheFactory::get('theme_hook_implementations');
-+    $procedural_hook_file_cache = FileCacheFactory::get('theme_procedural_hook_implementations:' . $theme_preg);
++  protected function collectThemeHookImplementations($dir, $theme, $currentThemePreg, $allThemesPreg, bool $shouldSkipProceduralScan): void {
++    $hookFileCache = FileCacheFactory::get('theme_hook_implementations');
++    $proceduralHookFileCache = FileCacheFactory::get('theme_procedural_hook_implementations:' . $allThemesPreg);
 +
 +    $iterator = new \RecursiveDirectoryIterator($dir, \FilesystemIterator::SKIP_DOTS | \FilesystemIterator::UNIX_PATHS | \FilesystemIterator::FOLLOW_SYMLINKS);
 +    $iterator = new \RecursiveCallbackFilterIterator($iterator, static::filterIterator(...));
@@ -731,11 +747,11 @@ index 0000000000000000000000000000000000000000..6b9f84956455d366a2171a0e3a82bc9b
 +    /** @var \RecursiveDirectoryIterator | \RecursiveIteratorIterator $iterator*/
 +    foreach ($iterator as $fileinfo) {
 +      assert($fileinfo instanceof \SplFileInfo);
-+      $file_extension = $fileinfo->getExtension();
++      $fileExtension = $fileinfo->getExtension();
 +      $filename = $fileinfo->getPathname();
 +
-+      if ($file_extension === 'php') {
-+        $cached = $hook_file_cache->get($filename);
++      if ($fileExtension === 'php') {
++        $cached = $hookFileCache->get($filename);
 +        if ($cached) {
 +          $class = $cached['class'];
 +          $attributes = $cached['attributes'];
@@ -748,7 +764,7 @@ index 0000000000000000000000000000000000000000..6b9f84956455d366a2171a0e3a82bc9b
 +          if (class_exists($class)) {
 +            $reflectionClass = new \ReflectionClass($class);
 +            $attributes = self::getAttributeInstances($reflectionClass);
-+            $hook_file_cache->set($filename, ['class' => $class, 'attributes' => $attributes]);
++            $hookFileCache->set($filename, ['class' => $class, 'attributes' => $attributes]);
 +          }
 +        }
 +        foreach ($attributes as $method => $methodAttributes) {
@@ -766,8 +782,8 @@ index 0000000000000000000000000000000000000000..6b9f84956455d366a2171a0e3a82bc9b
 +          }
 +        }
 +      }
-+      elseif (!$skip_procedural) {
-+        $implementations = $procedural_hook_file_cache->get($filename);
++      elseif (!$shouldSkipProceduralScan) {
++        $implementations = $proceduralHookFileCache->get($filename);
 +        if ($implementations === NULL) {
 +          $finder = MockFileFinder::create($filename);
 +          $parser = new StaticReflectionParser('', $finder);
@@ -776,12 +792,12 @@ index 0000000000000000000000000000000000000000..6b9f84956455d366a2171a0e3a82bc9b
 +            if (StaticReflectionParser::hasAttribute($attributes, ProceduralHookScanStop::class)) {
 +              break;
 +            }
-+            if (!StaticReflectionParser::hasAttribute($attributes, LegacyHook::class) && preg_match($theme_preg, $function, $matches)) {
++            if (!StaticReflectionParser::hasAttribute($attributes, LegacyHook::class) && (preg_match($currentThemePreg, $function, $matches) || preg_match($allThemesPreg, $function, $matches))) {
 +              assert($function === $matches['theme'] . '_' . $matches['hook']);
 +              $implementations[] = ['theme' => $matches['theme'], 'hook' => $matches['hook']];
 +            }
 +          }
-+          $procedural_hook_file_cache->set($filename, $implementations);
++          $proceduralHookFileCache->set($filename, $implementations);
 +        }
 +        foreach ($implementations as $implementation) {
 +          $this->proceduralImplementations[$implementation['hook']][] = $implementation['theme'];
@@ -799,9 +815,9 @@ index 0000000000000000000000000000000000000000..6b9f84956455d366a2171a0e3a82bc9b
 +   */
 +  protected function getFilteredImplementations(): array {
 +    $implementationsByHook = [];
-+    foreach ($this->proceduralImplementations as $hook => $procedural_extensions) {
-+      foreach ($procedural_extensions as $extension) {
-+        $implementationsByHook[$hook][$extension . '_' . $hook] = $extension;
++    foreach ($this->proceduralImplementations as $hook => $proceduralThemes) {
++      foreach ($proceduralThemes as $theme) {
++        $implementationsByHook[$hook][$theme . '_' . $hook] = $theme;
 +      }
 +    }
 +    foreach ($this->oopImplementations as $hook => $oopImplementations) {
@@ -852,17 +868,17 @@ index 0000000000000000000000000000000000000000..6b9f84956455d366a2171a0e3a82bc9b
 +   * Filter iterator callback. Allows include files and .php files in src/Hook.
 +   */
 +  protected static function filterIterator(\SplFileInfo $fileInfo, $key, \RecursiveDirectoryIterator $iterator): bool {
-+    $sub_path_name = $iterator->getSubPathname();
++    $subPathName = $iterator->getSubPathname();
 +    $extension = $fileInfo->getExtension();
-+    if (str_starts_with($sub_path_name, 'src/Hook/')) {
++    if (str_starts_with($subPathName, 'src/Hook/')) {
 +      return $iterator->isDir() || $extension === 'php';
 +    }
 +    if ($iterator->isDir()) {
-+      if ($sub_path_name === 'src' || $sub_path_name === 'src/Hook') {
++      if ($subPathName === 'src' || $subPathName === 'src/Hook') {
 +        return TRUE;
 +      }
 +      // glob() doesn't support streams but scandir() does.
-+      return !in_array($fileInfo->getFilename(), ['tests', 'js', 'css']) && !array_filter(scandir($key), static fn($filename) => str_ends_with($filename, '.info.yml'));
++      return !in_array($fileInfo->getFilename(), ['tests', 'js', 'css', 'templates']) && !array_filter(scandir($key), static fn($filename) => str_ends_with($filename, '.info.yml'));
 +    }
 +    return in_array($extension, ['inc', 'theme']);
 +  }
@@ -910,10 +926,26 @@ index 0000000000000000000000000000000000000000..6b9f84956455d366a2171a0e3a82bc9b
 +
 +}
 diff --git a/core/lib/Drupal/Core/Theme/Registry.php b/core/lib/Drupal/Core/Theme/Registry.php
-index 4c2fcf19a46781cee449c4598844feaccdaeacfa..f41b9b34311cbe9f081569ec231d4b3a5bf3c741 100644
+index cdc3f245d737a17ad3653415cc64583192cdd84c..56313011984f0614ec5fb5ec5ca6d60849b56d26 100644
 --- a/core/lib/Drupal/Core/Theme/Registry.php
 +++ b/core/lib/Drupal/Core/Theme/Registry.php
-@@ -560,6 +560,9 @@ protected function processExtension(array &$cache, $name, $type, $theme, $path)
+@@ -188,6 +188,15 @@ class Registry implements DestructableInterface {
+    */
+   protected ?array $preprocessForSuggestions = NULL;
+ 
++  /**
++   * List of all theme hooks.
++   *
++   * Used to build preprocess hooks defined in themes.
++   *
++   * @var array|null
++   */
++  protected ?array $themeHookList = NULL;
++
+   /**
+    * The key value factory.
+    *
+@@ -560,6 +569,9 @@ protected function processExtension(array &$cache, $name, $type, $theme, $path)
        $type = 'module';
        $args = [$cache, $type, $theme, $path];
      }
@@ -923,8 +955,102 @@ index 4c2fcf19a46781cee449c4598844feaccdaeacfa..f41b9b34311cbe9f081569ec231d4b3a
      else {
        $function = $name . '_theme';
        if (function_exists($function)) {
+@@ -632,7 +644,6 @@ protected function processExtension(array &$cache, $name, $type, $theme, $path)
+         // Preprocess variables for all theming hooks. Ensure they are arrays.
+         if (!isset($info['preprocess functions']) || !is_array($info['preprocess functions'])) {
+           $info['preprocess functions'] = [];
+-          $prefixes = [];
+           if ($type == 'module') {
+             // Add template_preprocess_HOOK function, if no initial preprocess
+             // callback is defined.
+@@ -649,22 +660,33 @@ protected function processExtension(array &$cache, $name, $type, $theme, $path)
+           elseif ($type == 'theme_engine' || $type == 'base_theme_engine') {
+             // Theme engines get an extra set that come before the normally
+             // named variable preprocessors.
++            $prefixes = [];
+             $prefixes[] = $name . '_engine';
+             // The theme engine registers on behalf of the theme using the
+             // theme's name.
+             $prefixes[] = $theme;
++
++            foreach ($prefixes as $prefix) {
++              if (function_exists($prefix . '_preprocess')) {
++                $info['preprocess functions'][] = $prefix . '_preprocess';
++              }
++              if (function_exists($prefix . '_preprocess_' . $hook)) {
++                $info['preprocess functions'][] = $prefix . '_preprocess_' . $hook;
++              }
++            }
+           }
+           else {
+             // This applies when the theme manually registers their own variable
+             // preprocessors.
+-            $prefixes[] = $name;
+-          }
+-          foreach ($prefixes as $prefix) {
+-            if (function_exists($prefix . '_preprocess')) {
+-              $info['preprocess functions'][] = $prefix . '_preprocess';
++            if ($this->hasThemeHookImplementation($name, 'preprocess')) {
++              $function = $name . '_preprocess';
++              $cache[self::PREPROCESS_INVOKES][$function] = ['theme' => $name, 'hook' => 'preprocess'];
++              $info['preprocess functions'][] = $function;
+             }
+-            if (function_exists($prefix . '_preprocess_' . $hook)) {
+-              $info['preprocess functions'][] = $prefix . '_preprocess_' . $hook;
++            if ($this->hasThemeHookImplementation($name, 'preprocess_' . $hook)) {
++              $function = $name . '_preprocess_' . $hook;
++              $cache[self::PREPROCESS_INVOKES][$function] = ['theme' => $name, 'hook' => 'preprocess_' . $hook];
++              $info['preprocess functions'][] = $function;
+             }
+           }
+         }
+@@ -698,11 +720,15 @@ protected function processExtension(array &$cache, $name, $type, $theme, $path)
+           if (!isset($info['preprocess functions'])) {
+             $cache[$hook]['preprocess functions'] = [];
+           }
+-          if (function_exists($name . '_preprocess')) {
+-            $cache[$hook]['preprocess functions'][] = $name . '_preprocess';
++          if ($this->hasThemeHookImplementation($name, 'preprocess')) {
++            $function = $name . '_preprocess';
++            $cache[self::PREPROCESS_INVOKES][$function] = ['theme' => $name, 'hook' => 'preprocess'];
++            $cache[$hook]['preprocess functions'][] = $function;
+           }
+-          if (function_exists($name . '_preprocess_' . $hook)) {
+-            $cache[$hook]['preprocess functions'][] = $name . '_preprocess_' . $hook;
++          if ($this->hasThemeHookImplementation($name, 'preprocess_' . $hook)) {
++            $function = $name . '_preprocess_' . $hook;
++            $cache[self::PREPROCESS_INVOKES][$function] = ['theme' => $name, 'hook' => 'preprocess_' . $hook];
++            $cache[$hook]['preprocess functions'][] = $function;
+             $cache[$hook]['theme path'] = $path;
+           }
+         }
+@@ -983,6 +1009,24 @@ protected function collectModulePreprocess(array &$cache, string $hook): array {
+     return $preprocess_functions;
+   }
+ 
++  /**
++   * Returns whether a theme implements a given hook.
++   *
++   * @param string $theme
++   *   Name of the theme.
++   * @param string $hook
++   *   Name of the hook.
++   *
++   * @return bool
++   *   True if the theme implements the given hook.
++   */
++  protected function hasThemeHookImplementation(string $theme, string $hook): bool {
++    if (!isset($this->themeHookList)) {
++      $this->themeHookList = $this->keyValueFactory->get('hook_data')->get('theme_hook_list') ?? [];
++    }
++    return isset($this->themeHookList[$theme][$hook]);
++  }
++
+   /**
+    * Returns discovered preprocess suggestions.
+    *
 diff --git a/core/lib/Drupal/Core/Theme/ThemeManager.php b/core/lib/Drupal/Core/Theme/ThemeManager.php
-index 2090f19d74dc4a4806eae994f376816631b472a4..d31597259ea734a96d345c120cdff7895baa271e 100644
+index 2090f19d74dc4a4806eae994f376816631b472a4..8bbb126226bdee16aedaa0917d6e17a675bf2fa6 100644
 --- a/core/lib/Drupal/Core/Theme/ThemeManager.php
 +++ b/core/lib/Drupal/Core/Theme/ThemeManager.php
 @@ -3,9 +3,11 @@
@@ -953,7 +1079,7 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..d31597259ea734a96d345c120cdff789
    /**
     * The theme registry used to render an output.
     *
-@@ -37,53 +32,35 @@ class ThemeManager implements ThemeManagerInterface {
+@@ -37,52 +32,43 @@ class ThemeManager implements ThemeManagerInterface {
    protected $activeTheme;
  
    /**
@@ -965,36 +1091,35 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..d31597259ea734a96d345c120cdff789
 -
 -  /**
 -   * The module handler.
+-   *
+-   * @var \Drupal\Core\Extension\ModuleHandlerInterface
+-   */
+-  protected $moduleHandler;
+-
+-  /**
+-   * The app root.
 +   * Default variables.
     *
--   * @var \Drupal\Core\Extension\ModuleHandlerInterface
+-   * @var string
 +   * @var array|null
     */
--  protected $moduleHandler;
+-  protected $root;
 +  protected ?array $defaultVariables = NULL;
  
    /**
--   * The app root.
+-   * Default variables.
 +   * Raw list of hook implementations by theme name.
     *
--   * @var string
+-   * @var array|null
 +   * @var array<string, array<string, array<string, string>>>|null
     */
--  protected $root;
+-  protected ?array $defaultVariables = NULL;
 +  protected ?array $allHookImplementations = NULL;
  
    /**
--   * Default variables.
+-   * Constructs a new ThemeManager object.
 +   * Raw list of hook callables by theme and hook name.
     *
--   * @var array|null
-+   * @var array<string, array<string, array<string, callable>>>|null
-    */
--  protected ?array $defaultVariables = NULL;
--
--  /**
--   * Constructs a new ThemeManager object.
--   *
 -   * @param string $root
 -   *   The app root.
 -   * @param \Drupal\Core\Theme\ThemeNegotiatorInterface $theme_negotiator
@@ -1005,13 +1130,13 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..d31597259ea734a96d345c120cdff789
 -   *   The module handler.
 -   * @param \Drupal\Core\Utility\CallableResolver $callableResolver
 -   *   The callable resolver.
--   */
++   * @var array<string, array<string, array<string, callable>>>|null
+    */
 -  public function __construct($root, ThemeNegotiatorInterface $theme_negotiator, ThemeInitializationInterface $theme_initialization, ModuleHandlerInterface $module_handler, protected CallableResolver $callableResolver) {
 -    $this->root = $root;
 -    $this->themeNegotiator = $theme_negotiator;
 -    $this->themeInitialization = $theme_initialization;
 -    $this->moduleHandler = $module_handler;
--  }
 +  protected ?array $themeHookImplementations = NULL;
 +
 +  public function __construct(
@@ -1019,14 +1144,49 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..d31597259ea734a96d345c120cdff789
 +    protected ThemeNegotiatorInterface $themeNegotiator,
 +    protected ThemeInitializationInterface $themeInitialization,
 +    protected ModuleHandlerInterface $moduleHandler,
-+    protected KeyValueFactoryInterface $keyValueFactory,
 +    protected CallableResolver $callableResolver,
-+    protected CacheBackendInterface $cache,
-+  ) {}
++    protected ?KeyValueFactoryInterface $keyValueFactory = NULL,
++    protected ?CacheBackendInterface $cache = NULL,
++  ) {
++    if ($this->keyValueFactory === NULL) {
++      @trigger_error('Calling ' . __METHOD__ . ' without the $keyValueFactory argument is deprecated in drupal:11.3.0 and it will be required in drupal:12.0.0. See https://www.drupal.org/node/3551652', E_USER_DEPRECATED);
++      $this->keyValueFactory = \Drupal::service('keyvalue');
++    }
++    if ($this->cache === NULL) {
++      @trigger_error('Calling ' . __METHOD__ . ' without the $cache argument is deprecated in drupal:11.3.0 and it will be required in drupal:12.0.0. See https://www.drupal.org/node/3551652', E_USER_DEPRECATED);
++      $this->keyValueFactory = \Drupal::service('cache.bootstrap');
++    }
+   }
  
    /**
-    * Sets the theme registry.
-@@ -484,6 +461,41 @@ protected function initTheme(?RouteMatchInterface $route_match = NULL) {
+@@ -302,11 +288,23 @@ public function render($hook, array $variables) {
+       // This is for backwards compatibility and may represent OOP
+       // implementations as well.
+       if (is_string($preprocessor_function) && isset($invoke_map[$preprocessor_function])) {
+-        // Invoke module preprocess functions.
+-        $this->moduleHandler->invoke(... $invoke_map[$preprocessor_function], args: [&$variables, $hook, $info]);
++        // The invoke map has either a module or a theme key.
++        if (isset($invoke_map[$preprocessor_function]['module'])) {
++          // Invoke module preprocess functions.
++          $handler = $this->moduleHandler;
++          $name = $invoke_map[$preprocessor_function]['module'];
++          $invoke_hook = $invoke_map[$preprocessor_function]['hook'];
++        }
++        else {
++          // Invoke theme preprocess functions.
++          $handler = $this;
++          $name = $invoke_map[$preprocessor_function]['theme'];
++          $invoke_hook = $invoke_map[$preprocessor_function]['hook'];
++        }
++        $handler->invoke($name, $invoke_hook, [&$variables, $hook, $info]);
+       }
+       // Invoke preprocess callbacks that are not in the invoke map, such as
+-      // those from themes or an alter hook.
++      // those from an alter hook.
+       elseif (is_callable($preprocessor_function)) {
+         call_user_func_array($preprocessor_function, [&$variables, $hook, $info]);
+       }
+@@ -484,6 +482,34 @@ protected function initTheme(?RouteMatchInterface $route_match = NULL) {
      $this->activeTheme = $this->themeInitialization->initTheme($theme);
    }
  
@@ -1035,13 +1195,6 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..d31597259ea734a96d345c120cdff789
 +   */
 +  public function invokeAllWith(string $hook, callable $callback): void {
 +    $active_theme = $this->getActiveTheme();
-+    $this->invokeAllWithForTheme($active_theme, $hook, $callback);
-+  }
-+
-+  /**
-+   * {@inheritdoc}
-+   */
-+  public function invokeAllWithForTheme(ActiveTheme $active_theme, string $hook, callable $callback): void {
 +    $theme_keys = $this->getThemeChain($active_theme);
 +
 +    foreach ($theme_keys as $theme_key) {
@@ -1055,7 +1208,7 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..d31597259ea734a96d345c120cdff789
 +  /**
 +   * {@inheritdoc}
 +   */
-+  public function invoke($theme, $hook, array &$args = []) {
++  public function invoke(string $theme, string $hook, array $args = []) {
 +    $listeners = $this->getImplementationsForTheme($theme, $hook);
 +    if ($listeners) {
 +      if (count($listeners) > 1) {
@@ -1068,7 +1221,7 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..d31597259ea734a96d345c120cdff789
    /**
     * {@inheritdoc}
     *
-@@ -505,29 +517,73 @@ public function alterForTheme(ActiveTheme $theme, $type, &$data, &$context1 = NU
+@@ -505,27 +531,71 @@ public function alterForTheme(ActiveTheme $theme, $type, &$data, &$context1 = NU
        }
      }
  
@@ -1101,9 +1254,9 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..d31597259ea734a96d345c120cdff789
 +    $listeners = array_filter($listeners);
 +    foreach ($listeners as $callback) {
 +      $callback($data, $context1, $context2);
-     }
-   }
- 
++    }
++  }
++
 +  /**
 +   * Gets a hook implementation list for a specific hook.
 +   *
@@ -1132,34 +1285,32 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..d31597259ea734a96d345c120cdff789
 +        $listeners[] = $this->callableResolver->getCallableFromDefinition($identifier);
 +      }
 +      $this->themeHookImplementations[$theme_key][$hook] = $listeners;
-+    }
+     }
 +
 +    return $this->themeHookImplementations[$theme_key][$hook];
 +  }
 +
 +  /**
-+   * Gets theme and base theme in reverse order.
++   * Gets theme and base themes in reverse order.
 +   *
 +   * @param \Drupal\Core\Theme\ActiveTheme $active_theme
 +   *   A manually specified theme.
 +   *
-+   * @return array
++   * @return list<string>
 +   *   The list of theme keys with the active theme last.
 +   */
 +  protected function getThemeChain(ActiveTheme $active_theme): array {
 +    $theme_keys = array_reverse(array_keys($active_theme->getBaseThemeExtensions()));
 +    $theme_keys[] = $active_theme->getName();
 +    return $theme_keys;
-+  }
-+
+   }
+ 
    /**
-    * {@inheritdoc}
-    */
 diff --git a/core/lib/Drupal/Core/Theme/ThemeManagerInterface.php b/core/lib/Drupal/Core/Theme/ThemeManagerInterface.php
-index c22a4d04e01d6ab42deb925c4e43b8f2884bd792..27c49fc3fdcd86b2ded8cfb980e4ffdc30e87c56 100644
+index c22a4d04e01d6ab42deb925c4e43b8f2884bd792..527f6bb03f8d2a6e535e3e68b762bac04fc8be3f 100644
 --- a/core/lib/Drupal/Core/Theme/ThemeManagerInterface.php
 +++ b/core/lib/Drupal/Core/Theme/ThemeManagerInterface.php
-@@ -71,6 +71,60 @@ public function resetActiveTheme();
+@@ -71,6 +71,42 @@ public function resetActiveTheme();
     */
    public function setActiveTheme(ActiveTheme $active_theme);
  
@@ -1176,7 +1327,7 @@ index c22a4d04e01d6ab42deb925c4e43b8f2884bd792..27c49fc3fdcd86b2ded8cfb980e4ffdc
 +   * @return mixed
 +   *   The return value of the hook implementation.
 +   */
-+  public function invoke($theme_key, $hook, array &$args = []);
++  public function invoke(string $theme_key, string $hook, array $args = []);
 +
 +  /**
 +   * Executes a callback for each implementation of a hook for a theme.
@@ -1198,24 +1349,6 @@ index c22a4d04e01d6ab42deb925c4e43b8f2884bd792..27c49fc3fdcd86b2ded8cfb980e4ffdc
 +   *    - Implementation theme machine name.
 +   */
 +  public function invokeAllWith(string $hook, callable $callback): void;
-+
-+  /**
-+   * Executes the callback on the hook for the provided theme.
-+   *
-+   * Similar to ::invokeAllWith, it also invokes the hook for the base themes.
-+   *
-+   * @param \Drupal\Core\Theme\ActiveTheme $active_theme
-+   *   A manually specified theme.
-+   * @param string $hook
-+   *   The name of the hook to invoke.
-+   * @param callable(callable, string): mixed $callback
-+   *   A callable that invokes a hook implementation. Such that
-+   *   $callback is callable(callable, string): mixed.
-+   *   Arguments:
-+   *    - Closure to a hook implementation.
-+   *    - Implementation theme machine name.
-+   */
-+  public function invokeAllWithForTheme(ActiveTheme $active_theme, string $hook, callable $callback): void;
 +
    /**
     * Passes alterable variables to specific $theme_TYPE_alter() implementations.
@@ -1356,7 +1489,7 @@ index 8667224b7df8945391a3b0a67f2b4e0f58b673f0..0145149c2ee1e9abd66aaca22c914d4d
        ->accessCheck(FALSE)
        ->condition('theme', $base_theme)
 diff --git a/core/modules/navigation/tests/src/FunctionalJavascript/PerformanceTest.php b/core/modules/navigation/tests/src/FunctionalJavascript/PerformanceTest.php
-index 2cdf423c037355648e20ab367e8bccf31f82e26b..97e8165a78430ec6c38c1cfef1b030925f5927a5 100644
+index eb1a0b71eaf76d136d1a1647569263763bc03143..d6196e37a1720c12678b48942d5f180c2b9cbae4 100644
 --- a/core/modules/navigation/tests/src/FunctionalJavascript/PerformanceTest.php
 +++ b/core/modules/navigation/tests/src/FunctionalJavascript/PerformanceTest.php
 @@ -76,12 +76,12 @@ public function testLogin(): void {
@@ -1553,10 +1686,10 @@ index 0000000000000000000000000000000000000000..5f770796a630217d17c052bff7127317
 +base theme: false
 diff --git a/core/modules/system/tests/themes/HookCollector/oop_hook_theme/src/Hook/TestHookCollectionHooks.php b/core/modules/system/tests/themes/HookCollector/oop_hook_theme/src/Hook/TestHookCollectionHooks.php
 new file mode 100644
-index 0000000000000000000000000000000000000000..f2b79041efcf399b4408a8ab52cd6f304c3cff75
+index 0000000000000000000000000000000000000000..f0a6ec44c22c465b1190d5e39e77d736b81dff99
 --- /dev/null
 +++ b/core/modules/system/tests/themes/HookCollector/oop_hook_theme/src/Hook/TestHookCollectionHooks.php
-@@ -0,0 +1,20 @@
+@@ -0,0 +1,19 @@
 +<?php
 +
 +declare(strict_types=1);
@@ -1571,45 +1704,8 @@ index 0000000000000000000000000000000000000000..f2b79041efcf399b4408a8ab52cd6f30
 +class TestHookCollectionHooks {
 +
 +  #[Hook('test_hook_alter')]
-+  public function testHookAlter(array &$calls): array {
++  public function testHookAlter(array &$calls): void {
 +    $calls[] = __METHOD__;
-+    return $calls;
-+  }
-+
-+}
-diff --git a/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_invalid_hook/oop_hook_theme_with_invalid_hook.info.yml b/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_invalid_hook/oop_hook_theme_with_invalid_hook.info.yml
-new file mode 100644
-index 0000000000000000000000000000000000000000..957d7dfbe53a3cfe3a780409b4bbe8fde8491613
---- /dev/null
-+++ b/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_invalid_hook/oop_hook_theme_with_invalid_hook.info.yml
-@@ -0,0 +1,5 @@
-+name: 'OOP hook test theme with invalid hook'
-+type: theme
-+description: 'Test theme for OOP hooks.'
-+version: VERSION
-+base theme: false
-diff --git a/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_invalid_hook/src/Hook/TestInvalidHookCollectionHooks.php b/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_invalid_hook/src/Hook/TestInvalidHookCollectionHooks.php
-new file mode 100644
-index 0000000000000000000000000000000000000000..0aeafcf0a343c0b7e20978e1f10969e4e7a921ba
---- /dev/null
-+++ b/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_invalid_hook/src/Hook/TestInvalidHookCollectionHooks.php
-@@ -0,0 +1,19 @@
-+<?php
-+
-+declare(strict_types=1);
-+
-+namespace Drupal\oop_hook_theme_with_module\Hook;
-+
-+use Drupal\Core\Hook\Attribute\Hook;
-+
-+/**
-+ * Contains hooks that will throw exceptions during collection.
-+ */
-+class TestInvalidHookCollectionHooks {
-+
-+  #[Hook('test_hook', module: 'test')]
-+  public function testHook(): string {
-+    return __METHOD__;
 +  }
 +
 +}
@@ -1626,7 +1722,7 @@ index 0000000000000000000000000000000000000000..8f09d8bbbb38e86fd080ee8ed19a9715
 +base theme: false
 diff --git a/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_module/src/Hook/TestInvalidHookCollectionHooks.php b/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_module/src/Hook/TestInvalidHookCollectionHooks.php
 new file mode 100644
-index 0000000000000000000000000000000000000000..2f5e82032aa410ec031907be22704af9354d359c
+index 0000000000000000000000000000000000000000..1b847510f153a0ee38bee0fda42a950caa33a880
 --- /dev/null
 +++ b/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_module/src/Hook/TestInvalidHookCollectionHooks.php
 @@ -0,0 +1,19 @@
@@ -1644,8 +1740,8 @@ index 0000000000000000000000000000000000000000..2f5e82032aa410ec031907be22704af9
 +class TestInvalidHookCollectionHooks {
 +
 +  #[Hook('test_hook_alter', module: 'test')]
-+  public function testHook(): string {
-+    return __METHOD__;
++  public function testHook(array &$calls): void {
++    $calls[] = __METHOD__;
 +  }
 +
 +}
@@ -1662,7 +1758,7 @@ index 0000000000000000000000000000000000000000..a332f85dd8a28b5a6ddd8805b8d8a864
 +base theme: false
 diff --git a/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_order/src/Hook/TestInvalidHookCollectionHooks.php b/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_order/src/Hook/TestInvalidHookCollectionHooks.php
 new file mode 100644
-index 0000000000000000000000000000000000000000..12a6b70954f7222c9189c09e73400d62df0bc2ff
+index 0000000000000000000000000000000000000000..4f96078842531851265068acb5b800aeec33dcab
 --- /dev/null
 +++ b/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_order/src/Hook/TestInvalidHookCollectionHooks.php
 @@ -0,0 +1,20 @@
@@ -1681,8 +1777,8 @@ index 0000000000000000000000000000000000000000..12a6b70954f7222c9189c09e73400d62
 +class TestInvalidHookCollectionHooks {
 +
 +  #[Hook('test_hook_alter', order: Order::First)]
-+  public function testHook(): string {
-+    return __METHOD__;
++  public function testHook(array &$calls): void {
++    $calls[] = __METHOD__;
 +  }
 +
 +}
@@ -1699,7 +1795,7 @@ index 0000000000000000000000000000000000000000..4dc0f7de35b10fa0c39d8331a549f7bc
 +base theme: false
 diff --git a/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_remove/src/Hook/TestInvalidHookCollectionHooks.php b/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_remove/src/Hook/TestInvalidHookCollectionHooks.php
 new file mode 100644
-index 0000000000000000000000000000000000000000..ccceefdcf5b3a6d866739169da717dc8aaaf8972
+index 0000000000000000000000000000000000000000..171572918e4c082d82fbe85044cfa796a5c5de43
 --- /dev/null
 +++ b/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_remove/src/Hook/TestInvalidHookCollectionHooks.php
 @@ -0,0 +1,21 @@
@@ -1719,8 +1815,8 @@ index 0000000000000000000000000000000000000000..ccceefdcf5b3a6d866739169da717dc8
 +
 +  #[Hook('test_hook_alter')]
 +  #[RemoveHook('test_hook_alter', self::class, 'testHook')]
-+  public function testHook(): string {
-+    return __METHOD__;
++  public function testHook(array &$calls): void {
++    $calls[] = __METHOD__;
 +  }
 +
 +}
@@ -1737,7 +1833,7 @@ index 0000000000000000000000000000000000000000..c0da4d366b275979decf3f649424a01d
 +base theme: false
 diff --git a/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_reorder/src/Hook/TestInvalidHookCollectionHooks.php b/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_reorder/src/Hook/TestInvalidHookCollectionHooks.php
 new file mode 100644
-index 0000000000000000000000000000000000000000..67e7f4176b1d814f829688897ed35034715c57ec
+index 0000000000000000000000000000000000000000..9a061778d0fbd536dbabfe76122dab51dbefed34
 --- /dev/null
 +++ b/core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_reorder/src/Hook/TestInvalidHookCollectionHooks.php
 @@ -0,0 +1,22 @@
@@ -1758,13 +1854,13 @@ index 0000000000000000000000000000000000000000..67e7f4176b1d814f829688897ed35034
 +
 +  #[Hook('test_hook_alter')]
 +  #[ReorderHook('test_hook_alter', self::class, 'testHook', Order::First)]
-+  public function testHook(): string {
-+    return __METHOD__;
++  public function testHook(array &$calls): void {
++    $calls[] = __METHOD__;
 +  }
 +
 +}
 diff --git a/core/modules/views/src/ViewExecutable.php b/core/modules/views/src/ViewExecutable.php
-index 554c38cdabafb03d1dcdc986e4acd80712b3fd8c..bab8f01d165b8ea0365f3abcc762ea796a6adc79 100644
+index 554c38cdabafb03d1dcdc986e4acd80712b3fd8c..ee6c13f25bf4360f44f1d4cb7c132166c00a158d 100644
 --- a/core/modules/views/src/ViewExecutable.php
 +++ b/core/modules/views/src/ViewExecutable.php
 @@ -1531,9 +1531,8 @@ public function render($display_id = NULL) {
@@ -1779,7 +1875,7 @@ index 554c38cdabafb03d1dcdc986e4acd80712b3fd8c..bab8f01d165b8ea0365f3abcc762ea79
  
      // Check for already-cached output.
      /** @var \Drupal\views\Plugin\views\cache\CachePluginBase $cache */
-@@ -1585,12 +1584,10 @@ public function render($display_id = NULL) {
+@@ -1585,12 +1584,9 @@ public function render($display_id = NULL) {
      $module_handler->invokeAll('views_pre_render', [$this]);
  
      // Let the themes play too, because prerender is a very themey thing.
@@ -1790,13 +1886,12 @@ index 554c38cdabafb03d1dcdc986e4acd80712b3fd8c..bab8f01d165b8ea0365f3abcc762ea79
 -      }
 -    }
 +    $theme_manager->invokeAllWith('views_pre_render', function (callable $hook_listener, string $theme) {
-+      $prerender = &$this;
-+      $hook_listener($prerender);
++      $hook_listener($this);
 +    });
  
      $this->display_handler->output = $this->display_handler->render();
  
-@@ -1602,12 +1599,10 @@ public function render($display_id = NULL) {
+@@ -1602,12 +1598,10 @@ public function render($display_id = NULL) {
      $module_handler->invokeAll('views_post_render', [$this, &$this->display_handler->output, $cache]);
  
      // Let the themes play too, because post render is a very themey thing.
@@ -1814,7 +1909,7 @@ index 554c38cdabafb03d1dcdc986e4acd80712b3fd8c..bab8f01d165b8ea0365f3abcc762ea79
      return $this->display_handler->output;
    }
 diff --git a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryAuthenticatedPerformanceTest.php b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryAuthenticatedPerformanceTest.php
-index 129d56ec2b0c7ccb9d8c06eb85f82ab0a312db2c..c18cb9eaaebe65d6e8dcf8d9258a2ead35760129 100644
+index 1004e4b073fc2e3501e41e0021cafd068c7f5ad4..ab1fb77522042881814bee111103532cab974b6c 100644
 --- a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryAuthenticatedPerformanceTest.php
 +++ b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryAuthenticatedPerformanceTest.php
 @@ -54,10 +54,10 @@ public function testFrontPageAuthenticatedWarmCache(): void {
@@ -1834,40 +1929,40 @@ index 129d56ec2b0c7ccb9d8c06eb85f82ab0a312db2c..c18cb9eaaebe65d6e8dcf8d9258a2ead
      }, 'administratorNodePage');
  
      $expected = [
--      'QueryCount' => 527,
--      'CacheGetCount' => 550,
-+      'QueryCount' => 528,
-+      'CacheGetCount' => 552,
+-      'QueryCount' => 523,
+-      'CacheGetCount' => 547,
++      'QueryCount' => 525,
++      'CacheGetCount' => 549,
        'CacheGetCountByBin' => [
-         'config' => 203,
+         'config' => 201,
 -        'bootstrap' => 26,
 +        'bootstrap' => 28,
-         'discovery' => 113,
+         'discovery' => 112,
          'data' => 71,
          'dynamic_page_cache' => 2,
 @@ -109,7 +109,7 @@ public function testNodePageAdministrator(): void {
          'render' => 39,
          'menu' => 28,
        ],
--      'CacheSetCount' => 457,
-+      'CacheSetCount' => 458,
+-      'CacheSetCount' => 453,
++      'CacheSetCount' => 454,
        'CacheDeleteCount' => 0,
        'CacheTagInvalidationCount' => 0,
        'CacheTagLookupQueryCount' => 47,
 diff --git a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryFrontPagePerformanceTest.php b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryFrontPagePerformanceTest.php
-index 1164922772785d859850b261d24e45d2b0e9f2ba..e62fa093241da11ff0d57d3853e8d45f42bf9c1e 100644
+index 552c3b66b0083980c648a38b285939cd2c4e92c3..10bcf84fbd37052ef0f2974c90c755850ea60f94 100644
 --- a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryFrontPagePerformanceTest.php
 +++ b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryFrontPagePerformanceTest.php
 @@ -52,9 +52,9 @@ protected function testFrontPageColdCache(): void {
      $this->assertSession()->pageTextContains('Umami');
  
      $expected = [
--      'QueryCount' => 352,
--      'CacheGetCount' => 453,
--      'CacheSetCount' => 448,
-+      'QueryCount' => 353,
-+      'CacheGetCount' => 454,
-+      'CacheSetCount' => 449,
+-      'QueryCount' => 348,
+-      'CacheGetCount' => 450,
+-      'CacheSetCount' => 444,
++      'QueryCount' => 350,
++      'CacheGetCount' => 451,
++      'CacheSetCount' => 445,
        'CacheDeleteCount' => 0,
        'CacheTagLookupQueryCount' => 49,
        'CacheTagInvalidationCount' => 0,
@@ -1881,17 +1976,17 @@ index 1164922772785d859850b261d24e45d2b0e9f2ba..e62fa093241da11ff0d57d3853e8d45f
        'CacheDeleteCount' => 0,
        'CacheTagInvalidationCount' => 0,
 diff --git a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryNodePagePerformanceTest.php b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryNodePagePerformanceTest.php
-index 43df210c413010a8ec5e7b4d0f02ae39de496527..19e1474a996cfdfe569159c704ff6d409f91c14d 100644
+index 96291fbdfa717828cd5635c99cab8db6d7181169..0edbc97a06d4078ce85a1669211c4275e359deb3 100644
 --- a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryNodePagePerformanceTest.php
 +++ b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryNodePagePerformanceTest.php
 @@ -55,8 +55,8 @@ protected function testNodePageColdCache(): void {
      $this->assertSession()->pageTextContains('quiche');
  
      $expected = [
--      'QueryCount' => 441,
--      'CacheSetCount' => 423,
-+      'QueryCount' => 442,
-+      'CacheSetCount' => 424,
+-      'QueryCount' => 437,
+-      'CacheSetCount' => 419,
++      'QueryCount' => 439,
++      'CacheSetCount' => 420,
        'CacheDeleteCount' => 0,
        'CacheTagLookupQueryCount' => 43,
        'CacheTagInvalidationCount' => 0,
@@ -1919,7 +2014,7 @@ index 43df210c413010a8ec5e7b4d0f02ae39de496527..19e1474a996cfdfe569159c704ff6d40
          'data' => 12,
          'entity' => 18,
 diff --git a/core/profiles/standard/tests/src/FunctionalJavascript/StandardPerformanceTest.php b/core/profiles/standard/tests/src/FunctionalJavascript/StandardPerformanceTest.php
-index e1ca9c0bf9aeaa52e73975f351970720fa6a9cdf..f7164ef58bdfddf1b959e9d9bc638b0aa1ac1d19 100644
+index b86ddaad47e9074a8cc43f22a8b0874e2daf94f0..0232b25d504ad574a4b7ea1fb3e4832fa8654a96 100644
 --- a/core/profiles/standard/tests/src/FunctionalJavascript/StandardPerformanceTest.php
 +++ b/core/profiles/standard/tests/src/FunctionalJavascript/StandardPerformanceTest.php
 @@ -137,13 +137,13 @@ protected function testAnonymous(): void {
@@ -1947,16 +2042,16 @@ index e1ca9c0bf9aeaa52e73975f351970720fa6a9cdf..f7164ef58bdfddf1b959e9d9bc638b0a
        'CacheSetCount' => 16,
        'CacheDeleteCount' => 0,
        'CacheTagInvalidationCount' => 0,
-@@ -317,7 +317,7 @@ protected function testAnonymous(): void {
+@@ -315,7 +315,7 @@ protected function testAnonymous(): void {
      $this->assertSame($expected_queries, $recorded_queries);
      $expected = [
-       'QueryCount' => 14,
--      'CacheGetCount' => 57,
-+      'CacheGetCount' => 58,
-       'CacheSetCount' => 17,
+       'QueryCount' => 12,
+-      'CacheGetCount' => 56,
++      'CacheGetCount' => 57,
+       'CacheSetCount' => 16,
        'CacheDeleteCount' => 0,
        'CacheTagInvalidationCount' => 0,
-@@ -362,13 +362,13 @@ protected function testCacheInvalidation(): void {
+@@ -360,13 +360,13 @@ protected function testCacheInvalidation(): void {
      $this->assertSame($expected_queries, $recorded_queries);
      $expected = [
        'QueryCount' => 3,
@@ -1972,7 +2067,7 @@ index e1ca9c0bf9aeaa52e73975f351970720fa6a9cdf..f7164ef58bdfddf1b959e9d9bc638b0a
          'dynamic_page_cache' => 2,
          'render' => 14,
          'default' => 3,
-@@ -492,7 +492,7 @@ protected function testLogin(): void {
+@@ -490,7 +490,7 @@ protected function testLogin(): void {
        'StylesheetBytes' => 1429,
        'StylesheetCount' => 1,
        'QueryCount' => 17,
@@ -1981,7 +2076,7 @@ index e1ca9c0bf9aeaa52e73975f351970720fa6a9cdf..f7164ef58bdfddf1b959e9d9bc638b0a
        'CacheSetCount' => 1,
        'CacheDeleteCount' => 1,
        'CacheTagInvalidationCount' => 0,
-@@ -601,7 +601,7 @@ protected function testLoginBlock(): void {
+@@ -599,7 +599,7 @@ protected function testLoginBlock(): void {
      $this->assertSame($expected_queries, $recorded_queries);
      $expected = [
        'QueryCount' => 18,
@@ -2085,10 +2180,10 @@ index 9ce1c1fb9da6b484a80748ac78cc2fd07c6f4857..ae33867b2dd937f54a5f14c15f08bb9d
          $this->fail($message);
 diff --git a/core/tests/Drupal/KernelTests/Core/Hook/ThemeHookCollectorPassTest.php b/core/tests/Drupal/KernelTests/Core/Hook/ThemeHookCollectorPassTest.php
 new file mode 100644
-index 0000000000000000000000000000000000000000..844b1c2321b0ab50e2c1ec11e761db1e63d2130f
+index 0000000000000000000000000000000000000000..c6c09f44d2735f965008624e6596ba3e5b853c0f
 --- /dev/null
 +++ b/core/tests/Drupal/KernelTests/Core/Hook/ThemeHookCollectorPassTest.php
-@@ -0,0 +1,150 @@
+@@ -0,0 +1,140 @@
 +<?php
 +
 +declare(strict_types=1);
@@ -2138,9 +2233,11 @@ index 0000000000000000000000000000000000000000..844b1c2321b0ab50e2c1ec11e761db1e
 +
 +  /**
 +   * Test exception with module parameter.
++   *
++   * The module parameter is not allowed.
 +   */
 +  public function testExceptionModule(): void {
-+    $this->expectException(\Exception::class);
++    $this->expectException(\LogicException::class);
 +    $container = new ContainerBuilder();
 +    $theme_filenames = [
 +      'oop_hook_theme_with_module' => [
@@ -2155,9 +2252,11 @@ index 0000000000000000000000000000000000000000..844b1c2321b0ab50e2c1ec11e761db1e
 +
 +  /**
 +   * Test exception with order parameter.
++   *
++   * The order parameter is not allowed.
 +   */
 +  public function testExceptionOrder(): void {
-+    $this->expectException(\Exception::class);
++    $this->expectException(\LogicException::class);
 +    $container = new ContainerBuilder();
 +    $theme_filenames = [
 +      'oop_hook_theme_with_order' => [
@@ -2172,9 +2271,11 @@ index 0000000000000000000000000000000000000000..844b1c2321b0ab50e2c1ec11e761db1e
 +
 +  /**
 +   * Test exception with reorder attribute.
++   *
++   * ReorderHook attribute is not allowed.
 +   */
 +  public function testExceptionReorder(): void {
-+    $this->expectException(\Exception::class);
++    $this->expectException(\LogicException::class);
 +    $container = new ContainerBuilder();
 +    $theme_filenames = [
 +      'oop_hook_theme_with_reorder' => [
@@ -2189,9 +2290,11 @@ index 0000000000000000000000000000000000000000..844b1c2321b0ab50e2c1ec11e761db1e
 +
 +  /**
 +   * Test exception with remove attribute.
++   *
++   * RemoveHook attribute is not allowed.
 +   */
 +  public function testExceptionRemove(): void {
-+    $this->expectException(\Exception::class);
++    $this->expectException(\LogicException::class);
 +    $container = new ContainerBuilder();
 +    $theme_filenames = [
 +      'oop_hook_theme_with_remove' => [
@@ -2205,28 +2308,10 @@ index 0000000000000000000000000000000000000000..844b1c2321b0ab50e2c1ec11e761db1e
 +  }
 +
 +  /**
-+   * Test exception with invalid hooks.
-+   */
-+  public function testExceptionInvalid(): void {
-+    $this->expectException(\Exception::class);
-+    $container = new ContainerBuilder();
-+    $theme_filenames = [
-+      'oop_hook_theme_with_invalid_hook' => [
-+        'pathname' => 'core/modules/system/tests/themes/HookCollector/oop_hook_theme_with_invalid_hook/oop_hook_theme_with_invalid_hook.info.yml',
-+      ],
-+    ];
-+    $container->setParameter('container.themes', $theme_filenames);
-+    $container->setParameter('preprocess_for_suggestions', []);
-+    $container->setDefinition('theme.manager', new Definition());
-+    (new ThemeHookCollectorPass())->process($container);
-+  }
-+
-+  /**
 +   * Tests hook execution in themes.
 +   */
 +  public function testHookExecution(): void {
-+    $theme_installer = $this->container->get('theme_installer');
-+    $theme_installer->install(['oop_hook_theme']);
++    $this->container->get('theme_installer')->install(['oop_hook_theme']);
 +    $theme_manager = $this->container->get('theme.manager');
 +    $theme_manager->setActiveTheme(\Drupal::service('theme.initialization')->initTheme('oop_hook_theme'));
 +    $expected_calls = [
@@ -2251,8 +2336,62 @@ index c889ebc49bbf3cc0f4a67dc824052f1f148664b7..b86ec929ff0cddc27e6b4b1e7c94f8b4
      $theme = $theme_handler->getTheme('test_theme');
  
      drupal_static_reset('theme_get_setting');
+diff --git a/core/tests/Drupal/Tests/Core/Theme/RegistryTest.php b/core/tests/Drupal/Tests/Core/Theme/RegistryTest.php
+index 8a78a9179ac560c7a47ff6aeffdbf7add04d662f..69594514c291f5c4af8555c9c5f5f3af5c17cf37 100644
+--- a/core/tests/Drupal/Tests/Core/Theme/RegistryTest.php
++++ b/core/tests/Drupal/Tests/Core/Theme/RegistryTest.php
+@@ -165,8 +165,15 @@ public function testGetRegistryForModule(): void {
+       ->method('getActiveTheme')
+       ->willReturnOnConsecutiveCalls($test_theme, $test_stable);
+ 
+-    // Include the theme file so that hook_theme can be called.
+-    include_once $this->root . '/core/tests/fixtures/test_stable/test_stable.theme';
++    // Set up a mock theme hook list for the test_stable theme. This does
++    // not actually need to exist for this test.
++    $this->keyValueFactory->get('hook_data')->set('theme_hook_list', [
++      'test_stable' => [
++        'preprocess_theme_test_render_element' => [
++          'Drupal\test_stable\Hook\TestStableHooks::preprocessThemeTestRenderElement',
++        ],
++      ],
++    ]);
+     $themeTestTheme = new ThemeTestHooks();
+     $this->moduleHandler->expects($this->exactly(2))
+       ->method('invoke')
+@@ -207,7 +214,11 @@ public function testGetRegistryForModule(): void {
+     // preprocess function worked.
+     $other_registry = $this->registry->get();
+     $this->assertNotSame($registry, $other_registry);
+-    $this->assertContains('test_stable_preprocess_theme_test_render_element', $other_registry['theme_test_render_element']['preprocess functions']);
++    // The "function" is just a map to the invoke map which contains the theme
++    // and hook name.
++    $function = 'test_stable_preprocess_theme_test_render_element';
++    $this->assertContains($function, $other_registry['theme_test_render_element']['preprocess functions']);
++    $this->assertEquals(['theme' => 'test_stable', 'hook' => 'preprocess_theme_test_render_element'], $other_registry['preprocess invokes'][$function]);
+   }
+ 
+   /**
+diff --git a/core/tests/fixtures/test_stable/test_stable.theme b/core/tests/fixtures/test_stable/test_stable.theme
+deleted file mode 100644
+index ffa9933ed6c25bb480cf454d47768a0abf3c6518..0000000000000000000000000000000000000000
+--- a/core/tests/fixtures/test_stable/test_stable.theme
++++ /dev/null
+@@ -1,13 +0,0 @@
+-<?php
+-
+-/**
+- * @file
+- * Test preprocess functions for theme test_stable.
+- */
+-
+-/**
+- * Implements hook_preprocess_theme_test_render_element().
+- */
+-function test_stable_preprocess_theme_test_render_element($variables): void {
+-  // This is used for Drupal\Tests\Core\Theme\RegistryTest.
+-}
 diff --git a/core/themes/claro/claro.theme b/core/themes/claro/claro.theme
-index b7f7215daaad23c660632e21a2476e6e87551e0b..b2c76c432dd37e137a4466372516584d97bc326a 100644
+index d59b4bfe345ea297882d42a191b1a9c49896eb64..af3b2d6f5c08405e1de30ee51932aeaba8c15efc 100644
 --- a/core/themes/claro/claro.theme
 +++ b/core/themes/claro/claro.theme
 @@ -9,7 +9,6 @@
@@ -2533,6 +2672,116 @@ index 0000000000000000000000000000000000000000..65bb0be6061374d0527379632524a1f1
 +        }
 +      }
 +    }
++  }
++
++}
+diff --git a/core/themes/olivero/olivero.theme b/core/themes/olivero/olivero.theme
+index 717dc58f504ad88522f063237de9e5045c8393f6..eb3931483f34ab4a17556c193c75b44f479a0003 100644
+--- a/core/themes/olivero/olivero.theme
++++ b/core/themes/olivero/olivero.theme
+@@ -12,41 +12,6 @@
+ use Drupal\Core\Render\Element;
+ use Drupal\user\UserInterface;
+ 
+-/**
+- * Implements hook_preprocess_HOOK() for HTML document templates.
+- *
+- * Adds body classes if certain regions have content.
+- */
+-function olivero_preprocess_html(&$variables): void {
+-  if (theme_get_setting('mobile_menu_all_widths') === 1) {
+-    $variables['attributes']['class'][] = 'is-always-mobile-nav';
+-  }
+-
+-  // Convert custom hex to hsl so we can use the hue value.
+-  $brand_color_hex = theme_get_setting('base_primary_color') ?? '#1b9ae4';
+-  [$h, $s, $l] = _olivero_hex_to_hsl($brand_color_hex);
+-
+-  $variables['html_attributes']->setAttribute('style', "--color--primary-hue:$h;--color--primary-saturation:$s%;--color--primary-lightness:$l");
+-
+-  // So fonts can be preloaded from base theme in the event Olivero is used as a
+-  // subtheme.
+-  $variables['olivero_path'] = \Drupal::request()->getBasePath() . '/' . \Drupal::service('extension.list.theme')->getPath('olivero');
+-
+-  $query_string = \Drupal::service('asset.query_string')->get();
+-
+-  // Create render array with noscript tag to output non-JavaScript
+-  // stylesheet for primary menu.
+-  $variables['noscript_styles'] = [
+-    '#type' => 'html_tag',
+-    '#noscript' => TRUE,
+-    '#tag' => 'link',
+-    '#attributes' => [
+-      'rel' => 'stylesheet',
+-      'href' => $variables['olivero_path'] . '/css/components/navigation/nav-primary-no-js.css?' . $query_string,
+-    ],
+-  ];
+-}
+-
+ /**
+  * Implements hook_preprocess_HOOK() for page title templates.
+  */
+diff --git a/core/themes/olivero/src/Hook/OliveroPagePreprocessHooks.php b/core/themes/olivero/src/Hook/OliveroPagePreprocessHooks.php
+new file mode 100644
+index 0000000000000000000000000000000000000000..dc1899b572f854c233609a185b95e314328c849a
+--- /dev/null
++++ b/core/themes/olivero/src/Hook/OliveroPagePreprocessHooks.php
+@@ -0,0 +1,58 @@
++<?php
++
++namespace Drupal\olivero\Hook;
++
++use Drupal\Core\Asset\AssetQueryStringInterface;
++use Drupal\Core\Extension\ThemeExtensionList;
++use Drupal\Core\Hook\Attribute\Hook;
++use Symfony\Component\HttpFoundation\RequestStack;
++
++/**
++ * Page preprocess hooks for olivero.
++ */
++class OliveroPagePreprocessHooks {
++
++  public function __construct(
++    protected RequestStack $requestStack,
++    protected ThemeExtensionList $themeExtensionList,
++    protected AssetQueryStringInterface $assetQueryString,
++  ) {
++  }
++
++  /**
++   * Implements hook_preprocess_HOOK() for HTML document templates.
++   *
++   * Adds body classes if certain regions have content.
++   */
++  #[Hook('preprocess_html')]
++  public function preprocessHtml(array &$variables): void {
++    if (theme_get_setting('mobile_menu_all_widths') === 1) {
++      $variables['attributes']['class'][] = 'is-always-mobile-nav';
++    }
++
++    // Convert custom hex to hsl so we can use the hue value.
++    $brand_color_hex = theme_get_setting('base_primary_color') ?? '#1b9ae4';
++    [$h, $s, $l] = _olivero_hex_to_hsl($brand_color_hex);
++
++    $variables['html_attributes']->setAttribute('style', "--color--primary-hue:$h;--color--primary-saturation:$s%;--color--primary-lightness:$l");
++
++    // So fonts can be preloaded from base theme in the event Olivero is used as
++    // a subtheme.
++    $variables['olivero_path'] = $this->requestStack->getCurrentRequest()->getBasePath() . '/' . $this->themeExtensionList->getPath('olivero');
++
++    $query_string = $this->assetQueryString->get();
++
++    // Create render array with noscript tag to output non-JavaScript
++    // stylesheet for primary menu.
++    $variables['noscript_styles'] = [
++      '#type' => 'html_tag',
++      '#noscript' => TRUE,
++      '#tag' => 'link',
++      '#attributes' => [
++        'rel' => 'stylesheet',
++        'href' => $variables['olivero_path'] . '/css/components/navigation/nav-primary-no-js.css?' . $query_string,
++      ],
++    ];
 +  }
 +
 +}
