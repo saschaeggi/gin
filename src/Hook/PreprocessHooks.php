@@ -6,7 +6,7 @@ use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Asset\AssetQueryStringInterface;
-use Drupal\Core\Block\BlockManager;
+use Drupal\Core\Block\BlockManagerInterface;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\DependencyInjection\ClassResolverInterface;
@@ -16,10 +16,11 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Extension\ThemeHandlerInterface;
+use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Element;
-use Drupal\Core\Render\Renderer;
-use Drupal\Core\Routing\CurrentRouteMatch;
+use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Security\TrustedCallbackInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Template\Attribute;
@@ -49,12 +50,12 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
     protected readonly ThemeManagerInterface $themeManager,
     protected readonly RequestStack $requestStack,
     protected readonly AssetQueryStringInterface $assetQueryString,
-    protected readonly CurrentRouteMatch $currentRouteMatch,
+    protected readonly RouteMatchInterface $currentRouteMatch,
     protected readonly ConfigFactoryInterface $configFactory,
     protected readonly AccountInterface $currentUser,
     protected readonly EntityTypeManagerInterface $entityTypeManager,
-    protected readonly BlockManager $blockManager,
-    protected readonly Renderer $renderer,
+    protected readonly BlockManagerInterface $blockManager,
+    protected readonly RendererInterface $renderer,
     protected ClassResolverInterface $classResolver,
   ) {}
 
@@ -88,8 +89,19 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   }
 
   /**
+   * Static lazy loader for the user picture.
+   *
+   * @return array
+   *   The user picture as a render array.
+   */
+  public static function lazyToolbarUserPicture(): array {
+    return \Drupal::classResolver(PreprocessHooks::class)->toolbarUserPicture();
+  }
+
+  /**
    * Implements template_preprocess_HOOK() for admin_block.
    */
+  #[Hook('preprocess_admin_block')]
   public function adminBlock(array &$variables): void {
     if (!empty($variables['block']['content'])) {
       $variables['block']['content']['#attributes']['class'][] = 'admin-list--panel';
@@ -99,6 +111,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements template_preprocess_HOOK() for admin_block.
    */
+  #[Hook('preprocess_admin_block_content')]
   public function adminBlockContent(array &$variables): void {
     foreach ($variables['content'] as &$item) {
       $link_attributes = $item['url']->getOption('attributes') ?: [];
@@ -117,6 +130,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    *
    * Disables contextual links for all blocks except for layout builder blocks.
    */
+  #[Hook('preprocess_block')]
   public function block(array &$variables): void {
     if (isset($variables['title_suffix']['contextual_links']) && !isset($variables['elements']['#contextual_links']['layout_builder_block'])) {
       unset($variables['title_suffix']['contextual_links'], $variables['elements']['#contextual_links']);
@@ -130,6 +144,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    *
    * Makes block_content_add_list variables compatible with entity_add_list.
    */
+  #[Hook('preprocess_block_content_add_list')]
   public function blockContentAddList(array &$variables): void {
     if (!empty($variables['content'])) {
       $query = $this->requestStack->getCurrentRequest()->query->all();
@@ -161,6 +176,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Breadcrumb.
    */
+  #[Hook('preprocess_breadcrumb')]
   public function breadcrumb(array &$variables): void {
     if (empty($variables['breadcrumb'])) {
       return;
@@ -295,6 +311,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements template_preprocess_HOOK() for datetime_wrapper.
    */
+  #[Hook('preprocess_datetime_wrapper')]
   public function datetimeWrapper(array &$variables): void {
     if (!empty($variables['element']['#errors'])) {
       $variables['title_attributes']['class'][] = 'has-error';
@@ -313,6 +330,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements template_preprocess_HOOK() for details.
    */
+  #[Hook('preprocess_details')]
   public function details(array &$variables): void {
     // @todo Revisit when https://www.drupal.org/node/3056089 is in.
     $element = $variables['element'];
@@ -349,6 +367,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements template_preprocess_HOOK() for entity_add_list.
    */
+  #[Hook('preprocess_entity_add_list')]
   public function entityAddList(array &$variables): void {
     // Remove description if empty.
     foreach ($variables['bundles'] as $type_id => $values) {
@@ -361,6 +380,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for field_multiple_value_form.
    */
+  #[Hook('preprocess_field_multiple_value_form')]
   public function fieldMultipleValueForm(array &$variables): void {
     // Make disabled available for the template.
     $variables['disabled'] = !empty($variables['element']['#disabled']);
@@ -401,6 +421,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements template_preprocess_HOOK() for fieldset.
    */
+  #[Hook('preprocess_fieldset')]
   public function fieldset(array &$variables): void {
     $element = $variables['element'];
     $composite_types = ['checkboxes', 'radios'];
@@ -440,6 +461,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    *
    * @see \Drupal\media_library\Plugin\Field\FieldWidget\MediaLibraryWidget::formElement()
    */
+  #[Hook('preprocess_fieldset__media_library_widget')]
   public function fieldsetMediaLibraryWidget(array &$variables): void {
     if (isset($variables['prefix']['weight_toggle'])) {
       $variables['prefix']['weight_toggle']['#attributes']['class'][] = 'action-link';
@@ -455,6 +477,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for file_managed_file.
    */
+  #[Hook('preprocess_file_managed_file')]
   public function fileManagedFile(array &$variables): void {
     // Produce the same renderable element structure as image widget has.
     $child_keys = Element::children($variables['element']);
@@ -467,6 +490,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for file_widget_multiple.
    */
+  #[Hook('preprocess_file_widget_multiple')]
   public function fileWidgetMultiple(array &$variables): void {
     $has_upload = FALSE;
 
@@ -539,6 +563,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements template_preprocess_HOOK() for filter_tips.
    */
+  #[Hook('preprocess_filter_tips')]
   public function filterTips(array &$variables): void {
     $variables['#attached']['library'][] = 'filter/drupal.filter';
   }
@@ -546,6 +571,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements template_preprocess_HOOK() for form_element.
    */
+  #[Hook('preprocess_form_element')]
   public function formElement(array &$variables): void {
     if (!empty($variables['element']['#errors'])) {
       $variables['label']['#attributes']['class'][] = 'has-error';
@@ -564,6 +590,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for form_element__password.
    */
+  #[Hook('preprocess_form_element__password')]
   public function formElementPassword(array &$variables): void {
     if (!empty($variables['element']['#array_parents']) && in_array('pass1', $variables['element']['#array_parents'], TRUE)) {
       // This is the main password form element.
@@ -579,6 +606,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for form_element__password_confirm.
    */
+  #[Hook('preprocess_form_element__password_confirm')]
   public function formElementPasswordConfirm(array &$variables): void {
     // Add CSS classes needed for theming the password confirm widget.
     $variables['attributes']['class'][] = 'password-confirm';
@@ -590,6 +618,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for html.
    */
+  #[Hook('preprocess_html')]
   public function html(array &$variables): void {
     // Are we relevant?
     $gin_activated = Helper::isActive();
@@ -660,6 +689,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for image_widget.
    */
+  #[Hook('preprocess_image_widget')]
   public function imageWidget(array &$variables): void {
     // This prevents image widget templates from rendering preview container
     // HTML to users that do not have permission to access these previews.
@@ -674,6 +704,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements template_preprocess_HOOK() for input.
    */
+  #[Hook('preprocess_input')]
   public function input(array &$variables): void {
     if (
       !empty($variables['element']['#title_display']) &&
@@ -721,6 +752,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_install_page().
    */
+  #[Hook('preprocess_install_page')]
   public function installPage(array &$variables): void {
     // Gin has custom styling for the install page.
     $variables['#attached']['library'][] = 'gin/install-page';
@@ -732,6 +764,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    * This targets each new, unsaved media item added to the media library,
    * before they are saved.
    */
+  #[Hook('preprocess_item_list__media_library_add_form_media_list')]
   public function itemListMediaLibraryAddFormMediaList(array &$variables): void {
     foreach ($variables['items'] as &$item) {
       $item['value']['preview']['#attributes']['class'][] = 'media-library-add-form__preview';
@@ -756,6 +789,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for links.
    */
+  #[Hook('preprocess_links')]
   public function links(array &$variables): void {
     foreach ($variables['links'] as $links_item) {
       if (!empty($links_item['link']) && !empty($links_item['link']['#url']) && $links_item['link']['#url'] instanceof Url && $links_item['link']['#url']->isRouted()) {
@@ -797,6 +831,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for links__action_links.
    */
+  #[Hook('preprocess_links__action_links')]
   public function linksActionLinks(array &$variables): void {
     $variables['attributes']['class'][] = 'action-links';
     foreach ($variables['links'] as $delta => $link_item) {
@@ -807,6 +842,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for links__dropbutton.
    */
+  #[Hook('preprocess_links__dropbutton')]
   public function linksDropbutton(array &$variables): void {
     // Add the right CSS class for the dropbutton list that helps reducing FOUC.
     if (!empty($variables['links'])) {
@@ -829,6 +865,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    * @todo Do this in the relevant template once
    *   https://www.drupal.org/project/drupal/issues/3088856 is resolved.
    */
+  #[Hook('preprocess_links__media_library_menu')]
   public function linksMediaLibraryMenu(array &$variables): void {
     foreach ($variables['links'] as &$link) {
       // Add a class to the Media Library menu items.
@@ -840,6 +877,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_maintenance_page().
    */
+  #[Hook('preprocess_maintenance_page')]
   public function maintenancePage(array &$variables): void {
     // Gin has custom styling for the maintenance page.
     $variables['#attached']['library'][] = 'gin/maintenance-page';
@@ -851,6 +889,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    * This targets each pre-selected media item selected when adding new media in
    * the modal media library dialog.
    */
+  #[Hook('preprocess_media_library_item__small')]
   public function mediaLibraryItemSmall(array &$variables): void {
     $variables['content']['select']['#attributes']['class'][] = 'media-library-item__click-to-select-checkbox';
   }
@@ -860,6 +899,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    *
    * This targets each media item selected in an entity reference field.
    */
+  #[Hook('preprocess_media_library_item__widget')]
   public function mediaLibraryItemWidget(array &$variables): void {
     $variables['content']['remove_button']['#attributes']['class'][] = 'media-library-item__remove';
     $variables['content']['remove_button']['#attributes']['class'][] = 'icon-link';
@@ -868,6 +908,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Local actions preprocess.
    */
+  #[Hook('preprocess_menu_local_action')]
   public function menuLocalAction(array &$variables): void {
     $variables['link']['#options']['attributes']['class'][] = 'button--primary';
     $variables['attributes']['class'][] = 'local-actions__item';
@@ -889,6 +930,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for menu-local-task templates.
    */
+  #[Hook('preprocess_menu_local_task')]
   public function menuLocalTask(array &$variables): void {
     $variables['link']['#options']['attributes']['class'][] = 'tabs__link';
     $variables['link']['#options']['attributes']['class'][] = 'js-tabs-link';
@@ -908,6 +950,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for menu-local-task Views UI templates.
    */
+  #[Hook('preprocess_menu_local_task__views_ui')]
   public function menuLocalTaskViewsUi(array &$variables): void {
     // Remove 'tabs__link' without adding a new class because it couldn't be
     // used reliably.
@@ -925,6 +968,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    * processed by Twig and \Drupal::service('renderer')->render() will be
    * invoked.
    */
+  #[Hook('preprocess_menu_local_tasks')]
   public function menuLocalTasks(array &$variables): void {
     if (!empty($variables['primary'])) {
       $variables['primary']['#attached'] = [
@@ -952,6 +996,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Navigation alter().
    */
+  #[Hook('preprocess_navigation')]
   public function navigation(array &$variables): void {
     // Get theme configs.
     $logo_default = $this->getSettings()->getDefault('logo.use_default');
@@ -968,6 +1013,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    *
    * Makes node_add_list variables compatible with entity_add_list.
    */
+  #[Hook('preprocess_node_add_list')]
   public function nodeAddList(array &$variables): void {
     if (!empty($variables['content'])) {
       /** @var \Drupal\node\NodeTypeInterface $type */
@@ -994,6 +1040,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for page.
    */
+  #[Hook('preprocess_page')]
   public function page(array &$variables): void {
     // Required for allowing subtheming Gin.
     $activeThemeName = $this->themeManager->getActiveTheme()->getName();
@@ -1026,6 +1073,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Node revisions.
    */
+  #[Hook('preprocess_page__node__revisions')]
   public function pageNodeRevisions(array &$page): void {
     // Attach the init script.
     $page['#attached']['library'][] = 'gin/revisions';
@@ -1034,6 +1082,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Page title.
    */
+  #[Hook('preprocess_page_title')]
   public function pageTitle(array &$variables): void {
     if (preg_match('/entity\.node\..*/', $this->currentRouteMatch->getRouteName(), $matches)) {
       $node = $this->currentRouteMatch->getParameter('node');
@@ -1059,6 +1108,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements template_preprocess_HOOK() for select.
    */
+  #[Hook('preprocess_select')]
   public function select(array &$variables): void {
     if (!empty($variables['element']['#title_display']) && $variables['element']['#title_display'] === 'attribute' && !empty((string) $variables['element']['#title'])) {
       $variables['attributes']['title'] = (string) $variables['element']['#title'];
@@ -1081,6 +1131,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for status_messages.
    */
+  #[Hook('preprocess_status_messages')]
   public function statusMessages(array &$variables): void {
     $variables['title_ids'] = [];
     foreach ($variables['message_list'] as $message_type => $messages) {
@@ -1091,6 +1142,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for system_themes_page.
    */
+  #[Hook('preprocess_system_themes_page')]
   public function systemThemesPage(array &$variables): void {
     if (!empty($variables['theme_groups'])) {
       foreach ($variables['theme_groups'] as &$theme_group) {
@@ -1123,6 +1175,8 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements template_preprocess_HOOK() for table.
    */
+  #[Hook('preprocess_field_ui_table')]
+  #[Hook('preprocess_table')]
   public function table(array &$variables): void {
     // Adding table sort indicator CSS class for inactive sort link.
     // @todo Revisit after https://www.drupal.org/node/3025726 or
@@ -1167,6 +1221,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements template_preprocess_HOOK() for text_format_wrapper.
    */
+  #[Hook('preprocess_text_format_wrapper')]
   public function textFormatWrapper(array &$variables): void {
     // @todo Remove when https://www.drupal.org/node/3016343 is fixed.
     $description_attributes = [];
@@ -1190,6 +1245,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    *
    * @see system_preprocess_toolbar()
    */
+  #[Hook('preprocess_toolbar')]
   public function toolbar(array &$variables): void {
     $variables['attributes']['data-drupal-gin-processed-toolbar'] = TRUE;
 
@@ -1213,18 +1269,9 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   }
 
   /**
-   * Static lazy loader for the user picture.
-   *
-   * @return array
-   *   The user picture as a render array.
-   */
-  public static function lazyToolbarUserPicture(): array {
-    return _gin_preprocess_class()->toolbarUserPicture();
-  }
-
-  /**
    * Lazy builder callback for the user picture.
    */
+  #[Hook('preprocess_toolbar_user_picture')]
   public function toolbarUserPicture(): array {
     $user = $this->entityTypeManager->getStorage('user')->load($this->currentUser->id());
     $url = $user->toUrl();
@@ -1292,6 +1339,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for top_bar.
    */
+  #[Hook('preprocess_top_bar')]
   public function topBar(array &$variables): void {
     if (!Helper::moduleIsActive('navigation')) {
       return;
@@ -1320,6 +1368,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for views_exposed_form.
    */
+  #[Hook('preprocess_views_exposed_form')]
   public function viewsExposedForm(array &$variables): void {
     $form = &$variables['form'];
 
@@ -1354,6 +1403,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_preprocess_HOOK() for views_ui_display_tab_bucket.
    */
+  #[Hook('preprocess_views_ui_display_tab_bucket')]
   public function viewsUiDisplayTabBucket(array &$variables): void {
     // Instead of re-styling Views UI dropbuttons with module-specific CSS
     // styles, change dropbutton variants to the extra small version.
@@ -1366,6 +1416,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements hook_form_FORM_ID_alter() for the Views UI rearrange filter form.
    */
+  #[Hook('preprocess_views_ui_rearrange_filter_form')]
   public function viewsUiRearrangeFilterForm(array &$variables): void {
     foreach ($variables['table']['#rows'] as &$row) {
       // Remove the container-inline class from the operator table cell.
@@ -1381,6 +1432,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    * This targets each rendered media item in the grid display of the media
    * library's modal dialog.
    */
+  #[Hook('preprocess_views_view_fields__media_library')]
   public function viewsViewFieldsMediaLibrary(array &$variables): void {
     // Add classes to media rendered entity field so it can be targeted for
     // styling. Adding this class in a template is very difficult to do.
@@ -1395,6 +1447,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    * @todo Revisit after https://www.drupal.org/node/3025726 or
    *   https://www.drupal.org/node/1973418 is in.
    */
+  #[Hook('preprocess_views_view_table')]
   public function viewsViewTable(array &$variables): void {
     if (!empty($variables['header'])) {
       foreach ($variables['header'] as &$header_cell) {
