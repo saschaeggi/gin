@@ -522,10 +522,6 @@ class FormHooks {
     else {
       $settings->clear($account);
     }
-
-    // Clear render cache to ensure the correct
-    // templates are loaded for our toolbar options.
-    \Drupal::service('cache.render')->deleteAll();
   }
 
   /**
