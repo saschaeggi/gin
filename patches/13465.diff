@@ -1,8 +1,8 @@
 diff --git a/core/core.services.yml b/core/core.services.yml
-index 077ce032be0cac521b6d921a2fe3a325813fe0d8..77fca66b266c8c082a75390115413a162a191641 100644
+index 926fdbbfa00950b3d78feb1e1bd18dac73db9eb3..946cc9b82d8056931233dcdda4ecef7f26911c16 100644
 --- a/core/core.services.yml
 +++ b/core/core.services.yml
-@@ -720,7 +720,7 @@ services:
+@@ -728,7 +728,7 @@ services:
    Drupal\Core\Extension\ThemeHandlerInterface: '@theme_handler'
    theme_installer:
      class: Drupal\Core\Extension\ThemeInstaller
@@ -11,7 +11,7 @@ index 077ce032be0cac521b6d921a2fe3a325813fe0d8..77fca66b266c8c082a75390115413a16
    Drupal\Core\Extension\ThemeInstallerInterface: '@theme_installer'
    entity.memory_cache:
      class: Drupal\Core\Cache\MemoryCache\LruMemoryCache
-@@ -1580,7 +1580,7 @@ services:
+@@ -1590,7 +1590,7 @@ services:
    Drupal\Core\Datetime\DateFormatterInterface: '@date.formatter'
    theme.manager:
      class: Drupal\Core\Theme\ThemeManager
@@ -41,7 +41,7 @@ index c725340912721abcc3f471efa9d19b6d196ae827..983165fd4fb65824a2e131fec2555ec8
      // Add the compiler pass that lets service providers modify existing
      // service definitions. This pass must come before all passes operating on
 diff --git a/core/lib/Drupal/Core/DrupalKernel.php b/core/lib/Drupal/Core/DrupalKernel.php
-index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..fcd2cfe0ac8951d497336632d2b0bdad500f43f6 100644
+index 53a3759ae861706650e8669db73fbf9715cc5e5b..e9707de59d7bce66ba2643faef1fd15194cb0bb3 100644
 --- a/core/lib/Drupal/Core/DrupalKernel.php
 +++ b/core/lib/Drupal/Core/DrupalKernel.php
 @@ -164,6 +164,23 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
@@ -51,26 +51,29 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..fcd2cfe0ac8951d497336632d2b0bdad
 +  /**
 +   * Holds the list of enabled themes from core.extension config.
 +   *
-+   * @var array
++   * @var array|null
 +   *   An associative array whose keys are theme names and whose values are
 +   *   ignored.
 +   */
-+  protected $themeEnabledList;
++  protected ?array $themeList;
 +
 +  /**
 +   * List of available themes.
 +   *
 +   * @var \Drupal\Core\Extension\Extension[]
 +   */
-+  protected $themeExtensions = [];
++  protected array $themeExtensions = [];
 +
 +
    /**
     * The class loader object.
     *
-@@ -510,7 +527,8 @@ public function boot() {
+@@ -508,9 +525,10 @@ public function boot() {
+ 
+     // Add the APCu prefix to use to cache found/not-found classes.
      if (Settings::get('class_loader_auto_detect', TRUE) && method_exists($this->classLoader, 'setApcuPrefix')) {
-       // Vary the APCu key by which modules are installed to allow
+-      // Vary the APCu key by which modules are installed to allow
++      // Vary the APCu key by which extensions are installed to allow
        // class_exists() checks to determine functionality.
 -      $id = 'class_loader:' . crc32(implode(':', array_keys($this->container->getParameter('container.modules'))));
 +      $installed_extensions = array_keys($this->container->getParameter('container.modules') + $this->container->getParameter('container.themes'));
@@ -78,35 +81,119 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..fcd2cfe0ac8951d497336632d2b0bdad
        $prefix = Settings::getApcuPrefix($id, $this->root);
        $this->classLoader->setApcuPrefix($prefix);
      }
-@@ -538,6 +556,9 @@ public function shutdown() {
+@@ -538,6 +556,8 @@ public function shutdown() {
      $this->container = NULL;
      $this->moduleList = NULL;
      $this->moduleData = [];
-+    $this->themeEnabledList = NULL;
++    $this->themeList = NULL;
 +    $this->themeExtensions = [];
-+
    }
  
    /**
-@@ -644,8 +665,15 @@ public function discoverServiceProviders() {
+@@ -626,26 +646,35 @@ public function discoverServiceProviders() {
+     $this->serviceProviderClasses['app']['core'] = 'Drupal\Core\CoreServiceProvider';
+ 
+     // Retrieve enabled modules and register their namespaces.
+-    if (!isset($this->moduleList)) {
++    if (!isset($this->moduleList) || !isset($this->themeList)) {
+       $extensions = $this->getExtensions();
+-      // If core.extension configuration does not exist and we're not in the
+-      // installer itself, then we need to put the kernel into a pre-installer
+-      // mode. The container should not be dumped because Drupal is yet to be
+-      // installed. The installer service provider is registered to ensure that
+-      // cache and other automatically created tables are not created if
+-      // database settings are available. None of this is required when the
+-      // installer is running because the installer has its own kernel and
+-      // manages the addition of its own service providers.
+-      // @see install_begin_request()
+-      if ($extensions === FALSE && !InstallerKernel::installationAttempted()) {
+-        $this->allowDumping = FALSE;
+-        $this->containerNeedsDumping = FALSE;
+-        $GLOBALS['conf']['container_service_providers']['InstallerServiceProvider'] = 'Drupal\Core\Installer\InstallerServiceProvider';
++      // The module list is manipulated in the TestRunnerKernel, so we should
++      // only set it if it is not set.
++      if (!isset($this->moduleList)) {
++        // If core.extension configuration does not exist and we're not in the
++        // installer itself, then we need to put the kernel into a pre-installer
++        // mode. The container should not be dumped because Drupal is yet to be
++        // installed. The installer service provider is registered to ensure
++        // that cache and other automatically created tables are not created if
++        // database settings are available. None of this is required when the
++        // installer is running because the installer has its own kernel and
++        // manages the addition of its own service providers.
++        // @see install_begin_request()
++        if ($extensions === FALSE && !InstallerKernel::installationAttempted()) {
++          $this->allowDumping = FALSE;
++          $this->containerNeedsDumping = FALSE;
++          $GLOBALS['conf']['container_service_providers']['InstallerServiceProvider'] = 'Drupal\Core\Installer\InstallerServiceProvider';
++        }
++        $this->moduleList = $extensions['module'] ?? [];
        }
-       $this->moduleList = $extensions['module'] ?? [];
+-      $this->moduleList = $extensions['module'] ?? [];
++
++      $this->themeList = $extensions['theme'] ?? [];
      }
 -    $module_filenames = $this->getModuleFileNames();
 -    $this->classLoaderAddMultiplePsr4($this->getModuleNamespacesPsr4($module_filenames));
-+    if (!isset($this->themeEnabledList)) {
-+      $extensions = $this->getExtensions();
-+      $this->themeEnabledList = $extensions['theme'] ?? [];
-+    }
 +
 +    $module_filenames = $this->getExtensionFileNames($this->moduleList, [$this, 'moduleData']);
 +    $this->classLoaderAddMultiplePsr4($this->getExtensionNamespacesPsr4($module_filenames));
-+    $theme_filenames = $this->getExtensionFileNames($this->themeEnabledList, [$this, 'themeExtensions']);
++    $theme_filenames = $this->getExtensionFileNames($this->themeList, [$this, 'themeExtensions']);
 +    $this->classLoaderAddMultiplePsr4($this->getExtensionNamespacesPsr4($theme_filenames));
  
      // Load each module's serviceProvider class.
      foreach ($module_filenames as $module => $filename) {
-@@ -798,7 +826,9 @@ protected function moduleData($module) {
+@@ -772,23 +801,36 @@ protected function handleException(\Exception $e, $request, $type) {
+    */
+   protected function moduleData($module) {
+     if (!$this->moduleData) {
+-      // First, find profiles.
+-      $listing = new ExtensionDiscovery($this->root);
+-      $listing->setProfileDirectories([]);
+-      $all_profiles = $listing->scan('profile');
+-      $profiles = array_intersect_key($all_profiles, $this->moduleList);
+-
+-      $profile_directories = array_map(function (Extension $profile) {
+-        return $profile->getPath();
+-      }, $profiles);
+-      $listing->setProfileDirectories($profile_directories);
+-
+-      // Now find modules.
+-      $this->moduleData = $profiles + $listing->scan('module');
++      $this->setExtensionData();
+     }
+     return $this->moduleData[$module] ?? FALSE;
+   }
+ 
++  /**
++   * Sets extension data to class properties using ExtensionDiscovery.
++   *
++   * This function is expensive to call as it scans the filesystem for
++   * extensions. Use ::moduleData() and ::themeExtensions() instead.
++   */
++  private function setExtensionData(): void {
++    // First, find profiles.
++    $listing = new ExtensionDiscovery($this->root);
++    $listing->setProfileDirectories([]);
++    $all_profiles = $listing->scan('profile');
++    $profiles = array_intersect_key($all_profiles, $this->moduleList);
++
++    $profile_directories = array_map(function (Extension $profile) {
++      return $profile->getPath();
++    }, $profiles);
++    $listing->setProfileDirectories($profile_directories);
++
++    // Now find modules.
++    $this->moduleData = $profiles + $listing->scan('module');
++
++    // Now find themes.
++    $this->themeExtensions = $listing->scan('theme');
++  }
++
+   /**
+    * Implements Drupal\Core\DrupalKernelInterface::updateModules().
+    *
+@@ -798,7 +840,9 @@ protected function moduleData($module) {
    public function updateModules(array $module_list, array $module_filenames = []) {
      $pre_existing_module_namespaces = [];
      if ($this->booted && is_array($this->moduleList)) {
@@ -117,7 +204,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..fcd2cfe0ac8951d497336632d2b0bdad
      }
      $this->moduleList = $module_list;
      foreach ($module_filenames as $name => $extension) {
-@@ -817,7 +847,7 @@ public function updateModules(array $module_list, array $module_filenames = [])
+@@ -817,7 +861,7 @@ public function updateModules(array $module_list, array $module_filenames = [])
        // class that is now available.
        // @see \Composer\Autoload\ClassLoader::findFile()
        $new_namespaces = array_diff_key(
@@ -126,12 +213,16 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..fcd2cfe0ac8951d497336632d2b0bdad
          $pre_existing_module_namespaces
        );
        if (!empty($new_namespaces)) {
-@@ -830,6 +860,74 @@ public function updateModules(array $module_list, array $module_filenames = [])
+@@ -830,6 +874,68 @@ public function updateModules(array $module_list, array $module_filenames = [])
      }
    }
  
 +  /**
 +   * Returns theme data on the filesystem.
++   *
++   * This allows us to update the container parameters and namespaces during
++   * compile, theme install and theme uninstall. This ensures that the
++   * container remains in sync before compiler passes.
 +   *
 +   * @param string $theme
 +   *   The name of the theme.
@@ -139,19 +230,9 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..fcd2cfe0ac8951d497336632d2b0bdad
 +   * @return \Drupal\Core\Extension\Extension|false
 +   *   Returns an Extension object if the theme is found, FALSE otherwise.
 +   */
-+  protected function themeExtensions($theme) {
++  protected function themeExtensions($theme): Extension|false {
 +    if (!$this->themeExtensions) {
-+      // First, find profiles.
-+      $listing = new ExtensionDiscovery($this->root);
-+      $listing->setProfileDirectories([]);
-+      $all_profiles = $listing->scan('profile');
-+      $profiles = array_intersect_key($all_profiles, $this->moduleList);
-+
-+      $profile_directories = array_map(static fn (Extension $profile): string => $profile->getPath(), $profiles);
-+      $listing->setProfileDirectories($profile_directories);
-+
-+      // Now find themes.
-+      $this->themeExtensions = $listing->scan('theme');
++      $this->setExtensionData();
 +    }
 +    return $this->themeExtensions[$theme] ?? FALSE;
 +  }
@@ -161,12 +242,12 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..fcd2cfe0ac8951d497336632d2b0bdad
 +   */
 +  public function updateThemes(array $register_themes = []): void {
 +    $pre_existing_theme_namespaces = [];
-+    if ($this->booted && is_array($this->themeEnabledList)) {
++    if ($this->booted && isset($this->themeList)) {
 +      $pre_existing_theme_namespaces = $this->getExtensionNamespacesPsr4(
-+        $this->getExtensionFileNames($this->themeEnabledList, [$this, 'themeExtensions'])
++        $this->getExtensionFileNames($this->themeList, [$this, 'themeExtensions'])
 +      );
 +    }
-+    $this->themeEnabledList = $register_themes;
++    $this->themeList = $register_themes;
 +    foreach ($register_themes as $name => $extension) {
 +      $this->themeExtensions[$name] = $extension;
 +    }
@@ -184,7 +265,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..fcd2cfe0ac8951d497336632d2b0bdad
 +      // @see \Composer\Autoload\ClassLoader::findFile()
 +      $new_namespaces = array_diff_key(
 +        $this->getExtensionNamespacesPsr4(
-+          $this->getExtensionFileNames($this->themeEnabledList, [$this, 'themeExtensions'])
++          $this->getExtensionFileNames($this->themeList, [$this, 'themeExtensions'])
 +        ),
 +        $pre_existing_theme_namespaces
 +      );
@@ -201,23 +282,23 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..fcd2cfe0ac8951d497336632d2b0bdad
    /**
     * Returns the container cache key based on the environment.
     *
-@@ -1159,6 +1257,8 @@ public function rebuildContainer() {
+@@ -1159,6 +1265,8 @@ public function rebuildContainer() {
      // Empty module properties and for them to be reloaded from scratch.
      $this->moduleList = NULL;
      $this->moduleData = [];
-+    $this->themeEnabledList = NULL;
++    $this->themeList = NULL;
 +    $this->themeExtensions = [];
      $this->containerNeedsRebuild = TRUE;
      $container = $this->initializeContainer();
      // ThemeManager::render() fails without this. Normally ::preHandle() has
-@@ -1311,11 +1411,19 @@ protected function compileContainer() {
+@@ -1311,11 +1419,19 @@ protected function compileContainer() {
      $this->initializeServiceProviders();
      $container = $this->getContainerBuilder();
      $container->set('kernel', $this);
 -    $container->setParameter('container.modules', $this->getModulesParameter());
 +    $container->setParameter('container.modules', $this->getExtensionsParameter($this->moduleList, [$this, 'moduleData']));
 +    $container->setParameter('container.themes', $this->getExtensionsParameter(
-+      $this->themeEnabledList ?? [], [$this, 'themeExtensions'])
++      $this->themeList ?? [], [$this, 'themeExtensions'])
 +    );
      $container->setParameter('install_profile', $this->getInstallProfile());
  
@@ -227,12 +308,12 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..fcd2cfe0ac8951d497336632d2b0bdad
 +      $this->getExtensionFileNames($this->moduleList, [$this, 'moduleData'])
 +    );
 +    $namespaces += $this->getExtensionNamespacesPsr4(
-+      $this->getExtensionFileNames($this->themeEnabledList ?? [], [$this, 'themeExtensions'])
++      $this->getExtensionFileNames($this->themeList ?? [], [$this, 'themeExtensions'])
 +    );
      // Add all components in \Drupal\Core and \Drupal\Component that have one or
      // more of Element, Entity and Plugin directories.
      foreach (['Core', 'Component'] as $parent_directory) {
-@@ -1491,12 +1599,34 @@ protected function getConfigStorage() {
+@@ -1491,12 +1607,34 @@ protected function getConfigStorage() {
     * @return array
     *   An associated array of module class parameters, keyed by module name, for
     *   all enabled modules.
@@ -259,7 +340,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..fcd2cfe0ac8951d497336632d2b0bdad
 +   *   An associated array of extension class parameters, keyed by extension
 +   *   name, for all enabled themes.
 +   */
-+  protected function getExtensionsParameter(array $extension_list, callable $get_data) {
++  protected function getExtensionsParameter(array $extension_list, callable $get_data): array {
      $extensions = [];
 -    foreach ($this->moduleList as $name => $weight) {
 -      if ($data = $this->moduleData($name)) {
@@ -270,7 +351,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..fcd2cfe0ac8951d497336632d2b0bdad
            'type' => $data->getType(),
            'pathname' => $data->getPathname(),
            'filename' => $data->getExtensionFilename(),
-@@ -1507,17 +1637,39 @@ protected function getModulesParameter() {
+@@ -1507,17 +1645,39 @@ protected function getModulesParameter() {
    }
  
    /**
@@ -314,7 +395,7 @@ index 4dcc97400e4c1f04b6631926e8dd38aebb1377da..fcd2cfe0ac8951d497336632d2b0bdad
        }
      }
      return $filenames;
-@@ -1527,17 +1679,40 @@ protected function getModuleFileNames() {
+@@ -1527,17 +1687,40 @@ protected function getModuleFileNames() {
     * Gets the PSR-4 base directories for module namespaces.
     *
     * @param string[] $module_file_names
@@ -400,7 +481,7 @@ index 2dd0e05e485c3aca220c274ccf6926b28e54c758..8d6e60c61aa657967c9b10e18bacf8cf
        foreach ($theme->info['libraries'] as $library => $name) {
          $theme->libraries[$library] = $name;
 diff --git a/core/lib/Drupal/Core/Extension/ThemeInstaller.php b/core/lib/Drupal/Core/Extension/ThemeInstaller.php
-index 172193ca8554b1ed78642f9a8ca8bb5925bc52eb..0888c949c8c71518384e2307a9ef6ec2e5263b3a 100644
+index 62a670075034f919720f4d22722848a5e6dbe49f..2fafe90701475ca968b1a3d65baa867487f13d91 100644
 --- a/core/lib/Drupal/Core/Extension/ThemeInstaller.php
 +++ b/core/lib/Drupal/Core/Extension/ThemeInstaller.php
 @@ -8,12 +8,14 @@
@@ -418,20 +499,37 @@ index 172193ca8554b1ed78642f9a8ca8bb5925bc52eb..0888c949c8c71518384e2307a9ef6ec2
  
  /**
   * Manages theme installation/uninstallation.
-@@ -29,18 +31,21 @@ public function __construct(
-     protected readonly ConfigInstallerInterface $configInstaller,
-     protected readonly ModuleHandlerInterface $moduleHandler,
-     protected readonly ConfigManagerInterface $configManager,
-+    #[Autowire(service: 'asset.css.collection_optimizer')]
-     protected readonly AssetCollectionOptimizerInterface $cssCollectionOptimizer,
-     protected readonly RouteBuilderInterface $routeBuilder,
-+    #[Autowire(service: 'logger.channel.default')]
-     protected readonly LoggerInterface $logger,
-     protected readonly StateInterface $state,
-     protected readonly ModuleExtensionList $moduleExtensionList,
-     protected readonly Registry $themeRegistry,
-     protected readonly ThemeExtensionList $themeExtensionList,
+@@ -24,23 +26,26 @@ class ThemeInstaller implements ThemeInstallerInterface {
+   use StringTranslationTrait;
+ 
+   public function __construct(
+-    protected readonly ThemeHandlerInterface $themeHandler,
+-    protected readonly ConfigFactoryInterface $configFactory,
+-    protected readonly ConfigInstallerInterface $configInstaller,
+-    protected readonly ModuleHandlerInterface $moduleHandler,
+-    protected readonly ConfigManagerInterface $configManager,
+-    protected readonly AssetCollectionOptimizerInterface $cssCollectionOptimizer,
+-    protected readonly RouteBuilderInterface $routeBuilder,
+-    protected readonly LoggerInterface $logger,
+-    protected readonly StateInterface $state,
+-    protected readonly ModuleExtensionList $moduleExtensionList,
+-    protected readonly Registry $themeRegistry,
+-    protected readonly ThemeExtensionList $themeExtensionList,
 -    protected ?CachedDiscoveryInterface $componentPluginManager = NULL,
++    protected ThemeHandlerInterface $themeHandler,
++    protected ConfigFactoryInterface $configFactory,
++    protected ConfigInstallerInterface $configInstaller,
++    protected ModuleHandlerInterface $moduleHandler,
++    protected ConfigManagerInterface $configManager,
++    #[Autowire(service: 'asset.css.collection_optimizer')]
++    protected AssetCollectionOptimizerInterface $cssCollectionOptimizer,
++    protected RouteBuilderInterface $routeBuilder,
++    #[Autowire(service: 'logger.channel.default')]
++    protected LoggerInterface $logger,
++    protected StateInterface $state,
++    protected ModuleExtensionList $moduleExtensionList,
++    protected Registry $themeRegistry,
++    protected ThemeExtensionList $themeExtensionList,
 +    #[Autowire(service: 'kernel')]
 +    protected DrupalKernelInterface|CachedDiscoveryInterface|null $kernel = NULL,
    ) {
@@ -444,7 +542,7 @@ index 172193ca8554b1ed78642f9a8ca8bb5925bc52eb..0888c949c8c71518384e2307a9ef6ec2
      }
    }
  
-@@ -174,7 +179,11 @@ public function install(array $theme_list, $install_dependencies = TRUE) {
+@@ -170,7 +175,11 @@ public function install(array $theme_list, $install_dependencies = TRUE) {
      }
  
      $this->cssCollectionOptimizer->deleteAll();
@@ -457,7 +555,7 @@ index 172193ca8554b1ed78642f9a8ca8bb5925bc52eb..0888c949c8c71518384e2307a9ef6ec2
  
      // Invoke hook_themes_installed() after the themes have been installed.
      $this->moduleHandler->invokeAll('themes_installed', [$themes_installed]);
-@@ -189,6 +198,8 @@ public function uninstall(array $theme_list) {
+@@ -185,6 +194,8 @@ public function uninstall(array $theme_list) {
      $extension_config = $this->configFactory->getEditable('core.extension');
      $theme_config = $this->configFactory->getEditable('system.theme');
      $list = $this->themeHandler->listInfo();
@@ -466,7 +564,7 @@ index 172193ca8554b1ed78642f9a8ca8bb5925bc52eb..0888c949c8c71518384e2307a9ef6ec2
      foreach ($theme_list as $key) {
        if ($extension_config->get("theme.$key") === NULL) {
          throw new UnknownExtensionException("Unknown theme: $key.");
-@@ -227,19 +238,34 @@ public function uninstall(array $theme_list) {
+@@ -219,19 +230,43 @@ public function uninstall(array $theme_list) {
      $extension_config->save(TRUE);
  
      // Refresh theme info.
@@ -494,14 +592,23 @@ index 172193ca8554b1ed78642f9a8ca8bb5925bc52eb..0888c949c8c71518384e2307a9ef6ec2
 -    $this->componentPluginManager->clearCachedDefinitions();
 +    $this->kernel->updateThemes($register_themes);
 +    $container = $this->kernel->getContainer();
++    $this->themeHandler = $container->get('theme_handler');
++    $this->configFactory = $container->get('config.factory');
++    $this->configInstaller = $container->get('config.installer');
++    $this->moduleHandler = $container->get('module_handler');
++    $this->configManager = $container->get('config.manager');
++    $this->cssCollectionOptimizer = $container->get('asset.css.collection_optimizer');
++    $this->routeBuilder = $container->get('router.builder');
++    $this->logger = $container->get('logger.channel.default');
++    $this->state = $container->get('state');
++    $this->moduleExtensionList = $container->get('extension.list.module');
++    $this->themeRegistry = $container->get('theme.registry');
++    $this->themeExtensionList = $container->get('extension.list.theme');
++
 +    $container->get('stream_wrapper_manager')->register();
 +    // Clear all plugin caches.
 +    $container->get('plugin.cache_clearer')->clearCachedDefinitions();
-+
-+    // Rebuild the menu router based on all rebuilt data.
-+    // Important: This rebuild must happen last, so the menu router is
-+    // guaranteed to be based on up to date information.
-+    $container->get('router.builder')->rebuild();
++    $this->routeBuilder->setRebuildNeeded();
    }
  
  }
@@ -528,7 +635,7 @@ index f813b86a14f043ccff9a9241612762fc389a92b7..3b50a9dbded86121e23985942e0f024d
  }
 diff --git a/core/lib/Drupal/Core/Hook/ThemeHookCollectorPass.php b/core/lib/Drupal/Core/Hook/ThemeHookCollectorPass.php
 new file mode 100644
-index 0000000000000000000000000000000000000000..51388b672c2948cff2a50fa03106438fe4c8a357
+index 0000000000000000000000000000000000000000..4771e1e7f33a28692cbdd575a2fd31a2920246a5
 --- /dev/null
 +++ b/core/lib/Drupal/Core/Hook/ThemeHookCollectorPass.php
 @@ -0,0 +1,393 @@
@@ -634,7 +741,7 @@ index 0000000000000000000000000000000000000000..51388b672c2948cff2a50fa03106438f
 +   *   Implementations, as theme names keyed by hook name and
 +   *   "$class::$method" identifier.
 +   *
-+   * @return array<string, array<string, array<string, string>>>
++   * @return array<string, array<string, list>>
 +   *   Implementations, as theme names keyed by theme, hook name and
 +   *   "$class::$method" identifier.
 +   */
@@ -642,7 +749,7 @@ index 0000000000000000000000000000000000000000..51388b672c2948cff2a50fa03106438f
 +    $implementationsByTheme = [];
 +    foreach ($implementationsByHook as $hook => $identifiers) {
 +      foreach ($identifiers as $identifier => $theme) {
-+        $implementationsByTheme[$theme][$hook][$identifier] = $theme;
++        $implementationsByTheme[$theme][$hook][] = $identifier;
 +      }
 +    }
 +    return $implementationsByTheme;
@@ -1050,7 +1157,7 @@ index cdc3f245d737a17ad3653415cc64583192cdd84c..56313011984f0614ec5fb5ec5ca6d608
     * Returns discovered preprocess suggestions.
     *
 diff --git a/core/lib/Drupal/Core/Theme/ThemeManager.php b/core/lib/Drupal/Core/Theme/ThemeManager.php
-index 2090f19d74dc4a4806eae994f376816631b472a4..8bbb126226bdee16aedaa0917d6e17a675bf2fa6 100644
+index 2090f19d74dc4a4806eae994f376816631b472a4..546ca71d5d89f9c4105584278d06513ec6da34c0 100644
 --- a/core/lib/Drupal/Core/Theme/ThemeManager.php
 +++ b/core/lib/Drupal/Core/Theme/ThemeManager.php
 @@ -3,9 +3,11 @@
@@ -1154,7 +1261,7 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..8bbb126226bdee16aedaa0917d6e17a6
 +    }
 +    if ($this->cache === NULL) {
 +      @trigger_error('Calling ' . __METHOD__ . ' without the $cache argument is deprecated in drupal:11.3.0 and it will be required in drupal:12.0.0. See https://www.drupal.org/node/3551652', E_USER_DEPRECATED);
-+      $this->keyValueFactory = \Drupal::service('cache.bootstrap');
++      $this->cache = \Drupal::service('cache.bootstrap');
 +    }
    }
  
@@ -1281,7 +1388,7 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..8bbb126226bdee16aedaa0917d6e17a6
 +
 +    if (!isset($this->themeHookImplementations[$theme_key][$hook])) {
 +      $listeners = [];
-+      foreach ($this->allHookImplementations[$theme_key][$hook] ?? [] as $identifier => $theme) {
++      foreach ($this->allHookImplementations[$theme_key][$hook] ?? [] as $identifier) {
 +        $listeners[] = $this->callableResolver->getCallableFromDefinition($identifier);
 +      }
 +      $this->themeHookImplementations[$theme_key][$hook] = $listeners;
@@ -1307,7 +1414,7 @@ index 2090f19d74dc4a4806eae994f376816631b472a4..8bbb126226bdee16aedaa0917d6e17a6
  
    /**
 diff --git a/core/lib/Drupal/Core/Theme/ThemeManagerInterface.php b/core/lib/Drupal/Core/Theme/ThemeManagerInterface.php
-index c22a4d04e01d6ab42deb925c4e43b8f2884bd792..527f6bb03f8d2a6e535e3e68b762bac04fc8be3f 100644
+index c22a4d04e01d6ab42deb925c4e43b8f2884bd792..adc857f6218fe985328dd3192347ecdb53bfd3ca 100644
 --- a/core/lib/Drupal/Core/Theme/ThemeManagerInterface.php
 +++ b/core/lib/Drupal/Core/Theme/ThemeManagerInterface.php
 @@ -71,6 +71,42 @@ public function resetActiveTheme();
@@ -1333,11 +1440,11 @@ index c22a4d04e01d6ab42deb925c4e43b8f2884bd792..527f6bb03f8d2a6e535e3e68b762bac0
 +   * Executes a callback for each implementation of a hook for a theme.
 +   *
 +   * It will detect the currently active theme and invoke the given hook for
-+   * the active theme and all of it's base themes in reverse order.
++   * the active theme and all of its base themes in reverse order.
 +   *
 +   * The callback is passed two arguments, a closure which executes a hook
 +   * implementation and the machine name of the current theme.
-+   * Note that this is executed for just a single theme and it's base themes.
++   * Note that this is executed for just a single theme and its base themes.
 +   *
 +   * @param string $hook
 +   *   The name of the hook to invoke.
@@ -1353,22 +1460,6 @@ index c22a4d04e01d6ab42deb925c4e43b8f2884bd792..527f6bb03f8d2a6e535e3e68b762bac0
    /**
     * Passes alterable variables to specific $theme_TYPE_alter() implementations.
     *
-diff --git a/core/modules/block/tests/src/Functional/BlockDemoTest.php b/core/modules/block/tests/src/Functional/BlockDemoTest.php
-index f19015e424e537aedc36dcac6469de140be1f25e..188a9f04830514c0667d63e2a698f42b0f1e1d1c 100644
---- a/core/modules/block/tests/src/Functional/BlockDemoTest.php
-+++ b/core/modules/block/tests/src/Functional/BlockDemoTest.php
-@@ -54,9 +54,9 @@ public function testBlockDemo(): void {
-     // All available themes minute minus the default theme.
-     $themes = array_diff($available_themes, [$default_theme]);
- 
-+    // Install theme.
-+    $this->container->get('theme_installer')->install($themes);
-     foreach ($themes as $theme) {
--      // Install theme.
--      $this->container->get('theme_installer')->install([$theme]);
-       // Confirm access to the block demo page for the theme.
-       $this->drupalGet('admin/structure/block/demo/' . $theme);
-       $this->assertSession()->statusCodeEquals(200);
 diff --git a/core/modules/block/tests/src/Kernel/BlockStorageUnitTest.php b/core/modules/block/tests/src/Kernel/BlockStorageUnitTest.php
 index e74573bd931acf297998e6f3e8878035599a943e..2d19be4078a8074ede21d46abb9ea6e5572a5120 100644
 --- a/core/modules/block/tests/src/Kernel/BlockStorageUnitTest.php
@@ -1407,11 +1498,11 @@ index e94e3d21b5cb2aa78a061b510d4489d456139ad7..f38019fa8eaf79b90a5ce1944af243d2
  
    /**
 diff --git a/core/modules/block/tests/src/Kernel/NewDefaultThemeBlocksTest.php b/core/modules/block/tests/src/Kernel/NewDefaultThemeBlocksTest.php
-index 8667224b7df8945391a3b0a67f2b4e0f58b673f0..0145149c2ee1e9abd66aaca22c914d4d21a39a3a 100644
+index 672a936e2c97f76968264db6c8dde446dcee97f7..847f3b8ac02c83960843fde05ffa5d02b340ef48 100644
 --- a/core/modules/block/tests/src/Kernel/NewDefaultThemeBlocksTest.php
 +++ b/core/modules/block/tests/src/Kernel/NewDefaultThemeBlocksTest.php
-@@ -27,13 +27,6 @@ class NewDefaultThemeBlocksTest extends KernelTestBase {
-     'user',
+@@ -26,13 +26,6 @@ class NewDefaultThemeBlocksTest extends KernelTestBase {
+     'system',
    ];
  
 -  /**
@@ -1424,7 +1515,7 @@ index 8667224b7df8945391a3b0a67f2b4e0f58b673f0..0145149c2ee1e9abd66aaca22c914d4d
    /**
     * The default theme.
     *
-@@ -48,7 +41,6 @@ protected function setUp(): void {
+@@ -47,7 +40,6 @@ protected function setUp(): void {
      parent::setUp();
  
      $this->installConfig(['system']);
@@ -1432,7 +1523,7 @@ index 8667224b7df8945391a3b0a67f2b4e0f58b673f0..0145149c2ee1e9abd66aaca22c914d4d
      $this->defaultTheme = $this->config('system.theme')->get('default');
    }
  
-@@ -60,8 +52,7 @@ protected function setUp(): void {
+@@ -59,8 +51,7 @@ protected function setUp(): void {
     */
    public function testNewDefaultThemeBlocks(): void {
      $default_theme = $this->defaultTheme;
@@ -1442,7 +1533,7 @@ index 8667224b7df8945391a3b0a67f2b4e0f58b673f0..0145149c2ee1e9abd66aaca22c914d4d
  
      // Add two instances of the user login block.
      $this->placeBlock('user_login_block', [
-@@ -81,7 +72,7 @@ public function testNewDefaultThemeBlocks(): void {
+@@ -80,7 +71,7 @@ public function testNewDefaultThemeBlocks(): void {
      // The new theme is different from the previous default theme.
      $this->assertNotEquals($new_theme, $default_theme);
  
@@ -1451,7 +1542,7 @@ index 8667224b7df8945391a3b0a67f2b4e0f58b673f0..0145149c2ee1e9abd66aaca22c914d4d
      $this->config('system.theme')
        ->set('default', $new_theme)
        ->save();
-@@ -110,7 +101,7 @@ public function testNewDefaultThemeBlocks(): void {
+@@ -109,7 +100,7 @@ public function testNewDefaultThemeBlocks(): void {
  
      // Install a hidden base theme and ensure blocks are not copied.
      $base_theme = 'test_base_theme';
@@ -1460,7 +1551,7 @@ index 8667224b7df8945391a3b0a67f2b4e0f58b673f0..0145149c2ee1e9abd66aaca22c914d4d
      $new_blocks = $block_storage->getQuery()
        ->accessCheck(FALSE)
        ->condition('theme', $base_theme)
-@@ -123,8 +114,7 @@ public function testNewDefaultThemeBlocks(): void {
+@@ -122,8 +113,7 @@ public function testNewDefaultThemeBlocks(): void {
     */
    public function testBlockCollision(): void {
      $default_theme = $this->defaultTheme;
@@ -1470,7 +1561,7 @@ index 8667224b7df8945391a3b0a67f2b4e0f58b673f0..0145149c2ee1e9abd66aaca22c914d4d
  
      // Add two instances of the user login block with machine
      // names that will collide.
-@@ -145,7 +135,7 @@ public function testBlockCollision(): void {
+@@ -144,7 +134,7 @@ public function testBlockCollision(): void {
      // The new theme is different from the previous default theme.
      $this->assertNotEquals($new_theme, $default_theme);
  
@@ -1479,7 +1570,7 @@ index 8667224b7df8945391a3b0a67f2b4e0f58b673f0..0145149c2ee1e9abd66aaca22c914d4d
      $this->config('system.theme')
        ->set('default', $new_theme)
        ->save();
-@@ -178,7 +168,7 @@ public function testBlockCollision(): void {
+@@ -177,7 +167,7 @@ public function testBlockCollision(): void {
  
      // Install a hidden base theme and ensure blocks are not copied.
      $base_theme = 'test_base_theme';
@@ -1489,7 +1580,7 @@ index 8667224b7df8945391a3b0a67f2b4e0f58b673f0..0145149c2ee1e9abd66aaca22c914d4d
        ->accessCheck(FALSE)
        ->condition('theme', $base_theme)
 diff --git a/core/modules/navigation/tests/src/FunctionalJavascript/PerformanceTest.php b/core/modules/navigation/tests/src/FunctionalJavascript/PerformanceTest.php
-index eb1a0b71eaf76d136d1a1647569263763bc03143..d6196e37a1720c12678b48942d5f180c2b9cbae4 100644
+index 601c669472108897b0108e157f1d0c88745c9090..00376bfead8283b828a32f60e2a5150f431dbeef 100644
 --- a/core/modules/navigation/tests/src/FunctionalJavascript/PerformanceTest.php
 +++ b/core/modules/navigation/tests/src/FunctionalJavascript/PerformanceTest.php
 @@ -76,12 +76,12 @@ public function testLogin(): void {
@@ -1909,10 +2000,10 @@ index 554c38cdabafb03d1dcdc986e4acd80712b3fd8c..ee6c13f25bf4360f44f1d4cb7c132166
      return $this->display_handler->output;
    }
 diff --git a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryAuthenticatedPerformanceTest.php b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryAuthenticatedPerformanceTest.php
-index 1004e4b073fc2e3501e41e0021cafd068c7f5ad4..ab1fb77522042881814bee111103532cab974b6c 100644
+index d9d2b56503d973b8f1af6b876261d21eb666d194..00546e844542a7f2ccddeb9910b80ba7cab7eb7b 100644
 --- a/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryAuthenticatedPerformanceTest.php
 +++ b/core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryAuthenticatedPerformanceTest.php
-@@ -54,10 +54,10 @@ public function testFrontPageAuthenticatedWarmCache(): void {
+@@ -56,10 +56,10 @@ public function testFrontPageAuthenticatedWarmCache(): void {
  
      $expected = [
        'QueryCount' => 3,
@@ -1925,27 +2016,27 @@ index 1004e4b073fc2e3501e41e0021cafd068c7f5ad4..ab1fb77522042881814bee111103532c
          'discovery' => 5,
          'data' => 5,
          'dynamic_page_cache' => 2,
-@@ -96,11 +96,11 @@ public function testNodePageAdministrator(): void {
+@@ -98,11 +98,11 @@ public function testNodePageAdministrator(): void {
      }, 'administratorNodePage');
  
      $expected = [
 -      'QueryCount' => 523,
--      'CacheGetCount' => 547,
+-      'CacheGetCount' => 548,
 +      'QueryCount' => 525,
-+      'CacheGetCount' => 549,
++      'CacheGetCount' => 550,
        'CacheGetCountByBin' => [
          'config' => 201,
 -        'bootstrap' => 26,
 +        'bootstrap' => 28,
          'discovery' => 112,
-         'data' => 71,
+         'data' => 72,
          'dynamic_page_cache' => 2,
-@@ -109,7 +109,7 @@ public function testNodePageAdministrator(): void {
+@@ -111,7 +111,7 @@ public function testNodePageAdministrator(): void {
          'render' => 39,
          'menu' => 28,
        ],
--      'CacheSetCount' => 453,
-+      'CacheSetCount' => 454,
+-      'CacheSetCount' => 454,
++      'CacheSetCount' => 455,
        'CacheDeleteCount' => 0,
        'CacheTagInvalidationCount' => 0,
        'CacheTagLookupQueryCount' => 47,
@@ -2085,45 +2176,6 @@ index b86ddaad47e9074a8cc43f22a8b0874e2daf94f0..0232b25d504ad574a4b7ea1fb3e4832f
        'CacheSetCount' => 1,
        'CacheDeleteCount' => 1,
        'CacheTagInvalidationCount' => 0,
-diff --git a/core/tests/Drupal/FunctionalTests/Installer/InstallerPerformanceTest.php b/core/tests/Drupal/FunctionalTests/Installer/InstallerPerformanceTest.php
-index d0a696ae19dad6027e81cd8daa2fa95e6e31677d..2f8486bc7df027cefae56558fb874eb265d7cdbe 100644
---- a/core/tests/Drupal/FunctionalTests/Installer/InstallerPerformanceTest.php
-+++ b/core/tests/Drupal/FunctionalTests/Installer/InstallerPerformanceTest.php
-@@ -41,7 +41,7 @@ protected function prepareSettings(): void {
-   public function testInstaller(): void {
-     // Ensures that router is not rebuilt unnecessarily during the install.
-     // Currently it is built once during the install in install_finished().
--    $this->assertSame(1, \Drupal::service('core.performance.test.recorder')->getCount('event', RoutingEvents::FINISHED));
-+    $this->assertSame(2, \Drupal::service('core.performance.test.recorder')->getCount('event', RoutingEvents::FINISHED));
-   }
- 
- }
-diff --git a/core/tests/Drupal/FunctionalTests/Installer/InstallerRouterTest.php b/core/tests/Drupal/FunctionalTests/Installer/InstallerRouterTest.php
-index 8abbcb3d322e1432ec7605e79a7821eeec0625fc..badd88f2cfcddecc45c9eab2aab6a64d70f61941 100644
---- a/core/tests/Drupal/FunctionalTests/Installer/InstallerRouterTest.php
-+++ b/core/tests/Drupal/FunctionalTests/Installer/InstallerRouterTest.php
-@@ -61,7 +61,7 @@ public function testInstalled(): void {
-     // - router_test_install()
-     // - router_installer_test_modules_installed()
-     // - install_finished()
--    $this->assertSame(3, \Drupal::service('core.performance.test.recorder')->getCount('event', RoutingEvents::FINISHED));
-+    $this->assertSame(4, \Drupal::service('core.performance.test.recorder')->getCount('event', RoutingEvents::FINISHED));
-     $this->assertStringEndsWith('/core/install.php/router_installer_test/test1', \Drupal::state()->get('router_installer_test_modules_installed'));
-     $this->assertStringEndsWith('/core/install.php/router_test/test1', \Drupal::state()->get('router_test_install'));
-   }
-diff --git a/core/tests/Drupal/FunctionalTests/Installer/InstallerTest.php b/core/tests/Drupal/FunctionalTests/Installer/InstallerTest.php
-index df0c5568d40afce83c3e5fe1fd92f0d4d372f5b0..8b20a272e025c9291e991dc717e8161017a33a1f 100644
---- a/core/tests/Drupal/FunctionalTests/Installer/InstallerTest.php
-+++ b/core/tests/Drupal/FunctionalTests/Installer/InstallerTest.php
-@@ -49,7 +49,7 @@ public function testInstaller(): void {
-     $this->assertArrayHasKey('testing', $extensions);
-     $this->assertEquals(1000, $extensions['testing']->weight);
-     // Ensures that router is not rebuilt unnecessarily during the install.
--    $this->assertSame(1, \Drupal::service('core.performance.test.recorder')->getCount('event', RoutingEvents::FINISHED));
-+    $this->assertSame(2, \Drupal::service('core.performance.test.recorder')->getCount('event', RoutingEvents::FINISHED));
-   }
- 
-   /**
 diff --git a/core/tests/Drupal/KernelTests/Core/Asset/LibraryDiscoveryIntegrationTest.php b/core/tests/Drupal/KernelTests/Core/Asset/LibraryDiscoveryIntegrationTest.php
 index 9ce1c1fb9da6b484a80748ac78cc2fd07c6f4857..ae33867b2dd937f54a5f14c15f08bb9df1d61a7e 100644
 --- a/core/tests/Drupal/KernelTests/Core/Asset/LibraryDiscoveryIntegrationTest.php
@@ -2180,7 +2232,7 @@ index 9ce1c1fb9da6b484a80748ac78cc2fd07c6f4857..ae33867b2dd937f54a5f14c15f08bb9d
          $this->fail($message);
 diff --git a/core/tests/Drupal/KernelTests/Core/Hook/ThemeHookCollectorPassTest.php b/core/tests/Drupal/KernelTests/Core/Hook/ThemeHookCollectorPassTest.php
 new file mode 100644
-index 0000000000000000000000000000000000000000..c6c09f44d2735f965008624e6596ba3e5b853c0f
+index 0000000000000000000000000000000000000000..f833c0417e192a070830ced48fbe906011957aac
 --- /dev/null
 +++ b/core/tests/Drupal/KernelTests/Core/Hook/ThemeHookCollectorPassTest.php
 @@ -0,0 +1,140 @@
@@ -2226,7 +2278,7 @@ index 0000000000000000000000000000000000000000..c6c09f44d2735f965008624e6596ba3e
 +
 +    $themeHookData = $container->getParameter('.theme_hook_data');
 +    $this->assertEquals(
-+      ['Drupal\oop_hook_theme\Hook\TestHookCollectionHooks::testHookAlter' => 'oop_hook_theme'],
++      ['Drupal\oop_hook_theme\Hook\TestHookCollectionHooks::testHookAlter'],
 +      $themeHookData['theme_hook_list']['oop_hook_theme']['test_hook_alter'],
 +    );
 +  }
@@ -2325,7 +2377,7 @@ index 0000000000000000000000000000000000000000..c6c09f44d2735f965008624e6596ba3e
 +
 +}
 diff --git a/core/tests/Drupal/KernelTests/Core/Theme/ThemeSettingsTest.php b/core/tests/Drupal/KernelTests/Core/Theme/ThemeSettingsTest.php
-index c889ebc49bbf3cc0f4a67dc824052f1f148664b7..b86ec929ff0cddc27e6b4b1e7c94f8b42ee44fb1 100644
+index 6db4ead59a876cc0e64b29e994785a996c60e7de..f417dd142fe0181ea8afbd0bf2291e82759b0003 100644
 --- a/core/tests/Drupal/KernelTests/Core/Theme/ThemeSettingsTest.php
 +++ b/core/tests/Drupal/KernelTests/Core/Theme/ThemeSettingsTest.php
 @@ -112,6 +112,7 @@ public function testLogoConfig(): void {
@@ -2335,7 +2387,7 @@ index c889ebc49bbf3cc0f4a67dc824052f1f148664b7..b86ec929ff0cddc27e6b4b1e7c94f8b4
 +    $theme_handler = $this->container->get('theme_handler');
      $theme = $theme_handler->getTheme('test_theme');
  
-     drupal_static_reset('theme_get_setting');
+     // Tests logo set in test_theme.info.yml.
 diff --git a/core/tests/Drupal/Tests/Core/Theme/RegistryTest.php b/core/tests/Drupal/Tests/Core/Theme/RegistryTest.php
 index 8a78a9179ac560c7a47ff6aeffdbf7add04d662f..69594514c291f5c4af8555c9c5f5f3af5c17cf37 100644
 --- a/core/tests/Drupal/Tests/Core/Theme/RegistryTest.php
@@ -2676,10 +2728,10 @@ index 0000000000000000000000000000000000000000..65bb0be6061374d0527379632524a1f1
 +
 +}
 diff --git a/core/themes/olivero/olivero.theme b/core/themes/olivero/olivero.theme
-index 717dc58f504ad88522f063237de9e5045c8393f6..eb3931483f34ab4a17556c193c75b44f479a0003 100644
+index 5f3b26420c60bb9d848d5c8fb920a1cd4bde6138..771dd8291abdab5815a0f21eee1825351a35590d 100644
 --- a/core/themes/olivero/olivero.theme
 +++ b/core/themes/olivero/olivero.theme
-@@ -12,41 +12,6 @@
+@@ -13,43 +13,6 @@
  use Drupal\Core\Render\Element;
  use Drupal\user\UserInterface;
  
@@ -2689,12 +2741,14 @@ index 717dc58f504ad88522f063237de9e5045c8393f6..eb3931483f34ab4a17556c193c75b44f
 - * Adds body classes if certain regions have content.
 - */
 -function olivero_preprocess_html(&$variables): void {
--  if (theme_get_setting('mobile_menu_all_widths') === 1) {
+-  /** @var \Drupal\Core\Extension\ThemeSettingsProvider $theme_settings_provider */
+-  $theme_settings_provider = \Drupal::service(ThemeSettingsProvider::class);
+-  if ($theme_settings_provider->getSetting('mobile_menu_all_widths') === 1) {
 -    $variables['attributes']['class'][] = 'is-always-mobile-nav';
 -  }
 -
 -  // Convert custom hex to hsl so we can use the hue value.
--  $brand_color_hex = theme_get_setting('base_primary_color') ?? '#1b9ae4';
+-  $brand_color_hex = $theme_settings_provider->getSetting('base_primary_color') ?? '#1b9ae4';
 -  [$h, $s, $l] = _olivero_hex_to_hsl($brand_color_hex);
 -
 -  $variables['html_attributes']->setAttribute('style', "--color--primary-hue:$h;--color--primary-saturation:$s%;--color--primary-lightness:$l");
@@ -2723,16 +2777,17 @@ index 717dc58f504ad88522f063237de9e5045c8393f6..eb3931483f34ab4a17556c193c75b44f
   */
 diff --git a/core/themes/olivero/src/Hook/OliveroPagePreprocessHooks.php b/core/themes/olivero/src/Hook/OliveroPagePreprocessHooks.php
 new file mode 100644
-index 0000000000000000000000000000000000000000..dc1899b572f854c233609a185b95e314328c849a
+index 0000000000000000000000000000000000000000..bcd4c66a351d660a265ced8849766754af1f4e53
 --- /dev/null
 +++ b/core/themes/olivero/src/Hook/OliveroPagePreprocessHooks.php
-@@ -0,0 +1,58 @@
+@@ -0,0 +1,60 @@
 +<?php
 +
 +namespace Drupal\olivero\Hook;
 +
 +use Drupal\Core\Asset\AssetQueryStringInterface;
 +use Drupal\Core\Extension\ThemeExtensionList;
++use Drupal\Core\Extension\ThemeSettingsProvider;
 +use Drupal\Core\Hook\Attribute\Hook;
 +use Symfony\Component\HttpFoundation\RequestStack;
 +
@@ -2745,6 +2800,7 @@ index 0000000000000000000000000000000000000000..dc1899b572f854c233609a185b95e314
 +    protected RequestStack $requestStack,
 +    protected ThemeExtensionList $themeExtensionList,
 +    protected AssetQueryStringInterface $assetQueryString,
++    protected ThemeSettingsProvider $themeSettingsProvider,
 +  ) {
 +  }
 +
@@ -2755,12 +2811,12 @@ index 0000000000000000000000000000000000000000..dc1899b572f854c233609a185b95e314
 +   */
 +  #[Hook('preprocess_html')]
 +  public function preprocessHtml(array &$variables): void {
-+    if (theme_get_setting('mobile_menu_all_widths') === 1) {
++    if ($this->themeSettingsProvider->getSetting('mobile_menu_all_widths') === 1) {
 +      $variables['attributes']['class'][] = 'is-always-mobile-nav';
 +    }
 +
 +    // Convert custom hex to hsl so we can use the hue value.
-+    $brand_color_hex = theme_get_setting('base_primary_color') ?? '#1b9ae4';
++    $brand_color_hex = $this->themeSettingsProvider->getSetting('base_primary_color') ?? '#1b9ae4';
 +    [$h, $s, $l] = _olivero_hex_to_hsl($brand_color_hex);
 +
 +    $variables['html_attributes']->setAttribute('style', "--color--primary-hue:$h;--color--primary-saturation:$s%;--color--primary-lightness:$l");
