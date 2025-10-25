@@ -32,6 +32,8 @@ final class Settings implements ContainerInjectionInterface {
    *   The class resolver.
    * @param \Drupal\user\UserDataInterface|null $userData
    *   The user data service.
+   * @param \Drupal\Core\Extension\ThemeSettingsProvider $themeSettingsProvider
+   *   The theme settings provider.
    */
   public function __construct(
     protected AccountInterface $currentUser,
