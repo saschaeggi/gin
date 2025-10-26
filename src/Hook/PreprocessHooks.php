@@ -620,69 +620,67 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    */
   #[Hook('preprocess_html')]
   public function html(array &$variables): void {
-    // Are we relevant?
-    $gin_activated = Helper::isActive();
+    if (!Helper::isActive()) {
+      return;
+    }
+    // Check if IMCE is active.
+    if (isset($variables['attributes']['class']) && in_array('imce-page', $variables['attributes']['class'], TRUE)) {
+      return;
+    }
 
-    if ($gin_activated) {
-      // Check if IMCE is active.
-      if (isset($variables['attributes']['class']) && in_array('imce-page', $variables['attributes']['class'], TRUE)) {
-        return;
-      }
+    // Get theme settings.
+    $settings = $this->getSettings();
 
-      // Get theme settings.
-      $settings = $this->getSettings();
+    // Old way to set accent color.
+    $variables['html_attributes']['data-gin-accent'] = $settings->get('preset_accent_color');
 
-      // Old way to set accent color.
-      $variables['html_attributes']['data-gin-accent'] = $settings->get('preset_accent_color');
+    // New way to set accent color.
+    $accent_colors = Helper::accentColors();
+    $preset = $settings->get('preset_accent_color');
+    $accent_color = '';
 
-      // New way to set accent color.
-      $accent_colors = Helper::accentColors();
-      $preset = $settings->get('preset_accent_color');
-      $accent_color = '';
+    if ($preset === 'custom' && $settings->get('accent_color')) {
+      $accent_color = $settings->get('accent_color');
+    }
+    elseif (isset($accent_colors[$preset]['hex'])) {
+      $accent_color = $accent_colors[$preset]['hex'];
+    }
 
-      if ($preset === 'custom' && $settings->get('accent_color')) {
-        $accent_color = $settings->get('accent_color');
-      }
-      elseif (isset($accent_colors[$preset]['hex'])) {
-        $accent_color = $accent_colors[$preset]['hex'];
-      }
+    if ($accent_color) {
+      $variables['html_attributes']['style'] = '--accent-base: ' . $accent_color . ';';
+    }
 
-      if ($accent_color) {
-        $variables['html_attributes']['style'] = '--accent-base: ' . $accent_color . ';';
-      }
+    // Set focus color.
+    $variables['html_attributes']['data-gin-focus'] = $settings->get('preset_focus_color');
 
-      // Set focus color.
-      $variables['html_attributes']['data-gin-focus'] = $settings->get('preset_focus_color');
+    // High contrast mode.
+    if ($settings->get('high_contrast_mode')) {
+      $variables['html_attributes']['class'][] = 'gin--high-contrast-mode';
+    }
 
-      // High contrast mode.
-      if ($settings->get('high_contrast_mode')) {
-        $variables['html_attributes']['class'][] = 'gin--high-contrast-mode';
-      }
+    // Set layout density.
+    $variables['html_attributes']['data-gin-layout-density'] = $settings->get('layout_density');
 
-      // Set layout density.
-      $variables['html_attributes']['data-gin-layout-density'] = $settings->get('layout_density');
+    // Edit form? Use the new Gin Edit form layout.
+    if ($this->getContentFormHelper()->isContentForm()) {
+      $variables['attributes']['class'][] = 'gin--edit-form';
+    }
 
-      // Edit form? Use the new Gin Edit form layout.
-      if ($this->getContentFormHelper()->isContentForm()) {
-        $variables['attributes']['class'][] = 'gin--edit-form';
-      }
+    // Only add toolbar/navigation class if user has permission.
+    if (
+      !$this->currentUser->hasPermission('access toolbar') &&
+      !$this->currentUser->hasPermission('access navigation')
+    ) {
+      return;
+    }
 
-      // Only add toolbar/navigation class if user has permission.
-      if (
-        !$this->currentUser->hasPermission('access toolbar') &&
-        !$this->currentUser->hasPermission('access navigation')
-      ) {
-        return;
-      }
-
-      // Check if Navigation module is active.
-      if (Helper::moduleIsActive('navigation')) {
-        $variables['attributes']['class'][] = 'gin--navigation';
-      }
-      else {
-        // Set toolbar class.
-        $variables['attributes']['class'][] = 'gin--toolbar';
-      }
+    // Check if Navigation module is active.
+    if (Helper::moduleIsActive('navigation')) {
+      $variables['attributes']['class'][] = 'gin--navigation';
+    }
+    else {
+      // Set toolbar class.
+      $variables['attributes']['class'][] = 'gin--toolbar';
     }
   }
 
