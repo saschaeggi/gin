@@ -190,58 +190,56 @@ class ThemeHooks implements TrustedCallbackInterface {
       'views_ui_noscript',
     ];
 
-    // Are we relevant?
-    $gin_activated = Helper::isActive();
-
-    if ($gin_activated) {
-      // Attach the init script.
-      $page['#attached']['library'][] = 'gin/init';
-
-      // Attach breadcrumb styles.
-      $page['#attached']['library'][] = 'gin/breadcrumb';
-
-      // Attach accent library.
-      $page['#attached']['library'][] = 'gin/accent';
-
-      // Attach sticky library.
-      $page['#attached']['library'][] = 'gin/sticky';
-
-      // Custom CSS file.
-      if (file_exists('public://gin-custom.css')) {
-        $page['#attached']['library'][] = 'gin/gin_custom_css';
-      }
-
-      // Expose settings to JS.
-      // Get theme settings.
-      $page['#attached']['drupalSettings']['gin']['darkmode'] = $this->getSettings()->get('enable_darkmode');
-      $page['#attached']['drupalSettings']['gin']['darkmode_class'] = 'gin--dark-mode';
-      $page['#attached']['drupalSettings']['gin']['accent_colors'] = Helper::accentColors();
-      $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $this->getSettings()->get('preset_accent_color');
-      $page['#attached']['drupalSettings']['gin']['accent_color'] = $this->getSettings()->get('accent_color');
-      $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $this->getSettings()->get('preset_focus_color');
-      $page['#attached']['drupalSettings']['gin']['focus_color'] = $this->getSettings()->get('focus_color');
-      $page['#attached']['drupalSettings']['gin']['highcontrastmode'] = $this->getSettings()->get('high_contrast_mode');
-      $page['#attached']['drupalSettings']['gin']['highcontrastmode_class'] = 'gin--high-contrast-mode';
-      $page['#attached']['drupalSettings']['gin']['show_user_theme_settings'] = $this->getSettings()->get('show_user_theme_settings');
-
-      // Expose stylesheets to JS.
-      $basethemeurl = '/' . $this->themeExtensionList->getPath('gin');
-      $page['#attached']['drupalSettings']['gin']['variables_css_path'] = $basethemeurl . '/dist/css/theme/variables.css';
-      $page['#attached']['drupalSettings']['gin']['accent_css_path'] = $basethemeurl . '/dist/css/theme/accent.css';
-
-      $page['#attached']['html_head'][] = [
-        [
-          '#tag' => 'script',
-          '#attributes' => [
-            'type' => 'application/json',
-            'id' => 'gin-setting-darkmode',
-          ],
-          '#value' => new FormattableMarkup('{ "ginDarkmode": "@value" }', ['@value' => $this->getSettings()->get('enable_darkmode') ?? 'unknown']),
-        ],
-        'gin_darkmode',
-      ];
-
+    if (!Helper::isActive()) {
+      return;
     }
+
+    // Attach the init script.
+    $page['#attached']['library'][] = 'gin/init';
+
+    // Attach breadcrumb styles.
+    $page['#attached']['library'][] = 'gin/breadcrumb';
+
+    // Attach accent library.
+    $page['#attached']['library'][] = 'gin/accent';
+
+    // Attach sticky library.
+    $page['#attached']['library'][] = 'gin/sticky';
+
+    // Custom CSS file.
+    if (file_exists('public://gin-custom.css')) {
+      $page['#attached']['library'][] = 'gin/gin_custom_css';
+    }
+
+    // Expose settings to JS.
+    // Get theme settings.
+    $page['#attached']['drupalSettings']['gin']['darkmode'] = $this->getSettings()->get('enable_darkmode');
+    $page['#attached']['drupalSettings']['gin']['darkmode_class'] = 'gin--dark-mode';
+    $page['#attached']['drupalSettings']['gin']['accent_colors'] = Helper::accentColors();
+    $page['#attached']['drupalSettings']['gin']['preset_accent_color'] = $this->getSettings()->get('preset_accent_color');
+    $page['#attached']['drupalSettings']['gin']['accent_color'] = $this->getSettings()->get('accent_color');
+    $page['#attached']['drupalSettings']['gin']['preset_focus_color'] = $this->getSettings()->get('preset_focus_color');
+    $page['#attached']['drupalSettings']['gin']['focus_color'] = $this->getSettings()->get('focus_color');
+    $page['#attached']['drupalSettings']['gin']['highcontrastmode'] = $this->getSettings()->get('high_contrast_mode');
+    $page['#attached']['drupalSettings']['gin']['highcontrastmode_class'] = 'gin--high-contrast-mode';
+    $page['#attached']['drupalSettings']['gin']['show_user_theme_settings'] = $this->getSettings()->get('show_user_theme_settings');
+
+    // Expose stylesheets to JS.
+    $basethemeurl = '/' . $this->themeExtensionList->getPath('gin');
+    $page['#attached']['drupalSettings']['gin']['variables_css_path'] = $basethemeurl . '/dist/css/theme/variables.css';
+    $page['#attached']['drupalSettings']['gin']['accent_css_path'] = $basethemeurl . '/dist/css/theme/accent.css';
+
+    $page['#attached']['html_head'][] = [
+      [
+        '#tag' => 'script',
+        '#attributes' => [
+          'type' => 'application/json',
+          'id' => 'gin-setting-darkmode',
+        ],
+        '#value' => new FormattableMarkup('{ "ginDarkmode": "@value" }', ['@value' => $this->getSettings()->get('enable_darkmode') ?? 'unknown']),
+      ],
+      'gin_darkmode',
+    ];
   }
 
   /**
