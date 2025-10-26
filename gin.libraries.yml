@@ -51,7 +51,7 @@ global-styling:
     - system/admin
     - core/jquery
     - core/drupal
-    # Gin has small and extra small variation for most of the control elements
+    # Admin has small and extra small variation for most control elements
     # such as inputs, action links, buttons, dropbuttons. For usability and
     # accessibility reasons, we keep target sizes big enough on touch screen
     # devices (by not making these elements smaller than their default size).

@@ -117,7 +117,7 @@ final class Settings implements ContainerInjectionInterface {
   }
 
   /**
-   * Clears all gin settings for the current user.
+   * Clears all admin settings for the current user.
    *
    * @param \Drupal\Core\Session\AccountInterface|null $account
    *   The account object. Current user if NULL.
@@ -278,7 +278,7 @@ final class Settings implements ContainerInjectionInterface {
       '#title' => $this->t('Focus color'),
       '#default_value' => $account ? $this->get('preset_focus_color', $account) : $this->getDefault('preset_focus_color'),
       '#options' => [
-        'gin' => $this->t('Gin Focus color (Default)'),
+        'gin' => $this->t('Admin Focus color (Default)'),
         'green' => $this->t('Green'),
         'claro' => $this->t('Claro Green'),
         'orange' => $this->t('Orange'),

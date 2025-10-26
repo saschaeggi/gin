@@ -661,7 +661,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
     // Set layout density.
     $variables['html_attributes']['data-gin-layout-density'] = $settings->get('layout_density');
 
-    // Edit form? Use the new Gin Edit form layout.
+    // Edit form? Use the new admin Edit form layout.
     if ($this->getContentFormHelper()->isContentForm()) {
       $variables['attributes']['class'][] = 'gin--edit-form';
     }
@@ -752,7 +752,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    */
   #[Hook('preprocess_install_page')]
   public function installPage(array &$variables): void {
-    // Gin has custom styling for the install page.
+    // Admin has custom styling for the install page.
     $variables['#attached']['library'][] = 'gin/install-page';
   }
 
@@ -877,7 +877,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    */
   #[Hook('preprocess_maintenance_page')]
   public function maintenancePage(array &$variables): void {
-    // Gin has custom styling for the maintenance page.
+    // Admin has custom styling for the maintenance page.
     $variables['#attached']['library'][] = 'gin/maintenance-page';
   }
 
@@ -1040,7 +1040,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
    */
   #[Hook('preprocess_page')]
   public function page(array &$variables): void {
-    // Required for allowing subtheming Gin.
+    // Required for allowing subtheming admin.
     $activeThemeName = $this->themeManager->getActiveTheme()->getName();
     $variables['active_admin_theme'] = $activeThemeName;
     $variables['active_navigation'] = Helper::moduleIsActive('navigation');
@@ -1238,7 +1238,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   /**
    * Implements toolbar preprocess.
    *
-   * This is also called by system_preprocess_toolbar() in instances where Gin
+   * This is also called by system_preprocess_toolbar() in instances where admin
    * is the admin theme but not the active theme.
    *
    * @see system_preprocess_toolbar()

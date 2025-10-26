@@ -50,7 +50,7 @@ class ThemeHooks implements TrustedCallbackInterface {
   /**
    * Implements hook_css_alter().
    *
-   * Set Gin CSS on top of all other CSS files.
+   * Set admin CSS on top of all other CSS files.
    */
   #[Hook('css_alter')]
   public function cssAlter(array &$css): void {
@@ -91,7 +91,8 @@ class ThemeHooks implements TrustedCallbackInterface {
 
     // Add a pre-render function for Operations to set #dropbutton_type.
     if (isset($info['operations'])) {
-      // In Gin, Operations should always use the extrasmall dropbutton variant.
+      // In admin, operations should always use the extrasmall dropbutton
+      // variant.
       // To add CSS classes based on variants, the element must have the
       // #dropbutton_type property before it is processed by
       // \Drupal\Core\Render\Element\Dropbutton::preRenderDropbutton(). This
@@ -134,7 +135,7 @@ class ThemeHooks implements TrustedCallbackInterface {
   public function libraryInfoAlter(array &$libraries, string $extension): void {
     if ($extension === 'toolbar') {
       $gin_info = $this->themeHandler->listInfo()['gin']->info;
-      // @todo After #Gin-merge-into-Core set path to "/core/themes/gin/".
+      // @todo After #Gin-merge-into-Core set path to "/core/themes/admin/".
       $path_prefix = '/themes/contrib/gin/';
       $gin_toolbar_overrides = $gin_info['libraries-override']['toolbar/toolbar'];
       foreach ($gin_toolbar_overrides['css'] as $concern => $overrides) {
@@ -260,7 +261,7 @@ class ThemeHooks implements TrustedCallbackInterface {
     foreach (['toolbar', 'menu__toolbar'] as $registry_item) {
       if (isset($theme_registry[$registry_item])) {
         // @todo After #Gin-merge-into-Core set path to
-        //   "core/themes/gin/templates/navigation".
+        //   "core/themes/admin/templates/navigation".
         $theme_registry[$registry_item]['path'] = 'themes/contrib/gin/templates/navigation';
       }
     }

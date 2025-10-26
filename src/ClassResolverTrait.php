@@ -5,7 +5,7 @@ namespace Drupal\gin;
 use Drupal\Core\DependencyInjection\ClassResolverInterface;
 
 /**
- * Provides class resolver methods for Gin services.
+ * Provides class resolver methods for admin services.
  */
 trait ClassResolverTrait {
 
@@ -17,31 +17,31 @@ trait ClassResolverTrait {
   protected ClassResolverInterface $classResolver;
 
   /**
-   * The Gin settings.
+   * The admin settings.
    *
    * @var mixed|null
    */
   protected mixed $settings = NULL;
 
   /**
-   * The Gin content form helper.
+   * The admin content form helper.
    *
    * @var mixed|null
    */
   protected mixed $contentFormHelper = NULL;
 
   /**
-   * The Gin description toggle.
+   * The admin description toggle.
    *
    * @var mixed|null
    */
   protected mixed $descriptionToggle = NULL;
 
   /**
-   * Gets the Gin settings.
+   * Gets the admin settings.
    *
    * @return \Drupal\gin\Settings
-   *   The Gin settings.
+   *   The admin settings.
    */
   protected function getSettings(): Settings {
     if ($this->settings === NULL) {
@@ -51,10 +51,10 @@ trait ClassResolverTrait {
   }
 
   /**
-   * Gets the Gin content form helper.
+   * Gets the admin content form helper.
    *
    * @return \Drupal\gin\ContentFormHelper
-   *   The Gin content form helper.
+   *   The admin content form helper.
    */
   protected function getContentFormHelper(): ContentFormHelper {
     if ($this->contentFormHelper === NULL) {
@@ -64,10 +64,10 @@ trait ClassResolverTrait {
   }
 
   /**
-   * Gets the Gin description toggle.
+   * Gets the admin description toggle.
    *
    * @return \Drupal\gin\DescriptionToggle
-   *   The Gin description toggle.
+   *   The admin description toggle.
    */
   protected function getDescriptionToggle(): DescriptionToggle {
     if ($this->descriptionToggle === NULL) {

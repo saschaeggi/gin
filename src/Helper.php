@@ -6,12 +6,12 @@ use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\NestedArray;
 
 /**
- * Gin helper methods.
+ * Admin helper methods.
  */
 final class Helper {
 
   /**
-   * Flag if Gin is active.
+   * Flag if admin is active.
    *
    * @var bool|null
    */
@@ -201,7 +201,7 @@ final class Helper {
   }
 
   /**
-   * Helper function for check if Gin is active.
+   * Helper function for check if admin is active.
    */
   public static function isActive(): bool {
     if (self::$active === NULL) {

@@ -1,7 +1,7 @@
-# Schema for the configuration files of the Gin theme.
+# Schema for the configuration files of the admin theme.
 gin.settings:
   type: theme_settings
-  label: 'gin settings'
+  label: 'Admin settings'
   mapping:
     preset_accent_color:
       type: string

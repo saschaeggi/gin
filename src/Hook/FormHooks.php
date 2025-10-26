@@ -400,7 +400,7 @@ class FormHooks {
     // Allow user settings.
     $form['custom_settings']['show_user_theme_settings'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('Users can override Gin settings'),
+      '#title' => $this->t('Users can override admin settings'),
       '#description' => $this->t('Expose the admin theme settings to users.'),
       '#default_value' => $this->getSettings()->getDefault('show_user_theme_settings'),
     ];

@@ -1,14 +1,8 @@
-name: Gin
+name: Admin
 type: theme
 base theme: false
-description: 'Admin theme with a strong focus on improving the Editorial Experience. Learn more about Gin’s <a href="https://www.drupal.org/docs/contributed-themes/gin-admin-theme/specific-settings-within-gin" target="_blank">Settings</a> and how to customize Gin in our <a href="https://www.drupal.org/docs/contributed-themes/gin-admin-theme/custom-theming" target="_blank">Custom theming guide</a>.'
-core_version_requirement: ^11.2
-
-# These dependencies will not allow the installation of Gin at all if gin_toolbar is not activated.
-# A bit harsh, so we'll continue to just rely on the composer requirement for now.
-# dependencies:
-#   - drupal:gin_toolbar
-#   - drupal:link
+description: 'Admin theme with a strong focus on improving the Editorial Experience. Learn more about admin’s <a href="https://www.drupal.org/docs/contributed-themes/gin-admin-theme/specific-settings-within-gin" target="_blank">Settings</a> and how to customize Gin in our <a href="https://www.drupal.org/docs/contributed-themes/gin-admin-theme/custom-theming" target="_blank">Custom theming guide</a>.'
+core_version_requirement: ^11.3
 
 libraries:
   - core/drupal.message
@@ -100,7 +94,7 @@ libraries-override:
       theme:
         css/views_ui.admin.theme.css: merge/css/theme/views_ui.admin.theme.css
 
-  # Gin overrides: replace
+  # Admin overrides: replace
   media_library/view:
     js:
       js/media_library.view.js: js/overrides/media_library.view.js
@@ -109,7 +103,7 @@ libraries-override:
     js:
       misc/tableselect.js: js/overrides/tableselect.js
 
-  # Gin overrides: disable
+  # Admin overrides: disable
   # needed override to overcome dialog styling issues
   gin/gin.drupal.dialog:
     css:
