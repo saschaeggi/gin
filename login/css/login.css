@@ -1,0 +1,259 @@
+:root {
+  --gin-color-primary: #003cc5;
+  --gin-color-primary-hover: #0036b1;
+  --gin-color-primary-active: #00339a;
+}
+
+.button--primary {
+  background-color: var(--gin-color-primary);
+}
+.button--primary:hover {
+  background-color: var(--gin-color-primary-hover);
+}
+.button--primary:active {
+  background-color: var(--gin-color-primary-hover);
+}
+
+a,
+.link,
+button.link,
+.forgot-password-link {
+  color: var(--gin-color-primary);
+}
+a:hover,
+.link:hover,
+button.link:hover,
+.forgot-password-link:hover {
+  color: var(--gin-color-primary-hover);
+}
+a:active,
+.link:active,
+button.link:active,
+.forgot-password-link:active {
+  color: var(--gin-color-primary-active);
+}
+
+.form-boolean--type-checkbox:checked,
+[open] > .claro-details__summary--accordion:not(:focus):not(:active)::after,
+[open] > .claro-details__summary--accordion-item:not(:focus):not(:active)::after {
+  border-color: var(--gin-color-primary);
+}
+.form-boolean--type-checkbox:checked:hover,
+[open] > .claro-details__summary--accordion:not(:focus):not(:active)::after:hover,
+[open] > .claro-details__summary--accordion-item:not(:focus):not(:active)::after:hover {
+  border-color: var(--gin-color-primary-hover);
+}
+.form-boolean--type-checkbox:checked:active,
+[open] > .claro-details__summary--accordion:not(:focus):not(:active)::after:active,
+[open] > .claro-details__summary--accordion-item:not(:focus):not(:active)::after:active {
+  border-color: var(--gin-color-primary-active);
+}
+
+.is-horizontal .tabs__link:hover,
+.claro-details__summary:hover,
+.action-link:hover {
+  color: var(--gin-color-primary-hover);
+}
+
+.claro-details[open] > .claro-details__summary:focus {
+  color: var(--gin-color-primary-active);
+}
+
+body.gin-login .toolbar-icon-default {
+  font-size: 0;
+  text-indent: -999em;
+}
+body.gin-login .toolbar-icon-default::before {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-color: var(--gin-color-text, #000);
+  -webkit-mask-image: url(../images/gin.svg);
+          mask-image: url(../images/gin.svg);
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center center;
+          mask-position: center center;
+  -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
+}
+@media (min-width: 800px) {
+  body.gin-login .toolbar-icon-default::before {
+    width: 40px;
+    height: 40px;
+  }
+}
+body.gin-login .toolbar-icon-default::before:hover {
+  background-color: var(--gin-color-primary, #003cc5);
+}
+body.gin-login .user-form-page {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  max-height: 100%;
+  margin-bottom: -1px;
+  background: var(--gin-bg-layer, #fff);
+}
+@media (min-width: 800px) {
+  body.gin-login .user-form-page {
+    flex-wrap: nowrap;
+  }
+}
+body.gin-login .user-form-page, body.gin-login .user-form-page * {
+  box-sizing: border-box;
+}
+body.gin-login .user-form-page__user-form, body.gin-login .user-form-page__wallpaper {
+  width: 100%;
+}
+@media (min-width: 800px) {
+  body.gin-login .user-form-page__user-form, body.gin-login .user-form-page__wallpaper {
+    flex-basis: 50%;
+  }
+}
+body.gin-login .user-form-page__user-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 60%;
+}
+@media (max-width: 800px) {
+  body.gin-login .user-form-page__user-form {
+    flex-basis: 100%;
+    align-content: flex-start;
+  }
+}
+@media (min-width: 1800px) {
+  body.gin-login .user-form-page__user-form {
+    flex-basis: 50%;
+  }
+}
+body.gin-login .user-form-page__user-form img {
+  max-width: 100%;
+  max-height: 40px;
+}
+body.gin-login .user-form-page__wallpaper {
+  display: none;
+  pointer-events: none;
+  position: relative;
+  background-color: #ccc;
+}
+@media (min-width: 800px) {
+  body.gin-login .user-form-page__wallpaper {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 40%;
+  }
+}
+@media (min-width: 1800px) {
+  body.gin-login .user-form-page__wallpaper {
+    flex-basis: 50%;
+  }
+}
+body.gin-login .user-form-page__wallpaper img {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: fadeInWallpaper 300ms ease forwards;
+}
+body.gin-login .user-form-page__page-title {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 100%;
+  text-overflow: unset;
+  white-space: normal;
+}
+@media (min-width: 800px) {
+  body.gin-login .user-form-page__page-title {
+    font-size: 3rem;
+    margin-top: 2rem;
+  }
+}
+body.gin-login .user-form-page .content-header {
+  flex-basis: 100%;
+  padding-top: 2.25rem;
+  background: transparent;
+}
+@media (max-width: 800px) {
+  body.gin-login .user-form-page .content-header {
+    margin-bottom: 4rem;
+  }
+}
+body.gin-login .user-form-page .content-header a {
+  display: flex;
+}
+body.gin-login .user-form-page .layout-container {
+  max-width: 560px;
+  margin: 0 auto !important;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+@media (min-width: 800px) {
+  body.gin-login .user-form-page .layout-container {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+body.gin-login .user-form-page .block-system > form {
+  padding: 0;
+  border: 0 none;
+  box-shadow: none;
+  background: transparent;
+}
+body.gin-login .user-form-page .form-type--text input,
+body.gin-login .user-form-page .form-type--password input,
+body.gin-login .user-form-page .form-type--email input {
+  width: 100%;
+}
+body.gin-login .user-form-page .form-element {
+  width: 100%;
+  padding: 1rem;
+}
+body.gin-login .user-form-page .more-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 0;
+  margin-top: 0;
+}
+body.gin-login .user-form-page .register-button {
+  width: 100%;
+  margin-right: 0;
+}
+body.gin-login .user-form-page .forgot-password-link {
+  display: inline-block;
+  margin-top: 2rem;
+}
+body.gin-login .user-login-form .button {
+  width: 100%;
+  padding: 1.25rem 1rem;
+  margin-right: 0;
+  margin-bottom: 0;
+}
+body.gin-login .user-login-form .button--primary {
+  margin-top: 0;
+}
+body.gin-login .user-login-form .form-actions {
+  display: block;
+  margin-bottom: 0;
+}
+body.gin-login .page-wrapper {
+  margin-top: 0;
+}
+
+@keyframes fadeInWallpaper {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+#sliding-popup {
+  display: none !important;
+}

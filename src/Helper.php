@@ -268,4 +268,31 @@ final class Helper {
     return self::$modules[$module];
   }
 
+  /**
+   * Get route definitions.
+   *
+   * @return array
+   *   The routes of login.
+   */
+  public static function getLoginRouteDefinitions(): array {
+    $route_definitions = [
+      'user.login' => [
+        'page' => 'page__user__login',
+        'template' => 'page--user--login',
+      ],
+      'user.pass' => [
+        'page' => 'page__user__password',
+        'template' => 'page--user--password',
+      ],
+      'user.register' => [
+        'page' => 'page__user__register',
+        'template' => 'page--user--register',
+      ],
+    ];
+
+    \Drupal::moduleHandler()->alter('admin_login_route_definitions', $route_definitions);
+
+    return $route_definitions;
+  }
+
 }

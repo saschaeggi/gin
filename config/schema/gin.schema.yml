@@ -3,6 +3,16 @@ gin.settings:
   type: theme_settings
   label: 'Admin settings'
   mapping:
+    brand_image:
+      type: mapping
+      label: 'Brand image'
+      mapping:
+        use_default:
+          type: boolean
+          label: 'Use random image'
+        path:
+          type: string
+          label: 'Path'
     preset_accent_color:
       type: string
       label: 'Preset accent color'

@@ -13,6 +13,7 @@ use Drupal\Core\Security\TrustedCallbackInterface;
 use Drupal\gin\ClassResolverTrait;
 use Drupal\gin\DescriptionToggle;
 use Drupal\gin\Helper;
+use Drupal\user\Routing\RouteSubscriber;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -190,7 +191,16 @@ class ThemeHooks implements TrustedCallbackInterface {
       'views_ui_noscript',
     ];
 
-    if (!Helper::isActive()) {
+    if (RouteSubscriber::useAdminThemeForLogin()) {
+      $origin_url = $this->requestStack->getCurrentRequest()->getSchemeAndHttpHost() . $this->requestStack->getCurrentRequest()->getBaseUrl();
+      $page['#attached']['drupalSettings']['gin_login']['path'] = $origin_url . '/' . $theme_path . '/login';
+      $page['#attached']['library'][] = 'gin/modern_login';
+      if ($this->getSettings()->getDefault('brand_image.use_default')) {
+        $page['#attached']['library'][] = 'gin/modern_login_wallpaper';
+      }
+    }
+
+    if (!Helper::isActive() && !RouteSubscriber::useAdminThemeForLogin()) {
       return;
     }
 
@@ -240,6 +250,21 @@ class ThemeHooks implements TrustedCallbackInterface {
       ],
       'gin_darkmode',
     ];
+  }
+
+  /**
+   * Implements hook_theme().
+   */
+  #[Hook('theme')]
+  public function theme(): array {
+    $theme = [];
+    foreach (Helper::getLoginRouteDefinitions() as $route_definition) {
+      $theme[$route_definition['page']] = [
+        'template' => $route_definition['template'],
+      ];
+    }
+
+    return $theme;
   }
 
   /**

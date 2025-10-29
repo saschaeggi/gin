@@ -2,19 +2,27 @@
 
 namespace Drupal\gin\Hook;
 
+use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\DependencyInjection\ClassResolverInterface;
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\EntityFormInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\File\Exception\FileException;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Hook\Attribute\Hook;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\State\StateInterface;
+use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Core\Url;
 use Drupal\gin\ClassResolverTrait;
 use Drupal\gin\Helper;
 use Drupal\gin\Settings;
 use Drupal\media\MediaForm;
+use Drupal\user\Routing\RouteSubscriber;
 use Drupal\views\Form\ViewsForm;
 use Drupal\views_ui\Form\Ajax\ViewsFormInterface;
 
@@ -33,6 +41,8 @@ class FormHooks {
     protected ClassResolverInterface $classResolver,
     protected readonly ModuleHandlerInterface $moduleHandler,
     protected readonly ConfigFactoryInterface $configFactory,
+    protected readonly StateInterface $state,
+    protected readonly MessengerInterface $messenger,
   ) {}
 
   /**
@@ -152,6 +162,61 @@ class FormHooks {
     // User form (Login, Register or Forgot password).
     if (str_contains($form_id, 'user_login') || str_contains($form_id, 'user_register') || str_contains($form_id, 'user_pass')) {
       $form['actions']['submit']['#attributes']['class'][] = 'button--primary';
+      // Check if site is in maintenance mode.
+      // Display a message if true.
+      if ($this->state->get('system.maintenance_mode')) {
+        $this->messenger->addWarning(
+          new FormattableMarkup($this->configFactory->get('system.maintenance')->get('message'), [
+            '@site' => $this->configFactory->get('system.site')->get('name'),
+          ])
+        );
+      }
+    }
+    // Adding button/links to Register and Forgot password.
+    if (str_contains($form_id, 'user_login')) {
+      // Move actions before new elements.
+      $form['actions']['#weight'] = '98';
+
+      // Add new class to submit button.
+      $form['actions']['submit']['#attributes']['class'][] = 'button-login';
+
+      // New wrapper.
+      $form['more-links'] = [
+        '#type' => 'container',
+        '#weight' => '99',
+        '#attributes' => ['class' => ['more-links']],
+      ];
+
+      // Register button.
+      $register_url = Url::fromRoute('user.register');
+      if ($register_url->access()) {
+        $form['more-links']['register_button'] = [
+          '#type' => 'link',
+          '#url' => $register_url,
+          '#title' => $this->t('Create new account'),
+          '#attributes' => [
+            'class' => [
+              'register-button',
+              'button',
+              'button--secondary',
+            ],
+          ],
+          '#weight' => '1',
+        ];
+      }
+
+      // Forgot password link.
+      $form['more-links']['forgot_password_link'] = [
+        '#type' => 'link',
+        '#url' => Url::fromRoute('user.pass'),
+        '#title' => $this->t('Forgot your password?'),
+        '#attributes' => ['class' => ['link', 'forgot-password-link']],
+        '#weight' => '2',
+      ];
+    }
+    // Changing name of Reset button.
+    if (str_contains($form_id, 'user_pass')) {
+      $form['actions']['submit']['#value'] = $this->t('Reset');
     }
 
     // Bulk forms: update action & actions to small variants.
@@ -375,11 +440,14 @@ class FormHooks {
     if (!isset($form['config_key']['#value']) || $form['config_key']['#value'] !== 'gin.settings') {
       return;
     }
+    $settings = $this->getSettings();
+
     /*
      * //////////////////////////
      * Move default theme settings to bottom.
      * * //////////////////////////
      */
+    $form['logo']['#open'] = FALSE;
     $form['logo']['#weight'] = 97;
     $form['favicon']['#open'] = FALSE;
     $form['favicon']['#weight'] = 98;
@@ -395,45 +463,152 @@ class FormHooks {
       '#type' => 'details',
       '#open' => TRUE,
       '#title' => $this->t('Settings'),
-    ] + $this->getSettings()->getSettingsForm();
+    ] + $settings->getSettingsForm();
 
     // Allow user settings.
     $form['custom_settings']['show_user_theme_settings'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Users can override admin settings'),
       '#description' => $this->t('Expose the admin theme settings to users.'),
-      '#default_value' => $this->getSettings()->getDefault('show_user_theme_settings'),
+      '#default_value' => $settings->getDefault('show_user_theme_settings'),
     ];
 
     /*
      * //////////////////////////
-     * Logo settings.
+     * Modern Login settings.
      * * ////////////////////////
      */
-    if (isset($form['logo']['settings']['logo_upload']['#upload_validators']['file_validate_extensions'])) {
-      $form['logo']['settings']['logo_upload']['#upload_validators'] = ['file_validate_extensions' => ['png gif jpg jpeg apng svg']];
+    if (RouteSubscriber::isUserLoginAdminThemeEnabled() && $this->moduleHandler->moduleExists('file')) {
+      $form['brand_image'] = [
+        '#type' => 'details',
+        '#open' => FALSE,
+        '#title' => $this->t('Login wallpaper'),
+        '#weight' => 100,
+      ];
+      $form['brand_image']['default_brand_image'] = [
+        '#type' => 'checkbox',
+        '#title' => $this->t('Use random image'),
+        '#default_value' => $settings->getDefault('brand_image.use_default'),
+        '#tree' => FALSE,
+      ];
+      $form['brand_image']['settings'] = [
+        '#type' => 'container',
+        '#states' => [
+          'invisible' => [
+            'input[name="default_brand_image"]' => ['checked' => TRUE],
+          ],
+        ],
+      ];
+      $form['brand_image']['settings']['brand_image_path'] = [
+        '#type' => 'textfield',
+        '#title' => $this->t('Path to custom image'),
+        '#default_value' => $settings->getDefault('brand_image.path') ? $settings->getDefault('brand_image.path') : '',
+      ];
+      $form['brand_image']['settings']['brand_image_upload'] = [
+        '#type' => 'file',
+        '#title' => $this->t('Upload image'),
+        '#description' => $this->t("If you don't have direct file access to the server, use this field to upload your brand image."),
+        '#upload_validators' => [
+          'FileIsImage' => [],
+          'FileExtension' => [
+            'extensions' => 'png gif jpg jpeg apng webp avif',
+          ],
+        ],
+      ];
     }
 
-    // Upgrade path:
-    // Move settings to new fields.
-    if ($this->getSettings()->getDefault('icon_default') === FALSE) {
-      $form['logo']['default_logo']['#default_value'] = FALSE;
-      $form['logo']['settings']['logo_path']['#default_value'] = $this->getSettings()->getDefault('icon_path');
-      $form['#submit'][] = [__CLASS__, 'formSystemThemeSettingsAlterSubmit'];
-    }
+    // Add handler.
+    $form['#validate'][] = [__CLASS__, 'formSystemThemeSettingsAlterValidate'];
+    $form['#submit'][] = [__CLASS__, 'formSystemThemeSettingsAlterSubmit'];
 
     // Attach custom library.
     $form['#attached']['library'][] = 'gin/settings';
   }
 
   /**
-   * Cleanup settings.
+   * Validate theme settings.
    */
-  public function formSystemThemeSettingsAlterSubmit(): void {
-    $config = $this->configFactory->getEditable('gin.settings');
-    $config->clear('icon_path')
-      ->clear('icon_default')
-      ->save();
+  public static function formSystemThemeSettingsAlterValidate(array &$form, FormStateInterface $form_state): void {
+    // When intending to use the default logo, unset the logo_path.
+    if ($form_state->getValue('default_brand_image')) {
+      $form_state
+        ->unsetValue('brand_image_path')
+        ->unsetValue('brand_image_upload');
+    }
+    else {
+      $file = _file_save_upload_from_form($form['brand_image']['settings']['brand_image_upload'], $form_state, 0);
+      if ($file) {
+        // Put the temporary file in form_values so we can save it on submit.
+        $form_state->setValue('brand_image_upload', $file);
+      }
+
+    }
+    // If the user provided a path for a brand image, make sure a file exists at
+    // that path.
+    $path = $form_state->getValue('brand_image_path');
+
+    // Move brand image values to properties to avoid config schema errors when
+    // the form submission saves all values in the form to config before the
+    // form submission handler below can do its cleanup.
+    $brandProperties = [
+      $form_state->getValue('default_brand_image'),
+      $form_state->getValue('brand_image_path'),
+      $form_state->getValue('brand_image_upload'),
+    ];
+    $form_state->set('brand_image', $brandProperties);
+    $form_state
+      ->unsetValue('default_brand_image')
+      ->unsetValue('brand_image_path')
+      ->unsetValue('brand_image_upload');
+    if ($path !== NULL) {
+      // Absolute local file paths are invalid.
+      if (\Drupal::service('file_system')->realpath($path) !== $path) {
+        // A path relative to the Drupal root or a fully qualified URI is valid.
+        if (is_file($path)) {
+          return;
+        }
+        // Prepend 'public://' for relative file paths within public filesystem.
+        if (StreamWrapperManager::getScheme($path) === FALSE) {
+          $path = 'public://' . $path;
+        }
+        if (is_file($path)) {
+          $brandProperties[1] = $path;
+          $form_state->set('brand_image', $brandProperties);
+          return;
+        }
+      }
+      $form_state->setErrorByName('brand_image_path', new TranslatableMarkup('The custom brand image path is invalid.'));
+    }
+  }
+
+  /**
+   * Submit theme settings.
+   */
+  public static function formSystemThemeSettingsAlterSubmit(array &$form, FormStateInterface $form_state): void {
+    $config = \Drupal::configFactory()->getEditable('gin.settings');
+    [$default, $path, $upload] = $form_state->get('brand_image');
+    if ($default) {
+      $config
+        ->set('brand_image.use_default', TRUE)
+        ->clear('brand_image.path');
+    }
+    else {
+      // If the user uploaded a new brand image, save it to a permanent
+      // location and use it in place of the default theme-provided file.
+      $default_scheme = \Drupal::configFactory()->get('system.file')->get('default_scheme');
+      try {
+        if (!empty($upload)) {
+          $path = \Drupal::service('file_system')->copy($upload->getFileUri(), $default_scheme . '://');
+        }
+      }
+      catch (FileException) {
+        // Ignore.
+      }
+      $config
+        ->set('brand_image.use_default', FALSE)
+        ->set('brand_image.path', $path);
+    }
+    $config->save();
   }
 
   /**

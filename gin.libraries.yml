@@ -554,3 +554,14 @@ maintenance_page:
     - gin/gin
     - gin/accent
     - gin/init
+
+# Modern login
+modern_login:
+  css:
+    theme:
+      login/css/login.css: { minified: false, weight: -99 }
+modern_login_wallpaper:
+  js:
+    login/js/wallpaper.js: { minified: false }
+  dependencies:
+    - core/once

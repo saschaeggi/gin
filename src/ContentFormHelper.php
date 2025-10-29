@@ -12,6 +12,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Theme\ThemeManagerInterface;
+use Drupal\user\Routing\RouteSubscriber;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -79,6 +80,9 @@ final class ContentFormHelper implements ContainerInjectionInterface {
   public function formAlter(array &$form, FormStateInterface $form_state, string $form_id): void {
     if ($this->isModalOrOffcanvas()) {
       $form['is_ajax_request'] = ['#weight' => -1];
+      return;
+    }
+    if (RouteSubscriber::useAdminThemeForLogin()) {
       return;
     }
 

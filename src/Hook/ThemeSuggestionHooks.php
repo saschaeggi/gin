@@ -5,6 +5,7 @@ namespace Drupal\gin\Hook;
 use Drupal\Core\DependencyInjection\ClassResolverInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Path\PathMatcherInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\gin\ClassResolverTrait;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -21,6 +22,7 @@ class ThemeSuggestionHooks {
   public function __construct(
     protected readonly RequestStack $requestStack,
     protected readonly PathMatcherInterface $pathMatcher,
+    protected readonly RouteMatchInterface $routeMatch,
     protected ClassResolverInterface $classResolver,
   ) {}
 
@@ -80,6 +82,7 @@ class ThemeSuggestionHooks {
   #[Hook('theme_suggestions_page_alter')]
   public function page(array &$suggestions): void {
     $path = $this->requestStack->getCurrentRequest()?->getPathInfo();
+    $route = $this->routeMatch->getRouteName();
 
     if ($path !== '/') {
       $path = trim($path, '/');
@@ -90,6 +93,20 @@ class ThemeSuggestionHooks {
     // The node page template is required to use the node content form.
     if (!in_array('page__node', $suggestions, TRUE) && $this->getContentFormHelper()->isContentForm()) {
       $suggestions[] = 'page__node';
+    }
+
+    switch ($route) {
+      case 'user.login':
+        $suggestions[] = 'page__user__login';
+        break;
+
+      case 'user.pass':
+        $suggestions[] = 'page__user__password';
+        break;
+
+      case 'user.register':
+        $suggestions[] = 'page__user__register';
+        break;
     }
   }
 

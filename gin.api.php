@@ -65,5 +65,15 @@ function hook_gin_content_form_ignore_form_ids(): array {
 }
 
 /**
+ * Implements hook_admin_login_route_definitions_alter().
+ */
+function hook_admin_login_route_definitions_alter(&$route_definitions): void {
+  $route_definitions['user.login.alternative'] = [
+    'page' => 'page__user__login',
+    'template' => 'page--user--login',
+  ];
+}
+
+/**
  * @} End of "addtogroup hooks".
  */

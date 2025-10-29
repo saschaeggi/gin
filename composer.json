@@ -35,6 +35,13 @@
     "require": {
         "drupal/gin_toolbar": "^3.0"
     },
+    "extra": {
+        "patches": {
+            "drupal/core": {
+                "User Login Admin Theme": "patches/13601.diff"
+            }
+        }
+    },
     "scripts": {
         "phpcs": "phpcs -s --runtime-set ignore_warnings_on_exit 1 --runtime-set ignore_errors_on_exit 0 'web/modules/custom'"
     }

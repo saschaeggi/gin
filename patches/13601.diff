@@ -1,0 +1,82 @@
+diff --git a/core/modules/user/src/Routing/RouteSubscriber.php b/core/modules/user/src/Routing/RouteSubscriber.php
+new file mode 100644
+index 0000000000000000000000000000000000000000..63771f356f1f72266e9f7797b827b1dc1e9f6b43
+--- /dev/null
++++ b/core/modules/user/src/Routing/RouteSubscriber.php
+@@ -0,0 +1,43 @@
++<?php
++
++namespace Drupal\user\Routing;
++
++use Drupal\Core\Routing\RouteSubscriberBase;
++use Drupal\Core\Site\Settings;
++use Drupal\gin\Helper;
++use Symfony\Component\Routing\RouteCollection;
++
++/**
++ * Listens to the dynamic route events.
++ */
++class RouteSubscriber extends RouteSubscriberBase {
++
++  /**
++   * Checks if admin theme should be used for login.
++   */
++  public static function isUserLoginAdminThemeEnabled(): bool {
++    return class_exists('\Drupal\gin\Helper') && Settings::get('user_login_admin_theme', TRUE);
++  }
++
++  /**
++   * Checks if current route is login related and should use the admin theme.
++   */
++  public static function useAdminThemeForLogin(): bool {
++    return self::isUserLoginAdminThemeEnabled() && array_key_exists(\Drupal::routeMatch()->getRouteName(), Helper::getLoginRouteDefinitions());
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function alterRoutes(RouteCollection $collection): void {
++    if (!self::isUserLoginAdminThemeEnabled()) {
++      return;
++    }
++    foreach (Helper::getLoginRouteDefinitions() as $id => $loginRouteDefinition) {
++      if ($route = $collection->get($id)) {
++        $route->setOption('_admin_route', TRUE);
++      }
++    }
++  }
++
++}
+diff --git a/core/modules/user/src/Theme/AdminNegotiator.php b/core/modules/user/src/Theme/AdminNegotiator.php
+index d8c495d2350ead62d44f0b6a3422f877b39a4197..c0e04b26aee48d151257163d461f822af6964f82 100644
+--- a/core/modules/user/src/Theme/AdminNegotiator.php
++++ b/core/modules/user/src/Theme/AdminNegotiator.php
+@@ -9,6 +9,7 @@
+ use Drupal\Core\Routing\RouteMatchInterface;
+ use Drupal\Core\Session\AccountInterface;
+ use Drupal\Core\Theme\ThemeNegotiatorInterface;
++use Drupal\user\Routing\RouteSubscriber;
+ 
+ /**
+  * Sets the active theme on admin pages.
+@@ -71,7 +72,7 @@ public function __construct(AccountInterface $user, ConfigFactoryInterface $conf
+    */
+   public function applies(RouteMatchInterface $route_match) {
+     $is_admin_route = $this->adminContext->isAdminRoute($route_match->getRouteObject());
+-    return $is_admin_route && $this->user->hasPermission('view the administration theme');
++    return $is_admin_route && ($this->user->hasPermission('view the administration theme') || RouteSubscriber::useAdminThemeForLogin());
+   }
+ 
+   /**
+diff --git a/core/modules/user/user.services.yml b/core/modules/user/user.services.yml
+index 4d9a0b273367d540a34a6feb29bbade8c019e966..8a9d9bff2d30e8b116de750312fe720c994cba7a 100644
+--- a/core/modules/user/user.services.yml
++++ b/core/modules/user/user.services.yml
+@@ -80,3 +80,7 @@ services:
+     class: Drupal\user\UserNameValidator
+     arguments: ['@validation.basic_recursive_validator_factory', '@validation.constraint']
+   Drupal\user\UserNameValidator: '@user.name_validator'
++  user.route_subscriber:
++    class: Drupal\user\Routing\RouteSubscriber
++    tags:
++      - { name: event_subscriber }

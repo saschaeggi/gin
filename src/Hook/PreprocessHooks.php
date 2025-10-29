@@ -16,6 +16,8 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Extension\ThemeHandlerInterface;
+use Drupal\Core\Extension\ThemeSettingsProvider;
+use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Element;
@@ -23,6 +25,7 @@ use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Security\TrustedCallbackInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\Core\Url;
@@ -31,6 +34,7 @@ use Drupal\gin\ClassResolverTrait;
 use Drupal\gin\Helper;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
+use Drupal\user\Routing\RouteSubscriber;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -40,6 +44,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallbackInterface {
 
   use ClassResolverTrait;
+  use StringTranslationTrait;
 
   /**
    * Constructs the theme related hooks.
@@ -56,6 +61,8 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
     protected readonly EntityTypeManagerInterface $entityTypeManager,
     protected readonly BlockManagerInterface $blockManager,
     protected readonly RendererInterface $renderer,
+    protected readonly ThemeSettingsProvider $themeSettingsProvider,
+    protected readonly FileUrlGeneratorInterface $fileUrlGenerator,
     protected ClassResolverInterface $classResolver,
   ) {}
 
@@ -75,6 +82,8 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
       $container->get('entity_type.manager'),
       $container->get('plugin.manager.block'),
       $container->get('renderer'),
+      $container->get(ThemeSettingsProvider::class),
+      $container->get('file_url_generator'),
       $container->get('class_resolver'),
     );
   }
@@ -220,15 +229,15 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
       }
 
       $operation_labels = [
-        '#entity.(?<entityTypeId>.+).canonical#' => t('View @bundle', ['@bundle' => $type_label]),
-        '#entity.(?<entityTypeId>.+).delete_form#' => t('Delete @bundle', ['@bundle' => $type_label]),
-        '#entity.(?<entityTypeId>.+).delete_multiple_form#' => t('Delete @bundle', ['@bundle' => $type_label]),
-        '#entity.(?<entityTypeId>.+).edit_form#' => t('Edit @bundle', ['@bundle' => $type_label]),
-        '#entity.(?<entityTypeId>.+).add_form#' => t('Add @bundle', ['@bundle' => $type_label]),
-        '#entity.(?<entityTypeId>.+).add_page#' => t('Add @bundle', ['@bundle' => $type_label]),
-        '#entity.(?<entityTypeId>.+).reset_form#' => t('Reset @bundle', ['@bundle' => $type_label]),
-        '#entity.(?<entityTypeId>.+).cancel_form#' => t('Cancel @bundle', ['@bundle' => $type_label]),
-        '#entity.(?<entityTypeId>.+).clone_form#' => t('Clone @bundle', ['@bundle' => $type_label]),
+        '#entity.(?<entityTypeId>.+).canonical#' => $this->t('View @bundle', ['@bundle' => $type_label]),
+        '#entity.(?<entityTypeId>.+).delete_form#' => $this->t('Delete @bundle', ['@bundle' => $type_label]),
+        '#entity.(?<entityTypeId>.+).delete_multiple_form#' => $this->t('Delete @bundle', ['@bundle' => $type_label]),
+        '#entity.(?<entityTypeId>.+).edit_form#' => $this->t('Edit @bundle', ['@bundle' => $type_label]),
+        '#entity.(?<entityTypeId>.+).add_form#' => $this->t('Add @bundle', ['@bundle' => $type_label]),
+        '#entity.(?<entityTypeId>.+).add_page#' => $this->t('Add @bundle', ['@bundle' => $type_label]),
+        '#entity.(?<entityTypeId>.+).reset_form#' => $this->t('Reset @bundle', ['@bundle' => $type_label]),
+        '#entity.(?<entityTypeId>.+).cancel_form#' => $this->t('Cancel @bundle', ['@bundle' => $type_label]),
+        '#entity.(?<entityTypeId>.+).clone_form#' => $this->t('Clone @bundle', ['@bundle' => $type_label]),
       ];
 
       foreach ($operation_labels as $regex => $label) {
@@ -260,8 +269,8 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
     // Back to site item.
     foreach ($variables['breadcrumb'] as $key => $item) {
       if ($key === 0) {
-        $variables['breadcrumb'][$key]['text'] = t('Back to site');
-        $variables['breadcrumb'][$key]['attributes']['title'] = t('Return to site content');
+        $variables['breadcrumb'][$key]['text'] = $this->t('Back to site');
+        $variables['breadcrumb'][$key]['attributes']['title'] = $this->t('Return to site content');
 
         if (isset($url, $url_access) && $url_access->isAllowed()) {
           // Link to the canonical route of the entity.
@@ -616,16 +625,44 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
   }
 
   /**
+   * Implements hook_preprocess_HOOK() for user login with admin theme.
+   */
+  #[Hook('preprocess_page__user__login')]
+  #[Hook('preprocess_page__user__password')]
+  #[Hook('preprocess_page__user__register')]
+  public function modernLogin(array &$variables): void {
+    $theme = $this->themeManager->getActiveTheme()->getName();
+    $variables['site_name'] = $this->configFactory->get('system.site')->get('name');
+    $logoPath = $this->themeSettingsProvider->getSetting('logo.path', $theme);
+    $logoUseDefault = $this->themeSettingsProvider->getSetting('logo.use_default', $theme);
+    $imagePath = $this->themeSettingsProvider->getSetting('brand_image.path', $theme);
+    $imageUseDefault = $this->themeSettingsProvider->getSetting('brand_image.use_default', $theme);
+
+    if (!$logoUseDefault && $logoPath !== '') {
+      $variables['icon_path'] = $this->fileUrlGenerator->generateAbsoluteString($logoPath);
+    }
+    if (!$imageUseDefault && $imagePath !== '') {
+      $variables['brand_image'] = $this->fileUrlGenerator->generateAbsoluteString($imagePath);
+    }
+    else {
+      $variables['brand_image'] = '';
+    }
+  }
+
+  /**
    * Implements hook_preprocess_HOOK() for html.
    */
   #[Hook('preprocess_html')]
   public function html(array &$variables): void {
-    if (!Helper::isActive()) {
+    if (!Helper::isActive() && !RouteSubscriber::useAdminThemeForLogin()) {
       return;
     }
     // Check if IMCE is active.
     if (isset($variables['attributes']['class']) && in_array('imce-page', $variables['attributes']['class'], TRUE)) {
       return;
+    }
+    if (RouteSubscriber::useAdminThemeForLogin()) {
+      $variables['attributes']['class'][] = 'gin-login';
     }
 
     // Get theme settings.
@@ -737,7 +774,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
       $variables['attributes']['class'][] = Html::getClass('form-element--api-' . $type_api);
 
       if (!empty($variables['element']['#autocomplete_route_name'])) {
-        $variables['autocomplete_message'] = t('Loading…');
+        $variables['autocomplete_message'] = $this->t('Loading…');
       }
     }
 
@@ -1097,7 +1134,7 @@ final class PreprocessHooks implements ContainerInjectionInterface, TrustedCallb
             '@title' => $node->getTitle(),
             '@language' => $node->language()->getName(),
           ];
-          $variables['title'] = t('@title <span class="page-title__language">(@language translation)</span>', $args);
+          $variables['title'] = $this->t('@title <span class="page-title__language">(@language translation)</span>', $args);
         }
       }
     }
