@@ -66,6 +66,7 @@
     min-width: 0;
     width: auto;
     height: 100%;
+    flex-grow: 1;
 
     @include mq(small) {
       .settings-tray-editable {

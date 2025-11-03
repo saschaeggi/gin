@@ -226,6 +226,7 @@ button.link:active,
   min-width: 0;
   width: auto;
   height: 100%;
+  flex-grow: 1;
 }
 
 @media (min-width: 48em) {
