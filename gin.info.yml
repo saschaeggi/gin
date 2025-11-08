@@ -15,7 +15,7 @@ libraries-override:
       component:
         misc/components/tabledrag.module.css: merge/css/components/tabledrag.css
     js:
-      misc/tabledrag.js: js/overrides/tabledrag.js
+      misc/tabledrag.js: dist/js/tabledrag.js
 
   core/drupal.ajax:
     css:
@@ -97,11 +97,11 @@ libraries-override:
   # Admin overrides: replace
   media_library/view:
     js:
-      js/media_library.view.js: js/overrides/media_library.view.js
+      js/media_library.view.js: dist/js/media_library.view.js
 
   core/drupal.tableselect:
     js:
-      misc/tableselect.js: js/overrides/tableselect.js
+      misc/tableselect.js: dist/js/tableselect.js
 
   # Admin overrides: disable
   # needed override to overcome dialog styling issues

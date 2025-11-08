@@ -426,13 +426,13 @@ gin_custom_css:
 
 scrollsync:
   js:
-    js/libs/scrollsync.js: { minified: true, weight: -1 }
+    dist/js/scrollsync.js: { minified: true, weight: -1 }
 
 # Overrides
 
 media_embed_ckeditor_theme:
   js:
-    js/overrides/media_embed_ckeditor.theme.js: { minified: false }
+    dist/js/media_embed_ckeditor.theme.js: { minified: false }
 
 # Components
 
