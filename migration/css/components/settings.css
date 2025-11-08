@@ -209,7 +209,7 @@
 }
 
 .gin--dark-mode [data-drupal-selector=edit-layout-density] .form-radios .form-item input[data-drupal-selector=edit-layout-density-medium] {
-  background-image: url(../../media/settings/layout_density_default_darkmode.png);
+  background-image: url(../../media/settings/layout_density_medium_darkmode.png);
 }
 
 [data-drupal-selector=edit-layout-density] .form-radios .form-item input[data-drupal-selector=edit-layout-density-small] {
