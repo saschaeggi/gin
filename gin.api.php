@@ -56,7 +56,7 @@ function hook_admin_content_form_routes_alter(array &$routes): void {
  * @return string[]
  *   The list of form IDs.
  */
-function hook_gin_content_form_ignore_form_ids(): array {
+function hook_admin_content_form_ignore_form_ids(): array {
   return [
     'media_library_add_form_',
     'views_form_media_library_widget_',

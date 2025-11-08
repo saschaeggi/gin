@@ -90,7 +90,7 @@ final class ContentFormHelper implements ContainerInjectionInterface {
     $is_content_form = $this->isContentForm($form_state, $form_id);
 
     // Sticky action buttons.
-    if (isset($form['actions'])) {
+    if (isset($form['actions']) && $is_content_form) {
       // Add sticky class.
       $form['actions']['#attributes']['class'][] = 'gin-sticky-form-actions';
 
@@ -169,6 +169,8 @@ final class ContentFormHelper implements ContainerInjectionInterface {
     $this->ensureAdvancedSettings($form);
 
     // Action buttons.
+    // @todo The sidebar is not necessarily dependent on action buttons. We
+    //   should rather determine otherwise if the sidebar is required.
     if (isset($form['actions'])) {
       // Add sidebar toggle.
       $hide_panel = $this->t('Hide sidebar panel');
@@ -245,7 +247,7 @@ final class ContentFormHelper implements ContainerInjectionInterface {
         'views_form_media_library_widget_',
         'views_exposed_form',
       ];
-      $form_ids_to_ignore = array_merge($this->moduleHandler->invokeAll('gin_content_form_ignore_form_ids'), $form_ids_to_ignore);
+      $form_ids_to_ignore = array_merge($this->moduleHandler->invokeAll('admin_content_form_ignore_form_ids'), $form_ids_to_ignore);
       foreach ($form_ids_to_ignore as $form_id_to_ignore) {
         if (str_contains($form_id, $form_id_to_ignore)) {
           return FALSE;
@@ -278,10 +280,10 @@ final class ContentFormHelper implements ContainerInjectionInterface {
       ];
 
       // API check.
-      $additional_routes = $this->moduleHandler->invokeAll('gin_content_form_routes');
+      $additional_routes = $this->moduleHandler->invokeAll('admin_content_form_routes');
       $route_names = array_merge($additional_routes, $route_names);
-      $this->moduleHandler->alter('gin_content_form_routes', $route_names);
-      $this->themeManager->alter('gin_content_form_routes', $route_names);
+      $this->moduleHandler->alter('admin_content_form_routes', $route_names);
+      $this->themeManager->alter('admin_content_form_routes', $route_names);
 
       $is_content_form = in_array($route_name, $route_names, TRUE);
     }
