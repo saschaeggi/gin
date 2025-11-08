@@ -13,19 +13,19 @@ libraries-override:
   core/drupal.tabledrag:
     css:
       component:
-        misc/components/tabledrag.module.css: merge/css/components/tabledrag.css
+        misc/components/tabledrag.module.css: css/components/tabledrag.css
     js:
-      misc/tabledrag.js: dist/js/tabledrag.js
+      misc/tabledrag.js: migration/js/tabledrag.js
 
   core/drupal.ajax:
     css:
       component:
-        misc/components/ajax-progress.module.css: merge/css/components/ajax-progress.module.css
+        misc/components/ajax-progress.module.css: css/components/ajax-progress.module.css
 
   core/drupal.autocomplete:
     css:
       component:
-        misc/components/autocomplete-loading.module.css: merge/css/components/autocomplete-loading.module.css
+        misc/components/autocomplete-loading.module.css: css/components/autocomplete-loading.module.css
 
   system/status.report: gin/status.report
 
@@ -37,7 +37,7 @@ libraries-override:
   core/drupal.dropbutton:
     css:
       component:
-        misc/dropbutton/dropbutton.css: merge/css/components/dropbutton.css
+        misc/dropbutton/dropbutton.css: css/components/dropbutton.css
 
   core/drupal.vertical-tabs:
     css:
@@ -62,7 +62,7 @@ libraries-override:
   field_ui/drupal.field_ui:
     css:
       theme:
-        css/field_ui.admin.css: merge/css/theme/field-ui.admin.css
+        css/field_ui.admin.css: css/theme/field-ui.admin.css
 
   node/drupal.node:
     css:
@@ -77,31 +77,31 @@ libraries-override:
   toolbar/toolbar:
     css:
       component:
-        css/toolbar.module.css: merge/css/components/toolbar.module.css
+        css/toolbar.module.css: css/components/toolbar.module.css
       theme:
-        css/toolbar.theme.css: merge/css/theme/toolbar.theme.css
-        css/toolbar.icons.theme.css: merge/css/theme/toolbar.icons.theme.css
+        css/toolbar.theme.css: css/theme/toolbar.theme.css
+        css/toolbar.icons.theme.css: css/theme/toolbar.icons.theme.css
 
   toolbar/toolbar.menu:
     css:
       state:
-        css/toolbar.menu.css: merge/css/state/toolbar.menu.css
+        css/toolbar.menu.css: css/state/toolbar.menu.css
 
   views_ui/admin.styling:
     css:
       component:
-        css/views_ui.admin.css: merge/css/components/views_ui.admin.css
+        css/views_ui.admin.css: css/components/views_ui.admin.css
       theme:
-        css/views_ui.admin.theme.css: merge/css/theme/views_ui.admin.theme.css
+        css/views_ui.admin.theme.css: css/theme/views_ui.admin.theme.css
 
   # Admin overrides: replace
   media_library/view:
     js:
-      js/media_library.view.js: dist/js/media_library.view.js
+      js/media_library.view.js: migration/js/media_library.view.js
 
   core/drupal.tableselect:
     js:
-      misc/tableselect.js: dist/js/tableselect.js
+      misc/tableselect.js: migration/js/tableselect.js
 
   # Admin overrides: disable
   # needed override to overcome dialog styling issues

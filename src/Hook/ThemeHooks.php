@@ -58,7 +58,7 @@ class ThemeHooks implements TrustedCallbackInterface {
     // Use anything greater than 100 to have it load after the theme
     // as CSS_AGGREGATE_THEME is set to 100.
     // Let's be on the safe side and assign a high number to it.
-    $base_css = $this->themeExtensionList->getPath('gin') . '/dist/css/base/gin.css';
+    $base_css = $this->themeExtensionList->getPath('gin') . '/migration/css/base/gin.css';
 
     if (isset($css[$base_css])) {
       $css[$base_css]['group'] = 200;
@@ -236,8 +236,8 @@ class ThemeHooks implements TrustedCallbackInterface {
 
     // Expose stylesheets to JS.
     $basethemeurl = '/' . $this->themeExtensionList->getPath('gin');
-    $page['#attached']['drupalSettings']['gin']['variables_css_path'] = $basethemeurl . '/dist/css/theme/variables.css';
-    $page['#attached']['drupalSettings']['gin']['accent_css_path'] = $basethemeurl . '/dist/css/theme/accent.css';
+    $page['#attached']['drupalSettings']['gin']['variables_css_path'] = $basethemeurl . '/migration/css/theme/variables.css';
+    $page['#attached']['drupalSettings']['gin']['accent_css_path'] = $basethemeurl . '/migration/css/theme/accent.css';
 
     $page['#attached']['html_head'][] = [
       [

@@ -2,51 +2,51 @@ global-styling:
   version: VERSION
   css:
     base:
-      merge/css/base/accents.css: {}
-      merge/css/base/variables.css: {}
-      merge/css/base/elements.css: {}
-      merge/css/base/typography.css: {}
-      merge/css/base/print.css: {}
+      css/base/accents.css: {}
+      css/base/variables.css: {}
+      css/base/elements.css: {}
+      css/base/typography.css: {}
+      css/base/print.css: {}
     component:
-      merge/css/components/accordion.css: {}
-      merge/css/components/action-link.css: {}
-      merge/css/components/content-header.css: {}
-      merge/css/components/ckeditor5.css: {}
-      merge/css/components/container-inline.css: {}
-      merge/css/components/container-inline.module.css: {}
-      merge/css/components/breadcrumb.css: {}
-      merge/css/components/button.css: {}
-      merge/css/components/details.css: {}
-      merge/css/components/divider.css: {}
-      merge/css/components/messages.css: {}
-      merge/css/components/entity-meta.css: {}
-      merge/css/components/fieldset.css: {}
-      merge/css/components/form.css: {}
-      merge/css/components/form--checkbox-radio.css: {}
-      merge/css/components/form--field-multiple.css: {}
-      merge/css/components/form--managed-file.css: {}
-      merge/css/components/form--text.css: {}
-      merge/css/components/form--select.css: {}
-      merge/css/components/help.css: {}
-      merge/css/components/image-preview.css: {}
-      merge/css/components/menus-and-lists.css: {}
-      merge/css/components/modules-page.css: {}
-      merge/css/components/node.css: {}
-      merge/css/components/page-title.css: {}
-      merge/css/components/pager.css: {}
-      merge/css/components/skip-link.css: {}
-      merge/css/components/tables.css: {}
-      merge/css/components/table--file-multiple-widget.css: {}
-      merge/css/components/search-admin-settings.css: {}
-      merge/css/components/tableselect.css: {}
-      merge/css/components/tabs.css: {}
+      css/components/accordion.css: {}
+      css/components/action-link.css: {}
+      css/components/content-header.css: {}
+      css/components/ckeditor5.css: {}
+      css/components/container-inline.css: {}
+      css/components/container-inline.module.css: {}
+      css/components/breadcrumb.css: {}
+      css/components/button.css: {}
+      css/components/details.css: {}
+      css/components/divider.css: {}
+      css/components/messages.css: {}
+      css/components/entity-meta.css: {}
+      css/components/fieldset.css: {}
+      css/components/form.css: {}
+      css/components/form--checkbox-radio.css: {}
+      css/components/form--field-multiple.css: {}
+      css/components/form--managed-file.css: {}
+      css/components/form--text.css: {}
+      css/components/form--select.css: {}
+      css/components/help.css: {}
+      css/components/image-preview.css: {}
+      css/components/menus-and-lists.css: {}
+      css/components/modules-page.css: {}
+      css/components/node.css: {}
+      css/components/page-title.css: {}
+      css/components/pager.css: {}
+      css/components/skip-link.css: {}
+      css/components/tables.css: {}
+      css/components/table--file-multiple-widget.css: {}
+      css/components/search-admin-settings.css: {}
+      css/components/tableselect.css: {}
+      css/components/tabs.css: {}
     theme:
-      merge/css/theme/colors.css: {}
-      dist/css/base/gin.css: { minified: false }
+      css/theme/colors.css: {}
+      migration/css/base/gin.css: { minified: false }
     layout:
-      merge/css/layout/breadcrumb.css: {}
-      merge/css/layout/local-actions.css: {}
-      merge/css/layout/layout.css: {}
+      css/layout/breadcrumb.css: {}
+      css/layout/local-actions.css: {}
+      css/layout/layout.css: {}
   dependencies:
     - system/admin
     - core/jquery
@@ -66,15 +66,15 @@ form-two-columns:
   version: VERSION
   css:
     layout:
-      merge/css/layout/form-two-columns.css: {}
+      css/layout/form-two-columns.css: {}
 
 maintenance-page:
   version: VERSION
   js:
-    merge/js/mobile.install.js: {}
+    js/mobile.install.js: {}
   css:
     theme:
-      merge/css/theme/maintenance-page.css: {}
+      css/theme/maintenance-page.css: {}
   dependencies:
     - system/maintenance
     - gin/global-styling
@@ -82,17 +82,17 @@ maintenance-page:
 install-page:
   version: VERSION
   js:
-    merge/js/mobile.install.js: {}
+    js/mobile.install.js: {}
   css:
     theme:
-      merge/css/theme/install-page.css: {}
+      css/theme/install-page.css: {}
   dependencies:
     - gin/maintenance-page
 
 drupal.nav-tabs:
   version: VERSION
   js:
-    merge/js/nav-tabs.js: {}
+    js/nav-tabs.js: {}
   dependencies:
     - core/jquery
     - core/drupal
@@ -103,38 +103,38 @@ gin.jquery.ui:
   version: VERSION
   css:
     component:
-      merge/css/components/jquery.ui/theme.css: { weight: -1 }
+      css/components/jquery.ui/theme.css: { weight: -1 }
 
 gin.drupal.dialog:
   version: VERSION
   css:
     theme:
-      merge/css/components/dialog.css: {}
+      css/components/dialog.css: {}
   dependencies:
     - gin/gin.jquery.ui
 
 gin.tabledrag:
   version: VERSION
   js:
-    merge/js/tabledrag.js: {}
+    js/tabledrag.js: {}
 
 drupal.node.preview:
   version: VERSION
   css:
     theme:
-      merge/css/components/node-preview.css: {}
+      css/components/node-preview.css: {}
 
 drupal.tablesort:
   version: VERSION
   css:
     component:
-      merge/css/components/tablesort-indicator.css: {}
+      css/components/tablesort-indicator.css: {}
 
 media-form:
   version: VERSION
   css:
     layout:
-      merge/css/components/media.css: {}
+      css/components/media.css: {}
   dependencies:
     - media/form
 
@@ -142,25 +142,25 @@ image.admin:
   version: VERSION
   css:
     component:
-      merge/css/components/image.admin.css: {}
+      css/components/image.admin.css: {}
 
 system.admin:
   version: VERSION
   css:
     component:
-      merge/css/components/system-admin--admin-list.css: { weight: -10 }
-      merge/css/components/system-admin--links.css: { weight: -10 }
-      merge/css/components/system-admin--modules.css: { weight: -10 }
-      merge/css/components/system-admin--panel.css: { weight: -10 }
+      css/components/system-admin--admin-list.css: { weight: -10 }
+      css/components/system-admin--links.css: { weight: -10 }
+      css/components/system-admin--modules.css: { weight: -10 }
+      css/components/system-admin--panel.css: { weight: -10 }
     layout:
-      merge/css/layout/system-admin--layout.css: { weight: -10 }
+      css/layout/system-admin--layout.css: { weight: -10 }
   dependencies:
     - gin/card
 
 checkbox:
   version: VERSION
   js:
-    merge/js/checkbox.js: {}
+    js/checkbox.js: {}
   dependencies:
     - core/drupal
 
@@ -168,13 +168,13 @@ icon-link:
   version: VERSION
   css:
     component:
-      merge/css/components/icon-link.css: {}
+      css/components/icon-link.css: {}
 
 dropbutton:
   version: VERSION
   js:
-    merge/js/dropbutton.js: { minified: false }
-    dist/js/dropbutton.js: { minified: false }
+    js/dropbutton.js: { minified: false }
+    migration/js/dropbutton.js: { minified: false }
   dependencies:
     - core/drupal
     - core/once
@@ -184,9 +184,9 @@ autocomplete:
   version: VERSION
   css:
     theme:
-      dist/css/components/autocomplete.css: { minified: false }
+      migration/css/components/autocomplete.css: { minified: false }
   js:
-    merge/js/autocomplete.js: {}
+    js/autocomplete.js: {}
   dependencies:
     - core/once
     - gin/gin.jquery.ui
@@ -197,25 +197,25 @@ drupal.shortcut:
     # @todo move this to components after
     #   https://www.drupal.org/project/drupal/issues/3045467 is in.
     theme:
-      merge/css/components/shortcut.css: {}
+      css/components/shortcut.css: {}
 
 details-focus:
   js:
-    merge/js/details.js: {}
+    js/details.js: {}
 
 ajax:
   css:
     theme:
-      dist/css/components/ajax.css: { minified: false, weight: 99 }
+      migration/css/components/ajax.css: { minified: false, weight: 99 }
   js:
-    merge/js/ajax.js: {}
+    js/ajax.js: {}
 
 form.password-confirm:
   css:
     component:
-      merge/css/components/form--password-confirm.css: {}
+      css/components/form--password-confirm.css: {}
   js:
-    merge/js/user.theme.js: {}
+    js/user.theme.js: {}
   dependencies:
     - core/drupal
     - gin/global-styling
@@ -225,52 +225,52 @@ status.report:
   version: VERSION
   css:
     component:
-      merge/css/components/system-status-report-general-info.css: {}
-      merge/css/components/system-status-report.css: {}
-      merge/css/components/system-status-report-counters.css: {}
-      merge/css/components/system-status-counter.css: {}
+      css/components/system-status-report-general-info.css: {}
+      css/components/system-status-report.css: {}
+      css/components/system-status-report-counters.css: {}
+      css/components/system-status-counter.css: {}
 
 views:
   css:
     component:
-      merge/css/components/views-exposed-form.css: {}
+      css/components/views-exposed-form.css: {}
 
 views_ui:
   css:
     component:
-      merge/css/components/views-ui.css: {}
+      css/components/views-ui.css: {}
 
 messages:
   js:
-    dist/js/messages.js: { minified: false }
+    migration/js/messages.js: { minified: false }
   dependencies:
     - core/once
 
 card:
   css:
     component:
-      merge/css/layout/card-list.css: {}
-      merge/css/components/card.css: {}
+      css/layout/card-list.css: {}
+      css/components/card.css: {}
 
 vertical-tabs:
   css:
     component:
-      merge/css/components/vertical-tabs.css: {}
+      css/components/vertical-tabs.css: {}
   js:
-    merge/js/vertical-tabs.js: {}
+    js/vertical-tabs.js: {}
   dependencies:
     - gin/global-styling
 
 file:
   css:
     component:
-      merge/css/components/file.css: {}
+      css/components/file.css: {}
 
 media_library.theme:
   version: VERSION
   css:
     theme:
-      merge/css/theme/media-library.css: {}
+      css/theme/media-library.css: {}
   dependencies:
     - gin/icon-link
 
@@ -278,9 +278,9 @@ media_library.ui:
   version: VERSION
   css:
     component:
-      merge/css/components/media-library.ui.css : {}
+      css/components/media-library.ui.css : {}
   js:
-    merge/js/media-library.ui.js: { weight: -1 }
+    js/media-library.ui.js: { weight: -1 }
   dependencies:
     - core/drupal
     - core/jquery
@@ -290,7 +290,7 @@ progress:
   version: VERSION
   css:
     component:
-      merge/css/components/progress.css: {}
+      css/components/progress.css: {}
 
 tabbingmanager:
   version: VERSION
@@ -301,15 +301,15 @@ filter:
   version: VERSION
   css:
     component:
-      merge/css/theme/filter.theme.css: {}
+      css/theme/filter.theme.css: {}
 
 tableselect:
   version: VERSION
   css:
     component:
-      dist/css/components/tableselect.css: { minified: false }
+      migration/css/components/tableselect.css: { minified: false }
   js:
-    merge/js/tableselect.js: {}
+    js/tableselect.js: {}
   dependencies:
     - core/jquery
     - core/drupal
@@ -323,8 +323,8 @@ tableselect:
 base:
   css:
     component:
-      dist/css/theme/font.css: { minified: false }
-      dist/css/theme/variables.css: { minified: false }
+      migration/css/theme/font.css: { minified: false }
+      migration/css/theme/variables.css: { minified: false }
   dependencies:
     - gin/tabs
     - gin/gin_dialog
@@ -335,7 +335,7 @@ base:
 init:
   header: true
   js:
-    dist/js/init.js: { minified: false, preprocess: false, weight: -99 }
+    migration/js/init.js: { minified: false, preprocess: false, weight: -99 }
   dependencies:
     - core/drupalSettings
 
@@ -344,7 +344,7 @@ init:
 top_bar:
   css:
     component:
-      dist/css/layout/top_bar.css: { minified: false }
+      migration/css/layout/top_bar.css: { minified: false }
   dependencies:
     - gin/status
 
@@ -353,9 +353,9 @@ top_bar:
 navigation:
   css:
     theme:
-      dist/css/layout/navigation.css: { minified: false }
+      migration/css/layout/navigation.css: { minified: false }
   js:
-    dist/js/navigation.js: { minified: false }
+    migration/js/navigation.js: { minified: false }
   dependencies:
     - gin/escape_admin
     - gin/node_preview
@@ -369,9 +369,9 @@ navigation:
 toolbar:
   css:
     component:
-      dist/css/components/toolbar.css: { minified: false }
+      migration/css/components/toolbar.css: { minified: false }
     theme:
-      dist/css/layout/toolbar.css: { minified: false }
+      migration/css/layout/toolbar.css: { minified: false }
   dependencies:
     - gin/escape_admin
     - gin/node_preview
@@ -385,9 +385,9 @@ toolbar:
 accent:
   css:
     theme:
-      dist/css/theme/accent.css: { minified: false }
+      migration/css/theme/accent.css: { minified: false }
   js:
-    dist/js/accent.js: { minified: false }
+    migration/js/accent.js: { minified: false }
   dependencies:
     - core/drupalSettings
     - core/once
@@ -397,7 +397,7 @@ accent:
 gin_dialog:
   css:
     theme:
-      dist/css/theme/dialog.css: { minified: false }
+      migration/css/theme/dialog.css: { minified: false }
   dependencies:
     - gin/dialog
     - gin/accent
@@ -405,13 +405,13 @@ gin_dialog:
 description_toggle:
   css:
     theme:
-      dist/css/components/description_toggle.css: { minified: false }
+      migration/css/components/description_toggle.css: { minified: false }
   js:
-    dist/js/description_toggle.js: { minified: false }
+    migration/js/description_toggle.js: { minified: false }
 
 escape_admin:
   js:
-    dist/js/escape_admin.js: { minified: false }
+    migration/js/escape_admin.js: { minified: false }
   dependencies:
     - core/once
 
@@ -426,19 +426,19 @@ gin_custom_css:
 
 scrollsync:
   js:
-    dist/js/scrollsync.js: { minified: true, weight: -1 }
+    migration/js/scrollsync.js: { minified: true, weight: -1 }
 
 # Overrides
 
 media_embed_ckeditor_theme:
   js:
-    dist/js/media_embed_ckeditor.theme.js: { minified: false }
+    migration/js/media_embed_ckeditor.theme.js: { minified: false }
 
 # Components
 
 sticky:
   js:
-    dist/js/sticky.js: { minified: false }
+    migration/js/sticky.js: { minified: false }
   dependencies:
     - gin/tooltip
     - core/drupal.displace
@@ -447,24 +447,24 @@ sticky:
 sidebar:
   css:
     theme:
-      dist/css/components/sidebar.css: { minified: false }
+      migration/css/components/sidebar.css: { minified: false }
   js:
-    dist/js/sidebar.js: { minified: false }
+    migration/js/sidebar.js: { minified: false }
   dependencies:
     - core/once
 
 settings:
   js:
-    dist/js/settings.js: { minified: false }
+    migration/js/settings.js: { minified: false }
   css:
     component:
-      dist/css/components/settings.css: { minified: false }
+      migration/css/components/settings.css: { minified: false }
   dependencies:
     - core/drupalSettings
 
 tableheader:
   js:
-    dist/js/tableheader.js: { minified: false }
+    migration/js/tableheader.js: { minified: false }
   dependencies:
     - core/once
     - gin/scrollsync
@@ -472,83 +472,83 @@ tableheader:
 tabs:
   css:
     component:
-      dist/css/components/tabs.css: { minified: false, weight: 99 }
+      migration/css/components/tabs.css: { minified: false, weight: 99 }
 
 tooltip:
   css:
     component:
-      dist/css/components/tooltip.css: { minified: false }
+      migration/css/components/tooltip.css: { minified: false }
   dependencies:
     - core/once
 
 status:
   css:
     component:
-      dist/css/components/status.css: { minified: false }
+      migration/css/components/status.css: { minified: false }
 
 more_actions:
   js:
-    dist/js/more_actions.js: { minified: false }
+    migration/js/more_actions.js: { minified: false }
   css:
     layout:
-      dist/css/components/more_actions.css: { minified: false }
+      migration/css/components/more_actions.css: { minified: false }
   dependencies:
     - core/once
 
 edit_form:
   css:
     layout:
-      dist/css/components/edit_form.css: { minified: false }
+      migration/css/components/edit_form.css: { minified: false }
 
 media_library:
   css:
     theme:
-      dist/css/components/media_library.css: { minified: false, weight: 99 }
+      migration/css/components/media_library.css: { minified: false, weight: 99 }
 
 contextual_links:
   css:
     theme:
-      dist/css/components/contextual_links.css: { minified: false, weight: 99 }
+      migration/css/components/contextual_links.css: { minified: false, weight: 99 }
 
 dialog:
   css:
     theme:
-      dist/css/components/dialog.css: { minified: false, weight: 99 }
+      migration/css/components/dialog.css: { minified: false, weight: 99 }
 
 ckeditor5:
   css:
     theme:
-      dist/css/components/ckeditor5.css: { minified: false }
+      migration/css/components/ckeditor5.css: { minified: false }
 
 revisions:
   css:
     theme:
-      dist/css/components/revisions.css: { minified: false }
+      migration/css/components/revisions.css: { minified: false }
 
 breadcrumb:
   css:
     theme:
-      dist/css/components/breadcrumb.css: { minified: false }
+      migration/css/components/breadcrumb.css: { minified: false }
 
 node_preview:
   css:
     component:
-      dist/css/components/node_preview.css: { minified: false }
+      migration/css/components/node_preview.css: { minified: false }
 
 settings_tray:
   css:
     component:
-      dist/css/components/settings_tray.css: { minified: false }
+      migration/css/components/settings_tray.css: { minified: false }
 
 settings_tray_edit:
   css:
     component:
-      dist/css/components/settings_tray_edit.css: { minified: false }
+      migration/css/components/settings_tray_edit.css: { minified: false }
 
 maintenance_page:
   css:
     theme:
-      dist/css/components/maintenance_page.css: { minified: false }
+      migration/css/components/maintenance_page.css: { minified: false }
   dependencies:
     - system/maintenance
     - gin/gin
