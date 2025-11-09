@@ -2838,6 +2838,7 @@ a.button--primary.button--danger,
   width: 29px;
   color: transparent;
   text-indent: -99999px;
+  background: transparent;
   border-radius: var(--gin-border-m);
   border-color: transparent !important;
   box-shadow: none;
