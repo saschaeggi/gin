@@ -115,6 +115,10 @@
   margin-inline-end: var(--gin-spacing-xs);
 }
 
+.views-bulk-actions__item:has(+ .views-bulk-actions__item.form-actions) {
+  margin-inline-end: var(--gin-spacing-xs);
+}
+
 .views-bulk-actions__item--status {
   color: var(--gin-color-text-light);
   margin-inline-end: var(--gin-spacing-l);
