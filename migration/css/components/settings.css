@@ -36,7 +36,7 @@
 
 [data-drupal-selector=edit-preset-accent-color] .form-radios .form-item--preset-accent-color input[data-gin-accent=custom] {
   background-color: #fff;
-  background-image: url(../../media/settings/custom-color.jpg);
+  background-image: url(../../../images/settings/custom-color.jpg);
   background-size: 100%;
   background-repeat: no-repeat;
   border-color: var(--gin-border-color);
@@ -197,27 +197,27 @@
 }
 
 [data-drupal-selector=edit-layout-density] .form-radios .form-item input[data-drupal-selector=edit-layout-density-default] {
-  background-image: url(../../media/settings/layout_density_default.png);
+  background-image: url(../../../images/settings/layout_density_default.png);
 }
 
 .gin--dark-mode [data-drupal-selector=edit-layout-density] .form-radios .form-item input[data-drupal-selector=edit-layout-density-default] {
-  background-image: url(../../media/settings/layout_density_default_darkmode.png);
+  background-image: url(../../../images/settings/layout_density_default_darkmode.png);
 }
 
 [data-drupal-selector=edit-layout-density] .form-radios .form-item input[data-drupal-selector=edit-layout-density-medium] {
-  background-image: url(../../media/settings/layout_density_medium.png);
+  background-image: url(../../../images/settings/layout_density_medium.png);
 }
 
 .gin--dark-mode [data-drupal-selector=edit-layout-density] .form-radios .form-item input[data-drupal-selector=edit-layout-density-medium] {
-  background-image: url(../../media/settings/layout_density_medium_darkmode.png);
+  background-image: url(../../../images/settings/layout_density_medium_darkmode.png);
 }
 
 [data-drupal-selector=edit-layout-density] .form-radios .form-item input[data-drupal-selector=edit-layout-density-small] {
-  background-image: url(../../media/settings/layout_density_small.png);
+  background-image: url(../../../images/settings/layout_density_small.png);
 }
 
 .gin--dark-mode [data-drupal-selector=edit-layout-density] .form-radios .form-item input[data-drupal-selector=edit-layout-density-small] {
-  background-image: url(../../media/settings/layout_density_small_darkmode.png);
+  background-image: url(../../../images/settings/layout_density_small_darkmode.png);
 }
 
 input[data-gin-toolbar=new] + label .gin-new-flag {
