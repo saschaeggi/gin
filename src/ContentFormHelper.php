@@ -85,12 +85,18 @@ final class ContentFormHelper implements ContainerInjectionInterface {
     if (RouteSubscriber::useAdminThemeForLogin()) {
       return;
     }
+    if (
+      str_ends_with($form_id, '_exposed_form') ||
+      str_starts_with($form_id, 'views_ui_')
+    ) {
+      return;
+    }
 
     // Save form types and behaviors.
     $is_content_form = $this->isContentForm($form_state, $form_id);
 
     // Sticky action buttons.
-    if (isset($form['actions']) && $is_content_form) {
+    if (isset($form['actions'])) {
       // Add sticky class.
       $form['actions']['#attributes']['class'][] = 'gin-sticky-form-actions';
 
