@@ -10,6 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Site\Settings;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\user\Routing\RouteSubscriber;
@@ -66,6 +67,24 @@ final class ContentFormHelper implements ContainerInjectionInterface {
   }
 
   /**
+   * Determines the feature flag to use for sticky action buttons.
+   *
+   * @param bool $is_content_form
+   *   TRUE if this should return the flag for content forms, FALSE if it should
+   *   return the flag for any form.
+   *
+   * @return bool
+   *   TRUE if core_admin_theme_use_sticky_action_buttons is enabled, FALSE
+   *   otherwise.
+   */
+  private static function useStickyActionButtons(bool $is_content_form = TRUE): bool {
+    $flag = Settings::get('core_admin_theme_use_sticky_action_buttons', 'never');
+    return $is_content_form ?
+      $flag === 'content_forms' || $flag === 'always' :
+      $flag === 'always';
+  }
+
+  /**
    * Add some major form overrides.
    *
    * @param array $form
@@ -95,8 +114,24 @@ final class ContentFormHelper implements ContainerInjectionInterface {
     // Save form types and behaviors.
     $is_content_form = $this->isContentForm($form_state, $form_id);
 
+    // If there are action buttons, and they should either be sticky or there
+    // is a content form, where the sidebar toggle is required, prepare the
+    // sticky action container for the top bar.
+    if (isset($form['actions']) && (self::useStickyActionButtons($is_content_form) || $is_content_form)) {
+      // Sticky action container.
+      $form['gin_sticky_actions'] = [
+        '#type' => 'container',
+        '#weight' => -1,
+        '#multilingual' => TRUE,
+        '#attributes' => [
+          'class' => ['gin-sticky-form-actions'],
+        ],
+      ];
+      $form['#after_build'][] = [__CLASS__, 'formAfterBuild'];
+    }
+
     // Sticky action buttons.
-    if (isset($form['actions'])) {
+    if (self::useStickyActionButtons($is_content_form) && isset($form['actions'])) {
       // Add sticky class.
       $form['actions']['#attributes']['class'][] = 'gin-sticky-form-actions';
 
@@ -108,16 +143,6 @@ final class ContentFormHelper implements ContainerInjectionInterface {
         $form['#attributes']['class'] = [$form['#attributes']['class']];
       }
       $form['#attributes']['class'][] = 'gin--has-sticky-form-actions';
-
-      // Sticky action container.
-      $form['gin_sticky_actions'] = [
-        '#type' => 'container',
-        '#weight' => -1,
-        '#multilingual' => TRUE,
-        '#attributes' => [
-          'class' => ['gin-sticky-form-actions'],
-        ],
-      ];
 
       // Assign status to gin_actions.
       $form['gin_sticky_actions']['status'] = [
@@ -150,8 +175,6 @@ final class ContentFormHelper implements ContainerInjectionInterface {
 
       // Attach library.
       $form['#attached']['library'][] = 'gin/more_actions';
-
-      $form['#after_build'][] = [__CLASS__, 'formAfterBuild'];
     }
 
     // Remaining changes only apply to content forms.
@@ -174,43 +197,38 @@ final class ContentFormHelper implements ContainerInjectionInterface {
 
     $this->ensureAdvancedSettings($form);
 
-    // Action buttons.
-    // @todo The sidebar is not necessarily dependent on action buttons. We
-    //   should rather determine otherwise if the sidebar is required.
-    if (isset($form['actions'])) {
-      // Add sidebar toggle.
-      $hide_panel = $this->t('Hide sidebar panel');
-      $form['gin_sticky_actions']['gin_sidebar_toggle'] = [
-        '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger" role="button" title="' . $hide_panel . '" aria-controls="gin_sidebar"><span class="visually-hidden">' . $hide_panel . '</span></a>',
-        '#weight' => 1000,
-      ];
-      $form['#attached']['library'][] = 'gin/sidebar';
+    // Add sidebar toggle.
+    $hide_panel = $this->t('Hide sidebar panel');
+    $form['gin_sticky_actions']['gin_sidebar_toggle'] = [
+      '#markup' => '<a href="#toggle-sidebar" class="meta-sidebar__trigger trigger" role="button" title="' . $hide_panel . '" aria-controls="gin_sidebar"><span class="visually-hidden">' . $hide_panel . '</span></a>',
+      '#weight' => 1000,
+    ];
+    $form['#attached']['library'][] = 'gin/sidebar';
 
-      // Create gin_sidebar group.
-      $form['gin_sidebar'] = [
-        '#group' => 'meta',
-        '#type' => 'container',
-        '#weight' => 99,
-        '#multilingual' => TRUE,
-        '#attributes' => [
-          'class' => [
-            'gin-sidebar',
-          ],
+    // Create gin_sidebar group.
+    $form['gin_sidebar'] = [
+      '#group' => 'meta',
+      '#type' => 'container',
+      '#weight' => 99,
+      '#multilingual' => TRUE,
+      '#attributes' => [
+        'class' => [
+          'gin-sidebar',
         ],
-      ];
-      // Copy footer over.
-      $form['gin_sidebar']['footer'] = ($form['footer']) ?? [];
+      ],
+    ];
+    // Copy footer over.
+    $form['gin_sidebar']['footer'] = ($form['footer']) ?? [];
 
-      // Sidebar close button.
-      $close_sidebar_translation = $this->t('Close sidebar panel');
-      $form['gin_sidebar']['gin_sidebar_close'] = [
-        '#markup' => '<a href="#close-sidebar" class="meta-sidebar__close trigger" role="button" title="' . $close_sidebar_translation . '"><span class="visually-hidden">' . $close_sidebar_translation . '</span></a>',
-      ];
+    // Sidebar close button.
+    $close_sidebar_translation = $this->t('Close sidebar panel');
+    $form['gin_sidebar']['gin_sidebar_close'] = [
+      '#markup' => '<a href="#close-sidebar" class="meta-sidebar__close trigger" role="button" title="' . $close_sidebar_translation . '"><span class="visually-hidden">' . $close_sidebar_translation . '</span></a>',
+    ];
 
-      $form['gin_sidebar_overlay'] = [
-        '#markup' => '<div class="meta-sidebar__overlay trigger"></div>',
-      ];
-    }
+    $form['gin_sidebar_overlay'] = [
+      '#markup' => '<div class="meta-sidebar__overlay trigger"></div>',
+    ];
 
     // Specify necessary node form theme and library.
     // @see gin_form_node_form_alter
@@ -312,34 +330,36 @@ final class ContentFormHelper implements ContainerInjectionInterface {
    * Helper function to remember the form actions after form has been built.
    */
   public static function formAfterBuild(array $form): array {
-    // Allowlist for visible actions.
-    $includes = ['save', 'submit', 'preview'];
+    if (self::useStickyActionButtons()) {
+      // Allowlist for visible actions.
+      $includes = ['save', 'submit', 'preview'];
 
-    // Build actions.
-    foreach (Element::children($form['actions']) as $key) {
-      $button = ($form['actions'][$key]) ?? [];
+      // Build actions.
+      foreach (Element::children($form['actions']) as $key) {
+        $button = ($form['actions'][$key]) ?? [];
 
-      if (!($button['#access'] ?? TRUE)) {
-        continue;
-      }
+        if (!($button['#access'] ?? TRUE)) {
+          continue;
+        }
 
-      if (Helper::moduleIsActive('navigation')) {
-        $form['gin_sticky_actions']['actions'][$key] = $button;
-      }
-
-      // The media_type_add_form form is a special case.
-      // @see https://www.drupal.org/project/gin/issues/3534385
-      // @see \Drupal\media\MediaTypeForm::actions
-      if ((isset($button['#type']) && $button['#type'] === 'submit') || $form['#form_id'] === 'media_type_add_form') {
-        // Update button.
-        $button['#attributes']['id'] = 'gin-sticky-' . $button['#id'];
-        $button['#attributes']['form'] = $form['#id'];
-        $button['#attributes']['data-drupal-selector'] = 'gin-sticky-' . $button['#attributes']['data-drupal-selector'];
-        $button['#attributes']['data-gin-sticky-form-selector'] = $button['#attributes']['data-drupal-selector'];
-
-        // Add the button to the form actions array.
-        if (!empty($button['#gin_action_item']) || Helper::moduleIsActive('navigation') || in_array($key, $includes, TRUE)) {
+        if (Helper::moduleIsActive('navigation')) {
           $form['gin_sticky_actions']['actions'][$key] = $button;
+        }
+
+        // The media_type_add_form form is a special case.
+        // @see https://www.drupal.org/project/gin/issues/3534385
+        // @see \Drupal\media\MediaTypeForm::actions
+        if ((isset($button['#type']) && $button['#type'] === 'submit') || $form['#form_id'] === 'media_type_add_form') {
+          // Update button.
+          $button['#attributes']['id'] = 'gin-sticky-' . $button['#id'];
+          $button['#attributes']['form'] = $form['#id'];
+          $button['#attributes']['data-drupal-selector'] = 'gin-sticky-' . $button['#attributes']['data-drupal-selector'];
+          $button['#attributes']['data-gin-sticky-form-selector'] = $button['#attributes']['data-drupal-selector'];
+
+          // Add the button to the form actions array.
+          if (!empty($button['#gin_action_item']) || Helper::moduleIsActive('navigation') || in_array($key, $includes, TRUE)) {
+            $form['gin_sticky_actions']['actions'][$key] = $button;
+          }
         }
       }
     }
