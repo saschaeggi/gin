@@ -5,6 +5,7 @@ namespace Drupal\gin;
 use Drupal\Core\Ajax\AjaxHelperTrait;
 use Drupal\Core\DependencyInjection\ClassResolverInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+use Drupal\Core\Entity\ContentEntityFormInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
@@ -261,6 +262,10 @@ final class ContentFormHelper implements ContainerInjectionInterface {
    *   The form id.
    */
   public function isContentForm(?FormStateInterface $form_state = NULL, string $form_id = ''): bool {
+    static $is_content_form;
+    if ($is_content_form) {
+      return TRUE;
+    }
     if ($form_id) {
       // Forms to exclude.
       // If media library widget, don't use new content edit form.
@@ -278,12 +283,13 @@ final class ContentFormHelper implements ContainerInjectionInterface {
         }
       }
     }
-    if ($form_state && ($form_state->getBuildInfo()['base_form_id'] ?? NULL) === 'node_form') {
+    if ($form_state && (($form_state->getBuildInfo()['base_form_id'] ?? NULL) === 'node_form' || $form_state->getFormObject() instanceof ContentEntityFormInterface)) {
+      $is_content_form = TRUE;
       return TRUE;
     }
 
-    static $is_content_form;
-    if (!isset($is_content_form)) {
+    static $is_content_form_route;
+    if (!isset($is_content_form_route)) {
       // Get route name.
       $route_name = $this->routeMatch->getRouteName();
 
@@ -309,9 +315,9 @@ final class ContentFormHelper implements ContainerInjectionInterface {
       $this->moduleHandler->alter('admin_content_form_routes', $route_names);
       $this->themeManager->alter('admin_content_form_routes', $route_names);
 
-      $is_content_form = in_array($route_name, $route_names, TRUE);
+      $is_content_form_route = in_array($route_name, $route_names, TRUE);
     }
-    return $is_content_form;
+    return $is_content_form_route;
   }
 
   /**
