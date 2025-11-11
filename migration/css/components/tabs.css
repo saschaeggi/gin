@@ -239,7 +239,7 @@
 @media (min-width: 48em) {
   .is-horizontal .tabs--primary .tabs__link.is-active {
     color: var(--gin-color-primary-active);
-    background: var(--gin-color-primary-light);
+    border: 1.5px solid currentColor;
   }
 }
 
