@@ -256,11 +256,7 @@ class GinContentFormHelper implements ContainerInjectionInterface {
     // callback, but maybe Gin is not the active theme anymore.
     // In that case `gin.theme` and the included files there won't be loaded, so
     // we better do an early return.
-    $is_gin_active = array_any(
-      \Drupal::theme()->getActiveTheme()->getBaseThemeExtensions(),
-      fn ($theme): bool => $theme->getName() === 'gin',
-    );
-    if (!$is_gin_active) {
+    if (!_gin_is_active()) {
       return $form;
     }
 
