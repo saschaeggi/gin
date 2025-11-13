@@ -15,6 +15,9 @@ use Drupal\Core\Theme\ThemeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+include_once __DIR__ . '/../gin.theme';
+_gin_include_theme_includes();
+
 /**
  * Service to handle content form overrides.
  */

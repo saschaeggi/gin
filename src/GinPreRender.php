@@ -4,6 +4,9 @@ namespace Drupal\gin;
 
 use Drupal\Core\Security\TrustedCallbackInterface;
 
+include_once __DIR__ . '/../gin.theme';
+_gin_include_theme_includes();
+
 /**
  * Implements trusted prerender callbacks for the Gin theme.
  *

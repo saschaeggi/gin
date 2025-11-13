@@ -5,6 +5,9 @@ namespace Drupal\gin;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+include_once __DIR__ . '/../gin.theme';
+_gin_include_theme_includes();
+
 /**
  * Service to handle toggling form descriptions.
  */
