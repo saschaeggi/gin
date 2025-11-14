@@ -5,6 +5,8 @@
  * gin.theme
  */
 
+use Composer\Autoload\ClassLoader;
+
 /**
  * Load include files which contain additional theming logic.
  */
@@ -19,8 +21,15 @@ _gin_include_theme_includes();
  * @see https://www.drupal.org/project/gin/issues/3554265
  */
 function _gin_include_theme_includes(): void {
-  foreach (glob(__DIR__ . '/includes/*.theme') as $file) {
-    include_once $file;
+  static $included;
+  if (!isset($included)) {
+    $included = TRUE;
+    $loader = new ClassLoader();
+    $loader->addPsr4("Drupal\\gin\\", __DIR__ . "/src");
+    $loader->register();
+    foreach (glob(__DIR__ . '/includes/*.theme') as $file) {
+      include_once $file;
+    }
   }
 }
 
