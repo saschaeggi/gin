@@ -87,6 +87,9 @@
       const chooseStorage = window.innerWidth < breakpoint ? storageMobile : storageDesktop;
       const hideLabel = Drupal.t('Hide sidebar panel');
       const sidebarTrigger = document.querySelector('.meta-sidebar__trigger');
+      if (sidebarTrigger === null) {
+        return;
+      }
 
       sidebarTrigger.querySelector('span').innerHTML = hideLabel;
       sidebarTrigger.setAttribute('title', hideLabel);
@@ -117,6 +120,9 @@
       const chooseStorage = window.innerWidth < breakpoint ? storageMobile : storageDesktop;
       const showLabel = Drupal.t('Show sidebar panel');
       const sidebarTrigger = document.querySelector('.meta-sidebar__trigger');
+      if (sidebarTrigger === null) {
+        return;
+      }
 
       sidebarTrigger.querySelector('span').innerHTML = showLabel;
       sidebarTrigger.setAttribute('title', showLabel);
