@@ -62,6 +62,7 @@ class GinDescriptionToggle implements ContainerInjectionInterface {
   public function preprocess(array &$variables) {
     if ($this->isEnabled() || (isset($variables['element']['#description_toggle']) && $variables['element']['#description_toggle'])) {
       if (!empty($variables['description'])) {
+        $variables['description_display_toggle'] = $variables['description_display'] ?? 'after';
         $variables['description_display'] = 'invisible';
         $variables['description_toggle'] = TRUE;
       }
