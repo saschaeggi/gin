@@ -41,6 +41,23 @@
   --ck-color-image-caption-text: var(--gin-color-text-light);
   --ck-color-image-caption-background: transparent;
   --ck-border-radius: var(--gin-border-m);
+  --ck-style-panel-button-label-background: var(--gin-bg-layer4);
+  --ck-style-panel-button-hover-label-background: var(--gin-bg-layer4);
+  --ck-style-panel-button-hover-border-color: var(--gin-color-primary);
+}
+
+.ck .ck-style-grid__button__preview {
+  border-start-start-radius: var(--ck-border-radius);
+  border-start-end-radius: var(--ck-border-radius);
+}
+
+.ck .ck-style-panel .ck-style-grid .ck-style-grid__button:not(.ck-on) .ck-button__label {
+  border-end-start-radius: var(--ck-border-radius);
+  border-end-end-radius: var(--ck-border-radius);
+}
+
+.ck .ck-dropdown__panel {
+  --ck-color-dropdown-panel-background: var(--gin-bg-input);
 }
 
 .ck .ck-content blockquote,
