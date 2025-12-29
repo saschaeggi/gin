@@ -12,6 +12,9 @@
   --ck-color-list-button-hover-background: var(--gin-color-primary-light-hover);
   --ck-color-panel-background: var(--gin-bg-layer3);
   --ck-color-panel-border: transparent;
+  --ck-color-dialog-background: var(--gin-bg-layer3);
+  --ck-color-dialog-form-header-border: var(--gin-border-color-form-element);
+  --ck-accessibility-help-dialog-code-background-color: var(--gin-bg-layer4);
   --ck-color-button-default-background: transparent;
   --ck-color-button-default-hover-background: var(--gin-color-primary-light);
   --ck-color-button-default-active-background: var(--gin-color-primary-light-active);
