@@ -1736,6 +1736,11 @@ table .views-field.views-field-operations {
   background-color: transparent;
 }
 
+.subfield-option {
+  border: 1px solid var(--gin-border-color-layer2);
+  border-radius: var(--gin-border-m);
+}
+
 .form-element--type-select {
   padding-inline-end: calc(var(--gin-spacing-xs) + var(--gin-spacing-xl) - 1px);
 }
