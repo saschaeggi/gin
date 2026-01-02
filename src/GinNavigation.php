@@ -79,9 +79,11 @@ class GinNavigation implements ContainerInjectionInterface {
 
     // Loop through menu items and add the plugin id as a class.
     foreach ($tree as $item) {
-      $plugin_id = $item->link->getPluginId();
-      $plugin_class = str_replace('.', '_', $plugin_id);
-      $build['#items'][$plugin_id]['class'] = $plugin_class;
+      if ($item->access->isAllowed()) {
+        $plugin_id = $item->link->getPluginId();
+        $plugin_class = str_replace('.', '_', $plugin_id);
+        $build['#items'][$plugin_id]['class'] = $plugin_class;
+      }
     }
 
     // Remove content and help from admin menu.
@@ -130,11 +132,13 @@ class GinNavigation implements ContainerInjectionInterface {
       $content_type_items = [];
 
       foreach ($content_types as $item) {
-        $content_type_items[] = [
-          'title' => $item->label(),
-          'class' => $item->id(),
-          'url' => Url::fromRoute('node.add', ['node_type' => $item->id()]),
-        ];
+        if ($this->hasLinkAccessPermission('node.add', ['node_type' => $item->id()])) {
+          $content_type_items[] = [
+            'title' => $item->label(),
+            'class' => $item->id(),
+            'url' => Url::fromRoute('node.add', ['node_type' => $item->id()]),
+          ];
+        }
       }
 
       $create_type_items = array_merge($content_type_items);
@@ -148,24 +152,28 @@ class GinNavigation implements ContainerInjectionInterface {
       $block_type_items = [];
 
       foreach ($block_content_types as $item) {
-        $block_type_items[] = [
-          'title' => $item->label(),
-          'class' => $item->id(),
-          'url' => Url::fromRoute('block_content.add_form', ['block_content_type' => $item->id()]),
-        ];
+        if ($this->hasLinkAccessPermission('block_content.add_form', ['block_content_type' => $item->id()])) {
+          $block_type_items[] = [
+            'title' => $item->label(),
+            'class' => $item->id(),
+            'url' => Url::fromRoute('block_content.add_form', ['block_content_type' => $item->id()]),
+          ];
+        }
       }
 
-      $create_type_items = array_merge(
-        $create_type_items,
-        [
+      if ($block_type_items) {
+        $create_type_items = array_merge(
+          $create_type_items,
           [
-            'title' => $this->t('Blocks'),
-            'class' => 'blocks',
-            'url' => '',
-            'below' => $block_type_items,
-          ],
-        ]
-      );
+            [
+              'title' => $this->t('Blocks'),
+              'class' => 'blocks',
+              'url' => '',
+              'below' => $block_type_items,
+            ],
+          ]
+        );
+      }
     }
 
     // Get media types.
@@ -174,24 +182,28 @@ class GinNavigation implements ContainerInjectionInterface {
       $media_type_items = [];
 
       foreach ($media_types as $item) {
-        $media_type_items[] = [
-          'title' => $item->label(),
-          'class' => $item->label(),
-          'url' => Url::fromRoute('entity.media.add_form', ['media_type' => $item->id()]),
-        ];
+        if ($this->hasLinkAccessPermission('entity.media.add_form', ['media_type' => $item->id()])) {
+          $media_type_items[] = [
+            'title' => $item->label(),
+            'class' => $item->label(),
+            'url' => Url::fromRoute('entity.media.add_form', ['media_type' => $item->id()]),
+          ];
+        }
       }
 
-      $create_type_items = array_merge(
-        $create_type_items,
-        [
+      if ($media_type_items) {
+        $create_type_items = array_merge(
+          $create_type_items,
           [
-            'title' => $this->t('Media'),
-            'class' => 'media',
-            'url' => '',
-            'below' => $media_type_items,
-          ],
-        ]
-      );
+            [
+              'title' => $this->t('Media'),
+              'class' => 'media',
+              'url' => '',
+              'below' => $media_type_items,
+            ],
+          ]
+        );
+      }
     }
 
     // Get taxonomy types.
@@ -202,24 +214,28 @@ class GinNavigation implements ContainerInjectionInterface {
       $taxonomy_type_items = [];
 
       foreach ($taxonomy_types as $item) {
-        $taxonomy_type_items[] = [
-          'title' => $item->label(),
-          'class' => $item->id(),
-          'url' => Url::fromRoute('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => $item->id()]),
-        ];
+        if ($this->hasLinkAccessPermission('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => $item->id()])) {
+          $taxonomy_type_items[] = [
+            'title' => $item->label(),
+            'class' => $item->id(),
+            'url' => Url::fromRoute('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => $item->id()]),
+          ];
+        }
       }
 
-      $create_type_items = array_merge(
-        $create_type_items,
-        [
+      if ($taxonomy_type_items) {
+        $create_type_items = array_merge(
+          $create_type_items,
           [
-            'title' => $this->t('Taxonomy'),
-            'class' => 'taxonomy',
-            'url' => '',
-            'below' => $taxonomy_type_items,
-          ],
-        ]
-      );
+            [
+              'title' => $this->t('Taxonomy'),
+              'class' => 'taxonomy',
+              'url' => '',
+              'below' => $taxonomy_type_items,
+            ],
+          ]
+        );
+      }
     }
 
     if (!$create_type_items && !$create_item_url) {
@@ -250,38 +266,46 @@ class GinNavigation implements ContainerInjectionInterface {
 
     // Get Content menu item.
     if ($this->entityTypeManager->hasDefinition('node')) {
-      $create_content_items['content'] = [
-        'title' => $this->t('Content'),
-        'class' => 'content',
-        'url' => Url::fromRoute('system.admin_content')->toString(),
-      ];
+      if ($this->hasLinkAccessPermission('system.admin_content')) {
+        $create_content_items['content'] = [
+          'title' => $this->t('Content'),
+          'class' => 'content',
+          'url' => Url::fromRoute('system.admin_content')->toString(),
+        ];
+      }
     }
 
     // Get Blocks menu item.
     if ($this->entityTypeManager->hasDefinition('block_content')) {
-      $create_content_items['blocks'] = [
-        'title' => $this->t('Blocks'),
-        'class' => 'blocks',
-        'url' => Url::fromRoute('entity.block_content.collection')->toString(),
-      ];
+      if ($this->hasLinkAccessPermission('entity.block_content.collection')) {
+        $create_content_items['blocks'] = [
+          'title' => $this->t('Blocks'),
+          'class' => 'blocks',
+          'url' => Url::fromRoute('entity.block_content.collection')->toString(),
+        ];
+      }
     }
 
     // Get File menu item.
     if ($this->entityTypeManager->hasDefinition('file')) {
-      $create_content_items['files'] = [
-        'title' => $this->t('Files'),
-        'class' => 'files',
-        'url' => '/admin/content/files',
-      ];
+      if ($this->hasLinkAccessPermission('view.files.page_1')) {
+        $create_content_items['files'] = [
+          'title' => $this->t('Files'),
+          'class' => 'files',
+          'url' => Url::fromRoute('view.files.page_1')->toString(),
+        ];
+      }
     }
 
     // Get Media menu item.
     if ($this->entityTypeManager->hasDefinition('media')) {
-      $create_content_items['media'] = [
-        'title' => $this->t('Media'),
-        'class' => 'media',
-        'url' => '/admin/content/media',
-      ];
+      if ($this->hasLinkAccessPermission('view.media.media_page_list')) {
+        $create_content_items['media'] = [
+          'title' => $this->t('Media'),
+          'class' => 'media',
+          'url' => Url::fromRoute('view.media.media_page_list')->toString(),
+        ];
+      }
     }
 
     return [
@@ -357,6 +381,23 @@ class GinNavigation implements ContainerInjectionInterface {
     }
 
     return $paths;
+  }
+
+  /**
+   * Check the current user's access permission for provided links.
+   *
+   * @param string $route_name
+   *   The name of the route.
+   * @param array $route_parameters
+   *   (optional) The route parameter value.
+   *
+   * @return bool
+   *   Return true if the user has the access to link or false if not.
+   */
+  public function hasLinkAccessPermission($route_name, ?array $route_parameters = []) {
+    $url = Url::fromRoute($route_name, $route_parameters);
+    $has_access = $url->access($this->currentUser);
+    return $has_access;
   }
 
 }
