@@ -409,4 +409,5 @@ class GinNavigation implements ContainerInjectionInterface {
     $has_access = $url->access($this->currentUser);
     return $has_access;
   }
+
 }
