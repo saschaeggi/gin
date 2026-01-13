@@ -3,7 +3,7 @@
   --admin-toolbar-top-bar-height: 54px;
 }
 
-.gin--navigation-top-bar {
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar {
   padding-inline: calc(var(--admin-toolbar-sidebar-width) + var(--gin-spacing-m)) var(--gin-spacing-m);
   padding-block: var(--gin-spacing-xxxs);
   min-height: 54px;
@@ -15,7 +15,7 @@
 }
 
 @supports ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) {
-  .gin--navigation-top-bar {
+  :is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar {
     opacity: .999;
     background: rgba(var(--gin-bg-layer-rgb), .8);
     -webkit-backdrop-filter: blur(12px);
@@ -23,59 +23,60 @@
   }
 }
 
-.gin--high-contrast-mode .gin--navigation-top-bar {
+.gin--high-contrast-mode :is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar {
   background: var(--gin-bg-layer);
   -webkit-backdrop-filter: none;
           backdrop-filter: none;
 }
 
-.gin--navigation-top-bar--offset {
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar--offset {
   margin-top: calc(54px + var(--gin-spacing-s));
 }
 
-.gin--navigation-top-bar:has(.top-bar__tools:not(:empty), .top-bar__context:not(:empty), .top-bar__actions:not(:empty)) {
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar:has(.top-bar__tools:not(:empty), .top-bar__context:not(:empty), .top-bar__actions:not(:empty)) {
   display: flex;
 }
 
-.gin--navigation-top-bar .top-bar__burger {
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .top-bar__burger {
   align-self: center;
 }
 
-.gin--navigation-top-bar .top-bar__context {
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .top-bar__context {
   gap: var(--gin-spacing-xs);
 }
 
-.gin--navigation-top-bar .top-bar__actions,
-.gin--navigation-top-bar .local-actions {
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .top-bar__actions,
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .local-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--gin-spacing-xs);
+  list-style: none;
 }
 
-.gin--navigation-top-bar .local-actions,
-.gin--navigation-top-bar .local-actions__item,
-.gin--navigation-top-bar .form-actions,
-.gin--navigation-top-bar .gin-sticky-form-actions {
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .local-actions,
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .local-actions__item,
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .form-actions,
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .gin-sticky-form-actions {
   width: auto;
   margin: 0;
 }
 
-.gin--navigation-top-bar .toolbar-title {
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .toolbar-title {
   color: var(--gin-color-text);
 }
 
-.gin--navigation-top-bar .toolbar-title__icon path {
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .toolbar-title__icon path {
   fill: var(--gin-color-text);
 }
 
-.gin--navigation-top-bar .toolbar-button {
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .toolbar-button {
   font-size: var(--gin-font-size-xs);
   font-weight: var(--gin-font-weight-semibold);
   font-variation-settings: normal;
 }
 
-.gin--navigation-top-bar .toolbar-dropdown__menu {
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .toolbar-dropdown__menu {
   gap: 0;
   padding: var(--gin-spacing-xs);
   background-color: var(--gin-bg-layer3);
@@ -85,12 +86,12 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .gin--navigation-top-bar .toolbar-dropdown__menu {
+  :is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .toolbar-dropdown__menu {
     transition: opacity var(--gin-transition-fast);
   }
 }
 
-.gin--navigation-top-bar .toolbar-dropdown__menu .toolbar-dropdown__link {
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .toolbar-dropdown__menu .toolbar-dropdown__link {
   font-size: var(--gin-font-size-xs);
   font-weight: var(--gin-font-weight-semibold);
   line-height: 1;
@@ -106,29 +107,39 @@
   box-sizing: border-box;
 }
 
-.gin--navigation-top-bar .toolbar-dropdown__menu .toolbar-dropdown__link:hover, .gin--navigation-top-bar .toolbar-dropdown__menu .toolbar-dropdown__link:active, .gin--navigation-top-bar .toolbar-dropdown__menu .toolbar-dropdown__link:focus {
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .toolbar-dropdown__menu .toolbar-dropdown__link:hover, :is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .toolbar-dropdown__menu .toolbar-dropdown__link:active, :is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .toolbar-dropdown__menu .toolbar-dropdown__link:focus {
   color: var(--gin-color-button-text);
   background-color: var(--gin-color-primary);
   outline: none;
 }
 
-.gin--navigation-top-bar .toolbar-dropdown__menu .toolbar-dropdown__link:hover::before, .gin--navigation-top-bar .toolbar-dropdown__menu .toolbar-dropdown__link:active::before, .gin--navigation-top-bar .toolbar-dropdown__menu .toolbar-dropdown__link:focus::before {
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .toolbar-dropdown__menu .toolbar-dropdown__link:hover::before, :is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .toolbar-dropdown__menu .toolbar-dropdown__link:active::before, :is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .toolbar-dropdown__menu .toolbar-dropdown__link:focus::before {
   background-color: var(--gin-bg-layer) !important;
 }
 
-.gin--navigation-top-bar .toolbar-dropdown__menu .toolbar-dropdown__item + .toolbar-dropdown__item {
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .toolbar-dropdown__menu .toolbar-dropdown__item + .toolbar-dropdown__item {
   border: none;
 }
 
-.gin--navigation-top-bar button,
-.gin--navigation-top-bar input[type=submit],
-.gin--navigation-top-bar .local-actions__item a {
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar button,
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar input[type=submit],
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .action-link--icon-trash.action-link--danger,
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .button.button--danger,
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar a.button.button--danger,
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .local-actions__item a {
   font-size: var(--gin-font-size-xs);
   font-weight: var(--gin-font-weight-bold);
+  text-decoration: none;
   padding-block: calc(var(--gin-spacing-xs) - var(--gin-spacing-xxxs));
   padding-inline: var(--gin-spacing-s);
   margin-block: 0;
   box-shadow: none;
+}
+
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .action-link--icon-trash.action-link--danger,
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .button.button--danger,
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar a.button.button--danger {
+  padding-block: calc(var(--gin-spacing-xs) - .5px);
 }
 
 body:has(.gin--navigation-top-bar .gin-sticky-form-actions) :where(#gin_sidebar) {
@@ -153,6 +164,6 @@ body:has(.gin--navigation-top-bar .gin-sticky-form-actions) :where(#gin_sidebar)
 }
 
 #block-gin-page-title {
-  margin-block: var(--gin-spacing-xxs) var(--gin-spacing-s);
+  margin-block: var(--gin-spacing-s);
 }
 

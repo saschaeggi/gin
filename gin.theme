@@ -52,13 +52,3 @@ function gin_css_alter(&$css, $assets) {
     $css[$custom_css]['group'] = 201;
   }
 }
-
-/**
- * Implements hook_library_info_alter().
- */
-function gin_library_info_alter(&$libraries, $extension) {
-  if ($extension === 'navigation' && isset($libraries['admin-reset-styles'])) {
-    unset($libraries['admin-reset-styles']['css']['base']['css/base/admin-reset-styles.css']);
-    $libraries['admin-reset-styles']['css']['base']['/' . \Drupal::service('extension.list.theme')->getPath('gin') . '/styles/admin-reset-styles.css'] = [];
-  }
-}
