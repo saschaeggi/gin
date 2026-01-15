@@ -85,7 +85,7 @@
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable > td {
   position: relative;
-  display: block;
+  display: table-cell;
   flex: 0 0 auto;
 }
 
