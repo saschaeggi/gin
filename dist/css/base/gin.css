@@ -3950,6 +3950,11 @@ button.link:active,
   color: var(--gin-color-text-light);
 }
 
+:where(*) #edit-help.messages.messages--warning,
+:is(#extra-specificity-hack, [data-drupal-admin-styles]) #edit-help.messages.messages--warning {
+  color: var(--gin-color-warning-light);
+}
+
 :where(*) .system-status-report__requirements-group h3,
 :is(#extra-specificity-hack, [data-drupal-admin-styles]) .system-status-report__requirements-group h3 {
   margin-block-start: 0;
