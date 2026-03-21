@@ -354,7 +354,8 @@ class GinNavigation implements ContainerInjectionInterface {
     $paths = [];
     foreach ($links as $link) {
       $url = $link->getUrl();
-      // Only get internal path for routed URIs to avoid UnexpectedValueException.
+      // Only get internal path for routed URIs
+      // to avoid UnexpectedValueException.
       if ($url->isRouted()) {
         $paths[] = $url->getInternalPath();
       }
