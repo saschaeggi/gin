@@ -2426,7 +2426,7 @@ html.js .dropbutton-wrapper.open .dropbutton {
 
 .dropbutton--multiple > .dropbutton__item:first-of-type {
   height: 100%;
-  margin-inline-end: var(--gin-spacing-xxl);
+  margin-inline-end: calc(var(--dropbutton-extrasmall-toggle-size) + var(--dropbutton-toggle-size-spacing) - 2px) !important;
   border-inline-end: 1px solid var(--gin-color-primary-light-active);
 }
 
