@@ -118,6 +118,7 @@
 .ui-dialog .ui-widget-content.ui-dialog-buttonpane .button.button--danger,
 .ui-dialog [data-drupal-selector*=-remove-form] .button.button--danger {
   border-color: var(--gin-color-danger) !important;
+  background-color: var(--gin-color-danger) !important;
 }
 
 .ui-dialog .ui-dialog-buttonset {
