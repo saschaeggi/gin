@@ -89,6 +89,7 @@
         position: relative;
         display: table-cell;
         flex: 0 0 auto;
+        height: auto;
 
         &:nth-child(2) {
           flex: 1 0 0;

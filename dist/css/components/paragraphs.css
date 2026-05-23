@@ -87,6 +87,7 @@
   position: relative;
   display: table-cell;
   flex: 0 0 auto;
+  height: auto;
 }
 
 .paragraphs-tabs-wrapper .field-multiple-table .draggable > td:nth-child(2) {
