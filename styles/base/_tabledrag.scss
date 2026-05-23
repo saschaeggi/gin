@@ -17,6 +17,18 @@
   }
 }
 
+tr.draggable:has(> td a.tabledrag-handle:not([style="display: none;"])) {
+  cursor: move;
+
+  &:hover {
+    background-color: var(--gin-bg-item);
+  }
+}
+
+tr.draggable:has(> td a.tabledrag-handle-y:not([style="display: none;"])) {
+  cursor: row-resize;
+}
+
 .tabledrag-toggle-weight-wrapper {
   margin-block-start: 0;
 
