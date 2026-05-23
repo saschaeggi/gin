@@ -41,6 +41,10 @@
   align-self: center;
 }
 
+:is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .top-bar__tools {
+  align-items: center;
+}
+
 :is(#extra-specificity-hack, [data-drupal-admin-styles]).gin--navigation-top-bar .top-bar__context {
   gap: var(--gin-spacing-xs);
 }

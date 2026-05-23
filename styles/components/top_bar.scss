@@ -39,6 +39,10 @@ $topbar: 54px;
       align-self: center;
     }
 
+    .top-bar__tools {
+      align-items: center;
+    }
+
     .top-bar__context {
       gap: var(--gin-spacing-xs);
     }
