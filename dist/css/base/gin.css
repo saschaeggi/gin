@@ -4722,8 +4722,8 @@ button.link:active,
   color: var(--gin-color-danger);
 }
 
-:where(*) table.diff .diff-context,
-:is(#extra-specificity-hack, [data-drupal-admin-styles]) table.diff .diff-context {
+:where(*) table.diff tr .diff-context,
+:is(#extra-specificity-hack, [data-drupal-admin-styles]) table.diff tr .diff-context {
   background-color: transparent;
 }
 
