@@ -17,16 +17,18 @@
       const formActions = form.querySelector('[data-drupal-selector="edit-actions"]'), actionButtons = Array.from(formActions.children);
       if (actionButtons.length > 0) {
         const formId = form.getAttribute("id");
-        once("ginSyncActionButtons", actionButtons).forEach((el => {
-          const formElement = el.dataset.drupalSelector, buttonId = el.id, buttonSelector = newParent.querySelector(`[data-drupal-selector="gin-sticky-${formElement}"]`);
-          buttonSelector && (buttonSelector.setAttribute("form", formId), buttonSelector.setAttribute("data-gin-sticky-form-selector", buttonId), 
-          buttonSelector.addEventListener("click", (e => {
-            const button = document.querySelector(`#${formId} [data-drupal-selector="${buttonId}"]`);
-            null !== button && (e.preventDefault(), once.filter("drupal-ajax", button).length && button.dispatchEvent(new Event("mousedown")), 
-            button.click());
-          })));
+        once("ginSyncActionButtons-" + formId, actionButtons).forEach((el => {
+          const formElement = el.dataset.drupalSelector, buttonDrupalDataSelector = el.getAttribute("data-drupal-selector"), buttonSelector = newParent.querySelector(`[data-drupal-selector="gin-sticky-${formElement}"]`);
+          buttonSelector && (buttonSelector.removeEventListener("click", this.actionButtonEventListener), 
+          buttonSelector.setAttribute("form", formId), buttonSelector.setAttribute("data-gin-sticky-form-selector", buttonDrupalDataSelector), 
+          buttonSelector.addEventListener("click", this.actionButtonEventListener));
         }));
       }
+    },
+    actionButtonEventListener: function(e) {
+      const stickyButton = e.currentTarget, buttonDrupalDataSelector = stickyButton.getAttribute("data-gin-sticky-form-selector"), formId = stickyButton.getAttribute("form"), button = document.querySelector(`#${formId} [data-drupal-selector="${buttonDrupalDataSelector}"]`);
+      null !== button && (e.preventDefault(), once.filter("drupal-ajax", button).length && button.dispatchEvent(new Event("mousedown")), 
+      button.click());
     },
     moveFocus: function(newParent, form) {
       once("ginMoveFocusToStickyBar", "[gin-move-focus-to-sticky-bar]", form).forEach((el => el.addEventListener("focus", (e => {
