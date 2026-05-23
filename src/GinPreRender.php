@@ -15,6 +15,20 @@ _gin_include_theme_includes();
 class GinPreRender implements TrustedCallbackInterface {
 
   /**
+   * Pre-render callback for form actions.
+   *
+   * Runs late in the render pipeline, after form's #after_build has populated
+   * _gin_form_actions().
+   */
+  public static function formActions(array $element) {
+    if ($form_actions = _gin_form_actions()) {
+      $element['actions'] = $form_actions;
+      $element['#attached']['library'][] = 'gin/top_bar';
+    }
+    return $element;
+  }
+
+  /**
    * Prepare description toggle for output in template.
    */
   public static function textFormat($element) {
@@ -37,6 +51,7 @@ class GinPreRender implements TrustedCallbackInterface {
    */
   public static function trustedCallbacks() {
     return [
+      'formActions',
       'textFormat',
     ];
   }
