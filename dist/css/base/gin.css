@@ -3218,6 +3218,7 @@ button.link:active,
 
 :where(*) .dropbutton-wrapper,
 :is(#extra-specificity-hack, [data-drupal-admin-styles]) .dropbutton-wrapper {
+  position: relative;
   box-shadow: none;
 }
 
