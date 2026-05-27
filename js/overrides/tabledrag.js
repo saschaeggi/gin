@@ -565,10 +565,26 @@
       $item.find('td').eq(0).prepend($handle);
     }
 
-    $handle.closest('tr').on('mousedown touchstart pointerdown', (event) => {
-      // Only trigger if the event target is the <tr> or <td> but not a child
-      // element like input/select/etc.
-      if (event.target !== event.currentTarget && !$(event.target).is('td')) {
+    // Drag from the handle itself.
+    // Off first to prevent duplicate listeners on re-init.
+    $handle
+      .off('mousedown.tabledrag touchstart.tabledrag pointerdown.tabledrag')
+      .on('mousedown.tabledrag touchstart.tabledrag pointerdown.tabledrag', (event) => {
+        event.preventDefault();
+        if (event.originalEvent.type === 'touchstart') {
+          event = event.originalEvent.touches[0];
+        }
+        self.dragStart(event, self, item);
+      });
+
+    // Also allow dragging from anywhere in the row.
+    // Off first to prevent duplicate listeners on re-init.
+    $handle.closest('tr')
+      .off('mousedown.tabledrag touchstart.tabledrag pointerdown.tabledrag')
+      .on('mousedown.tabledrag touchstart.tabledrag pointerdown.tabledrag', (event) => {
+        const $target = $(event.target);
+        // Skip interactive elements AND the handle itself (already handled above).
+        if ($target.is('input, select, textarea, button, a, label') || $target.closest('.tabledrag-handle').length) {
         return;
       }
       // Don't allow dragging if the handle is not visible (e.g. when weight
