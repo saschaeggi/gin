@@ -1894,21 +1894,6 @@ button.link:active,
   background-color: #f0f1f9;
 }
 
-:where(*) tr.draggable:has(> td a.tabledrag-handle:not([style="display: none;"])),
-:is(#extra-specificity-hack, [data-drupal-admin-styles]) tr.draggable:has(> td a.tabledrag-handle:not([style="display: none;"])) {
-  cursor: move;
-}
-
-:where(*) tr.draggable:has(> td a.tabledrag-handle:not([style="display: none;"])):hover,
-:is(#extra-specificity-hack, [data-drupal-admin-styles]) tr.draggable:has(> td a.tabledrag-handle:not([style="display: none;"])):hover {
-  background-color: var(--gin-bg-item);
-}
-
-:where(*) tr.draggable:has(> td a.tabledrag-handle-y:not([style="display: none;"])),
-:is(#extra-specificity-hack, [data-drupal-admin-styles]) tr.draggable:has(> td a.tabledrag-handle-y:not([style="display: none;"])) {
-  cursor: row-resize;
-}
-
 :where(*) .tabledrag-toggle-weight-wrapper,
 :is(#extra-specificity-hack, [data-drupal-admin-styles]) .tabledrag-toggle-weight-wrapper {
   margin-block-start: 0;
