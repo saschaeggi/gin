@@ -1496,6 +1496,11 @@ button.link:active,
   margin-block-start: calc(var(--gin-spacing-xs) * -1);
 }
 
+:where(*) .gin-table-scroll-wrapper:has(.dropbutton-wrapper.open),
+:is(#extra-specificity-hack, [data-drupal-admin-styles]) .gin-table-scroll-wrapper:has(.dropbutton-wrapper.open) {
+  overflow: visible;
+}
+
 :where(*) table.gin--sticky-table-header,
 :is(#extra-specificity-hack, [data-drupal-admin-styles]) table.gin--sticky-table-header {
   visibility: hidden;
