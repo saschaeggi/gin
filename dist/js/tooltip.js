@@ -1,7 +1,11 @@
 ((Drupal, once, _ref) => {
   let {computePosition, offset, shift, flip} = _ref;
-  Drupal.theme.ginTooltipWrapper = (dataset, title) => `<div class="gin-tooltip ${dataset.drupalTooltipClass || ""}">\n      ${dataset.drupalTooltip || title}\n    </div>`, 
-  Drupal.behaviors.ginTooltip = {
+  Drupal.theme.ginTooltipWrapper = (dataset, title) => {
+    const el = document.createElement("div");
+    return el.classList.add("gin-tooltip"), dataset.drupalTooltipClass && dataset.drupalTooltipClass.split(/\s+/).filter((token => "" !== token)).forEach((token => {
+      el.classList.add(token);
+    })), el.textContent = dataset.drupalTooltip || title || "", el;
+  }, Drupal.behaviors.ginTooltip = {
     attach: context => {
       Drupal.ginTooltip.init(context);
     }
@@ -9,7 +13,7 @@
     init: function(context) {
       once("ginTooltipInit", "[data-gin-tooltip]", context).forEach((trigger => {
         const title = trigger.title;
-        title && (trigger.title = ""), trigger.insertAdjacentHTML("afterend", Drupal.theme.ginTooltipWrapper(trigger.dataset, title));
+        title && (trigger.title = ""), trigger.insertAdjacentElement("afterend", Drupal.theme.ginTooltipWrapper(trigger.dataset, title));
         const tooltip = trigger.nextElementSibling, updatePosition = () => {
           this.computePosition(trigger, tooltip);
         };
