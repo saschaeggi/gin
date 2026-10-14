@@ -14,10 +14,20 @@
    * @return {HTMLElement}
    *   A DOM Node.
    */
-  Drupal.theme.ginTooltipWrapper = (dataset, title) =>
-    `<div class="gin-tooltip ${dataset.drupalTooltipClass || ''}">
-      ${dataset.drupalTooltip || title}
-    </div>`;
+  Drupal.theme.ginTooltipWrapper = (dataset, title) => {
+    const el = document.createElement('div');
+    el.classList.add('gin-tooltip');
+    if (dataset.drupalTooltipClass) {
+      dataset.drupalTooltipClass
+        .split(/\s+/)
+        .filter((token) => token !== '')
+        .forEach((token) => {
+          el.classList.add(token);
+        });
+    }
+    el.textContent = dataset.drupalTooltip || title || '';
+    return el;
+  };
 
   /**
    * Attaches the tooltip behavior to all required triggers.
@@ -45,7 +55,7 @@
             trigger.title = '';
           }
 
-          trigger.insertAdjacentHTML(
+          trigger.insertAdjacentElement(
             'afterend',
             Drupal.theme.ginTooltipWrapper(trigger.dataset, title),
           );
